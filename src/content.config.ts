@@ -28,6 +28,8 @@ const video = z.object({
   youtubeId: z.string(),
   title: z.string().optional(),
   publishedAt: z.string().optional(),
+  /** Offset in seconds when the session is part of a longer video (livestream). */
+  startSeconds: z.number().int().nonnegative().optional(),
   transcript: z.boolean().default(false),
 });
 
@@ -66,6 +68,8 @@ const editions = defineCollection({
     note: z.string().optional(),
     status: z.enum(['scheduled', 'pending', 'synthesized']),
     synthesisUpdatedAt: z.string().optional(),
+    /** Synthesis made with too few participant sources: the daily routine revisits it (a few per night). */
+    revisit: z.string().optional(),
     corpus: z.string().optional(),
     limits: z.string().optional(),
     tldr: z.string().optional(),

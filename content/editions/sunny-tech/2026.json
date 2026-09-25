@@ -8,6 +8,244 @@
   "venue": "Faculté des Sciences",
   "url": "https://sunny-tech.io",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "status": "synthesized",
+  "sessions": [
+    {
+      "id": "mythologie-de-la-tech-pourquoi-l-agi-ne-vous-remplacera-pas",
+      "day": "2026-07-02",
+      "type": "keynote",
+      "title": "Mythologie de la tech - pourquoi l'AGI ne vous remplacera pas",
+      "speakers": [
+        "Audrey Neveu"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Keynote d'ouverture** (contenu tiré de la vidéo, aucun retour de participant trouvé). Point de départ : de « Don't be evil » à l'alignement des patrons de la tech sur Trump (investiture de 2025, manifeste du CEO de Palantir en 2026).\n- **Généalogie du mythe de l'entrepreneur californien** : fortune de Leland Stanford, complexe militaro-industriel autour de Stanford (Fred Terman), contre-culture des années 60, objectivisme d'Ayn Rand (*La Grève*), dérégulation reaganienne puis d'Internet. Conclusion : ces patrons sont *« plus proches des barons voleurs du XIXᵉ siècle que des génies »*.\n- Tour des idéologies regroupées par Timnit Gebru et Émile Torres (eugénisme, transhumanisme, extropianisme, altruisme efficace, long-termisme…), jusqu'aux zones économiques autonomes comme Prospera.\n- **Trois obstacles à l'AGI** : coût écologique (terres rares, eau, électricité des data centers), *model collapse* quand les modèles auront épuisé les données humaines, **bulle financière** (prix des tokens subventionnés).\n- Message aux développeurs : *« notre métier n'a jamais été d'écrire du code »* (environ 5 % du temps selon elle) ; l'IA restera dans la stack sans remplacer les devs. C'est l'occasion de se réapproprier **l'architecture** et la **sécurité**, et de refuser la peur : *« on combat toujours mieux un ennemi qu'on voit »* ; continuer à apprendre et à se réunir *« entre humains »* (environ 500 personnes dans la salle, selon elle).",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "v9HWgjawZe0",
+        "title": "Mythologie de la tech - pourquoi l'AGI ne vous remplacera pas",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rex-notre-ia-et-nous-contre-le-legacy",
+      "day": "2026-07-02",
+      "type": "talk",
+      "title": "REX : Notre IA et nous contre le legacy : REX d'une reprise de contrôle assistée",
+      "speakers": [
+        "Jordan Nourry — Shodo Studio",
+        "Benjamin Lacroix — Shodo Studio"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Talk mis en scène à deux voix : un « enthousiaste » face à un « prudent », sur un vrai projet legacy open source (openwhyd, JavaScript sans TypeScript ni documentation, plus de 10 ans d'historique).\n- **Approche « enthousiaste »** : un prompt court (« refais-le en React, state of the art »), des rendus qui ne ressemblent pas à l'existant et un auto-scoring subjectif (72, puis 85, puis « 100/100 »). La rétro faite avec l'agent conclut qu'il manquait une méthode structurée, des critères vérifiables et une stratégie de test : *« est-ce qu'on n'est pas en train de refaire un legacy ? »*\n- **Approche « prudente »** : d'abord **monter en compétence fonctionnelle et technique**, avec un agent de discovery DDD (bounded contexts, sous-domaines, glossaire, parcours utilisateurs explorés via MCP navigateur) et un agent de discovery technique (dépendances critiques, providers externes). Ensuite, un agent architecte « socratique » construit la stratégie de migration avec l'équipe, puis un agent affine le backlog en **user flows complets**.\n- **Harness engineering** : donner à l'agent un signal **déterministe**, par exemple des tests de non-régression visuelle *pixel perfect* avec seuil, pour que *« chaque erreur devienne un signal »*. Un agent « kaizen » relit les sessions pour améliorer le harnais.\n- Bilan annoncé : un peu plus d'un sprint pour un chantier estimé à deux. Conclusion : *« l'IA n'a pas trop changé notre manière de coder… elle a amplifié notre expertise »*. Les PR restent relues par des humains, avec un agent reviewer et un modèle différent pour la revue.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "IyHHKTyoc9o",
+        "title": "REX : Notre IA et nous contre le legacy : REX d'une reprise de contrôle assistée",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "fini-les-nuits-difficiles-comment-l-ia-a-transforme-nos-astreintes",
+      "day": "2026-07-03",
+      "type": "talk",
+      "title": "Fini les nuits difficiles : Comment l'IA a transformé nos astreintes",
+      "speakers": [
+        "Jean-Philippe Foures — VP Product, Iguane Solutions"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Contexte : un hébergeur et infogéreur français aux **infrastructures hétérogènes** (clients comme Deezer ou EasyBourse) qui gère environ **700 incidents « bruit » par mois** nécessitant malgré tout une intervention humaine. Le vrai coût est la **demi-heure perdue** entre l'incident et sa compréhension.\n- Projet **Night Watch**, sur une **IA souveraine** : modèles open-weight (Qwen, puis Kimi) hébergés sur des GPU H200 internes, pour des raisons contractuelles, de propriété intellectuelle et de coût.\n- Leçons d'architecture : le **méga-agent au méga-prompt** hallucine ; mieux vaut **trois agents spécialisés** (métriques, logs, « juge ») ; trop de contexte dégrade la qualité (200 000 tokens en entrée pour un incident simple), d'où un **pré-filtrage des logs** prévu.\n- Sécurité : **pas de SSH ni de shell**. Un serveur MCP déployé sur chaque machine n'expose que des commandes en lecture et un unique redémarrage de service.\n- Résultats annoncés : un **rapport d'incident systématique**, un temps de traitement humain divisé par deux (soit ~350 h/mois), et le programme promet −80 % de sollicitations d'astreinte. Prochaines étapes : capter le feedback des SRE, un « chaos agent » en bac à sable, une autonomie progressive. *« L'IA ne remplace pas les agents, elle les soulage. »*",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "9dszqFciWHg",
+        "title": "Fini les nuits difficiles: Comment l'IA a transformé nos astreintes",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-monstre-invisible-l-empreinte-carbone-de-l-ia",
+      "day": "2026-07-03",
+      "type": "talk",
+      "title": "Le Monstre Invisible : L'Empreinte Carbone de l'IA",
+      "speakers": [
+        "Olivier Bierlaire — Carbonifer / Rebase.Green"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Ordres de grandeur : le numérique émettrait plus que l'aviation civile. L'IA pourrait consommer l'équivalent de l'électricité française vers 2028-2030 (projection du Shift Project citée). Les puces Nvidia vendues représenteraient **85 à 134 TWh/an**. Le **« token maxing »** (mesurer la productivité aux tokens consommés) est dénoncé.\n- **Le lieu compte** : l'intensité carbone varie de ~19 gCO₂/kWh (France, au moment de la démo) à ~500 (Virginie). Déménager de Paris à Dublin pour gagner 10 % sur la facture peut multiplier les émissions par 5. Les calculateurs des clouds affichant « zéro » sont jugés peu crédibles.\n- Repères proposés : **~1 tCO₂ par milliard de paramètres** pour l'entraînement ; énergie par token **à peu près linéaire** avec la taille du modèle ; un modèle auto-hébergé doit être **utilisé à fond** pour amortir son empreinte.\n- Outils : ML CO2 Impact, CodeCarbon, Carbon Tracker, **EcoLogits**, Cloud Carbon Footprint, export de tokens par session (Goose).\n- Leviers : *« smaller is greener »*, mixture of experts, **choisir le modèle et l'effort adaptés** à la question, consignes de concision (CLAUDE.md / AGENTS.md), modèles locaux ou hybrides, exiger la transparence des fournisseurs, calculer un « ROI carbone » et **questionner l'IA comme solution**.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "pOaAe2BXfWA",
+        "title": "Le Monstre Invisible : L'Empreinte Carbone de l'IA",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-face-cachee-de-la-performance-des-equipes-de-developpements",
+      "day": "2026-07-03",
+      "type": "talk",
+      "title": "La face cachée de la performance des équipes de développements",
+      "speakers": [
+        "Geoffrey Graveaud — Inside"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Constat de départ, d'après Gallup : la part de salariés « engagés » serait d'environ **20 % dans le monde, 12 % en Europe et 8 % en France**.\n- **Quatre facteurs invisibles** : (1) **perte de proximité managériale**, alors que le *transformational leadership* (« de quoi as-tu besoin pour mieux travailler ? ») améliore la performance de livraison selon *Accelerate* ; (2) **charge mentale** d'un métier dynamique, abstrait et sous deadlines, avec un risque de suradaptation (métaphore de la grenouille) ; (3) **mémoire de travail** limitée (≈ 7 éléments, 15 à 30 s) : la maintenance et le renommage du code allègent la charge cognitive (*The Programmer's Brain*, Felienne Hermans) ; (4) **interruptions** (environ 15 par heure selon une étude citée avec réserve) et effet Zeigarnik.\n- Remèdes évoqués : **limites de WIP**, apprendre à dire non (*Making Work Visible*, Dominica DeGrandis), **plages de deep work** protégées par l'équipe, équilibre difficulté/compétence pour atteindre le *flow*, boucles de feedback rapides.\n- Démarche DevEx / *Frictionless* : identifier le point de friction principal (onboarding, base de code, intégration, process, revue de code, dev, déploiement), puis associer des **faits observables et des chiffres** pour obtenir des arbitrages. L'IA y est vue comme un **amplificateur**, du bon comme du mauvais.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "fXaMKXIJ8xE",
+        "title": "La face cachée de la performance des équipes de développements",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "vibe-coding-augmenter-le-code-preserver-le-cerveau",
+      "day": "2026-07-03",
+      "type": "lightning",
+      "title": "Vibe coding : augmenter le code, préserver le cerveau",
+      "speakers": [
+        "Cyprien Pannier — Didask",
+        "Léa Combette — Didask"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Format court (20 min) par un staff engineer et une learning scientist de Didask. Au-delà du goulot de la relecture, ils pointent un **goulot métacognitif**.\n- Deux mécanismes que le vibe coding exploite : la **minimisation de l'effort** et l'**illusion de maîtrise** (confondre facilité et compétence). On stagne, voire on régresse, **sans s'en rendre compte**. Rappel de l'**« ironie de l'automatisation »** (Lisanne Bainbridge, 1983).\n- Compétences à préserver : **comprendre ce qu'on n'a pas écrit**, se faire comprendre du LLM, **juger** (chiffres cités : 96 % des devs ne font pas confiance au code généré mais 52 % ne le vérifient pas systématiquement), **déboguer sans filet**, **penser en système**.\n- Pistes testées chez Didask (sans métriques, précisent-ils) : commandes Claude Code pour **inverser la relation** avant de coder (`/grill-me`, `/derisk`), détection des validations passives pendant la session, `/describe-pr` et un « PR try me » où l'IA **interroge le relecteur** sur sa compréhension.\n- Conclusion : déplacer ses compétences, oui ; **arrêter de les développer**, non. Limite reconnue : tout repose sur l'**intention** du développeur.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "1HEEju-uGIo",
+        "title": "Vibe coding : augmenter le code, préserver le cerveau",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    }
+  ],
+  "synthesisUpdatedAt": "2026-09-25",
+  "edition": "7e édition",
+  "programUrl": "https://sunny-tech.io/schedule/day-1",
+  "note": "7ᵉ édition, 2 & 3 juillet 2026 à la Faculté des Sciences de Montpellier. Environ 60 sessions sur 5 salles (Lavande, Coquelicot, Olivier, Thym, Romarin) : talks de 50 min, formats courts de 20 min et ateliers de 110 min, répartis en pistes IA & Data, Cloud & DevOps, Architecture & Sécurité, Interfaces utilisateurs, Ingénierie logicielle, Conception et « Atypique ». Conférence organisée par une association de bénévoles.",
+  "corpus": "Aucun retour de participant exploitable trouvé : la recherche web n'a remonté que des annonces de sponsors publiées avant l'événement (Kaliop, Meritis) et, sur le blog officiel, un seul article sur le CFP. La synthèse s'appuie donc sur le **programme officiel** et sur **6 transcripts** de vidéos (keynote d'ouverture et 5 talks), choisis parmi les **52 vidéos** publiées le 09/07/2026 sur la chaîne YouTube Sunny Tech.",
+  "limits": "**Aucun retour de participant** : les résumés décrivent ce qui a été dit sur scène (sous-titres), pas la manière dont les talks ont été reçus. Le choix des 6 sessions transcrites est éditorial (keynote et sujets IA / organisation), il ne reflète pas une popularité mesurée. Le budget de recherche web étant épuisé en cours de travail, la recherche LinkedIn et Bluesky n'a pas pu être approfondie. Environ 55 sessions restent sans contenu analysé.",
+  "tldr": "**D'après les vidéos, Sunny Tech 2026 a mêlé une keynote très critique sur les mythologies de la tech et l'AGI à des retours d'expérience concrets sur l'IA en production (astreintes, legacy, vibe coding), avec un même message : l'IA amplifie l'expertise et l'organisation existantes, à condition de préserver les compétences humaines et de mesurer ses coûts.**",
+  "keyTakeaways": [
+    "Ne pas confier un chantier legacy à un prompt : monter d'abord en compétence fonctionnelle et technique (discovery DDD assistée par agents), puis co-construire la stratégie de migration (Shodo Studio).",
+    "Donner aux agents des **signaux déterministes** (tests, diff visuel avec seuil) pour que chaque erreur devienne un retour exploitable (Shodo Studio).",
+    "Découper en **agents spécialisés** plutôt qu'un méga-agent, et limiter le contexte (pré-filtrer les logs) pour réduire les hallucinations (Iguane Solutions).",
+    "Cadrer l'action d'une IA en production par un **serveur MCP à commandes pré-validées** (lecture seule, sans SSH) avant d'étendre son autonomie (Iguane Solutions).",
+    "Choisir le **modèle, l'effort et la région** adaptés à la tâche : l'énergie par token croît avec la taille du modèle, et l'intensité carbone varie d'un facteur 25 selon le pays (Bierlaire).",
+    "Mesurer l'empreinte de ses usages IA (EcoLogits, CodeCarbon, export des tokens par session) et exiger la transparence des fournisseurs (Bierlaire).",
+    "Contrer l'illusion de maîtrise du vibe coding : faire challenger sa compréhension par l'IA avant de coder et au moment de la revue de PR (Didask).",
+    "Protéger la concentration des équipes : limites de WIP, plages de deep work sacralisées, savoir dire non (Graveaud).",
+    "Objectiver les frictions DevEx par des faits observables et des chiffres pour obtenir des arbitrages (Graveaud).",
+    "Ne pas céder à la peur du remplacement : le métier est de résoudre des problèmes, pas d'écrire du code ; réinvestir l'architecture et la sécurité (Neveu)."
+  ],
+  "sessionsWithoutFeedback": [
+    "L'animation web responsable (Josiane Makelele)",
+    "Grandir avec le numérique : apprendre aux enfants à s'en protéger (Estelle Landry)",
+    "CJS, ESM, WTF ?? (Théo Gianella)",
+    "Initier votre démarche Platform Engineering (Emilien Escalle, Frédéric Léger) — atelier",
+    "Another World, une belle leçon d'architecture logicielle (Olivier Poncet)",
+    "Je malmène ton LLM en direct avec 10 failles de sécurité (Gaëtan Eleouet)",
+    "Et si on faisait du simulation-driven development ? (Pierre Zemb)",
+    "WebMCP : offrez une API aux applis web qui n'en ont pas (Thomas Simonnet)",
+    "Serious game Event Storming chez le Père Noël (Dorian Lamandé, Jérémie Bohbot) — atelier",
+    "Un donjon, deux donjons, trois donjons… (Sylvain Gougouzian, Florian Forestier)",
+    "Casser la prod pour mieux dormir (Wilfried Roset, Juliette Orain)",
+    "Et si vos outils faisaient un peu plus pour vous ? (Jules Poissonnet)",
+    "Toujours en UUIDv4/v5 ? (Brice Jaglin, Axel Czarniak)",
+    "Que la Force (du Changement) soit avec toi ! (Stéphane Trebel)",
+    "Bienvenue dans la jungle CloudNative : les container runtimes (Rachid Zarouali)",
+    "La révolution WebGPU (Julien Sulpis)",
+    "Local-first et sync-engines (Benjamin Legrand)",
+    "1h50 pour créer une app front avec la Clean Archigonale (Guillaume Chauvet, Dorian Lamandé) — atelier",
+    "C'est qui ce Zig ? (Didier Plaindoux)",
+    "Conception de logiciels : le match humains vs AI (Olivier Azeau)",
+    "BuildKit Powers (Emilien Escalle, Frédéric Léger)",
+    "AI Apocalypse Survival Kit : coding agents & Tiny Language Models (Philippe Charrière)",
+    "Tech & Bien-être (Luis Rubiera)",
+    "Comprendre Kyverno de manière visuelle (Aurélie Vache)",
+    "Merge Smarter, Not Harder : l'IA co-tech lead (Carmen Piciorus, Michael Enjolras)",
+    "Survivre à la bulle de l'IA (Eric Burel)",
+    "Les dev containers (Stéphane Philippart)",
+    "Cyber Resilience Act : qu'es aquò ? (Cyril Lopez)",
+    "Podman + Systemd : les Quadlets (Benjamin Vouillaume)",
+    "Pairing is caring! (Olivier Breda)",
+    "Déploiement de clusters Kubernetes à grande échelle (Rachid Zarouali) — atelier",
+    "Sécurité & Platform Engineering (Antoine Mayer, Maxime Lenormand)",
+    "Accessibilité : cochez les cases… et ratez la cible (Gabriel Pillet, Vanessa Strub)",
+    "Savez-vous vraiment ce qu'est la couleur ? (Julien Sulpis)",
+    "Sous le capot d'une base de données analytique (Sylvain Wallez)",
+    "(Re)devenez des fullstack humans (Raphaël Semeteys, Hajer Mabrouk)",
+    "Passkeys (Sébastien Buchoux)",
+    "Lorsqu'un simple bug réseau vous emmène dans les entrailles de Linux (Florian Forestier)",
+    "Détectives de la prod (Sébastien Ferrer)",
+    "Ratatui (Yann Prono)",
+    "Silence… Ça tourne ! (Nicolas Guillot)",
+    "Une identité pour les fédérer toutes ! (Sébastien Ferrer)",
+    "Codez votre Game Master de JDR avec Strands Agents (Olivier Leplus, Adrien Lebret, Tiffany Souterre, Arnaud Jean) — atelier",
+    "Booster votre productivité avec le Platform Engineering (Sébastien Lallemand, Guillaume Estrem)",
+    "De 2 à 50 modules Terraform avec Terragrunt Stacks (Stéphane Trognon)",
+    "TODO : faut-il arrêter les TODO dans le code ? (Ando Nary)",
+    "Quand TCP meurt à 20 minutes de latence (Sarah Theoulle, Hugo Ponthieu, Mathias Durat)",
+    "J'ai packagé mon application en image Docker, et maintenant ? (Aurélie Vache)",
+    "Le Magicien Zod (Lucas Audart, Mickael Alves)",
+    "RINA : repenser l'Internet du futur (Théo Tchilinguirian)",
+    "TDD × Vibe Coding : duel ou duo gagnant ? (Amine El Gaouzi)",
+    "Rust pour le développement d'applications métier (Stéphane Trebel)",
+    "Kubernetes Gateway API vs Ingress Controller (Jérôme Galais)",
+    "Lovable at first sight (Chantal Khin)",
+    "Catch me if you can : comment j'ai volé ma moto aux voleurs (Julien Haumont)",
+    "Art génératif (Camille Roux)"
+  ],
+  "sources": [
+    {
+      "label": "Programme officiel — jour 1 (2 juillet)",
+      "url": "https://sunny-tech.io/schedule/day-1"
+    },
+    {
+      "label": "Programme officiel — jour 2 (3 juillet)",
+      "url": "https://sunny-tech.io/schedule/day-2"
+    },
+    {
+      "label": "Chaîne YouTube Sunny Tech (52 vidéos 2026 publiées le 09/07/2026)",
+      "url": "https://www.youtube.com/@SunnyTechMtp/videos"
+    },
+    {
+      "label": "Blog Sunny Tech — « Derrière le rideau du CFP » (17/04/2026)",
+      "url": "https://sunny-tech.io/blog/2026-cfp"
+    },
+    {
+      "label": "Annonce sponsor Kaliop (avant l'événement)",
+      "url": "https://www.kaliop.com/fr/sunny-tech-2026/"
+    },
+    {
+      "label": "Annonce sponsor Meritis (avant l'événement)",
+      "url": "https://meritis.fr/evenements/meritis-a-sunny-tech-2026-rendez-vous-a-montpellier-autour-de-la-securite-des-llm/"
+    },
+    {
+      "label": "Posts LinkedIn : aucun retour de participant identifié"
+    },
+    {
+      "label": "Transcripts (sous-titres YouTube) : Neveu, Nourry & Lacroix, Foures, Bierlaire, Graveaud, Pannier & Combette"
+    }
+  ]
 }

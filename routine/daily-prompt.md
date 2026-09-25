@@ -25,6 +25,7 @@ Pour chaque entrée de `new-videos.json`, et aussi pour les éditions de la fen�
 Pour chaque édition de `plan.json > to_synthesize` :
 - `pending` : produis la synthèse complète (recherche web des retours participants, programme, vidéos).
 - déjà `synthesized` : cherche les nouveaux retours publiés depuis `synthesisUpdatedAt` et intègre-les (sessions, synthèse globale, corpus, limites, sources). Ne réécris pas ce qui n'a pas changé.
+- raison « à compléter » : la synthèse existe mais manque de retours participants (champ `revisit`). Cherche en priorité les posts LinkedIn, blogs et vidéos, intègre-les, puis supprime le champ `revisit` si le corpus est désormais satisfaisant (sinon mets à jour sa raison).
 - Mets `synthesisUpdatedAt` à la date du jour.
 S'il y a plus de 3 éditions à traiter, délègue chaque édition à un sous-agent (outil Agent) en lui donnant le chemin du guide et les fichiers concernés, puis vérifie le résultat.
 

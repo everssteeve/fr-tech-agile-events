@@ -38,11 +38,13 @@ Ne jamais inventer un retour, une citation, un chiffre ou un nom. Si une info ne
   - `feedbackFrom` : noms des personnes dont on a lu le retour (ou « Blog Octo », « sketchnote de X »).
   - `summary` : Markdown, 3 à 8 puces. Idées clés en **gras**, citations en *« … »*, attribution entre parenthèses. Terminer si utile par la lecture critique ou le point de débat.
   - `summarySources` : parmi `feedback`, `transcript`, `program`, `slides`, `blog`.
-  - `video` (si une vidéo officielle existe) : `{ "youtubeId": "…", "title": "…", "publishedAt": "AAAA-MM-JJ", "transcript": true|false }`.
+  - `video` (si une vidéo officielle existe) : `{ "youtubeId": "…", "title": "…", "publishedAt": "AAAA-MM-JJ", "transcript": true|false, "startSeconds": 1234 }`. `startSeconds` sert quand la session fait partie d'une longue vidéo (live d'une journée) : repérer le début de la session dans le transcript horodaté (fichier .vtt).
 - `sessionsWithoutFeedback` : titres courts (et speaker) des sessions du programme sans aucun contenu trouvé.
 - `sources` : `{ "label", "url"? }`. Programme, playlist YouTube, articles, et une ligne récapitulant les auteurs des posts LinkedIn.
 
 Pour un gros événement (Devoxx, VivaTech, FIC…), ne pas lister les centaines de sessions : garder les keynotes et les sessions les plus commentées (15 à 40), et résumer le reste dans la synthèse globale.
+
+- `revisit` (optionnel) : à renseigner (ex. « aucun post LinkedIn lu, quota de recherche épuisé ») quand la synthèse repose sur trop peu de retours participants. La routine quotidienne reprend ces éditions, quelques-unes par nuit, et retire le champ une fois le corpus complété.
 
 ## Contenu de `<year>.md` (synthèse globale)
 

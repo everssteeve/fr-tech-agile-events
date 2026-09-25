@@ -8,6 +8,231 @@
   "venue": "SKEMA",
   "url": "https://rivieradev.fr",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "status": "synthesized",
+  "sessions": [
+    {
+      "id": "etat-des-lieux-de-la-souverainete-du-cloud",
+      "day": "2026-07-07",
+      "type": "keynote",
+      "title": "État des Lieux de la Souveraineté du Cloud : Des Clouds Publics aux Clouds Confidentiels",
+      "speakers": [
+        "Seifeddin Mansri — SFEIR"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Keynote du premier jour de conférence** (contenu tiré de la vidéo, aucun retour de participant trouvé). Donald Trump y est présenté, avec ironie, comme *« le meilleur ambassadeur de la souveraineté »* pour les clouds européens.\n- Cadre juridique : **FISA (section 702)**, qui relève du renseignement, et **Cloud Act**, qui relève d'une procédure judiciaire assortie de *gag orders*. D'où cette définition : la souveraineté n'est **pas binaire** mais un **curseur** à régler selon la criticité des données (maîtrise juridique, technique, opérationnelle, sémantique).\n- Panorama : hébergeurs historiques, cloud privé, hyperscalers, PaaS européens (Scalingo, Clever Cloud…), bare metal, **confidential computing**, chiffrement externe (EKM), **clouds de confiance** en joint-venture (S3NS, Bleu) avec leurs faiblesses (dépendance aux mises à jour), AWS European Sovereign Cloud (*« ça reste une filiale d'AWS »*), clouds air-gapped.\n- **SecNumCloud** : 266 exigences, qualification par service, requalification tous les 3 ans. Qualifiés cités : Outscale, OVH Private Cloud, Cloud Temple, Worldline, S3NS, etc. En cours : Bleu, Scaleway, NumSpot. Un marché des clouds de confiance estimé à 9 Md€ en 2030 (Gartner).\n- Démo : clés gérées en externe, API d'IA générative managées chez Scaleway, console S3NS. Conclusion : un cloud souverain *« reste de l'infra »*, et la question reste ouverte de savoir s'il s'agit d'une mode ou d'une tendance durable.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "N_Cp2jRqh1g",
+        "title": "Riviera DEV 2026 - Seifeddin Mansri - État des Lieux de la Souveraineté du Cloud",
+        "publishedAt": "2026-09-06",
+        "transcript": true
+      }
+    },
+    {
+      "id": "vibe-architecture-et-ia-en-2040",
+      "day": "2026-07-07",
+      "type": "talk",
+      "title": "Vibe Architecture et IA en 2040 : Darwin a-t-il enfin eu raison des architectes ?",
+      "speakers": [
+        "Alexandre Touret",
+        "Raphaël Semeteys — Worldline"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Talk théâtralisé : un architecte « venu de 2040 », où l'IA décide seule et où l'architecture n'est plus qu'un **output** généré que plus personne ne comprend, dialogue avec un architecte de 2026.\n- Rappel du métier : comprendre le **pourquoi**, le contexte, les NFR, l'organisation (**loi de Conway**) ; il ne s'agit pas seulement de produire des diagrammes.\n- Démo d'un **skill d'architecture** : extraction des NFR d'un cahier des charges (RAG), choix guidés par les standards de l'entreprise, diagrammes **C4**, matrice de risques, **ADR**, avec une validation humaine à chaque étape. L'ordre de progression présenté : prompt, puis contexte, puis *harness engineering*, puis *loop engineering*.\n- Partage des rôles : **l'IA évalue** (patterns, fitness functions, cohérence des ADR, audit continu dans les PR), **l'humain décide et porte la responsabilité** (coût, organisation, culture). L'IA sert de *sparring partner* et aide à former, par exemple avec des katas d'architecture.\n- Les « trois erreurs de 2040 » : laisser l'IA décider, ne plus gérer le contexte, oublier le pourquoi et les ADR. Conclusion : *« human in the loop… et même human in the chain »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "EaQ2A1ScT_I",
+        "title": "Riviera DEV 2026 - Alexandre Touret/Raphaël Semeteys - Vibe Architecture et IA en 2040",
+        "publishedAt": "2026-09-06",
+        "transcript": true
+      }
+    },
+    {
+      "id": "d-un-orchestre-fige-a-un-joli-ballet",
+      "day": "2026-07-07",
+      "type": "talk",
+      "title": "D'un orchestre figé à un joli ballet aka comment on a propulsé notre monolith dans un pas de danse endiablé",
+      "speakers": [
+        "Marie-Laure Momplot — Michelin"
+      ],
+      "feedbackFrom": [],
+      "summary": "- REX Michelin : remplacement d'un orchestrateur Oracle propriétaire, **colonne vertébrale de la supply chain** (150 applications connectées), par une architecture événementielle **Kafka / Kafka Streams**, de 2020 à 2024. Chiffres présentés : ~400 microservices, 350+ connecteurs, 1 000+ topics.\n- **Strangler pattern** en trois étapes : encercler l'existant avec Kafka Connect sans impacter les applications voisines, reconstruire la logique métier en Kafka Streams (Avro), puis faire dialoguer directement les applications en Avro.\n- Les « coquilles » racontées : messages trop gros, *state stores* à purger, *poison pills* bloquant la chaîne (d'où des **dead letter queues** automatiques, reprises dans des KIPs Apache Kafka), contrats Avro cassés (d'où un portail de schémas versionnés, avec le **topic considéré comme une API**).\n- Sécurisation par **double run** et environnement de préprod alimenté par les événements de prod. ROI jugé positif : serveurs Exadata revendus, gestion des événements hors ordre. L'équipe est passée de 4 à ~30 personnes, avec des astreintes.\n- Honnêteté appréciable : Kafka a été utilisé pour une volumétrie « business » modeste, et la speakeuse reconnaît ne pas savoir pourquoi Avro plutôt que Protobuf, ni Kafka plutôt que Pub/Sub.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "dDK2ICzjSwY",
+        "title": "Riviera DEV 2026 - Marie-Laure Momplot - D'un orchestre figé à un joli ballet aka comment on a propu",
+        "publishedAt": "2026-09-06",
+        "transcript": true
+      }
+    },
+    {
+      "id": "quand-le-code-rencontre-le-droit",
+      "day": "2026-07-07",
+      "type": "talk",
+      "title": "Quand le code rencontre le droit : Propriété intellectuelle, algorithmes et créations générées par IA",
+      "speakers": [
+        "Delia Gonzalez — avocate, Squair"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Une avocate spécialisée en nouvelles technologies devant une salle sans juristes. Message central : **la responsabilité dépend de la position dans la chaîne**. Elle distingue le créateur de modèle, l'**intégrateur** qui embarque de l'IA dans son offre (qui devient *fournisseur* au sens de l'AI Act, même s'il s'appuie sur un modèle tiers) et l'utilisateur interne.\n- Les quatre outils de la PI : **droit d'auteur** (protège l'expression et exige une originalité humaine, d'où une œuvre générée protégeable seulement si l'apport humain, par exemple un prompt élaboré, est démontrable), **brevet**, **secret des affaires** (menacé quand on colle du code ou des documents internes dans une IA), **licences** (l'open source n'est pas libre de tout usage).\n- Contentieux cités : New York Times c. OpenAI, Getty Images c. Stability AI (violation de marques via les filigranes reproduits), plainte de développeurs contre GitHub Copilot. Rappel de l'exception de *text and data mining* sous réserve d'opt-out.\n- Recommandations : politique d'usage (outils autorisés, **comptes entreprise**, ce qu'on ne met jamais dans un prompt, code couleur vert/orange/rouge), **revue humaine** proportionnée au risque, traçabilité des sources et des consignes reçues, normes **ISO 42001/42005**.\n- Beaucoup de questions restent sans réponse (titularité des sorties, juridiction du lieu d'entraînement) : *« le droit avance lentement »*. Session très interactive, avec de nombreuses questions de la salle.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "hr-eP4GzHj0",
+        "title": "Riviera DEV 2026 - Delia Gonzalez - Quand le code rencontre le droit",
+        "publishedAt": "2026-09-06",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-projets-it-a-l-heure-de-l-ia",
+      "day": "2026-07-08",
+      "type": "keynote",
+      "title": "Les projets IT à l'heure de l'IA : quels bouleversements pour les équipes projets et les organisations ?",
+      "speakers": [
+        "Antoine Sabot-Durand",
+        "Laurence Dupré — professeure en sciences des organisations"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Keynote du second jour, à deux voix (un directeur technique et une chercheuse en sciences des organisations). L'IA y est décrite comme un **séisme** avec quatre ondes de choc : le développeur, le projet, l'organisation, la société.\n- **Développeur** : écart entre productivité ressentie et mesurée (étude citée : +20 % perçu contre −19 % mesuré de bout en bout), **dette cognitive**, illusion de compétence. Une étude du MIT (2025) montrerait une connectivité cérébrale plus faible chez les utilisateurs de LLM. Les **juniors** apprennent *« sans vraiment apprendre »*, mais l'effet est présenté comme **réversible** si l'on s'organise.\n- **Projet** : relation négative entre adoption de l'IA et stabilité des livraisons, retour du *spec-driven* (*« ce qu'on a arrêté de faire depuis 30 ans »*), **boîte noire** encore plus opaque et impossible à tenir responsable, risque de **« shadow knowledge »** dispersé dans des prompts et contextes privés, d'où un besoin de **knowledge management**.\n- **Organisation** : l'IA amplifie les fissures existantes (loi de Conway, Perrow). Le pouvoir se déplace vers qui maîtrise prompts, modèles et tokens. Mesurer les tokens consommés est jugé aussi absurde que compter les lignes de code. Couper les juniors revient à ne plus *« fabriquer de seniors »*.\n- **Société** : souveraineté, frugalité, **santé mentale** (burn-out, anxiété de déclassement). Pistes : travailler son *harness*, protéger le jugement, investir dans la formation et le mentorat (l'IA comme sparring partner), faire évoluer les managers vers l'orchestration, mesurer objectivement les gains.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "jH81va6DfWw",
+        "title": "Riviera DEV 2026 - Antoine Sabot-Durand/Laurence Dupré - Les projets IT à l’heure de l’IA",
+        "publishedAt": "2026-09-06",
+        "transcript": true
+      }
+    },
+    {
+      "id": "voila-pourquoi-j-ai-casse-la-production-en-secret",
+      "day": "2026-07-08",
+      "type": "lightning",
+      "title": "Voilà pourquoi j'ai cassé la production en secret",
+      "speakers": [
+        "Calvin Audier — Amadeus"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Format court (25 min) : des exercices de **chaos engineering secrets** chez Amadeus pour tester non seulement la résilience technique mais surtout la **gestion humaine des incidents**.\n- Difficultés concrètes : **garder le secret** (une réunion à 2 finit à 10 personnes), trois niveaux de procédures de repli exigés par le management, des perturbations limitées à la plateforme sans impact client (d'abord sur du trafic *shadow*), des outils (Litmus, Azure Chaos Studio) qui trahissent l'exercice dans les logs.\n- Observations : canaux de communication parallèles, **tickets dupliqués** sur plusieurs outils (6 incidents côté Microsoft au lieu d'un), mécanismes de résilience inconnus des équipes elles-mêmes, une personne encore mobilisée deux jours après l'exercice.\n- Apprentissages : communiquer vite la fin de l'exercice, faire la rétro **dans la foulée** (une semaine plus tard, les opérationnels avaient oublié), suivre MTTD et MTTR d'un exercice à l'autre. Résultats : le processus d'escalade Amadeus–Microsoft a été refait, et des équipes demandent désormais qu'on casse leur application.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "4DdqGcIyOGs",
+        "title": "Riviera DEV 2026 - Calvin Audier - Voilà pourquoi j'ai cassé la production en secret",
+        "publishedAt": "2026-09-06",
+        "transcript": true
+      }
+    }
+  ],
+  "synthesisUpdatedAt": "2026-09-25",
+  "programUrl": "https://www.rivieradev.fr/schedule",
+  "note": "6, 7 & 8 juillet 2026 à Sophia Antipolis (SKEMA). Le 6 juillet est consacré aux deep dives et ateliers de 3 h, les 7 et 8 juillet aux conférences : keynotes, talks de 50 min, « Snorkeling sessions » de 25 min, une piste Quarkus, des ateliers « We're not just coders » et des séances sportives. Environ 100 sessions au total ; conférence organisée par le Riviera JUG.",
+  "corpus": "Aucun retour de participant exploitable trouvé : la recherche web n'a remonté que le site officiel et les pages de billetterie. La synthèse repose sur le **programme officiel** et sur **6 transcripts** (les deux keynotes et quatre talks), choisis parmi les **28 vidéos de talks 2026** publiées sur la chaîne YouTube Riviera DEV (27 le 06/09/2026, 1 le 15/09/2026).",
+  "limits": "**Aucun retour de participant** : les résumés décrivent ce qui a été dit sur scène (sous-titres automatiques, noms propres parfois approximatifs), pas la réception par le public. Moins d'un tiers des sessions a une vidéo publiée, et les deep dives du 6 juillet n'en ont aucune. Le budget de recherche web étant épuisé en cours de travail, la recherche LinkedIn et Bluesky n'a pas pu être approfondie. Le choix des sessions transcrites est éditorial.",
+  "tldr": "**Selon les vidéos, Riviera DEV 2026 a surtout été une édition « IA et responsabilité » : dette cognitive et « shadow knowledge » (keynote du 8 juillet), architecture où l'IA évalue mais où l'humain décide, cadre juridique de la PI face à l'IA, souveraineté du cloud. Des REX très concrets l'ont complétée (migration Kafka chez Michelin, chaos engineering secret chez Amadeus).**",
+  "keyTakeaways": [
+    "Mesurer de bout en bout les gains de l'IA plutôt que se fier au ressenti : productivité perçue et mesurée peuvent diverger fortement (Sabot-Durand & Dupré).",
+    "Organiser un **knowledge management** adapté à l'IA pour éviter le « shadow knowledge » dispersé dans des prompts et contextes privés (Sabot-Durand & Dupré).",
+    "Continuer à recruter et former des juniors, en utilisant l'IA comme sparring partner plutôt que comme substitut (Sabot-Durand & Dupré ; Touret & Semeteys).",
+    "Garder la **décision d'architecture** côté humain et tracée dans des ADR ; utiliser l'IA pour évaluer, challenger et auditer en continu (Touret & Semeteys).",
+    "Traiter la souveraineté comme un **curseur** à régler selon la criticité des données, pas comme un choix binaire ; vérifier la qualification SecNumCloud service par service (Mansri).",
+    "Identifier sa position dans la chaîne IA (créateur, intégrateur-fournisseur, utilisateur) : intégrer un modèle tiers transfère des obligations AI Act (Gonzalez).",
+    "Adopter une politique d'usage de l'IA : comptes entreprise, données interdites dans les prompts, revue humaine proportionnée au risque, traçabilité (Gonzalez).",
+    "Migrer un monolithe par étranglement progressif, avec double run, DLQ automatiques et contrats de schémas versionnés (Momplot).",
+    "Tester aussi la **réponse humaine** aux incidents par des exercices de chaos, et faire la rétro immédiatement après (Audier)."
+  ],
+  "sessionsWithoutFeedback": [
+    "Deep dives du 6 juillet (sans vidéo trouvée) : Hackez votre supply chain (Marc Langlais, Sherine Khoury) ; De Java à l'IA : premier système d'agents (Antoine Sabot-Durand, Emmanuel Hugonnet, Yann Blazart) ; From 0 to Agentic AI expert(ish) (Kevin Dubois) ; Du JDK 21 au JDK 25 (Jean-Michel Doudoux, Clément de Tastes) ; Go, Linux et Kubernetes : le réseau de bout en bout (Donia Chaiehloudj, David Calvert) ; OpenFeature et feature flags (Alexandre Touret) ; Building with Open Source AI (Cedric Clyburn, Legare Kerrison) ; Conception de serveurs MCP (Horacio Gonzalez) ; State d'une application React (Théo Gianella, Yoann Frommelt) ; Site statique avec Roq (Andy Damevin, Frédéric Blanc) ; Initier votre démarche Platform Engineering (Frédéric Léger, Émilien Escalle) ; Game Master de JDR avec Strands Agents (Arnaud Jean, Adrien Lebret, Olivier Leplus, Tiffany Souterre) ; Standards et agents IA : MCP, A2A, ADK (Guillaume Laforge, Emmanuel Bernard)",
+    "Another World, une belle leçon d'architecture logicielle (Olivier Poncet) — vidéo publiée",
+    "Kubernetes et la JVM (Jean-Michel Doudoux, Alain Regnier)",
+    "Agentic AI Patterns for Enterprise Software (Kevin Dubois)",
+    "Microfrontends Done Right (Gábor Csomák) — vidéo publiée",
+    "Même les développeurs Java peuvent développer des CLIs (Fabrice Pipart)",
+    "Beyond the Surface: Vulnerability Analysis with Quarkus (Alexey Loubyansky)",
+    "JBang, un fichier Java pour les gouverner tous ? (Stéphane Philippart)",
+    "AI Agents Face-Off: Same App, Multiple Frameworks (Elaine Dias Batista) — vidéo publiée",
+    "Au cœur de la Garbage Collection (Sylvain Tiset)",
+    "Six and a half ridiculous things to do with Quarkus (Holly Cummins)",
+    "Create an AI assistant in your terminal using Java, Picocli, and Quarkus (Stéphane Philippart) — vidéo publiée",
+    "Les Value Types ne sont pas Complexes (Clément de Tastes)",
+    "Introducing Data Access in Quarkus 4 (Luca Molteni)",
+    "Les petites aventures de CSS, saison 2026 (Raphaël Goetter) — vidéo publiée",
+    "Makers de Père en Fils (Matthias et Sylvain Gougouzian)",
+    "Questions pour un conteneur - édition Supply Chain (Aurélie Vache, Sherine Khoury) — vidéo publiée",
+    "Injectez l'IA Générative dans vos architectures : LangChain4j-CDI (Emmanuel Hugonnet, Yann Blazart)",
+    "Les sites statiques, c'est très bon pour la santé (Andy Damevin, Frédéric Blanc)",
+    "A practical guide to agnostic design systems (Julien Sulpis) — vidéo publiée",
+    "GitHub Issues Driven Development (Sun S. D. Tan)",
+    "Le vrai coût d'un token (Pietro Mele) — cité dans la keynote du 8 juillet",
+    "Under the hood: Quarkus Native (Foivos Zakkak)",
+    "Ask Your Telemetry: AI-Powered Incident Debugging with ClickHouse (Javier Ortiz) — vidéo publiée",
+    "Compter l'incomptable : structures de données probabilistes (Sylvain Tiset) — vidéo publiée",
+    "Le hasard fait bien les tests (David Pilato) — vidéo publiée",
+    "Comprendre Kubernetes de manière visuelle (Aurélie Vache)",
+    "AI at the Edge (Laurent Doguin)",
+    "Object Calisthenics : simplifier le code pour retrouver le métier (Jacqueline Rwanyindo) — vidéo publiée",
+    "Let's play Factorio (Julien Wittouck) — vidéo publiée",
+    "Haute couture du Web : le défilé des approches CSS (Audrey Gentili, Etienne Idoux) — vidéo publiée",
+    "YggTorrent : un turbo hack (Lucas Oms, Calvin Audier)",
+    "Dev et Ops : des clients comme les autres ? (Fanny Klauk)",
+    "Quarkus and Leyden, the bumpy road ahead (Guillaume Smet)",
+    "Reactive ❤️ Loom (Francesco Nigro)",
+    "CI souveraine et portable (Frédéric Léger, Émilien Escalle) — vidéo publiée",
+    "AI Agents Need a Map: Knowledge Graphs (Thibault Jurado-Leduc, William Arias) — vidéo publiée",
+    "À la découverte de Agent Development Kit (ADK) en Java (Guillaume Laforge) — vidéo publiée",
+    "Prompt Registry: Open Source Package Manager for GenAI Assets (Waldek Herka, Guillaume Blanc) — vidéo publiée",
+    "REX : Notre IA et nous contre le legacy (Benjamin Lacroix, Jordan Nourry) — voir synthèse Sunny Tech 2026",
+    "Orchestrez vos agents IA pour organiser un dîner presque parfait (Thierry Chantier)",
+    "Talk to Your Data with Hibernate, Quarkus, and LangChain4j (Marco Belladelli)",
+    "Quarkus Testing Joy (Roberto Cortez)",
+    "Construire son Kubernetes pour l'IA et la Data (Ludovic Legrand, Nikita Rousseau) — vidéo publiée",
+    "Managing billion-scale embeddings in Elasticsearch and OpenSearch (Giovanna Monti, Pietro Mele) — vidéo publiée",
+    "Au-delà des ChatBots : modèles open source (Jérôme Garcia, Florian Marc) — vidéo publiée",
+    "Organiser un CTF en entreprise avec OWASP Juice Shop (Xavier Kress)",
+    "The Bold, the Broken, and the Burned: 6 years of Quarkus (Guillaume Smet)",
+    "MongoDB for Modern Travel Platforms (Thomas Scott) — vidéo publiée",
+    "Dark Patterns in AI Chatbots (Clément Oliva)",
+    "Reduce Log Ingestion Costs in Splunk (Michele Caci)",
+    "Dual-Stack pour toujours ? IPv6 dans Kubernetes (Donia Chaiehloudj) — vidéo publiée",
+    "Ateliers « We're not just coders » (impression 3D, astronomie amateur, bio-refactoring, miniatures, barbecue…) et sessions sportives"
+  ],
+  "sources": [
+    {
+      "label": "Programme officiel Riviera DEV 2026",
+      "url": "https://www.rivieradev.fr/schedule"
+    },
+    {
+      "label": "Liste des talks 2026",
+      "url": "https://2026.rivieradev.fr/talks"
+    },
+    {
+      "label": "Chaîne YouTube Riviera DEV (28 vidéos de talks 2026 + aftermovie)",
+      "url": "https://www.youtube.com/@RivieraDEV/videos"
+    },
+    {
+      "label": "Aftermovie Riviera DEV 2026",
+      "url": "https://www.youtube.com/watch?v=m21LPUt814k"
+    },
+    {
+      "label": "Posts LinkedIn : aucun retour de participant identifié"
+    },
+    {
+      "label": "Transcripts (sous-titres automatiques YouTube) : Mansri ; Sabot-Durand & Dupré ; Touret & Semeteys ; Gonzalez ; Momplot ; Audier"
+    }
+  ]
 }

@@ -2,12 +2,1039 @@
   "event": "devoxx-france",
   "year": 2026,
   "title": "Devoxx France 2026",
+  "edition": "14e édition",
   "start": "2026-04-22",
   "end": "2026-04-24",
   "city": "Paris",
   "venue": "Palais des Congrès",
   "url": "https://www.devoxx.fr",
+  "programUrl": "https://m.devoxx.com/events/devoxxfr2026",
+  "theme": "IA partout (fil rouge des keynotes : « Happy AI »)",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "14ᵉ édition, 22–24 avril 2026, Palais des Congrès de Paris — 4 980 participants (chiffre des organisateurs), 307 speakers, 259 talks dont 65 sur l'IA et les agents (décompte OVHcloud). Replays publiés en bloc le 12 mai 2026 sur la chaîne YouTube Devoxx France.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-09-25",
+  "corpus": "11 comptes-rendus publics lus (blogs d'entreprises : OVHcloud, Ippon, OCTO, Lunatech, Onepoint/dev.to, MARGO, Darkwood ; blogs personnels : Denis Germain/zwindler — 3 récaps quotidiens —, Julien Wittouck, David Micheneau, Estéban Soubiran), publiés entre le 22 avril et le 18 mai 2026, complétés par la description de la vidéo récap officielle et **8 transcripts** (les 6 keynotes, Éloge de la simplicité, L'Agentic Coding chez Doctolib).",
+  "limits": "Aucun post LinkedIn n'a pu être lu directement (recherche web peu efficace sur LinkedIn) : le corpus est un corpus de **blogs**, plus détaillé mais biaisé vers les entreprises sponsors/speakers (OVHcloud, Ippon…) et vers l'IA. Sur 259 sessions, une quarantaine seulement ont un retour ; le blog Darkwood couvre 19 sessions IA avec des résumés proches des descriptifs officiels et n'est utilisé qu'en complément. Le compte-rendu Criteo (Medium) n'était pas accessible.",
+  "tldr": "**L'IA a colonisé le programme (65 talks sur 259) mais l'édition marque son passage de la démo à l'ingénierie : agents, protocoles, évaluation, sécurité et plateforme — tandis que les keynotes et les talks les plus appréciés rappellent que le vrai sujet reste humain et organisationnel.**",
+  "keyTakeaways": [
+    "Utiliser l'IA en **« système 2 »** : relire, contredire, savoir lire le code qu'elle produit plutôt que la suivre « sans réfléchir » (Devillers, Fressinet).",
+    "**Partir du besoin terrain**, pas de la plateforme : sans adoption ni sponsorship, un POC techniquement réussi ne part pas en production (Canonne).",
+    "Traiter la **dette d'outillage** avant de multiplier les agents : environnement de dev lent, tests flaky, CI de 40 minutes deviennent bloquants quand « 600 agents par jour » s'onboardent (Doctolib).",
+    "Standardiser plutôt que disperser : un outil, une marketplace interne de skills, un skill de revue partagé et mesuré ; accepter de **déprécier son outillage maison** quand l'éditeur le livre (Doctolib).",
+    "Rendre les agents plus déterministes par le **contexte** : AGENTS.md courts, compaction, contrats Markdown, et **contraindre l'IA à une pièce du puzzle** (Fontaine, Martraire & Penhoat).",
+    "**Évaluer** les systèmes génératifs avec des jeux de validation, sans faire aveuglément confiance au LLM-as-a-judge (Pacquetet).",
+    "Traiter l'**injection de prompt** et les serveurs MCP trop permissifs comme des risques de production, pas comme des curiosités de démo (Vermeer, Gonzalez).",
+    "Préférer un **petit modèle bien outillé** à un gros modèle par défaut, pour le coût comme pour l'impact environnemental (Vincent & Charrière).",
+    "Prioriser avec les utilisateurs et livrer la solution la plus simple pour **agir afin d'apprendre**, plutôt que produire des plannings et des ROI « farfelus » (Leguédois).",
+    "À l'échelle d'un Devoxx, **choisir les rencontres plutôt que les talks** : les replays sont là, et les salles sont souvent pleines (Soubiran, Germain, OVHcloud)."
+  ],
+  "sessions": [
+    {
+      "id": "l-ia-au-service-du-bien-commun-agir-avec-raison-dans-l-incertain",
+      "day": "2026-04-22",
+      "type": "keynote",
+      "title": "L'IA au service du bien commun : agir avec raison dans l'incertain",
+      "speakers": [
+        "Laurence Devillers — Sorbonne Université / CNRS"
+      ],
+      "feedbackFrom": [
+        "Denis Germain (blog zwindler)",
+        "David Micheneau (azrod.me)",
+        "Blog OVHcloud (Aurélie Vache, Stéphane Philippart)",
+        "Blog MARGO",
+        "Blog Darkwood"
+      ],
+      "summary": "- **Sur scène** : keynote d'ouverture construite comme une démolition de **« 11 mythes »** : l'IA ne date pas de 2022 (McCulloch et Pitts, 1943-46 ; 1950), elle n'est **ni ange ni démon**, **ni neutre** (données majoritairement anglophones — « 95 % d'anglais » cités pour Llama 3), **ni gratuite**, **ni votre amie**, n'a **pas de niveau doctorat** et **ne connaît pas la vérité**.\n- Grille de lecture de Kahneman : les LLM ont une forme de « système 1 » statistique mais **pas de système 2** → *« on a intérêt quand on utilise l'IA à devenir le système 2 »*. Ouverture sur les **World Models** (LeCun) pour sortir du monde numérique clos.\n- Alerte sur la **« sécurité psychologique artificielle »** : une machine qui ne juge pas et ne dit jamais non entraîne à recevoir du feedback dans des conditions qui n'existent pas dans la vraie vie ; risque d'addiction et d'isolement (exemple des jouets parlants). *« L'abus d'IA est dangereux pour la santé mentale. »*\n- Message aux développeurs : si on ne sait pas lire le code produit par Claude, *« on va un peu dans le mur »* ; l'éducation est la clé ; *« l'éthique et la performance ne sont pas opposées, j'en ai ras-le-bol d'entendre ça »*.\n- **Réception partagée** : Denis Germain la juge **« dense mais peu lisible »** (trop de concepts enchaînés sans approfondir) ; David Micheneau salue au contraire un **retour au réel bienvenu** face au hype (*« l'IA n'est ni un ange ni un démon »*). OVHcloud retient la montée conjointe de la puissance et des enjeux de gouvernance et de cybersécurité.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "kMce8KBDMWQ",
+        "title": "L'IA au service du bien commun : Agir avec raison dans l'incertain",
+        "publishedAt": "2026-05-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-echecs-a-l-ere-de-l-intelligence-artificielle",
+      "day": "2026-04-22",
+      "type": "keynote",
+      "title": "Les échecs à l'ère de l'intelligence artificielle",
+      "speakers": [
+        "Laurent Fressinet — grand maître international"
+      ],
+      "feedbackFrom": [
+        "Denis Germain (blog zwindler)",
+        "David Micheneau (azrod.me)"
+      ],
+      "summary": "- **Sur scène** : de Karpov (*« jamais je ne perdrai contre une machine »*) à **Deep Blue** (1997, puissance de calcul programmée par des humains) puis **AlphaZero** (2017, auto-apprentissage : 4 h, 44 millions de parties, 28 victoires et 72 nulles contre Stockfish) — la vraie révolution selon lui.\n- Anecdote personnelle : une défaite contre Judith Polgár aux Olympiades pour avoir joué la préparation de l'ordinateur **« sans réfléchir »** — la machine s'était trompée. Leçon : *« même si l'ordinateur est un formidable outil d'entraînement, il faut quand même l'accompagner »*.\n- Effet de l'IA sur le jeu : **les joueurs jouent beaucoup mieux**, les grands maîtres sont de plus en plus jeunes, les concepts sont redéfinis (la poussée du pion h) et les grands maîtres débattent davantage entre eux.\n- Coach de Magnus Carlsen pendant 10 ans : *« ceux qui gagnent ne sont pas ceux qui résistent au changement mais ceux qui apprennent plus vite que les autres »*.\n- **Réception** : « excellent format » pour Denis Germain, qui retient *« on peut utiliser l'IA pour progresser, pas seulement pour accélérer »* ; David Micheneau retient que les échecs ne sont pas morts : la collaboration a déplacé leur centre de gravité.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "q_k3aW1BKmI",
+        "title": "Les échecs à l'ère de l'intelligence artificielle",
+        "publishedAt": "2026-05-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-developpeur-face-a-l-ia-du-prototypage-rapide-a-la-fin-des-intermediaires",
+      "day": "2026-04-23",
+      "type": "keynote",
+      "title": "Le développeur face à l'IA : du prototypage rapide à la fin des intermédiaires ?",
+      "speakers": [
+        "Nicolas Grenié — Typeform (programme)"
+      ],
+      "feedbackFrom": [
+        "Julien Wittouck (codeka.io)",
+        "Antoine Bastos (blog Lunatech)",
+        "David Micheneau (azrod.me)"
+      ],
+      "summary": "- **Sur scène** : l'orateur dit ne plus avoir écrit une ligne de code depuis un an — il se voit en **éditeur**, plus en créateur. Le vibe coding comme **« Strava du développeur »** : faire ses répétitions sur des side projects (app de suivi de contractions codée à la maternité, générateur d'icônes à 15 000 utilisateurs… pour 2 000 dollars de revenus) pour muscler la **création de produit** plutôt que la course aux frameworks.\n- Mise en garde : recréer un Typeform est facile, **gérer des millions de réponses, la sécurité et la compliance ne l'est pas** ; le développeur devient **chef d'orchestre** d'un « stagiaire » enthousiaste qu'il faut guider, relire, et à qui il faut savoir **dire non**.\n- Retour d'expérience Typeform : les **PM prototypent eux-mêmes** (Lovable, Bolt) au lieu de passer par des prototypes Figma, avec des **skills** internes (design system, permissions, tests) pour rester proches du vrai produit ; même idée pour les démos Sales.\n- Échange le plus repris (rapporté par Julien Wittouck et Antoine Bastos, non retrouvé dans la vidéo) : 500 jours prévus, un POC vibe-codé en 5 jours… *« les 495 jours restants servent à nettoyer »* le code généré.\n- **Réception** : Julien Wittouck se dit « triggered » par l'idée de déléguer le choix de la stack à l'IA ; Antoine Bastos y lit un avertissement sur la dette ; David Micheneau apprécie le duo avec Marjory Canonne : *« l'enthousiasme d'abord, puis la discipline d'ingénierie »*.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "3xgi_ULQMgc",
+        "title": "Le développeur face à l'IA : du prototypage rapide à la fin des intermédiaires ?",
+        "publishedAt": "2026-05-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "l-ia-sur-le-terrain-l-humain-au-coeur-de-la-valeur",
+      "day": "2026-04-23",
+      "type": "keynote",
+      "title": "L'IA sur le terrain : l'humain au cœur de la valeur",
+      "speakers": [
+        "Marjory Canonne — Spinalia"
+      ],
+      "feedbackFrom": [
+        "Julien Wittouck (codeka.io)",
+        "Antoine Bastos (blog Lunatech)",
+        "David Micheneau (azrod.me)"
+      ],
+      "summary": "- **Sur scène** : retour d'expérience depuis les PME des Vosges (charcuterie, vélos, BTP…) et, dix ans plus tôt, le **datalab de la Gendarmerie nationale** — où l'on partait du besoin terrain, quitte à *« ne pas faire d'IA mais faire de l'impact »*.\n- Parallèle entre le **data lake** d'hier et les **plateformes d'agents** d'aujourd'hui : un dirigeant engagé pour 3 ans sur une plateforme sans savoir pour quels cas d'usage.\n- Cas d'échec instructif : un workflow LLM performant techniquement (vérification d'une centaine de règles métier) **jamais mis en production faute d'adoption** — manque de sponsorship, peur d'être remplacé, attentes démesurées (*« l'IA elle est censée savoir »*).\n- Ce qui marche : **RAG de capitalisation** sur la connaissance interne, outils génératifs bien cadrés, et **prototypage en direct** avec des dirigeants. Mais une application vibe-codée par le métier reste pour les petits usages : dès qu'il y a sécurité et maintenabilité, *« il faut des vrais experts »* — et certaines ESN devront revoir leur modèle (*« pourquoi paierais-je 1 000 € pour changer la couleur d'un bouton ? »*).\n- Conclusion : *« l'enjeu n'est pas technologique, il est humain, organisationnel, culturel »*.\n- **Réception** : *« L'IA n'est pas une fin en soi »* retient Julien Wittouck ; Antoine Bastos approuve la priorité à la systématisation du savoir interne ; David Micheneau retient *« il n'existe pas de solution IA magique »*.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "h2CECLQl4nU",
+        "title": "L'IA sur le terrain : l'humain au cœur de la valeur",
+        "publishedAt": "2026-05-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "l-ia-au-defi-de-la-condition-humaine",
+      "day": "2026-04-24",
+      "type": "keynote",
+      "title": "L'IA au défi de la condition humaine",
+      "speakers": [
+        "Jean-Gabriel Ganascia — Sorbonne Université"
+      ],
+      "feedbackFrom": [
+        "Antoine Bastos (blog Lunatech)",
+        "David Micheneau (azrod.me)",
+        "Blog OVHcloud"
+      ],
+      "summary": "- **Sur scène** : keynote **sans aucune slide** (*« paresse de faire les transparents »*), bâtie sur **« Le Droit à la paresse »** de Paul Lafargue (gendre de Marx) : si l'IA générative décharge des « pensums », faut-il travailler 3 heures par jour ?\n- Il déroule d'abord, avec ironie, les promesses : travail mieux fait, formation tout au long de la vie, partage du travail, moindre impact environnemental — et un droit à la paresse devenu **« imprescriptible »** (impensable de faire écrire une dissertation « à cerveau nu »).\n- Puis quatre risques : **l'ennui** (Baudelaire), la **logique capitaliste** qui capte les gains de productivité (licenciements chez Meta cités), la **perte de compétences** (écrire, lire, coder), et l'**alignement moral comme censure** (IA constitutionnelle ; exemple d'un projet d'entretiens assistés par IA à France Travail, dont il siège au comité d'éthique).\n- Formule finale, reprise par Antoine Bastos : après les âges du bronze, du fer et de l'information, le risque d'entrer *« à l'âge de la falsification et du contrôle »*.\n- **Réception** : « inconfortable mais nécessaire » pour David Micheneau — la technologie qui remplace l'humain ne fait pas le bonheur, le sens reste déplacé plutôt que résolu. Antoine Bastos en tire une inquiétude plus concrète sur la dépendance à des fournisseurs d'IA non déterministes au cœur des produits.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "fg6DDchoxG8",
+        "title": "L'IA au défi de la condition humaine",
+        "publishedAt": "2026-05-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-course-a-l-ia-la-france-risque-t-elle-de-devenir-un-territoire-servant",
+      "day": "2026-04-24",
+      "type": "keynote",
+      "title": "La course à l'IA : la France risque-t-elle de devenir un « territoire servant » ?",
+      "speakers": [
+        "Loup Cellard — Datactivist / CNRS"
+      ],
+      "feedbackFrom": [
+        "Antoine Bastos (blog Lunatech)",
+        "David Micheneau (azrod.me)",
+        "Blog OVHcloud"
+      ],
+      "summary": "- **Sur scène** : trois dilemmes — tenir la **promesse économique** de l'IA face aux signes de bulle, concilier sobriété et **ruée vers les data centers** (foncier, électricité, eau), et une **souveraineté** au contenu flou.\n- Étude de deux « passerelles internet » : **Marseille** (≈19 câbles sous-marins, montée dans le top mondial de la connectivité, forte place de Digital Realty dans le Grand Port) et **Bordeaux** (câbles transatlantiques récents, projets portés par des acteurs de l'immobilier sans opérateur identifié, dont un projet à 3 milliards).\n- **Conflits d'usage** documentés : électricité réservée aux bus (2017) ou à l'électrification des quais (vers 2020) à Marseille ; résistances à Londres (brasserie Truman) et en Suède.\n- Risque d'une **bulle immobilière des data centers**, comparable à celle des bureaux vacants, et de **nouvelles friches urbaines** ; les collectivités disent ne pas comprendre la stratégie de l'État.\n- Proposition : parler moins de souveraineté (*« la maîtrise des frontières »*) et davantage d'**interdépendance**, de **cartographie des dépendances** et de soin.\n- **Réception** : questions jugées solides mais **réponses diffuses** (David Micheneau) ; Antoine Bastos note les messages contradictoires de l'État sur la « souveraineté numérique ».",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "YNaiLUpzlso",
+        "title": "La course à l'IA : La France risque-t-elle de devenir un \"territoire servant\"?",
+        "publishedAt": "2026-05-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "eloge-de-la-simplicite",
+      "type": "talk",
+      "title": "Éloge de la simplicité",
+      "speakers": [
+        "Frédéric Leguédois — Ex Novo"
+      ],
+      "feedbackFrom": [
+        "Estéban Soubiran (soubiran.dev)",
+        "Julien Wittouck (codeka.io)"
+      ],
+      "summary": "- **Sur scène** : one-man-show **sans slides**. Les utilisateurs ne consultent jamais les roadmaps : *« il n'y a que trois sources de satisfaction : le produit, le produit et le produit »* ; tout le temps passé à prédire le futur est retiré au produit.\n- Charge contre les transformations agiles devenues bureaucratiques : le planning tourné à la verticale et renommé backlog, *« insertion de Jira, fin de la transformation »* ; *« le planning, c'est un doudou organisationnel »*.\n- Estimations : une estimation logicielle « fiable » a ~100 % de marge d'erreur ; le ROI calculé divise des gains fantaisistes par des coûts fantasques. Alternative : **« prioriser par priorité »** en demandant aux utilisateurs leurs deux ou trois irritants principaux, puis livrer la solution la plus simple pour **agir afin d'apprendre**.\n- Fil rouge : **les urgences hospitalières**, organisation performante, imprédictible et sans planning (*« deux boîtes à chaussures et pas l'ombre d'un Scrum Master »*), synchronisée par des dialogues bilatéraux. D'où la critique de la synchronisation trimestrielle et le plaidoyer pour des **équipes autonomes et asynchrones** : *« il existe une alternative à l'agilité à l'échelle… elle s'appelle l'agilité »*.\n- **Réception** : « peut-être le meilleur talk Devoxx » pour Estéban Soubiran ; « un de mes talks préférés de cette édition » pour Julien Wittouck. Vidéo la plus vue de notre sélection (≈5 800 vues au 25/09).",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "7MpLQLKIjG0",
+        "title": "Éloge de la simplicité - Frédéric Leguédois",
+        "publishedAt": "2026-05-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "l-agentic-coding-nouveau-territoire-du-platform-engineering",
+      "day": "2026-04-23",
+      "type": "talk",
+      "title": "L'Agentic Coding, nouveau territoire du Platform Engineering",
+      "speakers": [
+        "Yankı Sesyılmaz — Doctolib",
+        "Julien Tanay — Doctolib"
+      ],
+      "feedbackFrom": [
+        "Denis Germain (blog zwindler)"
+      ],
+      "summary": "- **Sur scène** : suite d'un talk à Devoxx Belgium — **100 % d'adoption** de l'IA par les ~600 ingénieurs de Doctolib, puis une question : *« qu'est-ce qu'on fait quand tout le monde est à bord ? »*. Choix délibérés : **un seul outil** (Claude Code), mode de travail **agentic-first**, **spec-driven development** avec **OpenSpec** (léger, tout en Markdown, « éjectable »).\n- Plateforme : une **marketplace de plugins** interne (skills, agents, hooks, MCP) avec télémétrie maison, un **skill /review unique** amélioré en continu, un outil interne (Claudat) **déprécié** dès qu'Anthropic a livré l'équivalent — *« il faut parfois attendre et ne pas construire »*. Filtre des nouveaux outils : veille → valeur → revue sécurité → test par des « AI Champions » → standardisation.\n- **Agents distants sur GitHub Actions** : backlog de tickets « new joiner » traité à 1-3 tickets/jour, correctifs déclenchés depuis les erreurs Datadog, et **migrations techniques** encadrées par un contrat Markdown et revues par un autre agent (*« shift approval left »*).\n- Formation en trois niveaux ; le **mob programming sur les vrais sujets des équipes** a le meilleur NPS. Rituels agiles questionnés (rétro, poker planning) sans réponse définitive.\n- Conclusion : **le problème n'est pas l'IA** — *« avant vous aviez un ou deux new joiners par semaine, là vous avez 600 agents par jour »* : environnement de dev lent, tests flaky, CI de 40 minutes passent de gênants à **bloquants** → investir dans une plateforme solide.\n- **Réception** : Denis Germain salue un REX très concret, qui pointe les bonnes questions plus qu'il n'y répond ; il note que les profils DevOps/SRE, habitués au context switching, sont les plus gros utilisateurs. Vidéo la plus vue de la sélection (≈10 000 vues au 25/09).",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "NLg8As47Y84",
+        "title": "L'Agentic Coding, nouveau territoire du Platform Engineering",
+        "publishedAt": "2026-05-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-mythe-de-la-neutralite-quand-la-tech-devient-politique",
+      "day": "2026-04-23",
+      "type": "talk",
+      "title": "Le mythe de la neutralité : quand la tech devient politique",
+      "speakers": [
+        "Hugo Lassiège — eventuallycoding"
+      ],
+      "feedbackFrom": [
+        "Denis Germain (blog zwindler)"
+      ],
+      "summary": "- Le discours « la technologie est neutre » est jugé **commode pour les big techs** ; le numérique structure concrètement l'accès au monde, et les biais ont des effets réels (reconnaissance faciale).\n- Rappel que les GAFAM bénéficient de fonds publics ; **souveraineté ≠ autarcie**.\n- Citation retenue : *« J'espère qu'on est en train de vivre notre effet Sputnik, qu'on appellera peut-être l'effet Trump. »*\n- Talk jugé **« dense et courageux »** par Denis Germain. Le speaker a prolongé le sujet dans une interview au Studio Devoxx (« Le moment Spoutnik de la tech européenne ? »).",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "bCmFa3k1hBA",
+        "title": "Le mythe de la neutralité : quand la tech devient politique",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "et-si-on-debuguait-notre-rapport-au-temps",
+      "day": "2026-04-22",
+      "type": "talk",
+      "title": "Et si on débuguait notre rapport au temps ?",
+      "speakers": [
+        "Albane Fagot-Veyron — BPCE SI"
+      ],
+      "feedbackFrom": [
+        "Denis Germain (blog zwindler)",
+        "Estéban Soubiran (soubiran.dev)"
+      ],
+      "summary": "- Point de départ : *« Je n'ai pas le temps »*, phrase sur toutes les lèvres ; **temps perçu ≠ temps réel**, société de l'accélération.\n- Chiffres rapportés par Denis Germain : le multitâche coûterait jusqu'à **40 % de productivité** ; l'IA censée « faire gagner du temps » se traduirait par **+3 h 15 de travail par semaine** en moyenne.\n- Importance du **« temps de rien »** (mode par défaut du cerveau) pour la récupération cognitive ; recommandation : **sanctuariser 5 minutes par jour, en silence**.\n- *« Un talk que j'avais besoin d'entendre »* (Germain, entré parmi les derniers dans une salle comble) ; Estéban Soubiran le range dans ses trois coups de cœur pour son approche centrée sur l'humain.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "CS_7VJiV2zU",
+        "title": "⌛ Et si on débuguait notre rapport au temps ?",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "les-design-patterns-agentiques-dont-vous-etes-le-heros",
+      "day": "2026-04-23",
+      "type": "talk",
+      "title": "Les design patterns agentiques dont vous êtes le héros",
+      "speakers": [
+        "Guillaume Laforge — Google"
+      ],
+      "feedbackFrom": [
+        "Blog Ippon",
+        "Antoine Bastos (blog Lunatech)",
+        "David Micheneau (azrod.me, jour et titre rapportés différemment)"
+      ],
+      "summary": "- Talk « au-delà du hello world » structuré autour des piliers d'un agent : **objectif, mémoire, outils, planification** — *« un agent n'est pas juste un LLM « dans une boîte » ; c'est un écosystème articulé »* (Ippon).\n- Patterns présentés : planification programmatique, RAG, **Progressive Disclosure**, **Hierarchical Agent Decomposition**, **LLM-as-Judge** et **GOAP** (Goal-Oriented Action Planning).\n- Antoine Bastos souligne qu'ils répondent à la **dégradation des LLM en surcharge cognitive** ; David Micheneau retient GOAP comme une gouvernance pratique de systèmes non déterministes, dans une session **dense et peu tendre avec les débutants**.\n- Message retenu par Ippon : *« l'avenir de l'IA ne réside pas dans la puissance d'un modèle unique »*.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "c092bWijLhU",
+        "title": "Les design patterns agentiques dont vous êtes le héros",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "standards-et-agents-ia-mcp-a2a-adk",
+      "type": "workshop",
+      "title": "Standards et agents IA : un tour d'horizon de MCP, A2A, ADK et plus encore",
+      "speakers": [
+        "Guillaume Laforge — Google",
+        "Emmanuel Bernard"
+      ],
+      "feedbackFrom": [
+        "Blog MARGO",
+        "Blog Darkwood"
+      ],
+      "summary": "- Deep dive de 3 h sur les **protocoles communs des agents** (MCP, A2A, ACP) et les frameworks associés (ADK, Quarkus, LangChain4j…).\n- Formule retenue par MARGO : *« l'enjeu n'est plus de créer l'agent capable de tout faire, mais de bâtir un réseau d'agents capables de se parler »*.\n- Darkwood insiste sur l'**interopérabilité** comme condition d'écosystèmes multi-agents durables.",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "KvJ2OfLW7PE",
+        "title": "Standards et agents IA : un tour d'horizon de MCP, A2A, ADK et plus encore",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "serveurs-mcp-bonnes-pratiques-choix-de-conception",
+      "type": "workshop",
+      "title": "Serveurs MCP : bonnes pratiques, choix de conception et leurs conséquences",
+      "speakers": [
+        "Horacio Gonzalez — Clever Cloud"
+      ],
+      "feedbackFrom": [
+        "Blog Ippon"
+      ],
+      "summary": "- Deep dive sur ce qui vient **après** « faire tourner un serveur MCP » : conception, permissions, conséquences.\n- Anecdote marquante : un LLM qui **vide une base de données** via un serveur MCP trop permissif.\n- Performance saluée par Ippon : *« 3 h, 140 slides, tout défile sans accroc et sans note »*.",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "NNJC-zgsLTA",
+        "title": "Serveurs MCP : bonnes pratiques, choix de conception et leurs conséquences",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "docker-agent-simplifier-la-creation-d-agents-ia",
+      "day": "2026-04-23",
+      "type": "talk",
+      "title": "Docker Agent - comment simplifier encore plus la création d'agents IA ?",
+      "speakers": [
+        "Djordje Lukic — Docker",
+        "David Gageot — Docker"
+      ],
+      "feedbackFrom": [
+        "Christophe Frézier (Onepoint, dev.to)",
+        "Denis Germain (salle pleine, non vue)"
+      ],
+      "summary": "- Nouvelle approche de l'orchestration d'agents : **configuration minimaliste en YAML** et sélection flexible des modèles.\n- Démonstration de **plusieurs agents qui collaborent** et utilisent skills ou outils externes, avec des mécanismes d'**évaluation automatique** (Frézier).\n- Signe de l'affluence : Denis Germain n'a pas pu entrer (salle complète) et renvoie au replay.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "WI_aNYDWfQY",
+        "title": "Docker Agent - comment simplifier encore plus la création d'agents IA ?",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "mesurer-l-immesurable-evaluer-les-systemes-ia-generative",
+      "type": "talk",
+      "title": "Mesurer l'immesurable : comment évaluer les systèmes à base d'IA générative ?",
+      "speakers": [
+        "Erin Pacquetet — SCIAM"
+      ],
+      "feedbackFrom": [
+        "Christophe Frézier (Onepoint, dev.to)",
+        "Blog Darkwood"
+      ],
+      "summary": "- Pipeline d'évaluation en **trois étapes** et nécessité de **jeux de données de validation** (Frézier).\n- Enjeu central : *« gérer les compromis entre la créativité et le contrôle, essentiels pour les systèmes déployés en production »*.\n- Point de vigilance relevé par Darkwood : le **LLM-as-a-judge** automatise l'évaluation mais introduit ses propres biais — le jugement humain reste nécessaire.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "KK_7eCa0GK8",
+        "title": "Mesurer l'immesurable : Comment évaluer les systèmes à base d'IA générative ?",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "understanding-prompt-injection",
+      "day": "2026-04-23",
+      "type": "talk",
+      "title": "Understanding Prompt Injection - Techniques, Challenges, and Advanced Escalation",
+      "speakers": [
+        "Brian Vermeer — Snyk"
+      ],
+      "feedbackFrom": [
+        "Christophe Frézier (Onepoint, dev.to)",
+        "David Micheneau (azrod.me)"
+      ],
+      "summary": "- Démonstrations **en direct** d'attaques par injection de prompt sur différents modèles, puis stratégies d'atténuation.\n- David Micheneau : les démos rendent les vulnérabilités **impossibles à minimiser** ; la surface d'attaque est plus large que ce que couvrent les défenses actuelles.\n- *« Une conférence pertinente et ludique à la fois »* (Frézier).",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "SIfYive6nOA",
+        "title": "Understanding Prompt Injection - Techniques, Challenges, and Advanced Escalation",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "domptez-vos-agents-agents-md-et-context-engineering",
+      "type": "talk",
+      "title": "Domptez vos Agents : AGENTS.md et Context Engineering pour une IA déterministe",
+      "speakers": [
+        "Benoît Fontaine — Septeo"
+      ],
+      "feedbackFrom": [
+        "Antoine Bastos (blog Lunatech)"
+      ],
+      "summary": "- **Context engineering** concret : compacter le contexte vers **60 %**, maintenir des fichiers `AGENTS.md` / `CLAUDE.md` de **moins de 200 lignes**.\n- Formule retenue : *« l'IA est un amplificateur de l'état actuel… la maturité opérationnelle compte plus que le choix du modèle »*.\n- Antoine Bastos approuve : la qualité de la documentation conditionne directement la qualité des sorties.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "l_heE0CQQxg",
+        "title": "Domptez vos Agents : AGENTS.md et Context Engineering pour une IA déterministe",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "claudecode-protips-30-minutes",
+      "type": "talk",
+      "title": "ClaudeCode.proTips(30, minutes=30).run()",
+      "speakers": [
+        "Erwan Gereec — Doctolib"
+      ],
+      "feedbackFrom": [
+        "Blog Ippon",
+        "Antoine Bastos (blog Lunatech)"
+      ],
+      "summary": "- **30 astuces en 30 minutes** sur Claude Code : commandes `/clear`, `/context`, `/compact`, `/simplify`, `/effort`, `/insights`, `/fork`, `/resume`, `/init`, skills personnalisés…\n- Jugée *« une excellente porte d'entrée pour les débutants »* par Ippon.\n- Illustre la place prise par un outil précis dans le programme (Lunatech cite « Claude » parmi les buzzwords de l'édition).",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "lBPzQJTXHJ4",
+        "title": "ClaudeCode.proTips(30, minutes=30).run()",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "tests-end-to-end-d-api-generes-par-ia-refonte-legacy",
+      "type": "talk",
+      "title": "Tests end-to-end d'API générés par IA : un retour d'expérience en refonte legacy",
+      "speakers": [
+        "Cyrille Martraire — Arolla",
+        "Olivier Penhoat — Arolla"
+      ],
+      "feedbackFrom": [
+        "Antoine Bastos (blog Lunatech)"
+      ],
+      "summary": "- REX de migration d'API legacy où l'IA génère les tests end-to-end.\n- Principe clé : *« contraindre l'IA à remplir une pièce du puzzle, pas à générer le puzzle entier »*.\n- Antoine Bastos : le **déterminisme s'améliore nettement** quand le cadre fourni est précis.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "bp22O-oA-d0",
+        "title": "Tests end-to-end d'API générés par IA : un retour d'expérience en refonte legacy",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "gerer-vos-tickets-support-avec-de-l-ia-sans-cramer-la-planete",
+      "day": "2026-04-23",
+      "type": "talk",
+      "title": "Gérer vos tickets support avec de l'IA mais sans cramer la planète",
+      "speakers": [
+        "Matthieu Vincent — Sopra Steria",
+        "Philippe Charrière — Docker"
+      ],
+      "feedbackFrom": [
+        "Denis Germain (blog zwindler)"
+      ],
+      "summary": "- Pas besoin de gros modèles partout : des **SLM/TLM** bien dimensionnés suffisent pour beaucoup de tickets.\n- Recette : un **RAG propre sur l'historique des tickets** + une couche agentique légère.\n- Message retenu : un **« petit modèle bien outillé »** bat souvent un « gros modèle par défaut ». Denis Germain a apprécié la démo utilisant du JSON comme base vectorielle pour rendre le concept lisible.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "Nv5TnKl-q0o",
+        "title": "Gérer vos tickets support avec de l'IA mais sans cramer la planète",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "email-at-scale-800m-mails-par-an",
+      "day": "2026-04-23",
+      "type": "talk",
+      "title": "Email at scale : comment on a survécu à 800M mails/an (et au DNS)",
+      "speakers": [
+        "Julien Goullon — Mirakl",
+        "Julien Eyraud — Mirakl"
+      ],
+      "feedbackFrom": [
+        "Denis Germain (blog zwindler)"
+      ],
+      "summary": "- Contexte : 300+ marketplaces, 170 000 vendeurs, 500 domaines d'envoi.\n- Nouvelle architecture **Kafka + outbox + traitements asynchrones** ; garde-fous : circuit breaker, topics rapides/lents, déduplication Redis.\n- La **migration DNS/fournisseur** (SPF, DKIM, warm-up IP) est un chantier à part entière. REX « très solide sur un sujet sous-estimé » : à cette échelle, l'email devient un sujet de plateforme.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "wgiVTdKACnE",
+        "title": "Email at scale : comment on a survécu à 800M mails/an (et au DNS)",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "faconner-la-pertinence-et-la-resilience-de-notre-expertise-au-dela-de-2030",
+      "type": "talk",
+      "title": "Façonner la pertinence et la résilience de notre expertise au-delà de 2030",
+      "speakers": [
+        "Philippe Ensarguet — Orange"
+      ],
+      "feedbackFrom": [
+        "Blog Ippon"
+      ],
+      "summary": "- Trois âges de l'expert : **détenteur d'information**, puis **vérificateur**, puis **« boussole de sagesse »** qui définit les problèmes.\n- Durée de vie des connaissances techniques passée *« de 10 ans à seulement 1 an »* (chiffre rapporté par Ippon).",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "s-1_hsHW8gU",
+        "title": "Façonner la pertinence et la résilience de notre expertise au-delà de 2030",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "comment-les-developpeurs-lisent-du-code",
+      "type": "talk",
+      "title": "Comment les développeurs lisent du code ?",
+      "speakers": [
+        "Nicolas Delsaux — Zenika",
+        "Clément Bout — Zenika"
+      ],
+      "feedbackFrom": [
+        "Blog Ippon"
+      ],
+      "summary": "- Inspiré des travaux de **Felienne Hermans** : trois sources de confusion — manque d'informations (mémoire à court terme), manque de connaissances (mémoire à long terme), surcharge (mémoire de travail).\n- Image retenue : *« notre mémoire épisodique fonctionne comme une base de données indexée par les émotions »*.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "waWnP1PJ3a0",
+        "title": "Comment les développeurs lisent du code ?",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "les-erreurs-normales-anatomie-d-un-renoncement-collectif",
+      "type": "talk",
+      "title": "Les erreurs normales : anatomie d'un renoncement collectif",
+      "speakers": [
+        "Ivan Jewczuk — Decathlon"
+      ],
+      "feedbackFrom": [
+        "Blog Ippon"
+      ],
+      "summary": "- Bestiaire des erreurs tolérées : le **Hamster** (redémarrage automatique), le **Chat de Schrödinger** (irreproductible), le **Poisson rouge** (erreur bête qui noie les vraies), le **Perroquet** (répétitive).\n- Mise en garde : *« si votre solution consiste simplement à filtrer les logs pour ne plus voir le rouge… c'est une capitulation »*.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "2ieXYr0u82w",
+        "title": "Les erreurs normales : Anatomie d'un renoncement collectif",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "vous-pensiez-que-la-dette-technique-etait-le-pire-voici-la-dette-de-conception",
+      "type": "talk",
+      "title": "Vous pensiez que la dette technique était le pire ? Voici la dette de conception !",
+      "speakers": [
+        "Julien Topçu — Shodo Group",
+        "Josian Chevalier — Shodo"
+      ],
+      "feedbackFrom": [
+        "Georgia Bjarstal (blog OCTO)"
+      ],
+      "summary": "- Idée clé : une nouvelle fonctionnalité doit **challenger le code existant**, pas seulement l'étendre ; attention au couplage des responsabilités.\n- *« Les soucis de conception peuvent aller jusqu'à impacter l'organisation d'une entreprise »*.\n- Talk qui a le plus marqué Georgia Bjarstal, sur le fond comme sur la forme (≈4 100 vues au 25/09).",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "lfACSvxl4uY",
+        "title": "Vous pensiez que la dette technique était le pire? Voici la dette de conception!",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "la-magie-d-opentelemetry-reecrire-votre-app-en-production",
+      "type": "talk",
+      "title": "La magie d'OpenTelemetry : réécrire votre app en production",
+      "speakers": [
+        "Bruce Bujon — Datadog"
+      ],
+      "feedbackFrom": [
+        "Georgia Bjarstal (blog OCTO)"
+      ],
+      "summary": "- Ce que fait réellement l'agent JVM d'OpenTelemetry : *« le code qui s'exécute n'est plus celui qu'on a compilé »* (43 000 lignes ajoutées dans la démo).\n- Recommandé par Georgia Bjarstal à toute personne qui débute avec OpenTelemetry.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "1DYJUF1Rm2M",
+        "title": "La magie d'OpenTelemetry : réécrire votre app en production",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "cache-moi-si-tu-peux-patterns-et-pieges-du-cache-en-production",
+      "type": "talk",
+      "title": "Cache-moi si tu peux : patterns et pièges du cache en production",
+      "speakers": [
+        "Sébastien Lecacheur — Matmut"
+      ],
+      "feedbackFrom": [
+        "Georgia Bjarstal (blog OCTO)"
+      ],
+      "summary": "- Contre le réflexe *« on va mettre un cache, ça ira plus vite »* : patterns et pièges d'un cache en production.\n- Georgia Bjarstal retient la mise en garde contre la simplification du déploiement d'un cache (et la citation de Phil Karlton sur l'invalidation de cache).",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "AEWqJWPK_Lw",
+        "title": "Cache-moi si tu peux : patterns et pièges du cache en production",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "les-value-types-ne-sont-pas-complexes",
+      "day": "2026-04-24",
+      "type": "talk",
+      "title": "Les Value Types ne sont pas ℂomplexes",
+      "speakers": [
+        "Clément de Tastes — SCIAM",
+        "Rémi Forax — Université Gustave Eiffel"
+      ],
+      "feedbackFrom": [
+        "Blog Ippon",
+        "Antoine Bastos (blog Lunatech)",
+        "Julien Wittouck (codeka.io)"
+      ],
+      "summary": "- Projet **Valhalla** / JEP 401 illustré par la fractale de **Mandelbrot** : en objets classiques, le code est *« environ 10 fois plus lent »* qu'en primitifs (Ippon).\n- Trois concessions des value classes : **perte d'identité**, **immutabilité**, **aplatissement** des données ; gains rapportés par Lunatech : GC ÷143, −88 % de mémoire avec `value record`.\n- Vigilances : pièges avec `==` et `synchronized` (Bastos) ; risque de **mauvaise compréhension du mot-clé `value`** et d'usage systématique sans en mesurer l'impact (Wittouck, qui parle de gains « fous »).",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "4xGexqdLb3Q",
+        "title": "Les Value Types ne sont pas ℂomplexes",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "informatique-quantique-ce-coup-ci-on-vous-dit-tout",
+      "type": "workshop",
+      "title": "Informatique quantique, ce coup-ci on vous dit tout !",
+      "speakers": [
+        "Fanny Bouton — OVHcloud",
+        "Olivier Ezratty — Quantum Energy Initiative",
+        "Guillaume Schurck — Alice & Bob",
+        "Sébastien Marie — Matmut"
+      ],
+      "feedbackFrom": [
+        "Blog Ippon (Quentin)",
+        "Blog OVHcloud (entreprise des speakers)"
+      ],
+      "summary": "- Deep dive de 3 h pour développeurs : qubits, superposition, intrication, SDK, passage sur de vrais QPU.\n- Cas **Matmut** d'optimisation tarifaire ; *« le premier ROI du quantique n'est pas forcément business, mais intellectuel »* (Sébastien Marie).\n- *« Le quantique cesse d'être une abstraction pour ressembler à un vrai environnement de dev »* (Quentin, Ippon).",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "zyB2a3rwhYw",
+        "title": "Informatique quantique, ce coup-ci on vous dit tout !",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "du-storytelling-au-rendu-gpu-winamax",
+      "type": "talk",
+      "title": "Du Storytelling au rendu GPU : quand Winamax remplace ta console de jeu",
+      "speakers": [
+        "Thomas Cami — Winamax",
+        "Anthony Maffert — Winamax"
+      ],
+      "feedbackFrom": [
+        "Blog Ippon"
+      ],
+      "summary": "- Gamification du poker inspirée de Netflix et Hearthstone : *« les règles du poker sont les mêmes, pourtant l'expérience n'a plus rien à voir »*.\n- Le format **« Expresso »** (3 joueurs, moins de 10 minutes) et les multiplicateurs aléatoires présentés comme leviers d'engagement.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "bzVjWODvnvk",
+        "title": "Du Storytelling au rendu GPU : Quand Winamax remplace ta console de jeu",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "top-10-event-driven-architecture-pitfalls",
+      "day": "2026-04-23",
+      "type": "talk",
+      "title": "Top 10 Event-Driven Architecture Pitfalls",
+      "speakers": [
+        "Victor Rentea — Victor Rentea Consulting"
+      ],
+      "feedbackFrom": [
+        "Antoine Bastos (blog Lunatech)",
+        "Estéban Soubiran (soubiran.dev)"
+      ],
+      "summary": "- Les pièges de l'architecture événementielle, en format « parc d'attractions ».\n- *« Le talk le plus drôle de la conférence »* pour Antoine Bastos, trop rapide pour prendre des notes détaillées.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "LngJ-ZpNEMY",
+        "title": "Top 10 Event-Driven Architecture Pitfalls",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "se-retourner-la-tete-avec-les-quiz-java",
+      "day": "2026-04-23",
+      "type": "talk",
+      "title": "Se retourner la tête avec les quiz Java de José et Jean-Michel",
+      "speakers": [
+        "José Paumard — Oracle",
+        "Jean-Michel Doudoux — SCIAM"
+      ],
+      "feedbackFrom": [
+        "Julien Wittouck (codeka.io)"
+      ],
+      "summary": "- Format quiz interactif avec **environ 750 participants en direct** ; discussion publique et résolution en temps réel sur scène.\n- *« Un des talks que j'ai préféré »* (Wittouck), pour l'originalité du format.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "7bqt1Qp7Y2k",
+        "title": "Se retourner la tête avec les quiz Java de José et Jean-Michel",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "question-pour-un-cluster-kubernetes",
+      "day": "2026-04-22",
+      "type": "talk",
+      "title": "Question pour un cluster Kubernetes : quiz sur Kubernetes & ses concepts",
+      "speakers": [
+        "Aurélie Vache — OVHcloud"
+      ],
+      "feedbackFrom": [
+        "Denis Germain (blog zwindler)",
+        "Blog OVHcloud (speaker)"
+      ],
+      "summary": "- Quiz interactif avec démos sur les concepts de base (pods, secrets, services, namespaces) et des comportements piégeux (requests/limits, HPA, scheduling).\n- Salle pleine en avance (OVHcloud, *(speaker)*) ; Denis Germain, gagnant parmi 114 participants, juge que le format **« remet bien en place les réflexes »**.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "mS_Nz44cXlM",
+        "title": "Question pour un cluster Kubernetes : Quiz sur Kubernetes & ses concepts",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "kubernetes-et-la-jvm",
+      "day": "2026-04-24",
+      "type": "talk",
+      "title": "Kubernetes et la JVM",
+      "speakers": [
+        "Jean-Michel Doudoux — SCIAM",
+        "Alain Regnier — SCIAM"
+      ],
+      "feedbackFrom": [
+        "Denis Germain (blog zwindler)",
+        "Julien Wittouck (codeka.io)"
+      ],
+      "summary": "- Fondamentaux JVM × Kubernetes : warmup, GC, container awareness ; la JVM peut journaliser son ergonomie au démarrage ; la compilation native n'est pas magique (pas d'optimisations C2 à l'exécution).\n- Critique de Denis Germain : le talk *« balayait beaucoup de concepts sans forcément rentrer en profondeur »*.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "0ax9EU2Ly2Y",
+        "title": "Kubernetes et la JVM",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "mise-un-multi-outil-pour-votre-poste-de-dev-et-ops",
+      "day": "2026-04-23",
+      "type": "talk",
+      "title": "Mise : un multi-outil pour votre poste de Dev & Ops",
+      "speakers": [
+        "Rémi Verchère — Gravitek"
+      ],
+      "feedbackFrom": [
+        "Denis Germain (blog zwindler)",
+        "Julien Wittouck (codeka.io)"
+      ],
+      "summary": "- `mise.toml` fige les versions d'outils par projet ; système de **tasks** avec dépendances ; unification de l'outillage CI ; briques de sécurité (checksum, cosign, lockfiles, mode « paranoid ») ; hooks pour changer de contexte Kubernetes.\n- *« Assez dense pour un talk de 30 minutes »* (Wittouck) ; Germain veut l'adopter pour réduire la friction des changements de contexte.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "ZEtc6WnreI0",
+        "title": "Mise : un multi-outil pour votre poste de Dev & Ops",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "jujutsu-la-cerise-sur-le-git-oh",
+      "day": "2026-04-23",
+      "type": "talk",
+      "title": "Jujutsu, la cerise sur le git, oh !",
+      "speakers": [
+        "Siegfried Ehret — CyberPeace Institute"
+      ],
+      "feedbackFrom": [
+        "Julien Wittouck (codeka.io)"
+      ],
+      "summary": "- Découverte de **jj**, compatible Git, à la gestion du rebase jugée **« bluffante »**.\n- Conseil pratique retenu : *« ne demandez pas à votre manager si vous pouvez installer JJ »*.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "Li22nAOX1JE",
+        "title": "Jujutsu, la cerise sur le git, oh !",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "avec-l-ia-la-musique-a-t-elle-le-blues",
+      "day": "2026-04-22",
+      "type": "talk",
+      "title": "Avec l'IA, la musique a-t-elle le blues ?",
+      "speakers": [
+        "Sébastien Moreno — Deezer"
+      ],
+      "feedbackFrom": [
+        "David Micheneau (azrod.me)",
+        "Blog Darkwood"
+      ],
+      "summary": "- Fonctionnement des modèles génératifs musicaux, avec génération en direct.\n- Chiffre marquant rapporté par David Micheneau : **70 000 chansons générées par IA refusées chaque jour** par Deezer ; il devient *« presque impossible… de faire la différence »* entre musique humaine et générée.\n- Coup de cœur de Micheneau malgré une faible profondeur technique : le problème n'est pas la qualité mais l'**absence de cadre légal et éthique** pour valoriser la création.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "KHHc08dC_t0",
+        "title": "Avec l'IA, la musique a-t-elle le blues ?",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "maternite-dans-la-tech-du-temoignage-a-l-action",
+      "day": "2026-04-22",
+      "type": "talk",
+      "title": "Maternité dans la tech : du témoignage à l'action",
+      "speakers": [
+        "Estelle Thou — Criteo"
+      ],
+      "feedbackFrom": [
+        "Denis Germain (blog zwindler)"
+      ],
+      "summary": "- Trois axes : un environnement serein pour **annoncer une grossesse**, la **préparation du retour** de congé, et des points structurels (écarts salariaux, biais de présentéisme, formation des managers).\n- Message clé : ces aménagements *« ne sont pas des avantages, mais des réponses à des besoins bien réels »*. Talk jugé utile parce qu'il dépasse le témoignage.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "e1HU4H-ktSs",
+        "title": "Maternité dans la tech : Du témoignage à l'action",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "et-si-ecrire-du-sql-redevenait-cool",
+      "day": "2026-04-24",
+      "type": "lightning",
+      "title": "Et si écrire du SQL redevenait cool ?",
+      "speakers": [
+        "Sébastien Ferrer — OVHcloud"
+      ],
+      "feedbackFrom": [
+        "Julien Wittouck (codeka.io)",
+        "Blog OVHcloud (entreprise des speakers)"
+      ],
+      "summary": "- **sqlc** : SQL d'abord, code typé généré, sans surcouche d'ORM.\n- Approche jugée originale par Julien Wittouck, avec une limite : **pas de requêtes dynamiques**.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "H_macw0wqJ0",
+        "title": "Et si écrire du SQL redevenait cool ?",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Créer un jeu vidéo avec GitHub Copilot en 3h (X. Noya, A. Magne, T. Grall — atelier complet, seulement mentionné)",
+    "Fini les nuits difficiles : comment l'IA a transformé nos astreintes (seulement mentionné par D. Germain)",
+    "Sous le capot d'une base de données analytique (S. Wallez, Elastic — retour positif très bref de D. Germain)",
+    "Limits, Requests, QoS, PriorityClasses : démystifions le scheduling dans K8s (D. Germain — retour du speaker seulement)",
+    "G1, ZGC, Shenandoah… je choisis lequel ? (A. Dessaigne — retour bref de J. Wittouck)",
+    "TamboUI : faire de 2026 l'année de Java dans le terminal (C. Champeau, M. Rydahl Andersen — retour bref de J. Wittouck)",
+    "HTTP/3 : 37 ans d'histoire du protocole HTTP (C. Navas — retour bref de J. Wittouck)",
+    "Bye bye Vendor Lock-in : OpenFeature (T. Poignant — retour bref de J. Wittouck)",
+    "Silence is Coming : archi événementielle distribuée (J. Tourvieille, F. Njofang, AXA — retour bref de J. Wittouck)",
+    "The Hive : monolithe modulaire (T. Pierrain, J. Topçu — mention Lunatech)",
+    "Virtual Threads, Structured Concurrency et Scoped Values (J. Paumard, R. Forax — mention Lunatech)",
+    "L'ampoule qui en savait trop (P. Pinault — mention E. Soubiran)",
+    "Refactorer sans tout casser (H. Ben Khalfallah, OVHcloud — descriptif du blog OVHcloud seulement)",
+    "Apprendre à notre IA à… apprendre (S. Philippart, OVHcloud — descriptif OVHcloud/Darkwood seulement)",
+    "La genIA directement dans mon navigateur (J.-F. Garreau, SFEIR — mention D. Micheneau)",
+    "2 ans après, les devs n'ont pas disparu (M. Vincent, Y. Gloriau — résumé descriptif Darkwood seulement)",
+    "Le vrai coût d'un token (P. Mele — résumé descriptif Darkwood seulement)",
+    "The evolution of Software engineering (T. Gregoir, OpenAI — résumé descriptif Darkwood seulement)",
+    "Construire des agents IA en Kotlin avec Koog, MCP en pratique, Serveurs MCP sécurisés avec Spring AI, Tatouage numérique pour l'IA générative, Du texte aux données structurées (PayFit), L'IA dans le cycle de vie logiciel (Crédit Agricole) — résumés descriptifs Darkwood seulement",
+    "Faut-il vraiment découper son IA en agents spécialisés ?",
+    "Vos coding agents en mode YOLO… mais en toute sécurité",
+    "Spécialisez vos Agents avec les Skills",
+    "LLMs et Hallucinations : comprendre, mesurer, maîtriser",
+    "Le DevOps est mort, vive le Platform Engineering !",
+    "Chers Devs : votre PM n'est (probablement) pas là pour vous pourrir la vie",
+    "#SansCadres : créez votre propre méthode agile",
+    "Gouvernance partagée & équipe IT : ce qu'on a gardé, abandonné et appris",
+    "GitHub Actions : une bombe à retardement pour la supply chain security",
+    "Stop à la dette documentaire : ADRs et READMEs avec Spec-kit",
+    "Les Cast Codeurs 2026 (enregistrement live)"
+  ],
+  "sources": [
+    {
+      "label": "Programme officiel (Devoxx France 2026)",
+      "url": "https://m.devoxx.com/events/devoxxfr2026"
+    },
+    {
+      "label": "Chaîne YouTube Devoxx France — playlist 2026",
+      "url": "https://www.youtube.com/playlist?list=PLTbQvx84FrATeh9140x3_O0hAwGGgEI8q"
+    },
+    {
+      "label": "Playlist Keynotes 2026",
+      "url": "https://www.youtube.com/playlist?list=PLTbQvx84FrARmATtGZ-lPoT0fPV49seWw"
+    },
+    {
+      "label": "Vidéo « Devoxx France 2026, le récap ! » (chiffres officiels)",
+      "url": "https://www.youtube.com/watch?v=p_ASFOHhkbQ"
+    },
+    {
+      "label": "Blog OVHcloud — Devoxx France 2026: feedback and highlights (Aurélie Vache, Stéphane Philippart)",
+      "url": "https://blog.ovhcloud.com/en/posts/devoxx-france-2026/"
+    },
+    {
+      "label": "Blog Ippon — Devoxx 2026 (collectif)",
+      "url": "https://blog.ippon.fr/2026/05/11/devoxx-2026/"
+    },
+    {
+      "label": "Blog OCTO — Devoxx France 2026 : retour d'expérience (Georgia Bjarstal)",
+      "url": "https://blog.octo.com/devoxx-france-2026-retour-d'experience"
+    },
+    {
+      "label": "Blog Lunatech — Devoxx France 2026 (Antoine Bastos)",
+      "url": "https://blog.lunatech.com/posts/2026-04-24-devoxx-france-2026"
+    },
+    {
+      "label": "Onepoint sur dev.to — Une plongée dans l'IA (Christophe Frézier)",
+      "url": "https://dev.to/onepoint/devoxx-france-2026-une-plongee-dans-lintelligence-artificielle-2j62"
+    },
+    {
+      "label": "Denis Germain (zwindler) — récap jour 1",
+      "url": "https://blog.zwindler.fr/2026/04/22/devoxxfr-2026-recap-jour-1/"
+    },
+    {
+      "label": "Denis Germain (zwindler) — récap jour 2",
+      "url": "https://blog.zwindler.fr/2026/04/23/devoxxfr-2026-recap-jour-2/"
+    },
+    {
+      "label": "Denis Germain (zwindler) — récap jour 3",
+      "url": "https://blog.zwindler.fr/2026/04/24/devoxxfr-2026-recap-jour-3/"
+    },
+    {
+      "label": "Julien Wittouck — Devoxx France 2026, bilan",
+      "url": "https://codeka.io/2026/04/25/devoxx-france-2026-bilan/"
+    },
+    {
+      "label": "David Micheneau — Devoxx France 2026 : l'IA partout, mais pas sans nuances",
+      "url": "https://azrod.me/articles/devoxx-france-2026/"
+    },
+    {
+      "label": "Estéban Soubiran — Devoxx France 2026 : les personnes plus que les talks",
+      "url": "https://soubiran.dev/fr/posts/devoxx-france-2026-prioritizing-people-over-talks"
+    },
+    {
+      "label": "MARGO — Devoxx France 2026 : l'ingénierie logicielle à l'heure de l'industrialisation de l'IA",
+      "url": "https://www.margo.com/blog/artificial-intelligence-fr-fr/devoxx-france-2026-lingenierie-logicielle-a-lheure-de-lindustrialisation-de-lia/"
+    },
+    {
+      "label": "Blog Darkwood — Devoxx France 2026, l'ère de l'agentique",
+      "url": "https://blog.darkwood.com/article/devoxx-france-2026-l-ere-de-l-agentique-au-coeur-de-paris"
+    },
+    {
+      "label": "Criteo Tech Blog (Medium) — Our Experience at Devoxx France 2026 (non lu : accès refusé)",
+      "url": "https://medium.com/criteo-engineering/our-experience-at-devoxx-france-2026-8aaf3044f28f"
+    }
+  ]
 }

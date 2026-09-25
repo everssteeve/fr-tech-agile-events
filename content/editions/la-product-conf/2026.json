@@ -7,6 +7,308 @@
   "venue": "Folies Bergère",
   "url": "https://www.laproductconf.com/paris/lpc",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "10ᵉ édition (les 10 ans de LPC Paris), 19 mai 2026 aux Folies Bergère. Environ 1 300 participants, trois scènes (Folies Bergère, Scène Parisienne 1 et 2), une trentaine de sessions réparties en trois thématiques : « Intelligence artificielle », « Business & produit », « Product & beyond ». Événement organisé par Thiga.",
+  "status": "synthesized",
+  "edition": "10e édition",
+  "programUrl": "https://www.laproductconf.com/paris/schedule",
+  "synthesisUpdatedAt": "2026-09-25",
+  "corpus": "Programme officiel ; deux comptes-rendus publiés : **Le Ticket** (Kevin Deniau, 25/05/2026, en partie réservé aux abonnés, et deux articles dérivés) et le **blog Marmelab** (Alexandra Martin, 22/06/2026, 5 sessions détaillées) ; le post LinkedIn récapitulatif de Le Ticket et ses commentaires. S'y ajoutent les **28 vidéos officielles** mises en ligne le 03/06/2026, dont **6 sessions transcrites** (sous-titres automatiques) : Gilad, « AI Brain Fry », Leboncoin/Skello, Le Bail, table ronde AI-native, Straschnov.",
+  "limits": "Très peu de retours de participants publics : l'essentiel des retours vient de deux médias ou blogs, dont Le Ticket, partenaire de l'événement et animateur d'une table ronde. La recherche de posts LinkedIn n'a pas pu être exhaustive. Plusieurs sessions ne sont documentées que par leur vidéo ou leur descriptif. Les transcripts automatiques contiennent des erreurs, notamment sur les noms propres. Les chiffres cités sur scène (études BCG, données Stripe, TrueUp) sont rapportés tels quels et n'ont pas été vérifiés.",
+  "tldr": "**Pour ses 10 ans, LPC a parlé d'IA du matin au soir. Le fil rouge : l'IA ne tue pas le product management, elle en rend les fondamentaux plus nécessaires.** Il faut prioriser, viser l'impact plutôt que le volume, et orchestrer l'adoption collectivement. Sinon on obtient une *feature factory sous stéroïdes*, des équipes en surchauffe (« AI Brain Fry ») et des goulots qui se déplacent, alors même que les agents deviennent des utilisateurs à part entière de nos produits.",
+  "keyTakeaways": [
+    "Mesurer le **temps jusqu'à l'impact (outcome)**, pas le temps jusqu'à la livraison (output). Livrer plus vite de mauvaises features ne sert à rien (Gilad).",
+    "Limiter le travail en parallèle avec l'IA : **pas plus de trois outils ou agents à la fois**, des sessions timeboxées et le droit de renoncer (Warembourg, Renault). Ne pas valoriser ceux qui travaillent toute la nuit.",
+    "**Réinvestir les gains de productivité dans la qualité** et la profondeur fonctionnelle, plutôt que produire plus (Pennylane).",
+    "Sortir vite de la phase d'exploration libre : choisir quelques workflows, **figer ses outils** un temps, les inscrire dans les parcours de carrière et dans les objectifs (Yousign, Weglot, Meilleurtaux).",
+    "Prévoir **budget et temps de formation**, y compris pour le top management, pour contrer la « pensée magique » (Meilleurtaux).",
+    "Structurer le **knowledge management pour qu'il soit lisible par des agents**. Éviter l'« AI team » séparée qui ferait seule les features IA (Cegid).",
+    "Sur un produit IA, faire de l'**évaluation** le réflexe central : un jeu d'environ 50 questions rejoué à chaque changement, une revue hebdomadaire de la production et un LLM-as-a-judge. Arbitrer **qualité, latence et coût** (Skello, Leboncoin).",
+    "Auditer son **« agent readiness »** : les agents peuvent-ils trouver le produit (GEO), s'en servir sans friction, dans un cadre sécurisé et traçable (Stripe) ?",
+    "Ne pas confondre **prototype et produit industrialisable**. Décider lesquels industrialiser et accepter de couper (Van de Voorde, Doucet).",
+    "Face à une disruption, **bouger vite et soi-même** : le dirigeant qui code, un hackathon obligatoire, la remise en cause de toutes les hypothèses (Straschnov, Bubble)."
+  ],
+  "sessions": [
+    {
+      "id": "pm-are-here-to-stay-ouverture",
+      "day": "2026-05-19",
+      "type": "other",
+      "title": "Introduction et démarrage de la journée (clip « PM are here to stay »)",
+      "speakers": [
+        "Hugo Geissmann — Thiga"
+      ],
+      "feedbackFrom": [
+        "Le Ticket (compte-rendu et post LinkedIn)"
+      ],
+      "summary": "- Ouverture sur un **clip humoristique « PM are here to stay »** qui prend le contre-pied des prédictions LinkedIn sur la mort du product management (Le Ticket).\n- Le Ticket en fait le premier des « 5 apprentissages » de la journée : le ton était donné, **les PM ne disparaîtront pas**, reste à savoir lesquels et comment.",
+      "summarySources": [
+        "blog",
+        "feedback"
+      ]
+    },
+    {
+      "id": "the-ai-pm-disruption-hype-vs-reality",
+      "day": "2026-05-19",
+      "type": "keynote",
+      "title": "The AI PM Disruption — Hype vs. Reality",
+      "speakers": [
+        "Itamar Gilad — auteur d'Evidence-Guided, ex-Google"
+      ],
+      "feedbackFrom": [
+        "Le Ticket (Kevin Deniau)",
+        "Alexandra Martin (Marmelab)"
+      ],
+      "summary": "- **Sur scène**, Gilad part de la loi d'Amara (on surestime l'effet d'une technologie à court terme et on le sous-estime à long terme) et du cycle de hype de Gartner. Il fait le parallèle avec la bulle Internet : avec l'IA, on serait encore au début de la courbe.\n- **« Le coût du développement tombe à zéro » est une idée naïve.** Le logiciel est un problème de contraintes, « comme construire une ville, pas une chaise ». Le « 10x » est vrai pour passer de 0 à 1, mais sur de grosses bases de code l'accélération serait plutôt de 3x, 1,5x, voire 0,5x selon le contexte. Aucune étude ne mesure l'accélération sur tout le cycle de vie.\n- Le vrai sujet : **la plupart des idées ne produisent pas d'impact**. D'où sa question : optimisez-vous le *time to outcome* ou le *time to output* ? *« Si vous avez une feature factory aujourd'hui, vous aurez une feature factory sous stéroïdes demain »* (traduit).\n- **Trois archétypes passés au crible** :\n  - l'**AI PM** spécialiste : une offre sur sept selon des données TrueUp relayées par Lenny, donc une spécialité, « surtout du hype » ;\n  - le **developer PM** : utiliser Claude Code ou Cursor comme outil de travail, ce n'est pas du hype ; pousser du code en production en amateur, en revanche, est jugé « bizarre » ;\n  - la **fin des PM** : un « non-sens », sauf pour le **delivery Product Owner** qui traduit une roadmap en backlog. Gilad le compare aux dessinateurs industriels remplacés par la CAO.\n- Son quatrième archétype, l'**« AI-empowered PM »** : un PM qui utilise l'IA pour rendre son entreprise plus « moderne » (stratégie, recherche, objectifs, discovery…), par exemple pour produire de bons OKR.\n- **Ce qu'en a retenu Le Ticket** : quatre trajectoires, et une nuance importante sur le risque de **« productivité de façade »** (construire plus vite de mauvaises solutions).",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "NEi4yg7QXMo",
+        "title": "The AI PM Disruption — Hype vs. Reality - Itamar Gilad",
+        "publishedAt": "2026-06-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ai-brain-fry-comment-gerer-la-surchauffe",
+      "day": "2026-05-19",
+      "type": "roundtable",
+      "title": "Product Conversation : « AI Brain Fry », comment gérer la surchauffe ?",
+      "speakers": [
+        "Amandine Raoul — POINT.P (animation)",
+        "Marion Doucet — Meilleurtaux",
+        "Sébastien Warembourg — Renault Group",
+        "Catalina Silvart — Pennylane"
+      ],
+      "feedbackFrom": [
+        "Alexandra Martin (Marmelab)"
+      ],
+      "summary": "- **Sur scène** : le « Brain Fry » est défini comme une **surcharge cognitive intense liée à l'usage intensif de l'IA**. Ce n'est pas un burn-out : c'est plus aigu, mais ça passe plus vite. Une étude du BCG (environ 1 500 salariés américains) est citée : 39 % de ceux qui en souffrent disent faire davantage d'erreurs majeures.\n- **Warembourg (Renault)** parle de « la machine qui ne s'arrête pas » : les respirations naturelles des passations entre équipes disparaissent, et c'est « grisant », donc dangereux. Il l'a vécu lui-même. Ses règles :\n  - **pas plus de trois outils ou agents en parallèle** (étude BCG) ;\n  - timeboxer ;\n  - savoir renoncer ;\n  - garder un rythme humain : *« trouvez la personne qui vous fait lever la tête du Mac »*.\n- **Doucet (Meilleurtaux)** décrit quatre tensions avec le métier et le comex :\n  - la **pensée magique** (« tout va vite, donc plus besoin de prioriser ») ;\n  - la **confusion entre prototype et produit industrialisable** ;\n  - l'**IA comme prétexte au débat sur la productivité** : *« mettre de l'IA sur une équipe qui a un défaut dans son modèle opératoire, ça ne fera que l'accentuer »* ;\n  - la pression à raconter une histoire IA.\n  \n  Ses réponses : l'IA dans les objectifs individuels pour dégager du temps, des guildes puis des « champions » qui écrivent des skills, et de la formation jusqu'au top management.\n- **Silvart (Pennylane)** constate une polarisation des équipes et un syndrome de l'imposteur, symptômes d'un **manque d'orchestration**. Un prototype Figma Make de 3 h a consommé **quatre fois les crédits mensuels** d'un contributeur (environ 500 €). Pennylane distingue trois postures (adopteur, explorateur, pionnier) et **réinvestit les gains dans la qualité** : les objectifs de recrutement n'ont pas été revus à la baisse.\n- Dans la salle, une psychologue insiste sur le coût des changements de tâche. Les panélistes admettent **ne pas avoir organisé de temps de récupération**.\n- **Lecture d'Alexandra Martin (Marmelab)** : la session est classée 3ᵉ de ses cinq préférées. Elle retient quatre causes (travail solo avec une IA qui ne s'arrête pas, réseaux sociaux, confusion prototype/produit, dysfonctionnements organisationnels amplifiés) et conclut que *« la collaboration et la priorisation n'ont jamais été aussi vitales »*.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "xQ59oWJw-pE",
+        "title": "Product Conversation : \"AI Brain Fry” : comment gérer la surchauffe ?",
+        "publishedAt": "2026-06-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-leboncoin-et-skello-integrent-l-ia-dans-leur-produit",
+      "day": "2026-05-19",
+      "type": "roundtable",
+      "title": "Comment Leboncoin et Skello intègrent l'IA dans leur produit",
+      "speakers": [
+        "Kévin Deniau — Le Ticket (animation)",
+        "Pauline Minary — Leboncoin",
+        "Aude Clerc — Skello"
+      ],
+      "feedbackFrom": [
+        "aucun retour participant trouvé (résumé d'après la vidéo)"
+      ],
+      "summary": "- Deux démos concrètes :\n  - le **nouveau dépôt d'annonce Leboncoin**, qui combine un ML maison (catégories, attributs) et un LLM (description générée, prix suggéré) ;\n  - l'**assistant Skello** d'aide à la préparation de la paie, qui interroge les données RH du compte.\n- **Skello a construit son assistant en quatre itérations** : un POC, puis un agent superviseur avec agents spécialisés, garde-fous et contexte métier, puis un agent principal avec outils et observabilité, puis un agent de routing « videur ». Notion clé, le **harness** : *le produit, c'est tout ce qui entoure le modèle*.\n- **Leboncoin a gardé une architecture volontairement simple** (prompt, LLM, entrées). Les itérations ont porté sur le ton, jugé trop « marketing », l'ajout des attributs au contexte et un changement de modèle.\n- **Nouvelle compétence n°1, l'évaluation**, « le nerf de la guerre » :\n  - un *golden set* d'environ 50 questions rejoué à chaque modification ;\n  - une revue hebdomadaire d'un échantillon de questions posées en production ;\n  - un LLM-as-a-judge.\n- **Nouvelle compétence n°2, le triptyque qualité / latence / coût** :\n  - chez Leboncoin, environ 1 M d'annonces par jour et un coût absorbé (le dépôt est gratuit) : petits modèles, ML maison, modèles open source auto-hébergés à l'étude, une seule génération possible ;\n  - chez Skello, des limites d'usage par offre et un garde-fou anti-abus.\n- **Le rôle de PM change** :\n  - discovery continue à partir de ce que tapent les clients (tâche Claude hebdomadaire) ;\n  - app « vibe-codée » qui compare descriptions générées et descriptions publiées. Elle a montré qu'un tiers des vendeurs suppriment la phrase de contact, et elle pousse désormais un prompt corrigé en production.\n- Viser une **« minimum viable quality »** (80 à 90 % de bonnes réponses) et savoir arrêter : la recherche conversationnelle de Leboncoin a été mise de côté faute d'adoption.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "Z0xR7OM9pq0",
+        "title": "Comment Leboncoin et Skello intègrent l’IA dans leur produit",
+        "publishedAt": "2026-06-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "de-l-ux-a-l-ax-repenser-son-produit-a-l-ere-des-agents",
+      "day": "2026-05-19",
+      "type": "talk",
+      "title": "De l'UX à l'AX : repenser son produit à l'ère des agents",
+      "speakers": [
+        "Arielle Le Bail — Stripe"
+      ],
+      "feedbackFrom": [
+        "Alexandra Martin (Marmelab)",
+        "Le Ticket",
+        "speaker (remerciement en commentaire du post Le Ticket)"
+      ],
+      "summary": "- **Signaux Stripe présentés sur scène** :\n  - une **cassure de la courbe** des nouvelles entreprises créées sur Stripe depuis janvier 2026 ;\n  - 1 900 Md$ traités en 2025, soit 1,6 % du PIB mondial ;\n  - Patrick Collison qualifie le T1 2026 de possible *« premier trimestre de la singularité »*.\n- Elle ajoute que 31 % des acheteurs en ligne en France utilisent l'IA générative pour trouver un produit. Le commerce agentique progresse par niveaux : checkout dans l'interface de l'agent, recherche descriptive, mémoire, délégation, anticipation.\n- **Trois questions pour passer de l'UX à l'AX** :\n  - **Les agents peuvent-ils vous trouver ?** C'est le GEO (Generative Engine Optimization). Le trafic LLM vers la documentation Stripe a été multiplié par 10 en 2025, et les agents la liront plus que les humains en 2026 : la doc est en cours de réécriture.\n  - **Peuvent-ils interagir ?** Captchas, vérifications par email, uploads de photos et listes déroulantes forment une **« friction tax »**. Stripe repense son dashboard et a créé des « Claimable Sandboxes » accessibles par API.\n  - **Ont-ils un cadre clair et sécurisé ?** Il faut savoir qui est le merchant of record, qui a délégué quoi et pouvoir tracer. Les standards MCP et ACP (ce dernier co-écrit par OpenAI et Stripe) et des jetons de paiement bornés, sur le modèle des cartes virtuelles, y répondent.\n- Conclusion : *les produits qui réussiront la prochaine décennie seront conçus à la fois pour les humains et pour les agents*. Elle invite à mesurer l'« agent readiness » de son site (Stripe obtient 76 %).\n- **Réception** : Alexandra Martin (Marmelab) la classe 2ᵉ et retient surtout la perspective d'une communication directe d'agent à agent. Le Ticket la cite parmi ses cinq apprentissages clés.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "loEDDif5h-o",
+        "title": "De l’UX à l’AX : repenser son produit à l’ère des agents - Arielle Le Bail",
+        "publishedAt": "2026-06-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-on-devient-une-orga-produit-ai-native",
+      "day": "2026-05-19",
+      "type": "roundtable",
+      "title": "Comment on devient une orga produit AI-native, et par où on commence vraiment",
+      "speakers": [
+        "Timothé Frin — Stellar / Clef de Voûte (animation)",
+        "Christopher Parola — Yousign",
+        "Justine Poggi — Weglot",
+        "Florian Cordel — Cegid"
+      ],
+      "feedbackFrom": [
+        "Le Ticket (post et article « 4 conseils pour déployer l'IA à l'échelle »)"
+      ],
+      "summary": "- **Yousign (Parola)**, en transition depuis environ 18 mois :\n  - **80 % des employés** utilisent l'IA chaque jour, avec Claude Code côté devs et Dust pour le reste ;\n  - l'IA est inscrite dans les parcours de carrière, **avec date butoir** ;\n  - 80 % du code est écrit par des agents, mais le **gain réel tourne autour de 20 à 30 %** : le temps libéré part ailleurs et les goulots se déplacent ;\n  - le ratio PM/devs n'a pas bougé ;\n  - le goulot s'est déplacé vers la mise sur le marché : *« Pour la première fois de ma vie, quelqu'un côté revenu m'a dit : tu livres trop »*.\n- **Weglot (Poggi)** en est au début :\n  - le CEO a légitimé l'usage de l'IA, puis l'accès libre aux outils a fait émerger des power users et une journée IA ;\n  - les 2 h hebdomadaires bloquées ont été abandonnées au profit de **sprints dédiés** ;\n  - le gain de vélocité n'est **pas encore démontré** ;\n  - le goulot est côté PM, d'où des squads à **1 PM pour 3 devs** ;\n  - « à force de prototyper dans tous les sens, on a oublié les fondamentaux ».\n- **Cegid (Cordel)** compte 6 000 personnes dont 2 000 en R&D :\n  - il faut dépasser « l'enthousiasme volontaire » et bâtir le **nouvel operating system produit** ;\n  - selon des audits de Stanford, 50 à 70 % du code est généré par IA dans certaines équipes ;\n  - la discovery multi-agents s'est révélée décevante une fois examinée en détail.\n- **Conseils et erreurs** :\n  - être « intentionnaliste », un workflow à la fois ;\n  - **figer ses outils** un temps ;\n  - ne pas attendre trop longtemps pour passer à l'échelle (Parola) ;\n  - **anti-conseil de Cordel** : une « AI team » séparée qui fait les features IA ne marche pas, contrairement à une équipe d'enablement ;\n  - **investir dans un knowledge management lisible par des agents**.\n- **Ce qu'en a retenu Le Ticket** : les gains individuels restent anecdotiques sans déploiement systématique, et l'hétérogénéité de maturité produit de l'**« AI slop »**. D'où l'idée de canaliser les enthousiastes et de faire monter le reste en compétences (parcours de carrière avec échéances, formation, outils communs).",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "5g_6_L2hlb8",
+        "title": "Comment on devient une orga produit AI-native, et par où on commence vraiment",
+        "publishedAt": "2026-06-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "une-histoire-de-disruption",
+      "day": "2026-05-19",
+      "type": "keynote",
+      "title": "Une histoire de disruption (keynote de clôture)",
+      "speakers": [
+        "Emmanuel Straschnov — Bubble"
+      ],
+      "feedbackFrom": [
+        "Alexandra Martin (Marmelab)"
+      ],
+      "summary": "- Straschnov rappelle la **disruption « par le bas »** de Christensen : un produit moins bon mais bien moins cher devient un jour « good enough ». Bubble (no-code, lancé en 2012) en est un exemple : les startups Bubble ont généré plus d'un milliard de revenus l'an dernier.\n- **Puis Bubble s'est fait disrupter** par les LLM : *« on s'est dit : c'est un gadget… exactement ce que nous, on a fait aux autres »*. Il décrit une **courbe du deuil** où le déni est contagieux, puis la peur et la dépression, puis l'acceptation. Le choc est venu de Claude Code et d'Opus 4.6.\n- **Réaction drastique** :\n  - le CEO pousse lui-même des pull requests ;\n  - un **hackathon d'une journée, obligatoire pour les ~150 personnes** (ingénieurs ou non), a produit 30 à 40 PR, dont une dizaine partiront en production ;\n  - remise en cause de toutes les hypothèses du produit.\n- **Ce qui change selon lui** :\n  - **le code a beaucoup moins d'importance** : la duplication est tolérée, et le goulot devient la revue de PR, à traiter par des tests automatiques et un changement culturel ;\n  - la **triade s'inverse** : peu d'ingénieurs avec des agents, et une **renaissance des PM et des designers** ;\n  - la spec devient la source de vérité (spec-driven development) ;\n  - la confiance des utilisateurs et la **distribution** deviennent les actifs clés.\n- Il maintient toutefois que le code n'est pas le bon médium pour la plupart des applications métier, car peu de gens savent le lire. Le pari de Bubble est d'allier conversation et interface visuelle.\n- **Réception** : Alexandra Martin (Marmelab) la classe **1re de ses cinq sessions** pour son cadre concret. Elle retient la formule *« Il faut commencer par bouger soi-même »*. La thèse « la qualité du code n'a plus la même importance » tranche avec les appels à la rigueur d'autres sessions.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "HBWbACY345o",
+        "title": "Une histoire de disruption - Emmanuel Straschnov",
+        "publishedAt": "2026-06-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "from-lovable-to-runnable",
+      "day": "2026-05-19",
+      "type": "talk",
+      "title": "From Lovable to Runnable : du prototype au produit scalable",
+      "speakers": [
+        "Claire Van de Voorde — CPO et coach produit"
+      ],
+      "feedbackFrom": [
+        "Alexandra Martin (Marmelab)"
+      ],
+      "summary": "- REX d'une scale-up portée par des prototypes IA et low-code : **un prototype qui marche trop bien peut être plus dangereux qu'un échec**. Il crée de la dette, des coûts qui explosent, et des clients qui croient déjà avoir un produit (programme).\n- Deux rôles complémentaires : le **Creator**, qui explore vite avec peu de contraintes, et l'**Exploiter**, qui apporte robustesse et sécurité. Elle l'illustre par Coca-Cola, où l'inventeur John Pemberton a eu besoin de l'homme d'affaires Asa Griggs Candler pour industrialiser (Marmelab).\n- Le vrai problème est **un problème de décision** : cartographier ses prototypes, choisir ceux qui méritent d'être industrialisés, **accepter de couper même quand ça marche** (programme).\n- **Réception** : Alexandra Martin la classe 4ᵉ et apprécie ce recadrage du passage du prototype à la production. Le thème fait écho à la tension « prototype ≠ produit » soulevée par Marion Doucet le matin.",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "jhCU_x1BSwE",
+        "title": "From Lovable to Runnable : du prototype au produit scalable - Claire Van de Voorde",
+        "publishedAt": "2026-06-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "l-agentique-accelere-vis-ma-vie-de-head-of-data-ia",
+      "day": "2026-05-19",
+      "type": "roundtable",
+      "title": "L'agentique accélère : Vis ma vie de Head of Data & IA",
+      "speakers": [
+        "Robin Conquet — DataGen (animation)",
+        "Juliette Duizabo — Photoroom",
+        "Edouard Flouriot — Sorare",
+        "Virginie Cornu — ex-Jellysmack"
+      ],
+      "feedbackFrom": [
+        "Alexandra Martin (Marmelab)"
+      ],
+      "summary": "- L'IA automatise le rôle traditionnel de l'analyste, qui traduisait une question métier en requête SQL : **l'intermédiaire disparaît** et les PM gagnent en autonomie analytique.\n- Les équipes data se repositionnent sur la **fourniture d'un contexte propre et non ambigu** à l'IA.\n- Tension relevée : des PM capables de prototyper, implémenter et interpréter seuls **deviennent eux-mêmes des goulots**.\n- Consensus : **le meilleur investissement de carrière d'un PM aujourd'hui, c'est la culture data et métriques** (adoption, churn…). Il faut aussi garder un regard critique, car l'IA **confirme les biais** de celui qui l'interroge.\n- Classée 5ᵉ par Alexandra Martin (Marmelab), qui la juge riche en questions sur l'évolution des compétences PM.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "D2cKxGnk_FA",
+        "title": "L'agentique accélère : Vis ma vie de Head of Data & IA",
+        "publishedAt": "2026-06-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "clarity-for-product-people",
+      "day": "2026-05-19",
+      "type": "talk",
+      "title": "Clarity for Product People",
+      "speakers": [
+        "Arne Kittler — Contextual Product Leader"
+      ],
+      "feedbackFrom": [
+        "Le Ticket (article dédié, réservé aux abonnés)"
+      ],
+      "summary": "- Thèse du programme : la **clarté est la compétence n°1** des leaders produit. Sans vision partagée des rôles, de la direction et des façons de travailler, la collaboration s'essouffle, et c'est d'autant plus vrai à l'heure de l'IA.\n- **Modèle en 4 couches** : clarté directionnelle, situationnelle, de rôles et de communication. Il s'accompagne d'un diagnostic des signaux faibles de manque de clarté et de stratégies pour instaurer une culture de la clarté.\n- Le Ticket l'a retenue parmi les cinq apprentissages clés de la journée et lui consacre un article (« le framework d'Arne Kittler pour augmenter la clarté »), dont le contenu est réservé aux abonnés.",
+      "summarySources": [
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "slfrZSlSRtQ",
+        "title": "Clarity for Product People - Arne Kittler",
+        "publishedAt": "2026-06-03",
+        "transcript": false
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Service-as-a-Software (Lucien Bredin, Naboo) — vidéo en ligne",
+    "Du POC à l'intégration : comment TheFork a réussi son IA (Simran Singh, Thiga & Capucine Tiberghien, TheFork) — vidéo en ligne",
+    "Lean Tech Engineering (Fabrice Bernhard, Theodo) — vidéo en ligne",
+    "Scale: How Anthropic is helping start-ups grow globally (Aiden Blake, Anthropic & Amandine Durr, Back Market) — vidéo en ligne",
+    "Orchestrer une transformation IA multi-métiers sans créer le chaos (Sarah Lacroix & Claire Dhoosche, Criteo) — vidéo en ligne",
+    "What does it take to align 1,200 people across almost thirty disciplines? (Richard Sworder, Atlassian Williams Racing & Axel Sooriah, Atlassian) — vidéo en ligne",
+    "Why your team is hitting targets by building the wrong thing (Büşra Coşkuner) — vidéo en ligne",
+    "From analytics to action: evolving data products for agents (Andriy Mandyev) — vidéo en ligne",
+    "Club Med : retour sur deux ans de transformation IA (intervenants de la vidéo différents de ceux annoncés au programme) — vidéo en ligne",
+    "Codex for the future of work (Katia Gil Guzman, OpenAI) — vidéo en ligne",
+    "Malleable Software (Dave Killeen, Pendo) — vidéo en ligne",
+    "Keynote surprise « Quand le code rencontre la musique » (DJ Dave, live coding) — vidéo en ligne",
+    "Discovery from 0 to 1 : REX RATP Smart Systems (BilendiUX) — vidéo en ligne",
+    "Talks sponsors de 15 min : Vonage & Bouygues Telecom (RCS), Figma & BNP Paribas, Atlassian (Kevin Tassi), Airtable (David Benoish), Miro (Floriane Garde) — vidéos en ligne"
+  ],
+  "sources": [
+    {
+      "label": "Programme officiel",
+      "url": "https://www.laproductconf.com/paris/schedule"
+    },
+    {
+      "label": "Playlist YouTube « La Product Conf Paris 2026 » (28 vidéos)",
+      "url": "https://www.youtube.com/playlist?list=PLBaIQg089w708UasjxqhFkBghlwXUcwHV"
+    },
+    {
+      "label": "Le Ticket — La Product Conf 2026 : ce qu'il fallait retenir en 5 apprentissages clés (Kevin Deniau, 25/05/2026)",
+      "url": "https://www.le-ticket.fr/la-product-conf-2026-ce-quil-fallait-retenir-en-5-apprentissages-cles/150304/"
+    },
+    {
+      "label": "Le Ticket — 4 conseils pour déployer l'IA à l'échelle de son organisation",
+      "url": "https://www.le-ticket.fr/la-product-conf-2026-4-conseils-pour-deployer-lia-a-lechelle-de-son-organisation/150325/"
+    },
+    {
+      "label": "Marmelab — La Product Conf 2026 : l'IA sous un autre prisme (Alexandra Martin, 22/06/2026)",
+      "url": "https://marmelab.com/blog/2026/06/22/la-product-conf-2026-lia-sous-un-autre-prisme.html"
+    },
+    {
+      "label": "Post LinkedIn de Le Ticket (récapitulatif, commentaires de Timothé Frin et Arielle Le Bail)",
+      "url": "https://fr.linkedin.com/posts/le-ticket_la-product-conf-2026-activity-7464953258864910336-Tv1q"
+    },
+    {
+      "label": "Vidéo « Retour en images sur La Product Conf Paris 2026 »",
+      "url": "https://www.youtube.com/watch?v=O6IXnc6TvTk"
+    }
+  ]
 }

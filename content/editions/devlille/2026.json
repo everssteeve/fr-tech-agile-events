@@ -8,6 +8,381 @@
   "venue": "Lille Grand Palais",
   "url": "https://devlille.fr",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "status": "synthesized",
+  "sessions": [
+    {
+      "id": "eloge-de-la-simplicite",
+      "day": "2026-06-11",
+      "type": "keynote",
+      "title": "Éloge de la simplicité",
+      "speakers": [
+        "Frédéric Leguédois"
+      ],
+      "feedbackFrom": [
+        "Blog SFEIR (Erwan Le Tutour, Aurélien Allienne, Pierre Leclaire, Benoît Martin)"
+      ],
+      "summary": "- **Sur scène** (transcript) : keynote d'ouverture volontairement provocatrice. Point de départ : le logiciel qu'on déteste est presque toujours un logiciel **professionnel**, imposé au nom de l'uniformisation — qui finit par « décapiter les initiatives » et oblige à créer un « Lab » pour innover.\n- **Les utilisateurs ne lisent jamais les roadmaps** : *« il n'y a que trois sources de satisfaction pour les utilisateurs : le produit, le produit et le produit »* ; le temps passé à prédire le futur est du gaspillage. *« Le planning, c'est un doudou organisationnel »*, et un backlog avec des dates ou des jalons n'est qu'un « planning vertical ».\n- **Critique du ROI** : en logiciel, une estimation « fiable » a ~100 % de marge d'erreur ; diviser des gains « fantaisistes » par des coûts « fantasques » donne un ROI « farfelu » — *« pratiques divinatoires »* plutôt que démarche scientifique.\n- Alternative proposée : la **« priorisation par priorité »** — demander aux utilisateurs leurs 2-3 irritants principaux, chercher à **atténuer** (pas résoudre parfaitement) avec la solution la plus simple, livrer en un ou deux jours, **agir pour apprendre** (l'itération) plutôt que « réfléchir pour ne pas agir » (l'étude). *« Simplicité et amour »* (empathie) remplacent tableurs et estimations.\n- **Retenu par SFEIR** : l'agilité a généré sa propre bureaucratie ; retour aux itérations rapides, à l'échange direct avec les utilisateurs. Citation reprise : *« À l'origine, l'agilité, c'était plus de simplicité, plus de légèreté, moins de bureaucratie, des échanges directs »*.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "aV2Q-yEeF0g",
+        "title": "[DevLille 2026] Éloge de la simplicité - Jour 1",
+        "publishedAt": "2026-06-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "concevons-nous-toujours-des-applications-pour-les-humains",
+      "day": "2026-06-12",
+      "type": "keynote",
+      "title": "Concevons-nous toujours des applications pour les humains ?",
+      "speakers": [
+        "Julien (Software Engineer front / Scrum Master) — AXA France",
+        "Jonathan (Staff Engineer UI) — AXA France"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** (transcript ; talk qui ouvre le jour 2, absent du programme publié, speakers identifiés seulement par leur prénom dans la vidéo) : et si la majorité des utilisateurs du web devenaient des **agents IA** ? Fil rouge : un agent fictif, « Alan » (pour Alan Turing).\n- **Premier conseil concret : l'accessibilité**. Démo : un agent (Claude) doit choisir des sièges de cinéma ; sans attributs ARIA, il tâtonne et se trompe ; avec des `aria-label` sur les sièges, il choisit **plus vite et juste** — un bénéfice que les speakers n'avaient pas anticipé.\n- Du **« responsive first » à l'« agent first »** : Web MCP (preview Chrome), serveurs MCP, agents « computer use » ; *« les API sont-elles le nouveau front-end ? »* — oui pour certains besoins, mais **chaque écran devra se justifier** (humain ou agent ?). AXA prévoit de rendre certaines applications pilotables par des agents/MCP.\n- Côté développement : le vibe coding est devenu « AI native development » ; *« les PO vibe codent depuis toujours »* (ils testent sans lire le code). Question ouverte : les rituels agiles restent-ils pertinents si un sprint se produit en quelques heures ?\n- Longue partie sur les **risques** : dépendance (« point de non-retour doux » vs « dur »), deepfakes qui font douter du vrai, recommandations d'agents biaisées par leur opérateur, effondrement du modèle publicitaire du web, énergie, hégémonie d'un acteur, hallucinations (expérience Anthropic du magasin géré par Claude).\n- Conclusion : faire de l'accessibilité « pas uniquement par obligation », garder **un humain dans la boucle** ; *« le futur du frontend, c'est peut-être de ne plus en avoir […] concevoir des expériences, pas des interfaces »*. Talk le plus vu de la playlist (~310 vues au 25/09).",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "eiWp1WDnSto",
+        "title": "[DevLille 2026] Concevons nous toujours des applications pour les humains ? - Jour 2",
+        "publishedAt": "2026-06-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-vibe-coding-est-mort-vive-le-spec-coding",
+      "day": "2026-06-11",
+      "type": "talk",
+      "title": "Le vibe coding est mort, vive le spec coding",
+      "speakers": [
+        "Aurélien Allienne — SFEIR"
+      ],
+      "feedbackFrom": [
+        "Blog SFEIR (co-écrit par le speaker)"
+      ],
+      "summary": "- **Sur scène** (transcript) : retour sur le tweet de Karpathy (févr. 2025) et ce qu'il disait vraiment — *code jetable pour projets du week-end* — puis sur la dérive du terme. Le speaker aligne des signaux cités à charge : études GitClear (moins de refactoring, plus de copier-coller), Veracode (failles de sécurité qui ne baissent pas), incident Replit (base de prod supprimée malgré un « code freeze »), étude METR (devs expérimentés ~20 % plus lents alors qu'ils se croyaient plus rapides), baisse de confiance dans l'enquête Stack Overflow 2025 *(chiffres cités par le speaker)*.\n- **Changement de paradigme** : la **spec versionnée devient la source de vérité**, plus le code. Tour d'horizon : **GitHub Spec Kit** (fichier `constitution.md` de principes non négociables), **BMAD** (personas d'agents rejouant un workflow agile), **compound engineering** (chaque tâche rend la suivante plus facile, phase d'apprentissage qui met à jour la doc).\n- Démo de son plugin Claude Code maison : 11 commandes (PRD, constitution, roadmap, design system, plan, build, ship…), **workflow linéaire sans saut d'étape** (le merge exige QA et review), mise à jour automatique de la doc au merge, double review (Claude + Copilot).\n- Trois paris : « vibe coding » deviendra péjoratif comme « cowboy coding » ; tous les frameworks proposeront specs/tâches multi-agents ; **les specs deviendront le nouveau code source**.\n- À faire « lundi matin » : tester le cycle sur **une seule petite feature**, écrire avec l'équipe un **fichier de constitution**, **relire vraiment** ce que produit l'IA. Le vibe coding reste acceptable pour les projets perso.\n- Retenu par le blog SFEIR : *« Le vibe coding est mort. Il y a le spec coding qui arrive. »*",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "0Gsh8ym50Uw",
+        "title": "[DevLille 2026] Le vibe coding est mort, vive le spec coding - Jour 1",
+        "publishedAt": "2026-06-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ia11y-l-accessibilite-a-l-ere-de-l-ia",
+      "day": "2026-06-11",
+      "type": "talk",
+      "title": "IA11Y : L'accessibilité à l'ère de l'IA",
+      "speakers": [
+        "Pierre Leclaire — SFEIR"
+      ],
+      "feedbackFrom": [
+        "Blog SFEIR (co-écrit par le speaker)"
+      ],
+      "summary": "- **Sur scène** (transcript) : les personnes en situation de handicap (~1 personne sur 6, ~70 % de handicaps invisibles) sont parmi les **utilisateurs les plus actifs de l'IA**, pour contourner un web inaccessible. Étude auprès de 19 utilisateurs aveugles : enthousiasme (*« j'ai plus appris en 1 an avec ChatGPT qu'en 20 ans tout seul »*), mais vérification coûteuse et biais validistes.\n- **Limites** : chatbots eux-mêmes peu accessibles (titres, `aria-live`, verbosité pénible au lecteur d'écran), hallucinations, textes alternatifs générés à partir du prompt d'image.\n- **Le code généré reproduit un web inaccessible** (96 % des pages d'accueil les plus visitées ont des erreurs WCAG). Démo : 3 sites e-commerce générés par Claude — sans consigne (tout est cassé), avec « respecte les WCAG » (mieux, contrastes toujours faux), avec un système d'agents nourri de ~6 000 lignes de référentiel (nettement mieux, mais imparfait).\n- Côté positif : l'IA fait **mieux que des humains non formés** (-18 % de violations selon une étude citée) ; pistes : consignes a11y dans les prompts, agents avec base documentaire, **linter d'accessibilité en CI**, et surtout **former les développeurs**. Risque : que des MCP servent d'alibi pour ne pas corriger les sites.\n- Formule retenue par SFEIR et martelée en conclusion : *« L'IA est un supplément puissant, jamais un substitut. »* Rien ne remplace les **tests avec de vrais utilisateurs** en situation de handicap.\n- Talk rejoué au JUG Summer Camp 2026.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "t-O-gH8PKNc",
+        "title": "[DevLille 2026] IA11Y : L'accessibilité à l'ère de l'IA - Jour 1",
+        "publishedAt": "2026-06-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "notre-ia-et-nous-contre-le-legacy",
+      "day": "2026-06-12",
+      "type": "talk",
+      "title": "REX : Notre IA et nous contre le legacy : REX d'une reprise de contrôle assistée",
+      "speakers": [
+        "Jordan Nourry — Shodo Studio",
+        "Benjamin Lacroix — Shodo"
+      ],
+      "feedbackFrom": [
+        "Blog SFEIR"
+      ],
+      "summary": "- **Sur scène** (transcript) : duo « l'Enthousiaste » vs « le Prudent » sur une vraie application open source de plus de dix ans (Openwhyd).\n- **Approche naïve** (« refais-le en React, state of the art ») : 10 itérations, auto-évaluation subjective jusqu'à « 100/100 », forfait épuisé, fonctionnel incomplet — *« est-ce que tu n'es pas en train de refaire un legacy… sans les mains ? »*. La rétro demandée à l'agent lui-même recommande… checklist, stratégie de test, preuves mesurables : un backlog et des tests.\n- **Approche outillée** : agents de **discovery fonctionnelle** (DDD stratégique, bounded contexts, événements métier, parcours utilisateurs explorés via Playwright MCP, glossaire front vs back) et **technique** (adhérence aux technos, dépendances à risque) ; **agent architecte en mode sparring** (patterns de migration, POC) ; agent dev qui raffine le backlog par parcours utilisateur ; **évaluateur déterministe** (diff pixel-perfect) qui nourrit l'agent probabiliste — le « harness engineering ».\n- Chiffres annoncés par les speakers : analyse **4 à 5 fois plus rapide** avec la même méthodologie, migration estimée à **un sprint et demi**. Rituel « kaizen » après chaque reprise en main, en restant frugal (context rot).\n- Retenu par SFEIR : *« Rester sur nos pratiques de software engineer, juste assistées par l'IA. »* L'IA **amplifie** l'expertise… et ce qui est mal fait.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "AQcWBt9F8Nc",
+        "title": "[DevLille 2026] REX d'une reprise de contrôle assistée - Jour 2",
+        "publishedAt": "2026-06-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ia-et-bonnes-pratiques-nom-de-zeus-on-savait-deja-tout",
+      "day": "2026-06-12",
+      "type": "talk",
+      "title": "IA et bonnes pratiques : Nom de Zeus, on savait déjà tout !",
+      "speakers": [
+        "Nathan Castelein"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** (transcript) : talk en voyage temporel « Retour vers le futur ». Les six conseils de prompting en vogue en 2026 sont rapprochés de pratiques anciennes :\n  - **few-shot prompting** ↔ *Specification by Example* (Gojko Adzic, 2011) : des exemples concrets plutôt qu'une description abstraite ;\n  - **evaluation-driven prompting** ↔ **BDD** (Dan North, 2006), Given/When/Then comme critères d'évaluation ;\n  - **context engineering** ↔ **DDD** (Eric Evans, 2003) : langage ubiquitaire, bounded contexts ;\n  - **task decomposition** ↔ **Manifeste agile** (2001) : petits lots vérifiables, livrer souvent ;\n  - **iterative refinement** ↔ **Extreme Programming** (Kent Beck, 1999) : TDD, pair programming, simplicité — *« itérer vite ET itérer juste »* ;\n  - **prompt clarity** ↔ *The Mythical Man-Month* (1975) et la tour de Babel : les projets échouent par défaut de communication ; plus on ajoute d'agents, plus la coordination coûte.\n- Chute sur la conférence OTAN de 1968 qui a nommé le *software engineering* : *« notre métier n'a jamais été d'écrire du code, c'est de résoudre des problèmes »*. L'IA est une occasion de **remettre ces pratiques au cœur des équipes** — elles n'étaient pas nouvelles, juste devenues « optionnelles ».",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "-A_tPrXDGMA",
+        "title": "[DevLille 2026] IA et bonnes pratiques: Nom de Zeus, on savait déjà tout ! - Jour 2",
+        "publishedAt": "2026-06-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "failure-must-be-an-option",
+      "day": "2026-06-11",
+      "type": "talk",
+      "title": "Failure MUST be an option",
+      "speakers": [
+        "Olivier Breda"
+      ],
+      "feedbackFrom": [
+        "Blog SFEIR"
+      ],
+      "summary": "- Distinction entre **erreurs évitables** et **erreurs nécessaires à l'apprentissage** ; construire une **sécurité psychologique** (Amy Edmondson) pour que les équipes signalent les difficultés sans crainte et transforment les incidents en apprentissages plutôt qu'en recherche de coupable (blog SFEIR, programme).\n- Au menu selon le descriptif : « perverse incentives », NASA, humour.\n- Citation relevée par SFEIR : *« Peu importe votre niveau d'expérience, il y a des choses qui arrivent »*.",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "k-iN-7PyVJc",
+        "title": "[DevLille 2026] Failure MUST be an option - Jour 1",
+        "publishedAt": "2026-06-24",
+        "transcript": false
+      }
+    },
+    {
+      "id": "claudecode-protips",
+      "day": "2026-06-11",
+      "type": "talk",
+      "title": "ClaudeCode.proTips(20, minutes=20).run()",
+      "speakers": [
+        "Erwan Gereec"
+      ],
+      "feedbackFrom": [
+        "Blog SFEIR"
+      ],
+      "summary": "- Format condensé : **20 astuces en 20 minutes** sur Claude Code — installation, configuration, **gestion du contexte**, slash commands, intégration CLI/CI.\n- Point retenu par SFEIR : privilégier **l'installeur natif d'Anthropic** pour bénéficier des mises à jour quotidiennes.",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "AmR-x-BB0Lg",
+        "title": "[DevLille 2026] ClaudeCode.proTips(20, minutes=20).run() - Jour 1",
+        "publishedAt": "2026-06-24",
+        "transcript": false
+      }
+    },
+    {
+      "id": "transactional-facile-a-utiliser-difficile-a-maitriser",
+      "day": "2026-06-12",
+      "type": "talk",
+      "title": "@Transactional : Facile à utiliser, difficile à maîtriser",
+      "speakers": [
+        "Benoît Martin"
+      ],
+      "feedbackFrom": [
+        "Blog SFEIR (co-écrit par le speaker)"
+      ],
+      "summary": "- Derrière l'annotation Spring se cachent des mécanismes qui, mal compris, causent des bugs subtils d'intégrité de données.\n- Point clé retenu : maîtriser finement **`propagation`** (comportement lors d'appels entre méthodes) et **`isolation`** (visibilité des modifications concurrentes).",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "QDlWkmyr5N8",
+        "title": "[DevLille 2026] @Transactional : Facile à utiliser, difficile à maîtriser - Jour 2",
+        "publishedAt": "2026-06-24",
+        "transcript": false
+      }
+    },
+    {
+      "id": "dechainez-le-chaos-chaos-monkey",
+      "day": "2026-06-12",
+      "type": "talk",
+      "title": "Déchaînez le Chaos : Tester la résilience de votre application avec Chaos Monkey",
+      "speakers": [
+        "Erwan Le Tutour"
+      ],
+      "feedbackFrom": [
+        "Blog SFEIR (co-écrit par le speaker)"
+      ],
+      "summary": "- **Chaos Monkey for Spring Boot** pour injecter volontairement des perturbations et valider la robustesse **avant** les incidents réels.\n- Citation retenue : *« Le chaos trouve toujours un chemin. »*\n- Pas de vidéo DevLille 2026 dans la playlist officielle au 25/09.",
+      "summarySources": [
+        "blog"
+      ]
+    },
+    {
+      "id": "veille-technologique-ma-methode-pour-rester-a-jour",
+      "day": "2026-06-12",
+      "type": "talk",
+      "title": "Veille technologique : ma méthode pour rester à jour",
+      "speakers": [
+        "Camille Roux"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif : une méthode « zéro algorithme, zéro FOMO » fondée sur les **flux RSS** (Inoreader) et quelques agrégateurs (Hacker News, Lobsters, Human Coders News), avec filtres, résumés IA, créneaux dédiés et partage (mémo hebdo, blog).\n- Aucun retour participant trouvé ; c'est toutefois **la vidéo la plus vue** de la playlist 2026 (~330 vues au 25/09).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "uKBhNb5uOrM",
+        "title": "[DevLille 2026] Veille technologique : ma méthode pour rester à jour - Jour 2",
+        "publishedAt": "2026-06-24",
+        "transcript": false
+      }
+    },
+    {
+      "id": "pourquoi-personne-n-aime-relire-ta-pull-request",
+      "day": "2026-06-11",
+      "type": "talk",
+      "title": "Pourquoi personne n'aime relire ta Pull Request",
+      "speakers": [
+        "Maxime Clément"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif : une review difficile vient rarement du code lui-même mais de **sa présentation** (découpage des commits, taille et ordre des changements, contexte donné au reviewer).\n- L'IA y est envisagée **pour organiser et présenter** le changement, pas pour écrire le code. Aucun retour participant trouvé.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "nVKguI4-4wE",
+        "title": "[DevLille 2026] Pourquoi personne n'aime relire ta Pull Request - Jour 1",
+        "publishedAt": "2026-06-25",
+        "transcript": false
+      }
+    },
+    {
+      "id": "pas-de-paie-sans-controle-valider-evaluer-et-guider-le-llm",
+      "day": "2026-06-11",
+      "type": "talk",
+      "title": "Pas de paie sans contrôle : valider, évaluer et guider le LLM",
+      "speakers": [
+        "Thomas Villaren — PayFit"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif : chez PayFit, des LLM extraient des paramètres de paie à partir des textes de loi et génèrent de la logique métier dans un DSL maison.\n- Pattern proposé : **validations déterministes, boucle de correction, supervision humaine au bon endroit**, et une méthode légère d'évaluation (tests et métriques) pour comparer les modèles et détecter les régressions. Aucun retour participant trouvé.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "oTZ9ZHWz464",
+        "title": "[DevLille 2026] Pas de paie sans contrôle : valider, évaluer et guider le LLM - Jour 1",
+        "publishedAt": "2026-06-24",
+        "transcript": false
+      }
+    },
+    {
+      "id": "3-ans-de-devex-pour-3000-ingenieurs",
+      "day": "2026-06-11",
+      "type": "talk",
+      "title": "3 ans de DevEx pour 3000 ingénieurs : de la stratégie à l'impact !",
+      "speakers": [
+        "Julien Roynette — ADEO",
+        "Thomas Rumas — ADEO"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif : REX d'ADEO (3 000+ ingénieurs) autour d'un **DevHub maison** — identifier les développeurs, structurer les communautés, centraliser l'outillage et l'onboarding, industrialiser les campagnes de feedback, accompagner la montée en compétences (IA). Plan d'action pluriannuel et démo. Aucun retour participant trouvé.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "2xHzx4VHJe8",
+        "title": "[DevLille 2026] 3 ans de DevEx pour 3000 ingénieurs : de la stratégie à l'impact ! - Jour 1",
+        "publishedAt": "2026-06-24",
+        "transcript": false
+      }
+    }
+  ],
+  "synthesisUpdatedAt": "2026-09-25",
+  "programUrl": "https://devlille.fr/agenda/",
+  "note": "Ex-DevFest Lille. 11 & 12 juin 2026, Lille Grand Palais : ~44 conférences sur 3 salles (Grand Théâtre, Marie Curie, Stephen Hawking), 4 codelabs de 2 h, une keynote chaque matin ; conférences sous-titrées en direct. 49 talks publiés sur YouTube.",
+  "corpus": "Programme officiel (version archivée de l'agenda), **un compte-rendu de blog** (SFEIR, 29/07/2026, 8 sessions, co-écrit par quatre speakers), la playlist YouTube officielle (49 vidéos publiées les 24-25/06) et **6 transcripts** de talks (les deux keynotes et quatre talks IA). La recherche de posts LinkedIn/Bluesky n'a pas pu être menée pour cette édition.",
+  "limits": "Corpus très mince en retours participants : le seul compte-rendu public trouvé vient d'une ESN dont quatre des auteurs sont speakers (retours à lire comme *(speaker)*). Les résumés s'appuient surtout sur les transcripts (sous-titres automatiques, noms propres parfois approximatifs) et les descriptifs officiels ; aucune session n'a de retour contradictoire. La keynote du jour 2 n'apparaît pas dans l'agenda publié : ses speakers ne sont identifiés que par leur prénom.",
+  "tldr": "**Une édition dominée par l'IA générative vue par des praticiens prudents : on sort du « vibe coding » pour revenir aux fondamentaux (specs, tests, DDD, accessibilité, humain dans la boucle), l'IA étant présentée comme un amplificateur (des bonnes pratiques comme des mauvaises).**",
+  "keyTakeaways": [
+    "Tester le « spec coding » sur **une seule petite feature**, et écrire en équipe un fichier de **principes non négociables** (constitution) lu par l'agent (Allienne).",
+    "Donner aux agents des **évaluateurs déterministes** (tests, diff d'écran) plutôt que leur demander de s'auto-noter (Nourry & Lacroix).",
+    "Commencer une refonte de legacy par une **discovery fonctionnelle et technique assistée** (DDD, parcours utilisateurs), puis migrer parcours par parcours.",
+    "Faire de l'**accessibilité** une priorité : elle profite aux personnes handicapées **et** aux agents IA qui naviguent sur vos interfaces (Leclaire ; keynote jour 2).",
+    "Ajouter les consignes d'accessibilité aux prompts, un **linter a11y en CI**, et garder les **tests avec de vrais utilisateurs**.",
+    "Relire ce que l'IA produit et garder un **humain dans la boucle** : l'IA amplifie autant les erreurs que l'expertise.",
+    "Réappliquer au travail avec l'IA ce que l'on sait déjà : exemples concrets, Given/When/Then, langage ubiquitaire, petits lots, TDD (Castelein).",
+    "Côté produit : prioriser en demandant aux utilisateurs leurs 2-3 irritants principaux et **livrer la solution la plus simple** plutôt que d'estimer des ROI (Leguédois)."
+  ],
+  "sessionsWithoutFeedback": [
+    "Sculpter le bruit : génération de textures sonores (S. Ferrer) — vidéo dispo",
+    "Et si on ouvrait le capot de PostgreSQL ? (B. Coenen) — vidéo dispo",
+    "Construire un agent IA qui interroge des données en langage naturel (M. Tosun) — vidéo dispo",
+    "Noms de domaines : la grande histoire des petites extensions (B. Masson, T. Bougé) — vidéo dispo",
+    "LLMs en production : ce que les tutos ne vous diront jamais (J.-F. Lépine)",
+    "Le jour où nous avons arrêté de publier des messages Kafka depuis notre API (V. Zinck) — vidéo dispo",
+    "Héberge tout toi-même avec Coolify (F. Lemaire) — vidéo dispo",
+    "J'ai enfin compris pourquoi 50 % des femmes quittent la tech avant 35 ans (V. Chodaton) — vidéo dispo",
+    "Le CDC pour ne pas DCD (Q. Burg, L. Dussart) — vidéo dispo",
+    "J'ai ton numéro de CB dans ma BDD (R. Vangrevelynghe, T. Recloux) — vidéo dispo",
+    "Contract-First : reprends le contrôle de tes API (E. Peru) — vidéo dispo",
+    "Renovate : automatisez la dette technique de votre infra Kubernetes (P. Vulliemin) — vidéo dispo",
+    "Métier vs Technique : réconcilier deux mondes grâce au DDD (M. Bogaert, A. Carbenay) — vidéo dispo",
+    "Déployer souvent, stresser moins : feature flags en prod critique (M. Chineaud, E. Souvannavong) — vidéo dispo",
+    "Moderniser sans tout reconstruire : micro-frontend (L. Le Net) — vidéo dispo",
+    "Staff & Principal Engineer ? Comment ça marche chez AXA ? (F. Descamps, A. Dubois) — vidéo dispo",
+    "De pionnières à invisibles : où sont passées les femmes dans l'informatique ? (C. Masse) — vidéo dispo",
+    "Garder les clés de ses données : chiffrement et souveraineté (A. Desauw) — vidéo dispo",
+    "Les petites aventures de CSS, saison 2026 (R. Goetter) — vidéo dispo",
+    "Et si votre database était la queue qu'il vous fallait ? (J. Lampin) — vidéo dispo",
+    "Ils sont fous chez TanStack, ils ont mis une DB dans le front ! (L. Audart, D. Aubin) — vidéo dispo",
+    "EcoScore A ou E : où se situe vraiment votre API ? (E. Peru) — vidéo dispo",
+    "Reprenez le contrôle de votre plateforme data face aux géants américains (J. Fritsch, N. Leclercq) — vidéo dispo",
+    "ADR : de la documentation bureaucratique à la décision éclairante (N. Delsaux, L. Hauspie) — vidéo dispo",
+    "Le pattern Repository, Chat Potté du DDD (S. Decout, É. Siha) — vidéo dispo",
+    "Au cœur d'une pipeline : démystifions Vite et ses plugins (Estéban S.) — vidéo dispo",
+    "Remplacer le SecurityManager de Java par un agent grâce à ByteBuddy (L. Mathieu) — vidéo dispo",
+    "DevGreenOps : Decathlon x Greenspector (O. Philippot, L. Roland, N. Otte) — vidéo dispo",
+    "OID4VP : le protocole derrière les portefeuilles numériques européens (G. Djamena) — vidéo dispo",
+    "Handicap invisible : l'accessibilité commence dans les réunions (A. Moulin) — vidéo dispo",
+    "Et si vos erreurs se faisaient attraper avant l'exécution ? (R. Taniel) — vidéo dispo",
+    "Créer son premier provider Terraform (R. Even, C. Bout) — vidéo dispo",
+    "Local-first et sync-engines (B. Legrand) — vidéo dispo",
+    "Let's play Factorio (J. Wittouck) — vidéo dispo",
+    "Testez vos tests : le mutation testing (V. Ladreit de Lacharrière) — vidéo dispo",
+    "Créer un plugin Kestra 100 % généré par l'IA (F. Delbrayelle) — vidéo dispo",
+    "Codelabs : microservices en Rust ; accessibilité en mob ; Java profiling ; Testcontainers + Microcks ; enquête DuckDB ; DDD hands-on"
+  ],
+  "sources": [
+    {
+      "label": "Agenda officiel DevLille 2026 (version archivée du 18/05/2026)",
+      "url": "https://web.archive.org/web/20260518211322/https://devlille.fr/agenda/index.html"
+    },
+    {
+      "label": "Playlist YouTube officielle [DevLille 2026] (49 vidéos)",
+      "url": "https://www.youtube.com/playlist?list=PLXbqr_rv1t4N3LXk2aP80NQjIbymwpA2S"
+    },
+    {
+      "label": "Blog SFEIR — « DevLille : retour sur l'édition 2026 » (E. Le Tutour, A. Allienne, P. Leclaire, B. Martin, 29/07/2026)",
+      "url": "https://www.sfeir.dev/devlille-retour-sur-ledition-2026/"
+    },
+    {
+      "label": "Transcripts (sous-titres automatiques YouTube) : aV2Q-yEeF0g, eiWp1WDnSto, 0Gsh8ym50Uw, t-O-gH8PKNc, AQcWBt9F8Nc, -A_tPrXDGMA"
+    }
+  ]
 }

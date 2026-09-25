@@ -8,6 +8,409 @@
   "venue": "Station F",
   "url": "https://ai.engineer/paris/2026",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "status": "synthesized",
+  "sessions": [
+    {
+      "id": "what-can-economic-history-teach-us-about-the-ai-moment",
+      "day": "2026-09-23",
+      "type": "keynote",
+      "title": "What Can Economic History Teach Us About the AI Moment?",
+      "speakers": [
+        "Clemens Rawert — Langfuse"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **L'IA comme « GPT » au sens des économistes** (*general purpose technology*) : technologie pervasive, améliorable longtemps, à fortes complémentarités — et en même temps une technologie qui accélère l'invention elle-même.\n- **Les révolutions techniques mettent des décennies à apparaître dans la productivité** : machine à vapeur inventée en 1712, effets visibles vers 1830 ; électrification des usines US en 30-40 ans parce qu'il fallait **redessiner l'usine** (un moteur par machine) ; paradoxe de Solow (1987) résolu seulement fin des années 1990 par le changement organisationnel. Idée de **courbe en J** : l'investissement initial freine la productivité avant de l'accélérer.\n- **Ordres de grandeur d'investissement** cités : railway mania britannique à 5-7 % du PIB dans les années 1840, fibre à 1-1,5 % du PIB US en 1999, **infrastructure IA à ~1,8 % du PIB US cette année, ~3 % projetés en 2028**. Pas de verdict sur la bulle, mais l'infrastructure surconstruite (rails, fibre noire) a souvent servi plus tard.\n- Message de fin : la technologie avance à **« deux horloges »** (invention rapide, diffusion lente) ; la valeur viendra de ceux qui « recâblent » les organisations — *« ce que la plupart d'entre nous faisons toute la journée »*.\n- Limite : le début du talk manque dans le replay (le live démarre en cours de présentation).",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "CGq9KRSb9Kc",
+        "title": "AI Engineer Paris 2026 Opening Keynotes: Mistral, Langfuse & Sizzy | Day 1",
+        "publishedAt": "2026-09-23",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-next-level-of-ai-engineering",
+      "day": "2026-09-23",
+      "type": "keynote",
+      "title": "The next level of AI engineering",
+      "speakers": [
+        "Kitze — Sizzy"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Suite de son talk précédent « from vibe coding to vibe engineering » : on passe maintenant aux **« software factories »** (qu'il surnomme aussi *slop factories*).\n- Typologie provocatrice : les **« slop grenade throwers »** (on génère, on ne relit pas, on jette la PR au collègue), les **« meat proxies »** (on recopie la demande du manager dans un LLM et on renvoie la réponse sans la relire) — il prédit des licenciements pour ces derniers —, et les vrais AI engineers qui construisent un système autour de leur process.\n- Retour d'expérience très concret : harness minimaliste (Pi), sessions persistantes dans le terminal, laptop réduit à une « télécommande » vers des machines distantes (Proxmox, VM isolées pour ses agents), quatre abonnements à 200 $ derrière un load balancer, un MCP unique qui agrège ses connecteurs, des *skills* servis par MCP plutôt qu'en fichiers Markdown dispersés.\n- Leçon principale : **un worktree Git n'est pas un sandbox** — un agent a effacé sa base de production (restaurée depuis une sauvegarde). D'où le modèle **« une tâche = une mini-VM jetable »** avec base, seeds et navigateur, file d'attente limitée à quelques instances.\n- **Garde-fous anti-slop** : linters stricts (Oxlint, etc.), une CLI « police » maison pour les règles non exprimables en lint, et une revue par règles en langage naturel ; sinon *« l'agent désactive la moitié de ta config ESLint pour finir »*.\n- Démo (écourtée) de son orchestrateur « Bench » : pipeline code → revue → test par agents avant la revue humaine.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "CGq9KRSb9Kc",
+        "title": "AI Engineer Paris 2026 Opening Keynotes: Mistral, Langfuse & Sizzy | Day 1",
+        "publishedAt": "2026-09-23",
+        "transcript": true
+      }
+    },
+    {
+      "id": "building-frontier-ai",
+      "day": "2026-09-23",
+      "type": "keynote",
+      "title": "Building Frontier AI",
+      "speakers": [
+        "Lélio Renard Lavaud — Mistral"
+      ],
+      "feedbackFrom": [],
+      "summary": "- État de Mistral présenté par son VP Engineering : **~1 300 personnes** trois ans et quatre mois après la création, positionnement *« pas l'AGI, l'utilité »* ; rappel du rachat de l'équipe sandbox/infra présente à l'édition 2025 et d'un tour de série D présenté comme le plus gros d'une entreprise tech européenne.\n- **Vision produit « future of work »** : un **harness unifié** (Vibe) commun aux développeurs et aux « bricoleurs d'entreprise » non développeurs (exemple de Steven, en finance), capable de lancer des agents asynchrones, construire, tester, déployer et partager une app interne avec contrôle d'accès. Démo : agent d'investigation d'incident qui part d'une alerte Sentry et poste ses pistes dans Slack ; les skills s'auto-corrigent à partir des traces.\n- **Sécurité agentique** : privilèges dynamiques, sandboxes, garde-fous à l'exécution à partir des traces système/réseau ; démo d'une **injection de prompt via une issue GitHub** qui exfiltre un secret, puis bloquée au niveau réseau par une politique définie par l'admin — *« l'utilisateur n'a rien eu à configurer »*.\n- **Souveraineté** (données, modèles, compute, opérations) : datacenter de 10 MW près de Paris équipé de B300 NVIDIA pour les charges critiques et les clients sensibles.\n- Modèles spécialisés mis en avant : audio (TTS avec clonage de voix, STT avec diarisation temps réel, démo de traduction live), OCR 4.1 (manuscrits, documents anciens, bounding boxes). Pas d'annonce de nouveau grand modèle : *« je ne l'annoncerai pas aujourd'hui »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "CGq9KRSb9Kc",
+        "title": "AI Engineer Paris 2026 Opening Keynotes: Mistral, Langfuse & Sizzy | Day 1",
+        "publishedAt": "2026-09-23",
+        "transcript": true
+      }
+    },
+    {
+      "id": "from-pixels-to-robots-customizing-flux",
+      "day": "2026-09-24",
+      "type": "keynote",
+      "title": "From Pixels to Robots: How we customize FLUX for production to make it steer robots and play games",
+      "speakers": [
+        "Jakob Pörschmann — Black Forest Labs"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Présentation de la « boîte à outils » des forward deployed engineers de BFL, sur les six étapes du pipeline d'inférence (entrée, **prompt upsampling**, **modération**, poids, post-traitement, serving).\n- **Prompt upsampling** : un LLM/VLM réécrit la demande pour coller aux contraintes de design du client (cas réel : illustrations générées à partir de sujets machine, sujet à droite, espace pour texte à gauche). *« Le modèle n'est plus le goulot, ce sont les exigences de design »* ; itération rapide, sans entraînement.\n- **La modération est une surface produit** : configurations par client (plateforme enfants, retailer, studio) ; quand le modèle est déployé chez le client, modération intégrée aux poids via un **« slider LoRA »** appliqué en alpha négatif (cas de la désexualisation). Leçon : c'est faisable mais coûteux et statique, la configuration modulaire gagne dans la plupart des cas.\n- **FLUX 3 Action** (poids ouverts publiés la veille) : le modèle vidéo, mid-trained et fine-tuné, prédit à la fois les frames et le vecteur d'action d'un bras robot LeRobot, et joue à un shooter façon Quake.\n- Maxime de fin : une bonne personnalisation est *« aussi spécifique que nécessaire, aussi générale que possible »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "g0vqT_wZtXA",
+        "title": "AI Engineer Paris 2026 Main Stage: Google DeepMind, ElevenLabs, Hugging Face & Stripe | Day 2",
+        "publishedAt": "2026-09-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "generating-identity-at-scale-elevenlabs-orb",
+      "day": "2026-09-24",
+      "type": "talk",
+      "title": "Generating Identity at Scale, ElevenLabs' AI-Driven Orb",
+      "speakers": [
+        "Dorian Lods — ElevenLabs"
+      ],
+      "feedbackFrom": [],
+      "summary": "- L'auteur de l'« orb » de la voix OpenAI (faite à la main en shader) raconte le passage à **40 millions d'orbs, une par voix** chez ElevenLabs : *« je ne fais plus la chose, je fais la chose qui fait la chose »*.\n- Pipeline : analyse audio de chaque voix (hauteur, énergie, expressivité, calibrée sur 200 000 voix populaires) → image générée avec une **LoRA entraînée sur un jeu synthétique** et pilotée par des mots-clés de caption → couche temps réel en shader WebGL (simulation fluide, bruit, grain de marque), portée en rendu serveur.\n- **Contrainte de coût** : générer une image par voix était trop cher ; solution d'un grand atlas recadré/tourné par voix, présentée comme 10 à 15 fois plus rapide, moins de 3 secondes par voix. Backfill de 40 M de voix en quelques jours via un service interne dédié.\n- Leçons : **outiller la revue à grande échelle** (un bon exemple de debug ne garantit rien sur 40 M de sorties), posséder chaque sortie « comme si on l'avait faite », le savoir-faire se déplace vers les données et les règles ; parallèle explicite avec les software factories côté code.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "g0vqT_wZtXA",
+        "title": "AI Engineer Paris 2026 Main Stage: Google DeepMind, ElevenLabs, Hugging Face & Stripe | Day 2",
+        "publishedAt": "2026-09-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "how-a-transformers-model-loads-in-vllm",
+      "day": "2026-09-24",
+      "type": "talk",
+      "title": "How a Transformers Model Loads in vLLM",
+      "speakers": [
+        "Harry Mellor — Hugging Face"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Talk très technique d'un mainteneur vLLM : le **backend Transformers** de vLLM permet de servir une implémentation Hugging Face sans la réécrire, à la vitesse d'une implémentation dédiée.\n- Trois raisons de l'utiliser : code écrit une fois pour l'entraînement (y compris RL) et réutilisé dans vLLM/SGLang, prototypage, et parfois seule voie de support (**14 architectures** ne sont supportées que par ce backend).\n- Mécanique : détection des capacités depuis la config (MoE, multimodal, causal), mixins, remplacement récursif des couches par celles de vLLM (ce qui donne accès au parallélisme tenseur/expert), attention et **KV cache gérés par vLLM**, compilation torch des tours texte et vision.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "g0vqT_wZtXA",
+        "title": "AI Engineer Paris 2026 Main Stage: Google DeepMind, ElevenLabs, Hugging Face & Stripe | Day 2",
+        "publishedAt": "2026-09-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "inside-the-ai-economy-what-stripes-data-reveals",
+      "day": "2026-09-24",
+      "type": "keynote",
+      "title": "Inside the AI economy: What Stripe's data reveals",
+      "speakers": [
+        "Arielle Le Bail — Stripe"
+      ],
+      "feedbackFrom": [
+        "MC de la Main Stage (Replit), réaction à chaud captée dans le live"
+      ],
+      "summary": "- Cinq tendances vues dans les données Stripe : **vitesse**, **vente mondiale dès le jour 1**, **pricing hybride**, nouveaux canaux de go-to-market, **fraude**.\n- Chiffres annoncés sur scène : croissance des top entreprises IA en forte accélération en 2026 ; top entreprises IA présentes dans **42 pays dès la 1re année** (contre 25 pour les SaaS à croissance rapide) et 120 en 3e année ; **48 % du revenu hors marché domestique** ; prix localisés = +18 % de revenu transfrontalier, +7 % de conversion par moyen de paiement local ajouté ; deux tiers du Forbes AI 50 en tarification à l'usage, souvent hybride (abonnement + crédits).\n- Démo d'intégration Stripe « agentique » depuis Claude (MCP + skills, sandbox créée en CLI sans credentials).\n- **L'agent comme acheteur** : la documentation Stripe est, depuis l'été 2026, **plus lue par des agents que par des humains** → concevoir produit, docs et onboarding pour être découverts et achetés par des agents.\n- **Fraude** : une inscription sur six relèverait d'abus multi-comptes ; abus du pay-as-you-go (consommation de tokens puis carte invalide) → rapprocher usage et facturation, *« si vous n'avez pas pensé à l'attaque, vous n'êtes pas prêts à livrer »*.\n- Réaction de l'MC : l'idée retenue est qu'il faut **concevoir ses produits pour les humains et pour les agents**.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "g0vqT_wZtXA",
+        "title": "AI Engineer Paris 2026 Main Stage: Google DeepMind, ElevenLabs, Hugging Face & Stripe | Day 2",
+        "publishedAt": "2026-09-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rebuilding-a-streaming-model-for-voice-ai",
+      "day": "2026-09-24",
+      "type": "talk",
+      "title": "From research to production: How we rebuilt a streaming model for Voice AI",
+      "speakers": [
+        "Hervé Bredin — pyannoteAI"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Pédagogie de la **diarisation** (qui parle quand) : détection d'activité vocale, segmentation (changements de locuteur, parole superposée, *back-channels*), puis attribution sans connaître le nombre ni l'identité des locuteurs. Le toolkit open source pyannote est annoncé à ~10 M de téléchargements mensuels.\n- Pourquoi le temps réel : réunions (signaler qui interrompt ou monopolise), et bientôt robots domestiques qui doivent savoir à qui ils répondent.\n- Chemin vers le streaming : clustering incrémental (première version à ~5 s de latence), puis **segmentation causale** avec un modèle plus gros — même précision que le batch à **~400 ms de latence de bout en bout**, dont ~200 ms de *look-ahead* incompressible.\n- Messages : batch et temps réel sont **deux problèmes de ML différents** ; la latence n'est pas un chiffre unique (réseau, inférence = arbitrage coût/latence, algorithmique = arbitrage précision/latence). Démo live à deux voix.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "g0vqT_wZtXA",
+        "title": "AI Engineer Paris 2026 Main Stage: Google DeepMind, ElevenLabs, Hugging Face & Stripe | Day 2",
+        "publishedAt": "2026-09-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "building-the-infrastructure-behind-the-next-generation-of-ai",
+      "day": "2026-09-24",
+      "type": "roundtable",
+      "title": "Building the infrastructure behind the next-generation of AI",
+      "speakers": [
+        "Yann Léger — Mistral",
+        "Adolf Hohl — NVIDIA"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Constat de Yann Léger (déjà sur scène en 2025, sa société a été rachetée entre-temps) : l'ère agentique annoncée l'an dernier est arrivée plus vite que prévu ; une grande partie du logiciel est écrite par des agents, ce qui fait **exploser l'inférence** et remet **les CPU** dans l'équation (sandboxes, exécution des agents).\n- **Convergence entraînement/inférence** : plutôt que des pools statiques (gaspillage), un pool global réalloué dynamiquement ; l'inférence tolère des générations de GPU plus anciennes, d'où une infrastructure hétérogène à gérer dans la durée.\n- **Le rack devient l'ordinateur** : NVL72 présenté comme l'unité d'allocation économique ; côté tokens de raisonnement, le prochain chantier est le **cache distribué** (mémoire pour contextes longs).\n- Économie : NVIDIA préfère parler d'**« outcome maxing »** plutôt que de *token maxing* ; pour Mistral, la valeur se capte dans les couches hautes (harness, usage) et certains workflows consomment une quantité anormale de tokens pour leur résultat.\n- Europe : Mistral annonce **200 MW de capacité l'an prochain et 1 GW d'ici 2030**, en grande partie en Europe. Tendance surcotée selon Adolf Hohl : le *« self-healing everything »* ; sous-cotée selon Yann Léger : le logiciel qui fait fonctionner l'infrastructure.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "g0vqT_wZtXA",
+        "title": "AI Engineer Paris 2026 Main Stage: Google DeepMind, ElevenLabs, Hugging Face & Stripe | Day 2",
+        "publishedAt": "2026-09-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-low-latency-inference-engineering-playbook",
+      "day": "2026-09-24",
+      "type": "talk",
+      "title": "The low-latency inference engineering playbook",
+      "speakers": [
+        "Charles Frye — Modal"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Méthode en ordre strict : **comprendre la charge et le matériel**, puis viser les gros gains, puis le *grind* côté hôte, et **seulement ensuite** les kernels GPU (déjà proches de l'optimum).\n- Pour la faible latence, **huit GPU datacenter au plus** suffisent en général, un vrai gain opérationnel.\n- Gros gains : **décodage spéculatif** (ne change pas la distribution de sortie ; un spéculateur entraîné sur la charge du client fait une grande différence), puis **quantification** (change le comportement → nécessite des évals applicatives).\n- *Grind* hôte : éviter que le CPU bloque le GPU (profilage, consommation électrique comme signal) ; **routage tenant compte du KV cache**, décisif pour les agents (hit ≈ 500 ms contre ≈ 30 s en miss sur un déploiement mesuré).\n- Résultat client cité : ~5,5× plus de tokens par GPU et ~3× plus rapide par utilisateur. Bonus : un moteur qui génère des prompts depuis des requêtes SQL, présenté comme ~14× plus rapide que vLLM de base et open-sourcé le jour même.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "g0vqT_wZtXA",
+        "title": "AI Engineer Paris 2026 Main Stage: Google DeepMind, ElevenLabs, Hugging Face & Stripe | Day 2",
+        "publishedAt": "2026-09-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "eyes-up-edge-ai-innovation",
+      "day": "2026-09-24",
+      "type": "talk",
+      "title": "Eyes Up: Edge AI Innovation",
+      "speakers": [
+        "Dominic Pajak — Arm"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Thèse : des modèles open-weight toujours plus petits (autour d'un milliard de paramètres) + du matériel accessible (Raspberry Pi, DGX Spark) = des objets qui comprennent l'intention, sans cloud. Raisons de passer à l'edge : efficacité, latence d'interaction, vie privée.\n- Démo avec le robot **Reachy Mini** (Pollen Robotics / Hugging Face) et une app d'un collègue Arm ; choix pragmatique d'embeddings + correspondance sémantique plutôt qu'un LLM quand la latence prime.\n- **IA hybride** : orchestrer ce qui tourne sur l'appareil ou part au datacenter (routage par similarité avec un jeu de calibration, incertitude calibrée) ; idée d'agents « superviseurs » pour les systèmes embarqués.\n- Côté Arm : kernels SME2 intégrés en amont dans llama.cpp et ONNX Runtime (Gemma 4 optimisé dès sa sortie), programme d'accès anticipé aux outils d'optimisation.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "g0vqT_wZtXA",
+        "title": "AI Engineer Paris 2026 Main Stage: Google DeepMind, ElevenLabs, Hugging Face & Stripe | Day 2",
+        "publishedAt": "2026-09-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "agentic-map-reduce-for-large-scale-coding-tasks",
+      "day": "2026-09-24",
+      "type": "talk",
+      "title": "Closing the Distance: Agentic map-reduce for large-scale coding tasks",
+      "speakers": [
+        "Yannis Psorakis — Cognition"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Distinction clé : tâches **localisées** (un agent trouve seul le bon voisinage du code) contre tâches **à l'échelle du codebase** (audit sécurité, extraction de logique commune, code mort) où un agent seul brûle des tokens en recherche, pollue son contexte et ne sait pas quand s'arrêter.\n- **Agentic map-reduce** : l'agent principal planifie et écrit des **sélecteurs déterministes** qui découpent le code en zones candidates ; des sous-agents parallèles analysent chacun un contexte borné (map) ; l'agent principal déduplique, priorise et raisonne sur l'ensemble (reduce).\n- Cas sécurité (Devin Security Swarm) : le reduce détecte des **vulnérabilités chaînées** (plusieurs failles mineures qui composent un exploit critique) et tente de les **reproduire** avant de proposer des PR, pour éviter l'avalanche de faux positifs.\n- Gain revendiqué : moins cher et meilleur rappel grâce aux contextes bornés, évalué sur 50 vulnérabilités issues de GitHub dans plusieurs langages ; approche devenue une fonctionnalité du produit.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "g0vqT_wZtXA",
+        "title": "AI Engineer Paris 2026 Main Stage: Google DeepMind, ElevenLabs, Hugging Face & Stripe | Day 2",
+        "publishedAt": "2026-09-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "fixing-the-pr-bottleneck",
+      "day": "2026-09-24",
+      "type": "keynote",
+      "title": "Fixing the PR Bottleneck",
+      "speakers": [
+        "Matt Pocock"
+      ],
+      "feedbackFrom": [
+        "MC de la Main Stage (Replit), réaction à chaud captée dans le live"
+      ],
+      "summary": "- Constat : les agents rendent trivial l'ouverture d'une PR, pas celle d'une PR qui vaut la peine d'être relue. Dans une software factory, il faut des **« freins »** qui améliorent la qualité pour aller plus vite, sinon on obtient un *« slop cannon »*.\n- Trois couches : **checks automatiques** (tests, types, lint : peu coûteux, à multiplier), **revue automatique**, **revue humaine**. Mais *« les checks peuvent mentir »* : tests tautologiques qui réaffirment l'implémentation, tests qui lisent le fichier source, mocks qui empêchent tout échec.\n- Remèdes : concevoir des **modules profonds** (Ousterhout) pour que les tests passent par une petite interface ; **ne pas mettre les standards de code dans l'agent d'implémentation** (déjà surchargé) mais dans un agent de revue en sous-agent, avec un fichier `coding-standards.md` ; construire sa propre revue plutôt que l'externaliser ; **le reviewer doit committer ses corrections**, pas ajouter des commentaires.\n- **PR lisible par un humain** : qualifier chaque PR en *one-way door* ou *two-way door* et en rayon d'impact (on relit à fond les portes à sens unique, pas tout le reste), résumer par pseudo-code et diagrammes.\n- **Skill « retro »** : faire une rétrospective des sessions et PR de la semaine pour transformer chaque commentaire de revue en check automatique ou en règle — *« ne jamais écrire deux fois le même commentaire »*.\n- Réaction de l'MC : *« I love that retro skill »* ; le sujet a visiblement résonné avec la salle.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "g0vqT_wZtXA",
+        "title": "AI Engineer Paris 2026 Main Stage: Google DeepMind, ElevenLabs, Hugging Face & Stripe | Day 2",
+        "publishedAt": "2026-09-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-efficiency-of-gemma-4",
+      "day": "2026-09-24",
+      "type": "talk",
+      "title": "The Efficiency of Gemma 4",
+      "speakers": [
+        "Maarten Grootendorst — Google DeepMind"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Un modèle ouvert devient contraint dès qu'il tourne sur téléphone ou laptop : l'efficacité se joue sur la taille, la vitesse, la complexité et l'architecture.\n- Innovations détaillées : **embeddings par couche** (table de lookup stockable hors VRAM), **QAT « mobile »** à précision mixte selon les couches, **drafters MTP** (prédiction multi-tokens) partageant le KV cache du modèle cible, variante **sans encodeurs** audio/image (projection linéaire directe), et **DiffusionGemma**, un modèle de diffusion sur un canevas de tokens.\n- La diffusion est présentée comme adaptée aux usages de décision/classification rapides, en lien avec un modèle de décision très discuté dans les semaines précédant la conférence.\n- Message : l'efficacité est *« pour la communauté »* ; un modèle qu'on ne peut pas faire tourner n'a pas de sens.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "g0vqT_wZtXA",
+        "title": "AI Engineer Paris 2026 Main Stage: Google DeepMind, ElevenLabs, Hugging Face & Stripe | Day 2",
+        "publishedAt": "2026-09-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-missing-layers-of-conversational-ai",
+      "day": "2026-09-24",
+      "type": "keynote",
+      "title": "The Missing Layers of Conversational AI",
+      "speakers": [
+        "Olivier Teboul — Gradium"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Gradium, startup d'un an issue du laboratoire parisien Kyutai (Moshi), entraîne et sert des modèles STT, TTS et speech-to-speech.\n- Historique : du Siri « à six couches » aux agents vocaux **en cascade** (STT → LLM → TTS), utilisés selon lui par ~99 % des agents vocaux, puis au **speech-to-speech** full-duplex (codec neuronal ramenant l'audio de 24 kHz à 12,5 Hz, transformers multi-flux qui écoutent et parlent en même temps).\n- **La couche qui manque** : un modèle speech-to-speech isolé reste un gadget tant qu'il ne sait pas **appeler des outils** ; en conditions réelles, plusieurs locuteurs, bruit et sessions longues cassent encore les agents.\n- Serving sous **300 ms** : régions multiples (et synchronisation de caches), plusieurs fournisseurs et architectures de GPU face à la pénurie, taille de batch dynamique en cas de pic ; démo d'un nouveau TTS présenté comme ~3× plus rapide que les meilleurs (~150 ms), et d'un modèle embarqué de 100 M de paramètres avec clonage de voix.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "g0vqT_wZtXA",
+        "title": "AI Engineer Paris 2026 Main Stage: Google DeepMind, ElevenLabs, Hugging Face & Stripe | Day 2",
+        "publishedAt": "2026-09-24",
+        "transcript": true
+      }
+    }
+  ],
+  "edition": "2e édition",
+  "programUrl": "https://ai.engineer/paris/2026",
+  "theme": "AI engineering : agents en production, software factories, inférence, voix, IA ouverte et souveraine",
+  "note": "2e édition, 23 (soirée d'ouverture) & 24 septembre 2026 à Station F, organisée avec Mistral. ~1 000 participants annoncés, ~55 speakers, 6 salles (Main Stage, deux Discovery Tracks, Creativity Room, Expo Stage, workshops).",
+  "synthesisUpdatedAt": "2026-09-25",
+  "corpus": "Programme officiel complet (57 sessions sur ai.engineer) et **transcriptions automatiques des deux lives officiels de la Main Stage** (1 h 13 le 23/09, 8 h 44 le 24/09) sur la chaîne YouTube AI Engineer, lus intégralement le 25/09. Aucun post LinkedIn, article ou sketchnote de participant n'a pu être collecté (recherche web interrompue, budget de requêtes épuisé).",
+  "limits": "Synthèse fondée sur **ce qui a été dit sur scène**, pas sur des retours de participants : les seules réactions sont celles de l'MC captées dans le live. Seule la Main Stage est filmée ; les ~40 sessions des Discovery Tracks, de la Creativity Room, de l'Expo Stage et les workshops ne sont connues que par leur descriptif. Transcriptions automatiques (noms propres parfois déformés, début du talk d'ouverture absent du replay), J+1 à J+2.",
+  "tldr": "**Le goulot n'est plus la génération (code, images, voix) mais tout ce qui l'entoure** : revue, garde-fous, évaluation, sécurité des agents, latence et coût de l'inférence ; en parallèle, Mistral pousse une IA européenne **souveraine de bout en bout**, du datacenter au harness.",
+  "keyTakeaways": [
+    "Ne pas mettre ses standards de code dans l'agent qui implémente : les confier à un agent de revue séparé, qui **committe** ses corrections (Pocock).",
+    "Qualifier chaque PR en *one-way / two-way door* et en rayon d'impact pour concentrer la revue humaine là où elle compte (Pocock).",
+    "Transformer chaque commentaire de revue récurrent en check automatique ou en règle via une rétrospective régulière des sessions d'agents (Pocock).",
+    "Donner à chaque tâche d'agent un environnement jetable et isolé : un worktree Git n'est pas un sandbox (Kitze).",
+    "Pour les tâches à l'échelle du codebase, découper par sélecteurs déterministes et sous-agents à contexte borné (map-reduce agentique, Cognition).",
+    "Traiter l'agent comme un acheteur et un lecteur : docs et onboarding conçus pour lui (Stripe).",
+    "Anticiper la fraude dès le lancement (multi-comptes, abus du pay-as-you-go) et rapprocher usage et facturation (Stripe).",
+    "Optimiser l'inférence dans l'ordre : charge et matériel, décodage spéculatif, quantification validée par évals, routage par KV cache, kernels en dernier (Modal).",
+    "Outiller la revue à grande échelle quand un pipeline génère des millions de sorties (ElevenLabs).",
+    "Bloquer les injections de prompt par des politiques définies au niveau de l'entreprise plutôt que par la vigilance de chaque utilisateur (Mistral)."
+  ],
+  "sessionsWithoutFeedback": [
+    "Do you love wasting money? Agent tracing (Sergiy Dybskiy, Sentry)",
+    "A Computer for Every Idea: trees of live machines (E2B)",
+    "Stop Telling Your Agent Where to Look (Ina Koleva, Mistral)",
+    "Building Your Own Software Factory — workshop (Ben Miller, Factory)",
+    "Optimizing Small VideoLLM (Moments Lab, NVIDIA)",
+    "Dangerous by Design: restricted tool boundaries (Tomáš Barczi, Škoda Auto)",
+    "10mn to save hours on incident investigation (Colin Frisch, Mistral)",
+    "AI Agents Move at Machine Speed (Cockroach Labs, Expo Stage)",
+    "Never Lose a Trace (Erica Pisani, Sentry, Expo Stage)",
+    "How to Prevent AI Agents from Accessing Unauthorized Data (Sohan Maheshwar, AuthZed)",
+    "Fault-Tolerant GPU Clusters on Kubernetes (Connor Guerrero, Crusoe)",
+    "OCR for Business documents (Mistral)",
+    "Killing the Cold Start Tax on LLM Inference — workshop (NVIDIA)",
+    "Tabular Foundation Models for agents (Tuana Çelik, Prior Labs)",
+    "SGLang and Miles (Alex Nails, RadixArk)",
+    "The Model Is Probably Innocent (Han Héloir, Mistral)",
+    "Pricing AI Products without Destroying your Margins — workshop (Jérôme Tomasini, Stripe)",
+    "Building the first reliable model for on-device agents (Leonie Monigatti, Liquid AI)",
+    "Software Factories: Greenfield Is Easy. Brownfield Pays the Bills (Theresa Bradford, Otto Group)",
+    "The Human Attention Budget (Octave Raimbault, Mistral)",
+    "Debugging Agents in different environments — workshop (Sentry)",
+    "GraphRAG: The Definitive Guide (Stephen Chin, Neo4j)",
+    "Why Software Factories fail (Nikolay Rodionov, Alpic)",
+    "Own Your Agent: a fully sovereign stack (Henry Lagarde, Mistral)",
+    "Detecting Gender Bias in AI Agents (Algolia)",
+    "Fantastic environments and where to find them (Ben Burtenshaw, Hugging Face)",
+    "Evaluation harness and observability loop (Mistral, Microsoft)",
+    "Build a Knowledge Graph — workshop (Neo4j)",
+    "The Zero-Temperature Lie (Valeria Zuccoli, Intella)",
+    "The Long Tail of Done (Theofilos Petsios, Crash Override)",
+    "In agents we trust (Sonar, Expo Stage)",
+    "Fundamentals to build your Software Factory (Factory, Expo Stage)",
+    "The Harness Is the Product (Dat Ngo, Arize AI)",
+    "Your agent needs a computer, not a container (Fayaz Ahmed, Cloudflare)",
+    "Code for free, LLM on your laptop (Ben Morss, Mistral)",
+    "Hands-on Gitar: AI code review — workshop (Sonar)",
+    "Building Agents to Investigate Security Alerts at Scale (Anes Bendimerad, Datadog)",
+    "Anatomy of a paranoid sandbox (Ali Akca, Cast AI)",
+    "Mistral's model catalogue through demos (Joffrey Thomas, Mistral)"
+  ],
+  "sources": [
+    {
+      "label": "Programme officiel (horaires, salles, descriptifs)",
+      "url": "https://ai.engineer/paris/2026"
+    },
+    {
+      "label": "Live YouTube Jour 1 — Opening Keynotes (transcription automatique)",
+      "url": "https://www.youtube.com/watch?v=CGq9KRSb9Kc"
+    },
+    {
+      "label": "Live YouTube Jour 2 — Main Stage (transcription automatique)",
+      "url": "https://www.youtube.com/watch?v=g0vqT_wZtXA"
+    },
+    {
+      "label": "Chaîne YouTube AI Engineer",
+      "url": "https://www.youtube.com/@aiDotEngineer"
+    },
+    {
+      "label": "Posts LinkedIn de participants : aucun collecté (recherche web interrompue le 25/09)"
+    }
+  ]
 }

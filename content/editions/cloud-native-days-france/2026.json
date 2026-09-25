@@ -7,6 +7,429 @@
   "venue": "CENTQUATRE-PARIS",
   "url": "https://cloudnativedays.fr",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "status": "synthesized",
+  "sessions": [
+    {
+      "id": "keynote-d-ouverture-cloud-native-days-france-2026",
+      "day": "2026-02-03",
+      "type": "keynote",
+      "title": "Keynote d'ouverture Cloud Native Days France 2026",
+      "speakers": [
+        "Jérôme Petazzoni — Enix (animateur)",
+        "Ricardo Rocha — CERN",
+        "Julien Dauphant — DINUM",
+        "Renaud Fleury — DGFIP",
+        "Jean-Baptiste Kempf — Scaleway",
+        "NumSpot (CPO)",
+        "TOSIT",
+        "Équipe d'organisation CNDF"
+      ],
+      "feedbackFrom": [
+        "Antoine Mayer (blog)",
+        "Harold Bourge (blog Daveo)",
+        "Denis Germain / Zwindler (blog, panéliste)",
+        "communiqué Solutions Numériques"
+      ],
+      "summary": "- **Plénière d'1h15 à plusieurs voix** (et non une keynote unique) : Jérôme Petazzoni ouvre sur la **souveraineté** — une loi extraterritoriale américaine permet d'exiger d'un fournisseur cloud les données de clients français ; pas de solution magique, mais **l'open source en fait partie… à condition d'y contribuer** (code, argent, mais aussi documentation et aide aux nouveaux venus). Exemple cité : le contrôleur Ingress utilisé sur « à peu près la moitié des clusters », abandonné par sa poignée de mainteneurs bénévoles faute d'aide, et qui va coûter « des dizaines de milliers d'heures » de migration *(transcript)*.\n- **CERN (Ricardo Rocha)** : le LHC produit ~1 Po/s par expérience, **×10 après l'arrêt de 3 ans qui commence en 2026, à budget constant**. ~5 000 nœuds et ~30 000 applications pour le filtrage d'ATLAS ; modèles de deep learning compressés à quelques Mo pour FPGA. Démo d'une plateforme Kubeflow où l'utilisateur garde son UID, accède en **SSH à son pod** (« ça change complètement l'acceptation »), GPU partitionnés (MIG). Sans **CPU pinning / affinité NUMA**, Kubernetes par défaut fait perdre « 20-30 % de performance sans le savoir » ; un H100 inutilisé consomme encore ~60 W → DRA et infrastructure « composable » *(transcript)*.\n- **DINUM + DGFIP : annonce de Kubo**, distribution Kubernetes en **namespace-as-a-service** managée, basée sur Cluster API pour tourner sur l'OpenStack interne comme sur les clouds SecNumCloud ; constat de départ : « une vingtaine d'infrastructures différentes pour une quarantaine d'apps » à la DINUM. Labellisation CNCF visée et **publication open source (code et doc) fin 2026** *(transcript ; repris par Bourge et Zwindler)*.\n- **Scaleway (Jean-Baptiste Kempf)** : tout compilé en interne ou open source, « pas de stack étrangère », API unique générée → *« le cloud souverain en France, c'est possible sans compromis »* (phrase retenue par Antoine Mayer). Puis NumSpot (sponsor) et le **TOSIT** (25 membres publics et privés, communs numériques open source).\n- **Organisation** : ~15 bénévoles, association à but non lucratif ; passage de KCD à « Cloud Native Days » pour dépasser le cadre CNCF (ambition 2 000 personnes) ; coaching et dry-runs proposés à tous les speakers ; annonce d'un nouveau groupe dans le sud de la France. Petazzoni rappelle qu'en 2023 les sponsors finançaient ~90 % du budget *(transcript)*.\n- Retours : Harold Bourge retient **la contribution open source au-delà du code** et la souveraineté comme facteur de compétitivité ; **critique d'Antoine Mayer : une plénière trop longue (1h30) avec trop d'intervenants, « fatigante »**.",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "lJXUhqHWCDo",
+        "title": "Keynote d'ouverture Cloud Native Days France 2026 !",
+        "publishedAt": "2026-02-17",
+        "transcript": true
+      }
+    },
+    {
+      "id": "table-ronde-savoir-faire-equipes-cloud-native",
+      "day": "2026-02-03",
+      "type": "roundtable",
+      "title": "Table ronde : quels savoir-faire et technologies les équipes doivent-elles acquérir pour l'ère Cloud Native ?",
+      "speakers": [
+        "Jérôme Petazzoni (modérateur)",
+        "Shérine Khoury — Red Hat",
+        "Laurent Bernaille",
+        "Victor Boissière",
+        "Sébastien Blanc",
+        "Denis Germain (Zwindler)"
+      ],
+      "feedbackFrom": [
+        "Denis Germain / Zwindler (panéliste, speaker)",
+        "François Berthault (blog FG Tech)"
+      ],
+      "summary": "- Intégrée à la plénière d'ouverture ; question de départ de Petazzoni : **faut-il encore former les gens à Kubernetes** si des plateformes font tout ?\n- **Recrutement** : regarder moins la technique que la **responsabilité et la conscience de la prod** (haute dispo, observabilité) ; équipes **diverses** (data, backend, sécu). Un panéliste de Datadog : la réponse dépend de la maturité — quand l'entreprise grandit et se spécialise, des abstractions rendent la connaissance de Kube moins nécessaire *(transcript)*.\n- **« You build it, you run it »** : défendu (tout le monde d'astreinte, mais jamais seul face au problème) et nuancé — *on ne peut pas demander aux devs d'être responsables de ce qu'ils ne comprennent pas* ; proposition de faire vivre des incidents aux devs **en binôme avec un SRE**. Référence à *Team Topologies* *(transcript)*.\n- **Plateformes / IDP** : ne pas résoudre par l'outil un problème de responsabilité, d'onboarding ou de connaissance ; mais à l'échelle, les frameworks applicatifs sont « un très gros succès » car « rien que les développeurs détestent plus qu'écrire des Helm charts » — à condition de savoir défaire l'abstraction pour déboguer. Risque d'une plateforme trop restrictive → shadow IT *(transcript)*.\n- **Documentation** : la doc fausse est pire que pas de doc ; privilégier la doc générée, supprimer l'obsolète, **valoriser ce « glue work »** souvent porté par des femmes *(transcript)*.\n- Lecture critique : François Berthault (FG Tech) y voit un discours DevOps **« inchangé depuis 2016 »**, seul le vocabulaire (« enabling team ») a changé ; Zwindler, panéliste, aurait voulu **plus de temps** pour creuser.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "lJXUhqHWCDo",
+        "title": "Keynote d'ouverture Cloud Native Days France 2026 !",
+        "publishedAt": "2026-02-17",
+        "transcript": true
+      }
+    },
+    {
+      "id": "stop-the-fight-hpa-vpa-keda",
+      "day": "2026-02-03",
+      "type": "talk",
+      "title": "Stop the Fight : doper et unifier HPA, VPA et KEDA avec des métriques avancées",
+      "speakers": [
+        "Nicolas Vermande — Staticvoid"
+      ],
+      "feedbackFrom": [
+        "Antoine Mayer (blog)",
+        "Harold Bourge (blog Daveo)",
+        "François Berthault (blog FG Tech)"
+      ],
+      "summary": "- **Sur scène** : les trois autoscalers sont « trois bonnes intentions sans coordination ». Démo en conflit (HPA sur CPU + KEDA sur file NATS + VPA auto) : **les réplicas font du « yoyo »**, KEDA scale up pendant que le HPA manuel scale down, le backlog ne se vide jamais *(transcript)*.\n- **Pourquoi le CPU moyen est un mauvais signal** : metrics-server rafraîchit toutes les 60 s quand le HPA boucle toutes les 15 s → « 60-75 % des cycles HPA regardent des données périmées » ; ~1 min de retard alors que le **throttling CPU** est visible quasi immédiatement. Le VPA (histogramme à demi-vie de 24 h) est « inondé » quand le HPA multiplie les pods et recommande trop bas *(transcript)*.\n- **Règles d'or** : un contrôleur par dimension ; HPA/KEDA sur des **métriques « leading »** (throttling, backlog + tendance via `deriv`/`predict_linear`, P99) ; **VPA en mode off/initial** pour le sizing ; ne pas scaler sur la mémoire ; KEDA pour l'événementiel *(transcript)*.\n- Participants : Antoine Mayer retient la règle **« HPA ou KEDA pour les réplicas, VPA seulement pour le sizing »** ; Harold Bourge salue la démo interactive (générateur de mèmes) mais note que **les explications mathématiques ont perdu une partie de la salle** et qu'il a fallu basculer sur la vidéo de secours, faute de charge suffisante générée par le public.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "JSiiQWunyOg",
+        "title": "Stop the Fight : doper et unifier HPA, VPA et KEDA avec des métriques avancées",
+        "publishedAt": "2026-02-18",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rex-dinum-multitenancy-authentification-distribution-k8s",
+      "day": "2026-02-03",
+      "type": "talk",
+      "title": "REX DINUM - Les ingrédients multitenancy et authentification pour une distribution k8s open-source française",
+      "speakers": [
+        "Vincent Piard — Freelance (pour la DINUM)"
+      ],
+      "feedbackFrom": [
+        "François Berthault (blog FG Tech)",
+        "renvoi depuis la plénière (DINUM/DGFIP)"
+      ],
+      "summary": "- Volet technique de **Kubo**, annoncé en plénière : la multi-tenance exigée par les homologations (environnements ségrégués par commanditaire), sujet vers lequel la DINUM renvoyait explicitement *(transcript de la plénière)*.\n- Lecture de François Berthault : **Kubernetes utilisé comme PaaS avec Capsule**, preuve que les **Internal Developer Platforms sont devenues une réalité opérationnelle** dans le public. Ubisoft note en ouverture de son propre talk que la salle du matin avait déjà découvert Capsule.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "zWayprWXWVg",
+        "title": "REX DINUM -Les ingrédients multitenancy et authentification pour une distribution k8s open-source fr",
+        "publishedAt": "2026-02-18",
+        "transcript": false
+      }
+    },
+    {
+      "id": "rex-insee-mlops-dans-une-administration",
+      "day": "2026-02-03",
+      "type": "talk",
+      "title": "REX INSEE - De l'expérimentation à la mise en production de modèles d'IA : le MLOps dans une administration",
+      "speakers": [
+        "Hugo Simon — INSEE",
+        "Nathan Randriamanana — INSEE"
+      ],
+      "feedbackFrom": [
+        "François Berthault (blog FG Tech)"
+      ],
+      "summary": "- Plateforme MLOps interne **bâtie sur Onyxia** (projet open source de l'INSEE, également présent sur le stand TOSIT).\n- Lecture critique de François Berthault : **« l'histoire se répète presque à l'identique »** — une nouvelle fracture apparaît, *« non plus entre Dev et Ops, mais entre Data et Plateforme »*.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "-ks_Tcp3Lt4",
+        "title": "REX INSEE - De l'expérimentation à la mise en production de modèles d'IA : le MLOps dans une administration",
+        "publishedAt": "2026-02-18",
+        "transcript": false
+      }
+    },
+    {
+      "id": "rex-mistral-ai-fournisseur-cloud-clusterapi-datacenter",
+      "day": "2026-02-03",
+      "type": "talk",
+      "title": "REX Mistral AI - Construire un fournisseur cloud de zéro : ClusterAPI dans le datacenter",
+      "speakers": [
+        "Léonard Suslian — Mistral AI",
+        "Antoine Roy — Mistral AI"
+      ],
+      "feedbackFrom": [
+        "François Berthault (blog FG Tech)"
+      ],
+      "summary": "- **Mistral Compute** : cloud européen orienté IA (GPU NVIDIA), du bare metal au Kubernetes managé jusqu'à Mistral AI Studio. Projet lancé en septembre 2025 ; premiers clusters **dès le 17 septembre** « grâce à l'open source », premiers clusters GB200 en février 2026 *(transcript)*.\n- Stack : **Cluster API + Metal3 (Ironic, PXE) + Kamaji** (control planes en pods dans le cluster de management, pour ne pas immobiliser 3 serveurs de centaines de cœurs par cluster), opérateur maison (Kubebuilder) et API REST devant ; monitoring hors cluster (Grafana/Loki/Mimir côté management, Alloy dans les clusters, déployés par Sveltos) ; **Slurm via Slinky** pour les habitudes HPC *(transcript)*.\n- Galères racontées : support **ARM64 (CPU Grace)** absent de Metal3/CAPI, ajouté et upstreamé ; **etcd** saturé par Leases et Events sur des clusters de **~4 600 nœuds GPU** → contribution upstream à Kamaji (`dataStoreOverrides`) pour déporter les Events dans un etcd séparé ; reboot d'un nœud à plusieurs To de RAM ≈ 15 min ; une journée perdue faute de… **serveur DHCP** *(transcript)*.\n- Q&R : pas de virtualisation car un job d'entraînement consomme 100 % de la machine ; OS non immuable pour garder le **support NVIDIA certifié** (Ubuntu 24.04) *(transcript)*.\n- Lecture de François Berthault : **« les entreprises spécialisées dans l'IA deviennent des fournisseurs de cloud à part entière »**.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "LaOq7x-nGM4",
+        "title": "REX Mistral AI - Construire un fournisseur cloud de zero: ClusterAPI dans le datacenter",
+        "publishedAt": "2026-02-18",
+        "transcript": true
+      }
+    },
+    {
+      "id": "du-chaos-a-la-clarte-victorialogs-logsql",
+      "day": "2026-02-03",
+      "type": "talk",
+      "title": "Du chaos à la clarté : booster votre pipeline de logs avec VictoriaLogs et LogsQL",
+      "speakers": [
+        "Diana Todea — VictoriaMetrics"
+      ],
+      "feedbackFrom": [
+        "Harold Bourge (blog Daveo)",
+        "François Berthault (blog FG Tech)"
+      ],
+      "summary": "- Présentation de **VictoriaLogs**, binaire compact pour l'ingestion, le stockage et la requête de logs (LogsQL) en environnement cloud native (Berthault).\n- Harold Bourge retient l'argument de **sobriété** mis en avant par l'intervenante (« 90 % d'économies d'énergie » annoncés — chiffre du speaker, non vérifié).",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "la8coUmqriQ",
+        "title": "Du chaos à la clarté : booster votre pipeline de logs avec VictoriaLogs et LogsQL",
+        "publishedAt": "2026-02-18",
+        "transcript": false
+      }
+    },
+    {
+      "id": "rex-sellsy-migrer-50000-bdds-postgresql-k8s",
+      "day": "2026-02-03",
+      "type": "talk",
+      "title": "REX Sellsy - Migrer 50 000 BDDs sans coupure vers PostgreSQL et K8s : mission impossible ?",
+      "speakers": [
+        "Quentin Loupot — Sellsy",
+        "Alexandre Buisine — Enix"
+      ],
+      "feedbackFrom": [
+        "Denis Germain / Zwindler (blog, vu en partie)"
+      ],
+      "summary": "- Migration de **MariaDB vers PostgreSQL sur Kubernetes avec CloudNativePG**, depuis un existant legacy, sur du bare metal NVMe chez Scaleway, avec Proxmox VE et Talos Linux (d'après Zwindler).\n- Zwindler a trouvé le récit des incidents **« très intéressant »** mais a dû partir avant la fin (séance de dédicaces) — retour partiel.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "g3KXvevXStM",
+        "title": "REX Sellsy - Migrer 50 000 BDDs sans coupure vers PostgreSQL et K8s : mission impossible ?",
+        "publishedAt": "2026-02-18",
+        "transcript": false
+      }
+    },
+    {
+      "id": "rex-winamax-tracing-distribue-grande-echelle",
+      "day": "2026-02-03",
+      "type": "talk",
+      "title": "REX Winamax - De zéro à des milliards de traces : le tracing distribué à grande échelle",
+      "speakers": [
+        "Anthony Maffert — Winamax",
+        "Nicolas Fidel — Winamax"
+      ],
+      "feedbackFrom": [
+        "Antoine Mayer (blog)",
+        "Denis Germain / Zwindler (blog)"
+      ],
+      "summary": "- **Contexte** : ~700 microservices full JS sur **AWS ECS (pas de Kubernetes, assumé)**, 1 M d'utilisateurs uniques/mois ; déboguer une chaîne de services relevait de « l'archéologie et la spéléologie » dans des To de logs *(transcript)*.\n- **Architecture en 4 piliers** : auto-instrumentation OpenTelemetry via un wrapper « plug and play » (+ middleware JSON-RPC) ; **collecteurs en mode gateway à deux étages** (load balancing par trace ID pour permettre un sampling intelligent, pas encore activé : 100 % des traces gardées) ; **Kafka en tampon** (topic passant de ~300 Go à près d'1 To un soir de Ligue des Champions) ; stockage **Quickwit** sur S3, recherche via **Jaeger** *(transcript)*.\n- **Coûts** : ~7-8 k€/mois pour les traces, index de 45 To (7 jours) compressé à ~7 To sur S3 pour ~300 $/mois de bucket ; déploiement progressif depuis l'authentification (mai-juin 2025) via feature flags ; une requête MySQL lente trouvée « en 30 secondes chrono » *(transcript)*. Limites citées : Jaeger manque de filtres (regex) et rame sur les très grosses traces.\n- Participants : Antoine Mayer souligne l'intérêt du tracing pour **700+ microservices à fort trafic** ; Zwindler, qui utilise aussi OpenTelemetry, y retrouve son approche **« sans grosse surprise »** mais avec « une ou deux bonnes idées » à piocher.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "bCF0GYGI7Dk",
+        "title": "REX Winamax - De zéro à des milliards de traces : le tracing distribué à grande échelle",
+        "publishedAt": "2026-02-18",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rex-ubisoft-partager-un-cluster-capsule",
+      "day": "2026-02-03",
+      "type": "talk",
+      "title": "REX Ubisoft - Quand et comment partager un cluster : retour d'expérience sur Capsule chez Ubisoft",
+      "speakers": [
+        "Vincent Behar — Ubisoft",
+        "Corentin Closs — Ubisoft"
+      ],
+      "feedbackFrom": [
+        "Denis Germain / Zwindler (blog)"
+      ],
+      "summary": "- **Contexte** : ~430 clusters sur ~30 régions et 3 clouds (OpenStack interne, AWS, Azure) ; jusqu'à **six plateformes Kubernetes concurrentes** avant une convergence décidée « top-down » autour du produit historique, retenu pour **la meilleure expérience utilisateur** ; l'ancienne offre multi-tenant sur Rancher (5 clusters, 700+ namespaces, 10 000+ pods, un seul admin) est bloquée sur une vieille version sans isolation réseau *(transcript)*.\n- **Modèle « 3/3 »** : clusters dédiés (chers), cluster global partagé (pas d'opérateurs), et **cluster partagé par département** où des SRE installent les opérateurs. Comparaison Kubernetes natif + Kyverno / **Capsule** / vCluster / KCP → Capsule, car pas besoin d'isoler les CRD, code lisible, API stables, mainteneurs réactifs *(transcript)*.\n- **Killer feature : capsule-proxy**, qui donne à l'utilisateur une vue « comme sur un cluster dédié » (kubectl, k9s) ; add-ons Argo CD et OpenCost ; opérateur maison **Workspace** + plugin kubectl ; démo live réussie. Leçons : bon outil pour le bon besoin, **focus UX**, frontières claires entre cluster admin / SRE / utilisateur *(transcript)*.\n- Zwindler reconnaît avoir **sous-estimé Capsule** : *« l'outil a sa place dans plus de cas d'usage que je ne pensais »* (plugins, capsule-proxy, RBAC, network policies et quotas automatisés).",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "NAx2s_o1iuE",
+        "title": "REX Ubisoft - Quand et comment partager un cluster : retour d'expérience sur Capsule chez Ubisoft",
+        "publishedAt": "2026-02-18",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-jour-ou-nous-avons-casse-kubernetes",
+      "day": "2026-02-03",
+      "type": "lightning",
+      "title": "Le jour où nous avons cassé Kubernetes... et comment nous l'avons réparé !",
+      "speakers": [
+        "Christophe Jauffret — Nutanix"
+      ],
+      "feedbackFrom": [
+        "Antoine Mayer (blog)"
+      ],
+      "summary": "- Idée retenue par Antoine Mayer : **une supervision complète (infrastructure, control plane, réseau) est un prérequis à toute optimisation** — comprendre avant d'améliorer.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "7GcDh4aFTU4",
+        "title": "Le jour où nous avons cassé Kubernetes... et comment nous l'avons réparé !",
+        "publishedAt": "2026-02-18",
+        "transcript": false
+      }
+    },
+    {
+      "id": "sre-sous-pression-sante-mentale-heros-de-la-prod",
+      "day": "2026-02-03",
+      "type": "talk",
+      "title": "SRE sous pression : santé mentale, charge invisible et fatigue du « héros de la prod »",
+      "speakers": [
+        "Luckas Bosch — La Tangente podcast"
+      ],
+      "feedbackFrom": [
+        "Antoine Mayer (blog)"
+      ],
+      "summary": "- **Sur scène** : le dashboard est tout vert, mais « Jean-Michel » a passé son week-end d'astreinte à absorber l'entropie de l'infra. Paradoxe : *« on mesure très bien ce qui casse, on mesure très mal ceux qui s'usent »* ; on traite l'humain comme s'il était **stateless** *(transcript ; citation reprise par Antoine Mayer)*.\n- **Asymétrie du feedback** : l'incident est public, immédiat et bruyant ; la prévention est invisible → perte de motivation, *quiet quitting* vu comme un **ROI négatif rationnel**, rupture du « deuxième contrat » (reconnaissance, impact) *(transcript)*.\n- **Le héros est une dette technique** : un « worker humain », patch temporaire d'un process défaillant, **bus factor de 1** — on dépense des centaines de milliers d'euros pour éliminer les SPOF techniques mais on accepte les SPOF humains. L'IA générative fait exploser la base de code à opérer sans augmenter la bande passante cognitive *(transcript)*.\n- **À faire dès lundi** : valoriser l'invisible (une semaine sans incident), **escalade obligatoire après 15 min** sur un problème critique (« un devoir, pas un droit »), **post-mortem émotionnel** (« comment tu l'as vécu ? »), **gratitude granulaire** (dire l'impact plutôt qu'un pouce). *« L'empathie n'est pas un supplément d'âme, c'est une infrastructure critique »* *(transcript)*.\n- Q&R franche : le speaker reconnaît avoir **quitté le métier de SRE en décembre** et ne pas disposer de mesure de l'effet de ces pratiques ; un participant pointe le problème organisationnel du SRE « en bout de chaîne ».",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "XwECzgHIV_U",
+        "title": "SRE sous pression : santé mentale, charge invisible et fatigue du “héros de la prod”",
+        "publishedAt": "2026-02-18",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rex-ca-gip-plateforme-grafana-on-premise",
+      "day": "2026-02-03",
+      "type": "lightning",
+      "title": "REX CA-GIP - Construire la plus grande plateforme Grafana on-premise d'Europe",
+      "speakers": [
+        "Maxime Calvès — Crédit Agricole (CA-GIP)"
+      ],
+      "feedbackFrom": [
+        "Harold Bourge (blog Daveo)",
+        "speaker (post LinkedIn, 133 réactions ; commentaires de Guillaume Gill et du modérateur Thierry Chantier)"
+      ],
+      "summary": "- Point de départ : un Grafana **« complètement organique »** entre équipes — versions hétérogènes, pas de conventions de nommage, accès gérés à la main, « pas de vision globale » *(speaker)* ; le déclic est venu de la direction constatant l'absence de stratégie produit.\n- Harold Bourge retient la trajectoire : **d'un usage artisanal (~10 utilisateurs) à ~5 000 dashboards et ~2 200 utilisateurs mensuels**, et la leçon : **la standardisation transforme une initiative artisanale en plateforme d'entreprise**.\n- Talk salué pour sa qualité malgré le stress d'un format court (commentaires LinkedIn).",
+      "summarySources": [
+        "blog",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "ynYqDRy6nbE",
+        "title": "REX CA-GIP - Construire la Plus Grande Plateforme Grafana On-Premise d'Europe",
+        "publishedAt": "2026-02-18",
+        "transcript": false
+      }
+    }
+  ],
+  "edition": "2e édition (après KCD France 2023)",
+  "programUrl": "https://cloudnativedays.fr/en/programme/2026/",
+  "synthesisUpdatedAt": "2026-09-25",
+  "note": "Journée unique au CENTQUATRE-PARIS, 4 salles (Monet, Piaf, Dumas, Debussy), ~50 talks et lightning talks ; organisée par une quinzaine de bénévoles (association à but non lucratif). Fréquentation annoncée entre 1 500 (Zwindler) et « près de 2 000 » (organisateurs).",
+  "corpus": "4 comptes-rendus de blog (Denis Germain / Zwindler, Antoine Mayer, Harold Bourge pour Daveo, François Berthault pour FG Tech, publiés entre le 04/02 et fin février 2026), 1 post LinkedIn de speaker (Maxime Calvès) et le communiqué de bilan des organisateurs, complétés par le programme officiel, la playlist YouTube officielle (51 vidéos publiées les 17-18/02/2026) et 6 transcripts de sessions (plénière d'ouverture, Mistral AI, Winamax, Ubisoft, autoscaling, SRE).",
+  "limits": "Synthèse produite à J+7 mois mais sur un corpus de retours mince : peu de posts LinkedIn retrouvés (recherche web limitée), billet du blog Cilium non lisible (rendu côté client), et la plupart des lightning talks sans aucun retour. Les blogs couvrent surtout la matinée et les REX ; Zwindler était panéliste et a manqué une partie des talks. Les résumés s'appuient donc largement sur les transcripts auto-générés (noms propres parfois mal restitués, corrigés d'après le programme).",
+  "tldr": "**Kubernetes n'est plus le sujet, c'est l'infrastructure : l'édition 2026 a parlé souveraineté (Kubo, Scaleway, contribution open source), plateformes internes à l'échelle (Capsule, Cluster API, IDP) et REX de production massifs (Mistral AI, Winamax, CERN) — avec un rappel appuyé que l'humain (astreintes, héros de la prod, doc) reste le maillon fragile.**",
+  "keyTakeaways": [
+    "Contribuer à l'open source qu'on consomme — y compris par la documentation et l'aide aux nouveaux venus — sous peine de revivre l'abandon d'un projet critique (Petazzoni).",
+    "Ne jamais faire piloter la même ressource par plusieurs autoscalers : HPA ou KEDA pour les réplicas, VPA en mode off/initial pour le sizing, et scaler sur le throttling CPU ou le backlog plutôt que sur le CPU moyen (Vermande).",
+    "Configurer CPU pinning, affinité NUMA et partitionnement GPU (MIG, DRA) pour les workloads HPC/IA : les réglages par défaut coûtent 20-30 % de performance (CERN).",
+    "À grande échelle, surveiller etcd : déporter Events (et Leases) dans un etcd dédié et héberger le monitoring hors du cluster surveillé (Mistral AI).",
+    "Pour du multi-tenant « namespace-as-a-service », évaluer Capsule + capsule-proxy avant de sortir l'artillerie lourde (vCluster, KCP) et soigner l'expérience utilisateur (Ubisoft, DINUM).",
+    "Instrumenter le tracing distribué avec OpenTelemetry en mode gateway, un tampon Kafka et un stockage objet type Quickwit pour garder les coûts bas (Winamax).",
+    "Traiter les « héros de la prod » comme une dette : escalade obligatoire après 15 min, post-mortem émotionnel, reconnaissance explicite du travail de prévention (Bosch).",
+    "Standardiser une pratique organique (Grafana, templates, Helm charts) pour en faire un produit de plateforme, sans masquer ce qu'il faut savoir pour déboguer (CA-GIP, table ronde)."
+  ],
+  "sessionsWithoutFeedback": [
+    "REX SNCF - Kubernetes à l'Edge dans les TGV (Y. Rotilio)",
+    "REX Ledger - Cilium ClusterMesh (A. Outhenin-Chalandre, Q. Swiech)",
+    "REX Decathlon - Déployer sereinement avec Flagger (M. Véroone, J. Lore)",
+    "GitHub Actions : une bombe à retardement pour la supply chain (T. Abalea)",
+    "kro : la révolution déclarative (S. Allamand)",
+    "Scaler des charges GPU avec Karpenter et Argo Workflows (A. Saboni)",
+    "Admission Control 2.0 (Y. Kouki)",
+    "REX SNCF - Smells like Cloud Kubernetes (M. Strohl, E. Germain)",
+    "Cluster IA air-gapped (S. Robert, C. Morvan)",
+    "Résilience avec Plakar (G. Chehade)",
+    "K3s : état des lieux en 2026 (P. Gonin)",
+    "La famille k0s (L. Juggery)",
+    "Architecture Universal Mesh (B. Assmann)",
+    "Sécurité cloud native et contexte runtime (D. Vassilopoulos)",
+    "Attestation à distance d'un cluster Kubernetes (T. Ravier, A. Frosi)",
+    "REX Air France-KLM - Des chaînes applicatives aux chaînes OPS (C. de Vasson, A. Alaoui Echerif)",
+    "REX Mirakl - KServe (A. Nguyen, Y. Lambruschi)",
+    "OS immuables et systemd-sysext (M. Tortuyaux)",
+    "kube-image-keeper (P. Laffitte)",
+    "Challenge : 0 CVE en 10 min (M. Koreissi)",
+    "100 000 sessions de labs réseau et sécurité (R. Pinson)",
+    "Kagent sur Kubernetes (A. Ait Aazizi)",
+    "Inside Cilium : DSR (A. La Goutte)",
+    "Mobilité des workloads Kubernetes (C. Pouthier)",
+    "Workloads stateful sur Kubernetes (V. Jamois, S. Delmotte)",
+    "Sous le capot de Cluster API (T. Guichard)",
+    "REX Numberly - vault-db-injector (S. Blum, G. Legrain)",
+    "REX bpifrance - FinOps, de la visibilité au chargeback (H. Ben Farhat)",
+    "Chaos Engineering Escape Game (H. Leclerc)",
+    "PKI des clusters avec ClusterAPI et OpenBao (V. Coutellier, M. Amla)",
+    "Topomatik (A. Buisine)",
+    "Tokyo Drift Containers (D. Maher)",
+    "Uptime Kuma (W. Ahilé)",
+    "Questions pour un conteneur - édition Supply Chain (A. Vache, S. Khoury)",
+    "Kyverno au service de l'IA (L. Chmielowski)",
+    "REX Renault - Kubernetes as a Service (V. Ledan, I. Kaboubi)",
+    "Docker Bake (M. Tosun)",
+    "Passons au cloud-native durable (H. Rexed)",
+    "REX Skello - Data Platform Engineering (E. Halbert)"
+  ],
+  "sources": [
+    {
+      "label": "Programme officiel 2026",
+      "url": "https://cloudnativedays.fr/en/programme/2026/"
+    },
+    {
+      "label": "Playlist YouTube officielle 2026 (51 vidéos)",
+      "url": "https://www.youtube.com/playlist?list=PLmZ3gFl2Aqt_4_F40zEoUEweEctmtx4p2"
+    },
+    {
+      "label": "Denis Germain (Zwindler) — Cloud Native Days France 2026 : mon retour sur l'événement",
+      "url": "https://blog.zwindler.fr/2026/02/04/recap-cndf-2026/"
+    },
+    {
+      "label": "Zwindler — annonce de la table ronde et des dédicaces",
+      "url": "https://blog.zwindler.fr/2026/01/26/cloud-native-days-france-2026-table-ronde-signature-livre/"
+    },
+    {
+      "label": "Antoine Mayer — Une journée avec moi aux Cloud Native Days 2026",
+      "url": "https://blog.antoinemayer.fr/2026/02/07/une-journee-avec-moi-aux-cloud-native-days-2026/"
+    },
+    {
+      "label": "Daveo (Harold Bourge) — De Kubernetes à la souveraineté numérique : les insights du CNDF 2026",
+      "url": "https://www.daveo.fr/cloud-native-days-france-2026/"
+    },
+    {
+      "label": "FG Tech (François Berthault) — DevOps n'a pas bougé… mais tout a changé, la plateforme a pris le pouvoir",
+      "url": "https://www.fgtech.fr/post/cloud-native-days-france-2026-devops-n-a-pas-boug%C3%A9-mais-tout-a-chang%C3%A9-la-plateforme-a-pris-le-po"
+    },
+    {
+      "label": "Solutions Numériques — communiqué de bilan des organisateurs",
+      "url": "https://www.solutions-numeriques.com/communiques/cloud-native-days-france-2026-la-communaute-entre-dans-lere-de-lindustrialisation/"
+    },
+    {
+      "label": "Post LinkedIn de Maxime Calvès (replay CA-GIP)",
+      "url": "https://fr.linkedin.com/posts/maxime-calves_cloudnativedaysfr-grafana-devops-activity-7431593785593257985-jyqX"
+    },
+    {
+      "label": "Blog Cilium — Cilium at Cloud Native Days France 2026 (non lu : contenu rendu côté client)",
+      "url": "https://cilium.io/blog/2026/02/25/cloud-native-days-france-2026-cilium/"
+    }
+  ]
 }
