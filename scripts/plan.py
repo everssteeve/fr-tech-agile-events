@@ -24,7 +24,7 @@ from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parent.parent
 WINDOW_DAYS = 14
 HISTORY_YEARS = 20
-BACKLOG_PER_DAY = int(os.environ.get("BACKLOG_PER_DAY", 4))
+BACKLOG_PER_DAY = int(os.environ.get("BACKLOG_PER_DAY", 6))
 REVISITS_PER_DAY = int(os.environ.get("REVISITS_PER_DAY", 3))
 HISTORY_PER_DAY = int(os.environ.get("HISTORY_PER_DAY", 4))
 
