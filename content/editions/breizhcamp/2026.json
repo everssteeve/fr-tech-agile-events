@@ -7,7 +7,418 @@
   "city": "Rennes",
   "venue": "Campus de Beaulieu",
   "url": "https://www.breizhcamp.org",
-  "dateConfidence": "sec",
-  "status": "pending",
-  "sessions": []
+  "dateConfidence": "ok",
+  "edition": "14e édition",
+  "theme": "Matrix",
+  "programUrl": "https://www.breizhcamp.org",
+  "note": "14ᵉ édition, du 24 au 26 juin 2026, Campus de Beaulieu (Université de Rennes), sur le thème de Matrix. Bilan annoncé en keynote de clôture : « 1024+ participants », plus de 110 talks et 119 speakers, en pleine canicule. Édition marquée par un budget contraint (moins de sponsors, frais d'avocat pour défendre la marque) : ni t-shirts, ni soirée « Meet & Greet ». 93 vidéos publiées, les keynotes du matin en direct puis la plupart des sessions les 5 et 6 août 2026.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-09-25",
+  "corpus": "Un compte-rendu de blog détaillé (Julien Wittouck, codeka.io, 26/06/2026, lui-même speaker), la vidéo-récap d'un sponsor (Néosoft), quelques posts Mastodon (#breizhcamp) et la playlist officielle de 93 vidéos. 7 transcripts automatiques : les 3 keynotes (IA et défense, Enshittification, pop culture), la keynote de clôture, l'introduction du jeudi matin par les organisateurs, et les talks Rust et Direct en production.",
+  "limits": "Un seul retour participant détaillé, écrit par un speaker, qui ne couvre que son parcours : la grande majorité des ~110 sessions n'a aucun retour public trouvé. Aucun post LinkedIn n'a pu être lu directement (moteurs de recherche bridés pendant la collecte). Les transcripts sont des sous-titres automatiques. Les jours de certaines sessions sont inconnus.",
+  "tldr": "**Une édition « Matrix » sous la canicule et un budget serré**, qui a conjugué **conscience critique du numérique** (enshittification, souveraineté, IA de défense, tech « pop culture ») et **artisanat du dev** (Rust pour le métier, livrer directement en prod, dev containers, event sourcing), portée par une communauté qui appelle à **monter sur scène l'an prochain**.",
+  "keyTakeaways": [
+    "Traiter les devs et les ops comme des clients de ses outils internes : un outil mal conçu sera contourné par des scripts shell « invisibles » (Klauk, via Wittouck).",
+    "Tester le déploiement en production de façon « dark » (sans communication aux utilisateurs), avec feature flipping, plutôt que de se fier à des environnements de recette qui ne ressemblent pas à la prod — à réserver à des équipes expérimentées (Sperandio).",
+    "Bien implémenter le RGPD (consentement libre, spécifique, éclairé, univoque, rétractable ; l'adresse IP est une donnée personnelle) et promouvoir les alternatives libres et européennes face à l'enshittification (Sabatier).",
+    "Mesurer l'empreinte de ses APIs avec le framework API Green Score (Diallo / De Carvalho).",
+    "Évaluer ses dépendances cloud sous l'angle de la souveraineté : risque de coupure, lois extraterritoriales (Person).",
+    "Préférer les UUID v7 (horodatés, triables) quand l'ordre compte (Reynier).",
+    "Standardiser les environnements de dev avec des dev containers (Docker + un fichier JSON) pour accélérer l'onboarding (Philippart).",
+    "Distinguer opinion, intuition et preuve dans les débats techniques (Topçu).",
+    "Commencer à parler en meetup local, soigner son abstract et utiliser le programme de coaching du BreizhCamp pour proposer un talk (keynote de clôture)."
+  ],
+  "sessions": [
+    {
+      "id": "aventure-de-l-ia-et-de-la-defense",
+      "day": "2026-06-25",
+      "type": "keynote",
+      "title": "Aventure de l'IA et de la défense",
+      "speakers": [
+        "Bertrand Rondepierre — AMIAD (Agence ministérielle pour l'IA de défense)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, aucun retour participant trouvé)** : keynote du jeudi matin **sans slides** (« à cause de la chaleur »), mi-parcours personnel, mi-réflexion, avec beaucoup de questions-réponses.\n- Parcours : maths appliquées, entrée au ministère des Armées quand le machine learning n'y « parlait à personne », mission Villani (stratégie IA 2018), 5 ans chez Google pour développer Brain à Paris, puis direction de l'AMIAD (300 personnes visées, dont ~250 en production près de Rennes et ~50 en recherche à Palaiseau).\n- Thèse : l'IA est **centrale pour la défense** (retour d'Ukraine) car elle permet une boucle numérisée de bout en bout, du renseignement au système d'armes. *« Un drone, c'est un ordinateur qui vole. »* Le ministère, peu numérique à l'origine, doit se transformer.\n- **Souveraineté** : aucune entreprise privée ne doit prescrire ce que le ministère a le droit de faire. Il achète des modèles (ex. Mistral), ce qui crée une « dépendance collective franco-européenne » à la chaîne d'approvisionnement.\n- Sujets de recherche cités : incertitude des modèles, manipulation et robustesse, facteurs humains (garder l'humain en commande ; *« le GPS, ça marche bien jusqu'à ce que vous ne l'ayez plus »*).",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "IuN6e0A5kPg",
+        "title": "Aventure de l'IA et de la défense - Bertrand Rondepierre",
+        "publishedAt": "2026-08-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "enshittification-ou-la-face-cachee-du-numerique",
+      "day": "2026-06-26",
+      "type": "keynote",
+      "title": "Enshittification, ou la face cachée du numérique",
+      "speakers": [
+        "Karine Sabatier — Zenika"
+      ],
+      "feedbackFrom": [
+        "Julien Wittouck (codeka.io)"
+      ],
+      "summary": "- **Sur scène (transcript)** : le concept de **Cory Doctorow (2022)**, la dégradation **délibérée** des plateformes au détriment des utilisateurs et au profit des actionnaires. Trois temps : **verrouiller les utilisateurs** (gratuité subventionnée à perte, effet réseau, « travail gris » des utilisateurs et des travailleurs du clic), faire venir et payer les clients professionnels, puis **dépecer le produit** (content slop accéléré par l'IA, service client dégradé, payer pour voir moins de pub ; exemple de l'évolution des offres Netflix).\n- Conséquence : le **consentement résigné**. Leviers proposés : le **RGPD** (consentement libre, spécifique, éclairé, univoque, rétractable), la régulation, les alternatives libres et européennes (suite de l'Éducation nationale, alternative open source à Figma), l'alliance devs-product pour des modèles économiques plus vertueux.\n- Retour de Julien Wittouck : **étonné de découvrir un phénomène aussi bien documenté et délibéré** ; il retient aussi le travail gris qui alimente algorithmes et IA.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "tOUdU0L6swI",
+        "title": "Keynote · Enshittification, ou la face cachée du numérique - Karine Sabatier",
+        "publishedAt": "2026-08-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "pourquoi-la-tech-tient-plus-de-la-pop-culture-que-de-l-ingenierie",
+      "type": "keynote",
+      "title": "Pourquoi la Tech tient plus de la pop culture que de l'ingénierie ?",
+      "speakers": [
+        "Julien Topçu — Shodo"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, aucun retour participant trouvé)** : reprenant Alan Kay (« computing has turned into pop culture »), la tech est décrite comme traversée par les mécanismes de la **pop culture** : humour et mèmes, production « par nous, pour nous », modèles simples et séduisants comme la **vélocité**, dont le speaker juge la valeur prédictive démentie par les études.\n- Effets : débats qui ne convergent jamais, **opinions vécues comme identitaires**, **aversion aux abstractions** d'un côté et **gatekeeping** contre la vulgarisation de l'autre ; entre les deux, *« ce qui disparaît, c'est la pédagogie »*.\n- Proposition : revenir à **Bachelard** et à l'esprit scientifique en distinguant opinion, intuition et preuve (*« LinkedIn n'est pas la littérature »*), réhabiliter l'abstraction et valoriser la vulgarisation. Keynote déjà donnée au Snowcamp (janvier) et à MiXiT.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "9kjhNtgxBPs",
+        "title": "Keynote · Pourquoi la Tech tient plus de la pop culture que de l'ingénierie? - Julien Topçu",
+        "publishedAt": "2026-08-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "keynote-de-cloture-et-si-c-etait-vous-sur-scene-l-annee-prochaine",
+      "day": "2026-06-26",
+      "type": "keynote",
+      "title": "Keynote de clôture — Et si c'était vous sur scène l'année prochaine ?",
+      "speakers": [
+        "Maxime Odye",
+        "Nicolas Ledez"
+      ],
+      "feedbackFrom": [
+        "Julien Wittouck (codeka.io)"
+      ],
+      "summary": "- **Sur scène (transcript)** : bilan chiffré (**« 1024+ participants », plus de 110 talks, 119 speakers**), remerciements aux sponsors restés malgré la crise ; le trou dans le budget a supprimé le Meet & Greet, *« un grand soulagement »* vu la chaleur.\n- Coulisses d'un talk préparé (en partie avec Claude) par deux habitués, et démystification du parcours de speaker : du CFP au speaker dinner, *« le ridicule ne tue pas »*, syndrome de l'imposteur, premier refus qui fait mal.\n- Trois conseils : **tout le monde a un sujet**, **soignez votre abstract**, **utilisez le programme de coaching du BreizhCamp** ; commencer par les meetups rennais (BreizhJUG, RennesJS, Software Crafters…).\n- Retenue par Wittouck comme un encouragement aux futurs speakers, avec un aperçu des coulisses de l'organisation.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "Hhk2ZYtSjDA",
+        "title": "Keynote de clôture - Et si c'était vous sur scène l'année prochaine ? - Maxime Odye, Nicolas Ledez",
+        "publishedAt": "2026-08-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rust-pour-le-developpement-d-applications-metier-haut-niveau",
+      "day": "2026-06-26",
+      "type": "talk",
+      "title": "Rust pour le développement d'applications métier haut-niveau !",
+      "speakers": [
+        "Stéphane Trebel"
+      ],
+      "feedbackFrom": [
+        "Julien Wittouck (codeka.io)"
+      ],
+      "summary": "- **Coup de cœur** de Julien Wittouck : présenté avec humour, Rust n'est pas cantonné aux CLI et aux kernels, ses frameworks et librairies permettent de faire des **applications complètes**.\n- Sur scène (transcript) : un développeur web « CRUD » qui s'est longtemps cassé les dents sur le borrow checker explique qu'on peut écrire du Rust métier **sans lifetimes ni complexité bas niveau**. En Q&R : pas de passage en force sans compétences dans l'équipe (faire un POC d'abord), applications hors ligne et dépendances vendorées possibles, arrivée progressive de Rust dans l'écosystème data/IA (Python).",
+      "summarySources": [
+        "blog",
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "kwyD-miHlQI",
+        "title": "Rust pour le développement d'applications métier haut-niveau ! 🦀 - Stéphane Trebel",
+        "publishedAt": "2026-08-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "direct-en-production",
+      "day": "2026-06-26",
+      "type": "talk",
+      "title": "Direct en production !",
+      "speakers": [
+        "Christian Sperandio"
+      ],
+      "feedbackFrom": [
+        "Julien Wittouck (codeka.io)"
+      ],
+      "summary": "- **Sur scène (transcript)** : REX d'une équipe dans un grand opérateur télécom qui a **supprimé recette et préprod**. Les environnements intermédiaires sont comparés à un simulateur de vol aux données obsolètes : problèmes de configuration, de volumétrie et de données imprévues qui n'apparaissent qu'en prod, et paradoxe du « on a le go mais on ne livre pas le vendredi ».\n- Principe : **on déploie en production, on ne développe pas en production**. Déploiements « dark » sans communication aux utilisateurs, feature flipping, les autres équipes invitées à « tabasser » le service dès sa sortie ; ~10 déploiements par jour à deux personnes. À réserver à des équipes expérimentées et outillées côté qualité.\n- Lecture critique : position jugée **provocatrice** par Julien Wittouck, qui **reste sceptique pour les systèmes critiques**.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "Ar-E-bQE_js",
+        "title": "Direct en production ! - Christian / Sperandio Christian Sperandio",
+        "publishedAt": "2026-08-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "dev-ops-des-clients-comme-les-autres",
+      "day": "2026-06-24",
+      "type": "talk",
+      "title": "Dev & Ops : des clients comme les autres ?",
+      "speakers": [
+        "Fanny Klauk"
+      ],
+      "feedbackFrom": [
+        "Julien Wittouck (codeka.io)"
+      ],
+      "summary": "- Considérer les **développeurs et les ops comme des clients** des plateformes internes, avec un **onboarding optimisé** : la Developer Experience progresse, l'« Ops Experience » reste oubliée.\n- Idée retenue : un outil interne mal conçu **ne sera pas utilisé** et sera contourné par des **scripts shell cachés**, soit une dette technique invisible.",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "3R3Dx114oL0",
+        "title": "Dev & Ops : des clients comme les autres ? - Fanny Klauk",
+        "publishedAt": "2026-08-05",
+        "transcript": false
+      }
+    },
+    {
+      "id": "rejouer-une-partie-rejouer-le-systeme-de-la-matrice",
+      "day": "2026-06-24",
+      "type": "talk",
+      "title": "Rejouer une partie, rejouer le système de la matrice : des replays de jeux vidéo à l'event sourcing",
+      "speakers": [
+        "Pierre Fervel"
+      ],
+      "feedbackFrom": [
+        "Julien Wittouck (codeka.io)"
+      ],
+      "summary": "- Talk jugé original : un **replay de jeu vidéo** n'est pas une vidéo mais une liste d'événements rejouée par le moteur, et le même principe s'applique à l'**event sourcing**.\n- Permet de « remonter dans le temps » pour observer les états passés d'un système ; démonstrations jugées claires.",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "NsRvBkNZbOU",
+        "title": "Rejouer une partie, rejouer le système de la matrice : des replays de jeux vidéo à … - Pierre Fervel",
+        "publishedAt": "2026-08-06",
+        "transcript": false
+      }
+    },
+    {
+      "id": "a-la-decouverte-de-l-algo-de-chiffrement-diffie-hellman",
+      "day": "2026-06-25",
+      "type": "talk",
+      "title": "À la découverte de l'algo de chiffrement Diffie-Hellman",
+      "speakers": [
+        "Brieuc Le Faucheur"
+      ],
+      "feedbackFrom": [
+        "Julien Wittouck (codeka.io)"
+      ],
+      "summary": "- Comment deux parties établissent un **secret commun sur un canal non sécurisé** (HTTPS, Signal), expliqué **sans mathématiques complexes**, en se concentrant sur l'algorithme ; talk apprécié par Wittouck.",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "0APuZASmG1I",
+        "title": "🔑 🔒 A la découverte de l'algo de chiffrement Diffie-Hellman - Brieuc Le Faucheur",
+        "publishedAt": "2026-08-05",
+        "transcript": false
+      }
+    },
+    {
+      "id": "noms-de-domaines-la-grande-histoire-des-petites-extensions",
+      "day": "2026-06-25",
+      "type": "talk",
+      "title": "Noms de domaines : la grande histoire des petites extensions",
+      "speakers": [
+        "Benoît Masson — OVHcloud",
+        "Théo Bougé — OVHcloud"
+      ],
+      "feedbackFrom": [
+        "Julien Wittouck (codeka.io)"
+      ],
+      "summary": "- Histoire des domaines, TLD génériques (.com, .org) et nationaux (.fr, .be), **enjeux géopolitiques**, à l'approche du nouveau round de l'ICANN en 2026.\n- Anecdote retenue : le **.sucks**, qui se vend très bien auprès de marques cherchant à éviter le squatting.",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "ku_74jm_2I0",
+        "title": "Noms de domaines : la grande histoire des petites extensions - Benoît Masson, Théo Bougé",
+        "publishedAt": "2026-08-05",
+        "transcript": false
+      }
+    },
+    {
+      "id": "green-architecture-moins-de-gras-plus-d-impact",
+      "day": "2026-06-25",
+      "type": "talk",
+      "title": "Green Architecture : moins de gras, plus d'impact, plus d'efficacité",
+      "speakers": [
+        "Thierno Diallo",
+        "David De Carvalho"
+      ],
+      "feedbackFrom": [
+        "Julien Wittouck (codeka.io)"
+      ],
+      "summary": "- Tools-in-action : application pas à pas du framework **« API Green Score »** pour mesurer l'impact environnemental d'une API et obtenir une note à améliorer.",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "4yWsNIZ8SpI",
+        "title": "Green Architecture : moins de gras, plus d’impact, plus d'effic… - Diallo Thierno, David De Carvalho",
+        "publishedAt": "2026-08-06",
+        "transcript": false
+      }
+    },
+    {
+      "id": "souverainete-numerique-quelles-solutions-pour-quels-enjeux",
+      "day": "2026-06-25",
+      "type": "talk",
+      "title": "Souveraineté numérique, quelles solutions pour quels enjeux ?",
+      "speakers": [
+        "Ambre Person — OVHcloud"
+      ],
+      "feedbackFrom": [
+        "Julien Wittouck (codeka.io)"
+      ],
+      "summary": "- Format court : **risques de dépendance**, coupures potentielles et exposition aux **lois extraterritoriales** quand le cloud devient la norme, dans un monde géopolitiquement instable.",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "PjxCXgiiaOw",
+        "title": "Souveraineté numérique, quelles solutions pour quels enjeux ? - Ambre Person",
+        "publishedAt": "2026-08-05",
+        "transcript": false
+      }
+    },
+    {
+      "id": "let-s-play-factorio",
+      "day": "2026-06-26",
+      "type": "talk",
+      "title": "Let's play Factorio",
+      "speakers": [
+        "Julien Wittouck"
+      ],
+      "feedbackFrom": [
+        "Julien Wittouck (speaker)"
+      ],
+      "summary": "- Architecture et scalabilité racontées à travers le jeu d'automatisation Factorio, juste après la keynote du vendredi, devant une **audience nombreuse malgré la chaleur** et avec des **retours positifs** (speaker). Talk déjà donné à Touraine Tech.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "qRYdC7YTF3w",
+        "title": "Let's play Factorio - Julien Wittouck",
+        "publishedAt": "2026-08-05",
+        "transcript": false
+      }
+    },
+    {
+      "id": "petit-guide-pratique-des-uuid",
+      "day": "2026-06-26",
+      "type": "lightning",
+      "title": "Petit guide pratique des UUID",
+      "speakers": [
+        "Maxime Reynier"
+      ],
+      "feedbackFrom": [
+        "Julien Wittouck (codeka.io)"
+      ],
+      "summary": "- Quickie sur les **différentes normes d'UUID** : le **numéro de version est lisible dans l'UUID lui-même**, et la **v7 intègre un timestamp** qui permet de trier les données.",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "YW33z2kDsc8",
+        "title": "Petit guide pratique des UUID - Maxime Reynier",
+        "publishedAt": "2026-08-05",
+        "transcript": false
+      }
+    },
+    {
+      "id": "les-dev-containers-la-boite-a-outils-ultime-pour-les-devs",
+      "day": "2026-06-26",
+      "type": "talk",
+      "title": "Les dev containers, la boîte à outils ultime pour les devs ?",
+      "speakers": [
+        "Stéphane Philippart — OVHcloud"
+      ],
+      "feedbackFrom": [
+        "Julien Wittouck (codeka.io)"
+      ],
+      "summary": "- Tools-in-action : les dev containers facilitent l'**onboarding** (seuls Docker et un fichier JSON sont requis) et la réplication d'une configuration entre machines.\n- Intégration **meilleure dans VS Code que dans IntelliJ**, même si ce dernier progresse.",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "ld7TpHAj_xo",
+        "title": "🧰 Les dev containers, la boîte à outils ultime pour les devs ? - Stéphane Philippart",
+        "publishedAt": "2026-08-05",
+        "transcript": false
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Le parcours de Doctolib vers une plateforme de données médicales (S. Lukes, C. Anciaux)",
+    "La revanche des VMs : sandboxing avec NerdBox (N. De Loof)",
+    "AI4IT : déployer l'IA gen dans une DSI (A. Thorel, F. Girard)",
+    "Vous pensiez que la dette technique était le pire ? (J. Chevalier, J. Topçu)",
+    "GitLab CI/CD sous attaque (S. Robert, A. Coget)",
+    "Au-delà de la hype : embeddings à l'échelle du milliard (P. Mele, L. Precup)",
+    "Le vrai coût d'un token (A. Gani, P. Mele)",
+    "Context Engineering (M. Lahmam)",
+    "Microgpt : on partage la pilule rouge ? (L. Truchot)",
+    "S'augmenter sans se déposséder : la convivialité d'Illich face à l'IA (N. Pétard)",
+    "Aimer le dev à l'ère de l'IA (M. Durand, S. Spassevitch)",
+    "Comment l'IA va vous aider à réduire votre impact carbone (N. Ledez)",
+    "Réduire l'empreinte carbone du code legacy avec l'IA (O. Bierlaire)",
+    "Burn-out : The Matrix Reboot (P. Fervel)",
+    "Petit guide pour prendre des décisions éthiques en entreprise (C. Bossard, J. Paliès)",
+    "Concevoir accessible pour les personnes déficientes visuelles (A. Faubry, C. Corfmat)",
+    "RGPD, souverain, SecNumCloud… comment choisir son cloud ?",
+    "REX – poste d'administration conforme SecNumCloud",
+    "Agents Smith vs OAuth2 + DPoP (J. Marchand)",
+    "Retour d'expérience – la quête du homelab parfait (M. Vincent)",
+    "Arrêtez de miser sur vos tests unitaires ! (J.-M. Leclercq)",
+    "…et environ 70 autres sessions visibles dans la playlist"
+  ],
+  "sources": [
+    {
+      "label": "Site officiel BreizhCamp 2026",
+      "url": "https://www.breizhcamp.org"
+    },
+    {
+      "label": "Playlist YouTube Breizhcamp 2026 (93 vidéos)",
+      "url": "https://www.youtube.com/playlist?list=PLBKn2K9c0VXI"
+    },
+    {
+      "label": "Keynote jeudi matin (live, introduction des organisateurs)",
+      "url": "https://www.youtube.com/watch?v=dqMR28q_dpM"
+    },
+    {
+      "label": "Julien Wittouck — Breizhcamp 2026 (blog)",
+      "url": "https://codeka.io/2026/06/26/breizhcamp-2026/"
+    },
+    {
+      "label": "Néosoft — [RENNES] BreizhCamp 2026 : Immersion dans la Matrice (vidéo sponsor)",
+      "url": "https://www.youtube.com/watch?v=5SeqGUQhcu0"
+    },
+    {
+      "label": "Posts Mastodon #breizhcamp (24–25/06/2026) : dblanchet@piaille.fr, Rio@mastodon.social",
+      "url": "https://piaille.fr/@dblanchet/116803802479066051"
+    }
+  ],
+  "revisit": "un seul blog participant (celui d'un speaker) lu ; aucun post LinkedIn lu (recherche web bridée) ; talks IA et sécurité sans aucun retour"
 }
