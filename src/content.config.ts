@@ -21,6 +21,15 @@ const events = defineCollection({
       .optional(),
     /** Editions known not to exist, with the reason (e.g. "pas d'édition en 2026"). */
     gaps: z.array(z.object({ year: z.number().int(), note: z.string() })).default([]),
+    /** Historical editions research (queue): set once past editions back to `fromYear` have been looked up. */
+    history: z
+      .object({
+        checkedAt: z.string().optional(),
+        fromYear: z.number().int().optional(),
+        firstEdition: z.number().int().optional(),
+        note: z.string().optional(),
+      })
+      .optional(),
   }),
 });
 
@@ -58,8 +67,9 @@ const editions = defineCollection({
     year: z.number().int(),
     title: z.string(),
     edition: z.string().optional(),
-    start: z.string().regex(/^\d{4}-\d{2}(-\d{2})?$/),
-    end: z.string().regex(/^\d{4}-\d{2}(-\d{2})?$/).optional(),
+    /** YYYY-MM-DD, or YYYY-MM / YYYY when only the month or year is known (old editions). */
+    start: z.string().regex(/^\d{4}(-\d{2}(-\d{2})?)?$/),
+    end: z.string().regex(/^\d{4}(-\d{2}(-\d{2})?)?$/).optional(),
     city: z.string(),
     venue: z.string().optional(),
     url: z.string().url().optional(),

@@ -47,6 +47,7 @@ const parse = (s: string): Date => {
 };
 
 export function formatRange(start: string, end?: string): string {
+  if (start.length === 4) return `${start} (date précise inconnue)`;
   if (start.length === 7) return `${monthName(Number(start.slice(5, 7)) - 1)} ${start.slice(0, 4)} (date estimée)`;
   const a = parse(start);
   const b = parse(end ?? start);
@@ -62,6 +63,7 @@ export function formatDay(day: string): string {
 }
 
 export function when(e: Edition, ref = today()): 'past' | 'live' | 'upcoming' {
+  if (e.start.length === 4) return e.start < ref.slice(0, 4) ? 'past' : 'upcoming';
   if (e.start.length === 7) return e.start < ref.slice(0, 7) ? 'past' : 'upcoming';
   const end = e.end ?? e.start;
   if (end < ref) return 'past';

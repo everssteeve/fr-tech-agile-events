@@ -1,5 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
+import { loadAll, when } from '../lib/data';
+
+const { events, editions } = await loadAll();
+const backlog = editions.filter((e) => e.data.status === 'pending' && when(e.data) === 'past').length;
+const revisit = editions.filter((e) => e.data.status === 'synthesized' && e.data.revisit).length;
+const historyTodo = events.filter((e) => !e.data.history?.checkedAt).length;
+const synthesized = editions.filter((e) => e.data.status === 'synthesized').length;
 ---
 <Base title="Méthode" description="Comment les synthèses sont produites et mises à jour.">
   <article class="wrap prose page">
@@ -12,8 +19,16 @@ import Base from '../layouts/Base.astro';
     <ol>
       <li>elle met à jour le calendrier (nouvelles éditions, dates confirmées) ;</li>
       <li>elle rédige ou réécrit la synthèse de chaque événement terminé depuis moins de deux semaines, le temps que les retours arrivent ;</li>
+      <li>elle recherche les éditions passées de quelques événements et en rédige quelques synthèses en retard ;</li>
       <li>elle cherche les vidéos publiées depuis la veille sur la chaîne YouTube de chaque événement, les rattache aux sessions et, quand un transcript existe, met à jour le résumé de la session puis la synthèse globale.</li>
     </ol>
+    <p>Le travail en retard est traité progressivement, quelques éléments par nuit, grâce à trois files d'attente :</p>
+    <ul>
+      <li><strong>{historyTodo}</strong> événement{historyTodo > 1 ? 's' : ''} dont les éditions des 20 dernières années restent à rechercher ;</li>
+      <li><strong>{backlog}</strong> édition{backlog > 1 ? 's' : ''} passée{backlog > 1 ? 's' : ''} en attente de synthèse (des plus récentes aux plus anciennes) ;</li>
+      <li><strong>{revisit}</strong> synthèse{revisit > 1 ? 's' : ''} à compléter avec davantage de retours participants.</li>
+    </ul>
+    <p>{synthesized} synthèses sont publiées à ce jour.</p>
     <h3>Fiabilité des dates</h3>
     <p>Une date sans mention vient du site officiel. « Source secondaire » : billetterie ou plusieurs sources concordantes. « Date à vérifier » : vue seulement sur un agrégateur. « Date estimée » : aucune date publiée, le mois vient des éditions précédentes.</p>
     <h3>Limites</h3>

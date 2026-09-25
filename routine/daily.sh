@@ -22,9 +22,12 @@ pnpm install --frozen-lockfile --silent
 uv run scripts/plan.py
 uv run scripts/youtube_scan.py
 
+# Each run is a fresh Claude session with its own web-search budget.
+export CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION="${CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION:-200}"
+
 claude -p "$(cat routine/daily-prompt.md)" \
   --permission-mode acceptEdits \
-  --allowedTools "Read Write Edit Glob Grep WebSearch WebFetch Agent TodoWrite Bash(yt-dlp:*) Bash(uv run:*) Bash(pnpm validate) Bash(pnpm build) Bash(python3:*) Bash(ls:*) Bash(cat:*) Bash(jq:*) Bash(curl:*)" \
+  --allowedTools "Read Write Edit Glob Grep WebSearch WebFetch Agent TodoWrite Bash(yt-dlp:*) Bash(uv run:*) Bash(pnpm validate) Bash(pnpm build) Bash(python3:*) Bash(ls:*) Bash(cat:*) Bash(jq:*) Bash(curl:*) Bash(node scripts/validate.mjs)" \
   --output-format text
 
 pnpm validate

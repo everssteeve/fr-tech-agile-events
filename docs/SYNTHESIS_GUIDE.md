@@ -54,6 +54,18 @@ Frontmatter vide puis 5 à 10 sections `### N. Titre` qui dégagent les **thème
 
 Si on ne trouve presque rien (petit événement, zéro post public), produire quand même une synthèse honnête : `corpus` et `limits` le disent, les quelques sessions documentées sont résumées (`summarySources: ["program"]` si on ne s'appuie que sur le descriptif officiel, en le disant), et la synthèse globale reste courte (2 à 4 sections) en décrivant le thème et les sujets du programme. `status` passe à `synthesized`.
 
+## Historique des éditions
+
+Objectif : référencer toutes les éditions d'un événement sur les 20 dernières années (ou depuis sa création), pour qu'elles soient synthétisées ensuite, au fil des nuits.
+
+Sources, sans dépendre de la recherche web : pages « éditions précédentes » ou archives du site officiel ; sous-domaines par année (`2019.touraine.tech`, `/2018/`…) ; Wayback Machine (`curl "https://web.archive.org/cdx/search/cdx?url=<domaine>&output=json&fl=timestamp,original&collapse=timestamp:4"` pour voir les années où le site existait, puis `https://web.archive.org/web/<AAAA>/<url>` pour lire la page d'une année) ; playlists YouTube par année ; Sessionize, Conference Hall, Lanyrd (archivé), Meetup, Wikipédia.
+
+Pour chaque édition trouvée, créer `content/editions/<slug>/<année>.json` : `event`, `year`, `title` (« Nom Année »), `start`/`end` (AAAA-MM-JJ si connus ; AAAA-MM ou AAAA sinon, avec `dateConfidence: "est"`), `city`, `venue` et `url` si connus (lien d'archive accepté), `edition` (« 5e édition ») et `theme` si connus, `status: "pending"`, `sessions: []`. Ne jamais écraser un fichier existant. Une année sans édition confirmée (pause, annulation, COVID) va dans `gaps` de l'événement, avec la raison si elle est connue ; une année simplement non documentée n'est ni créée ni mise dans `gaps`.
+
+Quand l'événement a changé de nom (ex. DevFest Lille → DevLille, Lean Kanban France → FlowCon), rattacher les anciennes éditions au même `slug` et indiquer l'ancien nom dans `title` et `note`.
+
+Enfin renseigner `history` dans `content/events/<slug>.json` : `checkedAt` (date du jour), `fromYear` (année de départ de la recherche), `firstEdition` (année de la première édition si connue), `note` (sources utilisées, trous restants).
+
 ## Mise à jour par transcript
 
 Quand un transcript de session est disponible :

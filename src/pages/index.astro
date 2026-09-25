@@ -66,12 +66,12 @@ const todayLabel = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'lo
 
       {years.map((y) => (
         <div class="year" data-year={String(y)} hidden={y !== defaultYear}>
-          {Array.from({ length: 12 }, (_, m) => {
-            const list = editions.filter((e) => e.data.year === y && Number(e.data.start.slice(5, 7)) - 1 === m);
+          {Array.from({ length: 13 }, (_, m) => {
+            const list = editions.filter((e) => e.data.year === y && (m === 12 ? e.data.start.length === 4 : Number(e.data.start.slice(5, 7)) - 1 === m));
             if (!list.length) return null;
             return (
               <section class="month">
-                <h3>{monthName(m)} <small>{y}</small></h3>
+                <h3>{m === 12 ? 'Date non précisée' : monthName(m)} <small>{y}</small></h3>
                 <div class="list">
                   {list.map((e) => {
                     const ev = eventBySlug.get(e.data.event);

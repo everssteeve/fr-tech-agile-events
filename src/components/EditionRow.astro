@@ -34,7 +34,7 @@ const conf = CONFIDENCE[e.dateConfidence];
     {st === 'live' && <span class="tag live">en cours</span>}
     <span class={`tag cat-${category}`}>{CATEGORIES[category].short}</span>
     {e.status === 'synthesized' && <span class="tag done">synthèse · {e.sessions.length} sessions</span>}
-    {e.status === 'pending' && <span class="tag conf">synthèse en cours</span>}
+    {e.status === 'pending' && st === 'past' && <span class="tag conf">synthèse en file d'attente</span>}
     {videos > 0 && <span class="tag video">▶ {videos} vidéo{videos > 1 ? 's' : ''}</span>}
     {conf && <span class="tag conf">{conf}</span>}
   </span>
