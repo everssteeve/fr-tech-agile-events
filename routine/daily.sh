@@ -27,7 +27,8 @@ export CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION="${CLAUDE_CODE_MAX_WEB_SEARCHES_
 
 claude -p "$(cat routine/daily-prompt.md)" \
   --permission-mode acceptEdits \
-  --allowedTools "Read Write Edit Glob Grep WebSearch WebFetch Agent TodoWrite Bash(yt-dlp:*) Bash(uv run:*) Bash(pnpm validate) Bash(pnpm build) Bash(python3:*) Bash(ls:*) Bash(cat:*) Bash(jq:*) Bash(curl:*) Bash(node scripts/validate.mjs)" \
+  --strict-mcp-config \
+  --allowedTools "Read Write Edit Glob Grep WebSearch WebFetch Agent TodoWrite Bash(yt-dlp:*) Bash(uv run:*) Bash(pnpm validate) Bash(pnpm build) Bash(python3:*) Bash(ls:*) Bash(cat:*) Bash(jq:*) Bash(curl:*) Bash(node:*) Bash(grep:*) Bash(find:*) Bash(head:*) Bash(tail:*) Bash(wc:*) Bash(sort:*) Bash(mkdir:*) Bash(date:*) Bash(git status:*) Bash(git diff:*) Bash(git log:*)" \
   --output-format text
 
 pnpm validate

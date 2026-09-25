@@ -31,7 +31,7 @@ Pour chaque édition de `plan.json > to_synthesize`, selon sa raison :
 - « file d'attente » : édition passée jamais synthétisée (souvent une édition historique). Produis la synthèse complète. Pour une édition ancienne, les sources sont surtout le programme archivé (Wayback Machine), les vidéos, les blogs de l'époque et les slides ; applique « Peu de matière » si besoin et pose `revisit` si le corpus est mince.
 - « à compléter » : la synthèse manque de retours participants (champ `revisit`). Cherche en priorité posts LinkedIn, blogs et vidéos, intègre-les, puis supprime `revisit` si le corpus est désormais satisfaisant (sinon mets à jour sa raison).
 - Mets `synthesisUpdatedAt` à la date du jour.
-Délègue chaque édition à un sous-agent (outil Agent) en lui donnant le chemin du guide et les fichiers concernés, puis vérifie son résultat. Lance au plus 4 sous-agents en parallèle.
+Délègue chaque édition à un sous-agent (outil Agent) en lui donnant le chemin du guide et les fichiers concernés, puis vérifie son résultat. Lance au plus 4 sous-agents en parallèle. Un sous-agent ne modifie que les fichiers de son édition (`content/editions/<slug>/<année>.json` et `.md`) : s'il trouve une info pour `content/events/<slug>.json` (chaîne YouTube, gaps…), il te la renvoie dans sa réponse et c'est toi qui l'écris, pour éviter que deux sous-agents écrasent le même fichier.
 
 ## 5. Vérifier
 Lance `pnpm validate` puis `pnpm build`. Corrige les erreurs jusqu'à ce que les deux passent. Ne fais pas de commit : le script appelant s'en charge.
