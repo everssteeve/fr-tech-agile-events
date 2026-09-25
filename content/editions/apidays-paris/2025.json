@@ -6,9 +6,344 @@
   "end": "2025-12-11",
   "city": "Puteaux",
   "venue": "CNIT Forest (La Défense)",
-  "url": "https://web.archive.org/web/20250105/https://www.apidays.global/paris",
-  "theme": "The Future API Stack for Mass Innovation",
+  "url": "https://www.apidays.global/archive/2025/paris",
+  "theme": "The APIs meet AI conference: Innovation, Security, Sovereignty, Sustainability",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "Édition organisée sous la bannière FOST (Future of Software Technologies) Paris 2025, avec une trentaine d'événements co-localisés (GenerationAI, Green IO, Hacking APIs, OpenAPI/AsyncAPI/JSON Schema Conference, GraphQL Day, Travel Tech Days, Voice AI Space…). Chiffres annoncés par l'organisateur : 4 000+ participants, 1 500+ entreprises, 300+ sessions, 300+ speakers. Sponsor platinum : Boomi.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-09-25",
+  "revisit": "Corpus participants très mince : 3 posts LinkedIn lus (dont 1 du speaker), aucun blog ni compte-rendu trouvé ; programme détaillé non récupéré (page agenda en JS, Wayback Machine hors service le 2026-09-25). Rechercher des posts LinkedIn (#apidaysParis, #FOST) et des comptes-rendus, et relire l'agenda archivé.",
+  "corpus": "38 vidéos de la playlist officielle « apidays Paris 2025 » (titres, speakers, descriptions), 4 transcripts complets (Arnaud Lauret, Mark O'Neill, Dick Hardt, Ross Mason), les slides de Julie Clémençon sur Speaker Deck, les pages officielles apidays/FOST et OpenAPI Initiative, et 3 posts LinkedIn (Julie Clémençon, Audrey Kolski, Ikbel Naccache), lus en septembre 2026.",
+  "limits": "Synthèse fondée surtout sur le contenu des talks (transcripts) et non sur des retours de participants : quasi aucun post public trouvé avec 6 recherches web. La playlist ne couvre qu'une petite partie des 300+ sessions et privilégie la scène principale et les sponsors ; les jours précis des sessions ne sont pas connus.",
+  "tldr": "Une édition entièrement tournée vers **l'IA agentique vue par la lorgnette des API** : le message dominant de la scène principale est que **concevoir des outils MCP, c'est toujours faire du design d'API** — et que l'identité, la gouvernance et le contexte, pas les modèles, sont les vrais freins en entreprise.",
+  "keyTakeaways": [
+    "Traiter un serveur MCP comme une API : mêmes couches de design (besoin, ergonomie, contraintes), pas un simple emballage d'API existante (Lauret, O'Neill).",
+    "Soigner les messages d'erreur des outils exposés aux agents : un LLM ne débogue pas, sans feedback utile il abandonne ou invente (Lauret).",
+    "Prévoir une couche « back end for AI » : outils plus gros grain, réponses filtrées et paginées pour ne pas saturer le contexte ni la facture de tokens (Lauret).",
+    "Rendre ses API trouvables et essayables par des agents : documentation riche en contexte, sandbox et clés de démo, sinon les agents contournent l'API par du computer use (O'Neill).",
+    "Mesurer la productivité sur les changements qui touchent le client plutôt que sur la vélocité (étude Gartner citée par O'Neill, reprise par Ross Mason).",
+    "Prioriser les cas d'usage IA selon deux axes, clarté du résultat attendu et disponibilité du contexte ; garder l'humain dans la boucle ailleurs (Mason).",
+    "Ne pas supposer qu'OAuth 2 suffit pour MCP : l'identité de l'agent appelant et la délégation en chaîne restent des problèmes ouverts (Hardt).",
+    "Ne pas oublier les personnes derrière l'intégration : documentation, frontières claires, soin des équipes (Clémençon)."
+  ],
+  "sessions": [
+    {
+      "id": "the-design-of-mcp-servers",
+      "type": "talk",
+      "title": "The Design of MCP Servers",
+      "speakers": ["Arnaud Lauret — Postman"],
+      "feedbackFrom": [],
+      "summary": "- **Thèse** (sur scène) : *« if you're terrible at designing web APIs, you will be terrible at designing tools for AI »* — reprise de sa formule de 2015 sur SOAP et REST. Concevoir un serveur MCP, c'est du **design d'API « business as usual »**.\n- Rappel pédagogique : un agent est une boucle LLM + appels d'outils ; MCP standardise l'exposition de ces outils (tools, resources, prompts), décrits en **JSON Schema**.\n- **Ce qui ne change pas** : un LLM est un consommateur comme un autre, qui tolère un design imparfait (noms incohérents) mais pas les miracles (jargon interne, champs « value1 »).\n- **Ce qui compte plus que pour un humain** : les **messages d'erreur** (*« non-negotiable »*), car un LLM ne va pas enquêter ; les LLM calculent mal, donc fournir des données pré-traitées.\n- **Contraintes** : sécurité inchangée (ne pas donner tous les droits à un agent, cloisonner par utilisateur) ; efficacité et **fenêtre de contexte** poussent vers des outils plus gros grain, une **« back end for AI » / couche d'expérience IA**, pagination et filtres ; le coût en tokens impose de ne renvoyer que l'utile.\n- **Documentation** : exemple vécu d'un agent qui n'appelait pas son outil de validation en boucle — corrigé via la description de l'outil.\n- Astuce : donner ses API existantes à un agent pour **révéler les failles de design**.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "9vTEZxg3j8M",
+        "title": "Apidays Paris 2025 - The Design of MCP Servers By Arnaud Lauret.",
+        "publishedAt": "2026-01-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ai-and-apis-in-2026",
+      "type": "talk",
+      "title": "AI and APIs in 2026",
+      "speakers": ["Mark O'Neill — Gartner"],
+      "feedbackFrom": [],
+      "summary": "- Présenté en plénière, juste après Steve Lucas (d'après le transcript).\n- **Création d'API** : Gartner observe des **« tiny teams »** (souvent deux personnes : un profil très technique et un expert métier) travaillant avec des agents, qui codifient des processus jusque-là manuels ; l'expertise métier (schémas, modèles de données) devient aussi importante que la technique.\n- Deux phases : aujourd'hui des agents en ligne de commande avec **revue humaine à chaque étape** ; demain des agents qui s'orchestrent eux-mêmes, pilotés par le *spec-driven development* (« on pourrait dire que c'est le waterfall à nouveau »).\n- **Productivité** : selon une enquête Gartner, ce qui distingue les organisations qui réussissent est de mesurer les **changements qui impactent le client** — *« every productivity metric will be gamed »*.\n- **Usage des API** : forte hausse des demandes clients sur les **AI gateways** (FinOps, routage de modèles, tokens) et nouvelle catégorie des **Agent Management Platforms**, décrite comme le même schéma que l'API management.\n- **Menace** : des agents qui **contournent les API** via le *computer use* (scraping), bien plus coûteux. Réponse : l'**Agent Experience (AX)** — documentation riche en contexte et sémantique, sandbox et clés temporaires, découvrabilité, SDK, et MCP conçu plutôt que plaqué sur l'API.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "6-9MQtkga7s",
+        "title": "Apidays Paris 2025 - AI and APIs in 2026 By Mark O'Neill.",
+        "publishedAt": "2026-01-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "why-ai-works-for-individuals-but-fails-in-enterprises",
+      "type": "talk",
+      "title": "Why AI Works for Individuals but Fails in Enterprises, and How to Fix It",
+      "speakers": ["Ross Mason — fondateur de MuleSoft, investisseur (Dig Ventures)"],
+      "feedbackFrom": [],
+      "summary": "- En plénière, en réponse directe à Steve Lucas et Mark O'Neill (qu'il cite tous deux).\n- **Le constat** : l'IA est magique pour un individu, mais lâchée dans l'entreprise elle se heurte à ce que les humains absorbent d'ordinaire — ambiguïté, structures sociales, responsabilité. *« AI has unlimited knowledge but no context ; people have limited knowledge but full context. »*\n- **L'IA n'absorbe pas la complexité, elle expose les trous** : fragmentation des systèmes, contexte manquant, absence de définition de la « bonne » sortie, peu d'outils d'évaluation (AI ops), friction culturelle (on tient des humains pour responsables).\n- **Grille de priorisation** : clarté du résultat × disponibilité du contexte → automatisation complète (haut/haut), assistance avec humain dans la boucle, outil individuel, ou zone dangereuse. Pas de « god mode » en entreprise : garder des fenêtres de contexte petites.\n- **Maturité** : productivité individuelle → productivité d'équipe (très inégale, exemple d'équipes voisines chez Mastercard) → agents sur les workflows (1 à 3 ans selon lui) → processus pilotés par l'IA. Sauter les étapes échoue.\n- Pour les API : passer d'API **transactionnelles** à des API **orientées contexte** (« dis-moi ce que tu sais de cette transaction et comment on en est arrivé là »).",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "b0POfrMsrLg",
+        "title": "Apidays Paris 2025 - Why AI Works for Individuals but Fails in Enterprises, and How to Fix It.",
+        "publishedAt": "2026-01-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "from-authn-to-authz-the-future-of-identity",
+      "type": "talk",
+      "title": "From AuthN to AuthZ: The Future of Identity",
+      "speakers": ["Dick Hardt — Hellō (co-créateur d'OAuth 2)"],
+      "feedbackFrom": [],
+      "summary": "- **B2B** : l'SSO d'entreprise (SAML, OIDC, SCIM) est complexe et sans tests de conformité ; il promeut les profils **IPSIE** (niveaux de maturité certifiables) et **OpenID Provider Commands (OPC)** pour simplifier le cycle de vie des comptes, dont l'offboarding (*« 80 % de la valeur »*).\n- **B2C** : scepticisme assumé — les passkeys seront *« yet another way to log in »*, les wallets et l'eIDAS ne deviendront pas le standard unique ; il travaille avec Chrome sur l'**Email Verification Protocol (EVP)**.\n- **Identité des agents** : *« I don't think OAuth 2 is a good fit for MCP »* — pas de pré-enregistrement possible, l'enregistrement dynamique de clients n'est quasiment pas déployé sur Internet, et le serveur ne sait pas **qui l'appelle**. Il présente pour l'une des premières fois en public **AAuth (Agent Auth)** : identité d'agent = URL, signatures de messages HTTP, délégués avec leurs propres clés, interactions utilisateur remontant la chaîne.\n- Q&R : débat avec un participant qui trouvait MCP « pas si dynamique » — Hardt maintient que le problème est côté ressource, pas côté agent. Passage de relais explicite vers le talk de Lin Sun sur MCP et OAuth.\n- Lecture critique : une partie du talk promeut les produits de sa société (Hellō), ce qu'il reconnaît lui-même en Q&R.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "b7un0pZ-GXs",
+        "title": "Apidays Paris 2025 - From AuthN to AuthZ: The Future of Identity By Dick Hardt.",
+        "publishedAt": "2026-01-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "integration-is-feminist-building-peace-in-distributed-systems",
+      "type": "talk",
+      "title": "Integration is Feminist: Building Peace in Distributed Systems",
+      "speakers": ["Julie Clémençon — CEVA Logistics"],
+      "feedbackFrom": ["Julie Clémençon (speaker)", "Audrey Kolski"],
+      "summary": "- **Paradoxe** (slides) : plus les systèmes se distribuent (API, microservices, cloud), plus les équipes se cloisonnent.\n- L'intégration est une couche **invisible et sous-financée**, enchevêtrée, peu documentée, vue comme non fonctionnelle alors qu'elle concentre les frictions.\n- Proposition : utiliser le féminisme comme **méthode** — éthique du *care*, frontières claires, *soft power* et diplomatie ; concrètement, mettre de l'ordre et documenter, fixer des limites, mieux communiquer avec le métier, concevoir des structures de données canoniques. Conclusion : *« Protect the vulnerable, dare to care. »*\n- La speaker résume : *« behind APIs, there are people. And people matter »* (speaker).\n- Retour d'Audrey Kolski (API product management) : le travail d'intégration est *« invisible, relational, and deeply human »* ; elle retient l'écoute avant le design, l'accompagnement dans la complexité, la traduction entre équipes et la documentation.",
+      "summarySources": ["slides", "feedback"],
+      "video": {
+        "youtubeId": "tlHzZZkHJzw",
+        "title": "Apidays Paris 2025 - Integration is Feminist: Building Peace in Distributed Systems.",
+        "publishedAt": "2025-12-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "hello-i-m-a-hacker",
+      "type": "keynote",
+      "title": "Hello, I'm a Hacker",
+      "speakers": ["Chris Roberts"],
+      "feedbackFrom": [],
+      "summary": "- Keynote sécurité (d'après le titre officiel de la vidéo, 12 minutes). Contenu non analysé : vidéo non visionnée, pas de retour trouvé.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "EnCwBGdThUY",
+        "title": "Apidays Paris 2025 - Hello, I'm a Hacker By Chris Roberts Keynote.",
+        "publishedAt": "2026-01-09",
+        "transcript": false
+      }
+    },
+    {
+      "id": "from-digital-to-agentic-preparing-your-architecture-for-100x-scale",
+      "type": "talk",
+      "title": "From Digital to Agentic: Preparing Your Architecture for 100x Scale",
+      "speakers": ["Steve Lucas — Boomi"],
+      "feedbackFrom": [],
+      "summary": "- Talk de plénière du CEO du sponsor platinum, connu uniquement par le titre et par les reprises des speakers suivants : Ross Mason retient l'annonce de *« billions of agents next year »* et la pression qui en résulte sur l'infrastructure ; Mark O'Neill note qu'il a insisté sur la hausse de l'usage des API tirée par l'IA et sur la nécessité de concevoir les API pour les agents.",
+      "summarySources": ["program", "transcript"],
+      "video": {
+        "youtubeId": "qRsjEp0m3sA",
+        "title": "Apidays Paris 2025 - From Digital to Agentic: Preparing Your Architecture for 100x Scale.",
+        "publishedAt": "2026-01-09",
+        "transcript": false
+      }
+    },
+    {
+      "id": "from-digital-sovereignty-to-digital-resilience-digital-resiliency-index",
+      "type": "other",
+      "title": "From Digital Sovereignty to Digital Resilience: Launching the Digital Resiliency Index",
+      "speakers": ["David Djaïz", "Yann Lechelle", "Arno Pons"],
+      "feedbackFrom": [],
+      "summary": "- Session de lancement d'un **« Digital Resiliency Index »**, qui illustre le fil « souveraineté » de l'édition (d'après le titre officiel). Contenu non analysé.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "_FP0rdnpEW8",
+        "title": "Apidays Paris 2025 - From Digital Sovereignty to Digital Resilience [...]",
+        "publishedAt": "2026-01-09",
+        "transcript": false
+      }
+    },
+    {
+      "id": "hypermed-ai-where-intelligence-emerges-from-connection",
+      "type": "talk",
+      "title": "Hypermed-AI: Where Intelligence Emerges from Connection",
+      "speakers": ["Mike Amundsen — auteur de « RESTful Web Clients » et « Designing Great Web APIs »"],
+      "feedbackFrom": [],
+      "summary": "- D'après le titre : l'hypermédia comme modèle pour des systèmes d'IA connectés. Contenu non analysé.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "LbuR4pzjXc0",
+        "title": "Apidays Paris 2025 - Hypermed-AI: Where intelligence Emerges from Connection By Mike Amundsen.",
+        "publishedAt": "2026-01-09",
+        "transcript": false
+      }
+    },
+    {
+      "id": "mcp-at-1-the-state-of-the-protocol",
+      "type": "talk",
+      "title": "MCP at 1. The state of the protocol you love (or hate)",
+      "speakers": ["Emmanuel Paraskakis — Level 250"],
+      "feedbackFrom": [],
+      "summary": "- Bilan du protocole MCP un an après sa sortie (d'après le titre). Contenu non analysé.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "7dTLJE5RrZE",
+        "title": "Apidays Paris 2025 - MCP at 1. The state of the protocol you love (or hate) By Emmanuel Paraskakis.",
+        "publishedAt": "2026-01-09",
+        "transcript": false
+      }
+    },
+    {
+      "id": "secure-your-mcp-servers-with-oauth-jwt-spiffe",
+      "type": "talk",
+      "title": "Secure Your MCP Servers with OAuth, JWT, SPIFFE and More",
+      "speakers": ["Lin Sun — Solo.io"],
+      "feedbackFrom": [],
+      "summary": "- Approfondissement technique de la sécurisation des serveurs MCP, annoncé par Dick Hardt comme la suite de son propre talk. Contenu non analysé.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "RDjS95MCUHA",
+        "title": "Apidays Paris 2025 - Secure Your MCP Servers with OAuth, JWT, SPIFFE and More By Lin Sun.",
+        "publishedAt": "2026-01-09",
+        "transcript": false
+      }
+    },
+    {
+      "id": "governance-and-security-of-apis-and-mcps",
+      "type": "talk",
+      "title": "Governance and Security of APIs and MCPs",
+      "speakers": ["Isabelle Mauny — WSO2"],
+      "feedbackFrom": [],
+      "summary": "- Gouvernance et sécurité appliquées conjointement aux API et aux serveurs MCP (d'après le titre). Contenu non analysé.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "1eVEjoG4bEE",
+        "title": "Apidays Paris 2025 - Governance and Security of APIs and MCPs By Isabelle Mauny.",
+        "publishedAt": "2026-01-09",
+        "transcript": false
+      }
+    },
+    {
+      "id": "securing-the-ai-revolution-mcp-protocol-governance",
+      "type": "talk",
+      "title": "Securing the AI Revolution - MCP Protocol Governance in Enterprise API Infrastructure",
+      "speakers": ["François Lascelles — Broadcom"],
+      "feedbackFrom": [],
+      "summary": "- Gouvernance de MCP dans l'infrastructure API d'entreprise (d'après le titre). Contenu non analysé.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "5KyBP7h3gJc",
+        "title": "Apidays Paris 2025 - Securing the AI Revolution - [...]",
+        "publishedAt": "2026-01-09",
+        "transcript": false
+      }
+    },
+    {
+      "id": "api-management-recent-trends",
+      "type": "talk",
+      "title": "API Management Recent Trends",
+      "speakers": ["Andrew Humphreys — Gartner"],
+      "feedbackFrom": [],
+      "summary": "- Tendances récentes de l'API management vues par Gartner (d'après le titre). Contenu non analysé.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "J45dqh-GMyg",
+        "title": "Apidays Paris 2025 - API Management Recent Trends  By Andrew Humphreys.",
+        "publishedAt": "2026-01-09",
+        "transcript": false
+      }
+    },
+    {
+      "id": "ai-and-apis-ensuring-platform-migration-reliability-with-ai",
+      "type": "talk",
+      "title": "AI and APIs: Ensuring Platform Migration Reliability with AI",
+      "speakers": ["Cyrille Martraire — Arolla", "Thomas Nansot"],
+      "feedbackFrom": [],
+      "summary": "- Retour d'expérience sur la fiabilisation d'une migration de plateforme avec l'IA (d'après le titre). Contenu non analysé.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "72Ctuf61hog",
+        "title": "Apidays Paris 2025 - AI and APIs: Ensuring Platform Migration Reliability with AI By.",
+        "publishedAt": "2026-01-09",
+        "transcript": false
+      }
+    },
+    {
+      "id": "the-false-economy-of-speed-agentic-technical-debt",
+      "type": "talk",
+      "title": "The False Economy of Speed: Why Skipping API Governance Leads to Agentic Technical Debt",
+      "speakers": ["Markus Müller — Boomi"],
+      "feedbackFrom": [],
+      "summary": "- Thèse du titre : sauter la gouvernance d'API crée une **dette technique agentique**. Contenu non analysé.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "1HfKOh0LJx0",
+        "title": "Apidays Paris 2025 - The False Economy of Speed: [...]",
+        "publishedAt": "2026-01-09",
+        "transcript": false
+      }
+    },
+    {
+      "id": "unlocking-agentic-ai-enterprise-apis-missing-link",
+      "type": "talk",
+      "title": "Unlocking Agentic AI: Why Enterprise APIs Are the Missing Link to Real Innovation",
+      "speakers": ["Matthias Biehl — IBM"],
+      "feedbackFrom": [],
+      "summary": "- Les API d'entreprise comme chaînon manquant de l'IA agentique (d'après le titre). Contenu non analysé.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "jWKXYIE9FJg",
+        "title": "Apidays Paris 2025 - Unlocking Agentic AI: [...]",
+        "publishedAt": "2026-01-09",
+        "transcript": false
+      }
+    },
+    {
+      "id": "api-layer7-security-customer-use-cases-bbva-nexi",
+      "type": "talk",
+      "title": "API Layer7 Security by Broadcom, an Overview of Customer Use Cases",
+      "speakers": ["Paloma Reyes — BBVA Technology", "Valerio Dalessandro — Nexi"],
+      "feedbackFrom": [],
+      "summary": "- Cas clients bancaires (BBVA, Nexi) de sécurité d'API avec Layer7 ; slides publiées sur Speaker Deck. Contenu non analysé.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "NtObj9_8Hqk",
+        "title": "Apidays Paris 2025 - API Layer7 Security by Broadcom, A overview of Customer Use Cases.",
+        "publishedAt": "2025-12-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "arazzo-dress-up-your-api-ecosystem-for-the-ai-revolution",
+      "type": "talk",
+      "title": "Arazzo: Dress up Your API Ecosystem for the AI Revolution!",
+      "speakers": ["Andrea Cinquepalmi — Apishare", "Giorgio Sismanidis — Apishare"],
+      "feedbackFrom": [],
+      "summary": "- Présentation de la spécification **Arazzo** (description de workflows d'API) de l'OpenAPI Initiative, dont le track revenait pour la troisième année (d'après le titre et la page OAI). Contenu non analysé.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "0CJ6RhzA6k8",
+        "title": "Apidays Paris 2025 - Arazzo: Dress up Your API Ecosystem for the AI Revolution!",
+        "publishedAt": "2025-12-30",
+        "transcript": false
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "The Future of Integration: from API to Event Meshes (Charles Huyghe, Sibelga) — vidéo",
+    "Fraud fighting: leverage real-time network intelligence (Hatim Machrafi, Orange ; Pierre Elie Zipilivan, PlusmoProtect) — vidéo",
+    "API as the powerful EA lighthouse for a Composable Information System (Renaud Cleach, Super U) — vidéo",
+    "Reliable Kafka-Lambda Data Pipelines with AsyncAPI and Specmatic (Naresh Jain, Specmatic) — vidéo",
+    "How to Fail Your Event-Driven System (Hassane Moustapha, Engie Solutions) — vidéo",
+    "The AI Triple Security Gap (Carlos Villanúa, Traefik Labs) — vidéo",
+    "Using the Power of APIs and Domain Driven Design to Embrace AI (Radhouane Jrad, QBE) — vidéo",
+    "MCP: Is GraphQL the Right “Tool” For the Job? (Ahmet Soormally, WunderGraph) — vidéo",
+    "How Generative AI Apps Use APIs (Ryan Day) — vidéo",
+    "Power AI with Real-Time Data using AsyncAPI & Agent Mesh (Julien Testut, Oracle ; Alessandro Cagnetti, Solace) — vidéo",
+    "What if Your API Spoke Accessibility? (Vanessa Johnson, The New York Times) — vidéo",
+    "Building the digital fabric of the future: the Fastweb–Vodafone integration journey (Tullio Nardi) — vidéo",
+    "API Management Federation (Germán Hüttemann, Schneider Electric) — vidéo",
+    "Unlock API and Data – The Power of Data Model and Governance (Patrick Brosse, Amadeus ; Simon Harrer) — vidéo",
+    "Opensource API Tools to agile your API-first strategy (Marco Antonio Sanz Molina Prados, APIAddicts) — vidéo",
+    "Orchestrating APIs for LLMs - Agentic Workflows for GraphQL (Michael Watson, Apollo GraphQL) — vidéo",
+    "Building Agentic Workflows: Patterns for Orchestrating Intelligent Systems (Gbadebo Bello, Postman) — vidéo",
+    "Transform Your OpenAPI Spec into Interactive, AI-Powered Documentation (Tal Gluck, GitBook) — vidéo",
+    "From Chaos to Order: LLM traffic and MCP with Kong AI Gateway (Jérôme Guillaume, Kong) — vidéo",
+    "Keynote de Nat Sakimura (OpenID Foundation) et intervention de Siham Essodaigui, mis en avant sur la page officielle — sans vidéo trouvée"
+  ],
+  "sources": [
+    { "label": "Page officielle apidays Paris 2025 (archive)", "url": "https://www.apidays.global/archive/2025/paris" },
+    { "label": "Page FOST Paris 2025", "url": "https://apidays.global/fost/fost-past-events/paris-2025" },
+    { "label": "OpenAPI Initiative — track OAI à apidays Paris 2025", "url": "https://www.openapis.org/events/apidays-paris-2025" },
+    { "label": "Playlist YouTube « apidays Paris 2025 » (38 vidéos)", "url": "https://www.youtube.com/playlist?list=PLmEaqnTJ40Ore2Qyu8ng_HrI9kyG8tPGi" },
+    { "label": "Slides apidays sur Speaker Deck", "url": "https://speakerdeck.com/apidays" },
+    { "label": "Slides — Integration is Feminist (Julie Clémençon)", "url": "https://speakerdeck.com/apidays/apidays-paris-2025-integration-is-feminist-building-peace-in-distributed-systems" },
+    { "label": "Post LinkedIn d'Audrey Kolski (partage du post de Julie Clémençon)", "url": "https://www.linkedin.com/posts/audreykolski_apidays-paris-2025-integration-is-feminist-activity-7417137808357867520-3bab" },
+    { "label": "Post LinkedIn d'Ikbel Naccache (présence au CNIT)", "url": "https://fr.linkedin.com/posts/ikbelnaccache_on-est-l%C3%A0-apidays-paris-cnit-faites-activity-7404440856562388992-hNhf" },
+    { "label": "Posts LinkedIn lus : Julie Clémençon (speaker), Audrey Kolski, Ikbel Naccache (et commentaire d'Olivier Sztabowicz)" }
+  ]
 }

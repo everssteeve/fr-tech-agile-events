@@ -346,13 +346,47 @@
       "summarySources": [
         "program"
       ]
+    },
+    {
+      "id": "lyon-du-chaos-a-la-clarte-git-workflow",
+      "day": "2026-05-22",
+      "type": "talk",
+      "title": "[Lyon] Du chaos à la clarté : adopter un Git workflow fluide et robuste",
+      "speakers": [
+        "Steven Le Texier — ACSEO"
+      ],
+      "feedbackFrom": [
+        "Blog ACSEO — employeur du speaker (speaker)"
+      ],
+      "summary": "- Constat : sans **stratégie de branches et conventions de nommage des commits**, l'arrivée d'un développeur ou le démarrage d'un projet tourne au désordre (code perdu, bugs en prod, livraisons retardées, merge requests pénibles).\n- Réponse : installer une **« culture Git »** avec des workflows simples et lisibles, **adaptés à la taille du projet**, pour réduire la friction d'onboarding.\n- Ouverture : *« Un workflow structuré et des standards de développement rigoureux simplifient grandement l'implémentation d'agents IA au sein de nos Git workflows »* (ACSEO, *(speaker)*). Slides publiées par ACSEO.",
+      "summarySources": [
+        "blog",
+        "program"
+      ]
+    },
+    {
+      "id": "bordeaux-migrations-c-est-une-question-d-hygiene",
+      "day": "2026-05-22",
+      "type": "talk",
+      "title": "[Bordeaux] Migrations : c'est une question d'hygiène !",
+      "speakers": [
+        "Vincent Amstoutz"
+      ],
+      "feedbackFrom": [
+        "Slides du speaker sur Speaker Deck (speaker)"
+      ],
+      "summary": "- Traiter les montées de version comme une **hygiène quotidienne** plutôt qu'un chantier-tunnel : *« Ne pas attendre la date butoir et la pression de nos managers »*. Le tunnel accumule retard, CVE non traitées, feature freeze, bugs et démotivation, et rend le projet « legacy » dépendant d'une personne clé.\n- Outillage : **Dependabot / Renovate**, `composer outdated`, **`composer audit` en CI**, PHPStan + `phpstan-deprecation-rules`, **Rector** (sets `withPreparedSets()` / `withComposerBased()` de Rector 2.0) ; boucle `composer update` → Rector → PHPUnit.\n- En cas de retard, **découper** : de Symfony 4.4 à 8.0 en alternant paliers PHP et Symfony LTS (PHP 8.1, SF 5.4, PHP 8.2, annotations → attributs, SF 6.4, PHP 8.5, SF 7.4, SF 8.0), tests et Rector à chaque étape.\n- Bonus : supprimer les paquets inutiles, **bloquer du temps récurrent** dans l'agenda. Contenu connu par les seules slides, sans retour de participant.",
+      "summarySources": [
+        "slides",
+        "program"
+      ]
     }
   ],
   "synthesisUpdatedAt": "2026-09-25",
   "programUrl": "https://event.afup.org/afup-day-2026/",
   "venue": "Ynov Campus (Bordeaux), Théâtre de la Comédie (Lille), CPE (Lyon), ESGI (Paris)",
-  "corpus": "Programmes officiels des quatre villes et **deux comptes-rendus de blog** d'entreprises : JoliCode pour Paris (26/05/2026, 10 talks, 5 auteurs) et Les-Tilleuls.coop pour Lille (27/05/2026, 9 talks, par Alex Guyot). Rien trouvé pour Bordeaux ni pour Lyon, et aucune vidéo AFUP Day 2026 sur la chaîne YouTube de l'AFUP.",
-  "limits": "Deux villes sur quatre sans aucun retour : Bordeaux et Lyon ne sont connues que par leur programme. Chaque compte-rendu vient d'une entreprise dont un membre est speaker (Loïck Piera chez JoliCode, Yohan Giarelli chez Les-Tilleuls), et les deux sont uniformément positifs. La recherche de posts LinkedIn/Bluesky n'a pas pu être menée. Les titres des sessions sont préfixés par la ville.",
+  "corpus": "Programmes officiels des quatre villes, **bilan officiel de l'AFUP** (26/05/2026, fréquentation par ville) et **trois contenus d'entreprises ou de speakers** : comptes-rendus JoliCode pour Paris (26/05/2026, 10 talks, 5 auteurs) et Les-Tilleuls.coop pour Lille (27/05/2026, 9 talks, par Alex Guyot), article ACSEO sur son talk à Lyon, plus les slides Speaker Deck de Vincent Amstoutz (Bordeaux). Recherche de posts LinkedIn, Joind.in et YouTube menée le 25/09/2026 sans autre résultat.",
+  "limits": "Les posts LinkedIn trouvés sont tous des annonces antérieures à l'événement (CFP, complet) : aucun retour participant individuel publié n'a été trouvé. Bordeaux et Lyon ne sont documentés que par une session chacune, à travers les contenus des speakers eux-mêmes (slides, blog de l'employeur). Les deux comptes-rendus viennent aussi d'entreprises dont un membre est speaker (JoliCode, Les-Tilleuls) et sont uniformément positifs. Pas de vidéo publiée, et aucun talk ni commentaire sur Joind.in. Les titres des sessions sont préfixés par la ville.",
   "tldr": "**Une journée PHP très pragmatique dans quatre villes** : qualité (PHPStan, mutation testing, Closed-by-Default), architecture (FrankenPHP, Kafka, OpenSearch) et une IA qui entre dans l'écosystème par Symfony AI, les patterns d'agents et le pair programming assisté, sans prendre toute la place.",
   "keyTakeaways": [
     "Mesurer la qualité par un indicateur métier comme le **taux de hotfix en prod**, et adopter PHPStan progressivement, sans viser forcément les niveaux 9-10 (Weglot).",
@@ -361,14 +395,14 @@
     "Tester une API externe **sans mocks** en enregistrant et rejouant de vrais échanges HAR (Ezzine).",
     "Comprendre le besoin métier et la variabilité de la donnée **avant** de choisir la techno de recherche (Duplaix).",
     "Structurer l'IA en PHP avec des **patterns testables** (sortie contrainte par schéma, chaînage, routing, RAG, tools) plutôt qu'un prompt par classe (Giroux ; Rogier d'après le descriptif).",
-    "Regarder les **passkeys** : la technologie est prête depuis 2015, c'est l'adoption qui manque (Combraque)."
+    "Regarder les **passkeys** : la technologie est prête depuis 2015, c'est l'adoption qui manque (Combraque).",
+    "Faire des montées de version une **hygiène continue** (Renovate/Dependabot, `composer audit` en CI, Rector) et découper les grosses migrations en paliers PHP / Symfony LTS (Amstoutz, d'après ses slides)."
   ],
   "sessionsWithoutFeedback": [
     "[Bordeaux] Evolutionary Architecture : comment éviter la prochaine « grande réécriture » (N. Perussel)",
     "[Bordeaux] La lucidité comme architecture (J. Gomez Caballe, B. Jaillot)",
     "[Bordeaux] Les maux des mots (M. Roches)",
     "[Bordeaux] J'ai testé pour vous : le composant Cache de Symfony couplé à Redis (A. Larzabal)",
-    "[Bordeaux] Migrations : c'est une question d'hygiène ! (V. Amstoutz)",
     "[Bordeaux] Le code, c'est la partie facile (M. Girard)",
     "[Bordeaux] Retour vers la simplicité (B. Lafontaine)",
     "[Bordeaux] À la découverte d'Accelerate 2026 (G. Graveaud)",
@@ -380,7 +414,6 @@
     "[Lyon] La Console Symfony fait peau neuve ! (R. Chalas)",
     "[Lyon] Gérer ses fixtures avec Foundry (N. Philippe)",
     "[Lyon] JsonPath : pour des API incassables (A. Daubois)",
-    "[Lyon] Du chaos à la clarté : adopter un Git workflow fluide et robuste (S. Le Texier)",
     "[Lyon] La documentation, ce nouveau langage de programmation (X. Gorse)"
   ],
   "sources": [
@@ -411,7 +444,21 @@
     {
       "label": "Les-Tilleuls.coop — « AFUP Day Lille 2026 : notre retour sur la conférence » (Alex Guyot, 27/05/2026)",
       "url": "https://les-tilleuls.coop/blog/afup-day-lille-2026-notre-retour-sur-la-conference"
+    },
+    {
+      "label": "AFUP — « Bilan de l'AFUP Day 2026 » (26/05/2026)",
+      "url": "https://afup.org/news/1258-bilan-afupday2026"
+    },
+    {
+      "label": "ACSEO — « AFUP Day Lyon 2026 : nos slides sur le Git Workflow » (Steven Le Texier, speaker)",
+      "url": "https://www.acseo.fr/afup-day-lyon-2026-slides-git-workflow/"
+    },
+    {
+      "label": "Vincent Amstoutz — slides « Migrations : c'est une question d'hygiène ! » (Speaker Deck)",
+      "url": "https://speakerdeck.com/vinceamstoutz/migrations-cest-une-question-dhygiene"
+    },
+    {
+      "label": "LinkedIn : seuls des posts d'annonce trouvés (AFUP, AFUP Bordeaux, AFUP Paris, BoursoBank, Adrien Roches), aucun retour post-événement"
     }
-  ],
-  "revisit": "retours participants (LinkedIn, blogs) non recherchés : quota de recherche web épuisé le 25/09/2026"
+  ]
 }

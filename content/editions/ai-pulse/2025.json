@@ -4,11 +4,919 @@
   "title": "ai-PULSE 2025",
   "edition": "3e édition",
   "start": "2025-12-04",
+  "end": "2025-12-04",
   "city": "Paris",
   "venue": "Station F",
-  "url": "https://web.archive.org/web/20251004/https://www.ai-pulse.eu/",
+  "url": "https://2025.ai-pulse.eu/",
+  "programUrl": "https://2025.ai-pulse.eu/agenda",
+  "theme": "Smarter, Faster, Everywhere",
   "dateConfidence": "ok",
-  "note": "Date reportée en cours d'année (campagne « new date announcement ») ; 4 décembre d'après le site archivé en octobre 2025. « 3rd Edition » d'après le titre du live YouTube.",
-  "status": "pending",
-  "sessions": []
+  "note": "Journée unique le 4 décembre 2025 à Station F (date confirmée par le site 2025.ai-pulse.eu, le live YouTube du 4 décembre et le récap Scaleway). 3 scènes (Open Platform pour les keynotes, Master Stage, Central room) + Founders Café pour démos et workshops ; 36 événements au programme, 70+ speakers. Fréquentation annoncée : « 2 000+ » (site officiel, iliad, annonce sur scène) contre « 1 600+ » dans le récap et le livre blanc Scaleway.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-09-25",
+  "revisit": "Quasi aucun retour participant public trouvé (un seul billet d'exposant, Comino) : budget de recherche web limité (6 requêtes), posts LinkedIn post-événement non retrouvés. Chercher des posts LinkedIn de participants (#aiPULSE2025) et des articles de presse tech FR.",
+  "corpus": "Programme officiel (2025.ai-pulse.eu, 36 événements), 32 replays de la playlist YouTube « ai-PULSE 2025 | Scaleway » (descriptifs) dont 4 transcripts lus (keynotes d'ouverture, Artificial Analysis, Dust, Mirakl), le récap, le livre blanc et 4 articles « Insights » du blog Scaleway, un billet d'exposant (Comino) et une citation de LeCun reprise par Fortune (19/12/2025).",
+  "limits": "Corpus dominé par les sources de l'organisateur (Scaleway / groupe iliad) : ton promotionnel, aucune critique publique lue. Aucun post LinkedIn de participant retrouvé ; la plupart des sessions de l'après-midi ne sont résumées que d'après leur descriptif officiel ou les articles du blog Scaleway, pas d'après un retour d'auditeur.",
+  "tldr": "Une 3e édition placée sous le signe **« Smarter, Faster, Everywhere »** : Yann LeCun y a martelé que **les LLM ne suffiront pas et que l'avenir est aux world models**, pendant que la scène parisienne présentait **robotique (UMA, Mirokaï), voix (Gradium) et agents en production (Dust, Mirakl, Mistral)** — le tout sur fond d'annonces Scaleway pour une **IA européenne souveraine**.",
+  "keyTakeaways": [
+    "Les world models sont présentés comme le prochain paradigme : un modèle « conditionné par l'action » permet de planifier en imaginant les conséquences de ses actes, ce qu'un LLM auto-régressif ne fait pas (LeCun, de Witte).",
+    "Choisir un modèle ne se résume plus à « raisonnant ou non » : regarder l'**efficacité en tokens**, qui détermine latence et coût — jusqu'à trois ordres de grandeur d'écart pour une même tâche (Artificial Analysis).",
+    "Pour les agents en entreprise : décomposer une tâche en petits agents spécialisés puis les composer en workflow, et **découpler les permissions des agents de celles des humains** (Dust).",
+    "Donner à 100 % des salariés la capacité de construire leurs agents plutôt que de centraliser dans une équipe data ; chez Mirakl, un RFP passe de plus de 20 h de travail à moins de 5 h (Mirakl).",
+    "Viser des gains de plus de 90 % sur trois cas d'usage maximum plutôt que 30 % partout : « AI-assisted » est un échauffement, la valeur vient de l'IA intégrée au produit (Mirakl).",
+    "Dans les environnements régulés, un agent a besoin d'orchestration déterministe, de journaux d'audit et d'une autonomie accordée progressivement (descriptif Mistral AI).",
+    "Mesurer l'empreinte réelle de l'inférence (GPU, nœud, workload) plutôt que de supposer qu'une IA est « verte » ; choisir le plus petit modèle suffisant (Salesforce, Scaleway, GreenPT).",
+    "Le passage du prototype de recherche au produit (latence, langues, qualité studio) est un métier à part : c'est la raison d'être de Gradium après Kyutai (Zeghidour)."
+  ],
+  "sessions": [
+    {
+      "id": "ouverture-xavier-niel-aude-durand",
+      "day": "2025-12-04",
+      "type": "keynote",
+      "title": "Ouverture : Smarter, Faster, Everywhere",
+      "speakers": [
+        "Xavier Niel — groupe iliad",
+        "Aude Durand — groupe iliad"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Salle comble à Station F (**« over 2,000 people »** annoncé sur scène, des sièges ajoutés) et live suivi depuis plusieurs villes européennes.\n- Constat d'Aude Durand : la prolifération des modèles open source en 2025 a tenu ses promesses ; **le modèle le plus utilisé par les clients Scaleway est Qwen**, modèle open source de raisonnement.\n- Trois grilles de lecture pour la journée : **plus intelligente** (agents qui raisonnent, planifient et agissent), **plus rapide** (les développeurs passent de l'écriture de code à l'orchestration d'agents), **partout** (voix, systèmes embarqués, robots).\n- Message affiché : *« Europe has every reason to be optimistic about its future in AI »*.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "qr07Cc6dVs8",
+        "title": "Opening Keynotes | ai-PULSE 2025 | 3rd Edition",
+        "publishedAt": "2025-12-09",
+        "transcript": true,
+        "startSeconds": 0
+      }
+    },
+    {
+      "id": "world-models-yann-lecun-pim-de-witte",
+      "day": "2025-12-04",
+      "type": "keynote",
+      "title": "Fireside chat : Beyond LLMs, world models et agents incarnés",
+      "speakers": [
+        "Yann LeCun — Meta (puis AMI Labs)",
+        "Pim de Witte — General Intuition",
+        "Aude Durand — groupe iliad (modération)"
+      ],
+      "feedbackFrom": [
+        "Comino (exposant, billet de blog)",
+        "Fortune (presse, 19/12/2025)"
+      ],
+      "summary": "- **Sur scène** : LeCun rappelle qu'il défend les world models depuis sa keynote NeurIPS 2016 ; les LLM sont *« utiles »* mais *« not a path to human level intelligence »*. *« Understanding the physical world is much more difficult than understanding language »* — aucun robot ne fait ce que fait un enfant de 5 ans.\n- **Architecture** : prédire au niveau du pixel ne marche pas (les détails sont imprévisibles) ; les architectures **non génératives de type JEPA** l'emportent en apprentissage auto-supervisé. Objectif : un **world model conditionné par l'action** qui permet de planifier une séquence d'actions sous contraintes.\n- **Analogie retenue** (de Witte) : les LLM sont comme **une boule de neige** qui dévale la pente sans percevoir l'obstacle ; la vraie intelligence ressemble à Olaf, qui voit la pierre et l'esquive.\n- **Données et calcul** : 10¹⁴ octets, c'est tout le texte public d'Internet… ou **30 minutes d'uploads YouTube** ; entraîner V-JEPA 2 demande quelques milliers de GPU, loin des échelles des LLM de pointe. General Intuition s'appuie sur ~1 milliard de vidéos de jeu par an déjà annotées en actions (Medal).\n- **Open source et géopolitique** : les meilleurs modèles ouverts sont chinois, *« et ce n'est pas bon »* ; la recherche ouverte reste la voie la plus rapide. Phrase reprise par la presse : *« Silicon Valley is completely hypnotized by generative models »*, d'où l'intérêt de travailler à Paris.\n- **Annonces** : LeCun crée une structure indépendante (**AMI, « Advanced Machine Intelligence »**, Meta partenaire mais pas investisseur) ; partenariat scientifique **General Intuition × Kyutai** autour d'un jeu de données ouvert.\n- Côté participants, seul retour lu : Comino (exposant) salue une présentation qui a *« inspiré des discussions »*.",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "qr07Cc6dVs8",
+        "title": "Opening Keynotes | ai-PULSE 2025 | 3rd Edition",
+        "publishedAt": "2025-12-09",
+        "transcript": true,
+        "startSeconds": 388
+      }
+    },
+    {
+      "id": "mirokai-jerome-monceaux-enchanted-tools",
+      "day": "2025-12-04",
+      "type": "keynote",
+      "title": "Mirokaï : la robotique humanoïde sociale",
+      "speakers": [
+        "Jérôme Monceaux — Enchanted Tools",
+        "Aude Durand — groupe iliad (modération)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Entrée en scène par un **sketch entre Aude Durand et le robot Mirokaï** (« I'm not HAL 9000… I roll on a ball »).\n- Choix de conception : robot **non bipède**, sûr en permanence, visage « mignon », accessoires pour simplifier l'usage ; partenaire de Google DeepMind (Gemini Live / Gemini Robotics) + modèles embarqués pour la proximité des personnes.\n- **Une cinquantaine de robots** sur le point d'être déployés dans le soin ; l'hôpital est choisi parce que c'est un espace **semi-standardisé** (sols, couloirs, rôles, réglementation connus).\n- **Transparence** : le robot doit dire ce qu'il peut et ne peut pas faire — *« 80 % de succès, c'est 20 % d'échec »*, inacceptable en santé. Il faut *« designer la danse entre l'utilisateur et le robot »*.\n- Cas marquant : à l'**ICM de Montpellier**, Mirokaï accompagne les enfants en radiothérapie ; un moment de 60 minutes douloureux devient un moment de joie, les enfants n'ont plus besoin d'être sédatés, avec un **« facteur 10 » de productivité** de la machine (chiffre du speaker).",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "qr07Cc6dVs8",
+        "title": "Opening Keynotes | ai-PULSE 2025 | 3rd Edition",
+        "publishedAt": "2025-12-09",
+        "transcript": true,
+        "startSeconds": 2245
+      }
+    },
+    {
+      "id": "keynote-damien-lucas-scaleway",
+      "day": "2025-12-04",
+      "type": "keynote",
+      "title": "Keynote Scaleway : annonces 2025",
+      "speakers": [
+        "Damien Lucas — Scaleway"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Expansion géographique** : après la France, les Pays-Bas et la Pologne, déploiement en **Italie, Suède et bientôt Allemagne**.\n- **Data** : une acquisition (nom inaudible dans le transcript) et un portefeuille élargi (Kafka, OpenSearch, Data Warehouse, orchestration) pour *« amener l'IA aux données »*, en écho à Michael Dell l'an passé.\n- **Quantique** : après l'émulation (2023) et Quandela (2024), partenariats avec **Pasqal** (atomes neutres) et **IQM** (supraconducteurs).\n- **GPU** : **NVIDIA Blackwell Ultra B300** disponibles, *« 50 % plus rapides que les B200 »*, premiers en Europe ; calculateur d'empreinte environnementale étendu aux GPU.\n- **Modèles** : fournisseur d'inférence souverain de **Hugging Face**, **Holo 2 de H Company** et suite entreprise de **Mistral AI** (AI Studio, Mistral Code, Document AI) disponibles.\n- **AI gigafactory** : consortium européen **AION** (EDF, OPCORE, Kyutai, H, Hugging Face…) pour une infrastructure de centaines de milliers de GPU.\n- À lire comme une keynote commerciale de l'organisateur.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "qr07Cc6dVs8",
+        "title": "Opening Keynotes | ai-PULSE 2025 | 3rd Edition",
+        "publishedAt": "2025-12-09",
+        "transcript": true,
+        "startSeconds": 2945
+      }
+    },
+    {
+      "id": "uma-remi-cadene-robotique-generaliste",
+      "day": "2025-12-04",
+      "type": "keynote",
+      "title": "UMA : robots généralistes made in Europe",
+      "speakers": [
+        "Rémi Cadène — UMA",
+        "Aude Durand — groupe iliad (modération)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Lancement annoncé la semaine même : **UMA (Universal Mechanical Assistance)**, robots mobiles et humanoïdes généralistes ; Cadène vient de Tesla (Autopilot, Optimus) et de Hugging Face (LeRobot).\n- Leçon de la conduite autonome : apprendre **à partir de données humaines** pour gérer les cas limites, avec un matériel robuste.\n- **Défi n°1 : la dextérité** (manipuler un œuf sans l'écraser) ; un cofondateur, Rob Knight, conçoit des mains robotiques open source.\n- Piste : des robots **auto-améliorants** qui progressent en pratiquant, et un matériel léger, sûr par conception, avec une **chaîne d'approvisionnement européenne**.\n- Pourquoi l'Europe : tissu industriel, ingénieurs qualifiés et formation abordable (*« 600 euros »* pour son année de master), **société vieillissante** qui rend l'automatisation nécessaire.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "qr07Cc6dVs8",
+        "title": "Opening Keynotes | ai-PULSE 2025 | 3rd Edition",
+        "publishedAt": "2025-12-09",
+        "transcript": true,
+        "startSeconds": 3664
+      }
+    },
+    {
+      "id": "gradium-neil-zeghidour-voice-ai",
+      "day": "2025-12-04",
+      "type": "keynote",
+      "title": "Gradium : amener la voix IA en production",
+      "speakers": [
+        "Neil Zeghidour — Gradium",
+        "Aude Durand — groupe iliad (modération)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Gradium**, spin-off de Kyutai lancée le mardi précédent (tour d'amorçage de 60 M€ d'après la communication iliad).\n- Constat : Moshi et Hibiki (open source) ont suscité beaucoup de demande mais restaient des **prototypes** (anglais seulement, pas de qualité studio) ; *« le dernier kilomètre »* entre prototype de recherche et produit est le travail d'une entreprise.\n- Produits : **transcription et synthèse temps réel** pour des agents vocaux personnalisables, « enveloppe vocale » autour de n'importe quel LLM ; clients cités : jeu vidéo (PNJ, commentaires e-sport), support client, médias, restauration de la voix.\n- **Démo live** sur un robot Reachy Mini (Hugging Face) : changement de voix, de personnalité, de langue et d'accent à la demande.\n- Frontières restantes : la **compréhension émotionnelle** (exemple de l'IA thérapeutique qui répond mal) et la parole dans des **environnements acoustiques complexes** (usine, bruit, plusieurs locuteurs).",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "qr07Cc6dVs8",
+        "title": "Opening Keynotes | ai-PULSE 2025 | 3rd Edition",
+        "publishedAt": "2025-12-09",
+        "transcript": true,
+        "startSeconds": 4360
+      }
+    },
+    {
+      "id": "benchmarking-the-frontier-artificial-analysis",
+      "day": "2025-12-04",
+      "type": "talk",
+      "title": "Benchmarking the frontier: what really matters in the new AI stack",
+      "speakers": [
+        "Micah Hill-Smith — Artificial Analysis"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Les trois labs de pointe sont au coude à coude** fin 2025 ; GPT-5 a pu décevoir, mais il y a un an les agents de code *« ne fonctionnaient pas vraiment »*, aujourd'hui si.\n- **Paradoxe du prix** : à niveau d'intelligence égal, le coût a baissé d'environ **100×** (niveau GPT-4) ; mais une requête coûte facilement **10× plus** qu'en 2023 à cause des modèles plus gros, du raisonnement et des agents. Jusqu'à **trois ordres de grandeur** d'écart (≈5 $ à 2 000 $) pour faire tourner leur index.\n- **Raisonnant ou non ne suffit plus** : parler d'**efficacité en tokens**, qui pilote latence et coût.\n- **Open weights** : l'écart avec les modèles propriétaires reste stable ; **4 des 5 meilleurs modèles ouverts sont chinois** (Kimi K2 Thinking, DeepSeek V3.2, MiniMax M2, Qwen), tendance jugée durable. Mistral Large 3, lancé deux jours plus tôt, à relire comme un modèle non encore raisonnant ; les Ministral (3B/8B/14B) jugés très convaincants.\n- Nouveaux indices : **Omniscience** (l'hallucination est *« un problème d'incitation »* ; les modèles Claude ont le taux d'hallucination le plus bas) et **Openness Index** (OLMo 3 le plus proche du score parfait).",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "igpjxyk1RBc",
+        "title": "ai-PULSE 2025: Benchmarking the frontier - what really matters in the new AI stack",
+        "publishedAt": "2025-12-11",
+        "transcript": true
+      }
+    },
+    {
+      "id": "from-single-agents-to-agent-fleets-dust",
+      "day": "2025-12-04",
+      "type": "talk",
+      "title": "From single agents to agent fleets: lessons from building Dust's agentic platform",
+      "speakers": [
+        "Pauline Pham — Dust"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Retour sur deux ans et demi de Dust : la plupart des agents échouent parce qu'ils sont de simples chatbots sans **personnalisation, mémoire ni contexte**.\n- Pari fait dès 2023 : **tout salarié curieux doit pouvoir construire un agent**, sans être ingénieur, en y encodant son savoir « tribal ».\n- **Permissions des agents découplées de celles des humains** : un agent peut agir en tâche de fond sur des données qu'un humain n'a pas, selon des espaces restreints définis par l'équipe sécurité ; classification centralisée des outils et données en **« high stake / low stake »**.\n- Les évaluations des labs sont « overfittées » ; en entreprise, miser sur l'**observabilité** (inspecter chaque exécution) et sur la connaissance terrain des opérateurs.\n- Leçons : décomposer en petits agents puis composer un workflow ; la confiance se construit en **formant les gens** ; rester **agnostique** (modèles et outils).",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "xZyMYBTWbTA",
+        "title": "ai-PULSE: From single agents to agent fleets - lessons from building Dust's agentic platform",
+        "publishedAt": "2025-12-11",
+        "transcript": true
+      }
+    },
+    {
+      "id": "inside-the-agentic-stack-mirakl",
+      "day": "2025-12-04",
+      "type": "talk",
+      "title": "Inside the Agentic Stack: How Agency Is Rewriting Enterprise",
+      "speakers": [
+        "Anne-Claire Baschet — Mirakl"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Trois ères : travail traditionnel → **tâches assistées par l'IA** → **agents « human-led »** (l'humain fixe le but et relit, l'agent fait le travail).\n- Support client : agent disponible 24/7, même qualité qu'un humain, **36 % de gain d'efficacité** ; fusion des équipes documentation et service client, avec un responsable de l'agent « comme un product manager ».\n- **RFP** : un agent construit par les équipes juridique et sécurité, appelé depuis Google Sheets, fait passer une réponse de **plus de 20 h à moins de 5 h** ; première fois qu'un commercial remercie un agent dans le canal #wins.\n- Pas d'équipe centrale : **100 % des salariés doivent pouvoir construire leurs agents** sur une méta-plateforme multi-modèles (Dust).\n- Produit : onboarding de catalogues par des agents, **−95 % de délai** ; conseil : viser plus de 90 % d'amélioration sur trois sujets maximum plutôt que 30 % partout, et explorer les nouveaux marchés (commerce agentique).",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "GHSjndTICCg",
+        "title": "ai-PULSE 2025: Inside the Agentic Stack - How Agency Is Rewriting Enterprise",
+        "publishedAt": "2025-12-15",
+        "transcript": true
+      }
+    },
+    {
+      "id": "agents-that-actually-do-the-work",
+      "day": "2025-12-04",
+      "type": "roundtable",
+      "title": "Agents that actually do the work: how autonomy changes the way we build",
+      "speakers": [
+        "Robert Rizk — BLACKBOX AI",
+        "Benjamin De Almeida — SOCLE AI",
+        "Ramine Roane — AMD",
+        "Fred Bardolle — Scaleway (modération)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif : ce qu'il faut pour rendre fiables en production des agents qui **écrivent et refactorent du code, déclenchent des outils et prennent des décisions** dans des workflows.\n- Trois angles : agents de code sur de grosses bases (Blackbox), agents d'entreprise **prévisibles et auditables** en environnement régulé (Socle), matériel et runtimes pour de **longues boucles de raisonnement** (AMD).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "FJ609Z79C54",
+        "title": "ai-PULSE 2025: Agents that actually do the work - how autonomy changes the way we build",
+        "publishedAt": "2025-12-11",
+        "transcript": false
+      }
+    },
+    {
+      "id": "agentic-stack-for-regulated-industries",
+      "day": "2025-12-04",
+      "type": "talk",
+      "title": "Agentic Stack for Regulated Industries: Architecture Essentials",
+      "speakers": [
+        "Han Heloir — Mistral AI"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif : la plupart des agents échouent en environnement régulé faute d'architecture adaptée.\n- Briques nécessaires : **orchestration déterministe** (auditabilité), raisonnement explicable (conformité), outillage gouverné (sécurité), infrastructure souveraine (résidence des données).\n- Illustré par un système de **gestion de sinistres d'assurance** traitant des milliers de décisions par mois : calibration de la confiance, gestion des logs d'audit, **montée progressive de l'autonomie**.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "_aE_4yaXG3o",
+        "title": "ai-PULSE 2025: Agentic Stack for Regulated Industries - Architecture Essentials",
+        "publishedAt": "2025-12-11",
+        "transcript": false
+      }
+    },
+    {
+      "id": "a-deep-dive-into-mcp-and-chatgpt-apps",
+      "day": "2025-12-04",
+      "type": "talk",
+      "title": "A deep dive into MCP and ChatGPT apps",
+      "speakers": [
+        "Pierre-Louis Theron — Alpic"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif : état de la pile **MCP, ACP et ChatGPT apps**, et bonnes pratiques pour construire, déployer et **monétiser un serveur MCP en production**.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "iI5ZVKiVXqU",
+        "title": "ai-PULSE 2025: A deep dive into MCP and ChatGPT apps",
+        "publishedAt": "2025-12-15",
+        "transcript": false
+      }
+    },
+    {
+      "id": "building-at-the-speed-of-agents",
+      "day": "2025-12-04",
+      "type": "roundtable",
+      "title": "Building at the speed of agents: from training pipelines to data infrastructure",
+      "speakers": [
+        "Aurélien Delfosse — H Company",
+        "Dan Chester — VAST Data",
+        "Jérémie Eliahou Ontiveros — SemiAnalysis"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif : entraîner des modèles agentiques qui voient et agissent exige un **stockage à haut débit**, des pipelines propres et une infrastructure qui suit l'évolution des jeux de données, pour garder des **cycles d'itération courts**.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "BzfGSwOmyTc",
+        "title": "ai-PULSE: Building at the speed of agents - from training pipelines to data infrastructure",
+        "publishedAt": "2025-12-11",
+        "transcript": false
+      }
+    },
+    {
+      "id": "the-first-ai-flying-a-production-fighter-jet",
+      "day": "2025-12-04",
+      "type": "talk",
+      "title": "The first AI flying a production fighter jet",
+      "speakers": [
+        "Thomas Palomares — Helsing"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Architecture **multi-agents** qui évalue la situation de combat, choisit une tactique et exécute les manœuvres ; tout l'enjeu est le passage **de la simulation au vol réel** sous contraintes de sûreté aéronautique (descriptif).\n- D'après le blog Scaleway : le système **Centaur** repose sur l'apprentissage par renforcement, tourne à bord et fait des **recommandations validées par le pilote** ; le combat aérien moderne est décrit comme *« une partie d'échecs en 3D à grande vitesse jouée dans un ouragan »*.",
+      "summarySources": [
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "H_J5w_yt0yM",
+        "title": "ai-PULSE 2025: The first AI flying a production fighter jet",
+        "publishedAt": "2025-12-11",
+        "transcript": false
+      }
+    },
+    {
+      "id": "from-foundation-models-to-real-world-actions",
+      "day": "2025-12-04",
+      "type": "roundtable",
+      "title": "From Foundation Models to Real-World Actions",
+      "speakers": [
+        "Firas Abi Farraj — Enchanted Tools",
+        "Grégoire Linard — Enchanted Tools",
+        "Jean-Baptiste Kempf — Scaleway"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Passer de la perception à l'action pour des robots dans des lieux non structurés (maisons, hôpitaux) : planification, compréhension spatiale, **où faire tourner les modèles** (embarqué, edge, cloud), sûreté (descriptif).\n- D'après le blog Scaleway : deep learning pour la perception, RL pour la robustesse, puis LLM, VLM et world models qui accélèrent tout ; mais *« une erreur en IA robotique, ce n'est pas une coquille, c'est une avalanche »* (erreurs qui se cumulent sur les tâches longues).",
+      "summarySources": [
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "nz3pkpJhSck",
+        "title": "ai-PULSE 2025: From Foundation Models to Real-World Actions",
+        "publishedAt": "2025-12-11",
+        "transcript": false
+      }
+    },
+    {
+      "id": "from-lab-to-product-with-european-voice-model",
+      "day": "2025-12-04",
+      "type": "roundtable",
+      "title": "From lab to product with European voice model",
+      "speakers": [
+        "Alexandre Défossez — Kyutai",
+        "Enrico Bertino — indigo.ai",
+        "Constance Morales — Scaleway (modération)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Passer de la recherche ouverte (Moshi) à des produits conversationnels : fine-tuning multilingue, efficacité, confidentialité et souveraineté des modèles (descriptif).\n- D'après le blog Scaleway : le passage en production relève de la **discipline d'ingénierie plus que de la taille du modèle** ; la gouvernance des données est une contrainte de conception de premier ordre ; *« avec Moshi, nous avons créé une plateforme sur laquelle les développeurs peuvent innover »* (Défossez).",
+      "summarySources": [
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "BtLUnIc1w2E",
+        "title": "ai-PULSE 2025: From lab to product with European voice model",
+        "publishedAt": "2025-12-11",
+        "transcript": false
+      }
+    },
+    {
+      "id": "translation-and-the-limits-of-autoregressive-transformers",
+      "day": "2025-12-04",
+      "type": "talk",
+      "title": "Translation and the limits of autoregressive transformers",
+      "speakers": [
+        "Marco Trombetti — Translated"
+      ],
+      "feedbackFrom": [],
+      "summary": "- La traduction révèle les limites des architectures actuelles ; Translated construit **DVPS**, un modèle de fondation ouvert pour les dépasser (descriptif).\n- D'après le blog Scaleway : progrès mesuré au **temps que passent les traducteurs à corriger** la machine ; la « singularité » en traduction repoussée au début des années 2030 ; *« si un LLM hallucine un peu, personne ne s'en aperçoit ; en traduction, tout le monde rit »*.",
+      "summarySources": [
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "alwjX1r604I",
+        "title": "ai-PULSE 2025: Translation and the limits of autoregressive transformers",
+        "publishedAt": "2025-12-11",
+        "transcript": false
+      }
+    },
+    {
+      "id": "inside-photoroom-open-source-t2i-model",
+      "day": "2025-12-04",
+      "type": "talk",
+      "title": "Inside Photoroom's Open-Source T2I model",
+      "speakers": [
+        "Jon Almazán — Photoroom",
+        "David Bertoin — Photoroom"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Coulisses du nouveau modèle texte-image open source de Photoroom, construit en repartant de zéro : pipelines d'entraînement, composition des données, ajustements d'architecture (descriptif).\n- D'après le blog Scaleway : **PRX**, modèle de diffusion de **1,2 milliard de paramètres** sous Apache 2.0, qui tourne sur GPU grand public ; images recaptionnées pour apprendre plus vite ; toutes les expériences, y compris ratées, sont partagées.",
+      "summarySources": [
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "qNng7EYlXsE",
+        "title": "ai-PULSE 2025: Inside Photoroom's Open-Source T2I model",
+        "publishedAt": "2025-12-11",
+        "transcript": false
+      }
+    },
+    {
+      "id": "inference-everywhere-optimizing-performance",
+      "day": "2025-12-04",
+      "type": "talk",
+      "title": "Inference Everywhere: optimizing performance",
+      "speakers": [
+        "Steeve Morin — ZML"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif : construire une inférence efficace **de l'edge au serveur** sans sacrifier latence, débit ni fiabilité ; arbitrages entre généralité et spécialisation, portabilité entre matériels, leçons de mise en production chez ZML.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "yW6eGlfv3Jk",
+        "title": "ai-PULSE 2025: Inference Everywhere - optimizing performance",
+        "publishedAt": "2025-12-11",
+        "transcript": false
+      }
+    },
+    {
+      "id": "real-time-ai-building-100x-faster-inference",
+      "day": "2025-12-04",
+      "type": "talk",
+      "title": "Real-time AI: building 100x faster inference",
+      "speakers": [
+        "Gaël Delalleau — Kog"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif : la vitesse d'inférence est le goulot des agents et du « test-time compute » ; Kog vise une inférence **100× plus rapide** par optimisation GPU et innovations d'architecture Transformer. À 10 000–100 000 tokens/s, *« les agents et la Deep Research deviennent instantanés »*.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "5WaqrCALvWQ",
+        "title": "ai-PULSE 2025: Real-time AI: building 100x faster inference",
+        "publishedAt": "2025-12-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "beyond-flops-ai-carbon-footprint",
+      "day": "2025-12-04",
+      "type": "talk",
+      "title": "Beyond FLOPs: Engineering transparency into AI's carbon footprint",
+      "speakers": [
+        "Boris Gamazaychikov — Salesforce",
+        "Elise Auvray — Scaleway"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Salesforce présente l'**AI Energy Score** (méthode standardisée, avec Hugging Face) ; Scaleway son **calculateur d'empreinte environnementale** qui traduit l'usage GPU en émissions (descriptif).\n- D'après le blog Scaleway : l'Energy Score mesure une efficacité théorique, Scaleway *« le carburant réellement brûlé »* ; sujets : périmètre de mesure (GPU, nœud, workload), compromis précision/surcoût/reproductibilité.",
+      "summarySources": [
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "d9HsCAmuDAQ",
+        "title": "ai-PULSE 2025: Beyond FLOPs - Engineering transparency into AI's carbon footprint",
+        "publishedAt": "2025-12-11",
+        "transcript": false
+      }
+    },
+    {
+      "id": "building-ai-that-scales-efficient-compute",
+      "day": "2025-12-04",
+      "type": "talk",
+      "title": "Building AI that scales: efficient compute for a smarter, faster, everywhere world",
+      "speakers": [
+        "Sean Varley — Ampere Computing"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le blog Scaleway : le goulot passe de l'innovation des modèles à l'**économie de l'infrastructure** ; la GenAI pourrait consommer ~70 % de l'énergie des datacenters d'ici 2030 (chiffre du speaker) ; pour les petits modèles spécialisés, les **CPU** peuvent être plus rentables que les GPU — raisonner en **« performance par euro »** et **« tokens par watt »**.",
+      "summarySources": [
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "wGcvDGA5kvU",
+        "title": "ai-PULSE 2025: Building Al that scales - efficient compute for a smarter, faster, everywhere world",
+        "publishedAt": "2025-12-11",
+        "transcript": false
+      }
+    },
+    {
+      "id": "beyond-air-cooling-ai-hardware-design",
+      "day": "2025-12-04",
+      "type": "roundtable",
+      "title": "Beyond Air Cooling: new frontiers in AI hardware design",
+      "speakers": [
+        "Albert Tsai — Giga Computing",
+        "Christophe Lacroix — Motul",
+        "Frédéric Petit — Valeo",
+        "Bruno Lecointe — Eviden",
+        "Albane Bruyas — Scaleway (modération)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Refroidissement de la puce au datacenter : cold plates, immersion, boucles liquides, réutilisation de chaleur (descriptif).\n- D'après le blog Scaleway : la densité par GPU est passée de **700 W à plus de 2 kW** ; le refroidissement liquide direct apporterait *« 5 à 8 % d'efficacité en plus »* (Lecointe).",
+      "summarySources": [
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "llMW8jQQ0Tw",
+        "title": "ai-PULSE: Beyond Air Cooling - new frontiers in AI hardware design",
+        "publishedAt": "2025-12-15",
+        "transcript": false
+      }
+    },
+    {
+      "id": "how-to-build-a-sustainable-ai-infrastructure",
+      "day": "2025-12-04",
+      "type": "talk",
+      "title": "How to build a sustainable AI infrastructure",
+      "speakers": [
+        "Robert Keus — GreenPT",
+        "Cas Burggraaf — GreenPT"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le blog Scaleway : *« l'IA durable n'existe pas »*, seulement des façons de réduire l'impact ; modèles auto-hébergés, mesure en temps réel (**milliwattheures pour 100 tokens**) ; *« utiliser GPT pour beaucoup de tâches, c'est prendre une Ferrari pour faire les courses »*.",
+      "summarySources": [
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "QEFj9L4Q_N8",
+        "title": "ai--PULSE 2025: How to build a sustainable AI infrastructure",
+        "publishedAt": "2025-12-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "ai-everywhere-reinventing-spotify-core-strategies",
+      "day": "2025-12-04",
+      "type": "talk",
+      "title": "AI everywhere: reinventing Spotify's core strategies",
+      "speakers": [
+        "Romain Takeo Bouyer — Spotify"
+      ],
+      "feedbackFrom": [],
+      "summary": "- L'IA touche les trois stratégies cœur de Spotify : **ubiquité** (interfaces IA, intégration aux fournisseurs d'inférence), **personnalisation** (recommandations raisonnées, DJ conversationnel), **freemium** (descriptif).\n- D'après le blog Scaleway : passage *« de la prédiction au raisonnement »* ; **75 millions de titres retirés pour abus en 2025** ; l'objectif reste de renforcer le lien entre artiste et auditeur face à la musique générée.",
+      "summarySources": [
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "iRiRwTxEyGA",
+        "title": "ai-PULSE 2025: AI everywhere - reinventing Spotify's core strategies",
+        "publishedAt": "2025-12-15",
+        "transcript": false
+      }
+    },
+    {
+      "id": "from-molecules-to-models-pharmaceutical-rd",
+      "day": "2025-12-04",
+      "type": "roundtable",
+      "title": "From molecules to models: How AI is redesigning pharmaceutical R&D",
+      "speakers": [
+        "Joel Belafa — Biolevate",
+        "Antoine De Torcy — Biolevate",
+        "Cédric Mahé — Sanofi Vaccines",
+        "Sophia Metz — Biostream",
+        "Sophie Monnier — InstaDeep (modération)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Modèles de fondation adaptés aux données biomédicales, données rares et sensibles, validation entre hôpitaux et labos (descriptif).\n- D'après le blog Scaleway : la méthode de choix de l'antigène d'un vaccin *« n'a pas beaucoup changé en 50 ans »* (Mahé) ; Biolevate a déjà **déposé des brevets** issus de découvertes faites avec l'IA.",
+      "summarySources": [
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "wjRQwefEvR0",
+        "title": "ai-PULSE 2025: From molecules to models - How AI is redesigning pharmaceutical R&D",
+        "publishedAt": "2025-12-15",
+        "transcript": false
+      }
+    },
+    {
+      "id": "open-and-repurposable-foundation-models-automotive",
+      "day": "2025-12-04",
+      "type": "talk",
+      "title": "Open & Repurposable: Foundation Models for the Automotive Industry",
+      "speakers": [
+        "Andrei Bursuc — Valeo"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Modèles de fondation **entièrement ouverts** (données, modèles, code) pour la perception en conduite autonome : encodeur visuel **Franca**, modèles vidéo et vidéo-action **VaViM / VaVAM**, composables entre eux pour la distillation inter-capteurs et l'auto-annotation (descriptif et blog Scaleway).",
+      "summarySources": [
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "nMNbLZ9fEoM",
+        "title": "ai-PULSE 2025: Open & Repurposable: Foundation Models for the Automotive Industry",
+        "publishedAt": "2025-12-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "from-edge-inference-to-generative-pipelines-video-ai",
+      "day": "2025-12-04",
+      "type": "roundtable",
+      "title": "From edge inference to generative pipelines: building video AI that works",
+      "speakers": [
+        "Olivier Reynaud — Aive",
+        "Dam Mulhem — XXII",
+        "Paul Mochkovitch — Molia"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Deux architectures de l'IA vidéo : inférence temps réel en **edge** (XXII) et pipelines **génératifs** de post-production (descriptif).\n- D'après le blog Scaleway : compromis précision/vitesse et généralité/spécialisation ; systèmes **déterministes et hors ligne** pour la vision urbaine ; temps réel atteint avec des modèles *« principalement open source, fine-tunés »* (Reynaud).",
+      "summarySources": [
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "7R9_ND-1FwA",
+        "title": "ai-PULSE 2025: From edge inference to generative pipelines - building video AI that works",
+        "publishedAt": "2025-12-15",
+        "transcript": false
+      }
+    },
+    {
+      "id": "creative-integrity-and-algorithmic-innovation",
+      "day": "2025-12-04",
+      "type": "roundtable",
+      "title": "Creative Integrity and Algorithmic Innovation: A Dual Approach",
+      "speakers": [
+        "Nathalie Birocheau — Ircam Amplify",
+        "Frédéric Amadu — Ircam Amplify",
+        "Corina Chutaux — Sorbonne Université"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif : **détection d'artefacts générés par IA** dans l'audio (Ircam Amplify) face à une vision de la créativité incluant des agents computationnels ; question : l'humain peut-il rester au centre de la création à l'ère du son génératif ?",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "2yguKB87EVY",
+        "title": "ai-PULSE 2025: Creative Integrity and Algorithmic Innovation - A Dual Approach",
+        "publishedAt": "2025-12-15",
+        "transcript": false
+      }
+    },
+    {
+      "id": "ai-and-privacy-building-secure-intelligence-at-scale",
+      "day": "2025-12-04",
+      "type": "talk",
+      "title": "AI and Privacy: Building secure intelligence at scale",
+      "speakers": [
+        "Bart Butler — Proton",
+        "Romain Dillet — Drysdale Ventures (modération)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif : comment Proton a construit **Lumo**, son assistant conversationnel, en restant fidèle au **chiffrement zero-access** ; compromis d'ingénierie pour une IA respectueuse de la vie privée à grande échelle.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "GZtKVePqJnY",
+        "title": "ai-PULSE 2025: AI and Privacy - Building secure intelligence at scale",
+        "publishedAt": "2025-12-11",
+        "transcript": false
+      }
+    },
+    {
+      "id": "cracking-product-taxonomy-at-scale-veepee",
+      "day": "2025-12-04",
+      "type": "talk",
+      "title": "Cracking Product taxonomy at scale: A multimodal, zero-shot approach",
+      "speakers": [
+        "Anis Gandoura — Veepee"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif : taxonomie de **~1 400 nœuds**, déséquilibrée et mouvante ; d'une base CLIP zero-shot à un **LLM multimodal + « label book »** atteignant **94 % de précision Top-1** sans entraînement lourd.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "fF9X0bRcsD8",
+        "title": "ai-PULSE 2025: Cracking Product taxonomy at scale - A multimodal, zero-shot approach",
+        "publishedAt": "2025-12-15",
+        "transcript": false
+      }
+    },
+    {
+      "id": "finally-solving-the-high-stakes-problems-gilion",
+      "day": "2025-12-04",
+      "type": "talk",
+      "title": "Finally solving the high-stakes problems with agentic tree structures and metrics pipes",
+      "speakers": [
+        "Henrik Landgren — Gilion"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif : la méfiance est le premier frein en décision à fort enjeu ; réponse par la **« responsabilité radicale »** — un agent par tâche étroite et auditable. Gilion revendique **90 %+ de précision** sur des prévisions de revenus à 12 mois (chiffre du speaker).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "RZ9tAMTPnHQ",
+        "title": "ai-PULSE 2025: Finally solving the high-stakes problems",
+        "publishedAt": "2025-12-15",
+        "transcript": false
+      }
+    },
+    {
+      "id": "tabular-foundation-models-neuralk",
+      "day": "2025-12-04",
+      "type": "talk",
+      "title": "Tabular Foundation Models: the new frontier of data science",
+      "speakers": [
+        "Alexandre Pasquiou — Neuralk-AI"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif : les données tabulaires restent l'actif clé des entreprises ; **NICL 2.0**, modèle de fondation tabulaire, fait des prédictions par **apprentissage en contexte** sans réentraînement, en retirant des semaines au cycle data science.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "6D2qSD7N4Os",
+        "title": "ai-PULSE: Tabular Foundation Models: the new frontier of data science",
+        "publishedAt": "2025-12-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "building-computer-using-agents-for-lead-generation",
+      "day": "2025-12-04",
+      "type": "workshop",
+      "title": "Building computer-using agents for AI lead generation",
+      "speakers": [
+        "Adam Marszowski — SOFTIQ"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Workshop d'après un déploiement réel pour un client e-commerce : des **agents qui utilisent l'ordinateur** cherchent sur le web, manipulent des interfaces variées et génèrent des leads B2B qualifiés sans intervention humaine ; fiabilité, sécurité et performance sur l'infrastructure Scaleway (descriptif).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "7vIcz2_zJRc",
+        "title": "ai-PULSE 2025: Building computer-using agents for AI lead generation",
+        "publishedAt": "2025-12-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "solving-combinatorial-challenges-with-rl-pcb-routing",
+      "day": "2025-12-04",
+      "type": "talk",
+      "title": "Solving complex combinatorial challenges with Reinforcement Learning: the PCB routing demo",
+      "speakers": [
+        "Gianluca Drappo — InstaDeep"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Démo de 15 minutes : le **routage de circuits imprimés** traité comme un jeu par apprentissage par renforcement ; approche transposable à la logistique, aux infrastructures ou à la biologie (descriptif).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "bdOzwGQdB48",
+        "title": "ai-PULSE 2025: Solving complex combinatorial challenges with Reinforcement Learning",
+        "publishedAt": "2025-12-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "inductive-learning-ai-safety-disinformation",
+      "day": "2025-12-04",
+      "type": "talk",
+      "title": "Inductive learning, AI safety, and superintelligence in the age of disinformation",
+      "speakers": [
+        "Antoine Jardin — Arlequin AI"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif : que signifie une information « vraie » à l'ère de l'IA générative ? Arlequin combine **apprentissage non supervisé et inférence multimodale** pour identifier des récits de désinformation sans injecter de biais.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "XkF5wIt43BA",
+        "title": "ai-PULSE 2025: Inductive learning, AI safety, and superintelligence in the age of disinformation",
+        "publishedAt": "2025-12-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "decoding-aive-mgt-video-transcreation",
+      "day": "2025-12-04",
+      "type": "talk",
+      "title": "Decoding Aive's technology behind next-gen video transcreation: MGT",
+      "speakers": [
+        "Alexandre Thomas — Aive"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif : après les outils manuels et le prompt, une vidéo construite **à partir d'un brief** ; la technologie propriétaire **MGT** combine plusieurs modèles et du méta-apprentissage (6 ans de R&D).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "_2akz6Zyw7Y",
+        "title": "ai-PULSE 2025: Decoding Aive's technology behind next-gen video transcreation: MGT",
+        "publishedAt": "2025-12-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "ai-adoption-measuring-roi-european-regulatory-framework",
+      "day": "2025-12-04",
+      "type": "talk",
+      "title": "AI Adoption: Measuring and Maximizing ROI within the European Regulatory Framework",
+      "speakers": [
+        "Alina Holcroft — ETHIQAIS"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif : répondre aux questions des comités exécutifs — priorités, **mesure du ROI de l'IA**, stratégie de pilote — dans un cadre réglementaire européen et de confiance.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "t6HU-QbQnRw",
+        "title": "ai-PULSE 2025: AI Adoption: Measuring and Maximizing ROI within the European Regulatory Framework",
+        "publishedAt": "2025-12-30",
+        "transcript": false
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Scaling AI Sustainably with FUJITSU-MONAKA (Founders Café)",
+    "From Desktop to Supercomputer: Building Local AI Workflows with GIGABYTE AI TOP ATOM (Founders Café)",
+    "Build the OCR-powered menu inventory for « Café de l'AI » (workshop, Founders Café)",
+    "Build the audio agent for « Café de l'AI » (workshop, Founders Café)"
+  ],
+  "sources": [
+    {
+      "label": "Site officiel ai-PULSE 2025",
+      "url": "https://2025.ai-pulse.eu/"
+    },
+    {
+      "label": "Agenda officiel ai-PULSE 2025 (36 événements)",
+      "url": "https://2025.ai-pulse.eu/agenda"
+    },
+    {
+      "label": "Playlist YouTube « ai-PULSE 2025 | Scaleway »",
+      "url": "https://www.youtube.com/playlist?list=PL8WjEBDU6iML8jLXr93rLlUXmgjpBMCAI"
+    },
+    {
+      "label": "Live YouTube des keynotes d'ouverture (4 décembre 2025)",
+      "url": "https://www.youtube.com/watch?v=xsQ-8_Ajd04"
+    },
+    {
+      "label": "Blog Scaleway — ai-PULSE 2025: Inside the Ideas and Announcements (récap)",
+      "url": "https://www.scaleway.com/en/blog/ai-pulse-2025-recap/"
+    },
+    {
+      "label": "Scaleway — livre blanc « The key insights from ai-PULSE 2025 »",
+      "url": "https://www.scaleway.com/en/ai-pulse-2025-white-paper/"
+    },
+    {
+      "label": "Blog Scaleway — Insights: Building for Real-world Deployment",
+      "url": "https://www.scaleway.com/en/blog/ai-pulse-2025-insights-deployment/"
+    },
+    {
+      "label": "Blog Scaleway — Insights: Building Toward Sustainable AI",
+      "url": "https://www.scaleway.com/en/blog/ai-pulse-2025-insights-sustainability/"
+    },
+    {
+      "label": "Blog Scaleway — Insights: Building AI for Every Modality",
+      "url": "https://www.scaleway.com/en/blog/ai-pulse-2025-insights-modalities/"
+    },
+    {
+      "label": "Blog Scaleway — Insights: Building Toward Embodied AI",
+      "url": "https://www.scaleway.com/en/blog/ai-pulse-2025-insights-robotics/"
+    },
+    {
+      "label": "Groupe iliad — Retour sur l'édition 2025 d'ai-PULSE",
+      "url": "https://www.iliad.fr/fr/actualites/article/retour-sur-l-edition-2025-d-ai-pulse"
+    },
+    {
+      "label": "Groupe iliad — Smarter, Faster, Everywhere: European AI in the spotlight at ai-PULSE 2025",
+      "url": "https://www.iliad.fr/en/actualites/article/smarter-faster-everywhere-european-ai-in-the-spotlight-at-ai-pulse-2025"
+    },
+    {
+      "label": "Comino — Comino Attends ai-PULSE 2025 (billet d'exposant)",
+      "url": "https://www.comino.com/blog/comino-attends-ai-pulse-2025"
+    },
+    {
+      "label": "Fortune — Yann LeCun, AMI Labs (citation prononcée à ai-PULSE)",
+      "url": "https://fortune.com/2025/12/19/yann-lecun-ami-labs-ai-startup-valuation-meta-departure/"
+    },
+    {
+      "label": "LinkedIn : uniquement des posts d'annonce pré-événement lus (Gabriel Ghnassia, groupe iliad, Maddyness) ; aucun post de retour participant retrouvé"
+    }
+  ]
 }

@@ -8,6 +8,451 @@
   "city": "Paris",
   "venue": "Cité des Sciences et de l'Industrie",
   "url": "https://www.devopsrex.fr/fr/replay-2025",
-  "status": "pending",
-  "sessions": []
+  "programUrl": "https://www.devopsrex.fr/fr/programme",
+  "theme": "Gouvernance & souveraineté, IA en production, DevSecOps, DevOps",
+  "dateConfidence": "ok",
+  "note": "6e édition, 10 & 11 décembre 2025, Cité des Sciences et de l'Industrie (Paris), en parallèle d'Open Source Experience. Bilan de l'organisateur : 600 participants, 30 exposants, 25 speakers, 20 conférences et talks, en français.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-09-25",
+  "revisit": "Aucun post LinkedIn de participant lu (seul le bilan de l'organisateur a été trouvé) ; corpus limité à 3 comptes-rendus de blog. Chercher des posts de participants et de speakers (#devopsrex2025) et le programme détaillé (jours et horaires des talks de Maitrehenry, Verchère, Juggery et de la table ronde).",
+  "corpus": "3 comptes-rendus de blog publiés après l'événement (Onepoint sur dev.to, 15/12/2025 ; Synapsys, 17/12/2025 ; Bpifrance.IO, 24/12/2025), le post bilan de DEVOPS REX sur LinkedIn, les articles du blog officiel (replays, table ronde, Codeshift), les 17 replays YouTube de talks (descriptions officielles) et 4 transcripts complets (keynote d'Ophélie Coelho, Orange, Julien Maitrehenry, Rémi Verchère).",
+  "limits": "Aucun post LinkedIn de participant lu : les retours viennent de trois blogs d'entreprises (ESN, cabinet, fonds d'investissement), centrés sur une poignée de talks (Kaliop, Accure IT, Datadog, BPCE, iMSA, Anyshift). Le programme officiel n'est plus lisible (page dynamique) : le jour de quatre sessions reste inconnu et une partie des talks n'est résumée qu'à partir de la description officielle de la vidéo.",
+  "tldr": "Une 6e édition **100 % REX et en français** où la **souveraineté** devient un critère de choix d'infrastructure assumé (quitter AWS, S3NS, Scaleway, Clever Cloud, SecNumCloud) et où l'**IA passe du POC à la production** (plateformes, code review, RAG, LLMaaS), le tout sur fond de **pragmatisme** : standardiser plutôt qu'empiler des outils, et ne pas mettre du Kubernetes partout.",
+  "keyTakeaways": [
+    "**Quitter un hyperscaler est faisable** : Kaliop a migré une plateforme de monitoring d'AWS vers Scaleway en 4 mois à 3 personnes, avec une facture passée d'environ 50 000 € à environ 20 000 € par mois — à condition de **ne pas chercher à transposer à l'identique** (Onepoint, Synapsys).",
+    "**Cartographier ses dépendances service par service** : dire qu'on dépend d'AWS, d'Azure ou de Google Cloud ne suffit pas, il faut savoir quelles briques on utilise pour savoir lesquelles on peut remplacer (Ophélie Coelho, keynote).",
+    "**Les templates comme « pot de miel »** : Orange a diffusé le DevSecOps par des templates GitLab CI modulaires (devenus to-be-continuous), sans imposition hiérarchique, jusqu'à 22 000 projets en 2025, avec SBOM systématiques remontés dans Dependency-Track.",
+    "**Mesurer la maturité pour piloter la transformation** : grille DevSecOps « à la Nutriscore » (A à E) sur 4 axes chez BPCE-IT : Craft, CI, CD, Sécurité (Onepoint).",
+    "**Choisir selon le besoin réel, pas selon la hype** : VM, systemd, Ansible, Terraform et GitHub Actions suffisent longtemps à une petite équipe ; Kubernetes arrive quand les SLA et les applications clientes l'exigent (Julien Maitrehenry).",
+    "**Un projet IA souverain doit éviter le « CV Driven Development »** : 70 à 88 % des POC IA n'arrivent jamais en production selon Antoine Durand (Accure IT) ; sa réponse est une stack RAG simple et 100 % française (Clever Cloud, PostgreSQL/pgVector, Mistral AI, Airflow).",
+    "**La sécurité se co-construit avec les équipes** plutôt que d'être imposée : l'équipe sécurité de Datadog a co-conçu les accès Kubernetes et aux logs sensibles avec les équipes produit et plateforme (Bpifrance.IO).",
+    "**Les agents IA ont besoin de contexte** : modéliser l'infrastructure comme un graphe de dépendances multi-sources pour que l'IA diagnostique juste (Roxane Fischer, Anyshift, selon Bpifrance.IO).",
+    "**Attention à la dette Kubernetes** : mettre à jour régulièrement, ne pas tout conteneuriser, refactoriser tôt pour éviter les « macroservices » (message récurrent relevé par Onepoint)."
+  ],
+  "sessions": [
+    {
+      "id": "codeshift-demarche-devsecops-chez-les-ops-de-bpce-it",
+      "day": "2025-12-10",
+      "type": "talk",
+      "title": "« Codeshift » : démarche DevSecOps chez les Ops de BPCE-IT",
+      "speakers": [
+        "Julien Fouqueray — BPCE IT",
+        "Clément Rochas — BPCE IT (consultant freelance)"
+      ],
+      "feedbackFrom": [
+        "Yohann Streibel et Antonin Brugnot (Onepoint, dev.to)",
+        "Bpifrance.IO",
+        "Blog DEVOPS REX (organisateur)"
+      ],
+      "summary": "- REX d'une démarche de **diffusion de la culture DevSecOps chez les équipes d'infrastructure et de sécurité** : mesure de la maturité, outils, formations, avec un cap de **reconstruction automatique d'ici 2027** (description officielle).\n- Ce qu'a retenu Onepoint : une **grille de maturité « à la Nutriscore »** (notes A à E) sur **4 axes : Craft, CI, CD et Sécurité**.\n- Ce qu'a retenu Bpifrance.IO : la transformation tient à l'**alignement DevOps, Craft et Agile**, porté par des **équipes de coaching dédiées** et des « contrats » d'onboarding.\n- Relecture de l'organisateur (blog, avril 2026) : *« le vrai sujet n'est pas l'outil (GitOps, ArgoCD, etc.) mais le niveau de standardisation »*.",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "X47bPnFwqMc",
+        "title": "\"Codeshift\" - Démarche DevSecOps chez les Ops de BPCE-IT - DEVOPS REX 2025",
+        "publishedAt": "2025-12-16",
+        "transcript": false
+      }
+    },
+    {
+      "id": "engineering-platform-boostee-a-l-ia-ok-mais-pour-quoi-faire",
+      "day": "2025-12-10",
+      "type": "talk",
+      "title": "Engineering Platform boostée à l'IA : ok mais pour quoi faire ?",
+      "speakers": [
+        "Matthieu Vincent — Sopra Steria"
+      ],
+      "feedbackFrom": [
+        "Yohann Streibel et Antonin Brugnot (Onepoint, dev.to)"
+      ],
+      "summary": "- Plateforme d'ingénierie interne de Sopra Steria, **11 000 utilisateurs**, qui outille les pratiques DevSecOps depuis 2018 et a été enrichie par l'IA : génération de code, couverture de tests, revue de code et autres usages opérationnels, avec des démonstrations (description officielle).\n- Ce qu'a retenu Onepoint : une vision **« Agentic AI in the Software Delivery Lifecycle »** où des agents interviennent **à chaque étape** (exigences, user stories, architecture, tests, code review). C'est l'exemple phare de la tendance « IA intégrée au cycle DevOps » dans leur compte-rendu.",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "XZIbT50DdDo",
+        "title": "Engineering Platform boostée à l'IA : ok mais pour quoi faire ? - DEVOPS REX 2025",
+        "publishedAt": "2025-12-16",
+        "transcript": false
+      }
+    },
+    {
+      "id": "comment-nous-avons-mis-en-place-la-pratique-devsecops-chez-orange",
+      "day": "2025-12-10",
+      "type": "talk",
+      "title": "Comment nous avons mis en place la pratique DevSecOps chez Orange",
+      "speakers": [
+        "Cédric Olivier — Orange",
+        "Girija Saint-Ange — Orange"
+      ],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript) :\n- Point de départ : la **migration de SVN vers GitLab en 2017**, où chaque projet inventait ses règles (*« une équipe sécurise, l'autre croise les doigts »*). **Pas d'imposition hiérarchique** : une communauté interne d'experts a co-construit le standard.\n- Un **pipeline standard** avec la sécurité par défaut à chaque étape (SAST, scan d'image, **SBOM systématique**), et un **« adaptive pipeline »** : seuls les jobs critiques en développement, tous les jobs non bloquants en MR draft, tout échec bloquant en MR ready.\n- Mise en œuvre par des **templates GitLab CI/CD modulaires** (un pipeline complet avec 4 includes), un site de documentation et un générateur graphique ; le projet est publié en open source sous le nom **to-be-continuous**.\n- **Adoption par le bouche-à-oreille** : 10 000 projets en 2022, 14 000 en 2023, 19 000 en 2024, 22 000 en 2025 (la description de la vidéo parle de « plus de 17 000 projets »). Les SBOM remontés dans Dependency-Track permettent au RSSI de voir immédiatement les applications touchées par une faille.\n- Formules : *« Sans sécurité, c'est pas DevSecOps, ça sera juste un DevOps »* ; *« Les templates, c'est le pot de miel qui tire les bonnes pratiques dans les équipes. »*\n- Questions-réponses : pourquoi Artifactory (multicloud, scan Xray) ; les freins cités sont la complexité globale et… le fait de ne pas lire la documentation. Sondage à main levée : une majorité de la salle venait d'entreprises de plus de 5 000 salariés.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "1sx_ldbsbv4",
+        "title": "Comment nous avons mis en place la pratique DevSecOps chez Orange - DEVOPS REX 2025",
+        "publishedAt": "2025-12-16",
+        "transcript": true
+      }
+    },
+    {
+      "id": "confiance-operationnelle-quand-securite-et-delivery-creent-les-modeles-d-acces",
+      "day": "2025-12-10",
+      "type": "talk",
+      "title": "Confiance opérationnelle : quand Sécurité et Delivery co-conçoivent les modèles d'accès",
+      "speakers": [
+        "Isabelle Kraemer — Datadog"
+      ],
+      "feedbackFrom": [
+        "Bpifrance.IO"
+      ],
+      "summary": "- REX de Datadog : plutôt que d'imposer des restrictions, l'équipe sécurité a **repensé avec les équipes produit et plateforme les permissions sur les clusters Kubernetes** et l'accès aux **logs sensibles**, sans casser la fluidité opérationnelle (description officielle).\n- Ce qu'a retenu Bpifrance.IO : au-delà du « shift left » par scanners, des **experts sécurité qui codent avec les équipes** les fonctionnalités sensibles (IAM, chiffrement, secrets), ce qui crée de l'**empathie et du partage de compétences**. Le rédacteur y voit une confirmation de sa propre approche (une observabilité qui crée une « confiance partagée » plutôt que de la surveillance).",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "GY04O-KhGXA",
+        "title": "Confiance opérationnelle : quand Sécurité et Delivery créent les modèles d'accès - DEVOPS REX 2025",
+        "publishedAt": "2025-12-16",
+        "transcript": false
+      }
+    },
+    {
+      "id": "keynote-gouvernance-et-souverainete-geopolitique-du-numerique",
+      "day": "2025-12-10",
+      "type": "keynote",
+      "title": "Keynote Gouvernance & Souveraineté : faire de la géopolitique du numérique comme du DevOps",
+      "speakers": [
+        "Ophélie Coelho — IRIS / CIS (CNRS)"
+      ],
+      "feedbackFrom": [
+        "Yohann Streibel et Antonin Brugnot (Onepoint, dev.to, mention seulement)"
+      ],
+      "summary": "Sur scène (transcript) :\n- Angle choisi : **« ouvrir les portes de l'atelier »** de la chercheuse en géopolitique du numérique en comparant son travail à celui d'un DevOps : corpus et jeux de données au lieu de clusters, chaîne collecte → nettoyage → géoréférencement → cartographie → texte au lieu d'un pipeline CI/CD, veille au lieu d'observabilité, câbles coupés et pannes de services au lieu d'incidents.\n- **Outils** : RIPE Atlas et RIPEstat (routage BGP, latence, chemins), QGIS, outils d'OSINT, imagerie satellitaire (elle conseille l'alternative française Nimbo, mise à jour mensuelle, plutôt que Google Earth), du Python, du SQL et du GeoJSON. Par principe, elle évite les outils des grandes plateformes qu'elle critique.\n- **Le problème n°1, ce sont les données** : absentes, fermées (propriété industrielle, infrastructures critiques) ou trop chères. Exemples : la consommation réelle des **campus de centres de données** annoncés en Europe (projets de 1 à 2 GW, voire 4 GW) n'est pas publiée, et les audits arrivent après les financements (*« on met la charrue avant les bœufs »*).\n- **Mesurer les dépendances** : aucune cartographie n'existe. Savoir qu'on dépend d'AWS, d'Azure ou de Google Cloud ne suffit pas : il faut savoir **de quels services on dépend dans ces « immenses bibliothèques »** pour savoir quelle brique on peut remplacer. Elle pointe un **manque de culture du risque** dans les entreprises comme à l'État.\n- **Travail de terrain** (Afrique du Sud) : des centres de données géants s'implantent près de quartiers sans électricité. Les indicateurs sont imparfaits (un nombre de datacenters n'est pas une capacité de calcul) et une carte se documente comme du code.\n- Conclusion : la discipline est jeune, *« on n'en est pas encore au DevOps »* : ce qui lui manque, c'est l'**automatisation** de la veille et du traitement des données. Talk en dépassement, donc sans questions.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "pwrTBaXXmZ8",
+        "title": "Keynote Gouvernance & Souveraineté - DEVOPS REX 2025",
+        "publishedAt": "2025-12-16",
+        "transcript": true
+      }
+    },
+    {
+      "id": "quitter-aws-une-migration-vers-le-cloud-souverain-presque-sans-douleur",
+      "day": "2025-12-10",
+      "type": "talk",
+      "title": "Quitter AWS : une migration vers le cloud souverain (presque) sans douleur",
+      "speakers": [
+        "Jérôme Galais — Kaliop"
+      ],
+      "feedbackFrom": [
+        "Yohann Streibel (Onepoint, dev.to)",
+        "Robin Van Dessel (Synapsys)"
+      ],
+      "summary": "- La session la plus détaillée dans les comptes-rendus : migration d'une **plateforme de monitoring** d'AWS vers **Scaleway** (bare metal et services managés), pour **80 000 utilisateurs** et **22 000 clients actifs** (Onepoint).\n- Chiffres retenus : **4 mois**, **3 personnes à temps plein**, coûts passés de **~50 000 € à ~20 000 € par mois**, soit l'objectif de **plus de 50 % de réduction** atteint (Onepoint, Synapsys).\n- Motivations : **coûts AWS excessifs et RGPD**. Principale difficulté : le **vendor lock-in** sur des services sans équivalent direct (Kinesis, Elasticsearch). Bascule en une seule fois vers Scaleway (Synapsys).\n- Leçon la plus reprise : *« il ne faut pas chercher à transposer à l'identique »*. Il faut arbitrer entre besoins réels et ambition technique plutôt que de reproduire les standards de l'hyperscaler (Synapsys, description officielle).",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "87sla-hCb_g",
+        "title": "Quitter AWS : une migration vers le cloud souverain (presque) sans douleur - DEVOPS REX 2025",
+        "publishedAt": "2025-12-16",
+        "transcript": false
+      }
+    },
+    {
+      "id": "migration-de-la-plateforme-data-de-matmut-sur-le-cloud-s3ns",
+      "day": "2025-12-10",
+      "type": "talk",
+      "title": "Migration de la plateforme Data de Matmut sur le cloud S3NS",
+      "speakers": [
+        "Pascal Deshayes — TerraOps",
+        "Jean-Jacques Mok — Matmut"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après la description officielle : migration de la **plateforme Data et IA de Matmut vers S3NS**, avec une réarchitecture pour tirer parti de services managés (**Cloud Composer, BigQuery**) tout en garantissant la **confidentialité des données sensibles**, et une préparation de l'évolution vers le « Cloud de confiance ».\n- Aucun retour de participant trouvé (Onepoint ne fait que la citer).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "XiS8eWF8x0c",
+        "title": "Migration de la plateforme Data de Matmut sur le cloud S3NS - DEVOPS REX 2025",
+        "publishedAt": "2025-12-16",
+        "transcript": false
+      }
+    },
+    {
+      "id": "l-importance-du-contexte-en-ia-x-infra-votre-infrastructure-est-un-graphe",
+      "day": "2025-12-11",
+      "type": "talk",
+      "title": "L'importance du contexte en IA x Infra : votre infrastructure est un graphe",
+      "speakers": [
+        "Roxane Fischer — Anyshift.io"
+      ],
+      "feedbackFrom": [
+        "Bpifrance.IO"
+      ],
+      "summary": "- Pourquoi les outils d'IA, même avancés, **échouent sans contexte** sur de l'infrastructure réelle, et comment **modéliser l'infrastructure comme un graphe** reliant services, ressources et environnements, avec une démonstration en direct (description officielle).\n- Ce qu'a retenu Bpifrance.IO : pour déboguer, les agents IA ont besoin d'une infrastructure représentée en **graphe de dépendances multi-sources**, pas seulement des dépôts de code.",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Aapt5WinZvI",
+        "title": "L’Importance du contexte en IA x Infrastructure : votre Infrastructure est un Graphe - DEVOPS REX 25",
+        "publishedAt": "2025-12-16",
+        "transcript": false
+      }
+    },
+    {
+      "id": "agentic-ai-et-si-c-etait-l-ia-qui-faisait-ta-code-review",
+      "day": "2025-12-11",
+      "type": "talk",
+      "title": "Agentic AI : et si c'était l'IA qui faisait ta code review ?",
+      "speakers": [
+        "Oussama Abai — Les Filles & les Garçons de la Tech",
+        "Kenza Barnier — Les Filles & les Garçons de la Tech"
+      ],
+      "feedbackFrom": [
+        "Robin Van Dessel (Synapsys)"
+      ],
+      "summary": "- Un **agent intégré à GitLab** qui analyse les merge requests, suggère des améliorations, génère des tests et attribue un **score de qualité**, construit avec des **LLM open source (Mistral, LLaMA)** et des workflows **n8n** (description officielle).\n- Ce qu'a retenu Synapsys : l'illustration du passage de l'**IA expérimentale à l'IA opérationnelle** dans les pratiques DevOps.",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "cFZCIOMHRYg",
+        "title": "Agentic AI | Et si c’était l’IA qui faisait ta code review ? - DEVOPS REX 2025",
+        "publishedAt": "2026-01-05",
+        "transcript": false
+      }
+    },
+    {
+      "id": "industrialiser-un-llmaas-souverain",
+      "day": "2025-12-11",
+      "type": "talk",
+      "title": "Industrialiser un LLMaaS souverain : scalabilité, sécurité… et une IA qui aide à se créer elle-même",
+      "speakers": [
+        "Alexandru Lata — Cloud Temple"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après la description officielle : un **LLMaaS souverain hébergé sur IaaS SecNumCloud** pour des clients sensibles, avec des défis de scalabilité, de sécurité et de performance.\n- Originalité annoncée : **l'IA contribue à sa propre création** (génération d'infra-as-code, scripts de supervision, aide au diagnostic, optimisation du routage).\n- Pas de retour détaillé trouvé (Onepoint ne fait que la citer).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "VbpImaLxPRg",
+        "title": "Industrialiser un LLMaaS souverain et une IA qui aide à se créer elle-même - DEVOPS REX 2025",
+        "publishedAt": "2025-12-16",
+        "transcript": false
+      }
+    },
+    {
+      "id": "chatbot-rag-100-souverain",
+      "day": "2025-12-11",
+      "type": "talk",
+      "title": "ChatBot/RAG 100 % souverain",
+      "speakers": [
+        "Antoine Durand — Accure IT"
+      ],
+      "feedbackFrom": [
+        "Antonin Brugnot (Onepoint, dev.to)",
+        "Robin Van Dessel (Synapsys)"
+      ],
+      "summary": "- Chatbot RAG pour un client des **énergies renouvelables**, sur un gros volume de données non structurées (R&D, support), avec l'exigence **« 100 % français, hébergé en France »** (description officielle).\n- Chiffre d'accroche retenu : **70 à 88 % des POC IA ne passent jamais en production** (Onepoint ; Synapsys note « 78–88 % »).\n- Stack : **Clever Cloud, PostgreSQL + pgVector, Mistral AI, Airflow, Streamlit**, sans exposition à un cloud américain, avec des pratiques DevOps/DataOps et FinOps (Onepoint, description).\n- Question posée par le speaker et retenue par Synapsys : éviter le **« CV Driven Development »** et l'adoption par FOMO.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "-iHcRkoFP3M",
+        "title": "ChatBot/RAG 100% Souverain - DEVOPS REX 2025",
+        "publishedAt": "2026-01-05",
+        "transcript": false
+      }
+    },
+    {
+      "id": "unifier-le-delivery-legacy-et-cloud-native-le-defi-devops-d-imsa",
+      "day": "2025-12-11",
+      "type": "talk",
+      "title": "Unifier le delivery legacy et cloud-native : le défi DevOps d'iMSA",
+      "speakers": [
+        "Nicolas Cazottes — iMSA"
+      ],
+      "feedbackFrom": [
+        "Bpifrance.IO"
+      ],
+      "summary": "- **Plus de 1 000 applications**, du COBOL au cloud-native : unifier et automatiser le delivery en respectant sécurité, traçabilité et gouvernance dans un environnement réglementé (description officielle).\n- Ce qu'a retenu Bpifrance.IO : la performance DevOps n'est **pas réservée aux start-up cloud-native**. Le **modèle de Westrum** et les **métriques Accelerate** s'appliquent aussi dans un legacy contraint.",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "cqXmZWYBk3k",
+        "title": "Unifier le delivery legacy et cloud-native : le défi DevOps d’iMSA - DEVOPS REX 2025",
+        "publishedAt": "2025-12-16",
+        "transcript": false
+      }
+    },
+    {
+      "id": "et-si-mon-equipe-devops-devenait-performante",
+      "day": "2025-12-11",
+      "type": "talk",
+      "title": "Et si mon équipe DevOps devenait performante ?",
+      "speakers": [
+        "Olivier Cloirec — WeScale",
+        "Samia Kherrati — WeScale"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après la description officielle : REX et **pièges à éviter pour une équipe d'Ops** chargée des moyens d'infrastructure et d'outillage, qui se sent *« l'âme de super-héros »* et décide *« au doigt mouillé et dans l'urgence »*.\n- Chaque anti-pratique est expliquée et assortie d'**alternatives** (autonomie, Lean, culture produit).\n- Aucun retour de participant trouvé.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "j5iJ4oEWNi4",
+        "title": "Et si mon équipe DevOps devenait performante ? - DEVOPS REX 2025",
+        "publishedAt": "2025-12-16",
+        "transcript": false
+      }
+    },
+    {
+      "id": "docker-c-est-cool-kubernetes-c-est-hype-mais-peut-on-faire-autrement",
+      "type": "talk",
+      "title": "Docker c'est cool, Kubernetes c'est hype, mais peut-on faire autrement ?",
+      "speakers": [
+        "Julien Maitrehenry — Paren"
+      ],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript) :\n- Contexte : une start-up avec une **équipe de 3 personnes** où il était le seul à maîtriser Kubernetes. Exemple du coût caché : migrer de NGINX Ingress Controller vers la **Gateway API** lui a pris une semaine. *« Si on a la meilleure infrastructure du monde mais pas de produit à déployer dessus, notre valeur est toujours de zéro. »*\n- Premières étapes sur des **PaaS managés** (Azure Container Apps, DigitalOcean App Platform), avec leurs limites réseau : pour ne pas ouvrir un firewall à Internet, certains logs ont été sacrifiés.\n- Puis le **« vieux » qui marche** : VM Linux et **systemd** (services et timers plutôt que cron), **Terraform** (*« pas cloud agnostique mais multicloud »*), **Ansible** et Ansible Vault, **GitHub Actions** en SSH. Rollback simple par binaire `-previous`. Des technos très documentées, que les LLM connaissent bien.\n- **Docker reste utile** : Docker Compose en dev, outillage conteneurisé, Testcontainers.\n- **Kubernetes adopté au bout d'environ un an et demi**, quand sont arrivées des applications clientes avec SLA. Message : *« Faut-il toujours suivre les hypes ? Non, il faut choisir selon notre besoin réel. »*\n- En Q&R : un Kubernetes managé ne masque que le control plane ; ingress, opérateurs et monitoring restent à votre charge.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "jdbn2UErhFs",
+        "title": "Docker c'est cool, Kubernetes c'est hype, mais peut-on faire autrement ? - DEVOPS REX 2025",
+        "publishedAt": "2025-12-16",
+        "transcript": true
+      }
+    },
+    {
+      "id": "gerer-des-clusters-presque-identiques-en-mode-gitops-avec-argocd",
+      "type": "talk",
+      "title": "Gérer des clusters « presque » identiques en mode GitOps avec ArgoCD",
+      "speakers": [
+        "Rémi Verchère — Accenture"
+      ],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript) :\n- REX client, présenté comme tel (*« personne n'a la même manière de déployer Argo »*) : **une vingtaine de clusters** dev et prod, montés à la main puis avec Terraform, donc pas tout à fait identiques. Il gère les briques communes (ingress, cert-manager, backup, observabilité) et des montées de version Kubernetes tous les 4 à 6 mois.\n- Organisation : **monorepo, trunk-based**, un app-of-apps qui déploie des **ApplicationSets** ; les valeurs sont hiérarchisées par version de Kubernetes, puis type d'environnement, puis cluster, via les labels des secrets de cluster.\n- **Umbrella charts Helm** pour rester peu dépendant d'ArgoCD (le tout reste déployable avec Helm seul). Pour les clusters hétérogènes, un generator matrix/merge avec un `params.json` par cluster — *« pas sûr que ce soit une bonne pratique, mais ça marche »*.\n- Mises à jour : ArgoCD détecte la version du cluster et bascule les charts ; validation sur un cluster puis déploiement sur les 19 autres ; **Renovate** propose les PR de mise à jour.\n- En Q&R : la vérification des merges de values YAML reste manuelle (*« un enfer »*) ; il utilise deux instances ArgoCD, l'une pour la dev, l'autre pour la prod.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "FFCp-g53uO4",
+        "title": "Gérer des clusters \"presque\" identiques en mode GitOps avec ArgoCD - DEVOPS REX 2025",
+        "publishedAt": "2026-01-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "des-microservices-pour-des-ascenseurs-a-monaco",
+      "type": "talk",
+      "title": "Des microservices pour des ascenseurs à Monaco : voyage au cœur du DevOps vertical",
+      "speakers": [
+        "Luc Juggery — Exoscale"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après la description officielle : transformer des **ascenseurs classiques en machines connectées** à Monaco (écrans, messages du syndic, services à valeur ajoutée), sur une infrastructure **Kubernetes, CI/CD et MQTT**.\n- Une session « technique et décalée » sur la qualité logicielle et la haute disponibilité dans un contexte IoT. Le speaker travaille chez Exoscale, sponsor Gold de l'édition.\n- Aucun retour de participant trouvé ; le jour exact n'a pas pu être vérifié.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "CVfkMPW_Ldw",
+        "title": "Des microservices pour des ascenseurs à Monaco : voyage au cœur du DevOps vertical - DEVOPS REX 2025",
+        "publishedAt": "2025-12-16",
+        "transcript": false
+      }
+    },
+    {
+      "id": "table-ronde-souverainete-numerique-imperatif-strategique-et-realite-operationnelle",
+      "type": "roundtable",
+      "title": "Souveraineté numérique : entre impératif stratégique et réalité opérationnelle",
+      "speakers": [
+        "Renaud Chaillat — DGFiP (cloud souverain Nubo)",
+        "Lila Chauveau — Theodo",
+        "Laurent Doguin — Couchbase",
+        "Renaud Fleury — DGFiP (Kubo sur Nubo)",
+        "Henri Giordano — Groupama"
+      ],
+      "feedbackFrom": [
+        "Blog DEVOPS REX (organisateur)"
+      ],
+      "summary": "- Table ronde entre acteurs publics (DGFiP, cloud Nubo) et privés (Groupama, Theodo, Couchbase) sur quatre axes : **choix d'architecture** entre souveraineté et performance, **conduite du changement**, **gouvernance** des données, **compromis** entre conformité réglementaire et besoins opérationnels (description officielle, article de l'organisateur de mars 2026).\n- L'organisateur la présente comme un débat « pragmatique et détendu » ; aucune citation individuelle n'a été trouvée et la vidéo n'a pas été transcrite. C'est la session la moins vue de la playlist (hors pitchs sponsors).",
+      "summarySources": [
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "ecVlFubSl_4",
+        "title": "Souveraineté numérique : entre impératif stratégique et réalité opérationnelle - DEVOPS REX 2025",
+        "publishedAt": "2025-12-16",
+        "transcript": false
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Pitchs sponsors Platinum (Passbolt, Rudder, Zabbix, Splunk) et Gold (Spectrum Groupe, Kaliop, Digital.ai, Exoscale) : vidéos courtes publiées, non synthétisées"
+  ],
+  "sources": [
+    {
+      "label": "Replays 2025 (site officiel)",
+      "url": "https://www.devopsrex.fr/fr/replay-2025"
+    },
+    {
+      "label": "Playlist YouTube DEVOPS REX 2025",
+      "url": "https://www.youtube.com/playlist?list=PL7l-zOgt89E5zkZmwQIt4oxTsEd_XwzdE"
+    },
+    {
+      "label": "Onepoint (Yohann Streibel, Antonin Brugnot) — DevOps Rex 2025 : retour sur deux jours de conférences (dev.to)",
+      "url": "https://dev.to/onepoint/devops-rex-2025-retour-sur-deux-jours-de-conferences-3908"
+    },
+    {
+      "label": "Synapsys (Robin Van Dessel) — DevOps REX 2025 : cloud souverain, IA et Kubernetes",
+      "url": "https://synapsys-groupe.com/blog/devops-rex-2025/"
+    },
+    {
+      "label": "Bpifrance.IO — DevOps REX Paris 2025 : dive in with us !",
+      "url": "https://io.bpifrance.fr/devops-rex-paris-2025-dive-in-with-us/"
+    },
+    {
+      "label": "DEVOPS REX — post LinkedIn « Clap de fin » (bilan chiffré)",
+      "url": "https://fr.linkedin.com/posts/devopsrex_devopsrex2025-devops-retourdexperience-activity-7404935532155310080-Kr4l"
+    },
+    {
+      "label": "Blog DEVOPS REX — Revivez l'édition 2025",
+      "url": "https://www.devopsrex.fr/fr/blog/revivez-l-edition-2025-de-devops-rex"
+    },
+    {
+      "label": "Blog DEVOPS REX — Souveraineté numérique : entre impératif stratégique et réalité opérationnelle",
+      "url": "https://www.devopsrex.fr/fr/blog/souverainete-numerique-entre-imperatif-strategique-et-realite-operationnelle"
+    },
+    {
+      "label": "Blog DEVOPS REX — Quand le GitOps devient un levier de standardisation à grande échelle",
+      "url": "https://www.devopsrex.fr/fr/blog/devops-rex-quand-le-gitops-devient-un-levier-de-standardisation-a-grande-echelle"
+    },
+    {
+      "label": "Les Joies du Code — annonce de l'édition (600 participants attendus, 4 axes, colocalisation avec Open Source Experience)",
+      "url": "https://lesjoiesducode.fr/conference-devops-2025-devops-rex-retours-experience"
+    },
+    {
+      "label": "Posts LinkedIn : aucun post de participant lu (seul le bilan de l'organisateur)"
+    }
+  ]
 }
