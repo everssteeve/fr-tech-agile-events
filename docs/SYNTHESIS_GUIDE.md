@@ -38,7 +38,7 @@ Ne jamais inventer un retour, une citation, un chiffre ou un nom. Si une info ne
   - `feedbackFrom` : noms des personnes dont on a lu le retour (ou « Blog Octo », « sketchnote de X »).
   - `summary` : Markdown, 3 à 8 puces. Idées clés en **gras**, citations en *« … »*, attribution entre parenthèses. Terminer si utile par la lecture critique ou le point de débat.
   - `summarySources` : parmi `feedback`, `transcript`, `program`, `slides`, `blog`.
-  - `video` (si une vidéo officielle existe) : `{ "youtubeId": "…", "title": "…", "publishedAt": "AAAA-MM-JJ", "transcript": true|false, "startSeconds": 1234 }`. `startSeconds` sert quand la session fait partie d'une longue vidéo (live d'une journée) : repérer le début de la session dans le transcript horodaté (fichier .vtt).
+  - `video` (si une vidéo officielle existe) : `{ "youtubeId": "…", "title": "…", "publishedAt": "AAAA-MM-JJ", "transcript": true|false, "startSeconds": 1234 }`. Pour une vidéo hébergée ailleurs (Canal-U, Vimeo…), omettre `youtubeId` et renseigner `url`. `startSeconds` sert quand la session fait partie d'une longue vidéo (live d'une journée) : repérer le début de la session dans le transcript horodaté (fichier .vtt).
 - `sessionsWithoutFeedback` : titres courts (et speaker) des sessions du programme sans aucun contenu trouvé.
 - `sources` : `{ "label", "url"? }`. Programme, playlist YouTube, articles, et une ligne récapitulant les auteurs des posts LinkedIn.
 

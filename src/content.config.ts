@@ -25,7 +25,9 @@ const events = defineCollection({
 });
 
 const video = z.object({
-  youtubeId: z.string(),
+  /** YouTube video id; for other hosts (Canal-U, Vimeo…) leave empty and set `url`. */
+  youtubeId: z.string().optional(),
+  url: z.string().url().optional(),
   title: z.string().optional(),
   publishedAt: z.string().optional(),
   /** Offset in seconds when the session is part of a longer video (livestream). */

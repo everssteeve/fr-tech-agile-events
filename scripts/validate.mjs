@@ -16,7 +16,8 @@ for (const slug of readdirSync('content/editions')) {
       if (ids.has(s.id)) errors.push(`${p}: duplicate session id ${s.id}`);
       ids.add(s.id);
       if (!/^[a-z0-9-]+$/.test(s.id)) errors.push(`${p}: bad session id "${s.id}"`);
-      if (s.video && !/^[\w-]{11}$/.test(s.video.youtubeId)) errors.push(`${p}: bad youtubeId in ${s.id}`);
+      if (s.video && !s.video.youtubeId && !s.video.url) errors.push(`${p}: video without youtubeId or url in ${s.id}`);
+      if (s.video?.youtubeId && !/^[\w-]{11}$/.test(s.video.youtubeId)) errors.push(`${p}: bad youtubeId in ${s.id}`);
     }
     if (d.status === 'synthesized') {
       if (!existsSync(p.replace(/\.json$/, '.md'))) errors.push(`${p}: synthesized but no .md`);

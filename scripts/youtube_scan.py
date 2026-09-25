@@ -33,7 +33,8 @@ def feed_url(url: str, channel_ids: dict[str, str]) -> str | None:
         return f"https://www.youtube.com/feeds/videos.xml?channel_id={m.group(1)}"
     if url not in channel_ids:
         out = subprocess.run(
-            ["yt-dlp", "--flat-playlist", "--playlist-items", "1", "--print", "channel_id", url],
+            ["yt-dlp", "--no-update", "--flat-playlist", "--playlist-items", "1", "--print", "playlist_channel_id",
+             url.rstrip("/") + "/videos"],
             capture_output=True, text=True, timeout=120,
         )
         cid = out.stdout.strip().splitlines()[0] if out.stdout.strip() else ""
@@ -74,7 +75,7 @@ def transcript(video_id: str) -> str | None:
     if txt.exists():
         return str(txt.relative_to(ROOT))
     subprocess.run(
-        ["yt-dlp", "--skip-download", "--write-subs", "--write-auto-subs", "--sub-langs", "fr.*,en.*,fr,en",
+        ["yt-dlp", "--no-update", "--skip-download", "--write-subs", "--write-auto-subs", "--sub-langs", "fr.*,en.*,fr,en",
          "--sub-format", "vtt", "-o", str(TRANSCRIPTS / "%(id)s"), f"https://www.youtube.com/watch?v={video_id}"],
         capture_output=True, text=True, timeout=300,
     )
@@ -100,7 +101,7 @@ def main() -> None:
         s["video"]["youtubeId"]
         for p in (ROOT / "content/editions").glob("*/*.json")
         for s in json.loads(p.read_text()).get("sessions", [])
-        if s.get("video")
+        if s.get("video") and s["video"].get("youtubeId")
     }
 
     found: list[dict[str, object]] = []

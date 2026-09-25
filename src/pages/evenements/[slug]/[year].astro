@@ -141,7 +141,8 @@ const description = e.tldr ? e.tldr.replace(/\*/g, '') : `${ev.name} ${e.year} :
                     {s.feedbackFrom.length > 0 && <p class="from">Retours : {s.feedbackFrom.join(', ')}</p>}
                     <div class="s-body">
                       <div class="prose" set:html={md(s.summary)} />
-                      {s.video && <Video id={s.video.youtubeId} title={s.video.title ?? s.title} start={s.video.startSeconds} />}
+                      {s.video?.youtubeId && <Video id={s.video.youtubeId} title={s.video.title ?? s.title} start={s.video.startSeconds} />}
+                      {s.video && !s.video.youtubeId && s.video.url && <p><a class="ext-video" href={s.video.url} target="_blank" rel="noopener">▶ Voir la vidéo</a></p>}
                     </div>
                   </article>
                 ))}
