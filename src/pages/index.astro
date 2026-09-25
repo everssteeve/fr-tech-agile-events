@@ -1,0 +1,155 @@
+---
+import Base from '../layouts/Base.astro';
+import EditionRow from '../components/EditionRow.astro';
+import { CATEGORIES, loadAll, monthName, today, when } from '../lib/data';
+
+const { editions, eventBySlug } = await loadAll();
+const ref = today();
+const currentYear = Number(ref.slice(0, 4));
+const years = [...new Set(editions.map((e) => e.data.year))].sort((a, b) => b - a);
+const defaultYear = years.includes(currentYear) ? currentYear : years[0];
+const synthesized = editions.filter((e) => e.data.status === 'synthesized');
+const videos = editions.reduce((n, e) => n + e.data.sessions.filter((s) => s.video).length, 0);
+const upcoming = editions.filter((e) => when(e.data, ref) !== 'past');
+const next = upcoming.slice(0, 3);
+const todayLabel = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Paris' }).format(new Date());
+---
+<Base title="Retours de conf' tech & agile" description="Calendrier et synthèses des retours participants des conférences tech et agiles en France.">
+  <div class="wrap stack">
+    <section class="intro">
+      <div class="eyebrow">France · mis à jour le {todayLabel}</div>
+      <h1>Ce qui s'est dit dans les conférences tech &amp; agiles</h1>
+      <p class="lede">
+        Le calendrier des conférences françaises et, pour chaque édition passée, une synthèse des retours participants : session par session, puis les grandes idées de l'édition. Les vidéos publiées sont ajoutées au fil de l'eau.
+      </p>
+      <dl class="stats">
+        <div><dt>Synthèses</dt><dd>{synthesized.length}</dd></div>
+        <div><dt>Sessions résumées</dt><dd>{synthesized.reduce((n, e) => n + e.data.sessions.length, 0)}</dd></div>
+        <div><dt>Vidéos liées</dt><dd>{videos}</dd></div>
+        <div><dt>Événements suivis</dt><dd>{eventBySlug.size}</dd></div>
+      </dl>
+    </section>
+
+    {next.length > 0 && (
+      <section class="next" aria-label="Prochains événements">
+        <h2>Prochainement</h2>
+        <div class="next-grid">
+          {next.map((e) => {
+            const ev = eventBySlug.get(e.data.event);
+            return ev && <EditionRow edition={e.data} name={ev.data.name} category={ev.data.category} />;
+          })}
+        </div>
+      </section>
+    )}
+
+    <section class="cal" id="calendrier">
+      <div class="cal-head">
+        <h2>Calendrier</h2>
+        <div class="filters">
+          <div class="chips" role="group" aria-label="Année">
+            {years.map((y) => <button type="button" class="chip" data-f="year" data-v={String(y)} aria-pressed={String(y === defaultYear)}>{y}</button>)}
+          </div>
+          <div class="chips" role="group" aria-label="Thème">
+            <button type="button" class="chip" data-f="cat" data-v="all" aria-pressed="true">Tous</button>
+            {Object.entries(CATEGORIES).map(([k, c]) => (
+              <button type="button" class="chip" data-f="cat" data-v={k} aria-pressed="false"><span class="sw" style={`background:var(--${k})`}></span>{c.label}</button>
+            ))}
+          </div>
+          <div class="chips" role="group" aria-label="Période">
+            <button type="button" class="chip" data-f="when" data-v="all" aria-pressed="true">Toute l'année</button>
+            <button type="button" class="chip" data-f="when" data-v="synth" aria-pressed="false">Avec synthèse</button>
+            <button type="button" class="chip" data-f="when" data-v="upcoming" aria-pressed="false">À venir</button>
+          </div>
+        </div>
+        <p class="count muted" id="count" aria-live="polite"></p>
+      </div>
+
+      {years.map((y) => (
+        <div class="year" data-year={String(y)} hidden={y !== defaultYear}>
+          {Array.from({ length: 12 }, (_, m) => {
+            const list = editions.filter((e) => e.data.year === y && Number(e.data.start.slice(5, 7)) - 1 === m);
+            if (!list.length) return null;
+            return (
+              <section class="month">
+                <h3>{monthName(m)} <small>{y}</small></h3>
+                <div class="list">
+                  {list.map((e) => {
+                    const ev = eventBySlug.get(e.data.event);
+                    return ev && <EditionRow edition={e.data} name={ev.data.name} category={ev.data.category} />;
+                  })}
+                </div>
+              </section>
+            );
+          })}
+        </div>
+      ))}
+      <p class="empty muted" id="empty" hidden>Aucun événement pour ces filtres.</p>
+    </section>
+  </div>
+</Base>
+
+<script>
+  const state: Record<string, string> = { year: '', cat: 'all', when: 'all' };
+  const chips = [...document.querySelectorAll<HTMLButtonElement>('.cal .chip')];
+  state.year = chips.find((c) => c.dataset.f === 'year' && c.getAttribute('aria-pressed') === 'true')?.dataset.v ?? '';
+  try {
+    const saved = JSON.parse(localStorage.getItem('cal-filters') ?? 'null');
+    if (saved && typeof saved === 'object') Object.assign(state, { cat: saved.cat ?? 'all', when: saved.when ?? 'all' });
+  } catch {}
+
+  function apply() {
+    chips.forEach((c) => c.setAttribute('aria-pressed', String(state[c.dataset.f!] === c.dataset.v)));
+    let shown = 0;
+    document.querySelectorAll<HTMLElement>('.year').forEach((y) => {
+      const active = y.dataset.year === state.year;
+      y.hidden = !active;
+      y.querySelectorAll<HTMLElement>('.month').forEach((m) => {
+        let n = 0;
+        m.querySelectorAll<HTMLElement>('.row').forEach((r) => {
+          const ok =
+            (state.cat === 'all' || r.dataset.cat === state.cat) &&
+            (state.when === 'all' || (state.when === 'synth' ? r.dataset.synth === '1' : r.dataset.when === 'upcoming'));
+          r.hidden = !ok;
+          if (ok) n++;
+        });
+        m.hidden = n === 0;
+        if (active) shown += n;
+      });
+    });
+    const count = document.getElementById('count');
+    if (count) count.textContent = `${shown} événement${shown > 1 ? 's' : ''}`;
+    const empty = document.getElementById('empty');
+    if (empty) empty.hidden = shown > 0;
+  }
+  chips.forEach((c) =>
+    c.addEventListener('click', () => {
+      state[c.dataset.f!] = c.dataset.v!;
+      try { localStorage.setItem('cal-filters', JSON.stringify({ cat: state.cat, when: state.when })); } catch {}
+      apply();
+    }),
+  );
+  apply();
+</script>
+
+<style>
+  .stack { display: flex; flex-direction: column; gap: 44px; }
+  .intro { display: flex; flex-direction: column; gap: 12px; }
+  .lede { color: var(--muted); max-width: 64ch; margin: 0; font-size: 17px; }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 8px 0 0; max-width: 680px; }
+  .stats div { border-top: 2px solid var(--ink); padding-top: 6px; }
+  .stats dt { font-family: var(--font-m); font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+  .stats dd { margin: 0; font-family: var(--font-d); font-weight: 800; font-size: 30px; font-variant-numeric: tabular-nums; }
+  @media (max-width: 560px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .next { display: flex; flex-direction: column; gap: 8px; }
+  .next-grid { display: flex; flex-direction: column; }
+  .cal { display: flex; flex-direction: column; gap: 18px; }
+  .cal-head { display: flex; flex-direction: column; gap: 12px; position: sticky; top: 58px; background: var(--bg); z-index: 5; padding-block: 10px; border-bottom: 1px solid var(--line); }
+  @media (max-width: 640px) { .cal-head { position: static; } }
+  .filters { display: flex; flex-wrap: wrap; gap: 10px 24px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .count { margin: 0; font-family: var(--font-m); font-size: 12.5px; }
+  .year { display: flex; flex-direction: column; gap: 28px; }
+  .month h3 { font-family: var(--font-d); font-size: 22px; margin: 0 0 4px; text-transform: capitalize; border-bottom: 2px solid var(--ink); padding-bottom: 6px; display: flex; gap: 10px; align-items: baseline; }
+  .month h3 small { font-family: var(--font-m); font-weight: 400; font-size: 12px; color: var(--muted); }
+  .list { display: flex; flex-direction: column; }
+</style>

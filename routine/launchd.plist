@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.everssteeve.fr-tech-agile-events.daily</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/zsh</string>
+    <string>-lc</string>
+    <string>__REPO__/routine/daily.sh</string>
+  </array>
+  <!-- 03:00 local time; this Mac runs on Europe/Paris. A run missed while asleep fires on wake. -->
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key>
+    <integer>3</integer>
+    <key>Minute</key>
+    <integer>0</integer>
+  </dict>
+  <key>StandardOutPath</key>
+  <string>__REPO__/routine/logs/launchd.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>__REPO__/routine/logs/launchd.err.log</string>
+</dict>
+</plist>

@@ -1,0 +1,54 @@
+---
+import Base from '../../../layouts/Base.astro';
+import EditionRow from '../../../components/EditionRow.astro';
+import { CATEGORIES, loadAll, type EditionEntry, type EventEntry } from '../../../lib/data';
+
+export async function getStaticPaths() {
+  const { events, editions } = await loadAll();
+  return events.map((ev) => ({
+    params: { slug: ev.id },
+    props: { event: ev, editions: editions.filter((e) => e.data.event === ev.id).sort((a, b) => b.data.year - a.data.year) },
+  }));
+}
+interface Props {
+  event: EventEntry;
+  editions: EditionEntry[];
+}
+const { event, editions } = Astro.props;
+const ev = event.data;
+---
+<Base title={ev.name} description={ev.description}>
+  <div class="wrap page">
+    <header class="head">
+      <div class="eyebrow"><span class={`tag cat-${ev.category}`}>{CATEGORIES[ev.category].label}</span> {ev.city}</div>
+      <h1>{ev.name}</h1>
+      <p class="lede">{ev.description}</p>
+      <p class="links">
+        {ev.website && <a href={ev.website} target="_blank" rel="noopener">Site officiel</a>}
+        {ev.youtube?.channel && <a href={ev.youtube.channel} target="_blank" rel="noopener">Chaîne YouTube</a>}
+      </p>
+    </header>
+    <section>
+      <h2>Éditions</h2>
+      <div class="list">
+        {editions.map((e) => <EditionRow edition={e.data} name={e.data.title} category={ev.category} />)}
+      </div>
+      {editions.length === 0 && <p class="muted">Aucune édition référencée pour l'instant.</p>}
+    </section>
+    {ev.gaps.length > 0 && (
+      <section>
+        <h2>Années sans édition</h2>
+        <ul>{ev.gaps.map((g) => <li><strong>{g.year}</strong> : {g.note}</li>)}</ul>
+      </section>
+    )}
+  </div>
+</Base>
+<style>
+  .page { display: flex; flex-direction: column; gap: 32px; }
+  .head { display: flex; flex-direction: column; gap: 10px; }
+  .eyebrow { display: flex; gap: 8px; align-items: center; }
+  .lede { margin: 0; color: var(--muted); max-width: 64ch; font-size: 17px; }
+  .links { margin: 0; display: flex; gap: 16px; }
+  h2 { border-bottom: 2px solid var(--ink); padding-bottom: 6px; margin-bottom: 4px; }
+  .list { display: flex; flex-direction: column; }
+</style>

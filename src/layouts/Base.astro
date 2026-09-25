@@ -1,0 +1,68 @@
+---
+import '../styles/global.css';
+import { href } from '../lib/data';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = 'Synthèses des retours participants des événements tech et agiles français.' } = Astro.props;
+const nav = [
+  { path: '', label: 'Calendrier' },
+  { path: 'evenements/', label: 'Événements' },
+  { path: 'methode/', label: 'Méthode' },
+];
+const current = Astro.url.pathname;
+---
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <link rel="icon" href={href('favicon.svg')} type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" />
+  </head>
+  <body>
+    <header class="site">
+      <div class="wrap bar">
+        <a class="brand" href={href('')}>Retours de conf'<span>tech &amp; agile · France</span></a>
+        <nav aria-label="Navigation principale">
+          {nav.map((n) => {
+            const target = href(n.path);
+            const active = n.path === '' ? current === target || current === target + '/' : current.startsWith(target);
+            return <a href={target} aria-current={active ? 'page' : undefined}>{n.label}</a>;
+          })}
+        </nav>
+      </div>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site">
+      <div class="wrap">
+        Synthèses produites à partir de retours publics (LinkedIn, blogs, vidéos). Mises à jour chaque nuit.
+        <a href="https://github.com/everssteeve/fr-tech-agile-events">Code source</a>
+      </div>
+    </footer>
+  </body>
+</html>
+<style>
+  header.site { border-bottom: 1px solid var(--line); background: var(--surface); position: sticky; top: 0; z-index: 10; }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; padding-block: 12px; }
+  .brand { font-family: var(--font-d); font-weight: 800; font-size: 20px; text-decoration: none; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .brand span { font-family: var(--font-m); font-weight: 400; font-size: 11.5px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+  nav { display: flex; gap: 18px; }
+  nav a { text-decoration: none; color: var(--muted); font-size: 15px; padding-block: 4px; border-bottom: 2px solid transparent; }
+  nav a:hover { color: var(--ink); }
+  nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--accent); }
+  @media (max-width: 640px) { header.site { position: static; } }
+  main { padding-block: 32px 64px; }
+  footer.site { border-top: 1px solid var(--line); padding-block: 20px 32px; font-size: 13px; color: var(--faint); }
+  footer.site a { margin-left: 6px; }
+</style>

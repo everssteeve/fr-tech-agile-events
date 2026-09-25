@@ -1,0 +1,34 @@
+---
+interface Props {
+  id: string;
+  title: string;
+}
+const { id, title } = Astro.props;
+---
+<div class="yt">
+  <button type="button" class="yt-play" data-id={id} aria-label={`Lire la vidéo : ${title}`}>
+    <img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt="" loading="lazy" width="480" height="360" />
+    <span class="yt-btn" aria-hidden="true">▶</span>
+  </button>
+  <a class="yt-link" href={`https://www.youtube.com/watch?v=${id}`} target="_blank" rel="noopener">Voir sur YouTube</a>
+</div>
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.yt-play').forEach((b) =>
+    b.addEventListener('click', () => {
+      const f = document.createElement('iframe');
+      f.src = `https://www.youtube-nocookie.com/embed/${b.dataset.id}?autoplay=1`;
+      f.title = b.getAttribute('aria-label') ?? 'Vidéo';
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture';
+      f.allowFullscreen = true;
+      b.replaceWith(f);
+    }),
+  );
+</script>
+<style>
+  .yt { display: flex; flex-direction: column; gap: 4px; max-width: 520px; }
+  .yt-play, .yt :global(iframe) { position: relative; width: 100%; aspect-ratio: 16 / 9; border: 0; padding: 0; border-radius: 8px; overflow: hidden; background: #000; cursor: pointer; display: block; }
+  .yt-play img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: .9; }
+  .yt-play:hover img { opacity: 1; }
+  .yt-btn { position: absolute; inset: 0; margin: auto; width: 64px; height: 44px; border-radius: 10px; background: rgba(210, 64, 42, .92); color: #fff; font-size: 20px; display: grid; place-items: center; }
+  .yt-link { font-size: 13px; color: var(--muted); }
+</style>
