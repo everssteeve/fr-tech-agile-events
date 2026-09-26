@@ -4,10 +4,262 @@
   "title": "DevFest Paris 2025",
   "edition": "7e édition",
   "start": "2025-11-21",
+  "end": "2025-11-21",
   "city": "Le Kremlin-Bicêtre",
   "venue": "Epitech Paris",
   "url": "https://conference-hall.io/devfest-paris-2025",
-  "dateConfidence": "sec",
-  "status": "pending",
-  "sessions": []
+  "programUrl": "https://web.archive.org/web/20260121072601/https://devfest.gdgparis.fr/agenda",
+  "dateConfidence": "ok",
+  "note": "7e édition, vendredi 21 novembre 2025, campus Epitech Paris (Le Kremlin-Bicêtre), organisée par les bénévoles du GDG Paris. Environ 23 sessions (talks, lunch talks, ateliers) sur 4 salles (Grâce Hopper, HUB, Star Wars, Stallman) + un amphi « Keynote Hall ». Chiffres annoncés : ~300 participants (Epitech), 25 speakers (Dont miss iT), 192 propositions au CFP (compte X @devfestparis).",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-09-26",
+  "revisit": "Un seul compte-rendu participant public trouvé (article LinkedIn de Stéphane Trebel, lui-même speaker) ; aucun post LinkedIn post-événement lu, budget de recherche limité. 12 vidéos de la playlist sans transcript ni retour (dont Passkeys, Kubernetes, Spring, vibe coding).",
+  "corpus": "Programme officiel (agenda archivé sur la Wayback Machine, versions d'octobre 2025 et de janvier 2026), page GDG Community, article d'Epitech (11/12/2025), un compte-rendu LinkedIn de Stéphane Trebel (24/11/2025, speaker qui a aussi assisté à 5 autres sessions), la playlist YouTube officielle (17 vidéos, publiées sur la chaîne GDG France du 28/11 au 07/12/2025) et 5 transcripts automatiques (keynote 8-bit, sécurité des LLM, Méta-Lois, musique et IA, accessibilité).",
+  "limits": "Retours participants quasi inexistants en ligne : le seul compte-rendu vient d'un speaker, et on n'a trouvé aucun post LinkedIn d'un participant sans rôle dans l'événement. Les résumés s'appuient surtout sur les transcripts automatiques, où certains noms propres sont déformés et que nous avons signalés comme incertains. Les ateliers (Rust, API-First, Clean Archi, A2A/MCP) n'ont été ni filmés ni commentés.",
+  "tldr": "Un DevFest **à taille humaine et très communautaire** (~300 personnes chez Epitech), au programme éclectique plutôt que tout-IA : une keynote **« bidouille »** sur un ordinateur 8 bits construit transistor par transistor, de la **sécurité des applications LLM**, de l'**accessibilité** et des **« méta-lois »** de l'organisation, avec une IA traitée **en outil plutôt qu'en remplaçant**.",
+  "keyTakeaways": [
+    "Pour une app LLM, on ne peut pas influencer le modèle mais on peut **attaquer son contexte** : RAG, mémoire de chat et documents injectés sont la vraie surface d'attaque (Brian Vermeer).",
+    "Corriger d'abord les **failles classiques** (injection SQL, path traversal, dépendances) : ce sont elles qui ouvrent la porte à l'empoisonnement du contexte (Vermeer).",
+    "Mettre un **humain dans la boucle**, appliquer le moindre privilège aux outils (tool calling, MCP) et **coder les transitions de flux en dur** plutôt que de les confier au LLM (Vermeer).",
+    "Les tests d'accessibilité automatisés n'en couvrent qu'**environ 30 %** ; clavier, lecteur d'écran et tests utilisateurs restent indispensables, dès le début du projet et avec tous les rôles (Emmanuelle Aboaf).",
+    "**« Un bouton fait quelque chose, un lien va quelque part »** : HTML natif d'abord, ARIA seulement si on le maîtrise (Aboaf).",
+    "On n'échappe pas aux méta-lois (Conway, Goodhart, Hofstadter, Hyrum…), mais les **nommer** permet de les mitiger : peu de KPI choisis par l'équipe, petites itérations, techno éprouvées plutôt que « CV driven development » (Stéphane Trebel).",
+    "Construire soi-même pour comprendre : **« si je suis capable de faire une addition, je suis capable de tout faire »**, la démarche d'Olivier Huber pour expliquer l'informatique aux enfants.",
+    "L'IA générative musicale **abaisse le coût de l'échec** et retire des barrières techniques ; le point de vue retenu par un participant est celui de l'IA outil et non productrice, faute de quoi « on tombe dans le slop sans âme » (Valentin Dumas ; Trebel)."
+  ],
+  "sessions": [
+    {
+      "id": "construis-ton-ordi-8-bit-from-scratch",
+      "day": "2025-11-21",
+      "type": "keynote",
+      "title": "Construis ton ordi 8-bit « from scratch »",
+      "speakers": [
+        "Olivier Huber"
+      ],
+      "feedbackFrom": [
+        "Stéphane Trebel (article LinkedIn)",
+        "Article Epitech"
+      ],
+      "summary": "- **Sur scène (transcript)** : un « projet Covid » né d'une passion d'enfance pour l'Apple IIc. Sa règle : **n'acheter aucun composant avant de l'avoir construit lui-même en transistors** (décodeur 7 segments, timer). Ses inspirations sont Ben Eater et Ken Shirriff.\n- **Pédagogie pour les enfants** : compter en binaire sur ses doigts jusqu'à 1023, le transistor et la bascule mémoire expliqués par des analogies. En toile de fond, la maxime de Feynman *« ce que je ne peux pas créer, je ne peux pas le comprendre »*.\n- **Démo live** d'une addition 5 + 3 sur la machine : registres A/B, ALU, bus partagé, horloge, unité de contrôle. En plaçant les commandes en mémoire, *« on vient de créer un assembleur »*. Un simple compteur lui donne un saut, donc des boucles.\n- **Suite du projet** : un 6502 pour se rapprocher de l'Apple II, un clavier PS/2, une carte VGA 100×70 px et une carte son 8 bits. Détour historique par le RISC et ARM.\n- **Retour participant** : *« Un sujet parfait de Keynote »* pour un lieu d'expérimentation comme Epitech. On se laisse porter par l'enthousiasme du speaker devant *« la naissance d'un processeur »* exécuté seconde par seconde : *« Inspirant, comme toute Keynote doit l'être »* (Trebel). L'article d'Epitech cite aussi cette conférence parmi les temps forts.",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "EXKuAmd3ngg",
+        "title": "Construis ton ordi 8-bit \"from scratch\" - DevFest Paris 2025",
+        "publishedAt": "2025-12-01",
+        "transcript": true
+      }
+    },
+    {
+      "id": "picocli-mets-du-java-dans-ton-terminal",
+      "day": "2025-11-21",
+      "type": "talk",
+      "title": "Picocli : mets du Java dans ton terminal !",
+      "speakers": [
+        "Stéphane Philippart"
+      ],
+      "feedbackFrom": [
+        "Stéphane Trebel (article LinkedIn)"
+      ],
+      "summary": "- **Talk de secours** : il remplaçait au pied levé une session prévue au programme d'octobre (« Astro GitOps » de Kevin Davin).\n- Sujet : écrire des **CLI en Java** avec Picocli. Le talk donne un aperçu du Java contemporain, avec **Quarkus** et **GraalVM** pour produire des **binaires natifs autoportés**.\n- **Retour participant** : les binaires restent *« encore un peu boursouflés »*, mais offrent *« la DX moderne qu'on est en droit d'attendre de n'importe quel langage »*. Le participant, développeur Rust, y a vu *« un excellent rafraîchissement »* sans être converti (Trebel).",
+      "summarySources": [
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Htf7sdGq-3c",
+        "title": "Picocli: Put Java in your terminal! - DevFest Paris2025",
+        "transcript": false
+      }
+    },
+    {
+      "id": "histoires-d-horreur-de-rendu-serveur-en-production-avec-angular",
+      "day": "2025-11-21",
+      "type": "talk",
+      "title": "Histoires d'horreur de rendu serveur en production avec Angular",
+      "speakers": [
+        "Benjamin Legrand"
+      ],
+      "feedbackFrom": [
+        "Stéphane Trebel (article LinkedIn)"
+      ],
+      "summary": "- Des REX du **rendu côté serveur (SSR) Angular en production**, racontés comme un **« livre d'horreur »**. Slide retenue : *« Aucun dev n'a été maltraité pendant ces évènements… enfin presque ! »*\n- **Retour participant** : Stéphane Trebel avait vécu certaines de ces aventures aux premières loges. Le talk lui a permis de *« mettre des mots sur cette impression qu'on s'est infligé beaucoup trop de choses côté FrontEnd »*, en Angular ou ailleurs.\n- Il fait un parallèle avec les Méta-Lois : *« nous créons nos propres monstres »*, c'est donc à nous de nous en occuper (Trebel).",
+      "summarySources": [
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "pmGR1_NGdXE",
+        "title": "Server-side rendering horror stories in production with Angular - DevFest Paris 2025",
+        "transcript": false
+      }
+    },
+    {
+      "id": "breaching-llm-powered-applications",
+      "day": "2025-11-21",
+      "type": "talk",
+      "title": "Breaching LLM-Powered Applications: Overcoming Security and Privacy Challenges",
+      "speakers": [
+        "Brian Vermeer — Snyk"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, en anglais)** : talk co-écrit avec une mainteneuse de LangChain4j. L'accroche porte sur les incidents réels : la voiture vendue 1 $ par un chatbot de concessionnaire, les tokens OpenAI qui fuient sur GitHub.\n- Thèse centrale : *« I cannot influence the model. However, I can attack the context. »* Il le démontre sur une app Spring Boot + LangChain4j :\n  - **RAG empoisonné** : un path traversal sur l'upload écrase les CGU, et l'agent annule une réservation interdite.\n  - **Fausse mémoire de chat** : insérée via une injection SQL, dans du code attribué ironiquement à *« my new intern called Copilot »*.\n- **Prompt injection** : le classique « ignore all previous instructions » ne passe plus sur les modèles récents. En revanche, les attaques **multi-étapes** et le **payload splitting** fonctionnent encore. S'y ajoutent les injections invisibles (texte blanc sur blanc dans un PDF ou un CV) et les **MCP aux droits trop larges**.\n- **Tool calling avec un modèle local** : le modèle invente des paramètres pour créer un compte. Il note aussi un modèle qui dit *« I couldn't do it »* alors qu'il a bien exécuté un DROP TABLE. Il qualifie cette pratique de *« hope-driven development »*.\n- **Remédiations** :\n  - corriger les failles classiques et scanner les dépendances ;\n  - poser des guardrails en entrée et en sortie (démo Quarkus avec un LLM juge) ;\n  - imposer une sortie structurée et le moindre privilège, calqué sur l'utilisateur connecté ;\n  - coder les transitions de flux en dur ;\n  - mettre un humain dans la boucle pour les actions à risque, et journaliser ;\n  - mixer modèles locaux et cloud selon la sensibilité des données.\n- Aucun retour participant trouvé.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "FAzN8pPFPu8",
+        "title": "Breaching LLM-Powered Applications: Overcoming Security and Privacy Challenges - DevFest Paris 2025",
+        "publishedAt": "2025-12-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-state-of-voice-interactions-on-android",
+      "day": "2025-11-21",
+      "type": "talk",
+      "title": "The State of Voice Interactions on Android",
+      "speakers": [
+        "Elaine Dias Batista"
+      ],
+      "feedbackFrom": [
+        "Stéphane Trebel (article LinkedIn)"
+      ],
+      "summary": "- État des lieux des **interactions vocales sur Android**. Trebel en retient la légende *« Plus ouvert, plus varié, plus utile ! »*.\n- **Retour participant** : Trebel se dit méfiant envers les assistants et le « bloatware » poussés par les constructeurs. La speakeuse l'a pourtant convaincu de *« faire la part des choses »* entre les capacités désormais offertes par le système et ce qu'on peut en faire dans une app, *« notamment tout ce qui peut être fait on device »* sans cloud.",
+      "summarySources": [
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "ggAeJn_hVhc",
+        "title": "The State of Voice Interactions on Android - DevFest Paris 2025",
+        "transcript": false
+      }
+    },
+    {
+      "id": "comment-tester-l-accessibilite-d-un-site-internet",
+      "day": "2025-11-21",
+      "type": "talk",
+      "title": "Comment tester l'accessibilité d'un site internet ?",
+      "speakers": [
+        "Emmanuelle Aboaf"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : développeuse sourde de naissance, la speakeuse s'appuyait sur un sous-titrage en direct. Elle rappelle que **seuls environ 3 % des sites sont accessibles** (chiffre d'observatoire cité), pour environ 12 millions de personnes handicapées en France.\n- **Démo en direct** au clavier et au lecteur d'écran sur un site volontairement inaccessible, en 6 cas :\n  - focus visible (ne pas supprimer l'outline) ;\n  - contrastes ;\n  - attribut `lang` ;\n  - `alt` des images (vide pour les images décoratives) ;\n  - formulaires (`label`, `aria-describedby`, `aria-invalid`, pas d'information portée par la seule couleur) ;\n  - boutons et liens nommés explicitement.\n- Formule retenue : *« un bouton fait quelque chose, un lien ça va quelque part »*. Un lien « En savoir plus » répété, c'est *« comme une pochette surprise »*.\n- **Outillage** : les tests automatisés couvrent **environ 30 %** des critères. *« Les meilleurs tests restent les tests utilisateurs. »* Les overlays ne sont pas fiables et l'IA ne sait pas encore produire un site accessible.\n- **Cadre légal** : loi de 2005 étendue en 2023 à des entreprises privées (seuils de taille). Il faut un audit RGAA et une déclaration de conformité, même si les amendes sont jugées *« dérisoires »*.\n- **Questions nourries de la salle** : images animées, `role=\"presentation\"`, `aria-label` vs texte masqué. Sur ce dernier point : ARIA mal utilisé est « désastreux ». Conclusion : intégrer l'accessibilité dès le départ, avec PO, designers, devs et QA.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "Hl86px6rStc",
+        "title": "How to test the accessibility of a website? - DevFest Paris 2025",
+        "publishedAt": "2025-12-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-meta-lois-vous-ne-leur-echapperez-pas",
+      "day": "2025-11-21",
+      "type": "talk",
+      "title": "Les Méta-Lois, vous ne leur échapperez pas !",
+      "speakers": [
+        "Stéphane Trebel"
+      ],
+      "feedbackFrom": [
+        "Stéphane Trebel (speaker, article LinkedIn)"
+      ],
+      "summary": "- **Sur scène (transcript)** : le fil rouge est une développeuse junior dont chaque déboire illustre une **« méta-loi »**, avec des pistes pour la mitiger :\n  - **Conway** : équipes verticales, task forces limitées dans le temps.\n  - **Chesterton** : comprendre avant de changer. ADR, DDD, tests ; *« 80 % de notre métier est littéraire »*.\n  - **Goodhart** : une quality gate à 80 % pousse la junior, bloquée à 79,8 %, à écrire des tests artificiels. Remède : peu de KPI, choisis par l'équipe.\n  - **Dunning-Kruger**.\n  - **Hofstadter/Parkinson** : les estimations ne marchent pas. Il recommande de petits MVP, un ROTI anonyme et l'écrit asynchrone.\n  - **Lindy** : privilégier l'éprouvé, contre le « CV driven development ».\n  - **Tesler** et **Hyrum** : la complexité se déplace, *« SemVer est un mensonge »*.\n  - **Shirky**, puis le **marteau de Maslow** en clôture.\n- Punchlines : *« Vous avez commité, vous avez poussé, c'est du Legacy »* ; *« Ce qui est moderne n'est pas meilleur, c'est juste contemporain »* ; être *« intraitable avec le code […] tout en étant adorable avec les gens »*.\n- Message final : les méta-lois ne s'éliminent pas, elles se mitigent, et **les nommer** aide à ne pas les subir.\n- **Côté speaker** : son créneau a été échangé en dernière minute pour un retard. Il en résulte une salle clairsemée (*« Nous étions une douzaine ! »*), mais une séance de questions qui l'a conforté : *« qu'importe qu'on soit peu si l'intérêt est là »* (Trebel, speaker).",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "fSpPUEoaC-4",
+        "title": "Les Méta-Lois, vous ne leur échapperez pas ! - DevFest Paris 2025",
+        "publishedAt": "2025-11-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "quand-ton-prochain-hit-est-co-compose-par-une-ia",
+      "day": "2025-11-21",
+      "type": "talk",
+      "title": "Quand ton prochain hit est co-composé par une IA",
+      "speakers": [
+        "Valentin Dumas"
+      ],
+      "feedbackFrom": [
+        "Stéphane Trebel (article LinkedIn)",
+        "Article Epitech"
+      ],
+      "summary": "- **Sur scène (transcript)** : des chiffres de marché, dont la part croissante de titres générés par IA parmi les morceaux mis en ligne sur Deezer (environ 10 % début 2025, 28 % en octobre, 34 % en novembre, selon le speaker).\n- **Historique** de la musique algorithmique, de l'ILLIAC (1957) à AIVA et aux plateformes texte-vers-audio.\n- **Démo de bout en bout** : un GPT pour les paroles et la structure, Suno V5 pour la génération (persona vocale, séparation de pistes), un DAW IA pour le nettoyage, puis mixage et mastering assistés. Il juge toutefois l'ensemble *« pas prod ready »*.\n- **Bénéfice principal** : *« on a diminué le coût de l'échec »*, on itère vite pour se concentrer sur la création. Des retours humains restent recommandés.\n- **Droit d'auteur** : le copyright anglo-saxon diffère du droit d'auteur français (droit moral). Sur Suno, les droits dépendent de l'offre gratuite ou payante.\n- Conclusion *« de Normand »* : l'IA menace-t-elle les auteurs ? Oui et non, c'est un outil.\n- **Retour participant** : Trebel se dit sceptique face à une IA *« tellement survendue »*. Il y voit pourtant la confirmation d'une phase plus intéressante : l'IA **retire des barrières techniques aux débutants** plutôt que de remplacer la créativité, car *« dès qu'on retire la création humaine […] on tombe dans le slop sans âme »*.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "wP-hg8IDIzA",
+        "title": "When your next hit is co-composed by an AI - DevFest Paris 2025",
+        "publishedAt": "2025-12-06",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Understanding Kubernetes in a visual way — Aurélie Vache (vidéo en ligne)",
+    "Au secours j'en peux plus de mes tests d'intégration Spring, et ma CI non plus ! — Mathilde Lorrain & Nicolas Favier (vidéo en ligne)",
+    "Licence to Code: Understanding Open Source Licenses for Developers — Florent Zara (vidéo en ligne)",
+    "Gemini: Slashing Subtitle Time & Cost with AI — Chrys Le Gall (vidéo en ligne)",
+    "Firefighting: The Engineer's Guide to On-Call — Omid Gosha (vidéo en ligne)",
+    "Are You Vibing with Vibe Coding? A New Approach to Developer Productivity — Nishu Nishanta (vidéo en ligne, transcript indisponible)",
+    "Le pattern ELT en action avec DBT et SQLMesh — Mazlum Tosun (vidéo en ligne)",
+    "Des applis sans mot de passe : Passkeys en pratique — Daniel Garnier-Moiroux (vidéo en ligne)",
+    "From Chaos to Control: Governing GenAI with API Management — Nejmeddine Ben Ouarred & Florent Legras (vidéo en ligne)",
+    "Guilde des Conteurs : une campagne atelier A2A/MCP pour des Sagas du Soir (atelier) — Florent Legras & Yulianna Khorolich",
+    "Créez votre premier microservice en Rust (atelier) — Youssef Nait Belkacem & Jean-Eudes Couignoux",
+    "Améliorons la qualité et l'adoption de nos API grâce à l'approche API-First (atelier) — Alexandre Touret",
+    "1h50min pour créer une App Front avec la Clean Archigonale (atelier) — Dorian Lamandé & Guillaume Chauvet"
+  ],
+  "sources": [
+    {
+      "label": "Agenda officiel DevFest Paris 2025 (archive Wayback Machine, janvier 2026)",
+      "url": "https://web.archive.org/web/20260121072601/https://devfest.gdgparis.fr/agenda"
+    },
+    {
+      "label": "Agenda initial (agenda.devfest.gdgparis.fr, archive d'octobre 2025)",
+      "url": "https://web.archive.org/web/20251015142600/https://agenda.devfest.gdgparis.fr/"
+    },
+    {
+      "label": "Page de l'événement — GDG Community (GDG Paris)",
+      "url": "https://gdg.community.dev/events/details/google-gdg-paris-presents-devfest-paris-2025/"
+    },
+    {
+      "label": "Appel à propositions — Conference Hall",
+      "url": "https://conference-hall.io/devfest-paris-2025"
+    },
+    {
+      "label": "Playlist YouTube « DevFest Paris 2025 » (17 vidéos, chaîne GDG France)",
+      "url": "https://www.youtube.com/playlist?list=PLuZ_sYdawLiWNcXGIDSBQqcGGihkTO-9_"
+    },
+    {
+      "label": "Stéphane Trebel — « Le DevFest Paris 2025 » (article LinkedIn, 24/11/2025)",
+      "url": "https://fr.linkedin.com/pulse/le-devfest-paris-2025-st%C3%A9phane-trebel-1egye"
+    },
+    {
+      "label": "Epitech — « DevFest 2025 : Epitech Paris accueille une édition tournée vers l'innovation » (11/12/2025)",
+      "url": "https://www.epitech.eu/2025/12/11/devfest-2025-epitech-paris-accueille-une-edition-tournee-vers-linnovation/"
+    },
+    {
+      "label": "Dont miss iT — fiche DevFest Paris 2025 (25 speakers, 20 entreprises, 4 tracks)",
+      "url": "https://www.dontmiss-it.com/evenement/devfest-paris-2025/"
+    },
+    {
+      "label": "Post LinkedIn de Jihène Mejri (chapter lead GDG Paris) annonçant l'agenda (« plus de 20 sessions : conférences, lunch talks et workshops »)",
+      "url": "https://fr.linkedin.com/posts/jihenemejri_tickets-devfest-paris-2025-activity-7384162046784999424-iDZR"
+    },
+    {
+      "label": "@devfestparis sur X — clôture du CFP : 192 propositions, 145 speakers (extrait de résultat de recherche)",
+      "url": "https://x.com/devfestparis/status/1918252717908054275"
+    }
+  ]
 }

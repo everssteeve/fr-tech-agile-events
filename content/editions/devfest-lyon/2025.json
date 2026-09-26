@@ -4,10 +4,141 @@
   "title": "DevFest Lyon 2025",
   "edition": "1re édition",
   "start": "2025-11-28",
+  "end": "2025-11-28",
   "city": "Lyon",
   "venue": "L'Embarcadère",
   "url": "https://devfest.gdglyon.com/2025",
+  "programUrl": "https://devfest.gdglyon.com/2025/schedule",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "Première édition, organisée par l'association DevFest Lyon avec le soutien du GDG Lyon : une journée, deux salles (La Grande Halle, Le Rez-de-Saône), 16 talks (quickies de 20 min et conférences de 50 min) choisis parmi 314 propositions, environ 250 participants, 10 sponsors, complet plus d'un mois à l'avance. Pas de captation vidéo.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-09-26",
+  "revisit": "Corpus mince : 3 comptes-rendus de blog et 1 article sponsor, aucun post LinkedIn de participant lu (seuls les posts de l'organisation ont été trouvés) ; 9 sessions sur 18 sans aucun retour.",
+  "corpus": "Programme officiel (devfest.gdglyon.com/2025/schedule, Conference Hall) ; trois comptes-rendus de blog publiés entre le 29 novembre et le 2 décembre 2025 (Julien Wittouck, speaker ; Nirina Rabeson, Exotec ; Michaël Bernasinski, HoppR) et l'article du sponsor Gold SQLI ; deux posts LinkedIn de l'organisation (annonces).",
+  "limits": "Aucune vidéo : l'édition n'a pas été filmée, donc aucun transcript. Les retours se concentrent sur la Grande Halle et la matinée ; les sessions du Rez-de-Saône et la plupart des talks de l'après-midi n'ont aucun retour détaillé. L'article SQLI est un contenu de sponsor, plus thématique que factuel ; aucun post LinkedIn de participant n'a pu être lu.",
+  "tldr": "Une **première édition saluée à l'unanimité pour son organisation** (complète un mois avant, 314 propositions pour 16 créneaux), au programme dominé par l'**IA appliquée à des cas concrets** et par un **web qui se rapproche du natif** (View Transitions, WebGPU).",
+  "keyTakeaways": [
+    "Pour fiabiliser un agent conversationnel sur un gros catalogue, découper le problème : un LLM extracteur, un moteur de recherche (Algolia) pour retrouver le vrai produit, un LLM conversationnel et un LLM évaluateur contre les hallucinations (Marie Terrier, rapporté par HoppR).",
+    "L'API View Transition permet désormais d'animer nativement les changements de page, y compris entre documents, sans lourde bibliothèque JavaScript ; elle mérite d'être essayée sur un site existant (Théo Gianella, rapporté par Nirina Rabeson et SQLI).",
+    "WebGPU rend accessibles au web le rendu 3D, le traitement d'image et le calcul parallèle (jusqu'aux LLM dans le navigateur) en masquant Vulkan, DirectX 12 et Metal (Julien Sulpis, rapporté par Nirina Rabeson).",
+    "La dette d'architecture ressemble à une usine Factorio : les solutions « astucieuses » du début finissent par imposer une reconstruction complète ; penser urbanisation et scalabilité tôt (Julien Wittouck, rapporté par Nirina Rabeson et HoppR).",
+    "L'accessibilité ne se résume pas à cocher les critères de conformité : c'est une responsabilité collective dès la conception (Vanessa Strub et Gabriel Pillet, rapporté par SQLI).",
+    "Contribuer au noyau Linux est à la portée d'une équipe non spécialiste : diagnostiquer une panne matérielle jusqu'au patch upstream (Florian Forestier, rapporté par Nirina Rabeson).",
+    "Pour indexer des vidéos, une chaîne simple suffit : yt-dlp, transcription IA (les sous-titres automatiques étant trop pauvres), ffmpeg pour les aperçus, Algolia pour la recherche floue (Tim Carry, rapporté par HoppR).",
+    "En sport de haut niveau, les gains marginaux passent par la donnée et le jumeau numérique, mais surtout par la confiance entre scientifiques et athlètes et la validation terrain (Joseph Mestrallet, rapporté par HoppR et Nirina Rabeson)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-data-science-performance-sportive",
+      "day": "2025-11-28",
+      "type": "keynote",
+      "title": "Keynote d'ouverture : la data science au service de la performance sportive",
+      "speakers": ["Joseph Mestrallet"],
+      "feedbackFrom": ["Michaël Bernasinski (blog HoppR)", "Nirina Rabeson (blog)"],
+      "summary": "- Keynote donnée dans le créneau « Ouverture » (le programme en ligne ne la mentionne pas ; titre reconstitué d'après les comptes-rendus, HoppR la nomme « Datascience for performance »).\n- **Le sport de haut niveau atteint ses limites physiques** : les gains marginaux passent désormais par la data science (Rabeson).\n- Joseph Mestrallet travaille avec des athlètes comme **Quentin Fillon Maillet** et **Ruth Croft** ; il décrit **quatre niveaux de données** : littérature scientifique, suivi personnalisé, affinage, puis calcul par **jumeau numérique** permettant de rejouer une course des centaines de fois avec des paramètres différents pour trouver la meilleure stratégie (HoppR).\n- Insistance sur la **mesure terrain**, la **confiance à construire avec l'athlète** et la collaboration étroite scientifiques ↔ sportifs, plutôt que la théorie seule (HoppR, Rabeson).\n- Lecture critique : jugée accessible et prenante, mais Nirina Rabeson aurait aimé qu'elle creuse davantage la simulation de l'athlète numérique.",
+      "summarySources": ["feedback", "blog"]
+    },
+    {
+      "id": "demeler-vrais-produits-et-hallucinations-agent-telephonique",
+      "day": "2025-11-28",
+      "type": "talk",
+      "title": "Démêler vrais produits et hallucinations, REX d'un agent téléphonique chercheur de chaussettes",
+      "speakers": ["Marie Terrier"],
+      "feedbackFrom": ["Michaël Bernasinski (blog HoppR)", "Blog SQLI"],
+      "summary": "- REX d'un **agent conversationnel téléphonique** qui traite en temps réel les commandes de **pharmaciens** (SQLI, HoppR ; l'affiliation de la speakeuse diffère selon les sources : Yelda.ai pour HoppR, Hermès pour SQLI).\n- Historique : d'un système **NLP de 2017** aux LLM, avec un catalogue passé de **40 à 20 000 produits**, en plusieurs langues (HoppR).\n- Premiers écueils des LLM : **fenêtres de contexte de 8 000 tokens**, latence excessive, **hallucinations fréquentes** de produits inexistants.\n- Solution retenue : une chaîne de composants — **LLM extracteur** des noms partiels, **moteur de recherche Algolia** pour ancrer sur le vrai catalogue, **LLM conversationnel**, **LLM évaluateur** — jusqu'aux produits de niche comme les bas de contention (« chercheur de chaussettes »).\n- SQLI y voit l'exemple d'une IA qui a quitté l'expérimentation pour des **contraintes métier fortes**.",
+      "summarySources": ["feedback", "blog"]
+    },
+    {
+      "id": "l-api-viewtransition-une-revolution-pour-le-web",
+      "day": "2025-11-28",
+      "type": "talk",
+      "title": "L'API viewTransition : une révolution pour le web ?",
+      "speakers": ["Théo Gianella"],
+      "feedbackFrom": ["Nirina Rabeson (blog)", "Blog SQLI"],
+      "summary": "- Quickie de 20 minutes (Frontend).\n- **Le navigateur sait désormais animer nativement les changements d'URL**, un pattern d'UX mobile enfin intégré aux standards du web, sans dépendance JavaScript lourde (Rabeson).\n- Fonctionne pour les **transitions cross-document**, en SPA comme en site multi-pages (SQLI).\n- Pédagogie saluée : *« au bout de 15 minutes tout était clair »* alors que l'auto-formation aurait pris des heures (Rabeson, qui utilise l'API sur son blog ; support Firefox signalé comme incomplet).",
+      "summarySources": ["feedback", "blog"]
+    },
+    {
+      "id": "let-s-play-factorio",
+      "day": "2025-11-28",
+      "type": "talk",
+      "title": "Let's play Factorio",
+      "speakers": ["Julien Wittouck"],
+      "feedbackFrom": ["Nirina Rabeson (blog)", "Michaël Bernasinski (blog HoppR)", "Julien Wittouck (speaker, blog)"],
+      "summary": "- Le jeu **Factorio comme métaphore de l'architecture logicielle** (Software Architecture, 50 min) : patterns de développement (**code spaghetti**, architecture en couches, microservices), **urbanisation** (ESB, scalabilité verticale/horizontale), sécurité (métriques, monitoring, DDoS, pare-feu) (HoppR).\n- Idée qui a le plus parlé : les solutions **« astucieuses » du début deviennent des choix regrettés** qui imposent de tout reconstruire, comme la dette technique héritée (Rabeson).\n- Plus de **100 heures de préparation** (HoppR) ; troisième fois que le talk est donné, devant une Grande Halle *« quasi pleine »* et avec des cartes de feedback positives (Wittouck, speaker).\n- Pas de vidéo de cette édition ; HoppR renvoie vers une captation antérieure publiée par GDG France (vidéo I07DxOLw10E).",
+      "summarySources": ["feedback", "blog"]
+    },
+    {
+      "id": "c-etait-dans-quel-episode-deja-bref-j-ai-indexe-une-serie-culte",
+      "day": "2025-11-28",
+      "type": "lightning",
+      "title": "C'était dans quel épisode déjà ? Bref, j'ai indexé une série culte",
+      "speakers": ["Tim Carry — Algolia"],
+      "feedbackFrom": ["Michaël Bernasinski (blog HoppR)"],
+      "summary": "- Quickie de 20 minutes : construction de **brefsearch.com**, moteur de recherche des répliques de la série *Bref*.\n- Chaîne technique : **yt-dlp** (vidéos et métadonnées), **HappyScribe** pour une transcription IA (les sous-titres automatiques étant trop mauvais), **ffmpeg** pour les images et aperçus animés, **Algolia** pour la recherche, **Netlify** et **Cloudinary** (images LQIP).\n- Résultat : recherche floue avec **aperçu vidéo au survol** (HoppR).",
+      "summarySources": ["feedback", "blog"]
+    },
+    {
+      "id": "speechless-live-original",
+      "day": "2025-11-28",
+      "type": "other",
+      "title": "Speechless Live Original",
+      "speakers": ["Jean-François Garreau"],
+      "feedbackFrom": ["Michaël Bernasinski (blog HoppR)"],
+      "summary": "- Session d'**improvisation** pendant la pause déjeuner : les participants reçoivent un thème tiré au sort et des slides sans rapport à commenter (HoppR).\n- Moments retenus : **Carmen Piciorus** passant un entretien pour un poste de gardienne de nains de jardin, **Tim Carry** pitchant un film imaginaire, *« La revanche des cacahuètes »*.",
+      "summarySources": ["feedback", "blog"]
+    },
+    {
+      "id": "la-revolution-webgpu",
+      "day": "2025-11-28",
+      "type": "talk",
+      "title": "La révolution WebGPU : toute la puissance du GPU, sur le web et en dehors",
+      "speakers": ["Julien Sulpis"],
+      "feedbackFrom": ["Nirina Rabeson (blog)", "Blog SQLI"],
+      "summary": "- **WebGPU abstrait les API GPU bas niveau** (Vulkan, DirectX 12, Metal) pour les navigateurs modernes : rendu 3D, traitement d'image, **calcul parallèle**, jusqu'à l'exécution de LLM (Rabeson, SQLI).\n- Nirina Rabeson, a priori sceptique envers les talks purement « API », y a trouvé une utilité concrète ; un collègue : *« maintenant je comprends ce que font les équipes 3D chez Exotec »*.\n- SQLI y voit le signe d'un **web qui tend vers le natif** en performance.",
+      "summarySources": ["feedback", "blog"]
+    },
+    {
+      "id": "accessibilite-cochez-les-cases-et-ratez-la-cible",
+      "day": "2025-11-28",
+      "type": "talk",
+      "title": "Accessibilité : cochez les cases… et ratez la cible",
+      "speakers": ["Vanessa Strub", "Gabriel Pillet"],
+      "feedbackFrom": ["Blog SQLI"],
+      "summary": "- Conférence **à deux voix**, par une consultante-formatrice en accessibilité numérique et un développeur frontend, *« tous deux en situation de handicap »* (SQLI).\n- Message : **cocher les critères de conformité ne suffit pas** ; l'accessibilité est *« une responsabilité collective dès la conception de l'application »* et profite à tous les utilisateurs (SQLI).\n- Seul retour trouvé : l'article du sponsor, sans détail sur les exemples présentés.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "trois-jeunes-speleologues-dans-les-entrailles-de-linux",
+      "day": "2025-11-28",
+      "type": "lightning",
+      "title": "Comment trois jeunes spéléologues sont descendus dans les entrailles de Linux",
+      "speakers": ["Florian Forestier"],
+      "feedbackFrom": ["Nirina Rabeson (blog)"],
+      "summary": "- Quickie de clôture : une équipe **non experte du noyau** enquête sur des pannes de **cartes réseau** de serveurs coûteux, remonte à la cause et **contribue des patchs upstream** au noyau Linux, désormais distribués partout (Rabeson).\n- Présenté par Nirina Rabeson comme une **leçon d'accessibilité de la contribution open source**, qu'il rapproche de sa propre correction d'un bug de Nuxt.",
+      "summarySources": ["feedback", "blog"]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Créer son propre Jeu de Rôle en Agentic AI & MCP (TheWitcherish, Tiffany Souterre)",
+    "Déchaînez le Chaos : tester la résilience de votre application avec Chaos Monkey (Erwan Le Tutour)",
+    "Les gardiens des données à l'ère de l'IA (Carmen Piciorus)",
+    "Coder plus pour coder moins : outils maison, IA et carnet de notes (Edouard Penin)",
+    "Et si votre prochain script… c'était un prompt ? Découvrez GenAIScript! (Yohan Lasorsa)",
+    "45 min pour mettre son application à genoux : le guide complet du test de charge (Mathilde Lorrain, Loïc Ortola)",
+    "Docker Bake, élégance et standardisation pour le build de vos images Docker (Mazlum Tosun)",
+    "Développer un opérateur Kubernetes en Java, challenge accepted ! (Stéphane Philippart)",
+    "Embellir des QR Codes à l'ère de la GenAI (Raphael Semeteys)"
+  ],
+  "sources": [
+    { "label": "Programme officiel DevFest Lyon 2025", "url": "https://devfest.gdglyon.com/2025/schedule" },
+    { "label": "Site de l'édition 2025", "url": "https://devfest.gdglyon.com/2025" },
+    { "label": "Conference Hall : appel à orateurs DevFest Lyon 2025", "url": "https://conference-hall.io/devfest-lyon-2025" },
+    { "label": "Julien Wittouck (speaker) : J'étais au 1er DevFest Lyon", "url": "https://codeka.io/2025/11/29/j%C3%A9tais-au-1er-devfest-lyon/" },
+    { "label": "Nirina Rabeson : J'étais à la première conférence du Devfest Lyon !", "url": "https://nirinarabeson.fr/posts/1ere-edition-devfest-lyon-2025" },
+    { "label": "Blog HoppR (Michaël Bernasinski) : Alors ? C'était comment ce premier DevFest Lyon", "url": "https://blog.hoppr.tech/blogs/2025-12-02-alors-ctait-comment-ce-premier-devfest-lyon" },
+    { "label": "SQLI (sponsor Gold) : DevFest Lyon 2025, l'évolution technologique", "url": "https://www.sqli.com/fr-fr/insights/devfest-lyon-2025-evolution-technologique" },
+    { "label": "Let's play Factorio, captation antérieure publiée par GDG France (pas cette édition)", "url": "https://www.youtube.com/watch?v=I07DxOLw10E" },
+    { "label": "LinkedIn : posts de la page DevFest Lyon (annonce du programme) ; aucun post de participant lu" }
+  ]
 }
