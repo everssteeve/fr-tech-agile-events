@@ -8,7 +8,9 @@ Queues, each with a nightly budget so the backlog is worked through progressivel
 - window:   editions ended in the last 14 days, re-synthesized every night while feedback flows in (no limit);
 - backlog:  past editions still "pending" (e.g. discovered historical editions), most recent first;
 - revisit:  synthesized editions flagged `revisit` (thin corpus), oldest update first;
-- history:  events whose past editions (last 20 years) have not been looked up yet.
+- history:  events whose past editions (last 20 years) have not been looked up yet;
+- months:   monthly syntheses older than one of their edition syntheses (computed before tonight's work;
+            the Claude step re-checks after step 4).
 Also flips "scheduled" editions whose end date has passed to "pending".
 """
 
@@ -61,6 +63,24 @@ def main() -> None:
         elif d.get("revisit"):
             revisits.append((d.get("synthesisUpdatedAt", ""), {**item, "reason": f"à compléter : {d['revisit']}"}))
 
+    # Monthly syntheses to (re)write: a month with a synthesized edition updated after the month synthesis.
+    month_updates: dict[str, str] = {}
+    for p in (ROOT / "content/editions").glob("*/*.json"):
+        d = json.loads(p.read_text())
+        if d["status"] == "synthesized" and len(d["start"]) >= 7:
+            m = d["start"][:7]
+            month_updates[m] = max(month_updates.get(m, ""), d.get("synthesisUpdatedAt", ""))
+    months_todo = []
+    for m, last in sorted(month_updates.items()):
+        f = ROOT / "content/months" / f"{m}.md"
+        current = ""
+        if f.exists():
+            for line in f.read_text().splitlines():
+                if line.startswith("updatedAt:"):
+                    current = line.split(":", 1)[1].strip().strip('"')
+        if not f.exists() or last > current:
+            months_todo.append(m)
+
     history_todo = []
     for p in sorted((ROOT / "content/events").glob("*.json")):
         ev = json.loads(p.read_text())
@@ -77,11 +97,13 @@ def main() -> None:
         + [b for _, b in backlog[:BACKLOG_PER_DAY]]
         + [r for _, r in revisits[:REVISITS_PER_DAY]],
         "history_discovery": history_todo[:HISTORY_PER_DAY],
+        "months_to_update": months_todo,
         "queues": {
             "window": len(window),
             "backlog": len(backlog),
             "revisit": len(revisits),
             "history": len(history_todo),
+            "months": len(months_todo),
         },
     }
     out = ROOT / "routine/state/plan.json"
@@ -90,7 +112,8 @@ def main() -> None:
     q = plan["queues"]
     print(
         f"tonight: {len(plan['to_synthesize'])} synthesis, {len(plan['history_discovery'])} history lookups | "
-        f"queues: window={q['window']} backlog={q['backlog']} revisit={q['revisit']} history={q['history']}"
+        f"queues: window={q['window']} backlog={q['backlog']} revisit={q['revisit']} history={q['history']} "
+        f"months={q['months']}"
     )
 
 

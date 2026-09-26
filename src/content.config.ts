@@ -98,4 +98,17 @@ const syntheses = defineCollection({
   schema: z.object({}).passthrough(),
 });
 
-export const collections = { events, editions, syntheses };
+/** Monthly synthesis (synthesis of the month's edition syntheses): content/months/<YYYY-MM>.md */
+const months = defineCollection({
+  loader: glob({ pattern: '*.md', base: './content/months' }),
+  schema: z.object({
+    month: z.string().regex(/^\d{4}-\d{2}$/),
+    updatedAt: z.string(),
+    tldr: z.string(),
+    /** Edition ids (`<event>/<year>`) the synthesis is built from. */
+    editions: z.array(z.string()).min(1),
+    themes: z.array(z.string()).default([]),
+  }),
+});
+
+export const collections = { events, editions, syntheses, months };

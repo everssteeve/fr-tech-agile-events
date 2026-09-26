@@ -1,155 +1,183 @@
 ---
 import Base from '../layouts/Base.astro';
 import EditionRow from '../components/EditionRow.astro';
-import { CATEGORIES, loadAll, monthName, today, when } from '../lib/data';
+import {
+  CATEGORIES, fixMonthLinks, loadAll, mdInline, monthKey, monthLabel, monthPath, today, weekOf,
+  type EditionEntry,
+} from '../lib/data';
 
-const { editions, eventBySlug } = await loadAll();
+const { editions, eventBySlug, monthByKey } = await loadAll();
 const ref = today();
-const currentYear = Number(ref.slice(0, 4));
-const years = [...new Set(editions.map((e) => e.data.year))].sort((a, b) => b - a);
-const defaultYear = years.includes(currentYear) ? currentYear : years[0];
-const synthesized = editions.filter((e) => e.data.status === 'synthesized');
-const videos = editions.reduce((n, e) => n + e.data.sessions.filter((s) => s.video).length, 0);
-const upcoming = editions.filter((e) => when(e.data, ref) !== 'past');
-const next = upcoming.slice(0, 3);
-const todayLabel = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Paris' }).format(new Date());
+const week = weekOf(ref);
+const endOf = (e: EditionEntry) => e.data.end ?? e.data.start;
+const inWeek = (e: EditionEntry) => e.data.start.length === 10 && e.data.start <= week.end && endOf(e) >= week.start;
+const currentMonth = ref.slice(0, 7);
+
+// One continuous timeline: groups ordered chronologically. Year-only editions open their year.
+type Group = { key: string; label: string; month: string | null; items: EditionEntry[] };
+const groups = new Map<string, Group>();
+const add = (key: string, label: string, month: string | null, e?: EditionEntry) => {
+  if (!groups.has(key)) groups.set(key, { key, label, month, items: [] });
+  if (e) groups.get(key)!.items.push(e);
+};
+for (const e of editions) {
+  const m = monthKey(e.data);
+  if (m) add(m, monthLabel(m), m, e);
+  else add(`${e.data.year}-00`, `${e.data.year} · date non précisée`, null, e);
+}
+add(currentMonth, monthLabel(currentMonth), currentMonth);
+const timeline = [...groups.values()].sort((a, b) => a.key.localeCompare(b.key));
+
+const synthesized = editions.filter((e) => e.data.status === 'synthesized').length;
+const fmt = (s: string) => new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', timeZone: 'UTC' }).format(new Date(`${s}T12:00:00Z`));
+const weekLabel = `${fmt(week.start)} – ${fmt(week.end)}`;
 ---
 <Base title="Retours de conf' tech & agile" description="Calendrier et synthèses des retours participants des conférences tech et agiles en France.">
-  <div class="wrap stack">
-    <section class="intro">
-      <div class="eyebrow">France · mis à jour le {todayLabel}</div>
-      <h1>Ce qui s'est dit dans les conférences tech &amp; agiles</h1>
-      <p class="lede">
-        Le calendrier des conférences françaises et, pour chaque édition passée, une synthèse des retours participants : session par session, puis les grandes idées de l'édition. Les vidéos publiées sont ajoutées au fil de l'eau.
+  <div class="bar">
+    <div class="wrap bar-in">
+      <p class="summary">
+        <strong>{editions.length}</strong> éditions · <strong>{synthesized}</strong> synthèse{synthesized > 1 ? 's' : ''} d'événement · <strong>{monthByKey.size}</strong> synthèse{monthByKey.size > 1 ? 's' : ''} mensuelle{monthByKey.size > 1 ? 's' : ''}
       </p>
-      <dl class="stats">
-        <div><dt>Synthèses</dt><dd>{synthesized.length}</dd></div>
-        <div><dt>Sessions résumées</dt><dd>{synthesized.reduce((n, e) => n + e.data.sessions.length, 0)}</dd></div>
-        <div><dt>Vidéos liées</dt><dd>{videos}</dd></div>
-        <div><dt>Événements suivis</dt><dd>{eventBySlug.size}</dd></div>
-      </dl>
-    </section>
-
-    {next.length > 0 && (
-      <section class="next" aria-label="Prochains événements">
-        <h2>Prochainement</h2>
-        <div class="next-grid">
-          {next.map((e) => {
-            const ev = eventBySlug.get(e.data.event);
-            return ev && <EditionRow edition={e.data} name={ev.data.name} category={ev.data.category} />;
-          })}
-        </div>
-      </section>
-    )}
-
-    <section class="cal" id="calendrier">
-      <div class="cal-head">
-        <h2>Calendrier</h2>
-        <div class="filters">
-          <div class="chips" role="group" aria-label="Année">
-            {years.map((y) => <button type="button" class="chip" data-f="year" data-v={String(y)} aria-pressed={String(y === defaultYear)}>{y}</button>)}
-          </div>
-          <div class="chips" role="group" aria-label="Thème">
-            <button type="button" class="chip" data-f="cat" data-v="all" aria-pressed="true">Tous</button>
-            {Object.entries(CATEGORIES).map(([k, c]) => (
-              <button type="button" class="chip" data-f="cat" data-v={k} aria-pressed="false"><span class="sw" style={`background:var(--${k})`}></span>{c.label}</button>
-            ))}
-          </div>
-          <div class="chips" role="group" aria-label="Période">
-            <button type="button" class="chip" data-f="when" data-v="all" aria-pressed="true">Toute l'année</button>
-            <button type="button" class="chip" data-f="when" data-v="synth" aria-pressed="false">Avec synthèse</button>
-            <button type="button" class="chip" data-f="when" data-v="upcoming" aria-pressed="false">À venir</button>
-          </div>
-        </div>
-        <p class="count muted" id="count" aria-live="polite"></p>
+      <div class="chips" role="group" aria-label="Thème">
+        <button type="button" class="chip" data-f="cat" data-v="all" aria-pressed="true">Tous</button>
+        {Object.entries(CATEGORIES).map(([k, c]) => (
+          <button type="button" class="chip" data-f="cat" data-v={k} aria-pressed="false"><span class="sw" style={`background:var(--${k})`}></span>{c.short}</button>
+        ))}
       </div>
+      <div class="chips">
+        <button type="button" class="chip" data-f="synth" data-v="1" aria-pressed="false">Avec synthèse</button>
+        <a class="chip now" href="#cette-semaine" id="goto-week">↧ Cette semaine</a>
+      </div>
+    </div>
+  </div>
 
-      {years.map((y) => (
-        <div class="year" data-year={String(y)} hidden={y !== defaultYear}>
-          {Array.from({ length: 13 }, (_, m) => {
-            const list = editions.filter((e) => e.data.year === y && (m === 12 ? e.data.start.length === 4 : Number(e.data.start.slice(5, 7)) - 1 === m));
-            if (!list.length) return null;
-            return (
-              <section class="month">
-                <h3>{m === 12 ? 'Date non précisée' : monthName(m)} <small>{y}</small></h3>
-                <div class="list">
-                  {list.map((e) => {
-                    const ev = eventBySlug.get(e.data.event);
-                    return ev && <EditionRow edition={e.data} name={ev.data.name} category={ev.data.category} />;
-                  })}
-                </div>
-              </section>
-            );
-          })}
-        </div>
-      ))}
-      <p class="empty muted" id="empty" hidden>Aucun événement pour ces filtres.</p>
-    </section>
+  <div class="wrap timeline" id="timeline">
+    <p class="edge muted">Début de l'historique. Descendez pour avancer dans le temps.</p>
+    {timeline.map((g) => {
+      const monthSynth = g.month ? monthByKey.get(g.month) : undefined;
+      const isCurrent = g.month === currentMonth;
+      const before = isCurrent ? g.items.filter((e) => !inWeek(e) && endOf(e) < week.start) : g.items;
+      const during = isCurrent ? g.items.filter(inWeek) : [];
+      const after = isCurrent ? g.items.filter((e) => !inWeek(e) && endOf(e) >= week.start) : [];
+      return (
+        <section class={`month${g.key < currentMonth ? ' is-past' : ''}`} id={g.month ?? `annee-${g.key.slice(0, 4)}`} data-month={g.key}>
+          <header class="mh">
+            <h2>{g.label}</h2>
+            {monthSynth && <a class="msynth" href={monthPath(g.month!)}>Synthèse du mois →</a>}
+          </header>
+          {monthSynth && <p class="mtldr" set:html={fixMonthLinks(mdInline(monthSynth.data.tldr))} />}
+          <div class="list">
+            {before.map((e) => {
+              const ev = eventBySlug.get(e.data.event);
+              return ev && <EditionRow edition={e.data} name={ev.data.name} category={ev.data.category} />;
+            })}
+          </div>
+          {isCurrent && (
+            <div class="week" id="cette-semaine">
+              <div class="week-h"><span class="dot" aria-hidden="true"></span>Cette semaine · {weekLabel}</div>
+              <div class="list">
+                {during.map((e) => {
+                  const ev = eventBySlug.get(e.data.event);
+                  return ev && <EditionRow edition={e.data} name={ev.data.name} category={ev.data.category} />;
+                })}
+              </div>
+              <p class="week-empty muted" hidden={during.length > 0}>Aucun événement cette semaine. Remontez pour les événements passés, descendez pour les prochains.</p>
+            </div>
+          )}
+          {after.length > 0 && (
+            <div class="list">
+              {after.map((e) => {
+                const ev = eventBySlug.get(e.data.event);
+                return ev && <EditionRow edition={e.data} name={ev.data.name} category={ev.data.category} />;
+              })}
+            </div>
+          )}
+        </section>
+      );
+    })}
+    <p class="edge muted">Fin du calendrier connu. Les éditions suivantes apparaissent dès que leurs dates sont annoncées.</p>
   </div>
 </Base>
 
 <script>
-  const state: Record<string, string> = { year: '', cat: 'all', when: 'all' };
-  const chips = [...document.querySelectorAll<HTMLButtonElement>('.cal .chip')];
-  state.year = chips.find((c) => c.dataset.f === 'year' && c.getAttribute('aria-pressed') === 'true')?.dataset.v ?? '';
+  const state = { cat: 'all', synth: '' };
+  const chips = [...document.querySelectorAll<HTMLButtonElement>('.bar button.chip')];
   try {
-    const saved = JSON.parse(localStorage.getItem('cal-filters') ?? 'null');
-    if (saved && typeof saved === 'object') Object.assign(state, { cat: saved.cat ?? 'all', when: saved.when ?? 'all' });
+    const saved = JSON.parse(localStorage.getItem('timeline-filters') ?? 'null');
+    if (saved && typeof saved === 'object') Object.assign(state, { cat: saved.cat ?? 'all', synth: saved.synth ?? '' });
   } catch {}
 
   function apply() {
-    chips.forEach((c) => c.setAttribute('aria-pressed', String(state[c.dataset.f!] === c.dataset.v)));
-    let shown = 0;
-    document.querySelectorAll<HTMLElement>('.year').forEach((y) => {
-      const active = y.dataset.year === state.year;
-      y.hidden = !active;
-      y.querySelectorAll<HTMLElement>('.month').forEach((m) => {
-        let n = 0;
-        m.querySelectorAll<HTMLElement>('.row').forEach((r) => {
-          const ok =
-            (state.cat === 'all' || r.dataset.cat === state.cat) &&
-            (state.when === 'all' || (state.when === 'synth' ? r.dataset.synth === '1' : r.dataset.when === 'upcoming'));
-          r.hidden = !ok;
-          if (ok) n++;
-        });
-        m.hidden = n === 0;
-        if (active) shown += n;
-      });
+    chips.forEach((c) => {
+      const k = c.dataset.f as 'cat' | 'synth';
+      c.setAttribute('aria-pressed', String(k === 'synth' ? state.synth === '1' : state.cat === c.dataset.v));
     });
-    const count = document.getElementById('count');
-    if (count) count.textContent = `${shown} événement${shown > 1 ? 's' : ''}`;
-    const empty = document.getElementById('empty');
-    if (empty) empty.hidden = shown > 0;
+    document.querySelectorAll<HTMLElement>('.month').forEach((m) => {
+      let n = 0;
+      m.querySelectorAll<HTMLElement>('.row').forEach((r) => {
+        const ok = (state.cat === 'all' || r.dataset.cat === state.cat) && (state.synth !== '1' || r.dataset.synth === '1');
+        r.hidden = !ok;
+        if (ok) n++;
+      });
+      const week = m.querySelector<HTMLElement>('.week');
+      if (week) {
+        const visible = [...week.querySelectorAll<HTMLElement>('.row')].some((r) => !r.hidden);
+        week.querySelector<HTMLElement>('.week-empty')!.hidden = visible;
+      }
+      m.hidden = n === 0 && !week;
+    });
   }
   chips.forEach((c) =>
     c.addEventListener('click', () => {
-      state[c.dataset.f!] = c.dataset.v!;
-      try { localStorage.setItem('cal-filters', JSON.stringify({ cat: state.cat, when: state.when })); } catch {}
+      if (c.dataset.f === 'synth') state.synth = state.synth === '1' ? '' : '1';
+      else state.cat = c.dataset.v!;
+      try { localStorage.setItem('timeline-filters', JSON.stringify(state)); } catch {}
       apply();
     }),
   );
   apply();
+
+  // Open on the current week: past above, upcoming below. A #YYYY-MM hash opens that month instead.
+  // Fonts and images change row heights after first paint, so re-anchor until the layout settles,
+  // unless the reader has started scrolling.
+  const target = document.getElementById(decodeURIComponent(location.hash.slice(1))) ?? document.getElementById('cette-semaine');
+  let userScrolled = false;
+  const stop = () => { userScrolled = true; };
+  ['wheel', 'touchmove', 'keydown', 'mousedown'].forEach((t) => addEventListener(t, stop, { once: true, passive: true }));
+  const anchor = () => { if (!userScrolled) target?.scrollIntoView({ block: 'start' }); };
+  anchor();
+  document.fonts?.ready.then(anchor);
+  addEventListener('load', anchor);
+  setTimeout(anchor, 800);
 </script>
 
 <style>
-  .stack { display: flex; flex-direction: column; gap: 44px; }
-  .intro { display: flex; flex-direction: column; gap: 12px; }
-  .lede { color: var(--muted); max-width: 64ch; margin: 0; font-size: 17px; }
-  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 8px 0 0; max-width: 680px; }
-  .stats div { border-top: 2px solid var(--ink); padding-top: 6px; }
-  .stats dt { font-family: var(--font-m); font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
-  .stats dd { margin: 0; font-family: var(--font-d); font-weight: 800; font-size: 30px; font-variant-numeric: tabular-nums; }
-  @media (max-width: 560px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  .next { display: flex; flex-direction: column; gap: 8px; }
-  .next-grid { display: flex; flex-direction: column; }
-  .cal { display: flex; flex-direction: column; gap: 18px; }
-  .cal-head { display: flex; flex-direction: column; gap: 12px; position: sticky; top: 58px; background: var(--bg); z-index: 5; padding-block: 10px; border-bottom: 1px solid var(--line); }
-  @media (max-width: 640px) { .cal-head { position: static; } }
-  .filters { display: flex; flex-wrap: wrap; gap: 10px 24px; }
+  .bar { position: sticky; top: 58px; z-index: 8; background: var(--bg); border-bottom: 1px solid var(--line); }
+  @media (max-width: 640px) {
+    .bar { top: 0; }
+    .bar-in { flex-wrap: nowrap; overflow-x: auto; gap: 6px; scrollbar-width: none; }
+    .bar-in .chips { flex-wrap: nowrap; }
+    .summary { display: none; }
+    .chip { white-space: nowrap; }
+  }
+  .bar-in { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; padding-block: 10px; }
+  .summary { margin: 0; font-size: 13.5px; color: var(--muted); flex: 1 1 100%; }
+  .summary strong { color: var(--ink); font-variant-numeric: tabular-nums; }
   .chips { display: flex; flex-wrap: wrap; gap: 6px; }
-  .count { margin: 0; font-family: var(--font-m); font-size: 12.5px; }
-  .year { display: flex; flex-direction: column; gap: 28px; }
-  .month h3 { font-family: var(--font-d); font-size: 22px; margin: 0 0 4px; text-transform: capitalize; border-bottom: 2px solid var(--ink); padding-bottom: 6px; display: flex; gap: 10px; align-items: baseline; }
-  .month h3 small { font-family: var(--font-m); font-weight: 400; font-size: 12px; color: var(--muted); }
+  .chip.now { border-color: var(--accent); color: var(--accent); }
+  .timeline { display: flex; flex-direction: column; gap: 30px; padding-block: 24px 40vh; }
+  .edge { text-align: center; font-size: 13px; margin: 0; }
+  .month { scroll-margin-top: 150px; display: flex; flex-direction: column; gap: 4px; }
+  .mh { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-bottom: 2px solid var(--ink); padding-bottom: 6px; }
+  .mh h2 { font-size: 22px; text-transform: capitalize; }
+  .month.is-past .mh { border-bottom-color: var(--line); }
+  .month.is-past .mh h2 { color: var(--muted); }
+  .msynth { font-size: 14px; font-weight: 700; color: var(--accent); text-decoration: none; }
+  .msynth:hover { text-decoration: underline; }
+  .mtldr { margin: 6px 0 4px; font-size: 14.5px; color: var(--muted); max-width: 80ch; }
   .list { display: flex; flex-direction: column; }
+  .week { scroll-margin-top: 150px; margin-block: 10px; border: 2px solid var(--accent); border-radius: 10px; padding: 8px 10px 4px; background: var(--surface); }
+  .week-h { font-family: var(--font-m); font-size: 12.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); display: flex; align-items: center; gap: 8px; padding: 4px 4px 6px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  .week-empty { margin: 4px 4px 8px; font-size: 14px; }
 </style>

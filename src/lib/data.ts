@@ -78,14 +78,38 @@ export const href = (path: string): string => `${import.meta.env.BASE_URL.replac
 export const editionPath = (e: Edition): string => href(`evenements/${e.event}/${e.year}/`);
 export const eventPath = (slug: string): string => href(`evenements/${slug}/`);
 
+export type MonthEntry = CollectionEntry<'months'>;
+
+/** Month key (YYYY-MM) of an edition, or null when only the year is known. */
+export const monthKey = (e: Edition): string | null => (e.start.length >= 7 ? e.start.slice(0, 7) : null);
+
+export const monthLabel = (key: string): string => `${monthName(Number(key.slice(5, 7)) - 1)} ${key.slice(0, 4)}`;
+export const monthPath = (key: string): string => href(`mois/${key}/`);
+
+/** Rewrite relative links written for /mois/<key>/ pages so they work from any page. */
+export const fixMonthLinks = (html: string): string =>
+  html.replace(/href="(?:\.\.\/)+evenements\//g, `href="${href('evenements/')}`);
+
+/** Monday–Sunday of the week containing `ref` (YYYY-MM-DD). */
+export function weekOf(ref: string): { start: string; end: string } {
+  const d = parse(ref);
+  const dow = (d.getUTCDay() + 6) % 7;
+  const mon = new Date(d.getTime() - dow * 86400000);
+  const sun = new Date(mon.getTime() + 6 * 86400000);
+  const iso = (x: Date) => x.toISOString().slice(0, 10);
+  return { start: iso(mon), end: iso(sun) };
+}
+
 export async function loadAll() {
-  const [events, editions, syntheses] = await Promise.all([
+  const [events, editions, syntheses, months] = await Promise.all([
     getCollection('events'),
     getCollection('editions'),
     getCollection('syntheses'),
+    getCollection('months'),
   ]);
   const eventBySlug = new Map(events.map((e) => [e.id, e]));
   const sorted = editions.sort((a, b) => a.data.start.localeCompare(b.data.start) || a.data.title.localeCompare(b.data.title));
   const synthesisById = new Map(syntheses.map((s) => [s.id, s]));
-  return { events, editions: sorted, eventBySlug, synthesisById };
+  const monthByKey = new Map(months.map((m) => [m.data.month, m]));
+  return { events, editions: sorted, eventBySlug, synthesisById, months, monthByKey };
 }

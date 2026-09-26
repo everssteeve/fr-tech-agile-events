@@ -78,3 +78,29 @@ Quand un transcript de session est disponible :
 ## Vérification
 
 Après modification : `pnpm validate` (schéma et cohérence), puis `pnpm build` doit passer.
+
+## Synthèse mensuelle
+
+Une synthèse par mois, `content/months/<AAAA-MM>.md`, rédigée **uniquement à partir des synthèses d'éditions** déjà publiées dont la date de début tombe dans ce mois (pas de nouvelle recherche web). C'est une synthèse des synthèses : ce qui traverse les événements du mois, pas un résumé événement par événement.
+
+Frontmatter :
+
+```yaml
+---
+month: "2026-06"
+updatedAt: "2026-09-26"
+tldr: "Une phrase qui dit ce qu'il fallait retenir du mois (Markdown autorisé, **gras** sur l'essentiel)."
+editions: ["vivatech/2026", "breizhcamp/2026"]   # toutes les éditions synthétisées du mois
+themes: ["IA agentique", "Souveraineté"]          # 3 à 6 étiquettes courtes
+---
+```
+
+Corps (pas de H1/H2) :
+
+1. 3 à 6 sections `### Titre` sur les **thèmes transverses** du mois : ce qui revient d'un événement à l'autre, les convergences entre mondes agile, produit, dev et IA, les désaccords. Chaque idée cite les événements concernés entre parenthèses, avec un lien relatif vers la synthèse de l'édition : `([Devoxx France](../evenements/devoxx-france/2026/))`.
+2. `### Les événements du mois` : une puce par édition, avec le lien, et une phrase sur son apport propre.
+3. `### Limites` : 2 à 3 phrases sur la couverture (éditions sans synthèse, corpus minces signalés `revisit`, biais).
+
+Ne jamais attribuer à un événement une idée absente de sa synthèse. Si le mois ne compte qu'une édition synthétisée, la synthèse mensuelle reste courte (2 sections) et le dit.
+
+Mise à jour : quand une synthèse d'édition du mois est créée ou modifiée après `updatedAt`, régénérer la synthèse mensuelle et mettre `updatedAt` à la date du jour.

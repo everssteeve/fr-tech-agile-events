@@ -1,0 +1,67 @@
+---
+import Base from '../../layouts/Base.astro';
+import EditionRow from '../../components/EditionRow.astro';
+import { editionPath, fixMonthLinks, formatDay, loadAll, md, mdInline, monthKey, monthLabel, monthPath, type MonthEntry } from '../../lib/data';
+
+export async function getStaticPaths() {
+  const { months } = await loadAll();
+  const keys = months.map((m) => m.data.month).sort();
+  return months.map((m) => {
+    const i = keys.indexOf(m.data.month);
+    return { params: { month: m.data.month }, props: { entry: m, prev: keys[i - 1], next: keys[i + 1] } };
+  });
+}
+interface Props {
+  entry: MonthEntry;
+  prev?: string;
+  next?: string;
+}
+const { entry, prev, next } = Astro.props;
+const m = entry.data;
+const { editions, eventBySlug } = await loadAll();
+const list = editions.filter((e) => monthKey(e.data) === m.month);
+const body = fixMonthLinks(md(entry.body ?? ''));
+const title = monthLabel(m.month);
+---
+<Base title={`${title[0]!.toUpperCase()}${title.slice(1)} · synthèse du mois`} description={m.tldr.replace(/\*/g, '')}>
+  <article class="wrap page">
+    <header class="head">
+      <nav class="pager" aria-label="Mois">
+        {prev ? <a href={monthPath(prev)}>← {monthLabel(prev)}</a> : <span></span>}
+        <a href={`${import.meta.env.BASE_URL}#${m.month}`}>Voir dans le calendrier</a>
+        {next ? <a href={monthPath(next)}>{monthLabel(next)} →</a> : <span></span>}
+      </nav>
+      <div class="eyebrow">Synthèse du mois · {m.editions.length} événement{m.editions.length > 1 ? 's' : ''} synthétisé{m.editions.length > 1 ? 's' : ''}</div>
+      <h1 class="cap">{title}</h1>
+      {m.themes.length > 0 && <p class="themes">{m.themes.map((t) => <span class="tag conf">{t}</span>)}</p>}
+      <div class="tldr">
+        <div class="eyebrow">À retenir du mois</div>
+        <p set:html={mdInline(m.tldr)} />
+      </div>
+      <p class="muted small">Synthèse des synthèses d'événements, mise à jour le {formatDay(m.updatedAt)} {m.updatedAt.slice(0, 4)}.</p>
+    </header>
+    <section class="prose" set:html={body} />
+    <section>
+      <h2>Tous les événements du mois</h2>
+      <div class="list">
+        {list.map((e) => {
+          const ev = eventBySlug.get(e.data.event);
+          return ev && <EditionRow edition={e.data} name={ev.data.name} category={ev.data.category} />;
+        })}
+      </div>
+    </section>
+  </article>
+</Base>
+<style>
+  .page { display: flex; flex-direction: column; gap: 32px; }
+  .head { display: flex; flex-direction: column; gap: 12px; }
+  .pager { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; flex-wrap: wrap; }
+  .pager a { color: var(--muted); }
+  .cap { text-transform: capitalize; }
+  .themes { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; }
+  .tldr { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 8px; padding: 16px 20px; max-width: 80ch; }
+  .tldr p { margin: 6px 0 0; font-size: 18px; line-height: 1.5; font-family: var(--font-d); font-weight: 500; }
+  .small { font-size: 13.5px; margin: 0; }
+  h2 { border-bottom: 2px solid var(--ink); padding-bottom: 6px; margin-bottom: 4px; }
+  .list { display: flex; flex-direction: column; }
+</style>

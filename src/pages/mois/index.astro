@@ -1,0 +1,38 @@
+---
+import Base from '../../layouts/Base.astro';
+import { loadAll, mdInline, monthLabel, monthPath } from '../../lib/data';
+
+const { months } = await loadAll();
+const sorted = [...months].sort((a, b) => b.data.month.localeCompare(a.data.month));
+---
+<Base title="Synthèses mensuelles" description="Chaque mois, ce qui traverse les conférences tech et agiles françaises.">
+  <div class="wrap page">
+    <header>
+      <h1>Synthèses mensuelles</h1>
+      <p class="lede">Chaque mois, une synthèse des synthèses : ce qui revient d'une conférence à l'autre, entre agilité, produit, dev et IA.</p>
+    </header>
+    <ol class="months">
+      {sorted.map((m) => (
+        <li>
+          <a href={monthPath(m.data.month)}>
+            <span class="m">{monthLabel(m.data.month)}</span>
+            <span class="n">{m.data.editions.length} événement{m.data.editions.length > 1 ? 's' : ''}</span>
+            <span class="t" set:html={mdInline(m.data.tldr)} />
+          </a>
+        </li>
+      ))}
+    </ol>
+    {sorted.length === 0 && <p class="muted">Aucune synthèse mensuelle pour l'instant.</p>}
+  </div>
+</Base>
+<style>
+  .page { display: flex; flex-direction: column; gap: 28px; }
+  .lede { color: var(--muted); font-size: 17px; margin: 10px 0 0; max-width: 64ch; }
+  .months { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; }
+  .months a { display: grid; grid-template-columns: 180px 1fr; gap: 2px 20px; padding: 16px 8px; border-bottom: 1px solid var(--line); text-decoration: none; border-radius: 6px; }
+  .months a:hover { background: var(--surface); }
+  .m { font-family: var(--font-d); font-weight: 700; font-size: 20px; text-transform: capitalize; }
+  .n { font-family: var(--font-m); font-size: 12px; color: var(--muted); grid-column: 1; }
+  .t { grid-column: 2; grid-row: 1 / span 2; max-width: 70ch; }
+  @media (max-width: 640px) { .months a { grid-template-columns: 1fr; } .t { grid-column: 1; grid-row: auto; } }
+</style>

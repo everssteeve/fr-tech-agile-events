@@ -33,8 +33,11 @@ Pour chaque édition de `plan.json > to_synthesize`, selon sa raison :
 - Mets `synthesisUpdatedAt` à la date du jour.
 Délègue chaque édition à un sous-agent (outil Agent) en lui donnant le chemin du guide et les fichiers concernés, puis vérifie son résultat. Lance au plus 4 sous-agents en parallèle. Un sous-agent ne modifie que les fichiers de son édition (`content/editions/<slug>/<année>.json` et `.md`) : s'il trouve une info pour `content/events/<slug>.json` (chaîne YouTube, gaps…), il te la renvoie dans sa réponse et c'est toi qui l'écris, pour éviter que deux sous-agents écrasent le même fichier.
 
-## 5. Vérifier
+## 5. Synthèses mensuelles
+Applique la section « Synthèse mensuelle » du guide pour chaque mois de `plan.json > months_to_update`, **et** pour chaque mois dont une édition a été synthétisée ou mise à jour cette nuit (étapes 2 et 4). Aucune recherche web : uniquement les synthèses d'éditions locales. Délègue à des sous-agents s'il y a plus de 3 mois à traiter.
+
+## 6. Vérifier
 Lance `pnpm validate` puis `pnpm build`. Corrige les erreurs jusqu'à ce que les deux passent. Ne fais pas de commit : le script appelant s'en charge.
 
-## 6. Compte rendu
-Termine par un résumé en français de 12 lignes max : éditions synthétisées ou mises à jour, éditions historiques découvertes (par événement), vidéos ajoutées, transcripts intégrés, dates corrigées, état des files d'attente, erreurs rencontrées (dont quota épuisé). Écris ce même résumé dans `routine/state/last-report.md`.
+## 7. Compte rendu
+Termine par un résumé en français de 12 lignes max : éditions synthétisées ou mises à jour, éditions historiques découvertes (par événement), synthèses mensuelles écrites, vidéos ajoutées, transcripts intégrés, dates corrigées, état des files d'attente, erreurs rencontrées (dont quota épuisé). Écris ce même résumé dans `routine/state/last-report.md`.
