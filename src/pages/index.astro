@@ -133,6 +133,8 @@ const weekLabel = `${fmt(week.start)} – ${fmt(week.end)}`;
       else state.cat = c.dataset.v!;
       try { localStorage.setItem('timeline-filters', JSON.stringify(state)); } catch {}
       apply();
+      // Filtering changes the timeline height a lot: keep the current week in view.
+      document.getElementById('cette-semaine')?.scrollIntoView({ block: 'start' });
     }),
   );
   apply();
