@@ -11,11 +11,11 @@ const synthesized = editions.filter((e) => e.data.status === 'synthesized').leng
 <Base title="Méthode" description="Comment les synthèses sont produites et mises à jour.">
   <article class="wrap prose page">
     <h1>Méthode</h1>
-    <h3>D'où viennent les synthèses</h3>
+    <h2>D'où viennent les synthèses</h2>
     <p>Chaque synthèse s'appuie sur des sources publiques : programme officiel, posts LinkedIn de participants et de speakers, articles de blog, sketchnotes, puis vidéos et transcripts dès que l'événement les publie. Les retours sont attribués à leurs auteurs. Les retours d'un speaker sur sa propre session sont signalés.</p>
     <p>Chaque mois fait aussi l'objet d'une synthèse des synthèses : ce qui revient d'une conférence à l'autre ce mois-là. Elle est régénérée dès qu'une synthèse d'événement du mois change.</p>
     <p>Une synthèse comprend un résumé par session (keynotes, conférences, ateliers), une synthèse globale des thèmes de l'édition, les actions concrètes citées et la liste des sources. Chaque page précise le corpus lu et ses limites.</p>
-    <h3>Mise à jour quotidienne</h3>
+    <h2 id="routine">Mise à jour quotidienne</h2>
     <p>Une routine tourne chaque nuit à 3 h (heure de Paris) :</p>
     <ol>
       <li>elle met à jour le calendrier (nouvelles éditions, dates confirmées) ;</li>
@@ -30,13 +30,15 @@ const synthesized = editions.filter((e) => e.data.status === 'synthesized').leng
       <li><strong>{revisit}</strong> synthèse{revisit > 1 ? 's' : ''} à compléter avec davantage de retours participants.</li>
     </ul>
     <p>{synthesized} synthèses sont publiées à ce jour.</p>
-    <h3>Fiabilité des dates</h3>
+    <h2 id="fiabilite">Fiabilité des dates</h2>
     <p>Une date sans mention vient du site officiel. « Source secondaire » : billetterie ou plusieurs sources concordantes. « Date à vérifier » : vue seulement sur un agrégateur. « Date estimée » : aucune date publiée, le mois vient des éditions précédentes.</p>
-    <h3>Limites</h3>
+    <h2 id="limites">Limites</h2>
     <p>Les retours publics sont surtout enthousiastes et viennent souvent de speakers, sponsors ou cabinets de conseil. Certaines sessions n'ont aucun retour. Les synthèses sont produites avec l'aide d'une IA à partir de ces sources, sans invention de citation ni de chiffre.</p>
   </article>
 </Base>
 <style>
   .page { display: flex; flex-direction: column; }
   h1 { margin-bottom: 8px; }
+  h2 { font-size: 1.3rem; margin-top: 1.6em; }
+  h2 + p { margin-top: .4em; }
 </style>

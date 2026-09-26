@@ -1,221 +1,340 @@
 ---
-import { render, type CollectionEntry } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
 import Video from '../../../components/Video.astro';
 import {
-  CATEGORIES, CONFIDENCE, SESSION_TYPES, editionPath, eventPath, formatDay, formatRange, loadAll, md, mdInline, when,
-  type EditionEntry, type EventEntry, type Session,
+  CATEGORIES, CONFIDENCE, SESSION_TYPES, editionPath, eventPath, formatDay, formatRange, href, isArchiveUrl, loadAll,
+  md, mdInline, mdWithToc, monthKey, monthLabel, monthPath, when,
 } from '../../../lib/data';
+import type { EditionEntry, EventEntry, Session } from '../../../lib/data';
 
 export async function getStaticPaths() {
-  const { editions, eventBySlug, synthesisById } = await loadAll();
-  return editions.map((e) => ({
-    params: { slug: e.data.event, year: String(e.data.year) },
-    props: {
-      edition: e,
-      event: eventBySlug.get(e.data.event)!,
-      synthesis: synthesisById.get(e.id),
-      siblings: editions.filter((x) => x.data.event === e.data.event).map((x) => x.data.year).sort((a, b) => b - a),
-    },
-  }));
+  const { editions, eventBySlug, synthesisById, monthByKey } = await loadAll();
+  return editions.map((e) => {
+    const same = editions.filter((x) => x.data.event === e.data.event).sort((a, b) => b.data.year - a.data.year);
+    const m = monthKey(e.data);
+    return {
+      params: { slug: e.data.event, year: String(e.data.year) },
+      props: {
+        edition: e,
+        event: eventBySlug.get(e.data.event)!,
+        synthesis: synthesisById.get(e.id),
+        siblings: same.map((x) => ({ year: x.data.year, synthesized: x.data.status === 'synthesized' })),
+        latestSynth: same.find((x) => x.data.status === 'synthesized' && x.id !== e.id),
+        month: m && monthByKey.has(m) ? m : undefined,
+      },
+    };
+  });
 }
 
 interface Props {
   edition: EditionEntry;
   event: EventEntry;
   synthesis?: CollectionEntry<'syntheses'>;
-  siblings: number[];
+  siblings: { year: number; synthesized: boolean }[];
+  latestSynth?: EditionEntry;
+  month?: string;
 }
-const { edition, event, synthesis, siblings } = Astro.props;
+const { edition, event, synthesis, siblings, latestSynth, month } = Astro.props;
 const e = edition.data;
 const ev = event.data;
-const { Content } = synthesis ? await render(synthesis) : { Content: null };
+const global = synthesis?.body ? mdWithToc(synthesis.body) : null;
 const st = when(e);
 const conf = CONFIDENCE[e.dateConfidence];
 
+// Sessions grouped by day; sessions without a day go last.
 const byDay = new Map<string, Session[]>();
-for (const s of e.sessions) {
-  const k = s.day ?? '';
-  byDay.set(k, [...(byDay.get(k) ?? []), s]);
-}
-const days = [...byDay.keys()].sort();
+for (const s of e.sessions) byDay.set(s.day ?? '', [...(byDay.get(s.day ?? '') ?? []), s]);
+const days = [...byDay.keys()].sort((a, b) => (a === '' ? 1 : b === '' ? -1 : a.localeCompare(b)));
+const dayLabel = (d: string) => (d ? formatDay(d) : days.length > 1 ? 'Date non précisée' : 'Sessions');
 const videos = e.sessions.filter((s) => s.video).length;
-const updated = e.synthesisUpdatedAt ? formatDay(e.synthesisUpdatedAt) + ' ' + e.synthesisUpdatedAt.slice(0, 4) : null;
+const updated = e.synthesisUpdatedAt ? `${formatDay(e.synthesisUpdatedAt)} ${e.synthesisUpdatedAt.slice(0, 4)}` : null;
 const description = e.tldr ? e.tldr.replace(/\*/g, '') : `${ev.name} ${e.year} : ${formatRange(e.start, e.end)}, ${e.city}.`;
+const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+const siteLabel = isArchiveUrl(e.url) ? 'Site archivé' : 'Site officiel';
 ---
 <Base title={`${ev.name} ${e.year} · synthèse`} description={description}>
   <article class="wrap page">
     <header class="head">
-      <a class="back" href={eventPath(e.event)}>← Toutes les éditions de {ev.name}</a>
-      <div class="eyebrow">
-        <span class={`tag cat-${ev.category}`}>{CATEGORIES[ev.category].label}</span>
-        {e.edition && <span>{e.edition}</span>}
-        {st === 'live' && <span class="tag live">en cours</span>}
-        {conf && <span class="tag conf">{conf}</span>}
-      </div>
+      <nav class="crumbs" aria-label="Fil d'Ariane">
+        <a href={href('evenements/')}>Événements</a> <span aria-hidden="true">/</span>
+        <a href={eventPath(e.event)}>{ev.name}</a> <span aria-hidden="true">/</span>
+        <span aria-current="page">{e.year}</span>
+      </nav>
       <h1>{e.title}</h1>
       <p class="meta">
-        <strong>{formatRange(e.start, e.end)}</strong> · {[e.city, e.venue].filter(Boolean).join(', ')}
-        {e.theme && <><br />Thème : {e.theme}</>}
+        <span class={`tag cat-${ev.category}`}>{CATEGORIES[ev.category].label}</span>
+        {st === 'live' && <span class="tag live">en cours</span>}
+        <span><strong>{formatRange(e.start, e.end)}</strong></span>
+        {conf && <a class="tag conf" href={`${href('methode/')}#fiabilite`}>{conf}</a>}
+        <span>{[e.city, e.venue].filter(Boolean).join(', ')}</span>
+        {e.edition && <span>{e.edition}</span>}
       </p>
+      {e.theme && <p class="theme">Thème : {e.theme}</p>}
       <p class="links">
-        {e.url && <a href={e.url} target="_blank" rel="noopener">Site officiel</a>}
-        {e.programUrl && <a href={e.programUrl} target="_blank" rel="noopener">Programme</a>}
-        {ev.youtube?.channel && <a href={ev.youtube.channel} target="_blank" rel="noopener">Chaîne YouTube</a>}
+        {e.url && <a href={e.url} target="_blank" rel="noopener">{siteLabel}<span class="sr-only"> (nouvel onglet)</span> ↗</a>}
+        {e.programUrl && <a href={e.programUrl} target="_blank" rel="noopener">Programme<span class="sr-only"> (nouvel onglet)</span> ↗</a>}
+        {ev.youtube?.channel && <a href={ev.youtube.channel} target="_blank" rel="noopener">Chaîne YouTube<span class="sr-only"> (nouvel onglet)</span> ↗</a>}
+        {month && <a href={monthPath(month)}>Synthèse de {monthLabel(month)} →</a>}
       </p>
       {siblings.length > 1 && (
-        <nav class="editions" aria-label="Autres éditions">
-          {siblings.map((y) => <a class="chip" href={editionPath({ ...e, year: y })} aria-current={y === e.year ? 'page' : undefined}>{y}</a>)}
+        <nav class="editions" aria-label={`Éditions de ${ev.name}`}>
+          {siblings.map((s) => (
+            <a class={`chip${s.synthesized ? ' has' : ''}`} href={editionPath({ ...e, year: s.year })} aria-current={s.year === e.year ? 'page' : undefined} title={s.synthesized ? 'Synthèse disponible' : 'Synthèse à venir'}>
+              {s.year}{s.synthesized && <span class="sr-only"> (synthèse disponible)</span>}
+            </a>
+          ))}
         </nav>
       )}
       {e.note && <p class="note muted">{e.note}</p>}
     </header>
 
     {e.status !== 'synthesized' ? (
-      <section class="placeholder">
+      <section class="placeholder" aria-labelledby="h-wait">
+        <h2 id="h-wait">{e.status === 'scheduled' ? 'Pas encore eu lieu' : 'Synthèse à venir'}</h2>
         {e.status === 'scheduled' ? (
-          <p>Cet événement n'a pas encore eu lieu. La synthèse des retours sera publiée dans les jours qui suivent, puis mise à jour pendant deux semaines et à chaque publication de vidéo.</p>
+          <p>La synthèse des retours sera publiée dans les jours qui suivent l'événement, puis mise à jour pendant deux semaines et à chaque nouvelle vidéo.</p>
         ) : (
-          <p>L'événement est passé : sa synthèse est dans la file d'attente et sera rédigée par la routine quotidienne, qui traite quelques éditions chaque nuit, des plus récentes aux plus anciennes.</p>
+          <p>Cette édition est dans la file d'attente : la routine quotidienne rédige quelques synthèses chaque nuit, des plus récentes aux plus anciennes.</p>
         )}
+        <ul class="next">
+          {latestSynth && <li><a href={editionPath(latestSynth.data)}>Lire la synthèse de {latestSynth.data.title} →</a></li>}
+          {e.programUrl && <li><a href={e.programUrl} target="_blank" rel="noopener">Consulter le programme ↗</a></li>}
+          <li><a href={eventPath(e.event)}>Toutes les éditions de {ev.name}</a></li>
+        </ul>
       </section>
     ) : (
-      <>
-        <section class="summary">
-          {e.tldr && (
-            <div class="tldr">
-              <div class="eyebrow">À retenir en une phrase</div>
-              <p set:html={mdInline(e.tldr)} />
-            </div>
-          )}
-          <dl class="facts">
-            <div><dt>Sessions résumées</dt><dd>{e.sessions.length}</dd></div>
-            <div><dt>Vidéos</dt><dd>{videos}</dd></div>
-            {updated && <div><dt>Mise à jour</dt><dd class="small">{updated}</dd></div>}
-          </dl>
-          {(e.corpus || e.limits) && (
-            <details class="corpus">
-              <summary>Corpus et limites de la synthèse</summary>
-              {e.corpus && <p><strong>Corpus :</strong> <span set:html={mdInline(e.corpus)} /></p>}
-              {e.limits && <p><strong>Limites :</strong> <span set:html={mdInline(e.limits)} /></p>}
-            </details>
-          )}
-        </section>
-
-        <nav class="toc" aria-label="Sommaire">
-          {Content && <a href="#synthese">Synthèse globale</a>}
-          {e.keyTakeaways.length > 0 && <a href="#actions">Actions concrètes</a>}
-          {e.sessions.length > 0 && <a href="#sessions">Session par session</a>}
-          {e.sources.length > 0 && <a href="#sources">Sources</a>}
-        </nav>
-
-        {Content && (
-          <section id="synthese" class="block">
-            <h2>Synthèse globale</h2>
-            <div class="prose"><Content /></div>
-          </section>
-        )}
-
-        {e.keyTakeaways.length > 0 && (
-          <section id="actions" class="block">
-            <h2>Actions concrètes citées</h2>
-            <ol class="prose takeaways">{e.keyTakeaways.map((t) => <li set:html={mdInline(t)} />)}</ol>
-          </section>
-        )}
-
-        {e.sessions.length > 0 && (
-          <section id="sessions" class="block">
-            <h2>Session par session</h2>
-            {days.map((d) => (
-              <div class="day">
-                {d && days.length > 1 && <h3 class="dayh">{formatDay(d)}</h3>}
-                {byDay.get(d)!.map((s) => (
-                  <article class="session" id={s.id}>
-                    <div class="s-head">
-                      <span class="tag conf">{SESSION_TYPES[s.type]}</span>
-                      {s.video && <span class="tag video">▶ vidéo{s.video.transcript ? ' + transcript' : ''}</span>}
-                      {s.summarySources.includes('program') && s.summarySources.length === 1 && <span class="tag conf">d'après le programme</span>}
-                    </div>
-                    <h4><a href={`#${s.id}`}>{s.title}</a></h4>
-                    {s.speakers.length > 0 && <p class="speakers">{s.speakers.join(', ')}</p>}
-                    {s.feedbackFrom.length > 0 && <p class="from">Retours : {s.feedbackFrom.join(', ')}</p>}
-                    <div class="s-body">
-                      <div class="prose" set:html={md(s.summary)} />
-                      {s.video?.youtubeId && <Video id={s.video.youtubeId} title={s.video.title ?? s.title} start={s.video.startSeconds} />}
-                      {s.video && !s.video.youtubeId && s.video.url && <p><a class="ext-video" href={s.video.url} target="_blank" rel="noopener">▶ Voir la vidéo</a></p>}
-                    </div>
-                  </article>
-                ))}
-              </div>
-            ))}
-            {e.sessionsWithoutFeedback.length > 0 && (
-              <div class="nofb">
-                <h3>Sessions sans retour trouvé</h3>
-                <p class="muted">{e.sessionsWithoutFeedback.join(' · ')}</p>
+      <div class="layout">
+        <aside class="toc-wrap">
+          <details class="toc" open>
+            <summary>Sommaire</summary>
+            <nav aria-label="Sommaire de la synthèse">
+              <ol class="toc-main">
+                {global && (
+                  <li>
+                    <a href="#synthese">Synthèse globale</a>
+                    {global.headings.length > 0 && <ol>{global.headings.map((h) => <li><a href={`#${h.id}`} set:html={h.text} /></li>)}</ol>}
+                  </li>
+                )}
+                {e.keyTakeaways.length > 0 && <li><a href="#actions">Actions concrètes</a></li>}
+                {e.sessions.length > 0 && <li><a href="#sessions">Sessions ({e.sessions.length})</a></li>}
+                {e.sources.length > 0 && <li><a href="#sources">Sources</a></li>}
+              </ol>
+            </nav>
+            {e.sessions.length > 5 && (
+              <div class="sess-index">
+                <label for="sess-q">Trouver une session</label>
+                <input id="sess-q" type="search" placeholder="Titre ou orateur" autocomplete="off" />
+                <ol class="sess-list">
+                  {days.map((d) => byDay.get(d)!.map((s) => (
+                    <li data-text={`${s.title} ${s.speakers.join(' ')}`.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()}>
+                      <a href={`#${s.id}`}>{s.title}</a>
+                    </li>
+                  )))}
+                </ol>
+                <p class="sess-none muted" hidden>Aucune session trouvée.</p>
               </div>
             )}
-          </section>
-        )}
+          </details>
+        </aside>
 
-        {e.sources.length > 0 && (
-          <section id="sources" class="block">
-            <h2>Sources</h2>
-            <ul class="prose sources">
-              {e.sources.map((s) => <li>{s.url ? <a href={s.url} target="_blank" rel="noopener">{s.label}</a> : s.label}</li>)}
-            </ul>
+        <div class="content">
+          <section class="summary" aria-label="En bref">
+            {e.tldr && <p class="lead" set:html={mdInline(e.tldr)} />}
+            <p class="facts">
+              {e.sessions.length} session{e.sessions.length > 1 ? 's' : ''} résumée{e.sessions.length > 1 ? 's' : ''}
+              {videos > 0 && <> · {videos} vidéo{videos > 1 ? 's' : ''}</>}
+              {updated && <> · mise à jour le {updated}</>}
+              {e.revisit && <> · <a href={`${href('methode/')}#limites`}>synthèse à compléter</a></>}
+            </p>
+            {(e.corpus || e.limits) && (
+              <details class="corpus">
+                <summary>Sources lues et limites de cette synthèse</summary>
+                {e.corpus && <p><strong>Corpus :</strong> <span set:html={mdInline(e.corpus)} /></p>}
+                {e.limits && <p><strong>Limites :</strong> <span set:html={mdInline(e.limits)} /></p>}
+              </details>
+            )}
           </section>
-        )}
-      </>
+
+          {global && (
+            <section id="synthese" class="block" aria-labelledby="h-synthese">
+              <h2 id="h-synthese">Synthèse globale</h2>
+              <div class="prose" set:html={global.html} />
+            </section>
+          )}
+
+          {e.keyTakeaways.length > 0 && (
+            <section id="actions" class="block" aria-labelledby="h-actions">
+              <h2 id="h-actions">Actions concrètes citées</h2>
+              <ol class="prose takeaways">{e.keyTakeaways.map((t) => <li set:html={mdInline(t)} />)}</ol>
+            </section>
+          )}
+
+          {e.sessions.length > 0 && (
+            <section id="sessions" class="block" aria-labelledby="h-sessions">
+              <h2 id="h-sessions">Session par session</h2>
+              {days.map((d) => (
+                <section class="day" aria-labelledby={`day-${d || 'x'}`}>
+                  <h3 class="dayh" id={`day-${d || 'x'}`}>{cap(dayLabel(d))}</h3>
+                  {byDay.get(d)!.map((s) => (
+                    <article class="session" id={s.id}>
+                      <p class="s-head">
+                        <span class="s-type">{SESSION_TYPES[s.type]}</span>
+                        {s.video && <span class="tag video">▶ vidéo{s.video.transcript ? ' + transcript' : ''}</span>}
+                        {s.summarySources.length === 1 && s.summarySources[0] === 'program' && <span class="tag conf">d'après le programme</span>}
+                      </p>
+                      <h4>
+                        {s.title}
+                        <button type="button" class="copy" data-id={s.id} aria-label={`Copier le lien vers la session ${s.title}`}>#</button>
+                      </h4>
+                      {s.speakers.length > 0 && <p class="speakers">{s.speakers.join(', ')}</p>}
+                      {s.feedbackFrom.length > 0 && <p class="from">Retours : {s.feedbackFrom.join(', ')}</p>}
+                      <div class="s-body">
+                        <div class="prose" set:html={md(s.summary)} />
+                        {s.video?.youtubeId && <Video id={s.video.youtubeId} title={s.video.title ?? s.title} start={s.video.startSeconds} />}
+                        {s.video && !s.video.youtubeId && s.video.url && <p><a href={s.video.url} target="_blank" rel="noopener">▶ Voir la vidéo ↗</a></p>}
+                      </div>
+                    </article>
+                  ))}
+                </section>
+              ))}
+              {e.sessionsWithoutFeedback.length > 0 && (
+                <section class="nofb" id="sans-retour" aria-labelledby="h-nofb">
+                  <h3 id="h-nofb">Sessions sans retour trouvé ({e.sessionsWithoutFeedback.length})</h3>
+                  <ul>{e.sessionsWithoutFeedback.map((t) => <li>{t}</li>)}</ul>
+                </section>
+              )}
+            </section>
+          )}
+
+          {e.sources.length > 0 && (
+            <section id="sources" class="block" aria-labelledby="h-sources">
+              <h2 id="h-sources">Sources</h2>
+              <ul class="prose sources">
+                {e.sources.map((s) => <li>{s.url ? <a href={s.url} target="_blank" rel="noopener">{s.label}<span class="sr-only"> (nouvel onglet)</span> ↗</a> : s.label}</li>)}
+              </ul>
+            </section>
+          )}
+        </div>
+      </div>
     )}
+    <p class="toast" id="toast" role="status" aria-live="polite"></p>
   </article>
 </Base>
 
-<style>
-  .page { display: flex; flex-direction: column; gap: 36px; }
-  .head { display: flex; flex-direction: column; gap: 10px; }
-  .back { font-size: 14px; color: var(--muted); text-decoration: none; }
-  .back:hover { color: var(--ink); text-decoration: underline; }
-  .eyebrow { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-  .meta { margin: 0; color: var(--muted); font-size: 16px; }
-  .meta strong { color: var(--ink); }
-  .links { margin: 0; display: flex; gap: 16px; flex-wrap: wrap; font-size: 15px; }
-  .editions { display: flex; flex-wrap: wrap; gap: 6px; }
-  .note { margin: 0; font-size: 14px; }
-  .placeholder { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px; max-width: 70ch; }
-  .placeholder p { margin: 0; }
-  .summary { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px 32px; align-items: start; }
-  .tldr { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 8px; padding: 16px 20px; }
-  .tldr p { margin: 6px 0 0; font-size: 18px; line-height: 1.5; font-family: var(--font-d); font-weight: 500; }
-  .facts { display: flex; flex-direction: column; gap: 10px; margin: 0; min-width: 150px; }
-  .facts div { border-top: 2px solid var(--ink); padding-top: 4px; }
-  .facts dt { font-family: var(--font-m); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
-  .facts dd { margin: 0; font-family: var(--font-d); font-weight: 800; font-size: 26px; font-variant-numeric: tabular-nums; }
-  .facts dd.small { font-size: 15px; font-weight: 500; font-family: var(--font-b); }
-  .corpus { grid-column: 1 / -1; font-size: 14.5px; color: var(--muted); max-width: 80ch; }
-  .corpus summary { cursor: pointer; color: var(--ink); }
-  @media (max-width: 720px) {
-    .summary { grid-template-columns: 1fr; }
-    .facts { flex-direction: row; flex-wrap: wrap; gap: 16px; }
+<script>
+  // Session index filter
+  const q = document.getElementById('sess-q') as HTMLInputElement | null;
+  if (q) {
+    const items = [...document.querySelectorAll<HTMLLIElement>('.sess-list li')];
+    const none = document.querySelector<HTMLElement>('.sess-none')!;
+    q.addEventListener('input', () => {
+      const v = q.value.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+      let n = 0;
+      items.forEach((li) => { const ok = !v || li.dataset.text!.includes(v); li.hidden = !ok; if (ok) n++; });
+      none.hidden = n > 0;
+    });
   }
-  .toc { display: flex; gap: 8px 20px; flex-wrap: wrap; font-size: 14.5px; border-block: 1px solid var(--line); padding-block: 10px; }
-  .toc a { color: var(--muted); }
-  .block { display: flex; flex-direction: column; gap: 12px; scroll-margin-top: 70px; }
+  // Mobile: the contents panel starts closed and closes after choosing a destination.
+  const toc = document.querySelector<HTMLDetailsElement>('.toc');
+  const mq = matchMedia('(max-width: 1099px)');
+  if (toc && mq.matches) toc.open = false;
+  toc?.addEventListener('click', (ev) => { if (mq.matches && (ev.target as HTMLElement).closest('a')) toc.open = false; });
+  // Copy a link to a session
+  const toast = document.getElementById('toast')!;
+  let timer = 0;
+  document.querySelectorAll<HTMLButtonElement>('.copy').forEach((b) =>
+    b.addEventListener('click', async () => {
+      const url = `${location.origin}${location.pathname}#${b.dataset.id}`;
+      history.replaceState(null, '', `#${b.dataset.id}`);
+      try { await navigator.clipboard.writeText(url); toast.textContent = 'Lien de la session copié'; }
+      catch { toast.textContent = "Lien dans la barre d'adresse"; }
+      toast.classList.add('on');
+      clearTimeout(timer);
+      timer = window.setTimeout(() => toast.classList.remove('on'), 2000);
+    }),
+  );
+</script>
+
+<style>
+  .page { display: flex; flex-direction: column; gap: 32px; }
+  .head { display: flex; flex-direction: column; gap: 12px; }
+  .crumbs { font-size: 14px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px; }
+  .crumbs a { color: var(--muted); text-underline-offset: 3px; padding-block: 6px; }
+  .crumbs a:hover { color: var(--ink); }
+  .meta { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; color: var(--muted); font-size: 15.5px; }
+  .meta strong { color: var(--ink); }
+  .meta a.tag { text-decoration: none; }
+  .theme { margin: 0; font-size: 15.5px; }
+  .links { margin: 0; display: flex; gap: 4px 18px; flex-wrap: wrap; font-size: 15px; }
+  .links a { padding-block: 8px; text-underline-offset: 3px; }
+  .editions { display: flex; flex-wrap: wrap; gap: 6px; }
+  .editions .chip:not(.has):not([aria-current]) { color: var(--muted); border-style: dashed; }
+  .editions .chip.has:not([aria-current])::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+  .note { margin: 0; font-size: 14px; max-width: 80ch; }
+  .placeholder { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px 24px; max-width: 70ch; display: flex; flex-direction: column; gap: 8px; }
+  .placeholder h2 { font-size: 20px; }
+  .placeholder p { margin: 0; }
+  .next { margin: 4px 0 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; }
+  .next a { display: inline-block; padding-block: 6px; }
+
+  .layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  @media (min-width: 1100px) {
+    .layout { grid-template-columns: 250px minmax(0, 1fr); gap: 40px; }
+    .toc-wrap { position: sticky; top: calc(var(--hdr-h) + 16px); align-self: start; max-height: calc(100vh - var(--hdr-h) - 32px); overflow-y: auto; }
+    .toc summary { pointer-events: none; list-style: none; }
+    .toc summary::-webkit-details-marker { display: none; }
+  }
+  @media (max-width: 1099px) {
+    .toc-wrap { position: sticky; top: var(--hdr-h); z-index: 6; margin-inline: -20px; padding-inline: 20px; background: var(--bg); border-bottom: 1px solid var(--line); }
+    .toc[open] { max-height: calc(100vh - var(--hdr-h) - 16px); overflow-y: auto; padding-bottom: 12px; }
+    .toc summary { min-height: 48px; display: flex; align-items: center; cursor: pointer; font-weight: 700; }
+  }
+  .toc summary { font-family: var(--font-m); font-size: 12.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+  .toc ol { list-style: none; margin: 0; padding: 0; }
+  .toc-main > li { margin: 2px 0; }
+  .toc-main a { display: block; padding: 6px 0; font-size: 14.5px; text-decoration: none; color: var(--ink); line-height: 1.35; }
+  .toc-main a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .toc-main ol { padding-left: 12px; border-left: 1px solid var(--line); margin: 2px 0 6px 2px; }
+  .toc-main ol a { font-size: 13.5px; color: var(--muted); padding: 4px 0; }
+  .sess-index { margin-top: 16px; display: flex; flex-direction: column; gap: 6px; }
+  .sess-index label { font-family: var(--font-m); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+  .sess-index input { font: inherit; font-size: 15px; min-height: 40px; padding: 0 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink); }
+  .sess-list li a { display: block; padding: 5px 0; font-size: 13.5px; color: var(--muted); text-decoration: none; line-height: 1.35; }
+  .sess-list li a:hover { color: var(--ink); text-decoration: underline; }
+  .sess-none { font-size: 13.5px; margin: 0; }
+
+  .content { display: flex; flex-direction: column; gap: 40px; min-width: 0; }
+  .summary { display: flex; flex-direction: column; gap: 12px; }
+  .lead { font-family: var(--font-d); font-weight: 500; font-size: clamp(19px, 2.2vw, 22px); line-height: 1.45; }
+  .facts { margin: 0; font-size: 14.5px; color: var(--muted); }
+  .corpus { font-size: 15px; color: var(--muted); max-width: 75ch; }
+  .corpus summary { cursor: pointer; color: var(--ink); padding-block: 8px; }
+  .block { display: flex; flex-direction: column; gap: 12px; scroll-margin-top: calc(var(--hdr-h) + 64px); }
   .block > h2 { border-bottom: 2px solid var(--ink); padding-bottom: 6px; }
   .takeaways { padding-left: 22px; }
   .day { display: flex; flex-direction: column; }
-  .dayh { font-family: var(--font-m); font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 18px 0 4px; }
-  .session { border-bottom: 1px solid var(--line); padding-block: 18px; scroll-margin-top: 70px; display: flex; flex-direction: column; gap: 4px; }
+  .dayh { font-family: var(--font-m); font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 18px 0 4px; }
+  .session { border-bottom: 1px solid var(--line); padding-block: 20px; scroll-margin-top: calc(var(--hdr-h) + 64px); display: flex; flex-direction: column; gap: 4px; }
   .session:target { background: var(--hl); border-radius: 8px; padding-inline: 12px; }
-  .s-head { display: flex; gap: 6px; flex-wrap: wrap; }
-  .session h4 { font-family: var(--font-d); font-size: 19px; line-height: 1.25; margin: 4px 0 0; text-wrap: balance; }
-  .session h4 a { text-decoration: none; }
-  .session h4 a:hover { text-decoration: underline; }
-  .speakers { margin: 0; font-weight: 700; font-size: 14.5px; }
-  .from { margin: 0; font-size: 13.5px; color: var(--muted); font-style: italic; }
+  .s-head { margin: 0; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .s-type { font-family: var(--font-m); font-size: 12.5px; color: var(--muted); }
+  .session h4 { font-family: var(--font-d); font-size: 20px; line-height: 1.3; margin: 2px 0 0; text-wrap: balance; }
+  .copy { font: inherit; font-family: var(--font-m); font-size: 16px; color: var(--muted); background: none; border: 0; padding: 4px 8px; margin-left: 2px; cursor: pointer; opacity: 0; border-radius: 4px; }
+  .session:hover .copy, .copy:focus-visible { opacity: 1; }
+  @media (hover: none) { .copy { opacity: 1; min-width: 44px; min-height: 44px; } }
+  .copy:hover { color: var(--accent); }
+  .speakers { margin: 0; font-weight: 700; font-size: 15px; }
+  .from { margin: 0; font-size: 14px; color: var(--muted); }
   .s-body { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
-  @media (min-width: 900px) { .s-body:has(.yt) { grid-template-columns: minmax(0, 1fr) 340px; } }
-  .nofb { margin-top: 18px; }
-  .nofb h3 { font-family: var(--font-d); font-size: 17px; margin: 0 0 4px; }
-  .nofb p { margin: 0; font-size: 14px; }
-  .sources { padding-left: 20px; font-size: 14.5px; }
+  @media (min-width: 1300px) { .s-body:has(.yt) { grid-template-columns: minmax(0, 1fr) 300px; } }
+  .nofb { margin-top: 24px; }
+  .nofb h3 { font-family: var(--font-d); font-size: 18px; margin: 0 0 6px; }
+  .nofb ul { margin: 0; padding-left: 20px; columns: 2 280px; column-gap: 32px; font-size: 14.5px; color: var(--muted); }
+  .nofb li { break-inside: avoid; margin-bottom: 4px; }
+  .sources { padding-left: 20px; font-size: 15px; }
+  .toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 12px); margin: 0; background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 8px; font-size: 14px; opacity: 0; pointer-events: none; transition: opacity .2s ease-out, transform .2s ease-out; z-index: 30; }
+  .toast:empty { display: none; }
+  .toast.on { opacity: 1; transform: translate(-50%, 0); }
+  @media (prefers-reduced-motion: reduce) { .toast { transition: none; } }
 </style>

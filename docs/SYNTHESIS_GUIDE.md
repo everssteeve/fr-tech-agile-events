@@ -2,6 +2,12 @@
 
 Ce guide décrit comment produire ou mettre à jour la synthèse d'une édition d'événement. Il est suivi par les agents de recherche et par la routine quotidienne (`routine/daily-prompt.md`). La référence de qualité est `content/editions/agile-en-seine/2026.json` + `2026.md`.
 
+## Style d'écriture
+
+- Pas de tiret cadratin (—) : utiliser la virgule, les deux-points, le point-virgule, les parenthèses ou le point.
+- Gras avec parcimonie : au plus une expression en gras par puce, sur l'idée clé.
+- Phrases courtes, voix active, attribution entre parenthèses.
+
 ## Fichiers
 
 Pour l'édition `<slug>` de l'année `<year>` :

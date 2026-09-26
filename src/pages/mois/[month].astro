@@ -1,7 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
 import EditionRow from '../../components/EditionRow.astro';
-import { editionPath, fixMonthLinks, formatDay, loadAll, md, mdInline, monthKey, monthLabel, monthPath, type MonthEntry } from '../../lib/data';
+import { fixMonthLinks, formatDay, loadAll, mdInline, mdWithToc, monthKey, monthLabel, monthPath } from '../../lib/data';
+import type { MonthEntry } from '../../lib/data';
 
 export async function getStaticPaths() {
   const { months } = await loadAll();
@@ -20,27 +21,33 @@ const { entry, prev, next } = Astro.props;
 const m = entry.data;
 const { editions, eventBySlug } = await loadAll();
 const list = editions.filter((e) => monthKey(e.data) === m.month);
-const body = fixMonthLinks(md(entry.body ?? ''));
+const { html: rawBody, headings } = mdWithToc(entry.body ?? '');
+const body = fixMonthLinks(rawBody);
+const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
 const title = monthLabel(m.month);
 ---
 <Base title={`${title[0]!.toUpperCase()}${title.slice(1)} · synthèse du mois`} description={m.tldr.replace(/\*/g, '')}>
   <article class="wrap page">
     <header class="head">
       <nav class="pager" aria-label="Mois">
-        {prev ? <a href={monthPath(prev)}>← {monthLabel(prev)}</a> : <span></span>}
+        {prev ? <a href={monthPath(prev)}>← {cap(monthLabel(prev))}</a> : <span></span>}
         <a href={`${import.meta.env.BASE_URL}#${m.month}`}>Voir dans le calendrier</a>
-        {next ? <a href={monthPath(next)}>{monthLabel(next)} →</a> : <span></span>}
+        {next ? <a href={monthPath(next)}>{cap(monthLabel(next))} →</a> : <span></span>}
       </nav>
       <div class="eyebrow">Synthèse du mois · {m.editions.length} événement{m.editions.length > 1 ? 's' : ''} synthétisé{m.editions.length > 1 ? 's' : ''}</div>
       <h1 class="cap">{title}</h1>
-      {m.themes.length > 0 && <p class="themes">{m.themes.map((t) => <span class="tag conf">{t}</span>)}</p>}
-      <div class="tldr">
-        <div class="eyebrow">À retenir du mois</div>
-        <p set:html={mdInline(m.tldr)} />
-      </div>
-      <p class="muted small">Synthèse des synthèses d'événements, mise à jour le {formatDay(m.updatedAt)} {m.updatedAt.slice(0, 4)}.</p>
+      <p class="lead" set:html={mdInline(m.tldr)} />
+      <p class="muted small">Synthèse des synthèses d'événements du mois · mise à jour le {formatDay(m.updatedAt)} {m.updatedAt.slice(0, 4)}</p>
+      {headings.length > 0 && (
+        <nav class="themes" aria-label="Thèmes du mois">
+          {headings.map((h) => <a class="chip" href={`#${h.id}`} set:html={h.text} />)}
+        </nav>
+      )}
     </header>
-    <section class="prose" set:html={body} />
+    <section aria-labelledby="h-body">
+      <h2 id="h-body" class="sr-only">Synthèse du mois</h2>
+      <div class="prose" set:html={body} />
+    </section>
     <section>
       <h2>Tous les événements du mois</h2>
       <div class="list">
@@ -56,11 +63,10 @@ const title = monthLabel(m.month);
   .page { display: flex; flex-direction: column; gap: 32px; }
   .head { display: flex; flex-direction: column; gap: 12px; }
   .pager { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; flex-wrap: wrap; }
-  .pager a { color: var(--muted); }
+  .pager a { color: var(--muted); padding-block: 8px; text-underline-offset: 3px; }
   .cap { text-transform: capitalize; }
-  .themes { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; }
-  .tldr { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 8px; padding: 16px 20px; max-width: 80ch; }
-  .tldr p { margin: 6px 0 0; font-size: 18px; line-height: 1.5; font-family: var(--font-d); font-weight: 500; }
+  .themes { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 0; }
+  .lead { font-family: var(--font-d); font-weight: 500; font-size: clamp(19px, 2.2vw, 22px); line-height: 1.45; }
   .small { font-size: 13.5px; margin: 0; }
   h2 { border-bottom: 2px solid var(--ink); padding-bottom: 6px; margin-bottom: 4px; }
   .list { display: flex; flex-direction: column; }

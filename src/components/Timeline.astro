@@ -1,0 +1,218 @@
+---
+import EditionRow from './EditionRow.astro';
+import {
+  CATEGORIES, fixMonthLinks, mdInline, monthKey, monthLabel, monthPath, yearPath,
+  type EditionEntry, type EventEntry, type MonthEntry,
+} from '../lib/data';
+
+interface Props {
+  /** Visible heading of the view (also the page h1). */
+  title: string;
+  editions: EditionEntry[];
+  eventBySlug: Map<string, EventEntry>;
+  monthByKey: Map<string, MonthEntry>;
+  /** All years with editions, for the "Aller à" picker. */
+  years: number[];
+  /** Current week (Mon–Sun) when it falls in this view. */
+  week?: { start: string; end: string; label: string };
+  currentMonth?: string;
+}
+const { title, editions, eventBySlug, monthByKey, years, week, currentMonth } = Astro.props;
+
+const endOf = (e: EditionEntry) => e.data.end ?? e.data.start;
+const inWeek = (e: EditionEntry) => !!week && e.data.start.length === 10 && e.data.start <= week.end && endOf(e) >= week.start;
+
+type Group = { key: string; label: string; month: string | null; items: EditionEntry[] };
+const groups = new Map<string, Group>();
+const add = (key: string, label: string, month: string | null, e?: EditionEntry) => {
+  if (!groups.has(key)) groups.set(key, { key, label, month, items: [] });
+  if (e) groups.get(key)!.items.push(e);
+};
+for (const e of editions) {
+  const m = monthKey(e.data);
+  if (m) add(m, monthLabel(m), m, e);
+  else add(`${e.data.year}-00`, `${e.data.year} · date non précisée`, null, e);
+}
+if (week && currentMonth) add(currentMonth, monthLabel(currentMonth), currentMonth);
+const timeline = [...groups.values()].sort((a, b) => a.key.localeCompare(b.key));
+const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+const row = (e: EditionEntry) => {
+  const ev = eventBySlug.get(e.data.event);
+  return ev ? { e, ev } : null;
+};
+---
+<div class="tl-bar" id="tl-bar">
+  <div class="wrap tl-bar-in">
+    <h1 class="tl-title">{title}</h1>
+    <div class="chips" role="group" aria-label="Filtrer par thème">
+      <button type="button" class="chip" data-f="cat" data-v="all" aria-pressed="true">Tous</button>
+      {Object.entries(CATEGORIES).map(([k, c]) => (
+        <button type="button" class="chip" data-f="cat" data-v={k} aria-pressed="false"><span class="sw" style={`background:var(--${k})`} aria-hidden="true"></span>{c.short}</button>
+      ))}
+      <button type="button" class="chip" data-f="synth" aria-pressed="false">Avec synthèse</button>
+    </div>
+    <div class="nav-time">
+      <label class="sr-only" for="goto">Aller à un mois ou une année</label>
+      <select id="goto" class="goto">
+        <option value="">Aller à…</option>
+        {week && <option value="#cette-semaine">Cette semaine</option>}
+        <optgroup label="Sur cette page">
+          {timeline.filter((g) => g.month).map((g) => <option value={`#${g.month}`}>{cap(g.label)}</option>)}
+        </optgroup>
+        <optgroup label="Années">
+          {years.map((y) => <option value={yearPath(y)}>{y}</option>)}
+        </optgroup>
+      </select>
+      {week && <a class="chip now" href="#cette-semaine" id="goto-week">Aujourd'hui</a>}
+    </div>
+    <p class="count" aria-live="polite"><span id="tl-count"></span> <button type="button" class="reset" id="tl-reset" hidden>Tout afficher</button></p>
+  </div>
+</div>
+
+<div class="wrap timeline">
+  <slot name="before" />
+  {timeline.map((g) => {
+    const monthSynth = g.month ? monthByKey.get(g.month) : undefined;
+    const isCurrent = !!week && g.month === currentMonth;
+    const past = currentMonth ? g.key < currentMonth : false;
+    const beforeWeek = isCurrent ? g.items.filter((e) => !inWeek(e) && endOf(e) < week!.start) : g.items;
+    const during = isCurrent ? g.items.filter(inWeek) : [];
+    const afterWeek = isCurrent ? g.items.filter((e) => !inWeek(e) && endOf(e) >= week!.start) : [];
+    return (
+      <section class={`month${past ? ' is-past' : ''}`} id={g.month ?? `annee-${g.key.slice(0, 4)}`} aria-labelledby={`h-${g.key}`}>
+        <header class="mh">
+          <h2 id={`h-${g.key}`}>{cap(g.label)}</h2>
+          {monthSynth && <a class="msynth" href={monthPath(g.month!)}>Synthèse du mois</a>}
+        </header>
+        {monthSynth && <p class="mtldr" set:html={fixMonthLinks(mdInline(monthSynth.data.tldr))} />}
+        <div class="list">
+          {beforeWeek.map(row).map((r) => r && <EditionRow edition={r.e.data} name={r.ev.data.name} category={r.ev.data.category} />)}
+        </div>
+        {isCurrent && (
+          <section class="week" id="cette-semaine" aria-labelledby="h-week">
+            <h3 class="week-h" id="h-week"><span class="dot" aria-hidden="true"></span>Cette semaine · {week!.label}</h3>
+            <div class="list">
+              {during.map(row).map((r) => r && <EditionRow edition={r.e.data} name={r.ev.data.name} category={r.ev.data.category} headingLevel="h4" />)}
+            </div>
+            <p class="week-empty muted" hidden={during.length > 0}>Aucun événement cette semaine.</p>
+          </section>
+        )}
+        {afterWeek.length > 0 && (
+          <div class="list">
+            {afterWeek.map(row).map((r) => r && <EditionRow edition={r.e.data} name={r.ev.data.name} category={r.ev.data.category} />)}
+          </div>
+        )}
+      </section>
+    );
+  })}
+  <p class="empty muted" id="tl-empty" hidden>Aucune édition ne correspond à ces filtres. <button type="button" class="reset" data-reset>Tout afficher</button></p>
+</div>
+
+<script>
+  const root = document.documentElement;
+  const bar = document.getElementById('tl-bar')!;
+  new ResizeObserver(() => root.style.setProperty('--bar-h', `${bar.offsetHeight}px`)).observe(bar);
+
+  const state = { cat: 'all', synth: false };
+  const chips = [...bar.querySelectorAll<HTMLButtonElement>('button.chip')];
+  const rows = [...document.querySelectorAll<HTMLElement>('.timeline .row')];
+  const months = [...document.querySelectorAll<HTMLElement>('.timeline .month')];
+  const count = document.getElementById('tl-count')!;
+  const resets = [...document.querySelectorAll<HTMLButtonElement>('#tl-reset, [data-reset]')];
+  const week = document.getElementById('cette-semaine');
+
+  function apply() {
+    chips.forEach((c) =>
+      c.setAttribute('aria-pressed', String(c.dataset.f === 'synth' ? state.synth : state.cat === c.dataset.v)),
+    );
+    let shown = 0;
+    rows.forEach((r) => {
+      const ok = (state.cat === 'all' || r.dataset.cat === state.cat) && (!state.synth || r.dataset.synth === '1');
+      r.hidden = !ok;
+      if (ok) shown++;
+    });
+    months.forEach((m) => {
+      const hasWeek = m.contains(week);
+      m.hidden = !hasWeek && !m.querySelector('.row:not([hidden])');
+    });
+    if (week) week.querySelector<HTMLElement>('.week-empty')!.hidden = !!week.querySelector('.row:not([hidden])');
+    const filtered = state.cat !== 'all' || state.synth;
+    count.textContent = filtered ? `${shown} édition${shown > 1 ? 's' : ''} sur ${rows.length}` : `${rows.length} édition${rows.length > 1 ? 's' : ''}`;
+    resets.forEach((b) => { b.hidden = !filtered; });
+    document.getElementById('tl-empty')!.hidden = shown > 0 || !!week;
+  }
+  const keepInView = () => week?.scrollIntoView({ block: 'start', behavior: 'instant' });
+  chips.forEach((c) =>
+    c.addEventListener('click', () => {
+      if (c.dataset.f === 'synth') state.synth = !state.synth;
+      else state.cat = c.dataset.v!;
+      apply();
+      keepInView();
+    }),
+  );
+  resets.forEach((b) => b.addEventListener('click', () => { state.cat = 'all'; state.synth = false; apply(); keepInView(); }));
+  apply();
+
+  const go = document.getElementById('goto') as HTMLSelectElement;
+  go.addEventListener('change', () => {
+    const v = go.value;
+    go.value = '';
+    if (!v) return;
+    if (v.startsWith('#')) {
+      const t = document.getElementById(v.slice(1));
+      t?.scrollIntoView({ block: 'start', behavior: 'instant' });
+      history.replaceState(null, '', v);
+      t?.querySelector<HTMLElement>('h2, h3')?.setAttribute('tabindex', '-1');
+      t?.querySelector<HTMLElement>('h2, h3')?.focus({ preventScroll: true });
+    } else location.href = v;
+  });
+
+  // Open on the requested month (#YYYY-MM) or on the current week, without animation.
+  // Fonts change row heights after first paint: re-anchor once they are ready, unless the reader already scrolled.
+  const target = document.getElementById(decodeURIComponent(location.hash.slice(1))) ?? week;
+  if (target) {
+    let moved = false;
+    ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach((t) => addEventListener(t, () => { moved = true; }, { once: true, passive: true }));
+    const anchor = () => { if (!moved) target.scrollIntoView({ block: 'start', behavior: 'instant' }); };
+    anchor();
+    document.fonts?.ready.then(anchor);
+  }
+</script>
+
+<style>
+  .tl-bar { position: sticky; top: var(--hdr-h); z-index: 15; background: var(--bg); border-bottom: 1px solid var(--line); margin-top: -32px; }
+  .tl-bar-in { position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; padding-block: 10px; }
+  .tl-title { font-size: 22px; letter-spacing: -.01em; margin-right: 8px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .nav-time { display: flex; gap: 6px; align-items: center; margin-left: auto; }
+  .goto { font: inherit; font-size: 14px; min-height: 36px; padding: 0 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--ink); cursor: pointer; }
+  .chip.now { border-color: var(--accent); color: var(--accent); font-weight: 700; }
+  .count { flex-basis: 100%; margin: 0; font-family: var(--font-m); font-size: 12.5px; color: var(--muted); display: flex; gap: 10px; align-items: center; min-height: 20px; }
+  .reset { font: inherit; background: none; border: 0; padding: 4px 0; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+  @media (max-width: 720px) {
+    .tl-bar-in { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; gap: 6px; padding-block: 8px; }
+    .tl-bar-in::-webkit-scrollbar { display: none; }
+    .tl-title, .count { display: none; }
+    .chips { flex-wrap: nowrap; }
+    .nav-time { margin-left: 0; order: -1; }
+    .goto { min-height: 44px; }
+    .tl-bar { -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent); mask-image: linear-gradient(90deg, #000 88%, transparent); }
+  }
+  @media (pointer: coarse) { .goto { min-height: 44px; } }
+  .timeline { display: flex; flex-direction: column; gap: 28px; padding-block: 16px 40vh; }
+  .month { display: flex; flex-direction: column; gap: 4px; scroll-margin-top: calc(var(--hdr-h) + var(--bar-h)); }
+  .mh { position: sticky; top: calc(var(--hdr-h) + var(--bar-h)); z-index: 5; background: var(--bg); display: flex; align-items: baseline; justify-content: space-between; gap: 12px; border-bottom: 2px solid var(--ink); padding: 10px 0 6px; }
+  .mh h2 { font-size: 22px; }
+  .mh h2:focus { outline: none; }
+  .month.is-past .mh { border-bottom-color: var(--line); }
+  .month.is-past .mh h2 { color: var(--muted); }
+  .msynth { font-size: 14px; font-weight: 700; color: var(--accent); text-underline-offset: 3px; padding: 8px 0; white-space: nowrap; }
+  .msynth::after { content: " →"; }
+  .mtldr { margin: 6px 0 4px; font-size: 15px; color: var(--muted); max-width: 80ch; }
+  .list { display: flex; flex-direction: column; }
+  .week { scroll-margin-top: calc(var(--hdr-h) + var(--bar-h) + 56px); margin-block: 10px; border: 2px solid var(--accent); border-radius: 10px; padding: 8px 10px 4px; background: var(--surface); }
+  .week-h { font-family: var(--font-m); font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); display: flex; align-items: center; gap: 8px; margin: 0; padding: 4px 4px 6px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  .week-empty { margin: 4px 4px 8px; font-size: 14px; }
+  .empty { text-align: center; }
+</style>

@@ -1,0 +1,51 @@
+---
+import Base from '../../layouts/Base.astro';
+import Timeline from '../../components/Timeline.astro';
+import { href, loadAll, today, weekOf, yearPath } from '../../lib/data';
+import type { EditionEntry } from '../../lib/data';
+
+export async function getStaticPaths() {
+  const { editions } = await loadAll();
+  const years = [...new Set(editions.map((e) => e.data.year))].sort((a, b) => a - b);
+  return years.map((y, i) => ({
+    params: { year: String(y) },
+    props: { year: y, prev: years[i - 1], next: years[i + 1], list: editions.filter((e) => e.data.year === y) },
+  }));
+}
+interface Props {
+  year: number;
+  prev?: number;
+  next?: number;
+  list: EditionEntry[];
+}
+const { year, prev, next, list } = Astro.props;
+const { editions, eventBySlug, monthByKey } = await loadAll();
+const years = [...new Set(editions.map((e) => e.data.year))].sort((a, b) => b - a);
+const ref = today();
+const isCurrentYear = ref.startsWith(String(year));
+const week = weekOf(ref);
+const fmt = (s: string, y = false) => new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', ...(y && { year: 'numeric' }), timeZone: 'UTC' }).format(new Date(`${s}T12:00:00Z`));
+const synth = list.filter((e) => e.data.status === 'synthesized').length;
+---
+<Base title={`Calendrier ${year}`} description={`Conférences tech et agiles françaises en ${year} et synthèses des retours participants.`}>
+  <Timeline
+    title={`Calendrier ${year}`}
+    editions={list}
+    eventBySlug={eventBySlug}
+    monthByKey={monthByKey}
+    years={years}
+    week={isCurrentYear ? { ...week, label: `${fmt(week.start)} – ${fmt(week.end, true)}` } : undefined}
+    currentMonth={isCurrentYear ? ref.slice(0, 7) : undefined}
+  >
+    <nav class="years-nav" aria-label="Années" slot="before">
+      {prev ? <a href={yearPath(prev)}>← {prev}</a> : <span></span>}
+      <p>{list.length} éditions en {year} · {synth} synthèse{synth > 1 ? 's' : ''}</p>
+      {next ? <a href={yearPath(next)}>{next} →</a> : <a href={href('')}>Aujourd'hui →</a>}
+    </nav>
+  </Timeline>
+</Base>
+<style is:global>
+  .years-nav { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-block: 6px; font-size: 15px; }
+  .years-nav a { padding: 10px 0; text-underline-offset: 3px; }
+  .years-nav p { margin: 0; color: var(--muted); font-size: 14px; text-align: center; }
+</style>

@@ -11,7 +11,7 @@ const { id, title, start } = Astro.props;
     <img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt="" loading="lazy" width="480" height="360" />
     <span class="yt-btn" aria-hidden="true">▶</span>
   </button>
-  <a class="yt-link" href={`https://www.youtube.com/watch?v=${id}${start ? `&t=${start}s` : ''}`} target="_blank" rel="noopener">Voir sur YouTube</a>
+  <a class="yt-link" href={`https://www.youtube.com/watch?v=${id}${start ? `&t=${start}s` : ''}`} target="_blank" rel="noopener"><span>Voir sur YouTube</span><span class="sr-only"> (nouvel onglet)</span> ↗</a>
 </div>
 <script>
   document.querySelectorAll<HTMLButtonElement>('.yt-play').forEach((b) =>
@@ -22,6 +22,7 @@ const { id, title, start } = Astro.props;
       f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture';
       f.allowFullscreen = true;
       b.replaceWith(f);
+      f.focus();
     }),
   );
 </script>
@@ -30,6 +31,6 @@ const { id, title, start } = Astro.props;
   .yt-play, .yt :global(iframe) { position: relative; width: 100%; aspect-ratio: 16 / 9; border: 0; padding: 0; border-radius: 8px; overflow: hidden; background: #000; cursor: pointer; display: block; }
   .yt-play img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: .9; }
   .yt-play:hover img { opacity: 1; }
-  .yt-btn { position: absolute; inset: 0; margin: auto; width: 64px; height: 44px; border-radius: 10px; background: rgba(210, 64, 42, .92); color: #fff; font-size: 20px; display: grid; place-items: center; }
-  .yt-link { font-size: 13px; color: var(--muted); }
+  .yt-btn { position: absolute; inset: 0; margin: auto; width: 64px; height: 44px; border-radius: 10px; background: var(--accent); color: var(--on-accent); font-size: 20px; display: grid; place-items: center; }
+  .yt-link { font-size: 14px; color: var(--muted); padding-block: 6px; text-underline-offset: 3px; }
 </style>

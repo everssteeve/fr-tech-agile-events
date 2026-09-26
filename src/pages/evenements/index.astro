@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { CATEGORIES, eventPath, loadAll, type Category } from '../../lib/data';
+import { CATEGORIES, eventPath, formatRange, loadAll, when } from '../../lib/data';
+import type { Category } from '../../lib/data';
 
 const { events, editions } = await loadAll();
 const groups = (Object.keys(CATEGORIES) as Category[]).map((cat) => ({
@@ -10,42 +11,73 @@ const groups = (Object.keys(CATEGORIES) as Category[]).map((cat) => ({
     .sort((a, b) => a.data.name.localeCompare(b.data.name, 'fr'))
     .map((e) => {
       const eds = editions.filter((x) => x.data.event === e.id);
-      return { e, count: eds.length, synth: eds.filter((x) => x.data.status === 'synthesized').length };
+      const next = eds.filter((x) => when(x.data) !== 'past').sort((a, b) => a.data.start.localeCompare(b.data.start))[0];
+      return { e, count: eds.length, synth: eds.filter((x) => x.data.status === 'synthesized').length, next };
     }),
 }));
+const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 ---
 <Base title="Événements suivis" description="Toutes les séries d'événements tech et agiles suivies, avec leurs éditions.">
   <div class="wrap page">
-    <header>
+    <header class="head">
       <h1>Événements suivis</h1>
       <p class="lede">{events.length} conférences et rencontres, regroupées par thème. Chaque fiche liste les éditions et leurs synthèses.</p>
+      <div class="filter">
+        <label for="ev-q">Filtrer</label>
+        <input id="ev-q" type="search" placeholder="Nom ou ville" autocomplete="off" />
+        <span class="muted" id="ev-count" aria-live="polite"></span>
+      </div>
     </header>
     {groups.map((g) => (
-      <section>
-        <h2><span class="sw" style={`background:var(--${g.cat})`}></span>{CATEGORIES[g.cat].label} <small>{g.items.length}</small></h2>
+      <section class="grp" aria-labelledby={`h-${g.cat}`}>
+        <h2 id={`h-${g.cat}`}><span class="sw" style={`background:var(--${g.cat})`} aria-hidden="true"></span>{CATEGORIES[g.cat].label} <small>{g.items.length}</small></h2>
         <ul class="grid">
-          {g.items.map(({ e, count, synth }) => (
-            <li>
-              <a href={eventPath(e.id)}>
-                <strong>{e.data.name}</strong>
-                <span class="muted">{e.data.city}</span>
-                <span class="small">{count} édition{count > 1 ? 's' : ''}{synth > 0 && ` · ${synth} synthèse${synth > 1 ? 's' : ''}`}{e.data.gaps.length > 0 && count === 0 && ' · pas d’édition récente'}</span>
-              </a>
+          {g.items.map(({ e, count, synth, next }) => (
+            <li data-text={norm(`${e.data.name} ${e.data.city}`)}>
+              <h3><a href={eventPath(e.id)}>{e.data.name}</a></h3>
+              <p class="city">{e.data.city}</p>
+              <p class="small">{count} édition{count > 1 ? 's' : ''}{synth > 0 && ` · ${synth} synthèse${synth > 1 ? 's' : ''}`}</p>
+              {next && <p class="next">Prochaine : {formatRange(next.data.start, next.data.end)}</p>}
             </li>
           ))}
         </ul>
       </section>
     ))}
+    <p class="muted" id="ev-none" hidden>Aucun événement ne correspond.</p>
   </div>
 </Base>
+<script>
+  const q = document.getElementById('ev-q') as HTMLInputElement;
+  const items = [...document.querySelectorAll<HTMLLIElement>('.grid li')];
+  const count = document.getElementById('ev-count')!;
+  q.addEventListener('input', () => {
+    const v = q.value.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+    let n = 0;
+    items.forEach((li) => { const ok = !v || li.dataset.text!.includes(v); li.hidden = !ok; if (ok) n++; });
+    document.querySelectorAll<HTMLElement>('.grp').forEach((s) => { s.hidden = !s.querySelector('li:not([hidden])'); });
+    count.textContent = v ? `${n} résultat${n > 1 ? 's' : ''}` : '';
+    document.getElementById('ev-none')!.hidden = n > 0;
+  });
+</script>
 <style>
   .page { display: flex; flex-direction: column; gap: 36px; }
-  .lede { color: var(--muted); font-size: 17px; margin: 10px 0 0; }
+  .head { display: flex; flex-direction: column; gap: 12px; }
+  .lede { color: var(--muted); font-size: 17px; margin: 0; }
+  .filter { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+  .filter label { font-weight: 700; }
+  .filter input { font: inherit; min-height: 44px; padding: 0 12px; width: min(100%, 320px); border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); }
   h2 { display: flex; align-items: center; gap: 10px; border-bottom: 2px solid var(--ink); padding-bottom: 6px; }
   h2 small { font-family: var(--font-m); font-size: 13px; color: var(--muted); font-weight: 400; }
   .sw { width: 12px; height: 12px; border-radius: 50%; }
-  .grid { list-style: none; padding: 0; margin: 12px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; }
-  .grid a { display: flex; flex-direction: column; gap: 2px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); text-decoration: none; height: 100%; }
-  .grid a:hover { border-color: var(--ink); }
-  .small { font-family: var(--font-m); font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .grid { list-style: none; padding: 0; margin: 12px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 0 24px; }
+  .grid li { position: relative; padding: 12px 8px; border-bottom: 1px solid var(--line); border-radius: 6px; }
+  .grid li:hover { background: var(--surface); }
+  .grid h3 { font-family: var(--font-b); font-size: 16.5px; margin: 0; }
+  .grid h3 a { text-decoration: none; }
+  .grid h3 a::after { content: ""; position: absolute; inset: 0; }
+  .grid li:hover h3 a { text-decoration: underline; text-underline-offset: 3px; }
+  .grid p { margin: 0; }
+  .city { color: var(--muted); font-size: 14px; }
+  .small { font-family: var(--font-m); font-size: 12.5px; color: var(--muted); margin-top: 4px !important; }
+  .next { font-size: 13.5px; color: var(--accent); font-weight: 700; margin-top: 2px !important; }
 </style>

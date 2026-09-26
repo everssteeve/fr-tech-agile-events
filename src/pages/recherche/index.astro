@@ -1,0 +1,71 @@
+---
+import Base from '../../layouts/Base.astro';
+import { href } from '../../lib/data';
+---
+<Base title="Rechercher" description="Rechercher un événement, une édition, une session ou un orateur.">
+  <div class="wrap page">
+    <h1>Rechercher</h1>
+    <form class="box" role="search" action="" onsubmit="return false">
+      <label for="q" class="sr-only">Rechercher un événement, une session ou un orateur</label>
+      <input id="q" name="q" type="search" placeholder="Événement, session, orateur, ville…" autocomplete="off" autofocus />
+    </form>
+    <div class="kinds" role="group" aria-label="Type de résultat">
+      <button type="button" class="chip" data-k="" aria-pressed="true">Tout</button>
+      <button type="button" class="chip" data-k="e" aria-pressed="false">Événements</button>
+      <button type="button" class="chip" data-k="d" aria-pressed="false">Éditions</button>
+      <button type="button" class="chip" data-k="s" aria-pressed="false">Sessions et orateurs</button>
+    </div>
+    <p class="status muted" id="status" aria-live="polite">Tapez au moins 2 caractères. Astuce : la touche « / » ouvre la recherche depuis n'importe quelle page.</p>
+    <ol class="results" id="results"></ol>
+  </div>
+</Base>
+<script define:vars={{ indexUrl: href('recherche.json') }}>
+  const input = document.getElementById('q');
+  const list = document.getElementById('results');
+  const status = document.getElementById('status');
+  const chips = [...document.querySelectorAll('.kinds .chip')];
+  const LABEL = { e: 'Événement', d: 'Édition', s: 'Session' };
+  const norm = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  let data = null;
+  let kind = '';
+  const load = () => data ?? fetch(indexUrl).then((r) => r.json()).then((d) => (data = d.map((x) => ({ ...x, n: norm(`${x.t} ${x.s}`) }))));
+  const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+
+  async function run() {
+    const q = norm(input.value.trim());
+    const url = new URL(location.href);
+    if (q) url.searchParams.set('q', input.value.trim()); else url.searchParams.delete('q');
+    history.replaceState(null, '', url);
+    if (q.length < 2) { list.innerHTML = ''; status.textContent = 'Tapez au moins 2 caractères.'; return; }
+    status.textContent = 'Recherche…';
+    await load();
+    const terms = q.split(/\s+/);
+    const hits = data.filter((x) => (!kind || x.k === kind) && terms.every((t) => x.n.includes(t)));
+    // Rank: title match first, then events, editions, sessions.
+    const order = { e: 0, d: 1, s: 2 };
+    hits.sort((a, b) => (norm(b.t).includes(q) - norm(a.t).includes(q)) || order[a.k] - order[b.k]);
+    const shown = hits.slice(0, 60);
+    list.innerHTML = shown.map((x) => `<li><span class="k">${LABEL[x.k]}</span><a href="${x.u}">${esc(x.t)}</a><span class="s">${esc(x.s)}</span></li>`).join('');
+    status.textContent = hits.length ? `${hits.length} résultat${hits.length > 1 ? 's' : ''}${hits.length > 60 ? ' (60 premiers affichés)' : ''}` : 'Aucun résultat. Essayez un autre mot, ou un nom d’événement.';
+  }
+  let t;
+  input.addEventListener('input', () => { clearTimeout(t); t = setTimeout(run, 120); });
+  chips.forEach((c) => c.addEventListener('click', () => { kind = c.dataset.k; chips.forEach((x) => x.setAttribute('aria-pressed', String(x === c))); run(); }));
+  const initial = new URL(location.href).searchParams.get('q');
+  if (initial) { input.value = initial; run(); }
+</script>
+<style>
+  .page { display: flex; flex-direction: column; gap: 16px; max-width: 820px; }
+  .box input { font: inherit; font-size: 18px; width: 100%; min-height: 52px; padding: 0 16px; border: 2px solid var(--ink); border-radius: 10px; background: var(--surface); color: var(--ink); }
+  .kinds { display: flex; flex-wrap: wrap; gap: 6px; }
+  .status { margin: 0; font-size: 14px; }
+  .results { list-style: none; margin: 0; padding: 0; }
+  .results :global(li) { position: relative; display: grid; grid-template-columns: 96px 1fr; gap: 2px 16px; padding: 12px 8px; border-bottom: 1px solid var(--line); border-radius: 6px; }
+  .results :global(li:hover) { background: var(--surface); }
+  .results :global(.k) { grid-row: 1 / span 2; font-family: var(--font-m); font-size: 12px; color: var(--muted); padding-top: 3px; }
+  .results :global(a) { font-weight: 700; text-decoration: none; }
+  .results :global(a::after) { content: ""; position: absolute; inset: 0; }
+  .results :global(li:hover a) { text-decoration: underline; text-underline-offset: 3px; }
+  .results :global(.s) { font-size: 14px; color: var(--muted); }
+  @media (max-width: 560px) { .results :global(li) { grid-template-columns: 1fr; } .results :global(.k) { grid-row: auto; } }
+</style>

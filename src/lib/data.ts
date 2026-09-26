@@ -71,8 +71,39 @@ export function when(e: Edition, ref = today()): 'past' | 'live' | 'upcoming' {
   return 'upcoming';
 }
 
-export const md = (s: string): string => marked.parse(s, { async: false });
-export const mdInline = (s: string): string => marked.parseInline(s, { async: false });
+/** French typography on rendered HTML text nodes: narrow no-break space before : ; ? ! and inside « ». */
+export function frTypo(html: string): string {
+  const NNBSP = '\u202F';
+  return html.replace(/>([^<]+)</g, (_m, text: string) =>
+    `>${text
+      .replace(/ ([:;?!»])/g, `${NNBSP}$1`)
+      .replace(/« /g, `«${NNBSP}`)
+      .replace(/ ([:;?!»])/g, `${NNBSP}$1`)}<`,
+  );
+}
+
+export const slugify = (s: string): string =>
+  s.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
+
+const wrap = (html: string) => frTypo(`<x>${html}</x>`).slice(3, -4);
+export const md = (s: string): string => wrap(marked.parse(s, { async: false }));
+export const mdInline = (s: string): string => wrap(marked.parseInline(s, { async: false }));
+
+/** Render a long Markdown synthesis, giving each h3 an id; returns the headings for a table of contents. */
+export function mdWithToc(s: string): { html: string; headings: { id: string; text: string }[] } {
+  const headings: { id: string; text: string }[] = [];
+  const html = md(s).replace(/<h3>(.*?)<\/h3>/g, (_m, inner: string) => {
+    const text = inner.replace(/<[^>]+>/g, '').replace(/^\d+\.\s*/, '');
+    let id = slugify(text) || `section-${headings.length + 1}`;
+    if (headings.some((h) => h.id === id)) id = `${id}-${headings.length + 1}`;
+    headings.push({ id, text });
+    return `<h3 id="${id}">${inner}</h3>`;
+  });
+  return { html, headings };
+}
+
+/** Whether a URL points to a web archive rather than the live official site. */
+export const isArchiveUrl = (u?: string): boolean => !!u && /web\.archive\.org|archive\.(org|ph|today)/.test(u);
 
 export const href = (path: string): string => `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
 export const editionPath = (e: Edition): string => href(`evenements/${e.event}/${e.year}/`);
@@ -85,6 +116,16 @@ export const monthKey = (e: Edition): string | null => (e.start.length >= 7 ? e.
 
 export const monthLabel = (key: string): string => `${monthName(Number(key.slice(5, 7)) - 1)} ${key.slice(0, 4)}`;
 export const monthPath = (key: string): string => href(`mois/${key}/`);
+export const yearPath = (year: number | string): string => href(`annee/${year}/`);
+
+/** Add n months to a YYYY-MM key. */
+export function addMonths(key: string, n: number): string {
+  const y = Number(key.slice(0, 4));
+  const m = Number(key.slice(5, 7)) - 1 + n;
+  const yy = y + Math.floor(m / 12);
+  const mm = ((m % 12) + 12) % 12;
+  return `${yy}-${String(mm + 1).padStart(2, '0')}`;
+}
 
 /** Rewrite relative links written for /mois/<key>/ pages so they work from any page. */
 export const fixMonthLinks = (html: string): string =>

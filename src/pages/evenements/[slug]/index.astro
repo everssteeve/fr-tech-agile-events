@@ -1,13 +1,14 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import EditionRow from '../../../components/EditionRow.astro';
-import { CATEGORIES, loadAll, type EditionEntry, type EventEntry } from '../../../lib/data';
+import { CATEGORIES, editionPath, formatRange, href, loadAll, when } from '../../../lib/data';
+import type { EditionEntry, EventEntry } from '../../../lib/data';
 
 export async function getStaticPaths() {
   const { events, editions } = await loadAll();
   return events.map((ev) => ({
     params: { slug: ev.id },
-    props: { event: ev, editions: editions.filter((e) => e.data.event === ev.id).sort((a, b) => b.data.year - a.data.year) },
+    props: { event: ev, editions: editions.filter((e) => e.data.event === ev.id).sort((a, b) => b.data.year - a.data.year || b.data.start.localeCompare(a.data.start)) },
   }));
 }
 interface Props {
@@ -16,39 +17,80 @@ interface Props {
 }
 const { event, editions } = Astro.props;
 const ev = event.data;
+const synthCount = editions.filter((e) => e.data.status === 'synthesized').length;
+const upcoming = [...editions].reverse().find((e) => when(e.data) !== 'past');
+const latest = editions.find((e) => e.data.status === 'synthesized');
+// Editions and years without an edition, in one chronology (most recent first).
+type Item = { kind: 'edition'; e: EditionEntry; year: number } | { kind: 'gap'; year: number; note: string };
+const items: Item[] = [
+  ...editions.map((e) => ({ kind: 'edition' as const, e, year: e.data.year })),
+  ...ev.gaps.map((g) => ({ kind: 'gap' as const, year: g.year, note: g.note })),
+].sort((a, b) => b.year - a.year);
+const years = [...new Set(items.map((i) => i.year))];
 ---
 <Base title={ev.name} description={ev.description}>
   <div class="wrap page">
     <header class="head">
-      <div class="eyebrow"><span class={`tag cat-${ev.category}`}>{CATEGORIES[ev.category].label}</span> {ev.city}</div>
+      <nav class="crumbs" aria-label="Fil d'Ariane"><a href={href('evenements/')}>Événements</a> <span aria-hidden="true">/</span> <span aria-current="page">{ev.name}</span></nav>
       <h1>{ev.name}</h1>
+      <p class="meta"><span class={`tag cat-${ev.category}`}>{CATEGORIES[ev.category].label}</span> <span>{ev.city}</span> <span>{editions.length} édition{editions.length > 1 ? 's' : ''} · {synthCount} synthèse{synthCount > 1 ? 's' : ''}</span></p>
       <p class="lede">{ev.description}</p>
       <p class="links">
-        {ev.website && <a href={ev.website} target="_blank" rel="noopener">Site officiel</a>}
-        {ev.youtube?.channel && <a href={ev.youtube.channel} target="_blank" rel="noopener">Chaîne YouTube</a>}
+        {ev.website && <a href={ev.website} target="_blank" rel="noopener">Site officiel<span class="sr-only"> (nouvel onglet)</span> ↗</a>}
+        {ev.youtube?.channel && <a href={ev.youtube.channel} target="_blank" rel="noopener">Chaîne YouTube<span class="sr-only"> (nouvel onglet)</span> ↗</a>}
       </p>
+      {(upcoming || latest) && (
+        <div class="spot">
+          {upcoming && <p><span class="k">Prochaine édition</span> <a href={editionPath(upcoming.data)}>{formatRange(upcoming.data.start, upcoming.data.end)}</a></p>}
+          {latest && <p><span class="k">Dernière synthèse</span> <a href={editionPath(latest.data)}>{latest.data.title}</a></p>}
+        </div>
+      )}
     </header>
-    <section>
-      <h2>Éditions</h2>
+    <section aria-labelledby="h-eds">
+      <div class="eds-head">
+        <h2 id="h-eds">Éditions</h2>
+        {years.length > 6 && (
+          <nav class="jump" aria-label="Aller à une année">
+            {years.map((y) => <a href={`#y${y}`}>{y}</a>)}
+          </nav>
+        )}
+      </div>
       <div class="list">
-        {editions.map((e) => <EditionRow edition={e.data} name={e.data.title} category={ev.category} />)}
+        {items.map((i) =>
+          i.kind === 'edition' ? (
+            <div id={`y${i.year}`} class="anchor"><EditionRow edition={i.e.data} name={i.e.data.title} category={ev.category} showMonth hideCategory /></div>
+          ) : (
+            <p class="gap" id={`y${i.year}`}><span class="gy">{i.year}</span><span>Pas d'édition. {i.note}</span></p>
+          ),
+        )}
       </div>
       {editions.length === 0 && <p class="muted">Aucune édition référencée pour l'instant.</p>}
     </section>
-    {ev.gaps.length > 0 && (
-      <section>
-        <h2>Années sans édition</h2>
-        <ul>{ev.gaps.map((g) => <li><strong>{g.year}</strong> : {g.note}</li>)}</ul>
-      </section>
+    {ev.history?.note && (
+      <p class="hist muted">Historique : {ev.history.note}</p>
     )}
   </div>
 </Base>
 <style>
   .page { display: flex; flex-direction: column; gap: 32px; }
-  .head { display: flex; flex-direction: column; gap: 10px; }
-  .eyebrow { display: flex; gap: 8px; align-items: center; }
-  .lede { margin: 0; color: var(--muted); max-width: 64ch; font-size: 17px; }
-  .links { margin: 0; display: flex; gap: 16px; }
-  h2 { border-bottom: 2px solid var(--ink); padding-bottom: 6px; margin-bottom: 4px; }
+  .head { display: flex; flex-direction: column; gap: 12px; }
+  .crumbs { font-size: 14px; color: var(--muted); display: flex; gap: 6px; }
+  .crumbs a { color: var(--muted); padding-block: 6px; text-underline-offset: 3px; }
+  .meta { margin: 0; display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; color: var(--muted); font-size: 15px; }
+  .lede { margin: 0; max-width: 64ch; font-size: 17px; }
+  .links { margin: 0; display: flex; gap: 4px 18px; flex-wrap: wrap; }
+  .links a { padding-block: 8px; text-underline-offset: 3px; }
+  .spot { display: flex; flex-wrap: wrap; gap: 8px 32px; padding: 14px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
+  .spot p { margin: 0; display: flex; flex-direction: column; gap: 2px; }
+  .spot .k { font-family: var(--font-m); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+  .spot a { font-weight: 700; text-underline-offset: 3px; }
+  .eds-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; border-bottom: 2px solid var(--ink); padding-bottom: 6px; margin-bottom: 4px; }
+  .jump { display: flex; flex-wrap: wrap; gap: 2px 10px; font-family: var(--font-m); font-size: 13px; }
+  .jump a { color: var(--muted); padding: 6px 2px; text-underline-offset: 3px; }
   .list { display: flex; flex-direction: column; }
+  .anchor, .gap { scroll-margin-top: calc(var(--hdr-h) + 16px); }
+  .gap { margin: 0; display: grid; grid-template-columns: 104px 1fr; gap: 16px; padding: 12px 8px; border-bottom: 1px dashed var(--line); color: var(--muted); font-size: 14.5px; }
+  .gy { font-family: var(--font-m); font-weight: 600; }
+  @media (max-width: 640px) { .gap { grid-template-columns: 76px 1fr; } }
+  .hist { font-size: 13.5px; max-width: 80ch; margin: 0; }
 </style>
