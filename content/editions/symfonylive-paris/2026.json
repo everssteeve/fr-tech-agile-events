@@ -5,9 +5,221 @@
   "start": "2026-03-26",
   "end": "2026-03-27",
   "city": "Paris",
+  "venue": "Maison internationale, Cité internationale universitaire de Paris",
   "url": "https://live.symfony.com/2026-paris/",
+  "programUrl": "https://live.symfony.com/2026-paris/schedule",
   "dateConfidence": "ok",
-  "note": "Dates officielles (live.symfony.com/all et page de l'édition) ; talks en français (programme en ligne : FrankenPHP workers, chiffrement par champ avec Doctrine…). Lieu non retrouvé.",
-  "status": "pending",
-  "sessions": []
+  "note": "Dates officielles (live.symfony.com/all et page de l'édition). Conférence en français, une seule salle : 16 talks et une session de 4 lightning talks, précédés de formations les 24 et 25 mars. Lieu : premier étage de la Maison internationale de la Cité internationale universitaire de Paris (page « Le Lieu », archivée). Environ 500 participants annoncés avant l'événement (Presse Agence).",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-09-27",
+  "revisit": "Un seul post LinkedIn lu (sketchnotes de Mathieu Desnouveaux) ; retours publics venant presque tous de blogs d'entreprises sponsors ou de speakers ; replays réservés aux participants et acheteurs, un seul transcript (keynote TUI). Chercher d'autres posts LinkedIn, des slides (Speaker Deck) et d'éventuelles vidéos publiques supplémentaires.",
+  "corpus": "Programme officiel (planning archivé, descriptifs, page replay avec résumé des lightning talks), 6 comptes-rendus d'entreprises publiés entre le 27/03 et le 26/06/2026 (JoliCode, Webnet x2, Les-Tilleuls.coop, SensioLabs, ACSEO), le post LinkedIn de sketchnotes de Mathieu Desnouveaux couvrant les 15 conférences, les billets du blog Symfony (wrap-up, replays) et le transcript de la keynote de Fabien Potencier sur le composant Terminal, seule vidéo de talk publique sur YouTube.",
+  "limits": "Corpus dominé par des sponsors et des sociétés de speakers (JoliCode compte Grégoire Pineau parmi ses auteurs, l'article Les-Tilleuls.coop est signé par Alexandre Daubois, lui-même speaker d'un lightning talk, SensioLabs est l'organisateur historique) : tonalité très positive et peu de critiques. Le compte-rendu jour 1 de Webnet semble en partie paraphraser les descriptifs du programme (détails non corroborés, mention d'un « futur Symfony 8 » alors que Symfony 8 est sorti fin 2025), il est utilisé avec prudence. Les replays sont sur la plateforme payante de SymfonyLive : un seul transcript public (keynote TUI) ; les sessions du jour 2 sont moins couvertes (Webnet n'a publié que le jour 1).",
+  "tldr": "**Symfony se met à l'heure des agents de code** : nouveau composant Terminal (TUI) écrit largement avec des LLM, coding agent maison en PHP, FrankenPHP qui absorbe le poste de dev et les sidekicks, avec un fil rouge répété par tous les comptes-rendus : **l'IA produit, l'humain valide et reste responsable**.",
+  "keyTakeaways": [
+    "Séparer les responsabilités en CLI : garder **Console pour les commandes** (arguments, options, aide) et confier l'affichage et l'interaction au nouveau composant Terminal/TUI, expérimental et proposé pour Symfony 8.1 (Potencier, transcript).",
+    "Dans un agent de code, **le harness compte autant que le modèle** : 4 outils suffisent (lire, écrire, modifier, bash), une mémoire en arbre pour revenir en arrière, une compression du contexte qui garde le premier message et les derniers (Potencier, retour JoliCode).",
+    "**Transformer toute instruction répétée en skill** : du temps perdu au début, beaucoup de temps gagné ensuite, comme pour les tests (Potencier, JoliCode) ; le contexte compte plus que le prompt (Les-Tilleuls.coop).",
+    "Pour un assistant de code review IA, **mesurer l'usage et construire avec les développeurs** : la première version n'était quasiment pas utilisée chez Yousign (Boileau, JoliCode).",
+    "Chiffrer les données sensibles **dès la conception**, au niveau d'un type Doctrine, et ajouter des champs hashés pour garder la recherche possible (Tamarelle, JoliCode et Les-Tilleuls.coop).",
+    "Réserver le **JsonStreamer aux gros volumes** (indexation, exports) et garder le Serializer pour les API courantes (Pegeot, Webnet ; « gain x10 » annoncé selon Desnouveaux).",
+    "Tester le JSON en base relationnelle avant un modèle EAV : **performances à peine inférieures** à un schéma classique, avec la flexibilité en plus (Bonfils et Fourny, JoliCode).",
+    "En héritage Doctrine, préférer un **DiscriminatorMap explicite, un seul niveau d'héritage et des colonnes indexées** ; passer de STI à CTI reste possible (Janot, JoliCode et Les-Tilleuls.coop).",
+    "Faire tourner les agents de code **dans un conteneur avec pare-feu et liste blanche** de domaines (Symfony Docker, Dunglas ; orchestrateur de Potencier selon ACSEO).",
+    "Fiabiliser les fonctionnalités LLM avec un **dataset d'évaluation et une optimisation de prompt** (DSPy, GEPA), qui sert aussi de garde-fou contre les régressions lors d'un changement de modèle (Galopin, ACSEO)."
+  ],
+  "sessions": [
+    {
+      "id": "concevoir-des-tui-en-php-le-composant-symfony-terminal",
+      "day": "2026-03-26",
+      "type": "keynote",
+      "title": "Concevoir des TUI en PHP : le composant Symfony Terminal",
+      "speakers": ["Fabien Potencier — Symfony"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Webnet (Wajdi Bessassi)", "Blog Les-Tilleuls.coop (Alexandre Daubois)", "Blog SensioLabs", "Mathieu Desnouveaux (sketchnote)"],
+      "summary": "- Sur scène : deuxième version d'une keynote donnée à Bruxelles trois ans plus tôt, avec **« pas une seule ligne de code en commun »**. Le premier prototype avait un défaut de conception de fond ; ce qui a changé entre-temps, ce sont les LLM : *« le premier composant Symfony où je me suis très largement aidé des LLM »* (il dit avoir relu le code, « pas forcément les tests »).\n- **Séparation des responsabilités** : Console garde les commandes, arguments et options ; le composant TUI prend l'affichage riche et l'interaction. Déclencheur : comprendre les agents de code, qui vivent dans le terminal.\n- **Des réflexes web dans le terminal** : trois façons de styler (PHP, classes à la Tailwind, feuille de style avec sélecteurs et état focus), flex, breakpoints sur la largeur, templates Twig pour chaque widget (input, éditeur, listes, Markdown, overlays, calques avec transparence, images via le protocole Kitty avec repli en ASCII).\n- **Parti pris : utiliser le terminal plutôt que le réimplémenter** (scroll et curseur natifs, souris seulement en option). Boucle adaptative Revolt et Fibers (100 images/s en activité, environ 4 au repos), rien de bloquant, rendu ligne par ligne qui ne redessine que ce qui change ; démos de jeux pour trouver les limites.\n- **Pull request ouverte en direct** pour Symfony 8.1 (29 fichiers, documentation comprise), site de démo où PHP et le terminal Ghostty tournent en WASM dans le navigateur. Proposition de contribution inédite : *« je veux pas de pull request »*, mais des prompts de spécification dont il paie les tokens.\n- Côté participants : démonstrations de Tetris et 2048 jugées « bluffantes » (JoliCode, Webnet, Desnouveaux), ouverture de la PR saluée comme le moment symbolique (Webnet, SensioLabs) ; Les-Tilleuls.coop retient aussi un futur composant de conversion d'images et GIF en ASCII art.",
+      "summarySources": ["transcript", "blog", "feedback", "program"],
+      "video": {
+        "youtubeId": "4YxU_3X3R98",
+        "title": "Concevoir des TUI en PHP : le composant Symfony Terminal par Fabien Potencier",
+        "publishedAt": "2026-04-15",
+        "transcript": true
+      }
+    },
+    {
+      "id": "chiffrez-vos-donnees-avec-doctrine-en-restant-recherchable",
+      "day": "2026-03-26",
+      "type": "talk",
+      "title": "Chiffrez vos données avec Doctrine, en restant recherchable",
+      "speakers": ["Jérôme Tamarelle — MongoDB"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Webnet (Wajdi Bessassi)", "Blog Les-Tilleuls.coop", "Mathieu Desnouveaux (sketchnote)"],
+      "summary": "- Point de départ : stocker email, date de naissance ou numéro de sécurité sociale en clair est un risque majeur en cas de fuite, mais le chiffrement applicatif empêche un simple `WHERE email = :valeur` (programme).\n- **Les données indirectes comptent aussi** : croisées, elles suffisent à identifier une personne (JoliCode).\n- Rappels de base : **chiffrement réversible vs hashage irréversible**, chiffrement aléatoire (deux valeurs identiques donnent deux chiffrés différents) vs déterministe (JoliCode).\n- Mise en œuvre : le chiffrement est **encapsulé dans un type Doctrine**, utilisable via les attributs ; chaîne de clés KMS, clé de chiffrement, base ; pour la recherche, des **champs hashés servant de tags**, hydratés par des listeners Doctrine (Les-Tilleuls.coop). Webnet évoque aussi la rotation des clés.\n- Leçon retenue : *« Sécuriser ses données, c'est accepter de complexifier son application. Et surtout, le faire dès la conception »* (JoliCode). Revers noté : on ne peut plus chercher sur ces champs sans passer par Doctrine.",
+      "summarySources": ["blog", "feedback", "program"]
+    },
+    {
+      "id": "100-crons-par-seconde-le-scheduler-se-venge",
+      "day": "2026-03-26",
+      "type": "talk",
+      "title": "100 crons par seconde, le Scheduler se venge",
+      "speakers": ["Jérémie Augustin"],
+      "feedbackFrom": ["Blog Webnet (Wajdi Bessassi)", "Blog Les-Tilleuls.coop", "Mathieu Desnouveaux (sketchnote)"],
+      "summary": "- Retour d'expérience : d'un cron solitaire à un **Scheduler Symfony distribué sur Kubernetes** pilotant des centaines de tâches (programme).\n- Pièges annoncés et repris par Webnet : **locks Symfony qui bloquent tout le scheduler**, surprises du scaling horizontal, observabilité difficile.\n- Les-Tilleuls.coop retient que la migration a soulevé des **problèmes de scalabilité à partir d'un certain volume**, avec une solution temporaire à base d'event listeners pour avoir plusieurs workers.\n- Couverture mince : pas de détail chiffré dans les retours publics.",
+      "summarySources": ["blog", "feedback", "program"]
+    },
+    {
+      "id": "passez-a-la-vitesse-superieure-avec-le-jsonstreamer",
+      "day": "2026-03-26",
+      "type": "talk",
+      "title": "Passez à la vitesse supérieure avec le JsonStreamer",
+      "speakers": ["Gary Pegeot"],
+      "feedbackFrom": ["Blog Webnet (Wajdi Bessassi)", "Blog Les-Tilleuls.coop", "Mathieu Desnouveaux (sketchnote)"],
+      "summary": "- Retour d'expérience : migration du Serializer vers le **JsonStreamer** pour indexer en masse des documents dans Elasticsearch (programme).\n- Principe : sérialiser à la volée plutôt que tout construire en mémoire, d'où une **consommation mémoire faible et stable** sur les traitements batch (Webnet).\n- **Le JsonStreamer complète le Serializer sans le remplacer** : le second reste adapté aux API courantes, le premier aux exports et synchronisations massives (Webnet).\n- Détails techniques retenus : attribut `JsonStreamable` et ObjectMapper pour hydrater des entités depuis un DTO, « gain de performances colossal » qui a *« mis une claque à l'audience »* (Les-Tilleuls.coop) ; « gain de performance x10 » annoncé (Desnouveaux).",
+      "summarySources": ["blog", "feedback", "program"]
+    },
+    {
+      "id": "developper-un-coding-agent-en-php-dans-les-coulisses-du-harness",
+      "day": "2026-03-26",
+      "type": "talk",
+      "title": "Développer un Coding Agent en PHP : dans les coulisses du « Harness »",
+      "speakers": ["Fabien Potencier — Symfony"],
+      "feedbackFrom": ["Blog JoliCode", "Blog ACSEO", "Blog Webnet (Wajdi Bessassi)", "Blog Les-Tilleuls.coop", "Blog SensioLabs", "Mathieu Desnouveaux (sketchnote)"],
+      "summary": "- Thèse : **le modèle n'est que la moitié de la solution**, le « harness » (contexte, outils, prompts, boucles de rétroaction) fait la qualité du résultat (programme). Origine : un tweet affirmant qu'on ne pouvait pas faire de coding agent en PHP (JoliCode ; Potencier l'évoque aussi dans sa keynote).\n- Architecture retenue par JoliCode : interface avec le composant TUI, outil `symfony/models-dev` pour recenser les modèles disponibles, **seulement 4 outils** (Read, Write, Update, Bash), historique stocké **sous forme d'arbre** pour revenir en arrière, compression du contexte qui garde le premier message et les derniers et résume le reste.\n- Conseils pratiques : créer un **skill dès qu'une instruction se répète**, demander à l'agent un regard neuf (« fresh eyes ») quand il s'embrouille (JoliCode) ; **le contexte compte plus que le prompt**, résumer dans un SKILL.md avant de demander une feature (Les-Tilleuls.coop).\n- ACSEO décrit aussi son orchestrateur d'agents, baptisé Gérard, qui lance des agents en mode « YOLO » dans des conteneurs Docker aux sorties réseau limitées.\n- **Mise en garde la plus citée** : *« dans 6 mois vous êtes morts »*, adressé à ceux qui font du vibe coding sans maîtrise du développement : sans cadrage ni relecture, la dette technique devient fatale (ACSEO).",
+      "summarySources": ["blog", "feedback", "program"]
+    },
+    {
+      "id": "du-web-au-mobile-avec-symfony-et-hotwire-native",
+      "day": "2026-03-26",
+      "type": "talk",
+      "title": "Du web au mobile avec Symfony & Hotwire Native",
+      "speakers": ["Imad Zairig"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Webnet (Wajdi Bessassi)", "Mathieu Desnouveaux (sketchnote)"],
+      "summary": "- Promesse : livrer des applications iOS et Android natives à partir d'une application Symfony existante, **sans Swift, Kotlin ni React Native** (programme, Desnouveaux).\n- Présentation du **bundle Symfony UX Native** : webviews pilotées par Symfony, navigation et transitions gérées nativement ; exemple d'un bouton mobile dont le clic est écouté par Stimulus côté Symfony (JoliCode).\n- Limites notées par JoliCode : il faut parfois lancer le projet mobile avec Xcode, et les capacités natives (appareil photo) passent par des **« Bridge Components » qui demandent du code mobile**.\n- Verdict nuancé : *« Selon la complexité de l'application et la taille de l'équipe, Symfony UX Native est une piste à explorer »* (JoliCode) ; « prometteur, à tester dès que possible » (Desnouveaux).",
+      "summarySources": ["blog", "feedback", "program"]
+    },
+    {
+      "id": "l-ia-au-service-des-devs-anatomie-d-un-assistant-de-code-review",
+      "day": "2026-03-26",
+      "type": "talk",
+      "title": "L'IA au service des devs : Anatomie d'un assistant de Code Review",
+      "speakers": ["Thomas Boileau — Yousign"],
+      "feedbackFrom": ["Blog JoliCode", "Blog ACSEO", "Blog Webnet (Wajdi Bessassi)", "Mathieu Desnouveaux (sketchnote)"],
+      "summary": "- Contexte : faire évoluer la code review à l'échelle chez Yousign ; l'usage individuel de l'IA étant très inégal, **intervenir au niveau de la CI** plutôt que du poste de chaque développeur (JoliCode).\n- Fonctionnement : une PR étiquetée « Ready For Review » déclenche un webhook puis l'assistant ; socle Symfony Messenger, Webhook et AI, avec RabbitMQ et GitLab (programme, JoliCode).\n- **Leçon d'adoption** : après la première itération, *« quasiment personne n'interagissait avec son agent »* ; c'est en mesurant l'usage et en consultant les développeurs qu'une v2 utile a vu le jour (JoliCode).\n- Des **« standards » que les développeurs enrichissent au fil des cas** : la valeur tient autant à la connaissance consolidée qu'au gain de temps (ACSEO) ; pipeline « des findings structurés aux nouveaux standards » (Desnouveaux).\n- Pourquoi pas une solution du marché : contraintes réglementaires du secteur. Message répété : **l'IA ne remplace pas l'humain**, elle est un plus dans la boucle (JoliCode, ACSEO).",
+      "summarySources": ["blog", "feedback", "program"]
+    },
+    {
+      "id": "symfony-frankenphp-une-dx-comme-vous-n-en-avez-jamais-vu",
+      "day": "2026-03-26",
+      "type": "talk",
+      "title": "Symfony + FrankenPHP : une DX comme vous n'en avez jamais vu",
+      "speakers": ["Kévin Dunglas — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Blog Webnet (Mathis Rome, article dédié)", "Blog Webnet (Wajdi Bessassi)", "Blog Les-Tilleuls.coop", "Mathieu Desnouveaux (sketchnote)"],
+      "summary": "- **Tout en direct** : projet démarré en 3 secondes avec HTTPS, y compris nativement sous Windows sans WSL (programme, Webnet).\n- **Hot reload côté backend** : FrankenPHP surveille les fichiers, notifie le navigateur via Mercure et Idiomorph ne met à jour que ce qui a changé ; le mode worker, avec `watch`, sert désormais aussi en dev (Mathis Rome, Webnet).\n- **Symfony Docker** supporte les Dev Containers, avec Xdebug préconfiguré et des images rootless par défaut (Mathis Rome ; Les-Tilleuls.coop).\n- Moment fort : **Claude Code piloté depuis un téléphone**, codant dans un conteneur avec pare-feu et liste blanche de domaines (Packagist, GitHub) (Mathis Rome).\n- Côté participants : « le genre de démo qui donne envie de tout migrer en rentrant au bureau » (Mathis Rome) ; « une DX prête à l'emploi dans un binaire » (Desnouveaux). Kévin Dunglas est coopérateur des Tilleuls, dont le retour est donc interne.",
+      "summarySources": ["blog", "feedback", "program"]
+    },
+    {
+      "id": "lightning-talks",
+      "day": "2026-03-26",
+      "type": "lightning",
+      "title": "Lightning talks",
+      "speakers": ["Jérôme Tamarelle", "Alexandre Daubois — Les-Tilleuls.coop", "Imen Ezzine — SensioLabs", "Alex Balmes"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (Alexandre Daubois, speaker)", "Blog SensioLabs"],
+      "summary": "- **Vibe-coder des jeux dans le terminal** avec Claude Code et le composant TUI dévoilé le matin (Snake, Space Invaders, un clone de RollerCoaster Tycoon) (Tamarelle, programme).\n- **Ember**, un « htop » pour PHP, Caddy et FrankenPHP écrit en Go : activité de chaque worker, latences P50/P90/P99, mode démon exposant des métriques Prometheus ; première release faite sur scène (Daubois, programme ; annonce reprise par Les-Tilleuls.coop *(speaker)*).\n- **Un recorder natif dans Symfony HTTP Client** : attribut `#[UseRecorder]` et quatre modes pour enregistrer puis rejouer les échanges HTTP en test, sans mocks écrits à la main (Ezzine, programme) ; « un des moments dont l'équipe est la plus fière » (SensioLabs, son employeur).\n- **AWF (AI Workflow Framework)** : machine à états en Go pilotée par YAML qui mêle étapes déterministes (git, linter, tests) et appels LLM, pour industrialiser le développement assisté plutôt que viser la vitesse (Balmes, programme).",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "reconfigurer-symfony-en-temps-reel-avec-des-sidekicks-applicatifs",
+      "day": "2026-03-27",
+      "type": "talk",
+      "title": "Reconfigurer Symfony en temps réel avec des sidekicks applicatifs",
+      "speakers": ["Nicolas Grekas — Symfony"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop", "Blog SensioLabs", "Mathieu Desnouveaux (sketchnote)"],
+      "summary": "- Nouveau pattern : des **workers PHP long-running hors cycle HTTP**, rendus possibles par FrankenPHP, qui écoutent leur environnement et reconfigurent l'application sans polling, sans TTL approximatif, sans redéploiement (programme).\n- Problème de départ : le **coût d'une requête PHP qui doit solliciter de multiples services** ; le sidekick écrit en mémoire, le script frontal lit sans appel externe (Les-Tilleuls.coop).\n- Exemple type : la découverte **Redis Sentinel**, le sidekick interroge la sentinelle et le code principal lit sa réponse ; autres cas cités au programme : rotation de secrets et de clés JWT, feature flags, invalidation de cache.\n- Suite annoncée : des sidekicks sous forme de bundles, PR FrankenPHP en cours de revue (Les-Tilleuls.coop). Desnouveaux y voit la possibilité de *« reconfigurer une application en temps réel, sans redémarrage »*, inédite en PHP.",
+      "summarySources": ["blog", "feedback", "program"]
+    },
+    {
+      "id": "doctrine-inheritance",
+      "day": "2026-03-27",
+      "type": "talk",
+      "title": "Doctrine inheritance",
+      "speakers": ["Rémi Janot"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Les-Tilleuls.coop", "Mathieu Desnouveaux (sketchnote)"],
+      "summary": "- Clarification de vocabulaire : **héritage** (mapper une hiérarchie de classes) vs **polymorphisme** (une clé étrangère vers une autre classe) (JoliCode).\n- Tour des options : MappedSuperclass, DiscriminatorMap ; **STI** (une table, la plus performante mais pleine de colonnes nulles) vs **CTI** (une table par classe, schéma normalisé mais JOIN coûteux en lecture sur gros volumes) (Les-Tilleuls.coop).\n- Bonnes pratiques retenues : DiscriminatorMap explicite, valeurs d'enum, **un seul niveau d'héritage**, index sur les colonnes (Les-Tilleuls.coop, JoliCode).\n- Message rassurant : **passer de STI à CTI reste assez facile**, les choix ne sont pas figés (JoliCode).",
+      "summarySources": ["blog", "feedback", "program"]
+    },
+    {
+      "id": "clickhouse-pour-les-developpeurs-symfony",
+      "day": "2026-03-27",
+      "type": "talk",
+      "title": "ClickHouse pour les développeurs Symfony",
+      "speakers": ["Romain Neutron"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Les-Tilleuls.coop", "Mathieu Desnouveaux (sketchnote)"],
+      "summary": "- Quand MySQL ou PostgreSQL atteignent leurs limites pour l'analytique, les logs ou les métriques, **ClickHouse vient épauler la base principale, pas la remplacer** (JoliCode).\n- Benchmarks sur des agrégations de plusieurs millions de lignes : des requêtes de plusieurs secondes deviennent **quasi instantanées** (JoliCode).\n- Pièges et bonnes pratiques : structure des données, **choix du moteur de table** (MergeTree) (JoliCode) ; stockage en blob storage évoqué au programme.\n- Lectures participants : « plutôt orienté observabilité » (Desnouveaux), « meilleure mise à l'échelle que le relationnel » (Les-Tilleuls.coop). JoliCode, qui l'utilise pour redirection.io, le recommande.",
+      "summarySources": ["blog", "feedback", "program"]
+    },
+    {
+      "id": "json-sql-heresie-ou-elegance-retour-d-experience",
+      "day": "2026-03-27",
+      "type": "talk",
+      "title": "JSON + SQL : hérésie ou élégance ? Retour d'expérience",
+      "speakers": ["Rémy Bonfils — Orange Business", "Olivier Fourny — Orange Business"],
+      "feedbackFrom": ["Blog JoliCode", "Mathieu Desnouveaux (sketchnote)"],
+      "summary": "- Cas concret : une application mobile offline pour configurer des **maisons imprimées en 3D**, avec environ 80 000 configurations importées depuis un CSV (JoliCode).\n- Première piste, le modèle **EAV** : flexible mais sans structure (tout en varchar), requêtes complexes et **performances catastrophiques** (JoliCode).\n- Choix final : **stocker les paramètres en colonnes JSON** ; surprise, des performances *« à peine inférieures à une modélisation classique »* avec la flexibilité voulue, et des requêtes lisibles grâce aux fonctions SQL JSON (JoliCode). Encadrement côté Symfony par UDF DQL, DTO typés et validations (programme).\n- Clin d'œil : l'idée venait d'un talk de Grégoire Pineau au SymfonyLive 2022 (programme). JoliCode confirme utiliser et recommander le type JSON « lorsque le besoin s'en fait ressentir ».",
+      "summarySources": ["blog", "feedback", "program"]
+    },
+    {
+      "id": "embeddings-en-php-symfony-ai-en-pratique",
+      "day": "2026-03-27",
+      "type": "talk",
+      "title": "Embeddings en PHP : Symfony AI en pratique",
+      "speakers": ["Grégoire Pineau — JoliCode"],
+      "feedbackFrom": ["Blog JoliCode (dont le speaker est co-auteur)", "Mathieu Desnouveaux (sketchnote)"],
+      "summary": "- Cas d'usage fil rouge : **faire correspondre les URL d'un ancien et d'un nouveau site** par similarité sémantique plutôt que par règles, pour générer un plan de redirections (JoliCode, Desnouveaux).\n- Pédagogie saluée : un **schéma du processus réaffiché à chaque étape** pour savoir où l'on en est (JoliCode).\n- Contenu : ce qu'est un embedding, choisir un modèle, vectoriser depuis Symfony, stocker et requêter les vecteurs (PostgreSQL, Redis, ClickHouse…), héberger son vectoriseur (Ollama, multi-GPU, RabbitMQ) (programme, JoliCode).\n- Message : **tout se fait sans quitter l'écosystème Symfony** grâce à Symfony AI. Retour à lire avec prudence : l'article JoliCode est co-signé par le speaker.",
+      "summarySources": ["blog", "feedback", "program"]
+    },
+    {
+      "id": "edition-simultanee-facile-avec-symfony-ux",
+      "day": "2026-03-27",
+      "type": "talk",
+      "title": "Édition simultanée : facile avec Symfony UX",
+      "speakers": ["David Buchmann"],
+      "feedbackFrom": ["Blog JoliCode", "Mathieu Desnouveaux (sketchnote)"],
+      "summary": "- Démonstration pas à pas de la suite Hotwire dans Symfony UX : **Turbo (et Turbo Frames), puis Mercure intégré à FrankenPHP, puis des contrôleurs Stimulus** qui écoutent les messages Mercure (JoliCode).\n- Mécanique résumée : le client envoie au serveur, qui diffuse, et la page se met à jour (Desnouveaux).\n- Avantages mis en avant : **la logique reste dans le backend, la sécurité est intégrée, le frontend se simplifie** (JoliCode).",
+      "summarySources": ["blog", "feedback", "program"]
+    },
+    {
+      "id": "les-nouveaux-design-patterns-ia-avec-symfony",
+      "day": "2026-03-27",
+      "type": "talk",
+      "title": "Les nouveaux design patterns IA avec Symfony",
+      "speakers": ["Titouan Galopin"],
+      "feedbackFrom": ["Blog ACSEO", "Blog SensioLabs", "Mathieu Desnouveaux (sketchnote)"],
+      "summary": "- Cible : ceux qui ont expérimenté les LLM et veulent **livrer des fonctionnalités IA fiables et testables en production** (programme).\n- Problème posé : la **nature non déterministe** des LLM, on ne peut jamais garantir qu'ils n'hallucineront pas (ACSEO).\n- Réponse présentée : **DSPy et l'algorithme GEPA** (Genetic Pareto). Au lieu d'écrire le prompt parfait, on part d'une version simple et d'un dataset entrée/sortie attendue ; l'algorithme génère des variantes, les évalue et garde la meilleure (ACSEO, Desnouveaux).\n- Intérêt souligné : le dataset devient **un filet contre les régressions** quand le code ou le modèle change ; ACSEO y voit l'entrée de l'IA dans *« une dynamique d'industrialisation »*.",
+      "summarySources": ["blog", "feedback", "program"]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Formation : Sécurité améliorée avec Symfony (Florent Morselli, 24-25/03)",
+    "Formation : Maîtriser la POO et les patrons de conception (Alexandre Salomé)",
+    "Formation : Construisez un agent intelligent avec Symfony (Benjamin Zaslavsky)",
+    "Formation : Transformer une application MVC en DDD (Luc Sanchez)",
+    "Formation : Kubernetes deployment for Symfony (Tugdual Saunier, 2 jours)",
+    "Formation : Symfony 8: the fast track (Nicolas Grekas, 2 jours)"
+  ],
+  "sources": [
+    { "label": "Programme officiel (planning)", "url": "https://live.symfony.com/2026-paris/schedule" },
+    { "label": "Page de l'édition et replays (payants), avec résumé des lightning talks", "url": "https://live.symfony.com/2026-paris/" },
+    { "label": "Page « Le Lieu » (archive Wayback Machine)", "url": "https://web.archive.org/web/2026/https://live.symfony.com/2026-paris/venue" },
+    { "label": "JoliCode : Notre retour sur le SymfonyLive Paris 2026 (08/04/2026)", "url": "https://jolicode.com/blog/notre-retour-sur-le-symfonylive-paris-2026" },
+    { "label": "Webnet : retour sur la première journée (Wajdi Bessassi, 27/03/2026)", "url": "https://blog.webnet.fr/webnet-au-symfonylive-paris-2026-retour-sur-une-premiere-journee-au-coeur-de-linnovation/" },
+    { "label": "Webnet : FrankenPHP au SymfonyLive Paris 2026 (Mathis Rome, 26/06/2026)", "url": "https://blog.webnet.fr/%f0%9f%a7%9f%e2%9a%a1frankenphp-au-symfonylive-paris-2026-tout-comprendre-sur-le-serveur-php/" },
+    { "label": "Les-Tilleuls.coop : TUI, Base de données et FrankenPHP (Alexandre Daubois, 09/04/2026)", "url": "https://les-tilleuls.coop/blog/symfonylive-paris-2026-tui-base-de-donnees-et-frankenphp" },
+    { "label": "SensioLabs : AI Revolution and a Peak Reunion for Team SensioLabs (07/04/2026)", "url": "https://sensiolabs.com/blog/2026/symfonylive-paris-2026-ai-revolution-and-a-peak-reunion-for-team-sensiolabs" },
+    { "label": "ACSEO : SymfonyLive Paris 2026, conférences et tendances IA", "url": "https://www.acseo.fr/entreprise/acseo-sponsor-symfonylive-paris-2026/" },
+    { "label": "Post LinkedIn : Sketchnotes Symfony Live Paris 2026 (Mathieu Desnouveaux, 15 sketchnotes)", "url": "https://fr.linkedin.com/posts/mdesnouveaux_sketchnotes-symfony-live-paris-2026-activity-7445026619905212416-X8jh" },
+    { "label": "Blog Symfony : le wrap-up (31/03/2026)", "url": "https://symfony.com/blog/symfonylive-paris-2026-le-wrap-up" },
+    { "label": "Blog Symfony : les replays sont en ligne (15/04/2026)", "url": "https://symfony.com/blog/symfonylive-paris-2026-les-replays-sont-en-ligne" },
+    { "label": "YouTube Symfony : keynote TUI de Fabien Potencier (vidéo publique, transcript lu)", "url": "https://www.youtube.com/watch?v=4YxU_3X3R98" },
+    { "label": "YouTube Symfony : vidéo récap SymfonyLive Paris 2026", "url": "https://www.youtube.com/watch?v=NJX1NnfLwvo" },
+    { "label": "YouTube Café Tech avec Imen : interviews en direct depuis l'événement (non visionnées)", "url": "https://www.youtube.com/watch?v=7Bb8uZmttw0" },
+    { "label": "Presse Agence : annonce pré-événement (~500 participants attendus)", "url": "https://presseagence.fr/paris-numerique-lintelligence-artificielle-sinvite-au-coeur-du-symfonylive-2026/" }
+  ]
 }
