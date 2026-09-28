@@ -2,12 +2,941 @@
   "event": "pyconfr",
   "year": 2025,
   "title": "PyConFR 2025",
+  "edition": "16e édition",
   "start": "2025-10-30",
   "end": "2025-11-02",
   "city": "Lyon",
   "venue": "Campus René Cassin",
   "url": "https://www.pycon.fr/2025/",
+  "programUrl": "https://www.pycon.fr/2025/fr/schedule.html",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "Conférence gratuite de l'AFPy : sprints les 30 et 31 octobre, conférences et ateliers les 1er et 2 novembre (3 plénières, 16 conférences longues, 49 conférences courtes et ateliers au programme). Édition des 20 ans de l'AFPy. Environ 450 personnes selon le rapport de transparence (~390 le samedi selon Françoise Conil).",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-09-28",
+  "revisit": "Retours participants minces : aucun post LinkedIn post-événement trouvé (seulement des annonces de speakers), une quinzaine de comptes Mastodon dont un seul live-toot détaillé (Ash_Crow), 5 blogs dont 3 de speakers ; ateliers, sprints hors Django et lightning talks non couverts ; 23 transcripts Indymotion téléchargés (transcripts/pyconfr2025/) non encore exploités.",
+  "corpus": "Programme officiel complet (pycon.fr/2025), rapport de transparence du code de conduite (déc. 2025), 31 transcripts de vidéos Indymotion lus (ouverture, 3 plénières, 27 conférences, sur 56 vidéos publiées), une soixantaine de pouets Mastodon publiés du 28 octobre 2025 au 6 février 2026 (surtout le live-toot d'Ash_Crow, plus Julie, Django, FLOZz, Françoise Conil, Julien Maupetit…), et 5 billets de blog (Django Software Foundation, Martin Kirchgessner, Karen Jex, Hashbang, Le Calamar).",
+  "limits": "Corpus presque entièrement issu de Mastodon et de blogs de la communauté libre : aucun retour LinkedIn trouvé, et plusieurs sources viennent de speakers (Jex, Hashbang, Poulailleau, Kirchgessner). Les ateliers, les sprints hors Django et les lightning talks restent quasi non documentés, et une douzaine de sessions ne sont résumées qu'à partir de leur transcript, sans aucun retour participant. Les sous-titres automatiques Indymotion sont imparfaits (deux vidéos anglaises reconnues en finnois et en gallois, inexploitables).",
+  "tldr": "Une PyConFR **communautaire, gratuite et très « libre »** pour les 20 ans de l'AFPy : beaucoup d'outillage concret (tests, packaging, docs, htmx, lakehouses), une IA abordée avec **prudence et esprit critique**, et un fil rouge fort sur **l'inclusion et le soin des personnes**.",
+  "keyTakeaways": [
+    "Pour accélérer une suite de tests Django/pytest : **ne pas hacher les mots de passe comme en prod** (MD5 en test), couper le réseau pour débusquer les appels réels, désactiver la couverture en local, `--reuse-db`, et paralléliser un peu (2 à 4 workers, pas `-n auto`) (Haasser et Vuillard).",
+    "Sur un gros refactoring, utiliser l'IA **pour écrire l'outillage (codemods libcst), pas pour exécuter la migration** : les assistants ont halluciné des attributs, les codemods non (Schindler, Sentry).",
+    "Découper les grosses migrations en PR de ~5 fichiers par équipe propriétaire : 2 000 lignes sur 200 fichiers ne sont pas relisibles (Schindler).",
+    "À l'ère de l'IA, **être son propre premier relecteur** et exiger que l'auteur d'une PR sache défendre chaque bout de code « bizarre » ; documenter le code bizarre au plus près du code (Kellyer).",
+    "Côté enseignement, dire explicitement aux élèves quelle place l'IA a dans le cours et l'évaluation, et entraîner la **lecture critique de code** plutôt que la génération (Bayart).",
+    "htmx dans un monolithe Django tient ses promesses après 3 ans ; tester avec BeautifulSoup et Syrupy, voir django-htmx et Slippers (Martinet Sanchez, via Ash_Crow et le blog Django).",
+    "Sans être DBA, un dev doit connaître SQL, son SGBD, les bases de la performance et de la sauvegarde (Jex).",
+    "Pour de la data de taille petite ou moyenne, Delta Lake ou Iceberg se manipulent en Python sans Spark (delta-rs, pyiceberg, DuckDB), avec voyage dans le temps sur les versions (Clement, via Kirchgessner).",
+    "Pour profiler un démarrage Python, py-spy et speedscope plutôt que cProfile seul ; pour la confiance TLS, préférer truststore à un `verify_ssl false` (notes de Kirchgessner).",
+    "Pour l'inclusion : formations accessibilité, recherche utilisateur sur la diversité des besoins, espaces en non-mixité choisie, soutien aux associations de médiation numérique (Hauguel)."
+  ],
+  "sessions": [
+    {
+      "id": "sprints-django",
+      "day": "2025-10-31",
+      "type": "other",
+      "title": "Sprints Django",
+      "speakers": [
+        "Sarah Abderemane",
+        "Thibaud Colas"
+      ],
+      "feedbackFrom": [
+        "Django Software Foundation (blog et Mastodon)",
+        "Ash_Crow (Mastodon)"
+      ],
+      "summary": "- **27 contributeurs** sur deux jours (blog Django ; 25 annoncés sur Mastodon) : admin, commandes, traductions, accessibilité, site djangoproject.com, marketing.\n- *« La moitié de la salle était totalement novice en open source »* (trad.), certains s'appuyant sur le tutoriel Django Girls.\n- Thibaud Colas y insiste sur l'importance de **recueillir des témoignages d'utilisateurs** de Django (Ash_Crow).\n- Autres sprints au programme : traduction de docs.python.org, Mercurial, py-edu-fr, Ansible, OneGeo Chat, FeretUI.",
+      "summarySources": [
+        "blog",
+        "feedback",
+        "program"
+      ]
+    },
+    {
+      "id": "ouverture-pyconfr-2025",
+      "day": "2025-11-01",
+      "type": "other",
+      "title": "Ouverture de la PyConFR 2025",
+      "speakers": [
+        "Lucie Anglade — AFPy"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **20 ans de l'AFPy** : goûter d'anniversaire le samedi ; rappel des projets de l'association (forge, site d'exercices Genepi, traduction de la doc Python en français, Discourse et Discord relié à IRC).\n- **Code de conduite** présenté d'emblée, avec l'équipe de gestion des incidents, un numéro et une adresse dédiés, et un **tuto « comment poser une question »** : *« une question se termine par un point d'interrogation »*, pas de « remarque déguisée », pas d'interruption sans accord.\n- Soutiens : PSF, qui a *« refusé plus d'un million de subventions du gouvernement états-unien »* pour ne pas abandonner ses actions diversité, et EuroPython Society ; sponsors (April, Elastic, Kraken, Scalingo, Navicat, Solidaires Informatique, Entr'ouvert, Kobalt, Alma, Botify…).\n- Entr'ouvert rappelle son **procès gagné contre Orange** pour contrefaçon d'un logiciel libre ; Solidaires Informatique sponsorise une PyCon pour la première fois.\n- Pratique : espace enfants, atelier MixTeen, **salle de repos** prêtée par Galactée, déjeuner PyLadies, soirée à La Cordée Valmy, AG le dimanche, lightning talks sur inscription.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/wL39u1D5cZW1JKC2DTTHAd",
+        "title": "Ouverture PyConFR 2025 - Lucie Anglade",
+        "publishedAt": "2026-01-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "etre-un-e-allie-e-du-numerique-pour-toustes-en-environnement-hostile",
+      "day": "2025-11-01",
+      "type": "keynote",
+      "title": "Être un.e allié.e du numérique pour toustes en environnement hostile",
+      "speakers": [
+        "Morgane Rozenn Hauguel"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Point de départ : le **« backlash »** de 2025 (patrons de la tech à l'investiture de Trump, appel à plus d'« énergie masculine »), lu avec Susan Faludi.\n- Déconstruire le cadrage **« on n'arrête pas le progrès »** : progrès technique n'égale pas progrès social, et le mot « technophobie » pathologise la critique (références : Jarrige, Ellul, *Technologies partout, démocratie nulle part*).\n- État des lieux : **illectronisme** chez 15 % des adultes (28 % avec les compétences faibles, INSEE 2021), dématérialisation des services publics qui exclut (alertes du Défenseur des droits), 94 % des pages du WebAIM Million avec des erreurs d'accessibilité.\n- Numérique et dominations : extractivisme et travail du clic (Madagascar), biais sexistes des IA génératives, **continuum violences conjugales et cyberviolences** (85 % des répondantes, rapport Hubertine Auclert).\n- Pistes concrètes : se former à l'accessibilité (Access42 cité), inclure tous les publics en conception, **non-mixité choisie** au travail, alternatives libres, aider son entourage et les associations de médiation, guides du collectif Échap.\n- Conclusion : moins un backlash qu'un *« moment de clarté »* qui dit l'urgence de ramener ces choix dans des espaces démocratiques. En réponse au public, elle juge la souveraineté numérique utile mais incomplète si l'on ne demande pas *« pourquoi faire, pour qui »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/c8pyKK8RdZY9MFoo4hM5Ui",
+        "title": "Morgane Rozenn Hauguel - Être un.e allié.e du numérique pour toustes en environnement hostile",
+        "publishedAt": "2025-12-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-reve-de-tout-enfant-devenir-dba",
+      "day": "2025-11-01",
+      "type": "keynote",
+      "title": "Le rêve de tout enfant – devenir DBA ?",
+      "speakers": [
+        "Karen Jex — Crunchy Data / Snowflake"
+      ],
+      "feedbackFrom": [
+        "Ash_Crow (Mastodon)",
+        "Karen Jex (speaker, billet de blog)"
+      ],
+      "summary": "- Sondage à main levée d'ouverture : *« le nombre de personnes voulant être DBA enfant est de : zéro »* (Ash_Crow, qui y voit la loi de Betteridge). Elle-même l'est devenue par hasard, après des tests d'aptitude, et fait des bases depuis plus de 25 ans.\n- Constat sur scène : le rôle de DBA traditionnel décline et **les devs gèrent souvent leur base eux-mêmes** ; citation de Katie McLaughlin sur le dev Django à la fois DBA et sysadmin, *« très sous-payé »*.\n- Le minimum utile : sauvegarde et restauration (y compris vérifier celles d'un service managé), rôles et sécurité, lire un dashboard de monitoring, un modèle de données et un plan d'exécution, **SQL même avec un ORM**, protection des données.\n- Rappels de ses talks passés : 5 conseils pour une base « heureuse » (configuration, sauvegardes testées, haute disponibilité, bons utilisateurs, monitoring) ; Postgres a plus de 350 paramètres, une poignée suffit.\n- Refrain : *« il n'y a pas besoin de tout savoir sur les bases de données »*, il suffit de savoir que les techniques existent et où chercher. En questions : base managée ou non selon les compétences de l'équipe ; Postgres et ses extensions couvrent la plupart des besoins.\n- Première PyConFR de la speaker, qui salue un événement *« accueillant, bien organisé »* (speaker).",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "blog"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/fQAeQVLUGYFgQV3wdAVjx3",
+        "title": "Karen Jex - Le rêve de tout enfant - devenir DBA ?",
+        "publishedAt": "2025-12-31",
+        "transcript": true
+      }
+    },
+    {
+      "id": "est-on-juste-paye-a-ecrire-du-code",
+      "day": "2025-11-01",
+      "type": "talk",
+      "title": "Est-on (juste) payé à écrire du code ?",
+      "speakers": [
+        "Guillaume Ayoub — WeasyPrint"
+      ],
+      "feedbackFrom": [
+        "Julie (Mastodon)",
+        "Ash_Crow (Mastodon)"
+      ],
+      "summary": "- Récit d'une journée, lancé par la question de son fils de 7 ans : *« Papa, pourquoi tu prends pas une intelligence artificielle pour faire ton travail à ta place ? »*, et sa réponse : *« Si tu pouvais prendre une IA pour jouer à ta place à Mario Kart, tu le ferais ? »*.\n- Balade en plusieurs étapes : on est payé à **prendre du plaisir**, à **comprendre** (*« je ne suis pas un chercheur, je suis un re-chercheur »*), à **construire**, à **inventer** (pas de côté : AlphaGo, le premier site web, des slides en HTML/CSS/SVG sans JS).\n- Moment fort retenu par Julie : l'histoire de **Katie Bouman** et de la première image d'un trou noir, *« le poids de 200 ans de recherche sur les épaules »* ; et la phrase *« on est payé à comprendre des choses »*.\n- Chute sur l'IA (Ash_Crow) : elle peut être *« cool »* pour jouer à Mario Kart (trouver des glitchs), *« juste, pas à la place de jouer normalement »*.\n- Conclusion : au-delà de l'objectif, **le chemin et le fait de le partager** comptent, c'est aussi pour ça qu'on vient en conférence. Julie : *« on rit, on pleure ! »*.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/hj8bymXZAtqigNALYXKvKF",
+        "title": "Guillaume Ayoub - Est-on (juste) payé à écrire du code ?",
+        "publishedAt": "2025-12-31",
+        "transcript": true
+      }
+    },
+    {
+      "id": "developpement-de-cpython",
+      "day": "2025-11-01",
+      "type": "talk",
+      "title": "Développement de CPython",
+      "speakers": [
+        "Victor Stinner — Red Hat"
+      ],
+      "feedbackFrom": [
+        "Martin Kirchgessner (blog)"
+      ],
+      "summary": "- Chiffres : ~1,5 million de lignes de Python et ~600 000 de C, **48 000 tests**, des buildbots sur Windows, macOS, Linux, FreeBSD, Android, iOS et WebAssembly ; ~2 000 PR et plus de 7 000 tickets ouverts.\n- Critères de revue : utilité, PEP 7/8, doc et « What's New », tests des cas d'erreur, compatibilité ascendante ; *« parfois, c'est une meilleure décision de ne pas merger une pull request »*.\n- Gouvernance : **Steering Council** de 5 membres élus chaque année, 4 release managers, une centaine de core devs (la moitié actifs), groupes de travail C API, packaging, typing, sécurité, traductions.\n- Principe retenu par Kirchgessner et dit sur scène : *« quand on merge du code, on devient responsable de ce code-là »*.\n- En questions : de 24 h à jamais pour un merge selon le degré de conflit ; les bug triagers sont repérés et proposés par les core devs.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/9vLQ2rrgLzBrhwwjuFJAZZ",
+        "title": "Victor Stinner - Développement de CPython",
+        "publishedAt": "2025-12-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "documenter-son-projet-avec-sphinx",
+      "day": "2025-11-01",
+      "type": "talk",
+      "title": "Documenter son projet avec Sphinx",
+      "speakers": [
+        "Françoise Conil — LIRIS/CNRS"
+      ],
+      "feedbackFrom": [
+        "Julie (Mastodon)"
+      ],
+      "summary": "- Démarrage : Sphinx dans un environnement virtuel, `sphinx-quickstart`, `toctree`, rôles de références croisées et **intersphinx** vers d'autres docs.\n- Publication sur Read the Docs (gratuit pour le libre, multi-versions et multi-langues), configuration `.readthedocs.yaml`.\n- Code : Pygments, docstrings reST ou Google/NumPy (Napoleon), autodoc ; extensions nbsphinx, Mermaid, Sphinx Gallery ; **sphinx-lint** ; thèmes Furo et PyData ; Markdown via **MyST-Parser**.\n- Conseil final : contribuer à la **traduction de la doc Python** pour maîtriser Sphinx.\n- Julie : *« Superbe présentation de Sphinx, bien détaillée et pratique »*, avec une doc de démarrage téléchargeable ; partie sur MkDocs, elle se dit tentée.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/kV9VAdojrAM6CBfsjb1seB",
+        "title": "Françoise Conil - Documenter son projet avec Sphinx",
+        "publishedAt": "2026-01-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-duo-comique-accelere-une-suite-de-tests-django-pytest",
+      "day": "2025-11-01",
+      "type": "talk",
+      "title": "Le duo comique accélère une suite de tests Django/Pytest",
+      "speakers": [
+        "Agnès Haasser — Hashbang",
+        "Arthur Vuillard — Hashbang"
+      ],
+      "feedbackFrom": [
+        "Ash_Crow (Mastodon)",
+        "Martin Kirchgessner (blog)",
+        "Agnès Haasser et Arthur Vuillard (speakers, billet et slides)"
+      ],
+      "summary": "- Résumé des speakers eux-mêmes : *« tester c'est bien, mais quand c'est lent, c'est pas bien »* ; *« on peut paralléliser, mais pas trop »* ; *« soyons flemmard·es »*.\n- **Poste de dev** : `--durations` pour trouver les tests lents ; couper le réseau pour débusquer les appels réels (une API publique était lue en entier à chaque run, découverte dans le TGV) puis mocker avec `responses`.\n- Gain principal : **ne plus hacher les mots de passe comme en prod** (hasher MD5 en fixture de test) : de 5 min 22 pour 369 tests à ~40 s pour 650 tests selon le billet d'Agnès Haasser.\n- Couverture calculée seulement en CI, `--reuse-db`, et mesure avec hyperfine : `-n auto` ne gagne presque rien, 2 à 4 workers suffisent.\n- **CI GitLab** : PostgreSQL permanent à côté du runner au lieu d'un service par job (-1 min 45 de pull), puis **base template PostgreSQL** pré-migrée : initialisation de ~32 s à ~5 s, ~1 s en réutilisant la base.\n- Réaction d'Ash_Crow sur les tests qui appellent des API tierces : *« 😱😱😱😱 »*, prolongée par un échange sur le coût imposé à Wikipédia. Chute militante : *« le problème des coopératives, c'est le capitalisme »*.",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "blog"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/pqikHQPc1qUJRQQXCZq2ua",
+        "title": "Agnès Haasser/Arthur Vuillard - Le duo comique accélère une suite de tests Django/Pytest",
+        "publishedAt": "2026-03-04",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ansible-at-scale",
+      "day": "2025-11-01",
+      "type": "talk",
+      "title": "Ansible at Scale",
+      "speakers": [
+        "Daniel Gonçalves"
+      ],
+      "feedbackFrom": [
+        "Martin Kirchgessner (blog)"
+      ],
+      "summary": "- REX d'une plateforme Ansible partagée par plus d'une centaine d'équipes et plus de 800 000 jobs par mois (programme).\n- Notes de Kirchgessner : déploiement d'entreprise autour d'AWX, avec Django et FastAPI, génération de **certificats SSH** et intégration à Vault pour l'authentification.\n- Pas de vidéo publiée sur la chaîne Indymotion.",
+      "summarySources": [
+        "blog",
+        "program"
+      ]
+    },
+    {
+      "id": "vous-n-etiez-pas-prets-pour-les-design-systems",
+      "day": "2025-11-01",
+      "type": "talk",
+      "title": "Vous n'étiez pas prêts pour les Design Systems",
+      "speakers": [
+        "Mads"
+      ],
+      "feedbackFrom": [
+        "Django Software Foundation (blog et Mastodon)"
+      ],
+      "summary": "- REX : un design system dans une plateforme Django multi-app de près de 20 ans, pas API-first, avec une équipe back et infra et un seul dev front ; l'option FastAPI + SPA a été écartée.\n- Stack : **JinjaX** (composants façon JSX dans Jinja), **Stimulus**, **CUBE CSS**, Figma pour les design tokens, Vite et Storybook ; nouvelle app Django « ui » autonome, workspaces pnpm, assets versionnés publiés sur CDN.\n- Méthode : *« on ne fera pas un big bang »* ; première étape iso-fonctionnelle, invisible en prod. Durée réelle : 3 à 4 mois au lieu du mois annoncé.\n- Leçon : *« c'est pas de se dire qu'est-ce que je vais utiliser, c'est de se dire comment je vais l'utiliser »*. htmx jugé allant « un poil trop loin » pour ce cas.\n- Le compte Django a relayé la combinaison JinjaX, Stimulus et Cube CSS comme approche design system pour Django.",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "blog"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/buwEEuhCDsgWoS5kuLPMEW",
+        "title": "Mads - Vous n'étiez pas prêts pour les Design Systems",
+        "publishedAt": "2026-02-01",
+        "transcript": true
+      }
+    },
+    {
+      "id": "travailler-avec-des-data-lakehouses-en-python-sans-spark",
+      "day": "2025-11-01",
+      "type": "talk",
+      "title": "Travailler avec des Data Lakehouses en Python, sans Spark",
+      "speakers": [
+        "Romain Clement"
+      ],
+      "feedbackFrom": [
+        "Martin Kirchgessner (blog)"
+      ],
+      "summary": "- Du Data Warehouse au Data Lake qui finit en *« marécage de données »*, puis au **Lakehouse** : formats ouverts Delta Lake, Iceberg, Hudi, DuckLake, avec ACID, time travel et branches.\n- Spark se justifie pour des centaines de Go ou des To ; en dessous, JVM, clusters et UDF compliquent tout. Alternatives : `deltalake` (Rust), PyIceberg, Polars, DuckDB (support Delta et Iceberg encore partiel en octobre 2025).\n- Démo : append, `merge`, historique puis **voyage dans le temps** par version ou timestamp, et combinaison `deltalake` + Arrow + DuckDB. Kirchgessner retient le `load_as_version(i)`.\n- Conseil : *« si vous n'avez pas nécessairement des besoins en big data, faites du Python, faites du DuckDB »*, puis passer à Spark si le volume l'exige, le stockage restant compatible.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/5dsPsSnoe6YeQ7LBgWKNAt",
+        "title": "Romain Clement - Travailler avec des Data Lakehouses en Python, sans Spark",
+        "publishedAt": "2026-02-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "htmx-et-django-retour-d-experience-3-ans-plus-tard",
+      "day": "2025-11-01",
+      "type": "talk",
+      "title": "htmx et Django : retour d'expérience 3 ans plus tard",
+      "speakers": [
+        "Céline Martinet Sanchez"
+      ],
+      "feedbackFrom": [
+        "Ash_Crow (Mastodon)",
+        "Django Software Foundation (blog et Mastodon)"
+      ],
+      "summary": "- Contexte : « Les emplois de l'inclusion », monolithe Django depuis 2019, équipe 100 % back-end ; htmx adopté en octobre 2022 face aux demandes d'interactivité.\n- Argument décisif : *« ce qui a poussé les 7 développeurs à partir sur htmx, ça a été de ne pas faire de JS »* (dit sur scène et relevé par Ash_Crow).\n- Tests sans end-to-end : un simulateur maison du comportement htmx avec pytest, **BeautifulSoup et des snapshots Syrupy** ; limites assumées (pas de vrai navigateur).\n- Bilan : **un seul bug en 3 ans**, vélocité stable sans dev front dédié. Outils cités : django-htmx, Slippers, factory_boy, l'essai *Web Security Basics (with htmx)*.\n- Blog Django : *« une expérience de dev joyeuse, quelques défis (résolus) côté tests »* (trad.).",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "blog"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/t9ueEiQH46w1PY7JFCGoKX",
+        "title": "Céline Martinet Sanchez - htmx et Django : retour d'expérience 3 ans plus tard",
+        "publishedAt": "2025-12-31",
+        "transcript": true
+      }
+    },
+    {
+      "id": "how-to-solve-a-python-mystery",
+      "day": "2025-11-01",
+      "type": "talk",
+      "title": "How to solve a Python mystery",
+      "speakers": [
+        "Aivars Kalvāns"
+      ],
+      "feedbackFrom": [
+        "Martin Kirchgessner (blog)"
+      ],
+      "summary": "- Traiter une appli Python bloquée comme une **boîte noire** avec les outils d'observabilité Linux, quand on n'a pas le temps de lire le code (programme).\n- Notes de Kirchgessner : inspection de `/proc`, `strace` ; astuce retenue : un fichier de log supprimé par erreur reste lisible via `/proc/{pid}/fd/` tant que le processus tourne.\n- Sous-titres automatiques inexploitables (reconnus en finnois).",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/mCPA3CvZ4s1cKvwcrWTjf8",
+        "title": "Aivars Kalvāns - How to solve a Python mystery",
+        "publishedAt": "2026-02-01",
+        "transcript": false
+      }
+    },
+    {
+      "id": "comment-enseigner-le-python-a-l-ere-de-l-intelligence-artificielle-generative",
+      "day": "2025-11-01",
+      "type": "talk",
+      "title": "Comment enseigner le Python à l'ère de l'intelligence artificielle générative ?",
+      "speakers": [
+        "Pierre-Loïc Bayart — MIAI Grenoble"
+      ],
+      "feedbackFrom": [
+        "Ash_Crow (Mastodon)"
+      ],
+      "summary": "- Question préalable : pourquoi encore apprendre ? Réponse contre Jensen Huang (*« nous devons arrêter de dire aux enfants qu'ils doivent apprendre à coder »*) : une étude IRMf de 2020 montre que **lire du code active les zones de résolution de problèmes complexes**, pas celles du langage naturel. Point jugé *« plus intéressant »* par Ash_Crow.\n- Plus de la moitié des devs Python ont appris **après ChatGPT** (sondage JetBrains) ; citation d'Armin Ronacher : ce serait une erreur de les considérer comme de *« faux programmeurs »*.\n- Pistes : peu d'automatisation pour les débutants, **lecture critique de code** (faire expliquer ligne à ligne un code généré contenant une erreur), chatbot socratique type CS50 de Harvard, IA pour produire des supports (Manim, GIF Matplotlib, JupyterLite).\n- Conseil clé : chaque enseignant doit **expliciter sa position sur l'IA** pour le cours et l'évaluation.\n- Critique d'Ash_Crow sur la slide opposant *« savoir »* de la machine et connaissance humaine : *« les LLM n'ont pas de savoir, elles ont juste absorbé des contenus »*.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/aa5PQuqwShqcs5WRN7eCcU",
+        "title": "Pierre-Loïc Bayart - Comment enseigner le Python à l'ère de l'intelligence artificielle générative ?",
+        "publishedAt": "2025-12-31",
+        "transcript": true
+      }
+    },
+    {
+      "id": "virtual-environments-and-lockfiles-how-python-is-improving-reproducibility",
+      "day": "2025-11-01",
+      "type": "talk",
+      "title": "Virtual Environments and Lockfiles, How Python Is Improving Reproducibility",
+      "speakers": [
+        "Ivo Bellin Salarin"
+      ],
+      "feedbackFrom": [
+        "Martin Kirchgessner (blog)"
+      ],
+      "summary": "- 15 ans d'histoire : virtualenv, pip-tools (`requirements.in` / `.txt`), puis `pyproject.toml`, groupes de dépendances et marqueurs d'environnement.\n- Le **format standard de lockfile** (versions, URL par plateforme, hash) : *« il a fallu quatre ans pour le définir »* (trad.), encore peu adopté par les outils.\n- Suggestion, sans « guerre de religion » : **uv** (télécharge le bon Python, `uv sync`, `uv run`, dépendances en tête de script).\n- Sécurité : dépôt privé, `uv sync --frozen` en CI contre les versions mineures piégées sur PyPI, pas de secret dans le code.\n- Un participant l'a corrigé sur `~=`, qui bloque aussi la version mineure.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/rTNrsFxNPDbsnKxq4bLBK9",
+        "title": "Ivo Bellin Salarin - Virtual Environments and Lockfiles - How Python is Improvising Reproducibility",
+        "publishedAt": "2026-01-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-theorie-et-la-realite-de-l-apprentissage-du-python-a-l-ecole",
+      "day": "2025-11-01",
+      "type": "talk",
+      "title": "La théorie et la réalité de l'apprentissage du Python à l'école",
+      "speakers": [
+        "Luz (lycéenne)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Talk d'une lycéenne de terminale en Ardèche, appuyé sur un questionnaire rempli par 12 professeurs de sciences de son lycée (échantillon qu'elle dit biaisé).\n- Théorie : Python imposé au lycée depuis la réforme de 2019 ; des outils publics existent (Capytale, Basthon, France-IOI), mais Capytale n'est connu que des deux tiers des profs interrogés.\n- Réalité : manque de temps, programmes chargés, salles de 10 à 20 PC lents, devoirs impossibles sans ordinateur, profs non remplacés ; d'où des exercices réduits et « tout prêts ».\n- Côté élève : *« on fait une fonction qui ajoute deux […] ce n'est pas très intéressant »*. Besoins exprimés : temps, matériel, formation, demi-groupes, encadrement de l'IA.\n- Conclusion : des efforts réels, mais un **accès inégal**.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/5w1UJkktavzoyWGDFbBAkA",
+        "title": "Luz - La théorie et la réalité de l'apprentissage du Python à l'école",
+        "publishedAt": "2026-01-11",
+        "transcript": true
+      }
+    },
+    {
+      "id": "visualiser-les-reseaux-sociaux-a-echelle-planetaire-un-milliard-de-pixels-a-la-fois",
+      "day": "2025-11-01",
+      "type": "talk",
+      "title": "Visualiser les réseaux sociaux à échelle planétaire, un milliard de pixels à la fois",
+      "speakers": [
+        "Mathis Hammel"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Cartographier des graphes de réseaux sociaux pour repérer comptes clés, communautés et campagnes : exemples de l'élection présidentielle roumaine annulée (commentaires TikTok) et d'un spam politique canadien.\n- Trois algorithmes : PageRank, Louvain, et **ForceAtlas2**, quadratique, rendu praticable par l'approximation de Barnes-Hut empruntée aux astrophysiciens.\n- Au-delà de ~10 millions de nœuds, passage au **GPU** avec l'équipe NVIDIA cuGraph (première implémentation GPU fidèle de ForceAtlas2), puis rendu en pyramide de tuiles : une carte de Wikipédia d'environ 10 milliards de pixels affichée avec ~132 Mo de RAM.\n- Garde-fou : *« la carte, ça ne nous sert jamais à tirer des conclusions »*, seulement des intuitions.\n- Côté vie de l'événement : il promet de doubler les dons faits ce week-end à la PSF ou à l'AFPy.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/vKKdnPq85ZKU4GMk293qjN",
+        "title": "Mathis Hammel - Visualiser les réseaux sociaux à échelle planétaire, un milliard de pixels à la fois",
+        "publishedAt": "2025-12-31",
+        "transcript": true
+      }
+    },
+    {
+      "id": "bonnes-pratiques-de-l-integration-d-oidc-et-de-saml-pour-permettre-le-changement-de-login",
+      "day": "2025-11-01",
+      "type": "talk",
+      "title": "Bonnes pratiques de l'intégration d'OIDC et de SAML pour permettre le changement de login",
+      "speakers": [
+        "Michael Scherer — Red Hat"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Enjeu humain et légal : changements de nom et de prénom en hausse (INSEE), personnes trans, **droit de rectification** du RGPD (article 16).\n- Les normes le prévoient : `NameID` SAML opaque et stable, `sub` + `iss` immuables en OIDC, l'email et le pseudo pouvant changer.\n- Anti-patterns relevés dans les applis Fedora : login dans `sub`, **login comme clé primaire**, login dupliqué dans plusieurs tables ou dans l'URL.\n- Vie privée : savoir qu'une personne a changé de nom peut révéler une donnée sensible ; prévoir à la fois de garder et de couper le lien avec l'ancien nom.\n- Mot d'ordre : *« tout ce que je veux, c'est que les gens qui veulent changer de nom puissent le faire sans avoir à créer un nouveau compte »*.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/wD8LGbV3cQXhj8fXhuXHRp",
+        "title": "Michael Scherer - Bonnes pratiques de l'intégration d'OIDC et de SAML pour permettre le changement de login",
+        "publishedAt": "2026-01-11",
+        "transcript": true
+      }
+    },
+    {
+      "id": "embracing-weird-code",
+      "day": "2025-11-02",
+      "type": "keynote",
+      "title": "Embracing Weird Code",
+      "speakers": [
+        "Ivana Kellyer — Sentry"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le **code bizarre** n'est pas forcément du mauvais code : c'est du code dont on ne comprend pas pourquoi il existe ou pourquoi il est écrit ainsi (hack « temporaire », correctif pour un OS exotique, architecture forcée).\n- Exemples tirés du SDK Python de Sentry, qui doit supporter de nombreuses versions de Python et de frameworks : **monkey patching**, code défensif qui échoue là où « rien ne peut échouer » (`os.devnull`, `__getattr__` personnalisés, `__class__` d'objets enveloppés).\n- Le mystère du début (import de Flask puis de Quart) s'explique par un paquet qui fait passer une app Quart pour une app Flask : **tout code raconte une histoire**, laisser le bénéfice du doute à son auteur.\n- Théorie de la **vitre brisée** : le code bizarre attire le code bizarre, donc tenir ses standards (tests, couverture).\n- À l'ère de l'IA, le bénéfice du doute ne tient plus : le relecteur doit être un *« gardien du code bizarre »* (trad.), et l'auteur *« son premier relecteur »* ; mettre l'explication (lien vers le ticket) au plus près du code.\n- En questions : pas de chiffre sur les PR « vibe-codées » refusées, mais les contributeurs sont réceptifs quand on les renvoie retravailler.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/nNAD1NuLe7ZxHuXg6Uktzh",
+        "title": "Ivana Kellyer - Embracing Weird Code",
+        "publishedAt": "2026-01-04",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-suite-numerique-la-boite-a-outils-collaborative-open-source-de-l-etat",
+      "day": "2025-11-02",
+      "type": "talk",
+      "title": "La suite numérique, la boîte à outils collaborative open source de l'État",
+      "speakers": [
+        "Manuel Raynaud — DINUM",
+        "Virgile Deville — DINUM"
+      ],
+      "feedbackFrom": [
+        "Ash_Crow (Mastodon)",
+        "Django Software Foundation (blog et Mastodon)"
+      ],
+      "summary": "- La DINUM présente sa suite collaborative libre (Docs, Fichiers), sur une **« boring stack »** Django, DRF et PostgreSQL, son workflow qualité et son dev handbook libre (programme).\n- Le compte Django parle d'un espace de travail de **11 applications** propulsé par Django, porté aussi par l'Allemagne, les Pays-Bas et l'Italie : docs collaboratives, visio, assistant IA, messagerie.\n- Détail relevé par Ash_Crow : le guide de contribution de La Suite impose des messages de commit au présent, Django au passé, *« #ContextSwitching »*. Le wifi était en panne ce matin-là.\n- Pas de vidéo publiée sur la chaîne Indymotion.",
+      "summarySources": [
+        "feedback",
+        "blog",
+        "program"
+      ]
+    },
+    {
+      "id": "what-if-you-became-an-open-source-contributor-in-2025",
+      "day": "2025-11-02",
+      "type": "talk",
+      "title": "What if You Became an Open Source Contributor in 2025?",
+      "speakers": [
+        "Amanda Savluchinske"
+      ],
+      "feedbackFrom": [
+        "Django Software Foundation (blog et Mastodon)"
+      ],
+      "summary": "- Parcours : dans la tech depuis 2017, première contribution à un gros projet seulement en 2025, par peur d'être jugée. Message : *« l'open source vous a réservé une place »* (trad.).\n- Contexte : seul 1 codeur pro sur 4 contribue hors travail ; burn-out des mainteneurs.\n- Voies d'entrée : Google Summer of Code, **Djangonaut Space** (8 semaines, par équipes), ou partir d'un outil qu'on utilise déjà.\n- Conseils : good first issues, règles de contribution, conventional commits, questions sur les canaux publics, et un **prompt IA pour clarifier sa question avant de la poser au mainteneur** (retenu par le blog Django).",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/ndGgbe6NnUzDdJVTcooFgL",
+        "title": "Amanda Savluchinske - What if You Became an Open Source Contributor in 2025?",
+        "publishedAt": "2026-01-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "computer-vision-data-version-control-and-reproducibility-at-scale",
+      "day": "2025-11-02",
+      "type": "talk",
+      "title": "Computer Vision Data Version Control and Reproducibility at Scale",
+      "speakers": [
+        "Joe Pringle — lakeFS"
+      ],
+      "feedbackFrom": [
+        "Martin Kirchgessner (blog)"
+      ],
+      "summary": "- Présenté par Joe Pringle (lakeFS), et non par les speakers annoncés au programme (Tal Sofer, Itai Gilo).\n- **lakeFS** apporte *« des opérations de type Git aux données »* (trad.) : commits, branches « zero copy », merges avec hooks de contrôle.\n- Démo pré-enregistrée (wifi en panne) sur la détection de rétinopathie : la branche d'augmentation fait passer les faux négatifs de 14 à 3, la branche CLAHE fait moins bien ; lien bidirectionnel avec MLflow pour la traçabilité.\n- Argument réglementaire : AI Act, dispositifs médicaux, FDA. Face à DVC, lakeFS vise l'échelle du pétaoctet.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/5aBTeKBP8WhJSD7e1mWF4f",
+        "title": "Joe Pringle - Computer Vision Data Version Control and Reproducibility at Scale",
+        "publishedAt": "2026-01-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "who-does-python-trust-and-why",
+      "day": "2025-11-02",
+      "type": "talk",
+      "title": "Who Does Python Trust, and Why?",
+      "speakers": [
+        "Dom Weldon"
+      ],
+      "feedbackFrom": [
+        "Martin Kirchgessner (blog)"
+      ],
+      "summary": "- Bases de la PKI, du DNS et des certificats x509, attaques de la chaîne d'approvisionnement, et promesse de ne plus jamais taper `pip config set global.verify_ssl false` (programme).\n- Kirchgessner retient l'usage de `certifi` et l'adoption de **truststore** comme alternative recommandée.\n- Sous-titres automatiques inexploitables (reconnus en gallois).",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/jUEdTPEFyNQJfZHF7wHJyj",
+        "title": "Dom Weldon - Who Does Python Trust, and Why?",
+        "publishedAt": "2026-01-09",
+        "transcript": false
+      }
+    },
+    {
+      "id": "refactoring-at-scale-making-analytics-type-safe-with-codemods-and-ai",
+      "day": "2025-11-02",
+      "type": "talk",
+      "title": "Refactoring at Scale: Making Analytics Type-Safe with Codemods and AI",
+      "speakers": [
+        "Fabian Schindler — Sentry"
+      ],
+      "feedbackFrom": [
+        "Martin Kirchgessner (blog)"
+      ],
+      "summary": "- Contexte : ~200 événements analytics du backend Sentry, **typés par chaînes** et enregistrés à la main, donc invisibles pour mypy ; cible : des dataclasses et un `record()` typé, héritage simple.\n- Premier essai avec Cursor en mode max : événements oubliés et surtout **attributs hallucinés**, commentaires supprimés, *« ça a érodé toute notre confiance »* (trad.).\n- Solution : des **codemods libcst** (qui préservent commentaires et espaces), l'IA servant à écrire le transformeur, pas à faire la migration. Kirchgessner : *« des codemods fiables ont clairement surpassé les LLM »* (trad.).\n- Écueil social : une PR de 200 fichiers et 2 000 lignes, impossible à faire relire ; découpage en **67 PR** de ~5 fichiers, propriétaires trouvés via CODEOWNERS et `git blame`.\n- Leçons : *« la certitude passe avant la vitesse »* (trad.), mieux planifier, la relisibilité et le travail d'équipe comme facteurs décisifs ; bonus, de vieux bugs découverts au passage.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/oJPACvVYysGk9BtHi8Wqh2",
+        "title": "Fabian Schindler - Refactoring at Scale: Making Analytics Type-Safe with Codemods and AI",
+        "publishedAt": "2026-01-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "universal-python-extensions-performance-compatibility-sustainability-and-less-co2",
+      "day": "2025-11-02",
+      "type": "talk",
+      "title": "Universal Python Extensions: Performance, Compatibility, Sustainability, and Less CO₂",
+      "speakers": [
+        "Pierre Augier — CNRS"
+      ],
+      "feedbackFrom": [
+        "Martin Kirchgessner (blog)"
+      ],
+      "summary": "- Talk renommé sur scène **« Python Native Interface (PyNI) »**. Micro-benchmark : 66 itérations/s en 3.11, 72 en 3.14 (JIT un peu plus lent), ~1 000 pour PyPy et GraalPy.\n- Cause : l'**API C de CPython** (accès direct aux structures, comptage de références, adresses fixes) empêche JIT et interpréteurs alternatifs de briller avec NumPy.\n- HPy s'est enlisé faute d'implication et de **financement** ; PyNI, inspiré de HPy et destiné aux outils comme Cython, est porté par le groupe de travail C API, avec une PEP en rédaction et un horizon d'environ 5 ans.\n- Plaidoyer : Python est sous-financé (comparaison avec les licences MATLAB d'une université) ; appel concret à aider PyPy à supporter Python 3.12. Kirchgessner retient les régressions du JIT 3.14 et le manque de financement.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/tH8Dbh9YuS1XZCAcYvYq9R",
+        "title": "Pierre Augier - Universal Python Extensions: Performance, Compatibility, Sustainability, and Less CO₂",
+        "publishedAt": "2026-02-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "demarrage-python-mesurer-avant-d-optimiser",
+      "day": "2025-11-02",
+      "type": "talk",
+      "title": "Démarrage Python : mesurer avant d'optimiser",
+      "speakers": [
+        "Florentin Labelle"
+      ],
+      "feedbackFrom": [
+        "Martin Kirchgessner (blog)"
+      ],
+      "summary": "- Contexte : stage chez Datadog, réduire le cold start de sa bibliothèque sur AWS Lambda.\n- cProfile + pstats + SnakeViz sur une démo Flask ; règle d'or : *« si vous voulez rendre votre app un peu plus rapide au démarrage, vous ne faites rien au démarrage »*.\n- Limites de cProfile : modifier le code, aveugle aux extensions natives, temps multiplié par 3.\n- Alternative : profilage par échantillonnage avec **py-spy** (`--native` pour descendre dans l'extension Rust) et **Speedscope**, recommandation que retient aussi Kirchgessner.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/dueg4ryTtj5CLzpNen8Tet",
+        "title": "Florentin Labelle - Démarrage Python : mesurer avant d'optimiser",
+        "publishedAt": "2026-01-04",
+        "transcript": true
+      }
+    },
+    {
+      "id": "au-secours-on-vient-auditer-mon-application",
+      "day": "2025-11-02",
+      "type": "talk",
+      "title": "Au secours, on vient auditer mon application",
+      "speakers": [
+        "Thomas Cordival"
+      ],
+      "feedbackFrom": [
+        "Ash_Crow (Mastodon)"
+      ],
+      "summary": "- Une trentaine d'audits menés : un audit n'est pas un Sonar mais *« un regard objectif et extérieur »*, déclenché par une cause (choix stratégique, incidents, nouveau dirigeant, exigence client).\n- Méthode : architecture, code (SonarQube plus *« le flair de l'inspecteur »*), `git log`, pratiques, organisation ; 1 à 2 mois, de 10 000 à 100 000 €.\n- Pour l'équipe auditée : doc à jour, recul, et surtout **un canal vers les commanditaires**, l'auditeur prêtant *« sa cravate et son tampon »* à ses bonnes idées.\n- Sondage de salle relevé par Ash_Crow : la moitié a déjà lu un rapport d'audit, un quart en a subi ou mené un, trois personnes en ont commandé un.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/vjTpCRqvFHbGd6Krrj23Se",
+        "title": "Thomas Cordival - Au secours, on vient auditer mon application",
+        "publishedAt": "2026-02-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "calamars-et-pythons-creons-un-jeu-2d-avec-arcade",
+      "day": "2025-11-02",
+      "type": "talk",
+      "title": "Calamars et Pythons : créons un jeu 2D avec arcade",
+      "speakers": [
+        "Vincent Poulailleau"
+      ],
+      "feedbackFrom": [
+        "Ash_Crow (Mastodon)",
+        "Vincent Poulailleau (speaker, billet et slides)"
+      ],
+      "summary": "- **arcade** (OpenGL/pyglet, API typée) face à Pygame (SDL, supporte Android) : arcade tient mieux 60 images/s avec beaucoup de sprites.\n- Jeu démo « Calp » monté avec **uv** et `importlib.resources` : formes, sprites, clavier/souris, collisions, views, sons, shaders GLSL, puis distribution avec PyInstaller (compiler sur chaque OS).\n- Ton assumé : *« On va faire un petit jeu, ça ne sera pas le jeu de l'année »* ; Ash_Crow note l'alternance entre commandes uv et anecdotes sur les calamars.\n- Jeu lançable avec `uvx calp`, slides et code publiés (speaker).",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "blog"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/94PCLPM6KR1Axn7zvmFCKs",
+        "title": "Vincent Poulailleau - Calamars et Pythons : créons un jeu 2D avec arcade",
+        "publishedAt": "2026-01-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "quand-le-terminal-devore-la-ui-tui-pour-tout-le-monde",
+      "day": "2025-11-02",
+      "type": "talk",
+      "title": "Quand le Terminal dévore la UI : TUI pour tout le monde !",
+      "speakers": [
+        "Thierry Chantier"
+      ],
+      "feedbackFrom": [
+        "Julien Maupetit (Mastodon)"
+      ],
+      "summary": "- Une TUI maximise l'usage du terminal avec un peu d'interaction ; historique du métier Jacquard aux terminaux 80 colonnes.\n- Tour de 4 écosystèmes : Java (Picocli, Spring Shell), Python (**Typer, Rich, Textual**, Cyclopts), Go (Cobra, Bubble Tea, **VHS**), Rust (**Ratatui**), jugé le plus puissant aujourd'hui.\n- Mise en garde en questions : Textualize a fermé faute de financement par les entreprises utilisatrices, le projet ralentit ; l'**accessibilité** des TUI n'est pas mûre.\n- Retombée concrète : Julien Maupetit dit y avoir découvert VHS pour enregistrer des démos de CLI.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/3c7L6VMDq4rxqptA2wdrKj",
+        "title": "Thierry - Quand le Terminal dévore la UI : TUI pour tout le monde !",
+        "publishedAt": "2026-02-01",
+        "transcript": true
+      }
+    },
+    {
+      "id": "dompter-les-mocks",
+      "day": "2025-11-02",
+      "type": "talk",
+      "title": "Dompter les mocks",
+      "speakers": [
+        "Julien Lenormand"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Sondage d'ouverture : une vingtaine de personnes ont déjà eu du mal avec les mocks, une seule dit les maîtriser.\n- Live coding sur une API météo : écrasement brutal, `Mock` et `return_value`, puis **`patch` en context manager** pour isoler les tests ; `spec`, fixtures et `monkeypatch` de pytest.\n- Tout est affaire de **frontière** : moquer trop haut ne teste qu'un `if`, moquer `requests.get` oblige à reconstituer `Response`.\n- Limites : tests faux si le mock diverge du vrai service, fragilité (passer de requests à httpx casse tout). *« Le mock, c'est souvent un peu le dernier recours »*.\n- Alternatives : adaptateurs et inversion de dépendance, **testcontainers**, contract testing.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/nGx5DNKGAf6JUaYJyT4J9i",
+        "title": "Julien Lenormand - Dompter les mocks",
+        "publishedAt": "2026-02-01",
+        "transcript": true
+      }
+    },
+    {
+      "id": "l-orm-de-sqlalchemy-trop-intelligent-pour-etre-comprehensible",
+      "day": "2025-11-02",
+      "type": "talk",
+      "title": "L'ORM de SQLAlchemy : trop intelligent pour être compréhensible ?",
+      "speakers": [
+        "Xavier Ordoquy"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Points de douleur d'un ancien mainteneur de Django REST Framework passé à FastAPI + SQLAlchemy.\n- **Autoflush** : des erreurs d'intégrité lors d'une simple lecture ; `begin_nested` force toujours un flush.\n- N+1 : deux `joinedload` sur des many-to-many font un produit cartésien (~1 million de lignes, des out-of-memory en prod) ; **`selectinload`** règle le problème. Conseil : compter les requêtes SQL dans les tests.\n- Le commit expire les objets chargés et relance des requêtes ; itérer sur une relation qu'on modifie n'en traite que la moitié, sans erreur.\n- Verdict : de bons choix de conception, mais moins de prédictibilité que Django ; *« faites des conférences, ça vous apprend plein de choses »*.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/oLE2ZAQWXegpF24JNxUJQZ",
+        "title": "Xavier Ordoquy - L'ORM de SQLAlchemy : trop intelligent pour être compréhensible ?",
+        "publishedAt": "2026-01-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "construire-des-logiciels-fiables-bases-sur-des-api-douteuses",
+      "day": "2025-11-02",
+      "type": "talk",
+      "title": "Construire des logiciels fiables basés sur des API douteuses",
+      "speakers": [
+        "Romain Dorgueil"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Constat d'un infogérant partenaire : après l'erreur humaine, **la défaillance des services externes** est la deuxième cause de panne ; les API internes des clients posent souvent plus de problèmes que les externes.\n- Anecdotes : API passée de 100 ms à 30 s, service partagé qui a laissé des milliers de chauffeurs de camion sans itinéraire.\n- Les tests ne suffisent pas et le client juge le service final. Plutôt que des try/except et circuit breakers refaits à chaque projet, un **proxy HTTP open source** posé à côté des applis : sondes, circuit breaker, pools de secours, cache HTTP standard (Hishel).\n- *« Je vends un service, il faut que ce service fonctionne »*. En questions : le proxy se scale horizontalement pour ne pas devenir un point de défaillance unique.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/gZZjDbobst5HXbtAu8PVNq",
+        "title": "Romain Dorgueil - Construire des logiciels fiables basés sur des API douteuses",
+        "publishedAt": "2026-01-04",
+        "transcript": true
+      }
+    },
+    {
+      "id": "du-vrai-tdd-en-data-science-en-passant-de-pandas-a-polars-avec-pelage",
+      "day": "2025-11-02",
+      "type": "talk",
+      "title": "Du vrai TDD en data science en passant de Pandas à Polars avec Pelage !",
+      "speakers": [
+        "Alix Tiran-Cappello"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Refactoring Pandas sous test d'équivalence : `groupby`/`agg` au lieu de boucles (~1 s à ~0,2 s), fin de `inplace=True`, chaînage de méthodes.\n- Traduction pas à pas vers **Polars** (`filter`, `pl.col`, `with_columns`).\n- **Pelage** : tests de données chaînables via `pipe`, en lazy, inspirés de dbt et Great Expectations (plages, nulls, unicité, valeurs interdites).\n- Débat avec la salle : un participant voulait que le pipeline continue en journalisant les rejets ; l'orateur est *« en désaccord fondamental »*, le pipeline doit s'arrêter, *« c'est pour ça que je n'ai jamais vu un dashboard qui dit la vérité »*.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/urywjsk1HSkKyf5Tw2PdML",
+        "title": "Alix Tiran-Cappello - Du vrai TDD en data science en passant de Pandas à Polars avec Pelage !",
+        "publishedAt": "2026-01-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-accidents-du-travail-dans-la-tech",
+      "day": "2025-11-02",
+      "type": "talk",
+      "title": "Les accidents du travail dans la tech",
+      "speakers": [
+        "Camille Dupont — Solidaires Informatique",
+        "Camille Dupond — Solidaires Informatique"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Deux défenseurs syndicaux, sous pseudonyme : un accident du travail est *« un événement précis qu'on peut dater »*, y compris psychique (syndrome anxio-dépressif après un entretien d'évaluation, agression verbale, chute en télétravail).\n- Sondage de salle : environ 8 personnes ont déjà déclaré un accident, 4 y ont renoncé, 26 pensent qu'un·e collègue en a été victime.\n- Procédure : prévenir sous 24 h, l'employeur déclare sous 48 h et **ne peut pas refuser** ; à défaut, la victime a 2 ans pour déclarer elle-même.\n- Lecture de vrais courriers de réserves patronales (*« prétendu accident »*), motivées par le coût des cotisations.\n- Conclusion : *« collectivement, c'est la seule manière qu'on a de se protéger »* ; créer du lien avant l'accident, se faire accompagner par le CSE ou un syndicat.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/bN1pcqWMooFyKFYRWt5t3y",
+        "title": "Camille Dupont/Camille Dupond - Les accidents du travail dans la tech",
+        "publishedAt": "2026-01-31",
+        "transcript": true
+      }
+    },
+    {
+      "id": "py-edu-fr-formations-modulaires-a-python-dans-l-esr",
+      "day": "2025-11-02",
+      "type": "talk",
+      "title": "py-edu-fr : formations modulaires à Python dans l'ESR",
+      "speakers": [
+        "Jérémy Laforet"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Constat : dans la recherche, presque tout le monde finit par faire du Python sans formation, et les ressources existantes sont peu réutilisées.\n- Projet soutenu par les réseaux Calcul et Devlog du CNRS : *« pas tellement un cours, mais des kits pour faire des cours »*, sous forme de fiches Markdown/MyST avec métadonnées, assemblées par Jupyter Book et déployées via JupyterLite ou JupyterHub.\n- Un sprint py-edu-fr s'est aussi tenu pendant la PyConFR.\n- En questions, une chercheuse témoigne que les formations de 3 jours sont vite oubliées faute de pratique.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/ptQJMAqfDzthHDYhe6MqjZ",
+        "title": "Jérémy Laforêt - py-edu-fr : formations modulaires à Python dans l'ESR",
+        "publishedAt": "2026-02-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "onzr-l-histoire-du-cli-deezer-un-peu-en-retard",
+      "day": "2025-11-02",
+      "type": "talk",
+      "title": "Onzr : l'histoire du CLI Deezer un peu en retard",
+      "speakers": [
+        "Julien Maupetit"
+      ],
+      "feedbackFrom": [
+        "Julien Maupetit (speaker, Mastodon et slides)"
+      ],
+      "summary": "- Genèse politique : quitter Spotify après son don à l'investiture de Trump, mais Deezer n'a pas de client Linux et son lecteur web dévore la RAM.\n- Technique : flux découpé en blocs dont un sur trois est chiffré, lecture via les **bindings Python de VLC** ; une première version en UDP multicast échoue, la seconde relaie le flux via un simple serveur HTTP.\n- Message : *« ce qui est intéressant, c'est d'échouer, de tester des trucs, et pas forcément d'attendre qu'une machine nous crache une réponse toute faite »*.\n- Le speaker regrette que la capture d'écran de sa démo n'ait pas fonctionné sur la vidéo (speaker).",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/mhQZ9HqkRKkMzEzyfdw7Qz",
+        "title": "Julien Maupetit - Onzr : l'histoire du CLI Deezer un peu en retard",
+        "publishedAt": "2026-02-01",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Empowering Science Education with Python (Okoro Nosakhare)",
+    "Tout ce dont votre package a besoin (Joseph Barbier, vidéo)",
+    "QuerySet.explain() : Make it Make Sense (Aivars Kalvāns)",
+    "SSO : mode d'emploi et pièges à éviter (Carmen Alvarez)",
+    "Doc Busters (Sarah Haïm-Lubczanski, Pauline Rambaud, vidéo)",
+    "From Fields to Code: Open-Source Python Tools for European Farmers (Felipe Arruda Pontes, vidéo)",
+    "Protéger les secrets de vos clients (David Rigaudie, vidéo)",
+    "Accro au café ? (Rémi Cardona, vidéo)",
+    "Running Every Street in Paris with Python and PostGIS (Vinayak Mehta, vidéo)",
+    "Comment gérer un changelog facilement quand on est plusieurs ? (Cyrille Pontvieux, vidéo)",
+    "Créer des cartes avec Python (Michaël Favel-Guidet, Emeline Lesmanne, vidéo)",
+    "The Elegant Dependency Injection Mechanism of FastAPI (Mohamed Rebai, vidéo)",
+    "Gérer ses dépendances Python sans douleur avec uv (Anaïs Gatard, vidéo)",
+    "Anxiété : peut-on monitorer sa santé mentale ? (Jeffd)",
+    "Construire un type frozendict (Antoine Rozo, vidéo)",
+    "MicroPython : programmation Python pour microcontrôleurs (Amine Bendahmane, vidéo)",
+    "Migrer l'annuaire LDAP d'un Nextcloud (Armando Femat Ortiz, vidéo)",
+    "Advanced Alchemy : surcouche de SQLAlchemy (Julien Courtès, vidéo)",
+    "Retour d'expérience : une base de projet réutilisable avec Litestar (Irina Mitiaieva, Cyril Monmouton, vidéo)",
+    "À la sauce Python : métaclasses, décorateurs et ORM fait maison (Pierre Verkest, vidéo)",
+    "Cartographier les dommages aux bâtiments avec Sentinel-1 (Frédéric Lamy, Pierre-Henri Dubois, vidéo)",
+    "Pas d'algo, pas de bug (Matthieu Sauboua-Beneluz, vidéo)",
+    "Du comportement humain au comportement du code : l'ABA (Ewa Kadziolka, vidéo)",
+    "swh-fuse (Martin Kirchgessner, vidéo)",
+    "Canaille, un fournisseur d'identité léger en Python (Éloi Rivard, vidéo)",
+    "REX de développeuse : comment j'ai changé de stack technique (Marjolaine Bouquet, vidéo)",
+    "Des structures de données qui vont vous étonner (Pascal Martin, vidéo)",
+    "Atelier « Et si on codait aussi la mixité ? » (Houleymatou Baldé)",
+    "Atelier CI/CD avec Nox (Michaël Favel-Guidet)",
+    "Atelier Python sans GIL et le GPU (Rostan Tabet)",
+    "Atelier Des Objets Élégants dans votre code (Yann Bouvet, Jérémy Chauvin)",
+    "Atelier Créer un petit site web statique avec Python et Jinja (Liam Collod)",
+    "Atelier de programmation pour les enfants (MixTeen et bénévoles)",
+    "Atelier Litestar (Irina Mitiaieva, Cyril Monmouton, Jérémie)",
+    "Atelier Scrapy : mission exploration du web (Mouna Sebti)",
+    "Atelier Build your own Real Time Voice Assistant (Ivo Bellin Salarin)",
+    "Lightning talks du dimanche"
+  ],
+  "sources": [
+    {
+      "label": "Site officiel PyConFR 2025",
+      "url": "https://www.pycon.fr/2025/"
+    },
+    {
+      "label": "Programme et informations pratiques",
+      "url": "https://www.pycon.fr/2025/fr/schedule.html"
+    },
+    {
+      "label": "Planning complet",
+      "url": "https://www.pycon.fr/2025/fr/full-schedule.html"
+    },
+    {
+      "label": "Actualités PyConFR 2025 (vidéos, rapport, infos pratiques)",
+      "url": "https://www.pycon.fr/2025/fr/news.html"
+    },
+    {
+      "label": "Vidéos : chaîne Indymotion PyConFR 2025 (56 vidéos)",
+      "url": "https://indymotion.fr/c/pyconfr2025/videos"
+    },
+    {
+      "label": "Vidéos indexées sur PyVideo",
+      "url": "https://pyvideo.org/events/pycon-fr-2025.html"
+    },
+    {
+      "label": "Rapport de transparence du code de conduite (AFPy, 15 déc. 2025)",
+      "url": "https://git.afpy.org/AFPy/gestion/src/branch/master/compte_rendus_diversite/2025.pdf"
+    },
+    {
+      "label": "Django at PyCon FR 2025 (Sarah Abderemane et Thibaud Colas, blog Django)",
+      "url": "https://www.djangoproject.com/weblog/2025/nov/07/django-at-pycon-fr-2025/"
+    },
+    {
+      "label": "Notes de PyConFR 2025 (Martin Kirchgessner)",
+      "url": "https://mkir.ch/2025-11-03/pyconf2025.html"
+    },
+    {
+      "label": "Le rêve de tout enfant : devenir DBA ? (Karen Jex, billet de la keynote)",
+      "url": "https://karenjex.blogspot.com/2025/11/le-reve-de-tout-enfant-devenir-dba.html"
+    },
+    {
+      "label": "Accélérer une suite de tests Django et pytest (Hashbang, Agnès Haasser)",
+      "url": "https://hashbang.fr/blog/accelerer-une-suite-de-tests-django-et-pytest-sur-un-poste-de-developpement/"
+    },
+    {
+      "label": "Slides « Le duo comique accélère une suite de tests » (Hashbang)",
+      "url": "https://static.hashbang.fr/20251101-accelerer-une-suite-de-tests/"
+    },
+    {
+      "label": "Calamars et Pythons (Vincent Poulailleau, Le Calamar)",
+      "url": "https://www.lecalamar.fr/posts/2025-11-02-pyconfr-calamars-et-pythons/"
+    },
+    {
+      "label": "Slides Documenter avec Sphinx (Françoise Conil)",
+      "url": "https://perso.liris.cnrs.fr/francoise.conil/documenter-avec-sphinx_pyconfr-2025/"
+    },
+    {
+      "label": "Slides Onzr (Julien Maupetit)",
+      "url": "https://jmaupetit.github.io/2025-pyconfr-onzr/"
+    },
+    {
+      "label": "Live-toot d'Ash_Crow (Mastodon, 30 oct. au 2 nov. 2025)",
+      "url": "https://mastodon.social/@Ash_Crow"
+    },
+    {
+      "label": "Pouets Mastodon #pyconfr / #pyconfr2025 lus : Ash_Crow, Julie (pouet.chapril.org), Django (fosstodon), FLOZz, Françoise Conil, Julien Maupetit, Arthur Vuillard, Agnès Haasser, Karen Jex, Martin Kirchgessner, AFPy, mdk, sam, frague59, jmny"
+    },
+    {
+      "label": "Discourse AFPy : vidéos de la PyConFR 2025",
+      "url": "https://discuss.afpy.org/t/videos-pyconfr-2025/2962"
+    }
+  ]
 }

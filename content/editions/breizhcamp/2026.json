@@ -11,22 +11,23 @@
   "edition": "14e édition",
   "theme": "Matrix",
   "programUrl": "https://www.breizhcamp.org",
-  "note": "14ᵉ édition, du 24 au 26 juin 2026, Campus de Beaulieu (Université de Rennes), sur le thème de Matrix. Bilan annoncé en keynote de clôture : « 1024+ participants », plus de 110 talks et 119 speakers, en pleine canicule. Édition marquée par un budget contraint (moins de sponsors, frais d'avocat pour défendre la marque) : ni t-shirts, ni soirée « Meet & Greet ». 93 vidéos publiées, les keynotes du matin en direct puis la plupart des sessions les 5 et 6 août 2026.",
+  "note": "14ᵉ édition, du 24 au 26 juin 2026, Campus de Beaulieu (Université de Rennes), sur le thème de Matrix. Bilan annoncé en keynote de clôture : « 1024+ participants », plus de 110 talks et 119 speakers, en pleine canicule. Édition marquée par un budget contraint (moins de sponsors, frais d'avocat pour défendre la marque) : ni t-shirts, ni soirée « Meet & Greet ». 93 vidéos publiées, les keynotes du matin en direct puis la plupart des sessions les 5 et 6 août 2026. En septembre 2026, le BreizhCamp signe la lettre ouverte de l'AFUP pour la survie des événements techniques en France.",
   "status": "synthesized",
-  "synthesisUpdatedAt": "2026-09-25",
-  "corpus": "Un compte-rendu de blog détaillé (Julien Wittouck, codeka.io, 26/06/2026, lui-même speaker), la vidéo-récap d'un sponsor (Néosoft), quelques posts Mastodon (#breizhcamp) et la playlist officielle de 93 vidéos. 7 transcripts automatiques : les 3 keynotes (IA et défense, Enshittification, pop culture), la keynote de clôture, l'introduction du jeudi matin par les organisateurs, et les talks Rust et Direct en production.",
-  "limits": "Un seul retour participant détaillé, écrit par un speaker, qui ne couvre que son parcours : la grande majorité des ~110 sessions n'a aucun retour public trouvé. Aucun post LinkedIn n'a pu être lu directement (moteurs de recherche bridés pendant la collecte). Les transcripts sont des sous-titres automatiques. Les jours de certaines sessions sont inconnus.",
-  "tldr": "**Une édition « Matrix » sous la canicule et un budget serré**, qui a conjugué **conscience critique du numérique** (enshittification, souveraineté, IA de défense, tech « pop culture ») et **artisanat du dev** (Rust pour le métier, livrer directement en prod, dev containers, event sourcing), portée par une communauté qui appelle à **monter sur scène l'an prochain**.",
+  "synthesisUpdatedAt": "2026-09-28",
+  "corpus": "Trois comptes-rendus de blog détaillés, tous écrits par des speakers : Julien Wittouck (codeka.io, 26/06/2026), David Drugeon-Hamon (À l'encre rouillée, 27/06/2026, 10 talks) et Alexandre Muller (blog Néosoft, 07/08/2026, IA, sécurité et souveraineté). S'y ajoutent la vidéo-récap et un post LinkedIn de sponsors (Néosoft, Groupama G2S), quelques posts Mastodon et la playlist officielle de 93 vidéos, dont 16 transcripts automatiques lus (keynotes, clôture, introduction, et 11 talks dont les principaux talks IA et sécurité).",
+  "limits": "Aucun retour d'un participant non speaker : les trois blogs sont écrits par des speakers qui ne couvrent que leur parcours, et aucun post LinkedIn individuel n'a pu être lu (recherche bridée). Les talks IA et sécurité sont documentés surtout par leurs transcripts (sous-titres automatiques), donc sans réception du public ; environ 50 sessions restent sans aucun contenu. Les jours de la plupart des sessions sont inconnus.",
+  "tldr": "**Une édition « Matrix » sous la canicule et un budget serré**, qui a conjugué **conscience critique du numérique** (enshittification, souveraineté, IA de défense, tech « pop culture »), **artisanat du dev** (Rust pour le métier, livrer directement en prod, dev containers, event sourcing), une **IA abordée par ses coûts et ses limites** (tokens, contexte, autonomie du développeur) et une **forte veine sécurité** (supply chain CI/CD, OAuth2 + DPoP, passkeys), portée par une communauté qui appelle à **monter sur scène l'an prochain**.",
   "keyTakeaways": [
     "Traiter les devs et les ops comme des clients de ses outils internes : un outil mal conçu sera contourné par des scripts shell « invisibles » (Klauk, via Wittouck).",
     "Tester le déploiement en production de façon « dark » (sans communication aux utilisateurs), avec feature flipping, plutôt que de se fier à des environnements de recette qui ne ressemblent pas à la prod — à réserver à des équipes expérimentées (Sperandio).",
     "Bien implémenter le RGPD (consentement libre, spécifique, éclairé, univoque, rétractable ; l'adresse IP est une donnée personnelle) et promouvoir les alternatives libres et européennes face à l'enshittification (Sabatier).",
     "Mesurer l'empreinte de ses APIs avec le framework API Green Score (Diallo / De Carvalho).",
     "Évaluer ses dépendances cloud sous l'angle de la souveraineté : risque de coupure, lois extraterritoriales (Person).",
-    "Préférer les UUID v7 (horodatés, triables) quand l'ordre compte (Reynier).",
+    "Préférer les UUID v7 (horodatés, triables) quand l'ordre compte (Reynier), et ne jamais utiliser d'UUID v1, prédictibles, comme jeton de sécurité (Toulemont).",
     "Standardiser les environnements de dev avec des dev containers (Docker + un fichier JSON) pour accélérer l'onboarding (Philippart).",
     "Distinguer opinion, intuition et preuve dans les débats techniques (Topçu).",
-    "Commencer à parler en meetup local, soigner son abstract et utiliser le programme de coaching du BreizhCamp pour proposer un talk (keynote de clôture)."
+    "Commencer à parler en meetup local, soigner son abstract et utiliser le programme de coaching du BreizhCamp pour proposer un talk (keynote de clôture).",
+    "Avant de généraliser un agent de code facturé à l'usage : poser des spending caps, fournir des skills maison et outiller le suivi des tokens par projet (Thorel / Girard, Ouest-France)."
   ],
   "sessions": [
     {
@@ -37,10 +38,13 @@
       "speakers": [
         "Bertrand Rondepierre — AMIAD (Agence ministérielle pour l'IA de défense)"
       ],
-      "feedbackFrom": [],
-      "summary": "- **Sur scène (transcript, aucun retour participant trouvé)** : keynote du jeudi matin **sans slides** (« à cause de la chaleur »), mi-parcours personnel, mi-réflexion, avec beaucoup de questions-réponses.\n- Parcours : maths appliquées, entrée au ministère des Armées quand le machine learning n'y « parlait à personne », mission Villani (stratégie IA 2018), 5 ans chez Google pour développer Brain à Paris, puis direction de l'AMIAD (300 personnes visées, dont ~250 en production près de Rennes et ~50 en recherche à Palaiseau).\n- Thèse : l'IA est **centrale pour la défense** (retour d'Ukraine) car elle permet une boucle numérisée de bout en bout, du renseignement au système d'armes. *« Un drone, c'est un ordinateur qui vole. »* Le ministère, peu numérique à l'origine, doit se transformer.\n- **Souveraineté** : aucune entreprise privée ne doit prescrire ce que le ministère a le droit de faire. Il achète des modèles (ex. Mistral), ce qui crée une « dépendance collective franco-européenne » à la chaîne d'approvisionnement.\n- Sujets de recherche cités : incertitude des modèles, manipulation et robustesse, facteurs humains (garder l'humain en commande ; *« le GPS, ça marche bien jusqu'à ce que vous ne l'ayez plus »*).",
+      "feedbackFrom": [
+        "Alexandre Muller (blog Néosoft)"
+      ],
+      "summary": "- **Sur scène (transcript)** : keynote du jeudi matin **sans slides** (« à cause de la chaleur »), mi-parcours personnel, mi-réflexion, avec beaucoup de questions-réponses.\n- Parcours : maths appliquées, entrée au ministère des Armées quand le machine learning n'y « parlait à personne », mission Villani (stratégie IA 2018), 5 ans chez Google pour développer Brain à Paris, puis direction de l'AMIAD (300 personnes visées, dont ~250 en production près de Rennes et ~50 en recherche à Palaiseau).\n- Thèse : l'IA est **centrale pour la défense** (retour d'Ukraine) car elle permet une boucle numérisée de bout en bout, du renseignement au système d'armes. *« Un drone, c'est un ordinateur qui vole. »* Le ministère, peu numérique à l'origine, doit se transformer.\n- **Souveraineté** : aucune entreprise privée ne doit prescrire ce que le ministère a le droit de faire. Il achète des modèles (ex. Mistral), ce qui crée une « dépendance collective franco-européenne » à la chaîne d'approvisionnement.\n- Sujets de recherche cités : incertitude des modèles, manipulation et robustesse, facteurs humains (garder l'humain en commande ; *« le GPS, ça marche bien jusqu'à ce que vous ne l'ayez plus »*).\n- Retour d'Alexandre Muller (Néosoft) : il en fait l'ouverture de son fil « **l'IA redéfinit les enjeux de sécurité** », retenant le passage de Google (réseaux de neurones, transformers) à la coordination de l'IA au ministère des Armées, avec ses **contraintes de confidentialité**.",
       "summarySources": [
-        "transcript"
+        "transcript",
+        "blog"
       ],
       "video": {
         "youtubeId": "IuN6e0A5kPg",
@@ -124,9 +128,10 @@
         "Stéphane Trebel"
       ],
       "feedbackFrom": [
-        "Julien Wittouck (codeka.io)"
+        "Julien Wittouck (codeka.io)",
+        "David Drugeon-Hamon (À l'encre rouillée)"
       ],
-      "summary": "- **Coup de cœur** de Julien Wittouck : présenté avec humour, Rust n'est pas cantonné aux CLI et aux kernels, ses frameworks et librairies permettent de faire des **applications complètes**.\n- Sur scène (transcript) : un développeur web « CRUD » qui s'est longtemps cassé les dents sur le borrow checker explique qu'on peut écrire du Rust métier **sans lifetimes ni complexité bas niveau**. En Q&R : pas de passage en force sans compétences dans l'équipe (faire un POC d'abord), applications hors ligne et dépendances vendorées possibles, arrivée progressive de Rust dans l'écosystème data/IA (Python).",
+      "summary": "- **Coup de cœur** de Julien Wittouck : présenté avec humour, Rust n'est pas cantonné aux CLI et aux kernels, ses frameworks et librairies permettent de faire des **applications complètes**.\n- David Drugeon-Hamon salue un talk *« proche d'un standup »* qui démystifie structs, new types, traits et pattern matching et souligne la maturité du langage ; *« Stéphane est un excellent showman »*.\n- Sur scène (transcript) : un développeur web « CRUD » qui s'est longtemps cassé les dents sur le borrow checker explique qu'on peut écrire du Rust métier **sans lifetimes ni complexité bas niveau**. En Q&R : pas de passage en force sans compétences dans l'équipe (faire un POC d'abord), applications hors ligne et dépendances vendorées possibles, arrivée progressive de Rust dans l'écosystème data/IA (Python).",
       "summarySources": [
         "blog",
         "transcript"
@@ -193,9 +198,10 @@
         "Pierre Fervel"
       ],
       "feedbackFrom": [
-        "Julien Wittouck (codeka.io)"
+        "Julien Wittouck (codeka.io)",
+        "David Drugeon-Hamon (À l'encre rouillée)"
       ],
-      "summary": "- Talk jugé original : un **replay de jeu vidéo** n'est pas une vidéo mais une liste d'événements rejouée par le moteur, et le même principe s'applique à l'**event sourcing**.\n- Permet de « remonter dans le temps » pour observer les états passés d'un système ; démonstrations jugées claires.",
+      "summary": "- Talk jugé original : un **replay de jeu vidéo** n'est pas une vidéo mais une liste d'événements rejouée par le moteur, et le même principe s'applique à l'**event sourcing**.\n- Permet de « remonter dans le temps » pour observer les états passés d'un système ; démonstrations jugées claires.\n- David Drugeon-Hamon, ami du speaker, retient le journal d'événements comme piste d'audit et un talk *« rafraîchissant et didactique »* : un parallèle *« plutôt évident pourtant totalement différent sur le papier »*.",
       "summarySources": [
         "blog",
         "program"
@@ -287,9 +293,10 @@
         "Ambre Person — OVHcloud"
       ],
       "feedbackFrom": [
-        "Julien Wittouck (codeka.io)"
+        "Julien Wittouck (codeka.io)",
+        "Alexandre Muller (blog Néosoft)"
       ],
-      "summary": "- Format court : **risques de dépendance**, coupures potentielles et exposition aux **lois extraterritoriales** quand le cloud devient la norme, dans un monde géopolitiquement instable.",
+      "summary": "- Format court : **risques de dépendance**, coupures potentielles et exposition aux **lois extraterritoriales** quand le cloud devient la norme, dans un monde géopolitiquement instable.\n- Alexandre Muller en retient une **échelle de souveraineté en quatre niveaux** : hyperscalers (aucune), fournisseurs européens sur logiciel étranger (partielle), fournisseurs européens sur logiciel européen (totale), on-premise (totale, avec la gestion des serveurs en plus).",
       "summarySources": [
         "blog",
         "program"
@@ -368,31 +375,367 @@
         "publishedAt": "2026-08-05",
         "transcript": false
       }
+    },
+    {
+      "id": "ai4it-prendre-la-pilule-rouge-deployer-l-ia-gen-dans-une-dsi",
+      "type": "talk",
+      "title": "AI4IT : prendre la pilule rouge, déployer l'IA gén dans une DSI",
+      "speakers": [
+        "Arnaud Thorel — Ouest-France",
+        "Florian Girard — Ouest-France"
+      ],
+      "feedbackFrom": [
+        "Alexandre Muller (blog Néosoft)"
+      ],
+      "summary": "- **Sur scène (transcript)** : REX « humble » de la DSI d'Ouest-France (3000 applications à gérer), sous deux axes, **efficience économique et souveraineté**. Parti du **shadow AI** de 2023, le cadrage passe par la DG, le juridique (DPA d'entreprise, refus des comptes individuels, des extensions non auditées et des serveurs MCP publics) et trois piliers : **gouvernance, adoption, mesure**.\n- Déploiement : une squad pionnière de 15 personnes, puis environ 150, puis **207 utilisateurs de Claude Code** et environ 400 licences. Le passage du forfait Teams à la **facturation à l'usage** (février) provoque une « guerre des tokens » : budgets qui explosent, développeurs paniqués, jusqu'à un marché noir de tokens. Réponses : **spending caps** (80 dollars par développeur au départ), skills maison (conventions, architecture hexagonale), outils de réduction du contexte, dashboards de coût par projet, rallonges en self-service.\n- Mesures annoncées (en précisant que l'IA n'explique pas tout) : **fréquence de déploiement +30 %**, délai du développement à la prod divisé par trois, dette technique moyenne passée de 1,46 à 1,22 jour par projet. Reprise de DORA : l'IA **« amplifie ce que vous êtes déjà »**. Les plus gros consommateurs de tokens sont souvent des non-développeurs qui s'improvisent devs.\n- Ce qu'ils ne referaient pas : migrer d'offre pendant les vacances, des spending caps trop larges, un accompagnement trop mince hors des équipes de dev.\n- Retour d'Alexandre Muller (Néosoft) : il retient l'adoption d'abord *« anarchique »* puis la stratégie gouvernance, sécurité, mesure, avec des gains en fréquence de livraison et en qualité du code.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "YK8Cx0NxcVo",
+        "title": "AI4IT : prendre la pilule rouge, déployer l'IA gén dans une DSI san… - Arnaud Thorel, Florian Girard",
+        "publishedAt": "2026-08-06",
+        "transcript": true
+      }
+    },
+    {
+      "id": "gitlab-ci-cd-sous-attaque",
+      "type": "talk",
+      "title": "GitLab CI/CD sous attaque : secrets volés, pipelines détournés",
+      "speakers": [
+        "Stéphane Robert",
+        "Aurélien Coget — Plumber"
+      ],
+      "feedbackFrom": [
+        "Alexandre Muller (blog Néosoft)"
+      ],
+      "summary": "- **Sur scène (transcript)** : la **supply chain logicielle** passe désormais par la CI/CD. Rappel des attaques récentes (Trivy, Megalodon) où **aucune ligne de code applicatif n'est touchée** : une merge request modifie le pipeline, un bout de code encodé en base 64 exfiltre les secrets, voire publie un **artefact signé** malveillant, donc indétectable.\n- Démonstration sur une fintech fictive : variables **masquées mais pas protégées**, runners partagés et non éphémères, relecteur qui ne comprend pas le YAML. Parades : variables protégées et séparées par environnement, CODEOWNERS, branches protégées, `npm ci` sans scripts post-install, SBOM, **tags épinglés par digest**, séparer build et signature.\n- Message organisationnel : sécuriser **tous** les pipelines et pas seulement les plus critiques, en continu, et éviter que la sécurité CI/CD devienne un nouveau point de défaillance unique. Présentation de **Plumber**, outil open source qui note les pipelines de A à E (modèle économique : plateforme payante au-delà de 10 projets).\n- Débat en Q&R : Renovate et Dependabot restent de bonnes pratiques, mais sans auto-approbation, avec une **période de quarantaine** des nouvelles versions. C'est aussi ce que retient Alexandre Muller, qui veut intégrer Plumber à sa CI.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "n4kYHGtkqt0",
+        "title": "GitLab CI/CD sous attaque : secrets volés, pipelines détournés, d… - Stéphane Robert, Aurelien Coget",
+        "publishedAt": "2026-08-06",
+        "transcript": true
+      }
+    },
+    {
+      "id": "context-engineering-pas-des-modeles-plus-malins-du-contexte-plus-malin",
+      "type": "lightning",
+      "title": "Context Engineering : pas des modèles plus malins, du contexte plus malin",
+      "speakers": [
+        "Mehdi Lahmam"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, aucun retour participant trouvé)** : format court, sans slide de remerciement. Pourquoi l'agent qui brille en **greenfield** déçoit sur une base de code de dix ans (**brownfield**), avec une étude de Stanford citée sur le code généré plus souvent réécrit.\n- Un LLM est une fonction sans état qui relit tout son « carnet de notes » à chaque tour, et **sa qualité se dégrade avec la quantité de tokens** (étude Chroma citée : dégradation dès environ 50 000 tokens sur une fenêtre de 200 000). Une grande fenêtre est *« une spec de stockage »*, pas de l'intelligence. On passe alors de la « smart zone » à la « dumb zone ».\n- Quatre dégradations du contexte (empoisonnement, distraction, confusion, conflit) et quatre leviers : **write, select, compress, isolate** (fichiers de plan, grep au bon moment, compaction, sous-agents). Les agents « spécialistes » sont surtout de l'isolation de contexte.\n- Conseil pratique : séparer recherche, plan et implémentation dans des sessions distinctes, faire relire le plan par l'équipe, et alléger son `CLAUDE.md`.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "GdlxTwSlaRs",
+        "title": "Context Engineering : pas des modèles plus malins, du contexte plus malin - Mehdi Lahmam",
+        "publishedAt": "2026-08-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "microgpt-on-partage-la-pilule-rouge",
+      "type": "talk",
+      "title": "Microgpt : on partage la pilule rouge ?",
+      "speakers": [
+        "Loïc Truchot — Shodo"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, aucun retour participant trouvé)** : après une phase d'« AI psychosis » avec un agent personnel, le speaker, développeur front, décide d'**aller voir sous le capot** en réécrivant en TypeScript fonctionnel le **microGPT d'Andrej Karpathy** (200 lignes de Python, zéro dépendance).\n- Parcours pas à pas d'un transformer : dataset nettoyé et mélangé (10 000 noms de papillons au lieu des prénoms de Karpathy), tokenizer, paramètres, autograd, optimiseur Adam, entraînement puis inférence avec une **température** qui dose l'invention.\n- Parti pris : parler de modèle qui **« rêve »** plutôt qu'il n'« hallucine ». Talk dense qui a débordé, sans temps pour les questions.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "t2z-iQPndYI",
+        "title": "Microgpt : on partage la pilule rouge ? - Loïc Truchot",
+        "publishedAt": "2026-08-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-vrai-cout-d-un-token",
+      "type": "lightning",
+      "title": "Le vrai coût d'un token : la facture cachée de l'IA générative",
+      "speakers": [
+        "Amine Gani",
+        "Pietro Mele"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, aucun retour participant trouvé)** : 15 minutes non pas sur le coût financier mais sur le **coût environnemental** du token (électricité, eau, minerais), avec un entraînement opaque faute de transparence des fournisseurs. Estimation citée pour GPT-5 : 162 millions de kWh sur trois mois ; environ un demi-litre d'eau pour dix prompts ; paradoxe de Jevons.\n- Leviers selon le cas : si l'on entraîne, énergie décarbonée, données curées, mixture of experts, quantification ; si l'on consomme une API, prompts courts, `max_output_tokens`, **prompt caching** et cache sémantique ; si l'on héberge, petits modèles (SLM), fine-tuning, autoscaling.\n- Ton explicitement non culpabilisant : *« avoir la conscience »* du coût réel.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "YCom_GkQNzM",
+        "title": "Le vrai coût d'un token: la facture cachée de l'IA générative - Amine Gani, Pietro Mele",
+        "publishedAt": "2026-08-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "s-augmenter-sans-se-deposseder-la-convivialite-d-illich-face-a-l-ia",
+      "type": "lightning",
+      "title": "S'augmenter sans se déposséder : la convivialité d'Illich face à l'IA",
+      "speakers": [
+        "Nina Pétard — MAIF"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, aucun retour participant trouvé)** : la product owner de la plateforme IA de la MAIF applique aux assistants de développement la **convivialité d'Ivan Illich** : un outil convivial ne rend pas dépendant, ne crée *« ni esclave ni maître »* et élargit le rayon d'action (exemples de la voiture, du vélo, du tracteur).\n- Risque décrit : hallucinations et complaisance des IA transforment l'humain en **relecteur au service de l'IA**, et le cycle « vite puis retour en arrière » court-circuite l'apprentissage (taxonomie de Bloom).\n- Conseils : s'entraîner à faire sans pour repérer les « muscles cognitifs » qui s'atrophient, écrire soi-même le premier jet et laisser l'IA le critiquer, **détailler le contexte**, utiliser et contribuer à des technologies libres. Mise en garde contre le discours du *« développeur manager d'agents »*.\n- En Q&R, un participant rappelle que l'hallucination est une propriété du fonctionnement du modèle ; la speaker y ajoute la logique d'**engagement** voulue par les fournisseurs.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "ca-Nlqh9fko",
+        "title": "S'augmenter sans se déposséder: la convivialité d'Illich face à l'IA - Nina Pétard",
+        "publishedAt": "2026-08-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "agents-smith-vs-oauth2-dpop",
+      "type": "talk",
+      "title": "Agents Smith vs OAuth2 + DPoP : stopper le replay et le vol de bearer tokens",
+      "speakers": [
+        "Jérôme Marchand — Zenika"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, aucun retour participant trouvé)** : démonstrations avec Keycloak. Rappel des recommandations de la RFC 9700 et du futur **OAuth 2.1** : abandon des flux implicit et password, **PKCE généralisé** (y compris côté back), validation stricte des redirect URI sans wildcard, access tokens de 5 minutes, authentification forte des clients au lieu du client secret.\n- Faille restante : un access token ou un refresh token volé se rejoue sans que l'API ou le fournisseur d'identité ne puisse le détecter. Premier palier simple : refresh tokens à usage unique.\n- **DPoP** (demonstrating proof of possession) : l'application signe chaque requête avec une clé privée non exportable, le token est lié à l'empreinte de la clé publique, l'API vérifie la preuve (méthode, URL, date, identifiant anti-rejeu). Pour les applications publiques (SPA, mobile) ; **mTLS** reste préférable pour les applications back.\n- Q&R : support encore partiel selon les écosystèmes (keycloak-js via une branche, Spring Security en cours).",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "vjOvFAcTgrc",
+        "title": "Agents Smith vs OAuth2 + DPoP : stopper le replay et le vol de bearer tokens - Jérôme Marchand",
+        "publishedAt": "2026-08-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "de-developpeur-a-hacker-savoir-casser-c-est-savoir-proteger",
+      "type": "talk",
+      "title": "De développeur à hacker : savoir casser, c'est savoir protéger",
+      "speakers": [
+        "Florian Toulemont — Softeam (groupe Docaposte)"
+      ],
+      "feedbackFrom": [
+        "Alexandre Muller (blog Néosoft)"
+      ],
+      "summary": "- **Sur scène (transcript)** : plaidoyer pour que les développeurs (blue team) adoptent le regard de la red team, avec un rappel appuyé que **tester sans autorisation est illégal**. Chiffres cités : la France serait devenue le **troisième pays le plus attaqué** depuis les JO de Paris.\n- La CI comme premier outil de défense : SAST, analyse des dépendances, détection de secrets, scan d'images, DAST. Panorama des outils d'attaque (nmap, ffuf, sqlmap, Metasploit, hashcat, Kali, Exegol).\n- Démonstrations d'attaques simples mais encore vues en audit : XSS stockée (parade : CSP), **IDOR** sur des identifiants incrémentaux, SSRF vers un Redis interne jusqu'au reverse shell, socket Docker monté et conteneur privilégié, ARP spoofing, jeton de reset en **UUID v1 prédictible**, supply chain.\n- Pour s'entraîner : plateformes et événements CTF (dont le Breizh CTF à Rennes), Juice Shop, VulnHub, GOAD. Alexandre Muller en tire un « devoir de vacances » : **tester le Top 10 OWASP du point de vue de l'attaquant**.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "3rUSd4a2YOM",
+        "title": "De développeur à hacker : savoir casser, c'est savoir protéger ⚔️ - Florian Toulemont",
+        "publishedAt": "2026-08-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "passkeys-adieu-les-mots-de-passe",
+      "type": "talk",
+      "title": "Passkeys : adieu les mots de passe, bonjour la sécurité sans friction !",
+      "speakers": [
+        "Sébastien Buchoux"
+      ],
+      "feedbackFrom": [
+        "David Drugeon-Hamon (À l'encre rouillée)"
+      ],
+      "summary": "- **Sur scène (transcript)** : en fil rouge, Bob l'éponge se fait voler sa session par phishing, **même avec une MFA classique**. La solution : ne plus échanger de secret, grâce à la **cryptographie asymétrique** (signature d'un challenge) sur laquelle reposent FIDO2 et WebAuthn. Deuxième talk passkeys de l'édition, présenté comme complémentaire.\n- Retour de David Drugeon-Hamon : clé privée dans l'authenticator (TPM, clé matérielle, gestionnaire de mots de passe), clé publique côté serveur ; talk *« très pédagogique »*, avec un bémol : il *« s'est trop attardé à décrire l'implémentation pas à pas du protocole »*.",
+      "summarySources": [
+        "blog",
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "tGWvcnUwxbY",
+        "title": "Passkeys : Adieu les mots de passe, bonjour la sécurité sans friction ! - Sébastien Buchoux",
+        "publishedAt": "2026-08-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rex-construire-un-poste-d-administration-conforme-secnumcloud",
+      "type": "talk",
+      "title": "REX : construire un poste d'administration conforme SecNumCloud",
+      "speakers": [
+        "David Gandra — Numspot",
+        "Chris Navas — WeScale"
+      ],
+      "feedbackFrom": [
+        "David Drugeon-Hamon (À l'encre rouillée)"
+      ],
+      "summary": "- Numspot vise la qualification **SecNumCloud** de l'ANSSI : postes d'administration **airgap et immuables**, pipeline CI/CD qui déploie les images en 30 minutes, base RAG pour naviguer dans une documentation complexe.\n- Jugé *« très intéressant pour apercevoir les coulisses d'un cloud provider français »* (Drugeon-Hamon).",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "mU_JQTKIW9w",
+        "title": "REX – Construire un poste d’administration conforme SecNumCloud - David Gandra, Chris Navas",
+        "publishedAt": "2026-08-05",
+        "transcript": false
+      }
+    },
+    {
+      "id": "karpenter-keda-le-duo-gagnant-du-finops",
+      "type": "talk",
+      "title": "Karpenter & Keda : le duo gagnant du FinOps",
+      "speakers": [
+        "Sébastien Fourreau — RCA",
+        "Guillaume Membré"
+      ],
+      "feedbackFrom": [
+        "David Drugeon-Hamon (À l'encre rouillée)"
+      ],
+      "summary": "- Sur un cluster EKS : **Keda** ajuste le nombre de pods selon l'horaire ou des métriques (jusqu'au scale-to-zero), **Karpenter** consolide les nœuds et choisit dynamiquement les instances.\n- Résultat retenu : *« réduire de près de 50 % leur facture du cluster »* en un an ; talk jugé applicable à ses propres projets (Drugeon-Hamon).",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "czSRPhwFiY0",
+        "title": "Karpenter * Keda : Le duo gagnant du FinOps - Sebastien Fourreau, Guillaume Membré",
+        "publishedAt": "2026-08-05",
+        "transcript": false
+      }
+    },
+    {
+      "id": "reduire-l-empreinte-carbone-du-code-legacy-avec-l-ia",
+      "type": "talk",
+      "title": "Réduire l'empreinte carbone du code legacy avec l'IA",
+      "speakers": [
+        "Olivier Bierlaire"
+      ],
+      "feedbackFrom": [
+        "David Drugeon-Hamon (À l'encre rouillée)"
+      ],
+      "summary": "- Outils de mesure (CodeCarbon, Kepler, Electricity Maps, **EcoLogits** pour l'impact des requêtes LLM), optimisations par refactoring Python vers Rust, et l'IA pour identifier des pistes d'amélioration.\n- *« Intéressant à tout point de vue, même si c'est assez difficile d'évaluer son empreinte carbone »* (Drugeon-Hamon).",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "YjPdnvnvVcI",
+        "title": "Réduire l'Empreinte Carbone du Code Legacy avec l'IA - Olivier Bierlaire",
+        "publishedAt": "2026-08-05",
+        "transcript": false
+      }
+    },
+    {
+      "id": "gateway-api-10-ans-de-maturation",
+      "type": "talk",
+      "title": "Gateway API, 10 ans de maturation pour une nouvelle API Kubernetes",
+      "speakers": [
+        "Kevin Davin"
+      ],
+      "feedbackFrom": [
+        "David Drugeon-Hamon (À l'encre rouillée)"
+      ],
+      "summary": "- Migrer de Nginx Ingress Controller vers **Gateway API** (v1.5) : dépasse les limites des Ingress (WebSockets, gRPC natif), n'est pas embarquée par défaut dans Kubernetes, et s'adresse à trois personas (réseau, administration du cluster, développeurs).\n- *« Très didactique et pragmatique »* (Drugeon-Hamon).",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Sx5v2Doa16g",
+        "title": "Gateway API, 10 ans de maturation pour une nouvelle API Kubernetes - Kevin Davin",
+        "publishedAt": "2026-08-05",
+        "transcript": false
+      }
+    },
+    {
+      "id": "astro-gitops-press-x-to-start",
+      "type": "talk",
+      "title": "Astro GitOps : Press ⓧ to start",
+      "speakers": [
+        "Kevin Davin"
+      ],
+      "feedbackFrom": [
+        "David Drugeon-Hamon (À l'encre rouillée)"
+      ],
+      "summary": "- Les principes **OpenGitOps** : état déclaratif, versionné et immuable dans Git, tiré (pull) par l'outil et réconcilié en continu ; *« mettre des scripts dans Git n'est pas conforme à l'approche GitOps »*.\n- Critique des charts Helm (peu standardisés, traçabilité insuffisante) : commiter le manifeste YAML généré. Talk *« plutôt dense, mais facile à suivre »* (Drugeon-Hamon).",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "fKZbTpxwvXo",
+        "title": "Astro GitOps - Press ⓧ to start - Kevin Davin",
+        "publishedAt": "2026-08-05",
+        "transcript": false
+      }
+    },
+    {
+      "id": "tuner-uv-pour-travailler-avec-docker",
+      "type": "lightning",
+      "title": "Tuner uv pour travailler avec Docker",
+      "speakers": [
+        "Florent Vuillemin"
+      ],
+      "feedbackFrom": [
+        "David Drugeon-Hamon (À l'encre rouillée)"
+      ],
+      "summary": "- Quickie de 15 minutes : grâce aux options de **uv**, une image Docker Python passe de **500 Mo à 55 Mo** ; des astuces jugées directement réutilisables (Drugeon-Hamon).",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "moG4fla1d-E",
+        "title": "Tuner uv pour travailler avec Docker - Florent Vuillemin",
+        "publishedAt": "2026-08-05",
+        "transcript": false
+      }
+    },
+    {
+      "id": "comment-j-organise-ma-veille-technologique",
+      "type": "talk",
+      "title": "Comment j'organise ma veille technologique",
+      "speakers": [
+        "David Drugeon-Hamon"
+      ],
+      "feedbackFrom": [
+        "David Drugeon-Hamon (speaker)"
+      ],
+      "summary": "- Une heure de veille par jour, à la pause déjeuner, pour passer d'une veille passive à un **apprentissage actif** : capture et annotation (Snipd pour les podcasts, Kindle, articles), centralisation dans Readwise, notes structurées dans Obsidian qui deviennent articles ou talks.\n- Retour du speaker : amphi bien rempli, 19 votes « Super intéressant » sur OpenFeedback, questions intéressantes.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "40omK8EkL2Y",
+        "title": "Comment j’organise ma veille technologique - David Drugeon-Hamon",
+        "publishedAt": "2026-08-05",
+        "transcript": false
+      }
     }
   ],
   "sessionsWithoutFeedback": [
     "Le parcours de Doctolib vers une plateforme de données médicales (S. Lukes, C. Anciaux)",
     "La revanche des VMs : sandboxing avec NerdBox (N. De Loof)",
-    "AI4IT : déployer l'IA gen dans une DSI (A. Thorel, F. Girard)",
     "Vous pensiez que la dette technique était le pire ? (J. Chevalier, J. Topçu)",
-    "GitLab CI/CD sous attaque (S. Robert, A. Coget)",
     "Au-delà de la hype : embeddings à l'échelle du milliard (P. Mele, L. Precup)",
-    "Le vrai coût d'un token (A. Gani, P. Mele)",
-    "Context Engineering (M. Lahmam)",
-    "Microgpt : on partage la pilule rouge ? (L. Truchot)",
-    "S'augmenter sans se déposséder : la convivialité d'Illich face à l'IA (N. Pétard)",
     "Aimer le dev à l'ère de l'IA (M. Durand, S. Spassevitch)",
     "Comment l'IA va vous aider à réduire votre impact carbone (N. Ledez)",
-    "Réduire l'empreinte carbone du code legacy avec l'IA (O. Bierlaire)",
     "Burn-out : The Matrix Reboot (P. Fervel)",
     "Petit guide pour prendre des décisions éthiques en entreprise (C. Bossard, J. Paliès)",
     "Concevoir accessible pour les personnes déficientes visuelles (A. Faubry, C. Corfmat)",
-    "RGPD, souverain, SecNumCloud… comment choisir son cloud ?",
-    "REX – poste d'administration conforme SecNumCloud",
-    "Agents Smith vs OAuth2 + DPoP (J. Marchand)",
+    "RGPD, souverain, SecNumCloud… comment choisir son cloud ? (J. Mouchotte, M. Charles)",
+    "Comment proposer une UX passwordless à base de passkeys (D. Hervieux, N. Bogrova)",
+    "Sécuriser son réseau Kubernetes avec Cilium (P. Chaignon)",
+    "Dix pièges à éviter lors de l'intégration de Keycloak (T. Denmat)",
+    "Safety et Undefined Behavior : lab interactif de sécurité inter-langages (J. Laurenceau)",
     "Retour d'expérience – la quête du homelab parfait (M. Vincent)",
     "Arrêtez de miser sur vos tests unitaires ! (J.-M. Leclercq)",
-    "…et environ 70 autres sessions visibles dans la playlist"
+    "…et environ 45 autres sessions visibles dans la playlist"
   ],
   "sources": [
     {
@@ -418,7 +761,27 @@
     {
       "label": "Posts Mastodon #breizhcamp (24–25/06/2026) : dblanchet@piaille.fr, Rio@mastodon.social",
       "url": "https://piaille.fr/@dblanchet/116803802479066051"
+    },
+    {
+      "label": "David Drugeon-Hamon — Retours sur le Breizhcamp 2026 (blog À l'encre rouillée)",
+      "url": "https://david.drugeon-hamon.bzh/blog/2026/06/breizhcamp-2026/"
+    },
+    {
+      "label": "Alexandre Muller — BreizhCamp 2026 : IA, sécurité et souveraineté (blog Néosoft)",
+      "url": "https://www.neosoft.fr/nos-publications/blog-tech/breizhcamp-2026-ia-securite-et-souverainete/"
+    },
+    {
+      "label": "Post LinkedIn Groupama G2S (sponsor Gold) — Retour sur l'édition BreizhCamp 2026",
+      "url": "https://fr.linkedin.com/posts/groupama-supports-et-services_retour-sur-l%C3%A9dition-breizhcamp-2026-activity-7478103887519080448-ieZN"
+    },
+    {
+      "label": "Blog BreizhCamp — Un budget contraint (07/06/2026)",
+      "url": "https://www.breizhcamp.org/blog/2026-06-07-un-budget-contraint"
+    },
+    {
+      "label": "Blog BreizhCamp — Lettre ouverte pour la survie des événements techniques en France (08/09/2026)",
+      "url": "https://www.breizhcamp.org/blog/2026-09-08-lettre-ouverte"
     }
   ],
-  "revisit": "un seul blog participant (celui d'un speaker) lu ; aucun post LinkedIn lu (recherche web bridée) ; talks IA et sécurité sans aucun retour"
+  "revisit": "trois blogs lus, tous écrits par des speakers ; aucun post LinkedIn de participant lu (recherche web bridée, seul un post sponsor trouvé) ; talks IA et sécurité connus surtout par transcript, sans réception du public"
 }
