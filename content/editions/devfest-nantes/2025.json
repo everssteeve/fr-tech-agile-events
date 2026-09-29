@@ -7,7 +7,876 @@
   "city": "Nantes",
   "venue": "Cité des Congrès",
   "url": "https://devfest2025.gdgnantes.com",
+  "programUrl": "https://devfest2025.gdgnantes.com/schedule",
+  "theme": "Contes & Légendes",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "Deux jours à la Cité des Congrès, 8 salles en parallèle (dont une salle Unconf), environ 75 sessions au programme : conférences de 45 min, quickies de 15 à 20 min, ateliers de 2 h et unconférences. Chiffres de fréquentation divergents selon les sources : « plus de 2 000 » (page GDG), 2 500 (Julien Wittouck), plus de 3 500 (Ippon, Estéban Soubiran). Pass 2 jours à 132 € TTC. Keynote d'ouverture de l'artiste Dasha Ilina, clôture en spectacle d'improvisation par La Faltazi.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-09-29",
+  "corpus": "Programme officiel (site devfest2025.gdgnantes.com), playlist YouTube GDG France (62 vidéos, publiées le 2025-10-30) dont 24 transcripts automatiques lus, et environ 12 retours publics : blogs de Denis Germain (zwindler), Julien Wittouck, Estéban Soubiran, articles d'Ippon, Obeo et axYus, debrief vidéo d'Extia, posts LinkedIn de Sully Group, Daveo et axYus. Retours publiés entre le 17 octobre et le 6 novembre 2025, lus onze mois plus tard.",
+  "limits": "Très peu de posts LinkedIn individuels trouvés (recherche limitée, pages LinkedIn souvent inaccessibles) ; l'article Takima (Medium) n'a pas pu être lu. Une bonne part des retours vient de speakers ou d'ESN sponsors, souvent enthousiastes. Les deux keynotes n'ont pas de sous-titres YouTube : leurs résumés reposent sur les retours seuls ; beaucoup d'ateliers et de talks web n'ont aucun retour.",
+  "revisit": "Corpus participants mince pour un événement de plusieurs milliers de personnes : 3 blogs individuels, 3 articles d'entreprise, 1 debrief vidéo et 3 posts LinkedIn d'entreprises ; aucun post LinkedIn individuel lu, article Takima (Medium) inaccessible. Chercher des posts LinkedIn de participants et des retours sur les ateliers (IA agentique, OpenTelemetry, TypeScript).",
+  "tldr": "Un DevFest **très IA mais pas seulement** : les talks les plus commentés sont des **REX concrets et des sujets de fond** (PostgreSQL, Kubernetes, run en prod, accessibilité, Factorio), dans une ambiance « Contes & Légendes » unanimement saluée.",
+  "keyTakeaways": [
+    "Relire et apprendre SQL moderne avant d'ajouter un outil : CTE, window functions, lateral join, contraintes et types PostgreSQL remplacent beaucoup de code applicatif (Davin, Lesage ; retours zwindler, Wittouck, axYus).",
+    "Ne pas poser de limite CPU sur les services sensibles à la latence (web, bases de données) et calibrer les requests avec VPA ou KRR (Germain et Joly ; « un de mes talks préférés » pour Wittouck).",
+    "Développer son application comme si on devait la maintenir : logs structurés, alertes, archétype de projet commun (Ferrer, OVHcloud ; retours Ippon, Wittouck).",
+    "Traiter le code généré par IA comme celui d'un développeur junior : tests, revue et scanner de sécurité, car l'assistant reproduit les failles du contexte (Vermeer ; retour Obeo).",
+    "Pour un agent LLM en production, découper en sous-agents spécialisés et s'appuyer sur un moteur de recherche classique plutôt qu'un prompt géant (Terrier, Yelda) ; préférer un workflow déterministe quand les étapes sont connues (Laforge).",
+    "Chercher une recette existante avant d'automatiser un refactoring : OpenRewrite en propose des centaines, sans LLM (Tama ; retours Ippon, Obeo, Extia).",
+    "Construire des tests de charge réalistes (parcours variés, données aléatoires) sinon on ne teste que les caches (Ortola et Lorrain ; retours Soubiran, Obeo).",
+    "La conformité accessibilité n'est qu'un premier pas : tester avec les personnes concernées et intégrer l'accessibilité dès la conception (Doublier, Roux ; retours Wittouck, axYus, Sully Group).",
+    "Le FinOps sur Kubernetes passe par l'autoscaling des pods (KEDA) et des nœuds (Karpenter) : environ 38 % d'économies chez RCA (Membré et Fourreau ; retours zwindler, Wittouck, Extia)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-d-ouverture-advice-well-taken",
+      "day": "2025-10-16",
+      "type": "keynote",
+      "title": "Keynote d'ouverture : Advice Well Taken",
+      "speakers": [
+        "Dasha Ilina — artiste"
+      ],
+      "feedbackFrom": [
+        "Denis Germain (blog zwindler)",
+        "Julien Wittouck (blog codeka.io)",
+        "Debrief Extia"
+      ],
+      "summary": "- Programme : restitution d'un travail mené en 2023 sur le **« techlore »**, le folklore qui entoure des technologies devenues opaques (croyances sur la vie privée, astuces de réparation, explications « magiques »), collecté lors d'une résidence EMAP à IMPAKT avec Supisara Burapachaisri.\n- Selon zwindler : une artiste **techno-critique** qui montre comment on fabrique des mythes autour de la technologie à mesure qu'on comprend moins son fonctionnement ; rappel des promesses oubliées de l'internet du *Whole Earth Catalog* ; projets artistiques sur l'injustice algorithmique, dont un « café contestation » qui recueille des récits de traitements algorithmiques injustes.\n- Wittouck retient les récits d'usage et de bricolage : *« On a tous dans notre entourage des gens qui associent un côté magique ou démoniaque à leur téléphone. »*\n- **Réception partagée** : zwindler la trouve stimulante, avec le regard extérieur d'une non-développeuse, sans adhérer à toutes les positions ; à la table du debrief Extia, *« un pouce rouge »*.",
+      "summarySources": [
+        "program",
+        "feedback",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "ZhEMS_6m8PI",
+        "title": "DevFest Nantes 2025 - Keynote d'ouverture - Advice Well Taken",
+        "publishedAt": "2025-10-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "select-amazing-features-from-postgresql",
+      "day": "2025-10-16",
+      "type": "talk",
+      "title": "SELECT 'amazing_features' FROM \"postgresql\"",
+      "speakers": [
+        "Kevin Davin — Gradle"
+      ],
+      "feedbackFrom": [
+        "Denis Germain (blog zwindler)",
+        "Julien Wittouck (blog codeka.io)",
+        "Blog Ippon",
+        "axYus (article d'experts)",
+        "Alban (Sully Group, post LinkedIn)",
+        "Debrief Extia"
+      ],
+      "summary": "- Sur scène : SQL est une norme vivante (dernière version en 2023) : *« Si pour vous la dernière version de SQL, c'est celle de 92, vous n'êtes pas à jour. »* Démos sur la base Sakila.\n- **Tour des fonctionnalités sous-utilisées** : CTE (lisibilité, parallélisme), `count(*) filter (where …)`, `row_number() over (partition by …)` pour dédoublonner, lateral join (un « for each » déclaratif), `returning`, UUID plutôt que serial, contraintes regex, types et domaines custom, LISTEN/NOTIFY comme « RabbitMQ lite », ltree, foreign data wrappers, recherche plein texte, JSONB.\n- Pièges cités : `NOT IN` (*« un faux ami, le pire c'est qu'il marche en test »*), héritage de tables, `timestamp` sans fuseau.\n- Participants : l'un des talks les plus cités de l'édition (zwindler, Wittouck, Ippon, axYus, Sully Group). zwindler parle de plus de 150 slides et salue le speaker qui a *« su résister courageusement à de gros problèmes »* d'écran ; Wittouck note aussi son calme face aux coupures ; Sully Group le juge « enrichissant ».\n- Voix discordante (debrief Extia) : impression qu'on empile parfois des surcouches, au risque de faire une *« usine à gaz »*.",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "U5BQrWQimn0",
+        "title": "SELECT 'amazing_features' FROM \"postgresql\"",
+        "publishedAt": "2025-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "detectives-de-la-prod-resoudre-l-enquete-avant-le-crash",
+      "day": "2025-10-16",
+      "type": "talk",
+      "title": "Détectives de la prod : résoudre l'enquête avant le crash",
+      "speakers": [
+        "Sébastien Ferrer — OVHcloud"
+      ],
+      "feedbackFrom": [
+        "Blog Ippon",
+        "Julien Wittouck (blog codeka.io)"
+      ],
+      "summary": "- Sur scène : après dix ans sans toucher à la prod, le speaker doit tenir le run d'une cinquantaine de projets et entrer en astreinte. Comment **se forger une intuition** sur des projets qu'on connaît mal ?\n- **Le run au quotidien** : rotation hebdomadaire, « morning check » sur un tableau de bord vert/orange/rouge, triage des tickets (une P5 peut être une P2), métriques TTA et TTR.\n- **Méthodes** : historique des incidents (rapide mais trompeur), drill-down (rigoureux et formateur), bottom-up (réseau), 5 Why en post-mortem ; toujours **rétablir le service avant de chercher la cause**. Trois cas réels à 3 h ou 4 h du matin illustrent la démarche.\n- **Construire pour le run** : logs structurés (request ID, opération), alertes Prometheus, error wrapping, archétype et package communs, linter.\n- Phrase reprise par Ippon et sur scène : *« Développe tes applications comme si tu devais les maintenir, parce que c'est le cas. »*\n- Wittouck apprécie le ton drôle et humble et le juge **à voir pour tout développeur**.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "HDDbCymVRhE",
+        "title": "Détectives de la prod : résoudre l’enquête avant le crash",
+        "publishedAt": "2025-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-science-fiction-peut-elle-s-implementer-positivement",
+      "day": "2025-10-16",
+      "type": "talk",
+      "title": "La science-fiction peut-elle s'implémenter positivement ?",
+      "speakers": [
+        "m4dz",
+        "Nicolas Delsaux"
+      ],
+      "feedbackFrom": [
+        "Denis Germain (blog zwindler)"
+      ],
+      "summary": "- Sur scène, un dialogue à deux voix : l'IA date des années 1950 ; les robots de SF sont des « Pinocchio » ; le test de Turing a été « craqué » alors qu'on compte 17 théories neuroscientifiques de la conscience.\n- **Projection émotionnelle** : le film *Her*, le deuil des chiens robots Aibo à l'arrêt des serveurs Sony, le deuil de certains utilisateurs au passage de GPT-4o à GPT-5 ; critique des dark patterns des chatbots.\n- **Relire la SF** : les lois d'Asimov servaient à écrire des romans policiers, la singularité recyclée par les discours d'entrepreneurs, le Jihad butlérien de *Dune*. Critique économique : smartphone et « asservissement volontaire » (Damasio), technoféodalisme (Varoufakis), Nvidia en vendeur de pelles.\n- Formule marquante : *« La question, c'est pas tant “est-ce que les machines vont tous nous tuer”, que “est-ce que le mec qui te dit ça a l'intention de tous nous tuer”. »*\n- Recommandations : se demander si l'on *doit* faire quelque chose, pas seulement si l'on peut ; expérimenter soi-même plutôt que se vassaliser.\n- zwindler juge le talk **« rafraîchissant »** pour les questions qu'il pose plus que pour ses réponses.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "P432SgARwx0",
+        "title": "La science-fiction peut-elle s'implémenter positivement ?",
+        "publishedAt": "2025-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "let-s-play-factorio",
+      "day": "2025-10-16",
+      "type": "talk",
+      "title": "Let's play Factorio",
+      "speakers": [
+        "Julien Wittouck"
+      ],
+      "feedbackFrom": [
+        "Denis Germain (blog zwindler)",
+        "Blog Ippon",
+        "Julien Wittouck (speaker, blog codeka.io)"
+      ],
+      "summary": "- Sur scène : un talk **joué entièrement dans le jeu**, sans slides, pour construire une fusée. *« Factorio, c'est un miroir de notre métier. »*\n- **Architecture en cuisine italienne** : spaghettis (monolithe et dette), lasagnes (couches), raviolis (microservices, avec des robots comme paquets réseau et un problème d'observabilité) ; urbanisation en city blocks, bus central comparé à l'ESB et à « l'ancêtre de Kafka ».\n- **Scalabilité, monitoring, sécurité** : verticale contre horizontale, splitter en round robin, sondes comparées aux probes liveness/readiness, alertes sonores, déni de service par un tapis saturé, firewall et WAF.\n- Participants : **« saisissant »** (zwindler), qui en ressort avec l'envie de jouer ; Ippon retient *« Je ne joue pas quand je fais du Factorio, je travaille »* et la transposition directe à l'architecture logicielle.\n- Côté speaker : salle comble d'environ 400 personnes, 189 votes « Fun », plus de 300 scans du QR code posé dans le jeu, une centaine d'heures de préparation.",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "I07DxOLw10E",
+        "title": "Let's play Factorio",
+        "publishedAt": "2025-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "c-etait-dans-quel-episode-deja-bref-j-ai-indexe-une-serie-culte",
+      "day": "2025-10-16",
+      "type": "lightning",
+      "title": "C'était dans quel épisode déjà ? Bref, j'ai indexé une série culte",
+      "speakers": [
+        "Tim Carry — Algolia"
+      ],
+      "feedbackFrom": [
+        "Denis Germain (blog zwindler)"
+      ],
+      "summary": "- Sur scène : brefsearch.com, un moteur de recherche dans les répliques des 82 épisodes de *Bref*, avec aperçu animé au survol et lecture au bon timestamp. Un side project abandonné en 2012, relancé à la sortie de la saison 2.\n- **Pipeline** : yt-dlp, transcription Happy Scribe (les sous-titres automatiques YouTube étant inutilisables) vérifiée à la main, FFmpeg pour les captures et des aperçus WebM de 2 s, index Algolia, front statique Next.js sans backend.\n- **Trois optimisations** : CDN d'images (poids divisé par 10), LQIP flouté de 16×9 px, préchargement des vidéos dans un halo invisible autour de chaque résultat.\n- Phrase reprise par zwindler et sur scène : *« Il n'y a pas vraiment de side project abandonné, il n'y a que des bonnes idées qui attendent le bon moment. »*\n- zwindler salue un projet **mené au bout**.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "tVohBH0rcbc",
+        "title": "\"Which episode was that in again?\" - Anyway, I've indexed a cult series",
+        "publishedAt": "2025-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "etat-des-lieux-de-la-souverainete-du-cloud",
+      "day": "2025-10-16",
+      "type": "talk",
+      "title": "État des lieux de la souveraineté du cloud : des clouds publics aux clouds confidentiels",
+      "speakers": [
+        "Seifeddin Mansri"
+      ],
+      "feedbackFrom": [
+        "Julien Wittouck (blog codeka.io)",
+        "axYus (article d'experts)",
+        "Thomas (debrief Extia)"
+      ],
+      "summary": "- Sur scène : **la souveraineté est un gradient**, *« pas on/off »*, sur quatre piliers : juridique, technique, opérationnel et « sémantique » (savoir auditer ce qu'on déploie). Contexte : CLOUD Act, FISA 702, RGPD, NIS 2, DORA, Data Act, AI Act.\n- **Typologie** : hébergeurs historiques (OVH, Outscale, Scaleway), cloud privé (OpenStack, OpenShift), hyperscalers, multicloud et hybride (80 à 90 % des entreprises selon lui).\n- **Options techniques** : bare metal, confidential computing (AMD SEV-SNP, Intel SGX), gestion externe des clés ; **clouds de confiance** S3NS (Google et Thales) et Bleu (Microsoft, Capgemini, Orange), SecNumCloud et démo S3NS.\n- Participants : **« bonne entrée en matière »**, peu technique (Extia) ; axYus retient les offres S3NS et Bleu pour le secteur public.\n- Lecture critique (Wittouck) : **scepticisme sur les « clouds de confiance »**, jugés trop dépendants des hyperscalers américains.",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "fhCtcbinQV4",
+        "title": "État des Lieux de la Souveraineté du Cloud : Des Clouds Publics aux Clouds Confidentiels",
+        "publishedAt": "2025-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "from-rag-to-riches",
+      "day": "2025-10-16",
+      "type": "talk",
+      "title": "From RAG to riches : les secrets des LLM augmentés par la donnée !",
+      "speakers": [
+        "Laurent Mangin"
+      ],
+      "feedbackFrom": [
+        "Blog Obeo"
+      ],
+      "summary": "- Sur scène : le LLM *« sait tout, sauf l'essentiel : il ne sait absolument rien de vous »*. Un POC « chat with your PDF » de fin 2022 est devenu chez son client un outil utilisé par environ 10 000 personnes par jour.\n- **Du RAG naïf au RAG réel** : embeddings et similarité cosinus, puis les écarts entre l'effet démo et la vraie vie ; corpus hétérogènes (OCR, LLM vision, normalisation en Markdown), chunking structurel ou sémantique.\n- **Récupération** : réécriture et décomposition de la question, HyDE (« halluciner pour mieux trouver »), reranking, car *« être proche sémantiquement »* n'est pas *« être pertinent »*.\n- **Observer et évaluer** : Langfuse, LangSmith, LLM-as-a-judge (DeepEval, Ragas) ; les métriques BLEU ou ROUGE sont inadaptées.\n- Obeo retient une **synthèse claire** des approches RAG, avec l'accent sur l'observabilité.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "4zY0ElNUS9E",
+        "title": "From RAG to riches: The secrets of data-augmented LLMs!",
+        "publishedAt": "2025-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-developer-renaissance-the-humans-powering-the-age-of-ai",
+      "day": "2025-10-16",
+      "type": "talk",
+      "title": "The Developer RenAIssance: The Humans Powering the Age of AI",
+      "speakers": [
+        "Kate Smith — Stack Overflow"
+      ],
+      "feedbackFrom": [
+        "Blog Obeo"
+      ],
+      "summary": "- Sur scène (en anglais) : parallèle entre l'IA et la Renaissance ; ChatGPT joue le rôle de l'imprimerie, les nouveaux « Médicis » sont les grands éditeurs et les fonds. Qui possède les outils, et avec quels motifs ?\n- **Alerte sur les communautés** : avec l'IA, *« developers stop talking to each other »* ; or ce partage de connaissances est ce qui nourrit les LLM.\n- Chiffres cités (sources américaines, précise-t-elle) : 67 % des développeurs doivent corriger le code généré, 40 % des projets d'IA agentique annulés d'ici fin 2027 selon Gartner, 95 % des pilotes GenAI en échec selon le MIT.\n- **Le développeur polymathe** : on passe du copier-coller au « prompter et affiner », on relit plus qu'on écrit ; *« nobody's talking about the 10 times extra of complexity »*.\n- Obeo : réflexion inspirante sur le passage du rôle de **« codeur » à celui de « re-architecte »**.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "42guSLbHJy4",
+        "title": "The Developer RenAIssance: The Humans Powering the Age of AI",
+        "publishedAt": "2025-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "openrewrite-refactor-as-code",
+      "day": "2025-10-16",
+      "type": "talk",
+      "title": "OpenRewrite : Refactor as code",
+      "speakers": [
+        "Jérôme Tama — onepoint"
+      ],
+      "feedbackFrom": [
+        "Blog Ippon",
+        "Blog Obeo",
+        "Kilian (debrief Extia)"
+      ],
+      "summary": "- Sur scène : un framework de réécriture de code **automatisée, reproductible et testable, « pas de LLM »**, pour Java, Kotlin, Groovy, YAML, Maven, Gradle (SDK TypeScript annoncé).\n- **Recettes composables et LST** (Lossless Semantic Tree), qui conserve formatage et commentaires contrairement à un AST.\n- **Démo JUnit 4 vers 5** sur une app Quarkus : l'outil annonce 15 minutes gagnées, *« en vrai 3 semaines »*. Environ 600 à 700 recettes gratuites (javax vers jakarta, Spring Boot, versions de Java).\n- Réflexe prôné : *« je dois faire quelque chose, est-ce que quelqu'un l'aurait pas déjà fait avant moi ? »* ; limites : un simple renommage relève de l'IDE, les migrations complexes restent délicates.\n- Participants : Ippon retient la métaphore de la maison et appelle à un **usage judicieux** d'un outil aussi puissant ; « assez puissant » pour Extia, qui retient qu'il faut **quand même relire** les changements ; Obeo apprécie l'automatisation par recettes réutilisables.",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "E-wpR3FPU3w",
+        "title": "OpenRewrite: Refactor as code",
+        "publishedAt": "2025-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-future-of-routing-with-the-navigation-api",
+      "day": "2025-10-16",
+      "type": "talk",
+      "title": "The future of routing with the Navigation API",
+      "speakers": [
+        "Eduardo San Martin Morote"
+      ],
+      "feedbackFrom": [
+        "Estéban Soubiran (blog)"
+      ],
+      "summary": "- Sur scène (en anglais), par l'auteur de Vue Router : histoire du routing côté client (hash, polling à 200 ms pour IE6/7) et **critique de la History API** (arguments inutiles ou mal ordonnés, perte de la restauration du scroll et des view transitions).\n- **La Navigation API** : `navigate()` renvoie des promesses, accès à toutes les entrées d'historique, événement `navigate` pour *« every single navigation »*, `intercept()` qui active le spinner natif du navigateur.\n- Promesse : des routers **plus légers et agnostiques du framework**, utiles aux micro-frontends. Support encore partiel à l'époque (flag dans Chrome, nightly Safari, rien dans Firefox), API intégrée à Interop 2025.\n- Soubiran l'a trouvé **particulièrement utile** pour comprendre l'intérêt de l'API pour les auteurs de packages, avec des animations qui aident à la clarté.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "2z2HMwAIc0o",
+        "title": "The future of routing with the Navigation API",
+        "publishedAt": "2025-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "vos-requetes-sql-10000x-plus-performantes-durablement",
+      "day": "2025-10-16",
+      "type": "talk",
+      "title": "Vos requêtes SQL 10000x plus performantes, durablement",
+      "speakers": [
+        "Alain Lesage — Dalibo"
+      ],
+      "feedbackFrom": [
+        "axYus (article d'experts)"
+      ],
+      "summary": "- Sur scène : le premier rôle du DBA est de concevoir un modèle de données qui durera « environ 10 ans ». Rappels ACID, MVCC et autovacuum.\n- **Le « gruyère de la performance »** : douze couches à aligner, du matériel à l'application.\n- **Index** : leur coût en écriture, puis les types (multicolonne, partiel, couvrant, fonctionnel, BRIN, GIN, GiST) ; statistiques (pg_stat_statements, PoWA, statistiques étendues).\n- **Cas réel** : une requête passe de 5 min à 1 min avec un index, puis à 30 ms avec un simple ANALYZE ; l'index devient inutile. *« Parfois pour optimiser une requête, il n'y a pas besoin de créer d'index. »*\n- Critique d'architecture : une base par microservice fait perdre ACID et les jointures, là où des schémas suffisent ; travers des ORM.\n- axYus retient la démarche **diagnostic EXPLAIN ANALYZE, index ciblés, réécriture, partitionnement et vues matérialisées**.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "4Xx4WF4roUg",
+        "title": "Make your SQL queries 10,000x faster, sustainably.",
+        "publishedAt": "2025-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-legende-des-lecteurs-d-ecran",
+      "day": "2025-10-16",
+      "type": "workshop",
+      "title": "La Légende des Lecteurs d'Écran : une odyssée sensorielle au cœur de nos Apps",
+      "speakers": [
+        "Océane Gillard",
+        "Patrice De Saint Steban"
+      ],
+      "feedbackFrom": [
+        "axYus (article d'experts)"
+      ],
+      "summary": "- Format **immersif** : les participants naviguent les yeux bandés avec VoiceOver et TalkBack (axYus).\n- Objectif : faire ressentir l'importance de la **sémantique des interfaces** et des exigences WCAG/RGAA.\n- Seul retour trouvé ; pas de vidéo dans la playlist.",
+      "summarySources": [
+        "blog",
+        "program"
+      ]
+    },
+    {
+      "id": "mobiles-en-perspective",
+      "day": "2025-10-16",
+      "type": "workshop",
+      "title": "Mobiles en perspective : quels impacts sociaux et environnementaux ont nos smartphones ?",
+      "speakers": [
+        "Robin Caroff — U Tech",
+        "Thomas Boutin — Ippon Technologies"
+      ],
+      "feedbackFrom": [
+        "Blog Ippon (article collectif, collègue du speaker)"
+      ],
+      "summary": "- Format participatif **inspiré de la Fresque du Climat** : des cartes couvrant fabrication, usage et infrastructures (Ippon).\n- Points marquants : extraction d'eau et de minerais (dont travail d'enfants), recyclage qui récupère moins de 5 € de matière, **« décyclage »** (perte de valeur des matériaux).\n- Impacts positifs (accessibilité, nouvelles façons de travailler) et négatifs (santé mentale, isolement, fracture numérique).\n- Ton qui privilégie la **compréhension plutôt que la culpabilité** ; contenu de l'atelier open source sur GitHub.\n- Retour issu de l'employeur d'un des animateurs.",
+      "summarySources": [
+        "blog"
+      ]
+    },
+    {
+      "id": "osint-l-art-de-trouver-ce-qui-ne-devrait-pas-etre-trouve",
+      "day": "2025-10-16",
+      "type": "lightning",
+      "title": "OSINT : l'art de trouver ce qui ne devrait pas être trouvé",
+      "speakers": [
+        "Marie Viley"
+      ],
+      "feedbackFrom": [
+        "Debrief Extia"
+      ],
+      "summary": "- Exemples retenus par un participant du debrief Extia : **données Strava** révélant une base militaire ou les déplacements de gardes du corps de chefs d'État, jusqu'à la prédiction d'un hôtel présidentiel, et la traque d'un mafieux.\n- Jugé *« extrêmement fascinant »*.\n- Pas de transcript exploité.",
+      "summarySources": [
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "6IJV98WKLCE",
+        "title": "OSINT : L’art de trouver ce qui ne devrait pas être trouvé",
+        "publishedAt": "2025-10-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "from-flatcar-development-to-proxmoxve-deployment",
+      "day": "2025-10-16",
+      "type": "talk",
+      "title": "From Flatcar development to ProxmoxVE deployment : an example of open and sustainable collaboration",
+      "speakers": [
+        "Alexandre Buisine",
+        "Mathieu Tortuyaux"
+      ],
+      "feedbackFrom": [
+        "Meril (debrief Extia)"
+      ],
+      "summary": "- Retenu par le participant : enjeux techniques d'Ignition, Afterburn et partitions OEM, et **une contribution au long cours** (PR ouverte en mai 2023, fonctionnelle en novembre 2024, terminée en juin 2025).\n- Projecteur en panne, deux speakers qui ne s'étaient jamais rencontrés avant : *« belle histoire d'open source »*, *« je recommande chaudement »*.\n- Démos publiées séparément par l'un des speakers sur YouTube.",
+      "summarySources": [
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "ZMLL2049FhQ",
+        "title": "From Flatcar development to ProxmoxVE deployment - an example of open and sustainable collaboration",
+        "publishedAt": "2025-10-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "karpenter-keda-le-duo-gagnant-du-finops",
+      "day": "2025-10-17",
+      "type": "talk",
+      "title": "Karpenter * Keda : le duo gagnant du FinOps",
+      "speakers": [
+        "Guillaume Membré — Zenika",
+        "Sébastien Fourreau — RCA"
+      ],
+      "feedbackFrom": [
+        "Denis Germain (blog zwindler)",
+        "Julien Wittouck (blog codeka.io)",
+        "Thomas (debrief Extia)"
+      ],
+      "summary": "- Sur scène : REX de RCA (logiciels pour experts-comptables) après la **migration d'OVH vers AWS EKS** ; environ 70 applications, charge prévisible aux heures de bureau.\n- **KEDA** pilote les pods (triggers cron puis Prometheus), **Karpenter** crée et consolide les nœuds en fonction des requests. *« Il faut partir du principe qu'il n'y a jamais de place sur mon cluster. »*\n- Étapes : socle de nœuds fixes réduit de 12 à 0, passage de M5a à M6a (environ -25 %), consolidation sur plages horaires ; le spot, qui déstabilisait les environnements hors production, a été abandonné.\n- Résultat : **environ 38 % d'économies**, objectif 50 % (pistes : Graviton, scaling sur métriques).\n- Participants : *« assez ouf »*, speakers à l'aise (Extia) ; Wittouck retient les réductions de coût ; zwindler est un peu déçu par des choix de scaling jugés prudents et attend la suite.",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "sb5pq64_KcM",
+        "title": "Karpenter * Keda : Le duo gagnant du FinOps",
+        "publishedAt": "2025-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "limits-requests-qos-priorityclasses-scheduling-kubernetes",
+      "day": "2025-10-17",
+      "type": "talk",
+      "title": "Limits, Requests, QoS, PriorityClasses, on balaie ce que vous pensiez savoir sur le scheduling dans Kubernetes",
+      "speakers": [
+        "Denis Germain — Lucca",
+        "Quentin Joly — Lucca"
+      ],
+      "feedbackFrom": [
+        "Julien Wittouck (blog codeka.io)",
+        "Denis Germain (speaker, blog zwindler)"
+      ],
+      "summary": "- Sur scène : sketches à deux voix et **démos live** (kind, KWOK, K3s, Grafana, k6). CPU compressible (throttling), RAM incompressible (OOMKill).\n- **Démo clé** : avec une limite CPU, la latence p99 d'un serveur web explose, car les cgroups découpent le temps CPU en tranches de 100 ms.\n- Requests, classes QoS (BestEffort évincé en premier) et PriorityClasses (préemption) sont démontrées une à une.\n- Recommandation : *« Les limites CPU, évitez voire même n'en mettez pas »*, surtout pour le web et les bases de données ; requests réalistes calibrées avec VPA ou KRR.\n- Wittouck : **« un de mes talks préférés »**, il y découvre le throttling CPU et les PriorityClasses.\n- Côté speaker : 200 à 250 personnes, salle à moitié pleine mais attentive ; un participant dit avoir résolu un incident en cours grâce au passage sur les limites CPU ; petit souci de gestion du temps.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "bjV1Q7BQONo",
+        "title": "Limits, Requests, QoS... We're covering everything you thought you knew about scheduling in Kubernetes",
+        "publishedAt": "2025-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "demeler-vrais-produits-et-hallucinations",
+      "day": "2025-10-17",
+      "type": "lightning",
+      "title": "Démêler vrais produits et hallucinations, REX d'un agent téléphonique chercheur de chaussettes",
+      "speakers": [
+        "Marie Terrier — Yelda"
+      ],
+      "feedbackFrom": [
+        "Denis Germain (blog zwindler)"
+      ],
+      "summary": "- Sur scène : un agent vocal aide des pharmaciens à commander des bas de contention par téléphone. Un sous-agent LLM suffit pour 40 produits, puis le client annonce **20 000 produits** (et l'allemand).\n- Échecs : contexte trop petit, lenteur, hallucinations au-delà d'environ 80 produits, base vectorielle inefficace.\n- **Solution hybride** : un LLM reconstruit le nom, Algolia (recherche floue, synonymes) renvoie au plus 40 candidats, un deuxième LLM mène la conversation, un troisième vérifie.\n- Leçon : *« Plus le prompt est long, plus c'est lent, plus ça hallucine, plus les coûts augmentent. »* Spécialiser les agents ; masquer l'attente au téléphone (SSML, messages d'attente).\n- zwindler le juge **« fascinant »**, capable de captiver malgré le créneau tardif.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "NuspTRPMbYA",
+        "title": "Démêler vrais produits et hallucinations, REX d'un agent téléphonique chercheur de chaussettes",
+        "publishedAt": "2025-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "voyage-guide-au-pays-de-l-inaccessibilite",
+      "day": "2025-10-17",
+      "type": "lightning",
+      "title": "Voyage guidé au pays de l'inaccessibilité",
+      "speakers": [
+        "Thanh Lan Doublier"
+      ],
+      "feedbackFrom": [
+        "Julien Wittouck (blog codeka.io)"
+      ],
+      "summary": "- Sur scène : un quickie construit en « contes » à partir du vécu de la speakeuse (fauteuil roulant électrique, surdité profonde). 20 % des Français se déclarent limités ; la loi de 2005 a été étendue au numérique, avec entrée en vigueur au 1er janvier 2024 (selon la speakeuse).\n- **Conformité contre besoin réel** : ascenseur inutilisable, réglage des sous-titres disparu chez un service de streaming, sites de courses non navigables au clavier, formulaire d'assistance SNCF limité à *« deux handicaps maximum »* ; exemples positifs aussi.\n- Message : *« La conformité à la norme, c'est déjà un premier pas […] mais c'est pas suffisant »* ; tester avec les utilisateurs ; exclure, c'est perdre des clients.\n- Wittouck salue la **sincérité** et les exemples concrets.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "ivKYOsfzJMk",
+        "title": "Voyage guidé au pays de l’inaccessibilité",
+        "publishedAt": "2025-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-nous-avons-transforme-les-restos-du-coeur-en-cloud-provider",
+      "day": "2025-10-17",
+      "type": "talk",
+      "title": "Comment nous avons transformé les Restos du Coeur en Cloud Provider",
+      "speakers": [
+        "Julien Briault"
+      ],
+      "feedbackFrom": [
+        "Meril (debrief Extia)"
+      ],
+      "summary": "- Sur scène : principe fondateur **« 1 € = 1 repas »** : *« 1 € dépensé, c'est un repas qui n'est pas distribué. »* Plus de 35 000 utilisateurs informatiques, plus de 40 applications.\n- Parcours d'un bénévole : du PC oublié sans sauvegarde à un premier datacenter dans d'anciennes toilettes, puis un don de plus de 300 serveurs installés dans l'entrepôt de Chartres.\n- **Stack** : tout en code, sécurité (Teleport, Wazuh), infrastructure immuable, OpenStack dans Kubernetes, Ceph via Rook, NetBox ; environ 1 100 VM et plus de 500 pods.\n- **Économies traduites en repas** : gestionnaire de mots de passe, capteurs de chambres froides à 35 € contre un prestataire, un Linux pour les postes après la fin de Windows 10 ; environ 12 millions de repas au total.\n- Participant : *« il peut se passer des trucs de dingue même dans l'IT »*.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "Sa0kacMNVZM",
+        "title": "How we transformed Les Restos du Coeur into a Cloud Provider",
+        "publishedAt": "2025-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "breaking-ai-live-coding-and-hacking-applications-with-generative-ai",
+      "day": "2025-10-17",
+      "type": "talk",
+      "title": "Breaking AI: Live coding and hacking applications with Generative AI",
+      "speakers": [
+        "Brian Vermeer — Snyk"
+      ],
+      "feedbackFrom": [
+        "Blog Obeo"
+      ],
+      "summary": "- Sur scène (en anglais) : plus de code plus vite, c'est **plus de complexité, donc plus de vulnérabilités**. Études citées (GitHub, NYU, Stanford) sur l'usage et la sécurité du code assisté.\n- **Démo live** (Spring Boot, Copilot) : injection SQL générée puis exploitée pour mettre tous les prix à 0, path traversal sur un upload, XSS réfléchi et stocké dont ChatGPT ne repère qu'un cas sur deux.\n- Pourquoi : l'assistant apprend de votre propre code legacy, *« garbage in, garbage out »*.\n- Recommandations : politiques internes, tests, outil de sécurité ; *« treat your AI code like you do with your junior developer »* ; *« in the end you are responsible for the code, not Copilot »*.\n- Obeo : **démonstration frappante** des failles du code généré.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "LyjuKqgvbz4",
+        "title": "Breaking AI: Live coding and hacking applications with Generative AI",
+        "publishedAt": "2025-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "agents-intelligents-la-nouvelle-frontiere-des-llms",
+      "day": "2025-10-17",
+      "type": "talk",
+      "title": "Agents intelligents, la nouvelle frontière des LLMs",
+      "speakers": [
+        "Guillaume Laforge — Google"
+      ],
+      "feedbackFrom": [
+        "Blog Obeo"
+      ],
+      "summary": "- Sur scène : **démystifier les agents** : un LLM, de la mémoire, du planning et des outils dans une boucle, avec l'humain dans la boucle.\n- *« Le function calling, c'est jamais le modèle qui appelle directement les fonctions »* : le développeur garde le contrôle. Patterns : séquentiel, parallèle, routage, boucle, ReAct, LLM-as-judge.\n- **Workflow plutôt qu'autonomie** quand les étapes sont connues : en mode autonome, son générateur d'histoires hallucinait des étapes et des URL.\n- Démos LangChain4j et ADK, dont une partiellement ratée qui illustre le non-déterminisme : *« des fois, ça marche pas »* ; anecdote d'un agent de code qui a lancé un `rm -rf`.\n- Obeo retient surtout la présentation des **nouveaux outils IA de Google**.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "wHgYLwzTjjI",
+        "title": "Intelligent Agents: The New Frontier of LLMs",
+        "publishedAt": "2025-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "45-min-pour-mettre-son-application-a-genoux",
+      "day": "2025-10-17",
+      "type": "talk",
+      "title": "45 min pour mettre son application à genoux : le guide complet du test de charge",
+      "speakers": [
+        "Loïc Ortola — Takima",
+        "Mathilde Lorrain — Takima"
+      ],
+      "feedbackFrom": [
+        "Estéban Soubiran (blog)",
+        "Blog Obeo"
+      ],
+      "summary": "- Sur scène : une application fictive en microservices et **Gatling** ; scénario, protocole et profil d'injection (*« comme le matin dans le métro »*).\n- **Réalisme avant tout** : si tous les utilisateurs virtuels font la même chose, *« je suis en train de tester des caches »* ; parcours répartis aléatoirement, extraction d'identifiants, « 50 % du temps » du travail.\n- Architecture de test : pas de captcha ni de MFA, client IAM dédié, smoke test à chaque pipeline, test de capacité manuel.\n- Résultat : l'application ne tient qu'environ 11 utilisateurs concurrents ; *« Faire tomber un SI, c'est beaucoup plus simple qu'on le pense. »*\n- Participants : talk déjà vu à Devoxx, que Soubiran salue de nouveau (*« time flies »*, bien écrit, très accessible) ; Obeo apprécie la présentation claire de Gatling.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "DM-Ss58unGE",
+        "title": "45 minutes to bring your app to its knees: the complete load test guide",
+        "publishedAt": "2025-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "jbang-un-fichier-java-pour-les-gouverner-tous",
+      "day": "2025-10-17",
+      "type": "lightning",
+      "title": "JBang, un fichier Java pour les gouverner tous ?",
+      "speakers": [
+        "Stéphane Philippart — OVHcloud"
+      ],
+      "feedbackFrom": [
+        "Blog Obeo"
+      ],
+      "summary": "- Sur scène : un archétype Maven génère une masse de fichiers pour un Hello World ; **JBang exécute directement un `.java`**, avec dépendances déclarées en commentaire (`//DEPS`), shebang, catalogues et installation d'apps.\n- Honnêteté sur l'alternative : le JDK lance déjà des fichiers source seuls (et le multi-fichiers depuis Java 25) ; avec le main simplifié, le script ressemble à du Python.\n- Démo : un chatbot LangChain4j en un fichier. Réserve : pour une vraie CLI, il préfère Picocli et GraalVM.\n- *« Un script, je dois pouvoir le lire et vite fait le modifier. »*\n- Obeo : un utilitaire de script Java **pour les usages simples**.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "Aj8Bfq6X0tM",
+        "title": "JBang, one Java file to rule them all? 💍",
+        "publishedAt": "2025-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "l-aspirant-chevalier-lynxjs",
+      "day": "2025-10-17",
+      "type": "lightning",
+      "title": "L'aspirant chevalier LynxJS peut-il détrôner monseigneur React Native et le duc de Flutter ?",
+      "speakers": [
+        "Simon Bernardin"
+      ],
+      "feedbackFrom": [
+        "Blog Ippon"
+      ],
+      "summary": "- Sur scène : LynxJS, framework cross-platform de ByteDance (première version en mars 2025) qui pilote des vues natives en JS/TS avec le moteur PrimJS.\n- **Atouts** : première image instantanée sans écran blanc, double thread automatique, API React (fork de Preact) et vrai CSS, documentation précise, et une base React qui facilite l'usage d'un agent IA.\n- **Faiblesses** : pas de projets natifs générés, pas de plugins natifs (GPS codé à la main), time-to-market long. *« Sortir une application en prod, ça n'est pas encore prêt. »*\n- Ippon résume : **prometteur mais immature**, à surveiller.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "ybhG1neNlkM",
+        "title": "L'aspirant chevalier LynxJS peut-il détrôner monseigneur React Native et le duc de Flutter ?",
+        "publishedAt": "2025-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "en-javascript-il-y-a-un-paquet-pour-tout-et-souvent-pour-rien",
+      "day": "2025-10-17",
+      "type": "lightning",
+      "title": "En JavaScript, il y a un paquet pour tout... et souvent pour rien",
+      "speakers": [
+        "Estéban Soubiran"
+      ],
+      "feedbackFrom": [
+        "Kilian (debrief Extia)",
+        "Estéban Soubiran (speaker, blog)"
+      ],
+      "summary": "- Retenu par un participant : un paquet comme `is-string` est **plus téléchargé que React** ; présentation d'outils pour analyser son arbre de dépendances et remplacer les micro-paquets inutiles (Extia).\n- Côté speaker : quickie de 15 min dans l'amphi de 800 places, *« by far, the biggest room I've ever spoken in »* ; sa plateforme de présentation interactive a encaissé plus de 17 000 requêtes sans ralentir.\n- Pas de transcript disponible sur la vidéo.",
+      "summarySources": [
+        "feedback",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "YHl6fUM5PDw",
+        "title": "En JavaScript, il y a un paquet pour tout... et souvent pour rien.",
+        "publishedAt": "2025-10-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "succes-debloque-rendre-son-jeu-video-accessible",
+      "day": "2025-10-17",
+      "type": "talk",
+      "title": "Succès débloqué : rendre son jeu vidéo accessible",
+      "speakers": [
+        "Noëlie Roux"
+      ],
+      "feedbackFrom": [
+        "axYus (article d'experts)",
+        "Nassima (Sully Group, post LinkedIn)"
+      ],
+      "summary": "- Sur scène : 15 % des plus de 3 milliards de joueurs seraient en situation de handicap (Microsoft) ; handicap permanent, temporaire ou situationnel. Distinguer **barrières intentionnelles et involontaires**, et « accessible » d'« abordable ».\n- Panorama d'exemples : manettes adaptées, remapping (plus de 100 000 remappings en deux mois sur un jeu), danses assises dans Just Dance, modes daltoniens, audio-description, sous-titres activés par défaut (95 à 97 % les gardent, chiffres Ubisoft), modes arachnophobie, phrases prédéfinies contre le harcèlement vocal.\n- Cadre : European Accessibility Act, guidelines Xbox et Game Accessibility Guidelines. *« L'accessibilité, il faut la voir comme un ingrédient à part entière de la recette de votre jeu. »*\n- Participants : axYus retient qu'**intégrer l'accessibilité dès le départ coûte moins cher** qu'une correction a posteriori ; Sully Group la juge essentielle à l'inclusion numérique.",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "uzNNUCfGiZk",
+        "title": "Achievement Unlocked: Making Your Video Game Accessible",
+        "publishedAt": "2025-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "angular-signal-monde-asynchrone-etat-dependant",
+      "day": "2025-10-17",
+      "type": "workshop",
+      "title": "Angular Signal : monde asynchrone, état dépendant",
+      "speakers": [
+        "Camille Pillot — Takima",
+        "Modeste Assiongbon"
+      ],
+      "feedbackFrom": [
+        "Blog Ippon",
+        "axYus (article d'experts)",
+        "Camille Pillot (speaker, blog Takima, lu via extrait de recherche)"
+      ],
+      "summary": "- Lab de 2 h sur les **Signals Angular 19-20** : `rxResource`, `httpResource` pour les appels serveur simples, `linkedSignal` pour un état dérivé modifiable (Ippon, axYus).\n- axYus retient que les effects ne conviennent pas à l'asynchrone et que les resources font le pont entre Signals synchrones et opérations asynchrones.\n- Un utilisateur quotidien d'Angular (Ippon) salue des exercices bien décrits et des slides claires, **directement transposables** en projet.\n- Côté animatrice : environ 65 participants (article Takima, connu seulement par un extrait).",
+      "summarySources": [
+        "blog"
+      ]
+    },
+    {
+      "id": "la-guerre-des-prompts-attaques-et-defenses-au-royaume-des-llm",
+      "day": "2025-10-17",
+      "type": "workshop",
+      "title": "La Guerre des Prompts : attaques & défenses au royaume des LLM",
+      "speakers": [
+        "Benjamin Bernard",
+        "François Nollen",
+        "Pierre Therrode",
+        "Xavier Charef"
+      ],
+      "feedbackFrom": [
+        "Blog Obeo"
+      ],
+      "summary": "- Format **Capture the Flag** autour de l'injection de prompt et de la défense des LLM (Obeo).\n- Outils utilisés : Gandalf, Garak, PyRIT.\n- Seul retour trouvé, bref.",
+      "summarySources": [
+        "blog"
+      ]
+    },
+    {
+      "id": "paroles-de-dev-la-conference-ou-vous-avez-la-parole",
+      "day": "2025-10-17",
+      "type": "roundtable",
+      "title": "Paroles de dev' : la conférence où vous avez la parole !",
+      "speakers": [
+        "Benoit Martin",
+        "Damien Raude-Morvan"
+      ],
+      "feedbackFrom": [
+        "Blog Ippon"
+      ],
+      "summary": "- **Unconférence** sans sujets prédéfinis : règles d'*« écoute, empathie, bienveillance »*, sujets proposés sur post-it puis votés, « loi des deux pieds » (Ippon).\n- Sujets tirés au sort de la salle : précarité du métier de développeur, handicaps invisibles, refactoring et dette technique, **avenir du TDD face aux agents IA**.\n- Ippon salue le **« côté rafraîchissant »** du format, qui comble le manque de retours terrain et de temps de questions des conférences classiques.",
+      "summarySources": [
+        "blog"
+      ]
+    },
+    {
+      "id": "keynote-de-cloture-la-faltazi",
+      "day": "2025-10-17",
+      "type": "keynote",
+      "title": "Keynote de clôture : La Faltazi",
+      "speakers": [
+        "La Faltazi — compagnie d'improvisation"
+      ],
+      "feedbackFrom": [
+        "Julien Wittouck (blog codeka.io)",
+        "Estéban Soubiran (blog)",
+        "Blog Obeo",
+        "Debrief Extia"
+      ],
+      "summary": "- Pas une conférence mais un **spectacle d'improvisation** : une joute dans un décor médiéval-fantastique, raccord avec le thème « Contes & Légendes » (Wittouck parle de « la joute de Faltazi »).\n- Wittouck y voit une **fantaisie bienvenue** pour clore une édition très thématisée ; Soubiran la cite parmi les temps forts de l'organisation ; Obeo note une clôture bien reçue.\n- Un participant du debrief Extia : *« ça vidait un peu la tête »*.\n- Pas de sous-titres disponibles sur la vidéo.",
+      "summarySources": [
+        "feedback",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "IRJhj6_Wj54",
+        "title": "DevFest Nantes 2025 - Keynote de fermeture - La Faltazi",
+        "publishedAt": "2025-10-30",
+        "transcript": false
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Ressusciter vos présentations en articles de blog avec AWS Amplify Gen 2 et Amazon Bedrock (Adrien Lebret)",
+    "Playwright : tester vos applications devient un jeu d'enfant (Benjamin Cavy)",
+    "Créer son propre jeu de rôle en Agentic AI & MCP avec Strands Agents (Arnaud Jean, Olivier Leplus, Tiffany Souterre)",
+    "Unconference Green IT (Mathilde Rigabert Lemée, Sarah Tedjani)",
+    "Révolution TanStack Query : enfin une bonne gestion d'état (Lucas Audart, Mickael Alves)",
+    "Biomimétisme et cybersécurité (Ludovic Lefebvre)",
+    "Ne laissez plus traîner vos données de prod : anonymisez-les avec DbToolsBundle (Pierre Rineau, Simon Mellerin)",
+    "Charmer les dragons : pitcher son produit comme un héros (Montaine Marteau, Rachel Dubois)",
+    "Devenez un astronaute : découvrez le framework Astro (Florent Albert, Jérémy Chauvin)",
+    "Ensorcelle ton IDE : de zéro à démo (Maxime Courant, Samuel Berthe)",
+    "Saving Time With Amazon Q Developer (Faye Ellis)",
+    "Become a wizard and make the browser your own (Oliver Dunk)",
+    "Let's build K.I.T.T. with JavaScript (Nico Martin)",
+    "Propriété et intelligence artificielle : un droit sacré à l'épreuve des machines ? (Nicolas Blanchon)",
+    "Et si on parlait de « malware craftsmanship » ? (Nailya Bogrova, Sonia Seddiki)",
+    "Immersion dans les situations de handicap (Angi Guyard, Emmanuelle Aboaf)",
+    "Faire une app front avec Rust/leptos (Yann Lesage)",
+    "Guilde des Conteurs : un atelier A2A/MCP pour les sagas du soir (Florent Legras, Yulianna Khorolich)",
+    "Alice aux pays du gambling (Alexis Lina)",
+    "AI right in the browser with Chrome's built-in AI APIs (Thomas Steiner)",
+    "De OpenID Connect à OpenID AuthZEN (François Eckert)",
+    "Terramate, l'outil qui fait scaler votre code Terraform (Mathieu Herbert)",
+    "La notification : enjeux et pistes de solutions (Flora Brochier)",
+    "An Intro to eBPF with Go (Donia Chaiehloudj)",
+    "Making an Emulator in JavaScript? (Sara Vieira)",
+    "Building Offline AI Agents in Your Mobile App (Sasha Denisov)",
+    "Design First : OpenAPI et AsyncAPI en action ! (Philippe Bousquet), simple mention chez Obeo",
+    "Toi aussi donnes du style à tes données avec Grafana (Matthieu Vincent, Thomas Jouve)",
+    "Mais qu'est-ce qu'on va devenir ? Le métier de dev passé au crible des scénarios de l'ADEME (Cécilia Bossard, Jean Paliès)",
+    "Révolutionnez votre prise de notes : du Bullet Journal à Obsidian (Hoani Cross)",
+    "Optimizing third parties in frameworks with DX (Julien Huang)",
+    "Il était une fois... Modular monolith (Thomas Piscitelli)",
+    "Quantum Computing in Practice (Florent Houbart, Lennart Gundelach)",
+    "Select it! Styling new HTML UI capabilities (Brecht De Ruyte)",
+    "Il était une faille : construire la résilience dans un monde chaotique (Julien Crestin, Vincent Daligault)",
+    "L'IoT pour 5 ans et + : initiation sur carte micro:bit (Jonathan Baranzini, Thomas Cami)",
+    "Maîtrise TypeScript par la pratique (Bastien Tran, Johan Rouve, Marjorie Aubert)",
+    "2h chrono pour traquer tout ce qui bouge dans ton backend avec OpenTelemetry (Sébastien Oddo, Vivien Maleze)",
+    "Abracadabra ! Donnez vie à vos idées avec Google AI Studio (Guillaume Vernade)",
+    "Optimiser des UIs Web legacy dans un moteur de jeu AAA (Cédric Chariere Fiedler, Clément Grégoire)",
+    "How a Unicorn Migrated From an In-House Solution to Helm (Mey Beisaron)",
+    "Quand le Terminal dévore la UI : TUI pour tout le monde ! (Thierry Chantier), simple mention chez Obeo",
+    "Conception d'une IA de jeu vidéo avec l'apprentissage par renforcement (Vincent Ogloblinsky)",
+    "Silence... ça tourne ! De l'éco-volontariat à la promotion de mon side project en Australie (Nicolas Guillot)",
+    "Embellir des QR Codes à l'ère de la GenAI (Raphael Semeteys)"
+  ],
+  "sources": [
+    {
+      "label": "Programme officiel DevFest Nantes 2025 (jour 1)",
+      "url": "https://devfest2025.gdgnantes.com/schedule/1"
+    },
+    {
+      "label": "Programme officiel DevFest Nantes 2025 (jour 2)",
+      "url": "https://devfest2025.gdgnantes.com/schedule/2"
+    },
+    {
+      "label": "Playlist YouTube DevFest Nantes 2025 (GDG France)",
+      "url": "https://www.youtube.com/playlist?list=PLuZ_sYdawLiWvkdETEVYDFjV2ibwJ2E-9"
+    },
+    {
+      "label": "Denis Germain (zwindler) : DevFest Nantes 2025, récap des 2 jours",
+      "url": "https://blog.zwindler.fr/2025/10/17/recap-devfest-nantes-2025/"
+    },
+    {
+      "label": "Julien Wittouck : La veille de Wittouck, édition spéciale DevFest de Nantes 2025",
+      "url": "https://codeka.io/2025/10/17/la-veille-de-wittouck-%C3%A9dition-sp%C3%A9ciale-devfest-de-nantes-2025/"
+    },
+    {
+      "label": "Estéban Soubiran : My Adventure to Nantes for Europe's Largest DevFest",
+      "url": "https://soubiran.dev/posts/my-adventure-to-nantes-for-europes-largest-devfest"
+    },
+    {
+      "label": "Blog Ippon : Notre ReX du Devfest Nantes 2025",
+      "url": "https://blog.ippon.fr/2025/10/24/notre-rex-du-devfest-nantes-2025/"
+    },
+    {
+      "label": "Ippon : Ippon au Devfest Nantes 2025, récap'",
+      "url": "https://fr.ippon.tech/ippon/news/article/ippon-au-devfest-nantes-2025-recap/"
+    },
+    {
+      "label": "Obeo (Candice Guttadauro) : DevFest Nantes 2025, deux jours d'IA, d'expérimentations et d'inspiration",
+      "url": "https://blog.obeosoft.com/devfest-nantes-2025-deux-jours-d-ia-d-experimentations-et-d-inspiration"
+    },
+    {
+      "label": "axYus : DevFest Nantes 2025, entre innovation tech, souveraineté et inclusion",
+      "url": "https://www.axyus.com/article/devfest-nantes-2025/"
+    },
+    {
+      "label": "Extia : Broadcast spécial DevFest Nantes 2025, le debrief (vidéo, transcript lu)",
+      "url": "https://www.youtube.com/watch?v=9Kf69FTfCkA"
+    },
+    {
+      "label": "Takima (Camille Pillot) : Retour sur le DevFest Nantes 2025 (Medium, non lu en entier)",
+      "url": "https://medium.com/takima/retour-sur-le-devfest-nantes-2025-un-mix-parfait-de-partage-tech-et-fun-8241e4522c3b"
+    },
+    {
+      "label": "Geeek (Ludovic Toinel) : DevFest Nantes 2025, toutes les vidéos en replay",
+      "url": "https://www.geeek.org/devfest-nantes-2025-videos-youtube/"
+    },
+    {
+      "label": "Posts LinkedIn lus : axYus, Sully Group (Alban, Nassima), Daveo (stand IA, 140 cartes générées)",
+      "url": "https://fr.linkedin.com/posts/axyus_devfest-nantes-2025-ce-quil-faut-en-retenir-activity-7391376185097797633-Zb4i"
+    }
+  ]
 }

@@ -7,8 +7,203 @@
   "city": "Perros-Guirec",
   "venue": "Palais des Congrès",
   "url": "https://devfest.codedarmor.fr/archives/2025/devfest/",
-  "theme": "Qualité logicielle",
+  "programUrl": "https://devfest.codedarmor.fr/archives/2025/devfest/",
+  "theme": "Mieux développer : quels outils et pratiques pour créer du logiciel de qualité ?",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-09-29",
+  "revisit": "Aucun retour participant public trouvé (0 post LinkedIn, 0 article de blog) : synthèse fondée sur les transcripts automatiques des 10 vidéos officielles et le programme. À reprendre si des posts ou comptes-rendus émergent.",
+  "corpus": "Programme officiel (site Code d'Armor, Conference Hall), transcripts automatiques des 10 vidéos de la playlist officielle publiée le 14 décembre 2025 (mot d'introduction, 8 talks, présentation du challenge Ada Lovelace), deux articles Medium du speaker Pierrick Blons repérés sur son sujet. Huit recherches web menées en septembre 2026, soit un an après l'événement.",
+  "limits": "Aucun retour de participant n'a été trouvé : les résumés disent ce qui a été dit sur scène, pas ce que la salle en a retenu. Les transcripts sont des sous-titres automatiques (noms propres parfois déformés), et les chiffres cités par les speakers n'ont pas été vérifiés. Le mot de clôture n'a pas été filmé.",
+  "tldr": "Une journée mono-track sur la **qualité logicielle vue comme une affaire de sens et de pragmatisme** : nommer, modulariser, typer, rendre accessible et observable, avec en fil rouge l'idée que l'IA **ne dispense pas des développeurs** qui savent ce qu'est un bon code.",
+  "keyTakeaways": [
+    "Donner une **fourchette plutôt qu'un chiffre** quand on estime, pour éviter le biais d'ancrage, et la resserrer à mesure qu'on apprend (Alain Buzacarro).",
+    "Désendetter un code par **modularisation progressive**, PR après PR, est plus sûr que la réécriture from scratch (Stéphane Prohaszka, Ledger).",
+    "Poser des **tests unitaires autour du code endetté avant de le modifier**, même si c'est ingrat (Stéphane Prohaszka, citant Michael Feathers).",
+    "Commencer par un **monolithe bien découpé et à services stateless** ; migrer ensuite vers les microservices avec le pattern strangler fig si le besoin de scalabilité se confirme (Cédric Clavier, SII).",
+    "Utiliser des **types « brandés » et des smart constructors** en TypeScript pour que le compilateur refuse les états impossibles (Pierrick Blons, Payfit).",
+    "Tester l'accessibilité avec Wave, axe ou HeadingsMap, mais savoir que **les outils automatiques ne voient pas tout** (tailles en px, info portée par la seule couleur, listes non sémantiques) (Hannah Issermann et Isabelle Chanclou, Orange).",
+    "En incident, **restaurer le service d'abord**, enquêter ensuite ; loguer avec des **champs structurés** et envelopper les erreurs pour savoir où elles naissent (Sébastien Ferrer, OVHcloud).",
+    "Préférer **WET à DRY** : tolérer une duplication, n'abstraire qu'au troisième cas d'usage (Frédéric Bouchery).",
+    "Faire respecter des conventions de nommage par l'**analyse statique** (ex. une fonction `is`/`has` doit renvoyer un booléen dans PHPStan) (Frédéric Bouchery)."
+  ],
+  "sessions": [
+    {
+      "id": "mot-d-introduction",
+      "day": "2025-10-03",
+      "type": "other",
+      "title": "Mot d'introduction",
+      "speakers": [
+        "Président de Code d'Armor",
+        "Erven Léon — maire de Perros-Guirec",
+        "Estelle — Technopole Anticipa"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **5e édition**, organisée par l'association bénévole Code d'Armor (valeurs : *« apprendre, partager, rencontrer »*), avec Eco-Compteur comme sponsor principal et le soutien de partenaires institutionnels.\n- Thème **« Mieux développer »**, présenté comme *« un thème de revendication presque »* ; **97 propositions de talks** reçues pour un seul track, sélection équilibrée entre contenu, diversité d'expérience, de genre et de technologies.\n- Nouveautés : boutique vendue à prix coûtant, gommettes sur les badges pour lancer les discussions, stickers à collectionner, page LinkedIn de l'association ; vaisselle réutilisable plutôt que jetable.\n- Le maire relie l'édition au patrimoine local (palais des congrès brutaliste classé, première association loi 1901 de protection des sites à Ploumanac'h, naissance de la LPO à Perros-Guirec) ; la Technopole Anticipa annonce un CTF ouvert à tous et le concours Solutions for Good.\n- Prochaine édition annoncée pour le **2 octobre 2026**.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "qIaJlpvo8ro",
+        "title": "DevFest 2025 – Mot d’introduction",
+        "publishedAt": "2025-12-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "l-ignorance-ce-fleau-auquel-fait-face-le-tech-leader",
+      "day": "2025-10-03",
+      "type": "keynote",
+      "title": "L'ignorance, ce fléau auquel fait face le tech leader",
+      "speakers": ["Alain Buzacarro — Instinct Pioneer"],
+      "feedbackFrom": [],
+      "summary": "- Keynote d'ouverture, *« sans code »*, présentée comme un témoignage de tech leader : **« je suis ignorant et irrationnel »** (Kahneman, Dunning-Kruger, Argyris, Tribal Leadership de Dave Logan).\n- Cinq absurdités vécues en IT : exiger la précision des estimations (une estimation *« par définition, c'est faux »*, cf. *Waltzing with Bears*), croire le **quick and dirty rentable**, les solutions miracles (changer de CRM, conseils de cabinets de stratégie), fantasmer que la GenAI remplacera les développeurs, **tout faire en même temps** (démonstration par la limite du WIP).\n- Pourquoi ça persiste : on apprend peu du passé (Brooks, 1975), on confond complexe et compliqué, le travail tech est invisible et le **mindset du développeur, proche du joueur**, est incompris (ne jamais l'interrompre).\n- Réponses proposées : transparence et vulnérabilité (donner une **fourchette** plutôt qu'un chiffre, exemple d'un budget annoncé entre 250 000 et 750 000 €), clubs de lecture en comité de direction, **coresponsabilité radicale** et petites expérimentations communes plutôt que *« modèle contre modèle »*.\n- Lectures conseillées : *The Phoenix Project*, *Accelerate*, *The Goal*, *Team Topologies*.\n- En Q&A, un participant pousse sur les écarts de productivité « 10x » : le speaker les reconnaît et en tire l'absurdité du **jour-homme** comme unité ; *« la vélocité, on l'observe, on la décrète pas »*. À un autre qui trouve le talk orienté managers, il répond que le développeur a **la responsabilité d'agir** sur les estimations.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "qkXRisXkWkQ",
+        "title": "L’ignorance, ce fléau auquel fait face le tech leader – Alain Buzacarro",
+        "publishedAt": "2025-12-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-transformer-une-dette-technique-en-opportunite",
+      "day": "2025-10-03",
+      "type": "talk",
+      "title": "Comment transformer une dette technique en opportunité ?",
+      "speakers": ["Stéphane Prohaszka — Ledger"],
+      "feedbackFrom": [],
+      "summary": "- Retour d'expérience d'architecte sur l'**extraction des intégrations blockchain (« coin modules »)** du code de Ledger Live (TypeScript, Electron et React Native, open source) pour les partager.\n- Deux signes de dette : l'équipe ne suit plus les bugs, et **on ne peut plus extraire un pan fonctionnel** tant il est intriqué ; ici, une **dépendance cyclique** entre le module de comptes et le « bridge ».\n- Méthode : redonner du sens aux modules (inspiration onion et clean architecture), déplacer les fonctions mal placées, extraire la partie générique avec le **pattern décorateur** pour ne pas changer les signatures, et **éviter le big bang** (pas de PR à 1 000 fichiers).\n- Consolidation : maîtriser les exports du package, TypeScript strict, **injection de dépendance** d'un « signer » pour découpler la communication avec le device ; **tests unitaires posés d'abord autour du code endetté** (Michael Feathers), qui ont aidé à diagnostiquer vite une régression.\n- Rebondissement : les projets qui motivaient l'extraction ont été abandonnés, mais l'équipe B2B (Ledger Vault), qui avait **forké** ce code, est devenue l'utilisatrice ; le résultat est une couche qui absorbe l'hétérogénéité des blockchains.\n- Conclusion : *« désendetter, c'est plus facile et plus sûr que de repartir from scratch »* ; si un module a plus d'une réponse à « à quoi sert-il ? », il est déjà trop complexe.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "wK6P20OwoTw",
+        "title": "Comment transformer une dette technique en opportunité ? – Stéphane Prohaszka",
+        "publishedAt": "2025-12-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "l-accessibilite-numerique-un-atout-incontournable",
+      "day": "2025-10-03",
+      "type": "talk",
+      "title": "L'accessibilité numérique : un atout incontournable",
+      "speakers": ["Hannah Issermann — Orange", "Isabelle Chanclou — Orange"],
+      "feedbackFrom": [],
+      "summary": "- Un produit est accessible s'il est **utilisable par tous, quels que soient les aptitudes, le matériel et le réseau**, en autonomie, confidentialité et sécurité ; le handicap est **situationnel** (chiffres cités : plus de 20 % de la population française vit avec une déficience).\n- Cadre légal durci depuis juin 2025 selon les speakers : davantage d'organisations concernées, **six organismes de contrôle** au lieu d'un, sanctions cumulables ; obligations de schéma pluriannuel, formation, amélioration et **déclaration d'accessibilité**.\n- Démo pas à pas : attribut `lang`, `title` unique, régions et titres, `alt` (vide si décoratif), contrastes, **tailles en rem** pour le zoom texte, masquage accessible (`visually-hidden`), listes sémantiques, `aria-label` sur bouton-icône ; outils Wave, axe, HeadingsMap, WCAG Contrast Checker et lecteur d'écran.\n- Point clé : plusieurs défauts (px, info portée par la couleur, listes) **ne sont pas détectés par les outils automatiques**. Les surcouches d'accessibilité vendues comme magiques sont déconseillées.\n- Bénéfices revendiqués : inclusion, compétence rare et recherchée, code mieux structuré, SEO, image de marque, moindre coût de maintenance.\n- En Q&A sur l'IA : utile pour les alternatives d'images ou les sous-titres, mais **jamais sans relecture humaine** ; un participant conseille des consignes d'accessibilité dans les fichiers de configuration de son assistant de code. Rappel : *« no ARIA is better than bad ARIA »*.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "oLStptnR4fk",
+        "title": "L’accessibilité numérique : un atout incontournable – Hannah Issermann & Isabelle Chanclou",
+        "publishedAt": "2025-12-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "monolithes-vs-microservices",
+      "day": "2025-10-03",
+      "type": "talk",
+      "title": "Monolithes vs. Microservices : choisir la bonne architecture pour votre projet",
+      "speakers": ["Cédric Clavier — Groupe SII"],
+      "feedbackFrom": [],
+      "summary": "- Le monolithe promet **rapidité et simplicité** (un déploiement, transactions simples) mais vieillit mal : dépendances entremêlées, redéploiement et retest de tout, scalabilité grossière.\n- Les microservices promettent une **scalabilité fine et dynamique**, des déploiements fractionnés avec rollback, l'isolation des pannes (*« un peu douteuse »*) et une innovation facilitée, au prix d'un orchestrateur, d'un broker, d'observabilité, de **factures cloud difficiles à prévoir** (FinOps) et de cohérence des données à gérer.\n- Critères de choix : taille de l'équipe (*« beaucoup de temps à écrire du YAML »* si on est deux), délai avant mise en prod, diversité des domaines métier (DDD), profils de charge, SLA critiques.\n- Mises en garde : les **nanoservices**, et la confusion entre microservices et cloud.\n- Conseil central : **un monolithe bien écrit** (couches séparées, pas de god objects, services stateless) vit mieux et se découpe ensuite via le **strangler fig** ; *« on peut faire des microservices absolument dégueulasses »*.\n- En Q&A : le polyglottisme est un atout, mais à doser dans une petite structure ; la coordination entre équipes passe par le **versioning d'API**.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "KzksOfS6yH8",
+        "title": "Monolithes vs. Microservices : choisir la bonne architecture pour votre projet – Cédric Clavier",
+        "publishedAt": "2025-12-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "holacratie-et-gouvernance-distribuee-chez-eco-compteur",
+      "day": "2025-10-03",
+      "type": "lightning",
+      "title": "Holacratie & gouvernance distribuée chez Eco-Compteur",
+      "speakers": ["Christophe Milon — Eco-Compteur (Quanteo Group)"],
+      "feedbackFrom": [],
+      "summary": "- Session inscrite au programme comme « Quicky : découverte d'Eco-Compteur » par le fondateur du sponsor (comptage de piétons et cyclistes, 220 personnes, 55 pays selon le speaker).\n- Critique de l'**organigramme pyramidal**, hérité du militaire : il décrit mal les personnes aux fonctions multiples et toute réorganisation y devient un déplacement de personnes.\n- L'**holacratie** (Brian Robertson), pratiquée depuis près de dix ans : des **cercles** et des **rôles** avec raison d'être et redevabilités, visibles de tous dans un logiciel (exemple d'un directeur financier qui tient 46 rôles, dont DPO ou pédagogie financière).\n- La gouvernance évolue en réunions codifiées où un **facilitateur, distinct du leader de cercle**, garantit que chaque proposition va au bout.\n- Le plus dur pour le fondateur : **s'interdire de se mêler des rôles des autres** (*« au début, c'était l'enfer »*) ; ceux qui naviguaient bien dans le flou sont moins à l'aise dans cette transparence.\n- En Q&A : décision et attribution des rôles, charge régulée par le leader de cercle, salariés actionnaires dans le cadre de la transmission de l'entreprise.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "tJPS_zDv6cQ",
+        "title": "Holacratie & gouvernance distribuée chez Eco-Compteur – Christophe Milon",
+        "publishedAt": "2025-12-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ddd-tactique-avec-typescript",
+      "day": "2025-10-03",
+      "type": "talk",
+      "title": "DDD tactique avec TypeScript",
+      "speakers": ["Pierrick Blons — Payfit"],
+      "feedbackFrom": [],
+      "summary": "- Rappel : le DDD est **d'abord stratégique** (comprendre le bon problème avec les experts métier) avant d'être tactique ; le Blue Book d'Eric Evans peut se lire en commençant par la fin.\n- Cas fil rouge : un SaaS de satisfaction client, modélisé en **domain storytelling** puis en **event storming** pour aligner le langage qui doit apparaître dans le code.\n- Refactoring en live d'un contrôleur NestJS/Prisma défensif : **types brandés** (un email n'est pas une URI), **smart constructors** pour les value types (une note entre 1 et 10), découplage du body HTTP.\n- Entités et **unions discriminées** (enquête planifiée, démarrée, terminée) pour que seul un état valide accepte un feedback ; agrégat et repository garants de la cohérence ; **domaine pur**, séparé de l'infrastructure.\n- Message : *« faites du compilateur un allié »*, il donne un feedback plus rapide qu'un test unitaire. La démo a débordé et Copilot a parfois anticipé ou dérapé à l'écran.\n- Le speaker renvoie à ses articles Medium sur le sujet (primitives, value types).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "L8HUvUqwShI",
+        "title": "DDD tactique avec TypeScript – Pierrick Blons",
+        "publishedAt": "2025-12-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "presentation-ada-lovelace",
+      "day": "2025-10-03",
+      "type": "other",
+      "title": "Présentation du challenge Ada Lovelace",
+      "speakers": ["Organisatrices et jury du challenge Ada Lovelace (Orange, ENSSAT)"],
+      "feedbackFrom": [],
+      "summary": "- Constat posé sur scène : peu de femmes dans la salle, et de moins en moins de lycéennes vers les filières scientifiques et informatiques depuis la réforme du bac.\n- Le **challenge Ada Lovelace**, lancé à Lannion vers 2016 : deux jours où des lycéennes développent un site web après une dizaine d'heures de cours, coachées par des étudiantes de l'IUT et de l'ENSSAT, jugées par des femmes de l'industrie locale.\n- Extension à Vannes et Quimper ; les lauréates se voient offrir un **stage d'une semaine chez Orange** (Arduino, App Inventor), et une ancienne participante, aujourd'hui apprentie ingénieure, témoigne que ça l'a confortée dans son choix.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "4l5PEjqyeMM",
+        "title": "Présentation Ada Lovelace",
+        "publishedAt": "2025-12-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "troubleshooting-en-production",
+      "day": "2025-10-03",
+      "type": "talk",
+      "title": "Troubleshooting en production : quand chaque incident devient une enquête !",
+      "speakers": ["Sébastien Ferrer — OVHcloud"],
+      "feedbackFrom": [],
+      "summary": "- Récit d'un développeur qui n'avait *« jamais touché de prod »* en dix ans et rejoint une équipe qui maintient **50 à 60 projets** : comment se forger une intuition sur des systèmes qu'on ne connaît pas.\n- Le **run** comme astreinte de jour : morning check très visuel, tri humain des tickets et des priorités (P5 à P1), métriques **TTA** et **time to restore service**, et rôle de **point de contact** de l'équipe.\n- Deux approches de root cause analysis : par l'historique (rapide mais trompeuse) et le **drill down** (rigoureux, formateur). Mais d'abord : **restaurer le service**, l'enquête peut attendre le lendemain.\n- Trois cas vécus : sortir deux pods malades du load balancer à 3 h du matin, relever un rate limiter face à un client trop gourmand, découvrir grâce au champ `pod_id` qu'un pod était tombé ; puis post-mortem et **5 Why**.\n- Bonnes pratiques : *« développez vos applications comme si vous alliez les maintenir, parce que c'est le cas »* ; **logs à champs structurés** (ni manque ni bruit), alertes Prometheus, **error wrapping** en Go, packages communs, linter.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "6mXvcaVCJis",
+        "title": "Troubleshooting en production : quand chaque incident devient une enquête – Sébastien Ferrer",
+        "publishedAt": "2025-12-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ecrivez-vous-du-code-sale",
+      "day": "2025-10-03",
+      "type": "talk",
+      "title": "Écrivez-vous du code sale ?",
+      "speakers": ["Frédéric Bouchery — CCM Benchmark"],
+      "feedbackFrom": [],
+      "summary": "- Conférence de clôture, ouverte sur une expérience de **vibe coding** : une app de quiz générée par agent qui a brûlé ses crédits d'IA, accumulé code mort et duplications, et que le speaker a dû reprendre à la main ; il cite des études (non sourcées sur scène) sur plus de bugs et une maintenabilité dégradée.\n- Thèse : **« vous êtes votre futur legacy »** ; la propreté est relative (langage, époque, équipe) alors que le **sale** fait davantage consensus, d'où l'idée de le traquer plutôt que de viser un code propre dogmatique.\n- Symptômes : un code qui ne fait pas ce qu'il dit (un `fetch` qui renvoie void, un `exists` qui renvoie une entité), les commentaires qui compensent, les noms courts ou surchargés, les méthodes trop longues (**subitisation**), les god classes, les paramètres `options`, les booléens à trois états, les négations.\n- Remèdes : early return, suppression des `else`, **WET plutôt que DRY**, builders, analyse statique (PHPStan) et **design testing** pour tester l'écriture du code ; attention au **code zombie**.\n- Nuance revendiquée : *« je préfère un code pas trop sale qui fonctionne qu'un code propre qui fonctionne pas »* ; le quick and dirty peut être rationnel au démarrage.\n- En Q&A : le goto a des usages légitimes (noyau Linux, code compilé de Symfony) ; l'IA ne remplacera pas les développeurs tant qu'elle ne sait pas maintenir ce qu'elle génère.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "fQPaAPiT62o",
+        "title": "Écrivez-vous du code sale ? – Frédéric Bouchery",
+        "publishedAt": "2025-12-14",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Mot de clôture (organisateurs, non filmé)"
+  ],
+  "sources": [
+    { "label": "Programme officiel (archives Code d'Armor)", "url": "https://devfest.codedarmor.fr/archives/2025/devfest/" },
+    { "label": "Appel à conférences (Conference Hall)", "url": "https://conference-hall.io/devfest-perros-guirec-2025" },
+    { "label": "Playlist YouTube DevFest Perros-Guirec 2025 (chaîne Code d'Armor)", "url": "https://www.youtube.com/playlist?list=PLUVP9Ho1VmTn5CS80jst-a35EPsiYS49s" },
+    { "label": "Annonce de l'événement (Technopole Anticipa)", "url": "https://www.technopole-anticipa.com/le-devfest-de-perros-guirec-revient-en-2025-au-palais-des-congres/" },
+    { "label": "Pierrick Blons, « Primitives: Tactical DDD with TypeScript » (speaker)", "url": "https://medium.com/@pierrickblons/primitives-tactical-ddd-with-typescript-345e78d9feb7" },
+    { "label": "Pierrick Blons, « Value types: Tactical DDD with TypeScript (part 2) » (speaker)", "url": "https://medium.com/@pierrickblons/value-types-tactical-ddd-with-typescript-part-2-861bbeffa71a" },
+    { "label": "Blog de Sébastien Ferrer, articles « Run! » et « Be a resilient developer » (speaker)", "url": "https://blog.kimi.ovh/" },
+    { "label": "Posts LinkedIn : aucun retour participant trouvé (seulement l'annonce de billetterie de Code d'Armor)", "url": "https://fr.linkedin.com/posts/code-d-armor_la-billetterie-du-devfest-perros-guirec-activity-7351247927614267392-Jt41" }
+  ]
 }

@@ -7,6 +7,211 @@
   "city": "Paris",
   "venue": "Théâtre de Paris",
   "url": "https://2025.swiftconnection.io",
-  "status": "pending",
-  "sessions": []
+  "programUrl": "https://2025.swiftconnection.io",
+  "dateConfidence": "ok",
+  "edition": "9e édition (ex-FrenchKit)",
+  "note": "Conférence iOS / Swift en anglais, 1,5 jour (lundi 6 octobre après-midi, mardi 7 octobre) au Théâtre de Paris (15 rue Blanche, Paris 9e) : 22 sessions (talks de 35 min, lightning talks de 15 min, keynote de clôture de Peter Steinberger), 3 « classrooms » gratuites de 75 min (30 places) et une soirée. Sponsors : Guardsquare (gold), Coyote et leboncoin (silver). Organisée par Tech Connection, avec un Speaker Inclusion Programme.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-09-29",
+  "revisit": "Corpus participant mince : un seul compte-rendu (blog Ippon, 4 auteurs, 7 talks), une dizaine de posts Mastodon et un post LinkedIn d'entreprise sans contenu ; aucun post LinkedIn individuel, thread Bluesky/X ni support de slides lu. Transcript de Matt Massicotte non récupéré (YouTube HTTP 429) ; transcripts non récupérés pour les autres talks sans retour.",
+  "corpus": "Programme officiel (site 2025.swiftconnection.io), 22 vidéos officielles de la chaîne YouTube Tech Connection (publiées le 23/10/2025) dont **11 transcripts** lus (keynote de clôture et talks les plus vus), le compte-rendu du blog Ippon (15/10/2025, 4 auteurs, 7 talks), ~10 posts Mastodon (#SwiftConnection, 3 au 13/10/2025) et un post LinkedIn de RATP Smart Systems. 9 recherches web.",
+  "limits": "Corpus lu à J+1 an, mais très peu de retours participants publics : l'essentiel des résumés vient des transcripts (ce qui a été dit sur scène) et d'un seul blog d'ESN. Les retours Mastodon sont brefs et viennent en partie de speakers ou de l'équipe (signalés). Aucun post LinkedIn individuel ni thread X/Bluesky n'a pu être lu (X fermé sans compte, recherche Bluesky non accessible) ; le chiffre de 450 participants (« biggest conference ever ») n'apparaît que dans un extrait de résultat de recherche attribué aux organisateurs, non vérifié à la source. Les compteurs de vues YouTube (8 200 pour Steinberger, 2 900 pour Ricouard, 2 000 pour Rambo, au 29/09/2026) servent d'indicateur d'intérêt, pas de retour.",
+  "tldr": "Swift Connection 2025 s'est jouée entre **deux nouveautés d'Apple décortiquées (Liquid Glass, Foundation Models)** et **l'irruption du développement agentique** jusque dans la keynote de clôture, avec en fil rouge un conseil très pragmatique : **s'appuyer d'abord sur ce que la plateforme fournit** (composants natifs, accessibilité, SDK) avant de réinventer.",
+  "keyTakeaways": [
+    "Adopter Liquid Glass d'abord par les composants système (barres, toolbars, recherche) en compilant avec Xcode 26 ; ne personnaliser qu'avec parcimonie, l'API ayant changé à chaque bêta (Caron).",
+    "Pour l'accessibilité, suivre l'ordre : composant Apple, puis composant Apple personnalisé, puis composant 100 % custom ; `accessibilityRepresentation` permet de garder un visuel maison avec le comportement VoiceOver d'un contrôle natif (Freiband).",
+    "Tester les modèles on-device (Foundation Models) pour les petites tâches : gratuits, privés, hors ligne ; structurer la sortie avec `@Generable` et dire explicitement au modèle d'utiliser ses outils (Logan).",
+    "Avec un agent de code, écrire les contraintes du projet (version minimale d'iOS, conventions, docs de frameworks) dans des fichiers Markdown de contexte, et limiter les MCP qui saturent la fenêtre de contexte (Ricouard, Steinberger).",
+    "Modulariser l'app pour pouvoir ne lancer que les tests impactés : ~50 % de temps de CI en moins avec un outil open source de selective testing (Gerasymenko).",
+    "Savoir ce que contient réellement le bundle livré (métadonnées Objective-C/Swift, Info.plist, profil de signature) et définir son modèle d'attaquant avant d'ajouter des protections (Hopstock).",
+    "Lancer des erreurs pour signaler une hypothèse non tenue, avec un message utilisateur explicite et un contexte de chaîne d'erreurs pour le debug, plutôt que retourner `nil` (Gündüz).",
+    "Concevoir les composants SwiftUI comme Apple : options via modificateurs et environnement, sorties via préférences, et regarder d'abord le site d'appel (Durand)."
+  ],
+  "sessions": [
+    {
+      "id": "the-science-of-habit-forming-apps",
+      "day": "2025-10-06",
+      "type": "talk",
+      "title": "The Science of Habit-Forming Apps: Designing for Engagement",
+      "speakers": ["Tamia James — Women In Design (co-chair), UX designer"],
+      "feedbackFrom": ["Dylan Le Hir (blog Ippon)"],
+      "summary": "- Distinction entre **dark patterns** (paiements imposés, renouvellements automatiques, désabonnement volontairement compliqué) et **engagement sain**, présentée à travers le **Hook Model** de Nir Eyal : déclencheur, action, récompense, investissement.\n- Exemples cités : les notifications de Duolingo qui entretiennent les séries, le système de récompense d'Instagram.\n- Message : créer des habitudes positives qui respectent l'utilisateur plutôt que d'exploiter ses faiblesses, en mariant technique et psychologie.\n- Retour (Ippon) : pédagogie très claire, mais **la typologie des dark patterns n'est qu'effleurée**.",
+      "summarySources": ["blog", "program"],
+      "video": { "youtubeId": "fZ_Vr1TjXBo", "title": "Swift Connection 2025 - Tamia James - The Science of Habit-Forming Apps: Designing for Engagement", "publishedAt": "2025-10-23", "transcript": false }
+    },
+    {
+      "id": "hello-foundation-models",
+      "day": "2025-10-06",
+      "type": "talk",
+      "title": "Hello Foundation Models",
+      "speakers": ["Alex Logan — Applause"],
+      "feedbackFrom": ["Dylan Le Hir (blog Ippon)"],
+      "summary": "- Sur scène : un projet de **coach de course à pied IA**, abandonné car trop cher en appels OpenAI, relancé en **deux minutes** avec Foundation Models. Le framework est **gratuit, privé par défaut, hors ligne** et rapide sur un iPhone récent.\n- Le minimum : une `LanguageModelSession` avec des instructions, plus **vérifier la disponibilité** (Apple Intelligence activée, modèle téléchargé). Réponses en streaming, **guided generation** avec `@Generable` et `@Guide` (aussi simple qu'un `Codable`), et **tools** pour brancher le modèle sur des API.\n- Piège relevé : sans consigne explicite d'utiliser un tool, le modèle **invente** (des pilotes de F1 retraités donnés en tête du championnat).\n- Q&A : fixer la température pour stabiliser les réponses, générer en anglais puis passer par le framework Translation, contourner les **guardrails** trop sensibles (une recommandation du Moulin Rouge censurée).\n- Retour (Ippon) : sujet entièrement nouveau et **potentiel immense**, mais démo basique ; on aurait aimé des cas d'usage plus professionnels.",
+      "summarySources": ["transcript", "blog"],
+      "video": { "youtubeId": "VmkmGjykEBM", "title": "Swift Connection 2025 - Alex Logan - Hello Foundation Models", "publishedAt": "2025-10-23", "transcript": true }
+    },
+    {
+      "id": "designing-for-the-post-screen-era",
+      "day": "2025-10-06",
+      "type": "talk",
+      "title": "Designing for the Post-Screen Era",
+      "speakers": ["Maxim Cramer — MENNENIA"],
+      "feedbackFrom": ["Dan Perocheau (blog Ippon)", "Ben Freiband (référence dans son talk, speaker)"],
+      "summary": "- Les interfaces de l'ère « post-écran » dépassent l'écran visible : le vrai défi n'est pas la sophistication technique mais des systèmes **compréhensibles et dignes de confiance**, qui savent s'effacer.\n- Référence à Don Norman : **si une porte a besoin d'un panneau Pousser/Tirer, le design a échoué**. L'IA doit devenir un partenaire adaptatif et conscient du contexte.\n- Contre-exemple cité : un iPhone qui détecte une séance de vélo et demande une validation par hochement de tête, **dangereux et hors contexte**.\n- Retour (Ippon) : talk jugé clair, structuré et riche en exemples, qui a poussé un développeur plutôt tourné vers le « comment » à réfléchir au « pourquoi » ; questions ouvertes sur l'éthique, le contrôle utilisateur et le rôle des App Intents. Ben Freiband a repris la référence à Don Norman le lendemain.",
+      "summarySources": ["blog"],
+      "video": { "youtubeId": "0tZKTcDfU4o", "title": "Swift Connection 2025 - Maxim Cramer - Designing for the Post-Screen Era", "publishedAt": "2025-10-23", "transcript": false }
+    },
+    {
+      "id": "the-technical-side-of-liquid-glass",
+      "day": "2025-10-06",
+      "type": "talk",
+      "title": "The Technical Side of Liquid Glass",
+      "speakers": ["Mikaela Caron — développeuse iOS indépendante, Swift Ecosystem Workgroup"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène : Liquid Glass reçoit des avis partagés ; la clé `UIDesignRequiresCompatibility` permet de le désactiver, mais la doc la présente comme **temporaire**.\n- **Le plus simple : les composants système**. Barres, sheets, popovers et contrôles reçoivent Liquid Glass dès la compilation avec Xcode 26 ; c'est la **navigation** qui porte le verre, pas le contenu.\n- Tour des nouvelles API : `backgroundExtensionEffect`, `tabBarMinimizeBehavior(.onScrollDown)`, `tabViewBottomAccessory`, `ToolbarSpacer`, `sharedBackgroundVisibility(.hidden)` (utilisé quasi uniquement dans Livres), recherche désormais en bas sur iPhone, rôles de bouton (`.confirm`, `.cancel`, `.close`), styles `.glass` et `.glassProminent`, `GlassEffectContainer`, `glassEffectID`, `.interactive()`.\n- Conseil pragmatique : l'API **a changé à chaque bêta**, donc désactiver ou n'activer que les toolbars, le signal le plus visible d'une app « à jour ». Pour garder d'anciennes versions d'iOS, un modificateur de compatibilité, au risque de casser l'identité des vues et les animations.\n- Fil rouge humoristique : « demandez à Tamia » (la designer du talk précédent) ; pour des exemples, **copier les apps d'Apple**.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "R1DdKDa-gzs", "title": "Swift Connection 2025 - Mikaela Caron - The Technical Side of Liquid Glass", "publishedAt": "2025-10-23", "transcript": true }
+    },
+    {
+      "id": "inside-liquid-glass-how-ios-26-synthesizes-refractive-ui",
+      "day": "2025-10-06",
+      "type": "talk",
+      "title": "Inside Liquid Glass: How iOS 26 Synthesizes Refractive UI",
+      "speakers": ["Gui Rambo — développeur Mac/iOS (AirBuddy, VirtualBuddy), chercheur en sécurité"],
+      "feedbackFrom": ["@tuparev (Mastodon, un de ses talks préférés)"],
+      "summary": "- Sur scène : Liquid Glass comme prétexte pour parler de **Core Animation**, et de ses **API privées** (à but pédagogique, pas à utiliser). Rambo admet d'emblée la controverse sur la lisibilité.\n- Briques anciennes : `CABackdropLayer` (échantillonne ce qui est derrière, base des flous depuis iOS 7), `CAFilter` (filtres temps réel sur GPU), `CAPortalLayer` (copie d'un calque ailleurs).\n- Nouveau dans iOS 26 : les **signed distance fields** (SDF) via `CASDFLayer` et `CASDFElementLayer`, qui génèrent une carte de normales ; le filtre **glass background** (une cinquantaine de paramètres) produit la réfraction, le lissage donne l'effet « blobby » de fusion.\n- Démontage du bouton toggle : déplacement, réfraction, flou, voile, ombre teintée, filtre **glass foreground** (aberration chromatique), reflet spéculaire et bord sombre. **Liquid Glass n'est pas un effet mais un empilement**.\n- Q&A : les ingénieurs d'Apple passent surtout par une **API SwiftUI privée** ; reproduire l'effet sous iOS 26 est possible avec un shader Metal ; coût en performance et batterie supérieur au flou « frosted » classique.\n- Rendu vidéo 4K des arborescences de calques réalisé avec un outillage maison. Un des talks les plus vus de l'édition (~2 000 vues).",
+      "summarySources": ["transcript", "feedback"],
+      "video": { "youtubeId": "oj20mb8c0yI", "title": "Swift Connection 2025 - Gui Rambo - Inside Liquid Glass: How iOS 26 Synthesizes Refractive UI", "publishedAt": "2025-10-23", "transcript": true }
+    },
+    {
+      "id": "live-activities-notifications-that-users-actually-enjoy",
+      "day": "2025-10-06",
+      "type": "lightning",
+      "title": "Live Activities - Notifications That Users Actually Enjoy",
+      "speakers": ["Maxime de Chalendar — Yubo"],
+      "feedbackFrom": ["Vincent Blanchet (blog Ippon)"],
+      "summary": "- Les Live Activities sont **sous-exploitées** : elles conviennent à toute fonctionnalité temporelle ou événementielle, pas seulement au VTC ou à la livraison.\n- Architecture : **ActivityKit** gère la logique et le cycle de vie, **WidgetKit** le rendu ; extension possible à l'Apple Watch.\n- Exemples créatifs cités : Lumy (cycle solaire), Flighty (vols en temps réel), Pixel Pals (compagnon dans la Dynamic Island), Tinder (compte à rebours des boosts).\n- Retour (Ippon) : talk techniquement solide et sans excès ; **barrière d'entrée faible, gain UX élevé**, et un avantage concurrentiel tant que peu d'apps s'en servent. Recommandation : auditer ses apps pour y trouver des cas d'usage.",
+      "summarySources": ["blog"],
+      "video": { "youtubeId": "WZUZlD2fW68", "title": "Swift Connection 2025 - Maxime de Chalendar - Live Activities - Notifications That Users Actually Enjoy", "publishedAt": "2025-10-23", "transcript": false }
+    },
+    {
+      "id": "swift-on-linux-on-mac",
+      "day": "2025-10-06",
+      "type": "lightning",
+      "title": "Swift on Linux on Mac",
+      "speakers": ["Marcin Krzyzanowski — créateur de CryptoSwift, Notepad.exe"],
+      "feedbackFrom": ["@tuparev (Mastodon, un de ses talks préférés)"],
+      "summary": "- Sur scène : un atelier de deux heures condensé en dix minutes. Comment écrire du Swift sur Mac et le faire tourner sous Linux **sans Docker, sans SSH**.\n- Le compilateur est le même, **seul le SDK change** ; SwiftPM fait le gros du travail. Le **Static Linux SDK** produit sur Mac un binaire ELF autonome qui tourne sur n'importe quelle distribution.\n- Pour l'exécuter : le framework **Containerization** d'Apple (open source, en Swift), images OCI, **une micro-VM par conteneur** qui démarre en moins d'une seconde, sans démon, gratuit (contre Docker Desktop, gourmand et parfois payant).\n- Démo dans son éditeur Notepad.exe, code Mac et Linux côte à côte. Q&A : debug via LLDB distant ; compiler et tester sur Mac ne suffit pas, car Foundation et le runtime diffèrent sous Linux.",
+      "summarySources": ["transcript", "feedback"],
+      "video": { "youtubeId": "mFaZ5_nrhQw", "title": "Swift Connection 2025 - Marcin Krzyzanowski - Swift on Linux on Mac", "publishedAt": "2025-10-23", "transcript": true }
+    },
+    {
+      "id": "building-ios-apps-without-xcode-using-cursor-claude-code-and",
+      "day": "2025-10-07",
+      "type": "talk",
+      "title": "Building iOS Apps Without Xcode, Using Cursor, Claude Code and XcodeBuildMCP",
+      "speakers": ["Thomas Ricouard — Medium"],
+      "feedbackFrom": ["Vincent Blanchet (blog Ippon)"],
+      "summary": "- Sur scène : **live coding** d'une app compteur sans ouvrir Xcode. Cursor (extension SweetPad pour builder et lancer, complétion « tab »), **Claude Code** branché sur **XcodeBuildMCP** qui crée le projet, lance le simulateur, **tape sur les boutons et prend des captures** pour vérifier son travail.\n- Enchaînement : correction d'un bug de persistance (UserDefaults), puis **simplification demandée** vers `@AppStorage`, embellissement « laisse parler ta créativité » (dégradés, confettis), refonte avec un onglet Charts.\n- Distinction assumée : le **vibe coding** pour explorer des idées, l'**assistant guidé** (contraintes, relecture) pour un code qu'on maintiendra dix ans.\n- Q&A : écrire dans un fichier de contexte (`CLAUDE.md`) la version minimale d'iOS, car les modèles sont **plus à l'aise avec les anciennes API** ; des fichiers Markdown par framework (Swift Testing…) ; le debug reste meilleur dans Xcode ; passer aux groupes basés sur les dossiers pour éviter de casser le `.pbxproj`. Chez Medium, l'app historique reste surtout travaillée dans Xcode, une nouvelle app est outillée « agents » dès le départ.\n- Retour (Ippon) : un live coding **dynamique et risqué** qui montre clairement la puissance des outils ; il faut vite les maîtriser, car ils changent la vitesse de développement. Deuxième vidéo la plus vue (~2 900 vues).",
+      "summarySources": ["transcript", "blog"],
+      "video": { "youtubeId": "V7TNvf3fWTw", "title": "Swift Connection 2025 - Thomas Ricouard - Building iOS Apps Without Xcode, Using Cursor, Claude Code and XcodeBuildMCP", "publishedAt": "2025-10-23", "transcript": true }
+    },
+    {
+      "id": "what-really-happens-to-your-ios-app-during-compilation",
+      "day": "2025-10-07",
+      "type": "talk",
+      "title": "What Really Happens to Your iOS App During Compilation - and What It Exposes",
+      "speakers": ["Samuel Hopstock — Guardsquare"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène : on protège jalousement le code source, mais **personne ne sait ce que contient le bundle livré**. Tour du contenu : Info.plist (indices comme `NSAllowsArbitraryLoads`, URL schemes), `embedded.mobileprovision`, frameworks, binaire Mach-O et ses segments.\n- Les dSYM restent privés, mais **les métadonnées Objective-C et Swift sont dans le binaire** (noms de classes, propriétés, sélecteurs), indispensables au runtime et lisibles avec `ipsw`.\n- Techniques d'altération : hooking via la **GOT**, inline hooking (type Frida), swizzling Objective-C, **reconditionnement de l'IPA** puis re-signature (apps « premium » crackées, YouTube sans pub).\n- Parades : contrôles d'intégrité et de signature **discrets et imbriqués**, monitoring plutôt que crash systématique, et surtout du code sûr : suivre **OWASP MASVS/MASTG** (plus adaptés au mobile que le Top 10 web), intégrer l'analyse en CI.\n- À noter : talk du sponsor gold (Guardsquare) ; les parades renvoient à son offre.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "A8rS6APV6PA", "title": "Swift Connection 2025 - Samuel Hopstock - What Really Happens to Your iOS App During Compilation - and What It Exposes", "publishedAt": "2025-10-23", "transcript": true }
+    },
+    {
+      "id": "streamlining-ios-development-with-selective-testing",
+      "day": "2025-10-07",
+      "type": "lightning",
+      "title": "Streamlining iOS Development with Selective Testing",
+      "speakers": ["Mike Gerasymenko — Delivery Hero"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène : un talk **refusé au moins cinq fois** ailleurs, accepté ici en format court. Principe : à partir du diff git et de la structure du projet (pbxproj, `Package.swift`), ne lancer que les tests des modules impactés.\n- Outil open source **XcodeSelectiveTesting** : **~50 % de temps de CI en moins** chez Delivery Hero ; XCTest, UI tests, Swift Testing, projets Xcode, SPM, Linux.\n- Effets de bord : la **couverture de code** devient trompeuse (à mesurer par module) et des **tests flaky** peuvent passer entre les mailles.\n- Alternative : **Tuist** (payant, cache de résultats côté serveur) : de 30 à 8 minutes par PR. Prérequis commun : la **modularisation**, qui aide aussi l'IA à raisonner sur un contexte réduit. Q&A : un mode « turbo » qui ignore les dépendants.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "U1fJQRbq-TY", "title": "Swift Connection 2025 - Mike Gerasymenko - Streamlining iOS Development with Selective Testing", "publishedAt": "2025-10-23", "transcript": true }
+    },
+    {
+      "id": "a-talk-two-ways",
+      "day": "2025-10-07",
+      "type": "talk",
+      "title": "A Talk... Two Ways",
+      "speakers": ["Josh Holtz — RevenueCat, fastlane", "Zach Brass — UnderdogDevs"],
+      "feedbackFrom": ["Dan Perocheau (blog Ippon)"],
+      "summary": "- Un talk « méta » sur la manière de présenter : **sur-préparation méthodique** (script mémorisé, pauses planifiées, Zach) contre **spontanéité** (slides de dernière minute, improvisation, Josh).\n- Dispositif : chacun présente les slides de l'autre **dans le style opposé**, ce qui révèle les forces de chaque approche. Pas de bonne méthode unique : rythme, intention envers le public et connexion comptent plus que le format.\n- Retour (Ippon) : peu de Swift, mais une valeur pédagogique qui s'applique aux présentations internes comme aux conférences ; la complicité des deux speakers a tenu l'attention. Ben Freiband y fait référence dans son propre talk.",
+      "summarySources": ["blog"],
+      "video": { "youtubeId": "3uZHL-Oco9I", "title": "Swift Connection 2025 - Josh Holtz & Zach Brass - A Talk... Two Ways", "publishedAt": "2025-10-23", "transcript": false }
+    },
+    {
+      "id": "what-people-get-wrong-with-accessibility",
+      "day": "2025-10-07",
+      "type": "talk",
+      "title": "What People Get Wrong with Accessibility",
+      "speakers": ["Ben Freiband — Duo Security (Duo Mobile), CommunityKit"],
+      "feedbackFrom": ["Olivier Geffroy (blog Ippon)"],
+      "summary": "- Sur scène : REX d'une petite équipe iOS (Duo Mobile, ~4,85 M d'utilisateurs mensuels, clients publics et académiques exigeants). Une app accessible n'est pas seulement une app où l'on **peut** agir, mais où l'on **découvre** ce qu'on peut faire : **affordances et signifiants** (Don Norman), valables pour tous.\n- Stratégie en trois temps : **composant Apple**, sinon **composant Apple personnalisé**, et seulement ensuite du 100 % custom.\n- Démo VoiceOver sur une fausse « Apple Store » (de pommes) : `GroupBox` au lieu d'un titre marqué à la main ; **`accessibilityRepresentation`** pour donner à des boutons en forme de pomme le comportement d'un `Stepper` natif ; `accessibilityHidden` pour l'image décorative ; `accessibilityLabel` pour neutraliser les emojis. Mention de l'**European Accessibility Act**.\n- Retour (Ippon) : **accessibilité et utilisabilité vont de pair** ; l'accessibilité est présentée comme un prolongement de la clarté du design, pas comme un coût.",
+      "summarySources": ["transcript", "blog"],
+      "video": { "youtubeId": "6iZ_9haeiyI", "title": "Swift Connection 2025 - Ben Freiband - What People Get Wrong with Accessibility", "publishedAt": "2025-10-23", "transcript": true }
+    },
+    {
+      "id": "crafting-reusable-swiftui-components-the-same-way-apple-does",
+      "day": "2025-10-07",
+      "type": "lightning",
+      "title": "Crafting Reusable SwiftUI Components the Same Way Apple Does!",
+      "speakers": ["Thomas Durand — développeur indépendant (ButtonKit)"],
+      "feedbackFrom": ["@tuparev (Mastodon, un de ses talks préférés)"],
+      "summary": "- Sur scène : leçons tirées de **ButtonKit** (boutons asynchrones avec chargement, erreurs et progression). Partir du **site d'appel** et minimiser entrées et sorties d'un composant.\n- Entrées optionnelles : pas une cascade de paramètres par défaut, mais l'**environnement** exposé par un **modificateur de vue**, comme les API d'Apple. Pour un contrôle, un `Binding`, et respecter `controlSize` ou `disabled`.\n- Sorties en lecture seule : un callback sous forme de modificateur, implémenté par **PreferenceKey** (l'environnement écraserait les modificateurs empilés), puis un **« reader »** à la manière de `GeometryReader`.\n- Q&A : tester son API en la poussant dans des usages improbables (recréer le bouton de téléchargement de l'App Store avec ButtonKit).",
+      "summarySources": ["transcript", "feedback"],
+      "video": { "youtubeId": "eS1DIEnfXvk", "title": "Swift Connection 2025 - Thomas Durand - Crafting Reusable SwiftUI Components the Same Way Apple Does", "publishedAt": "2025-10-23", "transcript": true }
+    },
+    {
+      "id": "better-error-handling-in-swift-from-obj-c-legacy-to-swift-6",
+      "day": "2025-10-07",
+      "type": "talk",
+      "title": "Better Error Handling in Swift: From Obj-C Legacy to Swift 6 Power",
+      "speakers": ["Cihat Gündüz — développeur indépendant (TranslateKit, ErrorKit)"],
+      "feedbackFrom": ["@tuparev (Mastodon, un de ses talks préférés)"],
+      "summary": "- Sur scène : `try?` et `return nil`, c'est de l'**« error ignoring »** ; `print(error)`, de l'« error debugging ». Il faut **lancer une erreur dès qu'une hypothèse ne tient pas**.\n- Critique du protocole `Error` (vide, `localizedDescription` qui n'appelle pas la surcharge, héritage `NSError`) et de `LocalizedError` (quatre propriétés optionnelles ambiguës).\n- Proposition : un protocole **`Throwable`** avec un `userFriendlyMessage` obligatoire. Les **typed throws** de Swift 6 permettent un `switch` exhaustif mais mènent à l'**« error nesting hell »** ; un protocole `Catching` (cas `caught`) et une `errorChainDescription` restituent la chaîne d'appels.\n- Le tout dans le package open source **ErrorKit** (MIT) : mapping de messages système cryptiques, types d'erreurs prêts à l'emploi, compositeur de mail SwiftUI avec pièces jointes de logs. Rappel : rendre les messages d'erreur **sélectionnables**.\n- Q&A : partir d'un package pour prouver l'idée avant un pitch sur les forums Swift.",
+      "summarySources": ["transcript", "feedback"],
+      "video": { "youtubeId": "SEwI6vjC1Bw", "title": "Swift Connection 2025 - Cihat Gündüz - Better Error Handling in Swift: From Obj-C Legacy to Swift 6 Power", "publishedAt": "2025-10-23", "transcript": true }
+    },
+    {
+      "id": "you-can-just-do-things",
+      "day": "2025-10-07",
+      "type": "keynote",
+      "title": "You Can Just Do Things",
+      "speakers": ["Peter Steinberger — fondateur de PSPDFKit"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène : keynote de clôture sans code, venue **« réveiller »** une communauté iOS encore sceptique face à l'IA. Récit personnel : burn-out après la vente de PSPDFKit (2021), puis **l'étincelle retrouvée en avril 2025** grâce aux agents de code.\n- Constats chiffrés (repris de sources tierces) : progression de SWE-bench Verified (de ~20 % à 82 % dans l'année), baisse du prix des tokens, un quart de la promo W25 de Y Combinator avec 95 % de code généré, une étude sur 300 développeurs (-31 % de temps de revue de PR). Lecture assumée d'une **possible bulle** d'investissements circulaires, sans que cela change la donne.\n- **« Vibe coding » est devenu pour lui presque une insulte** : il préfère **« agentic engineering »**, une compétence qui s'apprend comme la salle de sport ; il faut encore lire le code, debugger et penser l'architecture.\n- Conseils : nouveau contexte par tâche, demander des tests dans le contexte construit, **se méfier des MCP** (celui de GitHub coûterait ~50 000 tokens), Markdown dans git pour la doc. Son projet : 300 000 lignes, **99,8 % générées**.\n- Moment « hérétique » assumé devant une conférence Swift : son app iOS est en **Expo / React Native**, son app Mac en **Tauri** ; le langage compte moins que l'écosystème et les données d'entraînement. Il évoque aussi le côté addictif (« crack cocaine », son projet VibeTunnel arrêté pour cette raison).\n- Appel final : lancer un side project avec un agent, et pour les dirigeants **rendre l'usage de l'IA obligatoire** (exemple de Shopify). Vidéo de loin la plus vue de l'édition (~8 200 vues).",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "z2IDQbNOS5s", "title": "Swift Connection 2025 - Peter Steinberger - You Can Just Do Things", "publishedAt": "2025-10-23", "transcript": true }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "How to Approach Approachable Concurrency (Matt Massicotte ; vidéo yyEWFcHRykA, transcript non récupéré)",
+    "The Wonderful World of Private APIs (Quentin Fasquel, Luni ;vidéo K-Q52-S-r8w)",
+    "Defence Against the Analytics Regressions (Oleksii Kirizii, Bikemap ;vidéo NbN3wFG2Tfo)",
+    "To Test Is to Doubt? Swift Testing as an Alternative to XCTest (Emma Gaubert ; vidéo 9KLoeQKyU7I)",
+    "When iOS Talks Back: Speaking and Listening Without Chaos (Montana Braswell ; vidéo o5fDwUs9j_8)",
+    "SwiftUI Apps That Effortlessly Scale from Your Smallest to Your Biggest Screen (Manuel Kehl ; premier talk du speaker ; vidéo P4ojd6U__DQ)",
+    "Slide Into visionOS (Juan Moya ; vidéo N05WEfGPp3M)",
+    "Classrooms : Understanding Isolation (Matt Massicotte), Foundation Models Framework (Alex Logan), Create Your Own Agent in 75 Minutes (Peter Steinberger)"
+  ],
+  "sources": [
+    { "label": "Site et programme officiels Swift Connection 2025", "url": "https://2025.swiftconnection.io" },
+    { "label": "Playlist YouTube Swift Connection 2025 (chaîne Tech Connection, 22 vidéos publiées le 23/10/2025)", "url": "https://www.youtube.com/playlist?list=PLZsRQnRG-mlIkHsjeax_cRq6kAclNrWBF" },
+    { "label": "Blog Ippon : Retour sur la Swift Connection 2025 (Dan Perocheau, Vincent Blanchet, Olivier Geffroy, Dylan Le Hir, 15/10/2025)", "url": "https://blog.ippon.fr/2025/10/15/retour-sur-la-swift-connection-2025/" },
+    { "label": "Mastodon : talks préférés de @tuparev (07/10/2025)", "url": "https://mstdn.social/@tuparev/115335176917614899" },
+    { "label": "Mastodon : Ellen Shapiro (@designatednerd, équipe Swift Connection) sur les speakers débutants (07/10/2025)", "url": "https://mastodon.social/@designatednerd/115334855962184438" },
+    { "label": "Mastodon : autres posts #SwiftConnection (Cihat Gündüz sur le lieu, Manuel Kehl avant son premier talk, Ellen Shapiro au retour, @zino)", "url": "https://mastodon.social/tags/swiftconnection" },
+    { "label": "LinkedIn : RATP Smart Systems (six développeurs présents, pas de contenu sur les talks)", "url": "https://fr.linkedin.com/posts/ratpsmartsystems_swift-connection-2025-activity-7383803862840737792-BFR_" },
+    { "label": "Plateforme Tech Connection async (vidéos et transcripts des talks)", "url": "https://async.techconnection.io/frenchkit/" }
+  ]
 }

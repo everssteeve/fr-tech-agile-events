@@ -18,13 +18,20 @@
         "David Louapre — Hugging Face"
       ],
       "feedbackFrom": [
-        "Victor (vjo.li, Bluesky)"
+        "Victor (vjo.li, Bluesky)",
+        "nedt.at (Bluesky)"
       ],
-      "summary": "- *D'après le descriptif officiel et un unique post Bluesky ; aucune vidéo au 25/09.*\n- Ouvrir la boîte noire : l'interprétabilité mécaniste comme « neurosciences de l'IA », utile pour la sécurité et la compréhension du raisonnement.\n- Résultats récents sur les LLM : **des concepts identifiables, localisables et pilotables** (steering), applicables aux modèles open source.\n- Talk d'ouverture de la journée ; seul écho public : *« #dotAI is starting strong with David Louapre »* (Victor, Bluesky), sans détail sur le contenu.",
+      "summary": "- *D'après le transcript de la vidéo officielle et deux brefs posts Bluesky.*\n- Sur scène : l'interprétabilité mécaniste comme « neurosciences » des réseaux. Dans les anciens modèles de vision, on lit des neurones isolés (**détecteur de courbes, détecteur de têtes de chien** invariant à la pose) et des **circuits** (roue + carrosserie + vitre = voiture).\n- Dans un LLM, **les neurones individuels ne veulent rien dire** ; on cherche des **vecteurs de concepts**, par méthodes supervisées (sondes linéaires, activations contrastives) ou non supervisées (**sparse autoencoders**), dont les dictionnaires sont souvent partagés sur le Hub et consultables sur Neuronpedia.\n- Application pratique : le **steering**. Après le « Golden Gate Claude » d'Anthropic, reproduction sur un Llama ouvert avec la tour Eiffel : stimulation faible, idées de business plus « françaises » ; forte, *« I'm a large metal structure »* ; excessive, du charabia. Il faut trouver le bon dosage ; quelques lignes avec un hook dans transformers suffisent.\n- Côté salle : *« #dotAI is starting strong with David Louapre »* (Victor, Bluesky) ; le lendemain, un participant plaisante qu'il voit encore des têtes de chien dans les fauteuils, *« still over stimulated from the first #dotai talk »* (nedt.at, Bluesky).",
       "summarySources": [
-        "program",
+        "transcript",
         "feedback"
-      ]
+      ],
+      "video": {
+        "youtubeId": "G85qi0_17YE",
+        "title": "Mechanistic Interpretability - David Louapre - Hugging Face - dotAI 2026",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "don-t-become-your-agent-s-b",
@@ -35,10 +42,16 @@
         "Guillaume Vernade — Google DeepMind"
       ],
       "feedbackFrom": [],
-      "summary": "- *D'après le descriptif officiel ; aucun retour ni vidéo trouvés au 25/09.*\n- On nous promettait d'être chefs d'orchestre ; on est devenus des **« concierges de terminal d'astreinte »** qui font des stand-ups avec des stagiaires qui hallucinent.\n- Promesse : reprendre la main, **« tuer le DRY »** et concevoir des workflows d'agents qui préservent la santé mentale des humains.",
+      "summary": "- *D'après le transcript de la vidéo officielle ; aucun retour de participant trouvé.*\n- Constat d'un ex-producteur d'Assassin's Creed : au lieu d'une dream team, on hérite d'un **« jardin d'enfants d'hyperactifs amnésiques »** qui inonde de PR à relire et fait répéter les mêmes consignes (doc en anglais, rebase, CI verte, modèle à jour).\n- Traiter l'agent comme un **stagiaire qu'on forme par itérations** : des **skills** maintenues et auditables plutôt que de longues conversations confiées à la compression du harness ; relire les trajectoires pour repérer où l'agent réinvente la roue.\n- La lenteur des agents pousse à lancer dix chantiers en parallèle et à changer de contexte sans cesse : il réclame des **modèles rapides** (ou un routage rapide/gros) pour rester dans le flow.\n- **Tuer le DRY** : pour un agent, dupliquer le code ne coûte rien ; cloisonner chaque feature rend la revue plus simple et limite la casse. Commencer par faire aider l'agent **à la revue**, le vrai goulot.\n- Prochaine percée attendue : des agents **meilleurs pour tester** (lancer l'app, parcourir le golden path) avant de demander une revue. Leitmotiv : *« your time is more precious than your tokens »*.",
       "summarySources": [
-        "program"
-      ]
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "-UHcQD4pwjo",
+        "title": "Don't Become Your Agent's B**** - Guillaume Vernade - Google DeepMind - dotAI 2026",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "when-prompting-runs-out-post-training-an-open-model",
@@ -49,10 +62,16 @@
         "Ziv Ilan — NVIDIA"
       ],
       "feedbackFrom": [],
-      "summary": "- *D'après le descriptif officiel ; aucun retour ni vidéo trouvés au 25/09.*\n- Épuiser d'abord les leviers moins chers (checkpoint plus récent, context engineering, RAG, outils, décodage contraint, routage) avec une **condition de sortie pour chacun**.\n- Puis choisir entre SFT, DPO, RL à récompenses vérifiables et distillation **selon le signal d'apprentissage disponible** ; exemple travaillé : Nemotron, dont poids, données et recettes sont publics.",
+      "summary": "- *D'après le transcript de la vidéo officielle ; aucun retour de participant trouvé.*\n- Tout commence par des **critères de succès et des évals propres au domaine**, pas les benchmarks des papiers ; l'évaluation est continue (traces, feedback utilisateurs, A/B de modèles). Un nouveau modèle n'est pas forcément meilleur pour son cas, et un 8B peut suffire.\n- Avant de toucher aux poids : choisir le bon modèle, soigner l'entrée, RAG, outils (une calculatrice plutôt qu'apprendre l'arithmétique), décodage contraint, routage. *« It's not this or that, it's this and that. »*\n- Post-entraînement : **SFT** sur quelques centaines ou milliers d'exemples « golden » pour le style et la langue ; **RL** où le modèle génère plusieurs réponses récompensées dans un **environnement d'exécution**. Idée notée : faire de sa propre application l'environnement RL.\n- Exemple de tool calling (bon outil, bonne entrée, bonne sortie) et ressources NVIDIA ouvertes (NeMo Gym, jeux de données, Nemotron) ; SFT et RL sur petits modèles possibles sur un seul GPU. Distillation et DPO, annoncés au programme, ne sont pas détaillés sur scène.",
       "summarySources": [
-        "program"
-      ]
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "poJ1bdZJjLk",
+        "title": "When Prompting Runs Out: Post-Training an Open Model - Ziv Ilan -  NVIDIA - dotAI 2026",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "ai-for-prediction-why-you-need-a-statistician-not-a-philosopher",
@@ -63,10 +82,16 @@
         "Kevin Scaman — Fundamental"
       ],
       "feedbackFrom": [],
-      "summary": "- *D'après le descriptif officiel ; aucun retour ni vidéo trouvés au 25/09.*\n- Les décisions métier clés (churn, demande, risque) sont des **problèmes de prédiction sur données tabulaires**, pas de langage.\n- Les **Large Tabular Models** entraînés sur des milliards de tables sont présentés comme complémentaires des LLM ; expériences sur les limites des LLM quand on leur demande de prédire.",
+      "summary": "- *D'après le transcript de la vidéo officielle ; aucun retour de participant trouvé.*\n- La prédiction tabulaire (churn, demande) est dure : haute dimension, signal caché parmi des centaines de colonnes, données bruitées, classes déséquilibrées.\n- Expérience : un LLM seul (sans outils ni code) sur 120 lignes d'entraînement fait **nettement moins bien que les baselines simples** (k plus proches voisins, forêts aléatoires, gradient boosting) sur 11 tâches de classification. Il se comporte **comme un plus-proche-voisin** et sa performance **baisse quand on ajoute des colonnes**, logique pour un réseau conçu pour des séquences.\n- Réponse : les **Large Tabular Models** (TabPFN, TabICL, puis modèles de Google, Amazon et Nexus de Fundamental), en **apprentissage en contexte** : toute la table entre dans le forward pass, avec attention sur les lignes et sur les colonnes, pré-entraînement sur des tâches synthétiques.\n- Conclusion : pas d'opposition, **le LLM pour comprendre la table et le texte, le LTM pour la puissance statistique**.",
       "summarySources": [
-        "program"
-      ]
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "EbUa-LSxyr8",
+        "title": "AI for Prediction: Why You Need a Statistician Not a Philosopher - Kevin Scaman - Fundamental -dotAI",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "webmcp-stop-scraping-the-web-start-calling-it",
@@ -77,10 +102,16 @@
         "Patrick Brosset — Microsoft Edge"
       ],
       "feedbackFrom": [],
-      "summary": "- *D'après le descriptif officiel ; aucun retour ni vidéo trouvés au 25/09.*\n- Remplacer le scraping et l'interprétation visuelle des pages par des **contrats d'outils explicites** exposés par la page.\n- Promesse : des workflows agentiques inspectables, robustes aux changements d'UI, sans intégration serveur par scénario.",
+      "summary": "- *D'après le transcript de la vidéo officielle ; aucun retour de participant trouvé.*\n- Démo 1 : une extension d'agent commande une pizza en cliquant et scrollant, se trompe de menu, revient ; lent et fragile car elle devine l'interface (DOM plein de `div`, arbre d'accessibilité pauvre, captures d'écran trompeuses). **L'agentic browsing se fait aujourd'hui sans les développeurs web.**\n- Démo 2 avec **WebMCP** : l'agent appelle directement les outils exposés par la page et atterrit sur le paiement ; **deux fois moins de tokens** dans cette démo (chiffre de l'orateur).\n- Deux API : **déclarative** (attributs `toolname`, description sur les formulaires existants) et **JavaScript** (`document.modelContext.registerTool`) qui réutilise la logique côté client. Avantages : rapide, sans fragilité d'UI, débogable (panneau WebMCP dans les DevTools Chromium).\n- WebMCP ne remplace pas MCP : il vise les scénarios **humain dans la boucle** où l'état vit côté client et où l'UI est le produit. Spécification en cours au W3C, testable dans Edge/Chrome derrière un flag, adoption citée (OpenAI, Cloudflare, Playwright, Puppeteer, Angular, React).",
       "summarySources": [
-        "program"
-      ]
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "3NDly38DWIE",
+        "title": "WebMCP: Stop scraping the Web, start calling it - Patrick Brosset - Microsoft Edge - dotAI 2026",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "llama-cpp-faster-and-easier-for-everyone",
@@ -91,10 +122,16 @@
         "Xuan-Son Nguyen — Hugging Face"
       ],
       "feedbackFrom": [],
-      "summary": "- *D'après le descriptif officiel ; aucun retour ni vidéo trouvés au 25/09.*\n- De l'expérience mono-fichier à une plateforme d'inférence locale ; focus sur le **décodage spéculatif** (modèle draft, n-gram, MTP, DFlash) et démo d'installation en une commande.",
+      "summary": "- *D'après le transcript de la vidéo officielle ; aucun retour de participant trouvé.*\n- Le **décodage spéculatif** : proposer plusieurs tokens « brouillons » par passe puis ne garder que ceux que le modèle valide ; l'enjeu est le **taux d'acceptation**.\n- Les variantes supportées par llama.cpp, de la plus simple à la plus récente : n-gram (façon clavier prédictif), petit modèle draft, têtes **MTP**, **DFlash** (brouillons générés par diffusion en une passe), puis DeepSpark avec un score de confiance par token.\n- Benchmarks Unsloth cités : **environ x2** avec MTP, un peu plus avec DFlash. Démo : installation, CLI puis `llama-server` avec un modèle multimodal qui décrit une capture d'écran.",
       "summarySources": [
-        "program"
-      ]
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "bq1cSrr0ZjM",
+        "title": "llama.cpp - faster and easier for everyone! - Xuan-Son Nguyen - Hugging Face - dotAI 2026",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "how-to-be-correct-at-scale-with-no-ground-truth",
@@ -105,10 +142,16 @@
         "Diane Le Douaron — Mirakl"
       ],
       "feedbackFrom": [],
-      "summary": "- *D'après le descriptif officiel ; aucun retour ni vidéo trouvés au 25/09.*\n- Évaluer la **justesse déterministe** de transformations de catalogue sur plusieurs briques de pipeline, sans vérité terrain.",
+      "summary": "- *D'après le transcript de la vidéo officielle ; aucun retour de participant trouvé.*\n- Catalog Transformer convertit les données brutes des vendeurs vers la taxonomie de chaque opérateur de marketplace : un pipeline à base de LLM dont on attend une **justesse déterministe** (« bleu foncé » doit devenir « navy », seule valeur admise, sinon le produit est rejeté).\n- Méthode en trois temps : **définir le succès** par peu de métriques non redondantes (*« définir une bonne métrique, c'est comme définir une bonne stratégie »*) ; **décomposer la tâche** en étapes avec une seule question chacune (la locale a-t-elle été détectée ?) ; **des juges maison**.\n- Un LLM générique ne peut pas juger : il prend une réécriture voulue ou un choix contraint pour une hallucination. Les juges sont nourris du fonctionnement du pipeline et des règles de l'opérateur, recalés par **annotation humaine hebdomadaire** sur les cas difficiles, et servent aux investigations, à l'amélioration du code et à la **détection de dérive**.\n- Exemple : la traduction traitée dès le début du pipeline, comme un problème de compréhension plus que de traduction.",
       "summarySources": [
-        "program"
-      ]
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "fhNZWExzlqU",
+        "title": "How to Be Correct at Scale With No Ground Truth - Diane Le Douaron - Mirakl - dotAI 2026",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "from-blank-page-to-production-a-year-of-building-ai-agents-at-carrefour",
@@ -119,10 +162,16 @@
         "Guillaume Blaquiere — Carrefour"
       ],
       "feedbackFrom": [],
-      "summary": "- *D'après le descriptif officiel ; aucun retour ni vidéo trouvés au 25/09.*\n- Rétrospective d'un an d'agents en production depuis début 2025, partis d'une page blanche ; intégration progressive du RAG, de l'observabilité et de l'évaluation ; **do's and don'ts** annoncés.",
+      "summary": "- *D'après le transcript automatique de la vidéo officielle (sous-titres de qualité médiocre) ; aucun retour de participant trouvé.*\n- Premier agent en février 2025, parti d'une page blanche avec les API Gemini, MVP en production en une semaine ; ADK a depuis simplifié la construction. Mais la plupart des projets échouent, pour trois raisons.\n- **Ne pas mettre de la GenAI partout** : l'estimation du chiffre d'affaires d'un magasin à racheter se fait désormais **en 10 minutes, en SQL, sans IA**, car les données sont structurées. L'IA brille sur le non structuré : un agent qui répond aux questions des utilisateurs de la data platform à partir de la doc et du savoir tribal de l'espace Google Chat.\n- **Ne jamais sous-estimer l'intégration** : intégrer l'agent dans Google Chat a assuré une adoption immédiate mais a pris **50 à 70 % du temps** ; les données de mainframe sans API sont un autre mur.\n- **Observer** : le plugin BigQuery Agent Analytics streame les événements ; une requête avec `AI.classify` sur le dernier message des sessions a révélé une demande (générer et optimiser du SQL) implémentée ensuite. Le jeu d'évaluation « golden » croisant sessions et pouces levés est encore en chantier.",
       "summarySources": [
-        "program"
-      ]
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "Rfyqlhygf2M",
+        "title": "From Blank Page to Prod: A Year of Building AI Agents at Carrefour - Guillaume Blaquiere - dotAI 26",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "your-ai-agents-have-adhd",
@@ -133,10 +182,16 @@
         "Greg Qualls — Upsun"
       ],
       "feedbackFrom": [],
-      "summary": "- *D'après le descriptif officiel ; aucun retour ni vidéo trouvés au 25/09.*\n- Parallèle revendiqué comme structurel entre les échecs des agents et le fonctionnement d'un cerveau TDAH ; les stratégies de compensation des personnes TDAH appliquées aux agents.",
+      "summary": "- *D'après le transcript de la vidéo officielle ; aucun retour de participant trouvé.*\n- Récit personnel d'un diagnostic TDAH tardif, puis mise en regard des fonctions exécutives et des échecs d'agents : mémoire de travail courte et fenêtre de contexte, auto-surveillance défaillante et dégradation silencieuse.\n- Principe : **on ne « répare » pas, on externalise** ce qui ne s'autorégule pas.\n- **Externaliser le focus** : liste de tâches hors de l'agent, re-ancrage régulier sur le plan, file priorisée, spec verrouillée. **Externaliser l'hyperfocus** : condition d'arrêt, budget par run, vérificateur, points de contrôle humains, soit la *« loop engineering »*. **Externaliser le feedback** contre la complaisance : évals indépendantes, seuils de réussite fixés d'avance.\n- Illustré par une campagne Kickstarter montée en 90 jours ; conclusion : **miser sur les forces de l'agent** et mettre l'infrastructure autour de ses faiblesses.",
       "summarySources": [
-        "program"
-      ]
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "EzIU5Vf7wXk",
+        "title": "Your AI agents have ADHD - Greg Qualls - Upsun - dotAI 2026",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "hallucinations-harvesting-uncertainty",
@@ -147,10 +202,16 @@
         "Aygalic Jara — Université Paris-Saclay × SCIAM"
       ],
       "feedbackFrom": [],
-      "summary": "- *D'après le descriptif officiel ; aucun retour ni vidéo trouvés au 25/09.*\n- Les hallucinations sont **structurelles** ; les modèles portent un signal interne d'incertitude lisible avant et pendant la génération, à exploiter pour détection, escalade, abstention et observabilité.",
+      "summary": "- *D'après le transcript de la vidéo officielle ; aucun retour de participant trouvé.*\n- Point de départ : deux randonneurs perdus avec une carte générée par IA ; rien n'a « planté », le modèle a produit du plausible, pas du vrai. L'entraînement et les benchmarks **n'incitent pas à dire « je ne sais pas »** ; RAG et outils baissent le taux d'erreur mais ne la signalent pas.\n- Les probabilités de tokens sont un signal bruité (hésitation entre synonymes) ; le bon signal est dans l'**espace latent** : une simple **régression logistique** entraînée sur des Q/R connues (TriviaQA) donne un proxy peu coûteux de la justesse.\n- Applications : **détection des passages hallucinés** dans des réponses de modèles vision-langage (travail récent de l'équipe), et tête de confiance pour le **décodage spéculatif** (DeepSpark, 60 à 85 % d'accélération selon l'orateur). Conclusion : *« you don't have to trust an AI that doesn't believe in itself »*.",
       "summarySources": [
-        "program"
-      ]
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "dFsws_PfGUk",
+        "title": "Hallucinations: Harvesting Uncertainty - Aygalic Jara - Paris-Saclay × SCIAM - dotAI 2026",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "radiological-agi-how-close-are-we",
@@ -161,10 +222,16 @@
         "Hélène Philippe — Raidium"
       ],
       "feedbackFrom": [],
-      "summary": "- *D'après le descriptif officiel ; aucun retour ni vidéo trouvés au 25/09.*\n- Entre outils radiologiques spécialisés qui ne généralisent pas et VLM polyvalents mais peu fiables, les **systèmes agentiques** comme voie vers des assistants radiologiques autonomes.",
+      "summary": "- *D'après le transcript de la vidéo officielle ; aucun retour de participant trouvé.*\n- Le suivi oncologique (repérer, mesurer, comparer, caractériser jusqu'à cinq lésions) prend **jusqu'à 20 minutes par patient**, dans un contexte de pénurie de radiologues. Outils spécialisés trop étroits, VLM qui hallucinent : piste des **agents** qui appellent les outils.\n- Expérience : reproduire des comptes-rendus (jeu Parrot) avec des **outils simulés parfaits**, pour évaluer uniquement la capacité de l'agent à les appeler, notée avec **RadMatch**.\n- Résultats : avec les ~1 000 outils autorisés aujourd'hui en clinique, **17 % de rappel** ; avec une boîte à outils infinie, **67 % seulement**. Le reste relève de la **caractérisation**, qui ne s'exprime qu'en langage naturel : d'où la nécessité de VLM travaillant avec les outils.",
       "summarySources": [
-        "program"
-      ]
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "Ecv83JrmuqM",
+        "title": "Radiological AGI: How Close Are We? - Hélène Philippe - Raidium - dotAI 2026",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "how-do-we-compress-giant-ai-models-to-run-at-the-edge",
@@ -175,10 +242,17 @@
         "Léo Arsenin — Cloudflare"
       ],
       "feedbackFrom": [],
-      "summary": "- *D'après le descriptif officiel ; aucun retour ni vidéo trouvés au 25/09.*\n- Compression **sans perte** : codage de Huffman du flux d'exposants BF16 (Unweight), décompressé en mémoire partagée du GPU.\n- Chiffres du descriptif : **-22 % de taille, sorties bit-exactes**, ~3 Go de VRAM économisés sur Llama 3.1 8B ; kernels et article publiés.",
+      "summary": "- *D'après le transcript de la vidéo officielle ; aucun retour de participant trouvé.*\n- Problème : un CDN n'a pas de grands data centers GPU. Réponse : **deux niveaux**, GPU dispersés en périphérie pour les petits modèles sensibles à la latence (voix), clusters plus concentrés pour les très gros modèles ; moteur d'inférence maison (Infire).\n- Trois leviers présentés sur scène : **quantifier le KV cache et les poids** (près de la moitié de la taille gagnée sur de gros modèles ouverts, selon l'orateur), **allocation paginée** de la mémoire GPU, et **affinité de routage** vers le même cluster pour réutiliser le cache (60 à 80 % de cache hit).\n- À noter : le talk filmé porte sur ces optimisations d'inférence et ne reprend pas le détail du descriptif (compression sans perte Unweight, codage de Huffman des exposants BF16).",
       "summarySources": [
+        "transcript",
         "program"
-      ]
+      ],
+      "video": {
+        "youtubeId": "riEnw0MDbKQ",
+        "title": "How Do We Compress Giant AI Models to Run at the Edge? - Léo Arsenin - Cloudflare - dotAI 2026",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "will-the-future-of-code-be-formal-or-informal",
@@ -189,10 +263,16 @@
         "Stanislas Polu — Dust"
       ],
       "feedbackFrom": [],
-      "summary": "- *D'après le descriptif officiel ; aucun retour ni vidéo trouvés au 25/09.*\n- **L'attention humaine (la revue du code généré) est devenue le goulot** ; le code devient moins cher à écrire et plus cher à croire.\n- Thèse : le code reste, mais ni la spec purement informelle ni la preuve formelle ne sont souhaitables ; l'avenir serait **entre la prose et la preuve**, avec des contrats locaux en langage naturel structuré que les humains relisent et que les agents auditent.",
+      "summary": "- *D'après le transcript de la vidéo officielle ; aucun retour de participant trouvé.*\n- **L'attention humaine est le goulot** : les agents produisent du code plus vite qu'on ne peut le relire. Revue des tentatives pour sortir le code de la boucle humaine : vibe coding, boucles autonomes (Ralph loop), **dark factories / spec as source** (scénarios et « satisfactions »), vérification formelle.\n- Petit cours sur les systèmes formels (types, types raffinés, types dépendants) : une spec formelle d'un système complexe est **aussi complexe que le code**, et plus dure à relire.\n- Contre les dark factories : *on ne comprend pas un système qu'on ne sait pas maintenir* ; à 4 h du matin, en panne, il n'y a pas de garagiste. **La formalité doit suivre la criticité** ; le code reste la bonne interface pour les systèmes complexes.\n- Proposition : les **code contracts** de Dust, commentaires structurés près du code (spécifications, invariants, règles), avec des labels `owner` et `notify`, et un vérificateur agentique sur chaque PR. Premiers chiffres sur 10 jours : **509 violations trouvées, 221 corrigées**.",
       "summarySources": [
-        "program"
-      ]
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "eg8u-0102lw",
+        "title": "Will the future of code be formal or informal? - Stanislas Polu - Dust - dotAI 2026",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "how-anthropic-uses-claude",
@@ -203,10 +283,16 @@
         "Ian Massingham — Anthropic"
       ],
       "feedbackFrom": [],
-      "summary": "- *D'après le descriptif officiel ; aucun retour ni vidéo trouvés au 25/09.*\n- Tout le monde a accès aux mêmes modèles : pourquoi certaines équipes obtiennent des résultats mesurés quand d'autres en sont aux démos ?\n- **Cinq principes de fonctionnement** internes, illustrés par des cas ingénierie, sécurité et commercial.",
+      "summary": "- *D'après le transcript de la vidéo officielle ; aucun retour de participant trouvé.*\n- Contexte : la durée pendant laquelle on laisse un agent travailler seul est passée de minutes à des heures ; le coût d'une même tâche a baissé de 90 à 95 % en un an, mais la dépense totale augmente (paradoxe de Jevons).\n- Chiffres internes annoncés : **productivité ressentie x8** (enquête interne), **plus de 80 % du code mergé écrit par Claude**, et environ 20 % du travail assisté qui n'aurait pas existé sans ces outils.\n- **Cinq principes** : travailler en public (Claude présent dans chaque compartiment Slack, Drive, mail) et partager les workflows sous forme de skills ; accès généralisé aux outils de code pour tous ; nouvelles interfaces (Claude dans Slack, Zoom, Teams ; interfaces maison) ; construire pour la prochaine génération de modèles ; **tuer sans état d'âme** ce qui ne sert plus.\n- Préparer l'avenir : **transformer chaque échec en test de régression**, évaluer les transcripts avec des modèles ; prompt engineering à base de balises et pipelines RAG « chunk + vecteurs » présentés comme des échafaudages que les modèles absorbent.\n- Cas : correctifs autonomes depuis Slack notés par risque, tri des alertes de sécurité. *« Everybody has the same models »* : l'écart tient à ce que Claude peut voir de l'entreprise. Talk d'un fournisseur sur ses propres outils : les chiffres ne sont pas vérifiés de façon indépendante.",
       "summarySources": [
-        "program"
-      ]
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "R-UkAmFv5G0",
+        "title": "How Anthropic Uses Claude - Ian Massingham - Anthropic - dotAI 2026",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "the-moving-target-benchmarking-dynamic-ai-systems-end-to-end",
@@ -219,11 +305,17 @@
       "feedbackFrom": [
         "dadideo (Bluesky)"
       ],
-      "summary": "- *D'après le descriptif officiel et un post Bluesky illustré de photos de slides ; aucune vidéo au 25/09.*\n- Évaluer **de bout en bout** un écosystème multi-agents médical (triage, interrogatoire, recherche, mémoire, prise de rendez-vous, image) plutôt que chaque brique.\n- **Utilisateurs synthétiques** qui simulent des parcours patients, et mesure de l'**ancrage** (groundedness) sur des conversations longues.\n- Retenu par un participant : la construction d'un **assistant médical fiable et sûr** racontée comme un parcours en **6 niveaux, du PoC à l'orchestrateur complet**, avec des **critères d'évaluation qui s'enrichissent à chaque étape** : *« medical accuracy, safety, triage routing, judge calibration and more »* (dadideo, Bluesky).",
+      "summary": "- *D'après le transcript de la vidéo officielle et un post Bluesky illustré de photos de slides.*\n- Sur scène : l'histoire du futur **compagnon santé** de Doctolib, construit par couches successives, avec **un benchmark par étape** ; l'équipe se dit au **niveau 4 sur 5**.\n- Niveaux 0 et 1 : un LLM seul évalué avec **HealthBench** (rubriques écrites par des médecins ; sécurité exigée à 100 %, exactitude médicale, UX), puis RAG sur des sources médicales (NHS, OMS, HAS) avec des métriques de retrieval, dont la part des documents récupérés qui **finissent dans la réponse**. Modèles ouverts : l'embedder DrBERT, et bientôt des sparse autoencoders pour un retrieval interprétable.\n- Niveaux 2 et 3 : **un bon composant ne fait pas un bon système** ; attribution des erreurs en cascade pour savoir quel agent a échoué, puis τ-bench et **pass^k** pour la robustesse des actions agentiques.\n- Niveau 4 : parcours multi-sessions (mémoire, allergies à ne pas oublier), testés par un **simulateur de patients** aux profils psychologiques variés (façon Monte-Carlo), et **cohérence entre sessions**. Niveau 5 visé : un orchestrateur évalué aussi sur latence et tokens (environ 4 s de time to first token en B2C).\n- Retenu par un participant : un parcours en **6 niveaux, du PoC à l'orchestrateur complet**, avec des critères d'évaluation qui s'enrichissent à chaque étape : *« medical accuracy, safety, triage routing, judge calibration and more »* (dadideo, Bluesky).",
       "summarySources": [
-        "program",
+        "transcript",
         "feedback"
-      ]
+      ],
+      "video": {
+        "youtubeId": "7AebpJri-T8",
+        "title": "The Moving Target: Benchmarking Dynamic AI Systems End-to-End - Gaëtan Brison - Doctolib - dotAI 26",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "we-thought-the-digital-world-would-be-easy-to-simulate",
@@ -234,10 +326,17 @@
         "Maxime Langevin — H Company"
       ],
       "feedbackFrom": [],
-      "summary": "- *D'après le descriptif officiel ; aucun retour ni vidéo trouvés au 25/09.*\n- Les agents numériques suivent la voie des voitures autonomes et de la robotique : apprendre en **simulateur**.\n- Paradoxe expliqué : les vraies apps sont trop lentes et instables pour le RL ; un **LLM qui simule l'environnement** fonctionne parce que ce monde est fait de symboles (arbres d'accessibilité).",
+      "summary": "- *D'après le transcript de la vidéo officielle ; aucun retour de participant trouvé.*\n- Le **computer use** : un modèle vision-langage en boucle (observer l'écran, agir à la souris, au clavier ou par API). Intérêt : l'IT des entreprises est fragmenté, sans API, mais **tout logiciel a une interface graphique**.\n- Sur OSWorld, les agents sont passés en un an d'environ 20-30 % de réussite au niveau humain (80-90 %).\n- Les progrès suivent la **facilité à générer des données** (jeux, code, maths vérifiables) ; le computer use est à mi-chemin et plus dur qu'attendu. Il faut une **infrastructure** de milliers de VM ou conteneurs, des **logiciels** (open source, applis générées par des agents de code, web avec ses limites : détection de bots, éthique) et de bonnes **tâches d'entraînement** tirées de la doc, des tutoriels vidéo, du crowdsourcing et des clients.\n- Puis SFT et RL en boucle ; un modèle spécialisé de 35 milliards de paramètres est présenté comme proche des modèles frontière sur ces benchmarks, pour bien moins cher. Le talk filmé ne détaille pas l'idée du descriptif d'un LLM qui simule lui-même l'environnement.",
       "summarySources": [
+        "transcript",
         "program"
-      ]
+      ],
+      "video": {
+        "youtubeId": "HzeZw1p8rbM",
+        "title": "We Thought the Digital World Would Be Easy to Simulate. Was it? - Maxime Langevin - H - dotAI 2026",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "own-your-agent",
@@ -249,10 +348,16 @@
         "Henry Lagarde — Mistral AI"
       ],
       "feedbackFrom": [],
-      "summary": "- *D'après le descriptif officiel ; aucun retour ni vidéo trouvés au 25/09.*\n- Pour des agents autonomes fiables, les API fermées deviennent un goulot : **l'open source présenté comme seule fondation viable** (contrôle du modèle, des données, de l'infrastructure).",
+      "summary": "- *D'après le transcript de la vidéo officielle ; aucun retour de participant trouvé.*\n- Un agent = **un modèle + un scaffold** (boucle, hooks, contexte, reprises) ; il faut réussir les deux. Les modèles grossissent, mais **l'open weight rattrape** : environ trois mois de retard sur les modèles fermés selon eux.\n- Comptes de ressources : un bon modèle ouvert tient sur un ou deux GPU haut de gamme en entreprise, un modèle ~27B sur une carte grand public ; **point mort autour de 100 millions de tokens par jour** face à l'API (sur un benchmark plus ancien).\n- Contre la dépendance aux API : verrouillage, **cible mouvante** (format ou comportement qui change), taxe cachée des boucles d'agent, observabilité (quel modèle répond vraiment ?), et **fuite structurelle** : plus l'agent est connecté, plus il voit de données sensibles. *« The most secure data transfer is the one that never happens. »*\n- Pas tout en agent : mieux vaut *« Mario et Luigi qui posent de bons tuyaux »* qu'Iron Man. Stack souveraine proposée : modèle ouvert quantifié et fine-tuné, llama.cpp en local puis vLLM en production, un harness qui borne les outils, Langfuse et OpenTelemetry pour l'observabilité. Talk d'un éditeur de modèles ouverts.",
       "summarySources": [
-        "program"
-      ]
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "3VlrLR1Twuw",
+        "title": "Own your agent - Joffrey Thomas & Henry Lagarde - Mistral AI - dotAI 2026",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "beyond-the-chatbox-what-changes-when-ai-runs-where-you-are",
@@ -263,26 +368,36 @@
         "Christian Keller — Meta Superintelligence Labs"
       ],
       "feedbackFrom": [],
-      "summary": "- *D'après le descriptif officiel ; aucun retour ni vidéo trouvés au 25/09.*\n- Partir de la **contrainte de l'appareil** (laptop, téléphone, lunettes) plutôt que du modèle : le form factor dicte le choix du modèle, les modèles spécialisés et les poids ouverts ouvrent l'espace de conception.",
+      "summary": "- *D'après le transcript de la vidéo officielle ; aucun retour de participant trouvé.*\n- Talk de clôture sur l'IA embarquée (lunettes à écran et bracelet neuronal de Meta) : l'agent gagne un **contexte physique**.\n- **Cinq raisons** de passer sur l'appareil : débit des capteurs, latence, frontière des données, connectivité, **absence de dérive** (ce qui est livré ne change pas). Exemples : flou d'arrière-plan, zone de sécurité du Quest, traduction et sous-titres en direct dans les lunettes, sans réseau.\n- Méthode : **partir des contraintes de l'appareil** (mémoire, y compris le KV cache des longs contextes ; backend ; batterie ; latence), pas du modèle en tête du classement ; une « échelle » lunettes, téléphone, laptop, cloud, avec une **politique d'escalade explicite** décidée à l'avance.\n- **Spécialistes plutôt que généraliste** quand c'est possible (DINO, SAM, traduction en 1 600 langues), un LLM pour l'intention et le routage ; le suivi d'une balle de tennis par LLM, c'est *« un bazooka quand il faut un scalpel »*. Runtime ExecuTorch pour répartir un modèle entre CPU et GPU ; l'open weight permet de quantifier, distiller et figer une version.",
       "summarySources": [
-        "program"
-      ]
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "xMHnwGw_ROI",
+        "title": "Beyond the Chatbox: What Changes When AI Runs Where You Are - Christian Keller - Meta - dotAI 2026",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     }
   ],
   "edition": "5e édition",
   "programUrl": "https://www.dotai.io/agenda",
   "note": "Jeudi 17 septembre 2026, Folies Bergère, la veille de dotJS. Une journée, une seule piste : 11 talks de 20 minutes et 7 lightning talks, sélectionnés par un comité éditorial indépendant ; soirée de clôture avec H Company.",
-  "synthesisUpdatedAt": "2026-09-27",
-  "corpus": "Page d'accueil et agenda officiels de dotAI (18 sessions, ordre de passage et descriptifs complets), chaîne YouTube dotConferences (vidéos, playlists, shorts, lives : aucune vidéo 2026 aux 25, 26 et 27/09), recherche Bluesky (3 posts du 17/09, dont 2 portant sur un talk ; rien de neuf aux 26 et 27/09) et trois passes de recherches web LinkedIn/blogs/dev.to (25, 26 et 27/09) sans retour de participant exploitable.",
-  "limits": "Synthèse **essentiellement du programme** : à J+10, aucun post LinkedIn, article ni sketchnote de participant trouvé (les résultats remontés sont des annonces d'avant l'événement, des fiches d'agrégateurs ou des posts d'éditions précédentes, LinkedIn étant de surcroît derrière un mur de connexion) ; seuls deux talks (Louapre, Brison) ont un bref écho sur Bluesky. Les talks sont annoncés « bientôt disponibles en ligne » ; les autres résumés ne disent rien de l'accueil des sessions.",
-  "tldr": "**D'après le programme**, une journée centrée sur **l'IA qu'on maîtrise** : évaluer sans vérité terrain, post-entraîner des modèles ouverts, lire l'incertitude et l'intérieur des modèles, et reprendre la main sur des agents devenus coûteux à superviser, avec **la revue humaine comme nouveau goulot** (Polu, Vernade).",
+  "synthesisUpdatedAt": "2026-09-29",
+  "corpus": "Agenda officiel (18 sessions), **transcripts des 18 vidéos officielles** publiées le 28/09 sur la chaîne dotConferences (sous-titres automatiques, de qualité médiocre pour Carrefour), recherche Bluesky (4 posts de participants des 17 et 18/09, dont 3 portant sur un talk) et quatre passes de recherches web LinkedIn/blogs/Medium (25 au 29/09) sans retour de participant exploitable.",
+  "limits": "Les résumés reflètent désormais **ce qui a été dit sur scène**, mais très peu **ce qu'en a retenu la salle** : à J+12, aucun post LinkedIn, article ni sketchnote trouvé (LinkedIn derrière un mur de connexion), seuls les talks de Louapre et Brison ont un écho sur Bluesky. Deux talks filmés s'écartent de leur descriptif (Arsenin, Langevin) ; plusieurs talks viennent de fournisseurs qui présentent leurs propres outils (Anthropic, Mistral, NVIDIA, Meta), et leurs chiffres sont ceux des orateurs.",
+  "tldr": "Une journée sur **l'IA qu'on maîtrise vraiment** : évaluer sans vérité terrain et de bout en bout (Doctolib, Mirakl), lire l'intérieur et l'incertitude des modèles, choisir le bon modèle (tabulaire, spécialisé, embarqué, ouvert) plutôt que le plus gros, et protéger **l'attention humaine, devenue le goulot**, face à des agents qui produisent plus vite qu'on ne relit (Polu, Vernade).",
   "keyTakeaways": [
-    "(Programme) Épuiser les leviers bon marché (contexte, RAG, outils, routage) avec une condition de sortie explicite avant de post-entraîner (Ilan).",
-    "(Programme) Évaluer les systèmes multi-agents de bout en bout avec des utilisateurs synthétiques plutôt que brique par brique (Brison).",
-    "(Programme) Exploiter le signal d'incertitude interne des modèles pour détecter les hallucinations et décider quand s'abstenir ou escalader (Jara).",
-    "(Programme) Pour les prédictions sur données tabulaires, préférer des modèles tabulaires dédiés aux LLM (Scaman).",
-    "(Programme) Exposer des contrats d'outils (WebMCP) plutôt que de laisser les agents scraper les pages (Brosset).",
-    "(Programme) Accompagner le code généré de contrats locaux en langage naturel structuré, relus par l'humain et audités par l'agent (Polu)."
+    "Évaluer chaque couche avant d'ajouter la suivante, puis le système entier : un bon composant ne fait pas un bon système (Brison).",
+    "Sans vérité terrain : peu de métriques nettes, une question par étape du pipeline, des juges maison recalés chaque semaine par annotation humaine (Le Douaron).",
+    "Épuiser modèle, contexte, RAG, outils et routage avec des évals métier avant de post-entraîner ; faire de sa propre application l'environnement de RL (Ilan).",
+    "Pour la prédiction sur tables, ne pas demander au LLM : il se comporte en plus-proche-voisin ; utiliser un modèle tabulaire et garder le LLM pour comprendre la table (Scaman).",
+    "Une régression logistique sur l'espace latent suffit à estimer si une réponse sera juste, pour signaler les hallucinations ou s'abstenir (Jara).",
+    "Réduire le coût de la revue : faire aider l'agent à relire, cloisonner le code par feature quitte à dupliquer, exiger qu'il lance l'app avant de demander une revue (Vernade).",
+    "Rapprocher la spécification du code avec des contrats structurés vérifiés par un agent sur chaque PR, plutôt que de viser la dark factory ou la preuve formelle (Polu).",
+    "Externaliser ce que l'agent ne régule pas : liste de tâches, condition d'arrêt, budget, vérificateur indépendant (Qualls).",
+    "Transformer chaque échec d'agent en test de régression pour mesurer les modèles suivants, et supprimer l'échafaudage devenu inutile (Massingham).",
+    "Ne pas mettre de GenAI sur des données structurées (du SQL suffit) et budgéter l'intégration dans les outils existants, qui peut prendre plus de la moitié du projet (Blaquiere)."
   ],
   "sessionsWithoutFeedback": [],
   "sources": [
@@ -291,12 +406,12 @@
       "url": "https://www.dotai.io/agenda"
     },
     {
-      "label": "Site dotAI (speakers 2026, « Talks will be soon available online »)",
+      "label": "Site dotAI",
       "url": "https://www.dotai.io"
     },
     {
-      "label": "Chaîne YouTube dotConferences (vidéos 2026 non publiées au 27/09)",
-      "url": "https://www.youtube.com/@dotconferences"
+      "label": "Chaîne YouTube dotConferences : les 18 vidéos dotAI 2026 (publiées le 28/09)",
+      "url": "https://www.youtube.com/@dotconferences/videos"
     },
     {
       "label": "Bluesky : dadideo sur le talk Doctolib (17/09)",
@@ -305,7 +420,11 @@
     {
       "label": "Bluesky : Victor (vjo.li) sur l'ouverture par David Louapre (17/09)",
       "url": "https://bsky.app/profile/vjo.li/post/3mvp6auhbq22g"
+    },
+    {
+      "label": "Bluesky : nedt.at, clin d'œil au talk de David Louapre (18/09)",
+      "url": "https://bsky.app/profile/nedt.at/post/3mvsehshvdk2l"
     }
   ],
-  "revisit": "corpus très mince à J+10 (2 posts Bluesky, aucun post LinkedIn ni blog trouvé malgré trois passes, 25, 26 et 27/09) : reprendre surtout à la publication des vidéos dotAI 2026 sur la chaîne dotConferences (transcripts), les recherches web n'apportant plus rien"
+  "revisit": "Vidéos et transcripts intégrés le 29/09/2026, mais retours participants très minces (4 posts Bluesky, aucun post LinkedIn ni article à J+12) : chercher à nouveau posts LinkedIn et blogs de participants."
 }

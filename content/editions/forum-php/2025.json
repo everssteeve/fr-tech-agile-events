@@ -7,8 +7,843 @@
   "city": "Marne-la-Vallée",
   "venue": "Hotel New York – The Art of Marvel, Disneyland Paris",
   "url": "https://event.afup.org/forum-php-2025/",
+  "programUrl": "https://event.afup.org/forum-php-2025/programme/",
+  "theme": "L'édition des anniversaires : 30 ans de PHP, 25 ans de l'AFUP, 20 ans de Symfony, 10 ans d'API Platform",
   "dateConfidence": "ok",
   "note": "30 ans de PHP.",
-  "status": "pending",
-  "sessions": []
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-09-29",
+  "revisit": "Corpus fait de comptes-rendus d'entreprises (dont plusieurs sponsors ou employeurs de speakers) et de transcripts ; aucun post LinkedIn individuel ni thread Mastodon/Bluesky lu (la recherche web ne remonte que les annonces AFUP). Article Conserto non lu (URL redirigée vers la liste du blog), Clever Age inaccessible (403). À compléter : posts de participants, sketchnotes, slides Speaker Deck/Joind.in, retours sur les sessions Laravel, Kubernetes, TechForAll et la conférence de Louis Vareille.",
+  "corpus": "Sept comptes-rendus publics lus (JoliCode, cinq auteurs, 14/10/2025 ; Les-Tilleuls.coop, Alexandre Daubois et quatre collègues, 13/10 ; Webnet, 22/10 ; Dn'D, 30/10 ; ACSEO ; PHP France, 18/03/2026), le programme officiel et les interviews speakers de l'AFUP. Treize vidéos de la playlist officielle (publiées du 1er au 24/12/2025) ont été transcrites et exploitées : les deux keynotes AFUP, la table ronde sur la PHP Foundation et dix talks.",
+  "limits": "Aucun post LinkedIn individuel lu : le corpus reflète surtout le regard d'agences et d'ESN, souvent sponsors (JoliCode, Les-Tilleuls.coop, Webnet) et parfois employeurs du speaker commenté (Dunglas, Bluchet, Alexandre, Daubois). Les sessions Laravel, les ateliers, les coups de projecteur sponsors et plusieurs talks du jour 1 n'ont aucun retour ; la conférence de Thibaut Soulcié n'est connue que par une mention de standing ovation. Les transcripts sont des sous-titres automatiques (noms propres parfois déformés).",
+  "tldr": "**Pour ses 30 ans, PHP s'est montré moins nostalgique que tourné vers l'avenir : un écosystème qui se modernise en supprimant (Symfony 8, PECL remplacé par PIE), qui mise sur FrankenPHP et la PHP Foundation pour sa performance et sa soutenabilité, et qui aborde l'IA de façon pragmatique, en rappelant que le code n'a jamais été le but.**",
+  "keyTakeaways": [
+    "Corriger les dépréciations au fil de l'eau (« passer le balai devant sa porte ») pour rendre les montées de version majeures ennuyeuses ; démarrer les nouveaux projets 2026 sur Symfony 8 (Grekas).",
+    "Remplacer PECL par **PIE** pour installer les extensions, et publier ses extensions sur Packagist avec un composer.json de type php-ext (Titcumb).",
+    "Évaluer un agent IA sur de gros volumes, avec un LLM-juge validé par un expert humain, et piloter le **95e percentile** plutôt que la moyenne (Zaninotto).",
+    "Se concentrer sur l'impact métier plutôt que sur la production de code : « Don't focus on output, focus on outcomes » ; demander l'accès aux indicateurs business (Leune).",
+    "Rester responsable du code généré par l'IA : c'est celui qui pousse en production qui en répond (Leune).",
+    "Tester le mode worker de FrankenPHP, en rendant ses services sans état et sans fuite mémoire, avant d'optimiser finement l'injection de dépendances (Dunglas, Bluchet, Grekas).",
+    "Assumer une architecture pragmatique plutôt que dogmatique : garder le métier au centre, supprimer les couches (interfaces de DTO, builders systématiques) qui n'apportent rien (Mairet, OpenClassrooms).",
+    "Intégrer l'accessibilité RGAA tout au long du développement, pas en fin de projet (Février, via JoliCode).",
+    "Revenir aux fondamentaux négligés : fonctionnalités SQL avancées (CTE, window functions, LATERAL), commandes d'optimisation de Composer, bases de la sécurité web (Avrot, Eymonot, Bouchard).",
+    "Soutenir financièrement la PHP Foundation et les projets open source dont on dépend (panel, Banyard, Grekas)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-d-ouverture",
+      "day": "2025-10-09",
+      "type": "keynote",
+      "title": "Keynote d'ouverture",
+      "speakers": [
+        "Adrien Gallou — AFUP"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Ouverture d'une édition placée **sous le signe des anniversaires** : 30 ans de PHP et 25 ans de l'AFUP ; une gazette distribuée à chacun, « pour dire J'y étais », un jeu sur deux jours via le QR code du badge et des séances photo par communauté.\n- **Les chiffres de l'organisation** : 29 sponsors (dont un nouveau « sponsor chocolat »), 35 conférencières et conférenciers, une table ronde et des ateliers ; 18 bénévoles et plus de **210 jours-personnes de travail**, pilotés par la directrice opérationnelle de l'association.\n- Appel à donner des retours aux speakers via **OpenFeedback** (« préparer une conférence, ça demande du temps… c'est fait de manière gratuite ») et à rejoindre la cinquantaine de bénévoles qui animent les meetups locaux.\n- Rappel du code de conduite et d'un numéro de contact ; clin d'œil avec une photo de l'équipe « il y a 30 ans ».",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "PeuBJEs4mnY",
+        "title": "Keynote ouverture - Équipe AFUP - Forum PHP 2025",
+        "publishedAt": "2025-12-01",
+        "transcript": true
+      }
+    },
+    {
+      "id": "20-ans-de-symfony-et-maintenant-la-version-8",
+      "day": "2025-10-09",
+      "type": "talk",
+      "title": "20 ans de Symfony, et maintenant la version 8!",
+      "speakers": [
+        "Nicolas Grekas — Symfony"
+      ],
+      "feedbackFrom": [
+        "Vincent Amstoutz (Les-Tilleuls.coop)",
+        "Blog JoliCode",
+        "Wajdi Bessassi (Webnet)"
+      ],
+      "summary": "- **Sur scène** : *« une version majeure, c'est rien. C'est juste supprimer du code déprécié »*. Symfony 8 (sortie fin novembre 2025) passe à **PHP 8.4 minimum**, ce qui permet de supprimer le code des services lazy et le parseur HTML5, devenus natifs ; il ajoute des types de retour manquants et **abandonne le format XML** pour la configuration des services et des routes. Le diff 7.4 → 8.0 compte 72 dépréciations retirées et plus de 500 changements mineurs.\n- Rétrospective des « waouh » de 20 ans : Flex, autowiring, MakerBundle, AssetMapper et import maps (« pas besoin de Node pour un petit projet PHP »), Messenger, HttpClient, variables d'environnement et préparation de longue date au **mode worker** que FrankenPHP exploite aujourd'hui.\n- Nouveautés 7.4 : support natif de FrankenPHP dans le composant Runtime, JsonStreamer stabilisé, ObjectMapper, commandes invocables décrites par attributs, **configuration en tableaux PHP typés** et JSON Schema pour l'autocomplétion du YAML. Symfony AI reste un projet à part, pas encore stable.\n- Message de fond : environ 4 000 contributeurs en 20 ans, ~500 uniques par an, une core team bénévole (hors Grekas et Fabien Potencier) ; **appel aux entreprises pour financer** le projet.\n- **Ce qu'en ont retenu les participants** : *« Une conf dynamique… On est enthousiasmé »* (Amstoutz), qui retient **4 000 lignes ajoutées pour 39 000 supprimées** (même chiffre chez Webnet ; environ 35 000 entendu sur scène) ; JoliCode se dit fière de compter parmi les contributeurs.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "uyuNhhqZgG0",
+        "title": "20 ans de Symfony, et maintenant la version 8! - Nicolas GREKAS - Forum PHP 2025",
+        "publishedAt": "2025-12-01",
+        "transcript": true
+      }
+    },
+    {
+      "id": "creer-un-serveur-mcp-avec-symfony",
+      "day": "2025-10-09",
+      "type": "talk",
+      "title": "Créer un serveur MCP avec Symfony",
+      "speakers": [
+        "Edouard Courty"
+      ],
+      "feedbackFrom": [
+        "Julien Lary (Les-Tilleuls.coop)",
+        "Alex Guyot (Les-Tilleuls.coop)",
+        "Blog JoliCode",
+        "Blog Dn'D"
+      ],
+      "summary": "- Présentation du **Model Context Protocol**, qui permet à une IA d'appeler des outils exposés par un serveur, et de sa mise en œuvre en PHP avec Symfony ; exemples e-commerce (service client, traitement de commandes) selon Dn'D.\n- Limites pointées : **sécurité des données** et risque d'hallucination ; un protocole *« très neuf, et… en évolution constante »* (JoliCode).\n- Accueil positif : *« une bonne entrée en matière »* (Lary) ; une approche pédagogique *« loin des posts LinkedIn bien aguicheurs »* (Guyot).\n- Premier volet d'une série de quatre talks IA du Forum (avec Leune, Zaninotto et Talleu).",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "gwpxwUrQBFA",
+        "title": "Créer un serveur MCP avec Symfony - Edouard COURTY - Forum PHP 2025",
+        "publishedAt": "2025-12-01",
+        "transcript": false
+      }
+    },
+    {
+      "id": "whats-new-in-php-8-5",
+      "day": "2025-10-09",
+      "type": "talk",
+      "title": "What's New in PHP 8.5",
+      "speakers": [
+        "Derick Rethans — PHP Foundation"
+      ],
+      "feedbackFrom": [
+        "Blog JoliCode",
+        "Blog Dn'D"
+      ],
+      "summary": "- **Sur scène**, le créateur de Xdebug déroule PHP 8.5 : **opérateur pipe** `|>` (une seule valeur passée à droite), closures dans les expressions constantes, et démonstration live du pas-à-pas Xdebug à travers une chaîne de pipes.\n- **clone with** : `clone()` devient une fonction acceptant un tableau de propriétés à modifier, pratique pour les objets readonly ; propriétés `final` en promotion de constructeur, visibilité asymétrique sur les statiques.\n- Nouvelle **API d'URI** conforme aux standards (WHATWG et RFC 3986) pour remplacer `parse_url` ; OPcache désormais toujours compilé dans PHP (mais pas activé par défaut) ; attribut `#[\\NoDiscard]`, attributs sur les constantes, `#[\\Deprecated]` sur les traits ; stack traces sur les erreurs fatales ; `FILTER_THROW_ON_FAILURE` ; `array_first()`/`array_last()` ; fonctions grapheme (`grapheme_str_split`, `grapheme_levenshtein`).\n- En Q&R : travaux en cours sur l'asynchrone ; les **génériques** lui paraissent peu probables à court terme.\n- **Retenu par les participants** : JoliCode souligne la découverte que les closures d'un pipe *« **doivent** être entourées de parenthèses »* (Rethans explique que c'est un problème de précédence) ; Dn'D écrit qu'OPcache « devient par défaut », ce que le transcript nuance.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "qrvFel7k8cQ",
+        "title": "What's New in PHP 8.5 - Derick Rethans - Forum PHP 2025",
+        "publishedAt": "2025-12-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-etre-un-e-bon-ne-dev-a-l-heure-des-ia-generatives",
+      "day": "2025-10-09",
+      "type": "talk",
+      "title": "Comment être un•e bon•ne dév à l'heure des IA génératives ?",
+      "speakers": [
+        "Xavier Leune"
+      ],
+      "feedbackFrom": [
+        "Julien Lary (Les-Tilleuls.coop)",
+        "Blog JoliCode",
+        "Wajdi Bessassi (Webnet)",
+        "Blog Dn'D"
+      ],
+      "summary": "- **Sur scène**, après un sondage de la salle (des devs conquis, d'autres qui y perdent du temps), Leune propose sa définition du bon dev : produire **efficacement** une application à partir d'un besoin métier, en gérant la complexité intrinsèque et en **évitant la complexité artificielle**, selon le contexte.\n- Chiffres mis en perspective : baisse des jeunes devs aux États-Unis depuis fin 2022 (qu'il n'attribue pas d'abord à ChatGPT), mais croissance mondiale du nombre de développeurs ; études de productivité contradictoires (des devs open source ralentis par l'IA, mais +26 % dans une étude menée chez Microsoft, Accenture et une entreprise du Fortune 100 ; Webnet retient une fourchette de -19 % à +56 %) ; 80 % d'usage quotidien mais une confiance faible (Stack Overflow 2025).\n- Témoignages de CTO : déploiements x3 et productivité estimée x2, au point que **« les PM n'arrivent plus à fournir »** ; les revues de PR par IA ont amélioré la qualité des PR ; alerte sur la charge mentale du multi-agents.\n- Conseils : *« Don't focus on output, focus on outcomes »* ; se former sans attendre l'employeur ; rester responsable du code poussé en prod ; accueillir les nouveaux venus sans gatekeeping. Analogie de l'iPhone et des photographes : le métier change sans disparaître.\n- Formule la plus reprise : *« Le code devient gratuit. Il n'a donc plus de valeur. Intéressez-vous au business »* (JoliCode, Webnet). L'IA *« remplacera les dev qui s'intéressent qu'au code »* hors top 5 % (transcript).\n- Lary y a vu un *« ted talk pour Lead Dev/CTO, ça change et c'est bien »* ; Dn'D retient que l'IA est une compétence à acquérir plutôt qu'une menace.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "xOILc-rN4bA",
+        "title": "Comment être un•e bon•ne dév à l'heure des IA génératives ? - Xavier LEUNE - Forum PHP 2025",
+        "publishedAt": "2025-12-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "codifier-php-une-nouvelle-generation-d-outillage-pour-la-documentation",
+      "day": "2025-10-09",
+      "type": "talk",
+      "title": "Codifier PHP : une nouvelle génération d'outillage pour la documentation",
+      "speakers": [
+        "Gina Banyard — PHP Foundation"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** (aucun retour participant trouvé) : visite guidée de php.net, de ses dépôts et sous-domaines (wiki des RFC, people, bugs…), et de la chaîne de documentation : sources DocBook en XML, traductions suivies par un commentaire de révision, rendu par PhD, outil *« plus vraiment maintenu depuis 2012 »*.\n- Défense de **DocBook plutôt que Markdown** : standard sémantique qui permet de générer liens et métadonnées automatiquement.\n- Historique de la génération de doc (parsing du C, puis réflexion, puis stubs rendus possibles par les TypeError de PHP 8) et de ses défauts : pas de tests, guide de migration écrit à la main.\n- Présentation de **stub-to-docbook**, son nouvel outil testé (PHPUnit, PHPStan) qui compare stubs et documentation et génère une partie du guide de migration 8.4 → 8.5.\n- Plaidoyer pour financer la PHP Foundation, présentée comme *« l'assurance vie »* des entreprises qui dépendent de PHP.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "Sk8xdft2SVo",
+        "title": "Codifier PHP : une nouvelle génération d'outillage pour la documentation - Gina BANYARD - Forum PHP",
+        "publishedAt": "2025-12-04",
+        "transcript": true
+      }
+    },
+    {
+      "id": "l-evaluation-des-ias-la-recette-secrete-des-agents-pas-trop-betes",
+      "day": "2025-10-09",
+      "type": "lightning",
+      "title": "L'évaluation des IAs : la recette secrète des agents pas trop bêtes",
+      "speakers": [
+        "François Zaninotto — Marmelab"
+      ],
+      "feedbackFrom": [
+        "Blog JoliCode",
+        "Blog Dn'D"
+      ],
+      "summary": "- **Sur scène**, une fable : « Recipe Finder », appli vibe-codée qui propose une recette à partir d'une photo de frigo, jusqu'à l'intoxication. Aucun bug de code : un agent est **par nature imprévisible**, on ne peut qu'améliorer son taux de fiabilité.\n- La recette : **tester tous les paramétrages** (prompt, modèle, taille, température, outils…), les noter avec un **LLM-juge**, lui-même validé par un expert humain sur quelques dizaines de cas ; combiner les métriques en un score unique et viser le **95e percentile**, pas la moyenne.\n- Cas client : l'agent de synthèse du moteur de recherche Qwant. Conseils : pattern Strategy pour changer d'implémentation au runtime, 4 ou 5 métriques clés, tout conserver dans une base requêtable, commencer par le modèle le plus cher puis descendre.\n- Devinette finale : un athlète qui a 10 % de chances de tomber à chaque haie n'a que **34 %** de chances de finir le 110 m haies ; multiplier les agents multiplie les échecs.\n- **Retenu par les participants** : outils DeepEval, Ragas, LangSmith et la mise en garde *« une application à base d'agent va forcément se planter à un moment »* (JoliCode) ; la difficulté n'est pas de créer un agent mais de le rendre fiable (Dn'D). Zaninotto concède lui-même un travail *« pas très passionnant »*, proche de la data science.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "NjrbQ8aWDv8",
+        "title": "L'évaluation des IAs : la recette secrète des agents pas trop bêtes - François Zaninotto - Forum PHP",
+        "publishedAt": "2025-12-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "php-sans-php-creez-des-binaires-autonomes-de-votre-code",
+      "day": "2025-10-09",
+      "type": "lightning",
+      "title": "PHP, sans PHP : créez des binaires autonomes de votre code",
+      "speakers": [
+        "Jean-François Lépine"
+      ],
+      "feedbackFrom": [
+        "Emmanuel Averty (Les-Tilleuls.coop)",
+        "Blog JoliCode",
+        "Wajdi Bessassi (Webnet)"
+      ],
+      "summary": "- Compiler un projet PHP en **exécutable autonome** sans dépendance, à la manière de Go ou Rust, pour Linux, macOS et Windows (Webnet), avec static-php-cli (SPC) et phpmicro.sfx.\n- Castor cité comme *« parfait exemple de binaire statique »* ; limites : pas de FFI, contraintes de taille (JoliCode).\n- Conclusion jugée pragmatique par Averty : *« utilisez plutôt FrankenPHP, vous embêtez pas avec ce que je vous ai dit »*.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "gqre9g4XV00",
+        "title": "PHP, sans PHP : créez des binaires autonomes de votre code - Jean-François Lépine - Forum PHP 2025",
+        "publishedAt": "2025-12-06",
+        "transcript": false
+      }
+    },
+    {
+      "id": "sql-vs-les-prejuges",
+      "day": "2025-10-09",
+      "type": "talk",
+      "title": "SQL vs Les Préjugés",
+      "speakers": [
+        "Lætitia Avrot"
+      ],
+      "feedbackFrom": [
+        "Blog JoliCode"
+      ],
+      "summary": "- Une **plaidoirie pour SQL** contre les idées reçues : *« SQL est déclaratif : nous lui disons plutôt « je veux ça » »*, à l'inverse de PHP impératif (JoliCode).\n- Démonstration de fonctionnalités avancées souvent ignorées : CTE avec `WITH`, `RETURNING`, window functions, et `LATERAL` pour résoudre les problèmes N+1.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "fvD5ipYU5qE",
+        "title": "SQL vs Les Préjugés - Lætitia Avrot - Forum PHP 2025",
+        "publishedAt": "2025-12-07",
+        "transcript": false
+      }
+    },
+    {
+      "id": "et-si-le-futur-de-la-programmation-concurrentielle-avait-deja-50-ans",
+      "day": "2025-10-09",
+      "type": "talk",
+      "title": "Et si le futur de la programmation concurrentielle avait déjà 50 ans ?",
+      "speakers": [
+        "Baptiste Langlade"
+      ],
+      "feedbackFrom": [
+        "Blog JoliCode",
+        "Blog Dn'D"
+      ],
+      "summary": "- Le **modèle d'acteurs** comme réponse à la complexité de la concurrence : chaque acteur traite séquentiellement sa boîte aux lettres.\n- Exemple d'un crawler qui respecte `Crawl-delay` *« **sans aucun verrou externe** »* (JoliCode) ; Dn'D retient une meilleure utilisation des ressources en traitement parallèle.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "E3pmkKQNC7Y",
+        "title": "Et si le futur de la programmation concurrentielle avait déjà 50 ans ? - Baptiste LANGLADE",
+        "publishedAt": "2025-12-07",
+        "transcript": false
+      }
+    },
+    {
+      "id": "construire-une-application-saas-multi-tenant-avec-php-et-laravel-en-2025",
+      "day": "2025-10-09",
+      "type": "talk",
+      "title": "Construire une application SaaS multi-tenant avec PHP et Laravel en 2025",
+      "speakers": [
+        "Vincent Demonchy"
+      ],
+      "feedbackFrom": [
+        "Wajdi Bessassi (Webnet)"
+      ],
+      "summary": "- Trois stratégies d'isolation des données clients : par propriété, logique ou physique.\n- Outillage Laravel : spatie/laravel-multitenancy et stancl/tenancy pour des SaaS sécurisés et évolutifs (Webnet, seul retour trouvé).",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "OPSrIdg_RmI",
+        "title": "Construire une application SaaS multi-tenant avec PHP et Laravel en 2025 - Vincent DEMONCHY",
+        "publishedAt": "2025-12-08",
+        "transcript": false
+      }
+    },
+    {
+      "id": "180-000-requetes-par-seconde-explique-simplement",
+      "day": "2025-10-09",
+      "type": "talk",
+      "title": "180 000 requêtes par seconde expliqué simplement",
+      "speakers": [
+        "Xavier Leune"
+      ],
+      "feedbackFrom": [
+        "Wajdi Bessassi (Webnet)"
+      ],
+      "summary": "- Les leviers de la très haute performance en PHP selon Webnet : **réutilisation des connexions**, parallélisation avec `curl_multi_init()`, multi-processus via `pcntl_fork()`, mémoire partagée avec `shmop`.\n- Au-delà d'une machine, la **scalabilité horizontale** devient indispensable.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "tS4SsX6Ij40",
+        "title": "180 000 requêtes par seconde expliqué simplement - Xavier Leune - Forum 2025",
+        "publishedAt": "2025-12-09",
+        "transcript": false
+      }
+    },
+    {
+      "id": "debrider-la-capacite-des-workers",
+      "day": "2025-10-09",
+      "type": "talk",
+      "title": "Débrider la capacité des Workers",
+      "speakers": [
+        "Julien Mercier-Rojas"
+      ],
+      "feedbackFrom": [
+        "Blog Dn'D"
+      ],
+      "summary": "- REX sur le traitement asynchrone à fort volume dans une application d'**éco-conduite**, et les difficultés concrètes de pilotage des workers (Dn'D, seul retour trouvé).",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "g1dqnX1h154",
+        "title": "Débrider la capacité des Workers - Julien Mercier-Rojas - Forum PHP 2025",
+        "publishedAt": "2025-12-10",
+        "transcript": false
+      }
+    },
+    {
+      "id": "quatre-patterns-avances-pour-ameliorer-la-resilience-d-une-application",
+      "day": "2025-10-09",
+      "type": "talk",
+      "title": "Quatre patterns avancés pour améliorer la résilience d'une application",
+      "speakers": [
+        "Pascal Martin"
+      ],
+      "feedbackFrom": [
+        "Blog JoliCode",
+        "Blog Dn'D"
+      ],
+      "summary": "- Fil rouge : la **file d'attente devant la machine à café**.\n- Quatre patterns : préparer les réponses à l'avance (cache), **étaler les expirations de cache**, retry exponentiel avec jitter, sharding et réplication (dont le shuffle sharding cité par Dn'D).\n- Point à contre-courant retenu par JoliCode : **éviter les retries** dans la plupart des cas.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "cF-ys_nptOs",
+        "title": "Quatre patterns avancés pour améliorer la résilience d'une application - Pascal MARTIN - Forum PHP",
+        "publishedAt": "2025-12-10",
+        "transcript": false
+      }
+    },
+    {
+      "id": "atteindre-la-qualite-d-une-spa-avec-htmx-et-twig",
+      "day": "2025-10-09",
+      "type": "talk",
+      "title": "Atteindre la qualité d'une SPA avec HTMX et Twig",
+      "speakers": [
+        "Damien Alexandre — JoliCode"
+      ],
+      "feedbackFrom": [
+        "Blog JoliCode (collègues du speaker)",
+        "Wajdi Bessassi (Webnet)",
+        "ACSEO"
+      ],
+      "summary": "- HTMX apporte la **fluidité d'une SPA sans framework JavaScript** : des attributs HTML déclenchent des requêtes AJAX dont le rendu reste côté serveur avec Twig (Webnet).\n- Plaidoyer pour une approche plus simple que les frameworks front lourds ; un side-project Minitel évoqué au passage (JoliCode, qui renvoie à un article antérieur).\n- ACSEO range HTMX parmi les sujets marquants de l'édition (« approche minimaliste de l'interactivité »).",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "wjmCTfVr4Q8",
+        "title": "Atteindre la qualité d'une SPA avec HTMX et Twig - Damien ALEXANDRE - Forum PHP 2025",
+        "publishedAt": "2025-12-11",
+        "transcript": false
+      }
+    },
+    {
+      "id": "lightning-talks",
+      "day": "2025-10-09",
+      "type": "lightning",
+      "title": "Lightning-talks",
+      "speakers": [
+        "Équipe AFUP (animation)",
+        "Alexandre Daubois — Les-Tilleuls.coop"
+      ],
+      "feedbackFrom": [
+        "Alexandre Daubois (speaker)"
+      ],
+      "summary": "- Seul témoignage trouvé, celui d'un des orateurs : Alexandre Daubois a raconté son parcours depuis 2015 et son **syndrome de l'imposteur**, lui qui avait commencé à une époque où on lui disait que *« PHP et le web, ça n'a aucun avenir »* (speaker, blog Les-Tilleuls.coop).",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "aCgrlPrEiOA",
+        "title": "Lightning talk - Forum PHP 2025",
+        "publishedAt": "2025-12-11",
+        "transcript": false
+      }
+    },
+    {
+      "id": "c-est-pas-tres-marrant-de-devoir-etre-drole-tout-le-temps",
+      "day": "2025-10-09",
+      "type": "talk",
+      "title": "C'est pas très marrant de devoir être drôle tout le temps",
+      "speakers": [
+        "Thibaut Soulcié — dessinateur de presse"
+      ],
+      "feedbackFrom": [
+        "Blog PHP France"
+      ],
+      "summary": "- Session hors technique en fin de premier jour : un dessinateur de presse (Mediapart, L'Équipe, Fluide Glacial) raconte **les coulisses du gag d'actualité** et du processus créatif (interview AFUP) ; *« Les dessinateurs de presse sont un tiers humoristes, un tiers artiste, un tiers journaliste et 100% dépressifs »*.\n- Seul retour trouvé : une **« standing ovation »** (PHP France). Pas de vidéo dans la playlist officielle.",
+      "summarySources": [
+        "program",
+        "blog"
+      ]
+    },
+    {
+      "id": "l-etat-de-l-art-de-php-apres-30-ans-d-existence",
+      "day": "2025-10-10",
+      "type": "talk",
+      "title": "L'état de l'art de PHP après 30 ans d'existence",
+      "speakers": [
+        "Antoine Bluchet — Les-Tilleuls.coop"
+      ],
+      "feedbackFrom": [
+        "Wajdi Bessassi (Webnet)"
+      ],
+      "summary": "- **Sur scène**, un récit personnel « sans code ni QR code » : de la page Personal Home Page de 1995 au Site du Zéro, en passant par phpBB, SPIP (qui propulsait le site de l'AFUP), TYPO3, WordPress, Joomla, PrestaShop, Drupal, CakePHP et Laravel, puis un détour par Node.js avant de revenir à PHP et API Platform.\n- Les jalons du langage retenus : typage des arguments et erreurs natives capturables en PHP 7, attributs, match, types union et arguments nommés en PHP 8 ; *« j'ai l'impression que ça a toujours existé »*.\n- Son propre **benchmark Sylius** (serveur modeste, nombre de workers réglé à la main pendant trois jours) : Nginx + PHP-FPM et FrankenPHP en mode classique font jeu égal ; seul le **mode worker** se détache nettement.\n- PHP comme moyen de **rencontrer une communauté** : c'est un meetup qui l'a mené chez Les-Tilleuls.coop ; conférence API Platform à 400 personnes pour ses 10 ans.\n- Webnet en retient un PHP devenu plateforme complète, dont les optimisations (JIT, OPcache, FrankenPHP) le rendent compétitif tout en restant accessible.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "btR6TXmOQZs",
+        "title": "L'état de l'art de PHP après 30 ans d'existence - Antoine Bluchet - Forum PHP 2025",
+        "publishedAt": "2025-12-13",
+        "transcript": true
+      }
+    },
+    {
+      "id": "creer-un-rag-en-php-demystifier-l-ia",
+      "day": "2025-10-10",
+      "type": "talk",
+      "title": "Créer un RAG en PHP : démystifier l'IA",
+      "speakers": [
+        "Clément Talleu"
+      ],
+      "feedbackFrom": [
+        "Alex Guyot (Les-Tilleuls.coop)",
+        "ACSEO"
+      ],
+      "summary": "- Une architecture RAG accessible, étape par étape : **découpage (chunking), vectorisation (embeddings), stockage dans PostgreSQL avec pgvector**, recherche puis génération.\n- *« Ravi de la présentation… le sujet était vraiment accessible et le POC présenté était clair »* (Guyot).",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "pJuDhAgCAw8",
+        "title": "Créer un RAG en PHP : démystifier l'IA - Clément TALLEU - Forum PHP 2025",
+        "publishedAt": "2025-12-14",
+        "transcript": false
+      }
+    },
+    {
+      "id": "perf-et-injection-de-dependances-etes-vous-suffisamment-paresseux-ses",
+      "day": "2025-10-10",
+      "type": "talk",
+      "title": "Perf et injection de dépendances - êtes-vous suffisamment paresseux·ses ?",
+      "speakers": [
+        "Nicolas Grekas — Symfony"
+      ],
+      "feedbackFrom": [
+        "Emmanuel Averty (Les-Tilleuls.coop)",
+        "Wajdi Bessassi (Webnet)"
+      ],
+      "summary": "- Une **masterclass sur le lazy loading** des services : ne rien instancier d'inutile, avec `#[Lazy]`, `#[AutowireMethodOf]` et les service locators.\n- *« une conférence de qualité… il a présenté des use cases très spécifiques pour une optimisation maximale »* (Averty).\n- Contrepoint le même jour : Kévin Dunglas lance que ces astuces deviennent **inutiles en mode worker** FrankenPHP, où le conteneur n'est construit qu'une fois (transcript Dunglas).",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "uiUHY6CQl3A",
+        "title": "Perf et injection de dépendances - êtes-vous suffisamment paresseux·ses ? - Nicolas GREKAS",
+        "publishedAt": "2025-12-15",
+        "transcript": false
+      }
+    },
+    {
+      "id": "jobs-queues-events-anatomie-des-erreurs-courantes",
+      "day": "2025-10-10",
+      "type": "talk",
+      "title": "Jobs, queues & events : anatomie des erreurs courantes et pistes de résolutions",
+      "speakers": [
+        "Jonathan Van Belle"
+      ],
+      "feedbackFrom": [
+        "Blog Dn'D"
+      ],
+      "summary": "- Défaillances fréquentes des workers et **fuites mémoire**, avec des pistes de diagnostic (Dn'D, seul retour trouvé).",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "2wG9oieuAJk",
+        "title": "Jobs, queues & events : anatomie des erreurs courantes et pistes de résolutions - Jonathan VAN BELLE",
+        "publishedAt": "2025-12-16",
+        "transcript": false
+      }
+    },
+    {
+      "id": "wannacry-les-dessous-d-un-ransomware-devastateur",
+      "day": "2025-10-10",
+      "type": "talk",
+      "title": "WannaCry : les dessous d'un ransomware dévastateur",
+      "speakers": [
+        "Sonia Seddiki"
+      ],
+      "feedbackFrom": [
+        "Blog JoliCode"
+      ],
+      "summary": "- Talk sans PHP mais apprécié : reverse engineering avec **Ghidra**, méthode des « 7 différences » pour analyser un malware, découverte du **killswitch**, memory forensics pour récupérer des données.\n- Leçon retenue : *« il n'y a pas besoin de décrypter un malware à 100% pour le stopper »* (JoliCode).",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "CBmEMhs5oug",
+        "title": "WannaCry : les dessous d'un ransomware dévastateur - Sonia SEDDIKI - Forum PHP 2025",
+        "publishedAt": "2025-12-16",
+        "transcript": false
+      }
+    },
+    {
+      "id": "frankenphp-en-dehors-des-sentiers-battus",
+      "day": "2025-10-10",
+      "type": "talk",
+      "title": "FrankenPHP en dehors des sentiers battus",
+      "speakers": [
+        "Kévin Dunglas — Les-Tilleuls.coop"
+      ],
+      "feedbackFrom": [
+        "Blog Les-Tilleuls.coop (collègues du speaker)",
+        "Blog Dn'D",
+        "ACSEO"
+      ],
+      "summary": "- **Sur scène** (10e Forum PHP d'affilée pour Dunglas) : FrankenPHP est désormais **hébergé par l'organisation GitHub de PHP**, avec le soutien de la PHP Foundation. Rappels : serveur d'application basé sur Caddy, HTTPS automatique, HTTP/3, compression zstd, binaire statique contenant PHP, extensions et application.\n- Le **mode worker** reste optionnel : WordPress n'y sera sans doute jamais compatible mais fonctionne en mode classique ; il exige des services sans état et sans fuite mémoire.\n- Fonctions natives : **103 Early Hints**, hub Mercure intégré. Nouveauté : écrire des **extensions PHP en Go** grâce à un générateur de code (dû en grande partie à Alexandre Daubois), par exemple un client etcd en une vingtaine de lignes.\n- Encore plus récent : des **workers Go** qui ouvrent la voie au gRPC et aux WebSockets côté serveur en PHP, et une extension de file de messages, **open-sourcée pendant le talk**, compatible Symfony Messenger et Laravel Queues, pour se passer de RabbitMQ ou Redis sur les petites applications.\n- **Retenu par les participants** : extensions en Go et Early Hints (Les-Tilleuls), files natives (Dn'D) ; ACSEO range FrankenPHP parmi les sujets phares.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "22Ozs_jLGco",
+        "title": "FrankenPHP en dehors des sentiers battus - Kévin DUNGLAS - Forum PHP 2025",
+        "publishedAt": "2025-12-17",
+        "transcript": true
+      }
+    },
+    {
+      "id": "a-slice-of-pie-revolutionising-php-extension-installation",
+      "day": "2025-10-10",
+      "type": "talk",
+      "title": "A slice of PIE: revolutionising PHP extension installation",
+      "speakers": [
+        "James Titcumb — PHP Foundation"
+      ],
+      "feedbackFrom": [
+        "Blog JoliCode"
+      ],
+      "summary": "- **Sur scène** : PIE, le nouvel installeur d'extensions financé via la PHP Foundation (avec le soutien de la Sovereign Tech Agency allemande), remplace PEAR/PECL, vieillissants et peu maintenus. Version 1.0 en juin 2025 ; **PECL officiellement déprécié** en septembre.\n- Principe : **réutiliser Composer et Packagist** plutôt que réécrire un registre ; les extensions déclarent un composer.json de type `php-ext` ; DLL Windows produites par une GitHub Action.\n- Fonctions : `pie show`, vérification d'attestation des binaires, `pie install` dans un projet pour installer les extensions manquantes ; à venir : `pie upgrade`, détection et installation des dépendances système. Les extensions par projet restent un chantier difficile.\n- **Retenu par JoliCode** : une gestion de versions comparable à Composer et une publication facile sur Packagist.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "UB6GAVQou_U",
+        "title": "🥧 A slice of PIE: revolutionising PHP extension installation - James TITCUMB - Forum PHP 2025",
+        "publishedAt": "2025-12-18",
+        "transcript": true
+      }
+    },
+    {
+      "id": "developpez-sous-sylius-2-en-40-minutes-top-chrono",
+      "day": "2025-10-10",
+      "type": "talk",
+      "title": "Développez sous Sylius 2 en 40 minutes top chrono",
+      "speakers": [
+        "Maxime Huran"
+      ],
+      "feedbackFrom": [
+        "Wajdi Bessassi (Webnet)"
+      ],
+      "summary": "- Sylius 2 (fin 2024) : meilleure intégration Symfony, **hooks** flexibles, architecture API-first ; un back-office complet peut être généré rapidement (Webnet, seul retour trouvé).",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "kijJ94rc1Ys",
+        "title": "Développez sous Sylius 2 en 40 minutes top chrono - Maxime HURAN - Forum PHP 2025",
+        "publishedAt": "2025-12-18",
+        "transcript": false
+      }
+    },
+    {
+      "id": "sous-le-capot-de-composer",
+      "day": "2025-10-10",
+      "type": "lightning",
+      "title": "Sous le capot de Composer : comprendre l'outil qu'on utilise tous les jours",
+      "speakers": [
+        "Felix Eymonot"
+      ],
+      "feedbackFrom": [
+        "Emmanuel Averty (Les-Tilleuls.coop)",
+        "Wajdi Bessassi (Webnet)"
+      ],
+      "summary": "- Résolution des dépendances, vérifications, optimisation de l'autoloader, commandes de diagnostic `why` et `why-not` (Webnet).\n- Effet salle : *« On a vu beaucoup de gens prendre des notes ou lever leur portable pour photographier la commande »* ; *« ce genre de conférences qui rappellent des bases sont toujours nécessaires »* (Averty).",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "OFpvsx8hHEU",
+        "title": "Sous le capot de Composer : comprendre l'outil qu'on utilise tous les jours - Felix EYMONOT",
+        "publishedAt": "2025-12-19",
+        "transcript": false
+      }
+    },
+    {
+      "id": "audit-rgaa-preparez-vous-a-relever-le-defi-technique",
+      "day": "2025-10-10",
+      "type": "lightning",
+      "title": "Audit RGAA : préparez-vous à relever le défi technique !",
+      "speakers": [
+        "Gilles Février"
+      ],
+      "feedbackFrom": [
+        "Blog JoliCode"
+      ],
+      "summary": "- L'accessibilité concerne les handicaps visibles, invisibles, temporaires et contextuels ; depuis juin 2025, certains produits doivent aussi respecter ces règles ; un audit RGAA compte **256 tests par page**.\n- Message retenu : *« le RGAA ne doit pas être un obstacle de fin de projet mais une bonne pratique tout au long du développement »* (JoliCode).",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "esrh_cGcX1Y",
+        "title": "Audit RGAA : préparez-vous à relever le défi technique ! - Gilles FEVRIER - Forum PHP 2025",
+        "publishedAt": "2025-12-19",
+        "transcript": false
+      }
+    },
+    {
+      "id": "panel-the-future-of-php-and-the-php-foundation",
+      "day": "2025-10-10",
+      "type": "roundtable",
+      "title": "Panel discussion: The Future of PHP and the PHP Foundation",
+      "speakers": [
+        "Gina Banyard — PHP Foundation",
+        "James Titcumb — PHP Foundation",
+        "Nicolas Grekas — Symfony",
+        "Kévin Dunglas — Les-Tilleuls.coop",
+        "Cédric Mourizard (modération)"
+      ],
+      "feedbackFrom": [
+        "Blog JoliCode",
+        "Blog Les-Tilleuls.coop"
+      ],
+      "summary": "- **Sur scène** : la PHP Foundation est née du départ de Nikita Popov et du constat d'un **bus factor** (deux personnes payées pour un langage qui fait tourner des millions de sites). Elle finance aujourd'hui 11 développeurs (3 à temps plein, 8 à temps partiel), **sans roadmap imposée** ni changement de gouvernance : les RFC restent la règle. Les commits se répartissent désormais à peu près à parts égales entre Fondation et communauté (Banyard).\n- Dunglas : FrankenPHP n'aurait pas été stable sans les revues de patches obtenues via le Slack de la Fondation ; Grekas cite les lazy objects co-conçus avec un développeur C de la Fondation.\n- Avenir : Laravel attire de nouveaux développeurs vers PHP (Dunglas) ; l'image du langage s'améliore, « au moins 15 ans » devant lui (Banyard) ; PHP est *« cheap et efficace »* en période de crise, et gagne des appels d'offres face à Java (Grekas, Dunglas).\n- **IA, ton critique** : Symfony AI n'est pas stable, peu de cas d'usage marchent vraiment ; Grekas invoque le Shift Project et la **responsabilité énergétique** (« please AI do use Symfony » plutôt que tout réinventer) ; Banyard ne croit pas que *« the future is in LLMs »*, trop énergivores.\n- **Retenu par les participants** : un PHP « versatile », des performances saluées, l'influence positive de Laravel, et même en cas de déclin *« des années de projets à maintenir »* (JoliCode) ; financement des développeurs et réduction du bus factor (Les-Tilleuls).",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "gL5l1ui0elM",
+        "title": "Panel discussion: \"The Future of PHP and the PHP Foundation\" - Forum PHP 2025",
+        "publishedAt": "2025-12-20",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-bases-de-la-securite-des-developpements-web",
+      "day": "2025-10-10",
+      "type": "lightning",
+      "title": "Les bases de la sécurité des développements Web",
+      "speakers": [
+        "Amaury Bouchard"
+      ],
+      "feedbackFrom": [
+        "Blog JoliCode",
+        "Wajdi Bessassi (Webnet)",
+        "Blog Dn'D"
+      ],
+      "summary": "- Quatre vulnérabilités et leurs parades : **injection SQL** (requêtes préparées), **XSS** (échappement, Twig), **SSRF** (filtrer les URL), **CSRF** (jetons, symfony/form).\n- En-têtes recommandés : `Strict-Transport-Security`, `Content-Security-Policy`, `X-Frame-Options`.\n- Maxime reprise par trois blogs : *« Ne jamais faire confiance aux données entrantes »*.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "i8pGv1bsLDk",
+        "title": "Les bases de la sécurité des développements Web - Amaury BOUCHARD - Forum PHP 2025",
+        "publishedAt": "2025-12-20",
+        "transcript": false
+      }
+    },
+    {
+      "id": "symfony-ux-livecomponents-construire-un-dashboard-interactif-sans-une-ligne-de-js",
+      "day": "2025-10-10",
+      "type": "talk",
+      "title": "Symfony UX LiveComponents : Construire un dashboard interactif sans une ligne de JS",
+      "speakers": [
+        "Felix Eymonot"
+      ],
+      "feedbackFrom": [
+        "Blog Dn'D",
+        "ACSEO"
+      ],
+      "summary": "- Démonstration d'**interfaces dynamiques sans écrire de JavaScript** avec les Live Components (Dn'D) ; ACSEO cite Symfony UX parmi les progrès marquants en expérience développeur.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "SZ4lV-K_a8M",
+        "title": "Symfony UX LiveComponents : Construire un dashboard interactif sans une ligne de JS - Felix Eymonot",
+        "publishedAt": "2025-12-21",
+        "transcript": false
+      }
+    },
+    {
+      "id": "et-si-vous-utilisiez-php-pour-coder-des-jeux-sur-votre-console",
+      "day": "2025-10-10",
+      "type": "talk",
+      "title": "Et si vous utilisiez PHP pour coder des jeux sur votre console de jeux (favorite) ?",
+      "speakers": [
+        "Eric Courtial — Vivlio"
+      ],
+      "feedbackFrom": [
+        "Wajdi Bessassi (Webnet)"
+      ],
+      "summary": "- PHP embarqué sur du matériel contraint comme la **Sega Dreamcast**, via le SDK KallistiOS et la SAPI PHP Embed : une démonstration de la polyvalence inattendue du langage (Webnet, seul retour trouvé).",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "Jda4DpeHRxM",
+        "title": "Et si vous utilisiez PHP pour coder des jeux sur votre console de jeux (favorite) ? - Eric COURTIAL",
+        "publishedAt": "2025-12-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "10-ans-de-clean-architecture-chez-openclassrooms",
+      "day": "2025-10-10",
+      "type": "talk",
+      "title": "10 ans de Clean Architecture chez OpenClassrooms : le rêve, la réalité, les leçons",
+      "speakers": [
+        "Olivier Mairet — OpenClassrooms"
+      ],
+      "feedbackFrom": [
+        "Blog JoliCode",
+        "Blog Dn'D"
+      ],
+      "summary": "- **Sur scène** : l'origine est un traumatisme, la mise en production de la V4 du Site du Zéro en janvier 2013, site cassé jusqu'à 20 h. D'où une Clean Architecture appliquée de façon très stricte : builders, assemblers, gateways et **une interface par classe**, soit 20 à 30 classes pour une simple route.\n- Simplifications au fil des ans : un **contrôleur unique piloté par la spec OpenAPI** (extension `x-usecase`), un hydrator, les arguments nommés de PHP 8, suppression des interfaces de DTO jamais réimplémentées sur plus de **600 use cases**.\n- Leçons : le métier au centre (tests passés de 30 minutes à quelques secondes), **pragmatisme plutôt que dogmatisme**, expliquer le pourquoi aux nouveaux arrivants, cohésion. Bilan : toujours la V4 douze ans plus tard, sans refonte ; l'architecture cadre aussi bien les LLM, avec un playbook.\n- Pistes : ramener la logique métier dans les entités (elle avait glissé vers les use cases, notamment à cause de l'ambiguïté avec les entités Doctrine), explorer une architecture par composants.\n- **Retenu par les participants** : les *« 20 à 30 classes et interfaces PHP 🤯 »* et un choix maintenu mais pragmatique (JoliCode) ; *« Une architecture qui n'évolue pas est une architecture morte »* (citation rapportée par Dn'D).",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "LbzQDnWHqbU",
+        "title": "10 ans de Clean Architecture chez OpenClassrooms : le rêve, la réalité, les leçons - Olivier MAIRET",
+        "publishedAt": "2025-12-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "keynote-de-cloture",
+      "day": "2025-10-10",
+      "type": "keynote",
+      "title": "Keynote de clôture",
+      "speakers": [
+        "Équipe AFUP (vice-président de l'association)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Remerciements aux sponsors, aux speakers, aux équipes techniques et Disney, et aux bénévoles, avec un aperçu des coulisses : une journée d'installation la veille et **une checklist de 25 pages** (« pas de blague avec l'hélium »).\n- Annonce de l'**AFUP Day 2026 le 22 mai**, simultanément à Lille, Lyon, Paris et Bordeaux ; CFP ouvert jusqu'au 10 novembre, avec un **mentorat pour les premières conférences**.\n- Appel renouvelé à rejoindre l'association comme bénévole.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "BrgcU-Nr4YQ",
+        "title": "Keynote de clôture - Forum PHP 2025",
+        "publishedAt": "2025-12-24",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Optimisation de la Pagination Multi-Source pour le Suivi des Virements (M. Desnouveaux ; vidéo vcu5XSO1N-8)",
+    "Archiver efficacement de grands volumes de données grâce aux monades (B. Langlade ; vidéo 8FqF_LCmjr8)",
+    "Le framework d'APIs qui capitalise sur 30 ans de maturité du language PHP (A. Bluchet ; vidéo GJhNSWEgZ88)",
+    "Overcoming our Primitive Obsessions (B. Rambaud ; vidéo ck_5fUwdYOo)",
+    "Implementing multi-tenancy in a Laravel app (F. Van der Herten ; vidéo Xy6nxS_ZIxQ)",
+    "Uncharted packages (F. Van der Herten ; vidéo n4-ON_Xbujk)",
+    "#TechForAll - Yeeso : l'avenir de l'IT avec les femmes ! (H. Baldé ; pas de vidéo)",
+    "[Atelier] Étendre PHP sans RFC (M. Arlaud)",
+    "[Atelier] Scanner, comprendre, améliorer : l'analyse statique (C. Villeneuve)",
+    "Understanding Kubernetes in a visual way (A. Vache ; vidéo L6dPxGlVtxM)",
+    "De la veille isolée aux squads collaboratives (J. Joye ; vidéo QVkjWxI9_-I)",
+    "Dépréciations Symfony : de l'angoisse à l'opportunité (M. Arlaud ; vidéo 7qG03GHRSNU)",
+    "Laravel : Nous ne pouvons pas passer à côté de ces fonctionnalités (J. Stein ; vidéo LIGLbReQGbQ)",
+    "Changer le monde. Une réunion après l'autre (L. Vareille, réuniologue ; pas de vidéo)",
+    "Coups de projecteur sponsors (Akawaka/Sylius Stack, Les-Tilleuls.coop, Activinnov, Clever Cloud, Yousign)"
+  ],
+  "sources": [
+    {
+      "label": "Programme officiel",
+      "url": "https://event.afup.org/forum-php-2025/programme/"
+    },
+    {
+      "label": "Playlist YouTube officielle Forum PHP 2025 (AFUP, vidéos publiées du 01/12 au 24/12/2025)",
+      "url": "https://www.youtube.com/playlist?list=PL9zDdgiGjkIdQwiNb-1evZqGmDfmOwIHv"
+    },
+    {
+      "label": "JoliCode : 30 ans de PHP au Forum PHP 2025, notre récap complet (14/10/2025)",
+      "url": "https://jolicode.com/blog/30-ans-de-php-au-forum-php-2025-notre-recap-complet"
+    },
+    {
+      "label": "Les-Tilleuls.coop : ForumPHP 2025, au cœur d'une révolution silencieuse (13/10/2025)",
+      "url": "https://les-tilleuls.coop/blog/forumphp-2025-au-coeur-dune-revolution-silencieuse"
+    },
+    {
+      "label": "Webnet : Forum PHP 2025, 30 ans de PHP, et toujours plus d'innovation ! (22/10/2025)",
+      "url": "https://blog.webnet.fr/forum-php-2025-30-ans-de-php/"
+    },
+    {
+      "label": "Dn'D : Forum PHP 2025, retour sur l'édition anniversaire (30/10/2025)",
+      "url": "https://www.dnd.fr/forum-php-2025-une-edition-anniversaire-tournee-vers-lavenir/"
+    },
+    {
+      "label": "ACSEO : ForumPHP 2025, un événement grandiose",
+      "url": "https://www.acseo.fr/developpement/forumphp-2025-acseo/"
+    },
+    {
+      "label": "PHP France : AFUP 25 ans, un Forum PHP mémorable (18/03/2026)",
+      "url": "https://blog.phpfrance.com/ans-afup-forum-php/"
+    },
+    {
+      "label": "Interviews speakers AFUP (Thibaut Soulcié, Louis Vareille)",
+      "url": "https://event.afup.org/forumphp2025-interview-thibaut-soulcie/"
+    },
+    {
+      "label": "Non lus : Clever Age (403) et Conserto (article non accessible)",
+      "url": "https://www.clever-age.com/forum-php-2025/"
+    }
+  ]
 }

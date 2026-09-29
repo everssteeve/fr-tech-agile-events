@@ -21,12 +21,19 @@
         "Blog Premier Octet (extraits indexés)",
         "Jad Joubran (speaker, Bluesky)"
       ],
-      "summary": "- Ouverture de la journée : les fonctionnalités de la plateforme web **arrivent désormais dans tous les navigateurs à un rythme inédit** ; l'IA fait disparaître le boilerplate et **les attentes montent** (descriptif officiel).\n- Tour d'horizon cité par le compte rendu de Premier Octet : **`<select>` personnalisable en CSS**, animations pilotées au scroll, **View Transitions API**, **Document Picture-in-Picture API**, speculation rules et prerendering, et transformers.js pour l'IA dans le navigateur.\n- Message résumé par le speaker une semaine après (speaker, Bluesky) : **un point d'inflexion**. Pendant des années, construire pour le web voulait dire **contourner la pénurie** ; aujourd'hui l'abondance est partout (chargement instantané, Web AI, Web Push), avec des API puissantes et un large support navigateur, ce qui **change la façon de servir les utilisateurs**.\n- *Contenu connu par des extraits indexés du blog et par le post du speaker ; aucun retour de salle ni vidéo au 27/09 (le speaker annonce la vidéo « soon »).*",
+      "summary": "- **Sur scène (transcript)** : le web n'a jamais été aussi riche, mais *« personne ne l'a vraiment dépensé »*. Le talk suit trois actes : la page s'améliore, la page sort de l'onglet, l'onglet devient l'ordinateur.\n- **La page** : dialog, popover, positionnement d'ancre, `<select>` personnalisable, bientôt les **scroll-state container queries** (styler un élément collé, snappé ou scrollé jusqu'au bout en CSS seul), et les **View Transitions entre deux documents** avec un minimum de HTML et CSS.\n- **Hors de l'onglet** : Document Picture-in-Picture (aperçu de code sur un second écran, ticket de caisse affiché au client), web apps installables avec **notifications push, y compris sur iOS une fois installées**, et le lien, *« toujours invaincu »*.\n- **L'onglet comme ordinateur** : mise à jour du firmware de ses lunettes XREAL via **WebHID**, File System Access (Excalidraw, vscode.dev), avec un bémol : Firefox et Safari ne suivent pas. Speculation rules pour pré-rendre la page suivante, et IA via Prompt API ou transformers.js avec repli cloud (son futur cours learnai.online).\n- **Démo finale** : les **declarative partial updates** (Chrome), des marqueurs HTML remplis plus tard dans la même réponse streamée. Révélation : **toute la présentation était une seule requête HTTP ouverte 20 minutes, sans JavaScript côté client**, chaque slide étant poussée par le serveur. Le speaker juge l'API pas encore prête pour la production.\n- **Retenu par les participants** : Premier Octet cite le tour d'horizon (select CSS, animations au scroll, View Transitions, Document PiP, speculation rules, transformers.js). Le speaker résume ensuite son talk comme **le passage de la pénurie à l'abondance** (speaker, Bluesky). *Aucun retour de salle ne mentionne la démo en requête unique.*",
       "summarySources": [
         "program",
         "blog",
-        "feedback"
-      ]
+        "feedback",
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "tH5JDK5FBfk",
+        "title": "The (Abundant) State of the Web - with @JadJoubran - LearnJavaScript.online - dotJS 2026",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "boring-but-effective-webai-that-ships",
@@ -39,11 +46,18 @@
       "feedbackFrom": [
         "Blog Premier Octet (extraits indexés)"
       ],
-      "summary": "- Le ML dans le navigateur, **au-delà des chatbots** : embeddings, reconnaissance vocale temps réel, détourage d'images, avec de petits modèles ouverts, **hors ligne, sans clé d'API ni abonnement cloud** (descriptif officiel).\n- Démo relevée par Premier Octet : **« Jamie »**, un assistant vocal **100 % local** qui enchaîne de petits modèles spécialisés (détection d'activité vocale, Whisper-tiny via transformers.js, LLM léger, synthèse vocale), accéléré par **WebGPU**.\n- Le blog en tire une tendance de la journée : l'IA dans le navigateur **n'est plus une démo mais un vrai sujet d'ingénierie**.\n- *Contenu connu par des extraits indexés du blog, l'article n'ayant pas pu être lu en entier.*",
+      "summary": "- **Sur scène (transcript)** : démo de **Jamie**, assistant de cuisine vocal tournant dans le navigateur (environ 140 tokens/s sur un MacBook M3 avec un runtime expérimental), puis *« le côté que j'avais laissé de côté »* : Jamie, c'est **quatre modèles et environ 3 Go à télécharger**, par origine, car les caches sont isolés.\n- **Deux trous à combler** : la distribution (quantification 1 à 1,5 bit, future **Cross-Origin Storage API**) et la couverture d'exécution (3 tokens/s sur un Dell XPS 15 avec ONNX Runtime ; Hugging Face travaille à un **runtime dédié WebGPU**, 5 à 10 fois plus rapide).\n- **Les tâches « ennuyeuses » qui marchent déjà partout** via l'API `pipeline` de Transformers.js : transcription Whisper tiny (14 fois le temps réel sur M3, au moins 1,7 fois sur machines plus modestes), estimation de profondeur (34 images/s), détourage (environ 40 images/s), **embeddings** (1 020 recettes indexées en 3 s, recherche en 17 ms).\n- **La vraie question n'est pas « l'IA peut-elle tourner sur l'appareil ? » mais « doit-elle ? »** : décider **tâche par tâche** selon réseau, taille du modèle et calcul. Pour Jamie en production : détection vocale et transcription côté client, LLM côté serveur, téléchargement local en option.\n- Dernier exemple : des notes médicales passées dans un **filtre de confidentialité local** qui remplace les données sensibles par des placeholders avant l'appel au LLM cloud.\n- **Retenu par les participants** : Premier Octet décrit Jamie comme un assistant **100 % local** et en tire que l'IA dans le navigateur est devenue un sujet d'ingénierie. *Le talk nuance ce point : il recommande plutôt de garder le LLM côté serveur tant que le téléchargement et le matériel posent problème.*",
       "summarySources": [
         "program",
-        "blog"
-      ]
+        "blog",
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "WfojGcUb5Rk",
+        "title": "Boring but Effective: WebAI That Ships - Nico Martin - Hugging Face - dotJS 2026",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "what-you-re-really-trusting-when-you-run-npm-install",
@@ -56,11 +70,18 @@
       "feedbackFrom": [
         "Blog Premier Octet (extraits indexés)"
       ],
-      "summary": "- `npm install` comme **acte de confiance** envers un réseau de mainteneurs largement invisible ; pistes annoncées : **publication fondée sur l'identité** et **provenance** des paquets (descriptif officiel).\n- D'après Premier Octet, Karen Li (équipe npm) a détaillé ce qui se passe à l'installation : arbre de dépendances **figé par le lockfile**, ou **résolu à la volée** s'il manque.\n- Défenses récentes de npm présentées : une **« minimum release age »** qui met en quarantaine les versions fraîchement publiées, et le **blocage par défaut des scripts install/postinstall à partir de npm 12**.\n- *Contenu connu par des extraits indexés du blog, l'article n'ayant pas pu être lu en entier.*",
+      "summary": "- **Sur scène (transcript)** : déroulé de `npm install` (arbre existant, arbre idéal depuis le lockfile ou le `package.json`, diff, téléchargement, scripts de cycle de vie, mise à jour du lockfile, audit) et **trois points où la confiance peut être exploitée**. Scénario type : lockfile supprimé, version malveillante publiée à 8 h, installée à 8 h 03, `postinstall` exécuté.\n- **Côté installateur** : passer à **npm 12** (sorti en juillet), qui bloque par défaut les **scripts de cycle de vie**, les dépendances **Git** et les **URL distantes** ; ré-autoriser au cas par cas avec `npm approve-scripts` (et committer la liste dans `package.json`). Utiliser **`min-release-age`** (depuis npm 11.10) pour ne pas installer une version de moins d'un jour.\n- **Côté publieur** : les attaques passent par la prise de compte, le vol de tokens et l'exfiltration en CI. Réponses : **trusted publishing** (token éphémère lié au dépôt et au workflow) et **staged publishing** (le paquet attend l'approbation d'un mainteneur avant d'être public), tokens limités au « stage » pour ceux qui contournent la 2FA.\n- Annonces : restriction à venir des tokens contournant la 2FA pour publier, création de paquets via staged publishing, historique d'activité de publication ; feuille de route npm publiée la veille sur GitHub Community.\n- Conclusion : on ne fait pas qu'installer du code, *« on fait confiance à des gens, à un système et à du code qu'on ne voit pas »*, mais on n'est pas démuni.\n- **Retenu par les participants** : Premier Octet retient le déroulé de l'installation, la quarantaine des versions fraîches et le blocage des scripts à partir de npm 12, ce que le talk confirme.",
       "summarySources": [
         "program",
-        "blog"
-      ]
+        "blog",
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "rg0Th87CGeY",
+        "title": "What You’re Really Trusting When You Run npm install - Karen Li - GitHub - dotJS 2026",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "web-performance-apis-you-probably-never-knew-existed",
@@ -74,12 +95,19 @@
         "Slides du speaker (Speaker Deck)",
         "Blog Premier Octet (extraits indexés)"
       ],
-      "summary": "- Les **API natives de performance** des navigateurs pour mesurer la réactivité sans dépendre des dashboards tout faits (descriptif officiel).\n- **Mesurer avec la plateforme** (slides du speaker) : Layout Instability (qui a causé le décalage), **Long Animation Frames** (frames de plus de 50 ms attribuées aux scripts), **Self Profiling** (profilage échantillonné sur les appareils réels), Memory Usage (fuites), **Compute Pressure** (adapter la charge à la pression CPU).\n- **Améliorer avec la plateforme** (slides) : preconnect, **Speculation Rules** (prefetch/prerender, SPA comme MPA), **Priority Hints** pour la ressource LCP, lazy loading natif, **Scheduler API et yielding** pour découper les longues tâches, View Transitions pour des navigations fluides.\n- Conclusions des slides : les **Core Web Vitals sont un point de départ, pas une ligne d'arrivée** ; les outils RUM du marché passent mal à l'échelle et ne mesurent pas les signaux propres à l'application ; l'IA génère du code mais **seuls des ingénieurs qui comprennent ordonnancement et rendu savent quoi optimiser** ; la performance ne se justifie pas que par le business.\n- Premier Octet cite la même liste d'API dans son compte rendu. *Aucun retour de salle ni vidéo au 26/09.*",
+      "summary": "- **Sur scène (transcript)** : préambule sur l'histoire de HTML5 ; la plateforme n'avance plus par grands manifestes mais par des fonctionnalités qui arrivent sans bruit, et la performance peut redevenir simple.\n- **Mesurer avec la plateforme** : Layout Instability (trouver le coupable d'un décalage), **Long Animation Frames** (frames de plus de 50 ms attribuées aux scripts), **Self Profiling** chez les vrais utilisateurs, mesure mémoire (exemples de fuites : timers qui retiennent des closures, nœuds DOM détachés encore référencés), **Compute Pressure** pour dégrader la qualité quand le CPU sature.\n- **Améliorer avec la plateforme** : preconnect, **Speculation Rules** (précharger le tableau de bord après la connexion), Priority Hints (y compris `priority` sur `fetch`), lazy loading natif, `scheduler.postTask` et `yield` contre les longues tâches, **View Transitions** qui ont apporté une continuité visuelle à une MPA React routée par un monolithe Java sans la réécrire en SPA.\n- **Conclusions** : les **Core Web Vitals sont un point de départ, pas une ligne d'arrivée** ; son entreprise a quitté un outil RUM du marché pour le sien (coût à l'échelle, métriques propres au produit) ; les ingénieurs qui comprennent ordonnancement et rendu restent ceux qui savent quoi faire optimiser aux agents ; la performance relève aussi de l'accessibilité (définition de Mozilla).\n- **Retenu par les participants** : Premier Octet cite la même liste d'API. *Aucun retour de salle trouvé.*",
       "summarySources": [
         "program",
         "slides",
-        "blog"
-      ]
+        "blog",
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "L_h8wOhR5Mg",
+        "title": "Web Perf APIs That You (Probably) Never Knew Existed - Matheus Albuquerque - Medallia - dotJS 2026",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "unlocking-client-side-ai-in-your-web-app",
@@ -92,11 +120,18 @@
       "feedbackFrom": [
         "Blog Premier Octet (extraits indexés)"
       ],
-      "summary": "- IA générative **entièrement côté client** (WebNN, WebGPU, WebAssembly), avec choix entre modèle intégré, modèle embarqué par l'app ou **repli cloud** ; arguments : confidentialité, hors ligne, pas de coût cloud récurrent (descriptif officiel).\n- Distinction retenue par Premier Octet : d'un côté les **briques bas niveau** (transformers.js, ONNX Runtime Web), de l'autre les **API haut niveau du navigateur** (Translator, Summarizer) qui s'appuient sur un modèle embarqué comme **Gemini Nano** dans Chrome.\n- *Contenu connu par des extraits indexés du blog, l'article n'ayant pas pu être lu en entier.*",
+      "summary": "- **Sur scène (transcript)** : le sujet n'est ni les agents qui naviguent sur nos sites, ni les apps dans ChatGPT, ni l'IA qui code, mais **l'IA à l'intérieur de nos web apps** : support client, détection de propos haineux avant envoi, traduction, résumés, tags automatiques, vision, voix, RAG.\n- Pourquoi côté client : **confidentialité** (avocats, médecins, banques), latence, **hors ligne**, **coût** (pas de facture de tokens le jour où l'on devient viral). *« Pas encore une solution miracle. »*\n- **API intégrées** : Translator, Summarizer, Writer/Rewriter (expérimentales), Speech API désormais adossée à l'IA, et **Prompt API** (sortie contrainte par JSON Schema, desktop uniquement). Le modèle est téléchargé une fois pour toutes les origines : Gemini Nano dans Chrome (Gemma 4 derrière un flag dans Canary), Phi-4 mini dans Edge. **Firefox et Safari s'y opposent** ; un polyfill permet un repli cloud ou local.\n- **Apporter son modèle** : transformers.js, WebLLM, MediaPipe, LiteRT, TensorFlow.js, ONNX Runtime Web…, LLM de 1 à 9 milliards de paramètres, sur WebGPU (donc tous navigateurs) ; WebNN reste expérimental. Pas besoin d'un LLM pour tout : certains modèles pèsent 200 Ko.\n- Démos **entièrement hors ligne** : chatbot Gemma 4, traduction vocale en direct vers le français, RAG vocal, description de la caméra par un modèle open source d'Apple. Recette : vérifier que le cas s'y prête, API natives si disponibles, **repli cloud**, cache du modèle.\n- **Retenu par les participants** : Premier Octet retient la distinction entre briques bas niveau (transformers.js, ONNX Runtime Web) et API haut niveau du navigateur adossées à Gemini Nano.",
       "summarySources": [
         "program",
-        "blog"
-      ]
+        "blog",
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "kJ5GyP9HGio",
+        "title": "Unlocking Client-Side AI in Your Web App - Maximiliano Firtman - dotJS 2026",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "promise-you-ll-know-it-the-async-javascript-quiz",
@@ -109,11 +144,18 @@
       "feedbackFrom": [
         "Thorsten Seyschab (speaker, Bluesky, avant le talk)"
       ],
-      "summary": "- *D'après le descriptif officiel et un post du speaker le matin même ; aucun retour de salle ni vidéo trouvés au 27/09.*\n- Quiz interactif sur smartphone : coercition de types, boucle d'événements, strict mode, pièges de configuration de build.\n- Le speaker annonce le retour de ses **magnets** à gagner, pour ceux qui les avaient manqués « la dernière fois » (speaker).",
+      "summary": "- **Sur scène (transcript)** : quiz en direct sur smartphone, huit questions, près de 200 participants, avant le déjeuner ; 600 magnets à gagner (speaker).\n- **Les pièges et les taux de bonnes réponses annoncés** : `as` en TypeScript ne valide rien à l'exécution (environ la moitié de bonnes réponses ; valider avec un schéma, Valibot ou Zod) ; un `fetch` qui reçoit un 429 **ne rejette pas**, il renvoie `ok === false` (**24 %**) ; l'ordre `A, D, B, C` entre code synchrone, microtâche et `setTimeout` (**44 %**).\n- Suite : `^0.3.4` n'autorise que les mises à jour de **patch** (en écho au talk de Karen Li) ; `Promise.all` **rejette sans annuler** les opérations en cours (**28 %**) ; `forEach` avec un callback async **n'attend pas** (la plupart ont bon).\n- *Aucun retour de salle trouvé ; questions et logiciel du quiz annoncés sur le site du speaker.*",
       "summarySources": [
         "program",
-        "feedback"
-      ]
+        "feedback",
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "4bttpOmwQVs",
+        "title": "Promise You'll Know It? The async JavaScript Quiz - Thorsten Seyschab - dotJS 2026",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "building-mcp-apps-with-modern-typescript-devx",
@@ -124,10 +166,17 @@
         "Nikolay Rodionov — Alpic"
       ],
       "feedbackFrom": [],
-      "summary": "- *D'après le descriptif officiel ; aucun retour ni vidéo trouvés au 25/09.*\n- Retrouver une vraie DX (émulateur local, **hot module reload**, typage de bout en bout des réponses d'outils aux props de widgets) pour les apps ChatGPT/MCP avec le framework open source Skybridge.",
+      "summary": "- **Sur scène (transcript)** : thèse d'ouverture, les sites web vont devenir **une interface « legacy »**, comme le téléphone pour réserver un restaurant ; plus de la moitié du trafic viendrait déjà d'agents et de bots (chiffre du speaker). Il faut penser **« expérience agentique »** et pas seulement expérience utilisateur.\n- **MCP apps** : le serveur MCP renvoie, en plus des données, une ressource HTML rendue dans une iframe du chatbot (exemple d'un widget produit dans ChatGPT). Problème : cette architecture casse l'outillage web, d'où **une DX très mauvaise** (tunnel, connexion au client, prompt pour tester chaque changement, pas de typage, comportements différents selon Codex, Claude ou Gemini).\n- **Skybridge**, framework TypeScript open source d'Alpic : typage de bout en bout, hooks React, skills pour agents, devtools locaux avec **hot module reload**, aperçu ChatGPT/Claude, tunnel intégré, playground avec LLM, audit de conformité aux stores, déploiement en un clic. Démo : une MCP app dotJS générée par Codex.\n- *Aucun retour participant trouvé.*",
       "summarySources": [
-        "program"
-      ]
+        "program",
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "kwTSkSGuxyA",
+        "title": "Building MCP Apps w/ All the Comfort of Modern TypeScript DevX - Nikolay Rodionov - Alpic - dotJS 26",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "microfrontends-done-right",
@@ -138,10 +187,17 @@
         "Gabor Csomak — Bally's Intralot"
       ],
       "feedbackFrom": [],
-      "summary": "- *D'après le descriptif officiel ; aucun retour ni vidéo trouvés au 25/09.*\n- Thèse : les microfrontends sont **une stratégie organisationnelle déguisée en pattern d'architecture** ; découper pour découper ajoute du coût. L'objectif est d'accélérer les équipes, pas de réduire les fragments.",
+      "summary": "- **Sur scène (transcript)** : les résultats de recherche donnent une mauvaise image des microfrontends (une app en trois frameworks, une équipe par bouton, *« le back est passé aux microservices, donc le front aussi »*).\n- **Le vrai problème est organisationnel** : plusieurs équipes sur un même codebase se marchent dessus. Règle du speaker, inspirée de la loi de Conway : **un composant appartient à une seule équipe**, de 1 à 5 développeurs, et on redécoupe quand le backlog l'exige.\n- Exemples vécus : une plateforme de trading multi-écrans il y a 15 ans, son entreprise actuelle (socle header/footer, modules sports, iGaming, inscription), une autre qui fait de chaque page entière un microfrontend.\n- Objectif : les **métriques DORA** et des équipes autonomes de bout en bout. Pratiques : tests end-to-end, coutures invisibles pour l'utilisateur, cache CDN, **contrats hôte/microfrontend conçus comme des API back**, harnais de test isolés ; la technique (iframe, module federation, single-spa) est secondaire.\n- À l'ère de l'IA : un périmètre borné et documenté est aussi **plus lisible pour un agent**, qui consomme moins de tokens.\n- *Aucun retour participant trouvé.*",
       "summarySources": [
-        "program"
-      ]
+        "program",
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "litIF9DM6t0",
+        "title": "Microfrontends done right - Gabor Csomak - Bally’s Intralot - dotJS 2026",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "typescript-was-built-for-agent-factories",
@@ -154,11 +210,18 @@
       "feedbackFrom": [
         "Blog Premier Octet (extrait indexé)"
       ],
-      "summary": "- *D'après le descriptif officiel et une mention d'une ligne du blog Premier Octet (extrait indexé) ; aucune vidéo au 26/09.*\n- Faire tourner des agents à l'échelle est un **problème de fabrication** : il faut une chaîne avec des **portes qualité**.\n- Types comme contrats, schémas comme garanties runtime, tests unitaires et E2E : autant de **« boucles de confiance »** qui permettent d'hériter du travail d'un agent comme de celui d'un nouvel arrivant.\n- Premier Octet résume le talk comme **TypeScript en filet de sécurité pour le code généré par l'IA**.",
+      "summary": "- **Sur scène (transcript)** : répondant à un article qui présentait Go comme le langage idéal des agents, le speaker note que Claude Code, Gemini CLI ou le SDK d'agents d'OpenAI sont en TypeScript, et que l'afflux de contributeurs TypeScript sur GitHub nourrit les données d'entraînement.\n- **Parallèle** : TypeScript a été conçu pour faire travailler de gros effectifs sur du JavaScript ; en 2026, **on n'intègre plus des juniors mais des agents**. Le métier se déplace de l'écriture vers la **vérification** (le code est-il correct ?) et la **validation** (fait-il ce qu'on voulait ?).\n- Chiffres avancés par le speaker, sans source détaillée : **94 % des erreurs du code généré seraient des erreurs de type** ; les agents utiliseraient `any` **neuf fois plus** qu'un humain.\n- Faiblesses de TypeScript face à Go : types **non vérifiés à l'exécution** (*« un videur qui demande la carte d'identité sans regarder la date »*), trop de façons de faire, chaîne d'approvisionnement fragile.\n- Recette : **strict mode**, `any` interdit, `tsc` et Biome comme **portes déterministes** avant la revue, **Zod** pour valider à l'exécution, tests de comportement par des agents, et imposer aux agents une seule bibliothèque par besoin. Upsun construit « Dispatch », une software factory sur ce principe.\n- **Retenu par les participants** : Premier Octet résume le talk comme **TypeScript en filet de sécurité du code généré par l'IA**.",
       "summarySources": [
         "program",
-        "blog"
-      ]
+        "blog",
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "bnGlGJ5LTRc",
+        "title": "TypeScript was built for agent factories - Guillaume Moigneu - Upsun - dotJS 2026",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "javascript-tooling-has-a-blind-spot-codebase-wide-questions",
@@ -166,17 +229,24 @@
       "type": "talk",
       "title": "JavaScript tooling has a blind spot: codebase-wide questions",
       "speakers": [
-        "Bart Waardenburg"
+        "Bart Waardenburg — Fallow"
       ],
       "feedbackFrom": [
         "Blog Premier Octet (extraits indexés)",
         "Page presse du site Fallow (speaker)"
       ],
-      "summary": "- Dans les gros repos JS/TS, le vrai mode d'échec du code généré n'est pas la syntaxe mais **le manque de contexte système** : exports morts, cycles, duplication, frontières d'architecture (descriptif officiel).\n- Question posée, selon Premier Octet : **qui garde la vue d'ensemble du codebase** quand les agents écrivent de plus en plus de code ?\n- Réponse du speaker : **Fallow**, un outil d'analyse statique écrit en **Rust** qui transforme le codebase TS/JS en **graphe de dépendances** pour repérer code inutilisé, duplication et problèmes d'architecture, branché en revue de PR et en CI.\n- La page presse du site de Fallow présente le talk sous un autre titre, *« Linters Check Files. TypeScript Checks Types. Who Checks the Codebase? »* : il porte sur **les problèmes qui vivent entre les fichiers** (par exemple deux dossiers de routes qui ne s'accordent pas sur un nom) et **s'arrête là où le code seul ne peut plus dire ce que la production exécute encore** (speaker).\n- *Contenu connu par des extraits indexés du blog, l'article n'ayant pas pu être lu en entier.*",
+      "summary": "- **Sur scène (transcript)** : face au code « slop » des agents, la meilleure défense est l'**outillage déterministe** (même entrée, même sortie). Point de départ : Cursor, fin 2024, renvoie les erreurs de TypeScript et du linter au modèle. Mais un linter lit **un fichier à la fois** et ne voit pas ce qui se joue entre les fichiers ; empiler Knip, JSCPD ou Sonar ralentit.\n- **Fallow**, commencé en mars : à partir des points d'entrée (framework, tests, stories), un **graphe de tout le codebase** qui détecte fichiers et exports morts, **dépendances inutilisées** (surface d'attaque supply chain), duplication, complexité (cyclomatique, fréquence des commits, **score CRAP** complexité/couverture) et **frontières d'architecture** (import `use client` / serveur dans Next.js).\n- Autres usages du graphe : classes CSS inutilisées, couleurs Tailwind qui dérivent du design system, **variables d'environnement serveur qui fuitent vers le client**.\n- Branché dans la boucle de l'agent, dans l'éditeur et en **CI** (*« je ne fais pas toujours confiance à mon agent, et encore moins à ceux de mes collègues »*). Nouveauté : une **balise de couverture en production** pour savoir si un code défensif généré (un `isRecord` superflu) s'exécute vraiment.\n- Conclusion : ces outils libèrent du temps pour la partie intéressante du métier, construire quelque chose d'utile.\n- **Retenu par les participants** : Premier Octet résume la question posée, *qui garde la vue d'ensemble quand les agents écrivent le code ?*, et présente Fallow comme un analyseur écrit en Rust.",
       "summarySources": [
         "program",
-        "blog"
-      ]
+        "blog",
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "E2aFrZpnNbo",
+        "title": "JavaScript tooling has a blind spot: codebase-wide questions - Bart Waardenburg - Fallow -dotJS 2026",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "your-lighthouse-score-doesn-t-matter-on-3g",
@@ -189,11 +259,18 @@
       "feedbackFrom": [
         "Blog Premier Octet (extrait indexé)"
       ],
-      "summary": "- *D'après le descriptif officiel et une mention d'une ligne du blog Premier Octet (extrait indexé) ; aucune vidéo au 28/09.*\n- Les métriques de labo reflètent des conditions idéales ; en Asie, en Afrique et en Amérique du Sud, **un bundle de 2 Mo est une barrière d'accès**.\n- Simuler appareils lents et réseaux pauvres, auditer sur Android d'entrée de gamme, remettre en cause le routage côté client et l'hydratation lourde au profit du rendu serveur et du CSS critique.\n- Premier Octet retient la thèse centrale : **le score Lighthouse ne reflète pas l'expérience réelle en 3G**, et présente plus largement la performance web comme un socle durable.",
+      "summary": "- **Sur scène (transcript)** : on fait une capture d'écran du 100/100 Lighthouse et on la poste sur Slack, sans se demander **pour qui est ce 100**. Presque toute la salle teste sur MacBook Pro, alors qu'une large part des utilisateurs de certaines régions d'Asie et d'Afrique utilise des Android à 100 $ (chiffres cités par le speaker d'après « un article »).\n- **Brider le réseau en 3G dans les DevTools, c'est tester un M5 Pro sur un mauvais réseau**, pas un appareil d'entrée de gamme. Première action du lundi : **faire acheter un Android à 100 $** et y déboguer à distance.\n- D'où vient le coût : parsing, compilation et exécution sur **un seul thread principal**, CSS inutilisé, **hydratation** qui affiche une UI pas encore cliquable, dépendances importées sans analyse de bundle, frameworks choisis par effet de mode.\n- Remèdes : rendu serveur et composants serveur, **CSS critique**, chargement selon l'intention de l'utilisateur, report du non prioritaire ; Lighthouse comme **signal de régression en labo**, pas comme juge, et du RUM ; faire la performance **une propriété de livraison** avec baseline et budget dans le cycle de développement.\n- Cinq règles finales : envoyer moins, exécuter moins, réduire le coût d'une action, laisser respirer le navigateur, tester sur de vrais appareils.\n- **Retenu par les participants** : Premier Octet retient la thèse centrale, **le score Lighthouse ne reflète pas l'expérience réelle en 3G**.",
       "summarySources": [
         "program",
-        "blog"
-      ]
+        "blog",
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "QA-hjjRPE5I",
+        "title": "Your Lighthouse Score Doesn’t Matter on 3G - Vishnudhasan Govindarajan - Virgio - dotJS 2026",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "beyond-the-chatbot-generative-ui-and-the-execution-trust-problem",
@@ -206,11 +283,18 @@
       "feedbackFrom": [
         "Blog Premier Octet (extrait indexé)"
       ],
-      "summary": "- *D'après le descriptif officiel et une mention d'une ligne du blog Premier Octet (extrait indexé) ; aucune vidéo au 26/09.*\n- **UI générative** : le LLM renvoie des composants React adaptés à l'intention de l'utilisateur plutôt que du texte.\n- Problème central : **exécuter du code généré** sans sacrifier performance ou isolation ; réponse proposée : des **isolates V8 à l'edge** et des sandboxes éphémères, avec les leçons de sécurité d'une mise en production.\n- Selon Premier Octet, le talk a bien **montré en démo** la génération et l'exécution sûre de composants React produits par un LLM dans des isolates V8.",
+      "summary": "- **Sur scène (transcript)** : cas réel, l'interface d'administration de la **plateforme de certification de Cloudflare**. Des tableaux de bord fixes, puis un chatbot (*« des blocs de texte »*), puis l'**UI générative**.\n- **Le modèle n'écrit ni JSX ni HTML** : il écrit une fonction qui récupère les données via un outil au schéma d'entrée strict (pas de SQL libre), calcule, et renvoie **une description de l'UI**.\n- **Où exécuter ce code non relu ?** Ni iframe, ni web worker, ni conteneur (trop lourd pour du JavaScript) : des **Dynamic Workers** Cloudflare, sur isolates V8, chargés à la volée puis détruits. Réglage clé : **`globalOutbound` à `null`** (ou liste d'URL autorisées) pour empêcher toute exfiltration.\n- **Côté navigateur, deux défenses** : validation par schéma, puis un `switch` qui mappe chaque type à un composant React connu ; un type inventé (du HTML brut) n'est jamais rendu.\n- Trois questions à se poser : **que peut atteindre ce code, que peut-il faire pendant son exécution, que renvoie-t-il** ; limites de CPU, outils restreints, validation côté serveur et client, et exécution hors de l'application. *« Traitez le code généré comme du code non fiable. »*\n- **Retenu par les participants** : Premier Octet résume une démo d'exécution sûre de composants React générés dans des isolates V8. *Le talk précise que le modèle ne génère justement pas de composants React mais une description mappée vers des composants existants.*",
       "summarySources": [
         "program",
-        "blog"
-      ]
+        "blog",
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "iymZjaNcwc8",
+        "title": "Beyond the Chatbot: Gen UI & the Execution Trust Problem - Harshil Agrawal - Cloudflare - dotJS 2026",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "a-50-year-accident-how-javascript-got-date-and-why-temporal-exists",
@@ -223,11 +307,18 @@
       "feedbackFrom": [
         "Blog Premier Octet (extrait indexé)"
       ],
-      "summary": "- *D'après le descriptif officiel et une mention d'une ligne du blog Premier Octet (extrait indexé) ; aucune vidéo au 28/09.*\n- Pourquoi dates et fuseaux sont difficiles, pourquoi `Date` aggrave le problème, et comment les types séparés de **Temporal** (Instant, PlainDateTime, ZonedDateTime, Duration) le rendent maîtrisable.\n- Premier Octet résume le talk comme un retour sur **l'histoire mouvementée de `Date`** et l'arrivée de Temporal.",
+      "summary": "- **Sur scène (transcript)** : *« si vous aviez une machine à remonter le temps jusqu'en mai 1995, que corrigeriez-vous dans JavaScript ? »* La réponse du talk : l'API de dates. Leçon d'histoire en étapes.\n- **1970** : Unix choisit un instant unique, parfait pour les machines, jamais prévu pour les anniversaires ou les horaires d'ouverture. **Mois indexés à zéro** hérités de C et Java (*« un indexage incohérent est pire qu'une règle cohérente mais laide »*). **1986** : la base des fuseaux horaires, un problème de **maintenance de données**, d'où un JS limité à UTC et heure locale.\n- **1995** : JavaScript copie en dix jours le `Date` **mutable et à type unique** de Java, pensé pour valider des formulaires, pas réserver des vols. Java et C# le remplacent ensuite ; le web, lui, **ne peut rien supprimer**, la seule issue est une nouvelle API.\n- **2011** : Moment.js devient la norme de fait (mutable, lourd). **2017** : proposition TC39 Temporal ; neuf ans plus tard, livraison dans **V8 en janvier 2026**, ES2026 et Node.js 26, avec l'arrivée annoncée dans la prochaine LTS de Node.\n- **Migration** : plus simple côté serveur ; plus compliquée côté client, car les sélecteurs de date des bibliothèques d'UI (Material UI, shadcn) reposent sur leurs propres bibliothèques de dates. Au passage, des types sémantiques que *« l'IA adore »*.\n- Chute : en 1995, *« ils ont livré un chronomètre et l'ont appelé Date »*. **Retenu par les participants** : Premier Octet résume le talk comme l'histoire mouvementée de `Date` et l'arrivée de Temporal.",
       "summarySources": [
         "program",
-        "blog"
-      ]
+        "blog",
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "TwlEn8Sqc_Q",
+        "title": "A 50-year accident: how JavaScript got Date, and why Temporal exists - Devlin Duldulao - dotJS 2026",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     },
     {
       "id": "no-build-pipe-dream-or-near-future",
@@ -240,28 +331,36 @@
       "feedbackFrom": [
         "Blog Premier Octet (extrait indexé)"
       ],
-      "summary": "- *D'après le descriptif officiel et une mention d'une ligne du blog Premier Octet (extrait indexé) ; aucune vidéo au 28/09.*\n- Talk de clôture : presque tout le monde utilise un bundler, peu l'apprécient.\n- Ce qui motive encore les bundlers, ce que la plateforme couvre déjà, **ce qui manque pour que le no-build soit viable** et si l'IA change l'équation.\n- Premier Octet confirme que Lea Verou a **clos la journée** en interrogeant l'avenir d'un développement sans bundler ; le contenu détaillé n'est pas connu.",
+      "summary": "- **Sur scène (transcript)** : presque tout le monde utilise un bundler, mais dans ses sondages environ **la moitié (Mastodon) et un tiers (Twitter) voudraient s'en passer**, et les outils de build dépassent le débogage dans les difficultés citées par State of JS. Le problème n'est pas la compilation, c'est **la fragmentation** : *« nous servons les bundlers »*.\n- **Pas de posture extrême** : le but n'est pas de supprimer les bundlers, mais de les rendre **moins indispensables et plus légers**. *« Pas besoin d'aller jusqu'au bout pour en tirer les bénéfices. »*\n- Trois raisons d'utiliser un bundler. **Transpilation** : la proposition TC39 d'annotations de types est au point mort, *« faites du bruit »* (enquêtes, Interop 2027) ; CSS : nesting fiable, Autoprefixer inutile, fonctions, `if()` et mixins à venir. **Performance** : HTTP/2 et 3, fetch priority, early hints, compression dictionaries réduisent l'écart, même si le bundler gagnera toujours.\n- **Résolution des dépendances** : le vrai **« usability cliff »**, car on en a besoin dès le premier jour. *« Être sans dépendance ne devrait pas être un badge d'honneur, c'est un signal d'alarme pour l'écosystème. »* Vendoring et CDN (affaire polyfill.io) écartés ; les **import maps** existent mais restent bas niveau.\n- Première présentation publique de son **« unbundler »** (nommé « Nudeps » d'après le transcript automatique), bâti sur JSPM et le hook `dependencies` de npm, qui vendorise localement par version. Manques restants : ressources non-JS, workers, import maps multiples dans Firefox, paquets qui supposent Node.\n- Les agents s'y adaptent (Claude, surtout avec un fichier de skill) ; elle cite **Modern Web Guidance**, projet Google pour enseigner aux agents les fonctionnalités modernes. **Retenu par les participants** : Premier Octet ne dit que la clôture de la journée sur l'avenir sans bundler.",
       "summarySources": [
         "program",
-        "blog"
-      ]
+        "blog",
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "5b0KmfeONGI",
+        "title": "No-build: pipe dream, or near future? - Lea Verou - TC39 delegate & WHATWG contributor - dotJS 2026",
+        "publishedAt": "2026-09-28",
+        "transcript": true
+      }
     }
   ],
   "programUrl": "https://www.dotjs.io/agenda",
   "note": "Vendredi 18 septembre 2026, Folies Bergère, le lendemain de dotAI (billet combiné possible). Une journée, une seule piste : 9 talks de 20 minutes et 5 lightning talks de 10 minutes, sélectionnés par un comité éditorial indépendant.",
-  "synthesisUpdatedAt": "2026-09-28",
-  "corpus": "Page d'accueil et agenda officiels de dotJS (14 sessions, descriptifs complets), chaîne YouTube dotConferences (aucune vidéo 2026 au 28/09), les **slides de Matheus Albuquerque** sur Speaker Deck, la page presse de l'outil Fallow (Bart Waardenburg), un post LinkedIn pré-événement d'un membre du comité éditorial, **cinq posts Bluesky** (trois de Christopher Buecheler, participant, le jour J ; un bilan de Jad Joubran, speaker, le 25/09 ; un post d'avant-talk de Thorsten Seyschab, speaker), et le seul compte rendu de contenu : celui de l'agence Premier Octet, connu uniquement par des extraits indexés (article bloqué par une protection anti-bot, HTTP 429).",
-  "limits": "Synthèse encore **surtout fondée sur le programme** : à J+10, un seul compte rendu (Premier Octet), lu indirectement via des extraits de moteur de recherche, qui enrichit 11 sessions (dont 5 d'une seule ligne) ; les posts Bluesky viennent surtout de speakers ou parlent d'ambiance, aucun post LinkedIn, X ou dev.to de participant n'a été trouvé, et les vidéos ne sont pas encore publiées. Rien ne dit comment les talks ont été reçus par la salle.",
-  "tldr": "**D'après le programme et un compte rendu d'agence**, une édition partagée entre la plateforme web « enfin abondante » (no-build, Temporal, API de performance, IA dans le navigateur) et **la fiabilité du code à l'ère des agents** (confiance dans npm, analyse à l'échelle du codebase, portes qualité TypeScript, exécution sûre de code généré).",
+  "synthesisUpdatedAt": "2026-09-29",
+  "corpus": "Les **14 vidéos officielles** publiées le 28/09 sur la chaîne dotConferences et leurs **transcripts automatiques** (anglais, trois lus dans une traduction automatique française), l'agenda officiel, les **slides de Matheus Albuquerque**, la page presse de Fallow, un post LinkedIn pré-événement du comité éditorial, **cinq posts Bluesky** (trois d'un participant, deux de speakers) et le seul compte rendu de contenu, celui de l'agence Premier Octet, connu uniquement par des extraits indexés (article toujours en HTTP 429). Cinq recherches web le 29/09 n'ont trouvé aucun nouveau retour.",
+  "limits": "Le contenu des talks est désormais **complet grâce aux transcripts**, mais la réception reste presque inconnue : un seul compte rendu (Premier Octet, lu indirectement), aucun post LinkedIn, X ou dev.to de participant, et des posts Bluesky surtout d'ambiance ou de speakers. Les transcripts automatiques déforment certains noms propres (outils, entreprises) et les chiffres avancés par les speakers n'ont pas été vérifiés.",
+  "tldr": "**D'après les 14 vidéos et un compte rendu d'agence**, une édition partagée entre une plateforme web **« abondante » qui allège l'outillage sans le supprimer** (no-build progressif, Temporal, API de performance, IA dans le navigateur décidée tâche par tâche) et **la confiance dans le code à l'ère des agents** (npm 12, analyse du codebase entier, portes TypeScript, code généré traité comme non fiable).",
   "keyTakeaways": [
-    "(Programme) Évaluer ce que l'IA côté client (API intégrées, WebGPU, petits modèles ouverts) peut faire avant de payer un appel cloud (Martin, Firtman).",
-    "(Programme) Traiter `npm install` comme une décision de confiance et suivre la provenance des paquets (Li).",
-    "(Blog Premier Octet) Activer les nouvelles défenses npm : délai minimal avant d'installer une version fraîchement publiée, et scripts install/postinstall bloqués par défaut à partir de npm 12 (Li).",
-    "(Programme) Ajouter une analyse déterministe du codebase entier dans la revue de PR et la CI quand l'IA accélère la production de code (Waardenburg).",
-    "(Slides) Traiter les Core Web Vitals comme un point de départ : instrumenter Long Animation Frames, Layout Instability ou Compute Pressure pour mesurer les signaux propres à son application (Albuquerque).",
-    "(Programme) Utiliser types, schémas et tests comme portes qualité pour le travail des agents (Moigneu).",
-    "(Programme) Mesurer la performance sur réseau 3G et appareils d'entrée de gamme, pas seulement au score Lighthouse (Govindarajan).",
-    "(Programme) Isoler l'exécution de code généré (isolates, sandboxes éphémères) avant toute UI générative (Agrawal)."
+    "(Talk) Passer à npm 12 (scripts de cycle de vie, dépendances Git et URL distantes bloqués par défaut) et régler `min-release-age` pour ne pas installer une version publiée il y a quelques minutes (Li).",
+    "(Talk) Côté mainteneur, publier via trusted publishing et staged publishing plutôt qu'avec un token longue durée (Li).",
+    "(Talk) Traiter tout code généré comme non fiable : l'exécuter hors de l'app, sans accès réseau sortant, et ne rendre que des composants connus après validation par schéma (Agrawal).",
+    "(Talk) Ajouter une analyse déterministe du codebase entier (code mort, dépendances inutilisées, duplication, frontières) dans la boucle de l'agent et en CI (Waardenburg).",
+    "(Talk) Activer le strict mode, interdire `any` aux agents, valider à l'exécution avec un schéma et imposer une seule bibliothèque par besoin (Moigneu, Seyschab).",
+    "(Talk) Décider tâche par tâche ce qui tourne sur l'appareil ou sur le serveur, avec repli cloud ; beaucoup de tâches n'ont pas besoin d'un LLM (Martin, Firtman).",
+    "(Talk) Acheter un Android à 100 $ pour tester : brider le réseau d'un MacBook ne simule pas un appareil d'entrée de gamme (Govindarajan).",
+    "(Talk) Traiter les Core Web Vitals comme un point de départ et instrumenter Long Animation Frames, Layout Instability ou Compute Pressure pour ses propres signaux (Albuquerque).",
+    "(Talk) Viser moins de build plutôt que zéro build : CSS natif, import maps, et réclamer aux navigateurs les fonctionnalités manquantes via enquêtes et Interop 2027 (Verou)."
   ],
   "sessionsWithoutFeedback": [],
   "sources": [
@@ -270,8 +369,12 @@
       "url": "https://www.dotjs.io/agenda"
     },
     {
-      "label": "Site dotJS (liste des speakers 2026, « Videos will be soon available »)",
+      "label": "Site dotJS (liste des speakers 2026)",
       "url": "https://www.dotjs.io"
+    },
+    {
+      "label": "Vidéos dotJS 2026 (14 talks, publiées le 28/09) sur la chaîne YouTube dotConferences ; playlist dédiée non trouvée au 29/09",
+      "url": "https://www.youtube.com/@dotconferences"
     },
     {
       "label": "Premier Octet, « DotJS 2026: AI in the Browser, Web Security & Performance Take Center Stage » (lu via extraits indexés)",
@@ -300,11 +403,7 @@
     {
       "label": "Page presse de Fallow (talk de Bart Waardenburg)",
       "url": "https://fallow.tools/press"
-    },
-    {
-      "label": "Chaîne YouTube dotConferences (vidéos 2026 non publiées au 28/09)",
-      "url": "https://www.youtube.com/@dotconferences"
     }
   ],
-  "revisit": "au 28/09/2026, toujours un seul compte rendu de contenu (blog Premier Octet, lu via extraits car encore en HTTP 429, pas d'archive Wayback), quelques posts Bluesky d'ambiance ou de speakers et aucun post LinkedIn, X ou dev.to de participant (6 recherches web supplémentaires le 28/09 sans nouveau retour) ; aucune vidéo dotJS 2026 sur la chaîne dotConferences (vidéo annoncée « soon » par Jad Joubran). Intégrer vidéos et transcripts à leur publication et relire l'article Premier Octet en entier"
+  "revisit": "au 29/09/2026, contenu des 14 talks couvert par les transcripts, mais toujours un seul compte rendu (Premier Octet, lu via extraits car en HTTP 429) et aucun post LinkedIn, X ou dev.to de participant (5 recherches web le 29/09 sans nouveau retour, après 6 le 28/09). Chercher des retours postérieurs à la publication des vidéos, la playlist dotJS 2026 si elle est créée, et relire l'article Premier Octet en entier"
 }

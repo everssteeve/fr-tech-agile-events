@@ -7,7 +7,231 @@
   "city": "Lille",
   "venue": "Université Catholique de Lille",
   "url": "https://2025.cloudnord.fr",
+  "programUrl": "https://2025.cloudnord.fr/schedule/day-1",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "Journée unique, 18 sessions sur 2 salles (Saint Louis, RS 031), environ 250 participants (contre 450 en 2024, d'après la page Conference Hall). Formats : conférences de 50 min et quickies de 20 min ; catégories Cloud, Sécurité, DevOps, Data & IA, Conteneurisation, Architecture, Discovery. L'article Synapsys parle de « 5e édition », Conference Hall de 6e.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-09-29",
+  "revisit": "Corpus participants très mince : un article de blog (Synapsys, 2 talks couverts), un post LinkedIn de speaker lisible, deux posts connus seulement par extraits de recherche (Ousmane Diallo, Alexandre Gambart). La synthèse repose surtout sur les transcripts des 19 vidéos. Chercher d'autres posts LinkedIn (hashtag cloudnord, speakers AXA France, Zenika, OCTO, Deezer, Zatsit).",
+  "corpus": "Programme officiel (2025.cloudnord.fr) et page Conference Hall ; transcripts automatiques des 19 vidéos de la playlist officielle (18 talks et keynote de clôture, publiés le 3 novembre 2025) ; un article de blog participant (Robin Van Dessel, Synapsys, 16 décembre 2025) ; un post LinkedIn de speaker (Bruno Verachten) et son commentaire ; deux posts LinkedIn connus seulement par extraits de recherche.",
+  "limits": "Presque aucun retour public de participants : l'essentiel des résumés décrit ce qui a été dit sur scène (transcripts auto, parfois bruités), pas la réception par la salle. Le mot des organisateurs et la keynote d'ouverture n'ont pas été filmés. Posts LinkedIn peu accessibles sans connexion ; recherche limitée à 8 requêtes.",
+  "tldr": "Une journée **Kubernetes et cloud native très concrète** (scale-to-zero, secrets, observabilité, tests, migration de cloud), où l'open source est discuté sous l'angle **gouvernance et licences** et où l'IA apparaît à la fois comme outil, menace et **facture carbone**.",
+  "keyTakeaways": [
+    "Viser le scale-to-zero : SlimFaas éteint un pod au bout de 8 s d'inactivité et a fait économiser plus de 230 000 € par an sur un projet d'AXA France (Chervet).",
+    "Ne pas confondre commodité et sécurité : External Secrets Operator synchronise les secrets depuis un coffre, mais ils restent en base64 dans Kubernetes (Fala).",
+    "Pour OpenTelemetry en production : fixer les conventions (service.name, attributs obligatoires, W3C Trace Context) avant le collecteur, et échantillonner autour de 10 % (Chevalier).",
+    "Tester les images Docker comme du code : Container Structure Test pour les métadonnées et fichiers, Bats pour l'intégration, le tout en CI (Lakrout).",
+    "Mocker les dépendances à partir des contrats existants (OpenAPI, AsyncAPI) avec Microcks, y compris une API LLM, pour tester en local sans environnement complet (Broudoux).",
+    "Une migration de cloud se prépare : feature freeze du legacy, élagage des fonctionnalités peu utilisées, bascule par vagues de clients et modules Terraform « compliant by design » (Popoff).",
+    "IA générative : questionner le besoin, prendre le plus petit modèle, le quantifier, le déployer dans une région bas carbone et mesurer (EcoLogits, CodeCarbon) (OCTO).",
+    "Avant d'open-sourcer un outil interne, passer par les règles de l'entreprise : le code écrit sur un poste de travail lui appartient ; confier le projet à une fondation traite le bus factor (Chervet)."
+  ],
+  "sessions": [
+    {
+      "id": "rafraichis-ta-prod-avec-kro",
+      "day": "2025-10-23",
+      "type": "talk",
+      "title": "Rafraîchis ta prod avec Kro",
+      "speakers": ["Tony Jarriault — Capgemini", "Laurent Grangeau — Google"],
+      "summary": "- **Problème posé** : chaque projet déploie à sa façon (YAML, CRD, opérateurs), et le travail avec l'équipe plateforme est long. Kro (Kube Resource Orchestrator) donne à cette équipe des **blueprints** pour les équipes projet.\n- **Deux rôles** : l'admin plateforme écrit une ResourceGraphDefinition (avec sécurité et conformité) ; Kro en génère la CRD et le contrôleur, sans code d'opérateur. Le développeur crée une instance en 10 à 20 lignes. Kro ordonne les créations selon un graphe de dépendances.\n- **Cloud-agnostique** : il s'appuie sur les contrôleurs natifs (Config Connector pour GCP, ACK pour AWS, ASO pour Azure) et s'intègre en GitOps (Argo CD, Flux, Config Sync).\n- Projet porté par AWS, Azure et GCP, versé sous un SIG Kubernetes, en version 0.5 : **« pas prêt pour la production »** selon les speakers. Pas encore de diff ni de framework de test.\n- Positionnement : *« C'est pas du templating »*, contrairement à Helm ou Kustomize ; Crossplane est jugé « extrêmement compliqué ».\n- Les **démos ont échoué en direct** (*« Hier soir, ça marchait promis »*), sous les applaudissements de la salle.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "NnjwINdWSbs", "title": "Rafraîchis ta prod avec Kro - Tony Jarriault - Laurent Grangeau", "publishedAt": "2025-11-03", "transcript": true }
+    },
+    {
+      "id": "gerer-ses-secrets-kube-avec-l-external-secrets-operator",
+      "day": "2025-10-23",
+      "type": "talk",
+      "title": "Gérer ses secrets Kube avec l'External Secrets Operator : parce que je le Vault bien",
+      "speakers": ["Alexis Fala — Deezer"],
+      "feedbackFrom": ["Robin Van Dessel (blog Synapsys)"],
+      "summary": "- **Point de départ** : les Secrets Kubernetes ne sont qu'encodés en base64, *« l'équivalent de les avoir en clair »*, donc impossibles à versionner dans Git.\n- **Contexte open source** : passage de HashiCorp en licence BSL puis rachat par IBM ; forks OpenTofu et OpenBao (*« Ça fait un peu mal à mon open source »*). Robin Van Dessel (Synapsys) retient surtout ce point.\n- **ESO** récupère les secrets d'un coffre (Vault, OpenBao, GCP Secret Manager…) et les synchronise en Secrets Kubernetes : SecretStore, ExternalSecret, PushSecret, générateurs. Côté Vault, la policy doit couvrir `data/` et `metadata/`.\n- **Démo live réussie** sur minikube : secret poussé dans le coffre, relu, consommé par un pod, puis rotation automatique avec Reloader. Révélation finale : tout tournait sur **OpenBao**, piloté avec la CLI Vault.\n- **Mise en garde** : ESO sert *« plus à se simplifier la vie qu'à renforcer »* la sécurité. L'alternative (injecteur Vault/OpenBao) rend l'application dépendante de la disponibilité du coffre.\n- OpenBao est jugé « prod-ready » par le speaker, qui ne l'utilise pas en contexte professionnel.",
+      "summarySources": ["transcript", "blog", "program"],
+      "video": { "youtubeId": "b5hHV6L0MfA", "title": "Gérer ses secrets Kube avec l'External Secrets Operator : parce que je le Vault bien - Alexis FALA", "publishedAt": "2025-11-03", "transcript": true }
+    },
+    {
+      "id": "simplifier-les-tests-d-applications-cloud-natives-avec-dapr-et-microcks",
+      "day": "2025-10-23",
+      "type": "talk",
+      "title": "Simplifier les tests d'applications cloud natives avec Dapr et Microcks",
+      "speakers": ["Laurent Broudoux"],
+      "summary": "- Fil rouge : une pizzeria en microservices (store, kitchen, delivery) avec Kafka et websockets.\n- **Dapr**, projet CNCF *« pas pour les Ops »* : sidecar qui abstrait invocation de service (mTLS), pub/sub (Kafka, SQS, RabbitMQ…) et fournit OpenTelemetry ; le SDK reste presque invisible dans le code Spring.\n- **Critique de l'expérience développeur** : environnements locaux lourds, mocks « dans la JVM » qui ne testent ni sérialisation ni réseau (*« Vous brûlez du CPU toute la journée »*).\n- **Microcks** (CNCF Sandbox) transforme les artefacts existants (OpenAPI, AsyncAPI, Postman, GraphQL) en mocks et tests de contrat, intégrés à Testcontainers.\n- **Démos réussies** : store testé seul avec ses voisins simulés, test de conformité OpenAPI en 500 ms, test de contrat asynchrone sur Kafka, Dapr Workflow qui survit à un crash, et commande en langage naturel avec une API OpenAI **mockée par Microcks**.\n- En questions : réponses dynamiques par templating, simulation de latence et de race conditions possibles.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "jKl8xOtTP1I", "title": "Simplifier les tests d'applications cloud natives avec Dapr et Microcks - Laurent Broudoux", "publishedAt": "2025-11-03", "transcript": true }
+    },
+    {
+      "id": "opentelemetry-en-production-rex-d-un-voyage-vers-l-observabilite-moderne",
+      "day": "2025-10-23",
+      "type": "talk",
+      "title": "OpenTelemetry en Production : REX d'un Voyage Vers l'Observabilité Moderne",
+      "speakers": ["Maximilien Chevalier — AXA France"],
+      "summary": "- REX d'un premier talk : OpenTelemetry *« en prod depuis 2 semaines »* chez AXA France, sur OpenShift (plus de 200 namespaces applicatifs).\n- **Existant hétérogène** : Dynatrace réservé aux systèmes critiques, outil interne de sondes, Application Insights, corrélation de logs maison via Kafka.\n- **Architecture** : collecteur central en gateway, Prometheus, Loki et stack Grafana, stockage sur Azure Blob.\n- **Conventions avant tout** : `service.name` aligné sur le référentiel applicatif, attributs obligatoires (environnement, région, équipe…), W3C Trace Context à la place des headers maison, baggage « avec parcimonie ».\n- **Réglages du collecteur** : memory_limiter, batch, **échantillonnage à 10 %** (*« ça va être votre ami »*), tail sampling qui jette health checks et metrics, masquage RGPD par regex, 3 replicas.\n- Gouvernance à convaincre : le collecteur ne remplace pas un outil existant ; argument clé, l'indépendance vis-à-vis des vendors. En questions, un participant signale des déséquilibres de charge gRPC et recommande Weaver pour les conventions sémantiques.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "YUqz_1DLKcA", "title": "OpenTelemetry en Production : REX d'un Voyage Vers l'Observabilité Moderne - Maximilien Chevalier", "publishedAt": "2025-11-03", "transcript": true }
+    },
+    {
+      "id": "construire-des-flux-d-ia-agentique-robustes-avec-dapr",
+      "day": "2025-10-23",
+      "type": "lightning",
+      "title": "Construire des flux d'IA agentique robustes avec Dapr",
+      "speakers": ["John Dennison — Sogeti"],
+      "summary": "- Constat de départ : les systèmes agentiques restent expérimentaux et manquent du **socle de production** (sécurité, résilience, observabilité).\n- Progression type : un agent simple, puis des outils (MCP) et du contexte, une mémoire long terme, des **workflows déterministes** pour fiabiliser, enfin des agents ReAct coordonnés par un superviseur.\n- **Dapr Agents** (disponible depuis Dapr 1.15, Python uniquement pour l'instant) réutilise des briques déjà éprouvées en production : workflows (agents durables qui reprennent après un arrêt), pub/sub entre agents (antérieur au protocole A2A), state store pour la mémoire, composant conversation pour le LLM. Changer de LLM ou de broker relève de la configuration, sans modifier le code.\n- Préférence du speaker : à terme, laisser les agents s'orchestrer eux-mêmes, *« plus risqué »* et plus difficile à contrôler que les workflows contraints.\n- **Démo live** : un superviseur d'une trentaine de lignes et un agent de test d'accessibilité web (Playwright via MCP), traces visibles dans Zipkin et Diagrid Conductor. Le résultat final s'affiche en erreur.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "cX8tA6b_OnQ", "title": "Construire des flux d'IA agentique robustes avec Dapr - John Dennison", "publishedAt": "2025-11-03", "transcript": true }
+    },
+    {
+      "id": "k8sgpt-ia-au-service-de-kubernetes",
+      "day": "2025-10-23",
+      "type": "lightning",
+      "title": "K8sGPT : IA au service de Kubernetes",
+      "speakers": ["Laëtitia Diverchy — Zenika"],
+      "feedbackFrom": ["Alexandre Gambart (Synapsys, extrait de recherche seulement)"],
+      "summary": "- Quickie de 20 min. **K8sGPT** diagnostique un cluster Kubernetes, explique les problèmes et propose des commandes, avec une IA distante (OpenAI) ou locale.\n- Cas d'usage : éviter les tickets « le déploiement a fail » ; le développeur pré-analyse et transmet un message plus parlant à l'ops.\n- Démo : `k8sgpt analyze --explain` (manque de ressources détecté), intégration Trivy pour les vulnérabilités, mode opérateur branché sur Prometheus avec dashboard.\n- Verdict de la speaker : outil récent (2023), déjà à la CNCF, *« une belle aide quand on maîtrise pas totalement Kubernetes »*.\n- **Limites relevées en questions** : pas de remédiation automatique fiable ; un participant signale que les NetworkPolicy sont mal comprises (absence de policy jugée « tout va bien »).",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "vBc1FW48Fww", "title": "K8sGPT : IA au service de kubernetes - Laëtitia Diverchy", "publishedAt": "2025-11-03", "transcript": true }
+    },
+    {
+      "id": "contenu-genere-par-l-ia-dans-la-cybercriminalite",
+      "day": "2025-10-23",
+      "type": "talk",
+      "title": "Contenu généré par l'IA dans la cybercriminalité : menaces émergentes et défenses dans les secteurs du retail et de l'hôtellerie",
+      "speakers": ["Vincent Meysonnet — HUMAN", "Joao Santos — HUMAN"],
+      "summary": "- Talk **en anglais** de l'équipe threat intel de HUMAN (un seul intervenant audible dans la vidéo).\n- **Menaces communes au retail et à l'hôtellerie** : scraping, scalping et « denial of inventory », réservations massives lors des grands événements, faux comptes, faux avis, phishing.\n- **L'IA outille les bots** : *« Kids no longer do CSS selectors »*, un agent LLM trouve le bouton « buy » ; plateformes de phishing automatisées (LLM et n8n) ; solutions complètes vendues quelques centaines de dollars sur le dark web.\n- **Infrastructure** : fermes de 128 téléphones pour environ 700 $, proxies résidentiels (3 à 5 $/Go), applications « free VPN » transformant les téléphones en nœuds de proxy, botnet BadBox (plus de 2 millions d'appareils) démantelé avec HUMAN.\n- **Défense** : analyse de sessions (mouvements de souris, GPU virtualisé, IP de datacenter) qui démasque Selenium comme les agents type ChatGPT Operator. Message final : *« The stack that they're using is not innovative »*, elle reste détectable par empreinte.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "aIXNXv8kUvU", "title": "Contenu généré par l'IA dans la cybercriminalité - Vincent Meysonnet - Joao Santos", "publishedAt": "2025-11-03", "transcript": true }
+    },
+    {
+      "id": "pulumi-automation-pour-piloter-votre-infrastructure-depuis-votre-code",
+      "day": "2025-10-23",
+      "type": "talk",
+      "title": "Pulumi Automation, pour piloter votre infrastructure depuis votre code",
+      "speakers": ["Mazlum Tosun — GroupBees"],
+      "summary": "- Rappel IaC puis **Terraform et Pulumi** comparés sur le même cas (datasets et tables BigQuery) : en HCL, la moindre logique demande des boucles et des opérateurs ; Pulumi s'écrit en Python, Go, Java ou TypeScript, avec le même principe de state et de preview.\n- **Automation API** : exécuter l'IaC depuis un programme (`create_or_select_stack`, `stack.up`, `stack.destroy`) plutôt que depuis la CLI, ce qui permet l'orchestration de tâches.\n- **Démos live réussies** : une API FastAPI d'« infra as a service » (validation Pydantic), conteneurisée avec uv (cache Docker, multi-stage, utilisateur non root) et déployée sur Cloud Run via Cloud Build ; puis une CLI maison avec Typer.\n- **Cas d'usage phare** : une bibliothèque de tests d'intégration SQL sur BigQuery avec **infrastructure éphémère** (setup, jeux de données, requêtes, rapport, destruction, rollback en cas d'erreur) ; selon le speaker, l'essayer en Terraform était devenu « impossible ».\n- **Questions** : les providers Terraform ont encore « un coup d'avance » en couverture ; un participant souligne qu'une API synchrone ne convient pas aux ressources longues à créer (un cluster GKE), le speaker propose un traitement asynchrone.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "ukEycUX_BoU", "title": "Pulumi Automation, pour piloter votre infrastructure depuis votre code - Mazlum Tosun", "publishedAt": "2025-11-03", "transcript": true }
+    },
+    {
+      "id": "cli-driven-developer-experience",
+      "day": "2025-10-23",
+      "type": "talk",
+      "title": "CLI-Driven Developer Experience : L'ingrédient secret d'une équipe alignée",
+      "speakers": ["Julien Briault — Deezer & Restos du Cœur"],
+      "feedbackFrom": ["Alexandre Gambart (Synapsys, extrait de recherche seulement)"],
+      "summary": "- Contexte : le **Cloud du Cœur**, cloud privé des Restos du Cœur lancé en 2022 (OpenStack et Kubernetes, 3 régions en France), avec une logique *« 1 € = un repas »* ; plus de 10 millions de repas économisés par an selon le speaker. L'équipe bénévole est passée d'une à 18 personnes, organisée en chapters à la Spotify (dev, réseau, infra, sécurité…).\n- **Frictions** : tickets pour créer un topic Kafka ou réserver un subnet, silos entre chapters, outils disparates, courbe d'apprentissage longue, scripts Bash, Python ou Go qui ne marchent que sur la machine de leur auteur.\n- **Décision** : plus de scripts, une **CLI unique en Go** (Cobra), pensée comme un produit : grammaire commune *équipe, environnement, action*, une commande par équipe avec ownership, validations sur Slack, templates de dépôts embarqués, wrapper Git qui normalise branches et merge requests.\n- **Outillage produit** : man pages et documentation générées, GoReleaser (paquets multi-OS, notification de nouvelle version), tests obligatoires, onboarding réduit à l'installation de la CLI qui configure l'environnement. Préféré à Rust (compilateur jugé rebutant pour des ops) et à un portail web.\n- **Coûts** : réécriture des scripts vécue comme *« un enfer »*, résistance de ceux attachés à leurs scripts, formation par des « share sessions » toutes les deux semaines.\n- Résultat revendiqué : moins de friction, plus d'autonomie, un langage commun dev et ops. Open-sourcing prévu ; une couche web avec RBAC est en cours pour les utilisateurs externes.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "53u3ftsaoZk", "title": "CLI-Driven Developer Experience : L'ingrédient secret d'une équipe alignée - Julien Briault", "publishedAt": "2025-11-03", "transcript": true }
+    },
+    {
+      "id": "le-cdc-pour-ne-pas-dcd",
+      "day": "2025-10-23",
+      "type": "talk",
+      "title": "Le CDC pour ne pas DCD",
+      "speakers": ["Ludovic Dussart — Zatsit", "Quentin Burg — Zatsit"],
+      "summary": "- **Legacy** : une couche anticorruption en Node.js sans tests, entre un PLM SaaS de retail et le SI du client. Plus de 10 millions de messages dans le topic d'entrée (le chiffre exact est confus dans la transcription), 17 composants, 28 tables, jusqu'à 100 messages pour un seul geste utilisateur, des désynchronisations fréquentes et des resynchronisations hebdomadaires de 3 à 4 heures.\n- **Cause** : plusieurs services consomment le même flux en parallèle ; la lecture arrive avant la fin de l'écriture en base. Rejoué en démo live avec un faux « Bluesky » de Pokémon ouvert au public, qui a d'abord saturé les quotas.\n- **Solution : Change Data Capture** avec Debezium dans Kafka Connect, qui lit le WAL de Postgres (wal_level logical, table heartbeat, REPLICA IDENTITY FULL pour obtenir l'état avant et après) et publie les changements. Un seul topic pour toutes les tables, routé par une clé, plutôt qu'un topic par table.\n- **Résultats en production depuis juin** : **CPU et mémoire de la base divisés par deux**, seulement 12 tables écoutées, environ 200 000 messages au lieu de plusieurs millions, **6 services sur 17 décommissionnés**, plus aucune désynchronisation, et même les corrections manuelles en base propagées automatiquement.\n- **Pièges** : le WAL qui gonfle et sature le disque quand le connecteur est éteint mais pas la base ; tester 3 semaines en préprod, déployer composant par composant.\n- *« Si vous pensez que l'architecture de qualité coûte cher, essayez les mauvaises architectures. »*",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "Ayi1vQGFTck", "title": "Le CDC pour ne pas DCD - Ludovic Dussart - Quentin Burg", "publishedAt": "2025-11-03", "transcript": true }
+    },
+    {
+      "id": "quand-une-licorne-trebuche-heriter-d-un-legacy-batir-un-changement",
+      "day": "2025-10-23",
+      "type": "lightning",
+      "title": "Quand une licorne trébuche : hériter d'un legacy, bâtir un changement",
+      "speakers": ["Flora Njofang — AXA France"],
+      "summary": "- Quickie d'une engineering manager qui a d'abord redouté sa première mission legacy (pas de documentation, AngularJS et C++, peur de ne rien apprendre), et invite à **lever la main** la prochaine fois.\n- **Trois trésors** : l'argent (selon elle, les DSI ont consacré 50 % de leur budget 2024 à la modernisation), l'apprentissage (rétro-ingénierie, sanity check, comprendre l'intérêt des pratiques craft) et la durabilité (contre la **« fast tech »** qui recrée une application à chaque besoin).\n- **Mettre sous contrôle** : CI/CD, 90 % de couverture visée sur le code nouveau sans chercher 100 % sur l'existant, tests d'approbation en boîte noire pour la non-régression, outils de qualité et de vulnérabilité ; isoler l'existant au lieu de le toucher.\n- **Décider du futur** (refonte, statu quo, décommissionnement) selon la valeur business, l'outillage maison, la réglementation et l'usage réel. Un plan refusé a mis un an à être accepté : **résilience et répétition**.\n- Une seule roadmap par squad, **portée par le Product Owner**, qui inclut la modernisation technique.\n- Sur l'IA : utile pour la rétro-ingénierie, mais le vibe coding *« génère beaucoup plus de legacy »* ; le métier glisse de la production de code vers le rôle de garant du code.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "PfsnHT1uWU4", "title": "Quand une licorne trébuche : hériter d'un legacy, bâtir un changement - Flora Njofang", "publishedAt": "2025-11-03", "transcript": true }
+    },
+    {
+      "id": "tester-vos-conteneurs-docker",
+      "day": "2025-10-23",
+      "type": "lightning",
+      "title": "Tester vos conteneurs Docker : plus qu'un choix, une nécessité",
+      "speakers": ["Hakim Lakrout — Norsys"],
+      "summary": "- Quickie sans slides : la présentation est une petite application Flask conteneurisée.\n- Point de départ : un Dockerfile de 4 lignes trouvé sur le web, fonctionnel mais **root par défaut, sans WORKDIR ni variables d'environnement**.\n- **Container Structure Test** (Google) pour des tests « unitaires » de l'image : métadonnées, présence et droits des fichiers, contenu, commandes. Démo en mode test rouge puis correction, avec optimisation du cache et copie sélective.\n- **Bats** pour l'intégration : lancement du conteneur, `curl`, vérification du code 200 et du contenu, nettoyage.\n- À intégrer en CI (composants GitHub Actions). Démos live réussies.\n- Question critique de la salle : Bats n'est-il pas « un peu overkill » ? Le speaker concède que l'exemple est limité et cite un cas plus utile (vérifier l'initialisation d'une base dans un docker-compose).",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "MaBHkXEbGuU", "title": "Tester vos conteneurs Docker : plus qu'un choix, une nécessité - Hakim Lakrout", "publishedAt": "2025-11-03", "transcript": true }
+    },
+    {
+      "id": "d-azure-a-aws-recit-d-une-migration-ambitieuse-et-reussie",
+      "day": "2025-10-23",
+      "type": "talk",
+      "title": "D'Azure à AWS : récit d'une migration ambitieuse et réussie",
+      "speakers": ["Michka Popoff — WayKonect / TotalEnergies"],
+      "summary": "- **Contexte** : accord TotalEnergies et Amazon (électricité verte contre crédits cloud) ; migration annoncée en 2022, le jour où le speaker devient manager (*« C'était pas un cadeau »*), terminée à l'été 2025. Produit de flotte : environ 150 000 clients B2B et 2,3 millions de cartes.\n- **Produit 1, replatform** en 6 mois, bascule big bang d'environ 2 h : commencer par le plus simple pour rassurer.\n- **Produit 2, réécriture en microservices** : 850 procédures stockées vers Postgres, SSIS vers Databricks, **ECS Fargate faute de Kubernetes** (interdit par la cyber du groupe), ce qui ramène l'effort d'exploitation de 2 à 3 ETP à environ un demi.\n- **Accélérateur** : modules Terraform d'une équipe plateforme centrale, « compliant by design ».\n- **Organisation** : équipe de 8 à 16 personnes, feature freeze d'un an sur le legacy (« le mammouth au frigo »), élagage des fonctionnalités peu utilisées, migration par vagues de 2 500 à 5 000 clients, données clients chargées chaque nuit en prod à la place de tests de charge.\n- Lucidité : *« tout n'a pas été rose »*, tensions build/legacy, grand écart à ne pas faire durer. Coût AWS un peu plus bas, mais comparaison jugée peu pertinente.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "ekLofCh3AV0", "title": "D'Azure à AWS : récit d'une migration ambitieuse et réussie - Michka Popoff", "publishedAt": "2025-11-03", "transcript": true }
+    },
+    {
+      "id": "donnez-une-seconde-vie-a-votre-smartphone-android-un-agent-jenkins-ecolo",
+      "day": "2025-10-23",
+      "type": "talk",
+      "title": "Donnez une seconde vie à votre smartphone Android : un agent Jenkins écolo",
+      "speakers": ["Bruno Verachten — CloudBees"],
+      "feedbackFrom": ["Bruno Verachten (speaker)", "Maxime Deroullers (commentaire)"],
+      "summary": "- Motivation affichée : *« C'est strictement inutile, donc rigoureusement indispensable. »*\n- **Plaidoyer chiffré** : 90 % des téléphones remplacés fonctionnent encore, recyclage de 15 % dans le monde et 5 % en France ; garder un téléphone 5 ans au lieu de 3 réduit son empreinte de 31 %.\n- **Technique** : Android n'est pas Linux (Bionic, ART). Termux sans root, OpenSSH, OpenJDK 21, puis agent Jenkins permanent, et même contrôleur Jenkins sur le téléphone (termux-services, Termux:Boot, wake-lock). Le téléphone serait un *« bête de compétition déguisée »*, face aux Raspberry Pi.\n- Humour assumé (*« il y a pas de cloud, désolé »*) ; démo finale **ratée faute de réseau**.\n- Réception : un commentaire de Maxime Deroullers sous le post du speaker indique que le talk est *« arrivé dans le top 1 pour beaucoup »*.",
+      "summarySources": ["transcript", "feedback", "program"],
+      "video": { "youtubeId": "MlMXjdl8Yvw", "title": "Donnez une seconde vie à votre smartphone Android : un agent Jenkins écolo - Bruno Verachten", "publishedAt": "2025-11-03", "transcript": true }
+    },
+    {
+      "id": "wasm-components-are-a-faas-best-friend",
+      "day": "2025-10-23",
+      "type": "talk",
+      "title": "WASM Components are a FaaS Best Friend",
+      "speakers": ["Laurent Doguin — Couchbase"],
+      "summary": "- **Faiblesses du FaaS** : cold start, durée limitée, absence d'état, débogage difficile, vendor lock-in. Principe : *« Quand j'en ai pas besoin, ça devrait pas tourner, je devrais pas payer. »*\n- Comparaison des runtimes (VM, conteneurs, gVisor/Kata, Firecracker) : **WebAssembly** offre des cold starts très courts et une isolation mémoire.\n- **Component Model** et WASI Preview 2 (interfaces WIT) règlent l'interopérabilité qui obligeait chacun à écrire ses SDK : *« Je dis pas que c'est facile, je dis que c'est mieux qu'avant. »*\n- **wasmCloud** (CNCF), bâti sur NATS : capability providers interchangeables ; cas American Express (FaaS interne replatformé sur wasmCloud et Couchbase) et edge industriel.\n- Démo `wash` avec un composant Rust appelant Couchbase : plantage puis réussite après les questions ; code Rust jugé « un peu dégueux » par le speaker lui-même.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "vpiADLEcRWk", "title": "WASM Components are a FaaS Best Friend - Laurent Doguin", "publishedAt": "2025-11-03", "transcript": true }
+    },
+    {
+      "id": "decouvrez-comment-slimfaas-a-pris-du-poids-sur-kubernetes",
+      "day": "2025-10-23",
+      "type": "talk",
+      "title": "Découvrez comment SlimFaas a pris du poids sur Kubernetes !",
+      "speakers": ["Guillaume Chervet — AXA France"],
+      "feedbackFrom": ["Robin Van Dessel (blog Synapsys)", "Ousmane Diallo et Alexandre Gambart (extraits de recherche seulement)"],
+      "summary": "- **SlimFaas** : proxy qui transforme n'importe quel Deployment en fonction par une annotation, avec **scale-to-zero après 8 s** ; plus de 230 000 € par an économisés sur un projet. Routes asynchrones protégeant les pods, pub/sub HTTP, jobs, et routes « wake-up » qui transforment une contrainte d'infrastructure en contrainte UX.\n- Robin Van Dessel (Synapsys) retient la boutade du speaker : il a *« tué la planète »*, mais il a une excuse, il utilise SlimFaas.\n- **Genèse** : né quand OpenFaaS est devenu payant ; puis le speaker, seul mainteneur, prend conscience du **bus factor** (*« si je me fais écraser par une voiture… »*).\n- **Aparté juridique** : licences permissives et copyleft, civil et pénal ; le code écrit sur un poste de travail appartient à l'entreprise, d'où des règles d'open-sourcing chez AXA (validation direction et sécurité).\n- **Entrée en sandbox CNCF** : candidature, sponsor, vote du TOC (6 voix pour), 4 mois d'onboarding, passage de MIT à Apache 2 et cession de la propriété intellectuelle à la Linux Foundation, DCO, CLOMonitor, OpenSSF Scorecard.\n- Bilan : qualité en hausse (site, doc, premiers contributeurs) mais *« c'est pas magique »* ; prochaine étape, le scale-out automatique.",
+      "summarySources": ["transcript", "blog", "program"],
+      "video": { "youtubeId": "6DN1qWzTo7E", "title": "Découvrez comment SlimFaas a pris du poids sur Kubernetes ! - Guillaume Chervet", "publishedAt": "2025-11-03", "transcript": true }
+    },
+    {
+      "id": "ia-generative-et-rechauffement-climatique",
+      "day": "2025-10-23",
+      "type": "lightning",
+      "title": "IA générative et réchauffement climatique : comment réduire la facture ?",
+      "speakers": ["Arielle Villa-Massone — OCTO Technology", "Émilie Greff — OCTO Technology"],
+      "summary": "- Quiz d'ouverture : 5 minutes d'échange avec ChatGPT consomment environ **50 cl d'eau**.\n- Les grands acteurs s'éloignent de leurs objectifs de neutralité carbone ; l'**inférence** est devenue la phase la plus émettrice, et l'industrie reste opaque (seuls Meta, Mistral et Google publient des chiffres).\n- **Chiffres Mistral Large 2** : 1,14 g de CO2 par page de texte générée ; 20,4 kt de CO2 pour l'entraînement et 18 mois d'inférence.\n- **Cinq bonnes pratiques** : questionner le besoin (*« Est-ce que j'ai vraiment besoin d'IA générative ? »*), choisir le plus petit modèle, l'optimiser (quantization, pruning, distillation), déployer en zone bas carbone (**facteur 17** entre Paris et Salt Lake City), mesurer (EcoLogits, Cloud Carbon Footprint, CodeCarbon).\n- En questions : des clients veulent remplacer par des LLM des tâches de ML classique qui marchent déjà très bien.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "CUOuf29wLa4", "title": "IA et réchauffement climatique, comment réduire la facture ? - Arielle Villa-Massone - Emilie GREFF", "publishedAt": "2025-11-03", "transcript": true }
+    },
+    {
+      "id": "les-defis-de-l-authentification-avec-un-homonyme-parfait",
+      "day": "2025-10-23",
+      "type": "lightning",
+      "title": "Les Défis de l'Authentification avec un Homonyme Parfait",
+      "speakers": ["David Aparicio"],
+      "summary": "- Le speaker a un **homonyme parfait** (mêmes nom, prénom et date de naissance) : les systèmes d'information ne savent pas gérer ce cas.\n- **Galères vécues** : dossiers CAF fusionnés (demande de remboursement de 1 700 € et réception du dossier complet de l'homonyme), rendez-vous Doctolib de l'homonyme rattaché automatiquement à son compte pendant le Covid, résultats de test proposés à l'envoi à Toulouse.\n- **Failles de conception** : identité pivot FranceConnect sans lieu de naissance, services de changement d'adresse multi-organismes, banques. Le NIR serait la bonne clé, mais son usage est strictement encadré par la loi.\n- Proposition : un lien de confirmation avant tout rattachement de compte, et toujours une porte vers un humain.\n- *« Nul développeur n'est censé ignorer la sécurité. »*",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "ActK-7Rx7Io", "title": "Les Défis de l'Authentification avec un Homonyme Parfait - David Aparicio", "publishedAt": "2025-11-03", "transcript": true }
+    },
+    {
+      "id": "keynote-de-fermeture",
+      "day": "2025-10-23",
+      "type": "keynote",
+      "title": "Keynote de fermeture",
+      "speakers": ["Romain Bricout — Domaine du Jeune Bois"],
+      "summary": "- Keynote hors tech : un vigneron des Hauts-de-France (près de Cambrai, en bio) présente son domaine avant la dégustation de son effervescent au cocktail de clôture.\n- Parcours : ingénieur conseil pendant 8 ans, reconversion par quête de sens, plantation en 2019-2020, première pleine récolte en 2023, rendements **divisés par 5 en 2024** (gel et coulure).\n- Le renouveau de la vigne dans le Nord tient *« plutôt à un changement de réglementation »* qu'au réchauffement climatique ; 80 à 100 ha et une quinzaine de vignerons indépendants dans la région.\n- Technologie au vignoble : robots de désherbage, modèles de prévision du mildiou et du gel, capteurs ; le travail reste « à 90 % opérationnel ».",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "nscjREQBB9E", "title": "Keynote de fermeture - Romain Bricout", "publishedAt": "2025-11-03", "transcript": true }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Mots des orgas / keynote d'ouverture (non filmée)"
+  ],
+  "sources": [
+    { "label": "Programme officiel Cloud Nord 2025", "url": "https://2025.cloudnord.fr/schedule/day-1" },
+    { "label": "Conference Hall Cloud Nord 2025 (CFP, formats, 6e édition)", "url": "https://conference-hall.io/cloud-nord-2025" },
+    { "label": "Playlist YouTube Cloud Nord 2025 (18 talks, keynote de clôture, aftermovie)", "url": "https://www.youtube.com/playlist?list=PLVQhat0Bx0WB-fhbbQ0bQkhfTLAZIU2IU" },
+    { "label": "Robin Van Dessel (Synapsys), « Cloud Nord 2025 : ce qu'il faut retenir des tendances cloud »", "url": "https://synapsys-groupe.com/blog/cloud-nord-2025/" },
+    { "label": "Post LinkedIn de Bruno Verachten (speaker), commentaire de Maxime Deroullers", "url": "https://fr.linkedin.com/posts/poddingue_cloud-nord-2025-c%C3%A9tait-hier-et-c%C3%A9tait-activity-7387418263795740673-EW5Y" },
+    { "label": "Posts LinkedIn connus par extraits de recherche seulement : Ousmane Diallo, Alexandre Gambart (Synapsys)" }
+  ]
 }
