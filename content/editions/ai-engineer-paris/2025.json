@@ -8,7 +8,554 @@
   "city": "Paris",
   "venue": "Station F",
   "url": "https://ai.engineer/paris/2025",
+  "programUrl": "https://sessionize.com/api/v2/tcoeoxpp/view/All",
+  "theme": "AI engineering : agents et MCP, contexte et mémoire, évaluation, modèles ouverts, inférence, voix",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "1re édition d'AI Engineer hors des États-Unis, organisée par Koyeb avec l'équipe AI Engineer (swyx, Ben Dunphy). Soirée d'ouverture le 23/09, journée de conférence le 24/09. Organisateurs : 700+ participants, 500+ propositions au CFP, 47 sessions sur 5 tracks (Master Stage, deux Discovery Tracks, salle de workshops, Expo), 25 sponsors ; environ 70 % des participants venus de l'étranger selon Yann Léger.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-09-30",
+  "revisit": "corpus participants mince : aucun post LinkedIn lisible (non indexé ou derrière connexion), article de Criteo R&D sur Medium non lu (403), retours publics surtout d'organisateurs et de sponsors ; transcript du talk Spotify non récupéré (429 YouTube le 30/09/2026) ; vidéos individuelles non transcrites (Lutsky, Burgy, Louf, Brissaud, Charpentier, Šelajev, Puljak, Kollegger)",
+  "corpus": "Programme officiel (61 créneaux Sessionize), **transcriptions automatiques des deux lives officiels de la Main Stage** (1 h 25 le 23/09, 8 h 26 le 24/09, chaîne AI Engineer) et de **12 talks des Discovery Tracks** publiés sur la chaîne YouTube de Koyeb (23/10 et 05/11/2025), lus le 30/09/2026. Retours écrits : récap en 4 parties de Koyeb (organisateur), récap de Safe Intelligence (Brain Aboze, 24/10/2025), billet d'Alex Spyropoulos (29/09/2025), live podcast de Mastra depuis l'expo (24/09/2025) et une dizaine de posts Bluesky (surtout sponsors : Docker, Tailscale, Alpic, Koyeb).",
+  "limits": "Retours de participants rares et **fortement teintés sponsors/organisateurs** (Koyeb, Docker, Mastra, Safe Intelligence) ; aucun post LinkedIn lisible, article Criteo inaccessible. La synthèse s'appuie surtout sur ce qui a été dit sur scène. Transcriptions automatiques (noms propres déformés ; pistes de Mhangami et Betegón manifestement retraduites). Workshops et talks de l'Expo sans captation ni retour. Synthèse rédigée un an après l'événement (J+371).",
+  "tldr": "Pour sa première édition européenne, AI Engineer Paris a montré **une ingénierie IA qui passe de la démo à la production** : agents outillés par MCP, **contexte et mémoire** comme vrai problème, évaluation continue plutôt que benchmarks, et une scène parisienne qui mise sur **l'ouvert et l'efficace** (Mistral, Kyutai, H, ZML, pyannote, BFL).",
+  "keyTakeaways": [
+    "Traiter un serveur MCP comme un produit : descriptions d'outils avec exemples, actions suivantes suggérées, observabilité par transport et par outil, erreurs explicites (Betegón, Sentry).",
+    "Préférer les serveurs MCP distants avec OAuth aux installations locales et aux tokens personnels : personne ne met à jour un MCP local qui fonctionne (Woodward, GitHub).",
+    "Limiter le nombre d'outils exposés à un agent, via la découverte dynamique ou un choix par l'utilisateur, car trop d'outils dégradent la précision (Woodward ; Castelo, Shopify).",
+    "Mettre les instructions « juste à temps » dans les réponses d'outils, y compris en cas de succès, plutôt que tout charger dans le prompt système (Castelo, Shopify ; Schmidt, Metabase).",
+    "Construire pour le chaos des données réelles, pas pour la démo du chemin heureux ; se méfier de la sur-optimisation sur un benchmark interne (Schmidt, Metabase).",
+    "Faire évoluer le prompt système à partir de retours rédigés en langage naturel et d'évals en production, avec un jeu de test caché pour éviter le surapprentissage (Dhinakaran, Arize).",
+    "Pour les gros refactorings, découper en tâches quasi « one-shot », limiter à 3 à 5 agents en parallèle, garder une revue humaine par sous-agent et partager les apprentissages dans un fichier de contexte (Brennan, OpenHands).",
+    "Isoler chaque agent dans un environnement jetable et garder code et données dans son propre cloud pour les secteurs régulés (Espino, Ona ; Léger, Koyeb).",
+    "Réduire le démarrage à froid de l'inférence en streamant les poids en parallèle vers le GPU plutôt que charger fichier par fichier (Karabulut et Schuurman, NVIDIA et Google).",
+    "Ne pas oublier la diarisation (qui parle quand) dans les pipelines vocaux : sans elle, un scribe médical ou un compte rendu de réunion peut conclure l'inverse (Bredin, pyannoteAI)."
+  ],
+  "sessions": [
+    {
+      "id": "welcome-keynote-year-in-agents",
+      "day": "2025-09-23",
+      "type": "keynote",
+      "title": "Welcome Keynote (The Year in Agents)",
+      "speakers": [
+        "Shawn Wang (swyx) — AI Engineer / Latent Space",
+        "Ben Dunphy — AI Engineer",
+        "Yann Léger — Koyeb",
+        "Raouf Chebri — MC"
+      ],
+      "feedbackFrom": ["Live podcast Mastra (exposant)"],
+      "summary": "- Ouverture : Ben Dunphy présente Paris comme le **premier événement AI Engineer confié à un partenaire communautaire** (Koyeb) ; Yann Léger annonce « plus de 30 speakers » et environ 70 % de participants venus de l'étranger.\n- swyx met à jour son talk « year of agents » : la définition qui s'impose est *« un LLM avec des outils dans une boucle, orienté vers un but »* (Simon Willison), mais il pousse à travailler les parties dures (mémoire, planification, confiance).\n- **Pas « l'année » mais la décennie des agents** (reprise de Karpathy), portée par un chantier d'infrastructure historique ; modèles de plus en plus agentiques (*« thinking with tools »*), autonomie croissante, autant de calcul en post-training qu'en pré-training.\n- Côté ingénierie : MCP a gagné, ACP (Zed) comme couche d'interop des agents de terminal, et une « bibliothèque standard » des API d'agents (sandbox d'exécution, recherche web, documents) dont il crédite Mistral ; manquent encore **mémoire et orchestration**.\n- Trois débats ouverts : **faut-il des évals ?** (Claude Code, *« no evals, just vibes »*), comment faire du context engineering (multi-agents ou non), et les **agents rapides** (Cerebras à ~2 000 tokens/s).\n- Retenu par l'équipe Mastra en direct de l'expo : l'idée que 2025-2035 sera *« la décennie des agents »*.",
+      "summarySources": ["transcript", "program", "feedback"],
+      "video": {
+        "youtubeId": "d6dp_dwgpYQ",
+        "title": "Opening Keynotes - AIE Paris 2025 (Day 1)",
+        "publishedAt": "2025-09-24",
+        "startSeconds": 2248,
+        "transcript": true
+      }
+    },
+    {
+      "id": "how-open-source-drives-successful-enterprise-adoption",
+      "day": "2025-09-23",
+      "type": "keynote",
+      "title": "How open source drives successful enterprise adoption",
+      "speakers": ["Lélio Renard Lavaud — Mistral AI"],
+      "feedbackFrom": ["Blog Koyeb (organisateur)", "Brain Aboze (Safe Intelligence)"],
+      "summary": "- Mistral rappelle son origine open source (Mistral 7B, Mixtral) et l'anecdote d'une grande entreprise qui avait mis Mixtral en production sans jamais les contacter : preuve que **l'ouvert et l'entreprise sont compatibles**.\n- Obstacles vus chez les clients : **données en silos** chez de multiples SaaS, chacun avec son assistant et son modèle de droits ; le RAG naïf échoue sans contexte d'entreprise (exemple du rapport annuel 2013 remonté à la place du bon).\n- Réponse : un **« moteur de contexte »** qui relie les entités entre silos et les rattache à une ontologie ; puis observer les usages réels pour automatiser et améliorer les modèles, comme l'ont fait les assistants grand public.\n- Aveu : il ne sait pas ce qu'est un agent ; ce qui compte est le problème métier résolu de bout en bout. Autres freins : alignement strict des modèles, vitesse, manque d'expertise et d'évals (*« pas juste du vibe checking »*).\n- En Q&R : les modèles pré-entraînés deviendront une commodité ouverte, la valeur se jouant sur le post-training et le déploiement.\n- Lecture des participants : le récap Koyeb retient les **défis de données du RAG** et le context engineering ; Brain Aboze y voit, avec H Company, l'idée que *« l'IA digne de confiance commence par des fondations ouvertes »*.",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "d6dp_dwgpYQ",
+        "title": "Opening Keynotes - AIE Paris 2025 (Day 1)",
+        "publishedAt": "2025-09-24",
+        "startSeconds": 3755,
+        "transcript": true
+      }
+    },
+    {
+      "id": "state-in-ai-engineering",
+      "day": "2025-09-24",
+      "type": "keynote",
+      "title": "The State in AI Engineering",
+      "speakers": ["Emil Eifrem — Neo4j"],
+      "feedbackFrom": ["Blog Koyeb (organisateur)", "Brain Aboze (Safe Intelligence)", "Live podcast Mastra (exposant)"],
+      "summary": "- Jeu de mots du titre : non pas l'état de l'AI engineering mais **la gestion de l'état** (corpus RAG, mémoire agentique, données applicatives), tiré de centaines de projets observés.\n- Constat : chaque base ajoute ce que les autres ont (vecteurs, métadonnées), *« c'est un peu le bazar »*. Il propose **quatre propriétés** d'une bonne couche de données pour l'IA : gérer structuré, non structuré et semi-structuré ; extraire des entités de façon fiable (reconnaissance puis résolution) ; **lier les entités** entre mémoire agentique et données applicatives au niveau de la base plutôt qu'à la récupération ; distinguer données de première main et données dérivées (reconstruites quand le corpus change).\n- Honnêteté affichée : Neo4j n'a pas tout cela aujourd'hui, c'est sa feuille de route ; démo du knowledge graph builder sur la page Wikipédia de Paris.\n- En Q&R : la mémoire agentique est *« intrinsèquement orientée graphe »* ; l'entreprise passe du *buy* au *build* ; l'innovation IA n'est plus concentrée dans *« un rayon de huit blocs à San Francisco »*.\n- Lecture critique : talk d'éditeur assumé ; Safe Intelligence le range parmi ceux qui situent la cause des échecs d'agents dans la gestion de l'état et du contexte.",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "wyUdpmj9-64",
+        "title": "AI Engineer Paris 2025 (Day 2)",
+        "publishedAt": "2025-09-24",
+        "startSeconds": 1181,
+        "transcript": true
+      }
+    },
+    {
+      "id": "democratizing-ai-agents-docker",
+      "day": "2025-09-24",
+      "type": "keynote",
+      "title": "Democratizing AI Agents: Building, Sharing, and Securing Made Simple",
+      "speakers": ["Tushar Jain — Docker"],
+      "feedbackFrom": ["Blog Koyeb (organisateur)", "Docker (sponsor, post Bluesky)"],
+      "summary": "- Cadre : **« les agents sont les nouveaux microservices »** ; comme les conteneurs hier, il faut un packaging standard, des catalogues de confiance et un partage simple.\n- Exploration : un format de type *agent file* (build, push, pull, run) ; **cagent**, constructeur d'agents open source qui les empaquette en artefacts OCI.\n- **Catalogue MCP** sur Docker Hub (serveurs vérifiés, conteneurisés, protection contre les *rug pulls*) et MCP Toolkit dans Docker Desktop pour configurer une fois les clients (Claude, Gemini…). Démo : retours produits dans Notion transformés en issues GitHub.\n- Talk court (7 min) et commercial ; Docker résume ensuite l'événement par *« the future is agentic »* (sponsor).",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "wyUdpmj9-64",
+        "title": "AI Engineer Paris 2025 (Day 2)",
+        "publishedAt": "2025-09-24",
+        "startSeconds": 3164,
+        "transcript": true
+      }
+    },
+    {
+      "id": "building-mcps-at-github-scale",
+      "day": "2025-09-24",
+      "type": "keynote",
+      "title": "Building MCP's at GitHub Scale",
+      "speakers": ["Martin Woodward — GitHub"],
+      "feedbackFrom": ["Brain Aboze (Safe Intelligence)"],
+      "summary": "- Plus un talk sur le **protocole MCP** que sur le serveur GitHub : MCP ne se réduit pas aux outils (ressources, prompts, sampling, roots, **elicitation**). Sur ~80 clients MCP recensés, 79 gèrent les outils mais seulement 3 l'élicitation ; VS Code est le seul client complet.\n- Leçons : **trop d'outils égare le modèle** → découverte dynamique ; l'installation locale est un cauchemar multiplateforme et *« personne ne met à jour un MCP local qui marche »* → serveur distant construit sur le même code que le serveur local open source ; les PAT sont un anti-pattern → OAuth ; un MCP qu'on ne trouve pas ne sert à rien → **registre MCP open source** et registres fédérés (entreprise, Docker, GitHub).\n- Thèse : *« MCP est devenu la couche API de l'IA »*.\n- En Q&R : plaidoyer pour **continuer à recruter des juniors**, *« rien ne fait grandir un senior comme faire grandir un junior »*.\n- Safe Intelligence le cite, avec Ona, parmi les talks qui font de la sécurité un principe de conception.",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "wyUdpmj9-64",
+        "title": "AI Engineer Paris 2025 (Day 2)",
+        "publishedAt": "2025-09-24",
+        "startSeconds": 3630,
+        "transcript": true
+      }
+    },
+    {
+      "id": "building-for-the-agentic-era-ai-infrastructure",
+      "day": "2025-09-24",
+      "type": "keynote",
+      "title": "Building for the Agentic Era: The Future of AI Infrastructure",
+      "speakers": ["Yann Léger — Koyeb"],
+      "feedbackFrom": ["Blog Koyeb (organisateur)", "Brain Aboze (Safe Intelligence)", "Alex Spyropoulos"],
+      "summary": "- La pile IA de 2023 (API, base vectorielle, quelques modèles sur GPU) est devenue une pile hétérogène : GPU, accélérateurs (Tenstorrent, AMD) et **les bons vieux CPU pour les charges agentiques**.\n- Un agent exécute du **code non fiable généré par un modèle non déterministe** : il faut des sandboxes sûres, rapides, éphémères et massives (clients demandant 10 000 conteneurs par jour). Démo d'un sandbox créé via le serveur MCP de Koyeb.\n- Goulot inattendu : **le réseau**, pas l'hyperviseur ; mitigation par *scale-to-zero* et snapshots mémoire (« light sleep ») ramenant le démarrage de plusieurs secondes à 100-200 ms, bientôt sur GPU.\n- En Q&R : il parie que le monopole NVIDIA tombera, comme Intel face à AMD, mais pas avant cinq ans.\n- Talk de l'organisateur-sponsor ; Alex Spyropoulos retient plus largement la vague de clouds « maison » sur bare metal et Firecracker.",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "wyUdpmj9-64",
+        "title": "AI Engineer Paris 2025 (Day 2)",
+        "publishedAt": "2025-09-24",
+        "startSeconds": 7202,
+        "transcript": true
+      }
+    },
+    {
+      "id": "inside-flux-how-it-really-works",
+      "day": "2025-09-24",
+      "type": "keynote",
+      "title": "Inside FLUX, How It Really Works",
+      "speakers": ["Andreas Blattmann — Black Forest Labs"],
+      "feedbackFrom": ["MC de la Main Stage (réaction captée dans le live)"],
+      "summary": "- Speaker remplaçant celui du programme (Stephen Batifol). BFL : 40 personnes, trois gammes (Pro par API, Dev en poids ouverts, Schnell open source) ; Flux Dev serait le modèle au plus grand écosystème de dérivés sur Hugging Face.\n- Thèse : **l'édition d'image compte autant que la génération** car elle permet d'itérer ; FLUX.1 Kontext unifie les deux (cohérence de personnage, transfert de style, édition de texte).\n- Pédagogie de la **latent flow matching** : autoencodeur qui ne garde que les détails perceptibles, puis champ de vecteurs appris ; l'édition n'est qu'une image de contexte ajoutée à la séquence de tokens du transformer.\n- Vitesse : **latent adversarial diffusion distillation**, de ~50 à 4 étapes ; objectif affiché, la génération en une étape et le temps réel.\n- Démo live réussie (logo sur un t-shirt, itérations successives) saluée par l'MC ; sur l'ouvert, Blattmann voit poids ouverts et API comme complémentaires.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "wyUdpmj9-64",
+        "title": "AI Engineer Paris 2025 (Day 2)",
+        "publishedAt": "2025-09-24",
+        "startSeconds": 8628,
+        "transcript": true
+      }
+    },
+    {
+      "id": "assembling-the-future-open-source-bricks",
+      "day": "2025-09-24",
+      "type": "keynote",
+      "title": "Assembling the Future: Open Source Bricks for the Next Generation of AI",
+      "speakers": ["Laurent Sifre — H Company"],
+      "feedbackFrom": ["Blog Koyeb (organisateur)", "Brain Aboze (Safe Intelligence)"],
+      "summary": "- H construit des **agents de computer use** (capture d'écran en entrée, clics et frappes en sortie) : les API et MCP ne couvriront pas la longue traîne des logiciels, par inertie et parce que certains éditeurs vendus au siège n'y ont pas intérêt.\n- Démo de Surfer H sur Google Flights ; architecture en trois modèles : politique (VLM), **localisateur** qui donne les coordonnées de l'élément, validateur.\n- Plaidoyer pour les **modèles spécialisés** : analogie GPT-5 contre AlphaZero aux échecs (des ordres de grandeur d'efficacité) ; ses modèles Holo (base Qwen 2.5 VL, SFT puis GRPO) visent une « frontière de spécialisation » sur la localisation d'UI.\n- Pourquoi l'open weights : confiance client, performance vérifiable, écosystème (TRL, vLLM), attractivité pour les équipes.\n- Modèle économique annoncé : forward deployed engineers et facturation à la valeur plutôt qu'au token, *« une course vers le bas »*.",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "wyUdpmj9-64",
+        "title": "AI Engineer Paris 2025 (Day 2)",
+        "publishedAt": "2025-09-24",
+        "startSeconds": 16128,
+        "transcript": true
+      }
+    },
+    {
+      "id": "vibing-with-data",
+      "day": "2025-09-24",
+      "type": "lightning",
+      "title": "Vibing With Data",
+      "speakers": ["Andreas Kollegger — Neo4j"],
+      "feedbackFrom": [],
+      "summary": "- Version « speedrun » (5 min) d'un talk plus long : un **système multi-agents** qui aide à construire un knowledge graph (ici une nomenclature produits, pièces, fournisseurs).\n- Enchaînement d'agents spécialisés (intention, découverte des fichiers, proposition de modèle de données, construction), avec **validation humaine à chaque étape**.\n- Argument : découper en agents limite la confusion et le *context rot* et permet d'utiliser des modèles spécialisés par étape. Code annoncé comme open source.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "wyUdpmj9-64",
+        "title": "AI Engineer Paris 2025 (Day 2)",
+        "publishedAt": "2025-09-24",
+        "startSeconds": 17597,
+        "transcript": true
+      }
+    },
+    {
+      "id": "state-of-open-llms-in-2025",
+      "day": "2025-09-24",
+      "type": "keynote",
+      "title": "State of Open LLMs in 2025",
+      "speakers": ["Vaibhav Srivastav (VB) — Hugging Face"],
+      "feedbackFrom": ["Blog Koyeb (organisateur)"],
+      "summary": "- Les modèles ouverts **talonnent les fermés** sur les benchmarks agrégés (GPT-5 high à 67 contre gpt-oss à 58 selon Artificial Analysis), à moindre coût et budget de tokens.\n- Trois façons de les utiliser (API serverless compatible OpenAI, déploiement managé, auto-hébergement) : l'intérêt est **l'optionalité**, illustrée par les incidents de qualité reconnus par Anthropic ; *« not your weights, not your brain »* (Karpathy).\n- Tendances 2025 : raisonnement ouvert depuis DeepSeek R1 et distillation dans de petits modèles, contextes de 128-256k devenus standard, formats et quantification (FP8, 4 bits) normalisés.\n- Où le fermé gagne encore : raisonnement généraliste, multimodal de bout en bout (voix temps réel), garde-fous anti-jailbreak.\n- Playbook : prendre un projet, remplacer le modèle propriétaire, évaluer sur les mêmes tests, itérer ; *« default to open »*.",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "wyUdpmj9-64",
+        "title": "AI Engineer Paris 2025 (Day 2)",
+        "publishedAt": "2025-09-24",
+        "startSeconds": 17932,
+        "transcript": true
+      }
+    },
+    {
+      "id": "system-prompt-learning-for-agents",
+      "day": "2025-09-24",
+      "type": "keynote",
+      "title": "System Prompt Learning for Agents",
+      "speakers": ["Aparna Dhinakaran — Arize AI"],
+      "feedbackFrom": ["Blog Koyeb (organisateur)", "Brain Aboze (Safe Intelligence)"],
+      "summary": "- Point de départ : un tweet de Karpathy sur le **« system prompt learning »** ; un prompt système statique empêche l'agent d'apprendre de son environnement.\n- Méthode : faire juger les sorties (LLM juge ou annotation humaine) **avec une explication en langage naturel**, signal plus riche qu'un score scalaire, puis un méta-prompt réécrit les règles.\n- Expérience sur les règles de Cline (mode plan) sur SWE-bench Lite : environ **30 % à 45 %** après 5 à 10 boucles (découpage 50/50 train/test) ; gains aussi sur BBH, génération JSON et classification support.\n- **Réponse directe à swyx** : les évals ne doivent pas bloquer la mise en production, mais les **évals en ligne sur les traces réelles** comptent davantage que des tests écrits d'avance.\n- En Q&R : catégoriser les erreurs pour tenir dans le contexte du méta-prompt, garder un jeu aveugle contre le surapprentissage ; approche jugée proche de GEPA (DSPy).",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "wyUdpmj9-64",
+        "title": "AI Engineer Paris 2025 (Day 2)",
+        "publishedAt": "2025-09-24",
+        "startSeconds": 19389,
+        "transcript": true
+      }
+    },
+    {
+      "id": "towards-unlimited-contexts-sparse-attention-cpu",
+      "day": "2025-09-24",
+      "type": "keynote",
+      "title": "Towards unlimited contexts: faster-than-GPU sparse logarithmic attention on CPU",
+      "speakers": ["Steeve Morin — ZML"],
+      "feedbackFrom": ["Brain Aboze (Safe Intelligence)", "MC de la Main Stage (réaction captée dans le live)"],
+      "summary": "- Problème : l'attention est **quadratique**, d'où fenêtres de contexte limitées, HBM et KV cache sur le GPU. Mais après softmax, la matrice d'attention est surtout vide.\n- Idée : traiter l'attention comme **un problème de graphe** parcouru en temps log-linéaire ; les GPU gèrent mal les branchements, donc calcul sur CPU (~30 µs par couche, dans un budget de ~100 µs pour 100 tokens/s sur un 8B).\n- Conséquence : le **KV cache quitte le GPU**, qui devient sans état ; l'attention part sur d'autres machines via UDP et contournement du noyau (DPDK), ~20 µs mesurées pour ~16 théoriques.\n- Démo live d'attnd : un Qwen 32B en FP8 sur un GPU de 32 Go (20 Mo libres), présenté comme une première ; la génération s'arrête quand on coupe le démon.\n- Safe Intelligence le cite avec Pruna pour l'idée que l'efficacité fait partie de la fiabilité.",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "wyUdpmj9-64",
+        "title": "AI Engineer Paris 2025 (Day 2)",
+        "publishedAt": "2025-09-24",
+        "startSeconds": 20828,
+        "transcript": true
+      }
+    },
+    {
+      "id": "building-an-open-source-notebooklm-alternative",
+      "day": "2025-09-24",
+      "type": "talk",
+      "title": "Building an open-source NotebookLM alternative",
+      "speakers": ["Tuana Çelik — LlamaIndex"],
+      "feedbackFrom": [],
+      "summary": "- Présentation de **Notebook Llama**, alternative open source à NotebookLM : résumé, points clés, FAQ, carte mentale, Q&R avec citations, extraction de tableaux et images, génération de podcast.\n- Trois contraintes posées : documents complexes (« layout bonanza »), fonctionnalités **réutilisables hors du projet** (toutes exposées en outils MCP), et **contrôle du flux** plutôt qu'un agent libre.\n- Mise en œuvre : LlamaParse et LlamaExtract (schéma Pydantic décrit) pour initialiser le notebook, Workflows 1.0 de LlamaIndex (étapes et événements typés, branche d'échec), index LlamaCloud et citation query engine.\n- Présenté comme un point de départ ouvert aux contributions ; talk d'éditeur assumé (*« je suis DevRel, donc LlamaIndex »*).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "wyUdpmj9-64",
+        "title": "AI Engineer Paris 2025 (Day 2)",
+        "publishedAt": "2025-09-24",
+        "startSeconds": 24868,
+        "transcript": true
+      }
+    },
+    {
+      "id": "whats-new-and-whats-next-for-generative-ai",
+      "day": "2025-09-24",
+      "type": "keynote",
+      "title": "What's new and what's next for generative AI",
+      "speakers": ["Paige Bailey — Google DeepMind"],
+      "feedbackFrom": ["Blog Koyeb (organisateur)", "MC de la Main Stage (réaction captée dans le live)"],
+      "summary": "- Tour d'horizon d'un Google qui livrerait *« un modèle ou une fonctionnalité tous les 5 jours »* : Gemini 2.5 Pro, Nano Banana, Veo 3, Gemma 3n, Genie 3.\n- Démos live dans AI Studio : application D&D générée par Build et déployée sur Cloud Run ; Live API qui guide dans l'interface de Colab par partage d'écran ; agent de data science dans Colab.\n- Veo 3 : d'une chaîne de plusieurs modèles avec Veo 2 (≈ 25-30 min pour recréer une pub) à un seul prompt.\n- Thèse : les **modèles ouverts et locaux sont l'avenir** (Gemma 3n à 4B dépasserait Gemini 1.5 Pro), Gemini dans Chrome ; et *« jamais un meilleur moment pour fonder »*, y compris en solo.\n- Le récap Koyeb associe plutôt DeepMind au workshop « fastest path from prompt to production » de la même équipe.",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "wyUdpmj9-64",
+        "title": "AI Engineer Paris 2025 (Day 2)",
+        "publishedAt": "2025-09-24",
+        "startSeconds": 26224,
+        "transcript": true
+      }
+    },
+    {
+      "id": "scaling-real-time-voice-ai",
+      "day": "2025-09-24",
+      "type": "keynote",
+      "title": "Scaling real-time voice AI",
+      "speakers": ["Neil Zeghidour — Kyutai"],
+      "feedbackFrom": ["MC de la Main Stage (réaction captée dans le live)"],
+      "summary": "- Kyutai, labo parisien à but non lucratif (open science), vise l'audio **interactif et à gros volume** (PNJ de jeux, robots, news personnalisées), là où qualité et passage à l'échelle s'opposent aujourd'hui.\n- **Moshi**, premier modèle full-duplex : codec Mimi (3 s de parole en ~37 tokens au lieu de 72 000 échantillons) et **modélisation multi-flux** qui permet de parler et d'écouter en même temps, robuste au bruit.\n- La même architecture donne la traduction speech-to-speech temps réel **sur téléphone** (Hibiki, faite par un stagiaire en quelques mois), la transcription temps réel, un TTS en streaming sur le texte et la diarisation.\n- Unmute : cascade STT, LLM, TTS pour garder outils et RAG ; démo d'un « Général de Gaulle » cloné à partir de 10 s de voix.\n- Échelle : 320 conversations simultanées sur un H100 ; cas client avec La Provence (news audio).\n- En Q&R : le full-duplex stagne car la cascade est plus pratique, mais reste le but.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "wyUdpmj9-64",
+        "title": "AI Engineer Paris 2025 (Day 2)",
+        "publishedAt": "2025-09-24",
+        "startSeconds": 28428,
+        "transcript": true
+      }
+    },
+    {
+      "id": "rewriting-all-of-spotifys-code-base",
+      "day": "2025-09-24",
+      "type": "talk",
+      "title": "Rewriting all of Spotify's code base, all the time.",
+      "speakers": ["Aleksandar Mitic — Spotify", "Jo Kelly-Fenton — Spotify"],
+      "feedbackFrom": ["Blog Koyeb (organisateur)", "Brain Aboze (Safe Intelligence)"],
+      "summary": "- D'après le descriptif : *« on n'a pas besoin des LLM pour écrire du nouveau code, mais pour nettoyer le bazar qu'on a déjà fait »* ; un **« Agentic Migrator »** chez Spotify aurait fait merger plus de 1 000 PR de migrations répétables sur des milliers de dépôts.\n- Le récap Koyeb le cite parmi les talks d'agents en production ; Safe Intelligence l'associe aux retours d'échecs dus à la gestion du contexte.\n- Troisième vidéo la plus vue de l'édition sur la chaîne Koyeb (~1 500 vues) ; transcript non récupéré (limite YouTube), contenu réel du talk non vérifié.",
+      "summarySources": ["program", "blog"],
+      "video": {
+        "youtubeId": "1oicrAfrEIk",
+        "title": "Rewriting all of Spotify's code base, all the time. - AI Engineer Paris 2025",
+        "publishedAt": "2025-10-23",
+        "transcript": false
+      }
+    },
+    {
+      "id": "vibe-over-benchmarks-ai-evaluation",
+      "day": "2025-09-24",
+      "type": "talk",
+      "title": "Vibe > Benchmarks: Rethinking AI Evaluation for the Real World",
+      "speakers": ["Pierre Burgy — Strapi"],
+      "feedbackFrom": ["Blog Koyeb (organisateur)", "Brain Aboze (Safe Intelligence)"],
+      "summary": "- D'après le descriptif : *« les évals IA sont cassées »* ; les scores de benchmark se traduisent rarement en valeur utilisateur, d'où des **« vibe benchmarks »** construits en observant les usages et des boucles de feedback qualitatif.\n- Cité par Koyeb (co-création humain + IA) et par Safe Intelligence, avec Arize, parmi ceux qui veulent dépasser les benchmarks statiques pour un suivi continu.\n- Vidéo disponible mais non transcrite : résumé fondé sur le programme et les récaps.",
+      "summarySources": ["program", "blog"],
+      "video": {
+        "youtubeId": "mlOnZ2oUrxQ",
+        "title": "Vibe Over Benchmarks: Rethinking AI Evaluation for the Real World - AI Engineer Paris 2025",
+        "publishedAt": "2025-11-05",
+        "transcript": false
+      }
+    },
+    {
+      "id": "speaker-diarization-foundational-layer",
+      "day": "2025-09-24",
+      "type": "talk",
+      "title": "Speaker diarization: the foundational layer of conversational AI",
+      "speakers": ["Hervé Bredin — pyannoteAI"],
+      "feedbackFrom": ["Neil Zeghidour (speaker, mention sur la Main Stage)"],
+      "summary": "- **Qui a parlé compte autant que ce qui a été dit** : exemple du scribe médical dont les notes SOAP changent selon qui, du médecin ou du patient, a dit quoi ; aussi doublage vidéo, comptes rendus de réunions hybrides, archives de podcasts.\n- La diarisation enchaîne détection d'activité vocale, segmentation (changements de locuteur, parole superposée, *back-channels*) et attribution, **sans connaître ni le nombre ni l'identité** des locuteurs.\n- Plus dur que le speech-to-text : tâches orthogonales (indépendance au locuteur contre indépendance au texte), un exemple d'entraînement est une conversation entière, et les étiquettes sont permutables.\n- pyannote.audio : ~8 000 étoiles, ~16-17 M de téléchargements mensuels du pipeline, brique de WhisperX ; annonce de Precision-2 (API) et du futur modèle ouvert Community-1, démo en deux lignes de code.\n- Vidéo la plus vue de l'édition sur la chaîne Koyeb (~3 300 vues au 30/09/2026).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "tsjt5ApCM1E",
+        "title": "Speaker diarization: the foundational layer of conversational AI - AI Engineer Paris 2025",
+        "publishedAt": "2025-10-23",
+        "transcript": true
+      }
+    },
+    {
+      "id": "llm-based-gui-agents",
+      "day": "2025-09-24",
+      "type": "talk",
+      "title": "LLM-Based GUI Agents: Bridging Human Interfaces and Autonomous AI",
+      "speakers": ["Daniel Homola — BMW"],
+      "feedbackFrom": [],
+      "summary": "- Contexte : un MVP de recherche d'**agent GUI embarqué** dans la voiture (assistant personnel BMW), pour intégrer des services sans API (courses, réservations).\n- Agents API et agents GUI ne s'opposent pas : les premiers pour les API stables et documentées, les seconds pour le reste, avec une exécution visible par l'utilisateur ; **viser l'hybride**, orchestré par la voix.\n- Leçons : commencer par des actions atomiques, construire les évals de bas en haut puis de bout en bout, **durcir l'exécuteur** (déterministe, actions groupées), planifier par blocs, instrumenter l'observabilité ; LiveKit pour la voix.\n- Modèles : un petit VLM spécialisé (Mobile-Agent-v3, 7B sur Qwen 2.5 VL) suffit avec un exécuteur strict.\n- Deuxième vidéo la plus vue des Discovery Tracks (~2 200 vues).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "f2QUGw5mnq4",
+        "title": "LLM-Based GUI Agents: Bridging Human Interfaces and Autonomous AI - AI Engineer Paris 2025",
+        "publishedAt": "2025-10-23",
+        "transcript": true
+      }
+    },
+    {
+      "id": "stop-wasting-gpu-flops-on-cold-starts",
+      "day": "2025-09-24",
+      "type": "talk",
+      "title": "Stop Wasting GPU Flops on Cold Starts: High Performance Inference with Model Streamer",
+      "speakers": ["Ekin Karabulut — NVIDIA (Run:ai)", "Peter Schuurman — Google Cloud"],
+      "feedbackFrom": [],
+      "summary": "- Le démarrage à froid d'un LLM est dominé par **le chargement des poids** (stockage, puis CPU, puis GPU, en séquentiel), d'où le surprovisionnement coûteux des GPU.\n- **Run:ai Model Streamer** (open source, intégré à vLLM) lit les tenseurs en parallèle et les streame vers le GPU ; Llama 8B chargé en moins de 5 s depuis S3 ; attention à l'écart entre bande passante théorique et réelle.\n- Nouveautés : chargement multi-fichiers pour mieux répartir, authentification native GCS, et **chargement distribué** entre processus GPU (chaque processus charge une part puis diffusion via torch.distributed) : Llama 70B de ~100 s à ~13 s (×7,7).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "EXQ3AksFXcM",
+        "title": "Stop Wasting GPU Flops on Cold Starts: High Performance Inference with Model Streamer - AI Eng Paris",
+        "publishedAt": "2025-10-23",
+        "transcript": true
+      }
+    },
+    {
+      "id": "automating-massive-refactors-with-parallel-agents",
+      "day": "2025-09-24",
+      "type": "talk",
+      "title": "Automating massive refactors with parallel agents",
+      "speakers": ["Robert Brennan — OpenHands"],
+      "feedbackFrom": ["Brain Aboze (Safe Intelligence)"],
+      "summary": "- Les gros chantiers (Python 2 vers 3, migration de bibliothèque, refactoring) sont très automatisables mais **impossibles en un seul prompt** : l'agent dérive, accumule les erreurs, devient « paresseux » ; et le plan évolue en cours de route.\n- Méthode : une branche de travail avec un fichier de contexte (agents.md ou micro-agent), un agent par tâche sur sa branche, **revue humaine de chaque PR** ; il plafonne lui-même à 3 à 5 agents simultanés.\n- **Décomposition** : fichier par fichier, par arbre de dépendances (des feuilles vers la racine), ou « scaffold and iterate » (couche de compatibilité puis migration composant par composant, cas d'une migration de gestion d'état React).\n- **Partage de contexte** : pas tout partager ; l'humain relaie, ou un fichier commun mis à jour par PR ; agents qui se parlent jugés prometteurs mais « techno 2026 ».\n- Attente réaliste : **80 à 90 % d'automatisation**, des mois ramenés à des jours.",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "7OwrdNS0d6Y",
+        "title": "Automating massive refactors with parallel agents - AI Engineer Paris 2025",
+        "publishedAt": "2025-10-23",
+        "transcript": true
+      }
+    },
+    {
+      "id": "everything-that-can-go-wrong-building-analytics-agents",
+      "day": "2025-09-24",
+      "type": "talk",
+      "title": "Everything That Can Go Wrong Building Analytics Agents (And How We Survived It)",
+      "speakers": ["Thomas Schmidt — Metabase"],
+      "feedbackFrom": ["Brain Aboze (Safe Intelligence)"],
+      "summary": "- Récit d'un échec : le prototype de **Metabot** marchait au hackathon, puis en démo au CEO il est devenu *« un stagiaire confus »* ; chaque équipe avait optimisé son outil sans voir **le contexte global** que reçoit le LLM.\n- Le benchmark interne aide à détecter les régressions, mais **sur-optimiser dessus trahit** : au-delà de 70-80 %, écart entre score et qualité perçue.\n- Recettes : une **représentation unique et réutilisable** des objets (tables, questions) pensée pour le LLM ; des instructions jointes aux réponses d'outils, **même en cas de succès** ; la découverte pas à pas (recherche, métadonnées) améliore même les questions de clarification ; pas de SQL généré mais le query builder, vérifiable par un non-technicien.\n- Réalité terrain : clients air-gapped (modèles ouverts), latence des modèles de raisonnement, entrepôts de données chaotiques, humains qui donnent mal le contexte. Test : *« un nouvel embauché s'y retrouverait-il ? »*\n- Simplifier le problème : réutiliser les dashboards existants, couche sémantique de métriques. Mot d'ordre : **construire pour le chaos, pas pour le chemin heureux**.",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "EnvozxnWjP4",
+        "title": "Everything That Can Go Wrong Building Analytics Agents (And How We Survived It) - AI Engineer Paris",
+        "publishedAt": "2025-11-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "context-engineering-the-art-of-feeding-llms",
+      "day": "2025-09-24",
+      "type": "talk",
+      "title": "Context Engineering: The Art of Feeding LLMs",
+      "speakers": ["Alberto Castelo — Shopify"],
+      "feedbackFrom": ["Brain Aboze (Safe Intelligence)", "Thomas Schmidt (speaker, citation dans son talk)"],
+      "summary": "- Terrain : **Sidekick**, l'assistant de l'admin Shopify utilisé par des millions de marchands (analytics via un langage de requête interne généré par un LLM spécialisé, remplissage de formulaires sans mutation directe, navigation, aide).\n- Ordres de grandeur : pour 1 token utilisateur, 10 de message système et **100 de messages d'outils** ; on purge les sorties d'outils déjà traitées et les tours anciens, car les longs fils dégradent le suivi d'instructions, le coût et la latence.\n- **Mémoire en trois couches** : préférences explicites (générées par le LLM, pas saisies librement), profil implicite synthétisé la nuit, mémoire épisodique par recherche hybride ; le GraphRAG a été essayé puis écarté, trop complexe pour le gain.\n- **Instructions juste à temps** : instructions et données dans le même message d'outil, conditionnelles au résultat ; enveloppe de sécurité autour du message utilisateur, +5 à 10 % d'adhérence aux consignes en interne.\n- Point de vigilance : ~20 outils et plus, une croissance qui devient un goulot.",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "ejtcgMmmmaM",
+        "title": "Context Engineering: The Art of Feeding LLMs - AI Engineer Paris",
+        "publishedAt": "2025-10-23",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ai-agent-for-highly-regulated-environments",
+      "day": "2025-09-24",
+      "type": "talk",
+      "title": "How We Built an AI Agent for Highly Regulated Environments",
+      "speakers": ["Jesús Espino — Ona (ex-Gitpod)"],
+      "feedbackFrom": ["Brain Aboze (Safe Intelligence)"],
+      "summary": "- Réflexe des secteurs régulés : **bloquer l'IA** ; compréhensible au début, intenable ensuite à cause de la productivité perdue et du **shadow AI** (sondage cité : 45 % utilisent des outils interdits, 58 % y ont collé des données sensibles).\n- Réponse d'Ona : des **environnements de développement isolés et jetables** (VM avec devcontainer) où tournent des agents en parallèle, avec garde-fous administrateur et journaux d'audit.\n- Déploiement dans le **VPC du client** : code, dépôts et appels aux fournisseurs de modèles restent dans son réseau ; le runner tire ses ordres (aucun port entrant), métadonnées seules côté éditeur, secrets chiffrés côté client.\n- Chiffre maison : ~70 % des commits d'Ona générés par IA, tous relus par des humains. Talk court et produit.",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "atAxfIUMdqI",
+        "title": "How We Built an AI Agent for Highly Regulated Environments - AI Engineer Paris 2025",
+        "publishedAt": "2025-10-23",
+        "transcript": true
+      }
+    },
+    {
+      "id": "building-reasoning-agents-with-reinforcement-learning",
+      "day": "2025-09-24",
+      "type": "talk",
+      "title": "Building reasoning agents with reinforcement learning",
+      "speakers": ["Julien Launay — Adaptive ML"],
+      "feedbackFrom": [],
+      "summary": "- Contre les graphes d'agents explicites devenus *« spaghetti »* (LangGraph), l'**agent de raisonnement** construit son graphe à l'inférence : il planifie et appelle lui-même ses outils, comportement appris par **RL de bout en bout** dans des environnements (scénarios, sorties cibles, récompense).\n- En entreprise, la vraie difficulté est de faire apprendre des outils maison (exemple d'une compagnie aérienne et de son système de bagages perdus des années 1970) ; un simple MCP ne suffit pas.\n- Le RAG devient de la **deep search** apprise : sur-récupérer, filtrer, reformuler, sans briques fragiles de réécriture et de reranking.\n- *« Si on peut le mesurer, on peut l'optimiser »* : rubriques, juges IA, flywheel de données synthétiques ; optimisation directe du taux d'escalade ou de l'engagement.\n- **World models** : un LLM joue le rôle d'une API trop fragile pour supporter la charge de l'entraînement.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "BebmB9kTxzE",
+        "title": "Building reasoning agents with reinforcement learning - AI Engineer Paris 2025",
+        "publishedAt": "2025-11-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "taking-your-ai-home-lab-on-the-road",
+      "day": "2025-09-24",
+      "type": "talk",
+      "title": "Taking your AI home lab on the road: a look at (small-ish) AI in 2025",
+      "speakers": ["Lars Trieloff — Adobe"],
+      "feedbackFrom": [],
+      "summary": "- Récit personnel et humoristique : un service de mémoire SaaS « vibe-codé » lui renvoie les souvenirs d'un autre utilisateur, d'où la décision de tout faire tourner chez soi : *« ne faites pas confiance à un modèle que vous ne pouvez pas faire tourner sur un ordinateur que vous pouvez jeter par la fenêtre »*.\n- Outillage : llm (Simon Willison), Ollama, Jan, puis **LM Studio** et MLX sur un Mac Studio 128 Go (mémoire unifiée jugée rentable).\n- Modèles : gpt-oss-120b, Qwen3 (Next), GLM 4.5 Air, Devstral ; les **labos chinois** mènent la compétition la plus vive sur les modèles locaux.\n- Exposition sécurisée : nginx avec tokens par application, puis Tailscale Funnel plutôt que ngrok ou Cloudflare Tunnel ; serveurs MCP locaux en simples scripts shell ; incompatibilités entre clients MCP.\n- Démo finale ratée, reconnue avec humour.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "GSW0Qagp9YA",
+        "title": "Taking your AI home lab on the road: a look at (small-ish) AI in 2025 - AI Engineer Paris",
+        "publishedAt": "2025-11-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "building-mcp-servers-for-vs-code",
+      "day": "2025-09-24",
+      "type": "talk",
+      "title": "Building MCP Servers for VS Code",
+      "speakers": ["Marlene Mhangami — Microsoft"],
+      "feedbackFrom": [],
+      "summary": "- Du Copilot d'autocomplétion au **mode agent** de VS Code ; il manquait le contexte temps réel, d'où MCP (hôtes, clients, serveurs).\n- Démo live en Python (FastMCP) sur le programme de la conférence : **outil** (session d'un speaker), **sampling** (le serveur fait appeler le modèle choisi par le client), **prompt** réutilisable (plus déterministe), **ressource** en lecture seule.\n- Publication : registre MCP open source (steering committee, Anthropic) alimentant le registre GitHub annoncé une semaine plus tôt ; publication possible en paquet Python.\n- Transcript disponible seulement en version retraduite automatiquement.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "ZcUBPjqqWnU",
+        "title": "Building MCP Servers for VS Code - AI Engineer Paris 2025",
+        "publishedAt": "2025-11-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "from-artisanal-training-to-foundation-model-factory",
+      "day": "2025-09-24",
+      "type": "talk",
+      "title": "From Artisanal Training to Foundation Model Factory",
+      "speakers": ["Robin Nabel — poolside"],
+      "feedbackFrom": [],
+      "summary": "- Exemple d'ouverture : leur modèle refusait d'utiliser un **outil to-do** ; le prompting n'y changeait presque rien, un nouvel arrivant a entraîné en une PR **quatre variantes de récompense RL** en 2-3 jours pour trouver la bonne.\n- Des scripts et notebooks ad hoc à une **« usine à modèles »** : graphe acyclique (Dagster) où chaque jeu de données et expérience est un nœud Python immuable et traçable, ablations en code, data lake Iceberg/S3, ordonnanceur sur ~10 000 H200.\n- Observabilité : un gain de débit ×3 cachait un bug d'invalidation de cache qui faisait diverger le RL (*« toujours des raisons ennuyeuses »*).\n- **RL par exécution de code** sur des millions de dépôts (dizaines de millions de révisions) dans des sandboxes bas niveau (runc), contrôle fin des fichiers pour empêcher les triches (*« supprimer les tests et dire que c'est fini »*).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "AEicU3-QVsw",
+        "title": "From Artisanal Training to Foundation Model Factory - AI Engineer Paris 2025",
+        "publishedAt": "2025-11-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "mcp-isnt-good-yet-30m-requests-month",
+      "day": "2025-09-24",
+      "type": "talk",
+      "title": "MCP isn't good yet we got to 30M requests/month",
+      "speakers": ["Miguel Betegón — Sentry"],
+      "feedbackFrom": [],
+      "summary": "- Le serveur MCP de Sentry remplace un geste existant (copier l'erreur dans Cursor) : 5 000+ organisations, **30 puis 60 M de requêtes/mois**, ~45 000 erreurs d'appels d'outils par mois, trois personnes dans l'équipe. Effet assumé : les utilisateurs passent moins par l'interface.\n- *« Vous êtes responsable de tout ce qui s'y passe »* : si l'outil n'est pas appelé, c'est la description qui est en cause, pas l'utilisateur. Descriptions en Markdown avec exemples, **actions suivantes suggérées**, FAQ pour agents, un agent interne pour renvoyer un contexte concis.\n- **Observabilité** : une panne ne touchait que le transport stdio (~10 % du trafic), invisible faute de métriques par transport ; d'où un wrapper d'instrumentation MCP (TypeScript) : transports, clients, outils lents, erreurs détaillées plutôt que le « something went wrong » de JSON-RPC.\n- Conclusion : **traiter le serveur MCP comme un service de production**. Transcript disponible seulement en version retraduite automatiquement.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "nlwRj7Mrkc8",
+        "title": "MCP isn't good yet we got to 30M requests/month - AI Engineer Paris 2025",
+        "publishedAt": "2025-10-23",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Inside Chat: how we taught AI to review code like a senior engineer (Merrill Lutsky, Graphite ; vidéo non transcrite)",
+    "Function calling that doesn't suck (Rémi Louf, .txt ; vidéo non transcrite, simple mention par Safe Intelligence)",
+    "How to make your AI models faster, smaller, cheaper, greener? (Bertrand Charpentier, Pruna ; vidéo non transcrite, simple mention par Safe Intelligence)",
+    "The rise of local CI tooling. Thanks AI coding agents! (Yves Brissaud ; vidéo non transcrite)",
+    "Building AI workflows: from local experiments to serving users (Oleg Šelajev, Docker ; vidéo non transcrite)",
+    "AX is the only Experience that Matters (Toma Puljak, Daytona ; vidéo non transcrite)",
+    "Workshop : Open Source Champions, gamify GitHub contributions (Ogi Bostjancic, Sentry)",
+    "Workshop : multi-agent systems with docker cagent (Djordje Lukic, Jean-Laurent de Morlhon, Mat Wilson, Docker)",
+    "Workshop : Inside FLUX, from open-weights to advanced models (Stephen Batifol, Black Forest Labs)",
+    "Workshop : Hands-on GraphRAG (Adam Cowley, Neo4j)",
+    "Workshop : Build with Google AI Studio (Guillaume Vernade, Paige Bailey, Patrick Loeber, Google DeepMind)",
+    "Workshop : Systematic Agent Evaluation with Arize (SallyAnn DeLucia, Arize AI ; citée par Safe Intelligence)",
+    "Expo : Live Debugging AI Agents (Miguel Betegón, Sentry)",
+    "Expo : Beyond Single Turns, evaluating agents at the session level (Srilakshmi Chavali, Arize ; citée par Koyeb et Safe Intelligence)",
+    "Expo : Agentic GraphRAG (Tomaz Bratanic, Neo4j)",
+    "Expo : Agentic Knowledge Graph Construction (Andreas Kollegger, Neo4j)",
+    "Expo : From Research to Reality (Paige Bailey, Google DeepMind)",
+    "Expo : An intro to Algolia Agent Studio (Paul-Louis Nech, Algolia)",
+    "Expo : Fireside chat Tenstorrent (Eric Duffy)",
+    "Expo : How a Docker engineer automated their way to an agent framework (Djordje Lukic)",
+    "Expo : Context Engineering with Graphs (Zach Blumenfeld, Neo4j ; cité par Koyeb)",
+    "Expo : Fireside chat Black Forest Labs (Stephen Batifol)",
+    "Expo : présentation Anyshift (Stéphane Jourdan)",
+    "Expo : VC Panel, From Hype to Hard Tech (Assaf Araki, Floriane de Maupeou, Thomas Turelier)"
+  ],
+  "sources": [
+    { "label": "Page officielle AI Engineer Paris 2025", "url": "https://ai.engineer/paris/2025" },
+    { "label": "Programme complet (Sessionize, iCal)", "url": "https://sessionize.com/api/v2/tcoeoxpp/view/All" },
+    { "label": "Live YouTube Jour 1, Opening Keynotes (transcription automatique)", "url": "https://www.youtube.com/watch?v=d6dp_dwgpYQ" },
+    { "label": "Live YouTube Jour 2, Main Stage (transcription automatique)", "url": "https://www.youtube.com/watch?v=wyUdpmj9-64" },
+    { "label": "Playlist Koyeb « AI Engineer Paris 2025 » (33 vidéos individuelles, 23/10 et 05/11/2025)", "url": "https://www.youtube.com/playlist?list=PLPkPwBW1RE_dn9zM6e6caqxChEwbBE-w6" },
+    { "label": "Playlists Koyeb par salle : Main Stage, Discovery Track 1, Discovery Track 2", "url": "https://www.youtube.com/playlist?list=PLPkPwBW1RE_ew8KDShCs-TQSTHhBP8sIL" },
+    { "label": "Koyeb, Inside AI Engineer Paris 2025 Part 1 : 5 highlights (organisateur)", "url": "https://www.koyeb.com/blog/ai-engineer-paris-2025-event-recap" },
+    { "label": "Koyeb, Part 3 : organiser une grande conférence en 90 jours (organisateur, 22/10/2025)", "url": "https://www.koyeb.com/blog/inside-ai-engineer-paris-2025-part-3-how-we-organized-a-large-conference-in-90-days" },
+    { "label": "Safe Intelligence, recap « through the lens of trustworthy AI » (Brain Aboze, 24/10/2025)", "url": "https://safeintelligence.ai/ai-engineer-paris-2025-recap-through-the-lens-of-trustworthy-ai/" },
+    { "label": "Alex Spyropoulos, Lessons from AI Engineer Paris 2025 (29/09/2025)", "url": "https://alexspyropoulos.com/posts/ai-engineer-paris/" },
+    { "label": "Mastra, Live from AI Engineer Paris (podcast d'exposant, 24/09/2025)", "url": "https://mastra.ai/podcasts/live-from-ai-engineer-paris" },
+    { "label": "Criteo R&D, The Future is Now: Key Insights from the AI Engineer Paris Conference (non lu, 403)", "url": "https://medium.com/criteo-engineering/the-future-is-now-key-insights-from-the-ai-engineer-paris-conference-aca43f9c1d37" },
+    { "label": "Docker, AI Engineer Paris: Build and Secure AI Agents (sponsor, via post Bluesky)", "url": "https://www.docker.com/blog/ai-engineer-paris-build-secure-ai-agents/" },
+    { "label": "Posts Bluesky lus : Koyeb, Docker, Tailscale, Alpic, catwell (hôte Discovery Track 1), relais de flux ; posts LinkedIn : aucun lisible" }
+  ]
 }
