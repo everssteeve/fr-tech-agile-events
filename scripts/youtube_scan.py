@@ -59,6 +59,32 @@ def fetch_feed(url: str) -> list[dict[str, str]]:
     ]
 
 
+def fetch_ytdlp(url: str) -> list[dict[str, str]]:
+    """Fallback when YouTube RSS feeds fail: latest 15 uploads via yt-dlp (no dates in flat mode)."""
+    target = url if "list=" in url else url.rstrip("/") + "/videos"
+    out = subprocess.run(
+        ["yt-dlp", "--no-update", "--flat-playlist", "--playlist-end", "15", "--print", "%(id)s\t%(title)s", target],
+        capture_output=True, text=True, timeout=180,
+    )
+    items = []
+    for line in out.stdout.splitlines():
+        vid, _, title = line.partition("\t")
+        if len(vid) == 11:
+            items.append({"videoId": vid, "title": title, "published": ""})
+    if not items:
+        raise RuntimeError(f"yt-dlp returned nothing ({out.stderr.strip().splitlines()[-1:] or ''})")
+    return items
+
+
+def upload_date(video_id: str) -> str:
+    out = subprocess.run(
+        ["yt-dlp", "--no-update", "--skip-download", "--print", "%(upload_date)s", f"https://www.youtube.com/watch?v={video_id}"],
+        capture_output=True, text=True, timeout=120,
+    )
+    d = out.stdout.strip()
+    return f"{d[:4]}-{d[4:6]}-{d[6:8]}T00:00:00+00:00" if len(d) == 8 and d.isdigit() else ""
+
+
 def vtt_to_text(vtt: Path) -> str:
     lines: list[str] = []
     for line in vtt.read_text(errors="ignore").splitlines():
@@ -97,6 +123,8 @@ def main() -> None:
     )
     started = datetime.now(UTC)
     channel_ids: dict[str, str] = json.loads(CACHE.read_text()) if CACHE.exists() else {}
+    seen_file = STATE / "seen-videos.json"
+    seen_by_feed: dict[str, list[str]] = json.loads(seen_file.read_text()) if seen_file.exists() else {}
     known = {
         s["video"]["youtubeId"]
         for p in (ROOT / "content/editions").glob("*/*.json")
@@ -113,20 +141,33 @@ def main() -> None:
         for u in urls:
             try:
                 f = feed_url(u, channel_ids)
-                entries = fetch_feed(f) if f else []
-            except Exception as exc:  # network hiccup on one feed must not stop the scan
-                print(f"  ! {p.stem}: {u}: {exc}", file=sys.stderr)
-                continue
+                entries = fetch_feed(f) if f else fetch_ytdlp(u)
+            except Exception as exc:  # RSS feeds are flaky (404 since 2026-09-30): fall back to yt-dlp
+                try:
+                    entries = fetch_ytdlp(u)
+                except Exception as exc2:  # one broken feed must not stop the scan
+                    print(f"  ! {p.stem}: {u}: {exc} / {exc2}", file=sys.stderr)
+                    continue
+            previously = set(seen_by_feed.get(u, []))
+            first_time = u not in seen_by_feed
+            seen_by_feed[u] = sorted(previously | {e["videoId"] for e in entries})[-200:]
             for e in entries:
                 if e["videoId"] in seen or e["videoId"] in known:
                     continue
                 seen.add(e["videoId"])
+                if not e["published"]:
+                    # No date (yt-dlp fallback): only videos this feed had never listed are candidates;
+                    # the first time a feed is read, just remember what is there.
+                    if first_time or e["videoId"] in previously:
+                        continue
+                    e["published"] = upload_date(e["videoId"]) or started.isoformat()
                 if datetime.fromisoformat(e["published"]) < since:
                     continue
                 found.append({"event": p.stem, **e, "transcript": transcript(e["videoId"])})
                 print(f"  + {p.stem}: {e['title']}")
 
     CACHE.write_text(json.dumps(channel_ids, indent=2))
+    seen_file.write_text(json.dumps(seen_by_feed, indent=1))
     (STATE / "new-videos.json").write_text(json.dumps(found, ensure_ascii=False, indent=2))
     last_run_file.write_text(started.isoformat())
     print(f"{len(found)} new video(s) since {since.isoformat()}")
