@@ -6,7 +6,7 @@ Contexte préparé par les scripts (déjà exécutés) :
 - `routine/state/plan.json` : date du jour, éditions à (re)synthétiser cette nuit (`to_synthesize`), événements dont il faut rechercher les éditions passées (`history_discovery`), taille des files d'attente (`queues`).
 - `routine/state/new-videos.json` : vidéos YouTube publiées depuis la dernière exécution sur les chaînes connues, avec le chemin du transcript texte quand il existe.
 
-Ton budget de recherches web est limité (environ 200 WebSearch par exécution). Répartis-le : étape 1 ≤ 20, étape 2 ≤ 20, étape 3 ≤ 60, le reste pour l'étape 4. WebFetch sur des URL connues et `curl` ne sont pas comptés : privilégie-les (sites officiels, archives, Wayback Machine, Sessionize, playlists YouTube). Si le quota est épuisé, arrête proprement l'étape en cours : ce qui n'est pas fait reste dans les files et sera repris la nuit suivante.
+Ton budget de recherches web est limité (environ 200 WebSearch par exécution). Répartis-le : étape 1 ≤ 15, étape 2 ≤ 15, étape 3 ≤ 20, le reste (environ 150) pour l'étape 4, soit une dizaine de recherches par édition. WebFetch sur des URL connues et `curl` ne sont pas comptés : privilégie-les (sites officiels, archives, Wayback Machine, Sessionize, playlists YouTube). Si le quota est épuisé, arrête proprement l'étape en cours : ce qui n'est pas fait reste dans les files et sera repris la nuit suivante.
 
 Fais les étapes dans l'ordre.
 
