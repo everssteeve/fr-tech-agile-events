@@ -9,6 +9,517 @@
   "venue": "L'Institut Agro Montpellier",
   "url": "https://2025.sunny-tech.io",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-03",
+  "programUrl": "https://2025.sunny-tech.io/schedule/day-1",
+  "note": "6ᵉ édition, 26 & 27 juin 2025 à L'Institut Agro Montpellier (ex-SupAgro). Environ 70 sessions sur 6 salles (Lavande, Coquelicot, Olivier, Thym, Romarin, Trop chaud) : talks de 50 min, formats courts de 20 min, ateliers de 110 à 120 min, en pistes IA & Data, Cloud & DevOps, Architecture & Sécurité, Web, Langages, Conception et « Atypique ». Keynotes de Jean-Baptiste Kempf (ouverture) et Brian Vermeer (fermeture, en anglais). Conférence associative ; environ 550 participants annoncés par l'organisation.",
+  "corpus": "**Trois comptes-rendus publics** : le blog d'Antoine Mayer (speaker, journée du 26 juin, publié le 30/06/2025), l'article collectif de Bpifrance.IO (quatre auteurs, publié le 27/10/2025) et un billet d'ambiance de Synanto (30/06/2025). S'y ajoutent le **programme officiel** archivé sur 2025.sunny-tech.io et **14 transcripts** choisis parmi les **36 vidéos** de la playlist officielle (publiées le 03/07/2025).",
+  "limits": "**Corpus participant très mince** : aucun post LinkedIn ni thread Bluesky exploitable trouvé (budget de recherche web limité), et les retours lus couvrent surtout le premier jour. Pour la plupart des sessions, les résumés décrivent ce qui a été dit sur scène (sous-titres automatiques), pas la manière dont les talks ont été reçus. Le choix des transcripts est éditorial (keynotes, IA, pratiques d'équipe, sécurité) ; environ 50 sessions restent sans contenu analysé, dont 21 disposant d'une vidéo non transcrite.",
+  "tldr": "**Sunny Tech 2025 a tourné autour de l'autonomie technique** : souveraineté et open source (keynote de Jean-Baptiste Kempf, IA auto-hébergée, xz-utils), **sécurité des usages de l'IA** (MCP, RAG, keynote de Brian Vermeer) et pratiques d'équipe pragmatiques (tests, legacy, revue de code en mob), le tout dans une ambiance estivale saluée par les rares retours publics.",
+  "keyTakeaways": [
+    "Viser l'**autonomie numérique** plutôt qu'une souveraineté totale : accepter l'interdépendance mais éviter de dépendre d'un seul fournisseur (Kempf).",
+    "Distinguer open weight et open source avant de choisir un modèle, et envisager l'IA locale quand les contrats ou la confidentialité l'exigent (Kempf, Foures).",
+    "Traiter les serveurs MCP comme du code à risque : moindre privilège, validation humaine, ne pas installer de serveur tiers sans le lire (Charrière, Vermeer).",
+    "Nettoyer et anonymiser les données **avant** de les indexer dans un RAG (Presidio, LLM Guard) : la fuite vient souvent de l'outil, pas du modèle (Piciorus).",
+    "Construire sa stratégie de test sur des motivations explicites (stabilité, conformité, documentation, intégrité, reproductibilité) plutôt que sur la pyramide ou le coverage ; préférer le mutation testing (Caron et Poissonnet, retenu par Christophe Leroux).",
+    "Face au legacy, mesurer le coût réel par feature et négocier un plan ciblé plutôt qu'une refonte en sous-marin ; sécuriser par approval tests et petits pas (Dumas).",
+    "Remplacer la revue de PR asynchrone par des créneaux de **mob code review** avec time keeper, si l'équipe a la sécurité psychologique nécessaire (Cantet).",
+    "Une plateforme interne converge par **décision organisationnelle**, pas par la technique ; laisser la duplication mûrir avant de converger (Ubisoft, retenu par Antoine Mayer).",
+    "Nettoyer régulièrement les feature flags et les instrumenter : l'observabilité est une condition de leur usage (Sopra Steria, retenu par Bpifrance.IO et Antoine Mayer).",
+    "Réfléchir avant d'adopter la soft-deletion : elle est facile à démarrer et difficile à abandonner (Doctolib, retenu par Antoine Mayer)."
+  ],
+  "sessionsWithoutFeedback": [
+    "Les codes à barres, c'est pas que de la barre ! (Sylvain Gougouzian) — vidéo",
+    "Full Stack App with Scala in 10 s (Olivier Nouguier)",
+    "Défi : L'accessibilité au bout des doigts ! (Patrice De Saint Steban, Océane Gillard) — atelier",
+    "Démystifions les bases de données vectorielles avec Qdrant (Bertrand Nau) — vidéo",
+    "Éviter que le chat botté ne vole vos secrets (Jérôme Masson, Sébastien Ribiere) — atelier",
+    "Open-source sans burn-out ? Le modèle CNCF (Damien Mathieu)",
+    "Enter the Daggerverse ! (Emeric Martineau, Julien Haumont) — atelier",
+    "Modéliser votre domaine métier grâce aux types (Jordane Grenat)",
+    "Un Élephant de Première Classe (Valentin Bergeron)",
+    "Méta programmation en Rust (Didier Plaindoux) — vidéo",
+    "Découvrons ensemble la relève de l'observabilité : Quickwit (Idriss Neumann) — vidéo",
+    "Pourquoi faire simple quand on peut faire compliqué ? (Olivier Huber)",
+    "Fermé pour inventaire : histoire et mécanique des « closures » (Frédéric Cabestre) — vidéo",
+    "L'API viewTransition : une révolution pour le web ? (Théo Gianella)",
+    "Développer avec l'IA : et si c'était aussi simple qu'ajouter une librairie ? (Stéphane Philippart) — atelier",
+    "Développer publiquement un site en milieu hostile (Alexis Lozano)",
+    "Comment j'ai trouvé le sens de la vie grâce à WebAssembly (Théo Gianella)",
+    "Parcours first : penser parcours, c'est penser utilisateur (Simon Gomez) — vidéo",
+    "Utiliser git est devenu simple quand j'ai compris que c'était « juste » un graphe (Jules Grand) — vidéo",
+    "Elysia : un cousin d'ExpressJS sous Bun (Sylvain Gougouzian) — vidéo",
+    "Port Knocking : le « Sésame, ouvre-toi » du SSH (Paul Jeannot)",
+    "Les Méta-Lois, vous ne leur échapperez pas ! (Stéphane Trebel)",
+    "Visual Regression Testing (Thomas Simonnet)",
+    "Succès débloqué : rendre son jeu vidéo accessible (Noëlie Roux, Yasmine Messaoudi) — vidéo",
+    "Clever KMS (Yannick Guern)",
+    "Ne jouez plus solo : le mob programming (Julien Libert)",
+    "Générer des milliers de sites statiques avec une approche serverless sur Kubernetes (Didier Segura, Jérôme Galais) — vidéo",
+    "Doc As Code (Benoît Lagarde)",
+    "HTMX 2.0 & Web Components (Horacio Gonzalez) — vidéo",
+    "Comme Alice, plongez dans la JVM (Antoine Dessaigne)",
+    "Le numérique accessible à chaque individu, un combat du quotidien ! (Stéphane Trognon)",
+    "Sécurisez vos pipelines : la sécurité de GitHub Actions (Paul Molin)",
+    "Understanding Kubernetes in a visual way (Aurélie Vache)",
+    "Homonyme parfait : un enfer administratif ! (David Aparicio) — vidéo",
+    "Scrum : je suis venue, j'ai vu, je n'en veux plus (Marine Verstraete)",
+    "Faisons de la musique réactive avec RxJS et l'API WebAudio (Benjamin Legrand) — vidéo",
+    "Les héros invisibles des livraisons bien orchestrées (Jeremy Roulle, Carmen Piciorus) — vidéo",
+    "Mockoon : Les bouchons contre-attaquent ! (Ivan Béthus) — vidéo",
+    "Inbox Zero sur Sentry : mission impossible ? (Sébastien Couniot)",
+    "Manifests, blobs et tags : les images de conteneurs (Yves Brissaud) — vidéo",
+    "Apache Arrow (Sylvain Wallez) — vidéo",
+    "Concevoir une librairie de traitements asynchrones distribués et robustes (Olivier Bourgain)",
+    "Coder un MMORPG en live avec Elixir, Phoenix et les Liveviews (Nicolas Savois) — atelier",
+    "Les coulisses de JavaScript (Mickael Alves, Etienne Idoux) — vidéo",
+    "10 fonctionnalités utiles du web que vous ne connaissez pas (Yohan Lasorsa, Olivier Leplus) — vidéo",
+    "Du chaos à l'élégance : refactorer des workflows complexes avec des events (Thibaut Cantet)",
+    "Rust on Rails avec le framework Loco (Sylvain Wallez) — vidéo",
+    "Et si vous abandonniez la revue de code systématique ? (Eric Siber)",
+    "Construit ton ordi 8-bit « from scratch » (Olivier Huber) — vidéo"
+  ],
+  "sources": [
+    {
+      "label": "Programme officiel — jour 1 (26 juin)",
+      "url": "https://2025.sunny-tech.io/schedule/day-1"
+    },
+    {
+      "label": "Programme officiel — jour 2 (27 juin)",
+      "url": "https://2025.sunny-tech.io/schedule/day-2"
+    },
+    {
+      "label": "Playlist YouTube Sunny Tech 2025 (36 vidéos, publiées le 03/07/2025)",
+      "url": "https://www.youtube.com/playlist?list=PLz7aCyCbFOu_5UbMFIJyZ_9Qsu5jZTBnU"
+    },
+    {
+      "label": "Antoine Mayer — « Une journée avec moi à Sunny Tech 2025 » (30/06/2025)",
+      "url": "https://blog.antoinemayer.fr/2025/06/30/une-journee-avec-moi-a-sunny-tech-2025/"
+    },
+    {
+      "label": "Bpifrance.IO — « Sunny Tech 2025 : ce qu'il ne fallait pas louper ! » (Christophe Leroux, Damien Sans, David Donès ; 27/10/2025)",
+      "url": "https://io.bpifrance.fr/sunny-tech-2025-ce-quil-ne-fallait-pas-louper/"
+    },
+    {
+      "label": "Synanto — « Sunny Tech 2025 » (billet d'ambiance, 30/06/2025)",
+      "url": "https://synanto.fr/2025/06/30/sunny-tech-2025/"
+    },
+    {
+      "label": "Annonce sponsor Kaliop (avant l'événement)",
+      "url": "https://www.kaliop.com/fr/sunny-tech-2025/"
+    },
+    {
+      "label": "Posts LinkedIn : aucun retour de participant identifié"
+    },
+    {
+      "label": "Transcripts (sous-titres YouTube) : Kempf, Vermeer, Charrière, Foures (x2), Dumas, Caron & Poissonnet, Behar & Cowley, Cantet, Poncet, Baer & Fleury, Marin & Rebuffat, Piciorus, Wittouck"
+    }
+  ],
+  "revisit": "corpus participant mince (3 billets de blog, aucun post LinkedIn lu) : rechercher les posts LinkedIn et Bluesky des speakers et participants",
+  "sessions": [
+    {
+      "id": "keynote-ouverture-open-source-et-souverainete",
+      "day": "2025-06-26",
+      "type": "keynote",
+      "title": "Keynote ouverture - Open Source & Souveraineté",
+      "speakers": [
+        "Jean-Baptiste Kempf — VideoLAN / Scaleway"
+      ],
+      "feedbackFrom": [
+        "Antoine Mayer (blog)",
+        "Blog Bpifrance.IO"
+      ],
+      "summary": "- **Sur scène (transcript)** : vingt ans d'open source racontés à travers **l'histoire de VLC**, né sur le réseau du campus de l'École Centrale Paris, passé en GPL vers 2001 *« en cachette »* de l'école qui revendiquait la propriété intellectuelle. VLC est *« le logiciel français le plus utilisé au monde »* et *« le moins rentable »*.\n- Il préfère **« autonomie numérique »** à « souveraineté » : l'interdépendance est normale (un projet npm tire des centaines de paquets), le danger est de **dépendre d'un seul fournisseur**. Exemples cités : hausses de prix de VMware et BigQuery, contrat EDF avec AWS, Airbus et Palantir.\n- Sur l'IA : distinguer **open weight et open source** (licences de Llama, Mistral, Qwen, DeepSeek) ; démonstration de traduction de sous-titres en IA locale dans VLC sur un portable. Formules marquantes : *« si vous avez open dans votre nom, c'est un peu comme la République populaire démocratique de Corée »*, *« une entreprise ne peut pas être morale »*.\n- **Reçu par les participants** comme une keynote inspirante (Bpifrance.IO) et pédagogique, *« sans langue de bois »* selon Antoine Mayer, qui retient les quatre dimensions de l'autonomie (indépendance technologique, vie privée, concurrence, impact social) et la phrase *« tout le monde en parle, mais pas beaucoup de monde en fait »*.\n- Environ 400 personnes dans la salle, selon l'estimation du speaker.",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "PpfUn2m4OGA",
+        "title": "Keynote ouverture - Open Source & Souveraineté",
+        "publishedAt": "2025-07-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "fun-with-feature-flags",
+      "day": "2025-06-26",
+      "type": "talk",
+      "title": "Fun with (feature) flags",
+      "speakers": [
+        "Matthieu Vincent — Sopra Steria",
+        "Léonore des Plas — Sopra Steria"
+      ],
+      "feedbackFrom": [
+        "Damien Sans (Blog Bpifrance.IO)",
+        "Antoine Mayer (blog)"
+      ],
+      "summary": "- Talk jugé *« aussi technique que pragmatique »* (Damien Sans, Bpifrance.IO) : les feature flags activent une fonctionnalité **sans redéploiement**.\n- **Trois familles de flags** : release, expérimentation, opérationnels ; segments pour cibler des groupes d'utilisateurs, variantes pour l'A/B testing (Mayer).\n- Outils comparés : **Unleash** (mature, multi-langage) face à **Flipt** (léger, gRPC), et standardisation par **OpenFeature** (CNCF) (Bpifrance.IO).\n- **Pièges** : accumulation de flags, imbrications, absence de monitoring, interfaces trop techniques. Bonnes pratiques : nettoyage régulier, tests, séparation des environnements, documentation, mesure (Bpifrance.IO).\n- Antoine Mayer, profil SRE, retient surtout **l'observabilité** comme condition de mise en œuvre et salue la clarté du talk même sans culture front.",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "rwdbmGVoDuY",
+        "title": "Fun with (feature) flags",
+        "transcript": false
+      }
+    },
+    {
+      "id": "avec-le-model-context-protocol-l-ia-peut-prendre-le-controle-de-nos-machines",
+      "day": "2025-06-26",
+      "type": "talk",
+      "title": "Avec le Model Context Protocol, l'IA peut prendre le contrôle de nos machines",
+      "speakers": [
+        "Philippe Charrière — Docker"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, aucun retour de participant trouvé)** : le speaker juge lui-même son titre dépassé, MCP ayant *« explosé »* depuis l'abstract ; il présente une version « en construction ».\n- Fil rouge ludique : des **personnages de Donjons et Dragons** joués par des agents en Go, sur des **modèles locaux** (Docker Model Runner, compatible Ollama). Constat : les petits modèles sont meilleurs en anglais qu'en français, et un petit Qwen 2.5 ne détecte que le premier tool là où les gros gèrent les appels parallèles.\n- **Function calling** : le nom et la description du tool sont décisifs. MCP (Anthropic, fin 2024) repose sur JSON-RPC, avec trois transports : stdio, SSE (déprécié) et **streamable HTTP** (recommandé). Le même serveur MCP est réutilisé dans Google ADK et Claude.\n- **Sécurité** : exemples d'une attaque par issue via le serveur MCP de GitHub et de clés poussées par un agent. Recommandations : moindre privilège, validation humaine, authentification, scan de secrets, préfixer les noms de tools, n'utiliser que ses propres serveurs MCP. *« MCP c'est super dangereux. C'est comme filer des boîtes d'allumettes à un bébé. »*\n- Salle pleine (*« je m'attendais pas à autant de monde »*), dernière démo en streamable HTTP ratée faute de temps.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "3lknunXBsPc",
+        "title": "Avec le Model Context Protocol, l'IA peut prendre le contrôle de nos machines 🙀",
+        "publishedAt": "2025-07-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "anatomie-d-une-faille",
+      "day": "2025-06-26",
+      "type": "talk",
+      "title": "Anatomie d'une faille",
+      "speakers": [
+        "Olivier Poncet — Weyland-Yutani"
+      ],
+      "feedbackFrom": [
+        "David Donès (Blog Bpifrance.IO)"
+      ],
+      "summary": "- **Sur scène (transcript)** : autopsie de l'attaque contre **xz-utils** (CVE-2024-3094, score 10/10), découverte presque par hasard fin mars 2024 par Andres Freund à cause d'une latence SSH anormale.\n- **Ingénierie sociale sur deux à trois ans** : le compte « Jia Tan » gagne la confiance d'un mainteneur seul et épuisé, aidé par de faux comptes qui mettent la pression, devient co-mainteneur, redirige les contacts, désactive le fuzzing puis cache la charge utile dans des fichiers de test.\n- **Technique** : le tarball diffère du dépôt Git, l'injection ne se déclenche qu'au build des paquets .deb ou .rpm et atteint sshd via libsystemd. Le speaker évoque aussi des indices d'attribution (oublis de VPN), avec prudence.\n- Supply chain : sommes de contrôle, gestionnaire d'artefacts, examen des dépendances transitives. Aux questions : le mainteneur a fait une dépression ; *« cette personne a souvent plus besoin d'aide que de conseils »*.\n- **Retenu par David Donès** (Bpifrance.IO) : une faille invisible pendant des années, découverte juste avant les sorties des distributions, et le risque que fait peser **le goulot de la maintenance open source**.",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "O5pngQn1mSo",
+        "title": "Anatomie d'une faille",
+        "publishedAt": "2025-07-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "design-system-beyond-marketing-bullshit",
+      "day": "2025-06-26",
+      "type": "talk",
+      "title": "Design System: beyond marketing bullshit",
+      "speakers": [
+        "Florian Marin — Teads",
+        "Matthieu Rebuffat — Teads"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, aucun retour de participant trouvé)** : quatre ans de design system chez Teads, parti de zéro en 2021 (une vingtaine d'applications, environ 200 ingénieurs, 3 designers pour environ 50 développeurs, migration Angular vers React).\n- Plus d'une centaine d'itérations en deux ans avant une V1 stable. Un outil de documentation payant abandonné après un sondage montrant que presque personne ne l'utilisait, remplacé par **Figma Code Connect**.\n- Gouvernance : binôme, puis équipe décentralisée, puis équipe centralisée ; un atelier d'une heure maximum par nouveau composant. Les **breaking changes freinent l'adoption** ; réponses : release notes publiées sur Slack, ambassadeurs, design breakfasts, présentation à l'onboarding.\n- Résultats annoncés : une feature livrée en moins de trois semaines contre environ deux mois, satisfaction client de 3,6 à 4,1 sur 5. Leçons : *« viser la perfection, c'est vraiment le contraire à une stratégie produit »*, en faire **un produit et non un projet**, *« communiquer, communiquer encore »*. Avec le recul, ils partiraient d'une librairie headless.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "OZZEc_fXk0I",
+        "title": "Design System: beyond marketing bullshit",
+        "publishedAt": "2025-07-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "how-to-embed-open-source-contribution-into-your-company-s-dna",
+      "day": "2025-06-26",
+      "type": "talk",
+      "title": "How to Embed Open Source Contribution into Your Company's DNA",
+      "speakers": [
+        "Rudy Baer — BearStudio",
+        "Yoann Fleury — BearStudio"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, en français malgré le titre)** : dix ans d'essais dans une ESN d'environ 20 personnes. *« Faire de l'open source, c'est pas utiliser de l'open source pour vendre à des clients »* : c'est contribuer, **sur le temps de travail**.\n- Quatre ingrédients : s'investir dans les **communautés** (conférences, co-organisation de Codeurs en Seine), **contribuer à l'existant** (JHipster, contributions sans code, dons), **avoir son propre projet** (Formiz, Start UI) avec un responsable qui le traite *« comme le client »*, puis **maintenir** (documentation, goodies, sponsoring).\n- Temps dédié : dernière semaine de l'année fermée aux clients et consacrée à l'open source, objectifs annuels, code retreats de deux à trois jours.\n- ROI : un client américain trouvé grâce à Start UI, mais la part du chiffre d'affaires due aux contributions reste *« impossible à dire »* ; *« le retour sur investissement, il se mesure pas en argent »*. Les projets qui tiennent partent d'un investissement personnel préalable d'un salarié.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "uxoQfRDxN80",
+        "title": "How to Embed Open Source Contribution into Your Company's DNA",
+        "publishedAt": "2025-07-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "8-ans-de-kubernetes-self-service-chez-ubisoft",
+      "day": "2025-06-26",
+      "type": "talk",
+      "title": "8 ans de Kubernetes self-service chez Ubisoft",
+      "speakers": [
+        "Vincent Behar — Ubisoft",
+        "Christopher Cowley — Ubisoft"
+      ],
+      "feedbackFrom": [
+        "Antoine Mayer (blog)"
+      ],
+      "summary": "- **Sur scène (transcript)** : huit ans de plateformes Kubernetes dans un groupe de 17 000 personnes aux studios très hétérogènes. **Fleet** (2016), très orientée développeurs pour les game services ; une plateforme **Rancher** on-prem (2018) qui a permis de créer des centaines de clusters, opérés par des équipes pas toujours matures, puis bloquée sur une vieille version ; **Runway**, du namespace as a service sur clusters partagés, avec des problèmes de *noisy neighbors*.\n- Viennent ensuite une couche multi-cloud pour les game servers basée sur **Agones**, une plateforme développeur interne, et des îlots d'innovation (Knative et inférence LLM, Talos Linux sur bare metal).\n- **Convergence** : tout revient sur Fleet, devenue une couche d'UX ; l'accès direct aux clouds managés est bloqué et des DevRel font le pont avec les équipes pour éviter le shadow IT. Même phénomène de duplication observé aujourd'hui avec la GenAI (quatre outils internes de code review).\n- Leçons : le self-service ne convient pas à tout le monde, laisser la duplication mûrir avant de converger, et *« c'est pas un problème technique, c'est vraiment un problème organisationnel »*.\n- **Retenu par Antoine Mayer** : l'adoption rapide crée l'hétérogénéité, la convergence vers un PaaS est **organisationnelle** et demande une décision du top management ; *« le self-service ne résout pas tout »*.",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "eNVChZd9sS0",
+        "title": "8 ans de Kubernetes self-service chez Ubisoft",
+        "publishedAt": "2025-07-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "tester-c-est-tricher",
+      "day": "2025-06-26",
+      "type": "talk",
+      "title": "Tester c'est tricher",
+      "speakers": [
+        "Antoine Caron — Scaleway",
+        "Jules Poissonnet — Bedrock Streaming"
+      ],
+      "feedbackFrom": [
+        "Christophe Leroux (Blog Bpifrance.IO)"
+      ],
+      "summary": "- **Sur scène (transcript)** : talk anti-dogmatique, au biais front assumé, qui démonte la **pyramide des tests**. Elle vient de Mike Cohn (2009) et non de Martin Fowler, et Cohn jugeait déjà la limite des tests d'interface « probablement temporaire ». Alternatives citées : hexagone, trophée de Kent C. Dodds.\n- Quatre profils de testeurs (believers, technophiles, sceptiques, « good enough ») ; exemples d'un test Gherkin qui passait encore après suppression de la page testée et de CI de 30 à 50 minutes pilotées par le coverage.\n- **Cinq motivations** construites avec la salle : stabilité, conformité, documentation, intégrité, reproductibilité, à formaliser dans un `TESTING.md`. Démo **Playwright** (sélecteurs accessibles, mock des API), Vitest, linters de tests, **mutation testing plutôt que coverage**, tests ciblés et option *bail* en CI.\n- Conclusion assumée : *« on a passé 50 minutes devant un public à juste dire ça dépend »* ; *« tout le monde teste, c'est juste qu'il y a des gens qui automatisent »*. Environ 150 personnes dans une salle surchauffée, selon les speakers.\n- **Retenu par Christophe Leroux** (tech lead, Bpifrance.IO) : la remise en cause de la pyramide et du coverage pour revenir à *« la réelle valeur des tests »*, la vitesse d'exécution, le BDD/Gherkin, la qualité de la base de tests au même niveau que le code et l'économie de CI.",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "cxUvNNSKYK0",
+        "title": "Tester c'est tricher",
+        "publishedAt": "2025-07-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "mission-impossible-511-meshed-kubernetes",
+      "day": "2025-06-26",
+      "type": "talk",
+      "title": "Mission impossible : 511 Meshed Kubernetes",
+      "speakers": [
+        "Joseph Ligier — Accenture"
+      ],
+      "feedbackFrom": [
+        "Antoine Mayer (blog)"
+      ],
+      "summary": "- Défi parti d'une annonce de **Cilium 1.15** : le Cluster Mesh supporte désormais **511 clusters**. Le speaker a tenté de les déployer et de les relier, en infrastructure as code, sur sept régions AWS, en surveillant les coûts (programme).\n- Antoine Mayer a apprécié le mélange de **curiosité, de retour d'expérience concret et d'humour**.\n- Pas de vidéo dans la playlist officielle ; slides publiées sur la page de la session.",
+      "summarySources": [
+        "blog",
+        "program"
+      ]
+    },
+    {
+      "id": "et-si-supprimer-tout-en-douceur-n-etait-pas-une-si-bonne-idee",
+      "day": "2025-06-26",
+      "type": "talk",
+      "title": "Et si supprimer tout en douceur n'était pas une si bonne idée ?",
+      "speakers": [
+        "Alice Loeser — Doctolib"
+      ],
+      "feedbackFrom": [
+        "Antoine Mayer (blog)"
+      ],
+      "summary": "- Retour d'expérience Doctolib sur la **soft-deletion** : marquer les données comme supprimées plutôt que les effacer, simple à mettre en place mais **bien plus difficile à abandonner** (programme).\n- Conséquences relevées par Antoine Mayer : tables surdimensionnées, requêtes plus lentes, bases encombrées de données « fantômes » ; le programme évoque aussi index partiels, tables de milliards de lignes et incidents de production.\n- Sa conclusion : un sujet découvert pendant la conférence, et une règle, **ne plus utiliser la soft-deletion pour les nouvelles tables**.\n- Pas de vidéo dans la playlist officielle.",
+      "summarySources": [
+        "blog",
+        "program"
+      ]
+    },
+    {
+      "id": "exegol-le-hacking-a-base-de-conteneurs",
+      "day": "2025-06-26",
+      "type": "lightning",
+      "title": "Exegol : Le Hacking à base de conteneurs",
+      "speakers": [
+        "Antoine Mayer — WeScale"
+      ],
+      "feedbackFrom": [
+        "Antoine Mayer (speaker)"
+      ],
+      "summary": "- Format court de 20 minutes : présenter **Exegol**, environnement de pentest en conteneurs Docker censé remplacer la VM Kali, puis un mini challenge CTF sur le site d'une école fictive « Sunny » (programme).\n- Le speaker raconte une version mise à jour avec les annonces **Exegol Pro et Enterprise**, un souci technique de dernière minute avec le navigateur de Burp Suite et un format très comprimé, mais une **salle pleine** ; il regrette l'absence de captation vidéo (speaker).",
+      "summarySources": [
+        "blog",
+        "program"
+      ]
+    },
+    {
+      "id": "on-a-refait-openai-en-open-source",
+      "day": "2025-06-27",
+      "type": "talk",
+      "title": "On a refait OpenAI en Open Source",
+      "speakers": [
+        "Jean-Philippe Foures"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, aucun retour de participant trouvé)** : retour d'expérience d'un hébergeur-infogéreur (le nom de l'entreprise est mal transcrit ; le speaker est chez Iguane Solutions en 2026). Point de départ : un équivalent interne de Dust branché sur Slack, parce que certains clients **interdisent contractuellement les services américains**.\n- **Dimensionnement** : Qwen 2.5 72B en FP8 sur une H200 plutôt que deux H100 ; un serveur à 8 GPU coûte *« environ 1 million d'euros »* prix public. Virtualisation OpenNebula/KVM en VM de 1, 2 ou 4 GPU.\n- **Pile** : vLLM, ComfyUI, NVIDIA MPS, **LiteLLM** comme endpoint compatible OpenAI (quotas, clés, load balancing), copilote privé via Continue, métriques GPU croisées avec Electricity Maps pour le CO2. Démo d'un RAG (Onyx) sur Confluence et Slack, et d'un « app store » interne (Open WebUI, Dify, n8n…).\n- Préfère le mot **« gouvernance »** à « souveraineté ». *« Il se passe pas une semaine que quand on fait une mise à jour, c'est cassé. »* Équipe de six personnes, cinquième version en deux ans ; pas de coût par token calculé.\n- Salle nombreuse et au moins sept questions, dont une sur la rentabilité.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "3B_XoCuO-vY",
+        "title": "On a refait OpenAI en Open Source",
+        "publishedAt": "2025-07-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-quantification-ou-comment-compresser-les-llms",
+      "day": "2025-06-27",
+      "type": "lightning",
+      "title": "La Quantification ou comment compresser les LLMs pour un usage plus responsable",
+      "speakers": [
+        "Jean-Philippe Foures"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : suite courte (20 min) du talk du matin. Les bons LLM sont gros, gourmands en GPU et en électricité ; la quantification garde le nombre de paramètres mais change leur type, de façon **irréversible**.\n- Formats et techniques : FP32 pour l'entraînement, FP16 et BF16 pour l'inférence, FP8 popularisé par DeepSeek ; quantification affine INT8 (précision dégradée) et **AWQ** (la plupart des poids en INT4, chemins critiques en 16 bits). Exemple : un modèle 72B passe d'environ 144 Go à 41 Go.\n- Limite observée en production : au-delà d'environ 32 000 tokens, les modèles en entiers deviennent instables, d'où le passage au **FP8 sur H200**.\n- Aux questions : méfiance envers les benchmarks, quantification 1 bit jugée *« un poil trop extrême »*, et une conviction : *« l'avenir est plutôt dans les plus petits modèles ultra spécialisés »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Sp_WaaI3Hwg",
+        "title": "La Quantification ou comment compresser les LLMs pour un usage plus responsable.",
+        "publishedAt": "2025-07-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-dilemme-du-code-legacy-on-maintient-ou-on-reecrit",
+      "day": "2025-06-27",
+      "type": "talk",
+      "title": "Le dilemme du code legacy : on maintient ou on réécrit ?",
+      "speakers": [
+        "Valentin Dumas — Takima"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, aucun retour de participant trouvé)** : ouverture sur l'échec du premier vol d'**Ariane 5** (1996), dû à du code repris d'Ariane 4 sans être retesté. Définition proposée : *« un code legacy, c'est un code qui a de la valeur et donc vous avez peur de le changer »*.\n- Symptômes (vélocité en baisse, régressions, bus factor) et anti-patterns : la **« refonte en sous-marin »** cachée dans les estimations, la refonte sans fin.\n- Cas d'une banque en ligne qui passe au multidevise : **mesurer le coût réel par feature**, proposer un plan ciblé, le négocier avec la direction, avancer par POC et petits pas. Réécrire se justifie surtout sous contrainte matérielle ; distinguer réarchitecture et refactoring (strangler, branch by abstraction).\n- **Démo live** sur le kata Trivia : churn git pour repérer les fichiers chauds, matrice de dépendances, *scratch refactoring* jeté ensuite, **approval tests**, méthode Mikado, micro-commits. Références : Feathers, Nicolas Carlo.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "v_cbDdfzsO4",
+        "title": "Le dilemme du code legacy : on maintient ou on réécrit ?",
+        "publishedAt": "2025-07-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "tester-dans-l-hexagone",
+      "day": "2025-06-27",
+      "type": "workshop",
+      "title": "Tester dans l'Hexagone : du Mob, du DDD, du TDD, des Doublures et les TestContainers !",
+      "speakers": [
+        "Anthony Cassaigne — Adeo",
+        "Guillaume Saint Etienne — ITER Organization"
+      ],
+      "feedbackFrom": [
+        "Christophe Leroux (Blog Bpifrance.IO)"
+      ],
+      "summary": "- Atelier de deux heures en **mob programming** (Kotlin) : construire une application autour d'un cas métier, introduire pas à pas DDD et architecture hexagonale, en TDD, avec doublures de test et **TestContainers** (programme).\n- Christophe Leroux en retient l'application pratique de ces pratiques et une leçon : la testabilité dépend d'abord de **la conception**.",
+      "summarySources": [
+        "blog",
+        "program"
+      ]
+    },
+    {
+      "id": "comment-merger-sa-pr-en-10-secondes-rex-mob-code-review",
+      "day": "2025-06-27",
+      "type": "lightning",
+      "title": "Comment merger sa PR en 10 secondes : REX mob code review",
+      "speakers": [
+        "Thibaut Cantet — Néosoft"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, aucun retour de participant trouvé)** : critique des pull requests asynchrones (context switching, lenteur, commentaires écrits parfois violents). Le titre est un gag : la PR se merge en dix secondes parce que **tout a été relu avant, ensemble**.\n- Contexte : refonte du tunnel de vente de la billetterie de Roland-Garros, équipe passée de 2 à 5 développeurs, pair programming et une seule branche mergée très souvent.\n- Quand l'équipe grossit, les revues s'allongent : passage à **deux créneaux fixes par jour**, un time keeper, et suppression de la seconde revue au profit de la confiance.\n- Bénéfices : branches courtes, quasi trunk-based, alignement sur l'architecture, bus factor réduit, onboarding rapide. Prérequis : sécurité psychologique et *egoless programming* (*« on est là pour critiquer le code, pas les gens »*). Il doute que la pratique tienne à 10 ou 15 personnes.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "iGiz3WOYk1c",
+        "title": "Comment merger sa PR en 10 secondes​ : REX mob code review",
+        "publishedAt": "2025-07-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-gardiens-des-donnees-a-l-ere-de-l-ia",
+      "day": "2025-06-26",
+      "type": "lightning",
+      "title": "Les gardiens des données à l'ère de l'IA",
+      "speakers": [
+        "Carmen Piciorus — La Poste, Branche Services-Courrier-Colis"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : beaucoup d'entreprises bloquent l'IA par peur de fuite de secrets, de code et de données personnelles ; les recommandations existantes (ANSSI, OWASP, AI Act) parlent surtout d'entraînement, peu de **RAG**.\n- **Anecdote** : en testant un chatbot RAG interne, elle demande les identifiants par défaut de PostgreSQL et obtient *« un vrai login mot de passe »* d'une base de recette, puis de production, tirés de pages Confluence.\n- Deux « gardiens » : **Presidio** (Microsoft, open source) pour détecter et anonymiser de façon réversible les données sensibles, et **LLM Guard** pour filtrer entrées et sorties (prompt injection, toxicité). Démo dans Open WebUI.\n- Message : *« c'est pas forcément le modèle qui pose problème, mais c'est l'outil que vous utilisez »* ; nettoyer les données avant de les indexer.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "fVNIrg7bJKg",
+        "title": "Les gardiens des données à l'ère de l'IA",
+        "publishedAt": "2025-07-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "lets-play-factorio",
+      "day": "2025-06-27",
+      "type": "talk",
+      "title": "Let's play Factorio",
+      "speakers": [
+        "Julien Wittouck — Freelance / Ekité"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : 50 minutes de partie en direct, Factorio servant de *« miroir de mon métier »* (300 heures de jeu, 15 ans d'IT).\n- **Architecture** : usine spaghetti contre lasagnes (*« n'en faites pas dans votre code, faites plutôt des lasagnes »*), raviolis en microservices dont les dépendances deviennent invisibles (d'où la traçabilité), main bus comparé à un ESB.\n- **Scalabilité** verticale puis horizontale, load balancing par splitters, monitoring construit en circuits logiques jusqu'à une alerte « SMS à l'ops », et **sécurité** figurée par un DoS et un pare-feu filtrant les « paquets ».",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "TnDRFGkeiwU",
+        "title": "Let's play Factorio",
+        "publishedAt": "2025-07-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "keynote-fermeture-securite-des-applications-llm",
+      "day": "2025-06-27",
+      "type": "keynote",
+      "title": "Keynote fermeture",
+      "speakers": [
+        "Brian Vermeer — Snyk"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, en anglais, aucun retour de participant trouvé)** : la sécurité des applications à base de LLM. Les LLM sont *stateless* ; mémoire et RAG sont réinjectés par l'application : *« I cannot hack the LLM but I can interfere with your context »*.\n- **Trois démos d'attaque** sur des applications LangChain4j : une faille de path traversal remplace les conditions générales lues par le RAG et fait annuler une réservation ; une injection SQL insère un faux historique de conversation ; une prompt injection par *payload splitting* finit en suppression de tables via une fonction SQL trop générique.\n- **Remèdes** : limiter la taille des entrées, garde-fous en entrée et en sortie (un second LLM qui note le risque), petites fonctions aux permissions liées à l'utilisateur, **human in the loop**, logs ; ne pas installer de serveurs MCP sans lire leur code. *« Don't make just one LLM to rule them all. »*\n- Vie privée : connaître les politiques des fournisseurs et router les tâches sensibles vers un modèle local.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "B3jEtJjiBMg",
+        "title": "Keynote fermeture",
+        "publishedAt": "2025-07-03",
+        "transcript": true
+      }
+    }
+  ]
 }

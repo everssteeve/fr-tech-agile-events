@@ -8,7 +8,408 @@
   "city": "Paris",
   "venue": "Cité des Sciences et de l'Industrie",
   "url": "https://lehack.org/2025/",
-  "theme": "The Singularity — Acquired Human Obsolescence edition",
-  "status": "pending",
-  "sessions": []
+  "programUrl": "https://lehack.org/2025/tracks/conferences/",
+  "theme": "The Singularity: Acquired Human Obsolescence edition",
+  "dateConfidence": "ok",
+  "note": "Deux jours (27 et 28 juin) et une nuit jusqu'au dimanche 29 juin 7 h. Piste conférences principale (salle Gaston Berger), village OSINT (salle Louis Armand), ateliers de nuit, rumps, wargame, leHACK Kids, car hacking, confessionnal ZATAZ. Près de 3 500 participants selon La Plateforme.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-01",
+  "revisit": "Aucun post LinkedIn ni thread social lu (recherche infructueuse) ; keynote « The Singularity » et village OSINT sans aucun retour ni vidéo ; transcripts intégrés pour 9 talks seulement (les autres résumés via programme et blogs).",
+  "corpus": "Programme officiel (piste conférences, village OSINT, ateliers), 19 vidéos de la playlist « Talks - leHACK 2025 » publiées de février à mars 2026, dont 9 transcripts lus. Cinq comptes-rendus publiés entre fin juin et fin juillet 2025 : blog Ippon (3 auteurs), RiskInsight de Wavestone (3 auteurs), Medium de 360Learning (Paul Van-Elsue), La Plateforme (Bilal Meguenni-Tani) et ZATAZ (Damien Bancal), plus la page de la DGSE.",
+  "limits": "Retours écrits essentiellement par des équipes de cabinets de conseil et d'écoles venues pour le wargame : biais vers les talks offensifs (Active Directory, Windows, web) et la compétition. Aucune trace du contenu de la keynote, des rumps (non enregistrés par principe) ni du village OSINT, dont les vidéos ne figurent pas dans la playlist ; certains noms viennent de sous-titres automatiques.",
+  "tldr": "Sous un thème d'ouverture alarmiste sur l'IA, leHACK 2025 est resté **une convention de technique pure** : Active Directory et Windows toujours au centre, retours de terrain sans filtre marketing, et une nuit de **wargame** que les participants racontent comme le cœur de l'expérience.",
+  "keyTakeaways": [
+    "**Ne jamais faire aveuglément confiance à un composant tiers** : une génération de PDF ou un cache de navigateur peuvent devenir des vecteurs d'attaque (Ippon, à propos des talks de Raunak Parmar et Aurélien Chalot).",
+    "**Les applications RAG fuient** : curer la base de connaissances, durcir les prompts, limiter les débits et assainir les données avant indexation (Pedro Paniago, relayé par Ippon).",
+    "**Analyser ce que font les GPO, pas seulement leurs droits** : GPOParser, outil open source, complète BloodHound pour révéler des chemins d'escalade invisibles autrement (Wilfried Bécard, relayé par Wavestone).",
+    "**Les protocoles industriels hérités restent des portes ouvertes** : Modbus sans authentification ni chiffrement, inventaire et cartographie des infrastructures climatiques insuffisants (Cybelle Oliveira, relayée par Wavestone).",
+    "**Connaître son « normal »** : auditer ses logs, établir une baseline, ne pas dépendre d'un seul outil et tester que ses contrôles fonctionnent vraiment (Melina Phillips).",
+    "**Contester le contexte d'une vulnérabilité réseau** : une faille de protocole peut être inapplicable dans une architecture correctement segmentée (lecture critique d'Ippon sur le talk VRRP).",
+    "**Se préparer avant la compétition** : un mois d'entraînement sur Root-Me et une forte cohésion ont porté une équipe étudiante à la 2e place du wargame (La Plateforme).",
+    "**La cybersécurité n'est pas réservée aux experts, elle est pour les curieux** : un premier bug bounty à 400 € décroché en live (Paul Van-Elsue, 360Learning)."
+  ],
+  "sessions": [
+    {
+      "id": "the-singularity-keynote",
+      "day": "2025-06-27",
+      "type": "keynote",
+      "title": "The Singularity keynote",
+      "speakers": ["majinboo"],
+      "feedbackFrom": [],
+      "summary": "- Keynote d'ouverture (10 h) portant le thème de l'édition, connue **uniquement par le programme** : aucune vidéo publiée, aucun compte-rendu lu.\n- Le manifeste de l'édition donne le ton : AGI annoncée « d'ici fin 2025 », effondrement des modèles entraînés sur des données synthétiques, risque d'une **« obsolescence humaine acquise »** si personne ne sait plus faire les choses soi-même. Réponse revendiquée : *« Are we doomers? Yes and no. We are hackers. »*",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "from-html-injection-to-full-aws-account-takeover",
+      "day": "2025-06-27",
+      "type": "talk",
+      "title": "From HTML Injection to Full AWS Account Takeover: Discovering Critical Risks in PDF Generation",
+      "speakers": ["Raunak Parmar"],
+      "feedbackFrom": ["Blog Ippon (Saba Berol, Florian Patérour, Hugo Joubert)"],
+      "summary": "- Retour de pentest : une **injection HTML dans une fonction de génération de PDF**, trouvée sur deux applications, mène à une SSRF, à l'accès à des fichiers internes et jusqu'à la compromission d'un compte cloud (programme).\n- Ce qu'en retient Ippon : le langage interne du PDF permet d'exécuter des programmes arbitraires, d'où la leçon de **ne jamais faire aveuglément confiance aux composants tiers**.\n- Message du talk : une vulnérabilité d'apparence mineure peut avoir des conséquences catastrophiques ; importance des pratiques de développement sûres et des configurations cloud robustes.",
+      "summarySources": ["program", "blog"],
+      "video": {
+        "youtubeId": "oPCrVXCru4c",
+        "title": "From HTML Injection to Full AWS Account Takeover - Raunak Parmar",
+        "publishedAt": "2026-02-02",
+        "transcript": false
+      }
+    },
+    {
+      "id": "up-and-down-technique-exposing-hidden-data-from-rag-systems",
+      "day": "2025-06-27",
+      "type": "talk",
+      "title": "Up and Down Technique: Exposing Hidden Data from RAG Systems",
+      "speakers": ["Pedro Paniago"],
+      "feedbackFrom": ["Blog Ippon"],
+      "summary": "- Seul talk de la piste principale centré sur l'IA générative : une technique d'**exfiltration de données de systèmes RAG par injection de prompt**, après une plongée dans leur architecture (embeddings, bases vectorielles, anatomie des prompts).\n- Ippon le rattache à des travaux de recherche menés à Harvard et retient les **défenses** : curation de la base de connaissances, durcissement des prompts, limitation de débit, assainissement des données avant indexation.\n- Public visé : red teamers, chasseurs de bugs, développeurs et RSSI (programme).",
+      "summarySources": ["program", "blog"],
+      "video": {
+        "youtubeId": "8h_9yTSscqY",
+        "title": "Up and Down Technique: Exposing Hidden Data from RAG Systems - Pedro Paniago",
+        "publishedAt": "2026-02-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "cache-me-if-you-can-smuggling-payloads-via-browsers-caching-systems",
+      "day": "2025-06-27",
+      "type": "talk",
+      "title": "Cache me if you can, smuggling payloads via browsers caching systems",
+      "speakers": ["Aurélien Chalot"],
+      "feedbackFrom": ["Blog Ippon", "RiskInsight Wavestone (Benjamin Garo, Julien Mirande, Florian Zinopoulos-Yannopoulos)"],
+      "summary": "- Le **« cache smuggling »** : utiliser le cache du navigateur comme nouveau canal de livraison de charges en red team, alors que les pièces jointes par mail sont de plus en plus surveillées.\n- Les deux comptes-rendus retiennent le principe : déguiser un fichier en ressource anodine mise en cache, puis profiter du chargement de bibliothèques par un logiciel de confiance.\n- **Limites relevées par Wavestone et Ippon** : détection par les EDR, besoin d'une action de l'utilisateur et d'ingénierie sociale (pas de compromission en zéro clic).\n- Le talk aborde aussi la reconnaissance silencieuse de réseaux internes et les moyens de s'en protéger (programme).",
+      "summarySources": ["program", "blog"],
+      "video": {
+        "youtubeId": "7KDUNm8Z_is",
+        "title": "Cache me if you can, smuggling payloads via browsers caching systems - Aurélien Chalot",
+        "publishedAt": "2026-02-04",
+        "transcript": false
+      }
+    },
+    {
+      "id": "quantum-computing-demystified",
+      "day": "2025-06-27",
+      "type": "talk",
+      "title": "Quantum computing demystified: A beginner's guide and cybersecurity implications",
+      "speakers": ["Robin Descamps"],
+      "feedbackFrom": [],
+      "summary": "- Introduction à l'informatique quantique **du point de vue d'un « hacker classique »** plutôt que d'un chercheur spécialisé : qubits, superposition, intrication, portes quantiques, premiers pas en Q#.\n- Enjeux de sécurité : **cryptographie post-quantique**, distribution quantique de clés, et ce que la menace quantique change (ou non) aujourd'hui pour les standards de chiffrement.\n- Résumé fondé sur le seul programme.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "9Jz1KhOIPV8",
+        "title": "Quantum computing demystified: A beginner's guide & cybersecurity implications - Robin Descamps",
+        "publishedAt": "2026-02-05",
+        "transcript": false
+      }
+    },
+    {
+      "id": "the-last-resort-debugging-embedded-systems",
+      "day": "2025-06-27",
+      "type": "talk",
+      "title": "The Last Resort: Debugging Embedded Systems with Unconventional Methods",
+      "speakers": ["Vincent Lopes"],
+      "feedbackFrom": ["Blog Ippon"],
+      "summary": "- Quand les ports de debug (JTAG, SWD) d'un microcontrôleur sont verrouillés, **implanter un débogueur dans le firmware lui-même**, le plus léger possible, avec un serveur intermédiaire pour GDB (programme).\n- Ippon retient la démonstration sur ARM Cortex-M3 (manipulation des interruptions, injection de code en RAM) et sa limite : elle exige une compréhension fine de l'architecture et **échoue sur les équipements correctement protégés** par la signature de code obligatoire.",
+      "summarySources": ["program", "blog"],
+      "video": {
+        "youtubeId": "2RO9eCKKxXw",
+        "title": "The Last Resort: Debugging Embedded Systems with Unconventional Methods - Vincent Lopes",
+        "publishedAt": "2026-02-06",
+        "transcript": false
+      }
+    },
+    {
+      "id": "active-directory-hall-of-shame-and-physical-pwnage",
+      "day": "2025-06-27",
+      "type": "talk",
+      "title": "Active Directory: Hall of Shame & Physical Pwnage",
+      "speakers": ["Nicolas Aunay"],
+      "feedbackFrom": [],
+      "summary": "- Un **« Hall of Shame » des pires erreurs Active Directory** croisées en pentest : droits de réplication accordés trop largement, politiques de mots de passe contre-productives, identifiants en clair dans les descriptions ou les GPO, vieux protocoles toujours actifs, comptes de service surprivilégiés, délégations et certificats mal configurés.\n- Démonstration d'un passage d'un simple accès réseau à administrateur de domaine, et bonus d'**intrusion physique en 10 minutes**.\n- Objectif affiché : donner aux défenseurs l'envie de corriger ces erreurs immédiatement. Résumé fondé sur le programme.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "7G1_QrQ1NgA",
+        "title": "Active Directory: Hall of Shame & Physical Pwnage - Nicolas Aunay",
+        "publishedAt": "2026-02-07",
+        "transcript": false
+      }
+    },
+    {
+      "id": "keep-it-alived-securite-du-protocole-vrrp",
+      "day": "2025-06-27",
+      "type": "talk",
+      "title": "Keep-it-alived : Étude de la sécurité du protocole VRRP",
+      "speakers": ["Geoffrey Sauvageot-Berland"],
+      "feedbackFrom": ["Blog Ippon"],
+      "summary": "- Étude de la sécurité de **VRRP**, protocole de redondance de routeurs, à travers Keepalived : authentification contournable en v2, supprimée en v3.\n- Le speaker présente une **faille de conception du protocole lui-même** découverte avec les mainteneurs de Keepalived, qui a donné lieu à l'erratum 8298 validé par l'IETF (programme).\n- **Point de débat** : l'expert réseau d'Ippon conteste la portée de l'attaque, inapplicable selon lui dans une infrastructure correctement segmentée où les protocoles de contrôle sont séparés du trafic utilisateur.",
+      "summarySources": ["program", "blog"],
+      "video": {
+        "youtubeId": "PZOpVtSOSZg",
+        "title": "Keep-it-alived : Étude de la sécurité du protocole VRRP - Geoffrey Sauvageot-Berland",
+        "publishedAt": "2026-02-08",
+        "transcript": false
+      }
+    },
+    {
+      "id": "confessions-of-a-linux-drama-queen",
+      "day": "2025-06-27",
+      "type": "talk",
+      "title": "Confessions of a Linux drama queen: When hackers are totally ruining your life",
+      "speakers": ["Melina Phillips"],
+      "feedbackFrom": [],
+      "summary": "- Talk de **réponse à incident sur Linux**, construit sur un cas réel (anonymisé) chez un petit distributeur de cosmétiques : contrôle d'accès défaillant sur une application web, dépôt de fichier non filtré, puis persistance et tentative d'exfiltration.\n- *« Logs are a girl's best friend »* : journaux réseau, applicatifs, bases de données et endpoints racontent l'histoire ; quand l'EDR tombe, le SIEM, la détection réseau, la deception et des outils comme Velociraptor ou osquery prennent le relais.\n- Pourquoi viser les marques de beauté : beaucoup de données personnelles, programmes de fidélité, API exposées, pression réputationnelle à payer les rançons.\n- Revue de tout ce qui a échoué (pas de WAF efficace, pas de MFA, identifiants dans des variables d'environnement, pas de filtrage sortant) et conclusion : **auditer ses logs, établir une baseline, ne pas dépendre d'un seul outil, tester ses contrôles**. *« Security is like skin care »* : ce n'est pas la perfection, c'est le progrès.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "xToeregwMZw",
+        "title": "Confessions of a Linux drama queen: When hackers are totally ruining your life - Melina Phillips",
+        "publishedAt": "2026-02-10",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-imposters-guide-to-hacking",
+      "day": "2025-06-27",
+      "type": "talk",
+      "title": "The imposter's guide to Hacking (With DEMOs!)",
+      "speakers": ["Jayson E. Street"],
+      "feedbackFrom": [],
+      "summary": "- Talk de clôture de la première journée, présenté par son auteur comme un **« cheval de Troie »** : quelques démonstrations d'ingénierie sociale servent d'appât à un discours sur la communauté.\n- Les démos (appels au support, objets du quotidien détournés) servent à montrer qu'on peut être hacker sans être un virtuose du code, et à **célébrer les victoires du client** : un technicien qui a tenu 40 minutes sans enfreindre la politique de sécurité.\n- Message central : *« There are no rock stars in this industry »* ; ne pas mettre les speakers sur un piédestal, chacun pourrait monter sur scène, arrêter de s'autocensurer.\n- Partie militante : privilèges dans la communauté, sécurité des femmes en conférence, rôle d'allié (*écouter, puis amplifier*), toxicité en ligne. Il cède **10 minutes de son créneau** à Vic Harkness (BSides Basingstoke), qui témoigne de son bénévolat en Ukraine.\n- Fil rouge : Mr Rogers comme modèle de hacker, quelqu'un qui voit un problème et le répare.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "gIkobTFKPFA",
+        "title": "The imposter's guide to Hacking With DEMOs! - Jayson E. Street",
+        "publishedAt": "2026-02-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "dcom-turns-20-revisiting-a-legacy-interface",
+      "day": "2025-06-28",
+      "type": "talk",
+      "title": "DCOM Turns 20: Revisiting a Legacy Interface in the Modern Threatscape",
+      "speakers": ["Julien Bedel"],
+      "feedbackFrom": ["RiskInsight Wavestone"],
+      "summary": "- Tour d'horizon des travaux récents sur **COM/DCOM**, interface Windows vieille de plus de 20 ans et vecteur polyvalent (mouvement latéral, élévation de privilèges, persistance), avec un cadre de test présenté pour les chercheurs (programme).\n- Wavestone retient l'ampleur de la surface : *« plus de 30 000 interfaces »* sur un seul poste Windows 11, et le fait que certaines attaques ne sont pas considérées par Microsoft comme franchissant une frontière de sécurité.\n- **Défenses** : signature des protocoles, désactivation de NTLM, EDR et IPS ; COM ne pouvant être bloqué entièrement, les contrôles compensatoires deviennent nécessaires.",
+      "summarySources": ["program", "blog"],
+      "video": {
+        "youtubeId": "rXNGso8sF_Y",
+        "title": "DCOM Turns 30: Revisiting a Legacy Interface in the Modern Threatscape - Julien Bedel",
+        "publishedAt": "2026-02-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "espilon-unknown-bot-net",
+      "day": "2025-06-28",
+      "type": "talk",
+      "title": "Espilon [Unknown bot net]",
+      "speakers": ["Eun0us", "Offpath"],
+      "feedbackFrom": [],
+      "summary": "- Un **botnet de microcontrôleurs ESP32 bon marché** reliés en GPRS à un serveur de commande maison, firmware et C2 développés par les speakers : surveillance, écoute, triangulation de signaux Bluetooth.\n- Message du talk : *pourquoi il ne faut pas trop faire confiance à son ESP32*. Résumé fondé sur le programme.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "yaoIKi_sZPo",
+        "title": "Espilon [Unknown bot net] - Eun0us & Offpath",
+        "publishedAt": "2026-02-14",
+        "transcript": false
+      }
+    },
+    {
+      "id": "hacking-de-jeux-video-casser-des-jeux-et-proteger-le-sien",
+      "day": "2025-06-28",
+      "type": "talk",
+      "title": "Hacking de jeux vidéo : casser des jeux et protéger le sien !",
+      "speakers": ["Lucas Parsy"],
+      "feedbackFrom": [],
+      "summary": "- Le **pentest de client lourd par le jeu vidéo** : développer un petit cheat repose sur les mêmes principes que cracker un logiciel industriel.\n- Tour d'horizon des méthodes (édition mémoire avec Cheat Engine, patch d'instructions) puis des **protections de binaires et de leurs limites**. Le hacking de jeux figurait aussi parmi les catégories du wargame, où Ippon dit avoir utilisé Cheat Engine.\n- Résumé fondé sur le programme.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "vOc_Rhg6Us0",
+        "title": "Hacking de jeux vidéo: Casser des jeux et protéger le sien! - Lucas Parsy",
+        "publishedAt": "2026-02-16",
+        "transcript": false
+      }
+    },
+    {
+      "id": "eastern-promises-mobile-vrp-lessons-for-bug-hunters",
+      "day": "2025-06-28",
+      "type": "talk",
+      "title": "Eastern Promises: Mobile VRP Lessons For Bug Hunters",
+      "speakers": ["Laszlo Radnai (TASZK Security Labs)", "Laszlo Szapula (TASZK Security Labs)"],
+      "feedbackFrom": [],
+      "summary": "- Bilan de cinq ans de **programmes de récompense de vulnérabilités (VRP) de fabricants de puces et smartphones** (MediaTek, HiSilicon, Samsung, UNISOC) : choisir sa surface d'attaque, savoir quand abandonner, lire les règles de périmètre et de sévérité.\n- Leçons tirées de soumissions passées : **ne pas supposer un délai de divulgation de 90 jours** (une divulgation imposée une semaine après leur conférence), des bugs logiques d'hyperviseur refusés car hors barème, une sévérité réévaluée après discussion.\n- Fuzzing émulé de la pile VoLTE : plus de 20 000 crashs, 11 rapports.\n- Q&A sur l'extraction de firmware ; applaudissements.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "J1yQfpOZlm0",
+        "title": "Eastern Promises: Mobile VRP Lessons For Bug Hunters - Laszlo Radnai/ Rx7 & Laszlo Szapula /LaTsa",
+        "publishedAt": "2026-02-17",
+        "transcript": true
+      }
+    },
+    {
+      "id": "fun-with-watches-hacking-a-12-euro-smartwatch",
+      "day": "2025-06-28",
+      "type": "talk",
+      "title": "Fun with watches: hacking a 12€ smartwatch with Bluetooth Low Energy and 3 wires",
+      "speakers": ["Virtualabs", "Xilokar"],
+      "feedbackFrom": ["Blog Ippon"],
+      "summary": "**Sur scène (transcript)**\n- Démontage d'une **montre connectée à 12 €** vendue par GiFi : authentification Bluetooth cassée (même clé partout), adresses non randomisées qui permettent le traçage.\n- Extraction du firmware sans programmateur, en **interceptant le bus de l'écran** avec un Raspberry Pi Pico, puis écriture d'un module Ghidra pour l'architecture du SoC JieLi.\n- La révélation : **fréquence cardiaque, tension et SpO2 sont générées aléatoirement** (une chaîne « HR fake » dans le firmware, valeurs bornées).\n\n**Retours** : Ippon cite ce démontage parmi ses talks marquants et retient les fausses mesures de santé. Sur scène, talk très applaudi, duo en autodérision, questions sur le coût réel du reverse et la comparaison avec les montres haut de gamme.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "madEexB6OwY",
+        "title": "Fun with watches: hacking a 12€ smartwatch with Bluetooth LE and 3 wires - Virtualabs & Xilokar",
+        "publishedAt": "2026-02-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-art-of-staying-in-unconventional-backdoors",
+      "day": "2025-06-28",
+      "type": "talk",
+      "title": "The Art of Staying In: Unconventional Backdoors on Windows and Linux",
+      "speakers": ["m101"],
+      "feedbackFrom": [],
+      "summary": "- Thèse : une porte dérobée **n'a pas besoin de malware** ; elle peut se construire à partir de primitives (lire, écrire, exécuter, livrer, déclencher) et de fonctionnalités légitimes du système, pour réduire la surface de détection face aux EDR et aux règles YARA ou Sigma.\n- Exemples côté Windows (zones DNS de confiance) et Linux (fichiers de configuration, sources de paquets, sous-domaines oubliés), et études de cas publiques : XZ, SolarWinds, Lapsus$, Bybit.\n- Ton humoristique, démos capricieuses (*« la démo après la conf »*), échanges avec l'organisation sur le temps restant.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "XrDO7R2nUk8",
+        "title": "The Art of Staying In: Unconventional Backdoors on Windows and Linux - m101",
+        "publishedAt": "2026-02-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "gpoparser-automating-group-policies-extraction",
+      "day": "2025-06-28",
+      "type": "talk",
+      "title": "GPOParser: Automating Group Policies extraction to reveal security gaps",
+      "speakers": ["Wilfried Bécard (Synacktiv)"],
+      "feedbackFrom": ["RiskInsight Wavestone"],
+      "summary": "**Sur scène (transcript)**\n- Rappel du fonctionnement des **GPO** (ordre d'application, stockage, héritage, filtres WMI, ciblage) et de tout ce qu'elles révèlent : groupes d'administration, privilèges, durcissements, EDR installés.\n- Démonstration d'un **faux positif de BloodHound** (un blocage d'héritage ignoré), qui motive GPOParser : outil en ligne ou hors ligne qui recrée des liens exploitables dans BloodHound.\n- Partie défensive : surveiller les requêtes LDAP anormales et les accès refusés sur SYSVOL, poser des leurres.\n\n**Retours** : Wavestone retient un outil open source qui analyse **ce que font les politiques** plutôt que leurs seules ACL, utile aux défenseurs comme aux red teamers. Sur scène, questions d'un public visiblement connaisseur.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "P0FzyfhRhVI",
+        "title": "GPOParser: Automating Group Policies extraction to reveal security gaps - Wilfried Bécard",
+        "publishedAt": "2026-03-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "modbus-apts-and-other-ways-humanity-is-messing-up-the-climate",
+      "day": "2025-06-28",
+      "type": "talk",
+      "title": "Modbus, APTs, and Other Ways Humanity is F**ing Up the Climate",
+      "speakers": ["Cybelle Oliveira"],
+      "feedbackFrom": ["RiskInsight Wavestone"],
+      "summary": "**Sur scène (transcript)**\n- Les APT étatiques visent les **infrastructures liées au climat** (chauffage, eau, énergie). Cas FrostyGoop (Ukraine, janvier 2024) : un malware de moins de 200 lignes via Modbus, plus de 30 000 personnes privées de chauffage.\n- **Modbus**, protocole des années 1970 sans authentification ni chiffrement, reste massivement exposé sur Internet. Historique : Stuxnet, Industroyer, Triton, Pipedream.\n- Appel à une threat intelligence qui croise météo, géopolitique et systèmes industriels ; la COP30 de Belém présentée comme une cible probable.\n\n**Retours** : Wavestone retient des chiffres (hausse de 340 % des activités malveillantes contre ces infrastructures entre 2022 et 2025, 89 % d'attaques à impact physique) et le **manque d'inventaire et de cartographie** des infrastructures critiques. Salle chaleureuse, talk en anglais ponctué d'autodérision.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "cpmqsFks9ks",
+        "title": "Modbus, APTs, and Other Ways Humanity is F**ing Up the Climate - Cybelle Oliveira",
+        "publishedAt": "2026-03-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ah-i-see-you-re-a-domain-controller-as-well",
+      "day": "2025-06-28",
+      "type": "talk",
+      "title": "Ah, I see, you're a Domain Controller as well",
+      "speakers": ["Charlie Bromberg (Shutdown)"],
+      "feedbackFrom": [],
+      "summary": "- Récit de six mois de travail pour **réimplémenter en Python DCShadow**, technique de persistance Active Directory publiée en 2018 et jusque-là disponible seulement dans Mimikatz, mené avec un chercheur italien.\n- Les obstacles : fonctions absentes des bibliothèques Python, environ **1 000 lignes de structures réimplémentées à la main** (applaudies), et un calcul d'intégrité où l'implémentation de Microsoft s'écarte des RFC, résolu par reverse engineering.\n- Résultat : un outil fonctionnel, démontré sur un lab, première brique d'un futur cadre de persistance AD.\n- Ton autodérisoire, piques envers les grandes conférences qui avaient refusé le sujet, remerciements à leHACK (sa 4e participation), conclusion sur l'équilibre vie perso et vie pro.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "ZYAAYGcPMu4",
+        "title": "Ah, I see, you're a Domain Controller as well - Charlie Bromberg",
+        "publishedAt": "2026-03-06",
+        "transcript": true
+      }
+    },
+    {
+      "id": "physical-security-what-you-don-t-see",
+      "day": "2025-06-28",
+      "type": "talk",
+      "title": "Physical Security : What you don't see…",
+      "speakers": ["MrJack"],
+      "feedbackFrom": [],
+      "summary": "- Dernier talk de la piste principale : l'**intrusion physique se joue surtout dans la préparation**, du plus loin au plus près de la cible.\n- OSINT (plans de sécurité incendie, badges, prestataires), analyse radio, puis reverse engineering low-tech et high-tech des serrures : endoscopes, scanner 3D industriel (environ 20 000 €), rayons X.\n- Q&A sur l'absence d'équivalent des CVE pour les serrures (renvoi aux certifications A2P), la sécurité des badges et les limites des outils grand public.\n- Démos tournées la veille avec l'équipe ; remerciements à la Red Team Alliance, présente sur le salon avec un atelier de crochetage.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "d-qlmwk1B-c",
+        "title": "Physical Security : What you don't see… - MrJack",
+        "publishedAt": "2026-03-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "wargame",
+      "day": "2025-06-28",
+      "type": "other",
+      "title": "Wargame (CTF de nuit)",
+      "speakers": [],
+      "feedbackFrom": ["Blog Ippon", "RiskInsight Wavestone", "Bilal Meguenni-Tani (La Plateforme)"],
+      "summary": "- **10 heures de compétition de nuit** (samedi 20 h à dimanche 6 h) : web, reverse engineering, exploitation de binaires, cryptographie, forensic, hardware, hacking de jeux vidéo.\n- Classements rapportés : l'équipe nantaise d'Ippon **35e sur environ 250 équipes** (70e l'année précédente) ; YoloSw4g de Wavestone **6e sur 120 équipes** ; l'équipe EternalBlue, avec des étudiants de La Plateforme, **2e** après avoir mené la première moitié. Les chiffres de participation divergent selon les sources.\n- Ingrédients cités : un mois d'entraînement sur Root-Me, stratégie collective, cohésion (*« cette équipe bienveillante nous a permis de try-harder ensemble »*, La Plateforme) ; Ghidra et Cheat Engine utiles (Ippon).",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "tracelabs-search-party-ctf",
+      "day": "2025-06-27",
+      "type": "workshop",
+      "title": "Tracelabs Search Party CTF IRL",
+      "speakers": ["Trace Labs (Robert Sell)"],
+      "feedbackFrom": ["Blog Ippon"],
+      "summary": "- CTF OSINT de 4 heures en présentiel, consacré à la **recherche de personnes disparues réelles** (programme).\n- L'équipe Ippon s'est concentrée sur un cas, a combiné réseaux sociaux, Google dorking et assistance d'un LLM, et s'est classée **6e** ; elle regrette le manque d'outils OSINT spécialisés pour aller plus loin.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "bug-bounty-live-et-challenge-yeswehack",
+      "day": "2025-06-28",
+      "type": "other",
+      "title": "Bug bounty live et challenge « Payload Plz » (YesWeHack)",
+      "speakers": ["YesWeHack"],
+      "feedbackFrom": ["Paul Van-Elsue (360Learning)"],
+      "summary": "- Challenge en ligne et sur place : **une seule charge utile pour exploiter 13 vulnérabilités web** ; Paul Van-Elsue se classe 10e sur 255.\n- Bug bounty live sur une cible révélée sur place : son équipe trouve un **contrôle d'accès défaillant** exposant des données clients, récompensé 400 €, son premier bounty.\n- Il retient l'esprit collaboratif et un événement qui tourne *« de 9 h à 3 h du matin »* : *« Cybersecurity isn't just for experts: it's for the curious. »*",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "rumps",
+      "day": "2025-06-28",
+      "type": "lightning",
+      "title": "RUMPS",
+      "speakers": [],
+      "feedbackFrom": ["ZATAZ (Damien Bancal)"],
+      "summary": "- Session de prises de parole libres de 5 à 10 minutes, **sans inscription, sans enregistrement, anonymes si besoin**, sous le principe de « déni plausible » (ZATAZ).\n- Devise rapportée : *« Ce qui se dit en rumps… reste en rumps »*. Aucun contenu public, par construction.",
+      "summarySources": ["blog", "program"]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Beyond Scanners: How Hands-On Recon Led Me to My First €1K Bug (Gaëtan Herfray)",
+    "Village OSINT : BAYBRIDGE, anatomie d'un écosystème d'influence chinois (Tadaweb)",
+    "Village OSINT : What can we learn about OSINT from Border Services trackers (Robert Sell)",
+    "Village OSINT : UNO Reverse Card, stealer logs de cybercriminels (Estelle Ruellan, Oleg O.)",
+    "Village OSINT : Hunting the Fake Brad Pitts (Marwan Ouarab)",
+    "Village OSINT : « AI-Freak », un modus operandi informationnel (Hervé Letoqueux, Viginum)",
+    "Village OSINT : Red Alert in Geneva (Inpact)",
+    "Village OSINT : OSINT Goes To War (H I Sutton)",
+    "Village OSINT : Scraping the Chinese Internet (Vincent Brussee)",
+    "Village OSINT : OSINT & Kleptocrats (Jérémie Baruch, Abdelhak El Idrissi, Le Monde)",
+    "Village OSINT : Russian Embargo, How to Circumvent Sanctions (Maëva Poulet)",
+    "Ateliers de nuit : Active Directory pwnage with NetExec ; Breaking into Hades' realm (Kerberos) ; Network protocol abuse (ICS) ; classification de malware ; UART ; Apkpatcher ; Pentesting AWS ; OSINT 101 ; traçage crypto ; détection de phishing",
+    "leHACK Kids, car hacking (RatZillaS), confessionnal ZATAZ, crochetage Red Team Alliance"
+  ],
+  "sources": [
+    { "label": "Page officielle leHACK 2025 (programme des pistes)", "url": "https://lehack.org/2025/" },
+    { "label": "Piste conférences leHACK 2025", "url": "https://lehack.org/2025/tracks/conferences/" },
+    { "label": "Playlist YouTube « Talks - leHACK 2025 » (19 vidéos, hzvprod)", "url": "https://www.youtube.com/playlist?list=PLzGIjwtabBqi3BKP_gxB6svGZJY1vW4O0" },
+    { "label": "Ippon : Retour sur leHACK 2025 (Saba Berol, Florian Patérour, Hugo Joubert)", "url": "https://blog.ippon.fr/2025/07/18/retour-sur-lehack-2025-immersion-dans-lunivers-du-hacking-et-de-la-cybersecurite/" },
+    { "label": "RiskInsight (Wavestone) : LeHack 2025, ce qu'il faut retenir", "url": "https://www.riskinsight-wavestone.com/en/2025/07/lehack-2025-what-to-remember/" },
+    { "label": "360Learning Engineering (Medium) : leHack 2025 (Paul Van-Elsue)", "url": "https://medium.com/360learning-engineering/lehack-2025-0b765dbe43e2" },
+    { "label": "La Plateforme : EternalBlue brille à leHACK 2025", "url": "https://laplateforme.io/eternalblue-brille-a-lehack-2025-un-week-end-dadrenaline-et-de-cybersecurite/" },
+    { "label": "ZATAZ : rumps, kids et confessionnal ZATAZ", "url": "https://www.zataz.com/lehack-2025-rumps-kids-et-confessionnal-zataz-au-coeur-de-la-cite-des-sciences/" },
+    { "label": "DGSE : de retour à leHACK", "url": "https://www.dgse.gouv.fr/fr/la-dgse/nos-actualites/la-dgse-de-retour-a-levenement-cyber-lehack" },
+    { "label": "YesWeHack at leHACK 2025 (annonce)", "url": "https://www.yeswehack.com/page/yeswehack-at-lehack-2025" },
+    { "label": "Posts LinkedIn : aucun lu (recherche sans résultat pour 2025)" }
+  ]
 }

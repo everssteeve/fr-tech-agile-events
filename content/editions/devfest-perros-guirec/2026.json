@@ -2,11 +2,209 @@
   "event": "devfest-perros-guirec",
   "year": 2026,
   "title": "DevFest Perros-Guirec 2026",
+  "edition": "6e édition",
   "start": "2026-10-02",
   "city": "Perros-Guirec",
   "venue": "Palais des Congrès",
   "url": "https://devfest.codedarmor.fr",
+  "programUrl": "https://devfest.codedarmor.fr/#programme",
+  "theme": "Coder moins, penser plus : quand l'IA change les règles du jeu",
   "dateConfidence": "ok",
-  "status": "scheduled",
-  "sessions": []
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-03",
+  "revisit": "Synthèse rédigée à J+1 : aucun retour participant public trouvé (0 post LinkedIn, 0 article, 0 thread Bluesky/Mastodon indexé). Les résumés reposent sur les transcripts automatiques des 10 vidéos et le programme. À reprendre dans une à deux semaines pour intégrer les posts LinkedIn et d'éventuelles slides (Clément Juste a annoncé partager sa configuration).",
+  "corpus": "Programme officiel (devfest.codedarmor.fr, page GDG Code d'Armor, Technopole Anticipa) et transcripts automatiques des 10 vidéos de la playlist officielle, publiées dès le 2 octobre 2026 (mot d'introduction, 2 keynotes, 5 talks, 2 quickies). Quatre recherches web menées le 3 octobre 2026, sans retour participant trouvé.",
+  "limits": "Corpus à J+1 : les résumés disent ce qui a été dit sur scène, pas ce que la salle en a retenu. Les transcripts sont des sous-titres automatiques (noms propres et termes techniques souvent déformés) ; les chiffres cités par les speakers (gains de productivité, coûts, études) n'ont pas été vérifiés. Les sessions de questions-réponses sont peu ou pas captées.",
+  "tldr": "Trois ans après son édition IA de 2023, le DevFest de la Côte de Granit Rose a dressé un état des lieux très concret du **développement agentique** : les gains sont réels (jusqu'à 80 % de tickets résolus automatiquement chez Mycom), mais la valeur du développeur se déplace vers **le contexte, les garde-fous déterministes et le jugement**.",
+  "keyTakeaways": [
+    "Générer ses idées **avant** de solliciter l'IA, puis comparer : la phase divergente reste humaine (Alexandra Zakharova, Microsoft).",
+    "Se situer sur les **8 niveaux d'ingénierie agentique** (Bassim Eledath) et viser l'orchestration avec feedback loops automatisés, là où les gains deviennent forts (David Tavoularis, Mycom).",
+    "Mesurer et améliorer la **qualité des tickets** avant d'automatiser leur résolution : *garbage in, garbage out* (David Tavoularis).",
+    "Relier un commentaire de code à un **ADR** suffit souvent à empêcher l'agent de violer une règle métier ; doubler par une **règle de lint ou un test** pour le déterminisme (Guillaume Lebourgeois, Pictaderm).",
+    "Confier la relecture à des **agents spécialisés au contexte propre** (architecture, sécurité, conventions) et supprimer ceux qui n'apportent rien (Guillaume Lebourgeois).",
+    "Traiter la sortie d'un LLM comme une **entrée non fiable** et casser le « triangle » données privées, contenu non fiable, communication externe (Gaëtan Eleouet, Meritis).",
+    "Écrire des prompts découpés en **contexte métier, besoin métier, besoin technique** avec des verbes précis pour éviter les itérations coûteuses (Camille Toulouse, OCTO).",
+    "Réduire les tokens : filtrer les sorties de commandes (RTK), imposer la brièveté, donner un **LSP ou un graphe de code** à l'agent, surveiller la taille du contexte (Clément Juste, Shodo).",
+    "Raisonner en **coût réel** plutôt qu'en tokens et se faire un benchmark maison rejoué à chaque nouveau modèle (Tugdual Grall, GitHub).",
+    "Isoler son produit des outils d'IA par **inversion de dépendance** et ajouter des **tests de dérive** pour que le logiciel reste pérenne (Vincent Hardy)."
+  ],
+  "sessions": [
+    {
+      "id": "mot-d-introduction",
+      "day": "2026-10-02",
+      "type": "other",
+      "title": "Mot d'introduction",
+      "speakers": [
+        "Romain — Code d'Armor",
+        "Erven Léon — maire de Perros-Guirec",
+        "Représentante de la Technopole Anticipa"
+      ],
+      "feedbackFrom": [],
+      "summary": "- L'association bénévole Code d'Armor (*« apprendre, partager, rencontrer »*) remercie Eco-Compteur et Orange Business, principaux financeurs, et note un **public fidèle** mêlé de nouveaux venus et d'étudiants (IUT de Lannion, ENSSAT).\n- Thème **« Coder moins, penser plus »** : faire le point **trois ans après l'édition IA de 2023**, avec *« jamais autant de speakers »* ; sélection fondée sur le sujet, pas sur l'expérience de scène.\n- Le maire relie le sujet à toutes les activités du territoire (tourisme, élus du littoral) : intégrer l'IA *« avec des effets positifs et non pas des effets de domination »*.\n- La Technopole Anticipa annonce **Boostia**, une communauté apprenante entre pairs sur l'IA ; premier cycle consacré aux développeurs le 12 octobre 2026.\n- Annonces : une soirée meetup en décembre 2026 et la **prochaine édition le 1er octobre 2027** (toujours le premier vendredi d'octobre) ; appel à prendre ses billets plus tôt, la billetterie se remplissant entre le 1er septembre et le 1er octobre.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "l1NNo2NbpHs",
+        "title": "Mot d'introduction - DevFest Perros-Guirec 2026",
+        "publishedAt": "2026-10-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "coder-avec-l-ia-sans-perdre-sa-creativite",
+      "day": "2026-10-02",
+      "type": "keynote",
+      "title": "Coder avec l'IA sans perdre sa créativité",
+      "speakers": ["Alexandra Zakharova — Microsoft"],
+      "feedbackFrom": [],
+      "summary": "- Keynote d'ouverture construite autour de « Mac », un macareux développeur insomniaque, et de ses questions : l'IA va-t-elle nous remplacer, nous rend-elle plus rapides, que fait-elle à notre cerveau, comment rester créatif ?\n- Sondage à main levée : presque toute la salle pense que l'IA supprimera plus d'emplois qu'elle n'en créera ; la speaker oppose les chiffres du **World Economic Forum** (92 millions d'emplois supprimés, 170 millions créés d'ici 2030), en précisant que ce sont des données et non son avis.\n- Sur la vitesse, elle cite une étude où des développeurs seniors **se croyaient plus rapides de 20 %** avec l'IA alors qu'ils mettaient **19 % de temps en plus** ; conseil : mesurer soi-même.\n- **Dette cognitive** : une petite étude sur la rédaction d'essais montre moins de créativité avec un LLM, un oubli d'une grande partie de ce qui a été produit et un moindre sentiment de propriété ; elle avoue elle-même écrire moins bien depuis que des agents rédigent ses mails.\n- Créativité vue comme un **muscle** : techniques (six chapeaux, cartes mentales, chindogu), rythmes cérébraux, méditation, marche, biorythmes ; les deux premières phases du processus créatif (préparation, idéation) restent difficiles à déléguer.\n- Trois conseils : commencer petit, **faire d'abord seul puis comparer avec l'IA**, et utiliser l'IA après la phase divergente, pas avant.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "8gjlhK-eZZg",
+        "title": "Coder avec l'IA sans perdre sa créativité - Alexandra Zakharova",
+        "publishedAt": "2026-10-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "vibe-coding-12-mois-avec-claude-code-retour-d-experience",
+      "day": "2026-10-02",
+      "type": "talk",
+      "title": "Vibe Coding : 12 mois avec Claude Code, retour d'expérience",
+      "speakers": ["David Tavoularis — Mycom"],
+      "feedbackFrom": [],
+      "summary": "- Présente les **8 niveaux d'ingénierie agentique** de Bassim Eledath (mars 2026), de l'autocomplétion (environ 10 % de gain mesuré en interne) aux équipes d'agents, en passant par le context engineering, les feedback loops (avec l'étape « codify » que *« tout le monde saute »*), MCP et skills, puis l'orchestration où les gains deviennent forts.\n- Chez Mycom, une **marketplace interne d'une centaine de skills** sert d'onboarding ; conseil de travailler sur plusieurs sessions en parallèle plutôt que de regarder l'agent, au prix d'une fatigue cognitive.\n- **Tickets d'incident** : Claude a noté la qualité des tickets (3,4 puis 4,3 étoiles sur 5) ; un agent autonome produit une root cause analysis et **80 % des tickets sont résolus de façon automatisée**, les experts se concentrant sur les 20 % restants.\n- **Legacy** : une migration d'API Elasticsearch qui touchait en fait **150 dépôts** ; environ 40 jours de travail contre 400 estimés (par l'agent lui-même, chiffre qu'il juge peut-être exagéré), zéro bug en production grâce au **harness** de tests.\n- Spec-driven development : une feature de 3 à 4 semaines livrée en 2 à 3 jours quand tout le monde était disponible ; même délai mais meilleure qualité sur un autre projet ; échec quand les parties prenantes ne s'accordaient pas sur la spec.\n- Sécurité (Cyber Resilience Act), gains mesurés (facteur 3 en maintenance, 50 à 60 % sur la R&D globale) et **« enfer de la revue de code »** : relectures par skills puis par un collègue. Conclusion : le métier est de résoudre des problèmes, *« gardez votre esprit critique »*.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "IcXAT5cqpoA",
+        "title": "Vibe Coding : 12 mois avec Claude Code, retour d'expérience - David Tavoularis",
+        "publishedAt": "2026-10-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "l-ia-au-service-du-metier-penser-le-besoin-avant-d-accelerer-le-code",
+      "day": "2026-10-02",
+      "type": "talk",
+      "title": "L'IA au service du métier : penser le besoin avant d'accélérer le code",
+      "speakers": ["Guillaume Lebourgeois — Pictaderm"],
+      "feedbackFrom": [],
+      "summary": "- Point de départ : sur une plateforme de télé-expertise dermatologique, remplacer une image pousse l'IA à **supprimer l'ancienne** (5 cas sur 5 avec un prompt nu, même en précisant le contexte HDS), alors qu'une donnée de santé ne doit jamais disparaître.\n- Correctif : un **ADR** interdisant la suppression, un commentaire de code qui pointe vers lui (suffisant à lui seul dans 100 % de ses essais), puis une **règle de lint** et un **test unitaire** pour le déterminisme.\n- Métaphore de la voiture (LLM moteur, harness carrosserie, agent conducteur) et trois piliers : **panneaux** (CLAUDE.md court qui pointe vers la culture d'ingénierie, skills dont un glossaire métier, ADR, Linear, Notion via MCP), **aides à la conduite** (agents relecteurs), **glissières** (vérifications déterministes).\n- Relecteurs spécialisés à **contexte propre** : l'agent d'architecture est le plus utilisé ; l'agent UX, sans design system à se mettre sous la dent, a été abandonné au profit d'itérations visuelles rapides.\n- Limites : un agent d'architecture a levé une fausse alerte critique à cause d'un **message de commit trompeur** ; vérifier d'où viennent ses informations.\n- Glissières : typage, lint, tests au commit, au push et avant publication OTA, test qui vérifie qu'un décorateur de throttling est bien accompagné de son guard. *« Ce qui est déterministe, c'est de la charge mentale en moins. »* Faute de temps, les démos terminal ont été écourtées.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "3fM5uZ47N0g",
+        "title": "L'IA au service du métier : penser le besoin avant d'accélérer le code - Guillaume Lebourgeois",
+        "publishedAt": "2026-10-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "je-malmene-ton-llm-en-direct-avec-10-failles-de-securites",
+      "day": "2026-10-02",
+      "type": "talk",
+      "title": "Je malmène ton LLM en direct avec 10 failles de sécurités",
+      "speakers": ["Gaëtan Eleouet — Meritis"],
+      "feedbackFrom": [],
+      "summary": "- Sous-titre : *« la sécurité, c'est aussi une affaire de dev »*. Ouverture sur une série d'incidents récents (assistants de Meta, Salesforce, ServiceNow, Gemini, Cursor, Copilot, OpenClaw) et sur l'attaque de **GitLab Duo**, qui enchaînait cinq failles du **Top 10 OWASP pour les LLM** pour exfiltrer du code privé.\n- Démonstration en direct sur son application de bibliothèque avec assistant : fuite du prompt système, injection de prompt, divulgation de données personnelles, **agentivité excessive** (16 emprunts déclenchés), dépendance compromise, empoisonnement de données via la fiche d'un livre, hallucinations, faiblesses des embeddings, XSS via la sortie du LLM, consommation non bornée.\n- Parades récurrentes : jamais de secret dans le prompt système, **guardrails** en entrée et en sortie (souvent un petit LLM dédié), permissions minimales, humain dans la boucle pour les actions qui comptent, SBOM et sandbox, quotas et timeouts.\n- Message central : **valider la sortie du LLM comme une entrée utilisateur non fiable**, et couper l'un des trois côtés du « triangle » données privées, contenu non fiable, communication externe, par exemple via une **sortie structurée** (enum, identifiant numérique, date) exécutée par un composant séparé.\n- Démo perturbée par le réseau, mais la conclusion est nette : intégrer un LLM, c'est intégrer un **acteur externe non fiable** qu'on isole, contrôle, surveille et teste comme tout composant critique.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "Xe4NJIutjLQ",
+        "title": "Je malmène ton LLM en direct avec 10 failles de sécurités - Gaëtan Eleouet",
+        "publishedAt": "2026-10-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-mes-6-annees-d-etudes-litteraires-cinematographiques-me-permettent-de-prompter-plus-efficacement-qu-un-ingenieur",
+      "day": "2026-10-02",
+      "type": "lightning",
+      "title": "Comment mes 6 années d'études littéraires/cinématographiques me permettent de prompter plus efficacement qu'un ingénieur ?",
+      "speakers": ["Camille Toulouse — OCTO Technology"],
+      "feedbackFrom": [],
+      "summary": "- Quickie de 15 minutes : parcours atypique (bac littéraire, cinéma, assistante-réalisatrice, Disney, reconversion) et constat d'un écart entre ses prompts « romans » et le besoin de l'IA : **contexte concis, vocabulaire métier ciblé, phrases courtes**.\n- **Vocabulaire** : remplacer les verbes génériques (faire, donner) par des verbes qui annoncent le résultat (rédiger, schématiser, lister, instruire). Exemple vécu : passé d'Opus à Sonnet pour réduire les coûts, il a fallu écrire « instruis l'US » là où Opus devinait seul.\n- **Découpage** : séparer contexte métier (qui peut vivre dans CLAUDE.md), besoin métier et besoin technique, et borner le périmètre (« pas de refactoring en dehors »), pour éviter les merge requests de plus de 1 000 lignes.\n- Son cursus comme atout : analyse filmique pour challenger le besoin, storyboard pour découper, théâtre pour se mettre à la place de l'utilisateur ; le métier de développeur glisse vers celui de product owner.\n- Conseil : **écrire** pour enrichir son vocabulaire, en écho à la keynote du matin ; moins d'itérations, c'est moins de tokens.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "JwWNctvtN_k",
+        "title": "Comment mes 6 années d'études littéraires/cinématographiques me permettent de… - Camille Toulouse",
+        "publishedAt": "2026-10-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-et-pourquoi-enseigner-le-developpement-en-iut-et-ecole-d-ingenieur-a-l-ere-des-llms",
+      "day": "2026-10-02",
+      "type": "lightning",
+      "title": "Comment (et pourquoi) enseigner le développement en IUT et école d'ingénieur à l'ère des LLMs ?",
+      "speakers": [
+        "Vincent Barreaud — ENSSAT",
+        "Pierre Alain — IUT de Lannion"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Déclencheur : un TP prévu pour 4 heures réalisé en quelques minutes par Claude. Les 4 heures servaient à **acquérir la compréhension**, pas seulement à produire ; or comprendre une réponse toute faite est bien plus facile que la formuler.\n- Les enseignants arrivent *« avec des doutes, aucune réponse »*, entre collègues qui refusent l'IA et d'autres qui y voient une révolution.\n- Pierre Alain : pour cadrer un LLM il faut une posture de senior, mais les LLM prennent les tâches simples sur lesquelles on devenait senior. Le développeur ne doit pas devenir **« le canard en plastique du LLM »**.\n- Proposition à volume horaire constant : garder algorithmique, conception, tests, débogage ; réduire ce que les IDE automatisaient déjà ; ajouter **relecture de code et contrôle d'agents**, plutôt en fin de cursus.\n- Vincent Barreaud, via le triangle pédagogique de Houssaye : le LLM toujours présent prend la place de l'enseignant trop tôt, efface la difficulté et donne un faux sentiment de maîtrise ; d'où l'idée de **difficultés désirables** et d'échec productif.\n- Ligne retenue : **usage critique plutôt qu'interdiction**, conceptuel plutôt que syntaxe, avec la réserve que le discours pourrait changer dans six mois.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "VYe1oa_fjok",
+        "title": "Comment (et pourquoi) enseigner le développement en IUT et école… - Vincent Barreaud & Pierre Alain",
+        "publishedAt": "2026-10-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "sobriete-agentique-comment-coder-avec-l-ia-sans-vider-son-portefeuille-ni-vider-la-planete",
+      "day": "2026-10-02",
+      "type": "talk",
+      "title": "Sobriété Agentique : Comment coder avec l'IA sans vider son portefeuille (ni vider la planète) ?",
+      "speakers": ["Clément Juste — Shodo"],
+      "feedbackFrom": [],
+      "summary": "- Prémisse honnête : *« on va pas sauver la planète »* ; il s'agit de limiter le coût financier et écologique d'un usage devenu imposé par certains clients, en prenant le **token** comme indicateur.\n- Rappels sur la tokenisation (BPE) : le découpage dépend du modèle et de la langue ; selon lui, un changement de tokenizer entre deux versions de Claude a produit environ 30 % de tokens en plus pour le même texte. Être précis en français vaut mieux que mal écrire en anglais.\n- **Moins d'entrée** : RTK (Rust Token Killer), proxy local qui compresse la sortie des commandes (build Maven, logs, stack traces répétées). **Moins de sortie** : un skill « brief » maison, plus mesuré que le populaire « Caveman ».\n- **Mieux outiller l'agent** : un LSP (utile sur les grosses bases, pas sur les petites) puis un graphe de code local (Codebase Memory, 12 secondes d'indexation sur son plus gros projet client), réindexé par hook à chaque session.\n- **Hygiène du contexte** : un skill « canari » qui fait préfixer chaque réponse d'un mot pour repérer la perte des consignes, une status bar qui affiche modèle et taux de remplissage, `/clear` entre les tâches, mode plan découpé en sous-agents avec cases à cocher pour reprendre après un nettoyage.\n- Amélioration continue : en fin de session, faire analyser les problèmes rencontrés pour **corriger le harness** (mémoire de la RAM nécessaire au build, Docker hors sandbox, skills inutilisés supprimés).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "Mz8IXKggDMc",
+        "title": "Sobriété Agentique : Comment coder avec l'IA sans vider son portefeuille (ni vider… - Clément Juste",
+        "publishedAt": "2026-10-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "de-l-autocomplete-a-l-autopilot-comment-l-ia-a-transforme-ma-vie-de-developpeur",
+      "day": "2026-10-02",
+      "type": "talk",
+      "title": "De l'autocomplete à l'Autopilot : Comment l'IA a transformé ma vie de développeur",
+      "speakers": ["Tugdual Grall — GitHub"],
+      "feedbackFrom": [],
+      "summary": "- Retour trois ans après sa venue de 2023, avec un discours assumé de vendeur. Chez GitHub, l'équipe de Copilot CLI (montée à l'été 2025 après la surprise Claude Code) a mergé **500 pull requests par semaine à 10 développeurs**, ce qui suppose de ne presque plus lire le code et de s'équiper en conséquence.\n- Exemple de réécriture complète du SDK : 3 semaines, une personne, environ **120 000 dollars de crédits**, contre 1,5 à 2 ans estimés pour trois développeurs ; *« n'attendez pas d'avoir une dette technique »*.\n- Choisir l'usage selon le projet (innovation, migration, maintenance) ; les projets de maintenance sont le bon endroit pour **intégrer et recruter des juniors**.\n- Démos (réseau difficile) : application desktop Copilot devenue son point d'entrée, agent qui surveille les issues et ouvre des PR dans des **git worktrees**, variantes de design générées par plusieurs modèles avec captures dans les PR, analyse de performance par trois modèles en parallèle, commande de débat contradictoire pour apprendre.\n- Sur le coût, il conseille de **regarder le crédit et non les tokens** (analyse à 57 centimes malgré 850 000 tokens, en grande partie en cache) et de rejouer un benchmark maison à chaque nouveau modèle ou harness.\n- Qualité : peu importe le formatage si on ne lit plus le code, mais tests d'intégration, scans SAST et autofix systématiques, et **équipes QA en début de cycle**. Il reconnaît ne plus savoir coder sans IA, tout en apprenant beaucoup grâce à elle.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "hmnKiNXj6t0",
+        "title": "De l'autocomplete à l'Autopilot : Comment l'IA a transformé ma vie de développeur - Tugdual Grall",
+        "publishedAt": "2026-10-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "coder-moins-encadrer-plus-le-nouveau-metier-de-developpeur",
+      "day": "2026-10-02",
+      "type": "keynote",
+      "title": "Coder moins, encadrer plus : le nouveau métier de développeur ?",
+      "speakers": ["Vincent Hardy"],
+      "feedbackFrom": [],
+      "summary": "- Keynote de clôture d'un enfant du pays (ex-Sun, W3C/SVG, Adobe, Meta), qui part de **La Bibliothèque de Babel** de Borges : dans un monde d'abondance, le problème n'est plus d'écrire mais de **choisir**. Il propose la curiosité critique plutôt que l'euphorie, la peur ou le rejet.\n- Trois enjeux : **périmètre** (prototyper et jeter sans retenue pour décider, mais *« ce n'est pas parce qu'on peut qu'il faut le faire »*), **qualité**, **pérennité** du logiciel qu'on garde.\n- Pratique dans sa société d'art numérique, volontairement simple : une issue, une PR, une branche, un worktree ; plan revu par deux IA en revue adverse (Claude et Codex) puis **validé par un humain**, ensuite TDD et CI sans arrêt jusqu'au merge, sans revue de code systématique.\n- Le contexte est central : skills par type de ticket, documentation d'architecture, mémoire consolidée dans GitHub entre sessions, CLI maison pour exposer l'API du produit ; **hooks** qui refusent une PR si les tests pertinents n'ont pas tourné.\n- Pérennité : **tests de dérive**, audits ponctuels par l'IA, documentation du pourquoi, car l'humain hérite des cas où l'IA échoue, souvent les plus durs, avec moins de familiarité avec le code.\n- Mises en garde : **charge cognitive** du passage incessant d'un agent à l'autre, IA inégale selon les domaines (excellente en web, faible en WebGPU bas niveau), et **inversion de dépendance** pour ne pas être prisonnier d'un outil. Le métier : choisir quoi faire, vérifier, garder la maîtrise.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "zjaxzKKQaKc",
+        "title": "Coder moins, encadrer plus : le nouveau métier de développeur ? - Vincent Hardy",
+        "publishedAt": "2026-10-02",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [],
+  "sources": [
+    { "label": "Site officiel et programme (Code d'Armor)", "url": "https://devfest.codedarmor.fr" },
+    { "label": "Playlist YouTube DevFest Perros-Guirec 2026", "url": "https://www.youtube.com/playlist?list=PLHigI4p3vVKc" },
+    { "label": "Chaîne YouTube Code d'Armor", "url": "https://www.youtube.com/@codedarmor5402" },
+    { "label": "Appel à orateurs (Conference Hall)", "url": "https://conference-hall.io/devfest-perros-guirec-2026" },
+    { "label": "Page GDG Code d'Armor", "url": "https://gdg.community.dev/events/details/google-gdg-code-darmor-presents-devfest-perros-guirec-2026-coder-moins-penser-plus/" },
+    { "label": "Annonce Technopole Anticipa", "url": "https://www.technopole-anticipa.com/evenement/devfest-2026-coder-moins-penser-plus/" },
+    { "label": "Posts LinkedIn : aucun retour participant trouvé au 3 octobre 2026" }
+  ]
 }

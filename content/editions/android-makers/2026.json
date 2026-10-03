@@ -1,0 +1,571 @@
+{
+  "event": "android-makers",
+  "year": 2026,
+  "title": "Android Makers by droidcon 2026",
+  "start": "2026-04-09",
+  "end": "2026-04-10",
+  "city": "Paris",
+  "venue": "Beffroi de Montrouge",
+  "url": "https://androidmakers.droidcon.com",
+  "programUrl": "https://androidmakers.droidcon.com/droidcon-agenda",
+  "dateConfidence": "ok",
+  "note": "Dates et lieu relevés sur le site officiel (« 9 - 10 April 2026, Paris », Beffroi de Montrouge). Le site annonce 90 speakers et panélistes, 70 sessions et workshops, 700 développeurs Android. Programme Sessionize : 65 créneaux sur 5 salles (Moebius, Grand Salon, Blin, 2.02 et une salle 2.04 dédiée aux « Unconference Roundtables » et « App Clinic »), deux keynotes d'ouverture et une clôture avec remise du « Pin-Droid ». Comité de programme communautaire (Alexandre Bruneau, Soriya Thach, Gérard Paligot, Carmen Alvarez, Julien Salvi, Julie Gléonnec, Marie Benoit, Greg Fawson, Zachary Powell). Édition 2027 non encore annoncée.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-03",
+  "revisit": "Corpus participant très mince : aucun post LinkedIn ni article de blog de participant trouvé (budget de 8 recherches web), seulement quelques posts Bluesky (majoritairement de speakers) et une newsletter. Synthèse fondée surtout sur 16 transcripts YouTube et le programme Sessionize.",
+  "corpus": "Programme Sessionize complet (65 sessions, descriptifs) et page officielle ; 16 transcripts automatiques de vidéos de la playlist officielle 2026 (53 vidéos publiées entre le 5 et le 24 mai 2026), dont les deux keynotes ; une dizaine de posts Bluesky d'avril à mai 2026 (Bladecoder, Iury Souza, et des speakers annonçant leur talk ou sa vidéo) ; la newsletter jetc.dev n° 316 ; le micro-blog de Dmitry Kandalov.",
+  "limits": "Aucun retour LinkedIn, Medium ou blog de participant trouvé, alors que l'événement réunit plusieurs centaines de personnes : la synthèse reflète ce qui a été dit sur scène bien plus que ce que la salle en a retenu. Les transcripts sont générés automatiquement (noms propres parfois déformés, talk d'Infomaniak très bruité). Ateliers, roundtables et App Clinic ne sont pas filmés ; une trentaine de talks filmés n'ont pas été transcrits ici.",
+  "tldr": "Une édition où **l'IA domine les keynotes sans faire consensus** : outillage agentique officiel (Android Studio, Gemini Nano, Claude Code) d'un côté, mises en garde chiffrées sur la productivité réelle, l'érosion des compétences et la place de l'humain de l'autre, le tout au milieu de talks très techniques (KMP, Compose, performance, réseau, ADB) qui restent le cœur de la conférence.",
+  "keyTakeaways": [
+    "Traiter l'IA comme un outil de productivité qui exige plus de garde-fous, pas moins : CI stricte (lint, analyse statique, tests), revues rigoureuses, fichier AGENTS.md court (Chordiya, Pérez, Milanovic et Alcérreca).",
+    "Remplacer le prompt ad hoc par une spec persistée et relue par un second modèle, et garder l'humain responsable du merge : « la responsabilité n'est pas transférée à l'agent » (Pérez).",
+    "Se méfier de l'impression de vitesse : plusieurs études citées sur scène (METR, DORA 2025, GitClear) montrent des développeurs qui se croient plus rapides en étant plus lents, et moins de refactoring (Chordiya, Geisler).",
+    "Penser « ingénieur logiciel spécialisé Android » plutôt que « dev Android » : architecture, profil en T, multi-form-factor (téléphone, desktop, auto, XR) et KMP (Chordiya, Powell).",
+    "Migrer vers KMP de façon incrémentale et ascendante, en modernisant d'abord l'app (Kotlin, KSP, coroutines, Compose, Ktor), et partager d'abord la logique métier plutôt que l'UI (Braun, Infomaniak).",
+    "Préférer l'interop Compose progressive à la réécriture, prouvée par expérimentation sur les métriques produit, en migrant d'abord le code activement développé (Instagram).",
+    "Mesurer avant d'optimiser : Perfetto, method sampling, Play Console (taux de low memory kills), ApplicationExitInfo ; précharger les données au clic plutôt qu'au démarrage de l'écran (Kozak, Lam).",
+    "Tester HTTP/3 via le bridge Cronet-OkHttp dans une expérience, en surveillant les marchés à forte perte de paquets où le CDN peut faire régresser la latence (Chidera).",
+    "Pour les fonctions IA in-app, commencer on-device (ML Kit GenAI, Gemini Nano) et prévoir un repli cloud via Firebase AI Logic (Verhoef)."
+  ],
+  "sessions": [
+    {
+      "id": "thriving-in-an-ai-era",
+      "day": "2026-04-09",
+      "type": "keynote",
+      "title": "Thriving in an AI era",
+      "speakers": [
+        "Akshay Chordiya — Marshmallow"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Thèse sur scène** : l'IA est un outil de productivité, pas un remplaçant. Les licenciements tech viennent surtout de la surembauche post-pandémie, l'IA servant de **« bouc émissaire »** (étude HBR de janvier 2026 citée : 60 % des entreprises ont coupé sur le potentiel de l'IA, 2 % sur sa performance réelle).\n- Un LLM est *« une machine à prédire, pas une machine à vérité »* : d'où une **« taxe de correction »** (étude METR citée : des devs expérimentés qui se croient 20 % plus rapides et sont 19 % plus lents ; 66 % des devs passent plus de temps à corriger du code « presque juste » selon Stack Overflow).\n- Remèdes proposés : **CI plus stricte** (lint, analyse statique, tests), revues de code rigoureuses, fichier agents.md.\n- Trois piliers de carrière : **penser en architecte** (effets en cascade, arbitrages), **profil en T** (« un ingénieur logiciel qui se spécialise en Android »), adaptabilité. L'IA « agrandit la tarte » : quand le logiciel coûte moins cher, on en construit plus.\n- Juniors : chute des offres d'entrée de gamme (-67 % entre 2023 et 2024 selon les chiffres cités) ; conseil de raconter en entretien les bugs, compromis et hallucinations rattrapées, et de publier ses propres apps.\n- Conclusion : *« penser systèmes, pas syntaxe »* ; un humain reste responsable, l'IA n'ayant pas de responsabilité légale.\n- Aucun retour de participant trouvé sur cette keynote d'ouverture.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "dl1YMYPNFpM",
+        "title": "Thriving in an AI era - Android Makers by droidCon 2026",
+        "publishedAt": "2026-05-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "whats-new-in-android-studios-ai-agent",
+      "day": "2026-04-09",
+      "type": "talk",
+      "title": "What's new in Android Studio's AI Agent?",
+      "speakers": [
+        "Simona Milanovic — Google",
+        "Jose Alcérreca — Google"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Objectif affiché** : faire de l'agent d'Android Studio l'agent le plus compétent et fiable pour Android, avec le choix du modèle (Gemini, OpenAI, Anthropic, local avec clé API, ou modèle gratuit par défaut). Tout en démo live.\n- **Outils spécialisés** (/tools) : Gradle, recherche dans la doc Android, capture d'écran, rendu de preview Compose, lookup de versions. Conseil : décrire le problème et laisser le modèle choisir l'outil.\n- **Android knowledge base** pour les API récentes (Navigation 3, Android XR) ; astuce : ajouter « consulte la doc officielle » au prompt.\n- **MCP** : démo Figma, écran Compose généré « pixel perfect ». **AGENTS.md et skills** : commencer petit (seulement ce que le modèle rate), mettre des liens plutôt que copier la doc, profiter de la hiérarchie par module ; skills pour les workflows, AGENTS.md pour la connaissance du code.\n- « Create with AI » génère une app depuis un prompt (10 à 20 minutes), **réservé aux prototypes**. Clic droit sur la preview : changer l'UI, l'aligner sur une image cible, corriger les problèmes d'accessibilité (contrastes).\n- Pas de retour participant trouvé.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "w_12KhfAlGA",
+        "title": "What's new in Android Studio's AI Agent? - Android Makers by droidCon 2026",
+        "publishedAt": "2026-05-06",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-nos-devs-ios-ont-adopte-kmp",
+      "day": "2026-04-09",
+      "type": "talk",
+      "title": "Comment nos devs iOS ont adopté KMP ?",
+      "speakers": [
+        "Louis CAD — Infomaniak",
+        "Jordan Chapelle — Infomaniak"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Talk en français, en binôme **Android + iOS** : l'adoption de KMP chez Infomaniak tient à un contexte d'équipe favorable et à un **partage de code partiel et progressif**.\n- **Swiss Transfer** (open source) : logique métier, API (Ktor) et stockage (Realm puis Room) partagés ; **UI en SwiftUI** et intégrations système (extension de partage, transferts en arrière-plan) natives.\n- **Étiquette** (scanner de billets) : l'algorithme de décodage donnait des résultats différents en Swift ; le partager en KMP a unifié résultats, erreurs et statistiques.\n- Frictions côté iOS : réimport du XCFramework hors monorepo, types KotlinInt/KotlinLong dans les génériques ; points positifs : les fonctions suspend deviennent async/await. Swift export (Kotlin 2.4) doit réduire le besoin de SKIE.\n- Compose Multiplatform sur iOS jugé peu pertinent pour tout l'écran (SwiftUI plus rapide pour un prototype selon Jordan Chapelle), intéressant pour de petits composants.\n- Message : *« nous on adore iOS »*, KMP permet **« l'union des équipes »** ; ne pas brider une plateforme à cause de l'autre. Transcript automatique très bruité.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "s6il6OPkFK4",
+        "title": "How did our iOS developers adopt KMP? - Android Makers by droidCon 2026",
+        "publishedAt": "2026-05-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "beyond-the-smartphone-androids-identity-crisis-in-2026",
+      "day": "2026-04-09",
+      "type": "lightning",
+      "title": "Beyond the Smartphone: Android's Identity Crisis in 2026",
+      "speakers": [
+        "Zachary Powell — droidcon"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Thèse** : Android n'est plus un OS de téléphone ; la « crise d'identité » est un problème de marque pour Google mais **une opportunité pour les devs** (TV, consoles portables, foldables, desktop, XR, auto, plus KMP vers iOS, desktop et web).\n- Sondage dans la salle : peu de participants ciblent autre chose que le mobile.\n- Construire un **UI state qui s'adapte au conteneur** et des entrées abstraites (télécommande, clavier, XR), avec window size classes et layouts adaptatifs.\n- **Android 17 (SDK 37)** : sur grand écran, les restrictions d'orientation, de redimensionnement et d'aspect ratio sont ignorées ; le mode desktop n'est plus expérimental.\n- Auto : test du « blink » de 2 secondes, templates de la car app library, la voix comme meilleure UI.\n- Formule de clôture : *« nous ne sommes plus des développeurs mobiles, mais des développeurs edge qui utilisent Kotlin »* (lightning talk, présentation elle-même réalisée en KMP).",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "eTO5lN1lP78",
+        "title": "Beyond the Smartphone: Android's Identity Crisis in 2026 - Android Makers by droidCon 2026",
+        "publishedAt": "2026-05-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "build-intelligent-android-apps-with-googles-ai",
+      "day": "2026-04-09",
+      "type": "talk",
+      "title": "Build intelligent Android apps with Google's AI",
+      "speakers": [
+        "Jolanda Verhoef — Google"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Actualité : **Gemma 4**, lancé la semaine précédente, sert de base à la prochaine génération de **Gemini Nano** ; accès anticipé via l'AICore developer preview (jusqu'à 4 fois plus rapide et 60 % de batterie en moins selon des tests préliminaires cités). Nouvelles API : system prompts, thinking mode, sortie structurée, tool calling.\n- **On-device** (données sensibles, hors-ligne, sans coût d'inférence) : ML Kit GenAI (résumé, correction, réécriture, description d'image), Prompt API (plus flexible mais exige ses propres evals), reconnaissance vocale. **LiteRT-LM** pour des modèles custom : prendre le plus petit modèle fiable.\n- **Hybride** : Firebase AI Logic propose « prefer on-device, fallback cloud » avec une seule API, plus App Check, Remote Config des prompts et monitoring des coûts.\n- **Gemini Live API** (GA) pour la voix et la vidéo temps réel, function calling pour boucler l'agent côté app ; côté cloud, ADK, A2A, MCP et AG-UI avec un SDK Kotlin, l'app devenant un « client léger ».\n- Pas de retour participant trouvé.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "5DlcAPekoFs",
+        "title": "Build intelligent Android apps with Google's AI - Android Makers by droidCon 2026",
+        "publishedAt": "2026-05-10",
+        "transcript": true
+      }
+    },
+    {
+      "id": "extreme-programming-with-ai",
+      "day": "2026-04-09",
+      "type": "talk",
+      "title": "Extreme Programming with AI?",
+      "speakers": [
+        "Matthias Geisler — Airalo"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **État des lieux critique**, « plus de questions que de réponses », qui relit l'IA à travers les valeurs d'XP (communication, simplicité, feedback, courage, respect). Il évoque le facteur humain : anxiété, « AI washing » des licenciements.\n- Études citées : **GitClear** (le copier-coller dépasse le déplacement de code en 2024, donc moins de refactoring), **DORA 2025** (90 % d'adoption, environ 30 % de faible confiance, plus de débit mais plus d'instabilité), une étude à laquelle il a participé (temps quasi identique avec ou sans IA), METR.\n- **Critique du spec-driven development** : il y voit *« du waterfall sans boucle de feedback »* ; l'IA tend vers la moyenne et amplifie les bonnes comme les mauvaises pratiques.\n- Pratique proposée : un « rubber duck » vocal où **l'humain navigue et l'IA conduit**, des sous-agents à responsabilité unique, des prototypes en direct avec les clients.\n- Objectif 2026 : *« sauver le plaisir du génie logiciel »* et combattre le slop. En Q&A : la revue de code est le vrai goulot (on lit plus lentement qu'on n'écrit) et les prix des outils devraient monter, les usages étant subventionnés.\n- Prolongé le lendemain par une roundtable « XP with AI? » (non filmée).",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "pz2qn6m_550",
+        "title": "Extreme Programming with AI? - Android Makers by droidCon 2026",
+        "publishedAt": "2026-05-11",
+        "transcript": true
+      }
+    },
+    {
+      "id": "zero-cost-observability-jetpack-multiplatform-tracing",
+      "day": "2026-04-09",
+      "type": "talk",
+      "title": "Zero* Cost Observability: A Deep Dive into the Jetpack Multiplatform Tracing Library",
+      "speakers": [
+        "Rahul Ravikumar — Google"
+      ],
+      "feedbackFrom": [
+        "Rahul Ravikumar (speaker, Bluesky)"
+      ],
+      "summary": "- D'après le descriptif officiel : présentation de la **nouvelle bibliothèque Jetpack Multiplatform Tracing** et de son implémentation, guidée par la contrainte du **coût « zéro »** (API conçue pour éviter les allocations).\n- Partie annoncée comme la plus complexe : **tracer une opération asynchrone** qui saute de thread en thread via la propagation du contexte de coroutine.\n- Le speaker a relayé la vidéo sur Bluesky en présentant la bibliothèque comme « Tracing 2.0 » et en sollicitant des retours d'utilisateurs. Talk non transcrit ici.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "d9Ya_YgDLOg",
+        "title": "Zero* Cost Observability: A Deep Dive into the Jetpack Multiplatform Tracing Library",
+        "publishedAt": "2026-05-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "one-android-dev-ten-ai-teammates-claude-code",
+      "day": "2026-04-09",
+      "type": "talk",
+      "title": "One Android Dev, Ten AI Teammates: Scaling Delivery With Claude Code",
+      "speakers": [
+        "Eury Pérez"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Thèse** : l'unité de travail n'est plus le prompt mais **une conversation qui aboutit à une spec persistée** ; Claude interviewe le dev (objectif, périmètre, patterns existants, impacts, hors périmètre, risques), puis un autre modèle relit la spec.\n- Il répond au scepticisme des devs Android (sondage JetBrains 2025 cité : 63 % jugent que l'IA rate le multi-module, 57 % qu'elle produit du Compose de mauvaise qualité) : le problème serait le **prompting ad hoc**, et *« bien utiliser ces outils est une compétence »*.\n- Cinq rôles à « voler » à une équipe humaine : kickoff, tech lead (orchestration), design review par un modèle frais, CI, **compounding** (documenter les apprentissages pour réduire l'effort par feature). Choix du modèle par rôle (Opus pour piloter, Sonnet pour exécuter, Haiku pour la doc), hooks déterministes.\n- Règles de production : deux essais puis escalade vers l'humain ; l'agent crée la PR mais ne merge pas, car **« la responsabilité n'est pas transférée à l'agent »**.\n- Face sombre : audit 2026 des skills partagées (environ 37 % avec faille, des dizaines de payloads malveillants) ; une skill n'est que du markdown, il faut l'auditer.\n- Plan d'action progressif (/init court, sous-agent QA, revue de PR automatisée, runs nocturnes) ; conclusion : *« ton job est promu, pas remplacé »*, tout en anticipant des équipes plus petites.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "UVE0z2lRXUc",
+        "title": "One Android Dev, Ten AI Teammates: Scaling Delivery With Claude Code - Android Makers by droidCon",
+        "publishedAt": "2026-05-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "how-adb-wifi-2-0-works",
+      "day": "2026-04-09",
+      "type": "talk",
+      "title": "How ADB Wifi 2.0 works",
+      "speakers": [
+        "Fabien Sanglard — Google"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Par le tech lead d'ADB : la v1 d'ADB Wi-Fi était **instable par conception et par ses dépendances** ; interrogés, 20 à 30 développeurs voulaient tous de la stabilité plutôt que des features.\n- Plongée dans l'architecture : serveur ADB multiplexeur, boucle mono-thread sur descripteurs de fichiers, passage de C à C++ puis Rust ; **mDNS** comme base de la découverte, appairage par QR code puis reconnexion automatique.\n- Problèmes de la v1 : arrêt au changement de réseau, spinner sans diagnostic dans Studio, dépendances mDNS lourdes (Apple, OpenScreen). Formule : les bibliothèques sont *« comme des cartes de crédit »*, on les rembourse plus tard.\n- **v2** : Android 17 réactive le débogage sur un réseau de confiance (SSID + BSSID), Studio liste les appareils visibles, **ADB 37 embarque sa propre bibliothèque mDNS en Rust** (environ 4 000 lignes).\n- Q&A riche : valable pour TV, Wear, XR ; « burst mode » désactivé par défaut (près de 30 % de gain à l'installation) ; joindre traces ADB et bugreport aux bugs.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "_CR44gRhad4",
+        "title": "How ADB Wifi 2.0 works - Android Makers by droidCon 2026",
+        "publishedAt": "2026-05-15",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ways-to-reduce-your-apps-memory-and-storage-footprint",
+      "day": "2026-04-09",
+      "type": "talk",
+      "title": "Ways to reduce your app's memory and storage footprint",
+      "speakers": [
+        "Fung Lam — Google"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Thèse** : réduire mémoire et stockage est l'un des meilleurs ROI qualité, car la mémoire élevée provoque jank, batterie, ANR et **low memory kills** (retour à un démarrage à froid).\n- Identifier : taux LMK dans la Play Console, API **ApplicationExitInfo** (REASON_LOW_MEMORY) pour journaliser le parcours avant la fermeture, profiler Android Studio (bitmaps dupliqués, détection de fuites intégrée).\n- Bitmaps : jamais d'image 4K dans une miniature, RGB_565 sans alpha, bitmaps matériels ; formats **WebP, HEIF, AVIF** (exemple cité : 1,2 Mo en JPEG, 270 Ko en AVIF).\n- Icônes vectorielles, polices téléchargeables, R8 avec shrinkResources ; attention à WebView et aux gros JSON.\n- Être un « bon citoyen » : onTrimMemory, désenregistrer les listeners, push FCM plutôt que polling, fichiers temporaires dans le cache.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "c1cnBYcoDbU",
+        "title": "Ways to reduce your app's memory and storage footprint - Android Makers by droidCon 2026",
+        "publishedAt": "2026-05-15",
+        "transcript": true
+      }
+    },
+    {
+      "id": "how-we-rebuilt-instagram-photo-sharing",
+      "day": "2026-04-09",
+      "type": "talk",
+      "title": "How We Rebuilt Instagram Photo Sharing: Compose Interoperability With Large Legacy Systems",
+      "speakers": [
+        "Brandon Pon — Instagram",
+        "Chris Arriola — Instagram"
+      ],
+      "feedbackFrom": [
+        "Newsletter jetc.dev n° 316 (sélection)"
+      ],
+      "summary": "- **Thèse** : migrer une énorme base legacy vers Compose passe par **l'interop incrémentale**, après avoir prouvé par expérimentation que Compose ne dégrade pas l'engagement.\n- Historique : preuve de concept en 2021, phase encadrée en 2023 (équipes produit accompagnées par l'équipe plateforme, contributions de performance avec Google), ouverture en 2024 ; **70 % des devs Android internes préfèrent Compose** selon un sondage interne ; Compose retenu comme « North Star » face à Litho.\n- Deux tests A/B (bouton de recadrage, barre du bas) : impact neutre sur l'engagement, l'hypothèse étant que la création de contenu est moins sensible à la performance que la consommation.\n- Détails d'interop : le bloc update d'AndroidView doit être idempotent, DisposableEffect plutôt que SideEffect, appels directs à la vue pour les valeurs qui changent vite (force d'un filtre).\n- Conseils : migrer d'abord le code activement développé et les composants réutilisables, laisser tranquille le legacy stable. Retenu dans la sélection Compose de jetc.dev.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "io2z24e8iBM",
+        "title": "How We Rebuilt Instagram Photo Sharing: Compose Interoperability With Large Legacy Systems",
+        "publishedAt": "2026-05-15",
+        "transcript": true
+      }
+    },
+    {
+      "id": "maitriser-le-liquid-glass-flou-jetpack-compose",
+      "day": "2026-04-09",
+      "type": "talk",
+      "title": "Maîtriser le Liquid Glass : effets de flou avancés et performance dans Jetpack Compose",
+      "speakers": [
+        "Mathieu Hausherr — Swile"
+      ],
+      "feedbackFrom": [
+        "Newsletter jetc.dev n° 316 (sélection)"
+      ],
+      "summary": "- D'après le descriptif officiel : le designer, inspiré par **Liquid Glass** et le glassmorphism, veut du flou partout (barres translucides, dégradés de flou, overlays teintés), alors qu'**Android a mauvaise réputation sur le sujet**.\n- Question posée : Compose est-il prêt en 2026, et comment le faire **sans sacrifier fluidité ni accessibilité**, avec des overlays qui s'adaptent à leur contexte.\n- Le sujet a été repris par la newsletter jetc.dev (« can we compose some liquid for our glass? »). Talk non transcrit ici.",
+      "summarySources": [
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "n5gh7Ighgkc",
+        "title": "Maîtriser le \"Liquid Glass\" : Effets de flou avancés et performance dans Jetpack Compose",
+        "publishedAt": "2026-05-16",
+        "transcript": false
+      }
+    },
+    {
+      "id": "shipping-smart-ui-with-remotecompose",
+      "day": "2026-04-09",
+      "type": "talk",
+      "title": "Shipping Smart UI with RemoteCompose",
+      "speakers": [
+        "Nicolas Roard — Google",
+        "Yuri Schimke — Google",
+        "John Hoford — Google"
+      ],
+      "feedbackFrom": [
+        "Bladecoder (Bluesky)",
+        "Nicolas Roard (speaker, Bluesky)",
+        "Newsletter jetc.dev n° 316 (sélection)"
+      ],
+      "summary": "- **Sur scène** : RemoteCompose projette une UI hors du process (widgets, notifications, autres appareils) sous forme d'un **document binaire compact et autonome** (commandes de dessin, composants, expressions, interactions locales), sans gérer le transport. *« Petit, c'est une fonctionnalité »*.\n- Producteurs : DSL Kotlin (utilisable côté serveur), API Compose ; players Compose, View et RemoteViews depuis Android 16. Démos : document de 2 Ko sur une carte NFC, QR code, particules, ESP32, exemple de 422 octets envoyé comme widget.\n- API préfixées « Remote » (RemoteModifier, RemoteMaterialTheme), actions à la place des lambdas ; **API en alpha**, développée ouvertement dans AndroidX ; les LLM la manipulent bien grâce au format compact. Les slides elles-mêmes étaient en RemoteCompose.\n- Q&A : Glance reste la voie pour les widgets sur toutes les versions, RemoteCompose pour widgets n'existant que depuis Android 16.\n- **Côté participants** : Bladecoder a salué le retour sur scène de Nicolas Roard et John Hoford pour parler de *« l'intrigant RemoteCompose »* ; Nicolas Roard (speaker) a présenté la vidéo comme un bon panorama du projet sur lequel il travaille depuis trois ans.",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "2O-uClv9R3o",
+        "title": "Shipping \"Smart UI\" with RemoteCompose - Android Makers by droidCon 2026",
+        "publishedAt": "2026-05-16",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-viewmodel-performance-trap",
+      "day": "2026-04-09",
+      "type": "talk",
+      "title": "The ViewModel Performance Trap: When State Management Bites Back",
+      "speakers": [
+        "Sinan Kozak — Delivery Hero"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Titre « clickbait » assumé : le ViewModel n'est pas mauvais, mais il a été conçu pour survivre aux changements de configuration et on lui fait **porter toute la logique**, ce qui ralentit le démarrage à grande échelle.\n- Diagnostic par **method sampling et Perfetto** : création eager de parsers JSON et de clients Retrofit dans l'injection ; paralléliser la création des ViewModels ou tout passer en lazy n'a pas marché chez eux.\n- Piège : viewModelScope utilise Dispatchers.Main.immediate, donc le résultat d'un chargement repasse par le main thread et arrive **après la première frame**. Solution : injecter son propre scope IO (avec un handler d'exceptions) et migrer de LiveData vers les flows.\n- **Précharger au clic, avant la navigation**, fait gagner 300 à 600 ms ; l'écran d'accueil est préchargé dans un cache local. En Q&A : ces changements ont augmenté les commandes de façon significative, sans A/B test systématique.\n- Changer de dispatcher le plus bas possible, comparer temps mur et temps CPU ; il suggère de brancher Perfetto à un MCP pour interroger les traces en SQL.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "fp4x7vlbeRw",
+        "title": "The ViewModel Performance Trap: When State Management Bites Back - Android Makers by droidCon 2026",
+        "publishedAt": "2026-05-17",
+        "transcript": true
+      }
+    },
+    {
+      "id": "43-refactorings-in-40-minutes",
+      "day": "2026-04-09",
+      "type": "talk",
+      "title": "43 Refactorings in 40 minutes",
+      "speakers": [
+        "Dmitry Kandalov",
+        "Duncan McGregor"
+      ],
+      "feedbackFrom": [
+        "Dmitry Kandalov (speaker, micro-blog, annonce avant l'événement)"
+      ],
+      "summary": "- **Démo live en TCR** (test && commit || revert) sur une base Kotlin serveur, avec un compteur de refactorings : l'objectif de 43 est **atteint avant la fin**.\n- Dmitry Kandalov : extract variable, convert parameter to receiver, change signature, aplatissement d'une gestion de Result (early return, invert if, lift return). Heuristique : *« si une chose n'est utilisée qu'une fois, essayer de l'inliner et voir si c'est mieux »*.\n- Duncan McGregor : extensions converties en méthodes puis en opérateurs, technique du « switcheroo » (extraire puis inliner pour corriger tous les appelants), classe transformée en object, fun interface, lambda puis typealias.\n- Message : l'**artisanat humain à l'ère de l'IA** ; les refactorings déterministes de l'IDE restent plus fiables que l'IA, qui les utilise via MCP « pas très intelligemment ». En amont, Kandalov se demandait si ce serait « la dernière fois que des humains utilisent un IDE pour éditer du code ».",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "DhJqO4RhcK0",
+        "title": "43 Refactorings in 40 minutes - Android Makers by droidCon 2026",
+        "publishedAt": "2026-05-17",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ai-agents-face-off-same-app-multiple-frameworks",
+      "day": "2026-04-10",
+      "type": "keynote",
+      "title": "AI Agents Face-Off: Same App, Multiple Frameworks",
+      "speakers": [
+        "Elaine Dias Batista — SFEIR"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Protocole** : construire la même app (login Firebase, API YouTube, cache local, carte, tri et filtre) en **Android natif, Flutter et React Native** avec plusieurs agents de code, à partir de specs markdown et de guidelines, sans utiliser ses propres connaissances. Critère « done » : ça marche.\n- V1 (septembre 2025, Claude Code, Gemini CLI, Junie : 9 apps en une dizaine de jours) : **Android natif gagne en RAM**, CPU équivalent, APK React Native nettement plus lourd.\n- V2 (mars 2026, Codex remplace Junie, fichiers CLAUDE.md, GEMINI.md, AGENTS.md) : trois runs par configuration, plus de la moitié en one-shot, **trois fois plus d'apps en environ trois jours**.\n- V3 (la semaine du talk, 27 apps) : qualité technique proche partout ; fonctionnel meilleur pour Claude et pour Android ; Claude consomme le moins de tokens, Gemini le plus.\n- Conclusion : **pas de verdict définitif** sur les frameworks ; l'enseignement porte sur la façon de faire travailler les agents. Appel à comparer technos ou bibliothèques avec des specs et des critères propres plutôt que par de longs POC. Limites reconnues en Q&A : aucune personnalisation (skills, hooks), comparaison des tokens entre agents incertaine.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "fn4xeY9Euy4",
+        "title": "AI Agents Face-Off: Same App, Multiple Frameworks",
+        "publishedAt": "2026-05-18",
+        "transcript": true
+      }
+    },
+    {
+      "id": "koin-kotlin-compiler",
+      "day": "2026-04-10",
+      "type": "talk",
+      "title": "Koin + Kotlin Compiler",
+      "speakers": [
+        "Arnaud Giuliani — Kotzilla"
+      ],
+      "feedbackFrom": [
+        "Arnaud Giuliani (speaker, Bluesky)"
+      ],
+      "summary": "- D'après le descriptif officiel et les posts du speaker : après plus de huit ans, **Koin s'appuie désormais sur le compilateur Kotlin**.\n- Annoncés : un **DSL plus sûr et automatisé**, un workflow par annotations, des index de dépendances précalculés et des **garanties à la compilation**, sans perdre la simplicité de Koin (intégration Navigation 3 citée).\n- Talk non transcrit ici ; aucun retour de participant trouvé.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "eny6bY-Shbg",
+        "title": "Koin + Kotlin Compiler = ♥️",
+        "publishedAt": "2026-05-19",
+        "transcript": false
+      }
+    },
+    {
+      "id": "going-multiplatform-with-your-android-app",
+      "day": "2026-04-10",
+      "type": "talk",
+      "title": "Going Multiplatform with Your Android App",
+      "speakers": [
+        "Márton Braun — JetBrains"
+      ],
+      "feedbackFrom": [
+        "Newsletter jetc.dev n° 316 (sélection)"
+      ],
+      "summary": "- **Thèse** : migrer vers KMP de façon **incrémentale et ascendante**, en préparant l'app pour que la bascule soit le plus petit pas possible ; pas de PR géante, rythme soutenable.\n- **Moderniser d'abord** : Java vers Kotlin, Gradle en Kotlin DSL, KAPT vers KSP, RxJava vers coroutines, vues vers Compose ; OkHttp vers Ktor (Ktorfit pour le style Retrofit), Moshi vers kotlinx.serialization ; Coil, Room et DataStore sont déjà multiplateformes (catalogue klibs.io).\n- **AGP 9** : les bibliothèques KMP ne gèrent plus variants ni builds natifs, à isoler dans un module Android séparé.\n- Compose Multiplatform : changer les artefacts, migrer les ressources ; côté iOS, un **module « umbrella »** produit un seul framework ; Swift export recommandé.\n- Q&A : des skills Kotlin pour la migration Android vers KMP sont à l'étude, sans calendrier.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "IgrYQw7CWQs",
+        "title": "Going Multiplatform with Your Android App",
+        "publishedAt": "2026-05-20",
+        "transcript": true
+      }
+    },
+    {
+      "id": "practical-on-device-ai-roundtable",
+      "day": "2026-04-10",
+      "type": "roundtable",
+      "title": "Practical On-Device AI: Turning Edge AI into Real Features",
+      "speakers": [
+        "Iury Souza — Klarna",
+        "Gabriel Volpi — iFood"
+      ],
+      "feedbackFrom": [
+        "Iury Souza (speaker, Bluesky)"
+      ],
+      "summary": "- Roundtable d'« unconference » (non filmée). D'après le descriptif : construire un modèle mental de l'**edge AI et des patterns hybrides**, transformer l'UI state et les données structurées en entrées fiables, et **boucler la boucle agentique** avec des mécanismes de sécurité.\n- Arguments mis en avant : latence faible, confidentialité (données sensibles hors du cloud), comportement prévisible.\n- Iury Souza (speaker) dit être reparti « encore tout excité » d'avoir partagé sur l'edge AI et échangé avec des gens qui construisent de bons produits.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ]
+    },
+    {
+      "id": "compose-without-flow",
+      "day": "2026-04-10",
+      "type": "talk",
+      "title": "Compose Without Flow: Unidirectional State with Snapshots and Coroutines",
+      "speakers": [
+        "Remco Mokveld"
+      ],
+      "feedbackFrom": [
+        "Remco Mokveld (speaker, Bluesky)",
+        "Newsletter jetc.dev n° 316 (sélection)"
+      ],
+      "summary": "- D'après le descriptif officiel : Kotlin Flow est souvent vu comme un prérequis de l'architecture UDF, mais ses pipelines ont un **coût cognitif** (opérateurs, annulation) qui rappelle RxJava.\n- Proposition : **pousser le système d'état de Compose (snapshots) au-delà de l'UI** et construire une application entièrement unidirectionnelle sans Flow, en en discutant les compromis.\n- Talk classé « Advanced » ; non transcrit ici, retenu dans la sélection Compose de jetc.dev.",
+      "summarySources": [
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "t89nFRuH_KA",
+        "title": "Compose Without Flow: Unidirectional State with Snapshots and Coroutines",
+        "publishedAt": "2026-05-23",
+        "transcript": false
+      }
+    },
+    {
+      "id": "deploying-http-3-at-scale-on-mobile",
+      "day": "2026-04-10",
+      "type": "talk",
+      "title": "Deploying HTTP/3 at Scale on Mobile: A 17% Startup Latency Gain Despite Implementation Constraints",
+      "speakers": [
+        "Elvis Chidera — Delivery Hero"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Pourquoi HTTP/3** : HTTP/2 garde le head-of-line blocking de TCP (un paquet d'analytics perdu peut bloquer le fil d'accueil) ; QUIC permet une connexion en un aller-retour, voire 0-RTT, décisif sur les **marchés à fort RTT**.\n- Mise en œuvre : activation côté CDN sans toucher l'origine ; OkHttp n'ayant pas de support natif, passage par **Cronet via le bridge Cronet-OkHttp**, avec leurs propres optimisations (initialisation de Cronet ramenée de 800 à 53 ms au P90, ping pour éviter les coupures NAT des connexions UDP).\n- Résultats : **environ 17 % de gain au P95 sur le fil d'accueil** (jusqu'à 22 % selon le marché), connexion initiale améliorée de 51 % en moyenne, moins d'erreurs (attribué au résolveur DNS de Cronet).\n- **Régression** : jusqu'à 14 % plus lent aux Philippines, attribuée à l'algorithme de contrôle de congestion du CDN (Cubic) sous forte perte de paquets ; déploiement sélectif en attendant un correctif.\n- Conseil : essayer le bridge Cronet-OkHttp dans une expérience.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "mMWzKHwZEZE",
+        "title": "Deploying HTTP/3 at Scale on Mobile: A 17% Startup Latency Gain Despite Implementation Constraints",
+        "publishedAt": "2026-05-24",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Mastering Recomposition: Optimizing State Changes for Efficient UI (Marcin Moskała), vidéo disponible",
+    "Going Beyond Obfuscation: Advanced Techniques for Protecting Android Apps (Ed Holloway-George), vidéo disponible",
+    "Crossing the Stack: How Backend Insights Made Me a Stronger Mobile Developer (Gianluca Veschi, Suraj Giri), roundtable",
+    "From chaos to control: Future-proofing your Android release process (Keegan Rush), vidéo disponible",
+    "How Direct Monetization Drives More Revenue via Web2App and App2Web (Braden Steel), vidéo disponible",
+    "Automatiser ce que tu répètes : du boilerplate à l'automatisation (Julien Bajon), vidéo disponible",
+    "Future-Proofing Monetization: AI-Driven Subscription Management with RevenueCat (Ollie Warren), vidéo disponible",
+    "From Beats to Bytes: What Music Production Can Teach About Programming (Benjamin Gonin), vidéo disponible",
+    "Cognitive Biases in Tech Work Env (Ashraf Atef), roundtable",
+    "KotlinCraft: Building Resilient, Testable, and Scalable Applications (Madona Wambua), vidéo disponible",
+    "OpenTelemetry on Android: From black box to X-Ray (Gerard Paligot), vidéo disponible",
+    "Stop Copy-Pasting AI Strategies: Lessons from Large vs. Lean Orgs (Ilya Savin), roundtable",
+    "Teaching agents to pay: what devs need to know (Benjamin Smith), vidéo disponible",
+    "Structured Concurrency: The paradigm shift that changes modern development (Marcin Moskała), vidéo disponible",
+    "Offline should be the norm: local-first apps with CRDTs & Kotlin Multiplatform (Renaud Mathieu), vidéo disponible",
+    "App Clinic (jour 1 : Simona Milanovic, Madona Wambua, Jolanda Verhoef, Akshay Chordiya, Piotr Prus, Ben Kadel, Sinan Kozak)",
+    "Hack Your Own App: Getting Started with Mobile Penetration Testing (Benedikt Löbbecke, Julius Fischer), vidéo disponible",
+    "The Hybrid Senior: Coding, Leading, and Mastering AI (Alessandro Finocchiaro), roundtable",
+    "Beyond Exceptions: Building Resilient Android Apps with Safety-Critical Principles (Bogusz Pawłowski), vidéo disponible",
+    "You Can Manage This: Tips for Anxious Leaders (Zoe Farooq), roundtable",
+    "The Lord of Collection Functions: The Fellowship of Kotlin (Ben Kadel), vidéo disponible",
+    "Practical Filament: Reshape your UI! (Nicole Terc), vidéo disponible",
+    "Composer sa navigation : tracer sa route dans l'écosystème Jetpack (Wissem Rezgui, Didier Sanches, Deezer), vidéo disponible",
+    "Android Development in Turbulent Times (Marc Reichelt), roundtable",
+    "From SQL to Flow: clean offline-first architecture with Kotlin 2.x (Alessandro Allegretti), vidéo disponible",
+    "DevOps for Android supercharged with AI (Tamás Bazsonyi, Bitrise), vidéo disponible",
+    "Release Prediction Test (Analytics Snapshot Testing) (Ashraf Atef), vidéo disponible",
+    "Bringing Your Canvas Creations to Life with Jetpack Compose (Piotr Prus), vidéo disponible",
+    "Engineering for Sustainability: Building a Carbon-Aware App with Android (David Ta), vidéo disponible",
+    "Hack for good: Accessibility testing with a Flipper Zero (Quintin Balsdon), vidéo disponible",
+    "Ship It and They Will Come... Or Not: A Real Guide to App Distribution (Benjamin Gonin), roundtable",
+    "Coroutines vs. Threads: The True Cost of a Context Switch (Ariella Mendel), vidéo disponible",
+    "So I tried to port my app to Android XR (Julien Salvi), vidéo disponible",
+    "We Built It for One. Then Everything Multiplied. (Bradley Wilson, Matthias Baccino), vidéo disponible",
+    "Utiliser JNI sans courir à la catastrophe (Guillaume Roche), vidéo disponible",
+    "No More Passwords: How I Got Passkeys Working (Kyriakos Georgiopoulos), vidéo disponible",
+    "Jusqu'où aller trop loin avec Kotlin ? (Antoine Robiez, Baptiste Carlier, Decathlon), vidéo disponible",
+    "Build The Million-Dollar Animation (Piotr Prus), vidéo disponible",
+    "XP with AI? (Matthias Geisler), roundtable",
+    "Native CameraX in Jetpack Compose: Filling the View-Shaped Hole (Ioannis Anifantakis, Kostas Filios), vidéo disponible",
+    "gRPC in Apps: A Migration Story (Ayushi Gupta, Zalando), vidéo disponible",
+    "Visual regression testing: your strategy's blind spot (Thomas Boutin, Ippon), vidéo disponible",
+    "App Clinic (jour 2 : Gerard Paligot, Renaud Mathieu, Louis CAD, Elaine Dias Batista, Julien Salvi)",
+    "Closing Remarks & Pin-Droid Winner (Greg Fawson, Alexandre Bruneau)"
+  ],
+  "sources": [
+    {
+      "label": "Site officiel Android Makers by droidcon",
+      "url": "https://androidmakers.droidcon.com"
+    },
+    {
+      "label": "Agenda officiel 2026",
+      "url": "https://androidmakers.droidcon.com/droidcon-agenda"
+    },
+    {
+      "label": "Sessionize : Android Makers by droidcon 2026",
+      "url": "https://sessionize.com/android-makers-by-droidcon-2026/"
+    },
+    {
+      "label": "Playlist YouTube « Android Makers by droidcon 2026 » (53 vidéos)",
+      "url": "https://www.youtube.com/playlist?list=PLn7H9CUCuXAsTheJ0b1SOYObU2ZXGbieS"
+    },
+    {
+      "label": "Newsletter jetc.dev n° 316 : sélection des talks Compose d'Android Makers 2026",
+      "url": "https://jetc.dev/issues/316.html"
+    },
+    {
+      "label": "Bladecoder sur Bluesky (RemoteCompose)",
+      "url": "https://bsky.app/profile/bladecoder.bsky.social/post/3mj3kul3zp227"
+    },
+    {
+      "label": "Iury Souza sur Bluesky (speaker, roundtable edge AI)",
+      "url": "https://bsky.app/profile/iurysouza.dev/post/3mjw4jgnlh22v"
+    },
+    {
+      "label": "Nicolas Roard sur Bluesky (speaker, RemoteCompose)",
+      "url": "https://bsky.app/profile/camaelon.bsky.social/post/3mmwfqwhrw22t"
+    },
+    {
+      "label": "Micro-blog de Dmitry Kandalov (speaker, annonce de « 43 refactorings »)",
+      "url": "http://dmitrykandalov.com/micro-blog/"
+    },
+    {
+      "label": "Autres posts Bluesky de speakers lus : Rahul Ravikumar, Remco Mokveld, Arnaud Giuliani ; Martin Bonnin (données AndroidMakers dans l'app Confetti)"
+    }
+  ]
+}

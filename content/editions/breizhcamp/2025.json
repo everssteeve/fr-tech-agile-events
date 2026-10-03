@@ -6,8 +6,424 @@
   "start": "2025-06-25",
   "end": "2025-06-27",
   "city": "Rennes",
+  "venue": "Université de Rennes, campus de Beaulieu",
   "url": "https://2025.breizhcamp.org/",
+  "programUrl": "https://2025.breizhcamp.org/conference/programme/",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "13e édition, du 25 au 27 juin 2025 : mercredi consacré aux formats longs (universités), jeudi et vendredi aux conférences, quickies et tools in action ; une centaine de sessions sur 5 salles, 96 speakers, près de 700 personnes par jour ; billetterie par loterie (75 € les deux jours, 90 € les trois jours).",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-01",
+  "revisit": "Deux comptes-rendus seulement (un speaker, Estéban Soubiran, et le blog d'un sponsor, Orange Business) et aucun post LinkedIn individuel lu ; les deux keynotes du vendredi ne sont ni filmées ni documentées.",
+  "corpus": "Programme officiel (JSON du site, 95 sessions hors pauses), playlist YouTube « Breizhcamp 2025 » (91 vidéos), dont 19 transcripts automatiques lus (les deux keynotes filmées du jeudi, 4 universités et 13 talks), un billet de blog de speaker (Estéban Soubiran, 29/06/2025), un article d'Orange Business (Johanna Duigou, 22/07/2025) et la vidéo-récap du sponsor Néosoft.",
+  "limits": "Aucun retour d'un participant non lié à l'événement : un blog de speaker, un blog de sponsor, aucun post LinkedIn individuel retrouvé par la recherche web. Les résumés reposent surtout sur des sous-titres automatiques (noms propres parfois incertains), donc sur ce qui a été dit sur scène, pas sur la réception ; les keynotes du vendredi matin et de clôture ne sont pas dans la playlist, et environ 75 sessions filmées restent sans contenu lu.",
+  "tldr": "Un BreizhCamp **résolument artisanal et peu porté sur l'IA** (deux sessions seulement) : craft et architecture modulaire, accessibilité, sécurité et sobriété dominent, et la keynote des Restos du Cœur devenus « cloud provider » open source donne le ton, **« 1 € dépensé, c'est un repas qui n'est pas distribué »**.",
+  "keyTakeaways": [
+    "Partir en **monolithe modulaire** (Spring Modulith, pattern Hive) et n'extraire un microservice que pour un vrai besoin, en figeant puis en réduisant le couplage existant avec ArchUnit (Piscitelli, Topçu et Pierrain).",
+    "Choisir sa stack selon le contexte et le coût, pas la hype : OpenStack, Proxmox et open source ont permis d'économiser l'équivalent de millions de repas aux Restos du Cœur (Julien Briault).",
+    "Mettre l'accessibilité dans les stories et la definition of done, outiller la CI (axe-core, Lighthouse, WAVE) et fuir les surcouches « automagiques », qui camouflent les problèmes (Angi Guyard, Cécilia Bossard).",
+    "Pratiquer les Object Calisthenics comme exercices et non comme dogmes, toujours avec des tests avant de refactorer : *« faites du pragmatic driven design »* (Carbonnel et Salaün).",
+    "Faire tourner le clavier toutes les 2 à 3 minutes en mob, caler le rythme sur le plus junior et donner la parole d'abord aux moins privilégiés (Manon Carbonnel).",
+    "Ne jamais lancer en local un « test technique » reçu d'un recruteur inconnu, et défendre sur les TTP plutôt que sur les hashes (Seddiki et Bogrova, campagne DEV#POPPER).",
+    "Vérifier la plausibilité avant tout outil : les détecteurs de texte IA ne sont pas fiables, le fact-checking et la recherche d'image inversée le sont davantage (Marie Viley).",
+    "Activer un profil qualité creedengo dans SonarQube pour traiter la « dette environnementale » du code, et négocier du temps de contribution open source avec son employeur (David De Carvalho).",
+    "Auditer ses node_modules (node-modules-inspector, pkg-size, module-replacements du collectif e18e) : un paquet comme is-string pèse 160 M de téléchargements par mois sans que personne ne l'ait choisi (Estéban Soubiran).",
+    "Découpler le rôle de manager du poste et le confier à des pairs volontaires, formés et rémunérés, avec environ 5 personnes chacun (Zenika Rennes)."
+  ],
+  "sessions": [
+    {
+      "id": "comment-transformons-nous-les-restos-du-coeur-en-cloud-provider",
+      "day": "2025-06-26",
+      "type": "keynote",
+      "title": "Comment transformons-nous les Restos du Cœur en cloud provider ?",
+      "speakers": ["Julien Briault — Restos du Cœur (bénévole)"],
+      "feedbackFrom": ["Estéban Soubiran (speaker de l'édition, blog)"],
+      "summary": "- Sur scène : 163 millions de repas, 78 000 bénévoles réguliers, 113 associations départementales ; au départ, l'informatique d'une antenne, c'était *« le fameux PC qui traîne dans un coin »*, sans sauvegarde ni doc.\n- Genèse : seul dans l'antenne d'Eure-et-Loir, des serveurs dans d'anciennes toilettes de l'entrepôt, puis un datacenter à Chartres monté avec du matériel récupéré.\n- **Principe directeur** : *« 1 € dépensé, c'est un repas qui n'est pas distribué »*, d'où le refus d'AWS et de VMware et le choix de l'open source : tout en infrastructure as code (Pulumi), pas de SSH direct, infra immuable, runbooks obligatoires.\n- **Le « Cloud du Cœur »** : OpenStack conteneurisé dans Kubernetes, 20 clusters Proxmox, trois régions en cours (Chartres, Paris, Marseille), un outil maison qui éteint les nœuds inutiles et a quasiment divisé par deux la consommation électrique du site.\n- Impact chiffré en repas : sondes de chaîne du froid maison (6 millions de repas par an), Passbolt, RustDesk, un « Linux du Cœur » pour 15 000 à 22 000 postes incompatibles Windows 11 ; environ 12 à 20 millions de repas économisés au total.\n- Position : le *context driven development* contre le *hype driven development* ; seul pendant 4 ans, l'équipe compte désormais 11 personnes et vise à ouvrir ce cloud à d'autres associations.\n- Réception : coup de cœur d'Estéban Soubiran, *« amusant, informatif et technique »*, la preuve que la tech peut servir le bien commun.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "OOj5fnWGRlM",
+        "title": "BreizhCamp 2025 - Keynote jeudi matin - Resto du coeur",
+        "publishedAt": "2025-06-26",
+        "transcript": true,
+        "startSeconds": 830
+      }
+    },
+    {
+      "id": "keynote-jeudi-soir-cyim",
+      "day": "2025-06-26",
+      "type": "keynote",
+      "title": "Keynote sponsor du jeudi soir : CYIM",
+      "speakers": ["Deux intervenants de CYIM (prénommés Mathieu)"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène, après la remise des trophées sponsors : CYIM, société rennaise d'environ 80 personnes qui assure la captation vidéo et l'application mobile du BreizhCamp, travaille à 99 % pour des **sociétés savantes médicales** (congrès, abstracts, examens).\n- **Souveraineté** : tout est hébergé dans un datacenter rennais dupliqué, avec leurs propres adresses IP.\n- Stack : legacy .NET et SQL Server en monolithe, event-driven avec Kafka et Flink, microservices GraphQL fédérés sur Kubernetes, applis Flutter en marque blanche ; jusqu'à 30 salles captées sur les plus gros congrès.\n- Projets : buzzers sur Raspberry Pi, migration des bornes de posters vers Linux, IA pour la traduction en direct et la recherche dans 15 à 20 ans d'archives, démarche RSE (label Lucie, ombrières solaires).\n- Point de friction rapporté : les clients veulent *« du Netflix ou du YouTube »*, sans les budgets ni la publicité qui les financent. *« Même si on fait de l'audiovisuel, on est une boîte d'informatique. »*",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "KATCQ_kGbFs",
+        "title": "BreizhCamp 2025 - Keynote jeudi soir - CYIM",
+        "publishedAt": "2025-06-27",
+        "transcript": true,
+        "startSeconds": 177
+      }
+    },
+    {
+      "id": "mais-qu-est-ce-qu-on-va-devenir-le-metier-de-dev-scenarios-ademe",
+      "day": "2025-06-25",
+      "type": "workshop",
+      "title": "« Mais qu'est-ce qu'on va devenir ? » Le métier de dev passé au crible des scénarios de l'ADEME",
+      "speakers": ["Jean Paliès", "Cécilia Bossard"],
+      "feedbackFrom": ["Johanna Duigou (Orange Business, mention)"],
+      "summary": "- Sur scène : les quatre scénarios **Transition(s) 2050 de l'ADEME** (génération frugale, coopérations territoriales, technologies vertes, pari réparateur) servent de cadre ; des groupes imaginent le dev de 2050 (formation, pouvoir, équipement, santé mentale).\n- Scénarios technologiques (S3, S4) : un « ouvrier du dev » peu formé qui pilote une IA, du low-code, des profils de vérification et de test, une fracture ville-campagne.\n- Scénarios sobres (S1, S2) : devs rattachés à des guildes locales ou à l'économie sociale et solidaire, **communs numériques** développés une fois et partagés, open source obligatoire, appareils standardisés et réparables, IA spécialisée voire réservée à la recherche.\n- Phrases de participants : *« le but c'est pas d'aller vite mais d'aller bien »* ; *« il y a peut-être pas besoin d'une app pour aller commander ma pizza »*. Un groupe juge que le monde frugal n'arrivera que « si on se prend un gros mur ».\n- Le temps a manqué pour débriefer les votes. Cité par Orange Business comme l'atelier écoconception de l'édition.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "6rTHBHSmSKk",
+        "title": "\"Mais qu'est ce qu'on va devenir ?\" - Le métier de dev passé au crible des scénarios de l'ADEME",
+        "publishedAt": "2025-07-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "des-objets-elegants-dans-votre-code",
+      "day": "2025-06-25",
+      "type": "workshop",
+      "title": "Des Objets Élégants dans votre code",
+      "speakers": ["Yann Bouvet — Shodo", "Jérémy Chauvin — Shodo"],
+      "feedbackFrom": ["Johanna Duigou (Orange Business, mention)"],
+      "summary": "- Sur scène : un kata Java (une todo list à refactorer) d'après *Elegant Objects* de Yegor Bugayenko, pour qui les développeurs produisent des structures de données plutôt que des objets.\n- Étapes : **value objects** qui portent leur validation, bannir les `get` et les setters au profit de méthodes métier, objets immuables, constructeurs métier à la place des builders, langage du domaine.\n- Plus radical : pas de `null` (un objet `NotFoundTask` plutôt qu'un Optional), polymorphisme à la place des `if`, décorateurs, « règle des 4 » attributs et méthodes.\n- Débat assumé : un participant juge l'approche dogmatique, et les animateurs le rejoignent, *« de là à tout appliquer au pied de la lettre, je pense que c'est pas souhaitable dans un projet industriel »* ; l'idée à garder est de remettre du comportement dans les objets.\n- Cité par Orange Business dans le volet craftsmanship de l'édition.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "-b46luhLtQw",
+        "title": "Elegant Objects in your code - Yann Bouvet, Jérémy Chauvin",
+        "publishedAt": "2025-07-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "enter-the-daggerverse",
+      "day": "2025-06-25",
+      "type": "talk",
+      "title": "Enter the Daggerverse !",
+      "speakers": ["Julien Haumont — Zenika", "Emeric Martineau"],
+      "feedbackFrom": ["Johanna Duigou (Orange Business, mention)"],
+      "summary": "- Sur scène : **Dagger**, une CI/CD exécutable en local, écrite dans son langage (Go, Python, TypeScript, Java…) via une API GraphQL, avec le Daggerverse comme index de modules réutilisables entre langages.\n- Démo : fonctions build et publish chaînées, terminal dans le conteneur, traces OpenTelemetry, module communautaire qui simplifie le code, Dagger Shell pour mettre au point sans coder, intégration progressive dans une GitHub Action existante.\n- Limites listées sans fard : version 0.x avec breaking changes, virtualisation souvent bloquée en entreprise, pas de support Kubernetes natif, gouvernance faible du Daggerverse (doublons, risque de backdoor, pas de gestion des CVE) : *« Aujourd'hui le Daggerverse c'est pas ouf. »*\n- Débat entre les deux speakers : Dagger complète ou remplace les Dockerfiles multi-stage ?\n- Lu par Orange Business comme la CI/CD pensée en écosystème cohérent.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "RW63hO98tkE",
+        "title": "Enter the Daggerverse ! - Julien Haumont, Emeric Martineau",
+        "publishedAt": "2025-07-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "quarkus-et-programmation-reactive-performance-et-sobriete",
+      "day": "2025-06-25",
+      "type": "talk",
+      "title": "Quarkus & programmation réactive : quand la performance rencontre la sobriété",
+      "speakers": ["Patrice Corteel"],
+      "feedbackFrom": ["Johanna Duigou (Orange Business, mention)", "Vidéo-récap Néosoft (sponsor)"],
+      "summary": "- Sur scène (format université) : la sobriété se joue d'abord dans la **conception produit** et l'architecture, loin devant l'algorithmie et le langage ; *« la feature la plus écoresponsable, c'est celle qui n'a pas été codée »*.\n- Témoignages de la salle : un audit de VM qui divise les ressources par 2 à 4, et 18 microservices restés à une instance chacun en 3 ans, là où un monolithe modulaire aurait suffi.\n- Quarkus face à Spring : mêmes recettes mais standards JSR, dev mode à chaud, pièges de migration (beans `@ApplicationScoped` en proxies) ; les virtual threads ne sont pas du réactif, Mutiny et Vert.x évitent les threads bloqués en entrées-sorties.\n- Image native GraalVM : environ 100 Mo et démarrage au dixième de seconde, mais builds longs et réflexion piégeuse ; rejouer les tests sur l'image native en CI.\n- Position : migrer une base Spring saine vers Quarkus *« ça a pas de sens »* ; un participant oppose un facteur 10 en faveur de Go, question restée ouverte.\n- Mis en avant par le sponsor Néosoft dans sa vidéo-récap et cité par Orange Business.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "hk-DZBY6rEY",
+        "title": "Quarkus & programmation réactive : quand la performance rencontre la sobriété 🍷 - Patrice Corteel",
+        "publishedAt": "2025-07-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "redecouvrir-la-cooperation-atelier-de-mob-programming",
+      "day": "2025-06-25",
+      "type": "workshop",
+      "title": "Redécouvrir la coopération : atelier de Mob Programming",
+      "speakers": ["Manon Carbonnel — Shodo"],
+      "feedbackFrom": ["Johanna Duigou (Orange Business, mention)"],
+      "summary": "- Sur scène : toute l'équipe sur une seule story, métier et testeurs compris ; échauffement avec le jeu *Baba Is You*, puis kata Mars Rover en TypeScript et TDD.\n- **Trois rôles** : le driver au clavier ne décide pas (il a « trop de pouvoir »), le navigateur tranche, les mobbers proposent ; rotations de 2 à 3 minutes, 3 à 6 personnes, consignes au plus haut niveau d'abstraction pour ne pas infantiliser.\n- Coût : pas de chiffres, mais suppression des code reviews, réunions et changements de contexte, et moins de bus factor ; décisions rapides avec le *Decider* des Core Protocols.\n- **Inclusion** : caler le rythme sur le plus junior, donner la parole d'abord aux moins privilégiés ; *« le premier critère de performance dans une équipe, c'est la sécurité psychologique »*. Remote oui, hybride non.\n- Débat : un participant d'ESN juge le mob réservé aux éditeurs ; réponse : *« 15 priorités en parallèle, c'est déjà un problème »*.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "b18s-OYZA_0",
+        "title": "Redécouvrir la coopération : Atelier de Mob Programming - Manon Carbonnel",
+        "publishedAt": "2025-07-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "management-libere-et-si-votre-collegue-developpeur-etait-votre-manager",
+      "day": "2025-06-25",
+      "type": "talk",
+      "title": "Management libéré : et si votre collègue développeur·euse était votre manager ?",
+      "speakers": ["Marie Gigon — Zenika", "Nicolas Leport — Zenika"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène : le constat (un manager sur deux jamais formé, peu de feedback) et la situation de départ chez Zenika, où directeurs d'agence et commerciaux suivaient près de 20 personnes chacun, parfois sans entretien depuis plus de 6 mois.\n- **Management par les pairs** depuis janvier 2024 (Rennes pilote, puis toutes les agences) : rôle découplé du poste, sur candidature, environ 5 personnes par manager, 8 jours par an dédiés, rôle rémunéré ; lors de la première vague, chacun a choisi son manager.\n- Rituels : one-to-one mensuel, suivi technique par un autre manager, arbre de compétences open source (Career Path), comité d'augmentation mensuel et collégial sur grille salariale publique.\n- Formation de 2 jours (CNV, feedback sans « sandwich », droit à la déconnexion, burn-out). Bilan à 18 mois jugé très bon par sondage anonyme.\n- Débat en Q&R : modèle transposable hors ESN ? Enveloppe d'augmentation épuisée en fin d'année ? Les speakers reconnaissent les limites. *« Faire grandir les gens même si la suite de leur carrière c'est ailleurs. »*",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "bZ9OxAGSrfM",
+        "title": "Management libéré : Et si votre collègue développeur.euse était votre manager ?",
+        "publishedAt": "2025-07-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-reactivite-et-les-signaux-demystifions-la-magie-du-frontend",
+      "day": "2025-06-25",
+      "type": "talk",
+      "title": "La réactivité et les signaux : démystifions la magie du frontend",
+      "speakers": ["Estéban Soubiran"],
+      "feedbackFrom": ["Estéban Soubiran (speaker, blog)"],
+      "summary": "- Sur scène : UI = fn(state), illustré par une cellule Excel ; dissection d'**Alien Signals** (base de la réactivité de Vue), deux fichiers d'environ 150 lignes.\n- Théorie : graphe orienté acyclique, signal, computed, effect ; propagation **push-pull** (flags « dirty » poussés, recalcul paresseux).\n- Révélation : tout repose sur une variable globale, `activeSub`, *« qui leur permet de communiquer entre eux »*.\n- Granularité : au composant dans Vue, au nœud du DOM dans Vue Vapor, Solid ou Qwik ; React n'a pas de signaux et ses hooks « n'ont rien à voir ».\n- Talk déjà donné à Devoxx France et MiXiT 2025 (blog du speaker).",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "Db2AttBSDtw",
+        "title": "La réactivité et les signaux : démystifions la magie du frontend - Estéban Soubiran",
+        "publishedAt": "2025-07-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "make-the-change-easy-apprivoiser-le-legacy-avec-les-object-calisthenics",
+      "day": "2025-06-26",
+      "type": "talk",
+      "title": "« Make the change easy » : apprivoiser le legacy avec les Object Calisthenics",
+      "speakers": ["Manon Carbonnel — Shodo", "Gaël Salaün — Shodo"],
+      "feedbackFrom": ["Estéban Soubiran (speaker de l'édition, blog)"],
+      "summary": "- Sur scène : une saynète de pair programming sur une bibliothèque de jeux vidéo en Kotlin ; Manon veut **« rendre le changement facile »** avant de contribuer, en suivant les neuf règles de Jeff Bay.\n- Un seul niveau d'indentation, pas de `else` (early return), polymorphisme et Null Object à la place des `when`.\n- Lutter contre la *primitive obsession* : des types comme détrompeurs (poka-yoke), first class collections, un seul point par ligne (loi de Déméter : *« on ne doit jamais jouer avec les jouets de nos jouets »*).\n- Nommer sans abréger, garder les entités petites (anecdote d'une classe de 12 500 lignes), pas de getters ni setters, *Tell, don't ask*.\n- Position : des exercices, pas des dogmes, et des tests avant de refactorer ; *« On critique le code, pas les gens »*, *« faites du PDD, du pragmatic driven design »*.\n- Réception : second coup de cœur d'Estéban Soubiran, *« un mélange parfait de perspicacité technique, de conseils pratiques et d'humour »*.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "BGZXNJ8t61c",
+        "title": "“Make the change easy” : Apprivoiser le legacy avec les Object Calisthenics",
+        "publishedAt": "2025-07-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "reinventer-les-masculinites-un-chemin-vers-plus-d-inclusion-dans-la-tech",
+      "day": "2025-06-26",
+      "type": "talk",
+      "title": "Réinventer les masculinités, un chemin vers plus d'inclusion dans la tech",
+      "speakers": ["Nathan Castelein — Shodo"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène : une femme sur deux quitte la tech avant 35 ans, une sur deux déclare avoir subi des comportements sexistes.\n- Cadre : la pyramide des masculinités de Raewyn Connell (hégémonique, marginalisée, subordonnée, **complice**), illustrée par son expérience de pom-pom boy dans le roller derby.\n- Dans la tech : l'« énergie masculine » prônée par Zuckerberg, le *rockstar programmer*, une étude GitHub où les PR de femmes sont moins acceptées dès que leur genre est visible, la code review comme terrain de compétition.\n- Pistes : comprendre ses privilèges, s'éduquer soi-même (bibliographie fournie), réagir à plusieurs, surveiller manspreading et manterrupting, sortir de la précarité émotionnelle.\n- Message : *« C'est normal et c'est OK d'être complice aujourd'hui »*, pour une performance vécue comme « une aventure collective ».",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "KKkCRtAD2Eg",
+        "title": "Réinventer les masculinités, un chemin vers plus d’inclusion dans la tech - Nathan Castelein",
+        "publishedAt": "2025-07-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "developpeurs-votre-code-faconne-le-monde-de-demain",
+      "day": "2025-06-26",
+      "type": "talk",
+      "title": "Développeurs, votre code façonne le monde de demain !",
+      "speakers": ["David De Carvalho — Capgemini"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène : selon la mise à jour ADEME 2025, le numérique pèse **4,4 % de l'empreinte carbone française** (60 % fabrication, 40 % usage) ; les développeurs agissent sur la part usage.\n- Notion de **« dette environnementale »** à côté de la dette technique ; distinction green coding et green architecture.\n- Outils open source : **creedengo** (ex-ecoCode), plugins SonarQube par langage fondés sur les 115 bonnes pratiques Green IT, le RGESN et le GR491 ; API Green Score pour les architectures backend.\n- Histoire du collectif Green Code Initiative : de la recherche (2019) à l'association loi 1901 et au marketplace Sonar, plus de 200 contributeurs, hackathons passés de 40 à 120 participants.\n- Démo : profil qualité Python, puis écriture en direct d'une règle Java qui détecte les `SELECT *`.\n- Débat en Q&R sur l'efficacité réelle des règles : désormais justifiées par la documentation ou une mesure CodeCarbon, certaines ont été dépréciées.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "3LZKjmShXXU",
+        "title": "Développeurs, votre code façonne le monde de demain ! - David De Carvalho",
+        "publishedAt": "2025-07-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "et-si-on-parlait-de-malware-craftsmanship",
+      "day": "2025-06-26",
+      "type": "talk",
+      "title": "Et si on parlait de « malware craftsmanship » ?",
+      "speakers": ["Sonia Seddiki", "Nailya Bogrova"],
+      "feedbackFrom": ["Johanna Duigou (Orange Business, mention)"],
+      "summary": "- Sur scène : la campagne **DEV#POPPER**, de faux recruteurs LinkedIn qui font lancer un repo Node.js « de test technique » piégé (3 antivirus sur 64 le détectaient), attribuée avec prudence au groupe Lazarus.\n- Histoire (ILOVEYOU, Stuxnet, NotPetya) et cadre légal français (loi Godfrain, LCEN qui punit la détention d'outils sans motif légitime).\n- Méthode : matrice MITRE ATT&CK et **Pyramid of Pain** ; changer un hash ou une IP est facile, changer ses TTP beaucoup moins, d'où une défense à viser sur les comportements.\n- Techniques d'évasion (détection de sandbox, exécution retardée, living off the land, process hollowing) et analyse en direct d'un dropper .NET caché dans une calculatrice, qui extrait une DLL des pixels d'une image.\n- Mise en garde : ce qu'on envoie sur VirusTotal devient public. Conseil (sur le ton de la blague) aux devs en recherche d'emploi : *« refusez les tests techniques »*.\n- Lu par Orange Business comme une approche pédagogique de la sécurité.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "GpXutWsMqto",
+        "title": "Et si on parlait de \"malware craftsmanship\" ? - Sonia Seddiki, Nailya Bogrova",
+        "publishedAt": "2025-07-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "mais-pourquoi-je-me-ferais-ch-r-avec-l-accessibilite",
+      "day": "2025-06-26",
+      "type": "talk",
+      "title": "Mais pourquoi je me ferais ch**r avec l'accessibilité ?",
+      "speakers": ["Angi Guyard — Shodo"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène : le cadre légal (RGAA fondé sur les WCAG, **European Accessibility Act** applicable « ce weekend » au B2C dès 10 salariés ou 2 M€ de chiffre d'affaires) et un état des lieux sévère (34 erreurs par page en moyenne sur les sites publics, moins de 1 % de sites conformes selon la Fédération des aveugles).\n- L'argument économique : 29 % des 15 ans et plus handicapés ou en perte d'autonomie (DREES 2024), un bug 30 fois plus cher après livraison, exemples Tesco, Barclays et un assureur britannique.\n- Risques : outils internes inaccessibles assimilables à de la discrimination à l'embauche, procès Domino's et Target aux États-Unis.\n- Position tranchée : *« les outils de surcouche, ça corrige pas tous les problèmes d'accessibilité, ça les camoufle »* ; un participant ajoute qu'un code propre est avant tout un code accessible.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "vwbddFDv0Vk",
+        "title": "Mais pourquoi je me ferais ch**r avec l'accessibilité ? - Angi Guyard",
+        "publishedAt": "2025-07-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "en-javascript-il-y-a-un-paquet-pour-tout-et-souvent-pour-rien",
+      "day": "2025-06-26",
+      "type": "lightning",
+      "title": "En JavaScript, il y a un paquet pour tout... et souvent pour rien",
+      "speakers": ["Estéban Soubiran"],
+      "feedbackFrom": ["Estéban Soubiran (speaker, blog)"],
+      "summary": "- Sur scène (quickie) : `is-string` dépasse 160 M de téléchargements par mois, plus que React, sans que presque personne ne l'ait installé volontairement ; il amène 15 sous-paquets dont 5 à 10 % de JS utile.\n- Outils : node-modules-inspector (Anthony Fu), pkg-size, npmgraph, et le collectif **e18e** (PR vers des API natives, forks allégés, table module-replacements).\n- Exemple : Storybook passé d'environ 400 dépendances transitives (8.2) à une vingtaine (8.4).\n- Débat : un participant « très haut niveau » ne se sent pas concerné ; réponse, contribuer en amont, surveiller ses propres choix et, comme mainteneur, assumer ce qu'on fait installer.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "Eu3laCsH640",
+        "title": "En JavaScript, il y a un paquet pour tout... et souvent pour rien. - Estéban Soubiran",
+        "publishedAt": "2025-07-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ia-et-desinformation-affutez-votre-bullshit-detector",
+      "day": "2025-06-26",
+      "type": "talk",
+      "title": "IA et désinformation : affûtez votre bullshit detector !",
+      "speakers": ["Marie Viley"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène (tool in action, l'une des deux seules sessions de l'édition consacrées à l'IA) : l'IA est *« un accélérateur à fake news »*, réalistes et personnalisées, sur tous les formats.\n- Indices dans un texte (style lisse, connecteurs typiques, ni auteur ni source) ; les **détecteurs de texte IA ne sont pas fiables** (faux positifs et négatifs, faciles à piéger) : *« je vous conseille de pas vous fier à ça »*.\n- Indices visuels et sonores : doigts, texte déformé, ombres, anachronismes, décalage son et lèvres, intonation plate ; outils TinEye, InVID, recherche d'image inversée.\n- Cas réels : la fausse explosion au Pentagone qui a fait chuter la bourse, un faux « Macron démissionne », les faux appels robotisés de Biden en 2024.\n- Première question à se poser : *« est-ce que c'est possible ? »*, avant tout outil.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "D0hlyq7Q3p8",
+        "title": "AI and disinformation: Sharpen your bullshit detector! - Marie Viley",
+        "publishedAt": "2025-07-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "modular-monolith-la-derniere-croisade-des-architectures",
+      "day": "2025-06-27",
+      "type": "talk",
+      "title": "Modular monolith : la dernière croisade des architectures ?",
+      "speakers": ["Thomas Piscitelli"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène, en fil rouge un Jurassic Park fictif : trois microservices nés de la hype, et le constat *« Oh mon dieu, nous avons fabriqué un monolithe distribué »* (code freeze, mises en prod groupées, coûts d'infra et de latence).\n- Démo **Spring Modulith** : découpage vertical, sous-packages privés, test de modularité, documentation générée depuis le code.\n- Migration d'un vrai microservice : ArchUnit fige le couplage existant (33 dépendances pour un module) puis le seuil baisse à chaque sprint ; événements entre modules.\n- Couplage par la base de données : cinq options sans *silver bullet* (UUID, requêtes en lot, dénormalisation par événements, module shared assumé, re-fusion).\n- Position : extraire un microservice seulement pour un vrai besoin business ; modéliser le métier est la valeur du développeur face à une IA qui « code bien ». Objection en Q&R : autoriser des couplages explicites, est-ce « la porte ouverte » ? Réponse : cela oblige à les justifier.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "2G4pH0_Amvc",
+        "title": "Modular monolith : la dernière croisade des architectures ? - Thomas Piscitelli",
+        "publishedAt": "2025-07-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "on-n-aurait-pas-oublie-un-truc-dans-le-craft",
+      "day": "2025-06-27",
+      "type": "talk",
+      "title": "On n'aurait pas oublié un truc dans le craft !?",
+      "speakers": ["Cécilia Bossard", "Angi Guyard — Shodo"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène, sous forme de conte : du cycle en V aux « Magilistes » (Manifeste agile) puis aux artisans du code (Manifeste craft), avec une critique de l'agile dévoyé (daily-reporting, vélocité, rétros sans suite, micro-management) et de l'élitisme du craft.\n- **Le sortilège oublié, c'est l'accessibilité** : *« le craft en fait c'est absolument pas une question d'outillage »* ; TDD, DDD et hexagonal ne garantissent pas un produit utilisable par tous.\n- REX d'un site ministériel : gros effort sur la navigation clavier, contrastes oubliés, charte graphique refaite en fin de projet.\n- Leviers : personas en situation de handicap, axe-core, Lighthouse et WAVE en CI, tests avec des personnes handicapées, audits externes, RGAA dans les stories et la DoD.\n- Votes de la salle : environ trois quarts ont connu l'effet tunnel, les personnes formées à l'accessibilité « se comptent sur les doigts d'une main ». En Q&R : *« On peut être 100 % conforme sans être vraiment accessible. »*",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "yVmKkRH60VI",
+        "title": "On n’aurait pas oublié un truc dans le craft !? - Cécilia Bossard, Angi Guyard",
+        "publishedAt": "2025-07-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-pattern-hive-strategie-de-modularisation",
+      "day": "2025-06-27",
+      "type": "talk",
+      "title": "Le pattern Hive : une stratégie de modularisation pour votre monolithe modulaire ou vos microservices",
+      "speakers": ["Julien Topçu — Shodo", "Thomas Pierrain"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène : rétrospective du big ball of mud aux microservices de 2015 et aux « monolithes distribués » ; un découpage en bounded contexts n'est vérifiable qu'en prod, et **les microservices sont une stratégie de déploiement, pas du design**.\n- **Le pattern Hive** : un module = un bounded context = une mini-architecture hexagonale, avec son propre datastore ; les modules communiquent par un port et un « InProc adapter », remplacé par un client HTTP le jour où l'on extrait un module.\n- Usage : partir en monolithe modulaire en greenfield, « ruchifier » le legacy par extract and move en brownfield.\n- Pièges : modules trop bavards (imaginer l'autre module « sur GCP en Australie »), suite de tests monolithique, plusieurs équipes sur un même monolithe comparé à une copropriété.\n- Mot d'ordre : *« modéliser d'abord et déployer comme vous le voulez »* ; pas contre les microservices, mais pour en rationaliser le choix.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "oeWEsLz40tY",
+        "title": "Le pattern Hive : une stratégie de modularisation pour votre monolithe modulaire ou vos microservice",
+        "publishedAt": "2025-07-14",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Keynote du vendredi matin (non filmée, intervenant non annoncé)",
+    "Keynote de clôture du vendredi (non filmée)",
+    "Bataille de l'IA (Héloïse Dano, université, non filmée)",
+    "Dis papa, c'est quoi un audit d'applications ? (Eric Siber)",
+    "1re règle du code club : il est interdit de trop coder (Ali El Amrani)",
+    "ProgramAtion in Franglais (William Bartlett)",
+    "HTMX, ou le retour de l'AJAX (Stéphane Trebel)",
+    "Le DDD, c'est compliqué ? Attendez de mal l'appliquer ! (Nathan Castelein)",
+    "Décodons nos pipelines (Hafsa El Maizi)",
+    "Rendre ses tests concis et évolutifs grâce à JUnit 5 (Juliette de Rancourt)",
+    "Vous pouvez venir à cet atelier les yeux fermés (François-Xavier Lair, Henri Gauffriau)",
+    "Démystifions nos clean architectures (Yann Schepens, Nicolas Giraud, Thomas Blaisot)",
+    "Sortir des ORMs avec jOOQ (Sylvain Decout, Samuel Lefebvre)",
+    "Klean Code en Kotlin (Mathieu Durand)",
+    "Booster le démarrage des applications Java (Olivier Bourgain)",
+    "Détection d'anomalies avec Apache Flink et Kafka (Ludovic Boutros)",
+    "Indiana Jones et la Malédiction des Commons (Thomas Piscitelli, non filmé)",
+    "Le monde merveilleux des claviers mécaniques (Romain Blazeix, David Blanchet)",
+    "Systèmes distribués, pour le meilleur et pour le pire (Sébastien Lecacheur)",
+    "HTTP/3 : 36 ans d'histoire du protocole HTTP (Chris Navas)",
+    "L'ensaignement vu par la data (Maxime Odye)",
+    "Social Engineering, techniques de manipulation (Pierre Chesneau)",
+    "Anonymiser ses données de prod avec DbToolsBundle (Pierre Rineau, Simon Mellerin)",
+    "À la découverte du code golf (Sonia Seddiki)",
+    "Mob code review : merger sa PR en 10 secondes (Thibaut Cantet)",
+    "RFID, MIFARE et Flipper Zero (Nicolas Ledez)",
+    "Le quantique, c'est fantastique (Damien Hackett)",
+    "OSINT : l'art de trouver ce qui ne devrait pas être trouvé (Marie Viley)",
+    "Faire évoluer une application legacy sans (trop) souffrir (Raphaël Luta)",
+    "Repérer les requêtes lentes avant la prod (Emmanuel Quincerot, Inigo Mediavilla Saiz)",
+    "Amusons-nous avec jj, une alternative à git (Harold Favereau)",
+    "Dapr : des microservices sans migraines (Joël Séguillon)",
+    "pre-commit, un framework pas que réservé aux développeurs (Christopher Louët, non filmé)",
+    "Quels identifiants pour vos bases de données en 2025 ? (Maxime Maigret)",
+    "La science derrière les pixels : la couleur (Julien Sulpis)",
+    "Visite guidée de la maintenabilité logicielle (Sébastien Bertrand)",
+    "La preuve de programme vous fera apprécier les tests (William Bartlett)",
+    "Confidential Computing : une invasion de RATS (Milan Jakobi)",
+    "Montres cardio-GPS : mythes et réalités (Nicolas Pennec)",
+    "Pourquoi les clés de nos HashMap doivent être comparables ? (Gaëtan Eleouet)",
+    "Un vieux smartphone Android en machine de CI Jenkins (Bruno Verachten)",
+    "Sécuriser vos pipelines GitHub Actions (Adrien Pessu)",
+    "10 trucs et astuces avant de développer en Go (Gwendal Leclerc, Benoît Masson)",
+    "Apprends les langues à ton IDE avec LSP (Maxime Reynier)",
+    "Tout plaquer et partir Fullstack Kotlin & HTMX (Mathieu Durand)",
+    "Guide de survie du contributeur git (Sébastien Lecacheur)",
+    "Traquez les memory leaks JavaScript (Gregory Houllier)",
+    "Mockoon : les bouchons contre-attaquent (Ivan Béthus)",
+    "La double vie d'Unreal Engine (Enora Landurein)",
+    "Diátaxis appliqué à la doc de plateforme (Alexis Chotard)",
+    "Reverse engineering d'un silent piano (Olivier Cloirec)",
+    "Angular : 10 ans d'aventures et bonnes pratiques en v19 (Pierre Fervel)",
+    "Rendre son back générique grâce au pattern composite (Alexandre Baron)",
+    "Le pouvoir des bonnes pratiques (Fabien Hiegel)",
+    "Le Fédivers et le protocole ActivityPub (Antoine Deprez)",
+    "20 000 nuages sous les mers (Nicolas Bouron, Antoine Oili)",
+    "Au cœur du phishing (Lucas Sécurin)",
+    "Micro-frontends hypermedia avec HTMX (Benoit Averty)",
+    "Héberger son serveur mail en 2025 (Nicolas Ledez)",
+    "Smartphonus adictus ? (Héloïse Dano)",
+    "Comment sont implémentés les containers sous Linux ? (Christophe Quintard)",
+    "Aventuriers du runtime perdu (François Dubrez)",
+    "Back to the dev, retour d'expérience (Emmanuel Legros)",
+    "Pattern matching en Java (Sébastien Buchoux)",
+    "Transformez votre path-to-production en promenade de santé (Tristan Denmat)",
+    "Comment compter les moutons sans perdre la mémoire (Benoît Masson)",
+    "API Security 2025 : éviter Have I Been Pwned (Mickaël Barroux)",
+    "Le code dont vous êtes le héros (Paul Roye)",
+    "Quand la téléradiologie ralentit (Joffrey Bétourné, Amélie Serrand)",
+    "Le Data Mesh (Anthony Dassé)",
+    "Le meilleur test, c'est celui qu'on n'a pas à écrire (Sébastien Buchoux)",
+    "Sécuriser son code à l'ère du DevSecOps (Mehdi Chilla, Jean-Baptiste Joffre)",
+    "Comment débuter dans l'accessibilité numérique ? (Emmanuelle Aboaf)",
+    "Tout déléguer, mais à quel prix ? (Alexis Chotard)",
+    "20 min pour réduire l'impact environnemental d'un site (Guillaume Wolf)",
+    "Conteneurisation de Python : chute de performances (Gaston Gary, Luc Sorel-Giffo, Sébastien Baguet)",
+    "L'approche API-First (Alexandre Touret)"
+  ],
+  "sources": [
+    { "label": "Site officiel BreizhCamp 2025", "url": "https://2025.breizhcamp.org/" },
+    { "label": "Programme officiel BreizhCamp 2025", "url": "https://2025.breizhcamp.org/conference/programme/" },
+    { "label": "Playlist YouTube « Breizhcamp 2025 » (91 vidéos)", "url": "https://www.youtube.com/playlist?list=PLv7xGPH0RMUSXGK-QkECCuK78GDGH3ddL" },
+    { "label": "Estéban Soubiran — BreizhCamp 2025: My First Time in Brittany as a Speaker (29/06/2025)", "url": "https://soubiran.dev/posts/breizhcamp-2025-my-first-time-in-brittany-as-a-speaker" },
+    { "label": "Johanna Duigou (Orange Business) — BreizhCamp 2025 : la technique en scène pour un buzz hors champ (22/07/2025)", "url": "https://perspective.orange-business.com/fr/breizhcamp-2025-technique-en-scene-buzz-hors-champ-developpement-et-ia/" },
+    { "label": "Néosoft — [RENNES] Retour en images sur le BreizhCamp 2025 (vidéo sponsor)", "url": "https://www.youtube.com/watch?v=DKM-iM1fqwM" },
+    { "label": "Slides de la keynote de Julien Briault (Speaker Deck)", "url": "https://speakerdeck.com/ju_hnny5/breizhcamp-2025-comment-transformons-nous-les-restos-du-coeur-en-cloud-provider-keynote" },
+    { "label": "Posts LinkedIn : aucun post individuel retrouvé par la recherche web" }
+  ]
 }

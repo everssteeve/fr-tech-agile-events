@@ -2,13 +2,709 @@
   "event": "raise-summit",
   "year": 2025,
   "title": "RAISE Summit 2025",
+  "edition": "2e édition",
   "start": "2025-07-08",
   "end": "2025-07-09",
   "city": "Paris",
   "venue": "Carrousel du Louvre",
   "url": "https://www.raisesummit.com/agenda-2025",
+  "programUrl": "https://www.raisesummit.com/agenda-2025",
   "dateConfidence": "ok",
-  "note": "Dates et lieu d'après le site officiel (agenda 2025 et page d'accueil archivée en avril 2025).",
-  "status": "pending",
-  "sessions": []
+  "note": "Dates et lieu d'après le site officiel (agenda 2025 et page d'accueil archivée en avril 2025). Deuxième édition selon le ministère de l'Économie. Quatre scènes (Master Stage, Grace Hopper, Ada Lovelace, Supernova by Cerebras), plus de 250 speakers, hackathon RAISE Your Hack et concours de startups RAISE the Stakes. Fréquentation annoncée entre 6 500 et 7 000 participants selon les sources.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-01",
+  "revisit": "Retours de participants très minces : un seul billet de blog (Harald Nezbeda) et un article de presse spécialisée (VeilleMag), aucun post LinkedIn lu malgré 7 recherches web. Synthèse reposant surtout sur 38 transcripts de vidéos officielles. Pistes : posts LinkedIn de participants et de sponsors, couverture SiliconANGLE et Bloomberg, retours des équipes du hackathon.",
+  "corpus": "Agenda officiel 2025 (raisesummit.com/agenda-2025), 38 transcripts de vidéos de la chaîne YouTube RAISE Summit (publiées de juillet à octobre 2025), le billet de blog d'un participant (Harald Nezbeda, 13 juillet 2025), un compte-rendu VeilleMag (2 août 2025), la note aux rédactions du ministère pour la venue de Clara Chappaz et un article bilan publié par l'organisateur (février 2026).",
+  "limits": "Corpus de participants quasi inexistant : les résumés décrivent ce qui a été dit sur scène, par des dirigeants et investisseurs souvent en position commerciale, pas la réception par le public. Sur environ 120 sessions, seules 39 sont documentées, choisies parmi les keynotes et les sujets les plus proches du développement logiciel. L'agenda en ligne étiquette toutes les scènes « Tuesday, July 8 » : la répartition par jour suit l'ordre des onglets Day 1 et Day 2, confirmée pour Clara Chappaz (8 juillet).",
+  "tldr": "Un sommet **business de l'IA** plus que technique : infrastructure et énergie, souveraineté européenne, agents en entreprise et argent (levées, ARR, valorisations) dominent, avec une conviction partagée par la plupart des intervenants : **la vitesse d'exécution est le seul avantage durable**.",
+  "keyTakeaways": [
+    "L'inférence devient le centre de gravité : coût par token, vitesse et énergie par token sont les nouveaux indicateurs suivis jusqu'aux CFO (Liang, Wolf, Ross, Feldman et Schmidt).",
+    "L'énergie est le facteur limitant de l'IA en Europe : campus de plusieurs gigawatts, électricité nucléaire disponible mais taxée (Feldman, Lochmiller, Price).",
+    "Le code généré accélère, mais la sécurité et le dépannage deviennent les goulots : garde-fous dès l'écriture (Snyk), pentest autonome (XBOW), diagnostic d'incidents par agents (Traversal).",
+    "Pour construire un agent, respecter le métier copié et calculer la fiabilité de bout en bout : des étapes fiables à 95 à 99 % donnent un flux fiable à 85 % (Des Traynor).",
+    "Évaluer un produit IA avec un vrai benchmark (prompts, rubriques, vérificateurs) construit avec les métiers : il devient le nouveau PRD (Alex Ratner).",
+    "Les agents utilisent désormais l'infrastructure eux-mêmes : chez Neon, plus de bases sont créées par des agents que par des humains ; il faudra une « vue agent » des services (panels open source et agentique).",
+    "Dans l'open source, répondre aux contributeurs : une pull request laissée sans réponse tue une communauté (Matt Hicks).",
+    "La souveraineté se décompose en questions concrètes : immunité aux lois extraterritoriales, dépendance aux fournisseurs, répartition de la valeur (Damien Lucas, Anjney Midha)."
+  ],
+  "sessions": [
+    {
+      "id": "the-ai-evolution-open-source-fast-inference-agentic-revolution",
+      "day": "2025-07-08",
+      "type": "roundtable",
+      "title": "The AI Evolution: Open Source, Fast Inference, and the Agentic Revolution",
+      "speakers": ["Rodrigo Liang — SambaNova Systems", "Tony Kim — BlackRock", "Thomas Wolf — Hugging Face", "Arjun Kharpal — CNBC (modération)"],
+      "feedbackFrom": [],
+      "summary": "- Panel d'ouverture (contenu tiré de la vidéo). Rodrigo Liang voit un **basculement rapide vers l'inférence en production** ; les agents iront en production plus vite que les grands modèles.\n- Tony Kim parle d'une *« guerre totale »* pour la superintelligence ; Thomas Wolf nuance : le savoir-faire circule vite, comme l'a montré DeepSeek.\n- Pour Thomas Wolf, l'open source joue le **long terme** (coût, contrôle, confidentialité) ; Tony Kim estime que le propriétaire garde 6 à 12 mois d'avance.\n- Thomas Wolf distingue géants fermés, grands modèles ouverts et **petits modèles de 3 à 4 milliards de paramètres** pour la périphérie et la robotique ; le prix par token est suivi jusqu'aux CEO et CFO.\n- Tony Kim prédit que *« chaque entreprise SaaS va disparaître ou se convertir en application agentique »*.\n- Risques divergents : sécurité des données (Liang), ralentissement de la frontière (Kim), impact social et startups revendues en acqui-hires (Wolf).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "0m5SZ1H1xY8",
+        "title": "RAISE Summit 2025: The AI Evolution Open Source, Fast Inference, and the Agentic Revolution",
+        "publishedAt": "2025-09-17",
+        "transcript": true
+      }
+    },
+    {
+      "id": "from-startup-to-snowfall-building-snowflake",
+      "day": "2025-07-08",
+      "type": "talk",
+      "title": "From Startup to Snowfall: Building Snowflake from Zero to IPO and Beyond",
+      "speakers": ["Benoit Dageville — Snowflake", "Roxanne Varza — Station F"],
+      "feedbackFrom": [],
+      "summary": "- Récit fondateur (contenu tiré de la vidéo) : Snowflake conçu pendant six mois **sur un tableau blanc dans un salon**, puis près de deux ans de construction.\n- Pari technique : séparer stockage et calcul pour exploiter l'élasticité du cloud (100 serveurs, 100 fois plus vite, même prix).\n- Face aux clients, il a fallu **« cacher la révolution »** derrière le mot rassurant d'entrepôt de données.\n- Valeur produit à préserver avec 7 000 salariés : **la simplicité**, *« nous sommes un peu l'iPhone de la donnée »*.\n- Sur l'IPO de 2020 : *« si vous pouvez éviter l'IPO, évitez-la »*. L'IA ouvre enfin la donnée non structurée et l'accès en langage naturel aux métiers.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "5UL7FAUMqHk",
+        "title": "Benoît Dageville @ RAISE 2025: Zero to IPO and Beyond. From Startup to Snowfall Building Snowflake",
+        "publishedAt": "2025-09-06",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ai-infrastructure-compute-is-the-new-oil",
+      "day": "2025-07-08",
+      "type": "roundtable",
+      "title": "AI Infrastructure: Compute is the New Oil",
+      "speakers": ["Youssef El-Manssouri — Sesterce", "Shaun O'Meara — Mirantis", "Stephen Balaban — Lambda", "Chase Lochmiller — Crusoe", "Roman Chernin — Nebius", "Dylan Patel — SemiAnalysis (modération)"],
+      "feedbackFrom": [],
+      "summary": "- Changement de paradigme (contenu tiré de la vidéo) : un serveur GB200 coûte plus de 3 millions de dollars, les racks passent à 140 kW puis bien au-delà.\n- **La vitesse fait l'avantage** face aux hyperscalers : Crusoe a livré deux bâtiments d'environ 100 MW chacun à Abilene en un peu plus de 300 jours.\n- Youssef El-Manssouri reconnaît que la souveraineté était pour lui *« un argument marketing »* jusqu'à cette année ; l'Europe détient moins de 5 % de la puissance de calcul mondiale.\n- Shaun O'Meara : les néoclouds vendent tous la même chose, ils doivent **vendre une expérience** et pas des clusters Kubernetes.\n- Débat central, faut-il monter dans la pile ? Oui pour Chernin (*« pas le choix »*), non pour Lochmiller (chaque couche aura ses gagnants), vers l'énergie pour El-Manssouri.\n- Lecture critique du modérateur lui-même : des fournisseurs d'infrastructure concluent que seule l'infrastructure compte.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "n3QdWygAzXg",
+        "title": "RAISE Summit 2025: AI Infrastructure. Compute is the New Oil",
+        "publishedAt": "2025-09-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "fireside-chat-with-nikesh-arora",
+      "day": "2025-07-08",
+      "type": "talk",
+      "title": "Fireside Chat with Nikesh Arora, CEO & Chairperson at Palo Alto Networks",
+      "speakers": ["Nikesh Arora — Palo Alto Networks", "Alok Sama — ex-SoftBank Group"],
+      "feedbackFrom": [],
+      "summary": "- L'IA passe de la démocratisation de l'information à la **démocratisation de l'intelligence** ; recherche et apps mobiles seront *« désintermédiées »* (contenu tiré de la vidéo).\n- Cyber : le rançongiciel coûterait environ 28 milliards de dollars par an pour une poignée de condamnations ; une voiture autonome pourrait être détournée à distance.\n- Stratégie de plateformisation : n'acheter que le numéro un ou deux d'un segment (20 acquisitions, 16 réussies selon lui).\n- Agents : en entreprise la précision prime ; un CEO de banque ne confiera pas le contrôle à l'IA sans l'aval du régulateur. Le quantique *« sera utilisé par les mauvais acteurs avant les bons »*.\n- Lecture critique : discours commercial assumé, *« mon métier, c'est de faire peur aux gens puis de leur vendre de la cybersécurité »*.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "DuilLaOl77k",
+        "title": "Alok Sama & Nikesh Arora: AI, Cybersecurity, and Bold Leadership",
+        "publishedAt": "2025-09-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "fireside-chat-with-clara-chappaz",
+      "day": "2025-07-08",
+      "type": "keynote",
+      "title": "Fireside Chat with Clara Chappaz, French Minister Delegate for Artificial Intelligence & Digital Affairs",
+      "speakers": ["Clara Chappaz — Gouvernement français", "Henri Delahaye — RAISE Summit"],
+      "feedbackFrom": [],
+      "summary": "- Atouts français selon la ministre (contenu tiré de la vidéo) : constance de la stratégie depuis 2018, talents scientifiques, énergie nucléaire ; **109 milliards d'euros** d'investissements annoncés au sommet de février.\n- Face aux milliards américains, la frugalité : *« ce n'est pas qu'une question de zéros, c'est aussi une question de cerveaux »*.\n- Sa préoccupation : **l'adoption**. Dans les « cafés IA », on lui demande *« est-ce que ça va me remplacer ? »* ; le plan Osez l'IA vise ambassadeurs, formation de 15 millions de Français et soutien aux PME via CCI, French Tech et Bpifrance.\n- L'open source reste central, y compris pour des raisons géopolitiques (fondation Current AI).\n- Lecture critique : discours institutionnel de promotion, sans indicateur de résultat sur l'adoption.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "nVX5JcoC3CY",
+        "title": "Clara Chappaz - French Minister Delegate: Can France Overtake AI? Inside the French Vision",
+        "publishedAt": "2025-09-16",
+        "transcript": true
+      }
+    },
+    {
+      "id": "pace-versus-panic-amit-zavery",
+      "day": "2025-07-08",
+      "type": "talk",
+      "title": "Pace versus Panic: A Fireside Chat with ServiceNow's Amit Zavery",
+      "speakers": ["Amit Zavery — ServiceNow", "Scott Thomas — Teneo"],
+      "feedbackFrom": [],
+      "summary": "- Tension **« pace versus panic »** (contenu tiré de la vidéo) : les conseils d'administration poussent à aller vite, mais beaucoup d'entreprises n'en tirent pas de valeur faute de gouvernance, de sécurité et de changement culturel.\n- Aller trop vite, c'est lancer des projets sans valeur et perdre les équipes : la clé est de **choisir les bons cas d'usage**.\n- L'**AI Control Tower** de ServiceNow recense et surveille les agents (les siens et ceux des tiers) sur le modèle d'une CMDB.\n- En interne, des « employés numériques » avec un humain *« sur la boucle »* ; chiffres de valeur avancés par l'éditeur.\n- Lecture critique : Scott Thomas dénonce les CEO qui utilisent l'IA *« comme bouc émissaire »* pour justifier des licenciements.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "P_hJeTNiYp0",
+        "title": "Amit Zavery & Scott Thomas: Pace vs Panic. Governance vs Chaos. How Companies Can Survive the AI Era",
+        "publishedAt": "2025-09-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "building-securely-in-the-ai-era",
+      "day": "2025-07-08",
+      "type": "talk",
+      "title": "Building Securely in the AI Era",
+      "speakers": ["Peter McKay — Snyk", "Helena Chao — Bank of America"],
+      "feedbackFrom": [],
+      "summary": "- Snyk est née du **shift left** et propose désormais des garde-fous pour Copilot, Cursor et Windsurf (contenu tiré de la vidéo).\n- Selon Peter McKay, le code généré contient nettement plus de vulnérabilités : on produit *« plus de code médiocre que jamais »*.\n- Image retenue : *« on roule vite non pas grâce à l'accélérateur mais grâce au frein »*, d'où la correction automatique dès l'écriture.\n- « Snyk pour l'IA » : red teaming de LLM, failles MCP, injection de prompt, empoisonnement de modèles ; la sécurité doit devenir intégrée par défaut, comme un correcteur orthographique.\n- Lecture critique : échange promotionnel, chiffres non sourcés.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "e88ELrdSN4s",
+        "title": "Snyk CEO, Peter McKay: Building Securely in the AI Era",
+        "publishedAt": "2025-08-01",
+        "transcript": true
+      }
+    },
+    {
+      "id": "0-75m-arr-in-7-months-winning-agentic-coding",
+      "day": "2025-07-08",
+      "type": "talk",
+      "title": "0-75M ARR in 7 Months: Winning Agentic Coding & Beyond",
+      "speakers": ["Anton Osika — Lovable", "Fredrik Cassel — Creandum"],
+      "feedbackFrom": [],
+      "summary": "- Le chiffre du titre est déjà dépassé : Anton Osika annonce **90 millions de dollars d'ARR** (contenu tiré de la vidéo).\n- Thèse : moins de 1 % des gens savent mener un logiciel jusqu'en production ; l'IA l'ouvre *« aux 99 % »*.\n- Usages cités : un responsable produit qui aligne son entreprise avec un **prototype plutôt qu'un document**, un clone de DocuSign en deux jours.\n- Avantage européen revendiqué : des ingénieurs non retenus par des *« menottes dorées »*.\n- Prochaines étapes : outil plus pédagogique, garantir qu'un changement ne casse rien en production.\n- Lecture critique : l'intervieweur est investisseur de Lovable ; les chiffres ne sont pas discutés.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "aUU70wdMAiA",
+        "title": "Anton Osika (CEO & Founder of Lovable): 0-75M ARR in 7 Months Winning Agentic Coding & Beyond",
+        "publishedAt": "2025-07-21",
+        "transcript": true
+      }
+    },
+    {
+      "id": "manus-ai-turning-intent-into-intelligent-action",
+      "day": "2025-07-08",
+      "type": "talk",
+      "title": "Manus AI: Turning Intent into Intelligent Action",
+      "speakers": ["Tao Zhang — Manus AI", "Henri Delahaye — RAISE Summit"],
+      "feedbackFrom": [],
+      "summary": "- Rêve fondateur (contenu tiré de la vidéo) : un produit qui **fait tourner un GPU 24 h sur 24 pour un seul utilisateur**.\n- Origine : les non-codeurs ignorent l'éditeur de Cursor et cliquent sur « accepter » ; Manus se veut le panneau de droite de Cursor, dans le cloud, pour le grand public.\n- Un agent consomme environ 1 000 fois plus de tokens qu'un chatbot, d'où des capacités négociées avec les clouds avant l'ouverture.\n- Choix produit : ne pas laisser l'utilisateur choisir le modèle, pour rester simple. Sur l'AGI : *« la barre recule toujours »*.\n- Lecture critique : entretien très favorable, benchmarks revendiqués sans réévaluation régulière.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "TCga2Op-G2s",
+        "title": "Manus AI Founder, Tao Zhang: Turning Intent into Intelligent Action",
+        "publishedAt": "2025-07-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-agi-ascent-climbing-toward-superhuman-intelligence",
+      "day": "2025-07-08",
+      "type": "roundtable",
+      "title": "The AGI Ascent: Climbing Toward Superhuman Intelligence",
+      "speakers": ["Sarah Franklin — Lattice", "Peter Sarlin — Silo AI", "Chase Lochmiller — Crusoe", "Illia Polosukhin — NEAR Protocol", "Beyang Liu — Sourcegraph", "Reed Albergotti — Semafor (modération)"],
+      "feedbackFrom": [],
+      "summary": "- Personne n'aime le terme AGI ; Illia Polosukhin le définit comme *« aussi bon ou meilleur que n'importe quel humain à n'importe quel travail »* (contenu tiré de la vidéo).\n- Chase Lochmiller défend les lois d'échelle : des clients demandent des **campus de 5 GW**.\n- Beyang Liu nuance (un modèle trop gros peut « apprendre le livre par cœur ») et indique que l'IA écrit environ 95 % du code de l'agent Amp de Sourcegraph.\n- Illia Polosukhin craint un futur *« à la 1984 »* contrôlé par une entreprise et prône une **régulation par la conception**.\n- Peter Sarlin juge l'AI Act meilleur qu'attendu mais pointe un **marché unique fragmenté** ; Sarah Franklin voit plutôt un manque d'éducation et la peur.\n- Désaccords nets sur le paradigme (approximateurs de fonctions ou agents) et sur l'humain assisté contre l'IA seule.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "2KS9AyVLVco",
+        "title": "RAISE Panel 2025: The AGI Ascent Climbing Toward Superhuman Intelligence",
+        "publishedAt": "2025-09-16",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ai-and-the-genesis-of-a-new-epoch",
+      "day": "2025-07-08",
+      "type": "keynote",
+      "title": "AI and the Genesis of a New Epoch",
+      "speakers": ["Eric Schmidt — Relativity Space", "Henri Delahaye — RAISE Summit"],
+      "feedbackFrom": [],
+      "summary": "- Eric Schmidt compare l'IA aux Lumières : l'arrivée d'une **intelligence non humaine qui raisonnera mieux que nous** ; aux gouvernements : *« vous n'êtes pas prêts »* (contenu tiré de la vidéo).\n- Le **« consensus de San Francisco »** prévoit un monde transformé en deux à quatre ans ; lui table plutôt sur six, AGI en quatre à six ans.\n- Test de la superintelligence : prouver un résultat vrai dont aucun humain ne comprend la preuve. Les domaines « scale-free » (maths avec Lean, logiciel) iront le plus vite, avec un revers cyber.\n- Bulle peu probable selon lui : *« la capacité matérielle a toujours été absorbée par le logiciel »*. Risque géopolitique : des usages mondiaux sur des modèles open source chinois.\n- À nuancer : calendriers de conviction personnelle ; il dit lui-même fournir *« la hype nécessaire pour convaincre les investisseurs »*.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "_gBxYL2ihc0",
+        "title": "Eric Schmidt: AI and the Genesis of a New Epoch",
+        "publishedAt": "2025-07-18",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-race-to-superintelligence-cerebras-eric-schmidt",
+      "day": "2025-07-08",
+      "type": "keynote",
+      "title": "Fireside Chat with Cerebras & Relativity Space: The Race to SuperIntelligence",
+      "speakers": ["Andrew Feldman — Cerebras", "Eric Schmidt — Relativity Space", "Henri Delahaye — RAISE Summit"],
+      "feedbackFrom": [],
+      "summary": "- Andrew Feldman présente la puce wafer-scale de Cerebras, conçue avant les transformers pour l'algèbre linéaire creuse (contenu tiré de la vidéo).\n- Eric Schmidt : **le coût par token baisse d'un facteur 10 par an** ; le ratio entraînement/inférence s'est inversé au profit de l'inférence, et la vitesse devient un avantage concurrentiel.\n- Open source : les modèles chinois gagnent l'Afrique et l'Asie centrale, à une fraction du prix des modèles fermés.\n- Alignement : *« comment savoir ce qu'un modèle sait sans le publier ? »*, problème *« pas fondamentalement résolu »*.\n- **L'électricité est le facteur limitant** ; la France a une énergie propre mais *« la taxe énormément »* (Feldman).\n- À nuancer : performances de Cerebras non étayées, Schmidt dit avoir aidé à les marketer.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "goG7g6ao5m4",
+        "title": "Eric Schmidt & Andrew Feldman: The Race to SuperIntelligence",
+        "publishedAt": "2025-07-21",
+        "transcript": true
+      }
+    },
+    {
+      "id": "open-software-infrastructure-2-0",
+      "day": "2025-07-08",
+      "type": "roundtable",
+      "title": "Open Software Infrastructure 2.0",
+      "speakers": ["Germain Masse — OVHcloud", "Alexey Milovidov — ClickHouse", "Heikki Linnakangas — Neon", "Oskari Saarenmaa — Aiven", "Michel Tricot — Airbyte", "Abel Samot — >commit (modération)"],
+      "feedbackFrom": [],
+      "summary": "- Raisons de l'open source (contenu tiré de la vidéo) : souveraineté et flexibilité (Tricot), réversibilité entre clouds (Masse), durabilité, *« une technologie qui existera encore dans 50 ans »* (Milovidov), crédibilité et recrutement (Linnakangas).\n- **Les protocoles deviennent des standards** : protocole Postgres, API Kafka.\n- Neon a refusé des contrats de support auto-hébergé pour se concentrer sur son cloud ; et chez Neon, **plus de bases sont créées par des agents IA que par des humains** (v0, Lovable, Replit).\n- ClickHouse voit la BI basculer vers des chatbots qui interrogent la base via MCP ; Airbyte veut **fournir du contexte aux agents**.\n- Débat : modèles commoditisés sur le téléphone (Linnakangas) contre hybride défendu par le cloud provider (Masse).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "4UMaCj-Jcz8",
+        "title": "OVH Cloud, ClickHouse, Neon, Aiven, Airbyte & Commit: Open Software Infrastructure 2.0",
+        "publishedAt": "2025-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "data-centric-ai-in-the-agentic-era",
+      "day": "2025-07-08",
+      "type": "talk",
+      "title": "Data-Centric AI in the Agentic Era",
+      "speakers": ["Alex Ratner — Snorkel AI"],
+      "feedbackFrom": [],
+      "summary": "- **L'évaluation repose sur trois ingrédients** : un jeu de prompts, des rubriques et des vérificateurs (contenu tiré de la vidéo).\n- Critique des outils centrés sur l'observabilité : *« un centre d'examen avec de belles chaises, mais personne n'a écrit les questions »*.\n- **Le benchmark d'évaluation devient le nouveau PRD** : à construire avec les PM et les métiers, pas seulement les data scientists.\n- Exemple : un jeu de données agentique en assurance où les meilleurs LLM plafonnent nettement une fois l'usage d'outils requis.\n- *« LLM-as-a-judge, c'est demander aux élèves de corriger leur propre copie »* ; la donnée purement synthétique est une *« machine à énergie libre »*, il faut des experts dans la boucle.\n- À nuancer : la thèse coïncide avec l'offre de Snorkel, ce que l'orateur reconnaît.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "NPWdBQSGUn0",
+        "title": "Alex Ratner, CEO & Co-Founder, Snorkel AI: Data Centric AI in the Agentic Era",
+        "publishedAt": "2025-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-neural-network-is-the-computer",
+      "day": "2025-07-08",
+      "type": "roundtable",
+      "title": "The Neural Network Is the Computer: The Future of Software and Computing",
+      "speakers": ["Stephen Balaban — Lambda", "Thomas Wolf — Hugging Face", "Dylan Patel — SemiAnalysis"],
+      "feedbackFrom": [],
+      "summary": "- Panel court et spéculatif (contenu tiré de la vidéo, un panéliste prévu semble absent). Stephen Balaban défend le **logiciel neuronal** : le réseau devient le programme au lieu de générer du code fragile.\n- Le fine-tuning pour des personnages cohérents (Thomas Wolf) pourrait être remplacé par un simple prompt avec vidéos de référence ; la voix se clone déjà en contexte.\n- **L'apprentissage continu** reste le Graal.\n- Chaque paradigme informatique a changé de mode d'entrée ; le prochain sera l'intention exprimée au modèle.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "OCBtTLTAY6k",
+        "title": "Lambda, Hugging Face, SemiAnalysis: The Neural Network Is the Computer",
+        "publishedAt": "2025-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "hackers-with-gpus-offensive-security-in-the-ai-era",
+      "day": "2025-07-08",
+      "type": "talk",
+      "title": "Hackers with GPUs: Offensive Security in the AI Era",
+      "speakers": ["Oege de Moor — XBOW", "Apoorv Agrawal — Altimeter Capital"],
+      "feedbackFrom": [],
+      "summary": "- XBOW est **un hacker IA entièrement autonome** : une URL suffit pour explorer, construire des exploits et rédiger un rapport (contenu tiré de la vidéo).\n- Revendiqué numéro un du classement HackerOne aux États-Unis sur le dernier trimestre, devant les humains.\n- L'IA aggrave la cyber : attaquants mieux équipés et vibe coding qui multiplie les failles ; il prévoit *« une période de chaos »* et un incident majeur dû à l'IA d'ici 12 mois.\n- Le créateur de GitHub Copilot juge **la génération de code surestimée** : les décisions d'architecture restent aussi difficiles.\n- *« L'hallucination est une fonctionnalité »* pour le pentest. À nuancer : le modérateur est investisseur de XBOW.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "o41IVN8ER8c",
+        "title": "Oege De Moor (XBOW) & Apoorv Agrawal (Altimeter): Hackers with GPUs Offensive Security in the AI Era",
+        "publishedAt": "2025-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ai-futures-where-public-research-meets-private-innovation",
+      "day": "2025-07-08",
+      "type": "roundtable",
+      "title": "AI Futures: Where Public Research Meets Private Innovation",
+      "speakers": ["Antoine Bordes — Helsing", "Gaël Varoquaux — Inria", "Joelle Barral — Google DeepMind", "Isabelle Ryl — PRAIRIE-PSAI", "Robert Cahill — Enhance Ventures (modération)"],
+      "feedbackFrom": [],
+      "summary": "- À 10 ans, Joelle Barral voit l'IA devenir un « médecin de famille » pour tous ; Isabelle Ryl refuse l'exercice, *« si vous pouvez l'imaginer, ce n'est pas de la recherche »* (contenu tiré de la vidéo).\n- AlphaFold comme **modèle de cercle vertueux public-privé** (Barral).\n- Antoine Bordes conseille d'acheter des **« programmes de drones »** mis à jour tous les 3 à 6 mois plutôt que des drones ; la clé, *« les données, les données et les données »*.\n- Isabelle Ryl : *« donnez-moi deux ou dix fois plus d'argent, je ne pourrai pas le dépenser »* (règles administratives).\n- Gaël Varoquaux en contradicteur : effets rebond, et **l'éléphant dans la pièce, les jeux de pouvoir**. Bordes regrette une passerelle académique vers privé *« à sens unique »*.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "08p5rGLyI40",
+        "title": "Antoine Bordes (Helsing) & Gaël Varoquaux (INRIA): Where Public Research Meets Innovation",
+        "publishedAt": "2025-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "fireside-chat-with-prashanth-chandrasekar-stack-overflow",
+      "day": "2025-07-08",
+      "type": "talk",
+      "title": "Fireside Chat with Prashanth Chandrasekar, CEO of Stack Overflow",
+      "speakers": ["Prashanth Chandrasekar — Stack Overflow", "Henry Shi — Super.com"],
+      "feedbackFrom": ["Harald Nezbeda (cité parmi les sessions suivies)"],
+      "summary": "- Question d'ouverture sans détour : questions mensuelles revenues au niveau de 2009, trafic en forte chute, **Stack Overflow est-il obsolète ?** (contenu tiré de la vidéo).\n- Réponse par l'enquête développeurs : 80 % utilisent l'IA mais **la confiance recule** (autour de 30 %), surtout chez les confirmés, à cause d'erreurs subtiles.\n- Stratégie : licencier les données, apparaître dans les outils (*« être là où est l'utilisateur »*), et pousser **la base de connaissances interne** pour entreprises, servie via un serveur MCP.\n- Les juniors, *« particulièrement vulnérables »* face aux agents : défis certifiants et partenariat avec Indeed.\n- À nuancer : entreprise dite *« rentable et en croissance »* sans chiffres.\n- Harald Nezbeda cite la session parmi celles qu'il a suivies, sans la commenter.",
+      "summarySources": ["transcript", "blog", "program"],
+      "video": {
+        "youtubeId": "SIHWy0l_-gw",
+        "title": "An AI conversation with Prashanth Chandrasekar, CEO of Stack OverFlow",
+        "publishedAt": "2025-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "fireside-chat-with-luc-julia-renault",
+      "day": "2025-07-08",
+      "type": "talk",
+      "title": "Fireside Chat with Luc Julia, Renault & Matthieu de Chanville, Shift for Good",
+      "speakers": ["Luc Julia — Renault", "Matthieu de Chanville — Shift4Good"],
+      "feedbackFrom": [],
+      "summary": "- Un véhicule se développe en 17 mois en Chine, encore en 5 ans chez Renault : *« on parle d'agile, la réalité c'est qu'on n'est pas agiles »* (contenu tiré de la vidéo).\n- Le véhicule défini par logiciel reste *« un souhait »* qui prendra du temps.\n- **Le niveau 5 d'autonomie est impossible** selon lui ; le niveau 4 fonctionne avec des opérateurs humains à distance.\n- Pas d'AGI mais **des IA spécialisées** : petits modèles plus sobres et plus fiables ; exemple des capteurs virtuels de Compredict.\n- À nuancer : affirmations fortes non démontrées et piques contre Elon Musk.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "XtW3ce4az48",
+        "title": "A Fireside Chat with Luc Julia, Renault & Matthieu de Chanville, Shift for Good",
+        "publishedAt": "2025-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "orchestrating-the-future-agentic-ai-and-autonomous-workflows",
+      "day": "2025-07-08",
+      "type": "roundtable",
+      "title": "Orchestrating the Future: Agentic AI and Autonomous Workflows",
+      "speakers": ["Alexandra Mysoor — Alix", "Emmanuel Cassimatis — SAP", "Ivan Burazin — Daytona", "Edwin Khodabakchian — Feedly", "Paul van der Boor — Prosus Group", "Larissa Holzki — Handelsblatt (modération)"],
+      "feedbackFrom": [],
+      "summary": "- Daytona fournit *« le MacBook de l'agent »* (sandboxes) ; les clients demandent déjà de bloquer ports sortants et processus, et une action d'agent se confond encore avec celle de son propriétaire dans les logs (contenu tiré de la vidéo).\n- Chez Alix, l'équipe devient **manager de « coéquipiers numériques »** ; SAP parle d'un *« monstre de la gouvernance »* et d'un comité de revue par agent.\n- Prosus : les tâches répétitives bien définies peuvent être entièrement autonomes ; « labeling parties » pour faire monter un agent en grade ; échec reconnu du chatbot shopping.\n- Feedly voit l'agent comme un **exosquelette** qui fait 85 à 90 % d'une tâche.\n- Il faudra une **« vue agent »** des services (API, MCP) à côté du web et du mobile.\n- Lecture critique : désaccords en partie mis en scène, positions proches de chaque offre.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "rOU-fDl_CPM",
+        "title": "Alix, SAP, Daytona, Feedly, Prosus & Handelsblatt: The Future Agentic AI & Autonomous Workflows",
+        "publishedAt": "2025-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "mcp-and-the-future-of-ai-agents",
+      "day": "2025-07-08",
+      "type": "talk",
+      "title": "MCP & the Future of AI Agents",
+      "speakers": ["Sara Du — Asari"],
+      "feedbackFrom": [],
+      "summary": "- Le MCP, créé par Anthropic puis adopté par OpenAI et Microsoft, compte déjà plus d'étoiles GitHub qu'OpenAPI (contenu tiré de la vidéo).\n- Différence clé : avec une API le développeur programme la logique ; avec le MCP, *« le modèle trouve la logique »* à partir des descriptions d'outils.\n- Un agent est **un programme autonome et non déterministe** : n'utiliser le MCP que si l'on accepte une variance des résultats.\n- Serveurs MCP open source de qualité inégale (simples traductions d'API) : définir des **golden paths d'évaluation** avant la production.\n- Sécurité : *« far west »* (vols d'identifiants par serveurs malveillants) ; les entreprises commencent à tenir des registres MCP internes. Talk qui se conclut par un appel au recrutement.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "9QFVrBRzfxU",
+        "title": "Sara Du, Founder, Asari: MCP & the Future of AI Agents",
+        "publishedAt": "2025-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-great-equaliser-agentic-ai-europe-startups",
+      "day": "2025-07-09",
+      "type": "keynote",
+      "title": "The Great Equaliser: How Agentic AI Is Powering Europe's Next Generation of Startups",
+      "speakers": ["Guillaume Princen — Anthropic", "Charlie Perreau — Les Echos"],
+      "feedbackFrom": [],
+      "summary": "- Ouverture du 9 juillet (contenu tiré de la vidéo). Premier conseil aux startups : miser sur le **codage agentique**, *« 90 % du code de Claude Code a été écrit avec Claude Code »*.\n- Second conseil : intégrer l'IA aux produits vendus, pas seulement à l'optimisation interne ; essor des « solopreneurs ».\n- L'IA **nivelle le terrain de jeu** pour l'Europe : les agents de code lèvent la barrière du talent.\n- Exemples en grandes entreprises (BMW, Novo Nordisk, SNCF) et idée de **« collaborateur virtuel »** capable de travailler des heures en autonomie, tout en notant que les usages restent surtout de l'augmentation.\n- Lecture critique : discours commercial, affirmations sur les pratiques des concurrents non étayées.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "oTv8P48elmY",
+        "title": "Anthropic: The Great Equaliser: How Agentic AI Is Powering Europe’s Next Generation of Startups",
+        "publishedAt": "2025-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "fireside-chat-with-jonathan-ross-groq",
+      "day": "2025-07-09",
+      "type": "talk",
+      "title": "Fireside Chat with Jonathan Ross, CEO of Groq",
+      "speakers": ["Jonathan Ross — Groq", "Dina Bass — Bloomberg News"],
+      "feedbackFrom": [],
+      "summary": "- Groq ouvre son premier datacenter européen à Helsinki, décidé *« il y a un mois et trois jours »* (contenu tiré de la vidéo).\n- Revendication : environ **un tiers de l'énergie par token** d'un GPU, refroidissement à l'air.\n- Leçon de l'ancien initiateur du TPU de Google : **le logiciel avant la puce** (six mois sur le compilateur avant de concevoir le silicium).\n- L'inférence est un **marché de volume à faible marge**, à la Costco.\n- Sur l'Europe : les « gigafactories » lui semblent rédigées par *« un lobbyiste d'un grand fabricant de GPU »* ; il prône une régulation qui n'agit qu'après un préjudice réel.\n- Lecture critique : comparaisons avec NVIDIA unilatérales.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "0EFeDbbO1zg",
+        "title": "Groq's CEO: A conversation with Jonathan Ross",
+        "publishedAt": "2025-07-31",
+        "transcript": true
+      }
+    },
+    {
+      "id": "fireside-chat-with-daniel-dines-uipath",
+      "day": "2025-07-09",
+      "type": "talk",
+      "title": "Fireside Chat with Daniel Dines, Founder & CEO of UiPath",
+      "speakers": ["Daniel Dines — UiPath", "John Furrier — SiliconANGLE Media"],
+      "feedbackFrom": [],
+      "summary": "- RPA et IA agentique poursuivent le même but : **imiter la façon dont les gens exécutent un processus** (contenu tiré de la vidéo).\n- L'IA probabiliste crée un besoin massif d'**orchestration** entre agents, robots et humains.\n- Deux écoles : agent maître qui choisit le chemin, ou workflow qui pilote de petits agents ; UiPath mise sur les deux.\n- Conseil : des **agents verticaux** adossés à une plateforme horizontale ; *« la société la plus rapide gagne toujours »*.\n- Il vend davantage aux gouvernements américain et britannique qu'aux institutions européennes : *« adopter plutôt que réguler »*. Échange complaisant.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "DgX-MCBBFEk",
+        "title": "Conversation with Daniel Dines, Founder & CEO of UiPath",
+        "publishedAt": "2025-08-13",
+        "transcript": true
+      }
+    },
+    {
+      "id": "is-enterprise-defensibility-possible-in-an-ai-world",
+      "day": "2025-07-09",
+      "type": "roundtable",
+      "title": "Is Enterprise Defensibility Possible in an AI's World?",
+      "speakers": ["Mahdi Yahya — Ori", "May Habib — Writer", "Lin Qiao — Fireworks AI", "Russell Banzon — Cresta", "Nikola Mrkšić — PolyAI", "Mike Butcher (modération)"],
+      "feedbackFrom": [],
+      "summary": "- May Habib : des directeurs financiers refusent nouveaux SaaS et nouveaux postes, *« avez-vous d'abord essayé de le construire avec l'IA ? »* (contenu tiré de la vidéo).\n- Fin de la tarification au siège au profit d'une **tarification aux résultats** (Banzon, Mrkšić).\n- Lin Qiao situe le seul fossé dans le **data flywheel** ; Mahdi Yahya cite un cabinet d'avocats qui a mieux réussi en formant ses avocats qu'en fine-tunant.\n- Adoption : transparence avec les agents de centre d'appels et passerelles vers l'IT.\n- Débat : donnée comme moat (Qiao) contre *« la vitesse d'innovation est le seul fossé »* (Habib) ; Mrkšić lance *« arrêtez de penser défense, c'est très européen »*.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "QGZMj8Bbx0w",
+        "title": "Ori, PolyAI, Cresta, Writer & Fireworks AI: Is Enterprise Defensibility Possible in an AI's World?",
+        "publishedAt": "2025-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "collaboration-is-all-you-need-open-source-as-ai-s-great-accelerator",
+      "day": "2025-07-09",
+      "type": "roundtable",
+      "title": "Collaboration is All You Need: Open Source as AI's Great Accelerator",
+      "speakers": ["Jim Zemlin — Linux Foundation", "Matt Hicks — Red Hat", "Jonathan Siddharth — Turing", "Mitchell Baker — Mozilla", "Ankit Patel — NVIDIA", "Olivier Huez — >commit (modération)"],
+      "feedbackFrom": [],
+      "summary": "- Mitchell Baker : chez Mozilla, *« on ne tirait pas parti de la communauté, nous étions la communauté »* (contenu tiré de la vidéo).\n- Jim Zemlin : la Linux Foundation assure la **propriété neutre de la propriété intellectuelle** et agit en *« capital-risqueur inversé »* ; Google lui a confié A2A pour attirer d'autres contributeurs.\n- **Standards et open source fusionnent** : un protocole comme MCP a besoin d'implémentations de référence ouvertes.\n- Matt Hicks : **une pull request laissée sans réponse tue une communauté** ; reconnaître l'humain, même sans fusionner (Baker).\n- IA et open source : projets plus rapides ou millions de forks jamais fusionnés, flou sur le droit d'auteur (Hicks) ; *« on ne remplacera pas Linus Torvalds en vibe codant »* (Zemlin).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "txXDkJKgqEg",
+        "title": "AI Visionaries Panel: Collaboration is All You Need! Open Source as AI's Great Accelerator",
+        "publishedAt": "2025-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "engineering-at-the-speed-of-change-windsurf",
+      "day": "2025-07-09",
+      "type": "keynote",
+      "title": "Keynote: Engineering at the Speed of Change",
+      "speakers": ["Alex Laubscher — Windsurf"],
+      "feedbackFrom": [],
+      "summary": "- Tout le monde adopte l'IA : l'enjeu n'est plus l'adoption mais **l'adaptation**, choisir des fournisseurs qui restent à la pointe (contenu tiré de la vidéo).\n- Rythme revendiqué : un nouveau palier de fonctionnalités *« toutes les trois semaines »* depuis le lancement de l'IDE agentique.\n- Chiffre avancé : **environ 90 % du code écrit par l'IA** chez les clients, sans méthodologie.\n- Différenciation sur le **brownfield** (grosses bases de code) ; démo d'assets importés de Figma via MCP et d'implémentation depuis une capture d'écran.\n- Lecture critique : keynote commerciale.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "B2Hqqa-5ys0",
+        "title": "Windsurf CTO, Alex Laubscher: Engineering at the Speed of Change",
+        "publishedAt": "2025-07-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-future-of-content-and-fair-compensation-in-the-age-of-ai",
+      "day": "2025-07-09",
+      "type": "talk",
+      "title": "The Future of Content & Fair Compensation in the Age of AI",
+      "speakers": ["Stephanie Cohen — Cloudflare", "Peter Elstrom — Bloomberg"],
+      "feedbackFrom": [],
+      "summary": "- Depuis le 1er juillet, Cloudflare bloque par défaut les crawlers IA sur les nouveaux domaines : **modèle fondé sur la permission** (contenu tiré de la vidéo).\n- Le **« pay per crawl »** s'appuie sur le code HTTP 402 : le créateur fixe un prix, le crawl est payé ou bloqué.\n- Argument : on lit de plus en plus des dérivés de contenus au lieu des originaux ; *« si le contenu original meurt, les modèles d'IA ne pourront plus progresser »*.\n- Elle refuse d'expliquer les écarts de ratio crawl/visites entre acteurs cités par le journaliste.\n- Point de débat : Cloudflare se dit arbitre neutre mais devient de fait un péage entre éditeurs et IA.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "i1xqt-Ro6nk",
+        "title": "Cloudflare CSO, Stephanie Cohen: The Future of Content & Fair Compensation in the Age of AI",
+        "publishedAt": "2025-08-13",
+        "transcript": true
+      }
+    },
+    {
+      "id": "beyond-the-hype-leading-agentic-ai-into-the-enterprise",
+      "day": "2025-07-09",
+      "type": "talk",
+      "title": "Beyond the Hype: Leading Agentic AI into the Enterprise",
+      "speakers": ["Gautier Cloix — H Company", "Reed Albergotti — Semafor"],
+      "feedbackFrom": [],
+      "summary": "- H construit des **agents « computer use »** capables d'utiliser un logiciel inconnu (contenu tiré de la vidéo).\n- Après le départ de plusieurs cofondateurs, le nouveau CEO (10 ans chez Palantir) importe le **modèle d'ingénieur « forward deployed »** assis à côté de l'utilisateur.\n- Délai moyen de signature d'un contrat : **trois semaines aux États-Unis contre 14,5 mois en France**, selon lui.\n- Modèle généraliste ajusté au besoin, présenté comme environ 10 fois moins cher.\n- Lecture critique : aucun client après un an, performance revendiquée sur un seul benchmark.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "HxcCf9o6QE4",
+        "title": "H Company CEO, Gautier Cloix: Beyond the Hype Leading Agentic AI into the Enterprise",
+        "publishedAt": "2025-07-23",
+        "transcript": true
+      }
+    },
+    {
+      "id": "algorithmic-independence-national-infrastructure",
+      "day": "2025-07-09",
+      "type": "talk",
+      "title": "Algorithmic Independence: The Next Frontier in National Infrastructure",
+      "speakers": ["Anjney Midha — Andreessen Horowitz", "Rachel Metz — Bloomberg News"],
+      "feedbackFrom": [],
+      "summary": "- Souveraineté technique et culturelle : *« presque toutes les routes qui commencent par la souveraineté mènent à l'open source »* (contenu tiré de la vidéo).\n- Biais culturel : un modèle américain parle hindi *« comme un touriste »* ; le fine-tuning ne suffit pas, les pays passent au mid-training.\n- On ne rattrape pas la frontière plus tard : l'IA ressemble à l'électrification, pas au mobile.\n- Mise en garde contre un **« colonialisme numérique »** qui ne laisserait que des puces dépréciées ; les pays devront s'insérer dans le « flux de tokens ».\n- Paris à deux ans : robotique et usage général de l'ordinateur par les agents. À nuancer : investisseur au conseil de Mistral.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "EoA3A1HC8-s",
+        "title": "Anjney Midha of a16z: Algorithmic Independence The Next Frontier in National Infrastructure",
+        "publishedAt": "2025-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-death-of-saas-the-dawn-of-agents",
+      "day": "2025-07-09",
+      "type": "talk",
+      "title": "The Death of SaaS, The Dawn of Agents",
+      "speakers": ["Des Traynor — Intercom (Fin.ai)"],
+      "feedbackFrom": [],
+      "summary": "- Moment « s'adapter ou mourir » pour le SaaS B2B : Intercom deviendrait énorme ou serait *« morte d'ici environ deux ans »* (contenu tiré de la vidéo).\n- Plan en cinq étapes : ambition, job à copier, compromis, architecture, lancement ; de l'assistant jusqu'à l'agent qui fait **le travail d'une organisation entière**.\n- **Respecter le métier copié** : le vrai support est désordonné, et Fin enchaîne de nombreux appels LLM spécialisés, loin d'un « thin wrapper ».\n- Calcul de fiabilité : des étapes à 95 à 99 % donnent un flux à 85 % ; si vérifier coûte autant que faire, l'agent ne sert à rien.\n- Le lancement n'est qu'un début (analytics, nouvelle organisation du support). Talk utile mais vitrine commerciale pour Fin.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "cA3lW2nvNcg",
+        "title": "Des Traynor, Co-Founder & CSO @ Intercom & Creator of Fin.ai: The Death of SaaS, The Dawn of Agents",
+        "publishedAt": "2025-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "production-software-keeps-breaking-traversal",
+      "day": "2025-07-09",
+      "type": "talk",
+      "title": "Production Software Keeps Breaking, and It Will Only Get Worse. Here's How Traversal is Fixing It",
+      "speakers": ["Anish Agarwal — Traversal"],
+      "feedbackFrom": [],
+      "summary": "- L'IA écrit une part croissante du code : **le dépannage deviendra le goulot**, sur des systèmes plus gros et moins connus des ingénieurs (contenu tiré de la vidéo).\n- L'incident type : *« dumpster diving dans les dashboards »*, des dizaines d'ingénieurs mobilisés pendant des heures.\n- Échecs des approches classiques : AIOps bruyant, télémétrie trop volumineuse pour un contexte LLM, runbooks toujours obsolètes.\n- Réponse : **ML causal**, modèles de raisonnement et essaims d'agents parallèles ; résultats annoncés chez DigitalOcean.\n- Lecture critique : pitch produit, métriques fournies par l'éditeur.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "B7ZDgR0t6EY",
+        "title": "Anish Agarwal, Traversal: Production Software Keeps Breaking, and It Will Only Get Worse",
+        "publishedAt": "2025-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-agentic-economy-ai-s-unseen-hand",
+      "day": "2025-07-09",
+      "type": "roundtable",
+      "title": "The Agentic Economy: AI's Unseen Hand",
+      "speakers": ["Alex Laubscher — Windsurf", "Tim Calveley — BUZZ HPC", "Peter Jung — Gnosis", "Mati Staniszewski — ElevenLabs", "Euro Beinat — Prosus Group", "Rachel Metz — Bloomberg News (modération)"],
+      "feedbackFrom": [],
+      "summary": "- Un agent perçoit, décide et agit vers un but ; s'y ajoutent mémoire et apprentissage (Jung) et le multimodal (Staniszewski). Contenu tiré de la vidéo.\n- Chez Prosus, l'assistant interne est passé de 10 % à moins de 1 % d'hallucinations grâce aux agents, et environ 500 agents créés par les employés sont apparus en trois mois.\n- Le code réussit grâce à une **boucle de feedback claire** : le code compile ou non (Laubscher).\n- Un agent de données juste à 80 % est *« inutile »* (Beinat) : l'essentiel du travail est de lever l'ambiguïté du vocabulaire métier ; les LLM savent mal dire « je ne sais pas » (Jung).\n- Débat sur la transparence : superflue demain (Laubscher, Beinat) ou indispensable aujourd'hui (Staniszewski, Calveley). Panel très promotionnel.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "shZqF8ZY4h0",
+        "title": "Windsurf, BUZZ HPC, Gnosis, ElevenLabs, Prosus & Bloomberg: The Agentic Economy AI’s Unseen Hand",
+        "publishedAt": "2025-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "frontier-ai-from-research-to-production",
+      "day": "2025-07-09",
+      "type": "talk",
+      "title": "Frontier AI: From Research to Production?",
+      "speakers": ["Stephane Kasriel — Meta Fundamental AI Research (FAIR)", "Michael Amar — RAISE & Paris Blockchain Week"],
+      "feedbackFrom": [],
+      "summary": "- FAIR fonctionne sur le **modèle des Bell Labs** : recruter, financer, laisser travailler, puis passer à l'échelle (contenu tiré de la vidéo).\n- Pari open source de Llama : un **écosystème plutôt qu'un produit**, la sécurité par la revue communautaire, le contrôle (*« pas tes poids, pas ton modèle »*).\n- Usages inattendus : la Station spatiale internationale utilise Llama en local faute de bande passante.\n- Écart d'efficacité avec le cerveau humain (données et énergie) estimé à plusieurs ordres de grandeur ; *« on en est encore au jour zéro »*.\n- Lecture critique : discours très optimiste, en réaction explicite à un panel précédent jugé *« déprimant »*.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "zJZxvij4rEs",
+        "title": "Stephane Kasriel, Meta Fundamental AI Research (FAIR): Frontier AI From Research to Production",
+        "publishedAt": "2025-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "fireside-chat-with-supabase-open-source-backend-for-the-ai-age",
+      "day": "2025-07-09",
+      "type": "talk",
+      "title": "Fireside Chat with Supabase: Open-Source Backend for the AI Age",
+      "speakers": ["Paul Copplestone — Supabase", "Abel Samot — >commit"],
+      "feedbackFrom": [],
+      "summary": "- Positionnement **« alternative open source à Firebase »** pour capter le développeur au moment du choix de sa base (contenu tiré de la vidéo).\n- Monétisation : payer pour l'exploitation ; face aux grands comptes, *« la configuration plutôt que la personnalisation »* et des protocoles standards (Postgres, Iceberg, OpenTelemetry).\n- La vague du **vibe coding** a provoqué un tel saut de croissance que l'équipe s'est crue sous attaque DDoS ; des apps « en production » sans être « prêtes pour la production ».\n- Organisation : environ 140 personnes, 100 % à distance et asynchrones, petites équipes qui fonctionnent comme une communauté open source ; « launch weeks » comme moteur de croissance.\n- Lecture critique : entretien bienveillant d'un investisseur, sans question sur les risques du vibe coding.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "Q0nH2-cW48E",
+        "title": "Paul Copplestone (SupaBase) & Abel Samot (Commit): Open Source Backend for the AI Age",
+        "publishedAt": "2025-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "investment-in-ai-who-gets-funded-and-why",
+      "day": "2025-07-09",
+      "type": "roundtable",
+      "title": "Investment in AI: Who Gets Funded and Why",
+      "speakers": ["Bernard Liautaud — Balderton Capital", "Apoorv Agrawal — Altimeter Capital", "Avid Larizadeh Duggan — Teachers' Venture Growth", "Malachi Price — Coatue", "Antoine Blondeau — Alpha Intelligence Capital", "Max Ruderman — Harmonic (modération)"],
+      "feedbackFrom": [],
+      "summary": "- Apoorv Agrawal décrit une **pyramide inversée** du revenu de l'IA générative : l'essentiel chez les fabricants de puces, peu dans les applications, à l'inverse du cloud (contenu tiré de la vidéo).\n- Les marges de l'IA d'entreprise *« ne sont pas des marges SaaS »* (Larizadeh Duggan) ; le goulot est l'**accès à l'électricité** (Price).\n- Des tours seed ou série A partent en grande partie en infrastructure (Liautaud) ; les meilleures startups européennes trouvent leur capital, souvent non européen en croissance.\n- Le vibe coding ne rend pas le logiciel gratuit (conformité, architecture) ; Agrawal tranche : *« la vitesse est la seule douve »*.\n- Débat sur le « greenfield » : premier arrivé gagnant, ou lourde conduite du changement chez les grands comptes.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "sh8ch5GXx0A",
+        "title": "Balderton, Altimeter, TVG, Coatue, Alpha & Harmonic: Investment in AI Who Gets Funded and Why",
+        "publishedAt": "2025-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "fireside-chat-with-scaleway-europe-s-most-advanced-clusters",
+      "day": "2025-07-09",
+      "type": "talk",
+      "title": "Fireside Chat with Scaleway: Unlocking AI's Potential: Insights from Deploying Europe's Most Advanced Clusters",
+      "speakers": ["Damien Lucas — Scaleway", "Jeremie Ontiveros — SemiAnalysis"],
+      "feedbackFrom": ["VeilleMag (Jacqueline Sala)"],
+      "summary": "- Scaleway (groupe Iliad) veut éviter de répéter *« l'erreur du cloud »* laissé aux hyperscalers américains ; son cluster Hopper a servi à entraîner des modèles de Mistral, Kyutai et H (contenu tiré de la vidéo).\n- Atout revendiqué : être à la fois cloud public et cloud GPU, pour **amener l'IA aux données** plutôt que l'inverse.\n- Projet de très grand cluster candidat à l'appel européen sur les AI gigafactories : *« nous ne voulons pas d'argent, nous voulons de la demande »* (commande publique, électricité moins taxée).\n- Il dit détester le mot « souveraineté » et le décompose en trois questions : immunité aux lois extraterritoriales, dépendance, répartition de la valeur.\n- Côté presse, VeilleMag retient l'annonce d'un super-cluster GPU européen et un programme d'accompagnement des startups. Lecture critique : discours commercial sur fond de candidature.",
+      "summarySources": ["transcript", "blog", "program"],
+      "video": {
+        "youtubeId": "B8bgvnyQeF8",
+        "title": "Scaleway &  SemiAnalysis: Unlocking AI's Potential Insights from Deploying Europe's Most Advanced",
+        "publishedAt": "2025-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-oss-paradox-free-software-priceless-value",
+      "day": "2025-07-09",
+      "type": "roundtable",
+      "title": "The OSS Paradox: Free Software, Priceless Value",
+      "speakers": ["Reza Shafii — Kong", "Olivier Huez — >commit", "Milos Rusic — deepset", "Pierre Burgy — Strapi", "Russ d'Sa — LiveKit", "Gabriele Columbro — FINOS (modération)"],
+      "feedbackFrom": [],
+      "summary": "- Milos Rusic : **monétiser le complément**, pas la commodité ; l'open core va vite mais crée un conflit d'intérêts permanent (contenu tiré de la vidéo).\n- Pierre Burgy juge l'hébergement plus aligné avec la communauté ; Reza Shafii irait *« directement au SaaS »* s'il recommençait Kong.\n- Russ d'Sa place la ligne au niveau du **déploiement et de la montée en charge** ; un grand cloud leur a proposé de les racheter ou de *« vous tuer avec votre open source »*, LiveKit est resté en Apache 2.\n- Olivier Huez parle de *« contrat moral »* : choisir la bonne licence dès le départ plutôt que d'en changer.\n- Débat réel sur open core contre hébergement et sur les licences restrictives ; les investisseurs tardifs qui appliquent les métriques SaaS à l'open source sont pointés comme un risque.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "5HQ1SmgBx74",
+        "title": "Kong, Commit, Deepset, Strapi, LiveKit & FINOS: The OSS Paradox Free Software, Priceless Value",
+        "publishedAt": "2025-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "workshop-agentic-pipelines-n8n-nebius-ai-studio",
+      "day": "2025-07-09",
+      "type": "workshop",
+      "title": "Workshop: Agentic Pipelines orchestrating open-source LLMs (with n8n & Nebius AI Studio)",
+      "speakers": ["Dylan Bristot — Nebius"],
+      "feedbackFrom": ["Harald Nezbeda"],
+      "summary": "- Atelier de 40 minutes (vidéo disponible, transcript non exploité) sur l'orchestration de LLM open source avec n8n et Nebius AI Studio.\n- **Côté participants** : *« personal highlight »* de Harald Nezbeda, qui retient des cas d'usage montrant comment combiner des LLM existants avec d'autres outils.",
+      "summarySources": ["blog", "program"],
+      "video": {
+        "youtubeId": "XYYeJH2fqG4",
+        "title": "Workshop: Agentic Pipelines orchestrating open-source LLMs ft. n8n & Nebius AI Studio",
+        "publishedAt": "2025-10-08",
+        "transcript": false
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Keynote: AI is the Pivot, Data is the Power (Paul Bloch, DDN), vidéo z3lW8x1aXdk",
+    "The Data Awakening: Defining the Future of AI (Or Lenchner, Bright Data), vidéo ww8m22OGe80",
+    "Eastern European Dynamism (Delian Asparouhov, Raycho Raychev), vidéo N1Mi6lmb5-0",
+    "Code, Copy, Conquer: How AI Agents Redefine Enterprise (Zendesk, Make, SAP, Heroku, KPMG)",
+    "Keynote by Google Cloud: Marketing in the AI Era (Alison Wagonfeld), vidéo QhvbmCm4tO4",
+    "Winning in the Era of Data and Intelligence (George Kurian, NetApp)",
+    "Keynote: AI all the work! (Ori Goshen, AI21 Labs), vidéo FnttzUVLCfQ",
+    "Enterprise AI: The Next Frontier of Software Innovation (Olivier Pomel, Naveen Rao, Ross Mason, Andrey Khusid)",
+    "Fireside Chat: The Enterprise AI Transformation (Rajiv Ramaswami, Serge Palaric)",
+    "Fireside Chat with Charles Liang (Supermicro)",
+    "In Conversation: Together AI's Vision For the Future of AI Infrastructure (Vipul Ved Prakash), vidéo b3DdOHPD1yo",
+    "From 10x to 100x: Building AI Systems for Real-World Scale (Eiso Kant, Poolside), vidéo hx3AFYmwhh0",
+    "Moore's Law vs. AI's Appetite: The Compute Collision (Arm, PsiQuantum, Intel, NextSilicon), vidéo kdhHrRgjKoE",
+    "Fireside Chat with May Habib (Writer), vidéo zHijvcaL7KE",
+    "Keynote by Fireworks AI: Open Models: The Future of AI Agent Development (Lin Qiao), vidéo bphWtB2yhUU",
+    "Fireside Chat with Merry Walker (White House) ; Fireside Chat with Robert Wachen (Etched) ; Keynote: Winning in the US (Martin Mignot)",
+    "Enterprise Performance in the Age of the AI Workforce (Sarah Franklin, Alexandre Dayon), citée par Harald Nezbeda sans commentaire",
+    "Scaling Without Crashing (WEKA, Intel, Graphite, InstaDeep, AWS), vidéo XmCleeKLEs0",
+    "Fireside Chat with Nicolas Dessaigne (YC) & Jean de La Rochebrochard (Kima Ventures), vidéo WR0iMHC17PQ",
+    "Agentic AI in Customer Support: How Parloa Became a European AI Unicorn (Malte Kosub, Laura Modiano)",
+    "Sovereign AI: The New Firewall in a Borderless Tech World (Clarifai, Oracle, TensorWave...), vidéo _YygUDeyXzE",
+    "Building The Next Superintelligence After AlphaGo (Ioannis Antonoglou, Reflection AI), vidéo dd-r5KQlHyc",
+    "The AI Trillion-Dollar Opportunity: Build Fast or Fade, vidéo ljMfLdzs-IQ",
+    "Unlocking the AI Mindset (Tanuja Randery, AWS), vidéo Bwxtg5OXVZs",
+    "Never Miss a Beat: Building Reliable Experiences with AI (Jennifer Tejada, PagerDuty), vidéo KGAnAfDTW1c",
+    "From Molecule to Market Value: AI Transformation at Sanofi (Bruno Gagliardo), vidéo BZIk3yM1YOY",
+    "Fireside Chat with CoreWeave (Mike Mattacola), vidéo TQUklT8Gcek",
+    "Keynote by Galileo: Making Enterprise Gen AI « Reliable » (Atin Sanyal), vidéo 4eYlsiVLojo",
+    "Fireside Chat with Amit Bendov (Gong), vidéo eZZtSq0yZBU",
+    "Building AI for Security-Minded Enterprises (Aurélien Rodriguez, Cohere), vidéo Y7TM37kgCI8",
+    "Fireside Chat with Fabricio Bloisi (Prosus), vidéo J0uPTyoxSKI",
+    "The Future of AI in Sports (Alexis Ohanian, Victorien Tixier), vidéo SA5vS4vH_dg",
+    "Startup Competition Final (RAISE the Stakes) et Prize Hackathon",
+    "Keynote by WEKA: Rise of the Token Economy (Liran Zvibel), vidéo UKgRuHF9fCo",
+    "Fireside Chat with Mati Staniszewski (ElevenLabs), vidéo QCaL8kh3aS8, citée par Harald Nezbeda sans commentaire",
+    "Thermodynamic Computing and the Energy Efficiency Crisis of AI (Guillaume Verdon, Extropic), vidéo N6-5BWZ2wkY",
+    "Groq x Equinix: Enabling AI Inference for the European Market, vidéo YAGo3rs8CQ4",
+    "Rewriting the Rules: Agentic AI and the Race to Scale (WEKA, Cohere, Nebius), vidéo NGUUxHuNo28",
+    "The Efficiency Enigma: Can Smarter Software Save Us from Hardware Bottlenecks?, vidéo OluOlLJlflk",
+    "Moats in the Age of AI: Separating Winners from Wannabes, vidéo Ds6OXLUk51M",
+    "Keynote: What CX Teaches Us About AI And The Future Of Work (Adrian McDermott, Zendesk), vidéo CFEUQzS_2sI",
+    "Scène Supernova by Cerebras (démos et ateliers partenaires : NinjaTech, Meta Llama, Notion, IBM, Docker, DataRobot, GSK, Mayo Clinic, LiveKit)",
+    "Et une quarantaine d'autres keynotes sponsors, firesides et panels (dont une partie en vidéo sur la chaîne)"
+  ],
+  "sources": [
+    { "label": "Agenda officiel RAISE Summit 2025", "url": "https://www.raisesummit.com/agenda-2025" },
+    { "label": "Chaîne YouTube RAISE Summit (vidéos 2025 publiées de juillet à octobre 2025)", "url": "https://www.youtube.com/@RAISESummit" },
+    { "label": "Harald Nezbeda, « My Experience at RAISE Summit 2025: AI Insights from Paris » (13 juillet 2025)", "url": "https://nezhar.com/blog/my-experience-at-raise-summit-2025-ai-insights-from-paris/" },
+    { "label": "VeilleMag (Jacqueline Sala), « Retour sur le RAISE Summit 2025 » (2 août 2025)", "url": "https://www.veillemag.com/Retour-sur-le-RAISE-Summit-2025-un-sommet-europeen-sur-l-intelligence-artificielle-a-Paris_a6212.html" },
+    { "label": "Ministère de l'Économie, note aux rédactions : déplacement de Clara Chappaz au Raise Summit (8 juillet 2025)", "url": "https://presse.economie.gouv.fr/nar-deplacement-de-clara-chappaz-au-raise-summit-mardi-8-juillet/" },
+    { "label": "RAISE Summit, « AI Trends 2025: Insights from RAISE Summit » (bilan de l'organisateur, février 2026)", "url": "https://www.raisesummit.com/post/ai-trends-insights-raise-summit" },
+    { "label": "Posts LinkedIn : aucun post de participant retrouvé (7 recherches web)" }
+  ]
 }

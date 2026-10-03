@@ -8,8 +8,45 @@
   "city": "Paris",
   "venue": "13 quai de Grenelle, Paris 15e",
   "url": "https://web.archive.org/web/20160303234130/http://ncrafts.io/",
+  "programUrl": "https://web.archive.org/web/20160719231524/http://ncrafts.io:80/2016/sessions",
   "dateConfidence": "ok",
   "note": "« NCrafts Conference 2016 » / « New Crafts 2016 » : software craftsmanship, architecture, design et pratiques. Site ncrafts.io consulté via la Wayback Machine.",
   "status": "pending",
-  "sessions": []
+  "sessions": [
+    {
+      "id": "life-beyond-relational-database-event-sourcing-in-haskell",
+      "day": "2016-05-12",
+      "type": "talk",
+      "title": "Life Beyond Relational Database: Event Sourcing in Haskell",
+      "speakers": ["Arnaud Bailly"],
+      "summary": "Sur scène (transcript), sans retour de participant lu :\n\n- Retour d'expérience de deux ans chez **Capital Match**, plateforme de prêt entre particuliers en production, bâtie en event sourcing avec Haskell ; Arnaud Bailly laisse de côté les bases de l'event sourcing, traitées par d'autres talks, pour **montrer le code**.\n- Live coding d'un compteur event-sourcé (incrément, décrément, bornes 0 à 100) : des commandes en entrée, des événements au passé en sortie, des erreurs métier typées ; un modèle se réduit à un état initial, une fonction `act` (commande vers événement ou erreur) et une fonction `apply` (événement vers nouvel état immuable).\n- **Piloter le design par des propriétés** (QuickCheck) plutôt que par des exemples : *« quelle que soit la séquence de commandes, le compteur reste dans ses bornes »* ; le contre-exemple généré révèle le contrôle de bornes oublié. Il dit avoir appliqué la même démarche à une comptabilité en partie double.\n- Le compilateur comme guide : warnings traités comme des erreurs, filtrage non exhaustif qui signale la commande non gérée.\n- Au-dessus du modèle, une couche de services : actions utilisateur générées avec des fréquences (qui pourraient venir de l'usage réel), effets restreints à un petit langage typé (état, stockage des événements, exceptions, mémoire transactionnelle), domaine séparé des ports et adaptateurs, puis une API REST décrite par des types avec Servant et testée par la même propriété.\n- Conclusion : définir des fragments de langage purs, laisser le typage fort garantir le modèle, les effets et l'API, et composer ces fragments. Le talk s'ouvre sur une pique contre l'affirmation de Robert C. Martin selon laquelle 100 % de couverture de tests dispenserait du typage statique.",
+      "summarySources": ["program", "transcript"],
+      "video": {
+        "youtubeId": "1r4qKIz--xM",
+        "title": "Arnaud Bailly - Life Beyond relational Database, Event sourcing in Haskell - NewCrafts 2016",
+        "publishedAt": "2026-10-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "crafty-communications",
+      "day": "2016-05-13",
+      "type": "talk",
+      "title": "Crafty Communications: dealing with the pesky people parts of development",
+      "speakers": ["Asher Glynn"],
+      "summary": "Sur scène (transcript), sans retour de participant lu :\n\n- Le craft est d'abord **un langage partagé** : une cathédrale bâtie sur 200 ans suppose de transmettre l'intention entre générations ; chaque métier a son jargon, et savoir manier quelques outils ne rend pas utile sur un chantier tant qu'on n'en parle pas la langue.\n- Les user stories sont **des outils pour les développeurs**, pas pour un analyste qui sert de proxy ; le pair programming oblige à ralentir et à expliciter ; les design patterns donnent un vocabulaire commun, à condition de ne pas en abuser.\n- **Relire le code pour l'intention** (« qu'a voulu faire l'auteur ? ») plutôt que pour imposer des standards ou laisser le senior le plus péremptoire juger : un junior, ou un développeur JavaScript relisant du Scala, devient alors un bon relecteur, et la revue sert aussi à apprendre un nouveau langage.\n- Moins de langage commun à construire si l'on évite ce qui n'est pas nécessaire (un serveur d'intégration continue plutôt qu'un rituel de build, un système de types plutôt que certains tests).\n- Contre la sur-ingénierie, trois questions : depuis combien d'endroits ce code sera appelé, combien de fois il sera exécuté au total, pour combien de clients.\n- Galerie de stéréotypes (princess programmer, desperate dev, agiliste zélé, client qui en veut toujours plus, « security sadist », « process prince of darkness », enthousiaste technologique, superstar silencieuse, devin de solutions) avec une parade pour chacun : faire écrire les inquiétudes ou le processus, mettre les exigences de sécurité dans la file comme les autres, écouter l'enthousiaste pour pouvoir lui dire non. Personne n'est constant : choisir le moment et le canal, et se demander pourquoi on communique.",
+      "summarySources": ["program", "transcript"],
+      "video": {
+        "youtubeId": "WRXBkUibzrE",
+        "title": "Asher Glynn-Crafty Communications- dealing with the pesky people parts of development-NewCrafts 2016",
+        "publishedAt": "2026-10-02",
+        "transcript": true
+      }
+    }
+  ],
+  "sources": [
+    { "label": "Programme des sessions NCrafts 2016 (ncrafts.io/2016/sessions, Wayback Machine)", "url": "https://web.archive.org/web/20160719231524/http://ncrafts.io:80/2016/sessions" },
+    { "label": "Agenda NCrafts 2016 (Wayback Machine)", "url": "https://web.archive.org/web/20160723151202/http://ncrafts.io:80/2016/agenda" },
+    { "label": "Playlist YouTube NewCrafts Conference (Aardling)", "url": "https://www.youtube.com/playlist?list=PLIYFkjdIWfVxEKvmXrh7f6mmBdbXp5NgO" }
+  ]
 }

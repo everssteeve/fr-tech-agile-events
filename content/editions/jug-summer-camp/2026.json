@@ -18,10 +18,17 @@
         "Nicolas Martignole — Back Market"
       ],
       "feedbackFrom": [],
-      "summary": "- D'après le descriptif officiel : le speaker a **arrêté de saisir du code depuis plus d'un an** au profit d'agents de développement ; il dit n'avoir « jamais fait autant de projets différents » et avoir retrouvé « le côté fun et hacker » du métier.\n- Au-delà du témoignage personnel, la keynote raconte sa mission chez **Back Market** : amener **plus de 300 développeuses et développeurs** sur ce même chemin.\n- Aucun retour participant ni vidéo trouvés au 25/09.",
+      "summary": "- Sur scène : il ne tape plus de code depuis plus d'un an et avoue **relire de moins en moins le code produit** ; il travaille avec OpenCode et passe par OpenRouter pour choisir le modèle selon la tâche. Release manager chez Back Market la semaine précédente, il a fait **toutes les mises en production du monolithe via une skill d'agent**, sous supervision, en précisant : *« Je suis pas plus productif, je fais pas plus de pull request. »*\n- Le récit Back Market : de 0 à environ 300 utilisateurs de Claude Code en paiement à l'usage ; une facture de juin à **86 000 $** retombée à **16 000 $** après le passage par OpenRouter (*« j'ai arrêté de demander la permission »*). Deux utilisateurs pesaient 18 % de la facture en février.\n- **Installer un outil n'est pas l'adopter** : un relais par équipe (sur une quarantaine) y consacre 1 à 4 h par semaine, écrit des skills communes et forme les autres ; adoption mesurée de 100 % en mobile à 35 % chez les engineering managers, d'où une formation obligatoire de 3 h pour les managers.\n- Gouvernance : chaque dépôt doit avoir un CONTRIBUTING.md qui fixe les règles de revue pour humains et agents ; si un agent écrit, un humain relit, et inversement.\n- Questions ouvertes : à quoi servent des frameworks pensés pour des humains, qui paie les licences (ESN ou client), quel TJM pour un dev assisté. Il va jusqu'à *« Je prédis et je souhaite la mort des pull request. »*\n- Conclusion : *« Faites gaffe au hype »* et *« soyez là pour défendre le métier de développeurs et de développeuses »*. Keynote citée ensuite par Tugdual Grall et par le duo Doctolib de « Du Slack à la PR ». Aucun retour de participant lu.",
       "summarySources": [
+        "transcript",
         "program"
-      ]
+      ],
+      "video": {
+        "youtubeId": "hQZje37vHoY",
+        "title": "Keynote d'ouverture (et intro d'Orianne) | Nicolas Martignole, la révolution de l'IA Agentique",
+        "publishedAt": "2026-09-30",
+        "transcript": true
+      }
     },
     {
       "id": "de-6-mois-a-2-jours-la-revolution-llm-pour-le-traitement-documentaire",
@@ -29,13 +36,20 @@
       "type": "talk",
       "title": "De 6 mois à 2 jours : la révolution LLM pour le traitement documentaire",
       "speakers": [
-        "Vinorth"
+        "Vinorth Varatharasan"
       ],
       "feedbackFrom": [],
-      "summary": "- D'après le descriptif : classifier et extraire des données de documents demandait **6 mois**, des ML engineers, des annotateurs et un budget à six chiffres ; un **LLM multimodal** fait le travail en quelques jours, sans dataset ni entraînement.\n- Démo live sur un cas réel de **KYC bancaire** (CNI, passeports, RIB) et focus sur la manière d'**éviter les hallucinations** sur des données sensibles.",
+      "summary": "- Sur scène, le speaker (senior data scientist) part d'un vécu : 3 semaines à annoter 8 000 images pour 87 % de précision, tombée à 62 % quand le client a changé la mise en page du formulaire.\n- Comparatif annoncé comme réel : **6 mois, ~100 000 €, 5 ML engineers et ~10 000 images annotées** avant ; **2 jours, 500 €, 1 développeur et zéro annotation** avec un LLM multimodal.\n- Cas KYC bancaire : classification et extraction par prompt, sortie JSON avec type, confiance et justification ; **le prompt se versionne comme du code** (87 % en v1.0, 95 % en v1.2).\n- Un **« gatekeeper » en trois couches** contre les hallucinations : schéma de données, règles techniques (format d'IBAN), règles métier (modulo 97). Démo sur une CNI fictive et un formulaire manuscrit de 140 cases.\n- En production : seuil de confiance à 85 % avec revue humaine (~5 % des documents), golden dataset rejoué chaque semaine, RGPD à trois niveaux ; la prod multiplie le budget par 10.\n- Nuance : *« Le LLM n'a pas tué le deep learning, il a déplacé son terrain de jeu »* ; le deep learning reste préférable pour les volumes massifs, la latence sous 200 ms et les schémas figés. Aucun retour de participant lu.",
       "summarySources": [
+        "transcript",
         "program"
-      ]
+      ],
+      "video": {
+        "youtubeId": "baF3pc6dgOg",
+        "title": "De 6 mois à 2 jours : la révolution LLM pour le traitement documentaire | Vinorth Varatharasan",
+        "publishedAt": "2026-09-30",
+        "transcript": true
+      }
     },
     {
       "id": "ajouter-30-services-a-un-monolithe-platform-as-a-service-doctolib",
@@ -47,10 +61,17 @@
         "Florent Sarat — Doctolib"
       ],
       "feedbackFrom": [],
-      "summary": "- D'après le descriptif : en découpant le monolithe, Doctolib est passé de **40 pull requests et 3 semaines** pour mettre un service en prod à **moins de 3 heures**, avec une plateforme self-service : plus de 90 % des PR d'infrastructure sont écrites et validées par les équipes elles-mêmes.\n- Double regard **Principal SRE / PM** : *« l'outil n'était pas la question »*, le vrai sujet est le bon niveau d'abstraction pour les développeurs, trouvé en travaillant avec les premières équipes ; « you build it, you run it » sans accès à la prod dans le contexte de la santé.\n- Ouverture : *« un fichier YAML est une interface idéale pour un LLM »*.",
+      "summary": "- Contexte donné sur scène : un monolithe Ruby on Rails de 12 ans (~9 M de lignes, 88 équipes) où *« tout le monde est responsable donc personne n'est responsable »*. Avant la plateforme : au moins **40 PR et 3 semaines** pour aller en prod, avec une doc Confluence de 12 pages.\n- Trois choix : **un seul point d'entrée** (des « deployment descriptors » YAML appliqués via Argo CD et Terraform), un **golden path** à une techno par besoin (la base, c'est PostgreSQL), et une **validation en CI** plutôt qu'un contrôleur Kubernetes.\n- L'erreur assumée : laisser les devs régler CPU et mémoire a provoqué des incidents et des nœuds surprovisionnés, d'où la règle *« en prod request égal limite point final »*.\n- Résultats : **57 services** en fin d'année au lieu de 30 (113 aujourd'hui), ~10 PR et ~3 h pour aller en prod, équipe SRE de taille quasi inchangée.\n- Revers : un « monolithe de configuration », une PR par semaine pour ajouter une option, et la revue qui ralentit au-delà de deux équipes. **60 % des PR sur les descriptors sont faites par Claude** (Q&A).\n- En Q&A, un développeur Doctolib présent dans la salle a confirmé que l'outil est simple à utiliser (rires). Aucun retour écrit de participant lu.",
       "summarySources": [
+        "transcript",
         "program"
-      ]
+      ],
+      "video": {
+        "youtubeId": "6Xmr08wZIgE",
+        "title": "Ajouter 30 services à un monolithe: platform as a service @ Doctolib | B. Paquet & F. Sarat",
+        "publishedAt": "2026-09-30",
+        "transcript": true
+      }
     },
     {
       "id": "le-hasard-fait-bien-les-tests",
@@ -61,10 +82,17 @@
         "David Pilato"
       ],
       "feedbackFrom": [],
-      "summary": "- D'après le descriptif : les **tests aléatoires** (framework RandomizedTesting utilisé par l'équipe Elasticsearch) combinés à TestContainers pour trouver des cas que « notre esprit n'aurait jamais osé imaginer » — bug lié à la locale `AZ`, `Math.abs(Integer.MIN_VALUE)` négatif.",
+      "summary": "- Sur scène (son 11e talk au JUG Summer Camp en 17 éditions, accepté au dernier moment comme plan B) : un NullPointerException en CI de FSCrawler, impossible à reproduire en local, venait d'une **JVM en locale azerbaïdjanaise** ; la cause était un `toLower` sans `Locale.ROOT` dans une dépendance.\n- Le framework **randomizedtesting** (utilisé sur Elasticsearch) injecte de l'aléatoire (nombre de nœuds, de shards, noms d'index) ; *« un random n'est jamais vraiment random »* : il suffit d'afficher la **seed** pour rejouer un échec.\n- Outils montrés : ordre aléatoire des tests, détection des threads zombies, tests « nightly » séparés, et un **test qui attend le bug** d'une dépendance pour savoir quand il est corrigé.\n- Testcontainers pour Elasticsearch et Kibana, avec une démo de dashboard as code sur données aléatoires. Le renversement : *« vous allez être heureux non pas quand votre CI est verte mais en fait quand votre CI passe en rouge »*.\n- En Q&A : pas besoin de multiplier tests × locales, mieux vaut changer régulièrement de locale pour toute la suite.",
       "summarySources": [
+        "transcript",
         "program"
-      ]
+      ],
+      "video": {
+        "youtubeId": "hYq-YmxWszA",
+        "title": "Le hasard fait bien les tests | David Pilato",
+        "publishedAt": "2026-09-30",
+        "transcript": true
+      }
     },
     {
       "id": "tech-leads-arretez-de-repondre-commencez-a-questionner",
@@ -75,10 +103,17 @@
         "Fanny Klauk"
       ],
       "feedbackFrom": [],
-      "summary": "- D'après le descriptif : plus un tech lead est compétent, plus il est sollicité, et **sa valeur crée sa surcharge**. Proposition : emprunter au coaching le **questionnement puissant** pour réduire sa charge cognitive, faire émerger des solutions plus solides et responsabiliser l'équipe sans imposer.",
+      "summary": "- Quickie sans démo de code : les « petites questions rapides » coûtent au tech lead des heures, voire la semaine ; le tech lead héros devient **goulot d'étranglement et SPOF**, et répondre du tac au tac installe ce qu'elle appelle *« une dette de dépendance »*.\n- L'outil, repris du coaching : le **questionnement puissant**, en trois étapes dans l'ordre : clarifier, explorer, responsabiliser. « Qu'est-ce qui t'a amené à ce choix ? » plutôt que « Pourquoi tu as fait ça ? ».\n- Consigne : *« Ne répondez pas. Ne donnez pas votre réponse. »* Limites : en incident critique on remet la cape de super-héros, et les juniors doivent être guidés.\n- Erreurs qu'elle dit avoir commises : orienter la question, suggérer la solution, poser des questions fermées, en enchaîner trop à la fois.",
       "summarySources": [
+        "transcript",
         "program"
-      ]
+      ],
+      "video": {
+        "youtubeId": "xutLRnUQz90",
+        "title": "TechLeads : arrêtez de répondre. Commencez à questionner ! | Fanny Klauk",
+        "publishedAt": "2026-09-30",
+        "transcript": true
+      }
     },
     {
       "id": "ia11y-l-accessibilite-a-l-ere-de-l-ia",
@@ -89,10 +124,17 @@
         "Pierre Leclaire — SFEIR"
       ],
       "feedbackFrom": [],
-      "summary": "- Talk déjà donné au **DevLille 2026** (juin), dont la vidéo et le transcript sont disponibles : les personnes handicapées utilisent massivement l'IA pour contourner un web inaccessible, mais le code généré reproduit les erreurs d'accessibilité ; démo de trois sites générés avec des consignes de plus en plus riches.\n- Formule clé du talk : *« L'IA est un supplément puissant, jamais un substitut. »* Aucun retour propre à l'édition JUG Summer Camp trouvé.",
+      "summary": "- Sur scène (talk déjà donné au DevLille 2026) : les personnes handicapées utilisent davantage l'IA que les autres travailleurs, mais les **chatbots eux-mêmes sont souvent inaccessibles**, les textes alternatifs générés trop vagues ou hors contexte, et les LLM héritent des erreurs d'un web majoritairement non conforme : *« l'IA multiplie l'impact des problèmes d'accessibilité »*.\n- Démo : trois sites e-commerce générés avec Claude Sonnet 4, sans consigne, avec « sois accessible selon les WCAG », puis avec une suite d'agents et d'instructions Copilot : **nette amélioration, mais largement imparfait**.\n- Nuance : l'IA fait mieux que des humains non formés, mais les classements de modèles varient d'une version à l'autre, *« des sables mouvants »*.\n- Recommandations : contraintes d'accessibilité dans les prompts, linter en CI, relecture des alts générés, et toujours des tests avec lecteurs d'écran. *« L'IA est un supplément puissant, jamais un substitut. »*\n- Le talk est cité en Q&A de « Du Slack à la PR » (part automatisable de l'accessibilité estimée à 20-30 %).",
       "summarySources": [
+        "transcript",
         "program"
-      ]
+      ],
+      "video": {
+        "youtubeId": "zBrAjR7po9g",
+        "title": "IA11Y : L'accessibilité à l'ère de l'IA | Pierre Leclaire",
+        "publishedAt": "2026-09-30",
+        "transcript": true
+      }
     },
     {
       "id": "wrap-reshape-or-redesign-adapter-vos-apis-a-un-monde-d-agents",
@@ -103,10 +145,16 @@
         "Horacio Gonzalez (LostInBrittany)"
       ],
       "feedbackFrom": [],
-      "summary": "- D'après le descriptif : pendant vingt ans, les API ont été conçues pour des humains qui « compensent » (lisent la doc, devinent les conventions). Les **agents LLM ne compensent pas** : ils prennent les descriptions au pied de la lettre et choisissent la mauvaise action avec assurance.\n- Cadre en trois stratégies : **exposer tel quel** (wrap), **remodeler en outils étroits orientés intention** (reshape), ou **refondre** (redesign) quand l'API révèle un défaut de conception, avec des exemples avant/après issus d'une plateforme en production. Idée forte : *concevoir pour les agents améliore souvent la plateforme pour les humains aussi*.",
+      "summary": "- D'après le descriptif : pendant vingt ans, les API ont été conçues pour des humains qui « compensent » (lisent la doc, devinent les conventions). Les **agents LLM ne compensent pas** : ils prennent les descriptions au pied de la lettre et choisissent la mauvaise action avec assurance.\n- Cadre en trois stratégies : **exposer tel quel** (wrap), **remodeler en outils étroits orientés intention** (reshape), ou **refondre** (redesign) quand l'API révèle un défaut de conception, avec des exemples avant/après issus d'une plateforme en production. Idée forte : *concevoir pour les agents améliore souvent la plateforme pour les humains aussi*.\n- La vidéo est en ligne, mais sans sous-titres disponibles au 01/10 : résumé toujours fondé sur le descriptif.",
       "summarySources": [
         "program"
-      ]
+      ],
+      "video": {
+        "youtubeId": "V8TZ67TigzE",
+        "title": "Wrap, Reshape, or Redesign : adapter vos APIs existantes à un monde d'agents | Horacio Gonzalez",
+        "publishedAt": "2026-09-30",
+        "transcript": false
+      }
     },
     {
       "id": "creez-votre-app-chatgpt-avec-mcp",
@@ -114,14 +162,21 @@
       "type": "other",
       "title": "Créez votre App ChatGPT avec MCP : du concept à la démo live",
       "speakers": [
-        "Mathieu Ancelin",
-        "Sébastien Prunier"
+        "Mathieu Ancelin — Serli",
+        "Sébastien Prunier — Serli"
       ],
       "feedbackFrom": [],
-      "summary": "- Tools-in-action d'après le descriptif : construire en direct une **App ChatGPT dédiée au JUG Summer Camp** (programme, sessions, speakers, infos pratiques) en exposant des tools via **MCP**.\n- Session relayée en direct sur la page LinkedIn de l'événement (11 réactions), sans retour de participant sur le contenu.",
+      "summary": "- Tools-in-action nourri de leur expérience de l'**app MAIF sur ChatGPT** (simulation d'assurance vélo) : rappel que le LLM ne fait que du texte et que c'est l'application de chat qui exécute les outils ; MCP règle le problème N×M des intégrations, et le SDK d'OpenAI est devenu le standard **MCP Apps** (widgets HTML dans une iframe isolée).\n- Démo d'un serveur MCP « Jug Summer Camp » (TypeScript, déployé sur Clever Cloud) : **la description du tool est ce qui part au LLM**, elle doit être précise sans être trop longue.\n- Ce qui leur a pris le plus de temps n'est pas technique : **RGPD** (aucune donnée personnelle demandée, bascule vers maif.fr), audit immuable de chaque appel, sécurité (*serveur attaqué dans l'heure suivant sa mise en ligne*, protégé par l'API gateway Otoroshi).\n- La soumission sur le store est *« presque la partie la plus chiante »* : cas de test rejoués, app refusée une fois, cache des versions côté ChatGPT. *« Préparez-vous à ce que ça change tous les 3 jours. »*\n- Session relayée en direct sur la page LinkedIn de l'événement (11 réactions), sans retour de participant sur le contenu.",
       "summarySources": [
+        "transcript",
         "program"
-      ]
+      ],
+      "video": {
+        "youtubeId": "C_K9eyhb6cc",
+        "title": "Créez votre App ChatGPT avec MCP : du concept à la démo live | Sébastien Prunier & Mathieu Ancelin",
+        "publishedAt": "2026-09-30",
+        "transcript": true
+      }
     },
     {
       "id": "de-l-autocomplete-a-l-autopilot",
@@ -132,10 +187,17 @@
         "Tugdual Grall — GitHub"
       ],
       "feedbackFrom": [],
-      "summary": "- D'après le descriptif : de Copilot qui complétait des lignes (2021) à la **délégation** de pans entiers du travail en 2026 (Copilot CLI, skills, workflows agentiques), de la création de projets à l'ouverture et la revue de PR en langage naturel.\n- Thèse : PM, SRE et DevOps **deviennent tous des « builders »** ; il ne s'agit plus d'écrire du code mais d'**exprimer une intention**. À noter : le speaker travaille chez l'éditeur de l'outil présenté.",
+      "summary": "- Sur scène, un parcours personnel : de la complétion Copilot (2021) au mode agent, puis à Copilot CLI (80 % de son usage dès novembre) et enfin à l'app desktop Copilot, qui **orchestre des agents en parallèle dans des git worktrees**.\n- Conseil de méthode : **ne pas commencer par les skills ni les MCP**, d'abord pousser l'agent sur son vrai travail ; faire le plan avec un modèle cher, implémenter avec un moins cher, relire avec un modèle différent.\n- Chiffre maison : l'équipe Copilot CLI merge **500 PR par semaine**, avec une revue humaine limitée aux parties critiques ; la revue de code devient le goulot d'étranglement (renvoi à la keynote de Nicolas Martignole).\n- Démo : réécriture de son site de planche à voile pour ~300 $, sessions parallèles avec plusieurs modèles ; il reconnaît ne pas comprendre une partie du code généré. *« On s'en fout du nombre de tokens. Ce qu'il faut que vous regardiez, c'est le prix que ça coûte. »*\n- En Q&A, à la question du plaisir restant dans le métier : *« Écrire du code aujourd'hui, c'est un peu comme dérouler le goudron »*, l'ingénieur conçoit la route. Lecture critique : le speaker travaille chez l'éditeur de l'outil présenté. Aucun retour de participant lu.",
       "summarySources": [
+        "transcript",
         "program"
-      ]
+      ],
+      "video": {
+        "youtubeId": "PR1kpBOhgZU",
+        "title": "De l'autocomplete à l'Autopilot : Comment l'IA a transformé ma vie de développeur | Tugdual Grall",
+        "publishedAt": "2026-09-30",
+        "transcript": true
+      }
     },
     {
       "id": "et-si-on-ouvrait-le-capot-de-postgresql",
@@ -143,13 +205,20 @@
       "type": "talk",
       "title": "Et si on ouvrait le capot de PostgreSQL ?",
       "speakers": [
-        "Benjamin Coenen"
+        "Benjamin Coenen — Supabase"
       ],
       "feedbackFrom": [],
-      "summary": "- D'après le descriptif : suivre une requête SQL jusqu'à la donnée pour comprendre les **internals de Postgres** (query planner, WAL, MVCC, tuples, vacuum).\n- Talk également donné au DevLille 2026 (vidéo disponible sur la chaîne DevLille).",
+      "summary": "- Sur scène, avec un avertissement d'entrée (*« Je suis pas du tout un expert PG »*, il dit couvrir « même pas 20 % » du sujet) : organisation logique (OID, catalogues) et physique (`PGDATA`, pages de 8 Ko, free space map, visibility map).\n- **Architecture multi-process** (un backend par connexion, d'où le pooling) et rôle des processus de fond : background writer, checkpointer, autovacuum, WAL writer.\n- **MVCC** comme « la partie la plus fun » : xmin, xmax, ctid ; un UPDATE crée une nouvelle version chaînée à l'ancienne. D'où le **vacuum**, garbage collector de Postgres : un gros DELETE ne libère pas l'espace disque tout de suite.\n- **WAL** pour la durabilité et la réplication logique. Ressource conseillée : le livre « PostgreSQL 14 Internals ». Talk également donné au DevLille 2026.",
       "summarySources": [
+        "transcript",
         "program"
-      ]
+      ],
+      "video": {
+        "youtubeId": "4EPOPkiYlnE",
+        "title": "Et si on ouvrait le capot de PostgreSQL ? | Benjamin Coenen",
+        "publishedAt": "2026-09-30",
+        "transcript": true
+      }
     },
     {
       "id": "du-slack-a-la-pr-6-semaines-avec-une-chaine-d-agents",
@@ -157,44 +226,284 @@
       "type": "other",
       "title": "Du Slack à la PR : 6 semaines avec une chaîne d'agents qui code à notre place",
       "speakers": [
-        "Colin Renaud",
-        "Julien Bideau"
+        "Colin Renaud — Doctolib",
+        "Julien Bideau — Doctolib"
       ],
       "feedbackFrom": [],
-      "summary": "- REX d'après le descriptif : un agent IA **à l'échelle de l'organisation** qui, à partir d'un label Jira ou d'un message Slack, identifie le bon repo, code, lance tests et lint, prend une capture, **ouvre une PR signée** et fait avancer le ticket, dans GitHub Actions et sans intervention humaine.\n- Les ratés assumés : commits non signés, **PR hallucinées**, agents qui **contournent leur propre safety check**. Garde-fous « non négociables » : sanity diff check, règles anti-contournement, dégradation gracieuse.\n- Coût annoncé : **~10 € et ~10 minutes par PR**. C'est la session la plus relayée sur la page LinkedIn de l'événement (21 réactions).",
+      "summary": "- Sur scène : l'**« Autopilot »** de leur équipe Doctolib, une GitHub Action avec Claude et des MCP Jira et GitHub. Un simple label Jira suffit : l'agent trouve le dépôt, code, lance tests et linter, ouvre une PR en brouillon, joint **une capture d'écran** (ce qui a le plus réduit le temps de relecture) et notifie Slack.\n- Trois leviers : **la qualité du besoin** (*« Ce qu'il faut c'est que Claude sache dire non »* et pose ses questions en commentaire), **les conventions du dépôt** (CLAUDE.md, linters, surtout les ADR) et **le temps de relecture**.\n- Les ratés : l'agent **contourne les hooks de pré-commit**, reste « junior » (pas de nettoyage opportuniste, par choix) et applique tout commentaire de revue comme une vérité, même venant d'une autre équipe.\n- Coûts et délais donnés : 1 à 2 $ par passage sur le monolithe, jusqu'à ~50 $ avec les itérations ; PR en brouillon en ~20 minutes. **En août, 50 % des PR mergées de l'équipe venaient de l'Autopilot.**\n- En Q&A : risque de produire des fonctionnalités sans discovery (la PM avait du mal à suivre en juin), PR d'agent d'abord délaissées qui dégradaient les métriques DORA. Le descriptif annonçait ~10 € par PR ; sur scène, les chiffres sont plus nuancés.\n- Session la plus relayée sur la page LinkedIn de l'événement (21 réactions), sans retour de participant sur le contenu.",
       "summarySources": [
+        "transcript",
         "program"
-      ]
+      ],
+      "video": {
+        "youtubeId": "3x1T44A8Ups",
+        "title": "Du Slack à la PR : 6 semaines avec une chaîne d'agents qui code à notre place | C. Renaud & J. Bideau",
+        "publishedAt": "2026-09-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-compilateur-jit-le-super-pouvoir-de-la-jvm",
+      "day": "2026-09-04",
+      "type": "lightning",
+      "title": "Le compilateur JIT : le super pouvoir de la JVM",
+      "speakers": [
+        "Benjamin Cavy"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Quickie pédagogique : javac optimise peu parce que Java n'est pas un monde fermé ; c'est le **JIT** qui compile à l'exécution, en s'appuyant sur le profiling réel du code.\n- Démo d'une moyenne calculée 30 fois : d'environ 500 ns (interpréteur) à environ 40 ns, *« à peu près 10 fois plus performant »*. Deux compilateurs (C1 rapide, C2 agressif) sur cinq niveaux.\n- C2 fait des **« paris » sur votre code** (supprimer une branche jamais empruntée) ; s'il perd, c'est la **déoptimisation**, montrée en direct avec `PrintCompilation`.\n- Perspectives : le projet Leyden pour réduire le temps de chauffe. Pas de Q&A faute de temps.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "b2GPHotIpME",
+        "title": "Le compilateur JIT : le super pouvoir de la JVM | Benjamin Cavy",
+        "publishedAt": "2026-09-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "de-developpeur-a-streamer-remettre-de-l-humain-dans-le-dev",
+      "day": "2026-09-04",
+      "type": "lightning",
+      "title": "De développeur à streamer, remettre de l'humain dans le dev",
+      "speakers": [
+        "Stéphane Trebel"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Quickie avant le déjeuner : face au discours « les devs vont disparaître », il défend que **la valeur humaine se déplace vers le contenu** ; la création de contenu lui sert d'engagement pour tenir sa veille.\n- Chiffres partagés honnêtement : stream 5 soirs par semaine (10 h), **45 € de revenus Twitch en 2025**, un peu moins de 900 abonnés YouTube, un Discord de 70 membres ; le podcast est ce qui grossit le plus.\n- Sur les plateformes : *« l'algorithme c'est une vraie cochonnerie »* et *« vous ne gagnerez pas la guerre contre les slops »* ; conseil de rester sincère et de faire ce qui vous amuse.\n- Il a posté sur Mastodon le matin même (« Et c'est parti pour le #JugSummerCamp ! »), sans retour sur les talks (speaker).",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "db6jngb2VWs",
+        "title": "De developpeur à streamer, remettre de l'Humain dans le Dev | Stéphane Trebel",
+        "publishedAt": "2026-09-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "l-arme-secrete-d-uber-tinder-et-slack-buildkite",
+      "day": "2026-09-04",
+      "type": "lightning",
+      "title": "L'arme secrète d'Uber, Tinder et Slack : Buildkite",
+      "speakers": [
+        "Julien Haumont"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Quickie de présentation de **Buildkite**, plateforme CI/CD australienne (2013) : **architecture hybride** où le SaaS ne fait que l'affichage et où les agents tournent chez soi, avec code et secrets ; seuls les logs remontent (*attention à ce qu'on y met*).\n- Atout mis en avant : les **pipelines dynamiques** générés par script, utiles en gros monorepo, plus la détection des tests instables.\n- Limites reconnues : pas d'exécution locale d'un pipeline complet (*« On sera toujours dans la même logique de push and pray »*), UI jugée trop petite, plan Pro à 30 $ par utilisateur et par mois plus les runners.\n- Cas cité d'Elastic, passé de Jenkins à Buildkite avec jusqu'à 700 agents en parallèle (via un ancien collègue).",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "b27A7jkkS-A",
+        "title": "L'arme secrète d'Uber, Tinder et Slack : Buildkite | Julien Haumont",
+        "publishedAt": "2026-09-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "kotlin-kmp-un-seul-langage-pour-une-multitude-de-plateformes",
+      "day": "2026-09-04",
+      "type": "talk",
+      "title": "Kotlin KMP, un seul langage pour une multitude de plateformes",
+      "speakers": [
+        "Guillaume Ehret",
+        "Hasna Gouram"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Sur scène : **KMP partage la logique métier**, Compose Multiplatform partage l'UI ; adoption possible par morceaux. Android, iOS et JVM sont stables, le web encore en bêta.\n- Fil rouge : une appli météo aux couleurs du JUG Summer Camp, construite étape par étape (expect/actual, previews, ressources et i18n, navigation, injection avec Koin, coroutines et StateFlow, client Ktor) et lancée sur Android puis iOS.\n- Retour de Hasna Gouram (sa première conférence) : *« Quand on sait faire du Kotlin, c'est rapide en fait de commencer du KMP »*, environ une semaine pour sortir une appli chez leur client.\n- En Q&A, un participant qui fait du Flutter au quotidien dit que le partage de code avec le serveur *« me ferait tout lâcher pour KMP »* ; questions sur les stores, le GPS et les notifications iOS (pont Swift nécessaire).",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "oKEfb3-QkRU",
+        "title": "Kotlin KMP un seul langage pour une multitude de plateformes | Guillaume Ehret & Hasna Gouram",
+        "publishedAt": "2026-09-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "mon-parcours-du-combattant-pour-m-eloigner-des-gafam",
+      "day": "2026-09-04",
+      "type": "talk",
+      "title": "Mon parcours du combattant pour m'éloigner des GAFAM",
+      "speakers": [
+        "Simon Bernardin"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Témoignage en étapes : réseaux sociaux (Facebook et Twitter quittés, Bluesky abandonné, Mastodon), **PC passé sous Debian** (jeux via Steam/Proton, Windows supprimé après une LAN de 5 jours), puis **smartphone sous GrapheneOS** avec F-Droid et Aurora Store.\n- Proton écarté : *« est-ce que j'ai envie de partir d'une prison pour aller dans une autre ? »* ; agenda Framasoft, stockage pCloud, constat d'échec pour YouTube, WhatsApp, Discord et Slack.\n- Bilan : *« On perd un peu en confort mais on gagne en liberté »*. Ironie relevée par le speaker : son PC Linux n'a pas démarré dans le train, il présente sur un Mac prêté.\n- Conseils aux devs (VSCodium, éviter les API Google/Apple en mobile, publier sur F-Droid) et inquiétude sur le verrouillage du sideload Android.\n- En Q&A, la salle défend /e/OS et suggère les PWA, YunoHost et Nextcloud.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "wXTERSnqfQc",
+        "title": "Mon parcours du combattant pour m'éloigner des GAFAM | Simon Bernardin",
+        "publishedAt": "2026-09-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-dev-containers-la-boite-a-outils-ultime-pour-les-devs",
+      "day": "2026-09-04",
+      "type": "other",
+      "title": "Les dev containers, la boîte à outils ultime pour les devs ?",
+      "speakers": [
+        "Stéphane Philippart — OVHcloud"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Tools-in-action ouvert par *« je vous propose pour finir ce JUG Summer Camp de ne pas parler d'IA »* : les dev containers contre les conflits de versions, l'onboarding laborieux et les contributions open source abandonnées, et pour **isoler les assistants IA trop « créatifs »**.\n- Démo progressive : template Java, features (JDK, Maven, JBang), extensions VS Code, `postCreateCommand`, variables d'environnement sans clé en dur, puis distribution (feature publiée, image, Docker Compose, template). Sa préférence : **une image tout-en-un**, il ne reste dans le projet qu'*« un nom et une image »*.\n- Limites assumées : machine puissante nécessaire, images de 2 Go, hors-ligne quasi impossible, et IntelliJ (Ultimate seulement) aux plugins communs à tous les conteneurs, *« by design »*.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "WbHpUGQMduc",
+        "title": "Les dev containers, la boîte à outils ultime pour les devs ? | Stéphane Philippart",
+        "publishedAt": "2026-09-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "chrome-devtools-from-zero-to-hero",
+      "day": "2026-09-04",
+      "type": "other",
+      "title": "Chrome DevTools from Zero to Hero",
+      "speakers": [
+        "Simon Belbeoch — OCTO Technology"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Tools-in-action de fin de journée, en démos : les pièges de `console.log` sur les objets (*« pensez à faire un JSON.stringify avant »*), `console.table`, `console.time`, `console.assert`, `console.trace` et l'instruction `debugger`.\n- Côté accessibilité, **l'émulation du daltonisme, de la vue floue et du contraste réduit** ; côté produit, capture d'un nœud au pixel près et `document.designMode` pour que le PO teste les cas limites.\n- Rétro-ingénierie avec `$0` et `monitorEvents`, puis paint flashing pour la performance web (démo qui finit par marcher sur le site de la Fnac).\n- À main levée, peu de personnes dans la salle disent encore déboguer au `console.log`. Talk en dépassement, sans Q&A ; sa cheat sheet date d'un ou deux ans, de son propre aveu.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "Xr1gn_x5was",
+        "title": "Chrome DevTools from Zero to Hero | Simon Belbeoch",
+        "publishedAt": "2026-09-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "temporal-fini-la-prise-de-tete-avec-les-dates-javascript",
+      "day": "2026-09-04",
+      "type": "other",
+      "title": "Temporal : fini la prise de tête avec les dates JavaScript",
+      "speakers": [
+        "Bastien Rousseau — Apside"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Ouverture sur un bug : avec `Date`, le 31 mars passé en février donne le 3 mars ; avec **Temporal**, on obtient le 28 février (ou une erreur, au choix).\n- Pourquoi `Date` est si pénible : copie de `java.util.Date` faite en 10 jours, mutable, fuseau implicite, mois indexés à 0, et conservée parce que le web ne casse jamais la rétrocompatibilité. Temporal a mis **9 ans** à sortir (portage au TC39, financement Bloomberg, implémentation Igalia).\n- Démos : **immutabilité**, distinction entre temps « plain » sans fuseau et temps zoné à fuseau obligatoire, calculs de durées (illustrés par le coucher de son fils), arithmétique de mois et tri.\n- Support : Firefox et Chrome/Edge oui, Safari pas encore ; recommandation d'utiliser un polyfill dès maintenant. *« Le nombre de bugs que vous allez vous enlever, c'est ça le plus important. »*",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "LVPyjmyO8hQ",
+        "title": "Temporal : fini la prise de tête avec les dates JavaScript | Bastien Rousseau",
+        "publishedAt": "2026-09-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "voyage-au-bout-des-apis-io-de-linux-de-poll-a-io-uring",
+      "day": "2026-09-04",
+      "type": "talk",
+      "title": "Voyage au bout des APIs IO de Linux (de poll à io_uring)",
+      "speakers": [
+        "Jean-Eudes Couignoux",
+        "Youssef Nait Belkacem"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Point de départ assumé : si l'IA génère bientôt tout le code (renvoi à la keynote), autant comprendre **ce qu'il y a sous les frameworks**, ici comment un serveur web tient ses connexions sous Linux.\n- Le mantra : *« tout est un file descriptor »*, démontré avec `strace`. Fil rouge : le défi **C10K** avec un seul thread, sur un serveur d'écho écrit en Rust.\n- Progression benchmarkée : boucle naïve (plus de 6 secondes pour accepter une connexion à 10 000 connexions), `select`/`poll` linéaires, puis **epoll** à coût constant, que Java utilise via `Selector`.\n- **io_uring** (2019) supprime presque tous les appels système grâce à deux files en mémoire partagée ; déjà dans Netty et Quarkus, mais *pas recommandé en prod aujourd'hui* à cause des failles de sécurité qu'il a révélées. Démo sautée faute de temps.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "c5-wAdftQ3M",
+        "title": "Voyage au bout des APIs IO de Linux (de \"poll\" à \"io uring\") | J.E Couigoux & Y. Nait Belkacem",
+        "publishedAt": "2026-09-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "claude-code-pour-creer-sanson-un-serveur-geospatial-oss",
+      "day": "2026-09-04",
+      "type": "lightning",
+      "title": "J'utilise Claude Code pour faire autre chose que des posts LinkedIn : voici Sanson",
+      "speakers": [
+        "Sébastien Prunier — Serli"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Quickie présenté comme un retour d'expérience personnel : **Sanson**, serveur géospatial open source né de la frustration envers GeoServer (*« ça date de 2001 et en fait ça se voit »*) et de son travail pour la MAIF sur des données de risques.\n- Méthode : il n'écrit ni code ni tests mais des **specs hiérarchisées** (vision, ce qu'on ne veut pas, V2) et un CLAUDE.md (conventions, « pas de mock », Testcontainers avec un vrai PostgreSQL) ; il dit avoir *« quasiment pas regardé le code »*.\n- Ce qui coince : **l'UX**, *« le pire ratio prompt/résultat du projet »*, Claude ne voyant pas tout ce qu'il voit, même avec le MCP Playwright.\n- Garde-fou : le **TCK de conformité OGC**, *« hyper rassurant »*, pas encore validé à 100 %. Il dit ne pas avoir succombé à la hype des armées d'agents.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "FibLWkjE49k",
+        "title": "J'utilise Claude Code pour créer Sanson, un serveur géospatial OSS | Sébastien Prunier",
+        "publishedAt": "2026-09-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "workstation-as-code-avec-mise",
+      "day": "2026-09-04",
+      "type": "lightning",
+      "title": "Fini le install.v37.4.1.docx, bienvenue le Workstation-as-code !",
+      "speakers": [
+        "Matthieu Vincent — Sopra Steria"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Quickie contre les docs d'installation de *« 40 pages imbuvables »* : si tout est as-code, le poste de travail aussi, avec **Mise** (open source, très actif).\n- Démo live sur une VM vierge : versions d'outils par projet dans un `mise.toml`, exécution isolée, **sandbox** sans écriture ni réseau pour tester un script trouvé sur Internet.\n- Au-delà des versions : tasks (en remplacement de Makefile), variables d'environnement par répertoire, hooks, bootstrap de paquets et de secrets. Parcours nouvel arrivant : `git clone` puis `mise install`.\n- Mise en garde sur les montées de version forcées : *« Faites pas le bump comme ça parce que sinon lui il va en mode bourin. »* Talk cité par Stéphane Philippart dans sa session dev containers.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "gt1TxXhTiro",
+        "title": "Fini le \"install.v37.4.1.docx\", bienvenue le Workstation-as-code ! | Matthieu Vincent",
+        "publishedAt": "2026-09-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "homer-d-une-idee-d-outil-interne-a-un-projet-open-source",
+      "day": "2026-09-04",
+      "type": "other",
+      "title": "Homer : d'une idée d'outil interne à un projet open source",
+      "speakers": [
+        "Pascal Fong Kye — ManoMano"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Tools-in-action : **Homer**, Slack app de ManoMano qui partage les merge requests GitLab dans le bon canal et suit commentaires, approbations, releases et déploiements.\n- Histoire d'un outil interne : premier commit en 2019 sur la machine d'un développeur, ouverture en open source en 2023 (nettoyage des secrets et du code spécifique), puis **bascule de ManoMano sur la version open source** en 2024 (image Docker multi-arch, config en JSON, système de plugins, tests Testcontainers).\n- Démo complète en direct (Docker Compose avec GitLab et runner local), réussie malgré les vidéos de secours préparées.\n- Chiffres internes de juillet 2026 : environ 268 projets configurés et 700 déploiements suivis. Demandes en cours pour GitHub et Mattermost.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "kfPx0LC6wQM",
+        "title": "Homer - D'une idée d'outil interne à un projet open-source | Pascal Fong Kye",
+        "publishedAt": "2026-09-30",
+        "transcript": true
+      }
     }
   ],
-  "synthesisUpdatedAt": "2026-09-25",
+  "synthesisUpdatedAt": "2026-10-01",
   "edition": "17e édition",
   "programUrl": "https://www.jugsummercamp.org/edition/17/planning",
   "note": "17e édition, vendredi 4 septembre 2026, La Rochelle : 1 keynote, 2 salles (Casoar Tadorne, Chanchardon), conférences, quickies et tools-in-action. Événement sold out, places attribuées par tirage au sort. 18e édition annoncée pour le 10 septembre 2027.",
-  "corpus": "Programme officiel (planning et descriptifs des 23 sessions sur jugsummercamp.org) et page LinkedIn de l'événement (post de remerciements et une dizaine de posts publiés en direct le jour J, consultés le 25/09). Aucun article de blog, sketchnote ni post de participant n'a été trouvé, et les vidéos 2026 ne sont pas encore publiées sur la chaîne Poitou JUG.",
-  "limits": "**Presque aucune matière de retour** : les résumés reposent sur les descriptifs officiels (`program`) et ne disent rien de la réception des talks. Les posts LinkedIn trouvés sont ceux de l'organisation (annonces et relais en direct), pas des retours de participants. La recherche de posts de participants n'a pas pu être menée. À réviser quand la playlist 2026 sera en ligne (les vidéos 2025 étaient sorties quelques semaines après l'événement).",
-  "tldr": "**Une édition très orientée IA agentique**, de la keynote de Nicolas Martignole (« j'ai arrêté de saisir du code depuis plus d'un an ») aux REX d'agents qui ouvrent des PR tout seuls, avec **des fondamentaux solides à côté** (PostgreSQL, JVM, tests aléatoires, plateforme Doctolib). Aucun retour public de participant n'était disponible au 25/09.",
+  "corpus": "Programme officiel (planning et descriptifs des 23 sessions), **transcripts automatiques de 22 des 23 vidéos** de la playlist officielle publiée le 30/09/2026, et page LinkedIn de l'événement (post de remerciements et relais du jour J, consultés le 25/09). Recherche de retours participants menée le 01/10 (LinkedIn, blogs, Mastodon, Bluesky) : seul un post Mastodon d'un speaker le matin même.",
+  "limits": "**Aucun retour public de participant** n'a été trouvé à J+27 : les résumés disent ce qui a été dit sur scène (transcripts), pas comment les talks ont été reçus, hormis les réactions et questions audibles dans les vidéos. Les transcripts sont des sous-titres automatiques (noms et chiffres parfois déformés, les plus douteux ont été omis). La vidéo de Horacio Gonzalez n'a pas de sous-titres : sa session reste résumée d'après le descriptif.",
+  "tldr": "**Une édition très orientée IA agentique, racontée en chiffres et en ratés** : Nicolas Martignole ne tape plus de code mais divise la facture d'agents de Back Market par cinq, Doctolib fait ouvrir la moitié de ses PR d'équipe par un « Autopilot » ; à côté, **des fondamentaux solides** (JIT, io_uring, PostgreSQL, tests aléatoires, plateforme Doctolib) rappellent ce qu'il y a sous les frameworks.",
   "keyTakeaways": [
-    "Pour exposer une API à des agents, choisir consciemment entre **exposer, remodeler en outils orientés intention, ou refondre** (Gonzalez, d'après le descriptif).",
-    "Une chaîne d'agents en production exige des **garde-fous non négociables** (sanity diff, pas de contournement des checks, dégradation gracieuse) et un suivi du coût par PR (Renaud & Bideau).",
-    "Pour une plateforme interne, chercher **le bon niveau d'abstraction pour les développeurs** avec les premières équipes utilisatrices plutôt que dans un design doc (Doctolib).",
-    "Ajouter des **tests aléatoires** pour débusquer les cas limites que personne n'imagine (Pilato).",
-    "Tech leads : **poser des questions plutôt que donner les réponses** pour réduire sa charge et faire grandir l'équipe (Klauk)."
+    "**Installer un outil d'IA n'est pas l'adopter** : un relais par équipe, des skills communes, une formation pour les managers, et un suivi de la facture par utilisateur (Martignole).",
+    "Une chaîne d'agents en production repose sur **la qualité du besoin, les conventions du dépôt (ADR, CLAUDE.md) et le temps de relecture** ; une capture d'écran jointe à la PR change la donne (Renaud & Bideau).",
+    "Regarder **le coût, pas le nombre de tokens** : planifier avec un modèle cher, implémenter avec un moins cher, relire avec un autre modèle (Grall).",
+    "Pour une plateforme interne : un point d'entrée unique, un golden path et une **validation en CI** ; accepter de se tromper sur le niveau d'abstraction et corriger vite (Paquet & Sarat).",
+    "Pour extraire des documents avec un LLM : **versionner le prompt comme du code** et valider la sortie en trois couches (schéma, règles techniques, règles métier) (Varatharasan).",
+    "Exposer un service via MCP prend surtout du temps sur **le RGPD, l'audit, la sécurité et la soumission au store**, pas sur le code (Prunier & Ancelin).",
+    "Ajouter des **tests aléatoires** et afficher la seed pour rejouer les échecs ; changer régulièrement de locale en CI (Pilato).",
+    "Mettre les contraintes d'accessibilité dans les prompts et un linter en CI, sans renoncer aux tests avec lecteurs d'écran (Leclaire).",
+    "Tech leads : **poser des questions plutôt que donner les réponses**, en clarifiant, explorant puis responsabilisant (Klauk)."
   ],
-  "sessionsWithoutFeedback": [
-    "Voyage au bout des APIs IO de Linux, de poll à io_uring (J.-E. Couignoux, Y. Nait Belkacem)",
-    "Le compilateur JIT : le super pouvoir de la JVM (B. Cavy)",
-    "J'utilise Claude Code pour faire autre chose que des posts LinkedIn : Sanson, un serveur géospatial OSS (S. Prunier)",
-    "De développeur à streamer, remettre de l'humain dans le dev (S. Trebel)",
-    "Workstation-as-code avec Mise (M. Vincent)",
-    "L'arme secrète d'Uber, Tinder et Slack : Buildkite (J. Haumont)",
-    "Kotlin KMP, un seul langage pour une multitude de plateformes (G. Ehret, H. Gouram)",
-    "Mon parcours du combattant pour m'éloigner des GAFAM (S. Bernardin)",
-    "Homer, d'une idée d'outil interne à un projet open source (P. Fong Kye)",
-    "Les dev containers, la boîte à outils ultime pour les devs ? (S. Philippart)",
-    "Chrome DevTools from Zero to Hero (S. Belbeoch)",
-    "Temporal : fini la prise de tête avec les dates JavaScript (B. Rousseau)"
-  ],
+  "sessionsWithoutFeedback": [],
   "sources": [
     {
       "label": "Planning officiel JUG Summer Camp 2026",
@@ -205,17 +514,21 @@
       "url": "https://www.jugsummercamp.org/edition/17/presentations"
     },
     {
+      "label": "Playlist YouTube Jug Summer Camp 2026 (chaîne Poitou JUG, 23 talks publiés le 30/09/2026)",
+      "url": "https://www.youtube.com/playlist?list=PLJNLkiRERwwI"
+    },
+    {
       "label": "Page LinkedIn Jug Summer Camp (post de remerciements et relais du jour J)",
       "url": "https://fr.linkedin.com/company/jug-summer-camp"
     },
     {
-      "label": "Chaîne YouTube Poitou JUG (vidéos 2026 non publiées au 25/09)",
-      "url": "https://www.youtube.com/@poitoujug"
+      "label": "Post Mastodon de Stéphane Trebel (speaker), le matin de l'événement",
+      "url": "https://mastodon.social/@stephanetrebel/117211471261823193"
     },
     {
       "label": "Vidéo DevLille 2026 du talk IA11Y (même talk, autre événement)",
       "url": "https://www.youtube.com/watch?v=t-O-gH8PKNc"
     }
   ],
-  "revisit": "retours participants (LinkedIn, blogs) non recherchés : quota de recherche web épuisé le 25/09/2026"
+  "revisit": "aucun retour de participant trouvé au 01/10/2026 (8 recherches web : LinkedIn, blogs, Mastodon, Bluesky) ; synthèse fondée sur le programme et les transcripts des vidéos, à reprendre si des posts ou articles apparaissent"
 }

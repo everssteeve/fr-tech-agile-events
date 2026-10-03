@@ -5,8 +5,606 @@
   "start": "2025-07-07",
   "end": "2025-07-09",
   "city": "Sophia Antipolis",
+  "venue": "SKEMA Business School",
   "url": "https://2025.rivieradev.fr",
+  "programUrl": "https://2025.rivieradev.fr/schedule",
+  "theme": "We're not just coders",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "7 juillet : journée « Deep Dive » (sessions et ateliers de 3 h) ; 8 et 9 juillet : keynotes, conférences de 50 min, « Snorkeling Sessions » de 25 min, track Red Hat et ateliers « We're not just coders » (cuisine, café, sport, musique). Environ 700 participants, 50 conférences et 30 ateliers annoncés (Sophianet, mai 2025).",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-01",
+  "revisit": "Un seul retour de participants trouvé (article collectif du blog Criteo R&D) et aucun post LinkedIn lu malgré 7 recherches web. Synthèse reposant surtout sur 31 transcripts de vidéos officielles. Pistes : posts LinkedIn des speakers et participants (#rivieradev), slides publiées sur les pages de session, sketchnotes.",
+  "corpus": "Programme officiel (2025.rivieradev.fr/schedule), 31 transcripts de vidéos de la chaîne YouTube Riviera DEV (publiées les 28 et 30 juillet 2025), un compte-rendu collectif du blog Criteo R&D (août 2025, 8 sessions commentées et le retour d'un speaker) et l'annonce Sophianet (mai 2025).",
+  "limits": "Corpus de retours très mince : un seul article de participants (Criteo), aucun post LinkedIn retrouvé. La plupart des résumés décrivent ce qui a été dit sur scène (transcripts auto, noms parfois mal transcrits) et non la réception. Les ateliers « We're not just coders », la track Red Hat (sauf deux sessions vues par Criteo) et une quarantaine de sessions restent sans contenu.",
+  "tldr": "Une édition **très ancrée dans le terrain** : l'IA est présente (keynote de Monsieur Phi contre les « perroquets stochastiques », RAG, coder avec l'IA), mais ce sont **les retours d'expérience concrets** (Restos du Cœur devenu cloud, Amadeus, Spotify, backdoor XZ) et l'esprit « We're not just coders » qui donnent le ton.",
+  "keyTakeaways": [
+    "Ne pas conclure trop vite qu'un LLM « ne sait pas » faire quelque chose : un échec avec un prompt ne prouve rien, seul un succès informe sur une capacité (Thibaut Giraud, retenu par Criteo).",
+    "Coder avec l'IA demande de la structure : description, architecture, PRD et tâches avant le code, linter sévère, revue humaine systématique, et mesurer la productivité avant de se lancer (Arthur Kuehn).",
+    "En RAG, soigner l'ingestion (fenêtre glissante, questions hypothétiques, modèle d'embedding adapté au français) puis évaluer sur ses propres données : il n'y a pas de recette universelle (Guillaume Laforge).",
+    "Sécuriser la supply chain : gestionnaire d'artefacts, vérification des empreintes, vigilance sur la gouvernance des projets open source à mainteneur unique (Olivier Poncet, retenu par Criteo).",
+    "Réduire l'impact du parc existant en trois temps, mesurer, prioriser, réduire : éteindre les applications inutilisées a suffi à rentabiliser l'outillage en moins de 6 mois chez G2S (Arthur Kuehn).",
+    "Préparer les stories avec l'Example Mapping : 30 minutes maximum, et tant qu'il reste des questions (fiches roses) la story n'est pas prête (Arnaud Langlade).",
+    "Tester l'accessibilité par des tests de bout en bout « user centriques » (rôle et nom accessible) : les outils automatiques ne détectent qu'un peu plus de la moitié des problèmes (Servical et Njako Molom).",
+    "Les canaries automatisés exigent des requêtes Prometheus robustes : fenêtres assez longues, pas de division par un trafic quasi nul, seuils d'erreurs calculés (James Searby, Amadeus).",
+    "Ne pas copier le « modèle Spotify » : sans transparence ni sécurité psychologique, squads et tribes ne servent à rien (Rachel Dubois)."
+  ],
+  "sessions": [
+    {
+      "id": "coder-avec-l-ia-le-duo-gagnant-en-pratique",
+      "day": "2025-07-07",
+      "type": "talk",
+      "title": "Coder avec l'IA : Le duo gagnant en pratique",
+      "speakers": ["Arthur Kuehn"],
+      "feedbackFrom": [],
+      "summary": "- Deep dive de 3 h (contenu tiré de la vidéo, aucun retour de participant trouvé). Arthur Kuehn raconte un parcours d'équipe **sans mesure au départ** : *« on s'est jeté dedans un peu sans réfléchir »*, donc aucune métrique de productivité avant/après.\n- Prompting : le contexte reste l'ingrédient clé ; faire poser des questions au LLM (en QCM), itérer, exiger qu'il soit *« brutal et honnête »*.\n- Démo fil rouge dans Cursor (app Next.js + Supabase en environ 2 h) avec une chaîne **description, architecture, stack, PRD, tâches** avant de coder, et un code en vertical slices.\n- Outillage : règles versionnées dans le dépôt, MCP Task Master, Context7 et Atlassian, OpenRouter, Playwright, CodeRabbit. Coûts cités : Cursor 20 € par mois, jusqu'à 50 € par jour sur de gros projets.\n- Risques : agent qui réinitialise une base de staging, failles dans le code généré, apps sans row level security, injection de prompt. Parade : **linter sévère** (300 lignes max par fichier) et revue humaine systématique.\n- Conclusion : l'IA déplace le goulot vers le produit sans remplacer les devs ; il conseille de coder encore environ 2 h par jour avec la seule autocomplétion. Son équipe reste sous 50 % de code généré.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "g6Ff1rYjXRk",
+        "title": "Riviera DEV 2025 - Arthur Kuehn - Coder avec l'IA : Le duo gagnant en pratique",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "really-inaccessible",
+      "day": "2025-07-07",
+      "type": "workshop",
+      "title": "Really inaccessible",
+      "speakers": ["Stanley Servical", "Louis Fredice Njako Molom"],
+      "feedbackFrom": [],
+      "summary": "- Atelier de 3 h (contenu tiré de la vidéo) ouvert par un **escape game open source** qui simule daltonisme, cécité avec lecteur d'écran, dyslexie, troubles de l'attention, tremblements, surdité.\n- Cadre légal : la directive européenne sur l'accessibilité s'applique depuis le 28 juin 2025 ; le RGAA compte 106 critères ; les microentreprises sont exemptées.\n- Un baromètre 2024 cité : seuls 7 % des grands sites dépassent 9/10, 56 % n'affichent pas de déclaration d'accessibilité.\n- Les outils automatiques (axe-core, WAVE, Tanaguru) ne détectent qu'environ 57 % des problèmes selon Deque. D'où la défense des **tests de bout en bout « user centriques »** (recherche par rôle et nom accessible, comme Testing Library, Playwright ou leur bibliothèque UUV).\n- Cas pratiques : div qui imite un bouton, deux boutons « Buy » indiscernables (aria-label), images décoratives testées avec NVDA.\n- Conclusion des animateurs : aucune équipe passée aux tests user centriques n'est revenue en arrière ; l'accessibilité est un levier d'expérience utilisateur.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "yWg0coZWmsI",
+        "title": "Riviera DEV 2025 - Stanley Servical/Louis Fredice Njako Molom - Really inaccessible",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "a-quick-introduction-to-qubits-and-quantum-information",
+      "day": "2025-07-07",
+      "type": "talk",
+      "title": "A quick introduction to qubits and quantum information",
+      "speakers": ["Gavin King — IBM"],
+      "feedbackFrom": [],
+      "summary": "- Deep dive de 3 h en anglais (contenu tiré de la vidéo). Gavin King présente l'information quantique comme **la façon la plus simple d'apprendre la mécanique quantique** : vecteurs et matrices plutôt qu'intégrales.\n- Première heure sur les probabilités classiques en notation bra-ket ; l'entropie y est une *« surprise moyenne »*.\n- Thèse principale : superposition et réduction du paquet d'onde **ne sont pas propres au quantique**, ce sont des propriétés de tout système stochastique ; l'avantage quantique vient d'ailleurs (amplitudes complexes, observables qui ne commutent pas, Heisenberg).\n- Qubit, sphère de Bloch, matrices de Pauli, porte de Hadamard réversible ; décohérence et théorème de non-clonage limitent l'avantage.\n- Conclusion sceptique : le seul algorithme vraiment utile aujourd'hui serait celui de Shor, qui *« n'a qu'une application : casser RSA »*. Lectures conseillées : Nielsen et Chuang, John Watrous, 3Blue1Brown.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "VYP0DiZ1-yA",
+        "title": "Riviera DEV 2025 - Gavin King - A quick introduction to qubits and quantum information",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-llm-revent-ils-de-cavaliers-electriques",
+      "day": "2025-07-08",
+      "type": "keynote",
+      "title": "Les LLM rêvent-ils de cavaliers électriques ?",
+      "speakers": ["Thibaut Giraud (Monsieur Phi)"],
+      "feedbackFrom": ["Blog Criteo R&D"],
+      "summary": "- **Sur scène** : Thibaut Giraud s'attaque à la thèse des **« perroquets stochastiques »** (Bender et coautrices, 2021) avec l'exemple des échecs : bien prédire le coup suivant d'une partie en notation algébrique suppose de reconstruire l'échiquier.\n- GPT-3.5-turbo-instruct joue autour de **1800 Elo** en mode complétion avec un en-tête PGN ; un petit ChessGPT (50 M de paramètres) entraîné en 2 jours atteint 99,8 % de coups légaux et des sondes y retrouvent l'état de l'échiquier.\n- **Asymétrie** : un échec avec un prompt ne prouve rien, puisqu'on ne peut pas explorer tout l'espace des prompts (image d'extraterrestres concluant d'un micro-trottoir que l'humanité ne sait pas aller sur la Lune).\n- Chute : *« continuer de soutenir que les LLM sont des perroquets stochastiques, c'est se comporter soi-même en perroquet stochastique »*.\n- **Côté participants** (Criteo) : une keynote d'ouverture « great » et très interactive (le public devait deviner la suite d'une séquence avant de découvrir qu'il s'agissait d'une partie d'échecs). Leçons retenues : seul un résultat positif informe sur une capacité, et la qualité de l'entraînement est clé.",
+      "summarySources": ["transcript", "blog", "program"],
+      "video": {
+        "youtubeId": "ThpD253Jvq0",
+        "title": "Riviera DEV 2025 - Thibaut Giraud - Les LLM rêvent-ils de cavaliers électriques",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "question-pour-un-conteneur",
+      "day": "2025-07-08",
+      "type": "talk",
+      "title": "« Question pour un conteneur » : Quiz interactif sur les images, les conteneurs, OCI & Docker",
+      "speakers": ["Sherine Khoury — Red Hat", "Aurélie Vache — OVHcloud"],
+      "feedbackFrom": [],
+      "summary": "- **Quiz interactif de 10 questions**, chaque réponse illustrée par une démo (contenu tiré de la vidéo).\n- L'OCI standardise format d'image, distribution et runtime ; d'où la possibilité de pousser des charts Helm, voire un LLM via ORAS, dans un registre.\n- Pièges démontrés : la compression se fait au push côté client ; un `rm -rf` dans un Dockerfile ajoute un fichier de **whiteout** sans réduire l'image ; une image n'est pas portable sans build multi-architectures ; supprimer une image ne supprime pas ses layers.\n- Signature cosign stockée comme un nouveau tag ; question la plus ratée : les formats SBOM (SPDX et CycloneDX), que Trivy, Docker Scout ou Podman produisent différemment.\n- Message final : *« utiliser les outils avec lesquels vos équipes sont à l'aise »*.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "HLJpzUxayUM",
+        "title": "Riviera DEV 2025 - Sherine Khoury/Aurélie Vache - “Question pour un conteneur”",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "retrieval-augmented-generation-rag-techniques-avancees",
+      "day": "2025-07-08",
+      "type": "talk",
+      "title": "Retrieval Augmented Generation (RAG) : Obtenez des réponses de qualité avec des techniques avancées",
+      "speakers": ["Guillaume Laforge — Google"],
+      "feedbackFrom": ["Blog Criteo R&D"],
+      "summary": "- **Sur scène** : le RAG compense date de coupure, données privées et hallucinations ; son atout préféré est l'**explicabilité** par les sources citées.\n- Ingestion : un découpage naïf coupe les phrases ; mieux vaut le chevauchement ou une **fenêtre glissante de phrases**, et surtout les « hypothetical questions » (on vectorise les questions auxquelles répond chaque chunk). Un modèle d'embedding mal adapté au français empêchait le Pass Culture de remonter les bonnes offres.\n- Retrieval : compression de requête, HyDE (un peu de gain, de la latence), routage, reranking ; RAG agentique de LangChain4j qui découpe une question en sous-recherches.\n- Conclusion : *« ça dépend »*, il faut évaluer sur ses propres jeux de données (Ragas, promptfoo).\n- **Côté participants** (Criteo) : session « technically rich » avec live coding Java et LangChain4j ; retenu : adapter le pipeline au cas d'usage, pas de solution universelle, et l'apport des grandes fenêtres de contexte, y compris pour aider au découpage.",
+      "summarySources": ["transcript", "blog", "program"],
+      "video": {
+        "youtubeId": "ShR965xeiOI",
+        "title": "Riviera DEV 2025 - Guillaume Laforge - Retrieval Augmented Generation (RAG)",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "reduire-la-consommation-energetique-de-votre-parc-applicatif",
+      "day": "2025-07-08",
+      "type": "talk",
+      "title": "La méthode simple pour réduire la consommation énergétique de votre parc applicatif",
+      "speakers": ["Arthur Kuehn"],
+      "feedbackFrom": [],
+      "summary": "- Arthur Kuehn regrette que le **Green IT passe à la trappe face à l'IA** ; la fabrication pèse 80 % de l'impact du numérique (contenu tiré de la vidéo).\n- Il faut agir sur l'existant, souvent du legacy sans budget de refonte ; dans la plupart des cas, réduire l'impact revient à réduire les coûts.\n- Méthode en boucle : **mesurer, prioriser, réduire**. La mesure peut être un simple score maison (Scaphandre, Cloud Carbon Footprint, EcoIndex ou un tableur) ; la priorisation croise impact, gains et complexité.\n- Leviers : VM inutiles, extinction hors heures d'usage, nettoyage des logs, mode debug coupé en prod, code mort (Knip) ; un serveur en Pologne a un impact 20 fois supérieur à la France.\n- Retour d'expérience chez G2S (Groupama) : une app note chaque application de A à F « comme Yuka », faite par 3 personnes en un peu plus de 3 mois et **rentabilisée en moins de 6 mois** rien qu'en éteignant les applications inutilisées.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "zDzmmhWigZ8",
+        "title": "Riviera DEV 2025 - Arthur Kuehn - La méthode pour réduire la consommation de votre parc applicatif",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "meshtastic-et-gaulix-un-reseau-hors-reseaux",
+      "day": "2025-07-08",
+      "type": "talk",
+      "title": "Meshtastic & Gaulix, un réseau hors réseaux à vocation mondiale",
+      "speakers": ["Paul Pinault"],
+      "feedbackFrom": [],
+      "summary": "- Point de départ : comment communiquer quand toute l'infrastructure tombe (panne géante en Espagne, inondations) ? Réponse : **Meshtastic**, réseau maillé que la communauté française appelle Gaulix (contenu tiré de la vidéo, en anglais).\n- Technique : **modulation LoRa** (réception sous le niveau du bruit), sous-bande 869 MHz à 500 mW ; portée de 20 à 50 km en règle générale ; routage volontairement *« simple et stupide »* limité à 7 sauts, avec des passerelles MQTT entre îlots.\n- Succès dû à **l'accessibilité** : module à 20 dollars, firmware flashé depuis le navigateur, réglages français appliqués par QR code.\n- Critique franche du speaker : couches mal séparées, sécurité faible, passage à l'échelle incertain ; à recommander aux hobbyistes, pas à l'industrie.\n- Questions : débit sous 1 kbit/s, donc télémétrie, positions et messages courts seulement.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "NcuV9QId350",
+        "title": "Riviera DEV 2025 - Paul Pinault - Meshtastic & Gaulix, un réseau hors réseaux à vocation mondiale",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "tu-te-mets-combien-en-responsive-css-edition-2025",
+      "day": "2025-07-08",
+      "type": "talk",
+      "title": "Tu te mets combien en responsive CSS ? Edition 2025",
+      "speakers": ["Théo Gianella", "Julien Sulpis"],
+      "feedbackFrom": ["Blog Criteo R&D"],
+      "summary": "- **Sur scène** : 10 niveaux de maquettes de difficulté croissante intégrées en live ; philosophie du *« Sois comme l'eau, mon ami »* : abandonner l'illusion du pixel perfect.\n- Unités : `ch` pour la longueur de ligne, `em`/`rem` pour tenir un zoom texte à 200 %, **`clamp()`** pour une taille fluide ; `dvh`, `svh`, `lvh` désormais largement disponibles.\n- Images avec `picture`, `srcset` et `sizes` ; media queries réservées aux vrais changements de structure ; grid avec `repeat(auto-fill, minmax(...))` ; grid n'est pas *« l'évolution »* de flex.\n- Niveau 9 : une même carte change d'apparence selon la place disponible grâce aux **container queries**. Niveau 10 : le monde réel, *« pas de formule magique »*.\n- **Côté participants** (Criteo) : *« one of the standout sessions »*, live coding drôle et technique ; retenu : le CSS est loin d'être un problème résolu et demande un apprentissage continu, avec une « empathie de design » pour les nouveaux appareils.",
+      "summarySources": ["transcript", "blog", "program"],
+      "video": {
+        "youtubeId": "i-lXLG107h0",
+        "title": "Riviera DEV 2025 - Julien Sulpis/Théo Gianella - Tu te mets combien en responsive CSS ? Edition 2025",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-j-ai-porte-doom-sur-navigateur-grace-au-webassembly",
+      "day": "2025-07-08",
+      "type": "talk",
+      "title": "Comment j'ai porté Doom sur navigateur grâce au WebAssembly",
+      "speakers": ["Yassine Benabbas — Worldline"],
+      "feedbackFrom": [],
+      "summary": "- Objectif : démystifier le portage de jeux, *« c'est vraiment accessible, surtout fun »* (contenu tiré de la vidéo).\n- Base : ManagedDoom (portage .NET) compilé vers Wasm avec le **template wasmbrowser** ; environ **70 % du code** était déjà compatible.\n- Méthode : bouchons pour les classes SFML manquantes, puis implémentation pas à pas ; la boucle de jeu devient un appel récursif à `requestAnimationFrame`.\n- Son via AudioContext (streaming fait main pour éviter les grésillements) ; image remplie **colonne par colonne**, car le moteur de raycasting dessine par colonnes.\n- Démo : le public joue sur mobile via QR code, jeu hors ligne en PWA.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "g2AeuXFd7_8",
+        "title": "Riviera DEV 2025 - Yassine Benabbas - Comment j'ai porté Doom sur navigateur grâce au WebAssembly",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "anatomie-d-une-faille",
+      "day": "2025-07-08",
+      "type": "talk",
+      "title": "Anatomie d'une faille",
+      "speakers": ["Olivier Poncet"],
+      "feedbackFrom": ["Blog Criteo R&D"],
+      "summary": "- **Sur scène** : décorticage de **la backdoor XZ Utils** (CVE-2024-3094, score 10/10), découverte par hasard par Andres Freund à cause d'une latence SSH anormale.\n- Première phase d'**ingénierie sociale** sur deux ans : « Jia Tan » contribue, des comptes vraisemblablement fictifs mettent la pression sur le mainteneur bénévole unique jusqu'à la co-maintenance.\n- Technique : macro m4 présente seulement dans le tarball, faux fichiers de test qui contiennent le payload, détournement de `RSA_public_decrypt` via IFUNC, chemin vers OpenSSH par libsystemd.\n- Pour le speaker, le vrai sujet est **la supply chain logicielle** (apt, npm, pip, images Docker) ; il recommande un gestionnaire d'artefacts avec vérification des empreintes. *Le maillon faible, c'est l'humain.*\n- **Côté participants** (Criteo) : *« a chilling reminder »* ; retenu : les attaquants sophistiqués sont patients, l'infrastructure critique repose sur des projets peu surveillés, les modèles de confiance des mainteneurs doivent évoluer, et maintenir ses propres dépôts de dépendances vaut son coût.",
+      "summarySources": ["transcript", "blog", "program"],
+      "video": {
+        "youtubeId": "u2Dv-oGvyHY",
+        "title": "Riviera DEV 2025 - Olivier Poncet - Anatomie d'une faille",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "quick-wins-to-improve-your-react-app-performance",
+      "day": "2025-07-08",
+      "type": "talk",
+      "title": "Stop shooting yourself in the foot: Quick wins to improve your react app's performance",
+      "speakers": ["Opher Vishnia — Hud"],
+      "feedbackFrom": [],
+      "summary": "- Talk en anglais mis en scène comme une enquête policière sur *« la mort des performances »* (contenu tiré de la vidéo).\n- Piège 1 : **`useContext`** avec une value recréée à chaque rendu re-rend tous les consommateurs ; mémoïser avec `useMemo`/`useCallback`.\n- Piège 2 : **`useEffect`** à n'utiliser qu'*« en dernier recours »* : valeurs dérivées calculées dans un effet, nettoyages oubliés et fuites mémoire.\n- Piège 3 : **la mémoïsation est fragile** (children ou styles en ligne qui la cassent) ; inutile de tout mémoïser.\n- Méthode : trouver ce qui re-rend, puis pourquoi (React DevTools, React Scan, why-did-you-render). Le React Compiler automatise la mémoïsation, mais seulement sur une base de code qui respecte les règles de React.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "EL5ZQAyDiVY",
+        "title": "Riviera DEV 2025 - Opher Vishnia - Stop shooting yourself in the foot: quick wins for your React app",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "dites-adieu-aux-sessions-interminables-de-refinement-avec-l-example-mapping",
+      "day": "2025-07-08",
+      "type": "talk",
+      "title": "Dites adieu aux sessions interminables de product backlog refinement avec l'Example Mapping",
+      "speakers": ["Arnaud Langlade"],
+      "feedbackFrom": [],
+      "summary": "- Constat vécu : refinements longs et descendants, digressions, questions sans réponse une fois le code commencé ; c'est *« l'ignorance des devs »* qui part en production (Brandolini, cité). Contenu tiré de la vidéo.\n- **L'Example Mapping** (Matt Wynne) réunit les « trois amis » 30 minutes maximum par story : fiches jaunes (story), bleues (règles), vertes (exemples), roses (questions).\n- **Tant qu'il reste des fiches roses, la story n'est pas prête** ; une règle avec trop d'exemples cache une nouvelle règle ; un atelier qui déborde signale une story trop grosse (un export s'est révélé être une épique de 15 à 20 stories).\n- Trier les règles « must » et « nice to have » aide à découper ; des stories de taille homogène donnent une vélocité prédictible sans estimation.\n- En pratique : créneau quotidien de 30 minutes après le daily, exemples transformés en tests, Miro en remote avec scribe et animateur tournants. En questions, il se dit critique envers Scrum et SAFe et préfère un Kanban minimal (*« strictement personnel »*).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "AHq1wBvx_nQ",
+        "title": "Riviera DEV 2025 - Arnaud Langlade - Example Mapping",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "savez-vous-vraiment-ce-qu-est-la-couleur",
+      "day": "2025-07-08",
+      "type": "talk",
+      "title": "Savez-vous vraiment ce qu'est la couleur ? Découvrez la science derrière les pixels",
+      "speakers": ["Julien Sulpis"],
+      "feedbackFrom": [],
+      "summary": "- Deux énigmes de départ : bleu et jaune n'ont pas la même luminosité perçue, et un « vert pur » n'a pas le même rendu dans Figma et en CSS (contenu tiré de la vidéo).\n- La couleur est une perception (trois types de cônes) : il existe **une infinité de blancs**. Histoire des notations, de CIE 1931 au diagramme de chromaticité.\n- sRGB couvre environ 35 % du diagramme, P3 environ 50 % : **le mystère du vert** vient de Figma en Display P3 face au `rgb()` CSS en sRGB.\n- RGB, HSL et HSB ne reflètent pas la perception ; **OKLab et OKLCH** (2020) corrigent ces déformations : palettes aux contrastes homogènes, dégradés sans *« dead gray zone »*.\n- Au passage : un orange saturé et accessible n'existe pas ; mieux vaut gérer soi-même le fallback sRGB des couleurs hors gamut.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "sNsxqaPSR4s",
+        "title": "Riviera DEV 2025 - Julien Sulpis - Qu’est-ce que la couleur ? La science derrière les pixels",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "developers-and-designers-what-if-we-really-spoke-the-same-language",
+      "day": "2025-07-08",
+      "type": "talk",
+      "title": "Developers & Designers: What if we really spoke the same language?",
+      "speakers": ["Camille Le Roux — Datadog"],
+      "feedbackFrom": ["Blog Criteo R&D"],
+      "summary": "- Session interactive d'une heure (pas de vidéo trouvée ; résumé d'après le blog Criteo) sur la collaboration développeurs et designers, nourrie de l'expérience de Camille Le Roux chez Amadeus et Datadog.\n- Iceberg de l'expérience utilisateur, bases du design thinking, mesure de l'UX (métriques déclaratives, comportementales, de performance, analytics, A/B tests).\n- Pratiques de Datadog retenues : **impliquer les devs tôt** dans les discussions UX, outils et langage partagés (Figma en mode développeur avec de vraies données métier), **handoff continu** plutôt qu'un événement ponctuel, culture du feedback et des tests collaboratifs.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "how-difficult-can-it-be-to-write-efficient-code",
+      "day": "2025-07-08",
+      "type": "talk",
+      "title": "How difficult can it be to write efficient code?",
+      "speakers": ["Roberto Cortez — Red Hat"],
+      "feedbackFrom": ["Blog Criteo R&D"],
+      "summary": "- Session de la track Red Hat (pas de vidéo trouvée ; résumé d'après le blog Criteo) sur l'efficacité du code backend dans l'écosystème JVM.\n- Point de départ : la citation complète de *« premature optimization is the root of all evil »*, pour se concentrer sur les optimisations qui comptent.\n- Série de défis de code analysés avec **Async Profiler** : les choix quotidiens, souvent négligés, pèsent lourd une fois l'application déployée à l'échelle.\n- Retenu par Criteo : surveiller, observer et **mesurer** avant d'optimiser ; le profilage et les tests de performance font partie du travail.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "crafting-intelligent-applications-with-quarkus-langchain4j",
+      "day": "2025-07-08",
+      "type": "talk",
+      "title": "Crafting Intelligent Applications with Quarkus/LangChain4j",
+      "speakers": ["Dimitris Andreadis — Red Hat"],
+      "feedbackFrom": ["Blog Criteo R&D"],
+      "summary": "- Session de la track Red Hat (pas de vidéo trouvée ; résumé d'après le blog Criteo).\n- Idée centrale : avec l'IA générative, **les services d'IA se consomment comme des API standard**, ce qui abaisse la barrière d'entrée pour les développeurs Java.\n- Introduction aux LLM puis démonstration d'une application construite avec Quarkus, LangChain4j et un modèle OpenAI, en services préconfigurés ou personnalisés.\n- Retenu : la combinaison de la légèreté de Quarkus et des capacités conversationnelles de LangChain4j ouvre de nouveaux usages.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "du-pod-au-chaos-voyage-au-centre-d-une-perturbation-reseau",
+      "day": "2025-07-08",
+      "type": "lightning",
+      "title": "Du Pod au Chaos : voyage au centre d'une perturbation réseau",
+      "speakers": ["Calvin Audier — Amadeus"],
+      "feedbackFrom": [],
+      "summary": "- Snorkeling session de 25 min (contenu tiré de la vidéo) sur le chaos engineering chez Amadeus, où le speaker travaille *« à casser des trucs »*.\n- Démarche : état stable, hypothèses, perturbation, analyse ; démonstration de LitmusChaos puis **refaite à la main** sur un cluster kind.\n- Mécanique : un pod helper privilégié trouve le PID de l'application via containerd, puis `nsenter` dans son **namespace réseau** et `tc netem loss 100%`.\n- Effet de bord réel en démo : une autre application plante faute de retry. Mieux vaut le découvrir *« en plein milieu de journée »* qu'*« un dimanche à 3h du matin »*.\n- Certaines perturbations sont faites en production, parfois sans prévenir, pour tester la réponse aux incidents.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "hNtuz53VpfI",
+        "title": "Riviera DEV 2025 - Calvin Audier - Du Pod au Chaos: voyage au centre d'une perturbation réseau",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "platform-engineering-ia-the-next-gen-devops",
+      "day": "2025-07-08",
+      "type": "lightning",
+      "title": "Platform engineering + IA - The next-gen DevOps",
+      "speakers": ["Dhruv Kumar — CloudBees (en remplacement de Sylvain Deyris)"],
+      "feedbackFrom": [],
+      "summary": "- Snorkeling session en anglais (contenu tiré de la vidéo), donnée par Dhruv Kumar qui remplace Sylvain Deyris annoncé au programme.\n- Chiffre d'ouverture : selon une enquête citée, les développeurs **codent environ 50 minutes par jour**.\n- Réponse proposée : le **platform engineering** (plateforme interne en self-service, golden paths sécurisés, modèle de données SDLC commun qui alimente aussi les métriques DORA).\n- IA : *« l'IA n'est bonne qu'à hauteur des données qui la nourrissent »* ; exemples de tests sélectionnés par l'IA et de serveurs MCP pour interroger vulnérabilités ou feature flags.\n- Lecture critique : talk qui se termine en promotion de CloudBees Unify ; une objection du public sur l'inutilité des tests générés pour viser 100 % de couverture reste sans réponse audible.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "skZk2ZQO04Y",
+        "title": "Riviera DEV 2025 - Dhruv Kumar - Platform engineering + IA - The next-gen DevOps",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "creating-a-culture-of-learning-inside-your-company",
+      "day": "2025-07-08",
+      "type": "lightning",
+      "title": "Creating a culture of learning inside your company",
+      "speakers": ["Joaquín Engelmo (Kini) — Criteo"],
+      "feedbackFrom": ["Joaquín Engelmo (speaker, blog Criteo R&D)"],
+      "summary": "- Snorkeling session non filmée ; résumé d'après le retour du speaker lui-même sur le blog Criteo (slides publiées).\n- Première conférence du speaker hors d'Espagne, sur un sujet qu'il pratique depuis environ 16 ans : **l'apprentissage continu**, pilier de l'agilité, de l'extreme programming et du craft.\n- Message : l'apprentissage n'est pas seulement un bénéfice personnel, il doit être **inscrit dans la culture de l'entreprise** ; il partage les activités testées, les obstacles et excuses rencontrés et les retours collectés.\n- (speaker) Accueil jugé très chaleureux par l'organisation et dîner des speakers *« absolutely fantastic »*.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "from-bob-and-alice-to-verifiable-credentials",
+      "day": "2025-07-08",
+      "type": "lightning",
+      "title": "From Bob and Alice to verifiable credentials",
+      "speakers": ["Walid Garbaya"],
+      "feedbackFrom": [],
+      "summary": "- Snorkeling session en anglais (contenu tiré de la vidéo) qui reprend les bases : confidentialité, intégrité, authentification, non-répudiation.\n- Symétrique (rapide mais clé à partager) puis asymétrique (clé publique à distribuer).\n- Les **DID** (W3C) résolvent la distribution : avec `did:web`, un simple GET sur `/.well-known/did.json`. Les **verifiable credentials** permettent de vérifier un diplôme sans contacter l'université, et de masquer certains claims.\n- Démo avec Eclipse Dataspace Components. À retenir : *« ne partagez jamais votre clé privée »*, automatiser la rotation des clés.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "IuzLM3YJJdE",
+        "title": "Riviera DEV 2025 - Walid Garbaya - From Bob and Alice to verifiable credentials",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "tips-et-astuces-pour-une-application-prenant-en-charge-divers-handicaps",
+      "day": "2025-07-08",
+      "type": "lightning",
+      "title": "Tips & Astuces pour créer une application prenant en charge divers handicaps",
+      "speakers": ["Enzo Conty"],
+      "feedbackFrom": [],
+      "summary": "- Snorkeling session (contenu tiré de la vidéo) : *« on fait l'accessibilité pour tout le monde »*, et c'est surtout du bon sens.\n- Trois idées reçues démontées : l'OMS compte **environ 15 % de la population mondiale** concernée ; un produit « trop complexe » est surtout mal conçu ; accessible ne veut pas dire moche.\n- **Cela ne coûte cher que si on s'y prend tard.** Conseils : polices redimensionnables, contraste d'au moins 4,5:1, sémantique correcte pour VoiceOver et TalkBack, erreurs signalées de deux façons, OpenDyslexic, boutons atteignables au pouce.\n- Bonus « accessibilité territoriale » : applications légères pour vieux téléphones. Il s'oppose aux « modes accessibles » séparés, jugés ségrégants.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "YeEGVH1DIos",
+        "title": "Riviera DEV 2025 - Enzo Conty - Tips & tricks pour créer une app prenant en charge les handicaps",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "an-intro-to-ebpf-with-go",
+      "day": "2025-07-08",
+      "type": "lightning",
+      "title": "An Intro to eBPF with Go: The Foundation of Modern Kubernetes Networking",
+      "speakers": ["Donia Chaiehloudj — Isovalent (Cisco)"],
+      "feedbackFrom": [],
+      "summary": "- Snorkeling session en anglais (contenu tiré de la vidéo) : **eBPF est le « couteau suisse » du noyau Linux**, des programmes sandboxés sans module ni reboot.\n- Dans Kubernetes, les conteneurs partagent le noyau : d'où Cilium, BCC, Pixie. Go est *« la langue du cloud native »* ; la librairie cilium/ebpf charge depuis Go un programme écrit en C.\n- Démos : tracing de `openat`, puis **XDP** (compteur de paquets, blocage par IP avec `XDP_DROP`). Cilium remplace iptables, utile chez des clients à 10 000 network policies.\n- Vigilance : en préparant la démo, elle s'est coupé l'accès à sa VM.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "MsTg0MGerIk",
+        "title": "Riviera DEV 2025 - Donia Chaiehloudj - eBPF with Go: The Foundation of Modern K8s Networking",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "de-l-ultra-low-tech-pour-sauver-les-cultures",
+      "day": "2025-07-08",
+      "type": "lightning",
+      "title": "De l'ultra low tech pour sauver les cultures : comment on a mis au point le système d'effarouchement le moins cher du marché",
+      "speakers": ["Mathieu Passenaud — Please Open.it"],
+      "feedbackFrom": [],
+      "summary": "- Snorkeling session (contenu tiré de la vidéo) : palombes et pigeons ravagent les levées de tournesol, et les effaroucheurs du marché coûtent de 780 à 2 000 €.\n- Premier proto pour environ 6 € : Arduino, relais, photorésistance et **klaxon de voiture** de récupération, qui couvre 2 à 3 hectares.\n- Itérations : ATtiny et batterie d'alarme dans une petite bouteille, banc de test automatisé, puis PCB à 2 € commandé à 1 500 unités.\n- Preuve chiffrée par les cartes de rendement des moissonneuses : **rendement multiplié par 3** dans les zones protégées.\n- Les revendeurs agricoles l'ont refusé, produit *« pas assez cher »* et *« pas assez innovant »*.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "4FzZ5iUxoJY",
+        "title": "Riviera DEV 2025 - Mathieu Passenaud - De l’ultra low tech pour sauver les cultures",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-cost-of-inaction",
+      "day": "2025-07-09",
+      "type": "keynote",
+      "title": "The Cost of Inaction",
+      "speakers": ["Quentin Adam — Clever Cloud", "Nicolas Leroux"],
+      "feedbackFrom": [],
+      "summary": "- Keynote d'ouverture du 9 juillet (contenu tiré de la vidéo, en français). Galerie des inactions : DEC, Kodak, Xerox, Blockbuster, BlackBerry.\n- **Raison d'être contre activité** : Kodak devait permettre de faire des photos, pas fabriquer du film ; quand les deux divergent, l'entreprise meurt.\n- **Le coût de l'inaction croît avec le temps** : migrer du Struts aujourd'hui coûte bien plus qu'il y a 10 ans. Quentin Adam affirme que *« la dette technique est un mythe »* : ce sont des investissements rentables ou non, vocabulaire qui parle à un board.\n- Constats macroéconomiques sur la France (balance des paiements dégradée par le numérique, rapport Villani non suivi) et appel aux développeurs : *« release early, release often »*, utiliser l'IA dès maintenant, prendre du leadership.\n- Chute : *« l'inaction, ce n'est pas un confort, c'est une corrosion »*.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "YIAxNPp57kU",
+        "title": "Riviera DEV 2025 - Nicolas Leroux/Quentin Adam - The Cost of Inaction",
+        "publishedAt": "2025-07-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "spotify-an-insider-view",
+      "day": "2025-07-09",
+      "type": "talk",
+      "title": "Spotify : an insider view",
+      "speakers": ["Rachel Dubois"],
+      "feedbackFrom": [],
+      "summary": "- Talk en anglais d'une ancienne de Spotify, coach agile et ex-PM (contenu tiré de la vidéo). Genèse : une vingtaine d'ingénieurs seniors culture XP qui s'auto-organisent.\n- **Le « modèle Spotify » est un malentendu** : le document de 2012 et le poster d'Henrik Kniberg décrivaient une culture d'ingénierie, pas un framework d'agilité à l'échelle. Squads et tribes sont devenues product teams et studios, les chapters ont disparu.\n- Pratiques décrites : salaire proposé sans négociation, golden paths dans Backstage, équipes stables, priorisation **P0 = keep the lights on**, changements portés par des RFC dans un simple Google Doc.\n- Livraison : release train hebdomadaire, 100 % du code sous feature flag, canaries ; innovation : 2 jours par mois et hack week.\n- Point de débat : licenciements de 2023, outils imposés puis abandonnés. Sans transparence ni sécurité psychologique, copier les squads ne sert à rien : *« si vous ne prenez pas les 90 % restants, vous passez à côté »*.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "ps3F82xydoI",
+        "title": "Riviera DEV 2025 - Rachel Dubois - Spotify : an insider view",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "scale-to-the-sky-amadeus-mongodb",
+      "day": "2025-07-09",
+      "type": "talk",
+      "title": "Scale to the sky! See how Amadeus uses MongoDB to handle massive transactions, no turbulence!",
+      "speakers": ["Ali Makke — Amadeus", "Nicolas Benhamou — MongoDB"],
+      "feedbackFrom": [],
+      "summary": "- Contexte (contenu tiré de la vidéo, en anglais) : avec le **NDC**, les recherches frappent directement les systèmes des compagnies, qui imposent quotas et ratios « look to book ».\n- Réponse d'Amadeus : un **cache intelligent** (Kafka, microservice updater, modèles de ML qui prédisent la validité d'une offre) sur plus de 120 clusters MongoDB.\n- Cas clé-valeur : 12 000 recherches/s à 3 ms, upserts en bulk non ordonné ; « pattern enveloppe » : compression Zstd côté application, documents de 100 Ko ramenés à 12 Ko.\n- Cas « open search » : index composé dans l'ordre égalité, tri, plage, et **sharding par plage** pour éviter le scatter-gather.\n- Conseils MongoDB : lire sur les secondaires (*« vous les payez, utilisez-les »*), se méfier des index TTL, isoler les workloads. Retour d'expérience : un cluster monté à 63 VM devenait impossible à maintenir, d'où une répartition sur plusieurs clusters.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "qYcl_rBkS7A",
+        "title": "Riviera DEV 2025 - Scale to the sky! See how Amadeus uses MongoDB to handle massive transactions",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "un-pixel-puis-un-autre-doom-sur-une-liseuse",
+      "day": "2025-07-09",
+      "type": "talk",
+      "title": "Un Pixel, puis un autre : Comment faire tourner DOOM sur une liseuse électronique",
+      "speakers": ["Moustapha Agack — Zenika"],
+      "feedbackFrom": [],
+      "summary": "- Défi personnel (contenu tiré de la vidéo) : **faire tourner Doom sur un Kindle de 2011** acheté 25 € d'occasion, après jailbreak et accès SSH.\n- Découverte de **la cross-compilation** : toolchain ARM générée avec crosstool-NG dans Docker ; *« Est-ce que c'est de l'over engineering ? Clairement. »*\n- Portage via doomgeneric, écriture directe dans le framebuffer et lecture des boutons dans `/dev/input`.\n- Le gris rafraîchit en 600 ms (*« on a envie de vomir »*) ; solution : **dithering de Floyd-Steinberg** en noir et blanc, autour de 10 FPS.\n- Bilan : un mois de cross-compilation contre une semaine de code, et le plaisir de sortir de son quotidien.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "q3iqE90dBTU",
+        "title": "Riviera DEV 2025 - Moustapha Agack - Un Pixel, puis un autre: faire tourner DOOM sur une liseuse",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "communaute-tu-aideras-sagesse-et-force-tu-gagneras",
+      "day": "2025-07-09",
+      "type": "talk",
+      "title": "Communauté, tu aideras. Sagesse et force, tu gagneras",
+      "speakers": ["Zineb Bendhiba — Red Hat", "Sherine Khoury — Red Hat"],
+      "feedbackFrom": [],
+      "summary": "- **On appartient déjà à plusieurs communautés** sans le savoir : équipe, meetups, podcasts, bibliothèques open source utilisées (contenu tiré de la vidéo).\n- Contribuer doit donner de l'énergie : *« la vie communautaire, c'est pas un sprint mais un marathon »*, sans culpabilité quand on donne moins.\n- **Niveaux de contribution progressifs**, illustrés par des témoignages : prendre des notes, ouvrir ou voter des bugs, talk au meetup local, première pull request, CFP, bénévolat, organisation, maintenance.\n- Elles ont recensé près de 80 meetups français et les ont ajoutés au site Developers Events avec une carte ouverte aux contributions.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "Re_bI8PlRz8",
+        "title": "Riviera DEV 2025 - Bendhiba/Khoury - Communauté, tu aideras. Sagesse et force, tu gagneras",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-nous-avons-transforme-les-restos-du-coeur-en-cloud-provider",
+      "day": "2025-07-09",
+      "type": "talk",
+      "title": "Comment nous avons transformé les Restos du Coeur en Cloud Provider",
+      "speakers": ["Julien Briault — Restos du Cœur (bénévole)"],
+      "feedbackFrom": [],
+      "summary": "- Règle de calcul (contenu tiré de la vidéo) : *« 1 € dépensé, c'est un repas qui n'est pas distribué »*. 78 000 bénévoles, plus de 40 applications.\n- Parcours : d'un PC serveur sans sauvegarde à un **datacenter dans l'entrepôt alimentaire de Chartres**, avec du matériel donné (plus de 80 serveurs).\n- Socle OpenStack, Kubernetes, Proxmox et Ceph, *« clairement pas facile à gérer »*, choisi par **« context driven development »** et non par hype ; cinq règles : infra as code, aucune connexion directe, immuabilité, déploiement par CI/CD, documentation.\n- Gains comptés en repas : Passbolt, sondes de chambres froides maison, RustDesk à la place de TeamViewer, un poste « Linux du Cœur » sur environ 25 000 machines ; au total environ 20 millions de repas.\n- Objectif : **ouvrir gratuitement la plateforme aux autres associations**.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "VRyAQZGgDZE",
+        "title": "Riviera DEV 2025 - Julien Briault - Nous avons transformé les Restos du Coeur en Cloud Provider",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "retour-d-experience-argo-rollouts-amadeus",
+      "day": "2025-07-09",
+      "type": "talk",
+      "title": "Retour d'expérience sur l'implémentation d'Argo Rollouts dans Amadeus",
+      "speakers": ["James Searby — Amadeus"],
+      "feedbackFrom": [],
+      "summary": "- Contexte (contenu tiré de la vidéo) : 500 instances Argo CD, 800 applications, d'où l'intérêt des **canaries avec rollback automatique**.\n- Sans ingress controller, un poids de 20 % devient 25 % ; avec Istio, pourcentages exacts et routage par marché. Les **experiments** comparent baseline et canary dans les mêmes conditions.\n- Cinq « fables » de pièges PromQL : comparer à une absence de série, fenêtres `increase` trop courtes, division par un trafic quasi nul, seuil d'erreurs 500 calculé par la loi de Poisson (un seuil de 0 fait échouer presque tous les rollouts de 24 h), suivi de nombreux rollouts parallèles.\n- Conseils : ordonner rollouts et analyses, démarrer avec assez de trafic, ne jamais utiliser `irate`.\n- Valeur réelle : **standardiser l'« application checkout »** et renforcer la confiance des opérateurs.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "EZvoa0yMdDM",
+        "title": "Riviera DEV 2025 - James Searby - L'implémentation d'Argo Rollouts dans Amadeus",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "web-bots-a-developer-s-best-friend-or-worst-nightmare",
+      "day": "2025-07-09",
+      "type": "talk",
+      "title": "Web Bots: A Developer's Best Friend or Worst Nightmare?",
+      "speakers": ["Elisa Chiapponi — Amadeus", "Martynas Buožis — Amadeus"],
+      "feedbackFrom": ["Blog Criteo R&D"],
+      "summary": "- **Sur scène** (en anglais) : en 2024, les bots génèrent 51 % du trafic web ; abus fonctionnels comme le **seat spinning** (billets bloqués sans paiement) et le SMS pumping.\n- Course aux armements : fingerprinting, challenges JS et CAPTCHA sont contournés, et l'IA rend les bots accessibles à tous ; le blocage par IP bute sur les **proxys résidentiels**, appareils de particuliers souvent enrôlés à leur insu.\n- Parade d'Amadeus : mesurer l'**écart entre RTT TLS et RTT TCP** (au-delà de 50 ms, connexion probablement relayée), validée sur 4 mois et intégrée au WAF ; suivi des préfixes /24 pour un score de risque.\n- Selon les domaines, 20 à 59 % du trafic de réservation passe par des proxys résidentiels.\n- **Côté participants** (Criteo) : *« one of the most eye-opening sessions »* ; retenu : la détection de bots n'est plus un problème résolu, c'est une course aux armements où les défenseurs doivent être plus créatifs.",
+      "summarySources": ["transcript", "blog", "program"],
+      "video": {
+        "youtubeId": "3nmUC7EPHkU",
+        "title": "Riviera DEV 2025 - Chiapponi/Buožis - Web Bots: A Developer’s Best Friend or Worst Nightmare",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "du-code-au-navigateur-vos-choix-techniques-faconnent-l-experience-web",
+      "day": "2025-07-09",
+      "type": "talk",
+      "title": "Du code au navigateur : comment vos choix techniques façonnent l'Expérience Web",
+      "speakers": ["Eroan Boyer — Agence Web Performance"],
+      "feedbackFrom": [],
+      "summary": "- Les SPA **pénalisent le premier chargement** : le JavaScript doit être téléchargé et exécuté avant toute interaction (contenu tiré de la vidéo).\n- Respecter le chemin de rendu critique (HTML, CSS, puis JS) ; erreurs fréquentes en audit : Google Font synchrone placée avant la feuille principale, CSS principal chargé en asynchrone.\n- JavaScript tiers en `defer`, chatbot et Tag Manager retardés jusqu'à l'interaction ; côté serveur, en-tête `Link` et **103 Early Hints**.\n- Cas réels de CLS et d'INP dégradés par des menus gérés en JS : *« CSS restera systématiquement beaucoup plus puissant que n'importe quel JavaScript »*.\n- Checklist serveur : HTTP/3, TLS 1.3, Brotli plutôt que Gzip.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "UudSlgw9oDQ",
+        "title": "Riviera DEV 2025 - Eroan Boyer - Du code au navigateur: vos choix tech façonnent l'Expérience Web",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "securiser-vos-apis-sans-compromettre-l-experience-developpeur",
+      "day": "2025-07-09",
+      "type": "talk",
+      "title": "Comment sécuriser vos APIs sans compromettre l'expérience développeur ?",
+      "speakers": ["Kevin Viet — Amadeus", "Romain Quinio — Amadeus"],
+      "feedbackFrom": [],
+      "summary": "- Passage au cloud public et aux microservices : **défense en profondeur**, chaque API vérifie authentification et autorisation (contenu tiré de la vidéo).\n- **Shift left** : tester la sécurité dès les tests de composants et les pull requests.\n- Live coding Quarkus : `deny-unannotated-endpoints` pour rendre visible tout endpoint non sécurisé, puis `@RolesAllowed` et contrôle au niveau objet.\n- Obstacles (Keycloak à configurer, tokens courts) contournés en **traitant OpenID Connect comme une API à mocker** avec Microcks ; le même mock sert des tests unitaires au cluster local.\n- Conseil : ne jamais réimplémenter le protocole soi-même, *« c'est facile de se planter »*.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "kBYEwd1Zpz8",
+        "title": "Riviera DEV 2025 - Viet/Quinio - Sécuriser vos APIs sans compromettre l’expérience dévelopeur",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "un-dev-frontend-un-dev-backend-et-un-ux-entrent-dans-un-bar",
+      "day": "2025-07-09",
+      "type": "talk",
+      "title": "Un dev frontend, un dev backend et un UX entrent dans un bar...",
+      "speakers": ["Corinne Paulve — Amadeus", "Kilian Panot — Amadeus", "Matthieu Crouzet — Amadeus"],
+      "feedbackFrom": [],
+      "summary": "- Ouverture jouée : une mise en prod ratée par un endpoint renommé, un format de date changé, des couleurs modifiées au dernier moment (contenu tiré de la vidéo, partie centrale peu audible).\n- Réponse : **le contrat, source unique de vérité versionnée**, entre back et front (spec OpenAPI qui génère serveur Quarkus, SDK TypeScript et doc, PR Renovate à chaque version) et entre UX et front (design tokens versionnés).\n- La bibliothèque open source Otter expose des métadonnées de configuration pilotables par un CMS ou un outil d'A/B testing.\n- Bilan : moins de bugs, doc alignée sur le code ; le diff de SDK généré sert à **ouvrir la discussion plus tôt**, pas à la remplacer. Chute : les trois sont en réalité des développeurs frontend de la même équipe.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "JXw-55Qi4tA",
+        "title": "Riviera DEV 2025 - Paulvé/Panot/Crouzet - 1 dev frontend, 1 dev backend & 1 UX entrent dans un bar",
+        "publishedAt": "2025-07-28",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Découvrez l'univers des utilitaires CSS avec Tailwind (Lucas Oms), deep dive",
+    "OpenCodeQuest : un combat de héros et de villains ! (Laurent Serot, Sébastien Lallemand, Alexey Loubyansky), deep dive Red Hat",
+    "Devenez un expert en Anti-Ban et Web Scraping en 3h (Fabien Vauchelles), deep dive",
+    "Toi aussi donnes du style à tes données avec Grafana (Matthieu Vincent, Thomas Jouve), deep dive",
+    "Quand Java rencontre l'AI (Clement Escoffier, Emmanuel Bernard), deep dive",
+    "Java SE en 2025 (Clément de Tastes, Jean-Michel Doudoux), deep dive (vidéo YVmirHl59gs sans transcript)",
+    "Quoi ? Vous n'utilisez pas Figma ?!? (Simon Mercier, Antoine Candy), deep dive",
+    "Améliorer les compétences et les infrastructures avec les katas d'architecture (Alexandre Touret), deep dive",
+    "Gateway API, 10 ans de maturation pour une nouvelle API Kubernetes (Kevin Davin)",
+    "MCP en action : Connecter les IA aux systèmes d'entreprise (Zineb Bendhiba)",
+    "A Qute story: rethinking templating in Quarkus (Martin Kouba)",
+    "Ce que les IDE ne veulent pas que vous sachiez ! (Benjamin Buléon)",
+    "AI Tools en pratique avec Nushell (Laurent Doguin)",
+    "Rust on Rails avec le framework Loco (Sylvain Wallez)",
+    "Developing Kubernetes Applications Beyond Go (Sun Tan)",
+    "0x5f3759df ? What the fuck ?! (Clément de Tastes)",
+    "What agent to trust with your k8s: Falco, Tetragon or KubeArmor? (Henrik Rexed)",
+    "Parlons de votre dépendance aux dépendances (Fabrice Pipart, Vincent Leon)",
+    "Comprendre MCP en 25 minutes (Sébastien Blanc)",
+    "Tests E2E sans stress : Robot Framework à la rescousse (Khadija Abdelouali)",
+    "Dark Patterns (Clément Oliva)",
+    "Graphs and games: can Go take a Ticket to Ride? (Michele Caci)",
+    "Building efficient MCP servers efficiently, with Quarkus (Martin Kouba)",
+    "Quarkus Unleashed (Roberto Cortez)",
+    "L'art et la manière de rater ses benchmarks (Michaël Strauss)",
+    "Découvrons ensemble la relève de l'observabilité avec les logs et traces : Quickwit (Idriss Neumann)",
+    "Roq : créez votre site statique avec des super-pouvoirs (Andy Damevin)",
+    "Quarkus OpenTelemetry Performance (Luis Barreiro, Bruno Baptista)",
+    "Si le header des objets m'était conté (Remi Forax)",
+    "Virtual Threads vs Reactive Programming in Quarkus (Willem Jan Glerum)",
+    "Ateliers « We're not just coders » : Pourquoi faire simple quand on peut faire compliqué ? (Olivier Huber), Il n'y a pas que le matériel qui compte ! (Michaël Strauss), (Télé-)boulot, stress, rythme intense (Natacha Damevin), Sapeur-Pompier ou Développeur ? (Yann-Thomas Le Moigne), Discover the mandolin (Prune Pillone), Succès débloqué : rendre son jeu vidéo accessible (Noëlie Roux, Yasmine Messaoudi), Brazilian cupping (Yohann Vaissière), MongoDB barbecue masterclass, Libère ta créature, neurodiversité (Cyrielle Eudeline), 5 Dimensional Flow (Raphael Semeteys, Hajer Mabrouk), Kanji Oboe (Clément Oliva), Club robotique",
+    "Keynote d'ouverture, « Sell your talk! » et keynote de clôture (organisateurs)"
+  ],
+  "sources": [
+    { "label": "Programme officiel Riviera DEV 2025", "url": "https://2025.rivieradev.fr/schedule" },
+    { "label": "Chaîne YouTube Riviera DEV (vidéos 2025 publiées fin juillet 2025)", "url": "https://www.youtube.com/@RivieraDEV" },
+    { "label": "Criteo R&D, « From Socca to Software: RivieraDev 2025 in Review » (Criteo Tech Blog, août 2025)", "url": "https://medium.com/criteo-engineering/from-socca-to-software-rivieradev-2025-in-review-676aa0f74f52" },
+    { "label": "Sophianet, « Riviera DEV, la conférence des développeurs » (annonce, mai 2025)", "url": "https://www.sophianet.com/article/sophia-riviera-dev-conference-developpeurs-developpeurs" },
+    { "label": "Posts LinkedIn : aucun post de participant retrouvé (7 recherches web)" }
+  ]
 }
