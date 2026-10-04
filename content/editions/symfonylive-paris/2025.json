@@ -5,9 +5,214 @@
   "start": "2025-03-27",
   "end": "2025-03-28",
   "city": "Paris",
+  "venue": "Cité internationale universitaire de Paris",
   "url": "https://live.symfony.com/2025-paris/",
+  "programUrl": "https://live.symfony.com/2025-paris/schedule",
+  "theme": "20 ans de Symfony",
   "dateConfidence": "ok",
-  "note": "Dates officielles (live.symfony.com/all) ; talks en français. Keynote « Symfony : 20 ans d'évolution vers la simplicité ». Lieu non retrouvé.",
-  "status": "pending",
-  "sessions": []
+  "note": "Dates officielles (live.symfony.com/all et blog Symfony). Conférence en français, une seule salle : 15 talks dont 2 keynotes et 8 lightning talks, précédés de formations les 25 et 26 mars chez SensioLabs à Asnières-sur-Seine (selon SensioLabs). Édition placée sous le signe des anniversaires : 20 ans de Symfony, 30 ans de PHP, 10 ans d'API Platform. Lieu : Cité internationale universitaire de Paris (blog Symfony).",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-04",
+  "revisit": "Aucun post LinkedIn, Mastodon ou Bluesky de participant lu (recherche LinkedIn infructueuse) ; corpus fait de comptes-rendus d'agences, souvent sponsors ou employeurs de speakers, et de slides. Replays réservés aux participants et acheteurs, aucun transcript. Chercher des posts LinkedIn de participants, les retours sur les lightning talks et la conférence de Laura Durieux (replay annoncé gratuit).",
+  "corpus": "Programme officiel et dépôt GitHub des slides, 9 comptes-rendus publiés entre le 01/04 et le 23/04/2025 (Les-Tilleuls.coop jour 1 et jour 2, JoliCode, SensioLabs, Eleven Labs, Codéin, Peaks, SQLi, ACSEO jour 1), le billet récapitulatif du blog Symfony, et les slides de la keynote de Fabien Potencier et de trois lightning talks (Speaker Deck).",
+  "limits": "Corpus dominé par des entreprises sponsors ou employant des speakers (Les-Tilleuls.coop, JoliCode, SensioLabs, ACSEO, Codéin), d'où une tonalité très positive ; seul Eleven Labs exprime une critique franche. Aucun retour individuel de réseau social, aucun transcript (replays payants), et les lightning talks ne sont couverts que par leurs slides et un paragraphe d'Eleven Labs. Les résumés de certains comptes-rendus (ACSEO notamment) restent proches des descriptifs du programme.",
+  "tldr": "Une édition anniversaire (**20 ans de Symfony**) centrée sur la **DX et le découplage** : Symfony qui « scale to 0 » avec Hello et Solo, nouvel ObjectMapper, API Platform 4 tourné vers les DTO, FrankenPHP qui accélère le développement, et Messenger décliné en asynchrone comme en synchrone ; l'IA n'apparaît encore qu'en lightning talks.",
+  "keyTakeaways": [
+    "Choisir le niveau de structure selon le projet : **Symfony Hello** (un fichier) pour un POC, **Solo** pour un développeur seul, **Team** pour une équipe et la maintenance longue (Potencier, slides, JoliCode, SensioLabs).",
+    "Exposer des **DTO plutôt que les entités Doctrine** dans API Platform 4 et abandonner les groupes de sérialisation au profit de classes de ressources dédiées (Arlaud, Les-Tilleuls.coop, JoliCode, Eleven Labs, SQLi).",
+    "Utiliser le nouvel **ObjectMapper** (expérimental, Symfony 7.3) pour séparer modèle métier et représentations d'infrastructure (Bluchet, Codéin, JoliCode).",
+    "Sortir les traitements lourds (imports CSV, PDF) de la requête HTTP : **Messenger pour le travail, Mercure pour le retour en temps réel** (Pineau, JoliCode, Peaks, Codéin).",
+    "Envisager Messenger **en synchrone comme command bus** : message en DTO, middlewares de validation, transaction et audit, handlers testables ; pas pour du CRUD (Saunier, JoliCode, Les-Tilleuls.coop).",
+    "Pour les passkeys, s'appuyer sur `web-auth/webauthn-symfony-bundle` et **garder un mécanisme d'authentification de secours** (Janot, JoliCode, Les-Tilleuls.coop).",
+    "Quand Doctrine génère des centaines de requêtes, agréger les relations **en JSON côté SQL** et passer par des providers et processors API Platform (Tamarelle, JoliCode, Les-Tilleuls.coop).",
+    "Avant d'adopter une SPA, tester **HTMX ou Turbo avec Twig** pour l'interactivité courante (Alexandre, JoliCode, SQLi)."
+  ],
+  "sessions": [
+    {
+      "id": "symfony-20-ans-d-evolution-vers-la-simplicite",
+      "day": "2025-03-27",
+      "type": "keynote",
+      "title": "Symfony : 20 ans d'évolution vers la simplicité",
+      "speakers": ["Fabien Potencier — Symfony"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (Jérôme Tanghe)", "Blog JoliCode", "Blog SensioLabs (Elise Hamimi)", "Blog SQLi", "Blog ACSEO"],
+      "summary": "- Slides intitulées *« Symfony in 2025: Scaling to 0 »* : ordre de priorité **Community > DX > Doc > Code**, et retour sur l'initiative DX lancée avec Flex en 2017 (JoliCode, Les-Tilleuls.coop).\n- Trois points d'entrée : **Symfony Hello** (une application complète dans un seul fichier, expérimental), **Symfony Solo** (un dossier autonome, HTTP et CLI par un même front controller, extensible) et **Symfony Team** (le framework classique, conventions et maintenance longue) (slides, SensioLabs, Les-Tilleuls.coop).\n- Nouveautés citées : commandes invocables avec arguments en attributs (7.3), profiler utilisable sur les commandes avec `--profile` (slides, Les-Tilleuls.coop).\n- Leçon retenue par ACSEO : *« moins de code === meilleure lisibilité, moins difficile à maintenir et faire évoluer »*.\n- Sur les LLM, Potencier insiste sur la qualité des pull requests et de la documentation, qui servent autant aux relecteurs qu'aux modèles entraînés sur ces contributions (slides, SQLi).",
+      "summarySources": ["slides", "blog", "program"]
+    },
+    {
+      "id": "le-composant-symfony-mapper",
+      "day": "2025-03-27",
+      "type": "talk",
+      "title": "Le Composant Symfony Mapper",
+      "speakers": ["Antoine Bluchet — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (Jérôme Tanghe)", "Blog JoliCode", "Blog Eleven Labs (Marianne Joseph-Géhannin)", "Blog Codéin (Axel Veber)", "Blog SQLi"],
+      "summary": "- Un **mapping explicite et typé entre objets** (entité, DTO, réponse d'API), distinct du Serializer qui convertit vers JSON ou XML ; besoin discuté dans la communauté depuis 2015 (JoliCode, SQLi).\n- Attribut `#[Map]` avec options `if` et `transform` ; composant **expérimental** livré avec Symfony 7.3 et API Platform 4.2 (Les-Tilleuls.coop).\n- Inspiré de jolicode/automapper et de symfonycasts/micro-mapper ; Codéin compte l'utiliser pour isoler le métier des formulaires, entités et API tierces.\n- JoliCode, auteur d'AutoMapper, rappelle des tentatives d'intégration passées et voit la **performance** comme le prochain chantier.\n- Critique : présentation *« un peu longuette »*, avec un long historique avant le sujet (Eleven Labs).",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "postgres-pour-vos-besoins-nosql",
+      "day": "2025-03-27",
+      "type": "talk",
+      "title": "Postgres pour vos besoins NoSQL",
+      "speakers": ["David Buchmann"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (Jérôme Tanghe)", "Blog ACSEO", "Blog Codéin"],
+      "summary": "- Utiliser les colonnes JSON de PostgreSQL avec Doctrine pour des données peu structurées (programme, ACSEO).\n- Préférer **JSONB**, optimisé pour la recherche et l'indexation ; index **GIN** adapté à la recherche mais lent en écriture (Les-Tilleuls.coop).\n- Doctrine ne gère le JSON que partiellement (`Types::JSON`) ; problèmes de performance signalés au-delà de 10 000 lignes ; chaque SGBD a sa propre approche, MySQL et MariaDB divergent (Les-Tilleuls.coop).\n- Codéin retient la souplesse d'un mélange relationnel et NoSQL dans une même base.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "passkeys-pour-une-authentification-fluide-et-securisee",
+      "day": "2025-03-27",
+      "type": "talk",
+      "title": "Passkeys pour une authentification fluide et sécurisée",
+      "speakers": ["Rémi Janot — Vasco"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (Jérôme Tanghe)", "Blog JoliCode", "Blog SQLi", "Blog ACSEO"],
+      "summary": "- Historique : mots de passe, 2FA, puis **WebAuthn**, API JavaScript disponible dans tous les navigateurs, avec clés privées et publiques et challenge généré par le serveur (Les-Tilleuls.coop, SQLi).\n- Intégration Symfony via **web-auth/webauthn-symfony-bundle** : une ligne pour l'enregistrement, une pour l'authentification (JoliCode) ; démo publiée sur GitHub.\n- Limites relevées : matériel compatible nécessaire, 25 clés maximum sur une Yubikey, non fonctionnel en navigation privée sous Chrome (Les-Tilleuls.coop), soucis avec Firefox et TouchID (JoliCode).\n- Conseil retenu : **garder un mécanisme de secours** (JoliCode). SQLi salue un sujet *« parfois perçu comme complexe »* rendu accessible.",
+      "summarySources": ["blog", "slides", "program"]
+    },
+    {
+      "id": "symfony-ux-points-forts-de-2024-et-perspectives-d-avenir",
+      "day": "2025-03-27",
+      "type": "talk",
+      "title": "Symfony UX : Points forts de 2024 et perspectives d'avenir",
+      "speakers": ["Simon André"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (Jérôme Tanghe)", "Blog JoliCode", "Blog ACSEO", "Blog Codéin"],
+      "summary": "- Une équipe UX créée et des téléchargements en forte hausse : **15 millions en 2024 contre 4 millions en 2023** (Les-Tilleuls.coop) ; adoption par EasyAdmin, Sylius ou PrestaShop (UX Icons).\n- État des composants : StimulusBundle et Turbo inclus par défaut, Twig et Live Components très utilisés, UX Map (janvier 2025) pour des cartes sans JavaScript, LazyImage bientôt déprécié (Les-Tilleuls.coop, JoliCode).\n- Perspectives : nouveau site rapatriant la documentation, UX Toolkit pour télécharger des composants Twig personnalisables, renommage possible de StimulusBundle en UXBundle, **UX 3 attendu à l'automne 2025** avec des ruptures (JoliCode, Les-Tilleuls.coop).\n- Codéin y lit une professionnalisation du front dans l'écosystème Symfony.",
+      "summarySources": ["blog", "slides", "program"]
+    },
+    {
+      "id": "roles-et-permissions-marque-blanche-feature-flipping",
+      "day": "2025-03-27",
+      "type": "talk",
+      "title": "Rôles & permissions : développez une marque blanche avec du Feature Flipping",
+      "speakers": ["Florian Bogey — GL events"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (Jérôme Tanghe)", "Blog JoliCode", "Blog SensioLabs", "Blog SQLi"],
+      "summary": "- Retour d'expérience GL events : une **seule base de code** pour une application en marque blanche, avec un comportement différencié par client (SQLi).\n- Rôles attribués statiquement pour les actions globales, **permissions vérifiées dynamiquement par des Voters** (`IsGranted`) ; API de permissions consommée par un front Vue.js, mise en cache dans Redis (Les-Tilleuls.coop, JoliCode).\n- Système de feature flags maison préféré à OpenFeature, outillé par des règles PHPStan, une extension du MakerBundle et un CRUD de configuration par client (JoliCode).\n- Avis JoliCode : modifier la configuration à chaud aide à corriger une erreur, sans être indispensable sur la durée ; SQLi souligne l'arbitrage entre sécurité, personnalisation et maintenabilité.",
+      "summarySources": ["blog", "slides", "program"]
+    },
+    {
+      "id": "api-platform-sans-doctrine",
+      "day": "2025-03-27",
+      "type": "talk",
+      "title": "API Platform sans Doctrine",
+      "speakers": ["Jérôme Tamarelle — MongoDB"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (Jérôme Tanghe)", "Blog JoliCode", "Blog ACSEO"],
+      "summary": "- Constat : API Platform avec Doctrine en mode basique génère **300 requêtes pour lire une recette**, 30 pour une insertion, 10 pour réordonner des étapes (Les-Tilleuls.coop) ; N+1 et jointures qui gonflent les volumes (JoliCode).\n- Solution : **agréger les relations en JSON côté SQL** (`json_object`, `json_group_array`), une seule requête, des DTO et un State Provider sur mesure ; MongoDB comme alternative naturelle (Les-Tilleuls.coop, JoliCode).\n- Implémentation en moins de 100 lignes avec ProviderInterface, ProcessorInterface et FilterInterface (Les-Tilleuls.coop) ; mapping avec jolicode/automapper et sa nouvelle fonction `mapCollection` (JoliCode).\n- JoliCode y voit la confirmation qu'API Platform peut se découpler de Doctrine.",
+      "summarySources": ["blog", "slides", "program"]
+    },
+    {
+      "id": "developper-plus-vite-grace-a-frankenphp",
+      "day": "2025-03-27",
+      "type": "talk",
+      "title": "Développer plus vite grâce à FrankenPHP",
+      "speakers": ["Kévin Dunglas — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (Jérôme Tanghe)", "Blog JoliCode", "Blog SQLi", "Blog Codéin"],
+      "summary": "- Le confort de Symfony (autowiring, autoconfiguration, découverte des services) a un coût : parsing, compilation, I/O, réflexion, payé à chaque rafraîchissement du cache en développement (Les-Tilleuls.coop, JoliCode).\n- FrankenPHP réunit runtime PHP, serveur Caddy et hub Mercure ; le **mode worker** garde l'application en mémoire entre les requêtes, au prix d'une gestion attentive de la mémoire (JoliCode).\n- Nouveauté de FrankenPHP 1.4 : un **mode watcher** qui redémarre les workers à chaque modification de fichier, pour des temps de réponse quasi instantanés en développement (Les-Tilleuls.coop, SQLi).\n- Réserves : adoption en production encore délicate (JoliCode), solution prometteuse en attente d'une adoption simplifiée et d'un paquet Debian (Codéin).",
+      "summarySources": ["blog", "slides", "program"]
+    },
+    {
+      "id": "ou-sont-passees-les-femmes-de-l-histoire-de-la-tech",
+      "day": "2025-03-28",
+      "type": "talk",
+      "title": "Où sont passées les femmes de l'histoire de la tech ?",
+      "speakers": ["Laura Durieux"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (Jérôme Tanghe)", "Blog Codéin"],
+      "summary": "- Deuxième volet d'une conférence déjà donnée dans plusieurs événements francophones (Les-Tilleuls.coop).\n- Galerie de pionnières : Nicole-Reine Lepaute, Maria Mitchell, Ada Lovelace, Grace Hopper (manuel de 521 pages sur le Harvard Mark I), Hedy Lamarr, Karen Spärck Jones (NLP), Joanna Rutkowska (cybersécurité) (Les-Tilleuls.coop).\n- Fil historique : des postes de programmation féminins et mal payés des années 1940-1970 au stéréotype masculin installé dès les années 1950, puis renforcé par les **publicités des années 1980 associant l'ordinateur aux garçons** (Les-Tilleuls.coop).\n- Codéin juge le talk instructif et invite les organisateurs à **diversifier davantage les speakers**. Replay annoncé en accès gratuit par le blog Symfony.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "async-avec-messenger-amqp-et-mercure",
+      "day": "2025-03-28",
+      "type": "talk",
+      "title": "Async avec Messenger, AMQP et Mercure",
+      "speakers": ["Grégoire Pineau — JoliCode"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (Jérôme Tanghe)", "Blog JoliCode", "Blog Peaks", "Blog Codéin", "Blog SQLi"],
+      "summary": "- Problème : PDF, exports ou imports CSV traités dans la requête HTTP bloquent l'utilisateur (programme, Peaks).\n- Patron proposé : **Messenger délègue le travail à des workers**, **Mercure pousse l'avancement en Server-Sent Events**, Turbo met la page à jour ; astuce : mettre directement le HTML dans le message (JoliCode, Codéin).\n- Exploitation : `messenger:consume`, transport qui peut s'arrêter sur erreur, relance via systemd, Supervisord ou PaaS ; polyfill SSE jusqu'à Internet Explorer 5.5 (Les-Tilleuls.coop).\n- Code de démo publié sur GitHub (lyrixx/async-messenger-mercure). Peaks juge la présentation *« hyper fluide »* et directement utile pour un projet en cours.",
+      "summarySources": ["blog", "slides", "program"]
+    },
+    {
+      "id": "atteindre-la-qualite-d-une-spa-avec-htmx-et-twig",
+      "day": "2025-03-28",
+      "type": "talk",
+      "title": "Atteindre la qualité d'une SPA avec HTMX et Twig",
+      "speakers": ["Damien Alexandre — JoliCode"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (Jérôme Tanghe)", "Blog JoliCode", "Blog SQLi", "Blog Codéin"],
+      "summary": "- Critique du **« syndrome SPA »** : React ou Vue adoptés par défaut, avec complexité et coûts de maintenance (SQLi).\n- HTMX, lancé en 2020 (réécriture d'intercooler.js), environ 50 ko, enrichit le HTML d'attributs (`hx-get`, `hx-post`, `hx-swap`) dans une logique hypermédia (Les-Tilleuls.coop, JoliCode).\n- Démos : formulaires, scroll infini, recherche à la frappe, chargement asynchrone ; bundle htmxfony et support PhpStorm recommandés (JoliCode).\n- Positionnement : **Turbo si Stimulus est déjà là, HTMX pour les projets hors Symfony UX**, et les outils front avancés réservés aux vrais besoins (JoliCode, SQLi).",
+      "summarySources": ["blog", "slides", "program"]
+    },
+    {
+      "id": "du-lego-de-composants-pour-un-bundle-gotenberg",
+      "day": "2025-03-28",
+      "type": "talk",
+      "title": "Du lego de composants pour un bundle Gotenberg !",
+      "speakers": ["Hubert Lenoir", "Adrien Roches"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (Jérôme Tanghe)", "Blog JoliCode", "Blog Codéin"],
+      "summary": "- **Gotenberg**, API HTTP en Go s'appuyant sur Chromium, convertit HTML et CSS (et documents bureautiques) en PDF avec un rendu fidèle, là où wkhtmltopdf n'est plus maintenu et DomPDF ne gère qu'une partie du CSS (Les-Tilleuls.coop).\n- Le talk sert surtout de visite des composants Symfony : itérateurs PHP et streams du HttpClient pour limiter la mémoire, Webhook et RemoteEvent pour la génération asynchrone, configuration sémantique, compiler passes, profiler dédié (JoliCode).\n- Résultat : le **sensiolabs/GotenbergBundle** ; Codéin retient l'accent mis sur la DX dans la conception d'un bundle.",
+      "summarySources": ["blog", "slides", "program"]
+    },
+    {
+      "id": "tirez-profit-de-messenger-pour-ameliorer-votre-architecture",
+      "day": "2025-03-28",
+      "type": "talk",
+      "title": "Tirez profit de Messenger pour améliorer votre architecture",
+      "speakers": ["Tugdual Saunier"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (Jérôme Tanghe)", "Blog JoliCode", "Blog Codéin"],
+      "summary": "- Thèse : **Messenger n'est pas réservé à l'asynchrone** ; en synchrone, il découple le code de HTTP et de la Request (Les-Tilleuls.coop, Codéin).\n- Le message sert de DTO pour le FormType, les middlewares portent validation, transaction, sécurité et un **audit de toutes les actions métier** ; le handler devient trivial à tester et le message modélise une action utilisateur (JoliCode).\n- Ouvre la voie au CQRS (Codéin) ; exécution périodique possible via le Scheduler (Les-Tilleuls.coop).\n- Limites : migration difficile sur l'existant, peu adapté aux logiques CRUD (Les-Tilleuls.coop). JoliCode s'interroge : *« Messenger pourrait-il être le meilleur outil de Command Bus ? »*",
+      "summarySources": ["blog", "slides", "program"]
+    },
+    {
+      "id": "developper-avec-api-platform-4-ca-change-quoi",
+      "day": "2025-03-28",
+      "type": "talk",
+      "title": "Développer avec API Platform 4, ça change quoi ?",
+      "speakers": ["Mathias Arlaud — baksla.sh"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (Jérôme Tanghe)", "Blog JoliCode", "Blog Eleven Labs (Marianne Joseph-Géhannin)", "Blog Codéin", "Blog SQLi"],
+      "summary": "- Comparaison 2020 / 2025 : des annotations et ressources collées aux entités, aux **attributs et ressources découplées** reliées à l'entité via `stateOptions` (Les-Tilleuls.coop).\n- Recommandation centrale : **des DTO comme ressources**, plusieurs représentations d'une même entité, et l'abandon des groupes de sérialisation (JoliCode, Eleven Labs, SQLi).\n- Providers et processors comme socle d'une architecture hexagonale ; l'ObjectMapper doit éviter d'écrire des providers et processors sur mesure (SQLi, Codéin).\n- Eleven Labs retient aussi *« designer son API publique en amont »* ; JoliCode applique déjà ces pratiques, sauf sur les projets bloqués en 2.7.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "les-nouveautes-de-symfony-7-3",
+      "day": "2025-03-28",
+      "type": "keynote",
+      "title": "Les Nouveautés de Symfony 7.3",
+      "speakers": ["Nicolas Grekas"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (Jérôme Tanghe)", "Blog JoliCode"],
+      "summary": "- Calendrier : Symfony 7.3 en mai 2025, **7.4 LTS et 8.0 en novembre 2025** (Les-Tilleuls.coop, JoliCode).\n- Bilan chiffré rapporté par Les-Tilleuls.coop : 7 correctifs de sécurité, 161 bugs corrigés, 195 changements mineurs, 149 nouvelles fonctionnalités.\n- Nouveaux composants **JsonStreamer, ObjectMapper et JsonPath** ; PHPUnit collecte désormais les dépréciations (avec un correctif proposé pour celles levées à l'autoload) ; Security avec OAuth 2 et OIDC ; Mailer avec DKIM et S/MIME ; HttpClient avec HTTP/3 (Les-Tilleuls.coop, JoliCode).",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "lightning-talks",
+      "type": "lightning",
+      "title": "Les 8 Lightning Talks",
+      "speakers": ["Benjamin Clay", "Benjamin Georgeault", "Grégoire Pineau — JoliCode", "Imen Ezzine", "Jacques Bodin-Hullin", "Jérémy Romey", "Mathieu Ledru", "Mathieu Santostefano"],
+      "feedbackFrom": ["Blog Eleven Labs (Marianne Joseph-Géhannin)", "Blog JoliCode", "Blog SensioLabs"],
+      "summary": "- Huit formats courts, proposés en bonus des replays : User-Agent (Clay), formulaires par attributs PHP 8 (Georgeault), MCP (Pineau), Gitingest (Ezzine), Shape Up (Bodin-Hullin), retour sur sfContext de symfony 1 (Romey), Flow (Ledru), agents d'IA générative (Santostefano) (programme).\n- **L'IA entre par la petite porte** : MCP présenté comme protocole standard entre LLM et applications, transports STDIO, SSE puis HTTP (slides Pineau) ; frameworks PHP php-llm/llm-chain, LLPhant et Neuron-ai, RAG avec ChromaDB, MongoDB ou PostgreSQL, et agents combinant MCP et RAG (slides Santostefano).\n- Eleven Labs juge la démonstration IA convaincante malgré un format trop court pour approfondir, et le talk Shape Up (méthode de Basecamp présentée comme alternative à SAFe) *« fun »*.\n- Flow : orchestration visuelle de données en PHP, programmation par flux et drivers asynchrones (slides Ledru, deck daté de 2024 et réutilisé).",
+      "summarySources": ["slides", "blog", "program"]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Formation : POO et design patterns (Alexandre Salomé, 25-26/03)",
+    "Formation : Sécurité améliorée et WebAuthn (Florent Morselli)",
+    "Formation : Développement d'API avec API Platform (Antoine Bluchet)",
+    "Formation : Symfony 7: the fast track (Nicolas Grekas)",
+    "Formation : TDD avec Symfony (Jules Pietri)"
+  ],
+  "sources": [
+    { "label": "Programme officiel (planning)", "url": "https://live.symfony.com/2025-paris/schedule" },
+    { "label": "Page de l'édition et replays (accès participants et acheteurs)", "url": "https://live.symfony.com/2025-paris/" },
+    { "label": "Dépôt GitHub des slides (SymfonyLive/paris-2025-talks)", "url": "https://github.com/SymfonyLive/paris-2025-talks" },
+    { "label": "Blog Symfony : SymfonyLive Paris 2025, Recap and replay! (Paola Suárez, 15/04/2025)", "url": "https://symfony.com/blog/symfonylive-paris-2025-recap-and-replay" },
+    { "label": "Vidéo « SymfonyLive Paris 2025 - best of » (YouTube, 15/04/2025)", "url": "https://www.youtube.com/watch?v=InaFzhX5AkM" },
+    { "label": "Les-Tilleuls.coop : comme si vous y étiez, jour 1 (Jérôme Tanghe, 01/04/2025)", "url": "https://les-tilleuls.coop/blog/le-symfonylive-paris-2025-comme-si-vous-y-etiez-jour-1" },
+    { "label": "Les-Tilleuls.coop : comme si vous y étiez, jour 2 (Jérôme Tanghe, 02/04/2025)", "url": "https://les-tilleuls.coop/blog/le-symfonylive-paris-2025-comme-si-vous-y-etiez-jour-2" },
+    { "label": "JoliCode : SymfonyLive Paris 2025 comme si vous y étiez (02/04/2025)", "url": "https://jolicode.com/blog/symfonylive-paris-2025-comme-si-vous-y-etiez" },
+    { "label": "SensioLabs : conférences, fun et 20 ans de Symfony (Elise Hamimi, 08/04/2025)", "url": "https://sensiolabs.com/fr/blog/2025/symfonylive-paris-2025-conferences-fun-et-immersion" },
+    { "label": "Eleven Labs : REX des conférences (Marianne Joseph-Géhannin, 09/04/2025)", "url": "https://blog.eleven-labs.com/fr/symfony-live-2025/" },
+    { "label": "Codéin : retour sur la conférence (Axel Veber, 11/04/2025)", "url": "https://www.codein.fr/blog/symfonylive2025" },
+    { "label": "Peaks : Symfony Live Paris 2025 (14/04/2025)", "url": "https://peaks.fr/symfony-live-paris-2025/" },
+    { "label": "SQLi : avancées et perspectives du framework (Noura Abdelkader, Michael Thieulin, 23/04/2025)", "url": "https://www.sqli.com/fr-fr/insights/framework-symfony-live-paris-2025" },
+    { "label": "ACSEO : retour sur une première journée", "url": "https://www.acseo.fr/developpement/symfonylive-paris-2025-retour-sur-une-premiere-journee-riche-en-enseignements/" },
+    { "label": "Slides de la keynote de Fabien Potencier (Speaker Deck)", "url": "https://speakerdeck.com/fabpot/symfony-in-2025-scaling-to-0" },
+    { "label": "Slides des lightning talks MCP (Pineau), agents GenIA (Santostefano) et Flow (Ledru) (Speaker Deck)", "url": "https://speakerdeck.com/lyrixx/mcp-symfony-live-paris-2025" },
+    { "label": "Photos (Flickr)", "url": "https://flic.kr/s/aHBqjC7vYe" },
+    { "label": "Posts LinkedIn : aucun post de participant retrouvé" }
+  ]
 }

@@ -8,7 +8,707 @@
   "city": "Paris",
   "venue": "Palais des Congrès",
   "url": "https://web.archive.org/web/20250202003103/https://www.devoxx.fr/",
+  "programUrl": "https://www.devoxx.fr/en/agenda-2025/talks-by-tracks/",
+  "theme": "Back to the roots (retour aux sources) ; fil des keynotes : tribus et langage",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "13ᵉ édition, 16–18 avril 2025, Palais des Congrès de Paris. Plus de 4 500 participants, environ 280 conférences et ateliers, plus de 300 speakers (communiqués repris par Solutions Numériques et StoriesOut). L'API du CFP liste 281 sessions, dont 49 dans le track Data & AI. Replays publiés les 9 (keynotes), 12 et 13 mai 2025 sur la chaîne YouTube Devoxx France.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-04",
+  "corpus": "Une vingtaine de comptes-rendus publics lus, publiés entre le 17 avril et le 3 juillet 2025 : blogs personnels (Denis Germain/zwindler : 2 récaps quotidiens et une sélection de replays ; Yann Moisan : 3 récaps ; Antoine Mayer ; mon-code.net ; veille de Julien Wittouck), blogs d'entreprises (Ippon, Onepoint ×2 sur dev.to, SQLI, Sedona ×2, Talan ×2, Takima, Bpifrance.IO) et presse (FrenchWeb, StoriesOut). Plus **8 transcripts** (les 5 keynotes, Les clés de l'architecture, Dans les coulisses des géants de la Tech, le test de charge Takima) et les favoris du programme officiel (API CFP).",
+  "limits": "Aucun post LinkedIn individuel n'a pu être lu : la recherche web ne remonte que des blogs et des communiqués. Plusieurs blogs (Talan, mon-code.net, Sedona) résument les talks de façon proche du descriptif, avec peu d'avis personnel ; quelques auteurs sont eux-mêmes speakers (Denis Germain, Antoine Mayer, Onepoint). Le récap Slickteam (Medium) n'a pas pu être lu (403), ni le jour 3 de Sedona et les volets IA et sécurité de Talan. Sur 281 sessions, une quarantaine seulement ont un retour.",
+  "tldr": "**L'édition « retour aux sources » a remis l'IA à sa place d'outil** : keynotes qui démystifient (Luc Julia), contestent (Monsieur Phi) ou politisent (Coelho, Mielczareck) l'IA, et un programme où les talks les plus suivis portent sur l'architecture, la performance, la sécurité et le produit.",
+  "keyTakeaways": [
+    "Traiter l'IA générative comme un **outil spécialisé** : RAG et fine-tuning sur ses propres données plutôt qu'un modèle généraliste qui se trompe une fois sur trois (Julia).",
+    "**Commencer par le problème** avant la solution, négocier les attributs de qualité et préférer le monolithe modulaire tant qu'on ne sait pas (Martraire, Le Merdy).",
+    "Mesurer l'**impact business** de ce qu'on livre, pas la vélocité : livrer des hypothèses testées en production, pouvoir désactiver une feature, pratiquer l'« anti-roadmap » (Rachel Dubois).",
+    "Faire un **test de charge** sur son chemin critique, avec un smoke test en CI pour qu'il ne pourrisse pas : la démo Takima tombait à 11 utilisateurs concurrents (Ortola, Lorrain).",
+    "Réduire le temps de démarrage Java avec **CDS, Spring AOT et Project Leyden** avant d'aller jusqu'au natif (Deleuze, Bourgain, Yurenko).",
+    "Sécuriser les applications LLM par conception : prompt système strict, **garde-fous avant et après l'appel**, permissions par rôle (Vermeer, Raes).",
+    "Surveiller sa **chaîne d'approvisionnement** : SBOM (CycloneDX), Dependency-Track, et ne pas oublier le social engineering, comme dans l'attaque xz-utils (Lucas, Poncet).",
+    "Éviter le **cargo cult DDD** : explorer plusieurs solutions, documenter ses choix dans des ADR (Jamin, Pierrain).",
+    "Écrire les tests **avant** de faire générer le code : générer le code puis demander les tests « n'a pas beaucoup de sens » (Germain, à propos de Benoit Prioux).",
+    "Diagnostiquer ses **dépendances numériques** (cloud, câbles, logiciels) avant de parler de souveraineté (Coelho)."
+  ],
+  "sessions": [
+    {
+      "id": "l-intelligence-artificielle-n-existe-pas",
+      "day": "2025-04-16",
+      "type": "keynote",
+      "title": "L'Intelligence Artificielle n'existe pas",
+      "speakers": ["Luc Julia — Renault (directeur scientifique), co-créateur de Siri"],
+      "feedbackFrom": [
+        "Denis Germain (blog zwindler)",
+        "Jacqueline Rwanyindo (blog Ippon)",
+        "Yann Moisan",
+        "Antoine Mayer",
+        "Blog SQLI",
+        "Bpifrance.IO",
+        "FrenchWeb",
+        "Yann Schepens et Thomas Blaisot (Onepoint)"
+      ],
+      "summary": "- **Sur scène** : l'IA *« de Hollywood »*, générale, celle promise par Musk et Altman, *« n'existe pas et n'existera jamais »*. Ce qui existe, ce sont des **outils spécialisés**, comme un marteau : *« c'est moi qui tiens le manche »*.\n- L'IA générative est **une évolution, pas une révolution** (*« nous Français, on sait ce que c'est, la révolution »*). La seule révolution, c'est celle du **prompt**, qui a rendu la technologie accessible : 100 millions d'utilisateurs en 2 mois, et un cycle de hype parcouru en 18 mois.\n- *« Générative, pas créative »* : *« les IA n'inventent rien, ne créent rien, n'innovent en rien »*. Exemples : l'avocat new-yorkais aux jurisprudences inventées, une étude citée à **64 % de pertinence** sur des faits vrais, d'où le besoin de **RAG et fine-tuning** (jusqu'à 97-99 %).\n- Autres alertes : propriété intellectuelle (Getty contre Stability), jailbreak impossible à empêcher, eau et énergie à l'inférence. Il rêve d'une **IA hybride** logique + statistiques.\n- **Réception** : la session la plus citée du corpus. *« Vraiment top »* (Germain), qui juge toutefois ses chiffres environnementaux peu fiables. SQLI et FrenchWeb retiennent l'image du marteau, Antoine Mayer une démystification *« provocatrice mais stimulante »*.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "JdxjGZBtp_k",
+        "title": "L’Intelligence Artificielle n’existe pas - Luc Julia",
+        "publishedAt": "2025-05-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "luc-julia-sans-filtre-l-ia-la-tech-et-les-idees-recues",
+      "day": "2025-04-16",
+      "type": "talk",
+      "title": "Luc Julia sans filtre : l'IA, la tech et les idées reçues",
+      "speakers": ["Luc Julia — Renault"],
+      "feedbackFrom": ["Delphine Kherouf (blog Sedona)"],
+      "summary": "- Session de questions-réponses qui prolonge la keynote d'ouverture, à 10 h 30.\n- Sedona en retient que l'IA n'est pas une intelligence générale mais un ensemble d'outils spécialisés, et que l'IA générative *« ne crée pas vraiment »* : elle produit du contenu en réponse aux instructions de l'utilisateur.\n- Inquiétudes reprises : **impact environnemental** et litiges de **propriété intellectuelle**.\n- Une des vidéos les plus vues de l'édition (≈14 000 vues au 4 octobre 2026).",
+      "summarySources": ["blog", "program"],
+      "video": {
+        "youtubeId": "1BTsjznpUMU",
+        "title": "🎙️ Luc Julia sans filtre : l’IA, la tech et les idées reçues",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "langage-ia-et-propagande-la-guerre-des-recits-a-deja-commence",
+      "day": "2025-04-17",
+      "type": "keynote",
+      "title": "Langage, IA et propagande : la guerre des récits a déjà commencé",
+      "speakers": ["Elodie Mielczareck — sémiologue"],
+      "feedbackFrom": ["Bpifrance.IO", "FrenchWeb", "Denis Germain (blog zwindler, par ouï-dire)"],
+      "summary": "- **Sur scène** : une descente « dans la matrice » en quatre niveaux, inspirés de **Baudrillard** : du signe relié au réel (savoir) à l'information cadrée, puis à l'« info-fiction » où le narratif compte plus que le vrai, jusqu'au **simulacre pur** où le réel devient inutile.\n- Le **bullshit n'a pas de couleur politique** : les fake news, *« c'est jamais nous, c'est toujours les autres »*, alors qu'il faut balayer devant sa porte.\n- Démonstration par l'exemple : un extrait de Baudrillard **recréé par IA** (ses vrais mots, mais elle aurait pu lui faire dire l'inverse).\n- Conclusion avec Humpty Dumpty : quand le vrai et le faux s'effacent, *« ce qui compte, c'est de savoir qui a le pouvoir »*. Les faiseurs de récits de demain sont *« ceux qui vont coder »*.\n- **Réception** : retenue par Bpifrance pour la phrase sur le pouvoir des récits et par FrenchWeb pour la nécessité de garde-fous humains face à la désinformation. Denis Germain, arrivé en retard, rapporte une session *« très réussie »* selon les échos.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "GDvcpgp2fn8",
+        "title": "Langage, IA et propagande : la guerre des récits a déjà commencé - Elodie Mielczareck",
+        "publishedAt": "2025-05-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-territorialisation-des-infrastructures-comme-levier-de-pouvoir",
+      "day": "2025-04-17",
+      "type": "keynote",
+      "title": "La territorialisation des infrastructures comme levier de pouvoir",
+      "speakers": ["Ophélie Coelho — IRIS, autrice de Géopolitique du numérique"],
+      "feedbackFrom": ["Bpifrance.IO", "FrenchWeb"],
+      "summary": "- **Sur scène** : du réseau télégraphique britannique de 1903 (et de la bataille de Tsushima) aux câbles de Google, dont 16 des 32 lui appartiennent en propre : Internet *« n'est absolument pas un village global »*, c'est un réseau de **frontières et de points de passage**.\n- Terrain de thèse en Afrique australe : data centers concentrés en Afrique du Sud, rachats par Digital Realty, sites alimentés en électricité dans des pays où des quartiers entiers n'y ont pas accès.\n- Grille **centre-périphérie** : qui contrôle les nœuds (câbles, cloud, stores, audience) détient un pouvoir structurel et nodal. Les **empires privés** s'ajoutent aux empires étatiques.\n- Pistes : **diagnostiquer ses dépendances** (n'utiliser que deux services AWS remplaçables, par exemple), protéger les secteurs socles (santé, énergie, éducation), occuper des nœuds offensifs (Orange Marine) et diffuser une **culture technique générale**.\n- **Réception** : FrenchWeb retient *« celui qui contrôle les nœuds de circulation contrôle la souveraineté numérique »*, Bpifrance une « analyse géopolitique pertinente ».",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "eSGbZM3XEpg",
+        "title": "La territorialisation des infrastructures comme levier de pouvoir - Ophélie Coelho",
+        "publishedAt": "2025-05-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "plongez-dans-l-ere-quantique",
+      "day": "2025-04-18",
+      "type": "keynote",
+      "title": "Plongez dans l'Ère Quantique : décryptez et anticipez la révolution à venir",
+      "speakers": ["Fanny Bouton — OVHcloud"],
+      "feedbackFrom": ["Denis Germain (blog zwindler)", "FrenchWeb"],
+      "summary": "- **Sur scène** : la *« Formule 1 du quantique »* n'arrivera peut-être pas avant **15 à 30 ans**. Les machines actuelles (2 à 156 qubits) ne font encore *« rien d'utile qui a été prouvé »*, et beaucoup d'annonces sont des *« milestones, pas des breakthroughs »*.\n- Le quantique **ne remplacera pas** l'informatique classique : c'est un « super GPU » pour la simulation et l'optimisation. On en est à l'époque de l'assembleur, avec une dizaine de technologies concurrentes.\n- C'est maintenant qu'il faut **se former**, sur des émulateurs (jusqu'à 20 qubits sur CPU) et des notebooks à moins de 2 € de l'heure. Anecdote : son père, analyste programmeur, n'a pas vu venir le PC.\n- Plaidoyer pour l'**Europe** : la France compte 6 des 10 types d'ordinateurs quantiques et des start-ups qui recrutent (Pasqal, Alice & Bob, Quandela).\n- **Réception** : Germain retient de ne pas craindre une technologie complémentaire. FrenchWeb lui prête une échéance de trois ans pour les premiers moteurs quantiques, qui ne figure pas dans le transcript.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "6iv2tbP4nd8",
+        "title": "Plongez dans l’Ère Quantique : décryptez et anticipez la révolution à venir - Fanny Bouton",
+        "publishedAt": "2025-05-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-llm-revent-ils-de-cavaliers-electriques",
+      "day": "2025-04-18",
+      "type": "keynote",
+      "title": "Les LLM rêvent-ils de cavaliers électriques ?",
+      "speakers": ["Thibaut Giraud — Monsieur Phi"],
+      "feedbackFrom": ["Denis Germain (blog zwindler)", "Yann Moisan", "FrenchWeb"],
+      "summary": "- **Sur scène** : attaque frontale de la thèse des **« perroquets stochastiques »** (Bender et al.). Prédire le prochain token n'exclut pas la compréhension : bien prédire le 19ᵉ coup d'une partie d'échecs exige de **se représenter l'échiquier**.\n- **GPT-3.5 Turbo Instruct** joue autour de **1 700-1 800 Elo** quand on lui fait compléter un fichier PGN, mieux que *« l'écrasante majorité d'entre vous »*. Il adapte même son jeu au niveau Elo indiqué dans l'en-tête.\n- Un petit modèle de 50 millions de paramètres entraîné sur 5 millions de parties (Adam Karvonen) joue 99,8 % de coups légaux, et des sondes retrouvent l'état de l'échiquier dans ses activations : une **représentation interne émergente**.\n- Conclusion : continuer à répéter la thèse des perroquets, *« c'est se comporter en perroquet stochastique soi-même »*.\n- **Réception** : Yann Moisan et FrenchWeb retiennent le chiffre de 1 800 Elo ; Denis Germain trouve que la démonstration *« joue sur les mots »*.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "bO96whMlB8E",
+        "title": "Les LLM rêvent-ils de cavaliers électriques ? - Thibaut Giraud (Monsieur Phi)",
+        "publishedAt": "2025-05-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-cles-de-l-architecture-pour-les-devs",
+      "day": "2025-04-17",
+      "type": "talk",
+      "title": "Les clés de l'architecture pour les devs",
+      "speakers": ["Cyrille Martraire — Arolla", "Christian Sperandio — Arolla (programme, absent)", "Éric Le Merdy — QuickSign (remplaçant sur scène)"],
+      "feedbackFrom": ["Blog Sedona (collectif)", "Yann Moisan"],
+      "summary": "- **Session la plus mise en favori du programme** (1 382 favoris), et l'une des vidéos les plus vues. Christian Sperandio, absent pour raison familiale, est remplacé au pied levé par Éric Le Merdy, prévenu *« ce matin à 6 h 30 »*.\n- **Sur scène**, un cas réel d'agrégation de mesures télécom en dix clés : **commencer par le problème** (*« un problème bien posé, c'est déjà à moitié une solution »*), expliciter et **négocier** les attributs de qualité (2 minutes de calcul au lieu d'« immédiatement »), modulariser selon des zones homogènes métier et technique.\n- Partir sur un **monolithe modulaire** (*« pas un gros mot »*), préparer des options peu chères (une interface, un connecteur), tester tôt en production avec une implémentation en mémoire, puis passer en multi-instance avec Pub/Sub et des consommateurs idempotents.\n- **Les contrats sont pour toujours** : on garde même un champ avec une faute de frappe. Pratiquer les ADR, les tests d'architecture, et rester non dogmatique.\n- **Réception** : Sedona retient une architecture « processus vivant » et la modularité avant les microservices ; Yann Moisan, *« les contrats sont pour toujours »* et les décisions réversibles.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "ZoYDxF_7LoI",
+        "title": "Les clés de l’architecture pour les devs - Christian Sperandio (Arolla), Cyrille Martraire (Arolla)",
+        "publishedAt": "2025-05-13",
+        "transcript": true
+      }
+    },
+    {
+      "id": "dans-les-coulisses-des-geants-de-la-tech",
+      "day": "2025-04-17",
+      "type": "talk",
+      "title": "Dans les coulisses des géants de la Tech !",
+      "speakers": ["Rachel Dubois — Bttrways (ex-Spotify, Vinted)"],
+      "feedbackFrom": ["Denis Germain (blog zwindler)", "Yann Moisan", "Mathis Goichon et al. (Onepoint)", "Bpifrance.IO"],
+      "summary": "- **Sur scène** : une équipe qui *« fait tout bien »* (PO, OKR, discovery, Jira impeccable) mais sans impact business : *« faire très bien des choses inutiles, c'est la définition même du gâchis »*.\n- La semaine d'Anna, PM fictive chez Spotify : dashboards plutôt que backlog, enquête data + support + interviews, framework **DIBB**, variantes sous feature flag et **2 000 A/B tests** en parallèle, déploiement progressif.\n- La licorne comme organisme vivant : **système nerveux** (capteurs, alertes poussées), **système immunitaire** (excellence technique, suppression régulière des features inutiles, « anti-roadmap »), **système circulatoire** (données accessibles à tous, combattre les « royaumes » plutôt que les silos).\n- Après un échec, on fait **switch off** puis une *cold review*, sans drame. Ce n'est ni la culture ni le leadership qui expliquent leur réussite : *« la tech, c'est le business »*. Elle s'oppose au *dual track* qui sépare ceux qui pensent de ceux qui font.\n- **Réception** : *« plein de bon sens »* mais peu surprenant techniquement, et difficile à faire passer dans certaines organisations (Germain). *« Un produit n'est pas une liste de tickets Jira »* (Moisan). Onepoint retient que l'agilité est *« la capacité à s'adapter »*, pas un framework de réunions.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "ulL4RLtJFzo",
+        "title": "Dans les coulisses des géants de la Tech !",
+        "publishedAt": "2025-05-13",
+        "transcript": true
+      }
+    },
+    {
+      "id": "45-min-pour-mettre-son-application-a-genoux",
+      "day": "2025-04-18",
+      "type": "talk",
+      "title": "45 min pour mettre son application à genoux : le guide complet du test de charge",
+      "speakers": ["Loïc Ortola — Takima", "Mathilde Lorrain — Takima"],
+      "feedbackFrom": ["Mathis Goichon et al. (Onepoint)", "Bpifrance.IO", "Blog Takima (Hugo Caupert, Delphine Rigaud)", "Denis Germain (blog zwindler)"],
+      "summary": "- **Sur scène** : démonstration live avec **Gatling** sur une fausse application, « Takiciné », introduite par une parodie de *Bref*. Les trois notions de base : scénario, protocole, **profil d'injection** (*« comme le matin dans le métro »*).\n- Méthode : tester le **chemin critique** et les API (pas les caches ni le CDN), sessions par utilisateur virtuel, pauses réalistes, *feeders*, et une **test gateway** pour faciliter le test.\n- Maintenance : données de test gérées côté plateforme, **smoke test** à un utilisateur à chaque pipeline, test de capacité lancé à la demande.\n- Chute : la démo s'effondre en direct (503, 95ᵉ centile au-delà de 60 s) et la capacité mesurée est de **11 utilisateurs concurrents**, malgré une stack « bien faite ».\n- **Réception** : *« divertissante et très instructive »* (Onepoint) ; *« Gatling révèle des surprises architecturales »* (Bpifrance). Denis Germain n'a pas pu entrer, amphi complet, et le recommande en replay.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "rXYq4Mhe80M",
+        "title": "45 min pour mettre son application à genoux : le guide complet du test de charge",
+        "publishedAt": "2025-05-13",
+        "transcript": true
+      }
+    },
+    {
+      "id": "anatomie-d-une-faille",
+      "day": "2025-04-17",
+      "type": "talk",
+      "title": "Anatomie d'une faille",
+      "speakers": ["Olivier Poncet — ARNEO"],
+      "feedbackFrom": ["Aurélie Abraham (blog Ippon)", "Denis Germain (blog zwindler)"],
+      "summary": "- Récit technique complet de la **CVE-2024-3094** (porte dérobée dans xz-utils), une attaque de chaîne d'approvisionnement montée sur plusieurs mois.\n- L'angle le plus marquant : le **social engineering** qui a poussé le mainteneur Lasse Collin à *« donner les clés du camion »* à Jia Tan (Germain).\n- **Réception** : *« un must à voir »*, *« excellent »* (Germain) ; Ippon retient l'ampleur stratégique de l'attaque sur l'infrastructure Linux.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "1cxdCcG7y8U",
+        "title": "Anatomie d'une faille - Olivier PONCET (ARNEO)",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "kubernetes-5-facons-creatives-de-flinguer-sa-prod",
+      "day": "2025-04-17",
+      "type": "talk",
+      "title": "Kubernetes : 5 façons créatives de flinguer sa prod",
+      "speakers": ["Denis Germain — Lucca"],
+      "feedbackFrom": ["Blog Sedona (collectif)", "Denis Germain (speaker)"],
+      "summary": "- Cinq incidents de production peu communs, avec un focus sur les **erreurs GitOps** (speaker).\n- Sedona retient que *« les health checks ne doivent jamais devenir des points de fragilité »*, et les recommandations : images immuables, automatisation de la gestion des certificats, webhooks de validation.\n- Le speaker raconte l'émotion de l'amphi bleu et une dizaine de minutes de questions du public.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "IeIuUCmjXUQ",
+        "title": "Kubernetes : 5 façons créatives de flinguer sa prod 🔫 - Denis Germain (Lucca)",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "restos-du-coeur-cloud-provider",
+      "day": "2025-04-16",
+      "type": "talk",
+      "title": "Comment nous avons transformé les Restos du Coeur en Cloud Provider",
+      "speakers": ["Julien Briault — Deezer & Restos du Coeur", "Stéphane Trognon — Crédit Agricole GIP & Restos du Coeur"],
+      "feedbackFrom": ["Denis Germain (blog zwindler)"],
+      "summary": "- Deep dive de 3 h : trois datacenters multi-AZ construits de zéro et gérés par **11 bénévoles**, avec OpenStack et Kubernetes, du matériel de récupération et de l'open source.\n- Supervision maison des chambres froides, indépendance vis-à-vis d'AWS, et des millions économisés au profit de la distribution de repas.\n- **Réception** : *« coup de cœur »* de Denis Germain, séduit par l'approche d'écoconception et d'indépendance.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "dlWGf7AyxF4",
+        "title": "Comment nous avons transformé les Restos du Coeur en Cloud Provider",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "github-copilot-aller-encore-plus-loin-que-la-completion-de-code",
+      "day": "2025-04-16",
+      "type": "talk",
+      "title": "GitHub Copilot : Aller encore plus loin que la completion de code",
+      "speakers": ["Kim-Adeline Miguel — GitHub", "Sandra Parlant — GitHub"],
+      "feedbackFrom": ["Denis Germain (blog zwindler)", "Yann Moisan"],
+      "summary": "- Démonstration des trois modes (chat, édition multi-fichiers, **agent**), du changement de modèle, des instructions personnalisées, de la génération de résumés de PR et d'issues.\n- Ce qui a convaincu Denis Germain : la **revue de code** et l'**analyse de sécurité** dans les PR, au point de vouloir essayer l'outil qu'il n'utilisait pas.\n- Talk d'éditeur, sans regard critique dans les retours lus.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "9kE9JWW2Y1k",
+        "title": "GitHub Copilot : Aller encore plus loin que la completion de code",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "iceberg-pourquoi-devez-vous-connaitre-ce-nouveau-format",
+      "day": "2025-04-16",
+      "type": "talk",
+      "title": "Iceberg : pourquoi devez-vous connaître ce nouveau format de stockage de données ?",
+      "speakers": ["Bertrand Paquet — Doctolib"],
+      "feedbackFrom": ["Mathis Goichon et al. (Onepoint)", "Yann Moisan", "Antoine Mayer"],
+      "summary": "- Apache Iceberg comme format de table au-dessus de Parquet : **transactions ACID**, *time travel*, branches à la Git, INSERT/UPDATE/DELETE, schéma évolutif.\n- Cas Doctolib : 3,5 milliards de rendez-vous, ingestion Kafka → Spark → Iceberg quasi temps réel (Moisan, Onepoint).\n- *« Même si vous ne travaillez pas dans une équipe data, cela finira par vous impacter »* (cité par Antoine Mayer, qui a trouvé le talk *« clair, accessible et pertinent »*). Onepoint note ses limites pour le transactionnel pur.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "h7vC5KhYF2c",
+        "title": "Iceberg: pourquoi devez-vous connaitre ce nouveau format de stockage de données?",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "optimisez-vos-applications-spring-boot-avec-cds-et-project-leyden",
+      "day": "2025-04-17",
+      "type": "talk",
+      "title": "Optimisez vos applications Spring Boot avec CDS et Project Leyden",
+      "speakers": ["Sébastien Deleuze — Broadcom"],
+      "feedbackFrom": ["Blog Sedona (collectif)", "Bpifrance.IO", "Mathis Goichon et al. (Onepoint)"],
+      "summary": "- **Class Data Sharing** : démarrage jusqu'à 2 fois plus rapide et 20 % de mémoire en moins dès Java 17 (Sedona).\n- Avec le **cache AOT** de Java 24 (JEP 483, Project Leyden), le gain monte à 2 à 4 fois.\n- Onepoint le rapproche du talk d'Olivier Bourgain et conseille de *« suivre Project Leyden et les nouveautés Spring »*.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "4EAxhhSWgw4",
+        "title": "Optimisez vos applications Spring Boot avec CDS et Project Leyden - Sébastien Deleuze (Broadcom)",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "booster-le-demarrage-des-applications-java",
+      "day": "2025-04-17",
+      "type": "talk",
+      "title": "Booster le démarrage des applications Java : optimisations JVM et frameworks",
+      "speakers": ["Olivier Bourgain — Mirakl"],
+      "feedbackFrom": ["Yann Moisan", "Mathis Goichon et al. (Onepoint)", "Julien Wittouck (veille)"],
+      "summary": "- Tour des approches : CDS, Spring AOT, CRaC, Native Image, cache AOT.\n- Chez Mirakl, la combinaison des optimisations fait passer un démarrage de **25 à 10 secondes** (Moisan).\n- Retenu dans la sélection de replays de Julien Wittouck.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "9k2HX9GUZRg",
+        "title": "Booster le démarrage des applications Java : optimisations JVM et frameworks",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "bring-the-action-using-graalvm-in-production",
+      "day": "2025-04-16",
+      "type": "talk",
+      "title": "Bring the Action: Using GraalVM in Production",
+      "speakers": ["Alina Yurenko — Oracle"],
+      "feedbackFrom": ["Mathis Goichon et al. (Onepoint)", "Jonathan Baranzini (blog Talan)"],
+      "summary": "- Migration d'une application Spring Boot vers GraalVM Native Image : gains au démarrage et en mémoire (Talan).\n- Astuces retenues par Onepoint : plugin Maven, `-O0` pour compiler vite en développement, **Profile Guided Optimization** qui dépasse la JVM en débit.\n- À venir : WebAssembly et Native Image Layers.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "pACFL9EnV2A",
+        "title": "Bring the Action: Using GraalVM in Production - Alina Yurenko (Switzerland / Oracle)",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "securing-llm-powered-applications",
+      "day": "2025-04-17",
+      "type": "talk",
+      "title": "Securing LLM-Powered Applications: Overcoming Security and Privacy Challenges",
+      "speakers": ["Brian Vermeer — Snyk", "Lize Raes — Naboo.ai"],
+      "feedbackFrom": ["Mathis Goichon et al. (Onepoint)", "Blog Sedona (collectif)"],
+      "summary": "- Injection de prompt, fuite de données sensibles et garde-fous, démontrés avec LangChain4j.\n- **Security by design** : prompt système strict, **garde-fous avant et après l'appel**, permissions par rôle (Sedona).\n- Exemple marquant : un chatbot mal protégé qui vend du stock à un prix absurde.\n- *« Contenu technique solide »*, entre humour et rigueur (Onepoint).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "JbRyQ0wOeOs",
+        "title": "Securing LLM-Powered Applications: Overcoming Security and Privacy Challenges",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "sous-le-capot-des-llms",
+      "day": "2025-04-16",
+      "type": "talk",
+      "title": "Sous le capot des LLMs : toutes ces questions que vous n'avez jamais osé poser",
+      "speakers": ["Guillaume Laforge — Google", "Didier Girard — SFEIR"],
+      "feedbackFrom": ["Mathis Goichon et al. (Onepoint)", "Yann Schepens et Thomas Blaisot (Onepoint)"],
+      "summary": "- Tokenisation (BPE, WordPiece, SentencePiece), prédiction du token suivant, fine-tuning, hallucinations.\n- Astuce retenue : les modèles traitent des **tokens, pas des lettres**, ce qui explique certaines erreurs.\n- Onepoint note que savoir *arrêter* un LLM reste un défi.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "C6tZE5OgqUc",
+        "title": "Sous le capot des LLMs : toutes ces questions que vous n’avez jamais osé poser",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "creer-des-applications-intelligentes-avec-quarkus-et-langchain4j",
+      "day": "2025-04-16",
+      "type": "talk",
+      "title": "Créer des Applications Intelligentes avec Quarkus et LangChain4j",
+      "speakers": ["Zineb Bendhiba — Red Hat", "Clément Escoffier — Red Hat"],
+      "feedbackFrom": ["Mathis Goichon et al. (Onepoint)", "Jonathan Baranzini (blog Talan)"],
+      "summary": "- Appels de LLM, **RAG**, function calling, guardrails et **Model Context Protocol** dans une application Quarkus.\n- *« Riche, clair, inspirant »* pour intégrer l'IA dans des applications Java (Onepoint).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "d_2jk8KbQHU",
+        "title": "Créer des Applications Intelligentes avec Quarkus et LangChain4j",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "quand-java-rencontre-l-ai",
+      "day": "2025-04-17",
+      "type": "workshop",
+      "title": "Quand Java rencontre l'AI : construisez des applications utilisant l'AI en Java",
+      "speakers": ["Emmanuel Bernard — Red Hat", "Clément Escoffier — Red Hat"],
+      "feedbackFrom": ["Blog Sedona (collectif)", "Blog Takima (Hugo Caupert, Delphine Rigaud)"],
+      "summary": "- Deep dive de 3 h : LangChain4j et Quarkus, mémoire, tool calling, RAG, architectures agentiques, guardrails, développement de serveurs **MCP**.\n- Sedona retient que le RAG réduit les hallucinations en ancrant les réponses dans des données externes et à jour.\n- Takima le place en tête de ses sessions IA, dans une édition où l'IA est *« de plus en plus visible »*.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "9KgkYktpGKI",
+        "title": "Quand Java rencontre l'AI - Construisez des applications utilisant l'AI en Java",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "llms-can-t-optimize-schedules-but-ai-can",
+      "day": "2025-04-16",
+      "type": "talk",
+      "title": "LLMs can't optimize schedules, but AI can!",
+      "speakers": ["Tom Cools — Timefold", "Geoffrey De Smet — Timefold"],
+      "feedbackFrom": ["Mathis Goichon et al. (Onepoint)"],
+      "summary": "- Les LLM ne savent pas résoudre les problèmes d'optimisation de planning ; les solveurs, si (type voyageur de commerce, gardes hospitalières équitables).\n- Anecdote retenue par Onepoint : **Timefold a généré le planning de Devoxx France 2025**.\n- Un contrepoint utile à l'enthousiasme LLM : *« IA »* ne veut pas dire *« LLM »*.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "m12AuqnX8a0",
+        "title": "LLMs can't optimize schedules, but AI can!",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "la-reactivite-et-les-signaux",
+      "day": "2025-04-17",
+      "type": "talk",
+      "title": "La réactivité et les signaux : démystifions la magie du frontend",
+      "speakers": ["Estéban Soubiran — Maiaspace"],
+      "feedbackFrom": ["Mathis Goichon et al. (Onepoint)", "Blog Sedona (collectif)"],
+      "summary": "- La réactivité ramenée à *« une simple fonction d'état »* et à trois primitives (Signal, Computed, Effect), avec la bibliothèque **Alien Signals**.\n- Présentation *« dynamique, interactive »* et pédagogique (Onepoint), qui cite Boileau : *« ce qui se conçoit bien s'énonce clairement »*.\n- Une des vidéos 2025 les plus vues côté front (≈2 800 vues au 4 octobre 2026).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "Iyts6NE6bps",
+        "title": "La réactivité et les signaux : démystifions la magie du frontend - Estéban Soubiran (Maiaspace)",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "et-si-on-parlait-de-malware-craftsmanship",
+      "day": "2025-04-17",
+      "type": "talk",
+      "title": "Et si on parlait de « malware craftsmanship » ?",
+      "speakers": ["Sonia Seddiki", "Nailya Bogrova — Sii Ouest"],
+      "feedbackFrom": ["Mathis Goichon et al. (Onepoint)"],
+      "summary": "- Dissection de **DEV#POPPER**, un malware caché dans du JavaScript et du Python, qui cible les développeurs.\n- Techniques montrées : offuscation, dissimulation dans des images, exfiltration de données.\n- Une session *« aussi captivante qu'inquiétante »*, comparée à un *« thriller numérique »* (Onepoint).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "9iWo3cBNwLU",
+        "title": "Et si on parlait de « malware craftsmanship » ? - Sonia Seddiki, Nailya Bogrova",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "vol-au-dessus-d-un-nid-de-vulnerabilites",
+      "day": "2025-04-16",
+      "type": "talk",
+      "title": "Vol au dessus d'un nid de vulnérabilités",
+      "speakers": ["Damien Lucas — Onepoint"],
+      "feedbackFrom": ["Antoine Mayer"],
+      "summary": "- Les **SBOM** : formats CycloneDX (recommandé) et SPDX, outils Syft, Trivy, Docker Scout.\n- Déployer **Dependency-Track** pour suivre les vulnérabilités des dépendances dans la durée.\n- Une *« clarification bienvenue »* sur les outils et les bonnes pratiques (Antoine Mayer).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "kuhDs9a_Ax4",
+        "title": "Vol au dessus d’un nid de vulnérabilités - Damien Lucas (Onepoint)",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "the-ddd-horror-picture-show",
+      "day": "2025-04-18",
+      "type": "talk",
+      "title": "The DDD Horror Picture Show",
+      "speakers": ["Pauline Jamin — Agicap", "Thomas Pierrain — Agicap"],
+      "feedbackFrom": ["Jacqueline Rwanyindo (blog Ippon)", "mon-code.net"],
+      "summary": "- Galerie des dérives du DDD : patterns plaqués partout, systèmes surcompliqués, **cargo cult**.\n- Recommandations : explorer plusieurs solutions avant de choisir, documenter ses décisions dans des **ADR**.\n- Ippon retient *« corrélation n'est pas causalité »* ; mon-code.net, que les patterns deviennent contre-productifs quand on les universalise.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "O0lEWaWaVYo",
+        "title": "The DDD Horror Picture Show - Thomas PIERRAIN (Agicap), Pauline Jamin (Agicap)",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "staff-engineer-les-defis-les-galeres",
+      "day": "2025-04-18",
+      "type": "talk",
+      "title": "Staff Engineer : Les défis, les galères, et comment les surmonter",
+      "speakers": ["Alice Bonhomme-Biais — Freelance", "Théotime Levêque — Back Market"],
+      "feedbackFrom": ["Yann Moisan", "mon-code.net"],
+      "summary": "- Obstacles du rôle : gestion du temps, visibilité, flou du périmètre, reconnaissance.\n- Leviers : déléguer, construire des relations, savoir **raconter son impact**, tenir un *brag doc* (mon-code.net).\n- Thème prolongé le soir par le panel « Staff 42 », où Denis Germain retient *« n'attendez pas qu'on vous sollicite pour faire des feedbacks »* et la question non résolue de l'équité salariale entre contributeurs visibles et discrets.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "EiADjypQoY0",
+        "title": "Staff Engineer : Les défis, les galères, et comment les surmonter",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "optimisation-des-requetes-postgresql-parlons-performance",
+      "day": "2025-04-18",
+      "type": "talk",
+      "title": "Optimisation des requêtes PostgreSQL : Parlons Performance !",
+      "speakers": ["Lætitia Avrot — EDB"],
+      "feedbackFrom": ["Yann Moisan", "mon-code.net", "Blog Takima (Hugo Caupert, Delphine Rigaud)"],
+      "summary": "- Planification et estimation des coûts, lecture d'**EXPLAIN ANALYZE**.\n- Signaux d'alerte : scans séquentiels sur de grosses tables, nested loops, écarts importants entre lignes estimées et réelles.\n- Présentée comme une « masterclass » par Takima.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "A2s6NGk5iT4",
+        "title": "Optimisation des requêtes PostgreSQL : Parlons Performance ! - Lætitia Avrot (EDB)",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "postgresql-le-couteau-suisse-dont-vous-avez-besoin",
+      "day": "2025-04-18",
+      "type": "talk",
+      "title": "PostgreSQL : Le couteau suisse dont vous avez besoin (sans le savoir)",
+      "speakers": ["Lætitia Avrot — EDB"],
+      "feedbackFrom": ["Denis Germain (blog zwindler)"],
+      "summary": "- Fonctionnalités méconnues présentées de façon progressive : *range types*, colonnes générées, recherche plein texte.\n- Denis Germain dit son admiration et la juge *« utile pour tout le monde (même moi, c'est dire) »* ; il retient aussi *« mon blog, je l'écris pour moi parce que je suis plus toute jeune »*.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "sYOldn23bNE",
+        "title": "PostgreSQL : Le couteau suisse dont vous avez besoin (sans le savoir) - Lætitia Avrot (EDB)",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "vos-requetes-sql-jusqu-a-10000-fois-plus-rapides",
+      "day": "2025-04-17",
+      "type": "talk",
+      "title": "Vos requêtes SQL jusqu'à 10000 fois plus rapides, durablement",
+      "speakers": ["Alain Lesage — DALIBO"],
+      "feedbackFrom": ["Yann Moisan", "Bpifrance.IO"],
+      "summary": "- Stratégies d'indexation (dont les **index fonctionnels**), gestion des jointures, outils d'analyse de requêtes.\n- Mise en garde d'architecture : des **microservices sans conception de schéma** sérieuse dégradent les performances (Moisan).\n- La vidéo de talk la plus vue de l'édition (≈14 700 vues au 4 octobre 2026), au niveau de la session Luc Julia sans filtre.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "TAJKNBPv4Wc",
+        "title": "Vos requêtes SQL jusqu'à 10000 fois plus rapides, durablement. - Alain LESAGE (DALIBO)",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "noestimates-vs-story-points-fact-checking-dessine",
+      "day": "2025-04-18",
+      "type": "talk",
+      "title": "NoEstimates vs Story Points : fact-checking dessiné",
+      "speakers": ["Victor Lambret — Agicap"],
+      "feedbackFrom": ["Jonathan Baranzini (blog Talan)"],
+      "summary": "- Les estimations frustrent tout le monde : on construit des chiffres, ils sont faux, et ça stresse (programme).\n- Talan retient que les **story points sont souvent peu fiables** et que des approches fondées sur les données (débit de tickets) les remplacent avantageusement.\n- Un des rares talks agiles du programme, avec « No Estimate : créer une culture d'équipe favorisant son adoption » (Virginie Jugie, Pigment), non commenté dans le corpus.",
+      "summarySources": ["blog", "program"],
+      "video": {
+        "youtubeId": "xHs6vqIuBtE",
+        "title": "NoEstimates vs Story Points : fact-checking dessiné - Victor Lambret (Agicap)",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "retourner-le-cerveau-de-sa-gameboy",
+      "day": "2025-04-18",
+      "type": "talk",
+      "title": "Retourner le cerveau de sa Gameboy et les attraper (vraiment) tous",
+      "speakers": ["Audren Burlot — Max Digital Services"],
+      "feedbackFrom": ["Jonathan Baranzini (blog Talan)", "Julien Wittouck (veille)"],
+      "summary": "- Les bugs célèbres de Pokémon sur Game Boy expliqués comme des conséquences des **optimisations matérielles** de l'époque.\n- *« La conférence la plus drôle »* selon Talan ; retenue aussi dans la sélection de replays de Julien Wittouck.\n- Représentatif du track « Mind the Geek » (rétro-gaming, Mario, racine carrée inverse de Quake 3, clavier fait maison).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "7f-zajwDuNk",
+        "title": "Retourner le cerveau de sa Gameboy et les attraper (vraiment) tous 💪",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "comment-allonger-notre-build-nous-a-fait-gagner-du-temps",
+      "day": "2025-04-17",
+      "type": "talk",
+      "title": "Comment allonger notre build nous a fait gagner du temps ?",
+      "speakers": ["Éric Le Merdy — QuickSign", "Vincent Galloy — QuickSign"],
+      "feedbackFrom": ["Jacqueline Rwanyindo (blog Ippon)", "Julien Wittouck (veille)"],
+      "summary": "- Automatiser dans le build les mises à jour de dépendances, le formatage et les **règles d'architecture**, quitte à l'allonger.\n- Moins d'erreurs manuelles au total, dans l'esprit du **jidoka** (arrêter la chaîne au premier défaut) (Ippon).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "Fzd45CaQBdk",
+        "title": "Comment allonger notre build nous a fait gagner du temps ?",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "marre-des-null-en-java-decouvrez-nullaway",
+      "day": "2025-04-17",
+      "type": "talk",
+      "title": "Marre des null en java, découvrez nullaway",
+      "speakers": ["Alexandre Navarro — BNP Paribas"],
+      "feedbackFrom": ["Aurélie Abraham (blog Ippon)", "Jonathan Baranzini (blog Talan)"],
+      "summary": "- Tools-in-Action : **NullAway** (Uber) détecte les NullPointerException à la compilation grâce aux annotations **JSpecify** (`@Nullable`, `@NonNull`).\n- Coût signalé : environ **20 % de temps de compilation** en plus (Ippon).\n- Le sujet est aussi traité le même jour par Sébastien Deleuze (« Null Safety en Java avec JSpecify et NullAway »).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "TV_nLJZssrE",
+        "title": "Marre des null en java, découvrez nullaway - Alexandre Navarro (BNP Paribas)",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "une-revue-de-code-qui-traine-ship-show-ask",
+      "day": "2025-04-18",
+      "type": "lightning",
+      "title": "Une revue de code qui traîne ? Ship, Show, Ask",
+      "speakers": ["Mohamed Ait Abderrahman — Thoth Technologies"],
+      "feedbackFrom": ["Khadija Abdelouali (blog Ippon)"],
+      "summary": "- Lunch talk : trois modes de PR. **Ship** (merge direct), **Show** (merge puis discussion), **Ask** (approbation requise).\n- Ippon y voit un équilibre entre vitesse de CI et qualité, fondé sur la **confiance** et l'autonomie.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "acS1tVScTyc",
+        "title": "Une revue de code qui traîne ?....Ship, Show, Ask - Mohamed AIT ABDERRAHMAN (Thoth Technologies)",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "kubernetes-en-2025",
+      "day": "2025-04-16",
+      "type": "talk",
+      "title": "Kubernetes en 2025",
+      "speakers": ["Alain Regnier — Kubo Labs"],
+      "feedbackFrom": ["Antoine Mayer", "Yann Schepens et Thomas Blaisot (Onepoint)", "Denis Germain (sélection de replays)"],
+      "summary": "- Fonctionnalités méconnues : `kubectl debug`, VolumeSnapshot pour les sauvegardes, Cilium et eBPF.\n- **Gateway API** confirmée comme tendance de fond ; un talk dédié (Emile Vauge, Nicolas Mengin) explique pourquoi elle remplacera les Ingress et leurs 117 annotations (Antoine Mayer).\n- *« Probablement un talk que j'ajouterai aux ressources pour débutants »* (Denis Germain).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "Eh8jKVVSVKA",
+        "title": "Kubernetes en 2025 - Alain Regnier (Kubo Labs)",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "d-officier-de-l-armee-de-terre-a-dev",
+      "day": "2025-04-16",
+      "type": "talk",
+      "title": "D'officier de l'Armée de Terre à dév : RETEX d'une autiste en quête d'inclusion",
+      "speakers": ["Véronique Sermage — Onepoint"],
+      "feedbackFrom": ["Mathis Goichon et al. (Onepoint)", "Yann Schepens et Thomas Blaisot (Onepoint)", "mon-code.net"],
+      "summary": "- Témoignage personnel : de l'armée au développement, et les obstacles à l'**inclusion** d'une développeuse autiste.\n- *« Humour, émotion, franchise »*, une conférence *« qui fait réfléchir »* (Onepoint, collègues de la speaker).\n- mon-code.net retient l'**empathie** comme fondement de la diversité au travail.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "h2OArQCY62w",
+        "title": "D'officier de l'Armée de Terre à dév : RETEX d'une autiste en quête d'inclusion",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "burrito-est-un-tacos",
+      "day": "2025-04-16",
+      "type": "talk",
+      "title": "Burrito est un TACoS : une alternative open-source à Terraform Cloud",
+      "speakers": ["Lucas Marques — Theodo Cloud", "Luca Corrieri — Theodo Cloud"],
+      "feedbackFrom": ["Denis Germain (blog zwindler)"],
+      "summary": "- Tools-in-Action : opérateur Kubernetes inspiré d'ArgoCD pour Terraform, Terragrunt et OpenTofu, avec détection de drift et réconciliation.\n- Problèmes d'échelle racontés franchement : I/O de téléchargement des providers, CPU, cache et fenêtres de synchronisation pour **800 layers Terraform** en parallèle.\n- Le talk a *« résonné »* avec les douleurs Terraform de Denis Germain (*« j'ai bien aimé »*).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "DSuSCgPQlso",
+        "title": "Burrito est un TACoS : une alternative open-source à Terraform Cloud",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "gitflow-c-est-bien-gitbutler-c-est-mieux",
+      "day": "2025-04-17",
+      "type": "talk",
+      "title": "Gitflow c'est bien, Gitbutler c'est mieux !",
+      "speakers": ["Yann-Thomas Le Moigne — Apside", "Lilian Forget — Apside"],
+      "feedbackFrom": ["Blog Sedona (collectif)"],
+      "summary": "- Tools-in-Action le plus mis en favori du programme (876 favoris).\n- **Branches virtuelles** manipulables en parallèle, sans changement de contexte, et messages de commit générés par IA (Sedona).",
+      "summarySources": ["blog", "program"],
+      "video": {
+        "youtubeId": "KPmyngwPQKU",
+        "title": "Gitflow c'est bien, Gitbutler c'est mieux ! - Yann-Thomas Le Moigne (Apside), Lilian Forget (Apside)",
+        "publishedAt": "2025-05-13",
+        "transcript": false
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Les Cast Codeurs : vivez l'expérience IRL (keynote de clôture, Arnaud Héritier, Emmanuel Bernard, Guillaume Laforge, Antonio Goncalves)",
+    "Comment debugger en production ? (Jean-Philippe Bempel, Datadog)",
+    "Platform Engineering : DevOps est maintenant majeur (Alexis Morelle, Henri Gomez, WeScale)",
+    "IA Générative, TDD et Architecture Hexagonale : une synergie révolutionnaire ? (Clément Virieux, Florine Chevrier, Ippon)",
+    "Au secours ! Mon manager me demande des KPIs ! (Geoffrey Graveaud, Inside)",
+    "Agents intelligents, la nouvelle frontière des LLMs (Guillaume Laforge, Google)",
+    "Vibe testing (Yann Helleboid, Orange)",
+    "Écrire l'avenir de son code avec OpenRewrite (Manuel Ryan, Swissquote)",
+    "Dans les coulisses de Copilot : contexte + LLM + perf + sécurité (Kim-Adeline Miguel, Tugdual Grall, GitHub)",
+    "Les effets indésirables de nos Clean Archis (Onepoint, deep dive ; seul retour des speakers eux-mêmes)",
+    "Le futur sera vert, notre code aussi (Crédit Agricole ; seulement cité par Takima)",
+    "Apprenez à votre IA à faire du TDD (Manuel Camargo, Theodo Fintech)",
+    "Construire une IA agentique avec les Structured Outputs, Function Calling et MCP (Julien Dubois, Microsoft)",
+    "Décrypter & gérer les conflits (Publicis Sapient ; résumé descriptif par Talan)"
+  ],
+  "sources": [
+    { "label": "Programme officiel Devoxx France 2025 (talks par track)", "url": "https://www.devoxx.fr/en/agenda-2025/talks-by-tracks/" },
+    { "label": "API publique du CFP Devoxx France 2025 (sessions, favoris, horaires)", "url": "https://devoxxfr2025.cfp.dev/api/public/talks" },
+    { "label": "Chaîne YouTube Devoxx France — playlist Devoxx France 2025", "url": "https://www.youtube.com/playlist?list=PLTbQvx84FrATiYy0se8yoHJHicXtmDbB-" },
+    { "label": "Playlist Keynotes 2025", "url": "https://www.youtube.com/playlist?list=PLTbQvx84FrAQ_SahOOqxsB9nH3FbuxiKe" },
+    { "label": "Playlist Conférences 2025", "url": "https://www.youtube.com/playlist?list=PLTbQvx84FrAQLPD28KiNKGJrDo5MeKxfI" },
+    { "label": "Denis Germain (zwindler) — récap jour 1", "url": "https://blog.zwindler.fr/2025/04/17/devoxxfr-2025-recap-jour-1/" },
+    { "label": "Denis Germain (zwindler) — récap jour 2", "url": "https://blog.zwindler.fr/2025/04/18/devoxxfr-2025-recap-jour-2/" },
+    { "label": "Denis Germain (zwindler) — récap jour 3", "url": "https://blog.zwindler.fr/2025/04/18/devoxxfr-2025-recap-jour-3/" },
+    { "label": "Denis Germain (zwindler) — quelques replays de DevoxxFR 2025", "url": "https://blog.zwindler.fr/2025/05/19/quelques-replays-devoxxfr-2025/" },
+    { "label": "Blog Ippon — Devoxx 2025 (Jacqueline Rwanyindo, Aurélie Abraham, Khadija Abdelouali)", "url": "https://blog.ippon.fr/2025/05/09/devoxx-2025/" },
+    { "label": "Onepoint sur dev.to — Devoxx France 2025 (Mathis Goichon et al., 25 avril 2025)", "url": "https://dev.to/onepoint/devoxx-france-2025-45p0" },
+    { "label": "Onepoint sur dev.to — Devoxx 2025 (Yann Schepens, Thomas Blaisot, 14 mai 2025)", "url": "https://dev.to/onepoint/devoxx-2025-55o4" },
+    { "label": "SQLI — Devoxx France 2025 (P.-A. Pinard Bertelletto, P. Bousquet, E. Chomton)", "url": "https://www.sqli.com/fr-fr/insights-news/blog/devoxx-france-2025" },
+    { "label": "Sedona — Devoxx France 2025, jour 1 (Delphine Kherouf)", "url": "https://sedona.fr/2025/05/19/devoxx-france-2025-retour-sur-trois-jours-de-conferences-tech-jour-1/" },
+    { "label": "Sedona — Devoxx France 2025, jour 2 (collectif)", "url": "https://sedona.fr/2025/05/21/devoxx-france-2025-retour-sur-trois-jours-de-conferences-tech-jour-2/" },
+    { "label": "Yann Moisan — Devoxx France 2025, jour 1", "url": "https://www.yannmoisan.com/devoxx-france-2025-jour-1.html" },
+    { "label": "Yann Moisan — Devoxx France 2025, jour 2", "url": "https://www.yannmoisan.com/devoxx-france-2025-jour-2.html" },
+    { "label": "Yann Moisan — Devoxx France 2025, jour 3", "url": "https://www.yannmoisan.com/devoxx-france-2025-jour-3.html" },
+    { "label": "Antoine Mayer — Une journée avec moi au Devoxx 2025", "url": "https://blog.antoinemayer.fr/2025/04/22/une-journee-avec-moi-au-devoxx-2025/" },
+    { "label": "Talan — Retour sur Devoxx 2025 : développement & langage (Jonathan Baranzini)", "url": "https://blog.talan.com/2025/07/03/retour-sur-devoxx-2025-developpement-langage/" },
+    { "label": "Talan — Retour sur Devoxx 2025 : culture geek (Jonathan Baranzini)", "url": "https://blog.talan.com/2025/06/25/retour-sur-devoxx-2025-culture-geek-mind/" },
+    { "label": "Takima — Devoxx France 2025, ce que nos reporters retiennent (Hugo Caupert, Delphine Rigaud)", "url": "https://blog.takima.fr/devoxx-france-2025-ce-que-nos-reporters-retiennent/" },
+    { "label": "Bpifrance.IO — Devoxx 2025 : on vous dit tout !", "url": "https://io.bpifrance.fr/devoxx-2025-on-vous-dit-tout/" },
+    { "label": "mon-code.net — Devoxx France 2025, description de quelques conférences", "url": "https://www.mon-code.net/article/179/devoxx-france-2025" },
+    { "label": "Julien Wittouck — La veille de Wittouck, best-of Devoxx 2025", "url": "https://codeka.io/2025/05/30/la-veille-de-wittouck-fin-mai-2025-best-of-devoxx-2025/" },
+    { "label": "FrenchWeb — Devoxx France 2025 : les 5 idées que tout CTO devrait intégrer dans sa roadmap", "url": "https://www.frenchweb.fr/devoxx-france-2025-les-5-idees-que-tout-cto-devrait-integrer-dans-leur-roadmap/453586" },
+    { "label": "Solutions Numériques — Devoxx France 2025 a réuni 4 500 passionnés", "url": "https://www.solutions-numeriques.com/devoxx-france-2025-levenement-tech-du-logiciel-a-reuni-4-500-passionnes/" },
+    { "label": "StoriesOut — Retour sur les temps forts Devoxx 2025 (communiqué)", "url": "https://storiesout.com/communiques-presse/retour-sur-les-temps-forts-devoxx-2025/" },
+    { "label": "LinkedIn : aucun post individuel de participant lu ; la recherche web ne remonte que des blogs et communiqués" }
+  ]
 }

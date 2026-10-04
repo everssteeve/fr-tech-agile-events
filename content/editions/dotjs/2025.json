@@ -7,8 +7,263 @@
   "city": "Paris",
   "venue": "Folies Bergère",
   "url": "https://web.archive.org/web/20250901/https://www.dotjs.io/",
+  "programUrl": "https://web.archive.org/web/20250402000000/https://www.dotjs.io/agenda",
   "theme": "10th edition anniversary",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "Jeudi 3 avril 2025, Folies Bergère, édition anniversaire (10e). Une journée, une seule piste : 9 talks de 20 minutes au plus avec questions-réponses animées par le maître de cérémonie Christophe Porteneuve (lui-même speaker), et 5 lightning talks de 10 minutes sans questions après le déjeuner. Le site annonçait 1 500 développeurs.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-04",
+  "corpus": "Les **14 vidéos officielles** (publiées le 09/04/2025 sur la chaîne dotConferences) et leurs **transcripts automatiques anglais**, l'agenda et la page speakers archivés, et **quatre comptes rendus** : JoliCode (trois développeuses, 09/04/2025), Premier Octet (Baptiste et Colin, 07/04/2025, lu via la Wayback Machine), ekino (Pierre-Alexandre Dupuy, 17/04/2025) et Les Joies du Code (Nicolas Lecointre, 16/05/2025, article en partenariat avec dotConferences). S'y ajoute un post X d'un speaker (Wes Bos).",
+  "limits": "Le contenu des talks est connu en détail par les transcripts, mais la **réception repose sur quatre articles d'agences ou de médias**, dont un en partenariat avec l'organisateur, et sur aucun post LinkedIn ou Bluesky de participant trouvé. Trois talks (Charly Poly, Joyce Lin, Yohan Lasorsa) n'ont aucun retour de salle. Les transcripts automatiques déforment certains noms propres et les chiffres des speakers n'ont pas été vérifiés.",
+  "tldr": "Pour ses dix ans, dotJS a fait du **navigateur et de l'appareil de l'utilisateur le centre de gravité** (local-first, IA via WebGPU, Navigation API, compression par dictionnaires partagés) tout en ouvrant la porte aux **agents IA (MCP, GenAIScript)** et à la robustesse en production (OpenTelemetry dans Deno, mémoire de Node.js).",
+  "keyTakeaways": [
+    "(Talk) Ne pas tuer un process Node.js parce qu'il atteint 80 % de la mémoire : surveiller le ratio heapUsed / heapTotal plutôt que le RSS (Collina).",
+    "(Talk) Depuis Node.js 22, la taille de la young generation dépend de la mémoire disponible : dans un petit conteneur, augmenter `--max-semi-space-size`, surtout pour du rendu serveur React (Collina).",
+    "(Talk) Activer l'OpenTelemetry intégré de Deno 2.2 pour corréler logs, traces et requêtes sans changer le code, y compris pour une app Node.js lancée dans Deno (Dahl).",
+    "(Talk) Vérifier que la compression est activée sur son site, utiliser Brotli, et suivre les dictionnaires partagés qui ne transfèrent que le différentiel d'un bundle (Caron).",
+    "(Talk) N'activer que les serveurs MCP utiles à la session en cours et soigner la description des outils, c'est elle qui guide le choix du LLM (Jones).",
+    "(Talk) Tester dès maintenant la Navigation API dans Chrome et faire remonter ses retours, elle peut remplacer une bonne partie de la plomberie des routeurs (San Martin Morote).",
+    "(Talk) Envisager l'IA dans le navigateur pour la latence, la confidentialité, le coût ou l'intégration à l'UI, en pesant taille des modèles, puissance de l'appareil et batterie (Bos).",
+    "(Talk) Appliquer le local-first par morceaux : *« un peu de local-first vaut mieux que pas de local-first du tout »* (Simpson).",
+    "(Talk) Concevoir un état de défaillance explicite pour tout code qui touche le monde physique, plutôt que de chercher à éviter toute panne (Lin)."
+  ],
+  "sessions": [
+    {
+      "id": "modern-day-mashups-ai-agents-programmable-web",
+      "day": "2025-04-03",
+      "type": "talk",
+      "title": "Modern Day Mashups: How AI Agents are Reviving the Programmable Web",
+      "speakers": ["Angie Jones — Block"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Premier Octet", "Pierre-Alexandre Dupuy (ekino)", "Nicolas Lecointre (Les Joies du Code, partenariat)"],
+      "summary": "- **Sur scène (transcript)** : retour sur l'ère des **mashups** des années 2000 (HousingMaps, Google Maps et Craigslist), qui a donné naissance à l'économie des API avant de s'éteindre faute de maintenance : des side projects cassés à chaque changement d'API.\n- **MCP** (lancé par Anthropic en novembre 2024, Block a contribué à la spec) ramènerait cette énergie : plus de 3 000 serveurs MCP, dont environ 200 seulement publiés par les éditeurs officiels, et une adoption par OpenAI.\n- **Démos avec Goose** (agent open source de Block) : une carte interactive des restaurants autour du théâtre en 30 secondes, un site généré depuis une maquette Figma, puis l'installation complète d'un projet (dépendances, Docker, base de données) en moins de deux minutes, avec un fichier `.gooseignore` pour tenir les secrets hors de portée.\n- **Conseils** : ne pas activer tous ses MCP à la fois (confusion, lenteur, tokens) et **ne pas bâcler la description des outils**, c'est elle qui guide le LLM. Annuaires cités : Glama (avec un bulletin de sécurité et de licence), PulseMCP, et un registre officiel en préparation.\n- **Retenu par les participants** : JoliCode retient l'installation automatique des dépendances et l'intégration Figma ; ekino y voit *« a new eldorado for web makers »* et souligne que la journée *« began beautifully »*. Premier Octet résume : *« The programmable web is back »*.",
+      "summarySources": ["program", "transcript", "blog"],
+      "video": {
+        "youtubeId": "jZbXq5qu55U",
+        "title": "Modern Day Mashups: How AI Agents are Reviving the Programmable Web - Angie Jones - dotJS 2025",
+        "publishedAt": "2025-04-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "love-hate-upgrading-to-web2-5-with-local-first",
+      "day": "2025-04-03",
+      "type": "talk",
+      "title": "Love/Hate: Upgrading to Web2.5 with Local-First",
+      "speakers": ["Kyle Simpson — auteur de You Don't Know JS"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Premier Octet", "Pierre-Alexandre Dupuy (ekino)", "Nicolas Lecointre (Les Joies du Code, partenariat)"],
+      "summary": "- **Sur scène (transcript)** : la tech vit de **fausses dichotomies** (web contre natif, TypeScript contre JavaScript, confidentialité contre confort). Selon lui, le Web 2 **s'effrite** : données possédées par d'autres, *« zero install »* devenu une installation à chaque visite, deux tiers de la population mondiale exclus d'un web qui suppose réseau et énergie illimités, coûts et complexité qui profitent aux hébergeurs.\n- **Le pont, c'est le local-first** (manifeste d'Ink & Switch, 2019) : données d'abord sur l'appareil, serveurs optionnels, *« server last »*. Outils cités : PWA, service workers, Isolated Web Apps, periodic background sync (Chrome seulement).\n- **Identité sans serveur** : une clé publique comme identité, protégée sur l'appareil par des passkeys biométriques, *« sans blockchain ni cryptomonnaie »*. Le « Web 2.5 » ajoute l'installation progressive après la découverte et la communication pair à pair (direct sockets, local peer-to-peer).\n- Il se dit *« un peu honteux »* du web qu'il a aidé à construire en 25 ans et rappelle que **tout n'est pas à faire d'un coup** : un peu de local-first vaut mieux que rien.\n- **Retenu par les participants** : JoliCode cite *« Stop sharing your data and then paying to access them back »* et note que l'approche reste compliquée sur les appareils partagés (smartphones familiaux, cybercafés). ekino y entend *« un manifeste »* pour un web ouvert ; Premier Octet retient l'identité par passkeys et le Web 2.5 comme *« pont pragmatique »* sans attendre le Web3.",
+      "summarySources": ["program", "transcript", "blog"],
+      "video": {
+        "youtubeId": "IVNh_49Kro8",
+        "title": "Love/Hate: Upgrading to Web2.5 with Local-First - Kyle Simpson - dotJS 2025",
+        "publishedAt": "2025-04-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "special-announcement-deno-opentelemetry",
+      "day": "2025-04-03",
+      "type": "talk",
+      "title": "Special Announcement (Deno et OpenTelemetry)",
+      "speakers": ["Ryan Dahl — Deno"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Premier Octet", "Nicolas Lecointre (Les Joies du Code, partenariat)"],
+      "summary": "- **Sur scène (transcript)** : live coding d'une petite API Hono dans Deno avec un bug aléatoire. Sous charge, les `console.log` entrelacés ne permettent plus de relier une erreur à sa requête.\n- **Deno 2.2 intègre OpenTelemetry** : un flag instable et un nom de service suffisent pour obtenir, sans changer le code, une trace par requête HTTP, des spans entrants et sortants, des logs corrélés par trace ID, des métriques de requêtes et de latence, et la propagation du header `traceparent`. Cela vaut aussi pour une **app Node.js lancée dans Deno**. Démo dans Grafana.\n- **Pas de magie** : la propagation repose sur une API C++ de V8 stabilisée fin 2024, issue de la proposition TC39 **AsyncContext** (stage 2). La télémétrie arrive aussi dans Deno Deploy, en accès anticipé.\n- **Digression finale** : Oracle détient la marque JavaScript ; Deno engage une procédure pour la faire annuler et appelle à signer la lettre ouverte javascript.tm.\n- **Retenu par les participants** : JoliCode note qu'il n'y a eu *« pas d'effet pyrotechnique »* pour cette « annonce spéciale », mais un talk sur la dernière version de Deno. Les Joies du Code résume : *« Le console.log, c'est bien, mais une traçabilité solide, c'est mieux. »* *Aucun des comptes rendus lus ne mentionne l'appel sur la marque JavaScript.*",
+      "summarySources": ["program", "transcript", "blog"],
+      "video": {
+        "youtubeId": "qAVyDK8SKW4",
+        "title": "Live coding with Ryan Dahl: Deno and OpenTelemetry - dotJS 2025",
+        "publishedAt": "2025-04-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "from-terrible-to-terrific-frontend-routers",
+      "day": "2025-04-03",
+      "type": "talk",
+      "title": "From terrible to terrific frontend routers",
+      "speakers": ["Eduardo San Martin Morote — Vue.js core team, auteur de Vue Router et Pinia"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Premier Octet"],
+      "summary": "- **Sur scène (transcript)** : en 2009, détecter un changement de hash se faisait par polling. Aujourd'hui, l'**History API** reste mal conçue (argument inutilisé, `popstate` sur `window`, état fragile), d'où des routeurs qui réimplémentent liens, scroll et focus et font perdre les comportements natifs.\n- **La Navigation API** : `navigation.navigate()` remplace `pushState` et `replaceState`, et l'événement `navigate` permet d'**intercepter presque toute navigation** (type, destination, état) et de la retarder via `intercept()`, avec spinner natif dans l'onglet.\n- Autres apports : `navigation.transition`, accès aux entrées d'historique de sa seule origine, `key` stable pour des **permaliens d'historique** (`traverseTo`), `canGoBack`, et des promesses partout. Utile aussi, selon lui, pour des UI qui anticipent l'intention de l'utilisateur.\n- **Bonne et mauvaise nouvelle** : l'API est dans la spec HTML, Safari et Firefox ont ouvert des « intent to ship » et elle fait partie d'Interop 2025, mais leur score y était alors de 0 %.\n- **Retenu par les participants** : JoliCode liste les fonctionnalités et regrette que le support de Firefox et Safari *« ne semble malheureusement pas évoluer »*. Premier Octet en fait *« une vraie alternative native aux routeurs JS »*, mais attribue par erreur le talk à Yohan Lasorsa.",
+      "summarySources": ["program", "transcript", "blog"],
+      "video": {
+        "youtubeId": "E18HxqAvP7o",
+        "title": "From terrible to terrific frontend routers - Eduardo San Martin Morote - dotJS 2025",
+        "publishedAt": "2025-04-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "recreating-windows-media-player-art-with-web-midi-api",
+      "day": "2025-04-03",
+      "type": "lightning",
+      "title": "Recreating Windows Media Player Art With Web MIDI API",
+      "speakers": ["Vadim Smirnov — CKEditor"],
+      "feedbackFrom": ["Blog JoliCode"],
+      "summary": "- **Sur scène (transcript)** : un clavier MIDI branché en USB, la **Web MIDI API** qui transmet note et vélocité, et un **shader GLSL** qui transforme ces valeurs en couleur, amplitude et mouvement, rendu avec le `ShaderMaterial` de Three.js pour éviter de tout câbler à la main.\n- **Message** : les API du navigateur forment un écosystème *« ridiculement riche »* et sous-exploité, y compris pour dialoguer avec du matériel ; *« faites des trucs bizarres »*, on s'en souvient mieux.\n- **Retenu par les participants** : JoliCode retient les quelques notes jouées sur scène, *« un moment de nostalgie »*.",
+      "summarySources": ["program", "transcript", "blog"],
+      "video": {
+        "youtubeId": "Vvhp7tcRT2c",
+        "title": "Recreating Windows Media Player Art With Web MIDI API - Vadim Smirnov - dotJS 2025",
+        "publishedAt": "2025-04-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "supercharge-web-performance-with-shared-dictionaries",
+      "day": "2025-04-03",
+      "type": "lightning",
+      "title": "Supercharge Web Performance with Shared Dictionaries: The Next Frontier in HTTP Compression",
+      "speakers": ["Antoine Caron — Scaleway"],
+      "feedbackFrom": ["Blog JoliCode"],
+      "summary": "- **Sur scène (transcript)** : *« la compression web n'est pas un sujet mort »*, mais beaucoup de sites oublient de l'activer (d'après le Web Almanac). Exemples : 15 % de temps de chargement gagné sur une page Wikipédia, plus de 50 Ko économisés sur jQuery minifié avec gzip.\n- **Pédagogie** : gzip combine LZ77 (remplacer les motifs répétés par une distance et une longueur) et le codage de Huffman ; **Brotli** ajoute un dictionnaire statique de mots et de tokens HTML, CSS et JS.\n- **Dictionnaires partagés** : le navigateur garde la version précédente d'un bundle comme dictionnaire et ne reçoit que le différentiel, soit 8 Ko pour une nouvelle version de jQuery, ou 70 % de transfert en moins en revenant sur YouTube deux mois plus tard (chiffres du speaker).\n- **Retenu par les participants** : JoliCode juge le procédé très efficace mais note que sa prise en charge *« n'est malheureusement pas à l'ordre du jour »*, ce que le speaker reconnaît lui-même (*« ce n'est pas pour aujourd'hui »*).",
+      "summarySources": ["program", "transcript", "blog"],
+      "video": {
+        "youtubeId": "av5rQNbMKoY",
+        "title": "Supercharge Web Performance with Shared Dictionaries - Antoine Caron - dotJS 2025",
+        "publishedAt": "2025-04-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "coding-and-adhd-where-we-excel",
+      "day": "2025-04-03",
+      "type": "lightning",
+      "title": "Coding and ADHD: Where We Excel",
+      "speakers": ["Abbey Perini — développeuse web et rédactrice technique"],
+      "feedbackFrom": ["Blog JoliCode"],
+      "summary": "- **Sur scène (transcript)** : le TDAH est un trouble des fonctions exécutives ; elle préférerait parler de **régulation de l'attention** plutôt que de déficit. La motivation y est fondée sur l'intérêt, pas sur l'importance de la tâche.\n- Après une série de blog sur les difficultés (ne pas pouvoir démarrer, continuer, s'arrêter, se souvenir), elle a voulu parler des forces, car les enfants concernés reçoivent selon une estimation qu'elle cite 20 000 messages négatifs de plus avant 10 ans.\n- **Forces** : pensée systémique, créativité, refus du *« on a toujours fait comme ça »*, hyperfocus, goût des terriers de lapin qui fait de bons débuggeurs. Pour les managers : sprints et tickets déjà priorisés et la reconnaissance fonctionnent bien.\n- **Retenu par les participants** : JoliCode y voit le *« rare sujet non-tech du jour »* et une mise en avant des profils atypiques, et cite *« Celebrate being a firework in a world that wants you to be a cube »*.",
+      "summarySources": ["program", "transcript", "blog"],
+      "video": {
+        "youtubeId": "mt2v2DX5Tno",
+        "title": "Coding and ADHD: Where We Excel - Abbey Perini - dotJS 2025",
+        "publishedAt": "2025-04-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "durable-executions-for-mortals",
+      "day": "2025-04-03",
+      "type": "lightning",
+      "title": "Durable Executions for Mortals",
+      "speakers": ["Charly Poly — Inngest"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : ce que React a apporté au front (unifier état, erreurs et rendu), l'**exécution durable** l'apporterait au back, où la logique métier asynchrone est éparpillée entre bases, caches, API externes et webhooks.\n- **Principe** : un workflow avec un état persisté par exécution et des **étapes isolées à retry automatique** ; en cas d'échec, il reprend à la dernière étape réussie. Exemple : un tunnel de paiement.\n- **Généalogie** : né chez Uber (Cadence), forké en Temporal, orienté systèmes distribués ; les outils JS (Inngest, l'employeur du speaker, Cloudflare Workflows, Upstash) se placent plus près de l'application, avec déclenchement par événements et attente d'un webhook jusqu'à sept jours.\n- **Pour qui** : les devs front qui veulent faire du back sans files de messages, les devs back qui veulent supprimer du code maison, et l'IA, puisque *« du RAG aux agents, ce sont des workflows »*.\n- *Aucun retour de participant trouvé sur ce lightning talk.*",
+      "summarySources": ["program", "transcript"],
+      "video": {
+        "youtubeId": "Haen-OX3y1M",
+        "title": "Durable Executions for Mortals - Charly Poly - dotJS 2025",
+        "publishedAt": "2025-04-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "code-in-the-physical-world",
+      "day": "2025-04-03",
+      "type": "lightning",
+      "title": "Code in the Physical World",
+      "speakers": ["Joyce Lin — Viam"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : *« le monde réel se moque de vos tests »*. Exemples : une mise à jour OTA de Rivian qui a bloqué 3 % des véhicules (mauvais certificat), une mise à jour Nest qui a coupé le chauffage en plein hiver, la panne de six heures de Facebook.\n- Le matériel se dégrade (capteurs AirGradient qui dérivent, connecteurs qui fondent) et la connectivité est intermittente : les balises des tortues marines stockent puis transmettent, comme MQTT.\n- **Concevoir l'échec** : définir un état de défaillance (le téléphone qui bride son CPU, Voyager 1 et ses redondances, les satellites Starlink désorbités volontairement) ; tester aussi sur les machines de ses utilisateurs, pas seulement sur des Mac 64 bits.\n- **Pour les devs JS** : le comité TC53 travaille sur des API standard pour les objets ; on peut aussi garder la logique dans le navigateur ou sur le laptop et piloter le matériel à distance (WebRTC, port série).\n- *Aucun retour de participant trouvé sur ce lightning talk.*",
+      "summarySources": ["program", "transcript"],
+      "video": {
+        "youtubeId": "7zXL6YIBv2c",
+        "title": "Code in the Physical World - Joyce Lin - dotJS 2025",
+        "publishedAt": "2025-04-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "prompting-is-the-new-scripting-genaiscript",
+      "day": "2025-04-03",
+      "type": "talk",
+      "title": "Prompting is the New Scripting: Meet GenAIScript",
+      "speakers": ["Yohan Lasorsa — Microsoft"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : comme jQuery a masqué les bizarreries des navigateurs, l'IA générative aurait besoin d'une couche qui simplifie. **GenAIScript** (open source, Microsoft) permet d'écrire un prompt comme un script JavaScript (`.genai.js`), avec un template tag `$`, la fonction `def` pour injecter du contexte (fichiers, URL, objets) et des helpers (GitHub, git, images).\n- **Démos en live** : un script qui relit les issues GitHub et commente via une GitHub Action, un outil (`defTool`) qui génère des fonds de slides, appelé depuis GitHub Copilot, puis un agent (`defAgent`) branché sur git qui écrit un changelog. *« Un agent, c'est juste un prompt plus un ou plusieurs outils. »*\n- Scripts débogables avec le débogueur de VS Code ; cas d'usage évoqué : les migrations de code à grande échelle (nouvelle syntaxe de templates Angular).\n- **Limite assumée** : c'est un outil pour le développeur, *« pas un vrai framework »* pour construire des applications.\n- *Aucun retour de participant trouvé ; Premier Octet lui attribue par erreur le talk sur les routeurs.*",
+      "summarySources": ["program", "transcript"],
+      "video": {
+        "youtubeId": "PrhPSUHXWJ4",
+        "title": "Prompting is the New Scripting: Meet GenAIScript - Yohan Lasorsa - dotJS 2025",
+        "publishedAt": "2025-04-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "clarkes-third-law-in-action-having-fun-es-proxies",
+      "day": "2025-04-03",
+      "type": "talk",
+      "title": "Clarke's third law in action: having fun ES proxies",
+      "speakers": ["Christophe Porteneuve — maître de cérémonie de la journée"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Premier Octet"],
+      "summary": "- **Sur scène (transcript)** : le MC passe de l'autre côté. Les **proxies ES**, présents depuis dix ans et impossibles à polyfiller, enveloppent un objet et interceptent ses interactions via des *traps* (`get`, `set`, `apply`, `construct`, `has`…), `Reflect` permettant de déléguer au comportement d'origine.\n- **Démos** : propriétés *« type-safe-ish »* qui lèvent une erreur à l'exécution, la bibliothèque farceuse `tpyo` (à ne jamais mettre en production), indices négatifs dans les tableaux, objet observable (le principe de la réactivité de Vue 3), fonction à durée de vie limitée, constructeur d'URL en DSL, enregistrement et rejeu d'opérations, à la manière d'Immer.\n- **Conclusion** : méta-programmation de nouvelle génération, *« pénalité de performance proche de zéro »* et plus rapide que les descripteurs de propriétés.\n- **Retenu par les participants** : JoliCode cite les cas d'usage (typage dynamique, indices négatifs, générateur d'URL) et le dépôt GitHub des exemples ; Premier Octet retient Vue 3, Immer et MobX bâtis sur les proxies.",
+      "summarySources": ["program", "transcript", "blog"],
+      "video": {
+        "youtubeId": "n8Of4JBDhQ8",
+        "title": "Clarke's third law in action: having fun ES proxies - Christophe Porteneuve - dotJS 2025",
+        "publishedAt": "2025-04-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "nodejs-will-use-all-the-memory-available",
+      "day": "2025-04-03",
+      "type": "talk",
+      "title": "Node.js will use all the memory available, and that's OK!",
+      "speakers": ["Matteo Collina — Platformatic, Node.js TSC"],
+      "feedbackFrom": ["Blog Premier Octet", "Nicolas Lecointre (Les Joies du Code, partenariat)"],
+      "summary": "- **Sur scène (transcript)** : beaucoup d'équipes croient avoir une fuite mémoire alors qu'elles **tuent elles-mêmes** leur process à un seuil. Explication du garbage collector de V8 : new space (scavenge, rapide) et old space (mark and sweep, plus lent) ; V8 ne rend pas la mémoire à l'OS parce qu'il sait qu'il va réallouer.\n- **À surveiller** : le ratio heapUsed / heapTotal, pas le RSS seul. Et *« ne tuez pas Node.js à 80 % de mémoire, c'est normal »*.\n- **Le piège de Node.js 22** : la taille de la young generation est désormais calculée selon la mémoire disponible ; avec 500 Mo, on obtient environ 1 Mo, trop peu pour un rendu React côté serveur qui alloue 5 à 20 Mo par requête.\n- **Démo** : avec des semi-spaces de 64 Mo, environ 10 % de latence P99 en moins et 10 % de débit en plus, *« en changeant une ligne de configuration »* : on échange de la mémoire contre du calcul. Lancement le jour même de l'outil de supervision de Platformatic et de son livre sur Node.js en entreprise.\n- **Retenu par les participants** : Premier Octet retient le monitoring heapUsed / heapTotal et le réglage de `--max-semi-space-size` ; Les Joies du Code, qu'une forte consommation mémoire n'est pas le signe d'une fuite.",
+      "summarySources": ["program", "transcript", "blog"],
+      "video": {
+        "youtubeId": "_OnTUIYxGRs",
+        "title": "Node.js will use all the memory available, and that's OK! - Matteo Collina - dotJS 2025",
+        "publishedAt": "2025-04-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-wind-and-the-waves-framework-waves",
+      "day": "2025-04-03",
+      "type": "talk",
+      "title": "The Wind and the Waves: The formation of Framework Waves from the Epicenter",
+      "speakers": ["Sarah Drasner — Google"],
+      "feedbackFrom": ["Blog Premier Octet", "Nicolas Lecointre (Les Joies du Code, partenariat)"],
+      "summary": "- **Sur scène (transcript)** : l'innovation est **un réseau, pas un éclair de génie** (l'histoire de l'ordinateur, Matt Ridley). Généalogie des frameworks : AngularJS, Ember, Backbone, React, Vue, Svelte, Solid, Qwik et Wiz, le framework interne de Google (Search, Workspace, YouTube), en cours de convergence avec Angular.\n- **Angular aujourd'hui** : des **signals** conçus avec Ryan Carniato (Solid) et repris dans Wiz donc YouTube, le chargement différé `@defer` et l'**hydratation incrémentale** appuyée sur JSAction, où elle juge Angular *« un peu en avance »*.\n- **Migrations** : la *single version policy* de Google impose de migrer tout le monorepo ; `ng update` est complété par tsurge, un outil expérimental d'analyse globale.\n- **DX** : syntaxes simplifiées et documentation refaite par d'anciens membres de l'équipe docs de Vue, avec du *docs-driven development*. Elle se décrit comme la *« grand-mère d'Angular »*, sans diriger l'équipe.\n- **Retenu par les participants** : Premier Octet résume *« Frameworks evolve together, not in isolation »* ; Les Joies du Code retient qu'aucun framework ne naît isolé. *Aucun retour ne discute le fait que le talk se recentre sur Angular, produit de l'employeur de la speaker.*",
+      "summarySources": ["program", "transcript", "blog"],
+      "video": {
+        "youtubeId": "PsCpK1UqC5s",
+        "title": "The Wind & Waves: The formation of Framework Waves from the Epicenter - Sarah Drasner - dotJS 2025",
+        "publishedAt": "2025-04-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "running-ai-models-in-javascript-good-idea",
+      "day": "2025-04-03",
+      "type": "talk",
+      "title": "Running AI models in JavaScript - good idea?",
+      "speakers": ["Wes Bos — Syntax.fm"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Premier Octet", "Pierre-Alexandre Dupuy (ekino)", "Nicolas Lecointre (Les Joies du Code, partenariat)", "Wes Bos (speaker, X)"],
+      "summary": "- **Sur scène (transcript)** : *« rien à vous vendre »*. Grâce à **WebGPU**, de nombreux modèles tournent assez vite en JavaScript. Cinq raisons : la **vitesse** (détection de pose à 60 images/s, Whisper presque en temps réel), la **confidentialité** (détourage d'images sans upload, en écho à Kyle Simpson), le **coût** (légendes et alt text, traduction de posts), l'**IA dans l'UI** (MediaPipe, jeu de dessin deviné, cartes de profondeur) et l'**IA dans le workflow** (filtrage de messages toxiques côté Node.js).\n- Il cite une réponse reçue en ligne : une analyse de sentiment pendant la frappe aurait réduit de 70 % un coût d'API.\n- **Outillage** : transformers.js (Hugging Face), MediaPipe et TensorFlow, WebLLM, la Prompt API expérimentale de Chrome, le format ONNX ; une légende d'image passe de 7 s sur CPU (Wasm) à environ 0,5 s sur WebGPU.\n- **Compromis** : modèles de quelques Mo à 2 Go, expérience dépendante de l'appareil, **batterie**, WebGPU absent de Firefox stable et seulement en preview chez Safari.\n- **Retenu par les participants** : clôture saluée par ekino (*« contagious energy »*, *« legendary humor »*, *« the ideal speaker to close this intense day »*). JoliCode et Premier Octet relient le talk au local-first de Kyle Simpson ; Premier Octet est le seul à reprendre les limites. Le matin, le speaker avait posté sur X que la conférence était *« off to an excellent start »*.",
+      "summarySources": ["program", "transcript", "blog", "feedback"],
+      "video": {
+        "youtubeId": "YRZh01o_UGY",
+        "title": "Using AI with JavaScript: good idea? - Wes Bos - dotJS 2025",
+        "publishedAt": "2025-04-09",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [],
+  "sources": [
+    { "label": "Agenda officiel dotJS 2025 (archive Wayback Machine)", "url": "https://web.archive.org/web/20250402000000/https://www.dotjs.io/agenda" },
+    { "label": "Site dotJS 2025, speakers et titres (archive Wayback Machine)", "url": "https://web.archive.org/web/20250320000000/https://www.dotjs.io/" },
+    { "label": "Playlist YouTube dotJS 2025 (14 talks, publiés le 09/04/2025, chaîne dotConferences)", "url": "https://www.youtube.com/playlist?list=PLMW8Xq7bXrG5WtvuO728_t6fmKpwgotDC" },
+    { "label": "JoliCode, « De la nostalgie aux nouveautés : ce que dotJS 2025 nous a inspiré » (Cécile Delmon, Katia Moreira, Suzanne Favot, 09/04/2025)", "url": "https://jolicode.com/blog/de-la-nostalgie-aux-nouveautes-ce-que-dotjs-2025-nous-a-inspire" },
+    { "label": "Premier Octet, « DotJS 2025: focus on the future of JavaScript and AI » (Baptiste et Colin, 07/04/2025, lu via la Wayback Machine)", "url": "https://www.premieroctet.com/blog/en/dotjs-2025" },
+    { "label": "ekino, « A day among web legends: my experience at dotJS 2025 » (Pierre-Alexandre Dupuy, 17/04/2025)", "url": "https://www.ekino.fr/publications/a-day-among-web-legends-my-experience-at-dotjs-2025/" },
+    { "label": "Les Joies du Code, « IA, Local-first, observabilité : ce que dotJS 2025 révèle sur l'avenir de JavaScript » (Nicolas Lecointre, 16/05/2025, en partenariat avec dotConferences)", "url": "https://lesjoiesducode.fr/ia-local-first-observabilite-ce-que-dotjs-2025-revele-sur-lavenir-de-javascript" },
+    { "label": "Wes Bos sur X, 03/04/2025 (speaker)", "url": "https://x.com/wesbos/status/1907719489153556513" },
+    { "label": "Posts LinkedIn et Bluesky : aucun post de participant trouvé (3 recherches ciblées)" }
+  ],
+  "revisit": "au 04/10/2026, contenu des 14 talks couvert par les transcripts, mais réception limitée à quatre articles d'agences ou de médias (dont un en partenariat avec dotConferences) et un post X de speaker ; aucun post LinkedIn ou Bluesky de participant trouvé (7 recherches web, API Bluesky inaccessible). Chercher des posts LinkedIn de participants, les sketchnotes d'Amélie Benoit (@AmelieBenoit33, citées par Premier Octet) et des retours sur Charly Poly, Joyce Lin et Yohan Lasorsa."
 }

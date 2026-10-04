@@ -6,9 +6,706 @@
   "end": "2025-04-11",
   "city": "Paris",
   "venue": "Beffroi de Montrouge",
-  "url": "https://sessionize.com/android-makers-by-droidcon-2025/",
+  "url": "https://androidmakers.droidcon.com",
+  "programUrl": "https://sessionize.com/android-makers-by-droidcon-2025/",
   "dateConfidence": "ok",
-  "note": "Dates (10 et 11 avril 2025) et lieu (Beffroi de Montrouge, avenue de la République, Montrouge) relevés sur Sessionize, page liée depuis androidmakers.droidcon.com. Playlist « Android Makers by droidcon 2025 » sur la chaîne YouTube Android Makers.",
-  "status": "pending",
-  "sessions": []
+  "note": "Dates (10 et 11 avril 2025) et lieu (Beffroi de Montrouge, avenue de la République, Montrouge) relevés sur Sessionize, page liée depuis androidmakers.droidcon.com. Le CFP annonçait « 80+ technical Android talks », des workshops et codelabs. Programme (données de l'app officielle, API Confetti) : 68 créneaux hors pauses sur six salles (Moebius, Grand Salon, Blin, 2.02, 2.04 pour les « Unconference Roundtables » et office hours, 2.01 pour l'atelier « Mobiles en Perspective » et l'App-Clinic), keynote de Cyril Mottier le jeudi, de Xavier F. Gouchet le vendredi. Jeu de piste « Pin-Droid » pendant les deux jours, soirée au Café Oz Denfert. Hashtag officiel #AMxDC25. Playlist YouTube « Android Makers by droidcon 2025 » (54 vidéos publiées entre le 13 juin et le 18 juillet 2025).",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-04",
+  "revisit": "Aucun post LinkedIn de participant trouvé (budget de 8 recherches web) ; corpus participant limité à deux comptes-rendus de blog (Ippon, Atecna) et une quinzaine de posts Bluesky, dont une partie de speakers. Synthèse fondée surtout sur 20 transcripts YouTube.",
+  "corpus": "Programme complet (68 sessions avec descriptifs, via l'API de l'app officielle et Sessionize) ; 20 transcripts automatiques de la playlist officielle (54 vidéos publiées entre le 13 juin et le 18 juillet 2025), dont les deux keynotes ; le compte-rendu en deux parties de l'équipe mobile d'Ippon (22 et 25 avril 2025), celui de Guillaume Decorte chez Atecna (22 mai 2025) ; une soixantaine de posts Bluesky #AMxDC25 d'avril à juin 2025, dont ceux de participants (David Blanc, Maxime Dupierreux, pboulch, Diana, Alex Bruneau, InTech Luxembourg) et de speakers présents dans la salle (John O'Reilly, Danny Preussler, Martin Bonnin, Ed Holloway-George, Romain Piel) ; billet de Cyril Mottier sur sa keynote.",
+  "limits": "Aucun post LinkedIn lu : le corpus participant repose sur Bluesky et deux blogs d'ESN, avec un biais francophone et « communauté Kotlin ». Les posts Bluesky sont souvent de simples mentions de talk, sans contenu ; plusieurs viennent de speakers. Roundtables, office hours, App-Clinic et atelier ne sont pas filmés et n'ont laissé aucune trace ; 34 vidéos n'ont pas été transcrites ici. Transcripts automatiques : noms propres parfois déformés (entreprise de deux speakers non identifiable).",
+  "tldr": "Une édition **très technique et assez peu « IA »** : passage à l'échelle des grosses apps (modularisation, build, dette, ownership), qualité et performance mesurées, accessibilité et éthique portées par la communauté française, l'IA restant cantonnée à des outils (Gemini dans Android Studio) et à des expérimentations assumées comme bricolées.",
+  "keyTakeaways": [
+    "Modulariser avec des modules API/implémentation séparés : dépendre seulement des API, qui changent rarement, préserve le cache de build et permet d'ajouter une feature à une app en une ligne (Mottier).",
+    "Rendre la dette technique visible par équipe plutôt qu'en chiffre global : un dashboard alimenté par l'API SonarQube et un ownership par module ont fait baisser la dette de 50 % pour 90 % des équipes en trois mois chez Qonto (Mierzejewski).",
+    "Mesurer avant d'optimiser, en production, sur le P95 autant que sur le P50 : une optimisation bonne pour l'utilisateur moyen peut dégrader les téléphones bas de gamme (Burke, Lobato Genco, Le Ficher).",
+    "Différer l'initialisation des SDK au démarrage et générer des Baseline et Startup Profiles : environ 15 % puis 35 % de gain sur le démarrage chez Back Market (Le Ficher).",
+    "Migrer progressivement plutôt que repartir de zéro : interop Compose et Views, RxJava et coroutines, Dagger et Hilt cohabitent, avec des tests Konsist pour suivre la migration module par module (Jaidi, Puccio).",
+    "Ne jamais avaler une CancellationException, utiliser un coroutineScope local et garder une référence forte sur ses scopes custom (Louis CAD).",
+    "Préparer Android 16 dès la stabilité de plateforme : edge-to-edge obligatoire, restrictions d'orientation ignorées sur grand écran, pages mémoire de 16 Ko pour les apps natives (Lam, Rezgui).",
+    "Intégrer l'accessibilité dès les « 3 amigos », en revue de code et en CI, et tester avec TalkBack, Switch Access et Accessibility Scanner ; l'EAA s'applique depuis le 28 juin 2025 (AXA, Benoit, Malisciuc).",
+    "Se demander si l'on doit faire une feature, pas seulement si l'on peut, et oser dire non (Gouchet)."
+  ],
+  "sessions": [
+    {
+      "id": "building-scalable-mobile-projects",
+      "day": "2025-04-10",
+      "type": "keynote",
+      "title": "Building Scalable Mobile Projects: Fast Builds, High Reusability and Clear Ownership",
+      "speakers": ["Cyril Mottier — Amo"],
+      "feedbackFrom": ["David Blanc (Bluesky)", "Cyril Mottier (speaker, billet de blog)"],
+      "summary": "- **Choisir ce qu'on optimise** : on ne peut pas tout optimiser, certains objectifs sont orthogonaux. Chez Amo (apps sociales simples plutôt que super app), trois priorités : **builds rapides** (cibles affichées : moins de 10 s en local, 100 s pour un build interne, 1 000 s pour la prod), **réutilisabilité** (16 variantes d'apps à composer) et **ownership** ; la testabilité et les coûts sont volontairement laissés de côté au démarrage.\n- La modularisation date de 1968 (Larry Constantine) : **forte cohésion, faible couplage**. Rappel pédagogique du build system comme tri topologique d'un graphe acyclique, du **chemin critique** (ajouter des workers ne sert à rien au-delà) et de l'évitement de compilation par le cache.\n- Organisation du monorepo : foundation, platform, components, apps ; chaque composant découpé en **api / lib / bindings**. Les implémentations ne dépendent que des API, qui changent rarement, d'où un cache préservé ; ajouter une feature à une app tient en une ligne de Gradle.\n- Ownership : le fichier CODEOWNERS de GitHub est jugé *« cassé par conception »* (si tout le monde peut le modifier, personne ne le possède). Amo a écrit en Kotlin un outil de fichiers OWNERS hiérarchiques inspiré de Chromium et Kubernetes, qui génère le CODEOWNERS.\n- Conclusion : pas de solution parfaite, *« c'est une question de concessions »* à adapter au contexte. Seul retour participant : l'annonce du début de keynote (David Blanc).",
+      "summarySources": ["transcript", "program", "feedback", "blog"],
+      "video": {
+        "youtubeId": "SmGisVJ549w",
+        "title": "Building Scalable Mobile Projects: Fast Builds, High Reusability and Clear Ownership",
+        "publishedAt": "2025-06-16",
+        "transcript": true
+      }
+    },
+    {
+      "id": "building-dynamic-forms-with-jsonforms-and-kmp",
+      "day": "2025-04-10",
+      "type": "talk",
+      "title": "Building dynamic forms with JSONForms and Kotlin Multiplatform",
+      "speakers": ["Gérard Paligot — Decathlon"],
+      "feedbackFrom": ["Blog Ippon", "Guillaume Decorte (Atecna)", "John O'Reilly (Bluesky)", "Gérard Paligot (speaker, Bluesky)"],
+      "summary": "- Formulaires qui s'adaptent au pays, à la langue ou au contexte de l'utilisateur, décrits avec **JSONForms**, standard de la fondation Eclipse surtout utilisé sur le web, et implémentés nativement pour Android et iOS via **Kotlin Multiplatform** (programme).\n- Trois blocs retenus par Ippon et Atecna : le **schema** (propriétés et contraintes), le **UI schema** (présentation) et le **state** (valeurs) ; bénéfices cités : modularité, maintenabilité, personnalisation et localisation rapide.\n- John O'Reilly a trouvé le talk *« very interesting »* ; le speaker a publié ensuite un premier snapshot de sa bibliothèque jsonforms-kotlin.",
+      "summarySources": ["program", "blog", "feedback"],
+      "video": {
+        "youtubeId": "vzP_3vUEJog",
+        "title": "Building dynamic forms with JSONForms and Kotlin Multiplatform",
+        "publishedAt": "2025-06-17",
+        "transcript": false
+      }
+    },
+    {
+      "id": "dinner-for-two-with-gemini",
+      "day": "2025-04-10",
+      "type": "talk",
+      "title": "Dinner for two with Gemini: takeaway or restaurant?",
+      "speakers": ["Mahya Mir Habibi — Qonto", "Maia Grotepass — Qonto"],
+      "feedbackFrom": ["David Blanc (Bluesky)"],
+      "summary": "- Deux side projects **assumés comme bricolés** (*« just do it and just hack it if you have to »*). Le premier recherche dans ses lieux enregistrés Google Maps (Data Portability API, Places API, base Room) en envoyant tout le contexte dans le prompt, avec sortie JSON structurée ; prototype avec le Google AI SDK, marqué « prototypage uniquement ».\n- Le second propose une recette à partir de la photo d'un plat à emporter : Gemini multimodal dans le cloud (via Vertex AI en REST), ou **Gemma 3 1B sur l'appareil** via MediaPipe, sans image ni sortie JSON fiable.\n- Limites montrées en direct : hallucinations du modèle local (deux concombres de 500 g, des concombres frits), parsing de markdown fragile ; pistes : LoRA, structured generation, RAG avec base vectorielle.\n- Coût observé pendant les tests : 355 € pour la recherche de lieux, à cause du gros prompt, contre 6 centimes pour les recettes. Le seul retour trouvé est un clin d'oeil sur les prénoms des speakers (David Blanc).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "fe4kANXiS4w",
+        "title": "Dinner for two with Gemini: takeaway or restaurant?",
+        "publishedAt": "2025-06-17",
+        "transcript": true
+      }
+    },
+    {
+      "id": "changer-les-bugs-en-or",
+      "day": "2025-04-10",
+      "type": "talk",
+      "title": "Changer les bugs en or : le guide du développeur vers l'amélioration continue",
+      "speakers": ["Dennis Bordet — Theodo Apps"],
+      "feedbackFrom": ["Blog Ippon", "Guillaume Decorte (Atecna)"],
+      "summary": "- Point de départ : plus de 40 nouveaux bugs en trois mois, près de 100 résolus en un an, chacun utilisé comme levier d'amélioration (programme).\n- Méthode en cinq étapes après le débogage : **contexte** (lignes, commits, intention d'origine), **hypothèses de cause** (les « 4M » : main-d'oeuvre, méthode, matériel, machine), **pourquoi il n'a pas été détecté**, **actions sur la cause racine** et non sur le symptôme, **partage des apprentissages** (Ippon).\n- Atecna retient l'état d'esprit : *« apprendre plutôt que se justifier »*, sans recherche de coupable, et des KPI pour suivre l'amélioration.",
+      "summarySources": ["program", "blog"],
+      "video": {
+        "youtubeId": "ESc4H7iR3Co",
+        "title": "Changer les bugs en or : le guide du développeur vers l'amélioration continue",
+        "publishedAt": "2025-06-19",
+        "transcript": false
+      }
+    },
+    {
+      "id": "partager-des-fonctionnalites-entre-applications",
+      "day": "2025-04-10",
+      "type": "talk",
+      "title": "Partager des fonctionnalités entre applications : retour d'expérience",
+      "speakers": ["Jean-Baptiste Vincey — Deezer", "Philemon Combes — Deezer"],
+      "feedbackFrom": ["pboulch (Bluesky)"],
+      "summary": "- Chez Deezer, l'**authentification** est devenue une bibliothèque unique utilisée par les apps Deezer et Zen, intégrable en quelques lignes tout en gérant les besoins propres à chaque app (programme).\n- Cité par pboulch parmi les trois talks qu'il retient de l'édition, sans détail sur le contenu.",
+      "summarySources": ["program", "feedback"],
+      "video": {
+        "youtubeId": "Qi3HpXRtXXY",
+        "title": "Partager des fonctionnalités entre applications : retour d'expérience",
+        "publishedAt": "2025-06-19",
+        "transcript": false
+      }
+    },
+    {
+      "id": "building-a-macos-screen-saver-with-kotlin",
+      "day": "2025-04-10",
+      "type": "talk",
+      "title": "Building a macOS screen saver with Kotlin",
+      "speakers": ["Márton Braun — JetBrains"],
+      "feedbackFrom": ["Danny Preussler (Bluesky)"],
+      "summary": "- Talk de Kotlin hors des sentiers battus (Kotlin/Native et API macOS). Seule trace : la conclusion résumée par Danny Preussler, *« just don't! »*, les API Apple étant selon lui le principal obstacle.",
+      "summarySources": ["program", "feedback"],
+      "video": {
+        "youtubeId": "PQ-CbFPJPew",
+        "title": "Building a macOS screen saver with Kotlin",
+        "publishedAt": "2025-06-18",
+        "transcript": false
+      }
+    },
+    {
+      "id": "hello-from-the-other-side-collaboration-with-backend-engineers",
+      "day": "2025-04-10",
+      "type": "talk",
+      "title": "Hello from the other side: effective collaboration with backend engineers",
+      "speakers": ["Romain Piel"],
+      "feedbackFrom": ["Danny Preussler (Bluesky)", "Romain Piel (speaker, Bluesky)"],
+      "summary": "- Contre les réflexes *« je ne fais que consommer l'API »* ou *« le backend est une boîte noire »*, le talk propose comportements, processus et outils pour mieux collaborer avec les développeurs backend (programme).\n- Danny Preussler l'attendait comme un sujet très personnel après son passage au full stack ; le speaker parle d'une conférence *« great content overall »*.",
+      "summarySources": ["program", "feedback"],
+      "video": {
+        "youtubeId": "4vzVW320NLE",
+        "title": "Hello from the other side: effective collaboration with backend engineers",
+        "publishedAt": "2025-06-21",
+        "transcript": false
+      }
+    },
+    {
+      "id": "multimodal-gemini-in-android-studio",
+      "day": "2025-04-10",
+      "type": "talk",
+      "title": "Multimodal Gemini in Android Studio: AI-powered UI development",
+      "speakers": ["Paris Hsu — Google", "Diego Perez — Google"],
+      "feedbackFrom": [],
+      "summary": "- L'équipe UI tools d'Android Studio présente Gemini sur le cycle de développement d'UI : **image vers code** (maquette ou croquis vers Compose), extraction de couleurs depuis une capture, **génération de previews Compose** avec des données factices réalistes, et « Transform UI », encore expérimental, qui modifie le code à partir de la preview.\n- Démo live honnête : un écran de calculatrice approximatif, une validation d'e-mail réussie au second essai, une transformation qui ne fait pas ce qui est demandé. Message répété : *« ce n'est pas pour générer votre UI finale »*, mais pour gagner du temps sur le boilerplate.\n- Conseils : documenter les composables (Gemini s'en sert comme un humain), fournir du contexte (fichiers, design system) via le context drawer et la prompt library.\n- Pistes : boucle agentique build, rendu de preview et comparaison avec la maquette, correctifs d'accessibilité depuis l'UI check mode, adaptation à d'autres form factors. Question de la salle sur la confidentialité du code : réponse renvoyant à Gemini in Android Studio for Business. Pas de retour participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "Meg93hUc-y4",
+        "title": "Multimodal Gemini in Android Studio: AI-powered UI development",
+        "publishedAt": "2025-06-20",
+        "transcript": true
+      }
+    },
+    {
+      "id": "debug-better-in-android-studio",
+      "day": "2025-04-10",
+      "type": "talk",
+      "title": "Debug Better in Android Studio",
+      "speakers": ["Adarsh Fernando — Google", "Fabien Sanglard — Google"],
+      "feedbackFrom": [],
+      "summary": "- Historique du débogueur depuis 2014 (dual debugger natif et Java, D8, Kotlin, ADB Wi-Fi), puis nouveauté : l'**état de recomposition** des paramètres d'un composable affiché au point d'arrêt (inchangé, modifié, instable), ce que ni Logcat ni le Layout Inspector ne disent.\n- Fabien Sanglard (tech lead du débogueur et d'ADB) plaide pour **une chaîne d'outils à jour, câble compris** : beaucoup de câbles USB-C ne sont qu'en USB 2 ; ADB avertit désormais d'un mauvais câble. Le dialogue « Waiting for debugger » perdait environ 3 secondes (une attente d'une seconde et une boucle héritée de Dalvik), corrigées sur les versions récentes.\n- Démo sur un petit jeu bogué : format Logcat compact, force return, breakpoints conditionnels, de log, groupés ou dépendants, modification de variables à chaud, suspension d'un seul thread, attachement à une app lancée sans débogueur.\n- Morale : *« soyez curieux »*, beaucoup de développeurs n'utilisent que breakpoint, step et print. Pas de retour participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "AO1F8z8FMhc",
+        "title": "Debug Better in Android Studio",
+        "publishedAt": "2025-06-21",
+        "transcript": true
+      }
+    },
+    {
+      "id": "application-mobile-ne-fermons-pas-les-yeux-sur-l-accessibilite",
+      "day": "2025-04-10",
+      "type": "talk",
+      "title": "Application mobile, ne fermons pas les yeux sur l'accessibilité !",
+      "speakers": ["Daniel Verdierre — AXA", "Pierre Echégut — AXA"],
+      "feedbackFrom": [],
+      "summary": "- L'accessibilité concerne tout le monde : handicaps permanent, temporaire, de situation ; *« on passe en moyenne 8 ans de notre vie en situation de handicap »*. Témoignage d'un speaker passé de 10/10 à 2/10 de vision en cinq jours.\n- Démos sur l'app MonAXA : **Switch Access** avec un boîtier d'arcade imprimé en 3D, eye tracking d'iOS 18, Voice Access, **TalkBack**, clavier braille.\n- Correctifs concrets : grandes polices (libellé conservé seulement sur l'onglet actif, onglets passés à la verticale), lecture des « 24h/24 » et prix barrés, titres navigables, images décoratives ignorées, rôles et états des composants, zones tactiles de 48 dp.\n- Détection : l'audit en préproduction arrive trop tard ; UI check mode, Accessibility Scanner et un outil payant intégrable à la CI. Responsabilité partagée par le PO, les designers, les devs (dès les « 3 amigos » et en revue de code) et les testeurs.\n- Points durs assumés : graphiques difficiles à rendre accessibles, mode paysage parfois bloqué faute de temps de test, webviews. Pas de retour participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "3ybkpqFGbXw",
+        "title": "Application mobile, ne fermons pas les yeux sur l'accessibilité !",
+        "publishedAt": "2025-06-13",
+        "transcript": true
+      }
+    },
+    {
+      "id": "kotlin-multiplatform-alchemy-swift-interop",
+      "day": "2025-04-10",
+      "type": "talk",
+      "title": "Kotlin Multiplatform Alchemy: Making Gold out of Your Swift Interop",
+      "speakers": ["Pamela Hill — JetBrains"],
+      "feedbackFrom": ["Maxime Dupierreux (Bluesky)"],
+      "summary": "- Kotlin parle à Swift via un **pont Objective-C** (choix de 2018) : la plupart des fonctionnalités marchent, avec ou sans contournement ; data classes et génériques demandent de la prudence ; value classes, varargs et fonctions inline sont à éviter. Référence : le site « Kotlin-Swift interopedia ».\n- Astuces immédiates : @ObjCName, @ShouldRefineInSwift, @HiddenFromObjC (aussi pour réduire la taille du binaire), export KDoc, @Throws pour transformer les exceptions attendues en erreurs Swift, classe abstraite générique plutôt qu'interface typée.\n- Coroutines et Flow : pas d'annulation par défaut côté Swift ; utiliser **SKIE** ou KMP-NativeCoroutines.\n- **Swift Export** (annoncé à KotlinConf 2024) doit à terme remplacer le pont, mais reste limité (pas de coroutines, génériques effacés). Retour participant : *« great deep dive »* (Maxime Dupierreux).",
+      "summarySources": ["transcript", "feedback"],
+      "video": {
+        "youtubeId": "rMduGbZMsfo",
+        "title": "Kotlin Multiplatform Alchemy: Making Gold out of Your Swift Interop",
+        "publishedAt": "2025-06-23",
+        "transcript": true
+      }
+    },
+    {
+      "id": "skipping-compose-performance-problems-in-one-commit",
+      "day": "2025-04-10",
+      "type": "talk",
+      "title": "Skipping Compose performance problems in one commit",
+      "speakers": ["Sebastian Lobato Genco — Q42"],
+      "feedbackFrom": ["Sebastian Lobato Genco (speaker, Bluesky)"],
+      "summary": "- Cas réel sur une bibliothèque Compose pour l'app McDonald's (UI pilotée par le serveur) : taper dans un champ recompose tout l'écran. Credo : *« se soucier de la performance, pas s'en inquiéter »*, donc mesurer d'abord (Layout Inspector, rapports de stabilité du compilateur Compose).\n- Causes : listes jugées instables, modèles dans des modules sans le plugin Compose, un ByteArray dans une value class sans equals. Rappel du **strong skipping** (Kotlin 2.0.20+) qui compare désormais les instances.\n- Solution retenue : un **fichier de configuration de stabilité** (collections Kotlin, packages de modèles), plus un wrapper data class pour le tableau d'octets ; résultat : seul le champ édité recompose.\n- Débat en Q&R : ce fichier est un contrat aussi engageant qu'une annotation @Stable, à protéger par la revue de code. Le speaker évoque une salle *« étonnamment pleine après le déjeuner »*.",
+      "summarySources": ["transcript", "feedback"],
+      "video": {
+        "youtubeId": "ISpYtP17qgs",
+        "title": "Skipping Compose performance problems in one commit",
+        "publishedAt": "2025-06-23",
+        "transcript": true
+      }
+    },
+    {
+      "id": "how-to-keep-your-apps-secrets-secret",
+      "day": "2025-04-10",
+      "type": "talk",
+      "title": "How to keep your app's secrets, secret",
+      "speakers": ["Ed Holloway-George"],
+      "feedbackFrom": ["David Blanc (Bluesky)", "Danny Preussler (Bluesky)", "InTech Luxembourg (Bluesky)"],
+      "summary": "- Réponse à la question la plus posée en sécurité mobile, *« comment sécuriser mes clés d'API ? »* : bonnes pratiques, stockage des clés à l'échelle, accès sécurisé, exemples réels d'échecs (programme).\n- Premier conseil noté par David Blanc : **commencer par retirer les secrets du code**. Salle comble : Danny Preussler a suivi le talk assis par terre au premier rang ; InTech Luxembourg cite la sécurisation des secrets parmi ses thèmes retenus.",
+      "summarySources": ["program", "feedback"],
+      "video": {
+        "youtubeId": "H-wdOLCIiXA",
+        "title": "How to keep your app's secrets, secret",
+        "publishedAt": "2025-06-26",
+        "transcript": false
+      }
+    },
+    {
+      "id": "mobileops-v2-approche-adaptee-a-votre-organisation",
+      "day": "2025-04-10",
+      "type": "roundtable",
+      "title": "MobileOps v2, une approche adaptée à votre organisation",
+      "speakers": ["Willy Rouvre — Ippon Technologies", "Gérard Paligot — Decathlon", "Jihène Mejri — BforBank", "David Bonnet — Datadog"],
+      "feedbackFrom": ["pboulch (Bluesky)"],
+      "summary": "- Suite du talk de 2024 en format panel animé par Willy Rouvre : modèles d'organisation selon la maturité (devs multicasquettes, CI hybride, puis équipes plateforme et qualité dédiées), modèle Spotify jugé complexe, Team Topologies plus récent. Consigne : *« inspirez-vous de la théorie, mais partez de vos contraintes »*.\n- Les panélistes décrivent leur réalité : staff engineers transverses chez Decathlon, Spotify « fait maison » avec équipe enabling chez BforBank (et valeur de la **stabilité des équipes**), équipe mobile qui fait l'avocat auprès des équipes produit chez Datadog.\n- Proposition de **métriques DORA adaptées au mobile** : délai jusqu'à la soumission au store, taux d'échec incluant les ANR, taux de rejet en soumission, temps de validation, notes et engagement par version. Les SLA des SDK partenaires sont un angle mort (jusqu'à 90 % des crashs dus à un partenaire chez BforBank).\n- Observabilité de bout en bout (OpenTelemetry, traces reliées au backend) comme « Graal » pour diagnostiquer sans ouvrir le code. pboulch cite cette table ronde parmi ses trois moments forts.",
+      "summarySources": ["transcript", "feedback"],
+      "video": {
+        "youtubeId": "pH8OVDaFuEo",
+        "title": "MobileOps v2, une approche adaptée à votre organisation",
+        "publishedAt": "2025-06-27",
+        "transcript": true
+      }
+    },
+    {
+      "id": "get-ready-for-android-16",
+      "day": "2025-04-10",
+      "type": "talk",
+      "title": "Get Ready for Android 16",
+      "speakers": ["Fung Lam — Google"],
+      "feedbackFrom": [],
+      "summary": "- Calendrier nouveau : **release majeure au deuxième trimestre**, mineure au quatrième (nouvelles API, peu de changements cassants) ; la stabilité de plateforme signifie que tout changement qui casse des apps sera annulé, donc cibler Android 16 tout de suite plutôt qu'à la date imposée par Google Play.\n- Changements cassants : ART mis à jour via Google Play sur plus d'un milliard d'appareils (ne pas dépendre des API internes), predictive back activé, **edge-to-edge sans opt-out**, restrictions d'orientation et de redimensionnement ignorées sur les écrans de 600 dp et plus (opt-out temporaire), protection du réseau local.\n- Nouveautés : photo picker enrichi, codecs modernes (AVIF, AV1), texte vertical, taux de rafraîchissement adaptatif.\n- Outillage : SDK Upgrade Assistant, lint qui bloque une simple montée de targetSdk, compatibility framework, device streaming, pré-analyse dans la Play Console. Pas de retour participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "20EwcjQXkAk",
+        "title": "Get Ready for Android 16",
+        "publishedAt": "2025-06-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ameliorer-le-temps-de-demarrage-de-50",
+      "day": "2025-04-10",
+      "type": "talk",
+      "title": "Comment nous avons amélioré le temps de démarrage de notre app de 50%",
+      "speakers": ["Florian Le Ficher — Back Market"],
+      "feedbackFrom": [],
+      "summary": "- App Back Market : plus de 280 modules Gradle, 9 millions de téléchargements ; démarrage au P90 passé d'environ 1,43 s à 670 ms.\n- **Mesurer d'abord** : Android Vitals (comparaison avec des apps similaires), Firebase Performance (rétention de 60 jours), Datadog, Macrobenchmark. Anecdote : l'API splash screen d'Android 12 a fait compter l'animation de lancement dans le démarrage, une fausse régression.\n- Gains : **Baseline Profiles** (léger), **Startup Profiles** (environ 15 %, en trois lignes), surtout un framework maison sur App Startup et coroutines pour différer et mesurer chaque SDK (environ 35 % ; un SDK antifraude prenait 300 ms au démarrage).\n- Autres pistes : StrictMode, ANR, dépendances à jour, R8 full mode à retester soigneusement. Pas de retour participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "M40jCXSWhGQ",
+        "title": "Comment nous avons amélioré le temps de démarrage de notre app de 50%",
+        "publishedAt": "2025-06-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "metadaquoi-compatibilite-kotlin",
+      "day": "2025-04-10",
+      "type": "talk",
+      "title": "Metadaquoi ? Gérez la compatibilité de vos applications et bibliothèques Kotlin",
+      "speakers": ["Martin Bonnin"],
+      "feedbackFrom": ["Maxime Dupierreux (Bluesky)", "Martin Bonnin (speaker, Bluesky)"],
+      "summary": "- Garanties de compatibilité de l'écosystème Kotlin (métadonnées, dépendances transitives, erreurs runtime sur les vieux Android) et outils pour les gérer finement ; le speaker a publié la veille un plugin Gradle, compat-patrouille (programme, Bluesky).\n- Retour participant limité à une réaction : *« metadata 🤯😰 »* (Maxime Dupierreux).",
+      "summarySources": ["program", "feedback"],
+      "video": {
+        "youtubeId": "0SSQTastVqU",
+        "title": "Metadaquoi ? Gérez la compatibilité de vos applications et bibliothèques Kotlin",
+        "publishedAt": "2025-06-27",
+        "transcript": false
+      }
+    },
+    {
+      "id": "prepare-your-app-for-the-16-kb-page-migration",
+      "day": "2025-04-10",
+      "type": "talk",
+      "title": "Prepare your app for the 16 KB page migration",
+      "speakers": ["Yacine Rezgui — Google"],
+      "feedbackFrom": [],
+      "summary": "- Les **pages mémoire de 16 Ko**, introduites avec Android 15, deviendront une exigence de Google Play ; un même APK fonctionne en 4 Ko et 16 Ko.\n- L'essentiel du talk vulgarise la mémoire (frames, pages, table des pages, swap, caches L1/L2/L3, TLB) pour expliquer le gain : moins de défauts de page, environ 4,6 % de consommation en moins et jusqu'à 30 % de lancement plus rapide selon les chiffres cités.\n- Migration : AGP 8.5.1 minimum, aligner le code natif et ne plus supposer une taille de page fixe, vérifier les dépendances natives (y compris transitives). Les apps purement Kotlin ou Java n'ont rien à faire. Pas de retour participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "Z6Ole2sKnLs",
+        "title": "Prepare your app for the 16 KB page migration",
+        "publishedAt": "2025-06-29",
+        "transcript": true
+      }
+    },
+    {
+      "id": "escape-from-planet-regex",
+      "day": "2025-04-10",
+      "type": "talk",
+      "title": "Escape from Planet Regex - Kotlin to the Rescue",
+      "speakers": ["Ben Kadel"],
+      "feedbackFrom": ["Alex Bruneau (Bluesky)", "Ed Holloway-George (Bluesky)"],
+      "summary": "- Les expressions régulières et leur usage en Kotlin, sur la grande scène. Retours centrés sur la forme : *« la première fois que je vois quelqu'un aussi enthousiaste en parlant de regex »* (Alex Bruneau), un talk « à haute énergie » (Ed Holloway-George). Ben Kadel animait aussi le jeu Pin-Droid pendant les deux jours.",
+      "summarySources": ["program", "feedback"],
+      "video": {
+        "youtubeId": "F7navDuZFdo",
+        "title": "Escape from Planet Regex - Kotlin to the Rescue",
+        "publishedAt": "2025-06-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "evolution-of-tech-jobs-post-2023",
+      "day": "2025-04-10",
+      "type": "talk",
+      "title": "The Evolution of Tech Jobs Post 2023: Navigating a New Era as an Android Developer",
+      "speakers": ["Alexandre Peysale"],
+      "feedbackFrom": [],
+      "summary": "- Chiffres cités : offres Indeed divisées par deux entre novembre 2022 et novembre 2023, salaires Kotlin en baisse de plus de 10 %, levées de fonds revenues au niveau d'avant le COVID, plus de fermetures de startups. **Cause racine selon le speaker : la hausse des taux d'intérêt**, qui détourne les fonds d'investissement des actifs non cotés.\n- Conseils : montrer **l'impact client et business** de son travail (le pourquoi, pas seulement le comment), continuer d'apprendre (outils IA, contexte de l'entreprise), viser les secteurs porteurs, élargir la zone géographique et ne pas se limiter aux postes Android.\n- En Q&R : recruter est *« beaucoup plus facile »* qu'il y a deux ans, mais beaucoup de candidats ne savent pas se vendre ; les freelances ont été coupés en premier en 2023. Pas de retour participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "478QszvzDUI",
+        "title": "The Evolution of Tech Jobs Post post 2023: Navigating a New Era as an Android Developer",
+        "publishedAt": "2025-07-01",
+        "transcript": true
+      }
+    },
+    {
+      "id": "securiser-nos-apps-anticiper-les-menaces",
+      "day": "2025-04-10",
+      "type": "talk",
+      "title": "Sécuriser nos apps : Anticiper les menaces, protéger les utilisateurs",
+      "speakers": ["Alexandre Genet"],
+      "feedbackFrom": ["Guillaume Decorte (Atecna)"],
+      "summary": "- Parcours du guide de tests de sécurité mobile de l'OWASP : ouvrir un APK, y trouver chaînes et images sensibles, fouiller bases et SharedPreferences, contourner la détection de root, observer le réseau (programme).\n- Atecna retient qu'il faut combiner protections client et serveur : *« ne jamais stocker de secrets dans l'APK »*, valider les certificats, obfusquer, vérifier l'intégrité à l'exécution et adopter le Zero Trust, la sécurité côté client seule ne résistant pas au reverse engineering.",
+      "summarySources": ["program", "blog"],
+      "video": {
+        "youtubeId": "SIKF23BXEaE",
+        "title": "Sécuriser nos apps : Anticiper les menaces, protéger les utilisateurs",
+        "publishedAt": "2025-07-02",
+        "transcript": false
+      }
+    },
+    {
+      "id": "tous-les-pieges-des-coroutines",
+      "day": "2025-04-10",
+      "type": "talk",
+      "title": "Tous les pièges des coroutines",
+      "speakers": ["Louis CAD — Infomaniak"],
+      "feedbackFrom": ["David Blanc (Bluesky)", "Martin Bonnin (Bluesky)"],
+      "summary": "- Pièges en nombre fini, erreurs infinies : *« lisez la doc »*. Rappel de ce qu'est une coroutine (une routine suspendable qui libère son thread) et de la **concurrence structurée** (grouper les tâches liées, annulation et erreurs propagées).\n- Pièges : runBlocking sur mobile, **avaler les CancellationException** (catch générique, runCatching, boucle de retry infinie), scope externe au lieu d'un coroutineScope local, try/catch autour d'un await, implémenter CoroutineScope, écraser le Job, suspendCoroutine non annulable, **scope custom sans référence forte** ramassé par le garbage collector (exemple MediaPlayer), scope qui vit trop longtemps.\n- Erreurs courantes : ignorer les intégrations (await des Tasks Play Services), mauvais dispatcher (pas d'I/O bloquante sur Default), yield pour les traitements longs, delay qui ne compte pas la veille. Exemples tirés des apps open source d'Infomaniak (SwissTransfer, kMail).\n- Retour participant : *« packed with extraordinary Kotlin wisdom. 5⭐ »* (David Blanc).",
+      "summarySources": ["transcript", "feedback"],
+      "video": {
+        "youtubeId": "9Ll14dR1OfQ",
+        "title": "🧨 Tous les pièges des coroutines",
+        "publishedAt": "2025-07-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "super-apps-skateboard-porte-avion",
+      "day": "2025-04-10",
+      "type": "talk",
+      "title": "Super apps : on voulait un skateboard, on construit un porte-avion",
+      "speakers": ["Antoine Robiez — Decathlon", "Baptiste Carlier — Decathlon Digital"],
+      "feedbackFrom": ["pboulch (Bluesky)", "Baptiste Carlier (speaker, Bluesky)"],
+      "summary": "- Deux apps Decathlon : la Shopping App (34 pays, plus de 10 millions de téléchargements, plus de 300 000 lignes Android) et l'app des vendeurs en magasin (plus de 70 pays). Analogie filée du skateboard au porte-avions : chaque étape résout des problèmes et en crée de nouveaux.\n- Organisation : **feature teams** pluridisciplinaires, **release train** avec CI/CD et feature flipping pour ne jamais retarder un train.\n- Technique : clean architecture, modules Gradle par couche puis par feature (253 modules sur la Shopping App) ; revers : **1 h 30 de CI**, d'où *« mieux vaut un module de 1 000 classes que 1 000 modules d'une classe »* pour le temps de build.\n- Réponse : une **équipe plateforme** et l'extraction des briques transverses dans une bibliothèque à part (plus de 20 000 lignes extraites, gain de build), au prix d'un processus de correction plus lourd. pboulch retient ce retour sur les défis techniques et d'organisation des super apps.",
+      "summarySources": ["transcript", "feedback"],
+      "video": {
+        "youtubeId": "LFgiytKFAMY",
+        "title": "Super apps : on voulait un skateboard, on construit un porte-avion",
+        "publishedAt": "2025-07-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "being-an-ethical-software-engineer",
+      "day": "2025-04-11",
+      "type": "keynote",
+      "title": "Being an ethical software engineer",
+      "speakers": ["Xavier F. Gouchet — Datadog"],
+      "feedbackFrom": ["David Blanc (Bluesky)", "Blog Ippon", "InTech Luxembourg (Bluesky)"],
+      "summary": "- Point de départ : l'enquête Stack Overflow 2018, où une minorité refusait d'écrire du code contraire à l'éthique et 80 % rejetaient la responsabilité sur le management. Le logiciel est souvent **« extralégal »**, en avance sur la loi (premier texte sur l'IA en 2024).\n- Pas de réponse toute faite : conséquentialisme contre déontologie, biais cognitifs. Contre-exemples : Volkswagen, biais des images générées par IA, filtrage asymétrique de hashtags sur Instagram.\n- Pistes : **prendre soin des utilisateurs** (donner un nom aux personas), se demander *« si l'on devrait »* et pas seulement *« si l'on peut »* (citation de Jurassic Park), **avoir le droit de dire non** (une case précochée d'assurance abandonnée sur l'insistance d'un développeur), posséder toute la codebase, ne pas faire confiance aveuglément à l'IA.\n- En Q&R : son SDK coupe le réseau en mode économie de batterie malgré la demande de clients ; débat sur les publicités dans les jeux pour enfants.\n- Retours : *« a bit of philosophy, a bit of psychology, some great quotes and plenty of food for thought. All the ingredients of a great keynote »* (David Blanc) ; Ippon retient de placer l'humain au début et à la fin de toute démarche.",
+      "summarySources": ["transcript", "feedback", "blog"],
+      "video": {
+        "youtubeId": "SK-TCHRN0Ik",
+        "title": "Being an ethical software engineer",
+        "publishedAt": "2025-07-04",
+        "transcript": true
+      }
+    },
+    {
+      "id": "diy-android-kiosks-raspberry-pi",
+      "day": "2025-04-11",
+      "type": "talk",
+      "title": "DiY Android Kiosks: Turning a Raspberry Pi into a Modular Workhorse",
+      "speakers": ["Etienne Caron — Kanastruk"],
+      "feedbackFrom": ["John O'Reilly (Bluesky)"],
+      "summary": "- Un Raspberry Pi sous Android en mode kiosque, avec périphériques USB inattendus (webcams, servos pour la numérisation 3D, lecteur de codes-barres, terminal de paiement, balance) pour des usages de point de vente ou d'entrepôt (programme).\n- John O'Reilly : *« very interesting… tons of useful advice! »*.",
+      "summarySources": ["program", "feedback"],
+      "video": {
+        "youtubeId": "P8l2PDiN2Zk",
+        "title": "DiY Android Kiosks: Turning a Raspberry Pi into a Modular Workhorse",
+        "publishedAt": "2025-07-07",
+        "transcript": false
+      }
+    },
+    {
+      "id": "impact-of-micro-optimizations-on-large-scale-apps",
+      "day": "2025-04-11",
+      "type": "talk",
+      "title": "The Impact of Micro-Optimizations on Large-Scale Apps",
+      "speakers": ["Damian Burke — Meta"],
+      "feedbackFrom": [],
+      "summary": "- Ingénieur chez WhatsApp : les micro-optimisations comptent à très grande échelle, surtout sur les appareils bas de gamme des marchés émergents, mais leur effet est difficile à mesurer et peut apparaître ailleurs que prévu.\n- Méthode : instrumenter en production par échantillonnage, regarder **P50 et P95**, A/B tester, puis nettoyer le code perdant.\n- Cas : téléchargements parallélisés (meilleur au P50, mais trop de threads pour les petits téléphones, d'où un parallélisme borné) ; grille remplacée par des lignes linéaires (moins de frames perdues) ; ViewStub (inflation initiale réduite d'environ 50 %) ; verrous partagés de l'Application Context à l'origine d'ANR aléatoires.\n- En Q&R : rendre visibles et célébrer les gains de performance, sinon ils passent inaperçus. Pas de retour participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "I1L3xzYgZxM",
+        "title": "The Impact of Micro-Optimizations on Large-Scale Apps",
+        "publishedAt": "2025-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "soft-disabling-eco-conception-frontend",
+      "day": "2025-04-11",
+      "type": "talk",
+      "title": "Comment développer une approche Frontend de l'éco-conception : le Soft Disabling",
+      "speakers": ["Vincent Offroy — Leboncoin"],
+      "feedbackFrom": ["Blog Ippon", "Leboncoin Tech (Bluesky)"],
+      "summary": "- Constat : l'éco-conception est presque toujours traitée côté infra ou backend. Chez Leboncoin, le bloc « annonces récentes » de l'accueil génère 20 millions de requêtes mensuelles non cachables, et 98 % des affichages ne sont suivis d'aucune interaction (Ippon).\n- **Soft disabling** : un compteur de non-interactions désactive la fonctionnalité au-delà d'un seuil (fixé à 30 par A/B test) et la remplace par un interrupteur qui explique le changement.\n- Résultat rapporté : la part Android du trafic de cette API passe de 55 % à 18 %, **sans impact business** et avec des retours utilisateurs positifs. Le titre refusé car « trop clickbait » promettait 70 % d'appels en moins (programme).",
+      "summarySources": ["program", "blog", "feedback"],
+      "video": {
+        "youtubeId": "7cOrk-O3oCY",
+        "title": "Comment développer une approche Frontend de l'éco-conception : le Soft Disabling",
+        "publishedAt": "2025-07-10",
+        "transcript": false
+      }
+    },
+    {
+      "id": "data-science-with-kotlin-dataframe",
+      "day": "2025-04-11",
+      "type": "talk",
+      "title": "Data Science with Kotlin: Leveraging Deep Analysis with DataFrame",
+      "speakers": ["Dinorah Tovar — Arkham"],
+      "feedbackFrom": ["John O'Reilly (Bluesky)", "Danny Preussler (Bluesky)"],
+      "summary": "- Kotlin DataFrame comme alternative typée à Pandas, avec live coding (programme). Retours : *« nice talk »* (John O'Reilly) ; Danny Preussler s'amuse d'un talk Kotlin qui met Python sur la table.",
+      "summarySources": ["program", "feedback"],
+      "video": {
+        "youtubeId": "cxGMQrMbsiE",
+        "title": "Data Science with Kotlin: Leveraging Deep Analysis with DataFrame",
+        "publishedAt": "2025-07-08",
+        "transcript": false
+      }
+    },
+    {
+      "id": "state-of-voice-interactions-on-android",
+      "day": "2025-04-11",
+      "type": "talk",
+      "title": "The State of Voice Interactions on Android",
+      "speakers": ["Elaine Dias Batista — SFEIR"],
+      "feedbackFrom": ["Blog Ippon"],
+      "summary": "- Cinq briques d'une interaction vocale : détection du mot d'activation, reconnaissance vocale, compréhension du langage, logique métier, synthèse vocale (Ippon).\n- Panorama des solutions : Google Assistant et Gemini, Picovoice, AWS Transcribe, Whisper, Tock, wit.ai, Vosk, modèles locaux. Ippon retient l'approche sélective et la **priorité au hors-ligne** pour la confidentialité.",
+      "summarySources": ["program", "blog"],
+      "video": {
+        "youtubeId": "Zo07RTddtGk",
+        "title": "The State of Voice Interactions on Android",
+        "publishedAt": "2025-07-09",
+        "transcript": false
+      }
+    },
+    {
+      "id": "compose-hot-reload-is-here",
+      "day": "2025-04-11",
+      "type": "talk",
+      "title": "Compose Hot Reload is here, stop relaunching your app!",
+      "speakers": ["Márton Braun — JetBrains"],
+      "feedbackFrom": ["Maxime Dupierreux (Bluesky)"],
+      "summary": "- Démo sur l'app KotlinConf : l'application n'est lancée qu'une fois, puis **toutes les modifications sont rechargées** en gardant l'état (constantes, layouts, nouvelles fonctions, autres modules, thème, nouvelle classe dans une hiérarchie scellée).\n- Fonctionnement : un plugin Gradle, le JetBrains Runtime et sa redéfinition de classes, un agent Java, une compilation Gradle continue, puis l'invalidation ciblée des scopes Compose touchés ; le code hors composition (ViewModel) n'est réexécuté qu'à la prochaine action.\n- Limites : en alpha, **cible desktop JVM uniquement** (argument pour ajouter une cible desktop rien que pour le développement), un cas non géré (changement de supertype). Retour participant : une simple mention enthousiaste (Maxime Dupierreux).",
+      "summarySources": ["transcript", "feedback"],
+      "video": {
+        "youtubeId": "0wfEsX_JB8k",
+        "title": "Compose Hot Reload 🔥 is here, stop relaunching your app!",
+        "publishedAt": "2025-07-10",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ux-et-accessibilite-cognitive",
+      "day": "2025-04-11",
+      "type": "talk",
+      "title": "UX & Accessibilité cognitive : et si vous simplifiiez vraiment l'expérience utilisateur ?",
+      "speakers": ["Marie Benoit"],
+      "feedbackFrom": ["Blog Ippon", "Guillaume Decorte (Atecna)", "pboulch (Bluesky)"],
+      "summary": "- Ancienne professeure de français reconvertie (programme) : 80 % des 12 millions de Français en situation de handicap ont un **handicap invisible** (cognitif, mental, psychique) selon les chiffres rapportés par Ippon.\n- Cinq principes : clarté visuelle, simplicité du langage, prévisibilité, adaptabilité, multimodalité. Contre-exemple de création de compte chez Leclerc Drive, bon exemple chez Super U.\n- Atecna souligne ces handicaps souvent oubliés des critères d'accessibilité classiques ; pboulch salue *« le premier talk plus que réussi »* de la speakeuse.",
+      "summarySources": ["program", "blog", "feedback"],
+      "video": {
+        "youtubeId": "iICl2AntJfA",
+        "title": "UX & Accessibilité cognitive : et si vous simplifiiez vraiment l'expérience utilisateur ?",
+        "publishedAt": "2025-07-11",
+        "transcript": false
+      }
+    },
+    {
+      "id": "migrer-une-application-progressivement",
+      "day": "2025-04-11",
+      "type": "talk",
+      "title": "Migrer une application avec des millions d'utilisateurs progressivement",
+      "speakers": ["Ala Jaidi", "Cyril Puccio"],
+      "feedbackFrom": [],
+      "summary": "- Point de départ : 15 à 16 minutes de compilation et des refactorings de trois semaines à chaque feature ; l'équipe a d'abord **repris de zéro** (« Reborn », six mois, sans gel des features et avec RxJava, techno maîtrisée), en faisant cohabiter Dagger et Hilt pour A/B tester dès le premier jour.\n- Ensuite, saisir chaque opportunité : le rebranding pour passer à **Compose** (formation, design system en tokens, atomes, molécules), puis Rx vers **coroutines** avec les ponts await, asFlow, rxSingle. Leçon tirée : *« tout casser et repartir de zéro, ce n'est peut-être pas la meilleure façon »*.\n- Pratiques d'équipe : vision technique annuelle revue chaque trimestre, deux heures hebdomadaires entre devs Android, daily de cinq minutes pour les blocages, spécifications techniques d'une demi-page, Dependabot, Spotless, tests **Konsist** pour suivre chaque migration par module.\n- Communiquer hors de l'équipe pour gagner la confiance, donc du temps pour les migrations. Entreprise non identifiable dans la transcription automatique ; pas de retour participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "Ef-cjjA00yo",
+        "title": "Migrer une application avec des millions d'utilisateurs progressivement",
+        "publishedAt": "2025-07-11",
+        "transcript": true
+      }
+    },
+    {
+      "id": "navigating-the-roadblocks-to-eaa-compliance",
+      "day": "2025-04-11",
+      "type": "talk",
+      "title": "Navigating the Roadblocks to EAA Compliance",
+      "speakers": ["Maxim Malisciuc"],
+      "feedbackFrom": ["Diana (Bluesky)"],
+      "summary": "- Le European Accessibility Act s'applique aux apps à partir du 28 juin 2025 : handicaps, WCAG 2.2, mise en conformité d'un écran réel et astuces au-delà des contentDescription (programme).\n- Diana juge la conférence *« the perfect stage for this topic, right on time »* avant l'entrée en vigueur de l'EAA et salue les qualités de speaker de Maxim.",
+      "summarySources": ["program", "feedback"],
+      "video": {
+        "youtubeId": "PgNgl1GJ40A",
+        "title": "Navigating the Roadblocks to EAA Compliance",
+        "publishedAt": "2025-07-15",
+        "transcript": false
+      }
+    },
+    {
+      "id": "android-context-and-manifest-system-mechanics",
+      "day": "2025-04-11",
+      "type": "talk",
+      "title": "Using the Android Context and Manifest to unveil the Android System Mechanics",
+      "speakers": ["Ioannis Anifantakis"],
+      "feedbackFrom": ["Blog Ippon"],
+      "summary": "- Chaque app tourne isolée sous un identifiant Linux propre : le **Manifest** sert de registre (paquets, permissions, quatre types de composants) et le **Context** de *« pont de communication avec Android »* (Ippon).\n- Trois rôles du Context : passif (ressources), actif (lancer des composants), liaison (connexions durables), illustrés par l'analogie du standard téléphonique. Même en single activity et Compose, il reste *« la colle de notre application »*.",
+      "summarySources": ["program", "blog"],
+      "video": {
+        "youtubeId": "4_oJLem1fqo",
+        "title": "Using the Android Context and Manifest to unveil the Android System Mechanics",
+        "publishedAt": "2025-07-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "accelerer-les-temps-de-build-gradle",
+      "day": "2025-04-11",
+      "type": "talk",
+      "title": "Des temps de build qui cassent votre rythme ? Découvrez comment les accélérer !",
+      "speakers": ["Louis Jacomet", "Paul Merlin"],
+      "feedbackFrom": ["Martin Bonnin (Bluesky)"],
+      "summary": "- Scalabilité de Gradle sur la boucle interne (coder, builder, tester) et externe (synchronisation Android Studio, CI) : évitement du travail inutile et parallélisme, ce qui a été livré et ce qui arrive (programme).\n- Seule trace participante : la mention du talk par Martin Bonnin.",
+      "summarySources": ["program", "feedback"],
+      "video": {
+        "youtubeId": "4zgHYgeWklI",
+        "title": "Des temps de build qui cassent votre rythme ? Découvrez comment les accélérer !",
+        "publishedAt": "2025-07-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "create-engaging-apps-for-wear-os",
+      "day": "2025-04-11",
+      "type": "talk",
+      "title": "Create engaging apps for Wear OS",
+      "speakers": ["Kseniia Shumelchyk — Google", "Yuri Schimke — Google"],
+      "feedbackFrom": ["John O'Reilly (Bluesky)", "Maxime Dupierreux (Bluesky)"],
+      "summary": "- Guidelines, architecture et bonnes pratiques Wear OS, Compose for Wear OS et outils IA (programme).\n- John O'Reilly note que la démo s'appuie sur Confetti, son exemple KMP, enrichi par Yuri Schimke ; Maxime Dupierreux retient la création d'un cadran à thème français.",
+      "summarySources": ["program", "feedback"],
+      "video": {
+        "youtubeId": "IO3Axjeuk_c",
+        "title": "Create engaging apps for Wear OS",
+        "publishedAt": "2025-07-15",
+        "transcript": false
+      }
+    },
+    {
+      "id": "pieges-courants-dans-les-equipes-techniques",
+      "day": "2025-04-11",
+      "type": "talk",
+      "title": "Les pièges courants dans les équipes techniques et comment les éviter",
+      "speakers": ["Renaud Mathieu"],
+      "feedbackFrom": ["Blog Ippon", "David Blanc (Bluesky)"],
+      "summary": "- Les **sept péchés capitaux** des équipes tech selon un freelance qui a vu les mêmes problèmes partout : orgueil (over-engineering, *« vouloir trop bien faire, trop tôt »*), avarice (trop de travail en cours), luxure (technos à la mode sans justification), envie (se comparer sans contexte), gourmandise (automatisation excessive), colère (tensions en code review), paresse (bonnes pratiques négligées) (Ippon).\n- Remèdes : KISS, YAGNI, SOLID, one piece flow, heijunka, MoSCoW, pair programming. David Blanc : *« packed full with pragmatic advice »*.",
+      "summarySources": ["program", "blog", "feedback"],
+      "video": {
+        "youtubeId": "TqLublQdams",
+        "title": "Les pièges courants dans les équipes techniques et comment les éviter",
+        "publishedAt": "2025-07-17",
+        "transcript": false
+      }
+    },
+    {
+      "id": "dont-let-attackers-exploit-your-app-via-intents",
+      "day": "2025-04-11",
+      "type": "talk",
+      "title": "Don't let attackers exploit your app via Intents",
+      "speakers": ["Balázs Gerlei"],
+      "feedbackFrom": ["David Blanc (Bluesky)"],
+      "summary": "- Les Intents sont des entrées à assainir : redirection d'Intent pour escalader les privilèges, déni de service par Intent malformé, fuite par injection de paramètres, détournement de tâche (StrandHogg), et apports des Intents plus sûrs d'Android 15 (programme).\n- Seule trace : David Blanc annonce le talk comme un déballage de *« toutes sortes d'Intents criminels »*.",
+      "summarySources": ["program", "feedback"],
+      "video": {
+        "youtubeId": "0YQym2HApfE",
+        "title": "Don't let attackers exploit your app via Intents",
+        "publishedAt": "2025-07-18",
+        "transcript": false
+      }
+    },
+    {
+      "id": "extending-android-xrs-reality",
+      "day": "2025-04-11",
+      "type": "talk",
+      "title": "Extending Android XR's Reality",
+      "speakers": ["Mario Bodemann — Yubico"],
+      "feedbackFrom": [],
+      "summary": "- Sans matériel disponible (casque Samsung seulement entrevu), tout passe par l'**émulateur Android XR** de la version Canary : déplacements et rotations simulés, fenêtres d'apps flottantes à placer autour de soi, terminal et navigateur en 3D.\n- Démo d'un client Bluesky : la même UI Compose s'affiche en 2D ou, en mode spatial, dans des SpatialPanel disposés en cylindre ; **Jetpack XR** reprend les concepts connus (Subspace, SpatialColumn, SpatialPanel), le reste est de la trigonométrie.\n- Bugs d'émulateur montrés avec humour (vue YouTube Cardboard mal rendue). Conclusion : démarrer XR est simple pour un développeur Android, *« on attend surtout le matériel »*. Pas de retour participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "mKgMBuSeMSA",
+        "title": "Extending Android XR's Reality",
+        "publishedAt": "2025-07-18",
+        "transcript": true
+      }
+    },
+    {
+      "id": "tackling-tech-debt-at-scale",
+      "day": "2025-04-11",
+      "type": "talk",
+      "title": "No More 'Someone Else's Problem': Tackling Tech Debt at Scale",
+      "speakers": ["Florian Mierzejewski — Qonto"],
+      "feedbackFrom": [],
+      "summary": "- Contexte Qonto : 53 ingénieurs Android et 10 leads en 13 équipes cross-fonctionnelles, 8 pays. Une dette mesurée globalement (*« 3 000 code smells »* dans SonarQube) est **le problème de tout le monde, donc de personne**.\n- Solution volontairement peu coûteuse (environ un mois pour un ingénieur) : un job nocturne lit l'API SonarQube, stocke les issues et alimente des **dashboards Metabase par équipe, module et règle**, à partir des README d'ownership existants ; les modules sans propriétaire, dont un monolithe de 23 % du code, apparaissent comme les pires.\n- Adoption : bêta avec quelques équipes, canal dédié, top 3 hebdomadaire, badges, coefficients par règle, lien direct vers la ligne dans Android Studio (la fonctionnalité la plus appréciée). Objectif dépassé : **90 % des équipes ont réduit leur dette de 50 % en moins de trois mois**, et le suivi des migrations n'est plus manuel.\n- Leçons : garder le score positif et sans blâme, le figer pour un trimestre, encourager les équipes à écrire leurs propres règles (dépendances, tests flaky) ; une règle doit signaler un fichier, pas 6 000 imports. Pas de retour participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "nK0kgD8jstc",
+        "title": "No More ‘Someone Else’s Problem’: Tackling Tech Debt at Scale",
+        "publishedAt": "2025-07-17",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Réussir une refonte UI modulaire : architecture, design system et screenshots tests (Damien Baronnet, Julien Emery, Coyote), vidéo disponible",
+    "Mastering Release Management (Alexandre Bruneau), roundtable",
+    "Securing Android: Tackling Advanced Threats and Enhancing App Security (Anique Sayed), vidéo disponible",
+    "Kotlin and Compose Multiplatform patterns for iOS interop (John O'Reilly), vidéo disponible",
+    "Software Engineering with GenAI (Maia Grotepass), roundtable",
+    "From Source Code to APK: A Manual Deep Dive into the Android Build Process (Rafa Moreno, Airbnb), vidéo disponible",
+    "Mobiles en Perspective (Robin Caroff, Thomas Boutin), atelier",
+    "BLE et contrôle d'accès : transformer son smartphone en badge (Florian N'Gbala, Lunabee Studio), vidéo disponible",
+    "Working across timezones tips and tricks (Alexandre Bruneau), vidéo disponible",
+    "Kotlin Notebooks: Data Visualization for Developers (Danny Preussler), vidéo disponible",
+    "Building a Modern Kotlin Multiplatform Application with Compose Multiplatform and Koin (Arnaud Giuliani), vidéo disponible",
+    "No Signal, No Problem: How We Collect Data in the Most Remote Places (Benjamin Monjoie), vidéo disponible",
+    "EM or IC? What's Right for Me? (Alexandre Peysale, Elaine Dias Batista), roundtable",
+    "Kotlin variance modifiers and Covariant Object Nothing pattern (Marcin Moskała), vidéo disponible",
+    "Comment contribuer à l'Android Open Source Project (Kamal Faraj), vidéo disponible",
+    "Pricing it right: exploring tendencies in monetization (Tomas Riauka), vidéo disponible",
+    "Keeping Up With Android, How to Stay Relevant (Ben Kadel, Carmen Alvarez), roundtable",
+    "Advance Protection Mode: Fortifying Devices for At-Risk Users (Hani Kazmi, Sabs, Google), lightning talk",
+    "Android + Bluetooth: A capture-the-flag workshop (Tom Colvin)",
+    "Google Maps Reimagined: Crafting Interactive, Animated Experiences (Roland Lamidieu), vidéo disponible",
+    "Efficient Android app monitoring (Julien Salvi), vidéo disponible",
+    "Android Open Source Frameworks in 2025 (Kamal Faraj, Mario Bodemann), roundtable",
+    "Office hours Google DevRel (Android Studio, plateforme et Wear OS), KMP/CMP et Kotlin (JetBrains)",
+    "App-Clinic en français et en anglais (Robin Caroff, Edouard Marquez, Gérard Paligot, David Bonnet, Benjamin Monjoie, Eyal Lezmy)"
+  ],
+  "sources": [
+    { "label": "Site officiel Android Makers by droidcon", "url": "https://androidmakers.droidcon.com" },
+    { "label": "Sessionize : Android Makers by droidcon 2025", "url": "https://sessionize.com/android-makers-by-droidcon-2025/" },
+    { "label": "Playlist YouTube « Android Makers by droidcon 2025 » (54 vidéos)", "url": "https://www.youtube.com/playlist?list=PLn7H9CUCuXAuEvoiAbUMD-Z2dw51BTrMT" },
+    { "label": "Blog Ippon : Android Makers by Droidcon 2025, partie 1", "url": "https://blog.ippon.fr/2025/04/22/android-makers-by-droidcon-2025-partie-1-jamais-trois-sans-quatre/" },
+    { "label": "Blog Ippon : Android Makers by Droidcon 2025, partie 2", "url": "https://blog.ippon.fr/2025/04/25/android-makers-by-droidcon-2025-partie-2-jamais-trois-sans-quatre-2/" },
+    { "label": "Atecna (Guillaume Decorte) : AndroidMakers 2025, comment booster vos applications Android", "url": "https://www.atecna.fr/articles/androidmakers-2025-comment-booster-vos-applications-android/" },
+    { "label": "Cyril Mottier : Building Scalable Mobile Projects at Android Makers 2025 (speaker)", "url": "https://cyrilmottier.com/posts/2025/building-scalable-mobile-projects/" },
+    { "label": "David Blanc sur Bluesky (keynote de Xavier F. Gouchet)", "url": "https://bsky.app/profile/speekha.bsky.social/post/3lmjk7cqdpc2c" },
+    { "label": "pboulch sur Bluesky (trois talks retenus)", "url": "https://bsky.app/profile/pboulch.bsky.social/post/3lmnls4o2g223" },
+    { "label": "InTech Luxembourg sur Bluesky (retour d'équipe)", "url": "https://bsky.app/profile/intech-lux.bsky.social/post/3lnxfahqmes2n" },
+    { "label": "Autres posts Bluesky #AMxDC25 lus : Maxime Dupierreux, Diana, Alex Bruneau, Leboncoin Tech ; speakers présents dans la salle : John O'Reilly, Danny Preussler, Martin Bonnin, Ed Holloway-George, Romain Piel, Sebastian Lobato Genco, Gérard Paligot, Baptiste Carlier, Ben Kadel (Pin-Droid) ; compte officiel (photos Flickr, sondage, playlist)" }
+  ]
 }

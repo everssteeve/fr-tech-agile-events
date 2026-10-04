@@ -5,9 +5,575 @@
   "edition": "14e édition",
   "start": "2025-04-29",
   "end": "2025-04-30",
-  "city": "Lyon",
+  "city": "Villeurbanne",
+  "venue": "CPE Lyon",
   "url": "https://mixitconf.org/2025",
+  "programUrl": "https://mixitconf.org/2025",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "theme": "Tech, éthique, vie d'équipe et « aliens »",
+  "note": "14ᵉ édition, 29 et 30 avril 2025 au CPE Lyon (campus LyonTech-la Doua, Villeurbanne). 58 sessions au programme : 5 keynotes, 35 talks, 10 lightning talks et 8 ateliers, classés en thèmes Tech, Team, Ethics et Aliens. Soirée à l'Hôtel de Ville de Lyon le 29 avril. Une keynote d'Anne-Marie Sohn (histoire des masculinités), annoncée sur Mastodon le 07/04/2025, n'apparaît pas au programme final.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-04",
+  "revisit": "Corpus de blogs correct (6 comptes-rendus) mais aucun post LinkedIn de participant trouvé et retours Bluesky inaccessibles ; une vingtaine de talks sans aucun retour, à compléter.",
+  "corpus": "Six comptes-rendus de blog : **Nirina Rabeson** (2 articles, 09/05/2025 environ, 11 sessions), **Virginie Pageaud** (« Vivi Sensei », 17/05/2025, 13 sessions avec ses sketchnotes), **Anthony Cassaigne** (3 articles, avril-mai 2025 : keynotes, conférences, ateliers), **Wanteeed** (21/05/2025, 8 sessions), **Sedona** (18/06/2025, 2 sessions) et **Marmelab** (19/06/2025, 8 sessions). S'y ajoutent une quinzaine de posts Mastodon (avril 2025 à juillet 2026, notamment @mithfindel et @gcolpart), le programme officiel, la playlist YouTube « MiXiT 2025 » (50 vidéos publiées le 06/06/2025) et **10 transcripts** (5 keynotes, 5 talks).",
+  "limits": "Synthèse rédigée 17 mois après l'événement : les retours sont surtout des blogs d'entreprises (Marmelab, Wanteeed, Sedona) ou de développeurs, qui couvrent les mêmes talks techniques et les keynotes ; aucun post LinkedIn de participant exploitable n'a été trouvé. **31 sessions documentées sur 58** : la plupart des talks Ethics/Team (accessibilité, jeu vidéo, management) et 5 ateliers sur 8 n'ont aucun retour. Les synthèses « sur scène » viennent de sous-titres automatiques (noms propres parfois approximatifs).",
+  "tldr": "**Une édition dominée par des keynotes de sciences humaines (robustesse du vivant contre culture de la performance, critique des chiffres, réseaux sociaux et démocratie, design militant)**, prolongée côté tech par un retour aux fondamentaux de l'architecture (Martraire, pattern Hive, feature flipping) et un regard lucide sur l'IA (RAG, LLMs, interprétabilité).",
+  "keyTakeaways": [
+    "Penser **robustesse avant performance** : garder des marges, de la redondance et de la diversité technique plutôt que suroptimiser (Hamant).",
+    "Avant de prendre une décision sur un chiffre, vérifier **sa convention de calcul** : taux de chômage des jeunes, révision des normes, croissance en % ou en valeur absolue (Charolles).",
+    "Choisir ses réseaux sociaux sur trois critères : **portabilité des données et de l'audience, pluralisme algorithmique, décentralisation** (Chavalarias).",
+    "En architecture, toujours se demander **quels nouveaux problèmes amène une solution**, et ménager des options réversibles (simplicité, tests, patterns) (Martraire, retenu par Cassaigne et Wanteeed).",
+    "Découper par **domaines métier (bounded contexts)**, jamais par couches, écrans ou entités, et ne jamais retirer un champ d'un contrat (Martraire).",
+    "Commencer par un monolithe découpé en « ruches » hexagonales reliées par des adaptateurs in-process, extractibles plus tard (pattern Hive, Topçu et Pierrain).",
+    "Avant d'ajouter un feature flag, chercher l'alternative : meilleur découpage des US, pattern stratégie, strangler, branch by abstraction ; garder les flags pour les **circuit breakers automatiques** (Bartaguiz).",
+    "Avant d'installer un paquet npm, mesurer son poids et ses dépendances (pkg-size, npmgraph, eslint-plugin-depend, e18e) (Soubiran, retenu par Marmelab et Sedona).",
+    "Évaluer chaque technique de RAG (découpage, métadonnées, embeddings, reranking) sur son propre cas : aucune n'est meilleure par défaut (Laforge, retenu par Marmelab).",
+    "Déclarer tout accident du travail, y compris psychique, dans les 24 h, et s'appuyer sur les représentants du personnel pour les témoignages (Dupont et Dupond)."
+  ],
+  "sessions": [
+    {
+      "id": "robustesse-une-nouvelle-culture-tech",
+      "day": "2025-04-29",
+      "type": "keynote",
+      "title": "Robustesse : une nouvelle culture Tech ?",
+      "speakers": ["Olivier Hamant — INRAE, ENS de Lyon, Institut Michel Serres"],
+      "feedbackFrom": [
+        "Nirina Rabeson (blog)",
+        "Virginie Pageaud (blog, sketchnotes)",
+        "Anthony Cassaigne (blog)",
+        "@mithfindel (Mastodon)",
+        "@gcolpart (Mastodon)"
+      ],
+      "summary": "- **Sur scène** : on quitte « le monde de la moyenne » pour « le monde de l'écart-type » ; la cause est la **performance** (efficacité + efficience), qui suroptimise et donc fragilise (blackout espagnol, CrowdStrike, pénurie de moutarde), crée des effets rebonds et nourrit la compétition, donc la violence.\n- Le vivant fait l'inverse : il est **robuste avant d'être performant** (redondance, lenteur, incohérence). Exemple : le corps à 37 °C plutôt qu'à 40 °C, où les enzymes sont optimales mais s'épuisent.\n- Conséquences pour la tech : la coopération numérique trop performante devient de la « canalisation » ; il faut une **technodiversité** de solutions réparables et adaptables localement, et des ingénieurs qui visent la robustesse plutôt que la performance. Appel final à créer des communautés apprenantes sur la robustesse (larobustesse.org).\n- Ce qu'en retiennent les participants : un message *« limpide »*, la performance n'étant qu'une **parenthèse temporelle** (Cassaigne) ; *« la crise qui sous-tend toutes les autres est culturelle »* (@mithfindel) ; Rabeson en tire une décision d'achat (ne plus acheter d'appareils seulement performants).\n- Un an plus tard, @mithfindel y repense face aux incendies de l'été 2026 : *« plus un système est \"performant\", plus il est fragile »*.",
+      "summarySources": ["transcript", "blog", "feedback"],
+      "video": {
+        "youtubeId": "W7kUFzNm5jk",
+        "title": "Robustesse: une nouvelle culture Tech ? (Olivier Hamant) #MiXiT2025",
+        "publishedAt": "2025-06-06",
+        "transcript": true
+      }
+    },
+    {
+      "id": "nos-manieres-de-compter-perils-economiques-democratiques-et-ecologiques",
+      "day": "2025-04-29",
+      "type": "keynote",
+      "title": "Nos manières de compter, périls économiques, démocratiques et écologiques",
+      "speakers": ["Valérie Charolles — philosophe, Laboratoire d'anthropologie du politique (EHESS)"],
+      "feedbackFrom": [
+        "Nirina Rabeson (blog)",
+        "Virginie Pageaud (blog, sketchnotes)",
+        "Anthony Cassaigne (blog)"
+      ],
+      "summary": "- **Sur scène** : le problème central de la philosophie du XXᵉ siècle (les mots et les choses) a été remplacé par celui du **rapport entre les faits et les chiffres** ; les chiffres ont un effet performatif et leur langage est asymétrique : nous sommes des « illettrés » des chiffres, pas des analphabètes.\n- Exemples : le taux de chômage des jeunes (environ 20 % des actifs, mais 7 % des 15-25 ans), la révision des normes de 2003 qui a fait baisser le chômage de deux points et **réécrit aussi le passé**, une croissance de 5 % qui doublerait la richesse en 15 ans, des taux de croissance qui masquent les écarts en valeur absolue (Éthiopie contre France).\n- Les chiffres ne sont pas les nombres : ils dépendent de conventions (risque gaussien en finance, travail compté comme charge et non comme investissement, mode de scrutin). Conclusion : *« se libérer de leur domination »*, pas les abandonner.\n- Reçue comme une keynote riche mais exigeante : *« assez difficile à suivre »* pour Rabeson, qui aurait voulu des alternatives ; *« pas toujours évident à suivre juste après la pause déjeuner »*, une introduction au sujet pour Pageaud ; Cassaigne la recommande pour sa citation de Wittgenstein et sa relecture des statistiques publiques.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "ARWGRCAsatM",
+        "title": "Nos manières de compter, périls économiques, démocratiques et écologiques (Valérie Charolles)",
+        "publishedAt": "2025-06-06",
+        "transcript": true
+      }
+    },
+    {
+      "id": "design-sabotage-hacking-politique",
+      "day": "2025-04-29",
+      "type": "keynote",
+      "title": "Design : sabotage, hacking & politique",
+      "speakers": ["Geoffrey Dorne — designer indépendant"],
+      "feedbackFrom": [
+        "Nirina Rabeson (blog)",
+        "Virginie Pageaud (blog, sketchnote)",
+        "Anthony Cassaigne (blog)",
+        "@gcolpart (Mastodon)"
+      ],
+      "summary": "- **Sur scène**, un témoignage en trois parties : détourner le design (symboles de la République, logos, pictogrammes des JO 2024), le hacker (*Hacker Citizen*, affiches à QR codes, stickers jouant sur « l'autorité du graphisme ») et **saboter** (*Hacker Protester*, bestiaire d'écosabotage, traduction du manuel de sabotage de l'OSS, livre *Ni data ni maître* sur le détournement des IA).\n- Constat de départ : un monde du design qui « s'effondre » (luxe, mobilier anti-SDF, offres d'emploi en chute) et ne remplit plus son rôle ; posture finale : *« continuer, mais sans accepter »* les conditions générales.\n- Réception partagée. Enthousiaste pour Cassaigne (l'esprit premier du hacking) et @gcolpart ; Rabeson a eu du mal au début (slide « fin du monde ») mais salue une manière de résister au techno-autoritarisme.\n- **Seule critique nette de l'édition** : Pageaud la juge *« mitigée »*, manquant de construction et proche de *« l'auto-promo »*, et aurait préféré moins d'exemples mieux expliqués.",
+      "summarySources": ["transcript", "blog", "feedback"],
+      "video": {
+        "youtubeId": "1XTQX2j1Pa8",
+        "title": "Design : sabotage, hacking & politiqu (Geoffrey Dorne) #MiXiT2025",
+        "publishedAt": "2025-06-06",
+        "transcript": true
+      }
+    },
+    {
+      "id": "faut-il-changer-d-ere-numerique-pour-preserver-la-democratie",
+      "day": "2025-04-30",
+      "type": "keynote",
+      "title": "Faut-il changer d'ère numérique pour préserver la démocratie ?",
+      "speakers": ["David Chavalarias — CNRS, Institut des systèmes complexes (ISC-PIF)"],
+      "feedbackFrom": [
+        "Nirina Rabeson (blog)",
+        "Virginie Pageaud (blog, sketchnotes)",
+        "Anthony Cassaigne (blog)",
+        "@mithfindel (Mastodon)"
+      ],
+      "summary": "- **Sur scène** : sur un réseau comme X, on ne lit qu'environ 3 % de ce que produit son environnement social, et ces 3 % sur-représentent les contenus toxiques (+49 %) ; le modèle économique des plateformes serait **incompatible avec la démocratie** (thèse de *Toxic Data*).\n- Données de l'ISC-PIF : les communautés **antivax de la période Covid sont devenues climatodénialistes** à partir de l'été 2022, dans tous les pays observés, avec des relais de la désinformation du Kremlin ; doctrine de subversion à long terme décrite par un ex-agent du KGB passé à l'Ouest (Tomas Schuman).\n- Réponse systémique : choisir des plateformes sur la **portabilité, le pluralisme algorithmique et la décentralisation** ; projet HelloQuitteX et outil de portabilité X vers Mastodon/Bluesky ; l'équipe a ensuite subi une attaque coordonnée (réseaux, médias, questions à l'Assemblée, plainte).\n- Participants : une *« démonstration magistrale »* qui *« pique »* (@mithfindel) ; Cassaigne retient la jonction antivax-climatosceptiques ; Pageaud trouve le constat sur la Russie et les États-Unis glaçant.\n- Frustration commune : **30 minutes trop courtes** ; Rabeson regrette des slides sautées et l'absence de prise de position finale, Pageaud aurait voulu l'écouter plus longtemps.",
+      "summarySources": ["transcript", "blog", "feedback"],
+      "video": {
+        "youtubeId": "toguh6aRQ7Q",
+        "title": "Do we need to enter the digital age to preserve democracy? (David Chavalarias) #MiXiT2025",
+        "publishedAt": "2025-06-06",
+        "transcript": true
+      }
+    },
+    {
+      "id": "mapping-the-critical-infrastructure-sustaining-our-understanding-of-the-earth",
+      "day": "2025-04-30",
+      "type": "keynote",
+      "title": "Mapping the critical infrastructure sustaining our understanding of the Earth",
+      "speakers": ["Codrina Maria Ilie — OSGeo (Open Source Geospatial Foundation)"],
+      "feedbackFrom": ["Nirina Rabeson (blog)"],
+      "summary": "- **Sur scène** (en anglais, la speakeuse se présentant comme une « alien » dans une conférence de développeurs) : le logiciel géospatial est une **infrastructure numérique critique**, et une grande partie est open source depuis GRASS (années 1980).\n- Récit d'une initiative lancée en 2016 pour convaincre une association d'entreprises de télédétection : un simple tableur des solutions open source, devenu avec le soutien de l'Agence spatiale européenne (depuis 2023) un observatoire de **551 solutions**, données ouvertes et API.\n- Enjeux soulignés : choisir les bons outils, vérifier la gouvernance et surtout l'**interopérabilité légale des licences** dans une chaîne de traitement.\n- Rabeson retient que *« sans open source, pas d'outils pour mapper la Terre »*, et partage les liens (oss4geo.org).",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "osL2ddm3hKk",
+        "title": "Mapping the critical infrastructure sustaining our understanding of the Earth (Codrina Maria Illie)",
+        "publishedAt": "2025-06-06",
+        "transcript": true
+      }
+    },
+    {
+      "id": "l-architecture-pour-tout-le-monde-partout-tout-le-temps",
+      "day": "2025-04-30",
+      "type": "talk",
+      "title": "L'architecture, pour tout le monde, partout, tout le temps",
+      "speakers": ["Cyrille Martraire — Arolla"],
+      "feedbackFrom": [
+        "Nirina Rabeson (blog)",
+        "Wanteeed (blog)",
+        "Anthony Cassaigne (blog)",
+        "Marmelab (blog, « à voir aussi »)"
+      ],
+      "summary": "- **Sur scène** : avec des systèmes de plus en plus modulaires et distribués, l'architecture devient l'affaire de tous les devs ; on ne saura **jamais tout**. Exercice dans la salle : expliquer son architecture en une minute.\n- Trois réflexes : poser le problème (et les attributs de qualité, coût compris, à négocier avec le métier), se demander **quels nouveaux problèmes amène chaque solution** (exemple pub/sub et idempotence), et ménager des options (simplicité, tests, patterns) sans tomber dans le YAGNI naïf.\n- Modularité : découper par **domaines métier / bounded contexts** ou par zones de contraintes techniques homogènes, jamais par couches, écrans ou entités ; contrats rétrocompatibles (n'ajouter, ne jamais retirer) ; une seule source de vérité par donnée.\n- Avec les assistants de code, ADR et tests d'architecture deviennent des **« prompts en moins »**.\n- Talk le plus apprécié de Rabeson (*« une masterclass »*) ; Cassaigne retient que l'architecture **déplace des problèmes** vers des problèmes mieux gérés ; Wanteeed résume « l'architecte omniscient est un modèle dépassé ».",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "LTtqP9175WQ",
+        "title": "L'architecture, pour tout le monde, partout, tout le temps (Cyrille Martraire) #MiXiT2025",
+        "publishedAt": "2025-06-06",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-pattern-hive-une-strategie-de-modularisation",
+      "type": "talk",
+      "title": "Le pattern Hive : une stratégie de modularisation pour votre monolithe modulaire ou vos microservices",
+      "speakers": ["Thomas Pierrain", "Julien Topçu"],
+      "feedbackFrom": ["Wanteeed (blog)", "Anthony Cassaigne (blog)", "Marmelab (blog, « à voir aussi »)"],
+      "summary": "- Plutôt que de partir directement en microservices, découper le code en modules métier autour de **bounded contexts**, chacun étant un hexagone (« ruche ») à part entière.\n- Les ruches communiquent d'abord par des **adaptateurs in-process** (un simple appel de méthode) ; pour extraire une ruche (raisons métier, sécurité, charge), il suffit d'écrire les adaptateurs driver et driven (Cassaigne).\n- Bénéfices listés par Wanteeed : isolation des responsabilités, moins d'effets de bord, transition douce vers le distribué, indépendance vis-à-vis de la stratégie de déploiement.\n- Jugée *« limpide et avec de réels retours d'expérience »*, une approche légère *« à essayer »* (Cassaigne).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "TL_nVaOs47g",
+        "title": "The Hive pattern: a modularization strategy (Julien Topçu & Thomas Pierrain) #MiXiT2025",
+        "publishedAt": "2025-06-06",
+        "transcript": false
+      }
+    },
+    {
+      "id": "ameliorer-l-implementation-du-feature-flip-pour-reussir-a-avoir-du-flow",
+      "day": "2025-04-30",
+      "type": "talk",
+      "title": "Améliorer l'implémentation du feature flip pour réussir à avoir du flow",
+      "speakers": ["Dorra Bartaguiz — Arolla"],
+      "feedbackFrom": ["Wanteeed (blog)", "Nirina Rabeson (blog)"],
+      "summary": "- **Sur scène** : le feature flipping, c'est **activer et désactiver plusieurs fois** une fonctionnalité sans livrer de code ; or la plupart des usages observés (et une enquête dont 92 % des répondants connaissaient la technique) ne correspondent pas à ce besoin, et 10 % s'en servent pour tester en prod.\n- Coûts : flags jamais supprimés, `if` techniques mêlés aux conditions métier, combinatoire de tests de non-régression, devs qui finissent par partir.\n- Alternatives par cas : le trunk-based development avec flags est un *« branch-based development déguisé »* ; pour les livraisons partielles, mieux **découper les US** (critères INVEST, technique du hamburger) ; pour l'activation selon le contexte, patterns stratégie / décorateur ou un vrai sous-domaine ; pour deux versions en parallèle, strangler fig ou branch by abstraction.\n- Seul usage gardé : le **circuit breaker** automatique devant une dépendance externe peu fiable.\n- Repris par Wanteeed ; salle comble au point que Rabeson n'a pas pu entrer.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "GNGSGq2mGUI",
+        "title": "Améliorer l'implémentation du feature flip pour réussir à avoir du flow (Dorra Bartaguiz) #MiXiT2025",
+        "publishedAt": "2025-06-06",
+        "transcript": true
+      }
+    },
+    {
+      "id": "llms-toutes-ces-questions-que-vous-n-avez-jamais-ose-poser",
+      "type": "talk",
+      "title": "LLMs, toutes ces questions que vous n'avez jamais osé poser à leur sujet",
+      "speakers": ["Guillaume Laforge"],
+      "feedbackFrom": ["Wanteeed (blog)"],
+      "summary": "- Démystifier le fonctionnement interne des LLM : pourquoi des **tokens** plutôt que des mots (environ 4 tokens pour 3 mots), les algorithmes de tokenisation (BPE pour GPT, SentencePiece pour Gemini).\n- Choix du prochain token par probabilité, réglé par **température, top-p, top-k**.\n- Un LLM *« ne sait pas s'il dit la vérité »* et peut être convaincu de son erreur.\n- Poids du **contexte**, même anodin : ajouter « j'ai un ami français » oriente la réponse à « quel est le meilleur footballeur ? » vers Mbappé (Wanteeed).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "9FOD6jo2MxQ",
+        "title": "LLMs, toutes ces questions que vous n'avez jamais osé poser (Guillaume Laforge) #MiXiT2025",
+        "publishedAt": "2025-06-06",
+        "transcript": false
+      }
+    },
+    {
+      "id": "retrieval-augmented-generation-rag-techniques-avancees",
+      "type": "talk",
+      "title": "Retrieval Augmented Generation (RAG) : obtenez des réponses de qualité avec des techniques avancées",
+      "speakers": ["Guillaume Laforge"],
+      "feedbackFrom": ["Marmelab (blog)", "Wanteeed (blog)"],
+      "summary": "- Le RAG fournit au modèle des données pertinentes via une base vectorielle, contre les limites des LLM (connaissances datées, données privées, fenêtre de contexte) ; bénéfices : précision, moins d'hallucinations, **sources affichables** (Wanteeed).\n- Techniques avancées : découpage des documents (fenêtres fixes, glissantes, par phrase), métadonnées sur les chunks, modèle d'embedding adapté (multilingue ?), réécriture des requêtes par un LLM, reranking, agents spécialisés (Marmelab).\n- Conclusion retenue : *« pas de technique meilleure que les autres »*, il faut **évaluer** sur son cas d'usage (Marmelab).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "iD1MKAvag8w",
+        "title": "Retrieval Augmented Generation (RAG) (Guillaume Laforge) #MiXiT2025",
+        "publishedAt": "2025-06-06",
+        "transcript": false
+      }
+    },
+    {
+      "id": "faut-il-deconstruire-l-intelligence-artificielle",
+      "day": "2025-04-30",
+      "type": "talk",
+      "title": "Faut-il déconstruire l'intelligence artificielle ?",
+      "speakers": ["Marine Sobas — Dataiku"],
+      "feedbackFrom": ["Nirina Rabeson (blog)"],
+      "summary": "- **Sur scène**, trois sens de « déconstruire ». D'abord l'architecture : le monolithe (tout confier à un grand modèle) suffit pour un prototype (chatbot de recommandation de livres en deux heures), mais un système robuste demande une **architecture modulaire** de composants bien spécifiés ; l'agentique apporte de la flexibilité au prix du contrôle et de la latence.\n- Ensuite la boîte noire : l'**interprétabilité mécanistique** d'Anthropic (sparse autoencoders, dictionnaire de concepts, « Golden Gate Claude ») montre que les activations se décomposent en concepts ; un concept d'« exceptionnalisme américain » interroge le *soft power* des modèles.\n- Enfin au sens de Derrida : identifier et retirer les concepts biaisés (exemple d'un modèle de prédiction de métier « dégenré »), ou à défaut guardrails et fine-tuning.\n- Conclusion : l'humain reste indispensable pour spécifier, interpréter et choisir.\n- Rabeson : un *« super talk »* qui l'a convaincu que les IA ne sont pas des boîtes noires, mais *« très avancé »* et parfois difficile à suivre.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "IAAVOKnSSXg",
+        "title": "Faut-il déconstruire l'intelligence artificielle ? (Marine Sobas) #MiXiT2025",
+        "publishedAt": "2025-06-06",
+        "transcript": true
+      }
+    },
+    {
+      "id": "stimuler-l-innovation-grace-a-une-plateforme-basee-sur-l-ia-generative",
+      "type": "talk",
+      "title": "Stimuler l'innovation de votre entreprise grâce à une plateforme basée sur l'IA générative",
+      "speakers": ["Philippe Laumay"],
+      "feedbackFrom": ["Marmelab (blog)"],
+      "summary": "- REX d'une **plateforme interne** permettant de poser des questions sur les données de l'entreprise, conçue pour le confort des utilisateurs *« et non pas pour les remplacer »*.\n- Constat : la **perception de l'utilité** de l'IA générative augmente avec l'usage.\n- Arguments pour construire plutôt qu'utiliser une interface générique : moins de dépendance fournisseur, intégration aux systèmes internes, UX centrée sur les cas d'usage, choix parmi plusieurs LLM, **sources citées** ; techniques employées : RAG, agents (Marmelab).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "4Q7XVLlpA1I",
+        "title": "Boosting Innovation with a Generative AI-Powered Platform (Philippe Laumay) #MiXiT2025",
+        "publishedAt": "2025-06-06",
+        "transcript": false
+      }
+    },
+    {
+      "id": "et-si-on-parlait-de-malware-craftsmanship",
+      "day": "2025-04-29",
+      "type": "talk",
+      "title": "Et si on parlait de « malware craftsmanship » ?",
+      "speakers": ["Sonia Seddiki", "Nailya Bogrova"],
+      "feedbackFrom": ["Sedona (blog)", "Nirina Rabeson (blog)", "@mithfindel (Mastodon)"],
+      "summary": "- On peut exécuter un malware malgré les bonnes pratiques : dépendance piégée, mail frauduleux, **test technique corrompu lors d'un faux entretien** (@mithfindel découvre l'attaque Dev#Popper).\n- Techniques de camouflage : polymorphisme, outils tiers, comportement qui change selon l'environnement, effacement de traces, faux crash ; méthodes d'analyse **statique, dynamique, contextuelle et forensique** (Sedona).\n- Rappel légal : écrire, posséder ou diffuser un virus est illégal hors recherche (Rabeson).\n- Rabeson, *« très positivement surpris »*, envisage d'analyser les malwares reçus par ses proches et d'intégrer cette « résistance active » aux formations cyber.",
+      "summarySources": ["blog", "feedback"],
+      "video": {
+        "youtubeId": "uFwgFfhn46c",
+        "title": "Et si on parlait de \"malware craftsmanship\" ? (Sonia Seddiki & Nailya Bogrova) #MiXiT2025",
+        "publishedAt": "2025-06-06",
+        "transcript": false
+      }
+    },
+    {
+      "id": "au-dela-des-heures-la-semaine-de-4-jours-comme-levier-d-egalite",
+      "day": "2025-04-29",
+      "type": "talk",
+      "title": "Au-delà des heures : la semaine de 4 jours comme levier d'égalité",
+      "speakers": ["Albane Veyron — Ideme"],
+      "feedbackFrom": ["Marmelab (blog)", "Virginie Pageaud (blog, sketchnotes)", "sketchnote de Scribissimo (via Pageaud)"],
+      "summary": "- **Sur scène** : semaine de 4 jours = **moins d'heures à salaire complet** (pas un 4/5ᵉ). Talk interactif appuyé sur la roue des privilèges, des études (Boston College : -71 % d'épuisement, -65 % d'arrêts maladie, -56 % de turnover, +1,4 % de rentabilité) et des entretiens.\n- Effets décrits : équilibre de vie, rééquilibrage possible des tâches dans le couple (une femme sur quatre est à 80 %), **accès aux soins** pour les 35 % de Français avec une maladie chronique (la speakeuse témoigne de son endométriose), reprise d'études, démarches administratives, engagement associatif.\n- Exemples d'entreprises (Ideme, Figure, Bilo) et méthode en quatre étapes : intention, concertation, cadre de test co-construit, pilote mesuré ; le CSE est présenté comme un allié.\n- Talk *« le plus attendu »* par Pageaud ; Marmelab est séduit mais doute de la faisabilité en **ESN facturant au jour** (*« difficile de négocier de perdre 1/5 de son chiffre d'affaires »*).",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "2XbNlj2g3h0",
+        "title": "Beyond hours: The 4-day week as a lever for equality (Albane Veyron) #MiXiT2025",
+        "publishedAt": "2025-06-06",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-accidents-du-travail-dans-la-tech",
+      "day": "2025-04-30",
+      "type": "talk",
+      "title": "Les accidents du travail dans la tech",
+      "speakers": ["Camille Dupont — Solidaires Informatique", "Camille Dupond — Solidaires Informatique"],
+      "feedbackFrom": ["Solidaires Informatique 44 (Mastodon)"],
+      "summary": "- **Sur scène** (pseudonymes, deux défenseurs syndicaux) : histoire du droit (présomption de responsabilité de l'employeur en 1898, branche AT-MP), définition de l'accident du travail et **présomption d'imputabilité**.\n- L'accident peut être **psychique** : jurisprudences sur un syndrome anxio-dépressif après un entretien d'évaluation, une agression verbale ; *« pleurer au travail, c'est suffisant pour déclarer un accident du travail »*. Un sondage dans l'amphi : une dizaine de personnes ont déjà renoncé à déclarer.\n- Procédure stricte (déclaration sous 24 h, rôle des témoins, réserves de l'employeur) illustrée par des **courriers de réserve réels** et leurs « prétendu accident » ; statistiques ANACT : baisse des accidents chez les hommes, hausse chez les femmes.\n- Conseils : *« restez pas seul »*, s'appuyer sur les élus protégés, se syndiquer, utiliser le congé de formation CFESES.\n- Relayé ensuite par Solidaires Informatique 44 comme *« une excellente conférence »* (post d'un syndicat proche des speakers).",
+      "summarySources": ["transcript", "feedback"],
+      "video": {
+        "youtubeId": "L2EHOZI4Aow",
+        "title": "Les accidents du travail dans la tech (Camille Dupont & Camille Dupond) #MiXiT2025",
+        "publishedAt": "2025-06-06",
+        "transcript": true
+      }
+    },
+    {
+      "id": "retour-d-experience-sur-la-creation-de-pepiniere-de-tests",
+      "day": "2025-04-29",
+      "type": "talk",
+      "title": "Retour d'expérience sur la création de pépinière de tests : un mélange de reconversion et de handicap",
+      "speakers": ["Aurelia Ribeira — Apside", "Solène Lapouge — Apside"],
+      "feedbackFrom": ["Nirina Rabeson (blog)", "Virginie Pageaud (blog, sketchnotes)"],
+      "summary": "- Initiative de **former des personnes en situation de handicap au métier de testeur** logiciel dans une pépinière, avec formation technique, accompagnement humain et formation des équipes clientes.\n- Objectif souligné par Pageaud : une **réinsertion dans l'entreprise cliente** finale, pas seulement un poste dans la société de service.\n- Rabeson retient l'**adaptation des parcours** fondée sur la confiance et se demande pourquoi toutes les formations ne proposeraient pas ces adaptations à tous.\n- Deux retours très enthousiastes (*« beaucoup d'espoir pour l'univers de la tech »*).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "3xpXQ2KkiXg",
+        "title": "Retour d'XP sur la création de pépinière de tests (Aurelia Ribeira & Solène Lapouge) #MiXiT2025",
+        "publishedAt": "2025-06-06",
+        "transcript": false
+      }
+    },
+    {
+      "id": "leggins-et-dark-patterns",
+      "type": "talk",
+      "title": "Leggins et dark patterns : quand une expérience sans couture dessert l'utilisateur",
+      "speakers": ["Iris Naudin"],
+      "feedbackFrom": ["Marmelab (blog)", "Anthony Cassaigne (blog)"],
+      "summary": "- Partant d'un achat de leggings, inventaire des **dark patterns** : formules les moins chères cachées dans un carrousel, abonnements ajoutés (cashback payant), culpabilisation (*« Votre panier est si vide »*), bouton d'acceptation des cookies à la place de « Continuer sans accepter » (Marmelab).\n- Leviers psychologiques exploités : peur de manquer, nouveauté, validation sociale, désorientation ; conséquences pour les publics vulnérables (achats impulsifs, surcharge cognitive).\n- Outils pour concevoir sans : matrice de captologie, checklist Opquast, livre *Deceptive Patterns*.\n- Cassaigne juge certaines pratiques *« quasiment de l'escroquerie »* et y voit un appel à porter l'éthique dans les équipes UX/UI.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "OhCCwV16wfA",
+        "title": "Leggins et dark patterns : quand une expérience dessert l'utilisateur (Iris Naudin) #MiXiT2025",
+        "publishedAt": "2025-06-06",
+        "transcript": false
+      }
+    },
+    {
+      "id": "quand-le-terminal-devore-la-ui-tui-pour-tout-le-monde",
+      "type": "talk",
+      "title": "Quand le Terminal dévore la UI : TUI pour tout le monde !",
+      "speakers": ["Thierry Chantier"],
+      "feedbackFrom": ["Marmelab (blog)"],
+      "summary": "- Après un historique (métiers Jacquard, cartes perforées), plaidoyer pour les **interfaces textuelles** (k9s, hurl) et démonstrations en Python, Rust et Go.\n- Focus sur **Textual** (styles proches du CSS, exécution dans le navigateur via textual-web), comparé à blessed en JavaScript.\n- Marmelab, convaincu, retient leur **esthétique minimaliste**, leur frugalité et leur accessibilité de développement.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "DDsd54PLtKU",
+        "title": "Quand le Terminal dévore la UI : TUI pour tout le monde ! (Thierry Chantier)",
+        "publishedAt": "2025-06-06",
+        "transcript": false
+      }
+    },
+    {
+      "id": "le-langage-inclusif-un-levier-d-engagement-dans-les-equipes",
+      "day": "2025-04-29",
+      "type": "talk",
+      "title": "Le langage inclusif, un levier d'engagement dans les équipes",
+      "speakers": ["Diane Moinet"],
+      "feedbackFrom": ["Virginie Pageaud (blog, sketchnotes)"],
+      "summary": "- Les **biais de représentation** existent aussi dans les langues peu genrées comme l'anglais, à cause des stéréotypes sociaux.\n- Techniques d'écriture inclusive, dont l'**adressage direct**.\n- Pageaud, déjà convaincue, y a trouvé de nouveaux arguments et en a fait deux sketchnotes.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "5InhlKSgUAw",
+        "title": "Le langage inclusif, un levier d'engagement dans les équipes (Diane Moinet) #MiXiT2025",
+        "publishedAt": "2025-06-19",
+        "transcript": false
+      }
+    },
+    {
+      "id": "la-reactivite-et-les-signaux-demystifions-la-magie-du-frontend",
+      "type": "talk",
+      "title": "La réactivité et les signaux : démystifions la magie du frontend",
+      "speakers": ["Estéban Soubiran"],
+      "feedbackFrom": ["Marmelab (blog)", "Wanteeed (blog)"],
+      "summary": "- `ui = fn(state)` : la réactivité expliquée par la théorie des graphes (orientés, acycliques, tri topologique), puis par la bibliothèque **alien-signals** et ses trois primitives `signal`, `computed`, `effect`.\n- Signaux comparés aux Observables (Angular) et aux Values (React).\n- Problèmes à résoudre : glitches liés à l'ordre d'exécution, dépendances cycliques, états mutables, graphe de dépendances dynamique.\n- Marmelab salue la clarté mais trouve le sujet *« dense »* pour un format court.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "3PcrqsBVGgA",
+        "title": "Responsiveness and signals: demystifying the magic of the frontend (Estéban Soubiran) #MiXiT2025",
+        "publishedAt": "2025-06-06",
+        "transcript": false
+      }
+    },
+    {
+      "id": "ma-vie-de-developpeur-web-dans-le-quantique",
+      "day": "2025-04-30",
+      "type": "talk",
+      "title": "Ma vie de développeur web dans le quantique",
+      "speakers": ["Benjamin Becquet — Pasqal"],
+      "feedbackFrom": ["Nirina Rabeson (blog)"],
+      "summary": "- REX d'un développeur web chez Pasqal, entreprise de calcul quantique, dans le contexte de la **« seconde révolution quantique »**, avec une dénonciation du *quantum-washing* marketing.\n- Rabeson, lui-même passionné de physique quantique, aurait voulu voir **plus tôt ce que fait concrètement Pasqal** et ses dashboards.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "G1GqXRK_NvA",
+        "title": "My life as a web developer in the quantum realm (Benjamin Becquet) #MiXiT2025",
+        "publishedAt": "2025-06-06",
+        "transcript": false
+      }
+    },
+    {
+      "id": "highway-to-fail-ou-l-histoire-d-un-echec-previsible",
+      "day": "2025-04-30",
+      "type": "talk",
+      "title": "Highway to fail, ou l'histoire d'un échec prévisible",
+      "speakers": ["Céline Louvet"],
+      "feedbackFrom": ["Virginie Pageaud (blog, sketchnotes)"],
+      "summary": "- Récit d'un projet de start-up dont l'**échec était prévisible** pour qui sait lire les signaux d'alerte.\n- Point retenu : l'attrait de la nouveauté fait oublier les signaux, *« nous restons des êtres vivants animés d'émotions et de désirs »* ; le talk donne des **points de vigilance** pour entreprendre (Pageaud).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "vbAjT2dbH7g",
+        "title": "Highway to Fail, or the story of a predictable failure (Céline Louvet) #MiXiT2025",
+        "publishedAt": "2025-06-06",
+        "transcript": false
+      }
+    },
+    {
+      "id": "un-developpeur-sous-couverture-parmi-les-utilisateurs",
+      "day": "2025-04-30",
+      "type": "talk",
+      "title": "Un développeur sous couverture parmi les utilisateurs",
+      "speakers": ["Aurélien Boudoux"],
+      "feedbackFrom": ["Virginie Pageaud (blog, sketchnotes)"],
+      "summary": "- Un développeur qui s'est retrouvé à **scier du bois dans une scierie** pour comprendre les utilisateurs de l'application qu'il développait.\n- Retenu : *« un retour à l'essentiel, où l'humain reste la clé »* (Pageaud).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "BXO4qnMZHYo",
+        "title": "Un développeur sous couverture parmi les utilisateurs (Aurélien Boudoux) #MiXiT2025",
+        "publishedAt": "2025-06-06",
+        "transcript": false
+      }
+    },
+    {
+      "id": "l-aventure-d-une-requete-http",
+      "type": "talk",
+      "title": "L'aventure d'une requête HTTP, ou le chemin de la vie des devs",
+      "speakers": ["Pascal Martin"],
+      "feedbackFrom": ["Marmelab (blog)"],
+      "summary": "- Point de départ : sa question d'entretien favorite, *« vous tapez une URL et appuyez sur Entrée, il se passe quoi ? »*, dont les réponses révèlent le profil du candidat.\n- Tour d'horizon du web moderne (DNS, protocoles, frameworks, API, bases, conteneurs, cloud, incidents).\n- Message rassurant : viser un **profil en T** plutôt que tout maîtriser ; talk recommandé aux nouveaux entrants (Marmelab).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "SIGWo51ymj0",
+        "title": "L’aventure d’une requête HTTP — ou le chemin de la vie des devs (Pascal Martin) #MiXiT2025",
+        "publishedAt": "2025-06-06",
+        "transcript": false
+      }
+    },
+    {
+      "id": "les-super-pouvoirs-meconnus-de-docker-desktop",
+      "day": "2025-04-30",
+      "type": "talk",
+      "title": "Les super-pouvoirs méconnus de Docker Desktop",
+      "speakers": ["Guillaume Lours", "Philippe Charrière"],
+      "feedbackFrom": ["Wanteeed (blog)", "Virginie Pageaud (blog, sketchnotes)"],
+      "summary": "- Démo des fonctions méconnues : Docker Scout pour les vulnérabilités, **mode debug** pour entrer dans un conteneur même sans shell, terminal intégré, aides au build et au déploiement Kubernetes (Wanteeed).\n- Démo perturbée par des **soucis techniques**, mais Pageaud en a tiré un aperçu utile (et deux sketchnotes).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "MCMIyAIy_6M",
+        "title": "Les super-pouvoirs méconnus de Docker Desktop (Guillaume Lours & Philippe Charrière)",
+        "publishedAt": "2025-06-06",
+        "transcript": false
+      }
+    },
+    {
+      "id": "en-javascript-il-y-a-un-paquet-pour-tout-et-souvent-pour-rien",
+      "type": "lightning",
+      "title": "En JavaScript, il y a un paquet pour tout… et souvent pour rien",
+      "speakers": ["Estéban Soubiran"],
+      "feedbackFrom": ["Marmelab (blog)", "Sedona (blog)"],
+      "summary": "- Constat : des **micro-paquets** comme is-number ou is-string (plus téléchargé chaque semaine que React, selon Sedona) peuplent les arbres de dépendances transitives.\n- Outils pour l'hygiène : pkg-size, npmgraph, node-modules.dev, eslint-plugin-depend, Deptree.\n- L'initiative **e18e** nettoie, optimise et améliore l'écosystème ; exemple cité, Storybook dont le bundle a été divisé par deux (Marmelab).\n- Leçon commune aux deux blogs : avant d'importer, se demander si le besoin est vraiment complexe ; *« on n'a plus d'excuse »* (Marmelab).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "VlyS6bJZYYU",
+        "title": "In JavaScript, there's a package for everything... and often for nothing (Estéban Soubiran)",
+        "publishedAt": "2025-06-06",
+        "transcript": false
+      }
+    },
+    {
+      "id": "tests-e2e-sans-stress-robot-framework-a-la-rescousse",
+      "type": "lightning",
+      "title": "Tests E2E sans stress : Robot Framework à la rescousse",
+      "speakers": ["Khadija Abdelouali"],
+      "feedbackFrom": ["Wanteeed (blog)"],
+      "summary": "- Présentation de **Robot Framework** pour des tests end-to-end lisibles et maintenables.\n- Points forts : peu de configuration, syntaxe accessible aux non-devs, étapes réutilisables, séparation ressources / variables.\n- Limites relevées : syntaxe parfois « magique » (espaces, insensibilité à la casse) et **lenteur** sur les gros projets (Wanteeed).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "haRUDnEc7uc",
+        "title": "Tests E2E sans stress : Robot Framework à la rescousse (Khadija Abdelouali) #MiXiT2025",
+        "publishedAt": "2025-06-06",
+        "transcript": false
+      }
+    },
+    {
+      "id": "medtech-transformons-la-sante-par-la-data",
+      "day": "2025-04-29",
+      "type": "lightning",
+      "title": "MedTech : transformons la santé par la data",
+      "speakers": ["Montaine Marteau"],
+      "feedbackFrom": ["Virginie Pageaud (blog)"],
+      "summary": "- Les **données de santé sont sous-exploitées** alors que l'IA pourrait transformer la recherche médicale.\n- Difficultés techniques citées : protection des données personnelles, hétérogénéité des formats, besoin de « petites mains » (Pageaud).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "5hgp0kasdrY",
+        "title": "MedTech: Transforming Healthcare Through Data (Montaine Marteau) #MiXiT2025",
+        "publishedAt": "2025-06-06",
+        "transcript": false
+      }
+    },
+    {
+      "id": "redecouvrir-la-cooperation-atelier-de-mob-programming",
+      "day": "2025-04-29",
+      "type": "workshop",
+      "title": "Redécouvrir la coopération : atelier de Mob Programming",
+      "speakers": ["Manon Carbonnel", "Marjorie Aubert"],
+      "feedbackFrom": [
+        "Anthony Cassaigne (blog)",
+        "Nirina Rabeson (blog)",
+        "@mithfindel (Mastodon)",
+        "Manon Carbonnel (speaker, Mastodon)"
+      ],
+      "summary": "- Première partie autour du jeu **Baba Is You** pour faire travailler un groupe sur ses interactions, puis le kata Nearest color (Cassaigne).\n- Cadre posé : la règle du **strong-style pairing** de Llewellyn Falco, un garde-fou car *« celui qui a le clavier a beaucoup de pouvoir »*.\n- Rabeson découvre le rôle qui manquait à ses tentatives : la **navigatrice** ; il retient aussi le parcours de Marjorie Aubert, reconvertie grâce au mob.\n- Atelier très fréquenté ; la speakeuse dit y avoir appris sur la prise de décision, les types de votes et le TDD *(speaker)*.",
+      "summarySources": ["blog", "feedback"]
+    },
+    {
+      "id": "slow-code-retreat",
+      "type": "workshop",
+      "title": "(Slow (code) retreat)",
+      "speakers": ["Philippe Bourgau", "Mathieu Cans"],
+      "feedbackFrom": ["Anthony Cassaigne (blog)"],
+      "summary": "- Proposition : **ralentir** pour mieux se concentrer sur ce qu'on produit, en raccourcissant les rotations de pair ou mob programming.\n- À chaque fin de rotation, un temps court pour remplir une grille écrite : **verbaliser ses émotions**, puis décider *« que vais-je faire ? »*.\n- Pour Cassaigne, un *« moment magique »*, complémentaire de l'outil Elephant Safari, qui rappelle la citation de Kent Beck sur XP (*« How would you program if you had enough time? »*).",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "mais-qu-est-ce-qu-on-va-devenir-le-metier-de-dev-scenarios-ademe",
+      "day": "2025-04-30",
+      "type": "workshop",
+      "title": "« Mais qu'est-ce qu'on va devenir ? » : le métier de dev passé au crible des scénarios de l'ADEME",
+      "speakers": ["Cécilia Bossard", "Jean Paliès"],
+      "feedbackFrom": ["Cécilia Bossard (speaker, Mastodon)", "@mithfindel (Mastodon)"],
+      "summary": "- Atelier de clôture du deuxième jour qui projette le **métier de développeur** dans les scénarios de transition de l'ADEME (d'après le programme).\n- Retours brefs : un atelier *« hyper enrichissant »* (@mithfindel) ; la speakeuse salue l'énergie et des *« échanges hyper riches »* *(speaker)*.",
+      "summarySources": ["program", "feedback"]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Les Threads Virtuels vont-ils rendre la programmation réactive obsolète ? (José Paumard)",
+    "Null Safety en Java avec JSpecify et NullAway (Sébastien Deleuze)",
+    "Spring Boot, la fin de la 3ème génération (Brian Clozel, Stéphane Nicoll)",
+    "Onboarding 2.0 : réinventer l'intégration des devs (Hafsa El Maizi)",
+    "De la pseudoscience pour mon (pseudo) management (Anaïs Huet)",
+    "3 techniques pour piloter par la valeur (Alfred Almendra)",
+    "Triangle cherche carré : 3 activités pour mieux apprécier nos différences (Anne-Laure Gros)",
+    "Art génératif : de la découverte à la publication de projets dans des studios prestigieux (Camille Roux)",
+    "Tu te mets combien en responsive CSS ? Édition 2025 (Julien Sulpis, Théo Gianella)",
+    "Smartphone et accessibilité : découvrez et apprenez en jouant ! (Fanny Demey)",
+    "Penser l'accessibilité numérique avec les handicaps cognitifs (Lison Fanuel)",
+    "Succès débloqué : rendre son jeu vidéo accessible (Noëlie Roux, Yasmine Messaoudi)",
+    "Double authentification : parlons-en (Agnès Haasser)",
+    "Un pixel, puis un autre : comment faire tourner DOOM sur une liseuse électronique (Moustapha Agack)",
+    "Why Brian can't code in the kitchen (Sonyth Huber)",
+    "Rendre transparents les changements des CGUs avec Open Terms Archive (Matti Schneider, Clément Biron) — lightning",
+    "Donjons et Pythons : la chevaleresse à la rescousse (Juliette Grillere) — lightning",
+    "« Question pour un conteneur » : quiz sur les images, les conteneurs, OCI & Docker (Aurélie Vache) — lightning",
+    "Python, ou l'éloge de la contorsion (Mouna Sebti) — lightning",
+    "À la découverte du code golf (Sonia Seddiki) — lightning",
+    "Mieux inclure la diversité de genre dans le monde du Libre : ça passe aussi par la radio ! (Isabella Vanni, Magali Garnero) — lightning",
+    "Il a préempté ma VM ! (Baptiste Macé) — lightning",
+    "Mission Jetpack Compose : révolutionnez le développement mobile (Audrey Gentili, Olivier Perez) — atelier",
+    "Défi : l'accessibilité au bout des doigts ! (Océane Gillard, Patrice De Saint Steban) — atelier",
+    "Devenez un astronaute : découvrez le framework Astro (Jérémy Chauvin, Florent Albert) — atelier",
+    "Workshop async-profiler (Victor Gallet) — atelier",
+    "Nos corps biologiques à la rescousse pour comprendre « l'intelligence artificielle » (Nicolas Decoster, Ines Besbes) — atelier"
+  ],
+  "sources": [
+    { "label": "Programme officiel MiXiT 2025", "url": "https://mixitconf.org/2025" },
+    { "label": "Playlist YouTube « MiXiT 2025 » (50 vidéos)", "url": "https://www.youtube.com/playlist?list=PLUmDV88wF1rym3tCrpLrZIXysS6bwbJeq" },
+    { "label": "Nirina Rabeson : « Retour sur ma première journée du MiXiT 2025 »", "url": "https://www.nirinarabeson.fr/posts/mixit-2025-incroyable" },
+    { "label": "Nirina Rabeson : « Retour sur la deuxième journée du MiXiT 2025 ! »", "url": "https://www.nirinarabeson.fr/posts/mixit-2025-incroyable-partie-2" },
+    { "label": "Virginie Pageaud (Vivi Sensei) : « MiXiT 2025 », avec sketchnotes (17/05/2025)", "url": "http://virginie-blog.pageaud.net/articles/tech/2025/mixit/" },
+    { "label": "Anthony Cassaigne : « Mixit 2025, les keynotes (partie 1/3) »", "url": "https://acassaigne.info/posts-output/2025-04-28_mixit_it_part_1_keynotes/" },
+    { "label": "Anthony Cassaigne : « Mixit 2025, les conférences (partie 2/3) » (06/05/2025)", "url": "https://acassaigne.info/posts-output/2025-05-06_mixit_it_part_2_conferences/" },
+    { "label": "Anthony Cassaigne : « Mixit 2025, les ateliers (partie 3/3) » (09/05/2025)", "url": "https://acassaigne.info/posts-output/2025-05-09_mixit_it_part_3_ateliers/" },
+    { "label": "Wanteeed : « MiXiT édition 2025 : Wanteeed y était ! » (21/05/2025)", "url": "https://blog.wanteeed.com/mixit-edition-2025-wanteeed-y-etait/" },
+    { "label": "Sedona : « MixIT 2025 : retour Jour 1 » (18/06/2025)", "url": "https://sedona.fr/2025/06/18/mixit-2025/" },
+    { "label": "Marmelab (Arnaud Tilbian, Jonathan Arnault) : « MiXiT 2025 : La conférence tech, éthique et crêpes » (19/06/2025)", "url": "https://marmelab.com/blog/2025/06/19/mixit-2025.html" },
+    { "label": "Posts Mastodon de @mithfindel (Hamant, malware, mob programming, Chavalarias, atelier ADEME)", "url": "https://mastodon.social/@mithfindel/114420291923327539" },
+    { "label": "Post Mastodon de @gcolpart (bilan du premier jour)", "url": "https://mastodon.evolix.org/@gcolpart/114423616849389490" },
+    { "label": "Posts Mastodon de speakers et partenaires : Manon Carbonnel (mob programming), Cécilia Bossard (atelier ADEME), Solidaires Informatique 44 (accidents du travail), April", "url": "https://mastodon.top/@manoncarbonnel/114422378326514820" },
+    { "label": "Posts LinkedIn : aucun retour de participant trouvé" },
+    { "label": "Transcripts (sous-titres automatiques YouTube) : keynotes Hamant, Charolles, Dorne, Chavalarias, Ilie ; talks Martraire, Bartaguiz, Sobas, Veyron, Dupont & Dupond" }
+  ]
 }
