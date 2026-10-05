@@ -6,8 +6,433 @@
   "start": "2024-12-04",
   "end": "2024-12-05",
   "city": "Paris",
+  "venue": "Palais des Congrès de Paris",
   "url": "https://www.devopsrex.fr/fr/replay-2024",
-  "note": "Retour après quatre ans d'absence.",
-  "status": "pending",
-  "sessions": []
+  "programUrl": "https://2024-devopsrex.eventmaker.io/fr/programme",
+  "theme": "DevOps, DevSecOps, CI/CD, conteneurs, cloud et infrastructure",
+  "dateConfidence": "ok",
+  "note": "Retour après quatre ans d'absence. 4 & 5 décembre 2024 au Palais des Congrès de Paris, colocalisé avec Open Source Experience : une salle unique, 17 REX filmés (15 à 30 minutes) entrecoupés de pitchs sponsors ; plus de 600 participants et 30 exposants attendus selon les annonces.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-05",
+  "revisit": "Aucun retour de participant trouvé (ni post LinkedIn, ni article de blog, ni sketchnote) après 7 recherches web : la synthèse repose sur les 17 transcripts et le programme. Pistes : chercher des posts LinkedIn des speakers et participants (#devopsrex, #devopsrex24, tag Slido de l'édition), des threads Bluesky (plusieurs speakers y ont publié leurs slides : Christophe Rochefolle, Alexis Chotard), et les slides sur Speaker Deck (Julien Briault).",
+  "corpus": "Programme 2024 (pages speakers archivées sur devopsrex.fr et 2024-devopsrex.eventmaker.io, page replays qui donne le jour de chaque talk), annonces de presse et de sponsors (Kaliop, developpez.com) et billet de l'organisateur d'août 2025 ; 17 replays YouTube publiés le 19/02/2025, tous transcrits (sous-titres automatiques) et lus en entier.",
+  "limits": "Aucun retour de participant lu : tout ce qui suit décrit ce qui a été dit sur scène, pas ce qu'en a retenu le public. Les transcripts automatiques déforment les noms propres et certains chiffres (signalés quand ils sont douteux), et les horaires de plusieurs talks restent inconnus. Les sept pitchs sponsors filmés n'ont pas été synthétisés.",
+  "tldr": "Un **retour réussi après quatre ans d'absence**, 100 % REX : on y a surtout parlé de **plateformes internes et de flux de livraison** (Bpifrance à 40 déploiements par jour, TheFork à 180 par semaine), de **migrations de cloud** (AWS vers GCP chez Back Market et Believe) et d'une **sécurité qui se gagne par l'organisation** plus que par l'outillage (EDF, Cloud Temple, Symbiotic), sur fond de pragmatisme budgétaire (« 1 € dépensé, c'est un repas pas distribué » aux Restos du Cœur).",
+  "keyTakeaways": [
+    "**Rendre la file d'attente visible avant d'outiller** : chez Bpifrance, un kanban lean a montré que le goulot était la conception technique ; modularité, tests end-to-end, trunk et feature toggles ont fait passer de 7 à 40 déploiements par jour (Nicolas Silberman, Fabrice Bernhard).",
+    "**Automatiser la décision de mise en prod, pas seulement le déploiement** : Hyperloop chez TheFork (Slack, Temporal, Argo Rollouts, rollback automatique sur métriques) a ramené le lead time d'une semaine à 50 minutes (Laurent Chenay).",
+    "**Ne plus bloquer le vendredi, mais rendre la mise en prod banale** : petits incréments, observabilité par événements, SLO et error budgets **traduits en euros** pour négocier avec le business, chaos engineering (Christophe Rochefolle).",
+    "**Déclarer un incident doit être à la portée de tous** : chez PayFit, n'importe qui ouvre un incident, l'incident commander est un facilitateur et le coût d'astreinte est chiffré (environ 40 000 € par an pour une personne en continu) (Alexis Chotard).",
+    "**Dans une migration de cloud, le non-standard coûte 4 à 5 fois plus cher** : Back Market a migré d'AWS à GCP en 6 mois sans migrer aucune VM, en déclarant tout dans Backstage et en basculant en one-shot (Guillaume Mazollier, Antonin Mellier).",
+    "**Abstraire Kubernetes pour les devs** : chart Helm générique (environ 15 lignes de values), images de base et building blocks GitLab CI chez Believe ; Cluster API et Argo CD pour livrer un cluster en environ 20 minutes chez un opérateur télécom (Rachid Zarouali).",
+    "**Automatiser aussi la preuve d'audit** : Cloud Temple génère automatiquement les preuves SecNumCloud et est passé de 3 ans pour son premier produit qualifié à environ 8 mois pour les suivants (Alexandru Lata).",
+    "**La sécurité est d'abord un sujet organisationnel** : EDF a échoué avec une grille de maturité OWASP SAMM faute d'appui des directions, et a réussi avec une solution de scan IaC clé en main co-construite (Anoh Able).",
+    "**Mesurer avant d'optimiser l'empreinte** : choisir la région et le datacenter (mix électrique, PUE, WUE) pèse bien plus que l'optimisation du code (Elise Auvray, Scaleway).",
+    "**En on-prem, les gens croient que c'est gratuit** : Groupama note chaque périmètre applicatif de A à G pour contenir l'explosion des environnements (Henri Giordano)."
+  ],
+  "sessions": [
+    {
+      "id": "lean-tech-a-la-bpi",
+      "day": "2024-12-04",
+      "type": "keynote",
+      "title": "Lean Tech à la BPI",
+      "speakers": [
+        "Nicolas Silberman — Bpifrance",
+        "Fabrice Bernhard — Theodo"
+      ],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript) :\n- Présentée par le MC comme le **talk d'ouverture**. Point de départ : la Digital Factory de Bpifrance, missionnée par l'État pour mettre en ligne la plateforme du **PGE en quelques jours**, avec près d'1 Md€ de prêts garantis dans les 24 premières heures.\n- Quatre ans plus tard, près de 300 personnes et une **dérive « en mode agence »** : les 5 jours qui suffisaient au PGE étaient devenus le délai pour tester et déployer une simple feature.\n- Réponse lean : des **« pilotes digitaux »** à double rattachement métier et digital, puis un **kanban qui rend le stock visible** et désigne le goulot (la conception technique). Suivent modularité (ateliers DDD), tests end-to-end automatisés, features partant de main, feature toggling : **de 7 à 40 déploiements par jour**.\n- Qualité inspirée du *Dantotsu* de Sadao Nomura : analyse quotidienne des défauts dans une équipe pilote, défauts en prod divisés par 7 (de 70 à une dizaine par trimestre).\n- **Gemba walks** du directeur : elles ont révélé une équipe qui clôturait des stories inachevées pour tenir son sprint goal (*« une pyramide de Ponzi »*) et une autre qui se croyait interdite de traiter sa dette.\n- Résultats affichés : 89 % de satisfaction client, eNPS supérieur à 50. En Q&R : oui, ils déploient le vendredi, pas le week-end.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "HIWKSC9z6hs",
+        "title": "Intro DEVOPS REX 2024 et REX \"Lean Tech à la BPI\"",
+        "publishedAt": "2025-02-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "heureux-qui-comme-believe-lanca-une-belle-transfo-tech",
+      "day": "2024-12-04",
+      "type": "talk",
+      "title": "Heureux qui, comme Believe, lança une belle transfo tech",
+      "speakers": [
+        "Mélanie Rao — Believe",
+        "Christophe Biguereau — Believe"
+      ],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript) :\n- Believe (plus de 2 000 collaborateurs, 135 000 artistes) avait une plateforme éclatée entre AWS et on-prem et a choisi de **repartir de zéro sur GCP** dans le cadre du programme d'entreprise #BeOdyssey, porté par des OKR qui rendent la migration aussi prioritaire que le produit.\n- Stack : GKE, Argo CD, Vault (identifiants dynamiques courte durée), Datadog avec SLO gérés en IaC, Kafka chez Confluent, Temporal, KEDA.\n- **Abstraction pour les devs** : images de base maison, et un **chart Helm générique** où les devs n'écrivent qu'environ 15 lignes de values, avec labels FinOps et Datadog fournis d'office et tests Ginkgo/Gomega. Crossplane remplace Terraform côté applicatif, mais reste *« complexe à maintenir »*.\n- Plus de 30 **building blocks GitLab CI**, un pipeline GitOps « one commit » et Renovate pour propager les mises à jour.\n- Accompagnement : formations Google, portail « My Console » basé sur Backstage, et des consultants Theodo Cloud intégrés à l'équipe.\n- En Q&R, pourquoi ne pas former directement les devs à Kubernetes : ils ont déjà du mal avec Docker, et l'infra *« les motive pas plus que ça »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "hz7RZUjsDyU",
+        "title": "REX Heureux qui, comme Believe, lança une belle transfo tech - DEVOPS REX 2024",
+        "publishedAt": "2025-02-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ca-passe-ou-ca-kaas",
+      "day": "2024-12-04",
+      "type": "talk",
+      "title": "Ça passe ou ça KaaS ?",
+      "speakers": [
+        "Rachid Zarouali — sevensphere"
+      ],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript) :\n- Mission chez un opérateur télécom étranger : monter **en 3 semaines** une plateforme Kubernetes on-prem, open source, sur un OpenStack encore immature, pour les équipes de dev.\n- Architecture : un cluster de bootstrap local qui installe **Cluster API**, puis un cluster de management d'où l'on déploie N clusters ; images **Flatcar** construites avec Image Builder.\n- Une V1 en Helm lancé à la main (*« chez moi ça marche »*), puis une V2 **GitOps avec Argo CD** et le Helm addon provider comme catalogue d'applications : 4 clusters complets en environ 20 minutes, *« le développeur a littéralement une minute 30 de boulot »*.\n- Galères : proxy authentifiant découvert en cours de route, connexion d'environ 512 kb/s pour des images de plusieurs gigaoctets, documentation du provider pas à jour.\n- Gains : auto-réparation des nœuds cassés par les devs, montée de version de 1.28 à 1.30 en changeant l'image, test de portabilité vers Azure concluant. Durée réelle : environ 4 semaines de travail effectif.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "YvTMjbP3Fmk",
+        "title": "REX Ça passe ou ça KaaS ? - DEVOPS REX 2024",
+        "publishedAt": "2025-02-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "automatiser-nos-releases-pour-180-deploiements-par-semaine",
+      "day": "2024-12-04",
+      "type": "talk",
+      "title": "De la cuisine maison au menu étoilé : automatiser nos releases pour +180 déploiements/semaine",
+      "speakers": [
+        "Laurent Chenay — TheFork",
+        "Franck Maudet — TheFork (absent le jour J)"
+      ],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript) :\n- Laurent Chenay présente seul (Franck Maudet a annulé au dernier moment). Contexte : environ 160 projets Node.js sur Kubernetes chez AWS, des pics aux heures des repas.\n- L'ancien process : un **créneau d'1 h réservé dans un agenda partagé**, jamais le vendredi, et des tests analysés à la main (*« s'ils étaient plus rouges que rouges, il fallait rollback »*). Cercle vicieux : créneaux allongés, attente de plus d'une semaine, gros lots et « ninja deploys ».\n- **Hyperloop** : un prototype Jenkins + Slack en un mois, adopté à 90 % en deux mois, puis refondu avec TypeScript, Temporal, Argo CD et Datadog. Ajouts successifs : **rollback automatique** sur golden metrics puis métriques fonctionnelles, Argo Rollouts par paliers de 10 %, environ 10 montées de dépendances automatiques chaque matin pour résorber les CVE.\n- Une option « casser les règles » permet d'aller en prod hors créneau, avec postmortem le lundi.\n- Résultats : lead time **d'une semaine à 50 minutes**, tests stables à 93 %, **180 déploiements par semaine**, et des nouveaux arrivants qui livrent dès leur premier jour.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "oWaKs6pK0pc",
+        "title": "REX : The Fork : automatiser nos releases pour +180 déploiements/semaine - DEVOPS REX 2024",
+        "publishedAt": "2025-02-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-creer-des-produits-cloud-secnumcloud-ready",
+      "day": "2024-12-04",
+      "type": "talk",
+      "title": "Comment créer des produits cloud SecNumCloud-ready ?",
+      "speakers": [
+        "Alexandru Lata — Cloud Temple"
+      ],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript) :\n- Format court (15 minutes). Cloud Temple, l'un des IaaS qualifiés SecNumCloud, a décidé en 2019 de se différencier des hyperscalers par la qualification : environ 6 M€, 2 ans et 50 personnes pour le premier produit.\n- SecNumCloud : plus de 700 exigences de l'ANSSI. Rappel de l'historique juridique (Safe Harbor, Privacy Shield, arrêts Schrems) et des échecs du cloud souverain des années 2010.\n- Approche : refuser la sécurité « véto de fin de cycle » et la semaine de gel avant audit ; shift-left, user stories de sécurité, et surtout **automatisation de la génération des preuves d'audit**.\n- Pipeline type : lint, liste blanche de licences, Renovate, détection de secrets, SCA, Sonar, DAST avec ZAP, Trivy ; binômes dev/expert sécurité et security champions volontaires.\n- Effet d'apprentissage : environ 3 ans pour le premier produit, 18 mois pour le PaaS, environ **8 mois pour les suivants**. Le transcript donne deux dates de qualification de l'IaaS (2020 et 2022).",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "CuiZxWvYweU",
+        "title": "REX Comment créer des produits cloud SecNumCloud-ready ? - DEVOPS REX 2024",
+        "publishedAt": "2025-02-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "chaines-industrielles-catalogue-services-cloud-iaas-paas-normes-securite",
+      "day": "2024-12-04",
+      "type": "talk",
+      "title": "Mise en œuvre de chaînes industrielles pour la gestion d'un catalogue de services Cloud IAAS/PAAS contraintes par des normes de sécurité",
+      "speakers": [
+        "Henri Gomez — WeScale",
+        "Renaud Fleury — Sopra Steria"
+      ],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript) :\n- Duo humoristique de « vieux de la vieille » sur l'automatisation sous fortes contraintes (ISO 27001, HDS, SecNumCloud). Il enchaîne sur le talk SecNumCloud de Cloud Temple.\n- Cas d'un **datacenter air-gapped** : un lab iso-production, un dépôt Nexus construit Internet coupé, des montées de version répétées, puis un passage en salle blanche où les données sont scannées pendant une semaine. Sur site, on rejoue un plan écrit ; on fait un postmortem à chaque imprévu.\n- Leçon business : ces interventions ne doivent pas être du pro bono. *« Une intervention de 5 minutes qui se transforme en une intervention de 7 h »* se chiffre.\n- Usine logicielle sensible : *« Tout ce qui vient d'Internet est challengeable »* (Buildah préféré à Kaniko pour la responsabilité de l'éditeur, binaires vérifiés par empreinte). **« Good bye GitOps »** au profit d'un « BinOps » où l'entrepôt d'artefacts sert de frontière entre CI et CD, et où un humain décide de l'applicabilité d'une vulnérabilité.\n- Partie cloud provider SecNumCloud : Cluster API et Crossplane, une zone d'administration qui signe les binaires, et aucun accès du prestataire au data plane du client sans entrée créée par celui-ci.\n- En Q&R : *« un junior qu'on n'envoie jamais sur le terrain reste junior toute sa vie »* ; GitOps reste possible en HDS, pas en SecNumCloud.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "BOuSn6r9a0U",
+        "title": "REX Des chaines industrielles pour un catalogue de services Cloud IAAS/PAAS avec normes de sécurité.",
+        "publishedAt": "2025-02-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-nous-avons-transforme-les-restos-du-coeur-en-cloud-provider",
+      "day": "2024-12-04",
+      "type": "talk",
+      "title": "Comment nous avons transformé les Restos du Cœur en Cloud Provider",
+      "speakers": [
+        "Julien Briault — Deezer / Restos du Cœur (bénévole)"
+      ],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript) :\n- Ingénieur réseau chez Deezer et responsable infrastructure bénévole, Julien Briault part d'un PC serveur sans sauvegarde dans une antenne, puis d'une première baie redondée, jusqu'à une plateforme régionale.\n- Règle d'or : *« 1 € qui est dépensé, c'est un repas qui n'est pas distribué »*. Le cloud public et VMware sont exclus ; le datacenter de Chartres est financé à 99 % par des dons (2,5 tonnes de serveurs déménagées à la main).\n- Socle : réseau routé en BGP (leaf/spine, VXLAN), tout en IaC et déployé par CI/CD, Wazuh, Teleport, Rudder, MAAS et Packer, revue d'architecture obligatoire avant la prod.\n- **OpenStack tourne dans Kubernetes** (Helm), avec Ceph hyperconvergé : le « Cloud du Cœur ». Kubernetes est jugé *« astreinte-friendly »*.\n- Impact compté en repas : environ 12 millions de repas par an attribués à la trentaine d'applications (dont une sonde de température des chambres froides). Environ 700 VM, 9 bénévoles actifs.\n- Sondage en salle : *« qui a apprécié installer OpenStack ? »*, plus personne ne lève la main.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "t2Qt0-U4Lyk",
+        "title": "REX : Comment nous avons transformé les Restos du Cœur en Cloud Provider - DEVOPS REX 2024",
+        "publishedAt": "2025-02-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "alerte-tout-brule-comment-collaborer-lors-d-incidents-techniques",
+      "day": "2024-12-04",
+      "type": "talk",
+      "title": "Alerte, tout brûle ! Comment collaborer lors d'incidents techniques",
+      "speakers": [
+        "Alexis « Horgix » Chotard — PayFit"
+      ],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript) :\n- Chez PayFit, le mot « incident » n'existait pas en 2021. Thèse : *« les incidents, c'est définitivement pas un truc d'ops »*, ils concernent aussi les devs et le support client.\n- **N'importe qui peut déclarer un incident**, la sévérité (SEV1 à SEV4) se revoit à la hausse plutôt qu'à la baisse ; une revue mensuelle mesure environ 3 % d'erreurs de sévérité. *« Si quelqu'un pense qu'il y a un incident, c'est qu'il y en a probablement un. »*\n- L'incident commander est un **facilitateur**, souvent l'engineering manager concerné ; un channel Slack par incident et une war room ouverte à tous.\n- **Astreinte chiffrée** : 80 € la nuit de semaine, 150 € le samedi, 200 € le dimanche, soit environ 40 000 € par an pour une personne en continu ; d'où une astreinte centrale d'environ 6 SRE plutôt qu'une par équipe produit.\n- Outils : Datadog, PagerDuty, incident.io (retours *« que super positifs »*), Notion pour les postmortems ; leviers côté dev : retries, circuit breakers, modes dégradés.\n- Le speaker revenait à DEVOPS REX, où il avait déjà parlé en 2017.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "e-GDAsVNYFY",
+        "title": "REX : Alerte, tout brûle ! Comment collaborer lors d'incidents techniques - DEVOPS REX 2024",
+        "publishedAt": "2025-02-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "devops-et-empreinte-environnementale-criteres-cles-pour-des-infrastructures-plus-durables",
+      "day": "2024-12-04",
+      "type": "talk",
+      "title": "DevOps et empreinte environnementale : des critères clés pour des infrastructures plus durables",
+      "speakers": [
+        "Elise Auvray — Scaleway"
+      ],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript) :\n- Dernier talk du 4 décembre. Rappels : scopes 1, 2 et 3 (le scope 3 pèse environ 80 % des émissions d'un cloud provider), PUE, et l'eau (WUE), souvent oubliée : *« un PUE faible va impliquer qu'il y a une consommation d'eau qui peut être démesurée »*.\n- Démonstration dans la console Scaleway : l'intensité carbone varie d'un facteur 16 entre Paris et Varsovie selon le mix électrique et le PUE.\n- **Leviers par ordre d'impact** : mesurer (*« on ne peut pas réduire ce qu'on ne peut pas mesurer »*), choisir la géographie, puis le datacenter, puis l'architecture (pas de surdimensionnement, autoscaling, Kubernetes, serverless), et en dernier le code.\n- En Q&R : la CSRD et les appels d'offres créent un signal ; les tarifs Scaleway ne dépendent pas du CO₂ ; sur l'IA, *« la meilleure façon de faire de l'IA frugale, c'est de pas l'utiliser »*.\n- Talk présenté par une salariée du fournisseur, dont les exemples s'appuient sur les outils maison ; slides mal affichées (pas la bonne version).",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "wyPA4DzMjZs",
+        "title": "DevOps et empreinte environnementale : des critères clés pour des infrastructures plus durable",
+        "publishedAt": "2025-02-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "pirates-du-devops-la-malediction-des-tests-temps-reel",
+      "day": "2024-12-05",
+      "type": "talk",
+      "title": "Pirates du DevOps : La Malédiction des tests temps réel",
+      "speakers": [
+        "David Konam — Thales"
+      ],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript) :\n- Monolithe temps réel militaire (Ada, C++, plusieurs millions de lignes) avec plus de 2 700 tests fonctionnels : **42 h en séquentiel, 8 h parallélisés** sur un Jenkins saturé, sans droit à Kubernetes.\n- Solution 1, le **temps simulé** : une surcouche maison qui n'avance l'horloge que *« lorsque toutes les tâches sont endormies »* (libfaketime écarté). 42 h ramenées à 1 h 40.\n- Solution 2, parallélisation par Docker Compose (un conteneur par CPU) : environ 20 minutes.\n- Les tests temps réel restent obligatoires : ordonnancement des tests longs en premier et gestion de charge en Groovy pour ne pas saturer Jenkins, soit 1 h 30.\n- En Q&R : un test qui casse en temps simulé casse presque toujours en temps réel ; ajouter des machines ne suffisait pas, le nombre de tests augmente chaque année. Fil rouge humoristique « Pirates des Caraïbes ».",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "iSxJxlAGINY",
+        "title": "REX Pirates du DevOps : La Malédiction des tests temps réel - DEVOPS REX 2024",
+        "publishedAt": "2025-02-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "securiser-le-cycle-de-vie-du-developpement-shift-left",
+      "day": "2024-12-05",
+      "type": "talk",
+      "title": "Sécuriser le cycle de vie du développement (SDLC) : bonnes pratiques et stratégies pour un shift-left réussi",
+      "speakers": [
+        "Edouard Viot — Symbiotic Security"
+      ],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript) :\n- Le shift-left actuel empile SCA, SAST, scan d'IaC et contrôle de supply chain dans la CI ; selon le speaker, **empiler des outils ne suffit pas**.\n- REX d'une attaque DDoS chez un ancien employeur : la cause venait de l'opérateur du cloud provider (*« la supply chain de notre supply chain »*). Aucun client perdu grâce à la transparence.\n- Sur l'IA générative : des études montrent plus de vulnérabilités dans le code de Copilot ; leurs tests de remédiation Terraform par LLM sont justes dans 85 à 90 % des cas, ce qu'il juge insuffisant sans humain dans la boucle.\n- Culture : apprentissage au moment du besoin (dans l'IDE plutôt que la CI), *« la posture de coach au lieu de policier »*, règles d'exception à durée limitée.\n- Talk d'un sponsor : le corps reste générique, l'autopromotion se limite aux questions-réponses.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "x_vVSV5j8gs",
+        "title": "REX : Sécuriser le cycle de vie du développement (SDLC): bonnes pratiques pour un shift-left réussi",
+        "publishedAt": "2025-02-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "securite-contextuelle-pipelines-ci-cd-industrie",
+      "day": "2024-12-05",
+      "type": "talk",
+      "title": "Sécurité contextuelle : une approche sur mesure pour les pipelines CI/CD dans l'industrie",
+      "speakers": [
+        "Anoh Able — EDF"
+      ],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript) :\n- Une petite équipe DevSecOps au centre d'opérations des vulnérabilités d'EDF : labs Security Champions (7 sessions, OWASP Top 10, threat modeling), accompagnement, communauté, outillage. Environ 400 security champions recensés.\n- **Échec assumé** : une grille de maturité OWASP SAMM adaptée, abandonnée faute d'appui des directeurs et de temps des projets.\n- Sur l'IaC, face à des scans « sauvages », une **solution clé en main** : repo central de règles, outil choisi après benchmark avec les utilisateurs, image et runner durcis, règles surchargeables par projet. Choix de la CI plutôt que d'un plugin IDE, trop long à qualifier chez EDF.\n- Quatre mois au total, lents surtout à cause de la concertation : *« Les pratiques évoluent beaucoup plus vite que les politiques. »*\n- Message : la sécurité est un sujet organisationnel bien plus que technique, et l'appui du RSSI a été décisif. Il reconnaît du shadow IT et un fort turnover des champions (souvent des prestataires).",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "kEP8_2KYDDs",
+        "title": "REX Sécurité contextuelle : Une approche sur mesure pour les pipelines CI/CD dans l’industrie",
+        "publishedAt": "2025-02-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "mon-cto-m-a-dit-et-si-on-deployait-le-vendredi",
+      "day": "2024-12-05",
+      "type": "talk",
+      "title": "Mon CTO m'a dit : Et si on déployait le vendredi ?",
+      "speakers": [
+        "Christophe Rochefolle — CAOS Management"
+      ],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript) :\n- Ouverture par un sondage debout : la salle se rassoit selon la date de son dernier déploiement un vendredi ; *« quelques-uns »* ont déployé le vendredi précédent.\n- S'interdire le vendredi, c'est se priver de 20 % du temps de livraison (description officielle). *« Une mise en production, ça va être un non-événement technique ; si ça ne l'est pas, c'est ça votre problème. »*\n- Trois peurs et trois réponses : petits incréments, **observabilité par événements** (plutôt que des métriques agrégées), **chaos engineering** pour les inconnus.\n- **SLO et error budgets traduits en euros** (pratique à Veepee et SNCF Connect, selon lui) pour obtenir des chantiers techniques auprès du business.\n- Platform engineering inspiré de *Team Topologies* : une approche produit tournée vers les équipes de dev, sans réinventer la roue. Anecdote : des « Day of Chaos » en préprod où les équipes gagnantes avaient des écrans d'observabilité.\n- Conclusion : *« On ne peut pas dire qu'on est DevOps si on a toujours cette règle. »* Il reprend les chiffres entendus la veille (40 déploiements par jour, 180 par semaine).",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "kFEaQIxvuVU",
+        "title": "REX Mon CTO m'a dit : Et si on déployait le vendredi ? - DEVOPS REX 2024",
+        "publishedAt": "2025-02-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "all-in-devops-notre-pari-gagnant",
+      "day": "2024-12-05",
+      "type": "talk",
+      "title": "All in DevOps, notre pari gagnant",
+      "speakers": [
+        "Oussama Abai — Les Filles & les Garçons de la Tech",
+        "Reza Issany — Les Filles & les Garçons de la Tech"
+      ],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript) :\n- Chez un acteur international des jeux d'argent en ligne : Kubernetes on-prem et EKS, GitLab, GitOps, stack Grafana. Mais des équipes infra, build et produit qui ne se parlent pas, aucune vision long terme ni catalogue de services.\n- Image retenue : *« c'est comme filer une Formula One à quelqu'un qui sait pas conduire »*.\n- Réponse : une équipe **« Professional Services »** au milieu, qui commence par des workshops (Kubernetes, observabilité, pipelines), puis fait du support et de la revue de repos et remonte les besoins vers le socle, **sans faire à la place des équipes**.\n- Résultat après presque 2 ans : plus de demandes de déploiement, et 90 à 95 % des sollicitations portent sur des composants cassés.\n- Le modèle dépend de l'appui de la direction ; avec les équipes legacy réfractaires, c'est *« très compliqué »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "YmLUErLQy0Q",
+        "title": "REX All in DevOps, notre pari gagnant - DEVOPS REX 2024",
+        "publishedAt": "2025-02-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rex-du-rex-5-ans-apres-la-plateforme-beluga-groupama",
+      "day": "2024-12-05",
+      "type": "talk",
+      "title": "REX du REX 5 ans après : la plateforme Beluga Groupama, OpenShift on prem",
+      "speakers": [
+        "Henri Giordano — Groupama"
+      ],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript) :\n- Suite d'un REX donné à une édition précédente de DEVOPS REX sur le DevOps multisite chez Groupama (équipes à Paris, en Bretagne, à Lyon et à Montpellier).\n- 2018 : choix d'OpenShift et d'une approche produit (« Beluga »). Le cluster unique grossit jusqu'à bloquer les livraisons un vendredi soir ; 2020 : séparation prod/non-prod et une équipe « DevOps » rebaptisée **platform team** d'après *Team Topologies*.\n- Apports : environnements iso-prod, images immuables, déploiements sans interruption, et **« Easy Change »**, livraison sans comité pour certains correctifs, soit environ une livraison par jour en prod. Environ 70 % des applications conteneurisées.\n- Migration vers OpenShift 4 en 2022 et passage de Jenkins à Tekton (plus de 1 600 pipelines). Quelques chiffres du transcript sont douteux.\n- Mise en garde : *« comme on est en on-prem, les gens ils ont l'impression que c'est gratuit »*. D'où une note de A à G par périmètre applicatif, et en non-prod : *« on les éteint et on attend que ça gueule »*.\n- *« DevOps c'est une culture, c'est pas une équipe. »* Démarrage perturbé par un souci technique.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Cx2NVD2nUZo",
+        "title": "REX : Groupama Devops Multisites 5 ans plus tard - DEVOPS REX 2025",
+        "publishedAt": "2025-02-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "accelerer-sa-transformation-devops-avec-accelerate",
+      "day": "2024-12-05",
+      "type": "talk",
+      "title": "Accélérer sa transformation DevOps avec Accelerate",
+      "speakers": [
+        "Jean-Rémy Revy — Ippon Technologies"
+      ],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript) :\n- Pas un REX unique mais la synthèse de 50 à 60 équipes accompagnées. Rappel d'*Accelerate* et du programme DORA (quatre métriques, profils low à elite, 29 capabilities).\n- Méthode : le quick check DORA pour **créer le sentiment d'urgence** face à la direction, l'argument de la courbe en J, puis quelques pratiques de base (gestion de version, CI/CD, observabilité, tests, petits lots, management visuel).\n- Le coach prend à sa charge ce que l'équipe ne peut pas faire seule : il a obtenu dans une banque un **« couloir accéléré »** malgré un gel de trois semaines avant chaque mise en prod. Il pique au passage les scrumistes : une story finie en 2 jours attend la fin du sprint.\n- Ordres de grandeur : environ 3 mois pour passer de low à medium performer. *« Ça sert à rien de développer et de déployer vite si on n'est pas capable de mesurer que c'est OK. »*\n- En Q&R : des métriques déclaratives suffisent au début ; *« l'outil, je m'en contrefiche »*, seul le processus compte. Il renvoie plusieurs fois au REX de Bpifrance de la veille.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Q1PCvAfTndc",
+        "title": "REX Accélérer sa transformation DevOps avec Accelerate - DEVOPS REX",
+        "publishedAt": "2025-02-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "6-mois-zero-perturbation-migration-chez-back-market",
+      "day": "2024-12-05",
+      "type": "talk",
+      "title": "6 Mois, Zéro* Perturbation : Histoire d'une migration chez Back Market (*ou presque)",
+      "speakers": [
+        "Guillaume Mazollier — Back Market",
+        "Antonin Mellier — Back Market"
+      ],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript) :\n- Dernier talk de l'édition (*« on est à peu près tout ce qui se tient entre vous et l'apéro »*). Back Market, née sur AWS, migre vers **GCP en 6 mois** sans impacter les roadmaps, pendant que les devs réécrivent le monolithe. Motivations : services managés, valeurs environnementales, ne pas financer un concurrent.\n- Hypothèses contre réalité : un seul jalon à 3 mois fait perdre du temps, et le soutien du COMEX n'enlève pas la charge mentale des experts. Règle : *« si aucune action identifiée ne permet de dérisquer, alors on doit avancer »*.\n- Ce qui fait gagner du temps : **aucune VM migrée**, tout déclaré via Backstage, réseau simplifié, exceptions supprimées.\n- Six migrations : la première préprod prévue en 2 jours en a pris 5, la tentative par lots a été abandonnée, puis bascules one-shot ; la dernière prod a pris 2 h.\n- Leçons : Kubernetes a bien servi d'abstraction, **le non-standard prend 4 à 5 fois plus de temps**, les données concentrent le risque. En Q&R, ils reconnaissent que rester sur AWS aurait coûté moins cher ; les clouds européens ont été écartés faute de services managés et de présence mondiale.\n- La vidéo est titrée « 2025 », mais le programme archivé place le talk le 5 décembre 2024.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "rx9CLFkfOUg",
+        "title": "6 Mois, Zéro* Perturbation : Histoire d’une migration chez Back Market (*ou presque) DEVOPS REX 2025",
+        "publishedAt": "2025-02-19",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Pitchs sponsors du 4 décembre (Spectrum Groupe, Digital.ai, Kaliop) et du 5 décembre (Rudder, Theodo Cloud, Symbiotic Security) : vidéos courtes publiées, non synthétisées"
+  ],
+  "sources": [
+    {
+      "label": "Replays 2024 (site officiel, talks classés par jour)",
+      "url": "https://2024-devopsrex.eventmaker.io/fr/replay-2024"
+    },
+    {
+      "label": "Programme 2024 archivé (2024-devopsrex.eventmaker.io)",
+      "url": "https://2024-devopsrex.eventmaker.io/fr/programme"
+    },
+    {
+      "label": "Liste des speakers 2024 (pages détaillées avec jour et horaire)",
+      "url": "https://2024-devopsrex.eventmaker.io/fr/liste-des-conferenciers"
+    },
+    {
+      "label": "Déroulé des deux jours (archive Wayback Machine, décembre 2024)",
+      "url": "https://web.archive.org/web/20241209040304/https://www.devopsrex.fr/fr/deroule"
+    },
+    {
+      "label": "Playlist YouTube DEVOPS REX 2024",
+      "url": "https://www.youtube.com/playlist?list=PL7l-zOgt89E6rWGKm1jQDHgnXYTn91BDi"
+    },
+    {
+      "label": "Blog DEVOPS REX : En attendant l'édition 2025, revivez les conférences 2024 en replay (août 2025)",
+      "url": "https://www.devopsrex.fr/fr/blog/en-attendant-l-edition-2025-revivez-les-conferences-devops-rex-2024-en-replay"
+    },
+    {
+      "label": "developpez.com : édition conjointe Open Source Experience et DevOps REX (annonce)",
+      "url": "https://solutions-entreprise.developpez.com/actu/364946/Les-conferences-Open-Source-Experience-et-DevOps-Rex-reviennent-pour-une-edition-conjointe-les-4-et-5-decembre-2024-au-Palais-des-Congres-de-Paris/"
+    },
+    {
+      "label": "Kaliop : annonce de sa participation (novembre 2024)",
+      "url": "https://www.kaliop.com/fr/devops-rex-2024/"
+    },
+    {
+      "label": "Posts LinkedIn : aucun post de participant ni de speaker trouvé"
+    }
+  ]
 }

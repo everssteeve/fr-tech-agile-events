@@ -18,10 +18,15 @@
       "speakers": [
         "Audrey Neveu"
       ],
-      "feedbackFrom": [],
-      "summary": "- **Keynote d'ouverture** (contenu tiré de la vidéo, aucun retour de participant trouvé). Point de départ : de « Don't be evil » à l'alignement des patrons de la tech sur Trump (investiture de 2025, manifeste du CEO de Palantir en 2026).\n- **Généalogie du mythe de l'entrepreneur californien** : fortune de Leland Stanford, complexe militaro-industriel autour de Stanford (Fred Terman), contre-culture des années 60, objectivisme d'Ayn Rand (*La Grève*), dérégulation reaganienne puis d'Internet. Conclusion : ces patrons sont *« plus proches des barons voleurs du XIXᵉ siècle que des génies »*.\n- Tour des idéologies regroupées par Timnit Gebru et Émile Torres (eugénisme, transhumanisme, extropianisme, altruisme efficace, long-termisme…), jusqu'aux zones économiques autonomes comme Prospera.\n- **Trois obstacles à l'AGI** : coût écologique (terres rares, eau, électricité des data centers), *model collapse* quand les modèles auront épuisé les données humaines, **bulle financière** (prix des tokens subventionnés).\n- Message aux développeurs : *« notre métier n'a jamais été d'écrire du code »* (environ 5 % du temps selon elle) ; l'IA restera dans la stack sans remplacer les devs. C'est l'occasion de se réapproprier **l'architecture** et la **sécurité**, et de refuser la peur : *« on combat toujours mieux un ennemi qu'on voit »* ; continuer à apprendre et à se réunir *« entre humains »* (environ 500 personnes dans la salle, selon elle).",
+      "feedbackFrom": [
+        "Antoine Mayer (blog)",
+        "David Drugeon-Hamon (blog)"
+      ],
+      "summary": "- **Keynote d'ouverture** (contenu tiré de la vidéo). Point de départ : de « Don't be evil » à l'alignement des patrons de la tech sur Trump (investiture de 2025, manifeste du CEO de Palantir en 2026).\n- **Généalogie du mythe de l'entrepreneur californien** : fortune de Leland Stanford, complexe militaro-industriel autour de Stanford (Fred Terman), contre-culture des années 60, objectivisme d'Ayn Rand (*La Grève*), dérégulation reaganienne puis d'Internet. Conclusion : ces patrons sont *« plus proches des barons voleurs du XIXᵉ siècle que des génies »*.\n- Tour des idéologies regroupées par Timnit Gebru et Émile Torres (eugénisme, transhumanisme, extropianisme, altruisme efficace, long-termisme…), jusqu'aux zones économiques autonomes comme Prospera.\n- **Trois obstacles à l'AGI** : coût écologique (terres rares, eau, électricité des data centers), *model collapse* quand les modèles auront épuisé les données humaines, **bulle financière** (prix des tokens subventionnés).\n- Message aux développeurs : *« notre métier n'a jamais été d'écrire du code »* (environ 5 % du temps selon elle) ; l'IA restera dans la stack sans remplacer les devs. C'est l'occasion de se réapproprier **l'architecture** et la **sécurité**, et de refuser la peur : *« on combat toujours mieux un ennemi qu'on voit »* ; continuer à apprendre et à se réunir *« entre humains »* (environ 500 personnes dans la salle, selon elle).\n- **Réception** : Antoine Mayer retient que le métier n'a jamais consisté à aligner des lignes de code mais à concevoir des systèmes et résoudre des problèmes, et salue *« une excellente keynote, une excellente oratrice ! »*. David Drugeon-Hamon, venu pour la première fois, la place en tête de ses recommandations et en retient surtout que la tech est politique.",
       "summarySources": [
         "transcript",
+        "feedback",
+        "blog",
         "program"
       ],
       "video": {
@@ -49,6 +54,158 @@
       "video": {
         "youtubeId": "IyHHKTyoc9o",
         "title": "REX : Notre IA et nous contre le legacy : REX d'une reprise de contrôle assistée",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "je-malmene-ton-llm-en-direct-avec-10-failles-de-securite",
+      "day": "2026-07-02",
+      "type": "talk",
+      "title": "Je malmène ton LLM en direct avec 10 failles de sécurité",
+      "speakers": [
+        "Gaëtan Eleouet — Meritis"
+      ],
+      "feedbackFrom": [
+        "Antoine Mayer (blog)"
+      ],
+      "summary": "- **Live hacking** d'une application de bibliothèque « vibe codée » avec un LLM à l'intérieur, pour illustrer le **Top 10 OWASP des applications LLM**. Point de départ : des incidents récents chez Meta, Salesforce, ServiceNow, Copilot ou GitLab Duo.\n- Démonstrations sur scène : fuite du **prompt système** (une étude citée en retrouve plus de 80 % sur 1 200 applications open source), injection de prompt, divulgation de données personnelles, agent aux **pouvoirs excessifs** qui supprime un utilisateur de la base, dépendance compromise, **empoisonnement de données** caché dans la fiche d'un livre, hallucinations, embeddings manipulés, XSS dans la sortie du LLM, consommation non maîtrisée.\n- Parades : ne rien mettre de sensible dans le prompt système, filtrer entrées et sorties (y compris avec un petit LLM garde-fou), limiter les permissions, **human in the loop** pour les actions sensibles, sandbox et SBOM pour la supply chain, quotas et timeouts. Pour le RAG : limiter qui peut indexer, et *« grep, ça marche super bien »*.\n- Le danger maximal est le triangle **entrée utilisateur + données sensibles + capacité à communiquer vers l'extérieur** : il faut casser l'un des côtés par une frontière déterministe (liste d'actions autorisées plutôt qu'exécution libre).\n- En questions, il estime qu'on ne peut pas sécuriser le LLM lui-même, seulement son **intégration** ; MCP aide un peu sur l'authentification et l'autorisation, sans tout régler.\n- **Réception** : Antoine Mayer a apprécié les démonstrations directes et découvert de nouvelles vulnérabilités. Il retient la conclusion : *« L'intégration d'un LLM dans une application doit être pensée comme l'intégration d'un acteur externe non fiable. »*",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "OoAP7cMnRls",
+        "title": "Je malmène ton LLM en direct avec 10 failles de sécurités",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "webmcp-offrez-une-api-aux-applis-web-qui-n-en-ont-pas",
+      "day": "2026-07-02",
+      "type": "talk",
+      "title": "WebMCP : offrez une API aux applis web qui n'en ont pas",
+      "speakers": [
+        "Thomas Simonnet — WeScale"
+      ],
+      "feedbackFrom": [
+        "David Drugeon-Hamon (blog)"
+      ],
+      "summary": "- Problème posé : piloter une application web sans API (ERP, portail administratif, vieux site) par Playwright ou Selenium est **fragile**, et la « vision » par captures d'écran est lente, coûteuse en tokens et non déterministe. Le serveur **Chrome DevTools MCP** (1.0 en mai 2026) donne accès au DOM, mais ni le rendu ni le DOM ne disent *l'intention* de l'application.\n- **WebMCP** : spécification W3C expérimentale (février 2026, Chrome 146 derrière des flags) qui laisse l'application **déclarer elle-même ses outils** via `navigator.modelContext`, en impératif (JavaScript) ou en déclaratif (attributs sur les formulaires HTML). Les outils réutilisent la session de l'utilisateur connecté.\n- Démos sur une application interne : création de talks et de sessions par prompt ; course entre deux agents, environ **44 secondes avec WebMCP contre 2 min 44 en mode vision** (gain annoncé de 8 à 12 fois). Puis un POC d'extension, « WebMCP Anywhere », qui **injecte des outils** dans un site tiers et permet de combiner les outils de deux sites.\n- Limites reconnues : spécification en draft, quasi aucun site compatible, extension d'injection aussi fragile que Playwright et dangereuse côté sécurité. Une question de la salle pointe le risque pour le modèle économique du web.\n- **Réception** : David Drugeon-Hamon, ancien collègue du speaker, le recommande comme une manière d'offrir une API web à un LLM depuis le navigateur.",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "nG3utl8B_so",
+        "title": "WebMCP : Offrez une API aux applis web qui n'en ont pas",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "casser-la-prod-pour-mieux-dormir",
+      "day": "2026-07-02",
+      "type": "talk",
+      "title": "Casser la prod pour mieux dormir : comment et pourquoi nous détruisons nos systèmes volontairement",
+      "speakers": [
+        "Wilfried Roset — OVHcloud",
+        "Juliette Orain — OVHcloud"
+      ],
+      "feedbackFrom": [
+        "Antoine Mayer (blog)",
+        "David Drugeon-Hamon (blog)"
+      ],
+      "summary": "- L'équipe observabilité d'OVHcloud (cluster **Mimir**, une dizaine de clusters, ~3 000 VM, 250 millions de séries actives) passe d'une résilience « par design » à une résilience **prouvée** : *« On a arrêté de déclarer notre résilience. On a décidé de la prouver. »* (slide citée par Antoine Mayer).\n- Format du **game day** annuel : scénarios réalistes, **paliers progressifs**, rôles répartis dans une équipe de 7, notes partagées en temps réel, critères d'arrêt définis à l'avance. Charge générée avec **k6**, sur une infra quasi identique à la prod (de 20 à 500 VM au pic).\n- Ce qui a cassé n'était presque jamais l'application : le **load balancer** (taille intermédiaire), les ingesters sous lecture et écriture, **Consul** saturé (erreurs 429) quand le nombre de tenants est multiplié par 10, le compacteur sous-dimensionné, et même les **quotas** du cloud public interne dès le premier jour. *« Le diable est dans les détails »*.\n- Variante légère : une demi-journée où une personne casse quelque chose en secret (certificat SSL retiré, Grafana coupé) et les autres enquêtent, façon escape game.\n- Argument managérial : 4 jours d'équipe, soit **environ 1 % du temps annuel**, pour aucun incident majeur depuis environ 800 jours, des chiffres opposables en capacity planning et d'autres équipes inspirées.\n- **Réception** : Antoine Mayer dit avoir adoré la session et en retient que la confiance dans une infra se construit avec des chiffres, pas avec des hypothèses. David Drugeon-Hamon la recommande aussi.",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "aSLYXl7H6vs",
+        "title": "Casser la prod pour mieux dormir : comment et pourquoi nous détruisons nos systèmes volontairement",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "que-la-force-du-changement-soit-avec-toi",
+      "day": "2026-07-02",
+      "type": "talk",
+      "title": "Que la Force (du Changement) soit avec toi !",
+      "speakers": [
+        "Stéphane Trebel"
+      ],
+      "feedbackFrom": [
+        "Antoine Mayer (blog)"
+      ],
+      "summary": "- Lecture de la **conduite du changement** à travers le **monomythe** de Joseph Campbell (*Le Héros aux mille et un visages*), qui inspire Star Wars : appel de l'aventure, refus, mentor, ventre de la baleine, route des épreuves, apothéose, retour.\n- Exemples : refuser le changement a un coût (Knight Capital en 2012, plus de 400 millions de dollars perdus) ; un sponsor fort débloque (Todd Park et healthcare.gov) ; *« le poisson pourrit par la tête »*, d'où la responsabilité des managers.\n- Idée centrale : **le héros change d'abord lui-même** avant de changer l'organisation. Il faut pratiquer, et il alerte sur une **« atrophie des compétences »** quand on se contente de valider ce que propose un LLM.\n- Deux pièges : le **cynisme**, vu comme un signal de douleur dans un écosystème toxique, et la tentation de **garder le pouvoir** une fois l'expertise acquise (bus factor). Réponse : devenir mentor des futurs mentors, pratiquer l'*egoless programming*, penser *outcome* plutôt qu'*output*.\n- **Réception** : Antoine Mayer, d'abord réticent face à la mythologie, parle d'*« une véritable pépite ce talk »* et retient la formule *« Conduite du changement = apprendre à apprendre + apprendre à échouer. »*",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "9TUpoFBjx4w",
+        "title": "Que la Force (du Changement) soit avec toi !",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comprendre-kyverno-de-maniere-visuelle",
+      "day": "2026-07-02",
+      "type": "lightning",
+      "title": "Comprendre Kyverno de manière visuelle",
+      "speakers": [
+        "Aurélie Vache — OVHcloud"
+      ],
+      "feedbackFrom": [
+        "Antoine Mayer (blog)"
+      ],
+      "summary": "- Format de 20 minutes en fin de journée, entièrement illustré : Kyverno, moteur de politiques Kubernetes, présenté comme un **magicien** qui intervient après l'authentification et l'autorisation de l'API server.\n- Les cinq « écoles de magie » : **validate** (bloquer ou auditer), **mutate** (ajouter labels, imagePullSecrets, side-cars), **generate** (copier un secret dans chaque nouveau namespace et le resynchroniser), **cleanup** (supprimer des ressources selon un planning cron) et **verifyImages** (signature cosign, SBOM, digest).\n- Conseil appuyé : les anciens types `ClusterPolicy` sont dépréciés et seront **supprimés en octobre**, il faut démarrer avec les nouvelles CRD (ValidatingPolicy, MutatingPolicy, etc.). Toujours commencer en **mode audit** avant de bloquer ou de supprimer.\n- **Réception** : Antoine Mayer apprécie la clarté du format visuel en fin de journée et retient que Kyverno *« permet de maintenir efficacement la conformité et l'hygiène globale de son cluster »*.",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "NSkvOOA2lPI",
+        "title": "Comprendre Kyverno de manière visuelle",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "podman-systemd-une-introduction-aux-quadlets",
+      "day": "2026-07-02",
+      "type": "talk",
+      "title": "Podman + Systemd = <3 - Une introduction aux Quadlets",
+      "speakers": [
+        "Benjamin Vouillaume"
+      ],
+      "feedbackFrom": [
+        "Antoine Mayer (blog)",
+        "David Drugeon-Hamon (blog)"
+      ],
+      "summary": "- Podman n'a pas de démon (plus simple en rootless), mais ne redémarre donc pas seul les conteneurs après un reboot. La première réponse, `podman generate systemd`, produisait des fichiers jugés **inmaintenables**.\n- Les **Quadlets** : des fichiers déclaratifs (`.container`, `.build`, `.network`, `.volume`, `.kube`…) que systemd transforme en unités de service, avec logs dans journalctl, dépendances résolues automatiquement entre build et conteneur, et fonctionnement rootless ou root.\n- Démo en direct sur le homelab du speaker (Caddy reconstruit avec un plugin Cloudflare). Il l'utilise aussi en prod dans son entreprise, en GitOps.\n- Limites assumées : la complexité de systemd et **aucun passage à l'échelle**, ce n'est pas un remplaçant de Kubernetes mais une solution pour une machine. Il mentionne aussi l'outil de conversion podlet et l'**auto-update** avec rollback.\n- **Réception** : Antoine Mayer retient l'auto-update et résume : *« C'est propre, c'est léger, c'est intégré à l'OS. »* David Drugeon-Hamon le recommande aussi.\n- Le sous-titrage de la vidéo démarre en cours de présentation.",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "RgnsZhUhl8M",
+        "title": "Podman + Systemd = 3 - Une introduction aux Quadlets",
         "publishedAt": "2026-07-09",
         "transcript": true
       }
@@ -125,10 +282,13 @@
         "Cyprien Pannier — Didask",
         "Léa Combette — Didask"
       ],
-      "feedbackFrom": [],
-      "summary": "- Format court (20 min) par un staff engineer et une learning scientist de Didask. Au-delà du goulot de la relecture, ils pointent un **goulot métacognitif**.\n- Deux mécanismes que le vibe coding exploite : la **minimisation de l'effort** et l'**illusion de maîtrise** (confondre facilité et compétence). On stagne, voire on régresse, **sans s'en rendre compte**. Rappel de l'**« ironie de l'automatisation »** (Lisanne Bainbridge, 1983).\n- Compétences à préserver : **comprendre ce qu'on n'a pas écrit**, se faire comprendre du LLM, **juger** (chiffres cités : 96 % des devs ne font pas confiance au code généré mais 52 % ne le vérifient pas systématiquement), **déboguer sans filet**, **penser en système**.\n- Pistes testées chez Didask (sans métriques, précisent-ils) : commandes Claude Code pour **inverser la relation** avant de coder (`/grill-me`, `/derisk`), détection des validations passives pendant la session, `/describe-pr` et un « PR try me » où l'IA **interroge le relecteur** sur sa compréhension.\n- Conclusion : déplacer ses compétences, oui ; **arrêter de les développer**, non. Limite reconnue : tout repose sur l'**intention** du développeur.",
+      "feedbackFrom": [
+        "David Drugeon-Hamon (blog)"
+      ],
+      "summary": "- Format court (20 min) par un staff engineer et une learning scientist de Didask. Au-delà du goulot de la relecture, ils pointent un **goulot métacognitif**.\n- Deux mécanismes que le vibe coding exploite : la **minimisation de l'effort** et l'**illusion de maîtrise** (confondre facilité et compétence). On stagne, voire on régresse, **sans s'en rendre compte**. Rappel de l'**« ironie de l'automatisation »** (Lisanne Bainbridge, 1983).\n- Compétences à préserver : **comprendre ce qu'on n'a pas écrit**, se faire comprendre du LLM, **juger** (chiffres cités : 96 % des devs ne font pas confiance au code généré mais 52 % ne le vérifient pas systématiquement), **déboguer sans filet**, **penser en système**.\n- Pistes testées chez Didask (sans métriques, précisent-ils) : commandes Claude Code pour **inverser la relation** avant de coder (`/grill-me`, `/derisk`), détection des validations passives pendant la session, `/describe-pr` et un « PR try me » où l'IA **interroge le relecteur** sur sa compréhension.\n- Conclusion : déplacer ses compétences, oui ; **arrêter de les développer**, non. Limite reconnue : tout repose sur l'**intention** du développeur.\n- **Réception** : David Drugeon-Hamon le cite parmi les talks qu'il recommande, sans commentaire détaillé.",
       "summarySources": [
         "transcript",
+        "blog",
         "program"
       ],
       "video": {
@@ -137,15 +297,105 @@
         "publishedAt": "2026-07-09",
         "transcript": true
       }
+    },
+    {
+      "id": "securite-et-platform-engineering-un-mariage-encore-trop-arrange",
+      "day": "2026-07-03",
+      "type": "talk",
+      "title": "Sécurité & Platform Engineering : un mariage (encore trop) arrangé ?",
+      "speakers": [
+        "Antoine Mayer — Kaliop",
+        "Maxime Lenormand"
+      ],
+      "feedbackFrom": [
+        "David Drugeon-Hamon (blog)"
+      ],
+      "summary": "- Duo platform engineer (Kaliop) et architecte sécurité. Rappel des fondamentaux du platform engineering (centralisation, standardisation, developer experience, golden paths) et constat tiré d'une étude de 2023 : la sécurité est citée comme moteur d'adoption mais **absente des usages et des objectifs**, tout en servant à mesurer le succès.\n- Trois cas vécus sur une IDP type : **sécurité minimaliste** (un gestionnaire de secrets et rien d'autre ; s'appuyer sur le Well-Architected Framework et les contrôles CIS, couvrir les 4C cloud, cluster, conteneur, code) ; **sécurité illusoire** (pile d'outils empilés à l'aveugle, chevauchements, fatigue des CVE ; d'où la modélisation de menaces STRIDE et l'analyse de risque EBIOS RM) ; **sécurité trop stricte** (le développeur bloqué à chaque étape finit en shadow IT).\n- Le poste du développeur fait partie de l'IDP : avec un agent de code, le **« trio létal »** (contenu non fiable, accès aux données privées, communication externe) ouvre la voie à l'exfiltration par injection de prompt. Parades : validation déterministe des entrées plutôt qu'un second LLM, sandboxing (conteneurs, micro-VM), filtrage réseau en sortie, se méfier du **mode « yolo »**.\n- Proposition : passer du *shift left* (qui charge les développeurs) au **shift down** vers la plateforme, avec un *security champion* entre développeurs, plateforme et équipe sécurité. Le « mariage heureux » dépend de la communication et de la mesure de l'adoption, pas des outils.\n- En questions, la salle y voit un « mariage à trois » prolongeant DevOps ; pour vendre la sécurité, les speakers conseillent d'avancer par itérations et de parler risque business.\n- **Réception** : David Drugeon-Hamon, ancien collègue des speakers, le recommande comme une façon d'intégrer la sécurité sans friction dans la plateforme.",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "L6CoZ1h3C_4",
+        "title": "Sécurité & Platform Engineering : un mariage (encore trop) arrangé ?",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "j-ai-package-mon-application-en-image-docker-et-maintenant",
+      "day": "2026-07-03",
+      "type": "talk",
+      "title": "J'ai packagé mon application en image Docker, et maintenant ?",
+      "speakers": [
+        "Aurélie Vache — OVHcloud"
+      ],
+      "feedbackFrom": [
+        "David Drugeon-Hamon (blog)"
+      ],
+      "summary": "- Fil rouge : sécuriser la **software supply chain** d'une petite API Go, de l'image à Kubernetes. Définition reprise par David Drugeon-Hamon : *« c'est la différence entre produire une application et la livrer de manière sécurisée »*.\n- Sept « commandements » démontrés en ligne de commande puis dans le registre Harbor : générer et attacher un **SBOM** (SPDX et CycloneDX, désormais exigé par le Cyber Resilience Act) ; **scanner** les vulnérabilités en gardant le même outil partout (Trivy et Docker Scout donnent des résultats différents) ; publier un **VEX** pour écarter les failles non exploitables (de 10 vulnérabilités hautes à 1 avec govulncheck) ; **signer** l'image avec cosign ; générer une **provenance SLSA** ; automatiser dans une GitHub Action (permissions minimales, actions épinglées par hash) ; imposer des **politiques d'admission** Kyverno.\n- La démo de signature a échoué en direct (service Rekor ou Wi-Fi), ce que la speakeuse a commenté avec humour avant de montrer la suite avec l'image signée par la CI.\n- Bonnes pratiques finales : partir d'images durcies (Docker Hardened Images), politiques de build, **tags immuables**, SBOM operator et Dependency-Track pour le parc.",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "m2n9DJctMlw",
+        "title": "J'ai packagé mon application en image Docker, et maintenant ?",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "kubernetes-gateway-api-vs-ingress-controller",
+      "day": "2026-07-03",
+      "type": "talk",
+      "title": "Kubernetes Gateway API vs Ingress Controller : nouvelle ère du trafic entrant dans vos clusters",
+      "speakers": [
+        "Jérôme Galais — Kaliop"
+      ],
+      "feedbackFrom": [
+        "David Drugeon-Hamon (blog)"
+      ],
+      "summary": "- Contexte : la dépréciation d'ingress-nginx inquiète, alors que l'Ingress est simple mais limité par design (HTTP seulement, pas de chiffrement de bout en bout, **annotations propriétaires** qui rendent la migration pénible, pas de délégation de droits).\n- La **Gateway API** (CNCF, version 1.6 quelques jours avant le talk) n'est pas une « Ingress v2 » : GatewayClass, Gateway, ListenerSet, HTTPRoute, GRPCRoute, TCP et TLSRoute désormais stables. Elle sépare les rôles (provider, ops, développeurs), autorise le cross-namespace via **ReferenceGrant** et étend le modèle par **extensionRef**, *« la pépite »* selon lui.\n- Démos avec Traefik : coexistence Ingress et Gateway sur le même contrôleur, puis **migration sans interruption** en jouant sur la priorité des routes, avec rollback en un commit via Argo CD.\n- Faiblesses actuelles côté Traefik : extensionRef limité au namespace, ListenerSet pas encore implémenté, services ExternalName non supportés. Sa recommandation : y aller, mais progressivement, en gardant l'Ingress le temps de la bascule.\n- **Réception** : David Drugeon-Hamon le recommande, la Gateway API étant présentée comme le remplaçant des Ingress Controllers.",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "JdpMlZwG-O0",
+        "title": "Kubernetes Gateway API vs Ingress Controller : Nouvelle ère du trafic entrant dans vos clusters",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "art-generatif-de-la-decouverte-a-la-publication",
+      "day": "2026-07-03",
+      "type": "keynote",
+      "title": "Art génératif : de la découverte à la publication d'un projet dans un studio prestigieux",
+      "speakers": [
+        "Camille Roux"
+      ],
+      "feedbackFrom": [
+        "Camille Roux (Bluesky, speaker)"
+      ],
+      "summary": "- **Keynote de clôture** de l'édition (pas de vidéo publiée sur la chaîne). Selon le descriptif officiel relayé par Sunny Tech, le parcours va du dessin papier aux lignes de code (p5.js, GLSL, three.js), jusqu'à des expositions à New York et à des studios de renom.\n- Seul retour trouvé, celui de la speakeuse (speaker) : un *« vrai bonheur de faire découvrir ce sujet et de voir la salle accrocher »*, et des remerciements à l'organisation pour l'accueil.",
+      "summarySources": [
+        "feedback",
+        "program"
+      ]
     }
   ],
-  "synthesisUpdatedAt": "2026-09-25",
+  "synthesisUpdatedAt": "2026-10-05",
   "edition": "7e édition",
   "programUrl": "https://sunny-tech.io/schedule/day-1",
   "note": "7ᵉ édition, 2 & 3 juillet 2026 à la Faculté des Sciences de Montpellier. Environ 60 sessions sur 5 salles (Lavande, Coquelicot, Olivier, Thym, Romarin) : talks de 50 min, formats courts de 20 min et ateliers de 110 min, répartis en pistes IA & Data, Cloud & DevOps, Architecture & Sécurité, Interfaces utilisateurs, Ingénierie logicielle, Conception et « Atypique ». Conférence organisée par une association de bénévoles.",
-  "corpus": "Aucun retour de participant exploitable trouvé : la recherche web n'a remonté que des annonces de sponsors publiées avant l'événement (Kaliop, Meritis) et, sur le blog officiel, un seul article sur le CFP. La synthèse s'appuie donc sur le **programme officiel** et sur **6 transcripts** de vidéos (keynote d'ouverture et 5 talks), choisis parmi les **52 vidéos** publiées le 09/07/2026 sur la chaîne YouTube Sunny Tech.",
-  "limits": "**Aucun retour de participant** : les résumés décrivent ce qui a été dit sur scène (sous-titres), pas la manière dont les talks ont été reçus. Le choix des 6 sessions transcrites est éditorial (keynote et sujets IA / organisation), il ne reflète pas une popularité mesurée. Le budget de recherche web étant épuisé en cours de travail, la recherche LinkedIn et Bluesky n'a pas pu être approfondie. Environ 55 sessions restent sans contenu analysé.",
-  "tldr": "**D'après les vidéos, Sunny Tech 2026 a mêlé une keynote très critique sur les mythologies de la tech et l'AGI à des retours d'expérience concrets sur l'IA en production (astreintes, legacy, vibe coding), avec un même message : l'IA amplifie l'expertise et l'organisation existantes, à condition de préserver les compétences humaines et de mesurer ses coûts.**",
+  "corpus": "**2 comptes-rendus de blog** : Antoine Mayer (09/07/2026, sa journée du 2 juillet, 6 sessions commentées ; il était aussi speaker le 3) et David Drugeon-Hamon (août 2026, 9 talks recommandés). S'y ajoutent les posts Bluesky de Sunny Tech et de deux speakers (Camille Roux, Florian Forestier), le **programme officiel** et **15 transcripts** de vidéos parmi les **52** publiées le 09/07/2026 sur la chaîne YouTube Sunny Tech.",
+  "limits": "Retours participants **très minces** : deux blogueurs, dont un speaker, qui listent leurs sessions préférées plus qu'ils ne les critiquent ; **aucun post LinkedIn** n'a été trouvé (7 recherches web le 05/10/2026, résultats limités aux pages de l'organisation et aux annonces de sponsors). Les 6 premiers transcripts relèvent d'un choix éditorial (keynote, IA, organisation), les 9 suivants des sessions citées par les blogueurs, d'où un biais Cloud et DevOps. Environ 45 sessions restent sans contenu analysé.",
+  "tldr": "**D'après les vidéos et deux blogs, Sunny Tech 2026 a mêlé une keynote très critique sur les mythologies de la tech et l'AGI, des retours d'expérience concrets sur l'IA en production (astreintes, legacy, vibe coding) et une solide piste sécurité et Cloud (failles des LLM, supply chain, chaos engineering), avec un même message : l'IA amplifie l'expertise existante, à condition de préserver les compétences humaines et de prouver plutôt que supposer.**",
   "keyTakeaways": [
     "Ne pas confier un chantier legacy à un prompt : monter d'abord en compétence fonctionnelle et technique (discovery DDD assistée par agents), puis co-construire la stratégie de migration (Shodo Studio).",
     "Donner aux agents des **signaux déterministes** (tests, diff visuel avec seuil) pour que chaque erreur devienne un retour exploitable (Shodo Studio).",
@@ -164,15 +414,11 @@
     "CJS, ESM, WTF ?? (Théo Gianella)",
     "Initier votre démarche Platform Engineering (Emilien Escalle, Frédéric Léger) — atelier",
     "Another World, une belle leçon d'architecture logicielle (Olivier Poncet)",
-    "Je malmène ton LLM en direct avec 10 failles de sécurité (Gaëtan Eleouet)",
     "Et si on faisait du simulation-driven development ? (Pierre Zemb)",
-    "WebMCP : offrez une API aux applis web qui n'en ont pas (Thomas Simonnet)",
     "Serious game Event Storming chez le Père Noël (Dorian Lamandé, Jérémie Bohbot) — atelier",
     "Un donjon, deux donjons, trois donjons… (Sylvain Gougouzian, Florian Forestier)",
-    "Casser la prod pour mieux dormir (Wilfried Roset, Juliette Orain)",
     "Et si vos outils faisaient un peu plus pour vous ? (Jules Poissonnet)",
     "Toujours en UUIDv4/v5 ? (Brice Jaglin, Axel Czarniak)",
-    "Que la Force (du Changement) soit avec toi ! (Stéphane Trebel)",
     "Bienvenue dans la jungle CloudNative : les container runtimes (Rachid Zarouali)",
     "La révolution WebGPU (Julien Sulpis)",
     "Local-first et sync-engines (Benjamin Legrand)",
@@ -182,15 +428,12 @@
     "BuildKit Powers (Emilien Escalle, Frédéric Léger)",
     "AI Apocalypse Survival Kit : coding agents & Tiny Language Models (Philippe Charrière)",
     "Tech & Bien-être (Luis Rubiera)",
-    "Comprendre Kyverno de manière visuelle (Aurélie Vache)",
     "Merge Smarter, Not Harder : l'IA co-tech lead (Carmen Piciorus, Michael Enjolras)",
     "Survivre à la bulle de l'IA (Eric Burel)",
     "Les dev containers (Stéphane Philippart)",
     "Cyber Resilience Act : qu'es aquò ? (Cyril Lopez)",
-    "Podman + Systemd : les Quadlets (Benjamin Vouillaume)",
     "Pairing is caring! (Olivier Breda)",
     "Déploiement de clusters Kubernetes à grande échelle (Rachid Zarouali) — atelier",
-    "Sécurité & Platform Engineering (Antoine Mayer, Maxime Lenormand)",
     "Accessibilité : cochez les cases… et ratez la cible (Gabriel Pillet, Vanessa Strub)",
     "Savez-vous vraiment ce qu'est la couleur ? (Julien Sulpis)",
     "Sous le capot d'une base de données analytique (Sylvain Wallez)",
@@ -206,15 +449,12 @@
     "De 2 à 50 modules Terraform avec Terragrunt Stacks (Stéphane Trognon)",
     "TODO : faut-il arrêter les TODO dans le code ? (Ando Nary)",
     "Quand TCP meurt à 20 minutes de latence (Sarah Theoulle, Hugo Ponthieu, Mathias Durat)",
-    "J'ai packagé mon application en image Docker, et maintenant ? (Aurélie Vache)",
     "Le Magicien Zod (Lucas Audart, Mickael Alves)",
     "RINA : repenser l'Internet du futur (Théo Tchilinguirian)",
     "TDD × Vibe Coding : duel ou duo gagnant ? (Amine El Gaouzi)",
     "Rust pour le développement d'applications métier (Stéphane Trebel)",
-    "Kubernetes Gateway API vs Ingress Controller (Jérôme Galais)",
     "Lovable at first sight (Chantal Khin)",
-    "Catch me if you can : comment j'ai volé ma moto aux voleurs (Julien Haumont)",
-    "Art génératif (Camille Roux)"
+    "Catch me if you can : comment j'ai volé ma moto aux voleurs (Julien Haumont)"
   ],
   "sources": [
     {
@@ -242,11 +482,23 @@
       "url": "https://meritis.fr/evenements/meritis-a-sunny-tech-2026-rendez-vous-a-montpellier-autour-de-la-securite-des-llm/"
     },
     {
-      "label": "Posts LinkedIn : aucun retour de participant identifié"
+      "label": "Antoine Mayer : « Une journée avec moi à Sunny Tech 2026 » (09/07/2026)",
+      "url": "https://blog.antoinemayer.fr/2026/07/09/une-journee-avec-moi-a-sunny-tech-2026/"
     },
     {
-      "label": "Transcripts (sous-titres YouTube) : Neveu, Nourry & Lacroix, Foures, Bierlaire, Graveaud, Pannier & Combette"
+      "label": "David Drugeon-Hamon : « Les news de l'été 2026 : juin & juillet » (section Sunny Tech)",
+      "url": "https://david.drugeon-hamon.bzh/blog/2026/08/news-ete/"
+    },
+    {
+      "label": "Bluesky Sunny Tech (fil de l'événement et reposts de Camille Roux et Florian Forestier, 2-3/07/2026)",
+      "url": "https://bsky.app/profile/sunnytech.bsky.social"
+    },
+    {
+      "label": "Posts LinkedIn : aucun retour de participant identifié (recherches du 05/10/2026)"
+    },
+    {
+      "label": "Transcripts (sous-titres YouTube) : Neveu, Nourry & Lacroix, Foures, Bierlaire, Graveaud, Pannier & Combette, Eleouet, Simonnet, Roset & Orain, Trebel, Vache (×2), Vouillaume, Mayer & Lenormand, Galais"
     }
   ],
-  "revisit": "retours participants (LinkedIn, blogs) non recherchés : quota de recherche web épuisé le 25/09/2026"
+  "revisit": "aucun post LinkedIn trouvé au 05/10/2026 (7 recherches web) ; seulement 2 blogs (dont un speaker) et 2 posts Bluesky de speakers : à revoir pour chercher des retours LinkedIn, Mastodon ou des comptes-rendus d'ESN montpelliéraines"
 }

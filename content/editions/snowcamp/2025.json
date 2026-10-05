@@ -3,11 +3,451 @@
   "year": 2025,
   "title": "Snowcamp 2025",
   "edition": "9e édition",
-  "start": "2025-01-28",
-  "end": "2025-01-31",
+  "start": "2025-01-22",
+  "end": "2025-01-25",
   "city": "Grenoble",
+  "venue": "World Trade Center Grenoble",
   "url": "https://app.voxxr.in/events/snowcamp25/schedule",
+  "programUrl": "https://app.voxxr.in/events/snowcamp25/schedule",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "9ᵉ édition, 22 au 25 janvier 2025 (dates corrigées d'après le programme Voxxrin : universités le mercredi 22, conférences les jeudi 23 et vendredi 24, journée à la montagne le samedi 25 ; le fichier snowcamp.io/editions/2025.json indique à tort 28–31 janvier). Selon Bpifrance : 600 participants, 77 orateurs, 42 sessions et 10 universités. Programme : 10 universités de 3 h, une keynote par jour, des conférences de 45 min et des « Schuss » de 20 min sur 4 tracks (Architecture/Data/IA, Cloud/DevOps, Langage/Backend/Sécurité, UX/Frontend) + un track « Hors-piste ». Les sessions n'ont pas été filmées.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-05",
+  "revisit": "aucun post LinkedIn de participant lu (HTTP 999 ; un post « Retour sur le Snowcamp 2025 » de Jean-Pascal Martinet repéré en recherche mais non lu) ; corpus limité à deux sponsors (Bpifrance, Criteo) et aux notes de Nicolas Delsaux",
+  "corpus": "Trois sources écrites publiées entre le 23 janvier et le 18 février 2025 : sept billets de prise de notes de Nicolas Delsaux (Zenika, lui-même speaker) sur autant de talks, l'article de Bpifrance.IO signé Victor Gallet (sponsor, 7 sessions commentées) et l'article Medium de Criteo (sponsor, retours de Sylvain Dedieu, Ioan Bucur, Rémi Di Savino et Valerian Gonnot). S'y ajoutent le programme Voxxrin, la page des supports de sessions (GitHub snowcamp) et 7 transcripts de captations des mêmes talks faites dans d'autres conférences.",
+  "limits": "Aucune captation officielle : les transcripts viennent de versions données ailleurs (Touraine Tech, MiXiT, BDX I/O, La Duck Conf, GDG Strasbourg, Viseo), parfois plusieurs mois avant ou après. Les deux articles détaillés viennent de sponsors dont des salariés étaient speakers, et aucun post LinkedIn de participant n'a pu être lu. Environ 50 des 65 sessions (dont les 10 universités) restent sans retour public.",
+  "tldr": "**Une 9ᵉ édition affichée complète (600 places parties en trois heures) dont les sessions les plus commentées parlent de fondamentaux plutôt que d'IA** : sécurité de la chaîne open source (keynote XZ Utils), architecture modulaire (pattern Hive), reprise en main du legacy et stratégie de test, avec une keynote de clôture sur la négociation salariale.",
+  "keyTakeaways": [
+    "Traiter la sécurité de l'open source comme un sujet d'entreprise : revue de code rigoureuse des nouvelles contributions, gestion des dépendances, modélisation des menaces et plan de réponse aux incidents (keynote XZ Utils, Delsaux).",
+    "Voir les microservices comme une stratégie de déploiement et non de design : démarrer en monolithe modulaire bien isolé (ports et adaptateurs, une base de données par module) et extraire un module seulement pour une raison technique ou organisationnelle (Pierrain / Topçu, via Bpifrance et Criteo).",
+    "Face à un legacy à bout de souffle, reprendre le contrôle plutôt que réécrire : garder l'application en production, tests automatisés, livraisons fréquentes, et mesurer avec les métriques DORA (Jeambrun).",
+    "Documenter sa stratégie de test dans un fichier TESTING.md (ou un ADR), préférer le mutation testing à la course à la couverture et mocker les API dans les tests d'interface (Poissonnet / Caron).",
+    "Automatiser les refactorings de masse avec des recettes OpenRewrite testées unitairement, en gardant une relecture humaine (Tama, via Bpifrance et Delsaux).",
+    "Avant d'écrire un Dockerfile à la main, regarder les buildpacks : bonnes pratiques embarquées, SBOM et rebase rapide de l'image de base, sans être une solution miracle (Rosso / Einaudi, via Delsaux).",
+    "Pour l'authentification : hacher les mots de passe avec Argon2 ou scrypt, ajouter un second facteur, garder des sessions courtes et identifier l'utilisateur OIDC par le claim `sub`, jamais par l'email (Molin / du Mesnil).",
+    "Préparer sa négociation salariale bien avant l'offre : regarder le package complet, faire écrire toute revalorisation promise dans le contrat, prendre 48 h à une semaine de réflexion et argumenter une contre-offre (Almosni Chiche)."
+  ],
+  "sessions": [
+    {
+      "id": "anatomie-d-une-backdoor-xz-utils",
+      "day": "2025-01-23",
+      "type": "keynote",
+      "title": "Anatomie d'une Backdoor : XZ Utils",
+      "speakers": [
+        "Quentin Dunand — Viseo",
+        "Wassim Ahmed-Belkacem — Viseo"
+      ],
+      "feedbackFrom": [
+        "Nicolas Delsaux (blog)",
+        "Victor Gallet (Bpifrance.IO)",
+        "Ioan Bucur (blog Criteo)"
+      ],
+      "summary": "- Contenu sur scène décrit d'après une version antérieure du talk enregistrée chez Viseo (octobre 2024, vidéo Uw5qDg4cS0g) et d'après les notes détaillées de Nicolas Delsaux, prises en direct à Grenoble.\n- Point de départ : l'open source est la **colonne vertébrale** d'innombrables systèmes (exemple de FFmpeg). La backdoor, découverte fin mars 2024 par Andres Freund via des lenteurs de sshd, visait l'**exécution de commandes à distance** sur les serveurs SSH en passant par liblzma.\n- Volet technique : build autotools modifié (fichier `build-to-host.m4`), scripts très obfusqués, fichier objet injecté au moment de la compilation pour détourner la vérification RSA de sshd. Démo : exécution de commandes en root sur une VM, sans droits SSH.\n- Volet humain, jugé essentiel : **ingénierie sociale** sur plusieurs années. Le compte Jia Tan, créé en 2021, se forge une réputation par des contributions fiables, des comptes complices font pression sur un mainteneur épuisé, puis il devient co-mainteneur et contact OSS-Fuzz. Les speakers évoquent une piste étatique (Russie, APT29) d'après l'heure des commits.\n- Leçons proposées : audits et revue de code rigoureux, surtout pour les nouveaux contributeurs, MFA et zero trust, gestion des dépendances, modélisation des menaces, plan de réponse aux incidents.\n- Accueil : *« Avec un très bon storytelling, une dose d’humour et des slides léchées »* (Victor Gallet) ; une *« Interesting discussion »* sur la façon dont un acteur apparemment étatique a exploité les faiblesses de l'open source (Ioan Bucur).\n- Lecture critique de Nicolas Delsaux : la conclusion lui semble *« un peu erronée »* ; selon lui *« ça n’est pas le problème de la communauté open-source. C’est le problème des entreprises »*, qui choisissent de ne pas contribuer à l'écosystème dont elles dépendent.",
+      "summarySources": [
+        "program",
+        "transcript",
+        "blog",
+        "feedback",
+        "slides"
+      ]
+    },
+    {
+      "id": "debugguez-votre-salaire-strategies-negociation-salariale",
+      "day": "2025-01-24",
+      "type": "keynote",
+      "title": "Débugguez votre salaire ! Mes stratégies gagnantes pour réussir sa négociation salariale !",
+      "speakers": [
+        "Shirley Almosni Chiche — BUILD RH"
+      ],
+      "feedbackFrom": [
+        "Ioan Bucur (blog Criteo)",
+        "Rémi Di Savino (blog Criteo)"
+      ],
+      "summary": "- Contenu décrit d'après la captation du même talk à BDX I/O (vidéo BKayyLc6YH8, publiée en janvier 2025), donc pas forcément identique à la version grenobloise. La speaker se présente comme recruteuse IT depuis plus de 10 ans et agent de carrière.\n- Cinq **« bugs »** qui justifient un salaire trop bas, chacun associé à un profil d'employeur caricatural : la **grille salariale**, l'**équité** avec les collègues déjà en poste, les **finances** difficiles, le **niveau technique** jugé insuffisant en fin de process, et le simple **plaisir de négocier**.\n- Corrections proposées : regarder le **package complet** (variable, intéressement, congés, RTT), adopter le langage de l'interlocuteur (« miroir empathique ») plutôt que le rapport de force, demander une **revalorisation en fin de période d'essai écrite dans le contrat**, indexer le risque (BSPCE, primes) dans une startup.\n- Anticipation : donner un salaire souhaité plutôt que son salaire actuel, rencontrer l'équipe, prendre 48 h à une semaine de réflexion, en parler à quelques personnes de confiance seulement, puis faire une **contre-offre argumentée**.\n- Conclusion : rester connecté au marché et regarder aussi la culture d'entreprise, car un bon salaire peut finir en burn-out.\n- Côté participants, aucun commentaire détaillé n'a été trouvé ; les auteurs de Criteo citent seulement la négociation salariale comme exemple de l'étendue des sujets : *« from general topics like negotiating a salary to specific programming language features »* (Ioan Bucur).",
+      "summarySources": [
+        "program",
+        "transcript",
+        "feedback"
+      ]
+    },
+    {
+      "id": "openrewrite-refactoring-as-code",
+      "day": "2025-01-23",
+      "type": "talk",
+      "title": "OpenRewrite: Refactoring as code",
+      "speakers": [
+        "Jérôme Tama — Onepoint"
+      ],
+      "feedbackFrom": [
+        "Nicolas Delsaux (blog)",
+        "Victor Gallet et Willy Malvault (Bpifrance.IO)"
+      ],
+      "summary": "- **Industrialiser le refactoring** (migration JUnit 4 vers 5, Spring Boot 2 vers 3) avec des « recettes » OpenRewrite, outil open source créé par Moderne et donné à Commonhaus.\n- Les recettes s'appuient sur un **lossless syntax tree** qui conserve le formatage du code et appliquent le pattern visitor ; elles se composent en YAML (`rewrite.yml`) et un catalogue officiel en propose environ 500 (notes de Delsaux).\n- Démo d'écriture de recettes maison : Refaster pour les cas simples, visiteurs pour les cas complexes, avec **tests unitaires** des recettes. OpenRewrite indique en fin d'exécution le temps gagné (Bpifrance).\n- Limites notées par Delsaux : inutile pour un simple renommage (l'IDE suffit), préconditions délicates à composer, fonctionnalités en preview de Java non supportées.\n- Note de Willy Malvault après échange avec le speaker et Nicolas Delsaux : un outil puissant mais *« très spécifique au monde Java »*, dont il apprécie qu'il passe par la relecture humaine plutôt que par une Pull Request directe.",
+      "summarySources": [
+        "blog",
+        "slides",
+        "program"
+      ]
+    },
+    {
+      "id": "je-malmene-ta-prod-en-direct-avec-15-failles-de-secu",
+      "day": "2025-01-23",
+      "type": "talk",
+      "title": "Je malmène ta prod en direct avec 15 failles de sécu",
+      "speakers": [
+        "Gaëtan Eleouet — Meritis"
+      ],
+      "feedbackFrom": [
+        "Nicolas Delsaux (blog)"
+      ],
+      "summary": "- Démonstration en direct de failles du **top 10 OWASP** ; chiffre rapporté par Delsaux : *« 72% des failles de sécurité sont liées au code »*.\n- Parades passées en revue : ne pas exposer de stack trace, requêtes paramétrées contre l'injection (SQL ou non), **jetons anti-CSRF** (CORS ne suffit pas), validation côté serveur et des cookies, neutralisation du HTML saisi.\n- Aussi : génération aléatoire sûre (SecureRandom), suivi des composants vulnérables (Renovate), algorithmes de signature non obsolètes, pages d'administration non exposées, pas de mot de passe par défaut.\n- Message de fond : *« si on vous propose un silver bullet qui résolve tous les problèmes, c’est un mensonge »* ; Delsaux recommande les cheat sheets de l'OWASP, *« beaucoup plus agréables à utiliser que leur site »*.",
+      "summarySources": [
+        "blog",
+        "program"
+      ]
+    },
+    {
+      "id": "defier-l-entropie-reecrire-ou-reprendre-le-controle",
+      "day": "2025-01-23",
+      "type": "talk",
+      "title": "Défier l'entropie : réécrire ses applications ou reprendre le contrôle ?",
+      "speakers": [
+        "Alexandre Jeambrun — OCTO Technology"
+      ],
+      "feedbackFrom": [
+        "Nicolas Delsaux (blog)",
+        "Victor Gallet (Bpifrance.IO)",
+        "Ioan Bucur (blog Criteo)"
+      ],
+      "summary": "- Contenu sur scène décrit d'après la captation de La Duck Conf (2024, vidéo DMH0oV73B_I) et les notes de Delsaux. Réponse annoncée d'emblée : on remet sous contrôle, car *« refaire c'est souvent voué à l'échec »*.\n- Trois sources d'**entropie** : les humains (organisation, compétences, turnover), la technologie (obsolescence, failles) et l'environnement (marché, budgets, priorités). Elle se traduit en **complexité accidentelle**, à distinguer de la complexité essentielle et de la complexité technique et de collaboration (Fred Brooks, *No Silver Bullet*).\n- Une réécriture fait cohabiter deux systèmes à maintenir en parallèle ; exemple vécu d'une application PowerBuilder toujours en production plus de 10 ans après le début de sa réécriture en Java.\n- Remèdes : autonomie et responsabilisation des équipes (principe du Manifeste agile), du temps pour progresser, un turnover qui devient un « non-événement », du code métier découplé de la technique, du refactoring et du design en continu.\n- Pour reprendre le contrôle : garder l'application en production, boucles de feedback courtes, livraisons fréquentes et **mesure** (métriques DORA), avec l'idée d'un « indice de réparabilité » du logiciel.\n- Accueil : *« Une très bonne conférence qu’il m’est difficile de résumer ici mais que je recommande »* (Victor Gallet) ; Ioan Bucur retient que réécrire tout un système est généralement une mauvaise idée.",
+      "summarySources": [
+        "program",
+        "transcript",
+        "blog",
+        "feedback"
+      ]
+    },
+    {
+      "id": "tester-c-est-tricher",
+      "day": "2025-01-23",
+      "type": "talk",
+      "title": "Tester c'est tricher",
+      "speakers": [
+        "Jules Poissonnet — Bedrock Streaming",
+        "Antoine Caron"
+      ],
+      "feedbackFrom": [
+        "Nicolas Delsaux (blog)",
+        "Victor Gallet (Bpifrance.IO)"
+      ],
+      "summary": "- Sortir des **dogmes du test** : la pyramide de Mike Cohn date de 2009, quand les tests d'interface coûtaient très cher, et elle est jugée dépassée (alternatives en ruche ou en diamant).\n- Typologie « maison » des équipes : les **croyants** qui ne testent pas faute de temps, les **technophiles** qui définissent leurs tests par l'outil, les **sceptiques** obsédés par 100 % de couverture, et les « **ça suffit comme ça** » qui ne testent que le métier important (notes de Delsaux).\n- Cinq piliers d'une stratégie de test : stabilité, intégrité, documentation, conformité, reproductibilité (Bpifrance).\n- Conseils : Vitest et Playwright (démo, avec mock des API dans les tests d'interface), BDD/ATDD avec Gherkin, **mutation testing** plutôt que couverture, tests ciblés sur le code modifié, et un **fichier TESTING.md** pour expliciter la stratégie.",
+      "summarySources": [
+        "blog",
+        "program"
+      ]
+    },
+    {
+      "id": "10-fonctionnalites-utiles-du-web-que-vous-ne-connaissez-pas",
+      "day": "2025-01-23",
+      "type": "talk",
+      "title": "10 fonctionnalités utiles du web que vous ne connaissez pas",
+      "speakers": [
+        "Olivier Leplus — AWS",
+        "Yohan Lasorsa — Microsoft"
+      ],
+      "feedbackFrom": [
+        "Victor Gallet (Bpifrance.IO)",
+        "Ioan Bucur (blog Criteo)",
+        "Rémi Di Savino (blog Criteo)"
+      ],
+      "summary": "- Contenu complété par la captation du même talk à Touraine Tech (février 2025, vidéo wSLRBF_RNHQ).\n- Introduction sur la fabrique des standards : le **TC39**, ses étapes (stage 0 à 4) et ses notes de réunion publiques sur GitHub, puis **Baseline** (initiative lancée en 2023 pour savoir quelles fonctionnalités sont disponibles dans tous les navigateurs) et webstatus.dev.\n- Fonctionnalités retenues par les participants : **Temporal** pour les dates, Compression Streams API, `@property` et `align-content` en CSS, l'opérateur `??=`, l'attribut `cause` des erreurs (Bpifrance) ; Temporal, le **test runner intégré à Node** (`node --test`) et Picsum (Rémi Di Savino, qui note que les « dix » fonctionnalités étaient en fait quatorze).\n- Accueil : *« Une collaboration AWS et Microsoft, on ne voit ça qu’au Snowcamp »* (Victor Gallet) ; Rémi Di Savino cite ce talk comme son préféré ; *« This was an engaging discussion »* (Ioan Bucur).",
+      "summarySources": [
+        "program",
+        "transcript",
+        "blog",
+        "feedback"
+      ]
+    },
+    {
+      "id": "implementer-son-design-system-maison-bonne-ou-mauvaise-idee",
+      "day": "2025-01-23",
+      "type": "talk",
+      "title": "Implémenter son Design System maison, bonne ou mauvaise idée ?",
+      "speakers": [
+        "Sylvain Dedieu — Criteo"
+      ],
+      "feedbackFrom": [
+        "Sylvain Dedieu (speaker, blog Criteo)"
+      ],
+      "summary": "- Retour d'expérience critique sur le **CDS (Criteo Design System)**, qui permet à plusieurs équipes d'intégrer leurs micro-frontends dans une même plateforme de façon transparente pour l'utilisateur, et sur la bibliothèque de composants maintenue par l'équipe du speaker (programme).\n- Question posée : adapter un design system existant (Material, Cupertino, Fluent) ou construire le sien ; conseils d'optimisation de performances et pièges à éviter pendant le développement.\n- Seul retour disponible, celui du speaker (speaker) : *« I was thrilled to see a full room, with an engaged audience and lots of great feedback. »*",
+      "summarySources": [
+        "program",
+        "feedback"
+      ]
+    },
+    {
+      "id": "guide-de-survie-pour-creer-son-authentification",
+      "day": "2025-01-23",
+      "type": "talk",
+      "title": "Guide de survie pour créer son authentification à l'intention des développeurs",
+      "speakers": [
+        "Paul Molin — Theodo",
+        "Marine du Mesnil — Theodo"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Contenu décrit d'après la captation du même talk au GDG Strasbourg (décembre 2024, vidéo rqkEioqs1Ys, lien donné par les speakers sur la page des supports) ; aucun retour de participant trouvé.\n- Objectif annoncé : partager un **modèle mental** de l'authentification (prouver qui on est), distincte de l'autorisation.\n- Mots de passe : hachage, sel contre les rainbow tables, puis algorithmes lents par conception (**Argon2**, scrypt) dont la sortie embarque sel et paramètres, ce qui permet de migrer les hachages de façon transparente à la connexion.\n- Contre le credential stuffing : **plusieurs facteurs** (ce que je sais, ce que je suis, ce que je possède). Contre le vol de session : cookies `HttpOnly`, jeton de session court (environ 10 minutes) et refresh token plus long, tout en admettant qu'une XSS ou un malware finira par passer.\n- OAuth et OIDC : PKCE pour prouver que l'application qui échange le code est celle qui a lancé le flux, ID token JWT, et identification de l'utilisateur par le claim **`sub`** plutôt que par l'email, qui peut changer.",
+      "summarySources": [
+        "program",
+        "transcript",
+        "slides"
+      ]
+    },
+    {
+      "id": "hello-quarkus",
+      "day": "2025-01-24",
+      "type": "talk",
+      "title": "Hello Quarkus!",
+      "speakers": [
+        "Clément Escoffier — Red Hat"
+      ],
+      "feedbackFrom": [
+        "Nicolas Delsaux (blog)"
+      ],
+      "summary": "- Rappel historique de l'écosystème Java, des gros serveurs dédiés aux conteneurs, pour poser la question : Java est-il fait pour les environnements modernes ? Selon les notes de Delsaux, *« La plupart des clients de Clément utilisent 0.5 CPU et 256 Mo de RAM. »*\n- Le principe de Quarkus : **déplacer un maximum de travail au build** (lecture de configuration, annotations), d'où un démarrage d'environ 1,1 s pour une application REST, 0,1 s en natif avec GraalVM (avec des limites sur les lambdas et l'introspection).\n- Un cœur réactif (Netty, Vert.x) avec trois modèles au choix, mélangeables dans une même application : worker threads, **threads virtuels** et threads I/O.\n- Démo : entité Panache, dev services (dont Redpanda pour Kafka), **tests continus** relancés à chaque modification et Dev UI.",
+      "summarySources": [
+        "blog",
+        "program"
+      ]
+    },
+    {
+      "id": "dockerfile-ou-buildpack",
+      "day": "2025-01-24",
+      "type": "talk",
+      "title": "Dockerfile ou buildpack? Mais au fait, c'est quoi buildpack?",
+      "speakers": [
+        "Loïc Rosso — Zenika",
+        "Benjamin Einaudi — Zenika Grenoble"
+      ],
+      "feedbackFrom": [
+        "Nicolas Delsaux (blog)"
+      ],
+      "summary": "- Constat : la qualité d'une image construite par Dockerfile **dépend de la compétence du développeur** (couches invalidées, exécution en root, fichiers et secrets qui restent dans les couches, images de base à choisir, failles à suivre avec Trivy).\n- Les **buildpacks** (projet de 2011, en incubation à la CNCF) construisent une image sans Dockerfile : standards respectés, builds reproductibles, image de base fournie par les ops, **SBOM** inclus.\n- Démos avec Paketo (Node, frontend avec nginx, Spring) et la commande **`rebase`**, très rapide pour mettre à jour l'image de base ; une tentative d'ajout d'OpenTelemetry échoue en direct.\n- Conclusion rapportée par Delsaux : *« Un bon Dockerfile, c’est complexe. »* Buildpack embarque les bonnes pratiques mais *« ça n’est pas une solution miracle »* : choisir selon ses besoins et son organisation.",
+      "summarySources": [
+        "blog",
+        "program"
+      ]
+    },
+    {
+      "id": "le-pattern-hive-strategie-de-modularisation",
+      "day": "2025-01-24",
+      "type": "talk",
+      "title": "Le pattern Hive : une stratégie de modularisation pour votre monolithe modulaire ou vos microservices",
+      "speakers": [
+        "Thomas Pierrain — Agicap",
+        "Julien Topçu — Shodo"
+      ],
+      "feedbackFrom": [
+        "Victor Gallet (Bpifrance.IO)",
+        "Ioan Bucur (blog Criteo)",
+        "Valerian Gonnot (blog Criteo)"
+      ],
+      "summary": "- Contenu sur scène décrit d'après la captation à MiXiT (juin 2025, vidéo TL_nVaOs47g).\n- Rétrospective du combat contre le **Big Ball of Mud** : l'architecture hexagonale isole la technique mais le domaine redevient spaghetti ; les microservices mènent souvent au monolithe distribué ; « un bounded context = un microservice » ne suffit pas, car le découpage peut être faux et les frontières floues.\n- Thèse centrale : les **microservices sont une stratégie de déploiement, pas de design**. La ruche part d'un **monolithe modulaire** où les erreurs restent réversibles (refactoring dans l'IDE, une seule release).\n- Chaque module est une mini architecture hexagonale avec ses tests et **son propre datastore** ; les modules ne se parlent que par des ports et des adaptateurs « in-process », qu'on remplace par un client HTTP pour extraire un module. Le pattern est fractal.\n- Mises en garde : éviter les échanges trop bavards entre modules, ne pas laisser la suite de tests devenir un monolithe caché, ne pas faire travailler plusieurs équipes sur le même monolithe, ne pas attendre trop longtemps pour découper. Formule finale : *« modéliser d'abord et déployez comme vous le souhaitez »*.\n- Accueil : *« Une conférence très bien faite, claire et qui mérite d’être vue »* (Victor Gallet) ; *« Fascinating and common sense talk »* (Ioan Bucur) ; Valerian Gonnot salue une présentation *« in a retro style »* devant un auditorium plein et apprécie de voir modélisation et stratégie de déploiement traitées ensemble.",
+      "summarySources": [
+        "program",
+        "transcript",
+        "blog",
+        "feedback"
+      ]
+    },
+    {
+      "id": "les-meta-lois-vous-ne-leur-echapperez-pas",
+      "day": "2025-01-24",
+      "type": "talk",
+      "title": "Les Méta-Lois, vous ne leur échapperez pas !",
+      "speakers": [
+        "Stéphane Trebel — WeScale"
+      ],
+      "feedbackFrom": [
+        "Valerian Gonnot (blog Criteo)"
+      ],
+      "summary": "- Contenu décrit d'après la captation du même talk en keynote à Touraine Tech (février 2025, vidéo vUQKU_iLktI) ; les slides de la version Snowcamp sont publiées.\n- Récit suivi d'une jeune développeuse qui débarque dans l'entreprise fictive Metacortex et qui croise une à une les **méta-lois** : loi de Conway, palissade de Chesterton, loi de Parkinson, loi de Tesler, loi de Goodhart, loi de Hofstadter, principe de Shirky, effet Lindy, marteau de Maslow.\n- Pour chacune, des pistes pour la **mitiger** (on ne l'élimine pas) : DevOps et full stack contre les silos, rotations entre équipes et task forces limitées dans le temps contre Conway, respect du legacy *« en prod »* qui paie les salaires, plateformes internes pour borner sans retirer l'autonomie.\n- Accueil : *« It’s a fun yet highly efficient session »* qui invite à prendre du recul sur les lois empiriques du quotidien, avec des remèdes parfois classiques, parfois surprenants (Valerian Gonnot).",
+      "summarySources": [
+        "program",
+        "transcript",
+        "slides",
+        "feedback"
+      ]
+    },
+    {
+      "id": "techno-autoritarisme-et-design-persuasif",
+      "day": "2025-01-24",
+      "type": "talk",
+      "title": "Techno-Autoritarisme et design persuasif : quels risques pour nos libertés ?",
+      "speakers": [
+        "Marcy Ericka Charollois — Merci Marcy, The Safe Place"
+      ],
+      "feedbackFrom": [
+        "Victor Gallet (Bpifrance.IO)"
+      ],
+      "summary": "- Sujet (programme) : comment le **design persuasif** des géants de la tech exploite la psychologie pour accroître l'engagement et la dépendance, et contribue à l'émergence d'un **techno-autoritarisme**.\n- Victor Gallet renonce à le résumer mais le recommande : un talk *« plein d’énergie, interactif, sourcé »*, sur le contexte politique américain, l'influence des réseaux sociaux sur nos idées et nos interactions.\n- Malgré une *« pluie d’informations déprimantes »*, il en ressort avec l'envie de reprendre le contrôle de ses données face aux géants de la tech, *« en gardant en tête que la tech est politique! »*",
+      "summarySources": [
+        "program",
+        "feedback"
+      ]
+    },
+    {
+      "id": "la-science-fiction-peut-elle-s-implementer-positivement",
+      "day": "2025-01-24",
+      "type": "talk",
+      "title": "La science-fiction peut-elle s'implémenter positivement ?",
+      "speakers": [
+        "m4dz — Zenika",
+        "Nicolas Delsaux — Zenika"
+      ],
+      "feedbackFrom": [
+        "Rémi Di Savino (blog Criteo)"
+      ],
+      "summary": "- Format atypique (programme) : pas de slides ni de grande leçon, *« Une table, deux chaises, un thé noir, et du temps »*, pour une discussion entre deux amis sur la SF, l'accélérationnisme, l'environnement, l'IA et la conquête spatiale, et sur la place de chacun face à une technologie qui *« prend le chemin de nos plus grandes dystopies »*.\n- Aucun compte-rendu du contenu ; Rémi Di Savino (Criteo) le cite comme exemple de l'étendue des sujets de l'édition, *« from salary negotiation to “Will Sci-Fi help technology?” with “How to use CQRS” in between »*.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Université — Développer avec l'IA : et si c'était aussi simple qu'ajouter une librairie ? (S. Philippart, T. Chantier)",
+    "Université — Toi aussi donnes du style à tes données avec Grafana (T. Jouve)",
+    "Université — La sécurité en double aveugle : kata d'architecture et cybersécurité communautaire (N. Delsaux, W. Malvault)",
+    "Université — Atelier Bevy : mockup de jeu multiplateforme en Rust (R. Ribaud, B. Sevajol ; slides publiées)",
+    "Université — Devenez un Astronaute : découvrez le framework Astro (F. Albert, J. Chauvin)",
+    "Université — L'observabilité dès le développement avec OpenTelemetry (A. Touret, D. Pequegnot)",
+    "Université — Python royal (J. Lenormand, J. Gaffiot ; sources publiées)",
+    "Université — Aventures en IA : Chronicles of Aethelgard avec Ollama sans GPU (P. Charrière)",
+    "Université — RAGTime : discuter avec ses propres données (P. Mele, B. Dauvissat)",
+    "Université — Mission Jetpack Compose (O. Perez, A. Gentili ; site de l'atelier publié)",
+    "Il était une faille : 5 histoires sur l'AppSec (P. Molin)",
+    "Bâtissez des applications invincibles avec Temporal (V. Primault ; slides publiées)",
+    "Kueue : Kubernetes-native Job Queueing (L. Grangeau)",
+    "Question pour un conteneur : quiz OCI & Docker (A. Vache, S. Khoury)",
+    "« On a 34 % de femmes, venez chez nous, on fait des trucs pour vous ! » (A. Moulin)",
+    "Banalisation du DDD ou pas ? (B. Boucard)",
+    "Vous ne devez pas faire aveuglément confiance à vos scanners de sécurité (R. Zarouali)",
+    "3 ans de Kubernetes on-premises : le bilan sans filtre (L. Gatellier, T. Ghibaudo ; slides publiées)",
+    "La résilience, c'est l'affaire de tous, donc c'est l'affaire de PersonneS ! (B. Gakic, W. Malvault)",
+    "Devcontainers : mettons notre environnement de dev en boîte (M. Oualiken, O. Jacques)",
+    "Développe sur un toaster grâce à Coder (P. Vulliemin, M. Pinon ; code publié)",
+    "Après la hype, mesurer l'impact réel des projets d'IA générative (L. Gudet)",
+    "Des tests performants grâce à un jeu de données réaliste (M. Choraine)",
+    "Schuss — Intégrons, faisons grandir et progresser les jeunes devs (A. Touret ; slides publiées)",
+    "Schuss — Le défi de la croissance : bâtir un Design System avec des ressources limitées (Y. L. Cheng)",
+    "Schuss — SOPS, passez un savon à vos secrets en clair ! (S. Metayer ; slides publiées)",
+    "Schuss — Vanilla JS et le Web standard : c'est sous-coté en fait ! (P. Arquier, I. Zachcial)",
+    "Schuss — Donjons et Pythons : la chevaleresse à la rescousse (J. Grillere)",
+    "Schuss — Le futur du design : un monde où le système prime sur l'utilisateur (C. Piteau)",
+    "Schuss — Simplifiez la conteneurisation de vos idées ! (T. Da Rocha)",
+    "Schuss — Sablier : démarrez et arrêtez automatiquement vos applications peu utilisées (L. Gatellier ; slides publiées)",
+    "TinyGo, petit mais costaud ! (A. Vache, T. Chantier)",
+    "Signals vs React Hooks (H. Lagarde)",
+    "Une architecture opensource moderne qui ne déraille pas (J. Cognet ; slides publiées)",
+    "REX : transformer de l'Ansible+docker-compose en Helm+k8s (B. Maras ; slides publiées)",
+    "Deviens le Green « Full-stack » Lantern ! (M. Vincent, S. Gougouzian)",
+    "Adieu RxJS ! Vive les Signals ! Oh wait… (A. Pena)",
+    "Optimisation de performance : bénéfice ou sacrifice ? (E.-L. Toulemonde)",
+    "Phoenix Framework : une stack réellement fullstack pour le web temps réel (M. Janvier)",
+    "Spock Framework pour les tests unitaires Java (S. Kermabon)",
+    "Les différents modes de synchronisation des data platforms chez Carrefour (G. Blaquière)",
+    "S'endetter pour se développer : stratégies d'investissement en dette technique (L. Lefebvre)",
+    "CQRS / ES : nos heuristiques après plusieurs années de production (R. Berthon, A. Boudoux ; slides publiées)",
+    "Gateway API, 10 ans de maturation pour une nouvelle API Kubernetes (K. Davin ; slides publiées)",
+    "Mettons de l'IA dans le pipeline CI/CD, live coding (O. Jacques, S. Akkad)"
+  ],
+  "sources": [
+    {
+      "label": "Programme 2025 (Voxxrin)",
+      "url": "https://app.voxxr.in/events/snowcamp25/schedule"
+    },
+    {
+      "label": "Snowcamp 2025 : supports des sessions (GitHub snowcamp)",
+      "url": "https://github.com/snowcamp/snowcamp-supports-sessions/blob/main/2025.md"
+    },
+    {
+      "label": "Victor Gallet (Bpifrance.IO) — Snowcamp 2025 : ce qu'il ne fallait pas louper ! (31/01/2025)",
+      "url": "https://io.bpifrance.fr/snowcamp-2025-ce-quil-ne-fallait-pas-louper/"
+    },
+    {
+      "label": "Criteo Engineering — Snowcamp 2025: Where Developers Meet in Wintery Grenoble (Medium, 18/02/2025)",
+      "url": "https://medium.com/criteo-engineering/snowcamp-2025-where-developers-meet-in-wintery-grenoble-c893b6405f99"
+    },
+    {
+      "label": "Nicolas Delsaux — Snowcamp : Anatomie d'une backdoor (blog)",
+      "url": "https://riduidel.wordpress.com/2025/01/23/snowcamp-anatomie-dune-backdoor/"
+    },
+    {
+      "label": "Nicolas Delsaux — Snowcamp : Défier l'entropie (blog)",
+      "url": "https://riduidel.wordpress.com/2025/01/23/snowcamp-defier-lentropie-refaire-ou-remettre-sous-controle/"
+    },
+    {
+      "label": "Nicolas Delsaux — Snowcamp : Je malmène ta prod en direct avec 15 failles de sécu (blog)",
+      "url": "https://riduidel.wordpress.com/2025/01/23/snowcamp-je-malmene-ta-prod-en-direct-avec-15-failles-de-secu/"
+    },
+    {
+      "label": "Nicolas Delsaux — Snowcamp : OpenRewrite (blog)",
+      "url": "https://riduidel.wordpress.com/2025/01/23/snowcamp-openrewrite-refactoring-as-code/"
+    },
+    {
+      "label": "Nicolas Delsaux — Snowcamp : Tester c'est tricher (blog)",
+      "url": "https://riduidel.wordpress.com/2025/01/23/snowcamp-tester-cest-tricher/"
+    },
+    {
+      "label": "Nicolas Delsaux — Bonjour Quarkus (blog)",
+      "url": "https://riduidel.wordpress.com/2025/01/24/bonjour-quarkus/"
+    },
+    {
+      "label": "Nicolas Delsaux — Dockerfile ou buildpack (blog)",
+      "url": "https://riduidel.wordpress.com/2025/01/24/dockerfile-ou-buildpack-mais-au-fait-cest-quoi-buildpack/"
+    },
+    {
+      "label": "Slides de Jérôme Tama — OpenRewrite (version Snowcamp)",
+      "url": "https://jtama.github.io/openrewrite-refactoring-as-code/snowcamp/#/"
+    },
+    {
+      "label": "Slides de Wassim Ahmed-Belkacem et Quentin Dunand — XZ Utils (PDF)",
+      "url": "https://github.com/ABWassim/SnowCamp-2025/blob/main/SnowCamp2025_XZ-Utils.pdf"
+    },
+    {
+      "label": "Slides de Stéphane Trebel — Les Méta-Lois (version Snowcamp)",
+      "url": "https://github.com/StephaneTrebel/presentations/blob/main/meta-lois/slides-snowcamp.pdf"
+    },
+    {
+      "label": "Captation externe utilisée pour le transcript : XZ Utils (Viseo, octobre 2024)",
+      "url": "https://www.youtube.com/watch?v=Uw5qDg4cS0g"
+    },
+    {
+      "label": "Captation externe utilisée pour le transcript : Débugguez votre salaire (BDX I/O)",
+      "url": "https://www.youtube.com/watch?v=BKayyLc6YH8"
+    },
+    {
+      "label": "Captation externe utilisée pour le transcript : Le pattern Hive (MiXiT 2025)",
+      "url": "https://www.youtube.com/watch?v=TL_nVaOs47g"
+    },
+    {
+      "label": "Captation externe utilisée pour le transcript : Défier l'entropie (La Duck Conf)",
+      "url": "https://www.youtube.com/watch?v=DMH0oV73B_I"
+    },
+    {
+      "label": "Captation externe utilisée pour le transcript : 10 fonctionnalités utiles du web (Touraine Tech 2025)",
+      "url": "https://www.youtube.com/watch?v=wSLRBF_RNHQ"
+    },
+    {
+      "label": "Captation externe utilisée pour le transcript : Les Méta-Lois (Touraine Tech 2025)",
+      "url": "https://www.youtube.com/watch?v=vUQKU_iLktI"
+    },
+    {
+      "label": "Captation externe utilisée pour le transcript : Guide de survie pour créer son authentification (GDG Strasbourg)",
+      "url": "https://www.youtube.com/watch?v=rqkEioqs1Ys"
+    },
+    {
+      "label": "Posts LinkedIn : aucun lu (HTTP 999) ; post de Jean-Pascal Martinet « Retour sur le Snowcamp 2025 » repéré en recherche, non consulté"
+    }
+  ]
 }

@@ -6,8 +6,364 @@
   "start": "2025-02-06",
   "end": "2025-02-07",
   "city": "Tours",
+  "venue": "Faculté des Sciences et Techniques de l'Université de Tours (Grandmont)",
   "url": "https://2025.touraine.tech",
+  "programUrl": "https://2025.touraine.tech/#schedule",
+  "theme": "#BackToSchool",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "7ᵉ édition, 6 & 7 février 2025, Faculté des Sciences et Techniques de l'Université de Tours (Grandmont), thème « #BackToSchool ». Billet à 30 € (early bird) ou 50 €. Programme de 78 speakers, 72 conférences et 4 labs selon ekino ; environ 550 participants selon Festivals en France. Keynotes : « Les robots de l'espace » (ouverture jeudi), « Les Méta-Lois » (clôture jeudi), Restos du Cœur (ouverture vendredi). 66 vidéos dans la playlist officielle.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-05",
+  "revisit": "Corpus participants très mince : 2 comptes-rendus d'entreprise (Néosoft, ekino) et aucun post LinkedIn lu (recherches site:linkedin.com et #TNT25 sans résultat exploitable). Chercher les posts LinkedIn des speakers et participants (hashtags #TNT25, #tourainetech, page linkedin.com/company/tourainetech, février 2025), les comptes Mastodon/Bluesky (@tourainetech@piaille.fr), les blogs des speakers (blog.touret.info, Speaker Deck) et la vidéo Néosoft sur youtube.com/@neosoft_.",
+  "corpus": "2 comptes-rendus publics : l'article collectif du blog Néosoft (5 auteurs, 14/02/2025, 9 sessions commentées) et le REX d'Adrien Bodin publié par ekino (13/03/2025, une dizaine de sessions), plus une courte page vidéo Néosoft. Complétés par le programme officiel (2025.touraine.tech), la playlist YouTube officielle (66 vidéos) et 13 transcripts automatiques (3 keynotes et 10 talks).",
+  "limits": "Aucun post LinkedIn, Mastodon ou Bluesky n'a pu être lu : les retours viennent de deux ESN (Néosoft, sponsor de l'édition, et ekino), qui couvrent surtout leur propre parcours. La grande majorité des ~75 sessions n'a aucun retour public trouvé ; plusieurs sessions sont résumées surtout d'après leur transcript. Les transcripts sont des sous-titres automatiques (noms propres et chiffres parfois déformés) ; les dates de publication des vidéos ne sont pas connues.",
+  "tldr": "**Une édition « #BackToSchool » très éclectique et très humaine** : des keynotes sur les robots spatiaux, les méta-lois et le **cloud open source des Restos du Cœur**, beaucoup d'artisanat logiciel (JVM, architecture hexagonale, sécurité sans secret) et une forte place des **sujets humains** (prise de parole, KPI, grilles de salaire, inclusion), saluée pour sa diversité et son ambiance.",
+  "keyTakeaways": [
+    "Supprimer les secrets longue durée : SSO + MFA pour les humains, fédération OIDC entre la CI et le cloud, identifiants de base de données générés à la volée par Vault (Lengagne).",
+    "Face à un bug « impossible », oser descendre dans la pile : compiler OpenJDK soi-même puis `git bisect` jusqu'au commit fautif, et se méfier des commits de refactoring même relus (Dessaigne).",
+    "Isoler le domaine métier de tout framework (ports et adaptateurs) et ne jamais sérialiser directement les objets du domaine dans une API REST (Topçu).",
+    "Compléter les KPI imposés par une démarche bottom-up : métriques DORA, atelier sur les pratiques Accelerate, questionnaire anonyme à l'équipe, pour « manager son manager » (Graveaud).",
+    "Une grille de salaire transparente et sans négociation, avec une pente partagée entre ancienneté et niveau, réduit les biais et donne un chemin de carrière (Daspet).",
+    "Mode sombre : laisser le choix à l'utilisateur, ne pas inverser naïvement les couleurs, simuler l'élévation par des gris et basculer au niveau des design tokens sémantiques (Candy / Mercier).",
+    "Raisonner en coût d'opportunité : aux Restos du Cœur, **1 € dépensé est un repas non distribué**, d'où le choix de l'open source, de l'infra as code et d'une documentation exhaustive (Briault).",
+    "La peur de parler en public se travaille : c'est une compétence, pas un trait de personnalité ; se fixer un objectif positif (inspirer plutôt qu'être aimé) et avancer par petits pas avec un mentor (Mamet).",
+    "Tester rigoureusement chaque mise à jour et vérifier les unités : un patch a coupé le contact avec Viking 1, une confusion livres/newtons a détruit Mars Climate Orbiter (Henriquet)."
+  ],
+  "sessions": [
+    {
+      "id": "les-robots-de-l-espace",
+      "day": "2025-02-06",
+      "type": "keynote",
+      "title": "Les robots de l'espace",
+      "speakers": ["Pierre Henriquet (@astropierre)"],
+      "feedbackFrom": ["Blog Néosoft", "Adrien Bodin (ekino)"],
+      "summary": "- **Sur scène (transcript)** : histoire des robots spatiaux, de Spoutnik et Lunokhod 1 (dont les traces restent visibles sur la Lune) aux rovers martiens, à l'hélicoptère de Perseverance (5 vols prévus, **72 vols en 3 ans**) et aux bras robotisés de l'ISS (Canadarm, Robonaut 2, jugé peu utile).\n- **Anecdotes logicielles** : Viking 1 perdu après une **mise à jour du logiciel de batteries** qui a écrasé le pointage de l'antenne ; Mars Climate Orbiter détruit par une **confusion livres / newtons** entre Lockheed Martin et le JPL.\n- **Voyager** : 76 Ko de mémoire, code en Fortran, une mémoire corrompue (probablement par un rayon cosmique) contournée en **redistribuant le code** dans la mémoire restante en 2024. Chute : un « ping » que *« aucun de vous n'atteindra jamais »*.\n- Futur évoqué : pôle Sud lunaire et sa glace, station Gateway, habitats en régolithe construits par des robots ; Artemis jugé « extrêmement flou ».\n- Retours : Néosoft retient le lien entre conquête spatiale et **importance d'un code rigoureux** ; ekino parle d'une présentation **passionnante**.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "PrQxGTOZ-uE",
+        "title": "[Keynote] Les robots de l'espace - Pierre Henriquet",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-meta-lois-vous-ne-leur-echapperez-pas",
+      "day": "2025-02-06",
+      "type": "keynote",
+      "title": "Les Méta-Lois, vous ne leur échapperez pas !",
+      "speakers": ["Stéphane Trébel — WeScale"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : le récit suit une jeune développeuse front confrontée, mésaventure après mésaventure, aux **méta-lois**, des comportements humains qu'on ne peut pas éliminer, seulement **mitiger**.\n- **Conway** (l'architecture reflète l'organisation) : DevOps, rotation entre équipes, task forces. **Chesterton** : comprendre avant de changer ; *« le Legacy il est en prod, il paye les factures et les salaires de tout le monde »*.\n- **Goodhart** : une MR bloquée à 79,5 % de couverture pousse à écrire des tests artificiels ; laisser l'équipe maîtresse de ses KPI. La bienveillance définie comme un écosystème où chacun donne le meilleur de soi, pas le baby-foot.\n- **Hofstadter / Parkinson** : les estimations ne marchent pas ; vrais MVP (*« le M de MVP veut dire minimum »*), ROTI pour supprimer les réunions inutiles, technologies « ennuyeuses » (effet Lindy), contre le « CV driven development ».\n- **Tesler, Hyrum, Shirky** : la complexité se déplace sans disparaître ; tout comportement observable d'une API finit par avoir un consommateur (le semantic versioning, *« au mieux une intention »*) ; les instances transverses finissent par préserver le problème qu'elles devaient résoudre.\n- Aucun retour participant public trouvé sur cette keynote de clôture du jeudi.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "vUQKU_iLktI",
+        "title": "[Keynote] Les Méta-Lois, vous ne leur échapperez pas ! - Stéphane Trébel",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-nous-avons-transforme-les-restos-du-coeur-en-cloud-provider",
+      "day": "2025-02-07",
+      "type": "keynote",
+      "title": "Comment nous avons transformé les Restos du Cœur en Cloud Provider",
+      "speakers": ["Julien Briault — Deezer & Restos du Cœur"],
+      "feedbackFrom": ["Blog Néosoft"],
+      "summary": "- **Sur scène (transcript)** : le titre devient « transformons », car le projet n'est pas fini. Point de départ : un PC sans sauvegarde dans un coin de l'antenne d'Eure-et-Loir, puis des serveurs récupérés jusqu'à un datacenter à Chartres, dans un entrepôt de denrées.\n- **Principe directeur** : *« 1 € dépensé, c'est un repas qu'on distribue pas »*. D'où une infra **majoritairement open source**, indépendante et presque gratuite, ouverte aux 112 associations départementales.\n- **Règles** : infra as code contre le shadow IT, pas de SSH direct, infrastructure immuable, configuration déployée par CI/CD, et *« si c'est pas documenté, ça n'a rien à faire en production »*.\n- **Stack** : OpenStack avec son control plane sur Kubernetes, Ceph via Rook, MAAS, Ansible et GitLab CI, Teleport, Wazuh, VictoriaMetrics et Grafana (un runbook obligatoire par alerte), NetBox, et un outil maison en Rust qui éteint les serveurs inutilisés pour réduire la facture d'énergie.\n- **Ordres de grandeur annoncés** : environ 700 VM, 80 serveurs, 11 bénévoles actifs, plus de 30 services ; les économies sont exprimées en repas (sondes de chambres froides maison, Wi-Fi, gestionnaire de mots de passe).\n- Retour Néosoft : un exemple inspirant d'association qui utilise le cloud pour mieux servir ses bénéficiaires, résumé par *« la technologie doit servir l'humain »*.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "l1UJkfFFG_c",
+        "title": "[Keynote] Comment transformons-nous les Restos du Coeur en Cloud Provider - Julien Briault",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comme-alice-osez-suivre-le-lapin-blanc-et-plongez-dans-la-jvm",
+      "day": "2025-02-06",
+      "type": "talk",
+      "title": "Comme Alice, osez suivre le lapin blanc et plongez dans la JVM pour comprendre son fonctionnement",
+      "speakers": ["Antoine Dessaigne — Axway"],
+      "feedbackFrom": ["Carl (blog Néosoft)"],
+      "summary": "- **Sur scène (transcript)** : enquête sur une **NullPointerException « impossible »** (une variable `final`) apparue sur un benchmark après la migration de Java 17 à 21.0.1, environ une fois sur deux.\n- Hypothèses éliminées une à une : agent Java maison, versions, quatre GC, puis le JIT. Le plantage n'arrive qu'avec le **compilateur C2**, et la comparaison d'assembleur à la main (hsdis) est vite ingérable.\n- **Déblocage** : compiler OpenJDK soi-même dans un conteneur (*« c'est très facile de compiler Java »*), puis **`git bisect`** jusqu'à un commit de refactoring contenant une coquille (`loader1` au lieu de `loader2`). Corrigé en Java 21.0.3 après un signalement relayé par des ingénieurs d'AWS.\n- Message : rien de démesuré, il faut juste **oser** ; se méfier des commits de refactoring, même relus.\n- Retour : Carl (Néosoft) le qualifie de *« vrai banger »* et dit avoir appris à aller plus loin dans le debug, les options de compilation et l'assembleur généré par la JVM.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "DiYLN07BxTw",
+        "title": "Comme Alice, osez suivre le lapin blanc et plongez dans la JVM pour comprendre son fonctionnement",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-cauchemar-des-attaquants-une-infrastructure-sans-secret",
+      "day": "2025-02-06",
+      "type": "talk",
+      "title": "Le cauchemar des attaquants : une infrastructure sans secret",
+      "speakers": ["Thibault Lengagne — Padok (Theodo Cloud)"],
+      "feedbackFrom": ["Blog Néosoft"],
+      "summary": "- **Sur scène (transcript)** : le concept **« zéro credential »** : remplacer les secrets longue durée par des **tokens courts générés à la volée** pour casser l'économie de la revente d'accès volés. Chiffres cités : 74 % des attaques impliquent un facteur humain (Verizon), 60 % des compromissions sont liées aux identifiants.\n- **Développeurs** : SSO avec MFA obligatoire, oauth2-proxy, Boundary et Vault comme bastion avec des identifiants de base valables de 1 h à 24 h.\n- **CI/CD** : détection des secrets (outil open source combinant gitleaks et TruffleHog), SOPS en dernier recours, et surtout une **fédération OIDC GitHub ↔ AWS** limitée à un dépôt et une branche (démo).\n- **Workloads** : External Secrets, Vault Agent ; démo d'identifiants Postgres uniques par réplica sur Kubernetes.\n- Objectif : un seul secret par personne, zéro dans le code et la CI, pour réduire le *blast radius* des erreurs humaines.\n- Retour Néosoft : approche jugée pertinente autant pour les DevOps que pour les développeurs.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "W9rc3EmHJ4E",
+        "title": "Le cauchemar des attaquants une infrastructure sans secret - Thibault Lengagne",
+        "transcript": true
+      }
+    },
+    {
+      "id": "au-secours-mon-manager-me-demande-des-kpis",
+      "day": "2025-02-06",
+      "type": "talk",
+      "title": "Au secours ! Mon manager me demande des KPIs !",
+      "speakers": ["Geoffrey Graveaud"],
+      "feedbackFrom": ["Emeric (blog Néosoft)"],
+      "summary": "- **Sur scène (transcript)** : fable façon Star Wars. Kevin, tech lead, reçoit de son manager trois injonctions (mesurer la performance, 80 % de couverture, métriques DORA), inspirées de cas réels de DSI.\n- **Trois leçons** : rendre clair l'obscur (les **4 métriques DORA** d'Accelerate, mesurables depuis git) ; révéler l'invisible (atelier qui part d'une pratique Accelerate pour en déduire actions observables et métriques) ; s'appuyer sur ses alliés (**questionnaire anonyme** construit avec des règles de psychométrie).\n- Le questionnaire montre que l'équipe juge la couverture inutile sur un code non modulaire : *« un compteur sans moteur, ça ne vaut rien »*. L'argument finit par convaincre quand le questionnaire est étendu à toute l'entreprise.\n- Un bon KPI tient à l'intention, l'attention et l'émotion ; *KPI* pourrait vouloir dire **« Keep People Interested »**.\n- Retour : Emeric (Néosoft) retient l'idée d'**inverser la dynamique et manager les managers**, et la phrase *« la qualité d'une organisation est limitée par la qualité de l'information qui y circule »*.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "DAwAx3kpKkE",
+        "title": "Au secours ! Mon manager me demande des KPIs ! - Geoffrey Graveaud",
+        "transcript": true
+      }
+    },
+    {
+      "id": "j-ai-peur-de-parler-en-public-pas-vous",
+      "day": "2025-02-06",
+      "type": "talk",
+      "title": "J'ai peur de parler en public, pas vous ?",
+      "speakers": ["Clara Mamet — Ippon Technologies"],
+      "feedbackFrom": ["Ion (blog Néosoft)", "Adrien Bodin (ekino)"],
+      "summary": "- **Sur scène (transcript)** : première conférence de la speakeuse, qui précise n'être ni coach ni psy. Thèse : *« c'est une compétence, c'est pas un trait de personnalité »*. La glossophobie toucherait 75 % des gens.\n- **Mécanismes** : peur du rejet héritée de la vie en tribu, rôle du cerveau reptilien et de l'amygdale ; distinction entre inquiétude, stress (incontrôlable) et anxiété (qui se travaillent).\n- **Syndrome de l'imposteur** : mini-test inspiré de l'échelle de Clance, cinq profils (perfectionniste, super-héros, génie naturel, soliste, expert).\n- **Cinq clés** : se renseigner, accepter l'imperfection, se fixer un objectif positif (inspirer plutôt qu'être aimé), agir par petits pas avec un mentor, s'aimer en restant soi-même.\n- Retours : Ion (Néosoft) salue une analyse approfondie qui aide à **conscientiser cette peur**, et une prestation exemplaire ; ekino retient une approche **pragmatique et bienveillante**.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "F18aec4Qncc",
+        "title": "J'ai peur de parler en public, pas vous - Clara Mamet",
+        "transcript": true
+      }
+    },
+    {
+      "id": "l-architecture-hexagonale-par-la-pratique",
+      "day": "2025-02-07",
+      "type": "talk",
+      "title": "L'Architecture Hexagonale par la pratique, le live coding qui rendra vos applications plus pérennes",
+      "speakers": ["Julien Topçu — Shodo"],
+      "feedbackFrom": ["Romain (blog Néosoft)", "Adrien Bodin (ekino)"],
+      "summary": "- **Sur scène (transcript)** : live coding Java autour d'une appli Star Wars qui assemble des flottes de sauvetage à partir de l'API publique SWAPI.\n- **Critique de l'architecture en couches** : logique métier dispersée, classes annotées à la fois JPA et Jackson qui couplent tout ; *« le couplage amène la fragilité »*.\n- **Principe** : le domaine ne dépend d'aucun framework, il expose une API (ports d'entrée) et une SPI (ports de sortie), et les adaptateurs vivent dans l'infrastructure. Il distingue complexité essentielle, obligatoire et accidentelle.\n- **Démarche** : tests d'acceptation d'abord, annotations maison pour éviter Spring dans le domaine, plugin Maven (ou ArchUnit) pour interdire les dépendances techniques, adaptateur SWAPI comme couche anticorruption. Exemple réel : une API sur données stubées pour débloquer les équipes mobiles chez Expedia.\n- Piège démontré : sérialiser directement les objets du domaine casse les consommateurs de l'API au premier renommage.\n- Retours : Romain (Néosoft) détaille les bénéfices (modularité, testabilité, évolutivité) et regrette un pattern du début des années 2000 *« malheureusement trop peu utilisé dans nos projets »* ; ekino cite la session comme une façon d'architecturer des applications plus durables.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "vvEP8wZNFfQ",
+        "title": "L'Architecture Hexagonale par la pratique, le live coding qui rendra vos applications plus pérennes",
+        "transcript": true
+      }
+    },
+    {
+      "id": "du-reve-a-la-realite-coder-un-jeu-sur-super-nintendo",
+      "day": "2025-02-06",
+      "type": "talk",
+      "title": "Du rêve à la réalité, coder un jeu sur Super Nintendo",
+      "speakers": ["Alekmaul — Worldline"],
+      "feedbackFrom": ["Blog Néosoft", "Adrien Bodin (ekino, coup de cœur)"],
+      "summary": "- **Sur scène (transcript)** : réaliser un rêve d'enfant, développer un jeu sur la console de sa jeunesse. Cadre légal du homebrew, outils de test (émulateur, cartouche flash), architecture de la Super Nintendo (processeur 65C816, 128 Ko de RAM, processeur son séparé).\n- **Le jeu** : Sydney Hunter et les cavernes de la mort, commandé en 2014 par un éditeur canadien, financé par un Kickstarter de 39 000 dollars dont les paliers ont ajouté des niveaux, fabriqué en cartouches.\n- **Outillage** : sa bibliothèque open source **PVSnesLib** (réécrite en assembleur pour les performances), VS Code, Tiled ; démo live sur une vraie console, avec quelques aléas.\n- Anecdote reprise par Néosoft : le jeu a été piraté et il a acheté la copie pirate de son propre jeu.\n- Retour : **coup de cœur** d'Adrien Bodin (ekino), qui en tire des principes universels : *« savoir rêver, persévérer, que les expériences collectives sont enrichissantes »*.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "Ei3vhTioKME",
+        "title": "Du reve a la realite coder un jeu sur Super Nintendo - Alekmaul",
+        "transcript": true
+      }
+    },
+    {
+      "id": "dark-mode-analyse-et-conception",
+      "day": "2025-02-06",
+      "type": "talk",
+      "title": "Dark Mode : analyse et conception",
+      "speakers": ["Antoine Candy — Worldline", "Simon Mercier — Worldline"],
+      "feedbackFrom": ["Adrien Bodin (ekino)"],
+      "summary": "- **Sur scène (transcript)** : du texte vert sur fond noir des écrans cathodiques (une contrainte technique) au retour du mode sombre comme option.\n- **Études** : le mode clair améliore la détection d'erreurs et l'acuité visuelle, surtout en petite police ; une étude publiée dans Nature associe la lecture en mode clair à un facteur de myopie ; le mode sombre aide les personnes atteintes de cataracte. Le gain de batterie est réel mais présenté comme marginal.\n- **Recommandation** : *« il faut faire les deux et il faut laisser le choix à l'utilisateur »*, sinon choisir selon l'usage (billetterie en clair, outil développeur en sombre).\n- **Conception** : pas d'inversion naïve ; élévation simulée par des gris de plus en plus clairs (méthode Material Design), contraste WCAG AA vérifié, gris teintés de la couleur principale. Bascule au niveau des **design tokens sémantiques** (primitifs, sémantiques, composants).\n- Retour : ekino retient une session qui **déconstruit les mythes** à partir d'études scientifiques, pour conclure que *« c'est avant tout une question de goût »*.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "GrgqnwuZANo",
+        "title": "Dark Mode analyse et conception",
+        "transcript": true
+      }
+    },
+    {
+      "id": "pourquoi-une-grille-de-salaire-on-n-est-pas-chez-les-fonctionnaires",
+      "day": "2025-02-06",
+      "type": "talk",
+      "title": "« Pourquoi une grille de salaire ? On n'est pas chez les fonctionnaires ! »",
+      "speakers": ["Éric Daspet — E3D5.fr"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : retour d'expérience dans une entreprise lyonnaise, sans prétendre à la solution ultime ; le speaker regrette son titre, les fonctionnaires ayant selon lui trouvé une bonne solution.\n- Point de départ : une grille linéaire à l'ancienneté, simple (encore recommandée pour 10 à 12 salariés) mais qui empêche certains recrutements et frustre les plus investis.\n- **Attentes** : transparence, **pas de négociation** (*« la négociation, c'est pas une valeur qui m'intéresse dans la boîte »*), égalité pour limiter les biais, chemin de carrière, simplicité.\n- **Construction** : niveaux junior, confirmé, expérimenté, senior, plus des branches staff et engineering manager ; pente d'environ 2 500 € par an partagée à parts égales entre ancienneté et niveau ; calage sur le marché lyonnais au 75e percentile, en s'appuyant sur des benchmarks publics.\n- Mise à jour annuelle ou dès que plus de 20 % des candidats refusent pour le salaire. Aucun retour participant public trouvé.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "z7J2q7ou44Y",
+        "title": "« Pourquoi une grille de salaire  On n’est pas chez les fonctionnaires ! » - Éric Daspet",
+        "transcript": true
+      }
+    },
+    {
+      "id": "sous-le-capot-des-llms",
+      "day": "2025-02-07",
+      "type": "talk",
+      "title": "Sous le capot des LLMs : toutes ces questions que vous n'avez jamais osé poser",
+      "speakers": ["Guillaume Laforge — Google"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : talk « sans maths » sur le fonctionnement des LLM. **Tokens** : pourquoi compter les « r » de « strawberry » est difficile, tokenisation BPE et SentencePiece.\n- **Modèle de fondation vs modèle « instruction-tuned »** (démo avec Gemma) : le second s'arrête grâce à un token spécial de fin de tour.\n- **Choix du token suivant** : softmax, top-K, top-P, température ; même à température 0, la sortie n'est pas déterministe (addition flottante non associative, calcul parallèle sur GPU).\n- **Limites** : il préfère parler de **« confabulation »** (*« il ne sait même pas qu'il ne sait pas »*), influence du contexte, « reversal curse », décodage du base64 comme d'une langue étrangère.\n- Questions : RLHF, DeepSeek, RAG, faiblesse en maths liée à la tokenisation des nombres, function calling. Aucun retour participant public trouvé.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "lcznirqR2dk",
+        "title": "Sous le capot des LLMs  toutes ces questions que vous n’avez jamais osé poser - Guillaume Laforge",
+        "transcript": true
+      }
+    },
+    {
+      "id": "on-a-34-de-femmes-venez-chez-nous-on-fait-des-trucs-pour-vous",
+      "day": "2025-02-07",
+      "type": "talk",
+      "title": "« On a 34 % de femmes, venez chez nous, on fait des trucs pour vous ! »",
+      "speakers": ["Anaïs Moulin — Onepoint"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : un talk sur la **discrimination positive**, dont le titre reprend une phrase lue sur LinkedIn et entendue en portes ouvertes d'école d'ingénieur. Fil narratif avec trois personnages au profil identique, départagés en colle puis à l'embauche par d'autres critères que leurs résultats.\n- Origine (États-Unis, années 1960), objectifs (compenser, égalité des chances, diversité), formes (quotas, actions positives, mesures indirectes) et repères législatifs français (loi Roudy de 1983, obligation d'emploi de travailleurs handicapés de 1987, index d'égalité de 2018).\n- **Avantages** chiffrés (féminisation de métiers, réduction des écarts d'activité et de chômage) et **inconvénients** : sentiment d'injustice, stigmatisation, syndrome de l'imposteur, renforcement des stéréotypes.\n- Témoignage personnel (prépa à 4 filles sur 48, notation plus clémente assumée par l'administration) et pistes : transparence, prévention, éducation.\n- Message : ce n'est pas le but qu'elle critique mais la manière ; elle voudrait que ces dispositifs disparaissent *« parce qu'on aura réglé le souci »*. Aucun retour participant public trouvé.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "IIQGsaEttSU",
+        "title": "On a 34 % de femmes, venez chez nous, on fait des trucs pour vous ! - Anaïs Moulin",
+        "transcript": true
+      }
+    },
+    {
+      "id": "anatomie-d-une-faille",
+      "day": "2025-02-07",
+      "type": "talk",
+      "title": "Anatomie d'une faille",
+      "speakers": ["Olivier Poncet"],
+      "feedbackFrom": ["Côme (blog Néosoft)"],
+      "summary": "- **Programme** : autopsie de la tentative de compromission de **xz-utils** révélée le 29 mars 2024, déroulée sur plus de deux ans, entre ingénierie sociale et ingénierie logicielle, et des risques pour la supply chain du logiciel libre.\n- Retour de Côme (Néosoft) : il apprécie une narration **dramaturgique** (manipulations psychologiques du mainteneur, insertion malveillante, découverte fortuite) autour d'une CVE notée 10/10.\n- Leçon retenue : *« l'open source est puissant mais aussi vulnérable, fragilisé par un manque d'investissement humain »*.\n- Pas de vidéo dans la playlist officielle.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "react-compiler-easier-better-faster-stronger",
+      "day": "2025-02-07",
+      "type": "talk",
+      "title": "React Compiler : Easier, Better, Faster, Stronger",
+      "speakers": ["Lucas Audart — Zenika", "Mickael Alves — Zenika"],
+      "feedbackFrom": ["Adrien Bodin (ekino)"],
+      "summary": "- **Programme** : tour de React 19 (nouveaux hooks, actions, Server Components) et surtout du **React Compiler**, qui promet des optimisations de performance automatiques, en démonstrations et sur un fil rouge Daft Punk.\n- Retour : Adrien Bodin (ekino), développeur Angular, a apprécié découvrir comment React **simplifie l'écriture du code en imposant les bonnes pratiques**.",
+      "summarySources": ["program", "blog"],
+      "video": {
+        "youtubeId": "EnKa06RKGts",
+        "title": "React Compiler  Easier, Better, Faster, Stronger",
+        "transcript": false
+      }
+    },
+    {
+      "id": "les-signals-avec-angular-comment-ca-marche",
+      "day": "2025-02-06",
+      "type": "talk",
+      "title": "Les signals avec Angular : comment ça marche ?",
+      "speakers": ["Benjamin Legrand — Onepoint"],
+      "feedbackFrom": ["Adrien Bodin (ekino)"],
+      "summary": "- **Programme** : qu'est-ce que la réactivité, qu'est-ce qu'un signal, et faut-il abandonner RxJS (réponse annoncée : non) ?\n- Retour : ekino décrit une conférence **approfondie sur le fonctionnement interne des signals**, jugée essentielle pour migrer vers Angular 17 et au-delà.",
+      "summarySources": ["program", "blog"],
+      "video": {
+        "youtubeId": "Caun9heAlNY",
+        "title": "Les signals avec Angular  comment ça marche - Benjamin Legrand",
+        "transcript": false
+      }
+    },
+    {
+      "id": "les-tresors-caches-des-lecteurs-video-pour-un-multimedia-plus-accessible",
+      "day": "2025-02-07",
+      "type": "talk",
+      "title": "Les trésors cachés des lecteurs vidéo pour un multimédia plus accessible",
+      "speakers": ["Audrey Maniez — Access42"],
+      "feedbackFrom": ["Adrien Bodin (ekino)"],
+      "summary": "- **Programme** : démonstrations de lecteurs multimédia avec des lecteurs d'écran, et fonctionnalités méconnues (sous-titres vocalisés, audiodescription, text-to-speech) pour rendre la vidéo accessible plus simplement.\n- Retour : ekino juge l'exposé pertinent, tout en relevant que *« la qualité de l'accessibilité dépendra trop souvent du budget alloué »*.",
+      "summarySources": ["program", "blog"],
+      "video": {
+        "youtubeId": "0djyAQQINZQ",
+        "title": "Les trésors cachés des lecteurs vidéo pour un multimédia plus accessible - Audrey Maniez",
+        "transcript": false
+      }
+    },
+    {
+      "id": "integrons-faisons-grandir-et-progresser-les-jeunes-devs",
+      "day": "2025-02-06",
+      "type": "lightning",
+      "title": "Intégrons, faisons grandir et progresser les jeunes devs : bonnes pratiques et retours d'expériences à l'intention des (vieux) devs",
+      "speakers": ["Alexandre Touret — Worldline"],
+      "feedbackFrom": ["Adrien Bodin (ekino)"],
+      "summary": "- **Programme** : bonnes pratiques et écueils de mentorat, tirés de plusieurs années d'accompagnement, pour intégrer et rendre autonomes les nouveaux arrivants.\n- Retour : ekino le cite parmi les talks non techniques marquants, comme un **retour d'expérience utile aux seniors** qui encadrent des juniors.",
+      "summarySources": ["program", "blog"],
+      "video": {
+        "youtubeId": "lmL_4Rp_UH8",
+        "title": "Intégrons, faisons grandir et progresser les jeunes devs Bonnes pratiques et retours d'expériences …",
+        "transcript": false
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "De Copilot à LangChain4j (Tugdual Grall)",
+    "Développer et déployer dans le Cloud avec GitHub, Codespaces, Copilot et Actions (Tugdual Grall)",
+    "Retour vers le futur du web (Marie-Cécile Trégouët)",
+    "10 fonctionnalités utiles du web que vous ne connaissez pas (Olivier Leplus, Yohan Lasorsa)",
+    "StyleX est-il le React du CSS ? (David Maurin)",
+    "Les LLMs par la pratique avec Gemini et LangChain4j, hands-on (Guillaume Laforge, Valentin Deleplace)",
+    "Dev Containers (Kevin Heraud)",
+    "Arrêtons de se moquer des mocks avec Mockoon (Florian Montalbano)",
+    "Et si Mozart, Daft Punk et Bob Marley avaient été des techs ? (Sylvain Gougouzian, Thierry Chantier)",
+    "Un cluster de production en un éclair avec Talos (Quentin Joly)",
+    "Automatisez l'installation de votre poste de travail (Sylvain Métayer)",
+    "Inclure la neurodiversité dans la tech (Diane Havlicek)",
+    "To Gather, or not to Gather (Jérôme Tama)",
+    "OpenRewrite : Refactoring as code (Jérôme Tama)",
+    "Playwright (Benjamin Cavy)",
+    "Les feature flags (Benjamin Cavy)",
+    "De l'infra à la config', as code en 3 temps (Yann Schepens)",
+    "Les outils DevOps au service de la formation DevOps (Hugues Lepesant)",
+    "Atelier : 10 tests simples pour améliorer l'accessibilité (François-Xavier Lair, Henri Gauffriau)",
+    "Introduction à la programmation réactive, de zéro à Super Mario (Damien Rouxel)",
+    "CI / CD : Correct Implementation or Continuous Deception (Marine du Mesnil)",
+    "La Quantification des LLMs (Jean-Philippe Foures)",
+    "Accessibilité : l'heure des comptes (Pierre Leclaire)",
+    "CQRS / ES : nos heuristiques après plusieurs années de production (Aurélien Boudoux, Romain Berthon)",
+    "Theming : faites peau neuve en 50 minutes (Gauthier Fiorentino)",
+    "Merge confliture sur mes gitscottes (Julie Brunetto, Gauthier Fiorentino)",
+    "Question pour un conteneur (Aurélie Vache, Sherine Khoury)",
+    "DevLake : un voyage au pays du DORA (Kevin Toublanc, Morgan Blanloeil)",
+    "ArgoCD vs Flux (Matthieu Vincent, Paul Vulliemin)",
+    "Le CRC expliqué à ma grand-mère (Olivier Cloirec)",
+    "Mise en œuvre de l'approche Accelerate chez Decathlon (Jean-Philippe Le Goff)",
+    "Comment j'ai porté Doom sur navigateur grâce au WebAssembly (Yassine Benabbas)",
+    "Tour d'horizon de Kotlin et de son écosystème (Yassine Benabbas)",
+    "Progressive Web Apps (Khadija Abdelouali)",
+    "Les tests techniques dans le cadre des recrutements (Laurent Grangeau, Magali de Labareyre)",
+    "Vol au-dessus d'un nid de vulnérabilités (Damien Lucas)",
+    "Delta Lake : le recalcul sans fracas ni tracas (Julie Galia)",
+    "Racine carrée, bit-shifting et paracétamol (Audren Burlot)",
+    "DevEx : qu'est-ce que l'expérience développeur ? (Yuriy Tyukhnin)",
+    "DDD tactique : des modèles anémiques aux modèles riches (Arnaud Langlade)",
+    "SOPS, passez un savon à vos secrets en clair (Sylvain Métayer)",
+    "API REST en Java avec une approche API-First, hands-on (Alexandre Touret)",
+    "G.I. Go : générateurs et itérateurs en Go (Benoît Masson)",
+    "Réinventer les masculinités (Nathan Castelein)",
+    "Optimisation de performance : bénéfice ou sacrifice ? (Emmanuel-Lin Toulemonde)",
+    "V0 by Vercel (Benoit El Amrani)",
+    "SELECT 'amazing_features' FROM postgresql (Kevin Davin)",
+    "Elysia : un cousin d'ExpressJS sous Bun (Sylvain Gougouzian)",
+    "Server side WASM, le prochain game changer ? (Etienne Anne, Mathieu Ancelin)",
+    "Quand le Terminal dévore la UI : TUI pour tout le monde (Thierry Chantier)",
+    "L'art de bien rater sa conférence (Jean-François Garreau)",
+    "Les petites aventures de CSS, saison 2025 (Raphaël Goetter)",
+    "Simplifiez la conteneurisation de vos idées (Thomas Da Rocha)",
+    "Redécouvrir la coopération : atelier de Mob Programming (Marjorie Aubert, Manon Carbonnel)",
+    "Tester une application React avec Vitest, React Testing Library et MSW (Cyril Hue)",
+    "REST next level : écrire des APIs web orientées métier (Julien Topçu)",
+    "Elasticsearch Query Language : ES|QL (David Pilato)",
+    "Keynote de clôture du vendredi (intervenant non renseigné au programme)"
+  ],
+  "sources": [
+    { "label": "Programme officiel Touraine Tech 2025", "url": "https://2025.touraine.tech/#schedule" },
+    { "label": "Playlist YouTube Touraine Tech 2025 (66 vidéos)", "url": "https://www.youtube.com/playlist?list=PLl0xIhYGSdm94h5lcrybZAsdGAfrpJx4y" },
+    { "label": "Néosoft : Touraine Tech 2025, les conférences qui nous ont marqués (Carl, Côme, Romain, Ion, Emeric, 14/02/2025)", "url": "https://www.neosoft.fr/nos-publications/blog-tech/touraine-tech-2025/" },
+    { "label": "ekino : REX de ma participation au Touraine Tech 2025 (Adrien Bodin, 13/03/2025)", "url": "https://www.ekino.fr/publications/rex-de-ma-participation-au-touraine-tech-2025/" },
+    { "label": "Néosoft : Retour sur Touraine Tech 2025 (page vidéo)", "url": "https://www.neosoft.fr/nos-publications/videos-podcasts/tours-retour-sur-touraine-tech-2025-avec-neosoft/" },
+    { "label": "Festivals en France : Touraine Tech, édition 2025 (fréquentation)", "url": "https://www.festivalenfrance.com/en/festival/touraine-tech/2025" },
+    { "label": "Transcripts automatiques YouTube : 3 keynotes et 10 talks" },
+    { "label": "Posts LinkedIn : aucun post lu (non indexés ou inaccessibles)" }
+  ]
 }

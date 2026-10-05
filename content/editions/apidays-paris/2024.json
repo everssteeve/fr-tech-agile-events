@@ -7,8 +7,427 @@
   "city": "Puteaux",
   "venue": "CNIT Forest (La Défense)",
   "url": "https://web.archive.org/web/20240126/https://www.apidays.global/paris",
-  "theme": "Software and APIs for Smart, Sustainable and Sovereign Societies",
+  "programUrl": "https://web.archive.org/web/20250120152429/https://www.apidays.global/paris2024/",
+  "theme": "The Future API Stack for Mass Innovation",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "Thème officiel de l'édition selon la page apidays Paris 2024, les descriptions YouTube et l'OpenAPI Initiative : « The Future API Stack for Mass Innovation » (l'ancien thème « Software and APIs for Smart, Sustainable and Sovereign Societies » venait d'une page archivée en janvier 2024). Chiffres annoncés par l'organisateur : 5 000+ participants, 1 500+ entreprises, 300+ sessions, 300+ speakers ; 11 salles selon Loïc Lefloch. Sponsor platinum : IBM. Co-localisés sous la bannière FOST (Future Of Software Technologies) : Green IO Paris (500+ participants annoncés), Enterprise No-Code, un track OpenAPI Initiative (3 décembre), la première JSON Schema Conference, un Docs track et les DevPortal Awards (4 et 5 décembre). Journée d'ateliers OpenAPI la veille (2 décembre : Thomas Bayer, Mike Amundsen, Frank Kilcommins et Yousaf Nabi). Têtes d'affiche annoncées : Alain Damasio, Ilan Benhaim (Veepee), Julien Villeret (EDF), Laurent Fressinet, Loubna Ben Allal (Hugging Face), Michal Valko (Meta), Thomas Mesnard (Google DeepMind), Jean-Baptiste Kempf (Scaleway), Lélio Renard (Mistral AI), Gregor Hohpe, Mark O'Neill (Gartner), Arnaud Lauret (Postman).",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-05",
+  "revisit": "Corpus participants très mince : un seul compte-rendu de participant (Loïc Lefloch, blog, une journée sur trois) et un récapitulatif communautaire (JSON Schema) ; aucun post LinkedIn exploitable trouvé avec 8 recherches web. Les keynotes (O'Neill, Hohpe, Darrell Miller, panel Damasio) ne sont pas dans la playlist YouTube ; transcript du « Highlights » (f8F87sspwFQ) bloqué par un 429. Chercher des posts LinkedIn de participants (décembre 2024), les recaps annoncés par API The Docs et d'éventuelles vidéos des keynotes.",
+  "corpus": "49 vidéos de la playlist officielle « apidays Paris 2024 » (titres, descriptions), 16 transcripts complets, la page officielle archivée (liste de 210 speakers), les programmes des tracks OpenAPI, Docs et Green IO, un compte-rendu détaillé de participant (Loïc Lefloch, deux pages de blog, 8 décembre 2024, 10 talks du 4 décembre), le récapitulatif de la JSON Schema Conference (Valeria Hernandez, 19 décembre 2024) et les slides de Teresa Pereira, lus en octobre 2026.",
+  "limits": "Synthèse fondée surtout sur le contenu des talks (transcripts de vidéos souvent réenregistrées après l'événement) et sur un seul témoignage de participant, centré sur les tracks design et architecture, l'auteur ayant volontairement évité les sessions IA. Aucun post LinkedIn lu. La playlist ne couvre qu'une cinquantaine des 300+ sessions et ne contient aucune keynote de la scène principale ; les jours ne sont connus que pour les sessions citées par le blog ou un programme de track.",
+  "tldr": "Une édition **à cheval entre deux mondes** : le design, la gouvernance et les standards d'API (OpenAPI, JSON Schema, catalogues, plateformes) occupent l'essentiel des talks, tandis que l'IA générative y entre d'abord **comme un nouveau trafic à gouverner par la gateway**.",
+  "keyTakeaways": [
+    "Gérer aussi les API que l'organisation consomme, pas seulement celles qu'elle expose (Mark O'Neill, rapporté par Loïc Lefloch).",
+    "Traiter le design d'API comme du design d'expérience pour développeurs, et nommer les abstractions selon leur intention plutôt que leur implémentation (Gregor Hohpe, rapporté par Loïc Lefloch).",
+    "Écrire une histoire, un vocabulaire, un diagramme et une description indépendants de la technologie avant la définition OpenAPI ou AsyncAPI (Mike Amundsen).",
+    "Faire passer les appels aux LLM par une gateway : clés centralisées, quotas en tokens, cache sémantique, bascule entre fournisseurs et garde-fous sur les prompts (Ancelin, Kong, Microsoft).",
+    "Mesurer la dérive entre documentation OpenAPI et comportement réel, en commençant par les parcours clients les plus utilisés (Ikenna Nwaiwu).",
+    "Considérer les équipes productrices d'API comme des clientes de la plateforme et leur offrir des abstractions qui masquent la tuyauterie (NHS England, présenté par Ikenna Nwaiwu).",
+    "Pour séduire les data scientists : SDK Python, identifiants externes standard, téléchargement en masse et filtre par date de dernière modification (Ryan Day).",
+    "Séparer bénéfices directs et indirects dans le business case d'un programme API, sous peine de « business case qui s'évapore » (Claire Barrett).",
+    "Protéger le jeton et le flux qui l'obtient : profil FAPI 2, jetons liés à l'émetteur (mTLS, DPoP), requêtes d'autorisation poussées (Michał Trojanowski).",
+    "Inventorier les API fantômes, zombies et orphelines avec un catalogue centralisé et une surveillance continue du trafic (Teresa Pereira)."
+  ],
+  "sessions": [
+    {
+      "id": "the-state-of-api-management",
+      "day": "2024-12-04",
+      "type": "keynote",
+      "title": "The State of API Management",
+      "speakers": ["Mark O'Neill — Gartner"],
+      "feedbackFrom": ["Loïc Lefloch (blog)"],
+      "summary": "- Une des deux keynotes d'ouverture de la journée, celle qui « a donné le ton » selon Loïc Lefloch.\n- **Fin du monolithe d'API management** : les organisations assemblent des outils spécialisés (« best of breed »). Les gateways se banalisent, et des éditeurs comme Postman ou SmartBear se concentrent sur des fonctions complémentaires.\n- **L'IA comme moteur de consommation** : chiffre Gartner cité, *« 30 % de la hausse de la demande d'API d'ici 2026 viendra de l'IA »*. Les AI gateways (routage de prompts, analyse des coûts, sécurité) sont placées au stade « Innovation Trigger » du hype cycle.\n- Phrase retenue : *« You must manage APIs your organisation consume, not only those you provide »*.\n- Autres tendances notées : adoption croissante de GraphQL (Shopify cité), et des API qui deviennent la couche d'interaction principale, devant les interfaces web.\n- Le chiffre des 30 % est repris le même jour par Peter Mörsch (Boomi) dans la session De Volksbank (*« thank you Mark »*).",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "build-abstractions-not-illusions",
+      "day": "2024-12-04",
+      "type": "keynote",
+      "title": "Build Abstractions, Not Illusions",
+      "speakers": ["Gregor Hohpe — auteur de Platform Strategy et co-auteur d'Enterprise Integration Patterns"],
+      "feedbackFrom": ["Loïc Lefloch (blog)"],
+      "summary": "- Seconde keynote d'ouverture. Idée directrice notée : *« We advance technology not towards its limit but to our own »*.\n- **Une plateforme doit permettre des solutions variées**, pas anticiper tous les cas d'usage.\n- **Les standards favorisent l'innovation** : métaphore du grand incendie de Baltimore, où les pompiers venus d'ailleurs ne pouvaient pas brancher leurs tuyaux faute de raccords standardisés.\n- **Bien nommer** : une bonne abstraction porte un nom qui dit son intention, pas son implémentation. Anti-pattern « The Grim Wrapper » : la surcouche qui ne fait qu'emballer sans abstraire.\n- Formule reprise : *« API Design is UX Design for developers »*.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "delivering-authentic-intelligence-with-openapi",
+      "day": "2024-12-03",
+      "type": "keynote",
+      "title": "Delivering Authentic Intelligence with OpenAPI",
+      "speakers": ["Darrell Miller — Microsoft, OAI Technical Steering Committee"],
+      "feedbackFrom": [],
+      "summary": "- Keynote du track OpenAPI Initiative, après l'ouverture d'Erik Wilde (INNOQ) sur l'état d'OpenAPI.\n- Aucun retour ni vidéo trouvés : seul le programme de l'OAI est disponible.\n- Oleg Nenashev y fait allusion dans sa propre session : Darrell Miller y a présenté les nombreuses mises à jour qui font avancer l'écosystème OpenAPI (3.1, Arazzo, Overlays, 3.2 à venir).",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "mastering-api-architecture",
+      "day": "2024-12-04",
+      "type": "talk",
+      "title": "Mastering API Architecture",
+      "speakers": ["James Gough — Morgan Stanley"],
+      "feedbackFrom": ["Loïc Lefloch (blog)"],
+      "summary": "- **Constat** : les API modernes vivent derrière des couches d'APM et de gateway. Cela apporte cache et rate limiting, mais aussi complexité, latence et maintenance.\n- **Remède proposé** : des plateformes d'infrastructure as code qui prennent en charge l'onboarding des développeurs, l'automatisation, la fiabilité et la sécurité.\n- **CALM (Common Architecture Language Model)**, projet FINOS, pour décrire l'architecture de façon standardisée. James Gough présentait aussi CALM à la JSON Schema Conference (« JSON Schema: powering FINOS architecture as code »).\n- Enjeux cités : API réparties sur de nombreux systèmes, dette technique, séparation des responsabilités.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "api-design-reference-kit",
+      "day": "2024-12-04",
+      "type": "talk",
+      "title": "API Design Reference Kit",
+      "speakers": ["Arnaud Lauret — Postman"],
+      "feedbackFrom": ["Loïc Lefloch (blog)"],
+      "summary": "- **Deux points de friction** : entre la définition du besoin et le design (API peu ergonomiques ou peu interopérables), puis entre le design et le développement (implémentations confuses).\n- **Le kit** : des capacités d'API écrites en langage naturel à partir des parcours utilisateurs ; des contrats d'interface (OpenAPI, enchaînements d'opérations, mocks) ; des détails d'implémentation (sécurité, comportements attendus) ; des guidelines réutilisables (méthodes HTTP, erreurs, conventions de données).\n- Consigne retenue : *« Adapt to context, focus on outcomes »*.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "graphql-vs-rest",
+      "day": "2024-12-04",
+      "type": "talk",
+      "title": "GraphQL vs. REST",
+      "speakers": ["Peter Milne — Criteo"],
+      "feedbackFrom": ["Loïc Lefloch (blog)"],
+      "summary": "- **REST** : *« bad REST is easy »*, mais un bon REST exige une discipline stricte. La multiplication des endpoints et le mélange des responsabilités compliquent la maintenance.\n- **GraphQL** : un endpoint unique, un langage de requête qui simplifie le développement d'interfaces, une séparation nette entre client et serveur.\n- Les intentions d'adoption de GraphQL sont en hausse nette, ce qui fait écho à la tendance citée par Mark O'Neill le même matin.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "creating-apis-that-data-scientists-will-love",
+      "day": "2024-12-04",
+      "type": "talk",
+      "title": "Creating APIs That Data Scientists Will Love",
+      "speakers": ["Ryan Day — auteur de Hands-On APIs for AI and Data Science"],
+      "feedbackFrom": ["Loïc Lefloch (blog)"],
+      "summary": "- **Thèse** (sur scène) : *« to succeed in AI you must first master APIs »*, pour les data scientists comme pour les développeurs. Le talk reprend des conseils du livre à paraître au printemps 2025.\n- **Se mettre à leur place** : environ 38 % du temps d'un data scientist passe en préparation de données (rapport Anaconda cité). Leur demande se résume à *« just give me the data »* : l'API ne les intéresse pas en soi.\n- **Cinq conseils** : un SDK Python publié sur PyPI ; des identifiants externes standard pour faire des jointures (exemple de l'identifiant GSIS des joueurs NFL) ; des types de données imposés et documentés dans OpenAPI (Pydantic + FastAPI) ; un téléchargement en masse pour l'analyse exploratoire et l'entraînement ; un filtre par date de dernière modification pour les chargements incrémentaux (Airflow).\n- Ce qu'en retient Loïc Lefloch : les data scientists se font une opinion d'une API **en quelques secondes**, la première impression compte énormément.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "siJevcmf1oA",
+        "title": "Apidays Paris 2024 - Creating APIs That Data Scientists Will Love - Ryan Day",
+        "transcript": true
+      }
+    },
+    {
+      "id": "five-essential-design-assets-for-successful-apis",
+      "day": "2024-12-04",
+      "type": "talk",
+      "title": "Five Essential Design Assets for Successful APIs",
+      "speakers": ["Mike Amundsen — auteur de Design and Build Great Web APIs"],
+      "feedbackFrom": ["Loïc Lefloch (blog)"],
+      "summary": "- **Cinq livrables de design** que tout projet d'API devrait avoir, sur le modèle des assets du design UI/UX.\n- **Histoire** : objectif en deux phrases (règle attribuée à Ridley Scott), actions, données, règles. Sans HTTP ni langage, donc accessible à tous. *« Every great design begins with an even better story »*.\n- **Vocabulaire** : tous les mots de l'API (ressources, actions, statuts), proche du langage omniprésent du DDD.\n- **Diagramme** d'interaction, qui montre les connexions possibles et non un workflow imposé.\n- **Description** agnostique et lisible par une machine (ALPS, Smithy, TypeSpec), qui dit ce qui est possible sans prescrire. **Définition** propre à la technologie (OpenAPI, AsyncAPI, Protobuf, GraphQL SDL), à partir de laquelle on génère code et documentation.\n- Conclusion citée par Loïc Lefloch comme par la vidéo : *« Design is thinking made visible »* (Saul Bass).",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "DZlG9U4AmEE",
+        "title": "Apidays Paris 2024 - Five Essential Design Assets for Successful APIs By Mike Amundsen.",
+        "publishedAt": "2024-12-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "canva-high-quality-public-apis",
+      "day": "2024-12-04",
+      "type": "talk",
+      "title": "Canva's High-Quality Public APIs",
+      "speakers": ["Ofir Zeevi"],
+      "feedbackFrom": ["Loïc Lefloch (blog)"],
+      "summary": "- Titre et entreprise tels que rapportés par Loïc Lefloch (orthographiés « Canvas » dans son billet) ; session absente de la playlist.\n- **Partir du problème** à résoudre et d'un objectif clair.\n- **Interne d'abord** : construire l'API en privé avant de l'ouvrir, pour affiner l'expertise métier et garder la liberté de la faire évoluer.\n- **Itérer par étapes** (alpha, bêta, disponibilité générale) et concevoir l'extensibilité dès le départ.\n- **Une équipe transverse dédiée aux API publiques**, avec permanences hebdomadaires et revues de design.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "modularizing-your-api-with-domain-storytelling",
+      "day": "2024-12-04",
+      "type": "talk",
+      "title": "Modularizing your API with Domain Storytelling",
+      "speakers": ["Henning Schwentner"],
+      "feedbackFrom": ["Loïc Lefloch (blog)"],
+      "summary": "- Session du Docs track (15 h 55).\n- **Problème** : les malentendus entre développeurs et métier font échouer les projets.\n- **Domain Storytelling** : un langage pictographique pour capter les récits des experts métier (acteurs, tâches, événements) et bâtir une compréhension commune.\n- Ces récits guident le découpage en microservices et la structure des API.\n- Bénéfice retenu par Loïc Lefloch : des exigences abstraites deviennent des représentations visuelles lisibles par les profils techniques comme non techniques.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "api-design-principles",
+      "day": "2024-12-04",
+      "type": "talk",
+      "title": "API Design Principles",
+      "speakers": ["Marco Pierobon"],
+      "feedbackFrom": ["Loïc Lefloch (blog)"],
+      "summary": "- **17 principes** relevés par Loïc Lefloch, dont : tout est compromis, à tracer dans des ADR ; versioning et politique de dépréciation ; kebab-case pour les URL et camelCase pour le JSON ; pas de hiérarchies de ressources trop profondes ; DTO pour séparer modèle de domaine et contrat d'API.\n- **Robustesse** : distinguer mises à jour complètes et partielles, suppression logique, opérations en masse atomiques avec verrouillage optimiste, retries idempotents, messages d'erreur utiles, opérations longues traitées comme des ressources suivables.\n- **Gouvernance** : tests de contrat contre les changements cassants, portail développeur, alignement sur des objectifs métier mesurables.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "ai-in-my-api-gateway-but-why",
+      "type": "talk",
+      "title": "AI in My API Gateway... But Why?",
+      "speakers": ["Mathieu Ancelin — Cloud APIM"],
+      "feedbackFrom": [],
+      "summary": "- **Position** (sur scène) : l'auteur d'Otoroshi, gateway open source, se dit *« pas particulièrement fan de GenAI »*. Selon lui, des bibliothèques comme LangChain réimplémentent des fonctions que les gateways offrent depuis longtemps ; mieux vaut appeler les LLM à travers la gateway.\n- **Une interface unifiée** (compatible OpenAI) vers tous les fournisseurs, avec retries, circuit breaker, bascule vers un modèle local et load balancing.\n- **Observabilité et coûts** : rapports par clé d'API (modèle, prompt, tokens), quotas en tokens par consommateur, cache exact et **cache sémantique** (démo : 10 secondes sans cache, 71 ms avec).\n- **Garde-fous** sur les prompts (regex, webhook ou LLM validateur hébergé en interne contre les fuites de secrets, de données personnelles ou les propos toxiques), secrets injectés depuis un coffre-fort, et appels d'outils exécutés dans la gateway (WASM).\n- Démos annexes : masquage de données personnelles dans une réponse d'API, faux backend généré par un LLM pour prototyper.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "QycS3XAzpIU",
+        "title": "Apidays Paris 2024 - AI in My API Gateway ... But Why? By Mathieu Ancelin.",
+        "publishedAt": "2024-12-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "run-secure-and-govern-your-ai-traffic-with-an-ai-gateway",
+      "type": "talk",
+      "title": "Run, Secure, and Govern Your AI Traffic with an AI Gateway for Multi-LLM",
+      "speakers": ["Jérôme Guillaume — Kong"],
+      "feedbackFrom": [],
+      "summary": "- **Point de départ** (sur scène) : selon un chiffre de Microsoft Ignite cité, plus de 90 % des cas d'usage utilisent au moins trois fournisseurs de modèles. Développeurs, réseau/sécurité et ops ont chacun leurs inquiétudes.\n- **Kong AI Gateway** : un seul endpoint pour Azure, Bedrock, Gemini, Mistral ; choix du modèle par en-tête ; clés stockées dans la gateway (Vault) ; accès sous OAuth/OIDC ; load balancing (round robin, latence, usage).\n- **Contrôle** : rate limiting en tokens, templates de prompts imposés pour restreindre les usages, transformation par LLM des requêtes et réponses d'API existantes sans code (« AI augmentation »).\n- **Fonctions sémantiques** : cache, garde-fou (démo : question politique refusée) et routage vers le modèle adapté au prompt. Tableaux de bord de coûts par modèle et par consommateur (ELK, Prometheus/Grafana).\n- Démo très produit, mais elle recoupe presque point par point les talks Cloud APIM et Microsoft.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "-9PDN8aJZt8",
+        "title": "Apidays Paris 2024 - Run, Secure, and Govern Your AI Traffic with an AI Gateway for Multi-LLM",
+        "publishedAt": "2024-12-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "azure-api-management-as-a-genai-gateway",
+      "type": "talk",
+      "title": "Azure API Management as a GenAI Gateway",
+      "speakers": ["Andrei Kamenev — Microsoft", "Iheb Khemissi — Microsoft"],
+      "feedbackFrom": [],
+      "summary": "- **Thèse** (sur scène) : un LLM est *« just another API »* (endpoint, clé, requêtes), qu'il faut gérer, sécuriser et gouverner comme les autres, avec en plus des enjeux spécifiques liés aux tokens.\n- **Coûts** : métrique de consommation de tokens par abonnement, utilisateur ou en-tête, pour refacturer aux équipes ; limites en tokens par minute et quotas horaires à annuels.\n- **Résilience** : load balancing et circuit breaker pour consommer d'abord la capacité réservée (PTU) puis basculer vers le paiement à l'usage ou une autre région en cas de 429 (démo France Central vers Suède).\n- **Sécurité** : identité managée vers Azure OpenAI au lieu d'une clé partagée, clés d'abonnement révocables, validation de JWT.\n- **Cache sémantique** (Redis + embeddings) ; prise en charge de l'API d'inférence unifiée (Mistral, Cohere, Llama, Phi) et des entrées image de GPT-4o.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "TAjsRu6yWy8",
+        "title": "Apidays Paris 2024 - Azure API Management as a GenAI Gateway.",
+        "publishedAt": "2025-02-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "tackling-openapi-drift",
+      "day": "2024-12-03",
+      "type": "talk",
+      "title": "Tackling OpenAPI Drift",
+      "speakers": ["Ikenna Nwaiwu — auteur d'Automating API Delivery"],
+      "feedbackFrom": [],
+      "summary": "- Session du bloc « Design » du track OpenAPI Initiative.\n- **Ampleur** : sondage en salle à apidays Paris, environ 29 % des participants savent que leur documentation ne correspond pas au comportement de leur API, et 3 % ne savent pas. Résultats proches à Bruxelles et Berlin. Livre blanc APIContext (août 2024) cité : 75 % des API testées ont des endpoints non conformes, 25 % n'en ont aucun de conforme.\n- **Cas Acme FS** (fintech anonymisée, 70+ microservices Spring Boot) : un grand compte abandonne une preuve de concept, la dérive OpenAPI arrivant en tête de ses griefs ; 30 % des endpoints du parcours type dérivaient.\n- **Deux ingénieurs, deux semaines** : neuf contre-mesures étudiées (génération depuis le code, design-first strict, Smithy/TypeSpec, Pact, tests par fuzzing…). Retenue : **des tests de contrat côté fournisseur via un proxy validant** (Prism), en rejouant les collections Postman existantes avec Newman.\n- **L'astuce** : fusionner les fichiers OpenAPI (Redocly CLI), filtrer l'obsolète et forcer `additionalProperties: false` pour détecter les champs non documentés. Résultat : conformité de 70 % à 100 % en cinq jours, et le contrat suivant est signé.\n- Leçon : commencer par les parcours clients les plus fréquents ; solution de court terme, le vrai chantier de tests de contrat continuant en parallèle.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "65jGW02HZdk",
+        "title": "Apidays Paris 2024 - Tackling OpenAPI Drift By Ikenna Nwaiwu.",
+        "publishedAt": "2024-12-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "an-operating-model-for-api-platforms",
+      "type": "talk",
+      "title": "An Operating Model for API Platforms",
+      "speakers": ["Ikenna Nwaiwu — auteur d'Automating API Delivery"],
+      "feedbackFrom": [],
+      "summary": "- **Deux indicateurs** pour une équipe plateforme API (sur scène) : la satisfaction des clients de l'API et le délai de livraison d'une API.\n- **« Two customer mindset »** : ne pas croire que les consommateurs sont les seuls clients. Une mauvaise expérience côté producteurs finit par dégrader celle des consommateurs. Exemple de NHS England : entretiens avec les équipes, analyse des besoins, enquête de satisfaction annuelle en hausse de 2020 à 2023.\n- **Monter en abstraction** : publier une API sur la plateforme NHS demandait de 3 à 8 semaines de checklist manuelle (Apigee, Azure DevOps, AWS). L'outil interne Proxygen génère et déploie le proxy depuis le fichier OpenAPI : **-75 % de délai, -50 % de charge de support**.\n- **Sondage en salle** à apidays Paris : 43 % des participants n'ont pas d'endroit central pour trouver les descriptions d'API (14 % ne savent pas) ; 56 % estiment que leur processus de design et de revue d'API comporte des goulots d'étranglement.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "2tUoR3bTczk",
+        "title": "Apidays Paris 2024 - An Operating Model for API Platforms By Ikenna Nwaiwu.",
+        "publishedAt": "2024-12-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "walk-the-openapi-talk-moonwalk-the-developer-experience",
+      "type": "talk",
+      "title": "Walk the OpenAPI Talk, Moonwalk the Developer Experience!",
+      "speakers": ["Oleg Nenashev — Gradle"],
+      "feedbackFrom": ["Oleg Nenashev (speaker)"],
+      "summary": "- Vidéo réenregistrée le 10 décembre ; le speaker dit avoir vécu une *« awesome experience »* et tenu le stand partagé avec AsyncAPI (speaker).\n- **OpenAPI n'est pas une spécification formelle** : une définition ne suffit pas à construire un service correct (réponses liées à une requête, comportement à états).\n- **Histoire** : quasi-stagnation entre la 3.0 (2016) et 2021 ; depuis, 3.1, Arazzo, Overlays et une 3.2 imminente. En 2024, « OpenAPI » dépasse « Swagger » dans les recherches web.\n- **Moonwalk (OpenAPI 4)** : relier requêtes et réponses, moins de verbosité, gabarits d'URL normalisés. Mais le dépôt semble à l'arrêt vu de l'extérieur, et la sortie annoncée pour 2024 n'aura pas lieu ; d'où le conseil de passer dès maintenant à la 3.2.\n- **Critiques personnelles** : le YAML est un mauvais langage de modélisation (il préférerait un DSL en code, Kotlin par exemple) ; le registre officiel d'extensions ne contient que `x-twitter`, ce qui oblige chacun à réinventer `x-logo` ou les modèles d'autorisation.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "Rrj-iUpBR6E",
+        "title": "Apidays Paris 2024 - Walk the OpenAPI Talk, Moonwalk the Developer Experience! By Oleg Nenashev.",
+        "publishedAt": "2024-12-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-state-of-json-schema",
+      "type": "talk",
+      "title": "The State of JSON Schema",
+      "speakers": ["Benjamín Granados — JSON Schema TSC, Celonis"],
+      "feedbackFrom": ["Valeria Hernandez (récapitulatif JSON Schema, organisation)"],
+      "summary": "- **Ouverture de la première JSON Schema Conference**, track d'apidays Paris ; Benjamín Granados remercie apidays d'offrir un espace aux standards ouverts (sur scène).\n- **Constat** : 97 % des payloads d'API sont en JSON (chiffre cité). En 2021, le projet comptait 7 membres du TSC, 355 contributeurs, 6 000 membres et 4 sponsors, mais l'échelle de contribution était trouée au milieu.\n- **Ce qui a été fait** : nouveau site, « Tour of JSON Schema », catalogue d'environ 200 outils relié au méta-validateur Bowtie, 8 projets Google Summer of Code en 2024 (près de 100 candidats), rédactrices financées par Season of Docs, ambassadeurs, programme d'adoptants. Le TSC passe à 9 membres.\n- **Revers** : des membres payés à plein temps, dont lui, ont été licenciés ; le travail se poursuit sur du temps libre, avec des délais assouplis. Version « stable » visée l'année suivante, avec quelques ruptures assumées ; processus de publication propre hors IETF ; volonté de rejoindre une fondation.\n- Récapitulatif de Valeria Hernandez (équipe JSON Schema) : dix présentations, trois thèmes récurrents (design et standardisation des données, outillage, intégration applicative), et un engagement du public qui *« a dépassé les attentes »*.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "L4FE87lVRto",
+        "title": "Apidays Paris 2024 - The State of JSON Schema - Benjamín Granados, JSON Schema TSC",
+        "publishedAt": "2024-12-20",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-internet-is-getting-emptier",
+      "day": "2024-12-04",
+      "type": "talk",
+      "title": "The Internet is Getting Emptier; That's a Sustainability Problem",
+      "speakers": ["Romain Jacob — ETH Zürich"],
+      "feedbackFrom": [],
+      "summary": "- Session de Green IO Paris (première journée, « Devil is in the Details »).\n- **Un réseau presque vide** (sur scène) : la charge moyenne des liens du réseau suisse SWITCH est de **2,1 %**. Le trafic total croît, mais c'est l'écart entre pic et creux qui grandit, et c'est le pic qui dicte le dimensionnement.\n- **Un matériel non proportionnel** : un routeur consomme presque autant à vide qu'à pleine charge (image du tube d'hyperloop qu'on maintient sous vide). On exploite donc le réseau dans son mode le moins efficace.\n- **Éteindre ne suffit pas** : le protocole Hypnos permet de couper un tiers des liens la nuit, mais n'économise presque rien, car un transceiver branché consomme même port éteint. Ce sont des bugs constructeurs à corriger. Projet de base publique de mesures de puissance (« Network Power Zoo »).\n- **Garder Internet vide** : le coût marginal du trafic est négligeable (environ 6 W, 0,02 % de la puissance du réseau), mais remplir les tuyaux déclenche de nouveaux investissements. D'où un appel à la sobriété et à éviter le pic, avec une mise en garde contre le « tout carbon-aware », qui synchroniserait les charges.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "Jhe_QP59QhI",
+        "title": "Apidays Paris 2024 - The Internet is Getting Emptier; That's a Sustainability Problem",
+        "publishedAt": "2024-12-21",
+        "transcript": true
+      }
+    },
+    {
+      "id": "getting-the-numbers-for-api-driven-transformation-to-add-up",
+      "type": "talk",
+      "title": "Getting the numbers for API-driven transformation to add up",
+      "speakers": ["Claire Barrett — APIsFirst, Women in APIs"],
+      "feedbackFrom": [],
+      "summary": "- **Le problème** (sur scène) : les organisations peinent à tirer la valeur promise de leurs investissements API (gateways plus chères que prévu, changements pas plus rapides), dans un contexte de concurrence pour les budgets.\n- **Asymétrie des business cases** : des semaines passées à chiffrer les coûts, quelques lignes vagues sur les bénéfices, d'où le risque d'un **« evaporating business case »**.\n- **Direct ou indirect** : portail, gouvernance et formation produisent des bénéfices directs et mesurables. Une architecture composable ou de nouveaux marchés sont des bénéfices indirects, à rattacher aux plans métier concernés ; seuls les revenus directs d'API produits sont vraiment attribuables.\n- **Ce que font ceux qui réussissent** : traiter les ingénieurs comme des clients, penser l'API comme un produit, discipline d'ingénierie, design en « sport d'équipe » métier et tech, culture API-first dès la conception.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "Z6EkpEPW138",
+        "title": "Apidays Paris 2024 - Getting the numbers for API-driven transformation to add up By Claire Barrett.",
+        "publishedAt": "2024-12-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "military-grade-security-for-apis",
+      "type": "talk",
+      "title": "Military-Grade Security for APIs",
+      "speakers": ["Michał Trojanowski — Curity"],
+      "feedbackFrom": [],
+      "summary": "- **Toutes les données sont sensibles** (sur scène) : même une liste d'e-mails volée nourrit d'autres attaques. Le but est de rendre la vie de l'attaquant assez dure pour qu'il aille ailleurs.\n- **FAPI**, profil de sécurité OAuth de l'OpenID Foundation, perd son « Financial-grade » en version 2 : il vaut pour tous les secteurs, d'où le titre « military-grade ».\n- **Jetons liés à l'émetteur** au lieu des bearer tokens : mTLS (RFC 8705, empreinte du certificat dans la claim `cnf`) ou DPoP (RFC 9449). Un jeton volé devient inutilisable.\n- **Protéger le flux** : PAR (RFC 9126) pour des requêtes d'autorisation authentifiées et intègres, JARM pour des réponses signées. PKCE sans flux hybride protège déjà des attaques par confusion de serveur.\n- À retenir selon lui : lire le court document FAPI 2, quel que soit le secteur.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "1fLKqUnusCw",
+        "title": "Apidays Paris 2024 - Military-Grade Security for APIs By Michał Trojanowski.",
+        "publishedAt": "2024-12-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "reconciling-zero-trust-apis-and-developer-experience",
+      "type": "talk",
+      "title": "Reconciling Zero-Trust APIs and Developer eXperience",
+      "speakers": ["Romain Quinio — Amadeus", "Kevin Viet — Amadeus"],
+      "feedbackFrom": [],
+      "summary": "- Transcript automatique de mauvaise qualité (son de salle) : résumé partiel.\n- **Contexte** (sur scène) : en passant au cloud public et aux microservices, Amadeus perd le périmètre de confiance. Chaque microservice doit valider lui-même le jeton OpenID Connect.\n- **Le dilemme** : tester une API sécurisée est pénible à chaque étage de la pyramide de tests. La tentation est de désactiver la sécurité en intégration, au risque que ce réglage parte en production.\n- **Leur réponse** : un mock conteneurisé du protocole OIDC, décrit comme une API OpenAPI, réutilisable du poste du développeur (dev service Quarkus) à l'intégration. Démo : 401, 403 selon l'utilisateur, rôle « agent de voyage ».\n- Message : déplacer la sécurité vers la gauche et en faire une responsabilité des développeurs, pas seulement de l'équipe sécurité.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "5FB_sJ2m_co",
+        "title": "Apidays Paris 2024 - Reconciling Zero-Trust APIs and Developer eXperience By Romain Quinio.",
+        "publishedAt": "2025-02-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "future-proofing-api-management-de-volksbank",
+      "type": "talk",
+      "title": "Future-Proofing API Management: How De Volksbank is Ready for Tomorrow's Challenges",
+      "speakers": ["Sebastiaan Kalshoven — De Volksbank", "Peter Mörsch — Boomi"],
+      "feedbackFrom": [],
+      "summary": "- **Contexte** (sur scène) : banque néerlandaise (ASN, SNS, RegioBank, BLG Wonen), 3,5 millions de clients, environ 4 000 salariés dont 1 100 ingénieurs. *« The biggest of the small banks »*, avec des ressources limitées.\n- **Le problème** : une belle vision d'intégration par API, mais sans outillage pour la piloter. Résultat : API redondantes, réutilisation faible, aucune vue d'ensemble sur deux gateways (Broadcom à l'extérieur, Gravitee à l'intérieur) et Kafka.\n- **Projet Lighthouse** : une évaluation de maturité notée par les équipes elles-mêmes, utile pour convaincre les parties prenantes. Puis un plan de contrôle construit avec APIDA (racheté par Boomi) : catalogue unique, gouvernance, contrôles de sécurité OWASP en amont, analytics.\n- Talk orienté leadership plutôt que technique, avec une forte part de discours éditeur ; le speaker y évoque aussi la démonstration d'attaque d'API d'un hacker le matin même.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "zR6RuazDfRY",
+        "title": "Apidays Paris 2024 - Future-Proofing API Management : How De Volksbank is Ready for Tomorrow's .",
+        "publishedAt": "2025-02-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "api-governance-snam-experience",
+      "type": "talk",
+      "title": "API Governance as an enabler of an architectural evolution: The SNAM experience",
+      "speakers": ["Alessandra Gambatesa — SNAM", "Simone Manzoni — SNAM"],
+      "feedbackFrom": [],
+      "summary": "- **Contexte** (sur scène) : l'opérateur gazier italien (environ 41 000 km de réseau, 9 sites de stockage) a engagé il y a environ sept ans une rationalisation de son parc applicatif : passage de monolithes en cascade à des microservices, Kafka, agile et DevOps.\n- **La désillusion** : l'architecture était devenue cloud native, mais personne ne savait plus quels composants existaient, qui les utilisait ni lesquels étaient réutilisables.\n- **Le tournant** : redéfinir les microservices comme des **produits API** porteurs d'un sens métier, désigner des propriétaires de processus, puis adopter un outil de gouvernance unique et non intrusif.\n- **Trois principes** : séparer la complexité organisationnelle de la complexité technique, offrir un point de contact unique aux fonctions hors DSI, ouvrir une marketplace d'API aux partenaires (en cours).\n- Présenté comme un retour d'expérience avec ses erreurs, et non comme un modèle à suivre.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "-4FxDOB-mKw",
+        "title": "Apidays Paris 2024 - API Governance as an enabler of an architectural evolution ​The SNAM experience",
+        "publishedAt": "2024-12-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "focus-on-data-on-the-road-to-ai",
+      "type": "talk",
+      "title": "Focus on Data, on the Road to AI",
+      "speakers": ["Nouamane Cherkaoui — BPCE Solutions Informatiques"],
+      "feedbackFrom": [],
+      "summary": "- **Discours de dirigeant** plutôt que talk technique (sur scène) : l'IA présentée comme une quatrième révolution, portée par l'explosion des données, qui attire aussi les cybercriminels.\n- **Paradoxe de productivité** : la technologie progresse sans gain de productivité visible, en raison du décalage historique entre une invention et son impact (la machine à vapeur citée).\n- **Relativiser les peurs** par l'histoire (imprimerie, électricité, e-mail) ; pour les dirigeants, apprendre puis adapter, à partir de cas d'usage concrets.\n- **L'IA seule ne donne pas d'avantage concurrentiel durable**, puisque tout le monde l'adopte. Anecdote Lego : le redressement est venu de décisions humaines, quand les outils d'IA testés auraient poussé vers le métavers.\n- Conclusion : *« true intelligence is human »*.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "dj7v5dZvSG0",
+        "title": "Apidays Paris 2024 - Focus on Data, on the Road to AI By Nouamane Cherkaoui.",
+        "publishedAt": "2024-12-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "do-not-live-in-the-shadow-apis",
+      "type": "talk",
+      "title": "Do not live in the Shadow (APIs)",
+      "speakers": ["Teresa Pereira — Siemens Energy"],
+      "feedbackFrom": [],
+      "summary": "- D'après les slides publiées sur Speaker Deck.\n- **Trois familles** : API fantômes (hors des canaux surveillés, par précipitation ou héritage), zombies (remplacées mais toujours actives), orphelines (documentées mais sans trafic).\n- **Risques** : un rapport de 2022 cité évoque 5 milliards de requêtes malveillantes visant des API fantômes ; la fuite d'Optus (environ 10 millions de clients) est passée par une API REST de test non surveillée.\n- **Parades** : découverte automatisée et validée à la main, catalogue centralisé (propriétaire, version, cycle de vie), surveillance continue à partir d'un trafic de référence, culture API-first, sécurité testée tôt.\n- Formule : *« APIs can be open windows, even when the doors are locked »*.",
+      "summarySources": ["slides"],
+      "video": {
+        "youtubeId": "D2Gjf310QAs",
+        "title": "Apidays Paris 2024 - Do not live in the Shadow (APIs) By Teresa Pereira.",
+        "transcript": false
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "AI and the Future of Humanity: Biopunk or Biohacking? (panel avec Alain Damasio, Green IO, 3 décembre)",
+    "OAI Track Introduction and the State of OpenAPI (Erik Wilde, INNOQ, 3 décembre)",
+    "Interventions annoncées sans contenu retrouvé : Ilan Benhaim (Veepee), Julien Villeret (EDF), Laurent Fressinet, Loubna Ben Allal (Hugging Face), Michal Valko (Meta), Thomas Mesnard (Google DeepMind), Jean-Baptiste Kempf (Scaleway), Lélio Renard (Mistral AI)",
+    "AI-Enhanced API Documentation (Saheed Abiola Lasisi, JPMorgan Chase, Docs track, 4 décembre) : vidéo",
+    "Harnessing AI for API Business Documentation in a Devportal CMS (Kristof Van Tomme, Pronovix, Docs track, 4 décembre) : vidéo",
+    "Discoverability, Findability, and AI: lessons learnt from the DevPortal Awards (Laura Vass, Docs track, 4 décembre)",
+    "TMForum's AsyncAPIs For a New Era of Event-Driven Architecture : vidéo",
+    "Contract-Driven Development for Event-Driven Architecture : vidéo",
+    "Streaming Data Events Into An AI Cognitive Event Mesh Using AsyncAPI : vidéo",
+    "AI Agents Meet AsyncAPI: Conversational Interfaces For Event Streams : vidéo",
+    "Governance of event-driven distributed systems (Omid Eidivandi, Groupe La Centrale) : vidéo",
+    "Generic and Extensible Web of Things Manager using JSON Schema & AI (Andreas Eberhart, Dashjoin) : vidéo et slides",
+    "Unlocking Dynamic Frontend Development Through JSON Schema (Neha Singla, Apple) : vidéo",
+    "Layered Approach of API Security Strategies and its Business Impact : vidéo",
+    "Building an AWS Serverless Application with Terraform (Andre Lopes, Tesla) : vidéo",
+    "The Power of Generative AI in API Product Testing and Validations : vidéo",
+    "The experience choosing a framework for documenting APIs (Laura Lacarra Arcos) : vidéo",
+    "Design, Debug, Test and Mock APIs with Kong Insomnia (Pierre-Alexandre Loriot) : vidéo",
+    "AI Voice agents for the Business and Phone Channels (Katya Lainé, TALKR.ai) : vidéo",
+    "Embeddings: Core Concepts for Developers (Jocelyn Matthews) : vidéo",
+    "Cross-platform Catalogs for Unified Governance and Developer Experience : vidéo",
+    "APIs and GenAI: Your Perfect Combo with LLM-Powered Frameworks : vidéo",
+    "API Integration augmented by GenAI (Pierre-Olivier Patin, Sogeti) : vidéo",
+    "Hexagonal Modules: A Cleaner Approach to Monolithic API Design (Adil Baaj) : vidéo",
+    "How to Build an Integration Platform using Open Source (Magnus Hedner) : vidéo",
+    "Develop in parallel and ship earlier with OpenAPI and mocking (Lee Turner) : vidéo",
+    "Fostering API Productization in Federated API Architecture (Abhijit Dey, Axis Bank) : vidéo",
+    "Establishing a Specification Framework for API Management Federation : vidéo",
+    "Success stories of API integration : vidéo",
+    "An Alternative View on OpenAPI Docs, Start Finally Doing it Right! : vidéo",
+    "Orchestrating APIs using AWS Step Functions (Daniel Gutierrez Diez, track OAI) : vidéo",
+    "Generate OpenAPI Schema from Golang Code with the Fuego Framework (track OAI) : vidéo",
+    "Project API Forge: Streamlining Dev-First API Lifecycle Management : vidéo",
+    "Advanced API Management & Operations, A Developer & Customer-Focused Approach : vidéo",
+    "Opey, the AI for API Discovery and Future of Fintech : vidéo",
+    "Designing a Composable API Platform Powered by Open Standards : vidéo"
+  ],
+  "sources": [
+    { "label": "Page officielle apidays Paris 2024 (archive Wayback Machine, janvier 2025)", "url": "https://web.archive.org/web/20250120152429/https://www.apidays.global/paris2024/" },
+    { "label": "OpenAPI Initiative : track OAI et ateliers à apidays Paris 2024", "url": "https://www.openapis.org/events/apidays-paris-2024" },
+    { "label": "Playlist YouTube « apidays Paris 2024 » (49 vidéos)", "url": "https://www.youtube.com/playlist?list=PLmEaqnTJ40OrUbnh6qdML34EySxvdRhQH" },
+    { "label": "Vidéo « Apidays Paris 2024 Highlights »", "url": "https://www.youtube.com/watch?v=f8F87sspwFQ" },
+    { "label": "Loïc Lefloch : My Experience at API Days Paris 2024 (blog, 8 décembre 2024)", "url": "https://www.loiclefloch.fr/api-days/2024/" },
+    { "label": "Loïc Lefloch : API Days Paris 2024 Talks Insights (notes de 10 talks)", "url": "https://www.loiclefloch.fr/api-days/2024/talks/" },
+    { "label": "JSON Schema : récapitulatif de la JSON Schema Conference (Valeria Hernandez, 19 décembre 2024)", "url": "https://json-schema.org/blog/posts/apidays-paris-2024-recap" },
+    { "label": "API The Docs : programme du Docs track et des DevPortal Awards", "url": "https://apithedocs.org/apidays-paris-2024" },
+    { "label": "Green IO Paris 2024 (conférence co-localisée)", "url": "https://greenio.tech/conference/10/paris-2024-december-green-it" },
+    { "label": "Slides : Do not Live in the Shadow (APIs), Teresa Pereira", "url": "https://speakerdeck.com/apidays/apidays-paris-2024-do-not-live-in-the-shadow-apis-teresa-pereira-siemens-energy" },
+    { "label": "Fiche événement Qwoted (sponsors, co-localisations)", "url": "https://app.qwoted.com/opportunities/event-apidays-2024-paris" },
+    { "label": "Posts LinkedIn : aucun post de participant exploitable trouvé (recherches d'octobre 2026)" }
+  ]
 }
