@@ -236,10 +236,17 @@
       "feedbackFrom": [
         "Blog SFEIR (co-écrit par le speaker)"
       ],
-      "summary": "- **Chaos Monkey for Spring Boot** pour injecter volontairement des perturbations et valider la robustesse **avant** les incidents réels.\n- Citation retenue : *« Le chaos trouve toujours un chemin. »*\n- Pas de vidéo DevLille 2026 dans la playlist officielle au 25/09.",
+      "summary": "- Sur scène (transcript) : le **chaos engineering** consiste à casser volontairement l'application dès le développement, pour trouver les failles avant la prod et avant le coup de fil de 3 h du matin ; rappel des origines chez Netflix (2011, outils ouverts en 2012) et de l'exemple de la SNCF, qui consacrerait un mois de chaos avant chaque grosse mise en production.\n- **Chaos Monkey for Spring Boot** (Codecentric, open source) : une dépendance, un profil `chaos-monkey` (absent du profil prod, donc sans risque par défaut), des *watchers* posés en AOP sur contrôleurs, services ou repositories, et des *assauts* configurables (latence, exceptions, arrêt de l'application, mémoire, CPU), déclenchés de façon déterministe ou probabiliste.\n- Démo participative sur « ChaosFlix », un clone de Netflix : latence une requête sur trois sur le catalogue, exceptions une fois sur deux sur les recommandations, puis chaos sur toutes les couches ; l'orateur insiste sur des **messages d'erreur parlants** plutôt qu'un code 200 avec « une erreur est survenue ».\n- Points d'attention : pas d'exception dédiée (difficile de savoir si l'erreur vient du singe, d'où l'intérêt d'un moment contrôlé) et chaque appel de configuration écrase le précédent ; pas d'équivalent direct pour Quarkus.\n- Pour se protéger : **Resilience4j** (circuit breakers, retry) supervisé via les actuators, et couplage avec Gatling pour simuler une panne sur 1 000 ou 10 000 requêtes.\n- Côté retours, seul le blog SFEIR, co-écrit par le speaker, en parle ; citation retenue : *« Le chaos trouve toujours un chemin. »*",
       "summarySources": [
+        "transcript",
         "blog"
-      ]
+      ],
+      "video": {
+        "youtubeId": "gW3edlRSr4g",
+        "title": "[DevLille 2026] Tester la résilience de votre application avec Chaos Monkey - Jour 2",
+        "publishedAt": "2026-10-06",
+        "transcript": true
+      }
     },
     {
       "id": "veille-technologique-ma-methode-pour-rester-a-jour",
@@ -442,10 +449,10 @@
       }
     }
   ],
-  "synthesisUpdatedAt": "2026-09-29",
+  "synthesisUpdatedAt": "2026-10-07",
   "programUrl": "https://devlille.fr/agenda/",
   "note": "Ex-DevFest Lille. 11 & 12 juin 2026, Lille Grand Palais : ~44 conférences sur 3 salles (Grand Théâtre, Marie Curie, Stephen Hawking), 4 codelabs de 2 h, une keynote chaque matin ; conférences sous-titrées en direct. 49 talks publiés sur YouTube.",
-  "corpus": "Programme officiel (version archivée de l'agenda), **deux comptes-rendus de blog d'ESN** publiés le 29/07/2026 : SFEIR (8 sessions, co-écrit par quatre speakers) et Ippon (11 sessions, huit auteurs dont une speaker), la playlist YouTube officielle (49 vidéos publiées les 24-25/06) et **13 transcripts** de talks (les deux keynotes et les sessions les plus commentées). Une recherche LinkedIn ciblée (29/09) n'a remonté que des posts d'annonce (billetterie, CFP, stands), aucun retour détaillé indexé.",
+  "corpus": "Programme officiel (version archivée de l'agenda), **deux comptes-rendus de blog d'ESN** publiés le 29/07/2026 : SFEIR (8 sessions, co-écrit par quatre speakers) et Ippon (11 sessions, huit auteurs dont une speaker), la playlist YouTube officielle (49 vidéos publiées les 24-25/06) et **14 transcripts** de talks (les deux keynotes, les sessions les plus commentées et, depuis le 07/10, la vidéo Chaos Monkey publiée en octobre). Une recherche LinkedIn ciblée (29/09) n'a remonté que des posts d'annonce (billetterie, CFP, stands), aucun retour détaillé indexé.",
   "limits": "Retours participants limités à deux blogs d'ESN, dont plusieurs auteurs sont speakers (retours à lire comme *(speaker)*) ; aucun post LinkedIn ou Bluesky individuel exploitable n'a été trouvé, ni de retour critique d'un participant indépendant. Les résumés s'appuient beaucoup sur les transcripts (sous-titres automatiques, noms propres parfois approximatifs) ; la majorité des ~44 talks reste sans retour. La keynote du jour 2 n'apparaît pas dans l'agenda publié : les noms complets de ses speakers viennent du blog Ippon.",
   "tldr": "**Une édition dominée par l'IA générative vue par des praticiens prudents : on sort du « vibe coding » pour revenir aux fondamentaux (specs, tests, DDD, accessibilité, humain dans la boucle), l'IA étant présentée comme un amplificateur (des bonnes pratiques comme des mauvaises).**",
   "keyTakeaways": [

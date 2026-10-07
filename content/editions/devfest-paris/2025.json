@@ -12,10 +12,10 @@
   "dateConfidence": "ok",
   "note": "7e édition, vendredi 21 novembre 2025, campus Epitech Paris (Le Kremlin-Bicêtre), organisée par les bénévoles du GDG Paris. Environ 23 sessions (talks, lunch talks, ateliers) sur 4 salles (Grâce Hopper, HUB, Star Wars, Stallman) + un amphi « Keynote Hall ». Chiffres annoncés : ~300 participants (Epitech), 25 speakers (Dont miss iT), 192 propositions au CFP (compte X @devfestparis).",
   "status": "synthesized",
-  "synthesisUpdatedAt": "2026-09-26",
-  "revisit": "Un seul compte-rendu participant public trouvé (article LinkedIn de Stéphane Trebel, lui-même speaker) ; aucun post LinkedIn post-événement lu, budget de recherche limité. 12 vidéos de la playlist sans transcript ni retour (dont Passkeys, Kubernetes, Spring, vibe coding).",
-  "corpus": "Programme officiel (agenda archivé sur la Wayback Machine, versions d'octobre 2025 et de janvier 2026), page GDG Community, article d'Epitech (11/12/2025), un compte-rendu LinkedIn de Stéphane Trebel (24/11/2025, speaker qui a aussi assisté à 5 autres sessions), la playlist YouTube officielle (17 vidéos, publiées sur la chaîne GDG France du 28/11 au 07/12/2025) et 5 transcripts automatiques (keynote 8-bit, sécurité des LLM, Méta-Lois, musique et IA, accessibilité).",
-  "limits": "Retours participants quasi inexistants en ligne : le seul compte-rendu vient d'un speaker, et on n'a trouvé aucun post LinkedIn d'un participant sans rôle dans l'événement. Les résumés s'appuient surtout sur les transcripts automatiques, où certains noms propres sont déformés et que nous avons signalés comme incertains. Les ateliers (Rust, API-First, Clean Archi, A2A/MCP) n'ont été ni filmés ni commentés.",
+  "synthesisUpdatedAt": "2026-10-07",
+  "revisit": "2026-10-07 : les 17 vidéos de la playlist sont désormais transcrites, mais le corpus participant reste limité à un seul compte-rendu public (Stéphane Trebel, lui-même speaker). 5 recherches web supplémentaires (LinkedIn, blogs, noms de speakers) n'ont remonté aucun post post-événement : à retenter via une recherche LinkedIn directe ou les comptes des speakers.",
+  "corpus": "Programme officiel (agenda archivé sur la Wayback Machine, versions d'octobre 2025 et de janvier 2026), page GDG Community, article d'Epitech (11/12/2025), un compte-rendu LinkedIn de Stéphane Trebel (24/11/2025, speaker qui a aussi assisté à 5 autres sessions), la playlist YouTube officielle (17 vidéos, publiées sur la chaîne GDG France du 25/11 au 07/12/2025) et les transcripts automatiques des 17 vidéos.",
+  "limits": "Retours participants quasi inexistants en ligne : le seul compte-rendu vient d'un speaker, et aucune recherche (septembre puis octobre 2026) n'a trouvé de post LinkedIn ou de blog d'un participant sans rôle dans l'événement. Les résumés de 14 sessions sur 17 reposent donc uniquement sur ce qui a été dit sur scène, d'après des transcripts automatiques où certains noms propres sont déformés (celui du talk sur le vibe coding a même été transcrit en écriture hindi). Les chiffres cités par les speakers sont rapportés tels quels, sans vérification. Les ateliers (Rust, API-First, Clean Archi, A2A/MCP) n'ont été ni filmés ni commentés.",
   "tldr": "Un DevFest **à taille humaine et très communautaire** (~300 personnes chez Epitech), au programme éclectique plutôt que tout-IA : une keynote **« bidouille »** sur un ordinateur 8 bits construit transistor par transistor, de la **sécurité des applications LLM**, de l'**accessibilité** et des **« méta-lois »** de l'organisation, avec une IA traitée **en outil plutôt qu'en remplaçant**.",
   "keyTakeaways": [
     "Pour une app LLM, on ne peut pas influencer le modèle mais on peut **attaquer son contexte** : RAG, mémoire de chat et documents injectés sont la vraie surface d'attaque (Brian Vermeer).",
@@ -25,6 +25,8 @@
     "**« Un bouton fait quelque chose, un lien va quelque part »** : HTML natif d'abord, ARIA seulement si on le maîtrise (Aboaf).",
     "On n'échappe pas aux méta-lois (Conway, Goodhart, Hofstadter, Hyrum…), mais les **nommer** permet de les mitiger : peu de KPI choisis par l'équipe, petites itérations, techno éprouvées plutôt que « CV driven development » (Stéphane Trebel).",
     "Construire soi-même pour comprendre : **« si je suis capable de faire une addition, je suis capable de tout faire »**, la démarche d'Olivier Huber pour expliquer l'informatique aux enfants.",
+    "Les passkeys **ne sont pas de la biométrie** mais de la cryptographie liée au domaine, d'où leur résistance au phishing ; avant de les coder soi-même, vérifier si son fournisseur d'identité les propose déjà (Daniel Garnier-Moiroux).",
+    "Pour des tests d'intégration Spring rapides, **mesurer d'abord**, puis viser un seul contexte Spring en centralisant la configuration de test, et protéger ce choix par un test (Mathilde Lorrain et Nicolas Favier).",
     "L'IA générative musicale **abaisse le coût de l'échec** et retire des barrières techniques ; le point de vue retenu par un participant est celui de l'IA outil et non productrice, faute de quoi « on tombe dans le slop sans âme » (Valentin Dumas ; Trebel)."
   ],
   "sessions": [
@@ -64,15 +66,17 @@
       "feedbackFrom": [
         "Stéphane Trebel (article LinkedIn)"
       ],
-      "summary": "- **Talk de secours** : il remplaçait au pied levé une session prévue au programme d'octobre (« Astro GitOps » de Kevin Davin).\n- Sujet : écrire des **CLI en Java** avec Picocli. Le talk donne un aperçu du Java contemporain, avec **Quarkus** et **GraalVM** pour produire des **binaires natifs autoportés**.\n- **Retour participant** : les binaires restent *« encore un peu boursouflés »*, mais offrent *« la DX moderne qu'on est en droit d'attendre de n'importe quel langage »*. Le participant, développeur Rust, y a vu *« un excellent rafraîchissement »* sans être converti (Trebel).",
+      "summary": "- **Talk de secours** : il remplaçait au pied levé une session prévue au programme d'octobre (« Astro GitOps » de Kevin Davin). Sur scène, le speaker (developer advocate chez OVHcloud) dit avoir préparé ce talk *« en une demi-journée, une nuit »*.\n- **Sur scène (transcript)** : live coding d'une CLI « Jarvis » avec Picocli et **Quarkus**. Le dev mode recharge tout à chaud, `@TopCommand` et les sous-commandes structurent l'outil, et `Callable<Integer>` est préféré à `Runnable` pour **renvoyer des codes retour** documentés.\n- **Packaging** : un jar exécutable d'environ 17 Mo, puis un **binaire natif GraalVM** d'environ 61 Mo. Le revers : un exécutable par OS, donc des builds matriciels en CI.\n- **IA dans le terminal** : LangChain4j avec un modèle Mistral hébergé chez OVHcloud, en streaming, un modèle d'analyse de sentiment, des converters Picocli et l'autocomplétion bash. Conseils : **plafonner les tokens** et parler de modèles *« open weight »* plutôt qu'open source.\n- La démo RAG finale rate : le modèle répond avec le programme d'une autre conférence, faute d'avoir remplacé le bon fichier, ce qui illustre involontairement la dépendance du RAG aux documents fournis.\n- **Retour participant** : les binaires restent *« encore un peu boursouflés »*, mais offrent *« la DX moderne qu'on est en droit d'attendre de n'importe quel langage »*. Le participant, développeur Rust, y a vu *« un excellent rafraîchissement »* sans être converti (Trebel).",
       "summarySources": [
+        "transcript",
         "feedback",
         "program"
       ],
       "video": {
         "youtubeId": "Htf7sdGq-3c",
         "title": "Picocli: Put Java in your terminal! - DevFest Paris2025",
-        "transcript": false
+        "publishedAt": "2025-12-01",
+        "transcript": true
       }
     },
     {
@@ -86,14 +90,16 @@
       "feedbackFrom": [
         "Stéphane Trebel (article LinkedIn)"
       ],
-      "summary": "- Des REX du **rendu côté serveur (SSR) Angular en production**, racontés comme un **« livre d'horreur »**. Slide retenue : *« Aucun dev n'a été maltraité pendant ces évènements… enfin presque ! »*\n- **Retour participant** : Stéphane Trebel avait vécu certaines de ces aventures aux premières loges. Le talk lui a permis de *« mettre des mots sur cette impression qu'on s'est infligé beaucoup trop de choses côté FrontEnd »*, en Angular ou ailleurs.\n- Il fait un parallèle avec les Méta-Lois : *« nous créons nos propres monstres »*, c'est donc à nous de nous en occuper (Trebel).",
+      "summary": "- Des REX du **rendu côté serveur (SSR) Angular en production**, racontés comme un **« livre d'horreur »**. Slide retenue : *« Aucun dev n'a été maltraité pendant ces évènements… enfin presque ! »*\n- **Sur scène (transcript)**, une série d'incidents réels, avec leur leçon :\n  - une librairie tierce qui appelle `window` casse le rendu serveur : passer par l'injection du `DOCUMENT` et `PLATFORM_ID`, et **utiliser le mode dev SSR** même s'il est plus lent ;\n  - un `subscribe` sans désabonnement dans un service fourni à la racine provoque une **fuite mémoire** et des crashs en boucle ;\n  - un `setTimeout` qui attend une iframe ajoute 8 à 10 s à chaque rendu, car Zone.js attend que l'app soit stable ;\n  - les appels API doublés entre serveur et client se règlent avec le **TransferState**.\n- **Le « scandale »** : après un code freeze de trois sprints, une release de 700 commits fait exploser le CPU. Il faut une semaine de `git bisect` et de flame graphs pour trouver le coupable, l'inlining de CSS critique (Critters) arrivé avec Angular 12. Leçon : **déployer souvent** et lire les changelogs.\n- Autres pièges : un fallback CloudFront qui masquait des erreurs 500 permanentes (*« ne cachez pas les erreurs »*), l'i18n native qui impose un build par locale (1 h 30 de déploiement), le `localStorage` inaccessible côté serveur. Sa conclusion reste que le SSR **vaut toujours le coup** (SEO, performance, accessibilité).\n- **Retour participant** : Stéphane Trebel avait vécu certaines de ces aventures aux premières loges. Le talk lui a permis de *« mettre des mots sur cette impression qu'on s'est infligé beaucoup trop de choses côté FrontEnd »*, en Angular ou ailleurs.\n- Il fait un parallèle avec les Méta-Lois : *« nous créons nos propres monstres »*, c'est donc à nous de nous en occuper (Trebel).",
       "summarySources": [
+        "transcript",
         "feedback"
       ],
       "video": {
         "youtubeId": "pmGR1_NGdXE",
         "title": "Server-side rendering horror stories in production with Angular - DevFest Paris 2025",
-        "transcript": false
+        "publishedAt": "2025-12-02",
+        "transcript": true
       }
     },
     {
@@ -127,14 +133,16 @@
       "feedbackFrom": [
         "Stéphane Trebel (article LinkedIn)"
       ],
-      "summary": "- État des lieux des **interactions vocales sur Android**. Trebel en retient la légende *« Plus ouvert, plus varié, plus utile ! »*.\n- **Retour participant** : Trebel se dit méfiant envers les assistants et le « bloatware » poussés par les constructeurs. La speakeuse l'a pourtant convaincu de *« faire la part des choses »* entre les capacités désormais offertes par le système et ce qu'on peut en faire dans une app, *« notamment tout ce qui peut être fait on device »* sans cloud.",
+      "summary": "- État des lieux des **interactions vocales sur Android**. Trebel en retient la légende *« Plus ouvert, plus varié, plus utile ! »*.\n- **Sur scène (transcript, en anglais)** : pourquoi la voix (mains occupées, accessibilité permanente ou temporaire), puis les **quatre briques** d'un système vocal : détection du mot d'éveil, speech-to-text, NLP pour extraire l'intention et ses paramètres, text-to-speech.\n- **Côté Google** : les API `SpeechRecognizer` et text-to-speech existent depuis 2009-2010, avec de plus en plus de traitement on-device. Voice Access, les App Actions (encore fonctionnelles mais sans équivalent côté Gemini), l'API Gemini pour la transcription, Gemma via MediaPipe et Gemini Nano, ce dernier limité à quelques appareils récents.\n- **Hors Google** : démos Picovoice entièrement hors ligne (mot d'éveil, commandes, LLM local sans trafic réseau), les services Amazon et Microsoft, Whisper d'OpenAI et les modèles de Hugging Face.\n- Thèse finale : on peut **combiner les briques** selon le besoin, les **petits modèles spécialisés** suffisent pour des vocabulaires métier, et *« offline is going to be key »*.\n- **Retour participant** : Trebel se dit méfiant envers les assistants et le « bloatware » poussés par les constructeurs. La speakeuse l'a pourtant convaincu de *« faire la part des choses »* entre les capacités désormais offertes par le système et ce qu'on peut en faire dans une app, *« notamment tout ce qui peut être fait on device »* sans cloud.",
       "summarySources": [
+        "transcript",
         "feedback"
       ],
       "video": {
         "youtubeId": "ggAeJn_hVhc",
         "title": "The State of Voice Interactions on Android - DevFest Paris 2025",
-        "transcript": false
+        "publishedAt": "2025-12-05",
+        "transcript": true
       }
     },
     {
@@ -203,18 +211,191 @@
         "publishedAt": "2025-12-06",
         "transcript": true
       }
+    },
+    {
+      "id": "des-applis-sans-mot-de-passe-passkeys-en-pratique",
+      "day": "2025-11-21",
+      "type": "talk",
+      "title": "Des applis sans mot de passe : Passkeys en pratique",
+      "speakers": [
+        "Daniel Garnier-Moiroux"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : dernier créneau du vendredi, par un membre de l'équipe Spring spécialisé en sécurité (Spring Security). Le problème n'est pas le mot de passe en soi mais **nos pratiques**, à commencer par la réutilisation.\n- **Étape 1, le one-time token** : quelques lignes de configuration Spring Security et un handler pour envoyer le lien par mail. Le jeton ne sert qu'une fois (403 au second essai). Ça marche, mais recopier 32 caractères depuis un autre appareil reste une mauvaise expérience.\n- **Les passkeys en démo** sur GitHub : empreinte digitale sur le Mac, YubiKey avec PIN, gestionnaire de mots de passe, QR code scanné par le téléphone (appairage Bluetooth puis tunnel Internet). Dans la salle, seules trois personnes disaient en utiliser.\n- **Fonctionnement** : une paire de clés par site et par compte, un challenge signé à chaque cérémonie, le domaine (RP ID) inscrit dans la clé, d'où une **résistance native au phishing**. Message martelé : *« les passkeys, c'est pas biométrique »*, la biométrie ne fait que déverrouiller l'authenticator.\n- **Intégration** : dépendance WebAuthn, configuration du RP ID et des origines, stockage JDBC des clés publiques (en mémoire par défaut). Pour une page de login personnalisée, il réutilise les quelque 120 lignes de JavaScript de la page par défaut, sans désactiver la protection CSRF (*« ça me brise le cœur quand vous faites ça »*).\n- **Recommandation** : vérifier d'abord si son **fournisseur d'identité** (Entra ID, Keycloak…) propose déjà les passkeys, sinon passer par une librairie. Pour aller plus loin, la documentation développeur de Yubico.\n- Aucun retour participant trouvé.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "EdyrGTGsQeU",
+        "title": "Des applis sans mot de passe: Passkeys en pratique (DevFest Paris 2025)",
+        "publishedAt": "2025-12-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "understanding-kubernetes-in-a-visual-way",
+      "day": "2025-11-21",
+      "type": "talk",
+      "title": "Understanding Kubernetes in a visual way",
+      "speakers": [
+        "Aurélie Vache — OVHcloud"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : la speakeuse, developer advocate chez OVHcloud, raconte comment elle a inventé *« par accident »*, pendant le premier confinement, une manière visuelle d'expliquer Kubernetes : **un pod dessiné comme une Poké Ball** contenant des conteneurs. Les sketchnotes hebdomadaires sont devenues un ebook, puis un livre autoédité après deux ans de travail.\n- **Pourquoi expliquer autrement** : *« On est tous différents »*. Elle cite environ 15 % de personnes neuroatypiques et des livres tech qui se ressemblent tous.\n- **Le tour visuel** : Kubernetes comme chef d'orchestre déclaratif, control plane et data plane, nodes, cycle de vie d'un pod, Deployments et scaling, types de Services, namespaces, Jobs et CronJobs, ConfigMaps et Secrets, avec des astuces `kubectl` (créer un Job depuis un CronJob pour le tester, plugin `view-secret`).\n- Point d'attention répété : **un Secret est encodé en base64, pas chiffré**, et ConfigMaps comme Secrets doivent être dans le même namespace que le pod.\n- **Message final** : une invitation à *« oser »*. Elle fêtait ses dix ans de prise de parole, elle qui bégaie, et encourage chacun à écrire, contribuer ou parler.\n- Aucun retour participant trouvé.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "YZyjXMMzSxY",
+        "title": "Understanding Kubernetes in a visual way - DevFest Paris 2025",
+        "publishedAt": "2025-12-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "au-secours-tests-d-integration-spring-et-ma-ci",
+      "day": "2025-11-21",
+      "type": "talk",
+      "title": "Au secours j'en peux plus de mes tests d'intégration Spring, et ma CI non plus !",
+      "speakers": [
+        "Mathilde Lorrain — Takima",
+        "Nicolas Favier — Takima"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : l'histoire d'une merge request qui échoue trois cafés de suite, parce que des **tests d'intégration trop lents** ne sont jamais lancés en local. Objectif : des tests découplés, rapides et maintenables, en live coding.\n- **Bases** : `@SpringBootTest` et MockMvc, `@MockitoBean` (à préférer à `@MockBean`) pour isoler un microservice externe, Testcontainers plutôt que H2 pour rester proche de la prod.\n- **Nettoyage de la base** : une extension générique qui vide les tables (sauf Flyway) plutôt que des scripts SQL à maintenir. Ils déconseillent `@Transactional` sur les tests, qui *« n'est pas le comportement de votre production »*.\n- **Assertions** : ne jamais réutiliser le mapper ou du code métier dans l'attendu, au risque de masquer ses bugs. Leur image est le dosimètre de Tchernobyl, qui ne mesurait pas ce qu'il fallait. Fixtures avec builders, helper de persistance générique et `MockMvcTester` pour la lisibilité.\n- **Performance** : mesurer d'abord. La recréation du **contexte Spring** coûte cher : une annotation maison centralise la configuration (mocks compris) pour n'avoir **qu'un seul contexte**. Les slices (`@DataJpaTest` : 93 beans au lieu de 466) sont un compromis, car elles ajoutent un contexte. Le parallélisme est incompatible avec une base partagée.\n- **Tester la tuyauterie** : un test qui échoue si le nombre de contextes augmente, et un test unique qui vérifie la liste des endpoints exposés et leurs droits.\n- Aucun retour participant trouvé.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "evLmU5_foHE",
+        "title": "Help! I can't take any more of my Spring integration tests, and neither can my CI! - DevFest Paris 2025",
+        "publishedAt": "2025-12-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-pattern-elt-en-action-avec-dbt-et-sqlmesh",
+      "day": "2025-11-21",
+      "type": "talk",
+      "title": "Le pattern ELT en action avec DBT et SQLMesh",
+      "speakers": [
+        "Mazlum Tosun"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : de l'**ETL** (transformation en code, Talend ou Spark, faute de data warehouses capables de calculer à grande échelle) à l'**ELT** (chargement brut puis transformation en SQL dans BigQuery, Redshift ou Snowflake), popularisé par dbt et la « modern data stack ». Les deux approches **cohabitent** : l'ETL reste plus simple à tester unitairement.\n- **Fil rouge** : les statistiques des joueurs de la Coupe du monde au Qatar, en couches raw, staging (vues) et mart (meilleurs buteurs, passeurs, dribbleurs par équipe).\n- **Trois implémentations en démo** : Airflow qui enchaîne des requêtes BigQuery et une UDF ; dbt orchestré par Airflow (external tables, macros, seeds, documentation, lineage, et dbt-colibri pour le lineage par colonne) ; SQLMesh.\n- **SQLMesh** : modèles SQL ou Python (y compris en dataframes BigFrames), un **état** avec `plan` et `apply` à la Terraform, des couches virtuelle et physique qui permettent de promouvoir un environnement de dev en prod en **changeant un pointeur** sans recalculer, et un incrémental plus économe que les merges de dbt.\n- **Verdict** : dbt est plus facile à prendre en main et a une plus grosse communauté, SQLMesh apporte des idées DataOps intéressantes.\n- Aucun retour participant trouvé.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "pg0lMHOf3Ak",
+        "title": "Le pattern ELT en action avec DBT et SQLMesh - DevFest Paris 2025",
+        "publishedAt": "2025-12-06",
+        "transcript": true
+      }
+    },
+    {
+      "id": "from-chaos-to-control-governing-genai-with-api-management",
+      "day": "2025-11-21",
+      "type": "talk",
+      "title": "From Chaos to Control: Governing GenAI with API Management",
+      "speakers": [
+        "Nejmeddine Ben Ouarred",
+        "Florent Legras"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : point de départ, un chiffre attribué au Gartner, **30 % des initiatives GenAI abandonnées après le POC**. En cause, le *« sprawl »* : chaque équipe choisit son LLM, son framework et sa base vectorielle, et l'entreprise perd le contrôle.\n- **Thèse** : tout passe par des API, donc on gouverne la GenAI avec une **AI gateway** (ici Apigee sur GCP). Elle permet de changer de modèle sans réécrire l'app, d'adapter les payloads entre fournisseurs et de centraliser l'authentification.\n- **Démos** : journalisation centralisée des prompts (pour mesurer les usages et un ROI), routage vers Mistral ou Gemini selon l'appelant, blocage de prompt injection et de données sensibles via Model Armor, **cache sémantique** sur base vectorielle qui fait chuter le temps de réponse pour des questions reformulées.\n- **Côté organisation** : *« un bon prompt, c'est 10 % de technique mais c'est 90 % de métier »*, d'où un prompt store partagé, et une acculturation pour choisir le bon modèle (Flash plutôt que Pro pour reformuler un mail).\n- **Vers l'agentique** : même logique étendue à A2A et MCP, avec une pyramide model gateway, prompt store, agrégateur MCP et registre d'agents. Évoqués faute de temps : limites de tokens, quotas, circuit breaker.\n- Une question de la salle a soulevé le risque du cache sémantique (une mauvaise première réponse resservie). Réponse des speakers : purger le cache sur feedback négatif des utilisateurs.\n- Aucun retour participant trouvé.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "RaQEmghK8y8",
+        "title": "From Chaos to Control: Governing GenAI with API Management - DevFest Paris 2025",
+        "publishedAt": "2025-11-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "licence-to-code-understanding-open-source-licenses",
+      "day": "2025-11-21",
+      "type": "talk",
+      "title": "Licence to Code: Understanding Open Source Licenses for Developers",
+      "speakers": [
+        "Florent Zara — Eclipse Foundation"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, en anglais)** : un lunch talk de 20 minutes par un membre de l'Eclipse Foundation (*« I am not a lawyer »*). Le logiciel relève du droit d'auteur ; en France, le **droit moral est incessible** et l'on ne peut donc pas placer soi-même une œuvre dans le domaine public.\n- **Open source n'est pas « open bar »** : les quatre libertés, la définition de l'OSI, et la différence entre **copyleft** (fort ou faible, à voir comme une clause de partage à l'identique) et licences **permissives** (Apache 2.0, avec sa clause brevets, BSD, MIT).\n- **Le « chamber of horrors »** : Beerware, WTFPL, et surtout la licence JSON (*« for good and not evil »*) ou les licences éthiques, **non open source** car elles restreignent les usages.\n- **Conseils** : choisir une licence populaire adossée à une communauté, vérifier la **compatibilité** avant de mélanger (une dépendance GPLv2 dans un projet Apache 2.0), se méfier des changements de licence (Elasticsearch, MongoDB). Le code copié de Stack Overflow reste protégé, et une définition spécifique de l'IA open source existe car les poids ouverts ne suffisent pas.\n- **Projets perso** : clarifier avec son employeur, utiliser son propre matériel, ne jamais publier de secrets ou d'URL internes.\n- Aucun retour participant trouvé.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "aT8UqhqZFYU",
+        "title": "Licence to Code: Understanding Open Source Licenses for Developers - DevFest Paris 2025",
+        "publishedAt": "2025-12-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "gemini-slashing-subtitle-time-and-cost-with-ai",
+      "day": "2025-11-21",
+      "type": "talk",
+      "title": "Gemini: Slashing Subtitle Time & Cost with AI",
+      "speakers": [
+        "Chrys Le Gall"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, en anglais)** : un REX de génération de sous-titres. Chiffres d'ouverture du speaker : 85 % des vidéos sur les réseaux sociaux sont regardées sans le son, et 25 % des adultes français ont une perte auditive. La transcription manuelle demande 12 à 15 h par heure de vidéo.\n- **Pourquoi pas une simple API speech-to-text** : écart de précision et environ 1 $ par heure. L'approche GenAI avec **Gemini Flash** sur la seule piste audio (moins de tokens que la vidéo) coûte environ **90 % de moins**.\n- **Quatre écueils et leurs parades** :\n  - la limite de **tokens en sortie** : découpage en segments de 5 minutes avec 30 s de recouvrement ;\n  - les timestamps SRT qui se dégradent : sortie **JSON structurée** puis formatage par du code ;\n  - les timestamps faux et les répétitions : option de timestamps audio et pénalités de présence et de fréquence ;\n  - les sous-titres trop longs (jusqu'à 17 s) : un **second passage** de Gemini sur ceux de plus de 8 s.\n- Leçon retenue : *« it's not magic »*, sans ingénierie on ne passe pas de la démo à la production. Résultat annoncé : temps réduit de 99 % par rapport au manuel, coût réduit de 90 % par rapport à l'API.\n- Aucun retour participant trouvé.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "-9nb0qycXFo",
+        "title": "Gemini: Slashing Subtitle Time & Cost with AI - DevFest Paris 2025",
+        "publishedAt": "2025-12-04",
+        "transcript": true
+      }
+    },
+    {
+      "id": "firefighting-the-engineers-guide-to-on-call",
+      "day": "2025-11-21",
+      "type": "talk",
+      "title": "Firefighting: The Engineer's Guide to On-Call",
+      "speakers": [
+        "Omid Gosha"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, en anglais)** : ouverture sur un réveillon quitté trois minutes après minuit pour un incident résolu… en redémarrant un pod. L'astreinte, c'est **le laptop au cinéma** et une pile d'outils en plus (alerting, dashboards, Slack, post-mortems).\n- **Ses chiffres**, issus d'entretiens menés depuis un an auprès d'équipes de tailles et secteurs variés (moyennes revendiquées par le speaker) : environ **trois incidents par semaine**, plus de 200 notifications par jour pour une équipe exposée à la prod. Il cite aussi une étude McKinsey selon laquelle un salarié sur quatre présenterait des symptômes de burn-out liés à l'astreinte.\n- **Les travers observés** : surveillance humaine de dashboards (20 % des cas), canaux d'alerte mis en sourdine (40 %), le **« héros »** dont dépend toute résolution (70 %), la fragmentation des outils (80 %).\n- **Les pratiques observées** : astreinte répartie dans toutes les équipes, ou au contraire une équipe de volontaires mieux payés ; des cycles dédiés à la dette technique ; une politique **« zéro alerte »** où toute alerte bruyante doit être corrigée ; l'automatisation (rollback automatique, RAG sur les post-mortems).\n- **Sa proposition**, qui est aussi celle de sa start-up : des **agents IA** pour absorber la fatigue d'astreinte. Il le reconnaît lui-même : *« trust for AI agents is still low »*.\n- Aucun retour participant trouvé.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "FiHu2OU0ujs",
+        "title": "Firefighting: The Engineer's Guide to On-Call - DevFest Paris 2025",
+        "publishedAt": "2025-12-04",
+        "transcript": true
+      }
+    },
+    {
+      "id": "are-you-vibing-with-vibe-coding",
+      "day": "2025-11-21",
+      "type": "talk",
+      "title": "Are You Vibing with Vibe Coding? A New Approach to Developer Productivity",
+      "speakers": [
+        "Nishu Nishanta"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript automatique en anglais, transcrit à tort en écriture hindi par YouTube)** : la speakeuse, développeuse iOS senior dans une banque à Dubaï après JPMorgan Chase, définit le vibe coding comme **« gérer le résultat, pas la syntaxe »** : cesser d'être un « compilateur humain » pour devenir le **directeur**, l'IA jouant le rôle d'un stagiaire ou d'un junior.\n- **Les « anti-vibes »** : réunions, revues de conformité bancaires (*« là où les rêves des développeurs vont mourir »*), changements de contexte, peur de casser la prod.\n- **Quatre piliers** : protéger son temps de flow, le feedback instantané (previews SwiftUI), le **pair programming avec l'IA** pour le boilerplate, et une culture d'équipe où l'on n'a pas honte de dire qu'on a utilisé l'IA.\n- **Exemples revendiqués** : migration d'une app Objective-C de dix ans vers SwiftUI en environ trois sprints au lieu de plusieurs mois, l'IA servant d'abord à comprendre le vieux code ; deux écrans d'une app Android écrits en Kotlin sans expérience préalable du langage, aujourd'hui en production.\n- **Garde-fous** : l'IA *« fait beaucoup d'erreurs avec beaucoup d'assurance »*, il faut être **meilleur relecteur que l'auteur**, ne pas lui confier la sécurité, et la responsabilité finale reste humaine. Elle ajoute qu'on a toujours besoin de vrais développeurs Android.\n- Aucun retour participant trouvé.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "foEGHvh3mXQ",
+        "title": "Are You Vibing with Vibe Coding? A New Approach to Developer Productivity - DevFest Paris 2025",
+        "publishedAt": "2025-12-04",
+        "transcript": true
+      }
     }
   ],
   "sessionsWithoutFeedback": [
-    "Understanding Kubernetes in a visual way — Aurélie Vache (vidéo en ligne)",
-    "Au secours j'en peux plus de mes tests d'intégration Spring, et ma CI non plus ! — Mathilde Lorrain & Nicolas Favier (vidéo en ligne)",
-    "Licence to Code: Understanding Open Source Licenses for Developers — Florent Zara (vidéo en ligne)",
-    "Gemini: Slashing Subtitle Time & Cost with AI — Chrys Le Gall (vidéo en ligne)",
-    "Firefighting: The Engineer's Guide to On-Call — Omid Gosha (vidéo en ligne)",
-    "Are You Vibing with Vibe Coding? A New Approach to Developer Productivity — Nishu Nishanta (vidéo en ligne, transcript indisponible)",
-    "Le pattern ELT en action avec DBT et SQLMesh — Mazlum Tosun (vidéo en ligne)",
-    "Des applis sans mot de passe : Passkeys en pratique — Daniel Garnier-Moiroux (vidéo en ligne)",
-    "From Chaos to Control: Governing GenAI with API Management — Nejmeddine Ben Ouarred & Florent Legras (vidéo en ligne)",
     "Guilde des Conteurs : une campagne atelier A2A/MCP pour des Sagas du Soir (atelier) — Florent Legras & Yulianna Khorolich",
     "Créez votre premier microservice en Rust (atelier) — Youssef Nait Belkacem & Jean-Eudes Couignoux",
     "Améliorons la qualité et l'adoption de nos API grâce à l'approche API-First (atelier) — Alexandre Touret",

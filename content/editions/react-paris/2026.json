@@ -2,12 +2,276 @@
   "event": "react-paris",
   "year": 2026,
   "title": "React Paris 2026",
+  "edition": "3e édition",
   "start": "2026-03-26",
   "end": "2026-03-27",
   "city": "Paris",
   "venue": "Pullman Paris Montparnasse",
   "url": "https://react.paris",
+  "programUrl": "https://react.paris",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "Conférence internationale en anglais, mono-track, organisée par BeJS (équipe de React Brussels) ; ~500 participants annoncés, 22 talks + 1 panel, et un workshop React Query la veille (25/03).",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-07",
+  "revisit": "aucun retour participant lu (LinkedIn, blogs, réseaux sociaux) : 7 recherches web sans résultat ; synthèse fondée sur les transcripts. Transcript de Nadia Makarevich non récupéré (YouTube 429).",
+  "corpus": "Programme officiel (react.paris) et **22 transcripts sur 23** des vidéos de la playlist officielle « React Paris 26 » (chaîne BeJS, toutes publiées le 01/04/2026), complétés par la page de présentation de Mark Erikson (slides + vidéo), l'article de Nadia Makarevich dont son talk reprend le titre, et deux mentions dans la newsletter This Week in React (#275 et #276).",
+  "limits": "Aucun retour de participant trouvé : les résumés décrivent ce qui a été dit sur scène (sous-titres automatiques anglais, parfois bruités), pas la réception par le public. La session de Nadia Makarevich est résumée à partir de son article de blog homonyme (octobre 2025), sans vérification du contenu exact du talk. Le workshop de Dominik Dorfmeister (25/03) n'est pas documenté.",
+  "tldr": "**Le front React à l'ère des agents** : l'IA écrit de plus en plus de code, si bien que la valeur se déplace vers le jugement, les garde-fous déterministes (types, lint, tests de perf, Knip) et le retour à la plateforme web native, sur fond de montée en puissance de l'écosystème TanStack et de Vite/Rolldown.",
+  "keyTakeaways": [
+    "Encadrer le code généré par des **garde-fous déterministes** : TypeScript strict, zéro erreur ESLint, plan mode, relecture systématique (Choubari, Kitze).",
+    "Chasser les **`useEffect` inutiles** et calculer les valeurs dérivées pendant le rendu : c'est l'anti-pattern n°1 du code React produit par l'IA (Choubari).",
+    "Lancer `npx knip` (en mode production) pour supprimer le code mort, que l'IA produit en abondance (Dorfmeister : 28 000 lignes en 6 semaines chez Sentry).",
+    "Transformer chaque régression de performance corrigée en **test end-to-end** : sondes de fuite mémoire, compteur de rendus, absence de long tasks (Dubien).",
+    "Mesurer avant d'optimiser : benchmark, profiling, une hypothèse à la fois (Erikson, gains de 40 % en moyenne sur Immer sans changer l'API).",
+    "Préférer une réponse de mutation qui renvoie l'état complet (`setQueryData`) à des cascades d'`invalidateQueries` (Neciu : de 16 requêtes par action à 0).",
+    "Combiner prefetch serveur en streaming et cache client pour **tuer le spinner** (Gosset).",
+    "Aller au natif d'abord en CSS (scroll-state queries, anchor positioning, interest invokers, view transitions) avant d'ajouter du JavaScript (Kravets).",
+    "Pour une migration à grande échelle, **prouver plutôt qu'imposer** : démos régulières, early adopters, strangler fig (Beaussart-Hatchuel, PayFit).",
+    "Tester l'accessibilité du login au lecteur d'écran, laisser les gestionnaires de mots de passe fonctionner et éviter les champs OTP à 6 cases (Schwering)."
+  ],
+  "sessions": [
+    {
+      "id": "little-big-things-building-a-great-ux-with-modern-css",
+      "day": "2026-03-26",
+      "type": "talk",
+      "title": "Little Big Things: Building A Great UX With Modern CSS",
+      "speakers": ["Una Kravets — Google"],
+      "summary": "- Point de départ : avec l'IA, la syntaxe compte moins et **savoir quoi construire** compte davantage. Trois principes UX structurent le talk : réduire le bruit, guider, personnaliser.\n- Réduire le bruit : sur Google Photos mobile, header, filtres et pop-up occupent près de 40 % de l'écran. Les **scroll-state queries** (Chrome 144+) permettent une barre qui se cache sans JavaScript ; scroll-driven et scroll-triggered animations complètent l'arsenal.\n- UI en couches : Popover API, anchor positioning (désormais dans tous les navigateurs), anchored container queries, `border-shape` (Chrome 147), et les **interest invokers** (`interestfor`) pour des hover cards accessibles à la souris, au clavier et à l'appui long.\n- Guider : `sibling-index()` pour décaler les animations, `linear()` pour des ressorts, un scroll spy en deux lignes avec `scroll-target-group`, des view transitions scopées pour les morphings.\n- Personnaliser : `light-dark()`, fonctions CSS custom (`@function` + `if()`), `contrast-color()`, customizable select (`appearance: base-select`).\n- Conclusion : *« reach for native first »*.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "5hdpXy5-eds", "title": "Little Big Things  Building A Great UX With Modern CSS - Una Kravets", "publishedAt": "2026-04-01", "transcript": true }
+    },
+    {
+      "id": "react-will-not-solve-your-problems",
+      "day": "2026-03-26",
+      "type": "talk",
+      "title": "React Will Not Solve Your Problems",
+      "speakers": ["Gabriel Pichot — CraftValue"],
+      "summary": "- Contexte : back-offices, outils internes et legacy B2B. Un formulaire de deux champs qui empile React Hook Form, Zod, TanStack Query et trois hooks custom illustre le **coût cognitif** des librairies, lourd surtout pour un junior.\n- Appui sur la théorie de la charge cognitive (intrinsèque, extrinsèque, germane). Choisir une librairie qui ne résout pas votre problème (Redux pour du data fetching) ajoute de la complexité.\n- Sur l'IA : elle fait aller plus vite, *« but faster in the wrong direction »* ; **le goulot n'a jamais été la frappe mais la compréhension**. Certains coéquipiers ne relisent plus les tests générés.\n- Deux outils construits avec l'IA : des « widget object models » (inspirés des page objects Playwright) partagés entre Testing Library et Playwright, et **domain-lint**, une CLI open source qui mesure cycles d'imports et violations de frontières entre features.\n- Message : aucun outil ne résoudra vos problèmes ; choisir la librairie alignée sur le problème et utiliser l'IA pour faire remonter l'information.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "XRmf8HWqR7o", "title": "React Will Not Solve Your Problems - Gabriel Pichot", "publishedAt": "2026-04-01", "transcript": true }
+    },
+    {
+      "id": "react-anti-patterns-in-ai-generated-code",
+      "day": "2026-03-26",
+      "type": "lightning",
+      "title": "React Anti-Patterns In AI-Generated Code",
+      "speakers": ["Kawtar Choubari — Alobees"],
+      "summary": "- Les outils d'IA choisissent React, Next.js, Tailwind et shadcn par défaut, car **React domine les données d'entraînement**, y compris des tutoriels datés.\n- Causes des anti-patterns : pas de visibilité sur le runtime (re-renders), code correct composant par composant mais confus une fois assemblé, biais « happy path » (ni cleanup, ni validation, ni accessibilité).\n- Anti-pattern n°1 : **le `useEffect`** (trois `useState` et deux effets chaînés pour des valeurs qu'on peut calculer au rendu). Autres cas : index comme `key`, fetch sans cleanup (race conditions), `count && …` qui affiche « 0 ».\n- Le plus dangereux car il passe en revue : l'accessibilité (`div` cliquable, modale sans gestion du focus, input sans label). Réponse : HTML sémantique et ARIA.\n- Garde-fous : ESLint, Git hooks, TypeScript strict, règles Cursor et agent skills, **plan mode et auto-critique** avant de générer, relecture systématique, sessions de refactoring régulières.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "betfwwrpvc4", "title": "React Anti Patterns In AI Generated Code - Kawtar Choubari", "publishedAt": "2026-04-01", "transcript": true }
+    },
+    {
+      "id": "liquid-glass-in-the-browser-refraction-with-css-svg",
+      "day": "2026-03-26",
+      "type": "lightning",
+      "title": "Liquid Glass In The Browser: Refraction With CSS & SVG",
+      "speakers": ["Chris Feijoo — kube.io"],
+      "summary": "- Histoire de la lumière dans les interfaces : Windows 95, XP, Aqua, Aero (premier flou temps réel), flat design, puis **Liquid Glass d'Apple en 2025**.\n- Base physique : la loi de Snell-Descartes (air n = 1, verre n = 1,5). On donne à l'objet un profil de bord, on lance des rayons sur une moitié (symétrie), on normalise les déplacements pour obtenir un champ de vecteurs.\n- Ce champ devient une **displacement map** pour le filtre SVG `feDisplacementMap` (X dans le rouge, Y dans le vert, 128 comme valeur neutre) ; un vecteur de lumière ajoute le reflet spéculaire.\n- Démos : loupe, switch, slider, lecteur de musique. Annonce de **Refractive**, librairie en pré-alpha orientée performance.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "p1ORlG2dCK8", "title": "Liquid Glass In The Browser  Refraction With CSS & SVG - Chris Feijoo", "publishedAt": "2026-04-01", "transcript": true }
+    },
+    {
+      "id": "share-once-ship-everywhere-federated-ui-at-scale",
+      "day": "2026-03-26",
+      "type": "talk",
+      "title": "Share Once, Ship Everywhere: Federated UI at Scale",
+      "speakers": ["Taylor Quinn-Bohmann — Tesla"],
+      "summary": "- Contexte : la recharge de véhicules électriques. Deux applications, développées par deux équipes, affichent pour le même site et le même jour 250 sessions d'environ 3 h 30 contre 315 sessions de 47 minutes : une **logique métier divergente** (un filtre sur les sessions de moins de 5 minutes).\n- Un composant partagé sur npm unifie l'UI mais pas les données, et ajoute couplage au déploiement et écarts de version ; les iframes cloisonnent trop.\n- Solution : **Module Federation** (2.0, découplée du bundler). Le composant fait son propre fetch et s'adapte au rôle ; le host ne fournit que l'identité (token SSO, site), et l'API amont vérifie les claims.\n- Vigilance : erreurs au runtime (error boundaries), déploiements immédiats qui imposent de **traiter l'UI comme une API** rétrocompatible, debug plus difficile. Pour une seule équipe, un monorepo suffit.\n- QA : Storybook par PR, types générés par Module Federation 2.0 vérifiés en CI, monitoring du chargement de `remoteEntry.js`.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "Rlq7S2xcI_Q", "title": "Share Once, Ship Everywhere: Federated UI at Scale - Taylor Quinn Bohmann", "publishedAt": "2026-04-01", "transcript": true }
+    },
+    {
+      "id": "killing-micro-frontends",
+      "day": "2026-03-26",
+      "type": "talk",
+      "title": "Killing Micro-Frontends: How Radical Simplification 10x'd Our Frontend Velocity",
+      "speakers": ["Nicolas Beaussart-Hatchuel — PayFit"],
+      "summary": "- Départ chez PayFit (~100 ingénieurs) : CI de 45 minutes et instable, 2 à 5 jours pour mettre une PR en prod, **5 façons de faire du micro-frontend**, 32 dépôts pour une app, 6 bundlers, et un premier monorepo imposé qui a échoué.\n- Remise en ordre : Vite avec config verrouillée, versions unifiées (l'équipe était bloquée sur React 16), Nx pour generators, graphe et conformance. Avec Nx Cloud, la CI passe de 45 à 7 minutes et les tests flaky deviennent mesurables.\n- **La confiance avant la migration** : démos publiques presque chaque mois pendant 2 ans, roadmap publique, early adopters accompagnés, migration par clusters repérés dans le graphe du système.\n- Mesurer le « cargo cult » : la file de merge tenait dans un Google Doc (3 h en moyenne) ; Mergify la ramène à 20-25 minutes. Une seule approbation par défaut, revue imposée sur les zones critiques.\n- React Router v5 (286 routes) vers TanStack Router selon le **strangler fig pattern** : 4 mois, plus de 20 bugs de query params révélés, 245 providers custom supprimés.\n- Résultats annoncés en 2 ans avec 2,5 ingénieurs : 15 à 20 déploiements par jour, 92 Mo de JavaScript en moins, 5 s gagnées au chargement. Leçon : *« never mandate, prove »*.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "D6yspV0FB0Y", "title": "Killing Micro Frontends  How Radical Simplification 10x'd Our Frontend Velocity - Nicolas Beaussart", "publishedAt": "2026-04-01", "transcript": true }
+    },
+    {
+      "id": "killing-the-spinner-hybrid-data-fetching-for-better-ux",
+      "day": "2026-03-26",
+      "type": "lightning",
+      "title": "Killing The Spinner: Hybrid Data Fetching For Better UX",
+      "speakers": ["Rody Gosset — Muséum national d'Histoire naturelle"],
+      "summary": "- Exemple : « Muse », l'application de gestion des prélèvements et prêts de spécimens du Muséum.\n- Rendu client seul : chargement initial lent mais **navigation instantanée grâce au cache**. Rendu serveur seul (RSC, streaming) : affichage initial rapide, mais chaque navigation repasse par le serveur.\n- Approche hybride : prefetch dans un Server Component sans `await`, query client déshydraté dans un `HydrationBoundary`, promesses en streaming, `useSuspenseQuery` côté client (pattern « Advanced Server Rendering » de TanStack Query).\n- Résultat de la démo : le streaming du serveur et la navigation instantanée du client ; un cache persisté rapproche du local-first.\n- Conseil final : **les spinners sont un fallback, pas l'état par défaut**.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "HG8JmbtakdI", "title": "Killing The Spinner  Hybrid Data Fetching For Better UX - Rody Gosset", "publishedAt": "2026-04-01", "transcript": true }
+    },
+    {
+      "id": "how-not-to-use-tanstack-query",
+      "day": "2026-03-26",
+      "type": "lightning",
+      "title": "How Not To Use TanStack Query",
+      "speakers": ["Dan Neciu — CareerOS"],
+      "summary": "- Histoire vraie : un CRM gamifié pour étudiants, passé de React Context à TanStack Query. Avec plus de 100 types d'actions de gamification, chaque mutation déclenchait au moins 12 `invalidateQueries`. *« The problem was it worked »*.\n- Aux pics de rentrée, CPU de la base à 100 % ; l'équipe soupçonne SQL et monte l'infrastructure (5 à 10 k sur GCP pour 300 utilisateurs quotidiens) avant de voir le bon indicateur : **1 400 requêtes par seconde**.\n- Correctifs successifs : file qui regroupe les invalidations (66 à 11 requêtes), abort, désactivation ciblée du retry par défaut.\n- La vraie solution, **revenir aux bases de REST** : le POST renvoie l'état complet, `setQueryData` met le cache à jour (16 requêtes par action à 0).\n- Idées reçues corrigées : `staleTime: 0` ne refetch pas à chaque rendu, `gcTime` concerne le garbage collection. Conseil : query keys hiérarchiques et onglet Network ouvert.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "nqDOF8NB2HQ", "title": "How Not To Use TanStack Query - Dan Neciu", "publishedAt": "2026-04-01", "transcript": true }
+    },
+    {
+      "id": "oxc-rolldown-vitest-vite-the-future-of-the-javascript-toolchain",
+      "day": "2026-03-26",
+      "type": "talk",
+      "title": "Oxc, Rolldown, Vitest, Vite: The Future of The JavaScript Toolchain",
+      "speakers": ["Elise Patrikainen — WeSave"],
+      "summary": "- Problème : un **outillage JS fragmenté**. Vite combinait esbuild (rapide, peu de contrôle), Rollup (riche mais ~40 fois plus lent) et SWC, d'où complexité et écarts dev/prod.\n- VoidZero (fondée par Evan You) réécrit une chaîne unifiée en Rust. **Oxc** regroupe parser (3 fois plus rapide que SWC), resolver, transformer, minifier, linter (650+ règles) et formatter (beta).\n- **Rolldown**, bâti sur Oxc : quasi aussi rapide qu'esbuild avec les optimisations de Rollup (~35 fois plus rapide que Rollup sur un benchmark de 19k modules).\n- Vite 8 fait de Rolldown le bundler par défaut, « le plus gros changement d'architecture depuis Vite 2 » ; un mode dev « full bundle » expérimental vise un build identique en dev et prod.\n- **Vite+**, désormais open source : une config unique et une CLI `vp` (création de monorepo, `vp check`, task runner avec cache). Selon Jeff Cross (Nx), interrogé par la speakeuse, il couvre 80 à 90 % des cas, en local seulement.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "BnjjUAQZ4CI", "title": "Oxc, Rolldown, Vitest, Vite  The Future of The JavaScript Toolchain - Elise Patrikainen", "publishedAt": "2026-04-01", "transcript": true }
+    },
+    {
+      "id": "how-i-made-immer-twice-as-fast",
+      "day": "2026-03-26",
+      "type": "talk",
+      "title": "How I Made Immer Twice As Fast: Performance Optimization In Practice",
+      "speakers": ["Mark Erikson — Replay.io"],
+      "summary": "- Fin 2024, un utilisateur signale que Redux avec Immer serait 100 fois plus lent que du code immuable écrit à la main ; Mark Erikson reprend l'enquête.\n- **L'investigation de performance est du debugging** : comprendre, reproduire, une hypothèse, un changement à la fois.\n- Le benchmark (Mitata, une vingtaine de scénarios, Immer v5 à v10) confirme une dégradation à partir de la v8. Piège : les accès à `process.env.NODE_ENV` sous Node faussaient les mesures.\n- Le profilage révèle que `isPlainObject` prend 2 s sur un benchmark de 30 s. Cache de ce test, `Object.keys`, sorties anticipées : ~20 % gagnés en quelques lignes ; puis nettoyage des proxies inspiré de Mutative et plugin d'override des tableaux.\n- Total : de 5 % à 79 % de gain (~40 % en moyenne) dans Immer 10.2 à 11.1, **sans changer l'API publique**. *« I was the one who actually took the time and did the work. And so can you. »*\n- Il présente aussi Replay MCP, qui permet à des agents d'analyser les rendus React d'un enregistrement.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "5l_cYsU7wgY", "title": "How I Made Immer Twice As Fast  Performance Optimization In Practice - Mark Erikson", "publishedAt": "2026-04-01", "transcript": true }
+    },
+    {
+      "id": "chasing-performance-drifts",
+      "day": "2026-03-26",
+      "type": "talk",
+      "title": "Chasing Performance Drifts",
+      "speakers": ["Nicolas Dubien — Pigment"],
+      "summary": "- La performance a un impact business : exemples cités de Google (100 ms, -20 % de trafic), Amazon (100 ms, -1 % de ventes) et Figma (une ligne de CSS qui divisait les performances par 3).\n- Le sujet n'est pas le correctif mais **ne jamais réintroduire une régression**.\n- Fuite mémoire (un listener `keydown` mal retiré) : un hook interne `useLeakProber` pose des sondes `WeakRef` ; un test Cypress force le GC et vérifie que le nombre de sondes vivantes n'augmente pas après un parcours.\n- Re-rendus en cascade dans une grille : un **compteur de rendus par type de composant**, avec une assertion (au plus 2 cellules re-rendues par déplacement).\n- Scroll lent : détection des long tasks (plus de 50 ms) via `PerformanceObserver`, vérifiée après chaque test end-to-end.\n- Ces tests restent un dernier filet ; tests unitaires, revue, lint et analyse statique doivent attraper les problèmes avant.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "7BbALMqYDCA", "title": "Chasing Performance Drifts - Nicolas Dubien", "publishedAt": "2026-04-01", "transcript": true }
+    },
+    {
+      "id": "behind-the-apis-zustand-jotai-valtio",
+      "day": "2026-03-26",
+      "type": "talk",
+      "title": "Behind The APIs: How Zustand, Jotai, and Valtio Were Born",
+      "speakers": ["Daishi Kato"],
+      "summary": "- Depuis l'arrivée des hooks (2018), Daishi Kato se concentre sur la gestion d'état et le data fetching. Ses premières libs (React Hooks Global State, React Tracked) lui apprennent qu'**un comportement caché crée un décalage avec les attentes**.\n- Il reprend la maintenance de Zustand en 2020 ; la v3 stabilise une API minimale à sélecteurs, inchangée depuis.\n- Jotai naît après Recoil (clés en string jugées inadaptées) : API calquée sur `useState`, force des **atomes dérivés** en graphe de dépendances. Valtio rend le proxy explicite (snapshots immuables, Suspense).\n- Les trois libs se placent sur un spectre d'optimisation : sélecteurs manuels, atomes intermédiaires, tracking automatique ; même philosophie de cœur minimal.\n- Q&R : les signals TC39 sont des valeurs, les atomes des définitions ; à titre personnel, il choisirait Jotai.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "gQ0PsCWvn3I", "title": "Behind The APIs: How Zustand, Jotai, and Valtio Were Born - Daishi Kato", "publishedAt": "2026-04-01", "transcript": true }
+    },
+    {
+      "id": "the-cake-is-a-lie-login-accessibility",
+      "day": "2026-03-27",
+      "type": "talk",
+      "title": "The Cake Is A Lie... And So Is Your Login's Accessibility",
+      "speakers": ["Ramona Schwering — Auth0"],
+      "summary": "- Cocher des cases (European Accessibility Act) ne veut pas dire être accessible. **Le handicap est un spectre** qui concerne tout le monde à un moment (gouttes dans les yeux, bruit, enfant dans les bras).\n- Démo VoiceOver : l'erreur de login n'est pas annoncée. Correctif : `role=alert`, `aria-invalid`, `aria-describedby`, et du HTML sémantique.\n- **Les gestionnaires de mots de passe sont des technologies d'assistance** : préserver l'autofill. Pour les daltoniens, des icônes plutôt qu'une bordure colorée.\n- CAPTCHA : charge cognitive et dépendance culturelle ; préférer des défis invisibles ou fondés sur le risque.\n- MFA : codes valables au moins 60 s, copier-coller autorisé, alternative texte aux QR codes. Les **champs OTP à 6 cases** cassent le collage et sont mal lus par les lecteurs d'écran.\n- Toujours proposer plusieurs méthodes (magic links, passkeys) : aucun facteur n'est parfait.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "9SC0y5ngLsE", "title": "The Cake Is A Lie... And So Is Your Login's Accessibility - Ramona Schwering", "publishedAt": "2026-04-01", "transcript": true }
+    },
+    {
+      "id": "coding-for-the-senses",
+      "day": "2026-03-27",
+      "type": "talk",
+      "title": "Coding For The Senses",
+      "speakers": ["Bree Hall — Atlassian"],
+      "summary": "- Une to-do list devient une « quête » façon Donjons et Dragons : **la différence n'est pas fonctionnelle mais ressentie**, construite autour des cinq sens.\n- Vue : React Three Fiber et drei pour des dés en 3D, `useFrame` pour animer sans 60 re-rendus par seconde. Toucher : GSAP pour l'impératif, React pour le cycle de vie (`useGSAP`).\n- Son : jamais seule porte d'entrée ; boucles génératives Tone.js sur une gamme pentatonique.\n- « Odorat » : l'identité d'ensemble ; changement de thème via View Transitions, avec `flushSync` pour éviter d'animer l'ancien état (`ViewTransition` disponible depuis React 19.2).\n- « Goût » : celui du développeur. L'IA aide à construire mais **n'a pas le goût** pour juger une expérience cohérente ; question finale : *« how should it actually feel? »*.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "sCQoRi_vFUQ", "title": "Coding For The Senses - Bree Hall", "publishedAt": "2026-04-01", "transcript": true }
+    },
+    {
+      "id": "vike-react-framework-stability-flexibility",
+      "day": "2026-03-27",
+      "type": "talk",
+      "title": "Vike: React Framework For Building Advanced Apps With Stability & Flexibility",
+      "speakers": ["Rom Brillout"],
+      "summary": "- Critique des frameworks qui imposent leurs priorités (Next.js, Vercel, Server Components) : *« A good piece of software is a piece of software you forget, not something you constantly fight. »*\n- **Vike propose des briques assemblables avec de bons défauts**, sur des primitives stables (SSR, SSG, streaming, routing), agnostique de l'UI et du déploiement ; côté serveur, un simple middleware.\n- Cas clients : Ecosia (migration page par page de Vue 2 à Vue 3), un réseau social sur Rails en hybride, Contra avec Relay, un groupe média allemand qui a bâti son framework interne dessus.\n- Telefunc (« it's just a function ») : RPC, upload avec progression, streaming de chat IA, temps réel (en partie en beta).\n- Modèle économique : MIT et gratuit pour les petites équipes, **licence payante pour les grandes entreprises** ; travail en cours sur Universal Deploy pour les frameworks basés sur Vite.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "gtRxhOnaymI", "title": "Vike: React Framework For Building Advanced Apps With Stability & Flexibility - Rom Brillout", "publishedAt": "2026-04-01", "transcript": true }
+    },
+    {
+      "id": "tanstack-start-a-client-first-web-framework",
+      "day": "2026-03-27",
+      "type": "talk",
+      "title": "TanStack Start: A Client-First Web Framework",
+      "speakers": ["Tanner Linsley — TanStack"],
+      "feedbackFrom": ["Newsletter This Week in React #275"],
+      "summary": "- **Type-safety par inférence** : presque plus d'annotations, ce qui protège aussi d'une IA qui *« is just going to write whatever the heck it wants »*.\n- Client-first : Start est « 80-90 % TanStack Router », une SPA à laquelle on ajoute le serveur là où il sert (SSR et streaming, routes API, server functions RPC avec validation obligatoire, middleware, loaders isomorphes).\n- Côté IA : plutôt que de faire générer un projet par un agent, utiliser **le CLI conçu comme un serveur MCP** (docs, skills).\n- Annonce inédite : des **server components** vus comme de « simples streams » cachables via `useQuery`, et des « composite components » sans `use client` ; pas de server actions, pour raisons de sécurité. La newsletter This Week in React (#275) relaie cette première présentation publique du support RSC.\n- 1.0 annoncée imminente après 5 ans de développement ; Solid supporté, Vue presque prêt.",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": { "youtubeId": "8XGcc-FRPuo", "title": "TanStack Start: A Client First Web Framework - Tanner Linsley", "publishedAt": "2026-04-01", "transcript": true }
+    },
+    {
+      "id": "from-vibe-coding-to-vibe-engineering",
+      "day": "2026-03-27",
+      "type": "talk",
+      "title": "From Vibe Coding To Vibe Engineering",
+      "speakers": ["Kitze — Sizzy"],
+      "summary": "- Thèse provocatrice : *« LLMs are actually good at writing React because there's no good way of writing React »*.\n- **Vibe engineering** : tout générer avec des agents, mais relire avec méfiance. Plus de 20 apps en 365 jours, dont environ 4 utiles ; le vibe coding pur reste bon pour des outils jetables.\n- Garde-fous : commits fréquents, git worktrees, **types et lint à zéro erreur**, fichiers de 200 lignes max, méfiance quand l'agent désactive des règles ; taguer docs et code dans chaque prompt, dictée vocale.\n- Pourquoi certains détestent le vibe coding : mauvais timing, budget insuffisant, et surtout une « skill issue ».\n- Positions tranchées : **contre l'IA pour les stagiaires et juniors** ; les modèles ne plafonnent pas, mais la maintenance de legacy restera bien payée.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "3zpTe_2rssI", "title": "From Vibe Coding To Vibe Engineering - Kitze", "publishedAt": "2026-04-01", "transcript": true }
+    },
+    {
+      "id": "humanizing-react-apps-with-ai-powered-reconciliation",
+      "day": "2026-03-27",
+      "type": "talk",
+      "title": "Humanizing React Apps With AI-Powered Reconciliation",
+      "speakers": ["Nikhil Sharma — Deel"],
+      "summary": "- Idée : utiliser **un petit modèle TensorFlow au service de la réconciliation React**, pour décider si un rendu vaut la peine (et non des features IA pour l'utilisateur).\n- Démo 1 : le modèle prend en entrée vitesse de scroll, clics, likes et fréquence de mise à jour pour filtrer les rendus d'une liste ; argument contre le if/else : au-delà de 10 à 20 facteurs pondérés.\n- Démo 2 : **pré-chargement prédictif** de composants lazy selon les widgets les plus cliqués. Démo 3 : batching des mises à jour piloté par un réseau de neurones.\n- Précautions : l'IA est « une secrétaire » de React, pas un remplaçant ; repli sur le comportement normal si l'erreur est trop grande, entraînement côté serveur ou en web workers. Exemples présentés comme « contrived ».\n- Formule finale : *« the best render is like no render at all »*.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "j4jmHAAAFlY", "title": "Humanizing React Apps With AI Powered Reconciliation  - Nikhil Sharma", "publishedAt": "2026-04-01", "transcript": true }
+    },
+    {
+      "id": "my-ai-agent-toolkit-for-building-minions",
+      "day": "2026-03-27",
+      "type": "talk",
+      "title": "My AI Agent Toolkit For Building Minions",
+      "speakers": ["Ankita Kulkarni"],
+      "summary": "- Un « minion » est **un agent autonome dans des limites** (*« autonomous doesn't mean uncontrolled »*) : contexte, mémoire, outils, cerveau.\n- Stack : Next.js, TypeScript, Zod, Convex pour journaliser chaque étape, Sentry, cron Vercel, SDK Anthropic. **La boucle d'agent n'est qu'une boucle while** avec un switch sur les outils.\n- Cas réel : un bot Telegram vérifie si son cours Next.js est à jour, dispose de 9 outils (rembourser, inscrire, statistiques) et ouvre des PR qu'elle relit ; nombre de tours plafonné.\n- Incident : un script de migration généré aurait **supprimé toutes ses données**. Règles depuis : validation humaine des actions destructives, backups, permissions limitées, rate limiting, escalade après 5 échecs, logs complets.\n- Conseil : commencer petit, car *« the best agent… is the one that actually ships »*.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "Nem3CYnkkcI", "title": "My AI Agent Toolkit For Building Minions - Ankita Kulkarni", "publishedAt": "2026-04-01", "transcript": true }
+    },
+    {
+      "id": "contejas-ai-panel",
+      "day": "2026-03-27",
+      "type": "roundtable",
+      "title": "ConTejas AI Panel",
+      "speakers": ["Tejas Kumar — IBM (animateur)", "Una Kravets — Google", "Faris Aziz — Smallpdf", "Nicolas Beaussart-Hatchuel — PayFit", "Taylor Quinn-Bohmann — Tesla"],
+      "summary": "- Panélistes identifiés dans le transcript par leur prénom et leur entreprise (seul le nom de Faris Aziz est prononcé ; les autres correspondent aux speakers de l'édition).\n- Una Kravets : l'IA est **en retard sur le CSS moderne** à cause des délais d'entraînement ; elle compense avec un fichier agents et des skills.\n- Faris Aziz : 41 % des CFP de ZurichJS mentionnent l'IA, souvent superficiellement ; chez Smallpdf, il juge l'IA **loin d'être prête pour la finance** (risques juridiques, licences).\n- Nicolas (PayFit) : un agent lancé chaque nuit pendant un mois a retiré un Redux legacy ; mais avec 892 repos, « bonne sur 1 repo, OK sur 2, s'effondre à 3 ». L'écart entre entreprises tient surtout au **budget et aux rate limits**.\n- Taylor (Tesla) : 4 sessions Claude Code en parallèle, dont l'astreinte via MCP (Splunk, Confluence, GitHub) ; le plaisir de coder « s'est déplacé ».\n- Débat sur les juniors et le plaisir de coder : Taylor défend leur embauche pour former des « systems thinkers » ; Faris pointe des politiques d'entreprise floues (quotas de tokens, IA en entretien).",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "0kTaR8L-_cs", "title": "ConTejas AI Panel", "publishedAt": "2026-04-01", "transcript": true }
+    },
+    {
+      "id": "react-at-warp-speed-chrome-mcp-ai",
+      "day": "2026-03-27",
+      "type": "talk",
+      "title": "React at Warp Speed: How Chrome MCP + AI Became My Frontend Superpower",
+      "speakers": ["Susanna Wong — Typeform"],
+      "summary": "- Son talk initial sur Chrome DevTools MCP a « mal vieilli » en 3 mois : les agents lancent désormais eux-mêmes un navigateur pour vérifier leur code, **l'humain n'est plus le maillon faible** de la boucle de test front.\n- Le code n'est plus une ressource rare : une remise à zéro du métier plutôt que sa fin, selon elle.\n- Un **deuxième utilisateur, les agents** : le front devient *« an execution service »*, mais les agents le parcourent par captures d'écran ou parsing du DOM, fragiles et coûteux.\n- Chrome DevTools MCP (septembre 2025, Puppeteer + CDP) permet une boucle mesurer, diagnostiquer, corriger.\n- **WebMCP** : l'app React expose ses fonctions comme outils (nom, description, schéma), avec l'authentification de la session ; humain et agent partagent le même state (exemple Typeform « add question »). Vigilance : sécurité, outils atomiques et idempotents ; API encore en preview.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "ORkwW-t7IqE", "title": "React at Warp Speed  How Chrome MCP + AI Became My Frontend Superpower - Susanna Wong", "publishedAt": "2026-04-01", "transcript": true }
+    },
+    {
+      "id": "dead-code-shouldnt-exist-knip",
+      "day": "2026-03-27",
+      "type": "talk",
+      "title": "Dead Code Shouldn't Exist: How We Removed 28k Lines of Code, One Knip at a Time",
+      "speakers": ["Dominik Dorfmeister — Sentry"],
+      "summary": "- Talk volontairement sans IA. **Le code mort a un coût** : charge cognitive, upgrades et règles de lint plus pénibles ; l'IA en produit beaucoup en abandonnant ses tentatives, et TypeScript ne voit pas les exports inutilisés.\n- **Knip** construit un graphe depuis les points d'entrée, avec plus de 140 plugins détectés via le package.json.\n- Démo live sur le code de Sentry : un fichier passe de 565 à 191 lignes en relançant Knip jusqu'à « no issues ». Le **mode production** (ignore le code utilisé seulement par les tests) a fourni plus des 2/3 des suppressions.\n- Frictions : code ajouté « pour plus tard », exports systématiques (« I've also seen AI do this a lot »), imports dynamiques supprimés à tort puis restaurés.\n- Bilan : ~50 PR en 6 semaines, **~28 000 lignes supprimées** (~3 % d'un front d'un million de lignes). Pour démarrer : `npx knip`.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "B5EQHjtfudY", "title": "Dead Code Shouldn't Exist! How We Removed 28k Lines of Code, One Knip at a Time -Dominik Dorfmeister", "publishedAt": "2026-04-01", "transcript": true }
+    },
+    {
+      "id": "react-server-components-do-they-really-improve-performance",
+      "day": "2026-03-27",
+      "type": "talk",
+      "title": "React Server Components: Do They Really Improve Performance?",
+      "speakers": ["Nadia Makarevich"],
+      "summary": "- Résumé établi à partir de l'**article homonyme de la speakeuse** (developerway.com, octobre 2025), le transcript n'ayant pu être récupéré : le contenu exact du talk n'est pas vérifié.\n- Méthode de l'article : une app multi-pages avec données dynamiques, mesurée en CPU ralenti 6x et Slow 4G, en comparant CSR, SSR (fetch client ou serveur), Next.js Pages et App Router.\n- Résultats de l'article : le CSR affiche un LCP de 4,1 s sans cache ; l'App Router avec Suspense descend à 1,28 s, mais un **écart d'interactivité** d'environ 2,4 à 2,5 s demeure (page visible, JavaScript pas encore chargé).\n- Conclusion de l'article : les Server Components seuls n'apportent pas de gain mesurable ; **le bénéfice vient du streaming avec des frontières Suspense** et d'une refonte du data fetching côté serveur.",
+      "summarySources": ["blog", "program"],
+      "video": { "youtubeId": "IHaIgbaqiAg", "title": "React Server Components  Do They Really Improve Performance? - Nadia Makarevich", "publishedAt": "2026-04-01", "transcript": false }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Workshop React Query - Beyond The Basics (Dominik Dorfmeister, 25/03, non filmé)"
+  ],
+  "sources": [
+    { "label": "Programme officiel React Paris 2026", "url": "https://react.paris" },
+    { "label": "Playlist YouTube « React Paris 26 » (chaîne BeJS, 23 vidéos)", "url": "https://www.youtube.com/playlist?list=PL53Z0yyYnpWhsizNWtlnyM7XWFUSw437J" },
+    { "label": "Mark Erikson : slides et vidéo de « How I Made Immer Twice As Fast »", "url": "https://blog.isquaredsoftware.com/2026/03/presentations-immer-perf/" },
+    { "label": "Nadia Makarevich : « React Server Components: Do They Really Improve Performance? » (article, Developer Way)", "url": "https://www.developerway.com/posts/react-server-components-performance" },
+    { "label": "This Week in React #275 (talk de Tanner Linsley, RSC dans TanStack Start)", "url": "https://thisweekinreact.com/newsletter/275" },
+    { "label": "This Week in React #276 (playlist React Paris 2026)", "url": "https://thisweekinreact.com/newsletter/276" },
+    { "label": "Posts LinkedIn : aucun post participant trouvé (7 recherches web, octobre 2026)" }
+  ]
 }
