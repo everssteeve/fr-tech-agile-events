@@ -2,12 +2,452 @@
   "event": "pyconfr",
   "year": 2024,
   "title": "PyConFR 2024",
+  "edition": "15e édition",
   "start": "2024-10-31",
   "end": "2024-11-03",
   "city": "Strasbourg",
-  "venue": "Université de Strasbourg",
+  "venue": "Université de Strasbourg (UFR de mathématique et d'informatique)",
   "url": "https://www.pycon.fr/2024/",
+  "programUrl": "https://www.pycon.fr/2024/fr/full-schedule.html",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "Conférence gratuite de l'AFPy : sprints les 31 octobre et 1er novembre, conférences et ateliers les 2 et 3 novembre. Environ 300 personnes (rapport de transparence) ; 364 inscrits et 280 badges pointés selon l'AG de l'AFPy. Trois plénières, toutes données par des femmes (choix délibéré). Édition prévue à Strasbourg depuis 2020, reportée par la crise sanitaire.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-08",
+  "corpus": "Programme officiel complet, 24 transcripts de vidéos Indymotion lus (3 plénières, 21 conférences) plus l'ouverture, la clôture et l'assemblée générale de l'AFPy, sur 50 vidéos publiées entre janvier et février 2025. S'y ajoutent le rapport de transparence du code de conduite (13 novembre 2024, avec un sondage de 100 répondants), une trentaine de pouets Mastodon publiés du 31 octobre au 5 novembre 2024, deux fils du forum discuss.afpy.org et les slides de deux speakers.",
+  "limits": "Retours participants très minces : aucun post LinkedIn ni article de blog post-événement trouvé, et les pouets Mastodon (mrjmad, jmny, Ash_Crow, mdk, petitlepton, Sarah Abderemane) se limitent souvent à annoncer la session suivie. La plupart des résumés reposent donc sur les transcripts automatiques, qui déforment des noms propres. Les ateliers, les sprints et les lightning talks ne sont pas documentés, et la conférence sur la covariance n'a pas été publiée (problème de son).",
+  "revisit": "Retours participants minces : aucun post LinkedIn ni blog post-événement trouvé, une trentaine de pouets Mastodon surtout factuels ; ateliers, sprints et lightning talks non couverts ; 23 transcripts Indymotion déjà téléchargés dans transcripts/pyconfr2024/ non exploités (Wagtail, Kedro, scikit-learn, DBnomics, Django FTL, Django-Oscar, etc.).",
+  "tldr": "Une PyConFR de communauté, gratuite et militante : **la qualité du code Python au quotidien (tests, ORM, migrations, packaging) et l'inclusion** ont dominé un programme où l'IA générative est surtout abordée sous l'angle de la sobriété et des petits modèles spécialisés.",
+  "keyTakeaways": [
+    "**Compter ses requêtes ORM** : `select_related` / `prefetch_related` côté Django, `joinedload` / `selectinload` côté SQLAlchemy, et verrouiller le résultat par un test `assertNumQueries` (Roxane Bellot, Carmen Alvarez).",
+    "Supprimer une colonne en **un seul déploiement** grâce à deux branches Alembic « pre » et « post », `lock_timeout` court avec retries, index `CONCURRENTLY` et linter **Squawk** en CI (pass Culture).",
+    "Distinguer visuellement les environnements (violet en local, orange en pré-prod, **rouge en prod**) et ne jamais rester seul face à un incident : une personne agit, une relit, une communique (Agnès Haasser).",
+    "Packager même un petit projet de recherche : **structure `src/`, `pyproject.toml` minimal, `pip install -e`, tags git annotés**, TestPyPI avant PyPI (Françoise Conil).",
+    "**Mesurer avant d'optimiser une IA** (CodeCarbon) et envisager quantisation, pruning, distillation ou un petit modèle fine-tuné avant un LLM ; *« la meilleure façon de ne pas faire consommer nos IA, c'est de ne pas en utiliser »* (Rivière, Hascoët).",
+    "Utiliser le LLM pour **prototyper et annoter**, puis le distiller en composants petits, rapides et hébergés en interne (Ines Montani).",
+    "Sans tests ni CI, impossible de migrer : *« si tu n'as pas de tests tu ne peux pas porter ton application »* (Julien Lenormand, encore en Python 2 en 2024).",
+    "Pour contribuer à l'open source : partir des projets qu'on utilise, des sprints, de la doc et des vieilles issues ; *« aucune contribution n'est trop petite »* (Stefanie Molin).",
+    "Installer la **sécurité psychologique** dans l'équipe (oser dire « hier, je n'ai rien fait » en daily) plutôt que de faire semblant de savoir (Léa Coston).",
+    "En conférence, **une question est une question, pas une remarque** : le rapport de transparence demande de le rappeler dès l'ouverture, après des interruptions d'oratrices."
+  ],
+  "sessions": [
+    {
+      "id": "de-villageoise-a-l-itwoman",
+      "day": "2024-11-02",
+      "type": "keynote",
+      "title": "De villageoise à l'itWoman… Quelles actions pour faire de mon rêve TECH une réalité ?",
+      "speakers": ["Houleymatou Baldé"],
+      "feedbackFrom": ["mrjmad (Mastodon)", "jmny (Mastodon)"],
+      "summary": "- **Récit de parcours** : orpheline dans un village du nord de la Guinée, scolarisée grâce à une cotisation du village, théâtre militant (excision, mariage précoce), puis diplômée à Lyon en 2016 ; aujourd'hui lead technique dans un éditeur lyonnais (transcript).\n- **Chiffres cités sur scène** : 16 % de femmes dans le développement, 50 % des femmes quittent l'informatique avant 35 ans, moins de 10 % des DSI sont des femmes.\n- **Contre l'injonction « il faut oser »**, qui fait porter l'inégalité aux femmes : six leviers proposés (éduquer, responsabiliser, promouvoir, expérimenter, communiquer, inclure), dont réagir aux propos sexistes et nommer des femmes à des postes techniques de haut niveau plutôt que les pousser vers la gestion de projet.\n- Formule de fin : *« Notre différence, c'est notre force. »*\n- Réception : une keynote *« à voir et écouter absolument »* (mrjmad).",
+      "summarySources": ["transcript", "feedback"],
+      "video": {
+        "url": "https://indymotion.fr/w/uLmqr8wZqPKnztBYeQw6a1",
+        "title": "Houleymatou Baldé - De villageoise à ITWoman… Quelles actions pour faire de mon rêve TECH une réalité ?",
+        "transcript": true
+      }
+    },
+    {
+      "id": "nouveautes-de-python-3-13",
+      "day": "2024-11-02",
+      "type": "talk",
+      "title": "Nouveautés de Python 3.13",
+      "speakers": ["Victor Stinner — Red Hat"],
+      "feedbackFrom": ["mrjmad (Mastodon)", "mdk (Mastodon)", "jmny (Mastodon)"],
+      "summary": "- **Free-threading (PEP 703)**, encore expérimental : démo Fibonacci sur 12 threads ramenée de 33,6 s à 14 s, mais mode plus lent en monothread. Retenu par mrjmad comme *« le début de la fin du GIL »*.\n- **JIT expérimental « copy-and-patch » (PEP 744)**, désactivé par défaut : environ 1,5 fois plus rapide sur un crible d'Ératosthène.\n- **Confort** : messages d'erreur qui suggèrent de renommer un script masquant un module (`random.py`), nouveau REPL coloré avec historique multiligne, `python -m random` (mdk en a retenu le pierre-feuille-ciseaux).\n- **Plateformes** : WebAssembly passe au niveau de support 2, Android et iOS entrent au niveau 3.\n- **Dette technique** : suppression des « dead batteries » de la PEP 594 (cgi, crypt, nntplib…) et de 263 fonctions privées de l'API C.",
+      "summarySources": ["transcript", "feedback", "slides"],
+      "video": {
+        "url": "https://indymotion.fr/w/2sVjq1R5WJu3UrAsyra1QM",
+        "title": "Victor Stinner - Nouveautés de Python 3.13",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-et-pourquoi-bien-tester-en-python",
+      "day": "2024-11-02",
+      "type": "talk",
+      "title": "Comment et pourquoi (bien) tester en Python",
+      "speakers": ["Philippe Gregoire"],
+      "summary": "- **Pourquoi tester** : prouver la conformité (y compris en recette contractuelle), détecter les régressions, sécuriser les refactorings ; pyramide des tests et coût croissant vers le haut.\n- **Couverture** : 100 % sur l'unitaire, ou au minimum ne jamais faire baisser le taux sur du legacy. *« Le 100% de coverage, c'est juste un minimum. »*\n- **pytest plutôt qu'unittest** pour un nouveau projet : `assert` introspectif, fixtures avec scope (`tmp_path`, `capsys`), tests paramétrés, centaines de plugins.\n- **Mocking** : monkey patching contre injection de dépendances ; bouchonner les appels aux LLM, qui ne répondent *« jamais deux fois la même chose »*.\n- Au-delà des tests : typage, linting, scanners de secrets. Démo VS Code écourtée faute de temps.\n- Aucun retour participant trouvé : résumé tiré du seul transcript.",
+      "summarySources": ["transcript"],
+      "video": {
+        "url": "https://indymotion.fr/w/4xz8q8TJ3qh7C4EKSHb9XK",
+        "title": "Philippe Gregoire - Comment et pourquoi (bien) tester en Python",
+        "publishedAt": "2025-01-11",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ia-potion-ou-poison",
+      "day": "2024-11-02",
+      "type": "talk",
+      "title": "IA, potion ou poison ?",
+      "speakers": ["Reynald Rivière", "Camille Hascoët"],
+      "summary": "- L'IA comme *pharmakon* : distinguer l'**« AI for green »** (optimiser une logistique) de la **« green AI »** (éco-concevoir le modèle). Environ 90 % de la consommation d'une IA a lieu en production.\n- **Constats** : les papiers de recherche publient la performance, jamais la consommation ; en compétition, on double le CO2 pour quelques centièmes.\n- **Étiquette énergétique** des approches, de A+ (pas d'IA) à X (LLM), à mettre en regard de la criticité du cas d'usage. *« La meilleure façon de ne pas faire consommer nos IA, c'est de ne pas en utiliser. »*\n- **Quatre techniques chiffrées** : quantisation 32 → 8 bits (consommation divisée par 3), petit modèle fine-tuné (Phi-3 à 85 % contre 72 % pour Mistral en détection de toxicité), pruning, distillation (jusqu'à 96 % de taille en moins pour environ 3 points de précision).\n- **Obsession de la mesure** avec CodeCarbon. Résumé tiré du seul transcript, sans retour participant.",
+      "summarySources": ["transcript"],
+      "video": {
+        "url": "https://indymotion.fr/w/qSMBFM3xaknunAkwJyY9Go",
+        "title": "Reynald Riviere/Camille Hascoët - IA, potion ou poison ?",
+        "publishedAt": "2025-01-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "covariance-de-type-contravariance-et-aspirine",
+      "day": "2024-11-02",
+      "type": "talk",
+      "title": "Covariance de type, contravariance et aspirine",
+      "speakers": ["Samuel de Framond"],
+      "feedbackFrom": ["mdk (Mastodon)", "petitlepton (Mastodon)", "jmny (Mastodon)"],
+      "summary": "- Conférence longue sur la **variance des types génériques** en Python typé.\n- Le titre a tenu sa promesse : *« #need aspirine »* (mdk), qui relaie l'exemple piège du talk : est-il sûr d'ajouter un `Fruit` à une `list[Banana]` ?\n- petitlepton dit ajouter cette définition de la covariance *« à celles de la statistique et de la physique »*.\n- **Pas de vidéo** : l'enregistrement a souffert d'un problème de son et n'a pas été publié (Lucie Anglade, discuss.afpy.org, septembre 2025).",
+      "summarySources": ["feedback", "program"]
+    },
+    {
+      "id": "je-fais-encore-du-python-2-en-2024",
+      "day": "2024-11-02",
+      "type": "talk",
+      "title": "Je fais encore du Python 2 en 2024…",
+      "speakers": ["Julien Lenormand — Kaizen Solutions"],
+      "summary": "- Une mission « Python » acceptée en 2022 s'est révélée être du **Python 2**. Sondage en salle : environ 80 % en ont déjà fait, une dizaine de pourcents depuis moins d'un an.\n- Rappel historique : 2.7 en 2010, PEP 404 (pas de 2.8), fin de vie repoussée à 2020 ; adoption de Python 3 sous les 80 % encore en 2018 (JetBrains).\n- **Poches de résistance** : Ubuntu 18 supporté jusqu'en 2028, PyPy, ActiveState, le fork Tauthon ; 6 % des développeurs Python feraient encore du Python 2 (sondage JetBrains 2023).\n- Diagnostic : *« si tu n'as pas de tests tu ne peux pas porter ton application »*. Sans CI ni environnement maîtrisé, on reste prisonnier de son code.\n- Résumé tiré du seul transcript.",
+      "summarySources": ["transcript"],
+      "video": {
+        "url": "https://indymotion.fr/w/sqAio91qR68EAJx7bqzycu",
+        "title": "Julien Lenormand - Je fais encore du Python 2 en 2024…",
+        "transcript": true
+      }
+    },
+    {
+      "id": "tempete-de-boulettes-geantes-le-retour",
+      "day": "2024-11-02",
+      "type": "talk",
+      "title": "Tempête de boulettes géantes – le retour",
+      "speakers": ["Agnès Haasser — Hashbang"],
+      "feedbackFrom": ["petitlepton (Mastodon)", "Sarah Abderemane (Mastodon)", "Ash_Crow (Mastodon)", "mrjmad (Mastodon)"],
+      "summary": "- Point de départ : sa **suppression accidentelle d'un index Elasticsearch d'un million d'enregistrements** en 2018 (une ligne vide dans un fichier d'IDs), sans sauvegarde.\n- Sondage de 195 réponses : environ trois quarts des boulettes causent indisponibilité ou perte de données ; plus d'un tiers viennent d'**interventions directes en prod**.\n- **Prévention** : ne pas rester seul (revue, pair, « canard » humain), automatiser, **couleur par environnement** (rouge en prod), et une « barrière de potentiel de flemme » qui rend la prod pénible d'accès sans la rendre impossible.\n- **Réponse à incident** : « protéger, alerter, secourir », au moins trois rôles (agir, relire, communiquer), post-mortem factuel ; une boulette est rarement individuelle. *« Ne restez pas toute seule avec votre boulette. »*\n- Réception très chaleureuse : *« le contenu, le ton, l'humour et les excellents conseils »* (petitlepton) ; *« on fait tous des boulettes, moi compris »* (Sarah Abderemane) ; Ash_Crow relaie *« les pires journées font les meilleures histoires »*.",
+      "summarySources": ["transcript", "feedback"],
+      "video": {
+        "url": "https://indymotion.fr/w/sSZd4eDE2chrPgH2S1w1ZK",
+        "title": "Agnès Haasser - Tempête de boulettes géantes – le retour",
+        "transcript": true
+      }
+    },
+    {
+      "id": "tout-ce-que-vous-ne-vouliez-pas-savoir-sur-le-dns-en-python",
+      "day": "2024-11-02",
+      "type": "talk",
+      "title": "Tout ce que vous ne vouliez pas savoir sur le DNS... en Python",
+      "speakers": ["Arthur Vuillard — Hashbang"],
+      "feedbackFrom": ["jmny (Mastodon, simple mention)"],
+      "summary": "- Contexte : **Le Bureau**, bureau d'enregistrement coopératif lancé après le rachat de Gandi, avec un sprint pendant PyConFR (speaker).\n- Bases du DNS avec **dnspython** (A/AAAA, MX, CNAME, TTL, reverse DNS), puis une **résolution itérative codée à la main** de la racine au serveur faisant autorité, et un serveur DNS en **nserver** qui renvoie le titre du talk en cours.\n- **Économie du nommage** : un .fr coûte un peu moins de 6 € au registre, l'accréditation ICANN demande plus de 70 000 $ de trésorerie.\n- **Vie privée et censure** : blocage de sites par les résolveurs des FAI, recommandation d'un résolveur neutre en DoH ou DoT. *« Demander une information sur un nom de domaine, ça en dit beaucoup sur la personne qui demande. »*",
+      "summarySources": ["transcript"],
+      "video": {
+        "url": "https://indymotion.fr/w/sQHTuar4TFaEQZqmuw66UA",
+        "title": "Arthur Vuillard - Tout ce que vous ne vouliez pas savoir sur le DNS... en Python",
+        "publishedAt": "2025-01-15",
+        "transcript": true
+      }
+    },
+    {
+      "id": "communaute-libre-autour-de-l-outil-de-gestion-odoo",
+      "day": "2024-11-02",
+      "type": "talk",
+      "title": "À la découverte de la communauté libre autour de l'outil de gestion Odoo",
+      "speakers": ["Virginie Dewulf — OCA", "Pierre Verkest"],
+      "feedbackFrom": ["Virginie Dewulf (speaker, Mastodon)"],
+      "summary": "- Fil rouge : l'informatisation d'un **supermarché coopératif bruxellois** (environ 4 000 membres) avec Odoo Community et les modules de l'OCA, par choix de coût, de maîtrise des données et de logiciel libre.\n- **Open core** : depuis la v9 (2015), Odoo réserve des fonctions à l'édition Enterprise ; l'OCA (Odoo Community Association) publie en LGPL ou AGPL.\n- **Chiffres OCA** : environ 1 400 contributeurs GitHub, 8 000 PR fusionnées en 2023, 238 dépôts, plus de 500 membres individuels en 2024 ; deux relectures obligatoires par PR, runbot, publication des modules sur PyPI.\n- Démo d'un module Odoo 18 ; les migrations entre versions restent *« très compliquées »*, d'où le projet OpenUpgrade financé par l'OCA.\n- Virginie Dewulf avait annoncé venir de Bruxelles pour présenter la communauté (speaker).",
+      "summarySources": ["transcript", "feedback"],
+      "video": {
+        "url": "https://indymotion.fr/w/o6veRsgmvmj2xZwiwj7gur",
+        "title": "Virginie Dewulf/Pierre Verkest - À la découverte de la communauté libre autour de l'outil de gestion Odoo",
+        "publishedAt": "2025-01-20",
+        "transcript": true
+      }
+    },
+    {
+      "id": "optimizing-sql-queries-in-django-and-sqlalchemy-n-plus-1",
+      "day": "2024-11-02",
+      "type": "talk",
+      "title": "Optimizing SQL Queries in Django and SQLAlchemy: Tackling the N+1 Problem with ORMs",
+      "speakers": ["Carmen Alvarez — Genymobile"],
+      "summary": "- Démo sur 100 films : le chargement paresseux produit **101 requêtes**, jusqu'à 301 sous Django et 227 sous SQLAlchemy pour la page complète.\n- SQLAlchemy en fait moins sur certaines relations grâce à l'**identity map** de la session.\n- **Correctifs** : `select_related` / `joinedload` pour le one-to-one et le many-to-one, `prefetch_related` / `selectinload` pour le many-to-many ; on retombe à 1 ou 2 requêtes, au prix de données dupliquées.\n- **Tests anti-régression** : `django_assert_num_queries` (pytest-django) et `get_recorded_queries` (Flask-SQLAlchemy).\n- *« Les ORM sont un peu magiques […] mais cette magie peut aussi poser problème »* (trad.). Résumé tiré du seul transcript.",
+      "summarySources": ["transcript"],
+      "video": {
+        "url": "https://indymotion.fr/w/wMJMerLxyXaBKvP8wYCMtC",
+        "title": "Carmen Alvarez - Optimizing SQL Queries in Django and SQLAlchemy : Tackling the N+1 Problem with ORMS",
+        "transcript": true
+      }
+    },
+    {
+      "id": "python-3-12-new-monitoring-and-debugging-api",
+      "day": "2024-11-02",
+      "type": "talk",
+      "title": "Python 3.12's New Monitoring and Debugging API",
+      "speakers": ["Johannes Bechberger — SAP"],
+      "summary": "- Un développeur OpenJDK écrit **un débogueur Python de zéro** : d'abord `sys._getframe()`, puis `sys.settrace`, appelé à chaque ligne et coûteux.\n- Cœur du talk : **PEP 669 (`sys.monitoring`)**, avec identifiants d'outils, événements activables globalement ou par fonction, retour `DISABLE` (utile pour la couverture) et instrumentation du bytecode.\n- **Benchmark** : `settrace` multiplie le temps d'exécution par 3,5 en moyenne (jusqu'à 12), contre environ 20 % de surcoût avec `sys.monitoring` sans handler de ligne.\n- PyCharm et VS Code l'utilisent déjà, pas encore pdb. Résumé tiré du seul transcript.",
+      "summarySources": ["transcript"],
+      "video": {
+        "url": "https://indymotion.fr/w/bXi7Pxzod9BHANDeHsGdVz",
+        "title": "Johannes Bechberger - Python 3.12's New Monitoring and Debugging API",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rust-pour-les-developpeurs-python",
+      "day": "2024-11-02",
+      "type": "talk",
+      "title": "Rust pour les développeurs Python : Avantages et intégration",
+      "speakers": ["Guillaume Fassot"],
+      "summary": "- Thèse : **Rust en back-end, Python en front-end**, deux langages aux forces complémentaires (ownership et borrow checker, sans ramasse-miettes).\n- L'écosystème Python s'écrit déjà en Rust : **Ruff, uv, Polars, pydantic-core**. Benchmark maison : pas d'écart net entre Polars et pandas sous 1 Go, Polars nettement devant au-delà ; préférer Parquet au CSV.\n- Intégration recommandée via **PyO3 et maturin** ; démo d'un Fibonacci 25 fois plus rapide qu'en Python pur.\n- Freins assumés : courbe d'apprentissage et sévérité du compilateur. *« Si vous voulez écrire un POC avec Rust, bon courage quand même. »* Résumé tiré du seul transcript.",
+      "summarySources": ["transcript"],
+      "video": {
+        "url": "https://indymotion.fr/w/8mEzFPtP6hknsTDwsuNJS5",
+        "title": "Guillaume Fassot - Rust pour les développeurs Python : Avantages et intégration",
+        "transcript": true
+      }
+    },
+    {
+      "id": "il-n-est-jamais-trop-tard-pour-redevenir-junior",
+      "day": "2024-11-02",
+      "type": "talk",
+      "title": "Il n'est jamais trop tard pour redevenir junior",
+      "speakers": ["Yann Bouvet — Shodo"],
+      "summary": "- Avec 5 ans d'expérience, il rate un entretien où on le juge **« trop junior »** faute de pratiquer le TDD : *« un parpaing de lucidité »*.\n- Méthode d'apprentissage : demander du feedback, trier les ressources selon **fiabilité et accessibilité**, trouver « ses experts » un peu en avance (meetups Python et Software Crafters à Lyon), pratiquer pair et mob programming.\n- Objectifs à trois horizons (1 à 2 ans, 6 mois, une demi-journée), relecture active à 24-48 h : il y reconnaît après coup la **roue de Deming (PDCA)**.\n- Aujourd'hui « relais craft » en mission (event storming, TDD en mob). Résumé tiré du seul transcript.",
+      "summarySources": ["transcript"],
+      "video": {
+        "url": "https://indymotion.fr/w/sqtV7iWxGkwsr3vQ69qxtK",
+        "title": "Yann Bouvet - Il n'est jamais trop tard pour redevenir junior",
+        "transcript": true
+      }
+    },
+    {
+      "id": "mettre-a-jour-le-schema-d-une-vaste-base-sans-downtime",
+      "day": "2024-11-02",
+      "type": "talk",
+      "title": "Mettre à jour le schéma d'une vaste base de données sans downtime et sans stress",
+      "speakers": ["Corentin Normant — pass Culture", "Damien Ramelet — pass Culture"],
+      "summary": "- Contexte pass Culture : une quarantaine de développeurs, une mise en production par semaine, environ 10 millions de requêtes HTTP par jour, stack Flask, SQLAlchemy, Alembic et PostgreSQL.\n- **Deux branches Alembic** : « pre » (compatible avec le code en production) avant le déploiement, « post » après ; une colonne se supprime en **un seul déploiement**, pratiqué depuis un an et demi.\n- **Verrous** : `lock_timeout` court avec 30 retries, `CREATE INDEX CONCURRENTLY`, contraintes `NOT VALID` validées après déploiement, mises à jour massives par lots d'environ 1 000 lignes.\n- Linter **Squawk** en pre-commit et en CI, job qui teste upgrade puis downgrade.\n- *« On passe chaque semaine des migrations en production, en pleine journée, sans downtime et sans stress. Presque. »* Résumé tiré du seul transcript.",
+      "summarySources": ["transcript"],
+      "video": {
+        "url": "https://indymotion.fr/w/k4UCqCBKNdTaGcBMHbmMya",
+        "title": "Corentin Normant/Damien Ramelet - Mettre à jour le schéma d'une vaste base de données sans downtime et sans stress",
+        "publishedAt": "2025-01-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "zero-python",
+      "day": "2024-11-02",
+      "type": "talk",
+      "title": "Zero Python",
+      "speakers": ["Dorian Turba", "Karine Bauch"],
+      "summary": "- Outil né en école d'ingénieurs pour **enseigner l'algorithmique en Python sans enseigner Python** : `len`, `range`, `sorted`, les méthodes, les imports, `for` ou `try` sont interdits.\n- Il s'appuie sur l'**AST** pour détecter et retirer les éléments interdits, exécuter le reste et produire des rapports ; il a servi à corriger 600 programmes de 150 étudiants.\n- Effet de bord assumé : quasi aucun code public n'existe sous ces contraintes, donc **ChatGPT échoue** (il réutilise `len` ou contourne par `__len__`, aussi bloqué).\n- Puzzle joué avec la salle : ajouter 4 à `[1, 2, 3]` sans `append`. Résumé tiré du seul transcript.",
+      "summarySources": ["transcript"],
+      "video": {
+        "url": "https://indymotion.fr/w/1dxwMa5Vzv2iseB4mhKge1",
+        "title": "Dorian Turba/Karine Bauch - Zero Python",
+        "publishedAt": "2025-01-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-mecanique-des-imports",
+      "day": "2024-11-02",
+      "type": "talk",
+      "title": "La mécanique des imports",
+      "speakers": ["Antoine Rozo"],
+      "summary": "- Démo en notebook, partie de l'envie d'**« importer un PNG »** pour un interpréteur du langage Piet.\n- Bases : `importlib.import_module`, cache `sys.modules`, `sys.path` qui accepte des zips. *« Souvent quand on en vient à manipuler le sys.path c'est qu'on fait une connerie. »*\n- **Finders et loaders** : `find_spec`, `ModuleSpec`, `exec_module`, `path_hooks`, `meta_path`.\n- Détournements ludiques : import depuis un `.tar.gz`, un « Python++ » avec `x++`, des modules en ROT13, un finder qui fait `pip install` à la volée. Résumé tiré du seul transcript.",
+      "summarySources": ["transcript"],
+      "video": {
+        "url": "https://indymotion.fr/w/g29bsQui3fuUJXxxHWji7j",
+        "title": "Antoine Rozo - La mécanique des imports",
+        "transcript": true
+      }
+    },
+    {
+      "id": "recherche-des-bonnes-pratiques-de-packaging",
+      "day": "2024-11-02",
+      "type": "keynote",
+      "title": "Recherche des bonnes pratiques de packaging",
+      "speakers": ["Françoise Conil — CNRS (LIRIS)"],
+      "feedbackFrom": ["Françoise Conil (speaker, Mastodon et slides)"],
+      "summary": "- Point de vue de la **recherche publique**, où la moitié des logiciels ont 2 à 5 contributeurs : packager sert la distribution et la reproductibilité ; éviter `sys.path.insert`.\n- **Processus minimal** : structure `src/`, `pyproject.toml` minimal, `pip install -e`.\n- **Pièges** : nom installé contre nom importé, normalisation des versions, **tags git annotés** (l'interface GitHub crée des tags légers qui ont cassé un plugin setuptools), TestPyPI avant PyPI, suppression de version irréversible.\n- **Étude de 110 000 `pyproject.toml`** fin 2023 : setuptools domine (environ la moitié), puis Poetry ; Flit, Hatch et PDM reposent surtout sur une personne. Réserve sur uv (financé par une levée de fonds) et rappel du passage d'Anaconda au payant.\n- Slides publiées par la speaker le 22 novembre 2024.",
+      "summarySources": ["transcript", "slides"],
+      "video": {
+        "url": "https://indymotion.fr/w/r1L6xCLymfYC9BBxqVJ6Ze",
+        "title": "Françoise Conil - Recherche des bonnes pratiques de packaging",
+        "publishedAt": "2025-01-11",
+        "transcript": true
+      }
+    },
+    {
+      "id": "reality-is-not-an-end-to-end-prediction-problem",
+      "day": "2024-11-03",
+      "type": "keynote",
+      "title": "Reality Is Not an End-to-End Prediction Problem: Applied NLP in the Age of Generative AI",
+      "speakers": ["Ines Montani — Explosion"],
+      "feedbackFrom": ["petitlepton (Mastodon)", "jmny (Mastodon, simple mention)"],
+      "summary": "- Thèse : utiliser le LLM pour **prototyper et aider à annoter**, puis le **distiller en composants petits et spécialisés** (modulaires, rapides, hébergés en interne), avec un humain dans la boucle (spaCy, Prodigy, spacy-llm).\n- **Cas S&P Global** : 8 pipelines en production, précision jusqu'à 99 %, modèles de 6 Mo, environ 16 000 mots par seconde.\n- **« Refactorer » les données comme le code** : séparer la logique métier de ce qui relève de la langue ; le RAG est flexible mais monolithique.\n- Image du **knocker-upper** : on l'a remplacé par le réveil, pas par une machine à frapper aux fenêtres. *« You don't want to build a window knocking machine, you want to build an alarm clock. »*\n- Réception : *« de belles slides »*, une présentation *« top notch »* (petitlepton, trad.).",
+      "summarySources": ["transcript", "feedback"],
+      "video": {
+        "url": "https://indymotion.fr/w/aa2VsbeH2Qmr58bCfpQ7WD",
+        "title": "Ines Montani - Reality Is Not an End-to-End Prediction Problem: Applied NLP in the Age of Generative AI",
+        "publishedAt": "2025-01-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "getting-started-with-open-source-contributions",
+      "day": "2024-11-03",
+      "type": "talk",
+      "title": "Getting Started with Open Source Contributions",
+      "speakers": ["Stefanie Molin — Bloomberg"],
+      "summary": "- Mainteneuse de numpydoc : **pas besoin d'être expert**, les débutants voient les pièges que les experts ne voient plus.\n- Trouver quoi faire : lister les projets qu'on utilise, filtrer par licence, activité, taille, stack et accès au dépôt.\n- **Cinq stratégies graduées** : sprints, exemples de documentation, issues étiquetées (et vieilles issues, les labels « easy »/« hard » sont subjectifs), correction de bug, nouvelle fonctionnalité (son hook pre-commit lui a valu d'être invitée comme core developer).\n- Commenter l'issue avant de commencer, rester patient avec des mainteneurs bénévoles. *« Aucune contribution n'est trop petite »* (trad.). Résumé tiré du seul transcript.",
+      "summarySources": ["transcript"],
+      "video": {
+        "url": "https://indymotion.fr/w/kMEhhztKsEfRmLYmMLbUq1",
+        "title": "Stefanie Molin - Getting Started with Open Source Contributions",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-gens-ne-savent-pas-ce-qu-ils-font-la-plupart-du-temps",
+      "day": "2024-11-03",
+      "type": "talk",
+      "title": "Les gens ne savent pas ce qu'ils font, la plupart du temps !",
+      "speakers": ["Léa Coston"],
+      "feedbackFrom": ["mrjmad (Mastodon, simple mention)", "Agnès Haasser (renvoi depuis son talk)"],
+      "summary": "- Développeuse reconvertie, elle constate que chaque équipe croit connaître « la bonne manière », jamais la même : *« la plupart des gens, la plupart du temps, ne savent pas ce qu'ils font, et font juste comme si »*.\n- Les dailies où l'on gonfle son activité ne relèvent pas de la paresse mais de **peurs interpersonnelles** ; oser dire *« hier, je n'ai rien fait »* a révélé une surcharge cognitive et des tickets trop gros.\n- Appui sur **la sécurité psychologique** (Amy Edmondson, *The Fearless Organization*) : ni gentillesse ni complaisance, mais *« trouver des solutions et pas des boucs émissaires »*.\n- Déconstruction du mythe du développeur génial et solitaire ; les soft skills sont des compétences à évaluer autant que la technique.\n- Agnès Haasser y renvoie explicitement dans son propre talk sur les incidents.",
+      "summarySources": ["transcript"],
+      "video": {
+        "url": "https://indymotion.fr/w/raUw2f1vjLTooUrFYuuZTk",
+        "title": "Léa Coston - Les gens ne savent pas ce qu'ils font, la plupart du temps !",
+        "publishedAt": "2025-01-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "petit-manuel-de-deminage-de-l-orm-django",
+      "day": "2024-11-03",
+      "type": "talk",
+      "title": "Petit manuel de déminage de l'ORM Django",
+      "speakers": ["Roxane Bellot"],
+      "feedbackFrom": ["mdk (Mastodon)"],
+      "summary": "- L'ORM cache la base, donc **les problèmes de performance sont invisibles** : observer avec `connection.queries` (en `DEBUG=True`), un helper dans son `PYTHONSTARTUP`, la Django Debug Toolbar. mdk en a fait son *« TIL »*.\n- **Laziness et cache des QuerySets** : savoir ce qui déclenche une requête (`first()`, `get()`, `list()`) et quand le `_result_cache` est vidé.\n- `len()` contre `.count()`, `if qs` contre `.exists()` : **aucun n'est meilleur dans l'absolu**, cela dépend de l'usage des données ensuite.\n- **N+1** : `select_related` pour une relation simple, `prefetch_related` pour les relations multiples, `annotate` pour un simple compte.\n- Tests avec `CaptureQueriesContext` et `assertNumQueries`. *« Le nombre de requêtes c'est qu'un indicateur »* : dans le doute, on mesure.",
+      "summarySources": ["transcript", "feedback"],
+      "video": {
+        "url": "https://indymotion.fr/w/ayXPvoW61gNy849QzcWVxg",
+        "title": "Roxane Bellot - Petit manuel de déminage de l'ORM Django",
+        "publishedAt": "2025-01-20",
+        "transcript": true
+      }
+    },
+    {
+      "id": "faire-du-grpc-simplement-avec-django",
+      "day": "2024-11-03",
+      "type": "talk",
+      "title": "Faire du gRPC simplement avec Django",
+      "speakers": ["Léni Gauffier", "Adrien Montagu"],
+      "summary": "- Contexte : découper un monolithe en services avec de gros payloads (rapports PDF de 90 à 110 pages). Comparaison REST, WebSocket, event-driven et **gRPC** (HTTP/2, Protobuf, contrat obligatoire).\n- Présentation de la bibliothèque **django-socio-grpc** : ProtoSerializers et services à la manière de DRF, génération des `.proto` (à vérifier en CI avec `--check`).\n- Gains annoncés : requête front de 2 s à 1,4 s ; HTTP classique et gRPC peuvent cohabiter pour migrer progressivement.\n- Côté web, proxy Envoy requis et streaming serveur seulement. Un seul orateur audible dans la vidéo ; résumé tiré du seul transcript.",
+      "summarySources": ["transcript"],
+      "video": {
+        "url": "https://indymotion.fr/w/qRRTXwAsETdBcknVoZdR8w",
+        "title": "Adrien Montagu - Faire du gRPC simplement avec Django",
+        "publishedAt": "2025-01-15",
+        "transcript": true
+      }
+    },
+    {
+      "id": "qu-est-ce-qu-il-y-a-dans-un-virtualenv",
+      "day": "2024-11-03",
+      "type": "talk",
+      "title": "Qu'est-ce qu'il y a dans un virtualenv?",
+      "speakers": ["Denis Viviès — Foodles"],
+      "summary": "- `activate` ne fait que **placer `venv/bin` en tête du `PATH`** ; en cas de doute, appeler directement `venv/bin/python`.\n- Anatomie d'un venv (`pyvenv.cfg` qui change `sys.prefix`, `site-packages`), puis recréation d'un venv **en bash** en suivant `EnvBuilder` et `ensurepip`.\n- Une wheel est un zip standardisé : décodage de son nom (le `t` du free-threading 3.13), `dist-info`, front-end et back-end de build.\n- Tour des outils (pyenv, pipx, pip-tools, Poetry, pex, **uv**, utilisé en production chez Foodles depuis peu). *« Finalement installer des packages ça ressemble juste à faire un unzip et à faire un move. »* Résumé tiré du seul transcript.",
+      "summarySources": ["transcript"],
+      "video": {
+        "url": "https://indymotion.fr/w/qNUgFK6eZmR3EMexbHAGUe",
+        "title": "Denis Viviès - Qu'est-ce qu'il y a dans un virtualenv?",
+        "publishedAt": "2025-01-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-leaking-bucket-women-in-tech",
+      "day": "2024-11-03",
+      "type": "talk",
+      "title": "The Leaking Bucket: Women in Tech",
+      "speakers": ["Isra Chahrazed Goumiri"],
+      "feedbackFrom": ["mrjmad (Mastodon, simple mention)"],
+      "summary": "- La métaphore du **seau qui fuit** : environ 20 % de femmes dans les STEM en France, puis des départs à chaque étape (études, première année, mi-carrière), jusqu'à 3 % aux postes de direction (chiffres cités sur scène).\n- Causes avancées : jouets genrés, stéréotypes, manque de modèles et de mentors, conciliation des temps de vie.\n- Leviers : s'entraider et s'auto-promouvoir, politiques d'entreprise (congés, horaires flexibles), communautés comme PyLadies, ateliers gratuits pour enfants et éducateurs.\n- Questions-réponses nourries sur le harcèlement et les questions illégales en recrutement. Résumé tiré du transcript ; talk court, de l'aveu même de l'oratrice.",
+      "summarySources": ["transcript"],
+      "video": {
+        "url": "https://indymotion.fr/w/dMptMGZBiscPxMqGo5nTig",
+        "title": "Isra Chahrazed Goumiri - The Leaking Bucket : Women in Tech",
+        "transcript": true
+      }
+    },
+    {
+      "id": "what-streamlit-can-and-can-t-do",
+      "day": "2024-11-03",
+      "type": "talk",
+      "title": "What Streamlit Can and Can't (or Shouldn't) Do",
+      "speakers": ["Yuichiro Tachibana"],
+      "feedbackFrom": ["mrjmad (Mastodon, simple mention)"],
+      "summary": "- Principe clé : **le script est réexécuté de haut en bas à chaque interaction**, sans callbacks ; mise en page et thème imposés, une contrainte qui simplifie.\n- Bons cas : UI dynamique ou conditionnelle, visualisation de données (un uploader CSV avec tableau et graphique en une quinzaine de lignes), tableaux de bord rafraîchis.\n- Limites : grosses pages, flux par polling, sources événementielles, interfaces riches type glisser-déposer ; pour une UI posée sur une seule fonction, Gradio est jugé plus adapté.\n- *« Streamlit vous donne facilement une UI/UX quatre étoiles, mais vous prive d'une UI/UX cinq étoiles sur mesure »* (trad.). Résumé tiré du transcript.",
+      "summarySources": ["transcript"],
+      "video": {
+        "url": "https://indymotion.fr/w/4ok7LnZyMQX1q36N2u21tp",
+        "title": "Yuchiro Tachibana - What Streamlit Can and Can't (or Shouldn't) Do",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Teaching Children Python – What Works? (Mykalin Jones, vidéo)",
+    "Wagtail : un CMS puissant pour les sites web modernes (Thevenel Joazard)",
+    "Easy Service to Service Communication Using Pydantic Models (Michal Korbela, vidéo)",
+    "Garantir la robustesse du CI/CD des BDD relationnelles avec SQLAlchemy et Alembic (Léo Ecrepont, vidéo)",
+    "Anatomy of a Python OpenTelemetry instrumentation (Riccardo Magliocchetti, vidéo)",
+    "Pythonade – Humour en Python (Melcore, vidéo)",
+    "Programming and Philosophy: Beyond the Code (Lorenzo Mele, vidéo)",
+    "Pathlib, mangez-en ! (HS-157, vidéo)",
+    "Quelques challenges techniques rencontrés sur l'auto instrumentation (Christophe Papazian)",
+    "Sparse Dataframes, a Memory Must (Michel Klüger, vidéo)",
+    "Introduction à l'apprentissage automatique avec scikit-learn (Pénélope Gittos, vidéo)",
+    "Duckdb for Data Scientists (Sara Iris Garcia, vidéo)",
+    "Python et Kedro au service de l'agriculture de précision (Flavien Lambert, Paul Arnaud, vidéo)",
+    "Intégrer un CMS aux applications Django avec Wagtail (Darko Stankovski, vidéo ; simples mentions Mastodon de mrjmad et Ash_Crow)",
+    "Une application versionnée automatiquement (David Rigaudie, vidéo)",
+    "Dédé ! Des dés aux données (Antoine Rigoureau, vidéo)",
+    "Impostor Syndrome in Tech (Paweł Zajączkowski, vidéo)",
+    "Confidentialité des bases de données médicales avec synthcity (Clément Benoist, vidéo)",
+    "Retour d'expérience : on a créé notre SaaS avec le CMS Wagtail (SebCorbin, Tristan Benier ; simple mention Mastodon d'Ash_Crow)",
+    "SLM – School Library Management (Georges Khaznadar, vidéo)",
+    "Une stack ML complète avec Kedro et MLflow (Anis Smail, vidéo)",
+    "Visual Data Storytelling with Blender and Python (Neeraj Pandey, vidéo)",
+    "Vos variables de configurations, le menu Rougail - Tiramisu (Emmanuel Garette)",
+    "Django FTL: Resolving Bottlenecks on the Path to High Performance (Maxim Danilov, vidéo)",
+    "Python et éducation : bien, mais peut mieux faire… (Claude Simon)",
+    "Créez une app mobile hybride avec Turbo Native et Strada (Thierry Chappuis)",
+    "Python WebServer : du WSGI à ASGI (Guillaume Fassot, vidéo)",
+    "Django-Oscar, retour d'expérience sur un site marchand en Python (Julie Rymer, vidéo)",
+    "DBnomics : un agrégateur de données économiques en Python (Christophe Benz, vidéo)",
+    "Lightning talks « C'est vous qui choisissez ! »",
+    "Ateliers (OpenTelemetry, pandas, animation de communauté, Wagtail, web app data science, Make Open Data, jeux vidéo, microservices Flask, HARP Proxy)",
+    "Sprints des 31 octobre et 1er novembre (dont traduction de la documentation Python et Le Bureau)",
+    "Déjeuner PyLadies"
+  ],
+  "sources": [
+    { "label": "Site officiel PyConFR 2024", "url": "https://www.pycon.fr/2024/" },
+    { "label": "Planning complet", "url": "https://www.pycon.fr/2024/fr/full-schedule.html" },
+    { "label": "Actualités PyConFR 2024 (keynotes, rapport de transparence)", "url": "https://www.pycon.fr/2024/fr/news.html" },
+    { "label": "Vidéos : chaîne Indymotion (PeerTube) PyConFR 2024, 50 vidéos", "url": "https://indymotion.fr/c/pyconfr2024/videos" },
+    { "label": "Vidéos indexées sur PyVideo", "url": "https://pyvideo.org/events/pycon-fr-2024.html" },
+    { "label": "Rapport de transparence du code de conduite (AFPy, 13 nov. 2024)", "url": "https://git.afpy.org/AFPy/gestion/src/branch/master/compte_rendus_diversite/2024.pdf" },
+    { "label": "Discourse AFPy : rapport de transparence de la PyConFR 2024", "url": "https://discuss.afpy.org/t/rapport-de-transparence-de-la-pyconfr-2024/2367" },
+    { "label": "Discourse AFPy : vidéos PyConFR 2024 (dont la vidéo non publiée)", "url": "https://discuss.afpy.org/t/videos-pyconfr-2024/2564" },
+    { "label": "LinuxFr : PyConFR 2024, planning et inscriptions", "url": "https://linuxfr.org/news/pyconfr-2024-planning-et-inscriptions" },
+    { "label": "Slides Nouveautés de Python 3.13 (Victor Stinner)", "url": "https://github.com/vstinner/talks/blob/main/2024-PyconFR/nouveautes_python3.13.pdf" },
+    { "label": "Slides Recherche des bonnes pratiques de packaging (Françoise Conil)", "url": "https://perso.liris.cnrs.fr/francoise.conil/recherche-des-bonnes-pratiques-de-packaging" },
+    { "label": "Vidéo de l'assemblée générale de l'AFPy 2024", "url": "https://indymotion.fr/w/mLQqZ3nBgzsq5fAGXxS4gJ" },
+    { "label": "Pouets Mastodon #pyconfr / #pyconfr2024 lus (31 oct. au 5 nov. 2024) : mrjmad, jmny, Ash_Crow, mdk, petitlepton, Sarah Abderemane, pawamoy, vdew (Virginie Dewulf), SlowKat69, Raphipons, fcodvpt (Françoise Conil)" }
+  ]
 }

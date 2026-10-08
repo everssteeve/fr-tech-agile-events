@@ -13,20 +13,22 @@
   "dateConfidence": "ok",
   "note": "6e édition, une journée (27 novembre 2025) au Campus CCI Alsace, 4 salles (dont une dédiée aux ateliers), 2 keynotes et 30 sessions (conférences de 40 min, formats courts de 20 min, 3 ateliers de 2 h) ; organisée par le GDG Strasbourg et Capitale Dev, 600+ participants annoncés, billet à 49 € (19 € en tarif réduit).",
   "status": "synthesized",
-  "synthesisUpdatedAt": "2026-09-26",
-  "revisit": "Aucun retour participant public trouvé (LinkedIn inaccessible, 9 recherches web sans post ni blog) ; keynotes non filmées ; transcript de Maud Nalpas bloqué (HTTP 429). À reprendre pour chercher des posts LinkedIn/Bluesky et transcrire d'autres vidéos.",
-  "corpus": "Programme officiel complet (site devfest25.gdgstrasbourg.fr et sa base Firestore publique : 2 keynotes + 30 sessions dont 3 ateliers, fiches speakers), 19 vidéos de talks publiées le 14 décembre 2025 sur la chaîne GDG Strasbourg (plus un aftermovie), dont 4 transcrites (sous-titres automatiques FR), et quelques pages de speakers (Strumenta, Kilian Valkhof).",
-  "limits": "Aucun retour de participant n'a pu être lu : la synthèse repose sur le programme et sur ce qui a été dit sur scène, pas sur la réception du public. Les keynotes (Martin Keary, Agnès Crépet & Adrien Montagut) et 12 autres sessions (dont les 3 ateliers) n'ont pas été filmées ou publiées ; les vidéos ont peu de vues (6 à 60 à J+10 mois).",
+  "synthesisUpdatedAt": "2026-10-08",
+  "revisit": "Toujours aucun retour participant public (LinkedIn illisible, 16 recherches web en deux passes, Bluesky et Mastodon sans post après l'événement) ; les 18 talks publiés sont désormais tous transcrits. À ne reprendre que pour chercher des posts LinkedIn de participants ou des retours sur les keynotes non filmées.",
+  "corpus": "Programme officiel complet (site devfest25.gdgstrasbourg.fr et sa base Firestore publique : 2 keynotes + 30 sessions dont 3 ateliers, fiches speakers), les 18 talks publiés le 14 décembre 2025 sur la chaîne GDG Strasbourg (plus un aftermovie), tous transcrits (sous-titres automatiques FR, EN pour Maud Nalpas et Federico Tomassetti), quelques pages de speakers (Strumenta, Kilian Valkhof) et une recherche Bluesky/Mastodon (seuls deux posts de speakers avant ou pendant l'événement).",
+  "limits": "Aucun retour de participant n'a pu être lu : la synthèse repose sur le programme et sur ce qui a été dit sur scène, pas sur la réception du public. Les keynotes (Martin Keary, Agnès Crépet & Adrien Montagut) et 12 autres sessions (dont les 3 ateliers) n'ont pas été filmées ou publiées ; les transcripts sont des sous-titres automatiques (noms propres parfois déformés) et les vidéos ont peu de vues (6 à 60 à J+10 mois).",
   "tldr": "Une journée **généraliste et très « craft »** où **l'IA s'invite partout sans tout dévorer** (revue de code, tests, agents, LLM locaux, sécurité des LLM), aux côtés d'un fort bloc **observabilité / troubleshooting de prod** et d'un fil **numérique responsable** (smartphones réemployés, keynote Fairphone × Commown).",
   "keyTakeaways": [
     "Brancher un assistant de revue IA (PR-Agent) en job CI apporte surtout description de MR et suggestions ; il ne voit que le diff et ne signale pas ce qui a été supprimé : la revue humaine reste indispensable (Alice Simon).",
     "Tout « as code » (infra, config GitOps, policies, doc, pipelines, slides) rend les choses versionnables et testables, au prix d'une inflation de YAML (Grohmann & Vincent).",
-    "Avant de déployer une stack d'observabilité, apprendre à lire /proc et strace permet déjà de diagnostiquer une prod en feu (programme, Yann Gloriau).",
+    "Avant de déployer une stack d'observabilité, apprendre à lire /proc, vmstat et strace permet déjà de diagnostiquer une prod en feu, conteneurs compris ; mais un strace mal détaché peut bloquer la prod (Yann Gloriau).",
     "Traiter un incident de prod comme une enquête méthodique : outils, organisation et logs/monitoring préparés à l'avance (Sébastien Ferrer).",
-    "Réduire ses dépendances npm en exploitant les fonctionnalités natives de Node.js (.env, SQLite, TypeScript, test runner) (programme, Modeste Assiongbon).",
+    "Réduire ses dépendances npm en exploitant les fonctionnalités natives de Node.js (--watch, fetch, --env-file, node:sqlite, type stripping, test runner) (Modeste Assiongbon).",
     "Beaucoup de patterns JS (accordéons, dialogs, auto-suggest) sont désormais faisables en HTML/CSS, avec de meilleurs effets sur l'accessibilité (programme, Kilian Valkhof).",
-    "Réemployer un vieux smartphone Android comme agent Jenkins : zéro investissement matériel et moins de déchets électroniques (programme, Bruno Verachten).",
-    "Découpler les étapes d'un workflow complexe par des events (chorégraphie plutôt qu'orchestrateur) simplifie code et tests (programme, Thibaut Cantet)."
+    "Réemployer un vieux smartphone Android comme agent Jenkins via Termux : 84 % de l'impact d'un téléphone vient de sa fabrication, selon l'ADEME citée par Bruno Verachten.",
+    "Découpler les étapes d'un workflow complexe par des events (chorégraphie plutôt qu'orchestrateur) simplifie les tests, au prix d'un flux moins lisible qui exige une équipe mature (Thibaut Cantet).",
+    "RAG pour retrouver de l'information, fine-tuning (LoRA/QLoRA) pour un jargon de niche ; un petit modèle fine-tuné pour 1,5 $ peut battre un gros modèle généraliste sur une tâche ciblée (Paul O'Mahony).",
+    "En GitOps avec Argo CD « app of apps », garder prune désactivé en prod et confier les mises à jour d'outils à Renovate (Paul Vulliemin)."
   ],
   "sessions": [
     {
@@ -100,9 +102,9 @@
       "title": "Client-Side AI: smart APIs right in your browser",
       "speakers": ["Maud Nalpas — Google (Chrome)"],
       "feedbackFrom": [],
-      "summary": "- Format court (20 min, en anglais) sur les **API « Built-in AI » expérimentales de Chrome** : résumé, aide à l'écriture, traduction **directement dans le navigateur**.\n- Promesse : IA côté client, **privée, sans serveur, sans clé d'API** ni gestion de modèle.\n- Au menu annoncé : fonctionnement des API, comment les tester aujourd'hui, ce que d'autres ont construit, et la **vision de Chrome pour une standardisation multi-navigateurs**.\n- Résumé d'après le programme ; vidéo disponible, transcript non récupéré (HTTP 429).",
-      "summarySources": ["program"],
-      "video": { "youtubeId": "VZKPmVnMIBM", "title": "Client Side AI smart APIs right in your browser - Maud Nalpas", "publishedAt": "2025-12-14", "transcript": false }
+      "summary": "- Format court (en anglais) sur les **API d'IA intégrées à Chrome**, démontrées sur une critique d'album (Saturday Night Fever) : résumé, traduction en français, question oui/non ; panneau réseau vide, *« no network request […] No API key »*.\n- Summarizer (key points, headline, TL;DR, teaser), Translator en streaming, et la **Prompt API** comme socle (le Summarizer n'en est que du *« syntactic sugar »*), avec sortie JSON structurée et entrée image.\n- Modèle : **Gemini Nano** (2B ou 4B paramètres) sauf pour la traduction ; *« do not expect Gemini 3 performance »*. Un benchmark local décide si l'appareil est assez puissant.\n- Disponibilité : certaines API en Chrome stable, les autres via flags, origin trial ou early preview ; repli cloud pour les autres navigateurs (Firebase AI hybride, Vercel AI SDK). Usage suggéré : **tester une fonction IA gratuitement** sur une partie des utilisateurs ; standardisation en cours (WebMCP cité).\n- Limites reconnues sur scène : *« not exactly free »* (l'utilisateur télécharge le modèle, d'où une barre de progression conseillée), Chrome desktop uniquement, exigences matérielles ; aucun chiffre de taille ni de latence.",
+      "summarySources": ["program", "transcript"],
+      "video": { "youtubeId": "VZKPmVnMIBM", "title": "Client Side AI smart APIs right in your browser - Maud Nalpas", "publishedAt": "2025-12-14", "transcript": true }
     },
     {
       "id": "la-prod-est-en-flammes-pas-de-stress-j-ai-strace",
@@ -111,9 +113,9 @@
       "title": "La prod est en flammes ? Pas de stress, j'ai strace (et ses copains)",
       "speakers": ["Yann Gloriau — Sopra Steria"],
       "feedbackFrom": [],
-      "summary": "- Talk **essentiellement en démos live** : quand la supervision manque (loi de Murphy), revenir aux outils présents sur toute machine.\n- Fouiller **`/proc`**, lire les principaux indicateurs et **tracer l'application avec `strace`** pour poser un diagnostic, quel que soit le langage (Java, Python…).\n- Message : les solutions de supervision ne font que s'appuyer sur ces mêmes sources ; un système « dit beaucoup de choses » sans outillage lourd.\n- Résumé d'après le programme ; vidéo disponible.",
-      "summarySources": ["program"],
-      "video": { "youtubeId": "qNR0hk5lyGM", "title": "Production's on fire? No stress, I've got Strace (and his buddies) - Yann Gloriau", "publishedAt": "2025-12-14", "transcript": false }
+      "summary": "- Par un spécialiste des prods en feu chez Sopra Steria (jusqu'en Nouvelle-Calédonie) ; posture du **canard** : *« parfaitement smooth en surface »*, en pédalant à fond dessous.\n- *« slash proc is life »* : cpuinfo, meminfo, puis `/proc/<PID>/cmdline`, `exe` et `fd` pour retrouver le log d'une appli Petclinic sans connaître la machine ; un `ps` réécrit en trois lignes de shell.\n- `vmstat` : une **charge CPU sans le load** n'a pas de sens (analogie des caisses de supermarché, règle « à la Yoda » sur le load au double du nombre de cœurs).\n- `ltrace` puis **`strace`** (`-fp`, `-e`, `-c`, `-s 4096`) : sockets, ports décodés depuis `/proc/net/tcp` (PostgreSQL), HTML échangé et requête SQL vus sans se connecter à la base. Un conteneur reste *« un process comme les autres »*, inspectable depuis l'hôte (root requis).\n- Mise en garde du speaker : strace met le process en debug et, mal détaché, bloque la prod (*« j'ai déjà hangé des plateformes de prod »*). Approche pensée pour des machines isolées, pas pour le distribué.",
+      "summarySources": ["program", "transcript"],
+      "video": { "youtubeId": "qNR0hk5lyGM", "title": "Production's on fire? No stress, I've got Strace (and his buddies) - Yann Gloriau", "publishedAt": "2025-12-14", "transcript": true }
     },
     {
       "id": "une-application-argocd-pour-les-gouverner-toutes",
@@ -122,9 +124,9 @@
       "title": "Une application ArgoCD pour les gouverner toutes",
       "speakers": ["Paul Vulliemin — Sopra Steria"],
       "feedbackFrom": [],
-      "summary": "- Format court : bootstrapper l'outillage d'un cluster Kubernetes (cert-manager, ingress controller, supervision) avec le modèle **« app of apps » d'ArgoCD** plutôt qu'un pipeline push.\n- Tout centralisé dans **un seul dépôt Git** (GitOps), avec Helm et **External Secrets** pour les secrets ; dépôt public fourni comme point de départ.\n- Bonus : **Renovate** pour automatiser la mise à jour des outils.\n- Résumé d'après le programme ; vidéo disponible.",
-      "summarySources": ["program"],
-      "video": { "youtubeId": "nsre0jxzFvM", "title": "Une application ArgoCD pour les gouverner toutes - Paul Vulliemin", "publishedAt": "2025-12-14", "transcript": false }
+      "summary": "- Rappel GitOps : déclaratif, Git comme source de vérité, et **mode pull** (Flux ou Argo CD surveillent le dépôt) plutôt que push ; Argo CD repose sur la CRD `Application`.\n- Pattern **« App of Apps »** : une application racine pointe vers un dépôt d'Applications, qui pointent vers les charts Helm ; idéal pour le *« cluster bootstrapping »*.\n- Démo : un dépôt GitLab avec Velero, supervision, ingress NGINX et cert-manager ; un simple push ajoute un GitLab Runner qui apparaît tout seul.\n- Conseils : `selfHeal` contre le drift, **`prune` à false en prod** ; Renovate ouvre les MR de mise à jour ; secrets via Sealed Secrets ou External Secrets (Sealed Secrets devient *« chiant »* en multicluster). En questions : chart « umbrella » comme alternative, ApplicationSet pour le multi-environnement.\n- Limites citées : plus de complexité, et l'accès au dépôt devient sensible puisque tout YAML poussé est créé dans le cluster.",
+      "summarySources": ["program", "transcript"],
+      "video": { "youtubeId": "nsre0jxzFvM", "title": "Une application ArgoCD pour les gouverner toutes - Paul Vulliemin", "publishedAt": "2025-12-14", "transcript": true }
     },
     {
       "id": "node-js-peut-faire-ca",
@@ -133,9 +135,9 @@
       "title": "Node.js peut faire ça !! Exploitons les fonctionnalités natives de Node.js",
       "speakers": ["Modeste Assiongbon — Freelance"],
       "feedbackFrom": [],
-      "summary": "- Chaque dépendance ajoutée coûte : **failles de sécurité**, poids, perte de contrôle, incompatibilités.\n- Node.js intègre désormais ce qui exigeait des modules npm : chargement des **fichiers .env**, **SQLite**, **TypeScript**, formatage de texte dans le terminal, **test runner** intégré.\n- Objectif : des projets plus légers, plus sûrs et plus maintenables.\n- Résumé d'après le programme ; vidéo disponible.",
-      "summarySources": ["program"],
-      "video": { "youtubeId": "sBv00OmItW0", "title": "Node.js can do that - Modeste ASSIONGBON", "publishedAt": "2025-12-14", "transcript": false }
+      "summary": "- Constat : un `npm install` par problème alourdit les projets (*« à peine 300 KB »* de code pour des gigaoctets de paquets) et expose aux **attaques de la chaîne npm** (vols d'identifiants récents) et aux incompatibilités.\n- Remplacements natifs : `--watch` (nodemon), `fetch` et client WebSocket (axios, ws), `--env-file` et `loadEnvFile` (dotenv), `styleText` (chalk), **`node:sqlite`** (base embarquée, encore expérimentale), `node --run` (sans hooks pre/post).\n- **Test runner natif** à la place de Mocha/Chai/Sinon : styles BDD et TDD, mocks, couverture.\n- **Type stripping** : Node exécute du TypeScript en retirant les types sans les vérifier ; préférer `type` à `interface`, éviter les namespaces, `import type` explicite. `require()` d'un module ESM synchrone depuis Node 22.\n- Lecture critique : un catalogue sur slides, sans mesure du gain réel ; plusieurs API sont encore expérimentales et la migration d'un projet existant n'est pas abordée.",
+      "summarySources": ["program", "transcript"],
+      "video": { "youtubeId": "sBv00OmItW0", "title": "Node.js can do that - Modeste ASSIONGBON", "publishedAt": "2025-12-14", "transcript": true }
     },
     {
       "id": "donnez-une-seconde-vie-a-votre-smartphone-android",
@@ -144,9 +146,9 @@
       "title": "Donnez une seconde vie à votre smartphone Android : un agent Jenkins écolo et performant",
       "speakers": ["Bruno Verachten — CloudBees"],
       "feedbackFrom": [],
-      "summary": "- Constat : les vieux smartphones dorment dans les tiroirs alors que leur puissance rivalise avec des **single-board computers**.\n- Recette : transformer un Android en **agent Jenkins** (Termux, agent Jenkins, réglages de perf) pour exécuter des builds, tester des apps mobiles sur leur environnement natif.\n- Impact : **réemploi plutôt que e-waste**, 0 € d'investissement, usage pédagogique (labs, communautés OSS) ; pièges : batterie, réseau.\n- Fait écho à la keynote de clôture Fairphone × Commown. Résumé d'après le programme ; vidéo disponible.",
-      "summarySources": ["program"],
-      "video": { "youtubeId": "nkQ0lA-m1ao", "title": "Donnez une seconde vie à votre smartphone Android - Bruno Verachten", "publishedAt": "2025-12-14", "transcript": false }
+      "summary": "- Chiffres d'ouverture cités par le speaker : *« 5,3 milliards de smartphones »* jetés dans l'année, 90 % des téléphones remplacés encore fonctionnels, moins de 20 % recyclés.\n- Argument clé, attribué à l'ADEME : **84 % de l'impact vient de la fabrication** ; garder son téléphone 5 ans au lieu de 3 réduit son empreinte de 31 %. Un vieux smartphone bat souvent un single-board computer récent.\n- Android n'est pas un Linux classique (Bionic, ART) : la clé est **Termux** (pkg, OpenSSH sur le port 8022, Java 17/21), puis Jenkins lancé avec `java -jar` en contournant l'absence de `/tmp` et de polices.\n- En faire un vrai serveur : termux-services, Termux:Boot et `termux-wake-lock`, optimisation de batterie désactivée ; agent SSH sur localhost et pipeline Maven depuis GitHub (le téléphone annonce *« C'est Jenkins qui vous parle »*). Playbooks Ansible fournis pour reproduire.\n- Limites avouées : *« ça marche pour moi »*, crainte des batteries lithium-ion (il éteint son labo en partant), Docker sur Termux hors de portée, aucun temps de build ni chiffre de consommation. Fait écho à la keynote Fairphone × Commown.",
+      "summarySources": ["program", "transcript"],
+      "video": { "youtubeId": "nkQ0lA-m1ao", "title": "Donnez une seconde vie à votre smartphone Android - Bruno Verachten", "publishedAt": "2025-12-14", "transcript": true }
     },
     {
       "id": "comment-j-ai-pas-gagne-d-argent-en-liant-ia-et-poker",
@@ -155,9 +157,9 @@
       "title": "Comment j'ai pas gagné d'argent en liant IA et poker ?",
       "speakers": ["Jules Duarte Vala — Sopra Steria"],
       "feedbackFrom": [],
-      "summary": "- Projet perso : un **bot de poker** (No Limit Hold'em, parties rapides à 3 joueurs type Spin & Go) capable d'affronter de vrais joueurs.\n- Ingrédients : théorie mathématique, **apprentissage par renforcement** et IA générative, avec des hypothèses simplificatrices.\n- Le titre annonce le résultat : pas de gains. Résumé d'après le programme ; vidéo disponible.",
-      "summarySources": ["program"],
-      "video": { "youtubeId": "deI7lQYDtR0", "title": "How I Didn't Make Any Money Combining AI and Poker - Jules Duarte Vala", "publishedAt": "2025-12-14", "transcript": false }
+      "summary": "- Projet perso sur le **Spin & Go** (poker en ligne à 3 joueurs, 15 blindes), réduit à une décision avant le flop : tapis ou se coucher.\n- Bot 1, **mathématiques de Nash** : espérance de gain par main, tables GTO de 720 situations scrapées (malgré des captchas) ; 42 % de victoires au bouton contre un joueur aléatoire sur 10 000 parties.\n- Bot 2, **apprentissage par renforcement** inspiré de Pluribus : après 30 000 parties contre lui-même, bon seulement au bouton. Bot 3, **un simple prompt à un LLM** (Llama 70B) : 41 % au bouton, à la surprise du speaker.\n- Duel final à trois : chaque bot gagne 33 %. Et les sites interdisent bots et conseils en temps réel : *« conclusion finale 0 € mais j'ai appris quand même plein de choses »*.\n- Autocritique : le GTO n'est optimal que si tout le monde le joue, l'entraînement par renforcement était trop court, le protocole perfectible ; l'expérience date d'un an, avant les modèles de raisonnement.",
+      "summarySources": ["program", "transcript"],
+      "video": { "youtubeId": "deI7lQYDtR0", "title": "How I Didn't Make Any Money Combining AI and Poker - Jules Duarte Vala", "publishedAt": "2025-12-14", "transcript": true }
     },
     {
       "id": "building-a-language-migration-pipeline",
@@ -166,9 +168,9 @@
       "title": "Building a Language Migration Pipeline: Architecture for Modernizing Legacy Systems",
       "speakers": ["Federico Tomassetti — Strumenta"],
       "feedbackFrom": [],
-      "summary": "- Pour les systèmes de **20 ans et plus** : la réécriture manuelle est coûteuse et risquée, la **migration automatisée de langage** offre une alternative.\n- Briques du pipeline : parsing et résolution de symboles, inférence de types, **transformations d'AST**, reconnaissance d'idiomes, tests et validation, génération.\n- Principes d'architecture et standards comme **LionWeb** pour des pipelines composables et agnostiques du langage (approche de Strumenta).\n- Résumé d'après le programme et la page d'annonce de Strumenta ; vidéo disponible.",
-      "summarySources": ["program"],
-      "video": { "youtubeId": "Uabh6JnlkXk", "title": "Building a Language Migration Pipeline Architecture for Modernizing Legacy Systems - F. Tomassetti", "publishedAt": "2025-12-14", "transcript": false }
+      "summary": "- (En anglais.) La modernisation du legacy est **un enjeu de continuité d'activité** ; exemple : un industriel de la région lyonnaise dont tout l'ERP tourne en RPG sur AS/400 depuis les années 90 et veut passer à Python.\n- Arguments chiffrés : sortir du matériel propriétaire IBM, 336 développeurs RPG contre 49 000 en Python sur LinkedIn dans la région du client, ~700 000 projets sur PyPI contre zéro pour RPG. Mêmes cas avec VB6, les L4G, SAS ou COBOL.\n- Pipeline : parsing en AST, **résolution des symboles** (un type « 7P2 » devient un `Decimal`), analyse de flot de contrôle pour transformer les GOTO, AST Python intermédiaire optimisé vers des formes idiomatiques, impression à la fin.\n- Chaque étape produit un fichier au **standard LionWeb**, inspectable dans un navigateur ; migrations écrites en Kotlin et suivies dans un tableau de bord.\n- Limites avouées : prouver que l'application migrée fait exactement la même chose, *« le problème majeur que nous avons en tant que communauté »* (traduit) ; changer de paradigme ; documenter le code généré. Slides illisibles en salle, de son propre aveu ; l'IA générative n'est jamais évoquée.",
+      "summarySources": ["program", "transcript"],
+      "video": { "youtubeId": "Uabh6JnlkXk", "title": "Building a Language Migration Pipeline Architecture for Modernizing Legacy Systems - F. Tomassetti", "publishedAt": "2025-12-14", "transcript": true }
     },
     {
       "id": "tester-c-est-douter-github-copilot",
@@ -177,9 +179,9 @@
       "title": "Tester c'est douter ! Devenez un maître des Tests avec GitHub Copilot",
       "speakers": ["Philippe Didiergeorges — Microsoft", "Lucile Jeanneret — Microsoft"],
       "feedbackFrom": [],
-      "summary": "- Cible : le **code jamais testé**, qu'on ne sait pas par où attaquer.\n- Exemples pratiques d'usage de **GitHub Copilot** pour écrire des tests robustes, y compris sur des bases de code « chaotiques ».\n- Session portée par l'éditeur (Microsoft). Résumé d'après le programme ; vidéo disponible.",
-      "summarySources": ["program"],
-      "video": { "youtubeId": "Tlq-M58-U5c", "title": "Devenez un maître des Tests avec GitHub Copilot - P. Didiergeorges & L. Jeanneret", "publishedAt": "2025-12-14", "transcript": false }
+      "summary": "- Point de départ : les fausses excuses (*« le test c'est trop cher »*) et la **pyramide des tests** ; Copilot présenté comme un « quatrième amigo » aux côtés du dev, du testeur et du PO.\n- Tests unitaires : en mode agent, Copilot lit la user story via **le serveur MCP de GitHub**, écrit, exécute et corrige les tests (120 au vert annoncés) ; fichiers `copilot-instructions` pour garder un cadre commun.\n- Tests end-to-end : scénarios Gherkin publiés dans l'issue, puis le coding agent de GitHub, avec le MCP Playwright, ouvre une PR avec captures et corrige ses tests seul.\n- Tests de charge (plan JMeter, **Azure Load Testing**, montée à 1 000 utilisateurs) et un agent personnalisé de tests d'accessibilité qui produit un rapport transformable en issues.\n- Lecture critique : **discours éditeur** avec démos surtout préenregistrées ; qualité des tests générés jugée *« de prime abord »* seulement, et une affirmation de code *« 100 % sécurisé »* grâce au scan de l'agent, non démontrée.",
+      "summarySources": ["program", "transcript"],
+      "video": { "youtubeId": "Tlq-M58-U5c", "title": "Devenez un maître des Tests avec GitHub Copilot - P. Didiergeorges & L. Jeanneret", "publishedAt": "2025-12-14", "transcript": true }
     },
     {
       "id": "au-secours-de-la-data-dans-mon-projet-streamlit",
@@ -188,9 +190,9 @@
       "title": "Au secours, de la data dans mon projet ! Streamlit à la rescousse...",
       "speakers": ["Nicolas Foussard — INSA"],
       "feedbackFrom": [],
-      "summary": "- Format court : **Streamlit**, framework Python pour créer des interfaces web en quelques lignes (charts, médias, inputs).\n- Usage mis en avant : tester vite une idée, rendre un rapport data interactif, **faire des POC** sans monter tout un environnement.\n- Résumé d'après le programme ; vidéo disponible.",
-      "summarySources": ["program"],
-      "video": { "youtubeId": "STObePdDT0w", "title": "Au secours, de la data dans mon projet ! Streamlit à la rescousse... - Nicolas Foussard", "publishedAt": "2025-12-14", "transcript": false }
+      "summary": "- Format court par un étudiant de 21 ans (INSA Lyon) : **Streamlit**, bibliothèque Python open source résumée en *« simplicité et interactivité »*.\n- Live coding sur un dataset Pokémon : `read_csv` puis `st.dataframe` (tri et recherche intégrés), rechargement automatique à chaque sauvegarde.\n- **Filtres interactifs** reliés aux données (`multiselect`, `slider`, `radio`), histogramme, colonnes et page large, image chargée par URL avec gestion d'erreur.\n- Résultat : une appli complète *« en seulement 10, 12 minutes »* et 35 lignes de code.\n- Limites signalées : pour l'IA/ML, Gradio est plus adapté ; sur des centaines de milliers de lignes Streamlit peine (alternative citée, probablement Taipy). Déploiement et cache non abordés.",
+      "summarySources": ["program", "transcript"],
+      "video": { "youtubeId": "STObePdDT0w", "title": "Au secours, de la data dans mon projet ! Streamlit à la rescousse... - Nicolas Foussard", "publishedAt": "2025-12-14", "transcript": true }
     },
     {
       "id": "ia-generative-sur-aws-personnaliser-des-modeles-fondamentaux",
@@ -199,9 +201,9 @@
       "title": "Intelligence Artificielle Générative sur AWS : Personnaliser des modèles fondamentaux",
       "speakers": ["Paul O'Mahony — Atyos"],
       "feedbackFrom": [],
-      "summary": "- Adapter des **foundation models** (Amazon Bedrock, SageMaker) à des cas d'usage métier : chatbot, résumé de documents internes, classification.\n- Techniques : **fine-tuning** et adaptation légère (**PEFT, LoRA**), en profitant de la scalabilité et de la sécurité du cloud.\n- Speaker d'un sponsor de l'événement (Atyos). Résumé d'après le programme ; vidéo disponible.",
-      "summarySources": ["program"],
-      "video": { "youtubeId": "M8I1-6u5M6o", "title": "Intelligence Artificielle Générative sur AWS: Personnaliser des modèles fondamentaux - Paul O'Mahony", "publishedAt": "2025-12-14", "transcript": false }
+      "summary": "- Deux stratégies : **gros modèles généralistes** (polyvalents mais propriétaires, coûteux, lents, sujets aux hallucinations) contre petits modèles spécialisés (efficaces et maîtrisés, mais qui demandent de la R&D).\n- PEFT plutôt que fine-tuning complet : avec **LoRA** (rang 16), une matrice d'environ 1 million de paramètres se réduit à 32 768 paramètres entraînés ; **QLoRA** quantifie en plus le modèle de base pour tenir en mémoire GPU.\n- Démo d'un agent météo : Amazon Nova Pro invente 22,5° à Strasbourg, quand un duo de petits modèles fine-tunés (dont Qwen3 4B) trouve les bons 3,6° ; entraînement sur SageMaker en 1 heure pour 1,5 $, *« un café »*.\n- Règle donnée en questions : **RAG pour retrouver de l'information**, fine-tuning pour un jargon de niche (santé, juridique) ; versionner modèles et datasets (MLOps).\n- Lecture critique : démo biaisée de son propre aveu (*« j'ai fait plus ou moins exprès de mal le développer »*), un seul essai sans évaluation systématique, tout sur AWS ; speaker d'un sponsor (Atyos).",
+      "summarySources": ["program", "transcript"],
+      "video": { "youtubeId": "M8I1-6u5M6o", "title": "Intelligence Artificielle Générative sur AWS: Personnaliser des modèles fondamentaux - Paul O'Mahony", "publishedAt": "2025-12-14", "transcript": true }
     },
     {
       "id": "redonner-vie-au-chip-8",
@@ -210,9 +212,9 @@
       "title": "Redonner vie au Chip-8 !",
       "speakers": ["Rémy Godin — Onepoint"],
       "feedbackFrom": [],
-      "summary": "- Écrire un **émulateur Chip-8** (système des années 1970, classique de l'émulation) pour faire tourner d'anciens jeux.\n- Recréer l'affichage, les registres, les opcodes et les instructions.\n- Résumé d'après le programme ; vidéo disponible.",
-      "summarySources": ["program"],
-      "video": { "youtubeId": "GwlS9YIdwVE", "title": "Redonner vie au Chip 8 ! - Rémy Godin", "publishedAt": "2025-12-14", "transcript": false }
+      "summary": "- Projet perso né d'une PS2 impossible à brancher en HDMI, puis d'un **émulateur Game Boy abandonné** (plus de 500 instructions, boucle infinie dans le BIOS).\n- Repli sur le **Chip-8** (fin des années 70) : documentation de moins de 10 pages et 35 instructions, mais *« une seule erreur quelque part dans vos instructions et votre programme est planté »*, sans débogueur.\n- Reconstruction composant par composant en C++ : 4 096 octets de RAM, programme à 0x200, pile et 16 registres (VF comme drapeau) ; cycle lire l'opcode, avancer le PC, exécuter.\n- Affichage via SDL (*« un enfer à implémenter »*), sprites dessinés par XOR ; démos d'un labyrinthe, d'une ROM de test et d'un Tetris.\n- Coût réel avoué : **plus de 4 mois de travail** derrière l'apparente simplicité ; le talk explique l'architecture plus que la compatibilité.",
+      "summarySources": ["program", "transcript"],
+      "video": { "youtubeId": "GwlS9YIdwVE", "title": "Redonner vie au Chip 8 ! - Rémy Godin", "publishedAt": "2025-12-14", "transcript": true }
     },
     {
       "id": "france-info-x-collect-or-flutter",
@@ -221,9 +223,9 @@
       "title": "France Info x Collect'OR : comment un jeu Flutter s'est infiltré dans une appli native pour les Jeux Olympiques",
       "speakers": ["David Fournier — Apps42 / Stolanapp", "Vincent Bencardino — Apps42"],
       "feedbackFrom": [],
-      "summary": "- REX JO 2024 : **Collect'OR**, jeu Flutter (cartes d'athlètes, matchs entre utilisateurs) intégré **comme module** dans les applis natives Android et iOS de France Info — 1 million d'utilisateurs, 10 000 joueurs annoncés.\n- Technique : communication avec le code natif sans mobiliser les équipes internes, intégration via **Swift Package Manager et Gradle**, CI/CD, pièges du moteur Flutter.\n- Message : Flutter n'est **pas un choix « tout ou rien »**. Résumé d'après le programme ; vidéo disponible.",
-      "summarySources": ["program"],
-      "video": { "youtubeId": "FVXtJMR3K-4", "title": "France Info x Collect'OR - A Flutter game in a native app for the Olympic Games", "publishedAt": "2025-12-14", "transcript": false }
+      "summary": "- REX JO 2024 : un jeu pour l'appli France Info (*« plus d'un million d'utilisateurs par mois »*), deadline intangible, et des équipes natives de deux développeurs par plateforme à **solliciter au minimum**.\n- Le jeu Flutter est livré comme un SDK (AAR Android, framework iOS) ; le moteur est démarré **à la demande** et non à l'ouverture de l'appli, pour ne pas ralentir des centaines de milliers d'utilisateurs dont peu joueront.\n- Le module n'est *« jamais vraiment standalone »* : des **method channels** gèrent la connexion (un hash sans donnée personnelle) et la sortie (le natif ferme la vue et détruit le moteur).\n- Le jeu : 70 cartes d'athlètes, matchs asynchrones, classement temps réel sur Redis, kill switch par remote config, accessibilité exigée. Bilan : 10 000 joueurs quotidiens, *« zéro lag »*, arrêt à la fin des Paralympiques.\n- Limites listées par les speakers : environ 5 Mo de plus pour l'appli, un seul module Flutter possible sur iOS à l'époque, deep links abandonnés faute de temps ; chiffres de conversion restés vagues.",
+      "summarySources": ["program", "transcript"],
+      "video": { "youtubeId": "FVXtJMR3K-4", "title": "France Info x Collect'OR - A Flutter game in a native app for the Olympic Games", "publishedAt": "2025-12-14", "transcript": true }
     },
     {
       "id": "ce-que-les-ide-ne-veulent-pas-que-vous-sachiez",
@@ -232,9 +234,9 @@
       "title": "Ce que les IDE ne veulent pas que vous sachiez !",
       "speakers": ["Benjamin Buléon — Gojob"],
       "feedbackFrom": [],
-      "summary": "- Ouvrir la boîte noire des IDE : **coloration syntaxique**, recherche d'usages, détection d'erreurs, **autocomplétion** (serveurs de langage).\n- Démonstration avec **Neovim**, transformé en IDE dans le terminal grâce aux plugins.\n- Résumé d'après le programme ; vidéo disponible (titre traduit automatiquement sur YouTube en « What nurses don't want you to know! »).",
-      "summarySources": ["program"],
-      "video": { "youtubeId": "CMUUpe9M9AU", "title": "Ce que les IDE ne veulent pas que vous sachiez! - Benjamin Buléon", "publishedAt": "2025-12-14", "transcript": false }
+      "summary": "- Ouvrir la boîte noire des IDE, démos en TypeScript dans un **Neovim** configuré pas à pas en Lua.\n- Coloration : un lexer (*« un gros moteur de regex »*) produit des tokens ; avec le **parsing en AST** (Tree-sitter), l'éditeur relie définitions et usages et repère une parenthèse manquante.\n- À l'échelle du projet : le **Language Server Protocol**, un serveur par langage qui dialogue en JSON-RPC (trames réelles montrées : références, diagnostics, code actions). *« L'IDE ne fait que représenter ce que le serveur lui a dit »* ; Copilot ou ESLint s'y branchent de la même façon.\n- Démo d'un mini-serveur qui signale les magic numbers, *« généré en 10 minutes avec Claude »*, puis le **Debug Adapter Protocol** (points d'arrêt et variables fournis par le débogueur natif).\n- Lecture critique : il admet qu'une règle ESLint aurait suffi pour son exemple ; débogage survolé, coûts des serveurs de langage non abordés. Titre YouTube traduit automatiquement en « What nurses don't want you to know! ».",
+      "summarySources": ["program", "transcript"],
+      "video": { "youtubeId": "CMUUpe9M9AU", "title": "Ce que les IDE ne veulent pas que vous sachiez! - Benjamin Buléon", "publishedAt": "2025-12-14", "transcript": true }
     },
     {
       "id": "du-chaos-a-l-elegance-refactorer-des-workflows-complexes-avec-des-events",
@@ -243,9 +245,9 @@
       "title": "Du chaos à l'élégance : refactorer des workflows complexes avec des events",
       "speakers": ["Thibaut Cantet — Néosoft"],
       "feedbackFrom": [],
-      "summary": "- REX du **tunnel de vente de Roland-Garros** : paiement avec/sans 3DS, échec de validation de commande, échec de remboursement… et des tests unitaires devenus illisibles.\n- Refactoring avec le **pattern Observer** (producteurs/écouteurs d'events) pour découpler chaque étape.\n- Live coding : passer d'un **orchestrateur complexe à une chorégraphie**, ce qui simplifie code et tests.\n- Résumé d'après le programme ; vidéo disponible.",
-      "summarySources": ["program"],
-      "video": { "youtubeId": "8gBisaiBfqk", "title": "Du chaos à l'élégance refactorer des workflows complexes avec des events - Thibaut Cantet", "publishedAt": "2025-12-14", "transcript": false }
+      "summary": "- REX de la **billetterie de Roland-Garros** (FFT) : prestataire de paiement, back-office qui transforme le panier en commande, service client.\n- Cas métier combinés avec ou sans 3DS : paiement refusé, commande refusée donc transaction annulée, et le pire, échec de l'annulation (*« on a payé mais on n'a pas de billet »*), traité par un mail au service client.\n- Point de départ en clean architecture : une **orchestration** à embranchements, avec des tests redondants et *« beaucoup de stubs »* (jusqu'à 5 cas par test).\n- Live coding vers une **chorégraphie** : command handlers qui émettent des événements (`PaymentSucceeded`, `CancelTransactionFailed`…), listeners qui déclenchent la commande suivante, bus faits main, tout reste synchrone. Gain : au plus 3 cas par test, flux composable, non-régression garantie par Cucumber.\n- Réserve du speaker : une chorégraphie est *« moins lisible »* et exige une équipe mature, de la documentation et des logs ; démo simplifiée, et rien n'est dit de ce qui a été déployé en production.",
+      "summarySources": ["program", "transcript"],
+      "video": { "youtubeId": "8gBisaiBfqk", "title": "Du chaos à l'élégance refactorer des workflows complexes avec des events - Thibaut Cantet", "publishedAt": "2025-12-14", "transcript": true }
     }
   ],
   "sessionsWithoutFeedback": [
@@ -267,11 +269,13 @@
     { "label": "Programme officiel (horaires, salles, keynotes)", "url": "https://devfest25.gdgstrasbourg.fr/schedule" },
     { "label": "Speakers (fiches et entreprises)", "url": "https://devfest25.gdgstrasbourg.fr/speakers" },
     { "label": "Appel à orateurs Conference Hall", "url": "https://conference-hall.io/devfest-strasbourg-2025" },
-    { "label": "Playlist YouTube DevFest Strasbourg 2025 (19 talks + aftermovie, publiés le 14/12/2025)", "url": "https://www.youtube.com/playlist?list=PLMM5_63TOT9BsQ1oiQMcn7mNHy0ZwHTdF" },
+    { "label": "Playlist YouTube DevFest Strasbourg 2025 (18 talks + aftermovie, publiés le 14/12/2025, tous transcrits)", "url": "https://www.youtube.com/playlist?list=PLMM5_63TOT9BsQ1oiQMcn7mNHy0ZwHTdF" },
     { "label": "Aftermovie DevFest Strasbourg 2025", "url": "https://www.youtube.com/watch?v=CzXPqzyKSYE" },
     { "label": "Annonce du talk de Federico Tomassetti (Strumenta)", "url": "https://tomassetti.me/federico-tomassetti-devfest-strasbourg/" },
     { "label": "Page speaking de Kilian Valkhof", "url": "https://kilianvalkhof.com/speaking/" },
     { "label": "Page événement GDG Strasbourg", "url": "https://gdg.community.dev/events/details/google-gdg-strasbourg-presents-devfest-strasbourg-2025/" },
-    { "label": "LinkedIn : aucun post participant lisible (HTTP 999) ; seuls des extraits de profils (Martin Keary, Raphaël Chatelain — Sopra Steria) mentionnent l'événement dans les résultats de recherche" }
+    { "label": "LinkedIn : aucun post participant lisible (HTTP 999) ; seuls des extraits de profils (Martin Keary, Raphaël Chatelain — Sopra Steria) mentionnent l'événement dans les résultats de recherche" },
+    { "label": "Bluesky : annonce de la keynote par Martin Keary (Tantacrul), 19/11/2025", "url": "https://bsky.app/profile/tantacrul.bsky.social/post/3m5x7jy7fh22o" },
+    { "label": "Bluesky : Kilian Valkhof sur place le jour J (speaker, pas de retour sur le contenu)", "url": "https://bsky.app/profile/kilianvalkhof.com/post/3m6lzki4mlc2w" }
   ]
 }

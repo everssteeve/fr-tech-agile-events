@@ -7,7 +7,908 @@
   "city": "Nantes",
   "venue": "Cité des Congrès",
   "url": "https://devfest2024.gdgnantes.com",
+  "programUrl": "https://devfest2024.gdgnantes.com/schedule",
+  "edition": "12e édition",
+  "theme": "Frayeur au DevFest (« Dark Chapter of the DevFest »)",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "Deux jours à la Cité des Congrès, 7 salles (4 de conférences, 3 d'ateliers) : 73 sessions au programme selon les données du site (conférences de 45 min, quickies de 20 min, codelabs de 2 h), soit 40 conférences, 16 quickies et 15 codelabs selon Onepoint. Plus de 3 500 participants selon Onepoint. Keynote d'ouverture de Mehdi Moussaïd (Fouloscopie), keynote de clôture « secrète » jouée par l'équipe organisatrice. Animations : Code In The Dark, expériences sociales avec Mehdi Moussaïd, espace Hackerspace (réparation, logiciel libre). Retours participants recueillis via OpenFeedback (votes et commentaires anonymes).",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-08",
+  "corpus": "Programme officiel (données du site devfest2024.gdgnantes.com), 10 895 votes et 439 commentaires anonymes laissés par les participants sur OpenFeedback pendant l'événement, playlist YouTube GDG France (61 vidéos publiées le 2024-10-30, dont 57 sessions) avec 36 transcripts automatiques lus, la rétrospective Onepoint sur dev.to (Arthur Rousseau, Benoit Reynaert, Anthony Baticle, Hervé Martin, 19 novembre 2024), le billet d'Adam Argyle (speaker) et une quinzaine de posts Mastodon (Hackerspace, partages de vidéos). Lu deux ans après l'événement.",
+  "limits": "Aucun post LinkedIn ni blog individuel de participant trouvé : les retours viennent surtout des commentaires OpenFeedback, courts et anonymes, et d'un seul article d'entreprise (Onepoint, qui avait aussi trois speakers). La keynote d'ouverture n'a pas de sous-titres YouTube, les codelabs n'ont pas été filmés, et les sessions non retenues ont des votes OpenFeedback qui n'ont pas été détaillés.",
+  "revisit": "Corpus de participants nommés très mince pour un événement de plus de 3 500 personnes : un seul article d'entreprise (Onepoint) et aucun post LinkedIn lu, faute de résultats de recherche. Les retours reposent surtout sur les commentaires anonymes OpenFeedback. Chercher des posts LinkedIn de participants (keynote Fouloscopie, Gameboy, méta-lois, motivation) et des blogs d'ESN (Zenika, SFEIR, Takima, Ippon).",
+  "tldr": "Une édition « frayeur » où les talks les plus plébiscités sont **des récits et des sujets humains** (foules, méta-lois, motivation, Gameboy, faille XZ) plus que les sujets IA, et où le public sanctionne nettement **les talks perçus comme commerciaux**.",
+  "keyTakeaways": [
+    "Auditer sa supply chain open source : dépôt d'artefacts local, dépendances limitées, pas forcément la toute dernière version (Poncet sur XZ Utils ; retour d'Arthur Rousseau, Onepoint).",
+    "Préparer dès maintenant le Cyber Resilience Act : SBOM, provenance, signature, gestion des CVE pendant au moins 5 ans (Robin, JFrog ; « la conf la plus effrayante du DevFest » selon un commentaire OpenFeedback).",
+    "Automatiser les montées de version avec Renovate, en regroupant les paquets, en traitant les MR à heure fixe et en surveillant le coût des builds (Baconnais et Quesnel, Zenika).",
+    "Optimiser le logiciel d'un facteur 2 tous les 2 ans plutôt que renouveler le matériel : la « loi de Eroom » diviserait l'empreinte par 4 (Nitot, OCTO ; retour de Benoit Reynaert).",
+    "Mesurer l'empreinte d'un usage IA avant de le choisir : modèle plus petit, région bas carbone, fine-tuning plutôt que réentraînement (Bierlaire ; retour d'Hervé Martin).",
+    "Évaluer un RAG avec un petit jeu de 10 à 30 questions écrit avec le métier et des métriques séparées pour la récupération et la génération (Vassard, Ippon).",
+    "Pour un système d'IA à décision critique, exiger de l'explicabilité (LIME, SHAP) et renoncer si la conformité AI Act est impossible (Hannotte, Onepoint).",
+    "Utiliser l'historique git comme « scène de crime » pour repérer hotspots et couplages avant de refactorer, sans chercher de coupable (Coudert, d'après Adam Tornhill).",
+    "Préférer un monolithe modulaire bien outillé (tests d'architecture, événements internes, cycle de release cadencé) aux microservices quand on n'en a pas besoin (Bats et Bégaudeau, Obeo).",
+    "Donner sa chance au tracing distribué via l'auto-instrumentation OpenTelemetry, quasi gratuite sur JVM et Python (Fränkel ; retour d'Arthur Rousseau)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-d-ouverture-fouloscopie",
+      "day": "2024-10-17",
+      "type": "keynote",
+      "title": "Keynote d'ouverture",
+      "speakers": [
+        "Mehdi Moussaïd — chercheur, chaîne Fouloscopie"
+      ],
+      "feedbackFrom": [
+        "Arthur Rousseau (Onepoint, dev.to)",
+        "16 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Programme : keynote sans résumé publié. Selon Onepoint, le chercheur spécialiste du comportement des foules, connu pour sa chaîne YouTube **Fouloscopie**, présente son métier et donne *« les clés pour comprendre et ne plus avoir peur de la foule »*.\n- Onepoint la juge *« inattendue, passionnante »*, avec les aspects scientifiques derrière des situations vécues au quotidien. Mehdi Moussaïd animait aussi deux sessions d'expériences sociales pendant l'événement.\n- La session la plus votée de l'édition sur OpenFeedback (715 votes, surtout « Good speaker », « Fun » et « Very interesting »). Commentaire le plus soutenu : *« Excellent speaker, passionné, drôle, storyteller, une masterclass ! »* ; d'autres parlent d'*« un condensé de sa chaîne YouTube sur scène »* et d'une keynote qui *« permet de faire un pas de côté »*.\n- **Critiques logistiques** : des participants refusés à l'entrée faute de place (*« la keynote devrait être accessible à tous ceux qui sont sur place »*) et des lumières de scène éblouissantes.",
+      "summarySources": [
+        "blog",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "xuKrkOh_mzk",
+        "title": "Keynote d'ouverture - DevFest Nantes 2024",
+        "publishedAt": "2024-10-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "multi-kubernetes-multi-regions-au-secours",
+      "day": "2024-10-17",
+      "type": "talk",
+      "title": "Multi Kubernetes, Multi Régions, Au-secours !",
+      "speakers": [
+        "Aurélien Moreau — Takima",
+        "Nicolas Lavacry — Casden Banque Populaire"
+      ],
+      "feedbackFrom": [
+        "Benoit Reynaert (Onepoint, dev.to)",
+        "3 commentaires OpenFeedback"
+      ],
+      "summary": "- Sur scène : un projet fictif (une chaîne de sandwichs qui s'ouvre aux États-Unis) reprend les contraintes réelles de la Casden. **Un cluster par région** : etcd supporte mal la latence, on n'étale pas un cluster sur plusieurs régions.\n- Déploiement en GitOps (Terraform, Ansible, Argo CD et Helm) ; KubeFed est archivé et le SIG Multicluster encore jeune, Karmada au-delà de centaines de clusters.\n- Trafic nord-sud via Gateway API, Istio et GSLB plutôt que DNS géolocalisé ; trafic est-ouest via Istio multi-cluster ; données PostgreSQL répliquées avec Patroni, démo de bascule Paris vers Californie sans perte.\n- Conclusion des speakers : *« C'est possible de le faire, mais c'est complexe. »* L'écosystème reste immature car Kubernetes a été pensé pour un seul cluster.\n- Benoit Reynaert (Onepoint) : *« un succès tant sur le fond que sur la forme »*, binôme fluide, démo *« simple et efficace »*, sujet complexe rendu accessible. Sur OpenFeedback, un participant y a trouvé de quoi *« rafraîchir des notions »*.",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "11sNNUMx5N4",
+        "title": "Multi Kubernetes, Multi Régions, Au-secours !",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "trucs-et-astuces-data-pour-devenir-le-prochain-sherlock-holmes",
+      "day": "2024-10-17",
+      "type": "talk",
+      "title": "Trucs et astuces data pour devenir le prochain Sherlock Holmes !",
+      "speakers": [
+        "Antoine Bonneau — Zenika",
+        "Guillaume Renaudin — Zenika"
+      ],
+      "feedbackFrom": [
+        "7 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Sur scène : deuxième volet d'une série « la data dans la société ». Fil historique de Sherlock Holmes au bertillonnage, au principe d'échange de Locard et aux sciences forensiques, puis bascule numérique : géolocalisation, empreinte de navigateur (*« ne croyez pas qu'être derrière un VPN vous rend complètement anonyme »*).\n- Tour des fichiers policiers (empreintes, ADN, TAJ, TES) et des outils : Anacrim, OSINT, reconnaissance faciale (PimEyes testé par un speaker, Clearview AI interdit en Europe), généalogie ADN.\n- Démo OSINT sur un collègue fictif, puis « police du futur » : PredPol abandonné après 9 ans à cause du **biais des données**, vidéosurveillance algorithmique. *« La donnée n'est pas toujours vraie. »*\n- Session très votée (339 votes) mais **la plus critiquée sur la profondeur** : 69 votes « Need more demo » et 42 « Too theorical ». Commentaires les plus soutenus : *« je reste sur ma faim, un peu superficielle »*, titre *« un peu putaclic »*, *« un listing exhaustif plutôt qu'un sujet creusé »*. Un participant a apprécié la présentation des outils open source.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "4-fl0XExLmU",
+        "title": "Trucs et astuces data pour devenir le prochain Sherlock Holmes !",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "renovate-dependabot-reprendre-le-controle-sur-ses-dependances",
+      "day": "2024-10-17",
+      "type": "talk",
+      "title": "Renovate/Dependabot, ou comment reprendre le contrôle sur la mise à jour de ses dépendances",
+      "speakers": [
+        "Jean-Phi Baconnais — Zenika",
+        "Lise Quesnel — Zenika"
+      ],
+      "feedbackFrom": [
+        "9 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Sur scène : la reprise d'un vieux side project en Angular 6 sert de fil rouge. Raisons de mettre à jour : sécurité, correctifs, performance, attractivité ; en moyenne **683 dépendances transitives** par projet npm.\n- Configuration de Renovate : presets (`config:recommended`, attente de 3 jours avant d'accepter une release), regroupement des paquets liés, Dependency Dashboard, relecteurs tirés de CODEOWNERS.\n- REX chez un client : limite ramenée à 5 MR ouvertes, majeures séparées, MR traitées à heure fixe, Ops prévenus de la charge des runners, tests instables corrigés.\n- Plus loin : automerge des patchs puis release automatique (semantic-release, Cloud Run), avec une mise en garde FinOps. *« La plus-value humaine de cliquer sur le bouton merge sans regarder le détail, c'est égal à zéro. »*\n- OpenFeedback : binôme jugé *« clair »* et *« dynamique »*, qui *« donne envie de le mettre en place »*. Bémol récurrent : Dependabot vite écarté, talk *« trop orienté solution produit Renovate »* (*« on pourrait enlever Dependabot du titre »*).",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "qbi5GYWftcY",
+        "title": "Renovate/Dependabot, ou comment reprendre le contrôle sur la mise à jour de ses dépendances",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ia-404-explication-not-found",
+      "day": "2024-10-17",
+      "type": "talk",
+      "title": "IA-404 : Explication not found",
+      "speakers": [
+        "Cécile Hannotte — Onepoint"
+      ],
+      "feedbackFrom": [
+        "Onepoint (dev.to, speaker de l'entreprise)",
+        "22 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Sur scène : un refus de crédit par une IA en 2034, sans explication, sert de fil rouge. Elle distingue **interprétabilité** (ce qui se passe dans le modèle) et **explicabilité** (pourquoi telle décision, pour l'utilisateur).\n- Enjeux éthiques (AI Act, CNIL), stratégiques (IBM Watson rejeté en 2011 par un hôpital faute d'explications) et techniques (un modèle qui reconnaissait les chevaux grâce au copyright des photos).\n- Méthodes passées en revue : LIME, SHAP, PDP, StylEx de Google, travaux d'Anthropic sur la monosémanticité.\n- Grille de décision : explicabilité facultative pour une décision non critique ; obligatoire pour une décision « à haut risque ». *« Si vous ne pouvez pas vous mettre en conformité avec les exigences de l'AI Act, stop, arrêtez. »*\n- Deuxième session la plus votée (482 votes) : **vulgarisation saluée** (*« tous les concepts sont bien vulgarisés »*, *« meilleure conf de la journée »*), plaisir de voir une femme sur un sujet tech. Réserves : niveau *« plus beginner qu'intermediate »*, tics de langage, *« pas autant de chats que promis »*.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "n7PeE_A1Gms",
+        "title": "IA-404 : Explication not found",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "how-to-build-and-deploy-custom-assistants-using-ai-agents",
+      "day": "2024-10-17",
+      "type": "talk",
+      "title": "How to Build and Deploy Custom Assistants to Work for You Using AI Agents",
+      "speakers": [
+        "Viktoria Semaan — AWS",
+        "Tiffany Souterre — AWS"
+      ],
+      "feedbackFrom": [
+        "3 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Sur scène (en anglais) : un agent Amazon Bedrock pour un client fictif qui veut une plateforme d'analytics et son coût, sans refaire l'étude à chaque changement d'exigence.\n- Trois outils : un assistant architecte (RAG sur une Knowledge Base, Claude 3.5 Sonnet), un assistant DevOps qui génère du Terraform, et un estimateur de coûts **volontairement sans LLM** (Infracost dans une Lambda) : *« On ne veut pas demander à un LLM de deviner : on veut des chiffres précis »* (traduit).\n- Orchestration par action groups dont les descriptions en langage naturel guident le choix des outils ; démo live qui recalcule l'architecture et son coût quand on demande plus de scalabilité.\n- Conseils : comparer les modèles (coût jusqu'à 5 fois supérieur), écrire des descriptions d'outils très précises.\n- Réception : 37 votes « Commercial presentation » sur 150 ; slides illisibles du fond de la salle. Un participant y voit *« un bon point de départ pour essayer Bedrock »*.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "qKOdvdUJLG4",
+        "title": "How to Build and Deploy Custom Assistants to Work for You Using AI Agents",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "code-case-les-methodes-de-la-crim-adaptees-au-code",
+      "day": "2024-10-17",
+      "type": "talk",
+      "title": "Code Case : les méthodes de la crim adaptées au code !",
+      "speakers": [
+        "Sylvain Coudert — freelance"
+      ],
+      "feedbackFrom": [
+        "6 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Sur scène : REX d'une mission inspiré du livre d'Adam Tornhill *Your Code as a Crime Scene*. Le speaker précise : *« c'est ce que j'ai fait, pas ce qu'il faut faire »*. Objectif : remplacer le ressenti par les données de `git log`, **sans chercher de coupable**.\n- Un an d'historique d'une base C# et TypeScript : environ 28 % de commits de merge et 31 % de correctifs, conséquence d'une branche par environnement.\n- Outils : code-maat, cloc, visualisation de hotspots. Surprise : les points chauds étaient côté front. 18 auteurs pour une équipe de moins de 8, signe d'un turnover qu'il dit avoir ignoré à tort.\n- Couplage : deux fichiers commités ensemble dans 65 % des cas révèlent de la duplication. Conseil : refaire l'analyse tous les 2 ou 3 mois et se méfier du biais de confirmation.\n- OpenFeedback : **mise en scène saluée** (*« un vrai effort de storytelling »*), *« REX honnête sur une démarche perfectible »*. Critique : on cherche du mauvais code *« de manière un peu aléatoire sans savoir s'il est prioritaire »*. Salle trop petite.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "I9AcC0g3dso",
+        "title": "Code Case : les méthodes de la crim adaptées au code!",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "our-future-without-passwords",
+      "day": "2024-10-17",
+      "type": "talk",
+      "title": "Our future without passwords",
+      "speakers": [
+        "Milica Mihajlija — Google"
+      ],
+      "feedbackFrom": [
+        "Anthony Baticle (Onepoint, dev.to)",
+        "5 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Sur scène (en anglais) : les mots de passe sont réutilisés par deux tiers des gens et 81 % des brèches liées au piratage viennent de mots de passe faibles ou volés.\n- Les **passkeys** : paire de clés liée au domaine (donc résistante au phishing), déverrouillée par le verrouillage d'écran, standard ouvert de la FIDO Alliance. Seule la clé publique est stockée côté serveur.\n- Implémentation WebAuthn (`navigator.credentials.create()` et `.get()`, `mediation: conditional`), partage entre domaines (Related Origin Requests), moments UX pour proposer une passkey. *« Les mots de passe ne disparaîtront pas du jour au lendemain »* (traduit).\n- Anthony Baticle (Onepoint) : *« très intéressante, bien que légèrement commerciale avec un focus sur les solutions Google »*, sujet complexe expliqué clairement.\n- OpenFeedback : 57 votes « Commercial presentation » sur 248 ; *« peu d'infos, beaucoup de promo »*, *« j'aurais aimé voir plus de code »*.",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "PMQb33saIwE",
+        "title": "Our future without passwords",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "de-monolithe-a-modulith-l-histoire-d-un-exorcisme",
+      "day": "2024-10-17",
+      "type": "talk",
+      "title": "De Monolithe à Modulith : L'histoire d'un Exorcisme",
+      "speakers": [
+        "Mélanie Bats — Obeo",
+        "Stéphane Bégaudeau — Obeo"
+      ],
+      "feedbackFrom": [
+        "7 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Sur scène : REX sur Sirius Web, plateforme low-code open source d'environ 500 000 lignes, présenté comme « 9 démons » techniques et organisationnels à exorciser, avec la loi de Conway en toile de fond.\n- Technique : monorepo, couches domaine, application et infrastructure, **tests d'architecture** qui interdisent certains appels, modules qui communiquent par événements en mémoire, schémas GraphQL qui se greffent sur le cœur.\n- Organisation : Team Topologies, cycle inspiré de Shape Up (8 semaines, feature freeze, stabilisation), changelog obligatoire, CalVer.\n- *« Les microservices c'est super si vous en avez besoin, mais c'est juste pas indispensable pour faire une application modulaire. Tout le monde n'est pas Netflix. »*\n- **Réception la plus mitigée** des talks retenus : 39 votes « Too theorical », 25 « Commercial » et 17 « Off topic » sur 222. Commentaires les plus soutenus : *« sensation de passage d'une usine à gaz à une autre »*, trop centré sur Sirius Web ; d'autres saluent le partage. Chaleur pénible dans la salle Belem.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "K1B2Hqg3Xmk",
+        "title": "De Monolithe à Modulith : L'histoire d'un Exorcisme",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "introduction-pratique-a-opentelemetry-pour-les-developpeurs",
+      "day": "2024-10-17",
+      "type": "talk",
+      "title": "Introduction pratique à OpenTelemetry pour les développeurs",
+      "speakers": [
+        "Nicolas Fränkel — Apache APISIX"
+      ],
+      "feedbackFrom": [
+        "Arthur Rousseau (Onepoint, dev.to)",
+        "4 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Sur scène : du monitoring sur murs d'écrans à l'observabilité (métriques, logs, traces). Conseils : métriques métier de haut niveau, logs en JSON sur la console.\n- Standard : W3C Trace Context, puis OpenTelemetry, fusion d'OpenTracing et d'OpenCensus. *« Utilisez l'auto-instrumentation si vous pouvez, c'est quasiment gratuit. »*\n- Démo d'un e-commerce polyglotte tracé dans Jaeger (Kotlin, Python, Rust, GraalVM, Ruby, Go), spans personnalisés, propagation manuelle sur MQTT ; limite montrée sur l'asynchrone.\n- Arthur Rousseau (Onepoint) retient la simplicité d'intégration : *« en une vingtaine de minutes »*, on retrace le chemin des requêtes. Il espère que plus aucun développeur n'aura à fouiller les logs pour cela.\n- OpenFeedback : *« bonne présentation et claire »*, *« ça donnerait presque envie de se lancer dans le tracing »*, avec un bémol sur les jugements tranchés envers certaines technos.",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "Bu0VKTxxAsc",
+        "title": "Practical Introduction to OpenTelemetry for Developers",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "analogjs-le-meta-framework-pour-angular",
+      "day": "2024-10-17",
+      "type": "talk",
+      "title": "AnalogJS, le meta-framework pour Angular que l'on attendait plus (ou pas)",
+      "speakers": [
+        "Benjamin Legrand — Onepoint"
+      ],
+      "feedbackFrom": [
+        "Onepoint (dev.to, speaker de l'entreprise)",
+        "5 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Sur scène : Angular est-il déjà un méta-framework ? Il fait du SSR et du SSG mais reste le seul de la liste sans **routage par fichiers**. AnalogJS (Brandon Roberts) comble ce manque.\n- Fonctionnalités : routes par arborescence, pages en Markdown, SSR et SSG hybrides, Vite et Vitest (recommandé même sans migrer), Nitro et H3 côté serveur, presets de déploiement ; fichiers `.analog` encore expérimentaux.\n- À utiliser si l'on a déjà des compétences Angular et un besoin de SSR ou de site riche en texte ; *« sinon, utilisez autre chose »*. *« Les abstractions, c'est bien ; c'est encore mieux quand on sait de quoi on s'abstrait. »*\n- OpenFeedback : diapos et fond appréciés, mais 20 votes « Need more demo » et des remarques sur la forme (*« ton un peu trop monotone »*, *« ça part un peu dans tous les sens »*).",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "mQujRWe_hNk",
+        "title": "AnalogJS, le meta-framework pour Angular que l'on attendait plus ( ou pas )",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "amazing-css-in-2024",
+      "day": "2024-10-17",
+      "type": "talk",
+      "title": "Amazing CSS in 2024",
+      "speakers": [
+        "Adam Argyle — Google"
+      ],
+      "feedbackFrom": [
+        "Adam Argyle (speaker, blog nerdy.dev)",
+        "8 commentaires OpenFeedback anonymes",
+        "Pablo Lara (partage Mastodon)"
+      ],
+      "summary": "- Sur scène (en anglais) : tour à grande vitesse d'une trentaine de fonctionnalités CSS récentes, **plus de 50 démos** selon le speaker : View Transitions en une ligne, container queries, cascade layers, @scope, field-sizing, light-dark(), @property, animations pilotées par le scroll, linear() easing, couleurs HDR et syntaxe relative, popover, anchor positioning.\n- *« Si c'est la seule chose que vous retenez de ce talk, c'est cette ligne de code »* (à propos de `@view-transition`, traduit). Peu de mains levées sur l'usage des container queries en production.\n- Seul talk CSS du jour 1 selon le speaker, qui le donnait en sweat squelette sur un skateboard.\n- OpenFeedback : *« Too fast too furious »*, *« ma conf préférée du jour 1 »*, slides en ligne très appréciées. Bémol : débit très rapide (*« comme une vidéo en x1.25 »*).",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "slides"
+      ],
+      "video": {
+        "youtubeId": "D79TND9w_AY",
+        "title": "Amazing CSS in 2024",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-meta-lois-vous-ne-leur-echapperez-pas",
+      "day": "2024-10-17",
+      "type": "talk",
+      "title": "Les Méta-Lois, vous ne leur échapperez pas !",
+      "speakers": [
+        "Stéphane Trebel — WeScale"
+      ],
+      "feedbackFrom": [
+        "16 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Sur scène : le parcours d'une développeuse junior dans une entreprise fictive sert à présenter des « méta-lois » sociales qu'on ne peut pas exterminer, seulement atténuer : Conway, Chesterton, Goodhart, Dunning-Kruger, Hofstadter et Parkinson, Lindy, Tesler, Hyrum, Shirky, marteau de Maslow.\n- Positions tranchées : la couverture de code imposée pousse à casser le thermomètre ; **« les estimations c'est de la daube »**, mieux vaut un MVP vraiment minimal et de petites itérations ; charge contre le *CV Driven Development* ; « semver est un mensonge ».\n- *« Le legacy, ça commence dès que vous avez commité. »* *« On est intraitable avec le code tout en étant adorable avec les gens. »*\n- Troisième session la plus votée (457 votes) : *« la meilleure conf de la journée pour moi »*, format narratif qui aide à adhérer, *« ça fait du bien de savoir que c'est partout pareil »*, *« combien pour venir répéter ça à mon chef ? »*.\n- Réserves : plus de conviction dans la critique que dans les solutions ; contradiction relevée entre la critique des rituels et l'appel à communiquer ; slides trop chargées.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "7uZAdS9yHlA",
+        "title": "Les Méta-Lois, vous ne leur échapperez pas !",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "react-compiler-easier-better-faster-stronger",
+      "day": "2024-10-17",
+      "type": "talk",
+      "title": "React Compiler : Easier, Better, Faster, Stronger",
+      "speakers": [
+        "Lucas Audart — Zenika",
+        "Mickaël Alves — Zenika"
+      ],
+      "feedbackFrom": [
+        "6 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Sur scène, en dialogue joué : la mémoïsation manuelle (`React.memo`, `useCallback`, `useMemo`) devient infernale à l'échelle ; le React Compiler (ex-React Forget) l'automatise, déjà en production chez Instagram et Facebook.\n- Prérequis : respecter les **Rules of React** (composants et hooks purs) ; le compilateur ignore sans risque le code non conforme. Démo : `healthcheck`, plugin Babel avec Vite, re-rendus inutiles supprimés sans toucher au code.\n- Limites : pas de class components, débogage des re-rendus plus difficile. *« Ça ne corrigera pas votre mauvais code. »* Statut expérimental, pas prêt pour la production à l'époque.\n- OpenFeedback : *« bonne mise en scène, bonnes démos, bons speakers »*, jeu de rôle drôle ; un participant aurait préféré une demi-heure.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "_edOnkr8Yy4",
+        "title": "React Compiler : Easier, Better, Faster, Stronger 🤖",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "pull-request-professionnelle-promouvoir-son-travail-en-interne",
+      "day": "2024-10-17",
+      "type": "talk",
+      "title": "Pull Request Professionnelle : Comment Promouvoir son travail en interne",
+      "speakers": [
+        "Vanessa Perillat — SFEIR"
+      ],
+      "feedbackFrom": [
+        "14 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Sur scène (environ 23 min) : par une membre du comité de direction de SFEIR, venue du recrutement. Le titre « Pull Request » n'est pas repris pendant le talk.\n- Critique du **syndrome du bon élève** : faire ce qu'on demande et attendre d'être récompensé au mérite ne suffit pas. *« Vous obtiendrez rarement ce que vous méritez, bien plus souvent ce que vous irez chercher. »*\n- Trois piliers : visibilité (dire « je », reporter à son chef, projets transverses), initiative (anecdotes de la place à Google Next et de l'augmentation), réseau interne et externe. Exemples tirés de SFEIR.\n- *« Réussir, ce n'est pas prendre la place de quelqu'un d'autre, mais vraiment occuper la sienne. »*\n- **Talk le plus contesté de l'édition** : 56 votes « Commercial » et 36 « Off topic » sur 163. Commentaires les plus soutenus : un discours qui demande *« de bien se faire voir par son chef »*, *« pour exister, être bon ne suffit plus, il faut faire du bruit »*, *« publicité pour SFEIR »*. D'autres s'y reconnaissent (*« ça fait du bien d'entendre ce qu'on ne veut pas entendre »*) ; plusieurs jugent le titre trompeur pour des développeurs.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "4BXoAAZj0OU",
+        "title": "Pull Request Professionnelle : Comment Promouvoir son travail en interne",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "redecouvrir-la-cooperation-atelier-de-mob-programming",
+      "day": "2024-10-17",
+      "type": "workshop",
+      "title": "Redécouvrir la coopération : Atelier de Mob Programming",
+      "speakers": [
+        "Manon Carbonnel — Shodo Nantes",
+        "Marjorie Aubert — Comet"
+      ],
+      "feedbackFrom": [
+        "Manon Carbonnel (speaker, Mastodon)",
+        "12 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Programme et annonce de l'animatrice : un atelier de 2 h qui commence **par un jeu vidéo puis un kata** de code, pour découvrir le mob programming.\n- D'après les commentaires, le jeu était *Baba Is You* : *« Baba is you est étonnamment proche du développement »* ; *« j'adore l'idée de commencer sur un jeu vidéo pour finir sur le code ! Mob is win »*.\n- Points salués : la complémentarité des deux animatrices et la gestion de la parole entre participants ; une directrice artistique, *« déjà convaincue par le pair programming »*, veut tester le mob.\n- Suggestion d'un participant : le format pourrait tenir en une heure avec le jeu et des rétros entre chaque tour. Pas de vidéo (atelier non filmé).",
+      "summarySources": [
+        "program",
+        "feedback"
+      ]
+    },
+    {
+      "id": "fresque-de-la-data",
+      "day": "2024-10-18",
+      "type": "workshop",
+      "title": "Fresque de la Data",
+      "speakers": [
+        "Laurène Thenoz — Hymaia",
+        "Sandra Pietrowska — Hymaia"
+      ],
+      "feedbackFrom": [
+        "Hervé Martin (Onepoint, dev.to)",
+        "6 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Atelier habituellement de 4 h ramené à 2 h ; une trentaine de participants en quatre équipes, selon Hervé Martin (Onepoint).\n- Cas d'usage thématisé (un dashboard pour un trafic d'organes, « thème du DevFest oblige ») : ordonner les cartes du cycle de la donnée, de l'ingestion au dashboard, puis résoudre les obstacles posés par une équipe rivale (dashboard bogué, tests absents, chiffres non fiables).\n- Rôles (data engineer, scientist, analyst), lignage, RGPD, qualité, Data Business Model Canvas, puis machine learning et modèles qui marchent « trop bien ».\n- Messages de clôture : appliquer à la data les bonnes pratiques de développement, **passer d'une mentalité projet à une mentalité produit**, mesurer l'impact environnemental de l'IA générative.\n- OpenFeedback : *« super format »*, impact environnemental de l'IA *« très bien vulgarisé »* ; un glossaire des termes aurait aidé.",
+      "summarySources": [
+        "blog",
+        "feedback"
+      ]
+    },
+    {
+      "id": "cyber-resilience-act-21-mois-pour-preparer-vos-chaines-devsecops",
+      "day": "2024-10-18",
+      "type": "talk",
+      "title": "Cyber Resilience Act : 21 mois pour y préparer vos chaînes DevSecOps",
+      "speakers": [
+        "David Robin — JFrog"
+      ],
+      "feedbackFrom": [
+        "6 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Sur scène, par un technicien *« pas juriste »* : le CRA est un règlement européen d'application directe, une sorte de **marquage CE du logiciel**. Obligation de déclarer les vulnérabilités exploitées à 21 mois, conformité totale à 36 mois.\n- Périmètre : tout logiciel distribué commercialement (même gratuit) qui se connecte à un appareil ou un réseau ; l'open source non commercial est en principe épargné, mais l'intégrateur devient responsable.\n- Obligations : livrer sans vulnérabilité exploitable connue, gérer les CVE au moins 5 ans, déclarer via une plateforme ENISA, prévoir une mise à jour sécurisée.\n- Outillage : curation des dépendances, méfiance envers les paquets « hallucinés » par l'IA, provenance (SLSA), SBOM, signature (Sigstore). Exemple : un projet passé de 570 à 603 CVE en 2 ans sans modification. *« Retenez juste une chose : l'UE ne prend pas ce sujet à la légère. »*\n- OpenFeedback : *« c'est, de loin, la conf la plus effrayante du DevFest »* ; *« merci d'avoir rendu intéressant une chose qui ne donne pas envie »*.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "9JHOP4N3J3g",
+        "title": "Cyber Resilience Act : 21 mois pour y preparer vos chaînes DevSecOps",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "tu-te-mets-combien-en-responsive-css-edition-2024",
+      "day": "2024-10-18",
+      "type": "talk",
+      "title": "Tu te mets combien en responsive CSS ? Edition 2024",
+      "speakers": [
+        "Julien Sulpis — Zenika",
+        "Théo Gianella — Zenika"
+      ],
+      "feedbackFrom": [
+        "8 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Sur scène : format jeu, « tu te mets combien » : 10 maquettes de difficulté croissante intégrées en live **en évitant au maximum les media queries**.\n- Techniques : largeurs en `ch` (80 à 100 caractères par ligne), `clamp()`, unités `svh`/`dvh`, `<picture>` et `srcset` (un mauvais recadrage gaspille environ 75 % de la bande passante), grid avec `minmax(min(25vw, 250px), 1fr)`.\n- Breakpoints en `em` plutôt qu'en `px` pour respecter le zoom texte à 200 % du RGAA ; container queries jugées pas encore prêtes si l'on vise des navigateurs un peu anciens, à nommer et à ne pas surutiliser.\n- *« L'idée du design responsive, c'est d'abandonner l'illusion de maîtrise […] il faut accepter l'imperfection. »*\n- OpenFeedback : *« bon script, storytelling, on sent les répètes »*, démo live *« très fluide et maîtrisée »*, format accessible même pour un débutant en CSS ; utile *« pour bien maîtriser CSS avant de se remettre dans un framework »*.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "yokgC2LdYFk",
+        "title": "Tu te mets combien en responsive CSS ? Edition 2024",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "server-side-wasm-le-prochain-game-changer",
+      "day": "2024-10-18",
+      "type": "talk",
+      "title": "Server side WASM, le prochain game changer ?",
+      "speakers": [
+        "Etienne Anne — MAIF",
+        "Mathieu Ancelin — SERLI"
+      ],
+      "feedbackFrom": [
+        "2 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Sur scène : le tweet de Solomon Hykes (« si WASM et WASI avaient existé en 2008, Docker n'aurait pas existé ») sert d'accroche. Wasm côté serveur : artefacts petits, démarrage quasi instantané, **isolation forte**, droits fins avec WASI.\n- REX : le système de plugins de la gateway Otoroshi réécrit en Wasm en 2023 (rechargement à chaud, plusieurs langages), avec le WAF Coraza et OPA ; Extism côté Java, création de Wasmo.\n- Démos : Coraza bloque un header Log4Shell ; WASI 0.2 et component model ; wasmCloud avec quatre composants en C, Go, Rust et TypeScript soumis au vote du public. *« wasmCloud, c'est un peu à Wasm ce que Kubernetes est à Docker. »*\n- Beaucoup de mains levées pour « qui connaît Wasm », une seule pour « qui en fait en prod ».\n- OpenFeedback : *« j'ai appris des choses »*, mais une démo qui montre que c'est faisable *« sans vraiment d'informations sur le comment faire »*.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "ziBaoZTOj0Q",
+        "title": "Server side WASM, le prochain game changer ?",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "reduire-l-empreinte-environnementale-du-numerique-par-4",
+      "day": "2024-10-18",
+      "type": "talk",
+      "title": "J'ai une idée pour réduire l'empreinte environnementale du numérique par 4",
+      "speakers": [
+        "Tristan Nitot — OCTO Technology"
+      ],
+      "feedbackFrom": [
+        "Benoit Reynaert (Onepoint, dev.to)",
+        "8 commentaires OpenFeedback anonymes",
+        "Michel Briand (partage Mastodon)"
+      ],
+      "summary": "- Sur scène : la loi de Moore est une décision industrielle qui s'essouffle ; la loi de Wirth fait grossir le logiciel plus vite que le matériel n'accélère. Environ **80 % de l'empreinte d'un appareil** est produite avant son premier allumage.\n- Exemples de gisements d'optimisation : mémoïsation (×60), passage de 64 à 8 bits (de 15 h à 10 s), et un cas extrême devenu immaintenable.\n- Proposition, la **loi de Eroom** : optimiser le logiciel d'un facteur 2 tous les 2 ans et garder le matériel, ce qui divise l'empreinte par 4. *« On n'optimise que sous la contrainte. »*\n- Benoit Reynaert (Onepoint) : la conférence *« a beaucoup plu »* et a suscité des discussions sur le profilage dans les jours suivants ; il pose la question de la motivation du client quand « ça marche ».\n- OpenFeedback : *« ce commentaire nécessite un iPhone 19 pour être consulté »* (le plus soutenu) ; une précision sur l'électricité française *« moins carbonée »* plutôt que décarbonée ; plusieurs regrettent que la mise en pratique en projet reste à creuser.",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "cnnWimwTduM",
+        "title": "J'ai une idée pour réduire l'empreinte environnementale du numérique par 4",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "machine-a-etats-pour-aider-la-petite-souris",
+      "day": "2024-10-18",
+      "type": "talk",
+      "title": "Et si on implémentait une Machine à Etats pour aider la petite souris ?",
+      "speakers": [
+        "Laurine Le Net — Takima"
+      ],
+      "feedbackFrom": [
+        "10 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Sur scène : point de départ vécu, un processus de recharge de voiture électrique en « code spaghetti » (webhooks, callbacks, if/else), sans vue d'ensemble, sans suivi ni retry par étape. Son tech lead y voit *« une drôle de façon d'implémenter une machine à états »*.\n- Concepts illustrés par une machine à café, puis le fil rouge de la petite souris : dent reçue, vérification des caries, commande d'argent (étape asynchrone), pièce sous l'oreiller.\n- **Live coding Java from scratch** : états, transitions, actions, moteur, contexte d'exécution historisé ; puis une version complète (pause, reprise, retry d'une seule étape, persistance MongoDB). Une erreur de transition est corrigée sur scène avec l'aide de la salle.\n- Alternatives citées : Spring State Machine, Temporal. *« Il faut juste faire attention à ne pas réinventer la roue. »*\n- OpenFeedback : *« belle gestion du petit effet démo et super live coding »*, *« speakeuse très compétente, pédagogue et courageuse »*, *« l'architecture, ce pan souvent oublié par les développeurs »*. Remarque transverse : le code trop petit pour les rangs du fond, problème signalé *« dans plusieurs salles »*.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "2ZMD-kM1gyw",
+        "title": "Et si on implémentait une Machine à Etats pour aider la petite souris ?",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "alors-quoi-de-neuf-dans-es2026",
+      "day": "2024-10-18",
+      "type": "talk",
+      "title": "Alors, quoi de neuf dans ES2026 ?",
+      "speakers": [
+        "Christophe Porteneuve — Doctolib"
+      ],
+      "feedbackFrom": [
+        "8 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Sur scène : fonctionnement du TC39 (stades 0 à 4, nouveau stade 2.7), puis revue de ce qui est arrivé et arrive dans JavaScript. Le speaker reconnaît qu'une bonne partie porte sur l'avant-2026.\n- ES2024 et ES2025 : `Object.groupBy` (*« encore un clou dans le cercueil de Lodash »*), helpers d'itérateurs, méthodes ensemblistes sur `Set`, import attributes et modules JSON, `Promise.try`.\n- Plus loin : `Array.fromAsync`, gestion explicite des ressources (`using`), **Temporal**, `RegExp.escape`, décorateurs, ShadowRealm, Signals. *« Un vrai ami ne laisse jamais un ami coder un calendrier. »*\n- Parmi les sessions les plus votées (345 votes) : *« génial »*, *« drôle et très instructif »*, *« excellent speaker »*. Réserves : code difficile à lire sur les slides, contenu *« trop dense et rapide »*.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "syiwlrtp5iw",
+        "title": "Alors, quoi de neuf dans ES2026 ?",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "bug-bounty-revolutionner-la-detection-des-vulnerabilites",
+      "day": "2024-10-18",
+      "type": "talk",
+      "title": "Bug Bounty : Révolutionner la détection des vulnérabilités dans votre SI et passer à l'échelle",
+      "speakers": [
+        "Florent Le Borgne — SIPA Ouest-France",
+        "Florian Girard — SIPA Ouest-France"
+      ],
+      "feedbackFrom": [
+        "12 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Sur scène : REX du groupe SIPA (Ouest-France, 20 Minutes, plus de 200 sites, stacks hétérogènes), annoncé *« sans rien à vendre »*. Contexte : DDoS à 200 000 requêtes par seconde avant la clôture des Paralympiques, ransomware parti d'un clic dans un mail.\n- Création de **« SSI champions »**, développeurs volontaires formés qui relaient la politique de sécurité, de la fiche projet à la CI, puis au bug bounty en production.\n- Programme privé sur YesWeHack, choisi parce que français : règles, périmètre, primes de 100 à 1 500 €. Exemple réel simplifié : modifier le prix dans le payload pour payer 2 € au lieu de 20 à 40 €. *« Il n'y a pas de petite faille. »*\n- Bilan sur plus de 2 ans : 144 failles potentielles remontées. Leçons : commencer petit (une dizaine de hunters), ne pas ouvrir en fin de semaine, exclure les CVE connues des CMS.\n- OpenFeedback : *« très clair pour des devs sans notions en cyber »*, *« présentation humble et généreuse »*, REX français jugé rare. Bémol : trop de lecture de slides.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "0hqfjsujF2A",
+        "title": "Bug Bounty: Revolutionize vulnerability detection in your IT system and scale up",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "evaluer-une-rag-j-ai-teste-je-vous-raconte",
+      "day": "2024-10-18",
+      "type": "talk",
+      "title": "Évaluer une RAG : j'ai testé, je vous raconte !",
+      "speakers": [
+        "Hugo Vassard — Ippon Technologies"
+      ],
+      "feedbackFrom": [
+        "9 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Sur scène : une « boîte à outils » pour détecter les hallucinations, éviter les régressions et piloter les améliorations d'un RAG, en offline comme en production.\n- Jeu de test : commencer avec **10 à 30 questions-réponses écrites avec le métier**. La génération synthétique avec Ragas a coûté 1 165 appels LLM et environ 1 million de tokens pour une quarantaine de questions de qualité inégale.\n- LLM-as-a-judge : biais connus (position, longueur, auto-approbation), mais un accord avec les humains comparable à celui entre deux humains, à condition d'utiliser un modèle puissant. *« Qui juge le LLM juge ? »*\n- Métriques séparées (answer correctness, context recall, faithfulness), outils (Ragas, DeepEval, LangSmith, Giskard). Les problèmes viennent surtout de la récupération : nettoyer les données, ajuster les chunks et le reranking.\n- OpenFeedback : **accessible aux non-initiés** (*« bien rythmé et accessible sans connaissance approfondie »*), démos et humour appréciés, même si *« les blagues sont parfois maladroites »*.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "C2E3Aqvr_Oc",
+        "title": "Evaluating a RAG: I tested it, let me tell you about it!",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-meteorite-gpt-et-les-dinosaures-moteur-de-recherche",
+      "day": "2024-10-18",
+      "type": "talk",
+      "title": "La météorite GPT annonce-t-elle la disparition des dinosaures « moteur de recherche » ?",
+      "speakers": [
+        "David Pilato — Elastic"
+      ],
+      "feedbackFrom": [
+        "3 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Sur scène : les LLM n'ont pas tué les moteurs de recherche ; chez Elastic, la barre de recherche revient comme **brique du RAG**.\n- Limites de la recherche lexicale, puis vecteurs expliqués sur des axes Star Wars (kNN, similarité cosinus, HNSW), quantization, recherche hybride et RRF.\n- Démo audio où il chante pour retrouver un morceau, puis avoue que c'est « bidon » : le modèle classe des types de sons, pas des mélodies. *« Vous faites pas avoir par les démos des éditeurs. »* Démo RAG qui répond « je ne sais pas » hors corpus, comportement voulu.\n- **Talk jugé commercial** : 64 votes « Commercial presentation » sur 201, record de l'édition. Commentaire le plus soutenu : *« talk commercial beaucoup trop éloigné du titre »* ; un autre note que le sujet du titre n'arrive que dans les dernières minutes. Un participant a aimé les détails techniques.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "UW2ajjz3u9E",
+        "title": "La météorite GPT annonce t'elle la disparition des dinosaures \"moteur de recherche\" ?",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-aventuriers-de-la-motivation-perdue",
+      "day": "2024-10-18",
+      "type": "talk",
+      "title": "Les aventuriers de la motivation perdue",
+      "speakers": [
+        "Noémie Delrue — CGI"
+      ],
+      "feedbackFrom": [
+        "Anthony Baticle (Onepoint, dev.to)",
+        "37 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Sur scène : une fausse ouverture démotivée, puis la fable des campagnols, les quatre stades de compétence, les **langages de la reconnaissance** transposés au travail et un « brag doc » détourné en carnet personnel de réussites.\n- La Golden Globe Race de 1968 et le « refus de parvenir » de Bernard Moitessier, le principe de Peter, la carrière vue comme un marathon.\n- Final : relaxation guidée, puis un SMS de remerciement que chacun envoie à un proche ; questions remplacées par des remerciements au micro. *« Se motiver, c'est trouver la force de se bouger. »*\n- Anthony Baticle (Onepoint) : *« un retour à l'essentiel, avec douceur, humour et empathie »*, *« inspirant et émouvant »*.\n- Session la plus commentée de l'édition sur OpenFeedback (37 commentaires) : beaucoup de « merci » en écho à l'exercice, *« une vraie claque »*, *« la meilleure conf des deux jours »*. **Clivage sur la méditation** : *« la séance de méditation était en trop »*, *« talk sur la motivation ou séance de méditation new-age ? »* ; 17 votes « Off topic ».",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "oU8QMHKac70",
+        "title": "Les aventuriers de la motivation perdue",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "retourner-le-cerveau-de-sa-gameboy",
+      "day": "2024-10-18",
+      "type": "talk",
+      "title": "Retourner le cerveau de sa Gameboy et les attraper (vraiment) tous",
+      "speakers": [
+        "Audren Burlot — Max Digital Services"
+      ],
+      "feedbackFrom": [
+        "17 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Sur scène : une longue première partie (environ 25 minutes) retrace la genèse de Pokémon, de Satoshi Tajiri au Mew ajouté en dernière minute dans la mémoire libérée par les outils de debug.\n- Puis démo sur émulateur du **glitch de Mew**, expliquée avec le désassemblage du jeu : drapeaux mémoire laissés armés, statistique Spéciale de 21 (0x15, l'identifiant interne de Mew), underflow d'expérience sur 24 bits qui fait passer Mew au niveau 100.\n- Rappels techniques : processeur dérivé du Z80, 8 bits, 64 Ko adressables. *« On n'est pas en train de développer une appli Electron de 4 Go. »* *« Ça, c'est la beauté du glitch : vous n'avez rien cassé dans votre jeu. »*\n- OpenFeedback : enthousiasme rare (*« Extraordinaire ! Keynote ! »*, *« le GOAT »*, *« meilleure conf du DevFest »*), nostalgie et storytelling salués. Critique partagée : **intro trop longue**, fin technique accélérée.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "qKh0Gv_EVtw",
+        "title": "Retourner le cerveau de sa Gameboy et les attraper (vraiment) tous 💪",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "anatomie-d-une-faille",
+      "day": "2024-10-18",
+      "type": "talk",
+      "title": "Anatomie d'une faille",
+      "speakers": [
+        "Olivier Poncet — Arneo"
+      ],
+      "feedbackFrom": [
+        "Arthur Rousseau (Onepoint, dev.to)",
+        "7 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Sur scène : la backdoor de **XZ Utils** (CVE de mars 2024, score 10/10), découverte par Andres Freund à cause d'une latence SSH anormale.\n- Ingénierie sociale : « Jia Tan » gagne en deux ans la confiance d'un mainteneur seul et épuisé, avec l'aide de comptes qui mettent la pression, puis devient co-mainteneur.\n- Ingénierie technique : tarball différent du dépôt git, payload caché dans des fichiers de test, Landlock désactivé par un simple point, détournement via IFUNC dans sshd. Attaque patiente, probablement étatique, découverte par *« un coup de chance monumental »*.\n- Message de fond, la supply chain : *« Toute notre infrastructure moderne est basée probablement sur un logiciel open source maintenu par une seule personne. »* Recommandations : dépôt d'artefacts local, audit des dépendances, pas toujours la dernière version.\n- Arthur Rousseau (Onepoint) : *« probablement celle qui m'a le plus intéressé de tout ce DevFest »* ; il en retient le risque pour les mainteneurs et la vigilance côté consommateurs. OpenFeedback : *« Incroyable, comme d'habitude »*, *« cette faille est effrayante »* ; quelques votes « Too complex ».",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "wb6gDRcrk6c",
+        "title": "Anatomie d'une faille",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "femmes-et-numeriques-reperer-les-mesures-incitatives-efficaces",
+      "day": "2024-10-18",
+      "type": "talk",
+      "title": "Femmes et numériques : repérer les mesures incitatives efficaces",
+      "speakers": [
+        "Isabelle Collet — Université de Genève"
+      ],
+      "feedbackFrom": [
+        "7 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Sur scène : environ 16 à 18 % de femmes dans le numérique. Leur part augmentait jusqu'au milieu des années 1980, puis a reculé avec la montée en prestige du métier et l'arrivée du micro-ordinateur chez les garçons. *« C'est pas parce que les femmes arrivent dans un métier qu'il se dévalorise, c'est parce que le métier se dévalorise que les femmes y arrivent. »*\n- Ce qui ne suffit pas seul : agir tôt au primaire, les rôles modèles, déconstruire les stéréotypes. Le moment décisif est celui des choix d'orientation.\n- Ce qui marche : **des mesures systémiques** (intéresser, recruter, socialiser). Exemples : quota à l'université NTNU de Trondheim, supprimé une fois la mixité devenue banale ; critères d'admission élargis à Carnegie Mellon ; mentorat, codes de conduite. Une femme sur deux quitte le numérique avant 35 ans, contre un homme sur cinq.\n- *« Je préfère être là parce que je suis une femme que pas là parce que je suis une femme. »*\n- OpenFeedback : *« merci pour la vision décomplexée »*, *« trop court, le sujet aurait mérité 1 h de plus »*. Une participante en ressort *« avec plus de mesures qui ne marchent pas que de mesures qui marchent »*.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "y5wvs7om4dY",
+        "title": "Women and Digital Technology: Identifying Effective Incentives",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "mongodb-en-scale-up-sortir-d-un-enfer-monolithique",
+      "day": "2024-10-18",
+      "type": "talk",
+      "title": "MongoDB en scale-up : comment sortir d'un enfer monolithique",
+      "speakers": [
+        "Laurentiu Capatina — PayFit",
+        "Alexis « Horgix » Chotard — PayFit"
+      ],
+      "feedbackFrom": [
+        "10 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Sur scène : un cluster MongoDB unique, auto-hébergé, en version 3.6 non supportée, qui contenait 98 % des données de l'entreprise, partagées entre services.\n- Incidents de mars 2023 : près de 5 h d'indisponibilité sur plusieurs jours, 8 jours de lenteurs, plus de 1 500 tickets clients, un postmortem de 27 pages. Monter sur de très grosses machines ne faisait gagner que 20 à 30 minutes avant le failover suivant.\n- Sortie : analyse des requêtes lentes, désactivation de fonctionnalités, puis migration vers MongoDB Atlas avec **un cluster par domaine métier**, outillage fourni aux équipes (SSO, IAM, Terraform), early adopters d'abord. *« On n'a pas peur du lock-in… on achète avant de construire. »*\n- Résultat : aucun incident lié à Mongo d'octobre 2023 à avril 2024, coûts attribuables à chaque domaine.\n- OpenFeedback : **transparence sur les difficultés** saluée, REX *« transposable dans d'autres contextes »*, *« vive les SRE ! »* ; rythme technique parfois difficile à suivre.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "PPQimiViVSA",
+        "title": "MongoDB en scale-up : comment sortir d’un enfer monolithique",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-performance-web-le-cas-de-l-afrique",
+      "day": "2024-10-18",
+      "type": "talk",
+      "title": "La Performance Web : Le cas de l'Afrique",
+      "speakers": [
+        "Ayoub Alouane — Adservio Group"
+      ],
+      "feedbackFrom": [
+        "4 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Sur scène : une grande partie du monde navigue en 3G ; en Afrique, environ 75 % des accès à Internet passent par un téléphone, souvent avec 2 Go de RAM. 15 Go de données par mois coûtent à peu près un salaire minimum au Burkina Faso, selon le speaker.\n- Rappel des Core Web Vitals, puis histoire du rendu web (SPA, SSR, hydratation) : selon lui, avec l'hydratation *« on n'a rien optimisé, on a juste essayé de tricher »*.\n- Solution défendue : la **résumabilité** avec Qwik, qui découpe l'application en petits morceaux préchargés mais exécutés seulement à l'interaction.\n- *« Le monde, c'est pas seulement la France […], il y a aussi un autre monde. »*\n- OpenFeedback : rythme et démonstration du problème des SPA salués, présentation de Qwik jugée succincte ; *« on ne sait pas comment réduire les 30 Mo de JS »*. Talk très digressif (une longue analogie sur le couscous).",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "pUf4KiLLpZs",
+        "title": "La Performance Web : Le cas de l'Afrique",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-monstre-invisible-l-empreinte-carbone-de-l-ia",
+      "day": "2024-10-18",
+      "type": "lightning",
+      "title": "Le monstre invisible : l'empreinte carbone de l'IA",
+      "speakers": [
+        "Olivier Bierlaire — Carbonifer"
+      ],
+      "feedbackFrom": [
+        "Hervé Martin (Onepoint, dev.to)"
+      ],
+      "summary": "- Sur scène : quickie d'environ 18 minutes, en remplacement au pied levé d'un talk Kubernetes, selon le speaker. Ordres de grandeur : l'IT émettrait plus que l'aviation civile ; 1 t de CO2 équivaut à peu près à un aller-retour Paris-New York.\n- Estimations pour l'IA : environ 500 t pour l'entraînement de GPT-3, bien plus pour l'inférence annuelle de ChatGPT ; mieux vaut **fine-tuner un modèle existant que réentraîner**. Si l'on héberge un modèle, il faut le charger au maximum.\n- Outils de mesure (Code Carbon, EcoLogits, Electricity Maps, tableaux de bord des clouds, qui « trichent un peu » avec la compensation) et leviers : modèles plus petits, choix de la région, quantization, texte plutôt qu'image.\n- *« Questionnez l'IA en tant que solution, parfois ce n'est pas forcément la meilleure. »*\n- Hervé Martin (Onepoint) : *« une conférence percutante »* ; il retient l'importance du lieu d'exécution, la réduction de la taille des modèles et la mesure pour un « retour sur investissement carbone ». Slides publiées sur Canva.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "2PHGFywU-4A",
+        "title": "Le monstre invisible : l'empreinte carbone de l’IA",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "data-et-sport-la-revolution",
+      "day": "2024-10-18",
+      "type": "lightning",
+      "title": "Data et sport : la révolution",
+      "speakers": [
+        "Eric Alard — ENI Ecole Informatique"
+      ],
+      "feedbackFrom": [
+        "Hervé Martin (Onepoint, dev.to)",
+        "5 commentaires OpenFeedback anonymes"
+      ],
+      "summary": "- Sur scène, par un ancien bobeur olympique : capteurs et données dans le bobsleigh, GPS dans les maillots et protège-dents à accéléromètre au rugby, R&D nutrition d'une équipe cycliste. Trois conditions pour en tirer un avantage : accès à la technologie, traitement des données, moyens financiers.\n- Côté spectateurs, l'expérience fan se prolonge sur écran. Contre-exemples où l'humain dépasse la mesure : Bob Beamon en 1968, Nadia Comaneci notée 1.00 en 1976. *« Le sport est un reflet de notre société. »*\n- Hervé Martin (Onepoint) : **un format proche d'un TEDx**, avec un storytelling émotionnel travaillé, *« moins technique, plus accessible »*.\n- OpenFeedback : très bon orateur, mais *« on n'a pas appris beaucoup sur le sujet »* ; 19 votes « Off topic » sur 95. Un ancien tech y voit pourtant la session qui l'a le plus marqué.",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "4mp3MUE-x4c",
+        "title": "Data et sport : la révolution",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "keynote-de-fermeture-qui-veut-gagner-des-frissons",
+      "day": "2024-10-18",
+      "type": "keynote",
+      "title": "Keynote de fermeture",
+      "speakers": [
+        "Équipe organisatrice du GDG Nantes (speaker « secret »)"
+      ],
+      "feedbackFrom": [
+        "1 commentaire OpenFeedback"
+      ],
+      "summary": "- Sur scène : un sketch de l'équipe organisatrice en jeu télévisé, « Qui veut gagner des frissons », avec une pyramide de gains allant de la « file d'attente » à « CrowdStrike » et des jokers « appel à l'IA », « Chaos Monkey » et « vote du public ».\n- Questions de culture dev : mot de passe le plus répandu, couleur exacte de l'écran bleu, moyen insolite d'obtenir une place cette année (une disquette distribuée en soirée GDG), regex de validation d'e-mail. La réponse absurde de ChatGPT sur le centrage d'un bouton fait rire la salle.\n- La question sur le thème 2025 tourne au gag et le thème n'est pas révélé. Annonces : DevFest les 16 et 17 octobre 2025, 86 arbres plantés grâce à un challenge, photo de groupe avec speakers et bénévoles.\n- Peu de retours écrits : un seul commentaire OpenFeedback (*« C'était génial, bravo »*), votes surtout « Fun ».",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "lJSnL-nbFro",
+        "title": "Keynote de fermeture",
+        "publishedAt": "2024-10-30",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Comment on a pimpé la 4L de Papy pour explorer Mars (Lemaire-Lefebvre, Briard, Thales)",
+    "Balancing tight security with fluid devex, powered by GKE (Natalie Godec)",
+    "Micro Frontend : libérer le potentiel de l'Importmap (Jonathan Gelin)",
+    "TinyGo, petit mais costaud (Aurélie Vache, Thierry Chantier)",
+    "Kueue : Kubernetes-native Job Queueing (Laurent Grangeau, Google)",
+    "GraphQL at Scale (Anthony Giniers, Swan)",
+    "OpenFeature : la normalisation du feature flag ? (Morgan Blanloeil, quickie)",
+    "Cutting through the layers: anatomy of a Linux system (Simon Chopin, quickie)",
+    "Parlons d'entretiens techniques (Ane Diaz De Tuesta, quickie)",
+    "Pl@ntNet : internationalisation dans 45 langues (Hugo Gresse, Thomas Paillot, quickie)",
+    "Ariga Atlas, pour aller au bout du GitOps (Guillaume Moirod, quickie)",
+    "dbt, ou comment facilement construire vos données (Guillaume Le Floch, quickie)",
+    "Mettre le monde en vecteur (Florent Legras, quickie)",
+    "Survie dans les ténèbres du rendu frontend (Alan Duchene, Jimmy Kasprzak, quickie)",
+    "Façonnez votre cloud avec Karpenter (Olivier Leplus, Clément Goillot, AWS ; transcript lu, voir synthèse)",
+    "Event driven et Serverless dans GCP (Mazlum Tosun)",
+    "Plongeons au cœur des frameworks frontend modernes et de leur réactivité (Sylvain Dedieu)",
+    "Développe sur un toaster grâce à Coder (Mélissa Pinon, Paul Vulliemin)",
+    "Platform Engineering Day-2 avec Backstage (Julien Hery)",
+    "/e/OS, mon smartphone Android sans Google (Benoît Masson, quickie ; transcript lu, voir synthèse)",
+    "Dev dès 12 ans : les Petits Hackers (Maison du libre, quickie ; transcript lu, voir synthèse)",
+    "Dynamisez vos backends avec HTMX (Alexis Lozano, quickie)",
+    "Boostez vos sites avec le code HTTP 103 Early Hints (Kévin Dunglas, quickie ; transcript lu, voir synthèse)",
+    "Dis papa, c'est quoi la génération procédurale ? (Flavien Normand, quickie)",
+    "Libérer la magie avec Dapr (John Dennison, Tony Jarriault, quickie)",
+    "Codelab Mission Jetpack Compose (Audrey Gentili, Olivier Perez)",
+    "Codelab RAG against the Machine (Bernard, Buret, Therrode)",
+    "Codelab Tous ensemble : atelier de l'inclusion (Luz Delgado, Stéphanie Vachon)",
+    "Codelab Kubernetes, du cauchemar au conte de fée (Ambre Person, Gwenaël Bec)",
+    "Codelab L'invasion du HTML mutant (Gaël Poupard, Onepoint)",
+    "Codelab IA Sprint (Philippe Antoine, Google)",
+    "Codelab La sécurité, par où commencer ? Install party (David et Christopher Aparicio)",
+    "Codelab Quoi ? Vous n'utilisez pas Figma ?! (Antoine Candy, Simon Mercier)",
+    "Codelab Comprendre l'IA : votre propre ChatGPT avec Node.js et LangChain (Thomas Rannou, Yohan Lasorsa)",
+    "Codelab Enter the Daggerverse (Emeric Martineau, Julien Haumont)",
+    "Codelab Angular Renaissance (Camille Pillot, Gérôme Grignon)",
+    "Codelab Hands-on Gemini with Java and LangChain4j (Guillaume Laforge, Valentin Deleplace)",
+    "Codelab Le petit chaperon rouge pratique le Zero Trust (WeScale)"
+  ],
+  "sources": [
+    { "label": "Programme officiel DevFest Nantes 2024", "url": "https://devfest2024.gdgnantes.com/schedule" },
+    { "label": "Playlist YouTube DevFest Nantes 2024 (GDG France)", "url": "https://www.youtube.com/playlist?list=PLuZ_sYdawLiWenx-X315dfZNOaliVnSTY" },
+    { "label": "OpenFeedback DevFest Nantes 2024 (votes et commentaires anonymes par session)", "url": "https://openfeedback.io/devfestnantes24" },
+    { "label": "Onepoint (dev.to) : Devfest Nantes 2024, la frayeur s'invite à la cité des congrès, par Arthur Rousseau, Benoit Reynaert, Anthony Baticle et Hervé Martin", "url": "https://dev.to/onepoint/devfest-nantes-2024-la-frayeur-sinvite-a-la-cite-des-congres-3pan" },
+    { "label": "Adam Argyle (speaker) : Amazing CSS in 2024 at DevFest Nantes", "url": "https://nerdy.dev/amazing-css-in-2024" },
+    { "label": "Slides Amazing CSS in 2024 (Adam Argyle)", "url": "https://argyle-at-devfest-2024.netlify.app/" },
+    { "label": "Mastodon : Arthur (Zenika) sur le Hackerspace du DevFest", "url": "https://pouet.chapril.org/@arthurzenika/113323548195365851" },
+    { "label": "Mastodon : gmembre, bénévole et co-animateur du Hackerspace", "url": "https://piaille.fr/@gmembre/113347079982323820" },
+    { "label": "Posts Mastodon lus (#DevFestNantes) : arthurzenika, gmembre, manoncarbonnel (speaker), cbossard, donthatedontkill, michelbriand, lcheylus, cooptilleuls, pablolarah, dadideo" }
+  ]
 }

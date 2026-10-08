@@ -4,10 +4,719 @@
   "title": "ai-PULSE 2024",
   "edition": "2e édition",
   "start": "2024-11-07",
+  "end": "2024-11-07",
   "city": "Paris",
   "venue": "Station F",
-  "url": "https://web.archive.org/web/20241003/https://www.ai-pulse.eu/",
+  "url": "https://2024.ai-pulse.eu/",
+  "programUrl": "https://2024.ai-pulse.eu/agenda",
+  "theme": "Big, Efficient & Open",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "Journée unique le 7 novembre 2024 à Station F, organisée par Scaleway (groupe iliad). Keynotes du matin sur l'Open Platform (9 h 30 à 11 h 30), puis 32 sessions l'après-midi réparties entre Master Stage, Central Room, Creativity Room, Workshop room et Founders café. Fréquentation selon les sources : « 1 500 attendees, 50 speakers, 8 stages » (site 2024), environ 1 500 invités attendus (Univers Freebox), 1 300 participants (Il Fatto Quotidiano).",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-08",
+  "revisit": "Aucun post LinkedIn ni blog de participant retrouvé (7 recherches web) ; la synthèse repose sur les transcripts des lives et replays, le programme, la communication Scaleway et la presse. Chercher des posts LinkedIn de participants publiés entre le 7 et le 20 novembre 2024 (#aiPULSE, noms des speakers : Laurent Mazaré, Nacim Rahal, Alex Combessie, Eliot Andres) et les articles de suivi du French Tech Journal.",
+  "corpus": "Programme officiel (2024.ai-pulse.eu, 32 sessions + keynotes), playlist YouTube « ai-PULSE 2024 » (27 vidéos) dont les transcripts complets des lives Master Stage et Central Room et de 5 replays (H, AI Act, empreinte carbone, Kili, LightOn), le récap et l'article « Best quotes » du blog Scaleway, et la presse (Maddyness 08/11/2024, French Tech Journal 12/11/2024, Univers Freebox, Il Fatto Quotidiano 19/11/2024).",
+  "limits": "Aucun retour de participant (post LinkedIn, blog) retrouvé : les résumés décrivent ce qui a été dit sur scène, pas ce qu'en a retenu le public. Le live des keynotes du matin n'a pas de sous-titres : ces sessions reposent sur les citations publiées par Scaleway (organisateur) et sur la presse ; les workshops (Founders café, Workshop room) ne sont pas documentés.",
+  "tldr": "Une 2e édition **« Big, Efficient & Open »** dominée par l'infrastructure : GPU, mémoire, énergie et refroidissement d'un côté, **modèles ouverts et spécialisés** (Moshi, Llama, poolside, Bioptimus) de l'autre, avec en toile de fond la promesse d'une **IA européenne souveraine** portée par Scaleway et l'écosystème français.",
+  "keyTakeaways": [
+    "Choisir un GPU d'inférence en regardant d'abord la mémoire : un Llama 70B en fp16 (140 Go) tient sur un MI300X de 192 Go mais demande deux H100 de 80 Go (AMD).",
+    "Se méfier de l'effet rebond : les gains d'efficacité sont absorbés par la hausse des usages ; d'abord se demander si un modèle génératif est nécessaire (frugalité plutôt qu'efficacité, panel durabilité).",
+    "Quantifier et distiller : une quantization 8 bits ou AWQ 4 bits réduit de plus de 30 % le CO2 par token pour une perte de score minime (IJO, On Behalf AI).",
+    "Construire le pipeline d'évaluation avant le produit, puis le réviser quand les métriques techniques progressent sans que la satisfaction suive (Doctolib).",
+    "Pour les LLM, la robustesse passe par des jeux d'évaluation générés et un LLM-juge relus par des humains ; l'explicabilité sert surtout au développement et à l'adoption (Giskard, Owkin).",
+    "Un long temps de réponse tue l'usage : une fonctionnalité à une minute n'était pas utilisée chez Photoroom, la même en quelques secondes l'est.",
+    "Mesurer un nouveau modèle par catégorie d'usage et pas seulement en moyenne : une mise à jour meilleure en moyenne a fâché toute une communauté de toiletteurs canins (Photoroom).",
+    "Préparer dès maintenant la portabilité logicielle vers d'autres architectures (ARM, AMD, accélérateurs) : porter un logiciel est toujours plus long que prévu (HPE).",
+    "Pour l'AI Act, commencer par qualifier son rôle (fournisseur, déployeur) et ses cas d'usage, vérifier les licences des modèles ouverts et rédiger son analyse d'impact algorithmique (Entropy)."
+  ],
+  "sessions": [
+    {
+      "id": "ouverture-xavier-niel-aude-durand",
+      "day": "2024-11-07",
+      "type": "keynote",
+      "title": "Ouverture : Big, Efficient & Open",
+      "speakers": [
+        "Xavier Niel — groupe iliad",
+        "Aude Durand — groupe iliad"
+      ],
+      "feedbackFrom": [
+        "Maddyness (presse, 08/11/2024)"
+      ],
+      "summary": "- Aude Durand pose les **trois thèmes de l'édition** (« Big, Efficient, Open ») et rappelle que les modèles de pointe demandent une puissance de calcul immense (citations publiées par Scaleway).\n- Xavier Niel revient sur le pari de la première édition : *« Europe has no AI ecosystem! »* lui disait-on il y a 18 mois ; il cite **Mistral, Poolside et Argil** comme preuves du contraire.\n- Il présente **Moshi (Kyutai)** comme *« the first truly open-source AI model created in Europe »*, gratuit.\n- **Lecture critique** : Maddyness note une apparition de Xavier Niel *« plus brève »* qu'en 2023. Résumé établi sans transcript (le live du matin n'a pas de sous-titres).",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "Fm-4NL-Rw2M",
+        "title": "[LIVE] Morning Keynotes | #aiPULSE 2024 by Scaleway | Europe's Premier AI Conference",
+        "publishedAt": "2024-11-07",
+        "transcript": false
+      }
+    },
+    {
+      "id": "keynote-michael-dell",
+      "day": "2024-11-07",
+      "type": "keynote",
+      "title": "Michael Dell : l'IA partout, du cloud à l'edge",
+      "speakers": [
+        "Michael Dell — Dell Technologies"
+      ],
+      "feedbackFrom": [
+        "Maddyness (presse, 08/11/2024)",
+        "French Tech Journal (presse, 12/11/2024)"
+      ],
+      "summary": "- Intervention **en vidéo** selon Maddyness.\n- Parallèle avec Internet au milieu des années 90 : on se demandait encore ce que cela voulait dire.\n- **Inférence partout** : *« AI will be used both on the cloud and on devices… at the edge »*, au plus près de l'action.\n- **Bascule vers l'ouvert** : l'an dernier était celui des modèles fermés ; *« two thirds of activity is now happening in open models »*.\n- *« We're transitioning from calculating to thinking »* : l'IA demandera de nouvelles architectures de calcul (repris par le French Tech Journal).\n- Plusieurs speakers de l'après-midi s'y réfèrent (Ampere pour « l'inférence partout », Meta pour *« bring the AI to the data »*). Résumé établi à partir des citations publiées par Scaleway.",
+      "summarySources": [
+        "blog",
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "Fm-4NL-Rw2M",
+        "title": "[LIVE] Morning Keynotes | #aiPULSE 2024 by Scaleway | Europe's Premier AI Conference",
+        "publishedAt": "2024-11-07",
+        "transcript": false
+      }
+    },
+    {
+      "id": "keynote-renee-james-ampere",
+      "day": "2024-11-07",
+      "type": "keynote",
+      "title": "Renée James : des processeurs efficaces pour l'IA",
+      "speakers": [
+        "Renée J. James — Ampere Computing"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Objectif initial d'Ampere : deux fois plus de puissance pour moitié moins d'énergie ; résultat annoncé, **3 à 4 fois la performance**.\n- Les processeurs doivent évoluer avec les modèles, et l'IA doit devenir *« affordable and environmentally efficient, because we don't have more power »*.\n- Plaidoyer pour un meilleur **accès au capital** des acteurs européens.\n- Résumé établi à partir des seules citations publiées par Scaleway (organisateur et partenaire d'Ampere).",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "Fm-4NL-Rw2M",
+        "title": "[LIVE] Morning Keynotes | #aiPULSE 2024 by Scaleway | Europe's Premier AI Conference",
+        "publishedAt": "2024-11-07",
+        "transcript": false
+      }
+    },
+    {
+      "id": "keynote-scaleway-annonces-2024",
+      "day": "2024-11-07",
+      "type": "keynote",
+      "title": "Keynote Scaleway : annonces 2024",
+      "speakers": [
+        "Damien Lucas — Scaleway",
+        "Jean-Baptiste Kempf — Scaleway"
+      ],
+      "feedbackFrom": [
+        "Maddyness (presse, 08/11/2024)",
+        "Il Fatto Quotidiano (presse, 19/11/2024)",
+        "Univers Freebox (presse)"
+      ],
+      "summary": "- **Capacité GPU** : 3 000 H100 aujourd'hui (*« triple our total this time last year »*), **plus de 5 000 GPU** sous quelques semaines, soit une capacité multipliée par cinq en un an ; Blackwell annoncé.\n- **AMD MI300X** : Scaleway premier fournisseur européen ; le speaker AMD de l'après-midi renvoie vers une liste d'attente pour quelques jours d'essai gratuit.\n- **Calculateur d'empreinte environnementale** (bêta privée) couvrant les trois scopes, le matériel et l'eau : *« Transparency matters »* (Damien Lucas).\n- **Moshi as a Service** sur Managed Inference, **Generative APIs**, accès à de vrais ordinateurs quantiques avec **Quandela**.\n- **Jean-Baptiste Kempf** (VLC) nommé CTO pour bâtir des produits d'IA souverains ; sur scène : *« 90% of the compute power will actually be dedicated to inference »*.\n- La presse (Maddyness, Il Fatto Quotidiano) reprend surtout la capacité GPU et l'arrivée de Kempf. À lire comme une keynote commerciale de l'organisateur.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "Fm-4NL-Rw2M",
+        "title": "[LIVE] Morning Keynotes | #aiPULSE 2024 by Scaleway | Europe's Premier AI Conference",
+        "publishedAt": "2024-11-07",
+        "transcript": false
+      }
+    },
+    {
+      "id": "keynote-kyutai-patrick-perez",
+      "day": "2024-11-07",
+      "type": "keynote",
+      "title": "Kyutai : Moshi, six mois après",
+      "speakers": [
+        "Patrick Pérez — Kyutai"
+      ],
+      "feedbackFrom": [
+        "Maddyness (presse, 08/11/2024)",
+        "French Tech Journal (presse, 12/11/2024)"
+      ],
+      "summary": "- *« Since launching… Moshi has already been experienced by over half a million people »* (plus de 500 000 sessions de démo en cinq mois selon Maddyness).\n- Moshi présenté comme *« a platform for developers to innovate on top of »*, pas seulement un modèle vocal.\n- Annonce d'une **intégration du français** et confirmation de la politique d'ouverture : *« pour chacun de nos projets, nous partageons le code et notre recherche »* (Maddyness).\n- Le détail technique est venu l'après-midi avec le talk de Laurent Mazaré (voir plus bas).",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "Fm-4NL-Rw2M",
+        "title": "[LIVE] Morning Keynotes | #aiPULSE 2024 by Scaleway | Europe's Premier AI Conference",
+        "publishedAt": "2024-11-07",
+        "transcript": false
+      }
+    },
+    {
+      "id": "keynote-renen-hallak-vast-data",
+      "day": "2024-11-07",
+      "type": "keynote",
+      "title": "Renen Hallak : une nouvelle architecture pour les données de l'IA",
+      "speakers": [
+        "Renen Hallak — VAST Data"
+      ],
+      "feedbackFrom": [],
+      "summary": "- L'IA passe des chiffres, lignes et colonnes aux **images, vidéos, langage et son** ; *« older systems were not built for that »*.\n- Il faut *« break that paradigm »* avec une nouvelle architecture logicielle des données.\n- Vision : des **agents qui communiquent entre eux** et résolvent des problèmes hors de portée des humains.\n- Résumé établi à partir des seules citations publiées par Scaleway.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "Fm-4NL-Rw2M",
+        "title": "[LIVE] Morning Keynotes | #aiPULSE 2024 by Scaleway | Europe's Premier AI Conference",
+        "publishedAt": "2024-11-07",
+        "transcript": false
+      }
+    },
+    {
+      "id": "keynote-h-charles-kantor-action-models",
+      "day": "2024-11-07",
+      "type": "keynote",
+      "title": "H : les modèles d'action",
+      "speakers": [
+        "Charles Kantor — H"
+      ],
+      "feedbackFrom": [
+        "Maddyness (presse, 08/11/2024)",
+        "French Tech Journal (presse, 12/11/2024)"
+      ],
+      "summary": "- Contexte posé par l'animateur : H a levé **220 M$** en mai, loue un cluster à Scaleway et reste très discret.\n- Lecture du marché en **trois vagues** : modèles de langage (chat, support client), modèles de code (Copilot puis offres on-premise), et désormais le **marché de l'action et de l'automatisation**, le plus gros selon lui.\n- Un modèle d'action **orchestre des LLM qui planifient et des modèles de vision qui comprennent les interfaces** (web, desktop, mobile) ; H se concentre d'abord sur un environnement.\n- **Évaluation en trois couches** : modèles sous-jacents, taux de succès d'un workflow complet, puis capacité du produit à *s'auto-réparer* ; viser une première exécution qu'on peut *« edit, validate, replay »* plutôt qu'une perfection immédiate.\n- Appel aux builders, liste d'attente par QR code, sortie promise *« by the end of the year »*.\n- **Presse** : Maddyness retient un positionnement distinct de Mistral AI mais une annonce sans produit ; l'animateur lui-même conclut que *« the suspense is painful »*.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "JPkVex7XYNk",
+        "title": "Charles Kantor H Company | ai-PULSE 2024 Replay",
+        "publishedAt": "2024-11-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "cloture-clara-chappaz",
+      "day": "2024-11-07",
+      "type": "keynote",
+      "title": "Clôture : la « troisième voie » française",
+      "speakers": [
+        "Clara Chappaz — secrétaire d'État chargée de l'IA et du numérique"
+      ],
+      "feedbackFrom": [
+        "Maddyness (presse, 08/11/2024)",
+        "French Tech Journal (presse, 12/11/2024)"
+      ],
+      "summary": "- Une IA qui doit être *« inclusive, frugal, and ethical »*.\n- Argument d'attractivité : la France dispose d'une des énergies **les moins carbonées** au monde.\n- Positionnement revendiqué : *« We like to call it the third way »* (titre repris par le French Tech Journal).\n- Maddyness souligne qu'elle a conclu la matinée en insistant sur la place de la France dans l'IA mondiale. Résumé établi à partir des citations publiées par Scaleway et de la presse.",
+      "summarySources": [
+        "blog"
+      ]
+    },
+    {
+      "id": "ampere-ai-in-the-fast-lane",
+      "day": "2024-11-07",
+      "type": "talk",
+      "title": "AI in the Fast Lane : véhicules autonomes, VTC et course automobile",
+      "speakers": [
+        "Jeff Wittich — Ampere Computing"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Cas d'usage du CPU ARM Ampere dans l'automobile : CI/CD de code embarqué (Tier IV), calcul embarqué de **Cruise** dans une enveloppe d'énergie très contrainte, simulations de **Red Bull Racing**, plateforme de VTC d'**Uber**.\n- Constat européen : l'électricité y est chère et rare ; la consommation des data centers pourrait être multipliée par **3,5** selon certaines projections.\n- Offre **COP-ARM** chez Scaleway (128 cœurs) pour faire tourner l'inférence de modèles type Mistral ou Llama 3.1 8B sans GPU ; Wallaroo annonce un **gain de 7x** en passant sur Ampere (chiffre du speaker).\n- L'**AI Platform Alliance** est passée de 12 à 30 membres en un an.\n- Talk de partenaire, très orienté produit.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "zD8XDZPR0k8",
+        "title": "[LIVE] Master Stage - #aiPULSE 2024 | Scaleway",
+        "publishedAt": "2024-11-07",
+        "transcript": true,
+        "startSeconds": 1080
+      }
+    },
+    {
+      "id": "amd-memoire-ia-mi300x",
+      "day": "2024-11-07",
+      "type": "talk",
+      "title": "Overcoming memory hurdles in AI : performance et choix à l'échelle",
+      "speakers": [
+        "Ramine Roane — AMD"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Thèse : **la mémoire et la bande passante** sont le goulot de la phase de génération des LLM (le prompt est limité par le calcul, la génération par la mémoire).\n- Le **MI300X** : même calcul qu'un H100 mais **2,4x plus de HBM** (192 Go) et 1,6x la bande passante ; un Llama 70B en fp16 (140 Go) tient sur un GPU au lieu de deux, d'où un avantage TCO revendiqué de 2x.\n- Le secret annoncé : l'**intégration 3D en chiplets**, héritée des CPU EPYC.\n- *« There is no CUDA moat »* : chaque génération de GPU impose de réécrire les bibliothèques ; AMD mise sur l'écosystème agnostique (Hugging Face, PyTorch, JAX, **Triton**, vLLM).\n- Conclusion : **le choix supprime le risque** de dépendance (pénuries, fabrication), à condition d'adopter des briques open source.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "zD8XDZPR0k8",
+        "title": "[LIVE] Master Stage - #aiPULSE 2024 | Scaleway",
+        "publishedAt": "2024-11-07",
+        "transcript": true,
+        "startSeconds": 1830
+      }
+    },
+    {
+      "id": "panel-ia-durable-modeles-specialises",
+      "day": "2024-11-07",
+      "type": "roundtable",
+      "title": "AI sustainability and specialized models : puissance contre efficacité",
+      "speakers": [
+        "Gaël Varoquaux — Inria et :probabl.",
+        "Samuel Rincé — GenAI Impact",
+        "Stéphan-Eloïse Gras — CNAM et :probabl.",
+        "Daphné Leprince-Ringuet — Sifted (modération)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Transparence** : Meta publie l'empreinte d'entraînement de Llama ; elle passe de quelques centaines de tonnes CO2e (Llama 1 et 2, environ 100 allers-retours Paris-New York) à environ 2 000 t pour Llama 3 70B, *« almost 10x in one year »*, et une étude citée multiplie par **5** ces estimations naïves (Samuel Rincé).\n- **Comportements, pas seulement technique** : la métaphore du SUV garé devant la boulangerie, *« which bakeries deserve an SUV »*, et le choix entre Concorde et TGV (Gaël Varoquaux).\n- **Frugalité contre efficacité** : l'efficacité seule nourrit l'effet rebond ; le référentiel AFNOR « IA frugale » invite à se demander d'abord si l'IA, puis l'IA générative, est nécessaire (Samuel Rincé).\n- **L'inférence pèse plus que l'entraînement** : estimation GenAI Impact / Data for Good, environ 500 t pour entraîner GPT-3 contre environ 10 000 t pour un mois d'usage de ChatGPT début 2023.\n- **Gouvernance** : l'AI Act ne consacre que *« two three bullet points »* à l'environnement, sans parler d'inférence ; il manque des KPI communs et un langage partagé pour éviter le greenwashing (Stéphan-Eloïse Gras).\n- Outils cités : EcoLogits, CodeCarbon, Green Algorithms. Conseil final : *« choose what you enable »* (Gaël Varoquaux).",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "zD8XDZPR0k8",
+        "title": "[LIVE] Master Stage - #aiPULSE 2024 | Scaleway",
+        "publishedAt": "2024-11-07",
+        "transcript": true,
+        "startSeconds": 2940
+      }
+    },
+    {
+      "id": "meta-llama-open-research",
+      "day": "2024-11-07",
+      "type": "talk",
+      "title": "AI at Meta : Llama et la recherche ouverte à l'échelle",
+      "speakers": [
+        "Christian Keller — Meta"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Naila Murray, annoncée au programme, était absente ; Christian Keller (ex-PyTorch, pré-entraînement de Llama 3) assure seul la session.\n- Distinction **open research** (tout publier) / **open source** ; Meta y trouve son intérêt (recrutement, écosystème matériel aligné sur sa stack).\n- Llama est né à Paris (FAIR) ; **plus de 400 millions de téléchargements** ; Llama serait devenu le modèle le moins cher à déployer à qualité égale (graphique de Meta).\n- Conseil : choisir les benchmarks qui comptent pour son cas d'usage, puis fine-tuner. Llama Stack, ExecuTorch et torchtune pour réduire la friction de déploiement, avec des garde-fous en entrée et en sortie.\n- Au-delà des LLM auto-régressifs : V-JEPA et une architecture à **world model avec mémoire**.\n- Feuille de route : contexte plus long, plus de modalités ; Llama 3.2 multimodal *« not in Europe yet… might come, might not »*.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "zD8XDZPR0k8",
+        "title": "[LIVE] Master Stage - #aiPULSE 2024 | Scaleway",
+        "publishedAt": "2024-11-07",
+        "transcript": true,
+        "startSeconds": 5040
+      }
+    },
+    {
+      "id": "nvidia-chips-will-never-be-enough",
+      "day": "2024-11-07",
+      "type": "talk",
+      "title": "Chips will never be enough",
+      "speakers": [
+        "Bryan Catanzaro — NVIDIA"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Le calcul accéléré est un co-design** : algorithmes, compilateurs, bibliothèques, réseau, data center ; le produit vendu, *c'est du temps*. Accélérer, c'est aussi choisir ce qu'on « décélère » (spécialisation).\n- Exemple **DLSS** : ajouter de l'IA au rendu fait passer un jeu de 23 à 62 puis 100 images par seconde ; *ne pas calculer chaque pixel* mais l'inférer.\n- Ordres de grandeur : un modèle de pointe demande 8 000 Hopper, 90 jours et 15 MW, contre **2 000 Blackwell et 4 MW** pour la même durée.\n- NVIDIA entraîne ses propres modèles (Nemotron) pour savoir quels systèmes construire, et package l'inférence en **NIM**.\n- La loi de Moore s'essouffle : il faut repenser tout le système. Le paradoxe de Jevons est cité sans être creusé. En keynote du matin, il annonçait aussi un entraînement et une inférence *« in a more distributed way »* plutôt qu'un million de GPU dans un seul data center (citation publiée par Scaleway).",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "zD8XDZPR0k8",
+        "title": "[LIVE] Master Stage - #aiPULSE 2024 | Scaleway",
+        "publishedAt": "2024-11-07",
+        "transcript": true,
+        "startSeconds": 7140
+      }
+    },
+    {
+      "id": "dell-gpu-clusters-open-source",
+      "day": "2024-11-07",
+      "type": "talk",
+      "title": "Managing GPU clusters with open source",
+      "speakers": [
+        "Maciej Mazur — Dell Technologies"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Point de départ de l'« AI Factory » de Dell : chez les clients, une **faible utilisation des GPU**, parfois attribués à la main sur un tableau blanc ou entiers à une VM.\n- Réponse : ordonnanceurs (Volcano), priorités, métriques, et des clusters **hétérogènes** ; un entraînement PyTorch a tourné sur des GPU NVIDIA et AMD réunis.\n- **Observabilité par profil** : SRE, data engineers (tokens/s, précision) et métier ne regardent pas les mêmes tableaux Grafana.\n- Outillage publié : designs validés et benchmarks sur Hugging Face, **Omnia** (open source) pour déployer Slurm, Kubernetes et Kubeflow.\n- Talk de partenaire, court (10 minutes).",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "zD8XDZPR0k8",
+        "title": "[LIVE] Master Stage - #aiPULSE 2024 | Scaleway",
+        "publishedAt": "2024-11-07",
+        "transcript": true,
+        "startSeconds": 8340
+      }
+    },
+    {
+      "id": "poolside-frontier-ai-software",
+      "day": "2024-11-07",
+      "type": "talk",
+      "title": "Meet frontier AI for software development",
+      "speakers": [
+        "Vitor Monteiro — poolside"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Ambition : une **AGI du développement logiciel**, en passant de l'assistant qu'on sollicite au collègue « junior » puis senior.\n- Deux goulots : **le calcul** (financé, vécu comme *« a massive responsibility »*) et **les données** : il n'existe qu'environ 3 000 milliards de tokens de code, les mêmes pour tous.\n- Réponse : **RLCEF** (reinforcement learning from code execution feedback). Un bot sélectionne des dépôts couverts par des tests, masque une révision, fait générer 40 à 50 solutions, et les tests servent d'oracle : même un échec est une donnée de qualité.\n- Choix assumé de **modèles spécialisés** plutôt que de LLM généralistes, et d'une offre d'abord entreprise, derrière le pare-feu du client.\n- Démo enregistrée (*« I wouldn't trust the Wi-Fi »*) d'un assistant dans l'IDE ; produit construit par une vingtaine de personnes.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "zD8XDZPR0k8",
+        "title": "[LIVE] Master Stage - #aiPULSE 2024 | Scaleway",
+        "publishedAt": "2024-11-07",
+        "transcript": true,
+        "startSeconds": 9240
+      }
+    },
+    {
+      "id": "panel-ia-de-confiance-explicabilite",
+      "day": "2024-11-07",
+      "type": "roundtable",
+      "title": "Building trustworthy AI : précision et explicabilité",
+      "speakers": [
+        "Lionel Guillou — Owkin",
+        "Alex Combessie — Giskard",
+        "Sophie Monnier — InstaDeep (modération)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le speaker de Helsing annoncé au programme était absent.\n- **Owkin** utilise l'explicabilité deux fois : en développement (vérifier avec des pathologistes où regarde le modèle) et en production, pour garder l'**œil critique du pathologiste**. Mais *« explainability is not the main fight »* : **95 % de l'effort** porte sur la généralisation.\n- Méthodes Owkin : validation clinique sur des cohortes diverses, **validation analytique** (perturber les entrées pour vérifier la stabilité), calibration sur site.\n- **Giskard** est parti de l'explicabilité : les utilisateurs l'utilisent une fois puis n'y reviennent pas. D'où un pivot vers le **test automatisé** ; on fait confiance aux avions parce qu'ils sont testés, pas parce qu'on les comprend (référence à Yann LeCun).\n- Pour les LLM, les techniques classiques ne suffisent plus : générer des **jeux d'évaluation réalistes** et utiliser un **LLM-juge**, sous validation humaine.\n- **AI Act** : pour un dispositif médical, l'écart est *« quite small »* (Owkin) ; Giskard regrette que le texte soit passé sans codes de conduite prêts et espère qu'ils le seront pour le sommet de février 2025.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "zD8XDZPR0k8",
+        "title": "[LIVE] Master Stage - #aiPULSE 2024 | Scaleway",
+        "publishedAt": "2024-11-07",
+        "transcript": true,
+        "startSeconds": 9840
+      }
+    },
+    {
+      "id": "moshi-behind-the-scenes-laurent-mazare",
+      "day": "2024-11-07",
+      "type": "talk",
+      "title": "Moshi's behind the scenes : de la conception à l'inférence",
+      "speakers": [
+        "Laurent Mazaré — Kyutai"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Pourquoi Moshi** : les assistants vocaux en cascade (détection de fin de parole, transcription, LLM, synthèse) ont **3 à 5 s de latence**, perdent l'émotion et fonctionnent en *talkie-walkie* ; une vraie conversation compte 5 à 10 % de chevauchement.\n- **Architecture** : codec neuronal **Mimi** (12,5 pas par seconde, environ 100 valeurs/s au lieu de 24 000 échantillons), Transformer hiérarchique (un petit Transformer de 600 M de paramètres pour les niveaux de détail) et **modélisation multistream** des deux voix.\n- **Entraînement en quatre étapes** : LLM texte Helium (7 B, 2 000 milliards de tokens), audio non annoté, dialogues séparés par diarisation, puis fine-tuning sur des **dialogues synthétiques** générés avec un TTS multistream (plus de 70 émotions, voix d'une comédienne).\n- **Latence de 200 ms** (160 ms théoriques + 35 ms de calcul + 5 ms réseau) ; backend en **Rust/Candle**, quantifié, sans modification depuis juillet.\n- **Chiffres** : 500 000 sessions, durée médiane de plus d'une minute ; 200 GPU au départ, quelques-uns aujourd'hui.\n- **Limite assumée** : le *modality gap*, 56,4 % de bonnes réponses en texte contre 23 % en audio ; code, poids et rapport technique publiés, version MLX pour Mac.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "zD8XDZPR0k8",
+        "title": "[LIVE] Master Stage - #aiPULSE 2024 | Scaleway",
+        "publishedAt": "2024-11-07",
+        "transcript": true,
+        "startSeconds": 12570
+      }
+    },
+    {
+      "id": "panel-data-pipeline-creation-training",
+      "day": "2024-11-07",
+      "type": "roundtable",
+      "title": "The data pipeline : de la création à l'entraînement",
+      "speakers": [
+        "Jessica April — Shutterstock",
+        "Ludovic Blusseau — Dataiku",
+        "Dan Chester — VAST Data",
+        "Paul Mochkovitch — Molia (modération)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Licences de données** : Shutterstock licencie un corpus d'environ 700 millions d'éléments et 800 milliards de métadonnées ; après les modèles de fondation, la demande se tourne vers des jeux ciblés pour le fine-tuning, avec **C2PA** et reversement de royalties aux contributeurs.\n- **Préparation** : l'IA devient l'interface low-code ultime (transformer ses données en langage naturel) ; la gouvernance doit associer métier, IT et conformité (Dataiku).\n- **Stockage** : VAST unifie objet, entrepôt et accès GPU direct, et rend les données **immuables** pour prouver leur traçabilité face à l'AI Act ; le stockage pèse 10 à 15 % de l'espace, de l'énergie et du capex d'un data center.\n- Prochaine vague selon VAST : le **déploiement en entreprise**, avec des données internes d'un ou deux ordres de grandeur plus volumineuses que les corpus d'entraînement et des droits d'accès à respecter.\n- Tendances citées : données synthétiques « commercialement sûres » (Shutterstock), **documentation automatique** de la conformité (Dataiku). Mot de la fin de Dan Chester : demander à ChatGPT de résumer l'AI Act, *« quite eye opening »*.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "iShPStnrH44",
+        "title": "[LIVE] Central Room - #aiPULSE 2024 | Scaleway",
+        "publishedAt": "2024-11-07",
+        "transcript": true,
+        "startSeconds": 870
+      }
+    },
+    {
+      "id": "panel-investir-ia-builders-adopters",
+      "day": "2024-11-07",
+      "type": "roundtable",
+      "title": "Investing in AI : builders vs adopters",
+      "speakers": [
+        "Rana Yared — Balderton",
+        "Paul Murphy — Lightspeed Venture Partners",
+        "Alexis Robert — Kima Ventures",
+        "Gabriel de Vinzelles — frst",
+        "Julien Codorniou — Felix Capital (modération)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Horizontal ou vertical** : *« picking your poison »*, problème de taille de marché d'un côté, de distribution de l'autre ; avec l'IA, *« you don't sell productivity software, you sell the work »* (Gabriel de Vinzelles). Ce qu'ils cherchent : des *« stage appropriate signs of life »* (Paul Murphy).\n- **Tout est IA ?** Lightspeed n'investit presque plus en early stage hors IA native ; Rana Yared objecte qu'une entreprise n'a pas à pivoter pour adopter l'IA (exemple de Klarna et de son support client).\n- **Valorisations** : rareté des équipes et FOMO des fonds américains qui viennent surenchérir en Europe ; des équipes seedées reviennent lever 20 à 30 M$ pour payer des chercheurs à 1 à 2 M$ par an.\n- **Sorties** : l'espoir d'un premier exit français à plusieurs dizaines de milliards ; Mistral présenté comme le champion qui *« meets the moment »*.\n- **Désaccord** : frst pousse ses fondateurs vers des sociétés centrées sur les États-Unis, quand Balderton y voit un risque de *drainer l'écosystème européen* (talents moins chers, chemin vers 100 M$ de revenus plus rapide en Europe).",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "iShPStnrH44",
+        "title": "[LIVE] Central Room - #aiPULSE 2024 | Scaleway",
+        "publishedAt": "2024-11-07",
+        "transcript": true,
+        "startSeconds": 3000
+      }
+    },
+    {
+      "id": "panel-ia-sante-biotech-passage-echelle",
+      "day": "2024-11-07",
+      "type": "roundtable",
+      "title": "Overcoming AI scaling barriers in healthcare & biotech",
+      "speakers": [
+        "Jean-Philippe Vert — Bioptimus",
+        "Robert Marino — Qubit Pharmaceuticals",
+        "Julia Gimbernat Mayol — InstaDeep",
+        "Chris O'Brien — French Tech Journal (modération)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Bioptimus** veut un modèle de fondation de *toute* la biologie (molécules, cellules, patients). Les données utiles sont dans les hôpitaux : il faut un deal gagnant-gagnant et de l'anonymisation, facilitée parce que le modèle n'a **pas besoin des métadonnées** cliniques.\n- Passer à l'échelle en **croisant des modalités non alignées** (protéines et images de tumeurs) grâce à des architectures dédiées (attention spécifique, Transformers hiérarchiques).\n- **InstaDeep** : comprendre jusqu'au **processus de génération des données** (séquençage par fragments, zones de faible couverture) ; cluster interne Kyber d'environ 0,5 exaflops ; plus de 700 000 téléchargements de ses modèles.\n- **Qubit Pharmaceuticals** : sa plateforme élimine 95 % des molécules, donc produit moins de données expérimentales ; elle compense par des **données synthétiques** issues de modèles physiques et quantiques.\n- Goulot inattendu : la **validation expérimentale** ; six mois perdus parce que théorie et expérience ne mesuraient pas la même grandeur.\n- Modèles d'affaires : Bioptimus diffuse via Hugging Face et les hyperscalers, Qubit vend des candidats-médicaments, pas sa plateforme.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "iShPStnrH44",
+        "title": "[LIVE] Central Room - #aiPULSE 2024 | Scaleway",
+        "publishedAt": "2024-11-07",
+        "transcript": true,
+        "startSeconds": 5160
+      }
+    },
+    {
+      "id": "doctolib-assistant-consultation",
+      "day": "2024-11-07",
+      "type": "talk",
+      "title": "AI-powered medical assistant : transformer le quotidien des soignants",
+      "speakers": [
+        "Nacim Rahal — Doctolib"
+      ],
+      "feedbackFrom": [],
+      "summary": "- L'**assistant de consultation** (lancé le 15 octobre 2024) écoute la consultation et produit des notes structurées dans le dossier patient ; environ **100 000 consultations par semaine** un mois après le lancement.\n- **D'abord le pipeline d'évaluation** : taux d'erreur sur les termes médicaux, rappel factuel face à une note idéale, note des utilisateurs. Difficulté : aucun standard de qualité, et une note manuelle médiane de 140 caractères comme point de comparaison.\n- **Première version** Whisper + GPT-3.5 : 41 % d'erreurs sur les termes médicaux, 49 % de rappel, *« terrible »*. Passer à un modèle plus lent mais meilleur a gardé les bêta-testeurs : les médecins veulent **la tranquillité d'esprit**, pas la vitesse.\n- Quand les métriques techniques montent sans que la satisfaction suive, il faut **revoir l'évaluation** : notes par praticien et non par consultation, métriques sur les médicaments, tests conçus pour piéger le système.\n- Leçons de production : la qualité du **micro** peut ruiner l'expérience d'un leader d'opinion ; difficile de savoir quel composant améliorer (deux versions du speech-to-text n'ont rien apporté au rappel).",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "iShPStnrH44",
+        "title": "[LIVE] Central Room - #aiPULSE 2024 | Scaleway",
+        "publishedAt": "2024-11-07",
+        "transcript": true,
+        "startSeconds": 7110
+      }
+    },
+    {
+      "id": "panel-infrastructure-ia-durable-quantique",
+      "day": "2024-11-07",
+      "type": "roundtable",
+      "title": "Building sustainable AI infrastructure : quantique, open et modulaire",
+      "speakers": [
+        "Jean-Marie Verdun — HPE",
+        "Jean Senellart — Quandela",
+        "Raúl Álvarez — Open Compute Project Foundation",
+        "James Coomer — DDN",
+        "Albane Bruyas — Scaleway (modération)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Préparer la panne** : sur des machines de 20 à 40 MW, le matériel lâche ; il faut des checkpoints rapides, donc un stockage performant (HPE, DDN).\n- **Standardiser et modulariser** (groupe de travail OCP) pour intégrer un nouveau GPU sans tout redessiner ; le refroidissement liquide direct-to-chip est désormais standardisé, avec des puces à 2 kW et bientôt plus (OCP).\n- **Densité** : racks à 400 kW sans ventilateurs chez HPE, 1 MW envisagé, au point que *« the computer is going to become a safety issue »* (Jean-Marie Verdun).\n- **Stockage** : environ 10 % de l'énergie, mais le vrai gain est de livrer les données vite pour ne pas laisser les GPU attendre (James Coomer).\n- **Quantique** : encore *« like VHS »*, sans standard matériel ; le calcul quantique lui-même consomme presque rien, mais le froid et le vide coûtent (Jean Senellart).\n- **Message aux développeurs** : *« software people tend to believe that it's easy to port software, that's not true »* ; tester tout de suite sur d'autres architectures (HPE).",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "iShPStnrH44",
+        "title": "[LIVE] Central Room - #aiPULSE 2024 | Scaleway",
+        "publishedAt": "2024-11-07",
+        "transcript": true,
+        "startSeconds": 8340
+      }
+    },
+    {
+      "id": "panel-ia-services-financiers",
+      "day": "2024-11-07",
+      "type": "roundtable",
+      "title": "AI's role in transforming financial services",
+      "speakers": [
+        "Fabrice Le Chatelier — BNP Paribas",
+        "Hanan Ouazan — Artefact",
+        "Ioan Iacob — FlowX.AI",
+        "Solène Brébant — Balderton Capital (modération)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **BNP Paribas** : 700 à 800 professionnels de l'IA, environ 780 cas d'usage sur un **cloud privé** interne ; contraintes clés : vie privée, GPU et électricité pour le serving, collaboration entre IT, quants et futurs *citizen developers*.\n- **Smart inbox** (Artefact pour BNP) : 20 millions d'e-mails par an ; un LLM sert à entraîner un **petit classifieur** rapide, d'où **24 % d'erreurs de routage en moins** et 80 % de précision sur les suggestions de réponse.\n- **Interne ou externe** : en interne pour les modèles régulés qui exigent l'explicabilité, achat pour les commodités comme l'OCR (BNP).\n- **Fiabilité** : FlowX revendique une hallucination *« virtually zero »* (affirmation du fournisseur) grâce à la décomposition des tâches, à l'auto-vérification et à un RAG strict, avec des cycles de vente de 9 à 12 mois.\n- **Observabilité en trois couches** (journaliser, évaluer, superviser côté métier), avec l'analogie du permis de conduire : même formé, on commet des infractions, d'où radars et police (Artefact).\n- **Humain dans la boucle** (BNP) ou *« human in control »* (FlowX, avec l'analogie de l'écran Tesla qui donne confiance).",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "iShPStnrH44",
+        "title": "[LIVE] Central Room - #aiPULSE 2024 | Scaleway",
+        "publishedAt": "2024-11-07",
+        "transcript": true,
+        "startSeconds": 10410
+      }
+    },
+    {
+      "id": "panel-ia-generative-temps-reel-video-photo",
+      "day": "2024-11-07",
+      "type": "roundtable",
+      "title": "Real-time generative AI for video and photo : les défis techniques",
+      "speakers": [
+        "Eliot Andres — Photoroom",
+        "Francescu Santoni — Mojo",
+        "Olivier Reynaud — Aive",
+        "Dounia Zouine — Meuf (modération)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **La latence décide de l'usage** : une première fonctionnalité Photoroom à une minute d'attente n'était pas utilisée ; ramenée à quelques secondes, elle permet d'itérer. Sur mobile, la norme est sous la seconde (Mojo).\n- **Photoroom entraîne son propre modèle** (256 H100, environ 10 M€ par an) pour filtrer nudité et violence des données, maîtriser la vitesse et *savoir entraîner*. Son problème inverse de l'hallucination : un modèle trop fidèle à une photo mal éclairée.\n- **Anecdote des toiletteurs canins** : une mise à jour gardait la table avec le chien ; colère de la communauté, retour arrière, puis A/B tests du taux d'export **par catégorie d'image**.\n- **Mojo** mesure par des proxies (ratio création / téléchargement) et le support client ; des LoRA open source trop entraînées sur du contenu NSFW ont dû être écartées.\n- **Aive** (B2B, vidéo publicitaire) : plus de 20 modèles, une minute de vidéo analysée en une minute, **aucune API externe** par contrat, et YOLO v8 plutôt que v10 jugé moins fiable ; le génératif pur n'est pas prêt pour la pub des grands comptes avant *« one or two years »*.\n- Conclusion de la modératrice : tester le génératif reste un chantier, *« we need this kind of humility »*.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "iShPStnrH44",
+        "title": "[LIVE] Central Room - #aiPULSE 2024 | Scaleway",
+        "publishedAt": "2024-11-07",
+        "transcript": true,
+        "startSeconds": 12510
+      }
+    },
+    {
+      "id": "ai-act-adrien-basdevant",
+      "day": "2024-11-07",
+      "type": "talk",
+      "title": "Mastering the AI Act : ce que tout entrepreneur IA doit savoir",
+      "speakers": [
+        "Adrien Basdevant — Entropy"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Dix points à retenir**, en ouvrant sur un chiffre : environ 700 projets de loi sur l'IA examinés par les États américains depuis le début de l'année, dont 113 adoptés. L'UE ne sera pas seule à réguler.\n- Distinguer le **contraignant** (AI Act) du **volontaire** (accords d'Anthropic et OpenAI avec l'AI Safety Institute américain, processus d'Hiroshima).\n- L'AI Act régule **des usages, pas une technologie**, sauf les modèles d'IA à usage général : seuil de risque systémique à 10^25 FLOP en Europe contre 10^26 aux États-Unis ; amendes jusqu'à 7 % du CA ou 35 M€.\n- Ce n'est qu'une **première couche** : codes de pratique, actes délégués jusqu'en 2030, modèle de résumé des données d'entraînement attendu à l'été 2025 ; il invite à y contribuer.\n- Autres fronts : RGPD (le modèle est-il une donnée personnelle ?), responsabilité produit, contentieux sur LAION-5B.\n- Q&R : pour un modèle « open source », **lire d'abord la licence** (Llama 3.2 n'est pas autorisé en Europe à ce stade) ; RGPD et AI Act ont des logiques en partie contradictoires.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "8pQE5Pd6jfQ",
+        "title": "Mastering the AI Act: What every AI Entrepreneur needs to know | ai-PULSE Replay 2024",
+        "publishedAt": "2024-11-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "empreinte-carbone-ia-generative",
+      "day": "2024-11-07",
+      "type": "talk",
+      "title": "Decoding GenAI's carbon footprint",
+      "speakers": [
+        "Lorena Nava Guajardo — IJO",
+        "Damien Juillard — On Behalf AI"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Enjeu** : selon les scénarios du think tank G9+, l'écart entre hypothèses basse et haute du numérique mondial équivaut dès 2026 à la consommation totale de la Suisse, et l'IA en est le principal moteur ; une requête ChatGPT consommerait **10 fois** une recherche Google (0,3 Wh, chiffre Google).\n- **Mesurer** : périmètre complet (fabrication, énergie, fin de vie, services, équipes) ; approche bottom-up quand on maîtrise l'infrastructure, top-down par hypothèses sinon, faute de **transparence des fournisseurs**. Le calculateur Scaleway est cité en exemple.\n- **L'inférence domine** l'impact sur la durée de vie d'un modèle.\n- **Leviers** : avec un modèle propriétaire, presque aucun (sauf le cache) ; avec un modèle ouvert, fine-tuning, **quantization** (plus de 30 % de CO2 en moins en 8 bits pour Gemma 7B) et distillation vers un plus petit modèle.\n- Outils cités : EcoLogits, routeurs de modèles, cadres d'évaluation de performance. En Q&R : la responsabilité revient aussi aux grands fournisseurs qui produisent des modèles toujours plus gros.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "MgqqAinROBc",
+        "title": "Decoding GenAI’s carbon footprint",
+        "publishedAt": "2024-11-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "kili-frontier-data",
+      "day": "2024-11-07",
+      "type": "talk",
+      "title": "Frontier data : la clé du prochain saut de l'IA",
+      "speakers": [
+        "Edouard d'Archimbaud — Kili Technology"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Thèse : malgré l'explosion du calcul, pas de saut majeur depuis GPT-4, car on a atteint un **« data wall »** : les données faciles du web sont épuisées.\n- **Frontier data** : des données plus profondes et spécialisées, comme les chaînes de raisonnement et le **savoir tacite** d'experts (juristes, analystes fraude, rédacteurs de brevets).\n- Exemple : faire traduire des preuves mathématiques en **Lean** pour récompenser ou pénaliser un modèle, comme le fait AlphaProof.\n- Données synthétiques produites par des *playbooks* paramétrables, avec des annotateurs recentrés sur le contrôle qualité.\n- Recherche publiée par Kili : des attaques multilingues atteignent plus de 93 % de succès sur Llama 3 et GPT-4o, et les garde-fous faiblissent après quelques tours. Talk de fournisseur.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "14fONVFqIFw",
+        "title": "Frontier Data: The Key to AI’s Next Leap Forward | aiPULSE 2024 Replay",
+        "publishedAt": "2024-11-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "lighton-agents-llm",
+      "day": "2024-11-07",
+      "type": "talk",
+      "title": "Agentic capabilities for enhanced LLMs and GenAI applications",
+      "speakers": [
+        "Laurent Daudet — LightOn"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Trois générations : le chatbot, le **RAG** (efficace mais limité aux workflows simples), puis l'**agent**, orchestrateur d'outils.\n- Le RAG naïf (une base vectorielle) *« won't work that well »* à l'échelle ; il faut plusieurs backends de recherche et un reranking.\n- LightOn s'en tient à **cinq outils** (chercher, analyser, comparer, résumer, calculer en Python) : *mieux vaut peu d'outils fiables* qu'une planification complexe qui produit du bruit.\n- L'agent doit **hériter des droits documentaires** de l'utilisateur (défense, banque) ; déploiements on-premise, jusqu'à l'air gap.\n- Selon lui, les capacités de planification n'apparaissent qu'à partir de 30 à 40 milliards de paramètres. Annonce au passage de l'introduction en Bourse de LightOn.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "iw88VsQdcmM",
+        "title": "Agentic capabilities for enhanced LLMs and GenAI applications | aiPULSE 2024 Replayy",
+        "publishedAt": "2024-11-22",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "AI Meets Quantum : Unlocking New Possibilities in Machine Learning (Jean Senellart, Quandela ; replay sans transcript)",
+    "Securing the Future : Strategies to Safeguard Your Business in the Era of Generative AI (Han Heloir, MongoDB)",
+    "Hands-On Integration : Simulating Embedding Models for Structured Data (Alexandre Pasquiou, Neuralk-AI ; replay disponible)",
+    "Building Speech AI Applications with NVIDIA Riva (Javier Figueroa, Meriem Bendris, NVIDIA)",
+    "Leveraging AI agents and efficient LLM inference on COP-ARM (Victor Jakubiuk, Ampere Computing)",
+    "Bringing Choice to Gen AI with the Intel Gaudi 3 AI Accelerator (Tristan Ladrech, Intel)",
+    "AMD x Hugging Face : No Code Change LLM Deployment on AMD GPUs (Jöerg Roskowetz, AMD)",
+    "Building a RAG system for lawyers : behind the scenes (Stéphane Béreux, Jimini)",
+    "Guided session : mapping inference workflows on the right GPU (Fabien Da Silva, Sebastian Tatut, Scaleway)",
+    "Accelerating Drug Discovery with NVIDIA BioNeMo (Javier Figueroa, Nick Venanzi, NVIDIA)",
+    "Accurately measuring your cloud activity's full impact : wishful thinking? (Diane Sempéré, Elise Auvray, Scaleway)",
+    "Agentic AI powered by Generative APIs : function calling on open-weight LLMs (Guillaume Calmettes, Scaleway)"
+  ],
+  "sources": [
+    {
+      "label": "Programme officiel ai-PULSE 2024",
+      "url": "https://2024.ai-pulse.eu/agenda"
+    },
+    {
+      "label": "Site ai-PULSE 2024",
+      "url": "https://2024.ai-pulse.eu/"
+    },
+    {
+      "label": "Playlist YouTube « ai-PULSE 2024 » (Scaleway)",
+      "url": "https://www.youtube.com/playlist?list=PL8WjEBDU6iMI56yQ1qusdZgLIiEONmZG8"
+    },
+    {
+      "label": "Live Morning Keynotes (sans sous-titres)",
+      "url": "https://www.youtube.com/watch?v=Fm-4NL-Rw2M"
+    },
+    {
+      "label": "Live Master Stage (transcript lu)",
+      "url": "https://www.youtube.com/watch?v=zD8XDZPR0k8"
+    },
+    {
+      "label": "Live Central Room (transcript lu)",
+      "url": "https://www.youtube.com/watch?v=iShPStnrH44"
+    },
+    {
+      "label": "Scaleway : récap « Scaleway affirms AI's Big, Efficient & Open future at ai-PULSE 2024 »",
+      "url": "https://www.scaleway.com/en/news/scaleway-affirms-ais-big-efficient-and-open-future-at-ai-pulse-2024/"
+    },
+    {
+      "label": "Scaleway (blog, 18/11/2024) : The Best quotes from ai-PULSE 2024's keynotes",
+      "url": "https://www.scaleway.com/en/blog/best-quotes-ai-pulse-2024-keynotes/"
+    },
+    {
+      "label": "Maddyness (08/11/2024) : ai-PULSE, Kyutai et H à l'offensive face à OpenAI depuis Station F",
+      "url": "https://www.maddyness.com/?p=1404242"
+    },
+    {
+      "label": "French Tech Journal (12/11/2024) : La Machine #6, Scaleway et Xavier Niel prennent le pouls de l'IA française",
+      "url": "https://www.frenchtechjournal.com/la-machine-6-scaleway-xavier-niel-take-the-pulse-of-french-ai/"
+    },
+    {
+      "label": "Univers Freebox : Xavier Niel et les leaders de l'IA en Europe réunis à ai-PULSE 2024",
+      "url": "https://www.universfreebox.com/article/572333/xavier-niel-et-les-leaders-de-lia-en-europe-reunis-a-la-conference-ai-pulse-2024-de-scaleway/amp"
+    },
+    {
+      "label": "Il Fatto Quotidiano (19/11/2024) : Scaleway, iliad, GPU",
+      "url": "https://www.ilfattoquotidiano.it/2024/11/19/scaleway-iliad-ai-gpu-nvidia-openai/7772889/"
+    },
+    {
+      "label": "Posts LinkedIn de participants : aucun retrouvé (recherche site:linkedin.com/posts et hashtags #aiPULSE / #aiPULSE2024)"
+    }
+  ]
 }

@@ -4,11 +4,165 @@
   "title": "La Duck Conf 2025",
   "edition": "8e édition",
   "start": "2025-03-19",
+  "end": "2025-03-19",
   "city": "Paris",
   "venue": "Parc floral de Paris",
   "url": "https://web.archive.org/web/20250115203033/https://www.laduckconf.com/",
+  "programUrl": "https://laduckconf.com/programme-2025",
+  "theme": "De l'archi à toutes les sauces : sous contrainte, pimentée d'orga, applicative, code d'infrastructure et code augmenté par l'IA",
   "dateConfidence": "ok",
-  "note": "« La duck conf, au parc floral, le 19 mars 2025 », site officiel archivé. Replays : playlist YouTube « La Duck Conf 2025 - les replays » (https://www.youtube.com/playlist?list=PLXlbmbYadKH5d5aKO2mNaH787kBDwXRU4).",
-  "status": "pending",
-  "sessions": []
+  "note": "« La duck conf, au parc floral, le 19 mars 2025 », site officiel archivé. Veille de La Grosse Conf (OCTO). Trois salles (Nemo, Atlantide, Neptune), 11 talks et un atelier DDD. Replays : playlist YouTube « La Duck Conf 2025 - les replays » (https://www.youtube.com/playlist?list=PLXlbmbYadKH5d5aKO2mNaH787kBDwXRU4).",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-08",
+  "revisit": "Aucun retour de participant lu (aucun post LinkedIn ni compte-rendu de blog sur l'édition 2025 remonté par 10 recherches web) : synthèse fondée sur les 11 transcripts de replays et le programme officiel.",
+  "corpus": "Programme officiel (site laduckconf.com et capture Wayback de février 2025), édito du site, article d'annonce du blog OCTO (19/02/2025) et **transcripts automatiques des 11 replays YouTube** publiés entre le 31/03 et le 14/04/2025 (un par talk, l'atelier « Infra as code, as code » inclus).",
+  "limits": "Aucun retour de participant trouvé : les résumés reflètent ce qui a été dit sur scène, pas la réception par le public. Sous-titres automatiques bruités (noms propres et chiffres parfois incertains, signalés). L'atelier DDD n'a ni replay ni compte-rendu ; aucune séance de questions-réponses n'est captée, sauf pour l'atelier Infra as code.",
+  "tldr": "**Une édition d'architecture pragmatique et sans dogme** : iframes avant Module Federation, monolithe modulaire avant microservices, Brownfield avant refonte, moins de tests mais mieux ciblés, plateformes conçues comme des produits, avec **l'IA traitée en assistant à piloter** plutôt qu'en révolution.",
+  "keyTakeaways": [
+    "Choisir la technologie la plus simple qui débloque la migration : InVivo a démarré ses micro-frontends en **iframes** pour éviter le big bang, puis est passé à Module Federation une fois mûr.",
+    "Partir d'un **« Majestic Monolith » modulaire découpé par domaines** et n'extraire microservices ou headless que sur besoin (Chantalou).",
+    "Écrire une **stratégie de test** qui dit aussi ce qu'on ne teste pas ; tester les fonctionnalités, pas les implémentations, et supprimer des tests sans culpabiliser (Mazure).",
+    "Aligner équipes et domaines métier avant de toucher à l'architecture : un domaine par équipe, un seul domaine complexe par équipe (Ahnine, d'après Team Topologies).",
+    "Ne livrer **aucune fonctionnalité de plateforme sans une équipe prête à la consommer** ; se placer sur ce qui est spécifique à l'entreprise, pas sous la ligne de flottaison du cloud (Landreau).",
+    "Traiter l'infrastructure comme un produit : templates, CRD et abstractions qui expriment l'intention, avec des couches ouvertes aux développeurs (Yubo, Gahat et Fontaine).",
+    "Rendre l'architecture implémentée visible par des **conventions de nommage** et un script qui génère le schéma réel, puis comparer à la cible (Bertrand et Dousset).",
+    "Aller voir dès maintenant ses **Core Web Vitals dans le CrUX** : les correctifs CLS et INP sont souvent simples (Jacquemin).",
+    "Protéger le flow des développeurs, qui ne codent que 84 minutes par jour selon l'étude citée, en réduisant la charge cognitive extrinsèque (Lesik).",
+    "Utiliser l'assistant de code en gardant la main : il produit vite mais doit être recadré comme un développeur junior (Laurent)."
+  ],
+  "sessions": [
+    {
+      "id": "les-pieges-des-plateformes",
+      "day": "2025-03-19",
+      "type": "talk",
+      "title": "Les pièges des plateformes : apprenez à les reconnaître et à les éviter",
+      "speakers": ["Jean-François Landreau — AWS, auteur de Platform Strategy"],
+      "feedbackFrom": [],
+      "summary": "- Talk d'ouverture, tiré de son expérience **avant** AWS (éditeur de logiciels de finance de marché dès 2007, puis grande entreprise régulée).\n- **Piège 1, le buzzword** : « plateforme » est mal défini. Remèdes : la métaphore du **châssis commun** automobile et une définition par catégorie (marketplace, plateforme business type SAP, cloud, plateforme de développement interne). Il préfère les *« economies of speed »* aux économies d'échelle.\n- **Piège 2, le coût n'est pas linéaire** : quatre « sauts » (une équipe colocalisée, d'autres équipes, toute l'entreprise à l'international, l'ouverture à l'extérieur). Tant que le self-service n'est pas mûr, **il faut compenser par l'humain**.\n- **Piège 3, le positionnement face au cloud** : si vos services passent « sous l'eau » des services managés, la plateforme perd sa valeur. Le **wrapper anti lock-in** au plus petit dénominateur commun prive de l'innovation du fournisseur et des certifications des développeurs.\n- **Méfiance envers la « réduction de la charge mentale »** : une organisation pyramidale où les juniors produisent vite sur la plateforme ne les fait pas progresser ; il défend une organisation en diamant où les seniors coachent.\n- Règle retenue : *« Ne délivrez aucune fonctionnalité qu'un client n'est pas prêt à consommer. »*\n- Lecture critique : il reconnaît que son poste actuel chez AWS teinte le propos.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "57HBDACgGQQ", "title": "Les pièges des plateformes : apprenez à les reconnaitre et à les éviter - Jean-François Landreau", "publishedAt": "2025-04-09", "transcript": true }
+    },
+    {
+      "id": "le-micro-frontend-decomplexe",
+      "day": "2025-03-19",
+      "type": "talk",
+      "title": "Le micro-frontend décomplexé : les dessous d'une migration incrémentale et itérative",
+      "speakers": ["Xavier Julien — InVivo Digital Factory", "Brandone Martins — OCTO Technology"],
+      "feedbackFrom": [],
+      "summary": "- REX sur **Aladin.farm** (InVivo), SPA Vue.js née en 2018 : environ 40 développeurs front passés dessus, un mois d'onboarding avant la première merge request, des développeurs qui ont **peur de toucher au front**, alors que la quinzaine de microservices back ne posait pas de problème.\n- Contraintes : migrer de Vue 2 à Vue 3 avant fin 2024, **sans big bang ni gel des développements**, et préparer une plateforme multimarque.\n- Principes : un fragment par domaine métier, une équipe par fragment, des contrats d'interface stables (*« Si ce contrat d'interface n'est pas stable, c'est qu'on a raté notre découpage »*), lien explicite avec la loi de Conway. *« Il y a le mot micro, mais pensez plutôt macro »* : découpage vertical d'abord.\n- **Sondage dans la salle** : majorité pour Module Federation ; **la bonne réponse était les iframes**, seules compatibles avec une appli CommonJS sans big bang. Module Federation est venu ensuite, une fois tout migré.\n- Jalons : POC en novembre 2023, premier micro-frontend en prod un mois plus tard, 11 en 2024, puis passage progressif à Module Federation.\n- L'**app shell** garde l'état partagé, le support (monitoring, analytics) et le routing, avec des contrats d'événements en `postMessage`.\n- Choix assumé de ne pas déployer les fragments indépendamment (un seul conteneur Nginx) : on peut laisser de côté un principe du pattern si l'organisation n'en a pas besoin.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "1zbgZzob9X0", "title": "Le micro-frontend décomplexé : les dessous d'une migration incrémentale et itérative - La Duck Conf", "publishedAt": "2025-04-09", "transcript": true }
+    },
+    {
+      "id": "dejouer-les-pieges-de-conway-dans-l-agilite-a-l-echelle",
+      "day": "2025-03-19",
+      "type": "talk",
+      "title": "Déjouer les pièges de Conway dans l'agilité à l'échelle",
+      "speakers": ["Samuel Ahnine — OCTO Technology"],
+      "feedbackFrom": [],
+      "summary": "- Point de départ : un program board de PI planning SAFe aux dépendances en « plat de spaghetti ». *« C'est la structure de mon organisation qui va l'emporter. »*\n- **Paradoxe de l'échelle** : les petites équipes fonctionnent, mais leur multiplication sur un legacy couplé fait exploser les interactions, la latence et les coûts.\n- Cas client : une société de jeux en ligne d'environ 500 personnes, cinq ans après son passage à Scrum ou Kanban : équipes surchargées, effets de bord, livraisons de plus en plus lentes.\n- Méthode : **manœuvre de Conway inversée**, Event Storming Big Picture pour faire émerger les domaines, puis une **cartographie OCTO en trois dimensions** (domaines, équipes, actifs techniques). Elle révèle un monolithe de base de données central et deux composants dont le savoir était perdu.\n- **« Police des domaines »** tirée de Team Topologies : un domaine n'a qu'une équipe ; une équipe gère 2 ou 3 domaines simples mais un seul domaine compliqué ou complexe. Le découpage suit les ruptures de l'**ubiquitous language** (« partie » de poker au sens tournoi ou partie unitaire).\n- Cible : quatre stream-aligned teams, une équipe complicated-subsystem (gains et fraude), une équipe plateforme « instance de jeu ». La collaboration est gardée là où un composant n'a pas pu être découplé.\n- Limite reconnue : *« Tous les modèles sont faux, certains sont utiles »* ; aucun chiffre de gain, hormis des délais de livraison raccourcis après le partage de la base.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "8HJuRREonas", "title": "Déjouer les pièges de Conway dans l'agilité à l'échelle - La Duck Conf 2025", "publishedAt": "2025-04-09", "transcript": true }
+    },
+    {
+      "id": "tests-pragmatiques-comment-presque-arreter-les-tests-automatises",
+      "day": "2025-03-19",
+      "type": "talk",
+      "title": "Tests pragmatiques : comment (presque) arrêter les tests automatisés ?",
+      "speakers": ["Antoine Mazure — OCTO Technology"],
+      "feedbackFrom": [],
+      "summary": "- Projet de tunnel de vente repris sans passation : environ **9 lignes de test par ligne de code**, des tests qui agissent comme des **cadenas** plutôt que comme un filet. Une évolution TVA estimée à 2 jours n'était pas finie au bout de 2 semaines.\n- La **stratégie de test se documente comme l'architecture** : elle dit quoi tester, quoi ne pas tester, et reste propre à chaque projet.\n- *« Tester les fonctionnalités plutôt que les implémentations »* : des tests d'orchestration sur les use cases, puis des tests ciblés sur le code **complexe ou sensible** (prix, sécurité). Pas de tests sur les getters ni les mappers un pour un.\n- Environ 600 tests end-to-end remplacés par **un seul parcours end-to-end par progiciel** (Pareto), branché sur la recette pour détecter les contrats d'interface qui changent sans prévenir. Ce choix a été débattu dans l'équipe (risque de flakiness).\n- Bilan annoncé : environ trois quarts des tests supprimés, couverture identique à 1 % près, **boucle de feedback de 12 minutes à 10 secondes**.\n- Message : *« Des tests, on peut les supprimer sans forcément culpabiliser »*, mais le pragmatisme ne vient qu'après avoir maîtrisé les règles. Il qualifie lui-même la métrique en lignes d'imparfaite.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "ohV6GvCIeLY", "title": "Tests pragmatiques : comment presque arrêter les tests automatisés ? - La Duck Conf 2025", "publishedAt": "2025-04-09", "transcript": true }
+    },
+    {
+      "id": "infrastructure-as-a-template-84m-d-utilisateurs-avec-une-equipe-de-5-personnes",
+      "day": "2025-03-19",
+      "type": "talk",
+      "title": "Infrastructure as a Template : 84M d'utilisateurs avec une équipe de 5 personnes",
+      "speakers": ["Mikael Robert — Yubo"],
+      "feedbackFrom": [],
+      "summary": "- Yubo, réseau social vidéo pour la Gen Z : environ 85 millions d'inscrits, environ 400 microservices, 11 technologies de bases de données, environ 40 clusters, des pics annoncés à 300 000 requêtes par seconde sur certaines bases.\n- Point de départ en 2021 : aucun automatisme, coûts « monstrueux », tout dans un seul Kubernetes. *« Quand on a beaucoup de contraintes, ça pousse à innover »*.\n- Étapes : intégrer le data engineering à l'infra et l'infra aux kick-offs de features, **traiter le RGPD comme une solution** (rétention automatisée), GitOps, un cluster de pilotage Argo, puis **tout en CRD Kubernetes** (une collection Mongo déclarée en quelques lignes de YAML), Config Connector à la place de Terraform.\n- Une nouvelle application se crée par un paramètre dans le template global, qui sert aussi de **plan de reprise d'activité** : l'infra se reconstruit from scratch.\n- Données : duplication assumée (une base par feature), CDC vers Kafka avec auto-guérison des consommateurs ; ML déployé en canary par un opérateur, MLflow comme registre.\n- Observabilité : dual shipping Datadog et VictoriaMetrics, environ 30 To de logs par jour, sampling pour réduire la facture analytics.\n- *« Les outils n'ont pas d'importance, c'est les patterns qui vont autour qui sont importants. »* Chiffres tirés d'un transcript automatique, certains incertains.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "F4dN8kqTtk8", "title": "Infrastructure as a Template : 84M d'utilisateurs avec une équipe de 5 personnes - Mikael Robert", "publishedAt": "2025-04-09", "transcript": true }
+    },
+    {
+      "id": "modern-software-engineering-architecture-les-tech-trends-2025",
+      "day": "2025-03-19",
+      "type": "talk",
+      "title": "Modern Software Engineering & Architecture : les Tech Trends 2025",
+      "speakers": ["Antoine Chantalou — OCTO Technology"],
+      "feedbackFrom": [],
+      "summary": "- Quatre tendances : **IA générative, architectures composables, sustainability et efficience, Zero Trust**.\n- **Assistants de code** : environ 40 % du temps de dev passe à écrire ou modifier du code, avec un gain estimé de 10 à 15 % (« à prendre avec des pincettes »). Gains substantiels pour les profils intermédiaires, quasi nuls pour les experts, **risque qualité pour les débutants**. Réponse : craft (TDD, pair, review) et équipes à séniorité mélangée.\n- **GenAI dans les applications** : privilégier prompt engineering et RAG plutôt que fine-tuning ou modèle maison. *« En terme d'architecture, il n'y a pas de révolution, on fait des appels d'API »*. Vigilance : tests non déterministes, souveraineté et propriété intellectuelle.\n- **MACH** (microservices, API first, cloud native, headless) revu à la baisse : recommandation **« Majestic Monolith first »**, un monolithe modulaire par domaines dont on extrait au besoin. *« Ne jamais partir sur du micro micro micro. »*\n- **Brownfield plutôt que refonte** : diagnostic façon « Docteur House », façade et nouveau front headless, suivi par les métriques DORA. *« On peut rendre sexy des systèmes existants. »*\n- **Zero Trust** : fin des comptes de service qui ouvrent tout le SI, OAuth et OpenID Connect en profondeur, API gateway et IAM.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "YxuMk63XRus", "title": "\"Modern Software Engineering & Architecture\" : Les Tech Trends 2025 - La Duck Conf 2025", "publishedAt": "2025-04-09", "transcript": true }
+    },
+    {
+      "id": "l-infra-as-code-as-code",
+      "day": "2025-03-19",
+      "type": "workshop",
+      "title": "L'infra as code, as code",
+      "speakers": ["Sébastien Gahat — OCTO Technology", "Ulysse Fontaine — OCTO Technology"],
+      "feedbackFrom": [],
+      "summary": "- Talk suivi d'un live coding (1h30 au programme). Thèse : le code d'infra ressemble à une **liste de courses** ; il doit exprimer une intention lisible. *« L'infra c'est un produit. Un produit ça se code. »*\n- Leviers : l'intention dans les tickets et le code, une interface unifiée pour les utilisateurs (CLI, YAML, CRD, portail), un but atteint vite puis du désendettement, une boucle rapide déployer et supprimer.\n- **Couches d'abstraction** inspirées du modèle OSI : portail, manifeste à trous, use case (CI/CD), repository qui encapsule les règles ops, provisioning (Terraform, API cloud, Crossplane). *« Autorisez-vous à coder sur la couche la plus pertinente. »*\n- Démo : une CLI « duck » en TypeScript avec Pulumi (Automation API) qui déploie un conteneur sur Scaleway ; la règle « pas de tag `latest` » devient un test unitaire sans appel API. Un participant relève que la vérification par chaîne rejetterait aussi `latest-v1`.\n- Même use case décliné sur GCP et AWS Fargate, avec un avertissement : **plus on multiplie les clouds, plus l'abstraction commune se restreint**.\n- Questions-réponses : faisable avec des modules Terraform ; la perte du déclaratif freine l'adoption, d'où la proposition de mixer le déclaratif pour le stable et le code pour ce qui bouge.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "GZFkpHHq_pc", "title": "L'infra as code, as code - La Duck Conf 2025", "publishedAt": "2025-04-09", "transcript": true }
+    },
+    {
+      "id": "l-architecture-continue-par-la-pratique",
+      "day": "2025-03-19",
+      "type": "talk",
+      "title": "L'architecture continue par la pratique",
+      "speakers": ["Pierrette Bertrand — OCTO Technology", "Pierre-Jean Dousset — OCTO Technology"],
+      "feedbackFrom": [],
+      "summary": "- Dialogue à deux voix sur un système de gestion des urgences. *« L'architecture continue consiste à faire évoluer rapidement et sans rupture les SI au fur et à mesure des besoins. »* Quatre défis : alignement, maîtrise, design sans rupture, ownership.\n- **Alignement** : une phrase de vision technique co-construite par tous les acteurs tech, des drivers d'architecture avec un **curseur** par driver (plus il est haut, plus on investit dans la vérification).\n- **Maîtrise** : l'architecture implémentée dérive de la cible. Plutôt qu'une live doc par APM, des **conventions de nommage** des variables d'environnement et un script « Python et des grep » génèrent le schéma réel.\n- **Design sans rupture** : un référentiel devenu goulot est inversé en **publication d'événements** (RabbitMQ, transactional outbox, idempotence) ; seules les nouvelles applications migrent. *« On s'autorise à avoir une situation hétérogène »*, *« sans rupture mais pas sans complication »*.\n- **Ownership** : l'architecte décide le moins possible, accepte le « good enough », ne se met jamais sur le chemin critique et cherche à **se rendre dispensable** ; le tech lead porte le contexte et la qualité.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "T5DPWcNDiKM", "title": "L'architecture continue par la pratique - Pierrette Bertrand et Pierre-Jean Dousset", "publishedAt": "2025-04-09", "transcript": true }
+    },
+    {
+      "id": "du-chaos-au-flow-faut-il-miser-sur-la-devex",
+      "day": "2025-03-19",
+      "type": "talk",
+      "title": "Du Chaos au Flow : faut-il miser sur la DevEx ?",
+      "speakers": ["Lana Lesik — OCTO Technology"],
+      "feedbackFrom": [],
+      "summary": "- Sondage d'ouverture : combien de temps un développeur code-t-il par jour ? Réponse : **84 minutes** (étude d'André Meyer citée de mémoire), prétexte à illustrer les biais cognitifs.\n- Ancienne psychologue, elle relie DevEx et sciences cognitives : charge cognitive (7 ± 2), environ 23 minutes pour revenir après une interruption, **charge extrinsèque** seule contrôlable, flow de Csikszentmihalyi.\n- Expérience personnelle sur un ticket de 5 jours, mesurée en productivité et en « happiness » : Copilot fait gagner une demi-journée ; l'IDP est refusé par son architecte (une « usine à gaz » pour une petite équipe) ; la **plateformisation** sur un train SAFe ramène à 3,5 jours ; le **flow forcé sans réunions** ramène à 3 jours mais l'isole.\n- *« J'ai gagné en productivité, j'ai perdu en happiness. »*\n- Cadre retenu : trois dimensions de la DevEx (boucles de feedback, charge cognitive, flow). DevEx reste un mot « hype » sans définition unique, qui n'a d'effet réel que **porté par la direction**.\n- Elle qualifie elle-même ses gains (environ 30 %) d'optimistes et très subjectifs.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "_BGon9KWczw", "title": "Du Chaos au Flow : faut-il miser sur la DevEx ? - Lana Lesik", "publishedAt": "2025-03-31", "transcript": true }
+    },
+    {
+      "id": "des-millisecondes-contre-des-millions-d-euros",
+      "day": "2025-03-19",
+      "type": "talk",
+      "title": "Des millisecondes contre des millions d'euros",
+      "speakers": ["Léo Jacquemin — OCTO Technology"],
+      "feedbackFrom": [],
+      "summary": "- Fil narratif : le cousin « Polo » qui veut devenir numéro un de la peluche en ligne. Le référencement dépend désormais de **métriques UX** : *« Plus que jamais l'UX, c'est pas seulement un délire de hipster. »*\n- **CLS** : trois causes et leurs correctifs simples (dimensions des images ou `aspect-ratio`, bannières en position absolue, polices de repli ajustées).\n- **INP** (seuil de 200 ms) : un site qui ne réagit pas est perçu comme bugué. Cas de Polo : des dizaines de scripts de tracking synchrones au clic (400 ms au p75), corrigés en **rendant la main au rendu** (`setTimeout` sur l'analytics).\n- Biais du développeur : *« ça marche sur mon iPhone »*, alors que la majorité des utilisateurs a des appareils moins puissants. Google mesure au p75 sur données réelles, publiques via le **CrUX**.\n- Pas de takeaway mais un *« take action »* : consulter le CrUX dès maintenant et faire corriger CLS et INP s'ils ne sont pas au vert. Le LCP n'est pas traité faute de temps.\n- Plusieurs chiffres (52 % du trafic sur le top 3, 95 % des sites sans problème d'INP) sont donnés de mémoire.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "MJ3wnqRqd5Y", "title": "Des millisecondes contre des millions d'euros - La Duck Conf 2025", "publishedAt": "2025-04-09", "transcript": true }
+    },
+    {
+      "id": "coder-une-application-inconnue-en-30-min-grace-a-l-ia",
+      "day": "2025-03-19",
+      "type": "talk",
+      "title": "Coder une application inconnue en 30 min grâce à l'IA : buzz ou révolution ?",
+      "speakers": ["Nicolas Laurent — OCTO Technology"],
+      "feedbackFrom": [],
+      "summary": "- Talk de clôture en improvisation : sujet et langage tirés au sort par la curation. Résultat : une **application Python** qui dimensionne un tableau électrique selon la **norme NF C 15-100**.\n- Outil : **Cursor** en mode agent avec un modèle Anthropic (Claude 3.7 surchargé, bascule sur Claude 3.5). Environ 100 lignes générées en une minute, 230 en moins de 30 minutes, une appli console fonctionnelle : « plutôt un succès ».\n- Ce qui a raté : l'agent perd le fil (fichiers recréés à la racine), oublie l'environnement virtuel, n'ajoute aucune règle métier au départ et accepte un « robot aspirateur » hors énumération. La dernière saisie échoue : *« bon, on s'arrête là »*.\n- Ce qui a marché : ajouter la sortie du terminal ou une capture d'écran au contexte fait corriger les règles et la validation des entrées.\n- Bilan : démarrage rapide et code plutôt cohérent, mais **gérer le contexte et le volume généré** reste dur. *« C'est comme un développeur un peu junior qui produit plein de code, mais qu'on doit en permanence recadrer »* ; le risque est de *« se faire piloter par l'IA »*. Il cite une étude (41 % de bugs en plus avec Copilot) et Addy Osmani (les seniors en profitent plus que les juniors).\n- Trois messages : monter dans le train, mixer pratiques craft et IA, développer ses soft skills.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "zyuiZC9VBLM", "title": "Coder une application inconnue en 30 min grâce à l'IA : buzz ou révolution ? - Nicolas Laurent", "publishedAt": "2025-04-14", "transcript": true }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Vivez l'expérience d'une modélisation orientée Domain-Driven Design (atelier, Bruno Boucard et Godefroy Clair, sans replay)"
+  ],
+  "sources": [
+    { "label": "Programme officiel 2025", "url": "https://laduckconf.com/programme-2025" },
+    { "label": "Talks 2025 (descriptifs, capture Wayback du 18/02/2025)", "url": "https://web.archive.org/web/20250218010415/https://laduckconf.com/talks-2025" },
+    { "label": "Édito du site officiel (capture Wayback du 01/04/2025)", "url": "https://web.archive.org/web/20250401000935/https://www.laduckconf.com/" },
+    { "label": "Blog OCTO : « Découvrez le programme de la Duck Conf 2025 » (19/02/2025)", "url": "https://blog.octo.com/decouvrez-le-programme-de-la-duck-conf-2025" },
+    { "label": "Playlist YouTube « La Duck Conf 2025 - les replays » (12 vidéos, 11 talks ; deux montages du talk de Nicolas Laurent)", "url": "https://www.youtube.com/playlist?list=PLXlbmbYadKH5d5aKO2mNaH787kBDwXRU4" },
+    { "label": "Transcripts automatiques des 11 replays (transcripts/)" },
+    { "label": "Posts LinkedIn : aucun retour de participant sur l'édition 2025 trouvé" }
+  ]
 }

@@ -8,8 +8,415 @@
   "city": "Paris",
   "venue": "New Cap Event Center",
   "url": "https://web.archive.org/web/20250114094026/https://react.paris/",
+  "programUrl": "https://web.archive.org/web/20250315000000/https://react.paris/",
   "dateConfidence": "ok",
-  "note": "Deux jours de conférence (20 et 21 mars 2025), précédés d'une journée de workshops payants le 19 mars ; site officiel archivé. Replays : playlist YouTube « React Paris 2025 » (https://www.youtube.com/playlist?list=PL53Z0yyYnpWitP8Zv01TSEQmKLvuRh_Dj).",
-  "status": "pending",
-  "sessions": []
+  "note": "Deux jours de conférence mono-track en anglais (20 et 21 mars 2025), précédés d'une journée de workshops payants le 19 mars et de deux meetups gratuits (18 et 19 mars) ; organisée par BeJS, 18 speakers, MC Tejas Kumar et Sarah Dayan. Replays : playlist YouTube « React Paris 2025 » (https://www.youtube.com/playlist?list=PL53Z0yyYnpWitP8Zv01TSEQmKLvuRh_Dj).",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-08",
+  "revisit": "aucun retour participant détaillé trouvé (LinkedIn, blogs, Bluesky) : 9 recherches web sans résultat exploitable, API Bluesky inaccessible ; synthèse fondée sur les transcripts. Transcript de Kent C. Dodds non récupéré (YouTube 429, deux tentatives).",
+  "corpus": "Programme officiel archivé (Wayback Machine, mars 2025) et **17 transcripts sur 18 talks** de la playlist officielle « React Paris 2025 » (chaîne BeJS, vidéos publiées le 25/03/2025), complétés par la description YouTube du talk de Kent C. Dodds, les slides PDF de François Best et une mention dans la newsletter This Week in React #227 (26/03/2025).",
+  "limits": "Aucun retour de participant détaillé n'a été trouvé, à part la mention de Sébastien Lorber (This Week in React) : les résumés décrivent ce qui a été dit sur scène (sous-titres automatiques anglais, parfois bruités sur les noms propres), pas la réception par le public. Le talk d'ouverture de Kent C. Dodds n'est résumé que d'après son descriptif. Les cinq workshops du 19 mars et les meetups ne sont pas documentés.",
+  "tldr": "**React 19 et les Server Components entrent dans le quotidien** : moins de `useState` et de JavaScript, plus d'URL, de HTML natif et de serveur, sur fond de premiers usages concrets de l'IA dans le front et de rappels insistants sur l'accessibilité à l'approche de l'European Accessibility Act.",
+  "keyTakeaways": [
+    "Réserver `useState` à l'état interne d'un composant : valeurs dérivées calculées au rendu, `useRef` pour ce qui ne s'affiche pas, `useReducer` ou un store pour la logique contrainte (Khourshid).",
+    "Mettre dans l'URL tout état **partageable** (filtres, tri, pagination), avec un parseur typé comme nuqs, en surveillant taille, SEO (URL canonique) et bouton retour (Best).",
+    "Pousser la récupération de données au plus près des composants, sous `Suspense`, avec des fallbacks **dimensionnés pour éviter le CLS** ; `useOptimistic` et `useTransition` pour le retour immédiat (Scharff).",
+    "Avant d'écrire du JavaScript, vérifier ce que la plateforme offre : `<details name>`, attribut `popover`, `:has()`, `@starting-style`, animations pilotées par le scroll (Abu).",
+    "Préférer le HTML sémantique à ARIA, relier labels, descriptions et erreurs par `useId`, et tester avec `getByRole` / `getByLabelText` puis avec un vrai lecteur d'écran (Porshnieva).",
+    "Pour streamer du JSON produit par un LLM, passer en **NDJSON** (un objet par ligne) ou s'appuyer sur un SDK qui valide avec Zod (Kumar).",
+    "Rendre les tests Playwright fiables avec `eslint-plugin-playwright`, des tests isolés en mode parallèle et des rapports lisibles par le back (Marshalkina).",
+    "Pour vendre une réécriture en entreprise, partir d'un problème chiffré, trouver des alliés hors de l'équipe et ne demander que **deux mois** de preuve (Jansson, Elkjøp).",
+    "Tester les bêtas des librairies que vous utilisez : c'est le seul moment où leur API peut encore changer (Dorfmeister).",
+    "En A/B test, ne changer qu'une variable, fixer hypothèse, KPI et durée avant de lancer, et faire tourner les variantes en même temps (Popova)."
+  ],
+  "sessions": [
+    {
+      "id": "abracadabra-the-vanishing-network",
+      "day": "2025-03-20",
+      "type": "talk",
+      "title": "Abracadabra: The Vanishing Network",
+      "speakers": [
+        "Kent C. Dodds — Epic Web"
+      ],
+      "summary": "- Talk d'ouverture de la conférence (9 h 15, suivi d'un Q&A).\n- D'après le descriptif : le réseau entre serveur et client est **la principale source de complexité** du développement web (UI initiale, appels d'API à la navigation, soumissions de formulaires).\n- Thèse annoncée : les **React Server Components et les Actions** font « disparaître » cette complexité et permettent de meilleures expériences utilisateur.\n- Le reste du jour 1 y fait écho : Jean Burellier cite la présentation « juste avant » sur le réseau, Aurora Scharff et David Khourshid prolongent sur RSC et formulaires.\n- Contenu exact non vérifié : transcript non récupéré.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "-W3_dxNDHVw",
+        "title": "Abracadabra: The Vanishing Network - Kent C  Dodds",
+        "publishedAt": "2025-03-25",
+        "transcript": false
+      }
+    },
+    {
+      "id": "building-a-design-system-with-react-in-2025-whats-new",
+      "day": "2025-03-20",
+      "type": "talk",
+      "title": "Building a design system with React in 2025, what's new?",
+      "speakers": [
+        "Jean Burellier — Sanofi"
+      ],
+      "summary": "- Contexte Sanofi : des milliers d'applications internes et publiques, toutes régulées, déclinées par pays. Le design system est porté par **4 ingénieurs et 2 designers pour plus de 2 000 ingénieurs**.\n- Choix d'un design system maison, sans librairie tierce (objectif : zéro dépendance) : cycles produit de 7 à 8 ans, besoins multi-supports, accessibilité au-delà de la loi, personnalisation par marque.\n- Ce qui change en 2025 : coexistence CSR/SSR, compatibilité React, Remix et Next.js, React 18 et 19 ; jusqu'à **48 variantes** de test par cas (frameworks, versions, navigateurs, rendu). L'**European Accessibility Act** arrive dans trois mois et vise aussi les outils internes.\n- Résultats annoncés : délai de livraison réduit de 25 à 45 %, prototype en moins d'une heure, site statique en quatre heures ; un socle validé fait passer la validation qualité **de deux ou trois mois à moins d'une semaine**.\n- Points durs : construire la communauté, viser zéro breaking change, boucle de feedback, culture inner source encore à installer.\n- Pistes : playground pour non-développeurs, assistant LLM nourri de la documentation, tests « canari » sur les projets les plus utilisés (inspiré de Node.js), composants métier complets (profil, recherche d'essai clinique).",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "JWsp_L6N_qg",
+        "title": "Building a design system with React in 2025, what's new? - Jean Burellier",
+        "publishedAt": "2025-03-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "i-cant-believe-its-not-javascript",
+      "day": "2025-03-20",
+      "type": "talk",
+      "title": "I Can't Believe It's Not JavaScript",
+      "speakers": [
+        "Jemima Abu — Google Developer Expert"
+      ],
+      "summary": "- Rappel historique : JavaScript a été créé pour **soutenir** HTML et CSS (validation côté client), pas pour porter tout le contenu. Anecdote left-pad pour illustrer la dépendance excessive.\n- Règle proposée : si la page était imprimée sans JavaScript, le contenu devrait rester lisible ; garder JS pour la fonctionnalité (par exemple persister un choix de thème).\n- Démos CodePen sans JS : sélecteur de thème avec `:has()`, accordéon `<details>` (accessibilité native, recherche dans la page, exclusivité avec l'attribut `name`), modale avec l'attribut **`popover`** (focus, fermeture au clic extérieur), `::backdrop`.\n- Fonctions encore expérimentales montrées : `calc-size(auto)`, `@starting-style`, animations pilotées par le scroll (`animation-timeline`, `animation-range`).\n- Q&A : pour un thème persistant en SSR, stocker le choix en local et laisser le CSS gérer l'affichage.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "h_tMtyvVPY0",
+        "title": "I Can’t Believe It’s Not JavaScript - Jemima Abu",
+        "publishedAt": "2025-03-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "demystifying-accessibility-in-react-apps",
+      "day": "2025-03-20",
+      "type": "talk",
+      "title": "Demystifying Accessibility in React Apps",
+      "speakers": [
+        "Kateryna Porshnieva — Buffer"
+      ],
+      "summary": "- Bases : l'**arbre d'accessibilité** (rôle, nom accessible, états) exposé aux technologies d'assistance ; démonstrations au lecteur d'écran tout au long du talk.\n- Première règle d'ARIA : ne pas l'utiliser si le HTML natif suffit. ARIA ne change que la sémantique, pas le comportement, et les pages qui en usent ont en moyenne plus d'erreurs.\n- Boutons icônes : `aria-hidden` sur l'icône, composant `VisuallyHidden` plutôt qu'`aria-label` (non traduit) ; `:focus-visible`, `:has()` et `@media (hover: hover)` pour les actions au survol.\n- Formulaires : labels reliés explicitement, `aria-describedby` pour aides et erreurs, `useId` pour les identifiants, `aria-required` et `aria-invalid` (aussi utilisés comme sélecteurs CSS), erreurs pas uniquement en couleur.\n- Notifications : régions live (`role=status`, `role=alert`).\n- Tests : axe, Lighthouse, jsx-a11y, puis **requêtes sémantiques** de Testing Library ; enfin lecteur d'écran et tests avec des utilisateurs handicapés (pratique de Buffer).",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "tFO0-aMxitY",
+        "title": "Demystifying Accessibility in React Apps - Kateryna Porshnieva",
+        "publishedAt": "2025-03-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "goodbye-usestate",
+      "day": "2025-03-20",
+      "type": "talk",
+      "title": "Goodbye, useState",
+      "speakers": [
+        "David Khourshid — Stately"
+      ],
+      "summary": "- Suite de son ancien talk « Goodbye useEffect » : `useState` n'est pas à bannir, mais **on l'utilise trop**, surtout avec React 19.\n- Pièges : closures (préférer le setter fonctionnel), identité d'objet (Map, Set), re-rendus inutiles ; `useRef` pour un état qui n'affecte pas l'UI.\n- Alternatives : l'URL pour l'état partageable (renvoi vers nuqs), Server Components, `Suspense`, `useTransition` ou TanStack Query pour les données, `FormData` et `useActionState` pour les formulaires, React Hook Form ou TanStack Form pour les cas complexes.\n- Modélisation : regrouper l'état lié, **enums de chaînes et unions discriminées** pour éliminer les états impossibles, valeurs dérivées calculées au rendu.\n- `useReducer` pour la logique contrainte (gestion « indirecte » par événements, testable), `useSyncExternalStore`, XState Store ; ouverture vers le local-first.\n- Formule mémorable : la « vibe state management », empilement de `useState` que génère Cursor laissé sans contrôle.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "aGkscOKWQvQ",
+        "title": "Goodbye, useState - David Khourshid",
+        "publishedAt": "2025-03-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "type-safe-url-state-management-in-react-with-nuqs",
+      "day": "2025-03-20",
+      "type": "talk",
+      "title": "Type-Safe URL State Management in React with nuqs",
+      "speakers": [
+        "François Best — 47ng"
+      ],
+      "summary": "- Le vrai intérêt de l'état dans l'URL n'est pas la survie au rechargement mais deux « super-pouvoirs » : **téléportation** (partage de lien) et **voyage dans le temps** (favoris, historique). L'URL devient aussi une frontière client/serveur.\n- Cinq points de vigilance : taille (environ 2 000 caractères), lisibilité des liens (l'URL est une UI), **migrations de schéma** des liens déjà partagés, bouton retour cassé par des push abusifs, limitation de débit des API d'historique par les navigateurs, SEO (URL canonique).\n- Démo de nuqs : `useQueryState` compatible avec l'API de `useState`, parseurs typés, adaptateurs Next.js et React Router, routage *shallow* par défaut, `shallow: false` pour déclencher le rendu serveur.\n- Descripteurs déclaratifs réutilisés côté serveur (`createLoader`), client (`useQueryStates`) et liens (`createSerializer`), avec renommage des clés dans l'URL.\n- François Best (speaker) rappelle qu'il assistait à la première édition un an plus tôt.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "U__Rwsp8v78",
+        "title": "Type Safe URL State Management in React with nuqs - François Best",
+        "publishedAt": "2025-03-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "react-server-components-elevating-speed-interactivity-and-user-experience",
+      "day": "2025-03-20",
+      "type": "talk",
+      "title": "React Server Components: Elevating Speed, Interactivity, and User Experience",
+      "speakers": [
+        "Aurora Scharff — Crayon Consulting"
+      ],
+      "summary": "- Démo live sur une app Next.js App Router + Prisma volontairement lente, améliorée pas à pas en partant d'une base sans JavaScript.\n- Étapes : `loading.tsx`, **requêtes déplacées dans les composants** qui les consomment et parallélisées sous `Suspense`, skeletons dimensionnés pour garder un CLS à zéro.\n- Promesses passées aux composants clients et lues avec `use()` ; formulaire `next/form`, recherche pilotée par l'URL, `useTransition` pour l'indicateur d'attente, attribut `data-pending` et `:has()` pour signaler le chargement sans état global.\n- `useOptimistic` pour des filtres réactifs indépendants du réseau, `cache()` pour dédupliquer les appels, `staleTimes` côté client, puis **Partial Prerendering** (expérimental).\n- Résultat : score Lighthouse de 99 malgré des requêtes de plus de 2 secondes, *« no useEffects or useStates »* hormis la transition. Variante avec nuqs montrée en fin de talk.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "dA-8FY5xlbk",
+        "title": "React Server Components  Elevating Speed, Interactivity, and User Experience - Aurora Scharff",
+        "publishedAt": "2025-03-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "what-we-learned-rebuilding-the-largest-nordic-electronic-retail-website-in-nextjs",
+      "day": "2025-03-20",
+      "type": "talk",
+      "title": "What we learned rebuilding the largest Nordic electronic retail website in Next.js?",
+      "speakers": [
+        "Tomas Jansson — Elkjøp Nordic"
+      ],
+      "summary": "- Point de départ : un site Angular lent, critiqué publiquement sur Reddit ; le parcours jusqu'au checkout passe **de deux minutes à 33 secondes** après la réécriture.\n- Volet conduite du changement : parler coûts et revenus plutôt que techno, chiffrer, trouver des premiers alliés hors des développeurs, réduire le périmètre (ni CMS ni recherche) et ne demander que **deux mois** à trois développeurs pour une preuve.\n- Volet technique : abandon du rendu à l'edge quelques jours avant la bascule (trop loin des API), suppression d'un proxy CDN superflu (**-40 % de TTFB**).\n- Pages statiques et cachables malgré l'i18n et les feature flags, encodés par le middleware dans un segment d'URL ; Server Actions, invalidation du cache par événements et tags, attente du Partial Prerendering.\n- Outils Vercel appréciés : déploiements de preview, Speed Insights, environnements, toolbar.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "nYOAWjcRuBY",
+        "title": "What we learned rebuilding the largest Nordic electronic retail website in Next js? - Tomas Jansson",
+        "publishedAt": "2025-03-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "bridging-code-and-creativity-level-up-your-game-as-a-frontend-engineer",
+      "day": "2025-03-20",
+      "type": "talk",
+      "title": "Bridging Code and Creativity: Level Up Your Game as a Frontend Engineer",
+      "speakers": [
+        "Yu Ling Cheng — Pigment"
+      ],
+      "summary": "- Jeu de rôle en trois niveaux pour le développeur front qui travaille avec design et produit.\n- Niveau 1, construire en autonomie : poser deux questions factuelles, **est-ce réaliste ?** (données réelles) et **est-ce cohérent ?** (déjà dans le design system ?), puis lister ce qu'il faut recevoir (assets, cas limites, interactions, formats, responsive).\n- Niveau 2, façonner la fonctionnalité : face à une option qui semble plus simple mais ne l'est pas, ne pas trancher en cinq minutes ; prendre le temps de traduire les contraintes techniques en **coûts et maintenance**.\n- Niveau 3, élargir son influence : composants et hooks qui embarquent l'accessibilité, guidelines écrites, feature flags pour itérer sur des données réelles, previews de pull request pour tester une idée avec designers et PM.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "rdspbWaySjs",
+        "title": "Bridging Code and Creativity  Level Up Your Game as a Frontend Engineer - Yu Ling Cheng",
+        "publishedAt": "2025-03-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "using-ai-effectively-in-2025",
+      "day": "2025-03-21",
+      "type": "talk",
+      "title": "Using AI Effectively in 2025",
+      "speakers": [
+        "Tejas Kumar — DataStax"
+      ],
+      "summary": "- Talk improvisé : Tejas Kumar dit n'avoir rien préparé et avoir demandé aux participants, la veille, ce qu'ils voulaient apprendre. Réponse majoritaire : **gérer le streaming de l'IA dans une UI React**.\n- Live coding (avec Cursor et quelques ratés CORS assumés) : réponse OpenAI streamée, lecture d'un `ReadableStream`, puis problème du JSON partiel.\n- Solution manuelle : **NDJSON** imposé par prompt système et tampon côté serveur. Solution outillée : `streamObject` du Vercel AI SDK avec schéma Zod.\n- Démo d'UI générative (films, bande-annonce, carte) : le LLM choisit l'outil et fournit les props, les composants restent écrits par le développeur. Message : *« I'm not building another chatbot »*.\n- Fin sur MCP (base Astra pilotée depuis Cursor, serveur MCP de TanStack Router) et l'idée que l'anglais devient la prochaine abstraction.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "fKOfUqAOGSE",
+        "title": "Using AI Effectively in 2025 - Tejas Kumar",
+        "publishedAt": "2025-03-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "lets-build-kitt-with-javascript",
+      "day": "2025-03-21",
+      "type": "talk",
+      "title": "Let's build K.I.T.T. with JavaScript",
+      "speakers": [
+        "Nico Martin — Freelance"
+      ],
+      "summary": "- Projet personnel : recréer KITT (K 2000) **entièrement dans le navigateur**, sur l'appareil, sans requête réseau.\n- Briques : WebGPU, Transformers.js avec Whisper (transcription) et Kokoro (synthèse vocale), WebLLM avec Gemma 2 (environ 33 tokens/s générés en local).\n- Personnalité par simple prompt système ; mémoire via un **RAG agentique** sur 6 275 scènes de la série, résumées par un LLM local (3,1 millions de tokens en entrée, plusieurs jours de calcul) et stockées dans IndexedDB.\n- Function calling en texte brut (balises XML) ; les petits modèles exigent davantage de garde-fous (appels en double).\n- Corps physique : voiture Lego pilotée par Arduino via **Web Bluetooth**. Débouché annoncé : un client mail hors ligne avec IA locale, proposée en opt-in.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "HpbMZX1yOKc",
+        "title": "Let’s build K I T T  with JavaScript - Nico Martin",
+        "publishedAt": "2025-03-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "from-chaos-to-clarity-mathematical-foundations-for-maintainable-react-applications",
+      "day": "2025-03-21",
+      "type": "talk",
+      "title": "From Chaos to Clarity: Mathematical Foundations for Maintainable React Applications",
+      "speakers": [
+        "Héla Ben Khalfallah — Ekino"
+      ],
+      "summary": "- Constat : JavaScript laisse tout passer et les revues de code reposent sur des avis ; objectif, des **critères déterministes** de qualité.\n- Théorie des graphes : fichiers comme nœuds, imports comme arêtes ; détection de cycles, communautés (méthode de Louvain) pour découper les modules, centralité pour l'instabilité, le code mort et **prioriser les tests unitaires**, densité pour repérer le code spaghetti. Outils : madge, graphology, son outil open source.\n- Théorie des catégories : transformations plutôt que mutations, composition de petites fonctions, foncteurs, monades, lenses, transducers.\n- Lambda-calcul : curryfication, fonctions d'ordre supérieur, évaluation paresseuse, mémoïsation, trampolines.\n- Lecture critique : talk très conceptuel, peu ancré dans React lui-même.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "ULTiZDTNeyI",
+        "title": "From Chaos to Clarity  Mathematical Foundations for Maintainable React Applications - Héla Ben Khal",
+        "publishedAt": "2025-03-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "work-smarter-not-harder-with-chrome-devtools",
+      "day": "2025-03-21",
+      "type": "talk",
+      "title": "Work Smarter, not Harder with Chrome DevTools",
+      "speakers": [
+        "Dominika Zając — Qualtrics"
+      ],
+      "summary": "- Fil rouge : les « petites questions » des collègues et la fonctionnalité DevTools qui y répond vite, démontrées sur le site de React Paris.\n- CSS : **CSS Overview** (couleurs et problèmes de contraste), émulation des déficiences visuelles, correction automatique du contraste dans le color picker, arbre d'accessibilité complet, paint flashing, `document.designMode` pour les designers.\n- Assistant IA intégré à DevTools (styles, erreurs CORS, requêtes réseau), avec la mise en garde de ne pas lui faire une confiance aveugle.\n- Recorder pour rejouer et exporter (Puppeteer) des scénarios de reproduction ; panneau Performance avec métriques locales et terrain (CrUX), annotations, insights, Lighthouse.\n- Réseau : surcharge locale des réponses et des en-têtes, blocage de requêtes pour tester les fallbacks.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "iAjLmlFwkdU",
+        "title": "Work Smarter, not Harder with Chrome DevTools - Dominika Zając",
+        "publishedAt": "2025-03-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "a-tale-of-two-components-mastering-a-b-testing-in-react",
+      "day": "2025-03-21",
+      "type": "talk",
+      "title": "A Tale of Two Components: Mastering A/B Testing in React",
+      "speakers": [
+        "Violina Popova — ClipMyHorse.TV"
+      ],
+      "summary": "- L'A/B test pour remplacer l'intuition par la donnée ; démarche scientifique : analytics, observation, hypothèse, ciblage, variantes, résultats.\n- Bonnes pratiques : **une seule variable**, KPI choisi avant, durée minimale (une semaine, deux à quatre pour les gros changements), variantes simultanées, bonne audience.\n- Feature flags et A/B tests distingués ; mise en œuvre avec GrowthBook et Google Analytics, logique de choix de variante isolée.\n- Cas réel ClipMyHorse.TV (France et Suède) : supprimer le mois d'essai a augmenté la conversion payante (+1,74 point combiné, **25 % d'abonnés payants en plus** selon la speaker), le taux d'annulation pendant l'essai étant élevé.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "LzCEfzHh8Eo",
+        "title": "A Tale of Two Components: Mastering A:B Testing in React - Violina Popova",
+        "publishedAt": "2025-03-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "at-the-top-of-the-pyramid-playwright-testing-at-scale",
+      "day": "2025-03-21",
+      "type": "talk",
+      "title": "At the top of the pyramid: Playwright testing at scale",
+      "speakers": [
+        "Kate Marshalkina — Aetion"
+      ],
+      "summary": "- Contexte : couvrir 64 epics de tests end-to-end exigés par la réglementation, sur une app React 17 non typée et un back Java vieux de dix ans.\n- Stratégie ad hoc, le « **testing mushroom** » : d'abord un chapeau de tests E2E comme filet de sécurité, puis intégration et unitaires.\n- Leçons : tests instables dus à un mauvais usage des API (corrigé par `eslint-plugin-playwright`), dépendances entre tests cassées par le mode **fully parallel**, rapports lisibles grâce au décorateur `step` et à Allure.\n- Vitesse : de 51 à 17 minutes en augmentant les workers, 10 minutes gagnées sur 200 tests grâce à un cache réseau (« mocking without mocks »).\n- Effet de bord : un an après, React mis à jour, monorepo, feature-sliced design et migration TypeScript ; *« everything else becomes easier when you've got your testing right »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "OYZNTPp04hw",
+        "title": "At the top of the pyramid: Playwright testing at scale - Kate Marshalkina",
+        "publishedAt": "2025-03-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "react-query-api-design-lessons-learned",
+      "day": "2025-03-21",
+      "type": "talk",
+      "title": "React Query API Design - Lessons Learned",
+      "speakers": [
+        "Dominik Dorfmeister — Sentry"
+      ],
+      "summary": "- Une bonne API est **minimale et intuitive au départ, puissante quand l'app grandit** : `useQuery` donne 80 % de la valeur, le reste s'apprend au besoin.\n- Les versions majeures servent à casser des API, pas à livrer des fonctionnalités ; mention de l'*epoch semver* d'Anthony Fu.\n- Concevoir avec les types dès le départ : suppression des surcharges de `useQuery` en v5 (de 125 à 25 lignes de types).\n- Prendre son temps avant d'ajouter une option : `refetchPage` était une erreur, remplacée par `maxPages` ; l'inversion de contrôle (options en callbacks) plutôt que des options dédiées comme le debounce.\n- Pragmatisme (erreurs typées `Error` par défaut), courage de retirer (callbacks `onSuccess` supprimés en v5).\n- Appel principal : **tester les bêtas et remonter du feedback**, car stable veut seulement dire que l'API ne peut plus changer. Il mentionne avoir livré deux jours plus tôt un adaptateur de streaming expérimental, ce que Tejas Kumar avait salué le matin.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "l3PxErcKeAI",
+        "title": "React Query API Design: Lessons Learned - Dominik Dorfmeister",
+        "publishedAt": "2025-03-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "using-remix-the-wrong-way",
+      "day": "2025-03-21",
+      "type": "talk",
+      "title": "Using Remix, the wrong (?) way",
+      "speakers": [
+        "Antoine Chalifour — Geckosocial"
+      ],
+      "summary": "- Retour d'expérience sur deux ans de Remix (désormais React Router v7) pour un SaaS de publication LinkedIn construit en solo.\n- Le modèle Remix (loader, action, revalidation globale) est simple et stable, mais il a coincé : éditeur riche Lexical incompatible SSR et progressive enhancement, données non liées à une route, **revalidation devenue coûteuse**, formulaires complexes.\n- Migration incrémentale vers TanStack Query et React Hook Form : alimenter le cache dans les `clientLoader`, lire le cache, `clientAction` vers une API indépendante, puis invalidation ciblée et mutations.\n- Ce qu'on perd : stabilité de page par défaut, gestion des courses, progressive enhancement. Ce qu'on garde : Vite, routing imbriqué, redirections d'authentification côté serveur, intégration dans un serveur NestJS.\n- Message : un framework est un outil, on n'est pas obligé d'en utiliser toutes les fonctionnalités ; **migrer par petites étapes, sans réécrire**.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "i1cVfJz4Vlw",
+        "title": "Using Remix, the wrong ? way - Antoine Chalifour",
+        "publishedAt": "2025-03-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "a-journey-into-the-fiber",
+      "day": "2025-03-21",
+      "type": "talk",
+      "title": "A journey into the fiber",
+      "speakers": [
+        "Matias Nahuel Gonzalez Fernandez — Basement Studio"
+      ],
+      "summary": "- Dernier talk de l'édition : comment fonctionnent les **renderers custom** de React (comme React Three Fiber) via `react-reconciler`.\n- Principe expliqué avec un « React Pizza Fiber » : un objet de configuration de callbacks (`createInstance`, `appendChild`…) et un conteneur.\n- Série d'expériences volontairement inutiles : composition d'images avec Jimp, rendu ASCII dans le terminal (jusqu'à un Space Invaders et Doom), fichiers MIDI, modèles 3D avec JSCAD, et un renderer qui envoie l'arbre JSX à DALL-E.\n- Philosophie : apprendre en s'amusant, sans viser la production.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "EHGcU3mV-pc",
+        "title": "A journey into the fiber - Matias Nahuel Gonzalez Fernandez",
+        "publishedAt": "2025-03-25",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Workshop React Performance (Kent C. Dodds, 19/03, payant)",
+    "Workshop Accessibility in React (Kateryna Porshnieva, 19/03, payant)",
+    "Workshop Getting started with AI (-agents) in the browser (Nico Martin, 19/03, payant)",
+    "Workshop Going Full-stack with Astro (Elian Van Cutsem, 19/03, payant)",
+    "Workshop Hands-on React Server Components, Server Functions, and Forms in the Next.js App Router (Aurora Scharff, 19/03, payant)",
+    "Meetup Remix Paris avec Kent C. Dodds (18/03) et meetup Fork It! & React Paris (19/03)"
+  ],
+  "sources": [
+    {
+      "label": "Programme officiel React Paris 2025 (archive Wayback Machine, mars 2025)",
+      "url": "https://web.archive.org/web/20250315000000/https://react.paris/"
+    },
+    {
+      "label": "Playlist YouTube « React Paris 2025 » (chaîne BeJS, 18 talks + aftermovie)",
+      "url": "https://www.youtube.com/playlist?list=PL53Z0yyYnpWitP8Zv01TSEQmKLvuRh_Dj"
+    },
+    {
+      "label": "François Best : slides de « Type-Safe URL State Management in React with nuqs » (PDF)",
+      "url": "https://nuqs.47ng.com/react-paris-25-slides.pdf"
+    },
+    {
+      "label": "This Week in React #227 (Sébastien Lorber, présent le vendredi, signale la playlist)",
+      "url": "https://thisweekinreact.com/newsletter/227"
+    },
+    {
+      "label": "Posts LinkedIn, Bluesky, blogs : aucun retour participant trouvé (9 recherches web, octobre 2026)"
+    }
+  ]
 }

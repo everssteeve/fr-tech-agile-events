@@ -4,12 +4,281 @@
   "title": "La Duck Conf 2026",
   "edition": "9e édition",
   "start": "2026-03-24",
+  "end": "2026-03-24",
   "city": "Paris",
   "venue": "Pavillon Chesnaie du Roy (Parc floral)",
   "url": "https://web.archive.org/web/20260224163853/https://www.laduckconf.com/",
   "programUrl": "https://www.laduckconf.com/programme-2026",
+  "theme": "Architecture de SI, avec « une pincée d'IA dans la mare »",
   "dateConfidence": "ok",
-  "note": "« 24.03.2026 », Pavillon Chesnaie du Roy, 102 route de la Pyramide, 75012 Paris (site officiel archivé). Replays : playlist YouTube « La Duck Conf 2026 - Replays » (https://www.youtube.com/playlist?list=PLXlbmbYadKH4bFiVhW9-VEG6pC7rOyBic).",
-  "status": "pending",
-  "sessions": []
+  "note": "« 24.03.2026 », Pavillon Chesnaie du Roy, 102 route de la Pyramide, 75012 Paris (site officiel archivé). Annoncée à 500 participants, 2 tracks, 15 speakers, 100 % présentiel ; programme réel sur 3 salles (Nemo, Atlantide, Neptune pour les ateliers). Replays : playlist YouTube « La Duck Conf 2026 - Replays » (https://www.youtube.com/playlist?list=PLXlbmbYadKH4bFiVhW9-VEG6pC7rOyBic), 14 vidéos publiées les 3 et 7 avril 2026.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-08",
+  "revisit": "Aucun retour de participant trouvé : 10 recherches web sans un seul post LinkedIn ni article de blog sur l'édition (résultats pollués par DuckCon/DuckDB). Synthèse fondée sur les 14 transcripts et le programme. À reprendre avec une recherche LinkedIn ciblée sur les noms des speakers et le blog OCTO.",
+  "corpus": "Programme officiel (page programme 2026 et page d'accueil archivée), et les 14 replays de la playlist officielle, tous transcrits (sous-titres automatiques en français, publiés les 3 et 7 avril 2026). Aucun post LinkedIn, article de blog ni slide publique n'a été trouvé au 8 octobre 2026.",
+  "limits": "Synthèse construite uniquement sur ce qui a été dit sur scène : aucun regard de participant, donc ni réception, ni débat de couloir, ni retour sur les ateliers. Les sous-titres automatiques déforment certains noms et chiffres. Un talk (Kubernetes) et 4 ateliers n'ont ni vidéo ni retour.",
+  "tldr": "Une Duck Conf **plus pragmatique que prospective** : l'IA y est surtout un **accélérateur de modernisation sous contraintes humaines** (contexte, méthode, fatigue), au milieu de REX très concrets sur le legacy, la sobriété logicielle (EROOM chez Decathlon) et le passage à l'échelle chez Michelin.",
+  "keyTakeaways": [
+    "Mesurer la sobriété par une métrique ressources / opérations métier (ORI chez Decathlon) et parler en CO2 plutôt qu'en euros pour mobiliser les équipes (Nitot, Taillade).",
+    "Optimiser chirurgicalement 1 à 3 % du code critique tous les deux ans plutôt que renouveler le matériel : démarche EROOM, publiée en open source par Boavizta (Nitot).",
+    "Traiter la documentation comme du contexte pour les agents : architecture as code (C4), ADR, specs Markdown et AGENTS.md à côté du code (Lagacherie).",
+    "Onboarder l'IA comme un développeur junior, planifier plus que réaliser, et viser 50 % de ce que l'IA permet pour ne pas épuiser l'équipe (Keli).",
+    "En startup, retirer des fonctionnalités (« unship ») et revenir à un monolithe modulaire simple plutôt qu'ajouter de la techno (Mokbel, Billy).",
+    "Éteindre le hors-prod la nuit et le week-end (61 % du temps) et démarrer les services dans l'ordre des dépendances pour diviser la facture cloud (Perré).",
+    "Partir par défaut d'une MPA et de liens natifs pour l'accessibilité ; réserver la SPA aux applications riches (Fiorentino).",
+    "Ne pas confier un audit RGAA à une IA : prompter critère par critère donne une réponse juste deux fois sur trois, à relire en entier (Duhem-Verdière, Moizan).",
+    "Pour un logiciel éditeur auto-hébergé, partir d'emblée de l'architecture de référence et évaluer sauvegarde et restauration dès le choix (Michelin, GitLab).",
+    "Remplacer les estimations à l'échelle par des budgets trimestriels sur équipes stables, une priorisation explicite et la mesure du lead time (Luquet)."
+  ],
+  "sessions": [
+    {
+      "id": "comment-mener-2000-developpeurs-vers-du-numerique-plus-responsable-decathlon",
+      "day": "2026-03-24",
+      "type": "keynote",
+      "title": "Comment mener 2000 développeurs vers du numérique plus responsable ? L'expérience de Decathlon",
+      "speakers": [
+        "Tristan Nitot — OCTO Technology",
+        "Romain Taillade — Decathlon"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Point de départ côté Decathlon : les **appels d'API multipliés par 12** sur la période, *« on n'a pas fait x12 sur le business »* (Taillade).\n- Nitot oppose la loi de Moore à la **loi de Wirth** (le logiciel ralentit plus vite que le matériel n'accélère) et rappelle que l'essentiel de l'impact vient de la fabrication du matériel.\n- **EROOM** (Moore à l'envers) : optimiser l'existant d'un facteur 2 tous les 2 ans par des **frappes chirurgicales sur 1 à 3 % du code**, sans sacrifier la lisibilité. Méthodologie publiée en open source par Boavizta.\n- **ORI** (Operational Resource Intensity) : ressources consommées (CPU, RAM, réseau) divisées par les opérations métier, automatisée et intégrée au Tech Performance Framework de Decathlon.\n- Ce que la métrique a révélé : un consommateur d'API en cascade, un scale-to-zero Spring Boot plus coûteux que des pods allumés, des pods en crash-loop (5 à 10 % de l'énergie), une plateforme de perf qui consommait 3 fois plus que la prod.\n- Résultat annoncé : **23 000 kWh économisés** sur une BU d'environ 150 personnes. Leçon : parler **CO2 plutôt qu'euros** mobilise mieux les développeurs que le FinOps.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "3Xtvw8LdYWg",
+        "title": "Comment mener 2000 développeurs vers du numérique plus responsable ? L’expérience de Decathlon",
+        "publishedAt": "2026-04-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "l-architecte-a-l-ere-de-l-agentic-ai",
+      "day": "2026-03-24",
+      "type": "talk",
+      "title": "L'Architecte à l'ère de l'Agentic AI",
+      "speakers": ["Matthieu Lagacherie"],
+      "feedbackFrom": [],
+      "summary": "- Thèse : l'IA générative déplace le goulot de **« comment construire » vers « que doit-on construire »** ; on passe d'une décision d'architecture par semaine à plusieurs par jour.\n- *« La documentation, on appelle ça du contexte »* : **architecture as code** (C4, Structurizr, LikeC4), living documentation, specs Markdown dans le dépôt (spec-driven development), capacités du SI exposées en MCP.\n- Un dépôt type : AGENTS.md, description C4 en JSON, ADR devenus *« quelque chose qu'on peut lire et consommer au quotidien »*, skills.\n- Cartographie de mutualisation : prompts (peu partageables), **agent skills** (partageables), MCP (échelle entreprise), sur-mesure en dernier recours ; privilégier des skills qui portent **la manière de faire plutôt que le code**.\n- Réflexes à changer : les méthodes durent des années, les outils changent tous les 6 mois ; le refactoring massif du legacy redevient envisageable ; des PR de 3 000 à 5 000 lignes ne sont pas relisables ; se protéger de l'injection de prompt.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "DpbOo_Bspi0",
+        "title": "L’Architecte à l’ère de l’Agentic AI, par Matthieu Lagacherie",
+        "publishedAt": "2026-04-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "l-impact-des-architectures-front-sur-l-accessibilite",
+      "day": "2026-03-24",
+      "type": "talk",
+      "title": "L'impact des architectures front sur l'accessibilité",
+      "speakers": ["Gauthier Fiorentino — OCTO Technology"],
+      "feedbackFrom": [],
+      "summary": "- Thèse : **SPA et PESPA cassent des comportements d'accessibilité** que le navigateur offre nativement aux MPA.\n- Démo au lecteur d'écran : focus resté dans le pied de page après navigation, changement de page non annoncé (route announcer et aria-live imparfaits), spinners et layout shift pénalisants pour les troubles de l'attention.\n- **Principe de moindre pouvoir** (Berners-Lee) : le HTML déclaratif est analysable par les technologies d'assistance, pas le JavaScript.\n- Mesures maison sur 3 sites Next (non représentatives, dit-il) : environ **1 Mo de JS pour 8 Ko de HTML**, 56 % du temps d'exécution passé à générer du HTML, *« la représentation concrète de la loi de Wirth »*.\n- Démarche proposée : séparer domaine et UI, adopter un méta-framework (Astro recommandé), revenir aux **liens `<a>` natifs** plutôt qu'au routing du framework.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "n7dBAfNGSNs",
+        "title": "L’impact des architectures front sur l’accessibilité",
+        "publishedAt": "2026-04-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "apprivoiser-le-legacy-en-startup",
+      "day": "2026-03-24",
+      "type": "talk",
+      "title": "Apprivoiser le legacy en startup",
+      "speakers": ["Maria Mokbel — Billy"],
+      "feedbackFrom": [],
+      "summary": "- En startup, **le legacy arrive en 2 ans** à force de raccourcis nécessaires : vision web3 (billets NFT), 6 mois de trésorerie, 3 développeurs, serverless (Lambda, Chalice), microservices blockchain, back-office low-code.\n- Contrecoups : connexions base saturées, framework abandonné, low-code non versionné, frais de gas imprévisibles ; **10 bugs critiques par mois** et un crash pendant une vente de 15 000 billets.\n- Déclic : après une levée de fonds, un simple prix différencié dans un bundle demandait 2 mois.\n- Stratégie : nouvelle vision (boutique événementielle en marque blanche), **retrait de fonctionnalités** (mobile, blockchain), un seul artefact, Docker, ADR, typage strict, **monolithe modulaire** et migration progressive en double run.\n- Résultats annoncés : plus de 117 000 billets vendus, environ 20 déploiements par mois, zéro bug critique sur deux mois.\n- Formules : *« une stack moderne ce n'est pas une baguette magique »*, *« aucune fonctionnalité n'était gratuite »*.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "31qQtbGGyRU",
+        "title": "Apprivoiser le legacy en startup",
+        "publishedAt": "2026-04-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "a-l-epreuve-de-l-echelle-dette-technique-plateforme-devops",
+      "day": "2026-03-24",
+      "type": "talk",
+      "title": "À l'épreuve de l'échelle : surmonter la dette technique et les défis d'une plateforme DevOps",
+      "speakers": [
+        "Lucas Drago — Michelin",
+        "Adrien Gooris — Michelin"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Contexte : une **instance GitLab unique auto-hébergée** (souveraineté, secret industriel) pour environ 3 000 applications et environ 230 mises à jour par semaine.\n- 2017 : un simple `docker run` sur une VM cache Omnibus et sa configuration de près de 3 600 lignes. Vers 2 000 utilisateurs, sortir PostgreSQL et Redis et passer sur NFS fait gagner environ 2 ans.\n- Vers 5 000 utilisateurs, le **NFS s'effondre** (verrous sur des millions de petits fichiers) ; l'architecture de référence passe à 31 VM et 15 services : *« ce n'est plus un ticket, c'est une epic »*.\n- Remède : le **GitLab Environment Toolkit** (Terraform, Ansible) utilisé sans fork, avec monitoring inclus, mises à jour sans interruption et infra reproductible, au prix de compétences pointues.\n- Leçons : partir au minimum de l'architecture de référence, ne jamais forker l'outillage, et **penser la sauvegarde dès le départ** (plus de 24 h pour 4 à 6 To, contre un objectif de moins de 12 h).\n- Le programme affiche la session deux fois (11h00 Atlantide, 11h45 Neptune) ; le talk renvoie la démonstration à la salle Neptune.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "4o0O_MKYPcU",
+        "title": "À l'épreuve de l'échelle - surmonter la dette technique et les défis d'une plateforme DevOps",
+        "publishedAt": "2026-04-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "auditer-l-accessibilite-en-15-secondes-grace-a-l-ia",
+      "day": "2026-03-24",
+      "type": "talk",
+      "title": "Auditer l'accessibilité en 15 secondes grâce à l'IA ?",
+      "speakers": [
+        "Romy Duhem-Verdière",
+        "Guillaume Moizan"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Rappel : un audit RGAA, c'est 106 critères et 258 tests par page sur environ 20 pages, soit **plus de 5 000 tests et environ 21 jours ouvrés**.\n- Les outils d'audit IA « en 15 secondes » se trompent : **surévaluation des sites non conformes, sous-évaluation des conformes**, scores jamais sous 50.\n- Agents (Gemini, Codex, Claude Opus) branchés sur Playwright via MCP : un audit en un seul prompt échoue (jusqu'à 108 critères « hallucinés » pour 106) ; critère par critère, **juste environ deux fois sur trois**, donc tout relire.\n- Coût : 1 min 30 à 2 min par critère et quotas vite épuisés.\n- Ce qui marche : tests clavier à la touche Tab (une dizaine de critères), environ 25 % de critères automatisables et 25 % vérifiables manuellement simplement.\n- Formule : l'audit RGAA *« c'est pas la porte d'entrée d'une démarche d'accessibilité, c'est l'aboutissement »*.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "hn3HcaQ0IlE",
+        "title": "Auditer l’accessibilité en 15 secondes grâce à l’IA ?",
+        "publishedAt": "2026-04-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "sobriete-cloud-kubernetes-hyperscalers",
+      "day": "2026-03-24",
+      "type": "talk",
+      "title": "Sobriété cloud : réduire l'impact énergétique et la dépendance aux hyperscalers avec Kubernetes",
+      "speakers": ["Yannig Perré — OCTO Technology"],
+      "feedbackFrom": [],
+      "summary": "- Thèse : des gestes simples de sobriété sur Kubernetes permettent de **diviser environ par 4** consommation et facture.\n- Le **hors-prod pèse 60 à 70 % de la facture** pour moins de 30 % d'usage ; l'éteindre de 19 h à 8 h et le week-end couvre 61 % du temps.\n- Redémarrer dans l'ordre des dépendances (probes, init containers), sinon les crash-loops gaspillent du CPU ; runners de CI éphémères, environnements de test à la volée, bouton « start » sur une page de maintenance (kube-green, kube-janitor cités).\n- Dimensionnement : ratio d'environ 1 CPU pour 4 Go, **instances spot 4 à 5 fois moins chères** pour le stateless et les batchs réentrants, ne pas mélanger batchs et API temps réel.\n- Mutualiser (namespaces, network policies) plutôt que multiplier les clusters ; Kubernetes comme **« runtime d'infrastructure »** qui réduit la dépendance à un fournisseur cloud.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "1qfV7IR5Z1E",
+        "title": "Sobriété cloud : réduire l’impact énergétique et la dépendance aux hyperscalers avec Kubernetes",
+        "publishedAt": "2026-04-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "estimation-des-projets-a-l-echelle-bienvenue-a-mytholand",
+      "day": "2026-03-24",
+      "type": "talk",
+      "title": "Estimation des projets à l'échelle : Bienvenue à Mytholand !",
+      "speakers": ["Thomas Luquet — OCTO Technology"],
+      "feedbackFrom": [],
+      "summary": "- Une fausse formule d'estimation (séniorité, dette, context switching, « part de mytho », dépendances × 5…) mène aux **indicateurs pastèques**, verts dehors et rouges dedans.\n- Budgétiser : le levier RH est trop lent (environ 5 mois entre recrutement et intégration) ; préférer le **Lean Portfolio Management avec budgets trimestriels et équipes stables**, abandonner WSJF, TCO et ROI fondés sur des estimations.\n- Planifier : distinguer planification et **priorisation**, rendre visible le mécanisme de priorisation et ses dates de révision, découper en tâches de 2 à 3 jours, vendre des MVP.\n- Comprendre : aller sur le terrain (gemba, « vis ma vie », démos), mesurer le **lead time** (*« c'est pas les devs qui codent pas assez vite »*) et la satisfaction utilisateur.\n- Conclusion : *« laisser les estimations mourir d'elles-mêmes »*.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "4ogAuN12n7o",
+        "title": "Estimation des projets à l'échelle : Bienvenue à Mytholand ! Par Thomas Luquet",
+        "publishedAt": "2026-04-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "architect-paradox-pourquoi-personne-ne-veut-parler-aux-architectes",
+      "day": "2026-03-24",
+      "type": "talk",
+      "title": "Architect Paradox : Pourquoi personne ne veut parler aux architectes ?",
+      "speakers": ["Lana Lesik — OCTO Technology"],
+      "feedbackFrom": [],
+      "summary": "- Thèse : le problème n'est pas l'architecture mais le fait qu'**architectes et équipes vivent dans deux mondes**.\n- Stéréotypes et anti-patterns passés en revue : « thinkers and doers », jargon et UML illisible, fantôme de la tour d'ivoire, architecte « as a service » qui duplique la même solution partout.\n- Le métier change tous les 10 ans (jusqu'à l'architecte « orchestrateur » de demain) ; l'IA accélère les décisions, et avec elles les **biais d'ancrage et de confirmation**.\n- Pistes : clarifier les rôles (un atelier prévu pour 30 minutes en a duré 2 heures), être un **walking architect** (*« 20 % de schéma, 80 % de communication »*, formule non scientifique de son propre aveu), katas, langage commun du DDD, tests d'architecture dans le code.\n- Côté équipes : parler d'architecture en rétro et dans la definition of done. Formule de clôture : *« influencer par la confiance et pas par le contrôle »*.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "fSCio3DuXCU",
+        "title": "Architect Paradox : Pourquoi personne ne veut parler aux architectes ?",
+        "publishedAt": "2026-04-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "natif-hybride-ia-ou-en-est-vraiment-le-mobile",
+      "day": "2026-03-24",
+      "type": "talk",
+      "title": "Natif, hybride, IA. Où en est vraiment le mobile ?",
+      "speakers": ["Jasmine Lebert — OCTO Technology"],
+      "feedbackFrom": [],
+      "summary": "- Thèse : le mobile est à un **moment de pivot**, l'hybride devient le standard, le natif reste nécessaire, l'IA change usages et développement.\n- Pourquoi l'hybride : budgets (4 devs Android + 4 iOS remplacés par 4 devs Flutter), time-to-market, recrutement ; adapté selon elle à *« 98 % des cas »*.\n- Le natif reste incontournable : environ 90 % des dépendances, configuration, accès matériel (AR, scan, widgets), d'où une **charge cognitive accrue** pour les développeurs.\n- Côté usages : agents locaux (Apple Intelligence, Gemini Nano) à court terme, **applications sans écran** à moyen terme, avec la question ouverte du modèle publicitaire.\n- Côté développement : une migration natif vers hybride passée d'1 an à 3 mois avec l'IA ; le design glisse vers une **« interface relationnelle »**.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "8spj0Dyrtuc",
+        "title": "Natif, hybride, IA. Où en est vraiment le mobile ?",
+        "publishedAt": "2026-04-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "moderniser-un-legacy-consequent-sans-y-perdre-ses-plumes",
+      "day": "2026-03-24",
+      "type": "talk",
+      "title": "Moderniser un legacy conséquent sans y perdre ses plumes : et si le code legacy n'était pas le problème ?",
+      "speakers": ["Bruno Boucard"],
+      "feedbackFrom": [],
+      "summary": "- Thèse : le legacy vient souvent de **l'organisation plus que du code** ; moderniser l'organisation d'abord, puis le code, **par vagues**.\n- Méfiance envers la réécriture : *« un moment de liesse »* puis *« la désillusion »*, avec deux systèmes à financer. Anecdote d'une réécriture Java lancée pour un bug de verrou qu'il suffisait de déplacer de quelques lignes.\n- Côté organisation : Event Storming Big Picture pour découper en sous-domaines et équipes, management servant leader, OKR à 3 mois, User Story Mapping, Example Mapping.\n- Côté code : Event Storming Software Design, Bounded Context Canvas, techniques de rupture de dépendances, value objects, découpage des tables par équipe, architecture hexagonale, CI/CD sans validation manuelle.\n- Gouvernance : Core Domain Chart pour prioriser, une équipe à la fois, trunk-based ; objectif d'une modernisation *« choisie et pas subie »*. Le talk annonçait l'atelier Event Storming de l'après-midi.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "TbT7M892VE0",
+        "title": "Moderniser un legacy conséquent sans y perdre ses plumes. Et si le code n'était pas le problème ?",
+        "publishedAt": "2026-04-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "7-ans-au-pays-de-kafka",
+      "day": "2026-03-24",
+      "type": "talk",
+      "title": "7 ans au pays de Kafka",
+      "speakers": [
+        "Valérie Servaire — Michelin",
+        "Fabien Alberi — Michelin"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Thèse : Kafka est **« beaucoup plus facile à utiliser qu'à opérer »** ; réussir l'event-driven, c'est partir des événements métier et capitaliser l'expertise en frameworks partagés.\n- 2018 : installation on-premise sous-dimensionnée (moins de RAM, disques plus lents que demandé), **cluster tombé après environ 6 mois** de prod ; impact business faible, impact d'image fort.\n- 2020-2021 : migration vers un service managé (environ 1 500 topics, 25 équipes) et création de l'outil **ns4kafka**, ouvert en open source.\n- Supply chain modélisée en event storming ; Kafka Streams, *« c'est pas comme du SQL »* : fenêtrage, Processor API et state stores, d'où le framework open source **Kstreamplify**.\n- 2025 : environ 220 équipes sur Kafka (20 % sur Kafka Streams), un cluster par usine. Suite : abandon de ZooKeeper, queuing Kafka 4.0, open tables (Iceberg, Delta), Flink, explorations RAG et MCP.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "erhzgoPhRkM",
+        "title": "7 ans au pays de Kafka , par Valérie Servaire et Fabien Alberi",
+        "publishedAt": "2026-04-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "utiliser-la-genai-pour-moderniser-une-application-en-deux-fois-moins-de-temps",
+      "day": "2026-03-24",
+      "type": "talk",
+      "title": "Comment utiliser la GenAI pour moderniser une application en deux fois moins de temps",
+      "speakers": ["Soufiane Keli — OCTO Technology"],
+      "feedbackFrom": [],
+      "summary": "- REX : une application de planning de supervision réseau née en shadow IT (10 ans de Python/Django obsolète, 100 à 150 règles métier, failles de sécurité) à ouvrir de 30 à 500 utilisateurs.\n- Une squad de 2 personnes au lieu d'environ 4 développeurs plus PO, UI et Ops ; modèles Claude via Bedrock dans le tenant AWS du client pour la confidentialité ; analyse de 100 000 lignes en une semaine.\n- Méthode : l'IA est **« un nouveau développeur junior » à onboarder** (contexte, standards, agents), car *« il y a pas plus bête qu'une IA »* ; *« si l'output est KO, c'est que l'input était pas bon »* ; beaucoup de planification, peu de réalisation. **100 % du code généré**, réécriture Node/React avec la méthode BMAD.\n- Résultats annoncés : page principale de 7 s à environ 600 ms, de 8 000 à 136 requêtes SQL, base de code divisée par deux.\n- Limites : *« on va aussi vite que l'élément le moins rapide »*, **l'humain devient le facteur limitant** et la fatigue est forte ; conseil de **viser 50 % de ce que l'IA peut faire** et de réinvestir le temps gagné dans l'apprentissage.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "Uza1JaZo0b8",
+        "title": "Comment utiliser la GenAI pour moderniser une application en deux fois moins de temps",
+        "publishedAt": "2026-04-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "developpeur-solo-a-l-ere-de-l-ia",
+      "day": "2026-03-24",
+      "type": "talk",
+      "title": "Développeur solo à l'ère de l'IA : produire à la vitesse d'une équipe",
+      "speakers": ["Adrien Cens — OCTO Technology"],
+      "feedbackFrom": [],
+      "summary": "- Thèse : un développeur seul peut couvrir avec l'IA **toute la chaîne** (idée, design, dev, localisation, distribution) ; il prévient que le talk ne parle pas d'IA responsable.\n- Contraste : un premier réseau social, 3 ans pour presque aucun utilisateur ; en 2025, **3 applications rentables dès le premier jour**.\n- Leviers : optimisation des stores (impressions x10 pour 5 minutes de travail), 100 designs en 15 minutes avec Figma Make, localisation culturelle des captures pour 190 pays.\n- Dev avec Cursor : sur 35 jours, 107 000 lignes proposées, 60 000 acceptées ; vitesse estimée x4, mais **le dev ne pèse que 20 % de son temps** ; il garde l'architecture et relit chaque ligne.\n- Partie qu'il nomme lui-même « Darkside » : contenus TikTok générés par IA, téléphones pilotés et likes croisés pour contourner l'anti-bot ; agent autonome testé puis désactivé pour coût et sécurité.\n- Clôture : *« quand le vent souffle, certains bâtissent des murs et d'autres bâtissent des moulins »*.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "MvzswUQ6eNE",
+        "title": "Développeur solo à l’ère de l’IA : produire à la vitesse d’une équipe",
+        "publishedAt": "2026-04-07",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Après 2 ans de Kubernetes, on a (enfin) compris son fonctionnement (Léa Boyer, Simon Lefort)",
+    "Atelier : Produire le code d'une app à partir de ses screenshots, démo d'un pipeline agentique (Nicolas Laurent)",
+    "Atelier : 1h30 pour créer une App Front avec la Clean Archigonale (Dorian Lamandé, Guillaume Chauvet)",
+    "Atelier : Quand le métier raconte son histoire, explorer son SI avec l'Event Storming Big Picture (Bruno Boucard)"
+  ],
+  "sources": [
+    { "label": "Programme officiel 2026", "url": "https://www.laduckconf.com/programme-2026" },
+    { "label": "Page d'accueil 2026 archivée (édito, chiffres, descriptifs)", "url": "https://web.archive.org/web/20260224163853/https://www.laduckconf.com/" },
+    { "label": "Playlist YouTube « La Duck Conf 2026 - Replays » (14 vidéos, transcripts automatiques)", "url": "https://www.youtube.com/playlist?list=PLXlbmbYadKH4bFiVhW9-VEG6pC7rOyBic" },
+    { "label": "Méthodologie EROOM (Boavizta), citée dans la keynote", "url": "https://boavizta.org/eroom" },
+    { "label": "Posts LinkedIn : aucun trouvé (10 recherches web, octobre 2026)" }
+  ]
 }
