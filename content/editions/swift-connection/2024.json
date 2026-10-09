@@ -7,6 +7,199 @@
   "city": "Paris",
   "venue": "Théâtre de Paris",
   "url": "https://2024.swiftconnection.io",
-  "status": "pending",
-  "sessions": []
+  "programUrl": "https://2024.swiftconnection.io",
+  "dateConfidence": "ok",
+  "edition": "8e édition (ex-FrenchKit)",
+  "note": "Conférence iOS / Swift en anglais, 1,5 jour (lundi 23 septembre après-midi, mardi 24 septembre) au Théâtre de Paris (15 rue Blanche, Paris 9e), premier passage dans ce lieu annoncé comme doublant la capacité d'accueil. 21 sessions au programme (talks de 35 min, lightning talks de 15 min) et une soirée le 23 au soir. Sponsors : Runway et Codemagic (gold), Genius Scan SDK et RocketSim (silver), Kodeco (média). Organisée par La Tech Connection, avec un Speaker Inclusion Programme.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-09",
+  "revisit": "Corpus participant très mince : 7 posts Mastodon (#SwiftConnection, dont 4 de speakers) et un billet de blog de speaker ; aucun post LinkedIn, compte-rendu de blog ou thread X/Bluesky trouvé en 7 recherches web. Les résumés reposent surtout sur 13 transcripts ; les 6 lightning talks filmés restants (Hill, Zinovieff, Bariaux, Manceaux-Panot, Chanliau Merle, De la Garza) n'ont pas été transcrits.",
+  "corpus": "Programme officiel (2024.swiftconnection.io), 20 vidéos de la playlist YouTube Tech Connection (publiées le 05/11/2024, une le 16/12/2024, une vidéo privée) dont **13 transcripts** lus, 7 posts Mastodon #SwiftConnection (23 au 29/09/2024, dont 4 de speakers), les weeknotes de Chris Eidhof (speaker) et les slides d'Ellen Shapiro sur Speaker Deck. 7 recherches web.",
+  "limits": "Corpus lu à J+2 ans, avec presque aucun retour participant public : l'essentiel des résumés décrit ce qui a été dit sur scène (transcripts), pas sa réception. Les rares retours viennent de Mastodon, souvent de speakers (signalés). Aucun post LinkedIn ni compte-rendu de blog trouvé ; deux talks du programme (Bas Broek, Muralidharan Kathiresan) n'ont pas de vidéo publique. Les compteurs de vues YouTube (3 900 pour Sundell, 3 100 pour Eidhof, 1 700 pour Van Voorden au 09/10/2026) indiquent un intérêt, pas un retour.",
+  "tldr": "Swift Connection 2024, première édition au Théâtre de Paris, a surtout parlé **d'artisanat Swift au quotidien** (performance, debugging, tests, tooling, architecture) avec en toile de fond **Swift 6 et la concurrence stricte**, tandis que l'IA d'Apple (Apple Intelligence, complétion prédictive de Xcode 16) était regardée avec **curiosité mais prudence**.",
+  "keyTakeaways": [
+    "Écrire du code « rapide par défaut » : connaître la complexité de ses algorithmes, préférer une fonction à une propriété calculée coûteuse, choisir l'algorithme adapté au site d'appel (`contains` plutôt que `filter`), paralléliser avec `async let`, et toujours mesurer sur device en release (Sundell).",
+    "Face à un bug dur, passer en mode science : tenir un journal, relire vraiment le rapport de bug, réduire le problème dans une petite app de test, et ne pas masquer un index hors limites par un `guard` (Napier).",
+    "Pour débusquer les race conditions avec la concurrence Swift, insérer un `Task.sleep` aléatoire juste après chaque `await` et tester avec Network Link Conditioner à 100 % de perte de paquets (Napier).",
+    "Générer le code réseau client et serveur depuis un document OpenAPI avec Swift OpenAPI Generator : le contrat reste synchronisé et le compilateur signale toute évolution de l'API (James).",
+    "Ne pas faire confiance par défaut à la complétion prédictive de Xcode 16 : utile pour les mocks et les modèles simples, mais plus lente et moins bonne que Copilot, et limitée au fichier courant ; prévenir les juniors (Pradeilles).",
+    "Utiliser Swift plutôt que Bash ou Ruby pour l'outillage d'une équipe iOS, avec Swift Argument Parser et des templates Stencil, puis l'exécuter en CI sur Linux (Rolnik).",
+    "Pour un écran complexe, une architecture en plugins (registre, fabriques, décodage délégué) permet d'ajouter une section sans toucher l'existant, à condition de garder le cœur minuscule et de limiter la communication entre plugins (Sabaliauskas).",
+    "Avant de migrer vers TextKit 2, avoir des tests couvrant toute la logique de texte ; la migration reste nécessaire pour profiter pleinement d'Apple Intelligence (Shapiro).",
+    "Pour publier une première app : viser un MVP minuscule, se fixer une date butoir et construire en public pour trouver aide et testeurs (Lewis)."
+  ],
+  "sessions": [
+    {
+      "id": "streamline-your-workflow-with-swift-openapi-generator",
+      "day": "2024-09-23",
+      "type": "talk",
+      "title": "Streamline Your Workflow with Swift OpenAPI Generator",
+      "speakers": ["Timirah James — Apple (Worldwide Developer Relations)"],
+      "feedbackFrom": ["Pit Schrader (Mastodon)"],
+      "summary": "- Premier talk de la conférence. Constat : avec `URLSession`, le développeur doit écrire et maintenir à la main chaque requête et **garder le contrat client/serveur synchronisé**, un travail répétitif et source d'erreurs.\n- **OpenAPI** décrit l'API (YAML ou JSON) comme un contrat ; **Swift OpenAPI Generator** est un plugin de package qui génère au build le code réseau client **et** serveur, sans le committer.\n- Démo en direct : une app de vote sur la prochaine couleur de cheveux de la speakeuse (Memoji), avec un serveur Hummingbird et un client iOS (transport URLSession). Ajout d'une opération dans le document : **le compilateur signale immédiatement le handler manquant**, ce qui garde toute l'équipe alignée sur l'évolution de l'API.\n- La salle a voté en direct ; résultat : blond.\n- Retour (Pit Schrader) : *« Nice explanation of OpenAPI to generate code for both server and client »*.",
+      "summarySources": ["transcript", "feedback"],
+      "video": { "youtubeId": "y__RdURMZys", "title": "Swift Connection 2024 - Timirah James - Streamline Your Workflow with Swift OpenAPI Generator", "publishedAt": "2024-12-16", "transcript": true }
+    },
+    {
+      "id": "a-practical-guide-to-swift-performance",
+      "day": "2024-09-23",
+      "type": "talk",
+      "title": "A practical guide to Swift performance",
+      "speakers": ["John Sundell"],
+      "feedbackFrom": [],
+      "summary": "- Objectif : écrire du code **« fast by default »** plutôt que de traiter la performance seulement quand un problème survient. Distinguer code synchrone (vitesse brute, complexité) et asynchrone (orchestration des tâches).\n- **Synchrone** : filtrer avant de trier ou mapper ; transformer une propriété calculée coûteuse en fonction pour rendre le coût visible (un accès répété dans une boucle donnait du O(n²), **150 fois plus lent** sur 1 000 éléments) ; créer des API adaptées aux sites d'appel (`contains` au lieu de `filter(...).isEmpty`).\n- **Cache** : utile mais « double tranchant » (mémoire, données périmées, bugs difficiles à reproduire avec un cache chaud) ; alternatives comme le précalcul.\n- **Asynchrone** : remplacer des `await` séquentiels indépendants par des `async let` (jusqu'à 3 fois plus rapide) ; sortir du main actor les traitements O(n) avec une tâche détachée, en annulant la tâche précédente pour éviter les races.\n- Toujours **mesurer sur device et en release**, pas dans le simulateur en debug.\n- Q&A : pas d'optimisation prématurée si on optimise juste avant la PR ; sur les vérifications de Swift 6, il dit les avoir d'abord détestées sur de gros projets mais garder l'esprit ouvert, et rappelle que les race conditions (réentrance des actors) restent possibles.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "ofXGwYHr-ZM", "title": "Swift Connection 2024 - John Sundell - A practical guide to Swift performance", "publishedAt": "2024-11-05", "transcript": true }
+    },
+    {
+      "id": "building-an-accessibility-culture-one-step-at-a-time",
+      "day": "2024-09-23",
+      "type": "talk",
+      "title": "Building an Accessibility Culture, One Step at a Time",
+      "speakers": ["Bas Broek — WeTransfer"],
+      "feedbackFrom": ["Robin Kanatzar (Mastodon)"],
+      "summary": "- Talk sur la construction d'une **culture de l'accessibilité** dans une équipe, pas de vidéo publique trouvée (une vidéo de la playlist est privée).\n- Seul retour lu, bref : *« Great talk by @bas at #SwiftConnection about building a culture of #Accessibility »* (Robin Kanatzar).",
+      "summarySources": ["program", "feedback"]
+    },
+    {
+      "id": "from-dread-to-delight-why-you-should-embrace-writing-tests",
+      "day": "2024-09-23",
+      "type": "talk",
+      "title": "From Dread to Delight: Why You Should Embrace Writing Tests (Even If You Hate It)",
+      "speakers": ["Leah Vogel — Chegg"],
+      "feedbackFrom": [],
+      "summary": "- Talk sur le **pourquoi** des tests, pas le comment, construit sur son parcours : un premier test écrit avec son lead pour une emoji qui « pop » (un emoji seul compte deux caractères en Objective-C), puis l'évangélisation des tests chez OrCam (mock d'un manager Bluetooth via un protocole, Bluetooth n'étant pas testable en simulateur).\n- Trois raisons : **craftsmanship** (le test force à mieux découper le code), **fiabilité** (refactorer et livrer avec moins d'anxiété) et **ownership** (*« un chef qui ne goûte pas sa cuisine »*).\n- Préférence pour **beaucoup de tests d'intégration**, entre la pyramide classique et l'approche tout end-to-end. Commencer par le code partagé et le plus utilisé.\n- Mises en garde : ne pas inciter au nombre de tests ; on peut se passer de tests pour un A/B test court ou un POC jetable, mais un POC parti en production sans aucun test leur a valu un incident.\n- Swift Testing jugé prometteur ; l'IA pour écrire des tests *« demande encore beaucoup de supervision »*.\n- Lors du sondage à main levée, la majorité de la salle disait déjà écrire des tests.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "r0luDOTLxUQ", "title": "Swift Connection 2024 - Leah Vogel - From Dread to Delight: Why You Should Embrace Writing Tests (Even If You Hate It)", "publishedAt": "2024-11-05", "transcript": true }
+    },
+    {
+      "id": "zen-and-the-science-of-debugging",
+      "day": "2024-09-23",
+      "type": "talk",
+      "title": "Zen and the Science of Debugging",
+      "speakers": ["Rob Napier"],
+      "feedbackFrom": [],
+      "summary": "- Dernier talk du premier jour. Thèse : **programmer est un art, débugger est une science**. La première étape est d'accepter qu'on ne sait pas ce que fait le programme, et de *« renoncer à l'espoir »* de trouver tout de suite.\n- En amont : lire ses logs quand tout va bien pour savoir à quoi ressemble la normale (il y a trouvé des requêtes dupliquées et une base migrée deux fois).\n- Méthode : **tenir un journal** (setup, device, OS de chaque essai), relire vraiment le rapport de bug, vérifier qu'on exécute bien le code modifié (un `fatalError` volontaire), bissecter dans le temps (`git bisect`) et **dans l'espace** en supprimant du code ou via une petite app de test, sans perdre de temps sur un framework de test.\n- Race conditions : lancer la fonction dans une dizaine de tâches en parallèle, ajouter un **`Task.sleep` aléatoire après chaque `await`**, dégrader le réseau (Network Link Conditioner à 100 % de perte).\n- Mise en garde : ne pas masquer un index hors limites par un `guard` ; ces « whiskey fixes » doivent au minimum être documentés et signés dans le code.\n- Q&A : sa pire chasse, six mois pour une faute de casse dans le nom d'une bibliothèque sur un disque sensible à la casse ; des stack traces « impossibles » signalent souvent une corruption mémoire, en Swift en général un accès concurrent.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "abZsSwC9aqA", "title": "Swift Connection 2024 - Rob Napier - Zen and the Science of Debugging", "publishedAt": "2024-11-05", "transcript": true }
+    },
+    {
+      "id": "5-tips-to-ship",
+      "day": "2024-09-24",
+      "type": "lightning",
+      "title": "5 Tips to Ship",
+      "speakers": ["Danielle Lewis"],
+      "feedbackFrom": [],
+      "summary": "- Ouverture du deuxième jour. Parcours : premières lignes de Swift en juin 2023 après l'annonce du Vision Pro, **huit apps publiées** sur les App Stores iOS et visionOS depuis.\n- Cinq conseils : l'app n'a pas besoin d'être grande (un minuteur visionOS codé et soumis en une journée) ; construire ce qui vous passionne (une app de revues pour ses collègues de dispensaire) ; le code n'a pas besoin d'être public, **un portfolio App Store vaut un portfolio GitHub** ; se fixer une date butoir pour tenir le MVP ; s'appuyer sur la communauté.\n- Q&A : face à la frustration, accepter de demander de l'aide publiquement ; entendre des développeurs expérimentés dire qu'ils bloquent aussi aide contre le syndrome de l'imposteur.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "dahoZR-zPng", "title": "Swift Connection 2024 - Danielle Lewis - 5 Tips to Ship", "publishedAt": "2024-11-05", "transcript": true }
+    },
+    {
+      "id": "how-apple-intelligence-infuses-and-distills-its-models-into-the-app",
+      "day": "2024-09-24",
+      "type": "talk",
+      "title": "How Apple Intelligence infuses and distills its models into the app",
+      "speakers": ["Etienne Vautherin"],
+      "feedbackFrom": [],
+      "summary": "- Explication du modèle d'intégration d'Apple Intelligence côté app : des **domaines** (13 annoncés, 30 prévus) et des **schémas** que l'app implémente via des intents et entités App Intents annotés par macro (exemple : ouvrir une photo dans le domaine Photos, créer un brouillon dans le domaine Mail), stockés dans l'« App Intent toolbox ».\n- Le langage naturel est transformé en intent conceptuel par des modèles plus petits spécialisés par domaine (contrainte du on-device), puis rapproché des intents exposés par les apps.\n- Côté architecture : partager les actions entre la vue et l'intent, et accéder au modèle via les **dépendances App Intents** quand l'intent tourne en arrière-plan sans UI.\n- L'**index sémantique** se nourrit des entités indexées (`IndexedEntity`, attributs Core Spotlight) et de la recherche in-app.\n- Limite rappelée : Apple Intelligence n'était pas disponible en Europe à l'époque ; la démonstration s'appuyait sur une métaphore de « jouets pour bébé » et une nouvelle bêta sortie la veille.\n- Q&A : écrire du déclaratif et laisser le système composer, comme avec SwiftUI ; entre deux apps mail, le choix dépendrait de l'usage et de l'index.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "xCIMaF1sqDY", "title": "Swift Connection 2024 - Etienne Vautherin - How Apple Intelligence infuses and distills its models into the app", "publishedAt": "2024-11-05", "transcript": true }
+    },
+    {
+      "id": "ai-in-xcode-is-it-better-than-the-competitors",
+      "day": "2024-09-24",
+      "type": "lightning",
+      "title": "AI in Xcode: is it better than the competitors?",
+      "speakers": ["Vincent Pradeilles — PhotoRoom"],
+      "feedbackFrom": [],
+      "summary": "- Swift Assist n'étant toujours pas disponible, comparaison de la **complétion prédictive de Xcode 16** (locale, Apple Silicon) avec **GitHub Copilot** (cloud, via VS Code) sur cinq cas.\n- Modèle de données et mocks : résultats comparables, Xcode plus lent et **sans indicateur de chargement**. Appel d'API : les deux proposent un completion handler plutôt que `async/await` ; Xcode fait à peine mieux avec `Result`. Corps d'une vue : Copilot raisonne sur plusieurs fichiers, Xcode **seulement sur le fichier courant** et produit du code qui ne compile pas.\n- Verdict : prédictions égales ou moins bonnes que Copilot, plus lentes, mais utiles sans effort ; *« si seulement 20 % sont bonnes, c'est quand même un gain »*.\n- Mise en garde : l'intégration visuelle dans Xcode rend les suggestions **plus crédibles qu'elles ne le méritent**, à expliquer aux juniors. Cursor présenté comme un aperçu de ce que pourrait être Swift Assist.\n- Q&A : impression d'un outil arrivé *« quelques années en retard »* sur la concurrence.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "YszBJrrpZM0", "title": "Swift Connection 2024 - Vincent Pradeilles - AI in Xcode: is it better than the competitors?", "publishedAt": "2024-11-05", "transcript": true }
+    },
+    {
+      "id": "managing-complex-screens-with-plug-in-architecture",
+      "day": "2024-09-24",
+      "type": "talk",
+      "title": "Managing Complex Screens with Plug-in Architecture",
+      "speakers": ["Darius Sabaliauskas — Vinted"],
+      "feedbackFrom": ["Darius Sabaliauskas (Mastodon, speaker)"],
+      "summary": "- Architecture en plugins (micro-kernel, d'Unix à Eclipse) appliquée à un écran de checkout UIKit : un **cœur minimal**, un **registre** d'identifiants et de fabriques, chaque section étant un plugin (view controller enfant) ajouté **sans modifier l'existant** (principe ouvert/fermé).\n- Astuce : redécouper la réponse JSON en morceaux bruts confiés à chaque plugin, ce qui améliore la tolérance aux erreurs (une section cassée n'empêche pas d'afficher les autres).\n- Limites : le cœur doit être conçu en amont car le changer casse les contrats ; **la communication entre plugins est le point douloureux** (validation par protocole ségrégé, événements publiés et consommés, garder le bouton de paiement hors plugins).\n- Q&A : SwiftUI ne change pas le raisonnement architectural ; sur une grosse base, on ne réécrit pas pour le plaisir.\n- Retour du speaker sur Mastodon : premier talk devant **400 personnes**, et le travail de ne pas écouter son « critique intérieur ».",
+      "summarySources": ["transcript", "feedback"],
+      "video": { "youtubeId": "1YjjVum0JtI", "title": "Swift Connection 2024 - Darius Sabaliauskas - Managing Complex Screens with Plug-in Architecture", "publishedAt": "2024-11-05", "transcript": true }
+    },
+    {
+      "id": "swiftui-animations",
+      "day": "2024-09-24",
+      "type": "talk",
+      "title": "SwiftUI Animations",
+      "speakers": ["Chris Eidhof"],
+      "feedbackFrom": ["Ellen Shapiro (Mastodon, speaker)", "Chris Eidhof (weeknotes, speaker)"],
+      "summary": "- Quatre exemples de complexité croissante autour d'un cœur : animation de base (`trim` + `.animation(value:)`), **phase animator**, **keyframe animator**, puis particules faites main avec `Canvas` et `TimelineView`.\n- Explication de ce qui se passe sous le capot : SwiftUI interpole entre deux états de l'arbre de vues ; un outil maison façon « Instruments du futur » montrait la transaction descendre l'arbre jusqu'au modificateur animé.\n- Conseils : ne rien faire de coûteux dans les closures appelées à chaque frame ; `withAnimation` pour piloter de l'extérieur, `.animation` pour l'intégrer à un composant ; le modificateur `speed` casse la fusion des vélocités et rend les animations interrompues saccadées.\n- Retour : le logiciel de présentation écrit par Eidhof, qui simule la frappe puis affiche une vraie vue SwiftUI interactive, a laissé *« les autres speakers bouche bée »* et *« impressionné le public »* (Ellen Shapiro, speaker). Eidhof dit que l'essai s'est bien passé malgré un incident technique signalé par un spectateur.",
+      "summarySources": ["transcript", "feedback", "blog"],
+      "video": { "youtubeId": "CPzf_0tRwcE", "title": "Swift Connection 2024 - Chris Eidhof - SwiftUI Animations", "publishedAt": "2024-11-05", "transcript": true }
+    },
+    {
+      "id": "swift-cowbox-easy-copy-on-write-semantics-for-swift-structs",
+      "day": "2024-09-24",
+      "type": "talk",
+      "title": "Swift-CowBox: Easy Copy-on-Write Semantics for Swift Structs",
+      "speakers": ["Rick Van Voorden"],
+      "feedbackFrom": [],
+      "summary": "- Rappel : les structs ont une sémantique de valeur mais **copient toutes leurs données** ; une struct de 80 octets copiée n fois coûte un ordre de grandeur de mémoire de plus qu'une classe.\n- Le copy-on-write manuel (classe de stockage privée, `isKnownUniquelyReferenced`) fonctionne mais génère beaucoup de boilerplate risqué, souvent laissé en TODO.\n- **Swift-CowBox** (open source) génère ce code via des macros (`@CowBox`, `@CowBoxMutating`), y compris les conformances `Equatable`, `Hashable`, `Codable`, sans changer les sites d'appel.\n- Étude de cas sur l'app exemple Food Truck d'Apple avec 24 000 commandes : **-31 % de commits Core Animation, -18 % de hangs, -38 % de mémoire totale**.\n- Limites présentées honnêtement : temps de compilation (swift-syntax), coût d'allocation sur le tas, inutile pour de petites structs peu copiées, risque de « quadratiques accidentels ». Conseil : mesurer avant et après.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "m9JZmP9E12M", "title": "Swift Connection 2024 - Rick Van Voorden - Swift-CowBox: Easy Copy-on-Write Semantics for Swift Structs", "publishedAt": "2024-11-05", "transcript": true }
+    },
+    {
+      "id": "dub-dub-time-machine",
+      "day": "2024-09-24",
+      "type": "talk",
+      "title": "Dub Dub Time Machine",
+      "speakers": ["Ellen Shapiro — Pixite"],
+      "feedbackFrom": ["Ellen Shapiro (Mastodon, speaker)"],
+      "summary": "- Point de départ : la plupart des apps doivent supporter deux versions d'iOS en arrière, donc on oublie les nouveautés de WWDC avant de pouvoir les utiliser. Le talk revisite ce qu'apporte **iOS 16 comme version minimale**.\n- SwiftUI : `NavigationStack` / `NavigationSplitView` et navigation programmatique, `AnyLayout` plutôt que `AnyView`, `UIHostingConfiguration` pour les cellules UIKit, Swift Charts (sans camembert avant iOS 17), sheets à détentes, sélection de dates multiples.\n- **TextKit 2** : vrais avantages (séparation stockage/affichage, gestion des emoji et idéogrammes), mais quatre types de range à jongler ; à n'adopter que sur une app neuve, une logique simple ou **déjà très bien testée**, et nécessaire pour Apple Intelligence.\n- Aussi : `DataScannerViewController`, `Transferable`, Regex Builder, WeatherKit (attention au coût au-delà de 500 000 appels par mois).\n- La speakeuse a dépassé son temps et n'a pas pu faire de Q&A ; elle a publié ses slides et proposé de répondre sur Mastodon.",
+      "summarySources": ["transcript", "feedback", "slides"],
+      "video": { "youtubeId": "kGkwbvn-ytQ", "title": "Swift Connection 2024 - Ellen Shapiro - Dub Dub Time Machine", "publishedAt": "2024-11-05", "transcript": true }
+    },
+    {
+      "id": "mastering-swift-for-scripting-and-tooling",
+      "day": "2024-09-24",
+      "type": "talk",
+      "title": "Mastering Swift for Scripting & Tooling",
+      "speakers": ["Natan Rolnik — monday.com"],
+      "feedbackFrom": [],
+      "summary": "- Pourquoi Swift pour l'outillage : dans une équipe iOS, **tout le monde connaît Swift**, alors que chacun a son langage de script préféré ; plus le compilateur, Foundation, les property wrappers et l'écosystème de packages.\n- Live coding 1 : un script qui appose un badge sur l'icône d'une build bêta (AppKit), avec `readLine` puis `CommandLine.arguments`.\n- Live coding 2 : un CLI avec **Swift Argument Parser** et **Stencil** qui génère des structs d'événements analytics à partir d'un tableau Markdown, puis une GitHub Action sur Linux qui régénère et commit le code quand le fichier change.\n- Sondage en salle : la plupart automatisent déjà des tâches, peu ont essayé Swift côté serveur.\n- Q&A : ne pas migrer tout fastlane de Ruby vers Swift, plutôt appeler des scripts Swift depuis fastlane.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "tbx_T2dwoFI", "title": "Swift Connection 2024 - Natan Rolnik - Mastering Swift for Scripting & Tooling", "publishedAt": "2024-11-05", "transcript": true }
+    },
+    {
+      "id": "everythings-cooler-in-space",
+      "day": "2024-09-24",
+      "type": "talk",
+      "title": "Everything's Cooler in Space",
+      "speakers": ["Lena Stöxen — Volkswagen Véhicules Utilitaires (étudiante)"],
+      "feedbackFrom": [],
+      "summary": "- Récit d'une tentative de porter une app de réalité augmentée iPad (Swift Student Challenge, trois fois lauréate) vers le **Vision Pro avec une seule base de code**, sans posséder de Vision Pro.\n- Constats : UIKit et `ARView` d'un côté, SwiftUI et `RealityView` de l'autre ; **les anchors ARKit diffèrent et ne sont pas compatibles** entre iPad et Vision Pro. RealityKit est unifié, pas ARKit.\n- Options : `#if` par plateforme, ou les `AnchorEntity` de RealityKit, testables dans le simulateur mais moins précises et sans classification.\n- Explication pédagogique de l'**Entity Component System** de RealityKit : entités, composants porteurs d'état, systèmes qui agissent à chaque frame (donc rien de coûteux).\n- Conclusion : rêve multiplateforme abandonné, **deux bases de code** recommandées car interactions et ancrages sont trop différents ; la RA reste un bon démarreur de créativité.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "vn6TQvOdSQY", "title": "Swift Connection 2024 - Lena Stöxen - Everything's Cooler in Space", "publishedAt": "2024-11-05", "transcript": true }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Data? Data! It's everywhere! (Nicolas Zinovieff, lightning, vidéo f_4JQIuTqRg non transcrite)",
+    "Swift 6 + Concurrency = Peace (Muralidharan Kathiresan, pas de vidéo publique trouvée)",
+    "Unifying form validation with TCA (Anthony Chanliau Merle, AVIV Group, lightning, vidéo RrBxRX_SEsQ non transcrite)",
+    "KMP: A Hands-On Perspective (Melisa De la Garza, lightning, vidéo 0AvHyr6e0_s non transcrite)",
+    "Zoom transitions: A comprehensive guide (Douglas Hill, PSPDFKit, lightning, vidéo qA69uZDd53Q non transcrite)",
+    "Parsing the real intent behind user input (Nathan Manceaux-Panot, lightning, vidéo riK8aL_yZGw non transcrite)",
+    "Blink them to death using Embedded Swift (Eric Bariaux, Nelcea, lightning, vidéo 61A46nZmCLE non transcrite)"
+  ],
+  "sources": [
+    { "label": "Programme officiel Swift Connection 2024", "url": "https://2024.swiftconnection.io" },
+    { "label": "Playlist YouTube Swift Connection 2024 (Tech Connection)", "url": "https://www.youtube.com/playlist?list=PLZsRQnRG-mlLtWamhfaJA86Dwdakix6X2" },
+    { "label": "Weeknotes de Chris Eidhof (speaker), semaine 39 de 2024", "url": "https://chris.eidhof.nl/post/2024-39" },
+    { "label": "Slides d'Ellen Shapiro, Dub Dub Time Machine (Speaker Deck)", "url": "https://speakerdeck.com/designatednerd/dub-dub-time-machine-swift-connection-paris-france-september-2024" },
+    { "label": "Posts Mastodon #SwiftConnection (iosdev.space)", "url": "https://iosdev.space/tags/SwiftConnection" },
+    { "label": "Posts Mastodon #SwiftConnection (mastodon.social)", "url": "https://mastodon.social/tags/SwiftConnection" },
+    { "label": "Auteurs des posts Mastodon lus : Ellen Shapiro (speaker), Robin Kanatzar, Pit Schrader, Pakk', Darius Sabaliauskas (speaker), Tuparev ; aucun post LinkedIn trouvé" },
+    { "label": "Appel à orateurs Swift Connection 2024 (Sessionize)", "url": "https://sessionize.com/swift-connection-2024" }
+  ]
 }

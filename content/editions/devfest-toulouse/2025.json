@@ -10,10 +10,10 @@
   "dateConfidence": "ok",
   "note": "Journée unique organisée par le GDG Toulouse : 1 200 participants, 65 speakers, une cinquantaine de conférences sur six salles en parallèle (chiffres de la page officielle). La page « éditions » du site affiche le 20 novembre, mais la page de l'événement GDG Toulouse, le compte-rendu Loxodata et le billet d'Olivier Azeau datent la journée du jeudi 13 novembre 2025.",
   "status": "synthesized",
-  "synthesisUpdatedAt": "2026-09-27",
-  "revisit": "Retours participants minces : deux comptes-rendus de blog (Loxodata, Olivier Azeau), un article Néosoft sur une seule session et quelques commentaires LinkedIn. Aucun transcript : yt-dlp renvoie « This video is not available » sur toutes les vidéos de la playlist. À reprendre avec les transcripts et d'autres posts LinkedIn.",
-  "corpus": "Programme officiel (55 sessions, avec replays YouTube pour la plupart), deux comptes-rendus de participants (Loxodata, 8 talks ; blog Contretemps d'Olivier Azeau, 6 talks), un article Néosoft consacré à la plénière Another World, et 4 posts LinkedIn (organisateurs, Ippon, Olivier Azeau) avec leurs commentaires, publiés entre le 13 et le 24 novembre 2025 puis en décembre 2025.",
-  "limits": "Une douzaine de sessions seulement ont un retour, vues par deux auteurs qui privilégient l'infra, la data et la sobriété : les sessions IA (Guillaume Laforge, MCP, sécurité des LLM), front et accessibilité restent sans retour. Aucun transcript exploitable (vidéos bloquées pour yt-dlp) ; l'article promis par Ippon sur blog.ippon.fr n'a pas été trouvé.",
+  "synthesisUpdatedAt": "2026-10-09",
+  "revisit": "Transcripts récupérés pour 11 sessions, mais retours participants toujours minces : trois billets de blog (Loxodata, Olivier Azeau, Emmanuel Nhan), un article Néosoft et quelques commentaires LinkedIn ; aucun nouveau post LinkedIn trouvé et données OpenFeedback introuvables. À reprendre avec d'autres posts LinkedIn ou Bluesky et les transcripts des sessions front, tests et sécurité.",
+  "corpus": "Programme officiel (55 sessions), transcripts automatiques YouTube de 11 replays (publiés les 5 et 12 décembre 2025), trois comptes-rendus de participants (Loxodata, 8 talks ; blog Contretemps d'Olivier Azeau, 6 talks ; blog d'Emmanuel Nhan, 3 talks et la logistique), un article Néosoft sur la plénière Another World, et 4 posts LinkedIn (organisateurs, Ippon, Olivier Azeau) avec leurs commentaires, publiés entre le 13 novembre et décembre 2025.",
+  "limits": "Les retours de participants couvrent une quinzaine de sessions, vus par trois auteurs plutôt tournés vers l'infra, la data et la sobriété ; les transcripts comblent une partie du volet IA (LLM, MCP et A2A, empreinte carbone) mais restent sur scène, sans réaction du public. Front, accessibilité, tests et sécurité n'ont ni retour ni transcript lu ; les notes OpenFeedback ne sont pas publiques ou pas trouvées, et l'article promis par Ippon n'a pas été trouvé.",
   "tldr": "Un DevFest généraliste à six salles où les rares retours publiés dessinent un fil conducteur inattendu : **la sobriété logicielle**, de l'architecture d'Another World (1991) au backend tout-Postgres et à l'IA locale sans LLM géant.",
   "keyTakeaways": [
     "**Les contraintes font l'architecture** : la machine virtuelle d'Another World (24 Ko d'exécutable, 64 threads coopératifs) reste une leçon d'abstraction et de modularité (Néosoft, Azeau).",
@@ -23,7 +23,9 @@
     "**Moderniser la gestion des clusters paie** : chez Qonto, Terraform, ArgoCD, multi-cluster et Karpenter annoncent 50 % d'économies sur la facture cloud (programme, Loxodata).",
     "**Traiter le bare-metal comme une VM** : MaaS permet aux Restos du Coeur de provisionner des serveurs physiques par API et Terraform (programme, Loxodata).",
     "**Rust, oui, mais pas partout ni pour tout le monde** : bon candidat pour la sobriété, réserve sur la tentation du « RIIR » généralisé (Azeau).",
-    "**Face à l'IA, la conception reste une question de cap** : le quiz humains vs IA revient à opposer spécifications détaillées et PO désorienté (commentaire de Thomas Corrège)."
+    "**Face à l'IA, la conception reste une question de cap** : le quiz humains vs IA revient à opposer spécifications détaillées et PO désorienté (commentaire de Thomas Corrège).",
+    "**Garder la main sur la conception** : sur scène, les LLM appliquent mal SOLID dans une situation abstraite ; l'écriture de code devient une commodité, pas les principes de conception (transcript, Azeau).",
+    "**Un test de charge se lance vite** : scénario réaliste et varié, test gateway, smoke test en CI ; l'appli de démo de Takima tombe dès quelques utilisateurs par seconde (transcript)."
   ],
   "sessions": [
     {
@@ -33,9 +35,9 @@
       "title": "Another World, une belle leçon d'architecture logicielle",
       "speakers": ["Olivier Poncet"],
       "feedbackFrom": ["Philippe Viegas (Loxodata)", "Olivier Azeau (blog Contretemps)", "Jérôme Audouy (Néosoft)"],
-      "summary": "- **Plénière d'ouverture** : l'architecture du jeu d'Éric Chahi (1991) et son **portage dans le navigateur en WebAssembly** par le speaker (Loxodata).\n- Contraintes de l'époque rappelées : **24 Ko d'exécutable**, 1,2 Mo de données au total (Néosoft).\n- Cœur du talk : une **machine virtuelle maison** à architecture Harvard, un multithreading coopératif (64 threads, 256 registres, une seule pile), un rendu vectoriel de polygones par algorithme du peintre (Néosoft).\n- Leçons retenues pour aujourd'hui : **abstraction, modularité, économie de ressources, simplicité**, des principes qui valent encore pour les moteurs modernes (Néosoft).\n- Pour Azeau, *« une belle leçon de sobriété »*, obligatoire en 1991 car la mémoire était la contrainte principale ; la VM et ses instructions de dessin de polygones sont *« incroyable[s] »*.",
-      "summarySources": ["feedback", "blog", "program"],
-      "video": { "youtubeId": "QCnYO5bOmmY", "title": "Another World, une belle leçon d'architecture logicielle", "transcript": false }
+      "summary": "- **Plénière d'ouverture**, démarrée sans projection : le speaker décrit d'abord ses slides à voix haute, l'affichage ne revient qu'au milieu du talk (transcript).\n- Sur scène : le jeu d'Éric Chahi (1991) tient en **24 Ko d'exécutable** et 1,2 Mo de données, sur une seule disquette ; ressources rangées dans 13 banques indexées, compressées « à rebours » dans un seul buffer (gain total de 33 %) (transcript).\n- Cœur du talk : une **machine virtuelle maison** (architecture Harvard, big-endian hérité du 68000 de l'Amiga), 64 threads en multitâche coopératif, 256 registres de 16 bits soit 512 octets de mémoire de travail, opcodes rangés par fréquence d'usage (transcript).\n- Rendu par **polygones vectoriels hiérarchiques** et algorithme du peintre, décor mis en cache dans une page vidéo, transparence et masquage par astuces de palette ; 4 canaux audio façon tracker (transcript).\n- Conclusion du speaker : un jeu élégant, sobre, **piloté par les données** et facile à porter, car il suffit de porter la VM ; démo de sa réimplémentation C++/SDL et WebAssembly avec les assets d'origine (transcript).\n- Retenu par les participants : abstraction, modularité, économie de ressources, simplicité (Néosoft) ; pour Azeau, *« une belle leçon de sobriété »* et une VM *« incroyable »*.",
+      "summarySources": ["transcript", "feedback", "blog", "program"],
+      "video": { "youtubeId": "QCnYO5bOmmY", "title": "Another World, une belle leçon d'architecture logicielle", "publishedAt": "2025-12-12", "transcript": true }
     },
     {
       "id": "conception-de-logiciels-le-match-humains-vs-ai",
@@ -44,9 +46,9 @@
       "title": "Conception de logiciels : le match humains vs AI",
       "speakers": ["Olivier Azeau"],
       "feedbackFrom": ["Philippe Viegas (Loxodata)", "Thomas Corrège (commentaire LinkedIn)", "Olivier Azeau (speaker)"],
-      "summary": "- **Format participatif** : le public vote sur des choix de conception via une web app, et ses réponses sont comparées en direct à celles d'une IA générative (programme, Loxodata).\n- Sujets : **couplage et cohésion, SOLID, smells, refactoring**, sans langage imposé ; question posée : quelle solution est la plus simple, la plus maintenable ? (programme).\n- Lecture d'un participant : *« C'est un match spécifications détaillées vs product owner agilement désorienté en réalité… »* (Thomas Corrège).\n- Le speaker raconte avoir eu du mal à se concentrer avant de passer sur scène (Azeau, speaker). Pas de résultat chiffré du match publié dans les sources lues.",
-      "summarySources": ["feedback", "blog", "program"],
-      "video": { "youtubeId": "CmYN9fEeCDw", "title": "Conception de logiciels : le match humains vs AI", "transcript": false }
+      "summary": "- Sur scène, une définition posée d'emblée : la bonne conception **minimise le temps et le coût pour une valeur donnée** (loi de Brooks à l'appui) (transcript).\n- **Jeu en direct** (environ 150 connectés) : programmer des robots qui se passent une balle, chaque bout de code ayant un coût ; les réponses de la salle sont comparées à celles de LLM (transcript).\n- Manche aller : les IA font mieux, en choisissant la solution simple d'abord ; le speaker rappelle de **ne pas généraliser trop tôt** (règle de trois de Fowler) sans s'enfermer dans le copier-coller (transcript).\n- Manche retour, histoires utilisateur plus ouvertes : les humains l'emportent nettement (meilleur coût 41 pour un minimum de 38, meilleure IA à 82) ; responsabilité unique, ouvert/fermé et inversion de dépendance faisaient la différence (transcript).\n- Conclusion du speaker : les LLM *« récitent »* la théorie mais l'appliquent mal ; **l'écriture de code devient une commodité**, les principes de conception restent à garder en main (transcript).\n- Lecture d'un participant : *« C'est un match spécifications détaillées vs product owner agilement désorienté en réalité… »* (Thomas Corrège) ; le speaker raconte avoir eu du mal à se concentrer avant de monter sur scène (Azeau, speaker).",
+      "summarySources": ["transcript", "feedback", "blog", "program"],
+      "video": { "youtubeId": "CmYN9fEeCDw", "title": "Conception de logiciels : le match humains vs AI", "publishedAt": "2025-12-12", "transcript": true }
     },
     {
       "id": "toute-ma-stack-est-dans-ma-bdd-postgres-et-quelques-power-tools",
@@ -55,9 +57,9 @@
       "title": "Toute ma stack est dans ma BDD : Postgres et quelques power tools pour mon backend",
       "speakers": ["Loïc des Rochettes — Please-open.it", "Mathieu Passenaud — Please-open.it"],
       "feedbackFrom": ["Philippe Viegas (Loxodata)", "Olivier Azeau (blog Contretemps)"],
-      "summary": "- **PostgreSQL pour toute la pile** : stockage, authentification via **Keycloak**, fonctions pour la partie contrôleur, APIs exposées par **PostgREST** (Loxodata).\n- Démo d'une appli web qui tourne *« directement dans Postgres, sans avoir besoin du moindre process applicatif boursouflé »* (Azeau).\n- Lecture critique : *« Mettre le moindre code métier dans la base de données est une idée dangereuse. Par contre, comme exercice métaphorique, c'était génial »* ; c'est pour lui la preuve qu'une appli web peut se passer de frameworks lourds et de dépendances incontrôlables (Azeau).\n- En commentaire LinkedIn, Mathieu Passenaud remercie Azeau d'avoir compris le message de fond (speaker).",
-      "summarySources": ["feedback", "blog"],
-      "video": { "youtubeId": "0kDcFUIZgn0", "title": "Toute ma stack est dans ma BDD : Postgres et quelques power tools pour mon backend", "transcript": false }
+      "summary": "- Sur scène, le point de départ : les ORM cachent ce qui se passe en base (requêtes **N+1**, jointures en mémoire), alors que vues, triggers et fonctions existent depuis des décennies (transcript).\n- Démo live : **PostgREST** n'expose que des vues, l'authentification passe par un **proxy OpenID Connect** (OpenResty) devant Keycloak, la *row level security* filtre par utilisateur, des triggers *instead of* traitent les insertions (transcript).\n- Code métier en **PL/Python** dans la base (PDF, paiement Stripe), puis n8n déclenché par des triggers Postgres pour l'asynchrone et les connecteurs externes (transcript).\n- Limites reconnues en questions-réponses : versionnement et migrations encore *« artisanal »*, métriques à construire soi-même, et *« plus une réflexion que [...] partez en prod directement avec ça »* (transcript).\n- Lecture critique d'un participant : *« Mettre le moindre code métier dans la base de données est une idée dangereuse. Par contre, comme exercice métaphorique, c'était génial »* ; preuve qu'une appli web peut se passer de frameworks lourds (Azeau). Loxodata retient la pile complète PostgreSQL, Keycloak, PostgREST.",
+      "summarySources": ["transcript", "feedback", "blog"],
+      "video": { "youtubeId": "0kDcFUIZgn0", "title": "Toute ma stack est dans ma BDD : Postgres et quelques power tools pour mon backend", "publishedAt": "2025-12-12", "transcript": true }
     },
     {
       "id": "ia-et-edge-computing-traitement-du-langage-efficace-sobre-et-sans-dependance",
@@ -66,9 +68,9 @@
       "title": "IA et Edge Computing : traitement du langage efficace, sobre et sans dépendance",
       "speakers": ["Didier Plaindoux", "Ionut Mihalcea"],
       "feedbackFrom": ["Olivier Azeau (blog Contretemps)"],
-      "summary": "- **IA locale sur le poste de l'utilisateur**, pensée pour les données sensibles : des modèles de la famille **BERT** pour l'extraction d'entités, la structuration, la classification et le question-réponse, souvent meilleurs que les LLM en contexte réglementé (programme).\n- Distribution des modèles en **ONNX** avec un runtime **Rust**, et agents autonomes côté client (programme).\n- Le programme promet aussi les limites : les LLM restent plus efficaces pour la désambiguïsation et le raisonnement complexe.\n- Retenu par Azeau : des résultats *« étonnants »* en traitement du langage avec du code local *« sans moyens démesurés »*, qui permet de **limiter l'usage des LLM au strict minimum**.",
-      "summarySources": ["feedback", "blog", "program"],
-      "video": { "youtubeId": "mzPTyx5SE4o", "title": "IA et Edge Computing : traitement du langage efficace, sobre et sans dépendance", "transcript": false }
+      "summary": "- Sur scène, le problème : les prompts envoyés aux LLM en SaaS partent bruts avec leurs **données sensibles** ; auto-héberger un modèle de 70 milliards de paramètres coûterait de l'ordre de 100 000 € de GPU (ordre de grandeur cité par les speakers) (transcript).\n- Alternative : **pseudonymiser le prompt** en local avant envoi, puis recontextualiser la réponse ; un filtre bloque les prompts jugés stratégiques (transcript).\n- Deux briques montrées : une **classification sans réseau de neurones** (k plus proches voisins et distance de compression gzip) comme premier filtre sur CPU, puis une reconnaissance d'entités zero-shot à base de **BERT** (GLiNER, environ 300 millions de paramètres) tournant sur un portable (transcript).\n- Distribution des modèles et d'un runtime **Rust** par agent ou WebAssembly, avec bindings .NET, Python et Java (Panama) ; mise en garde finale sur MCP, *« les portes de l'enfer »* de l'injection (transcript).\n- Retenu par Azeau : des résultats *« étonnants »* avec du code local *« sans moyens démesurés »*, qui permet de **limiter l'usage des LLM au strict minimum**.",
+      "summarySources": ["transcript", "feedback", "blog", "program"],
+      "video": { "youtubeId": "mzPTyx5SE4o", "title": "IA et Edge Computing : traitement du langage efficace, sobre et sans dépendance", "publishedAt": "2025-12-05", "transcript": true }
     },
     {
       "id": "rewrite-it-in-rust-peut-on-riir-de-tout",
@@ -76,10 +78,10 @@
       "type": "talk",
       "title": "Rewrite It In Rust : peut-on RIIR de tout ?",
       "speakers": ["Igor Laborie"],
-      "feedbackFrom": ["Olivier Azeau (blog Contretemps)"],
-      "summary": "- **Tour des usages de Rust**, du microcontrôleur aux systèmes distribués en passant par les CLI, le desktop et le web, et son intégration avec Python ou le web (programme).\n- Argument du programme : Rust combine la puissance d'un langage système avec un niveau de sécurité qu'envierait une JVM.\n- Pour Azeau, **code natif et gestion directe de la mémoire** en font un choix à considérer pour la sobriété.\n- Réserve du même auteur sur l'envie de le pousser *« partout, pour tout faire et, surtout, pour tout le monde »*, en citant Stroustrup : en Rust il est plus difficile de se tirer une balle dans le pied, mais *« quand ça se produit, ça doit pas être beau à voir »*.",
-      "summarySources": ["feedback", "blog", "program"],
-      "video": { "youtubeId": "cxVxFBw7Tio", "title": "Rewrite It In Rust : peut-on RIIR de tout ?", "transcript": false }
+      "feedbackFrom": ["Olivier Azeau (blog Contretemps)", "Emmanuel Nhan (blog)"],
+      "summary": "- Sur scène, le point de départ : une CVE de dépassement de tampon, et le constat que plus des deux tiers des vulnérabilités viennent de la gestion mémoire ; le mème « RIIR » vient de l'agacement des mainteneurs (transcript).\n- Arguments : **sécurité mémoire sans ramasse-miettes**, typage proche du fonctionnel (pas de null, erreurs explicites), protection contre les *data races*, *« quand ça compile, ça marche »* ; Rust est déjà dans les navigateurs, Cloudflare, uv ou ruff (transcript).\n- Démo en *yak shaving* : son propre outil de slides en Rust (CLI, serveur, WebAssembly, client lourd, terminal, ESP32, bindings mobile et Python) (transcript).\n- Réponse du speaker : réécrire l'existant rarement, sauf contrainte réglementaire ; écrire en Rust les nouveaux projets ; selon lui, ne pas en faire *« n'est pas un choix technique »* mais un manque de compétences ; appel à relancer le meetup Rust de Toulouse (transcript).\n- Côté participants : talk préféré d'Emmanuel Nhan, qui salue la gestion des soucis d'affichage et une question qui *« really resonated »* ; Azeau y voit un choix à considérer pour la sobriété, tout en se méfiant de l'envie de le pousser *« partout, pour tout faire et, surtout, pour tout le monde »*.",
+      "summarySources": ["transcript", "feedback", "blog", "program"],
+      "video": { "youtubeId": "cxVxFBw7Tio", "title": "Rewrite It In Rust : peut-on RIIR de tout ?", "publishedAt": "2025-12-05", "transcript": true }
     },
     {
       "id": "les-codes-a-barres-c-est-pas-que-de-la-barre",
@@ -98,10 +100,10 @@
       "type": "keynote",
       "title": "La domotique débridée, du sac poubelle au sanglier !",
       "speakers": ["Erwan", "Sylvain"],
-      "feedbackFrom": ["Olivier Azeau (blog Contretemps)"],
-      "summary": "- **Plénière de clôture** autour de **Home Assistant** : des projets gradués du pratique au franchement excessif (mais génial), avec appel au public pour partager ses propres bricolages (programme ; speakers identifiés par leur seul prénom).\n- Pour Azeau, une domotique **sans cloud et à base de petits dispositifs peu onéreux**, donc elle aussi sobre ; *« un ton assez léger pour finir cette journée mais aussi quelques idées intéressantes »*.",
-      "summarySources": ["feedback", "blog", "program"],
-      "video": { "youtubeId": "nxVhlSdwFwA", "title": "La domotique débridée, du sac poubelle au sanglier !", "transcript": false }
+      "feedbackFrom": ["Olivier Azeau (blog Contretemps)", "Emmanuel Nhan (blog)"],
+      "summary": "- **Plénière de clôture** autour de **Home Assistant**, open source, auto-hébergé, sans dépendance au cloud ; sur scène, Sylvain (organisateur) et Erwan sont rejoints par Mathieu Passenaud et Logan (transcript).\n- Gradation des cas d'usage : VMC déclenchée par l'écart d'humidité, lampe de chevet augmentée d'un bouton Zigbee, poulailler motorisé avec photo de contrôle, cumulus piloté selon les tarifs EDF Tempo, canapé motorisé intégré au « mode cinéma » (transcript).\n- Message glissé dans l'humour : un suivi de consommation de papier toilette montre **ce que révèlent les métadonnées**, d'où l'intérêt de garder ces données chez soi (transcript).\n- Final : détection de sangliers par caméra et **VLM auto-hébergé** (Moondream), klaxon de récupération piloté par ESP32, et projet de robot-tondeuse pour les chasser (transcript).\n- Côté participants : domotique sans cloud et à base de petits dispositifs peu onéreux, donc sobre, *« un ton assez léger pour finir cette journée mais aussi quelques idées intéressantes »* (Azeau) ; Emmanuel Nhan, *« delighted »*, retient la rencontre du matériel et du logiciel (Raspberry Pi, ESP32).",
+      "summarySources": ["transcript", "feedback", "blog", "program"],
+      "video": { "youtubeId": "nxVhlSdwFwA", "title": "La domotique débridée, du sac poubelle au sanglier !", "publishedAt": "2025-12-12", "transcript": true }
     },
     {
       "id": "beyond-agile-dans-les-coulisses-des-licornes-geantes-de-la-tech",
@@ -110,9 +112,64 @@
       "title": "Beyond agile : Dans les coulisses des licornes géantes de la Tech !",
       "speakers": ["Rachel Dubois"],
       "feedbackFrom": ["Philippe Viegas (Loxodata)", "Céline Chantry-Darmon (commentaire LinkedIn)", "Rachel Dubois (speaker)"],
-      "summary": "- Constat du programme : malgré rituels et OKR, **l'impact réel sur l'utilisateur reste souvent décevant** ; beaucoup d'équipes *« croient innover… alors qu'elles ne font que livrer »*.\n- Ce qui distinguerait Google, Airbnb, Spotify, Amazon ou Vinted : ni budget ni outillage, mais **la capacité à apprendre plus vite que les autres** (programme).\n- Retenu par Loxodata : les pratiques des grandes sociétés tech pour innover, et **comment l'échec leur permet de livrer** des expériences utilisateurs plus désirables.\n- Retours publics limités à des félicitations en commentaire (Céline Chantry-Darmon) ; la speaker remercie les organisateurs pour une très belle journée (speaker).",
-      "summarySources": ["feedback", "blog", "program"],
-      "video": { "youtubeId": "hGSbAc7EFtk", "title": "Beyond agile : Dans les coulisses des licornes géantes de la Tech !", "transcript": false }
+      "summary": "- Sur scène, le constat : des équipes agiles *« by the book »*, vélocité et prédictibilité au rendez-vous, mais incapables de dire leur impact sur les utilisateurs ou le chiffre d'affaires ; *« confondre la vitesse, le mouvement et [...] le progrès »* (transcript).\n- Récit d'une semaine d'équipe chez **Spotify** (où la speaker a travaillé, comme chez Vinted) : on part des dashboards, une baisse de métrique déclenche enquête, entretiens utilisateurs, hypothèses, variantes derrière feature flags et tests A/B (1 500 à 2 000 en permanence, selon elle) (transcript).\n- « Anatomie de licorne » : signaux d'alerte, équipes autonomes qui font **discovery et delivery ensemble**, qualité et refactoring non négociables, transparence radicale sur la donnée, droit de couper un variant sans comité (transcript).\n- Pistes pour les dirigeants : livrer des **expérimentations plutôt que des features**, refuser le déploiement large sans preuve chiffrée, pratiquer l'*« anti-roadmap »* qui planifie la suppression de fonctionnalités inutiles (transcript).\n- Côté participants : Loxodata retient comment l'échec permet de livrer des expériences plus désirables ; en commentaire, seulement des félicitations (Céline Chantry-Darmon), et des remerciements de la speaker aux organisateurs (speaker).",
+      "summarySources": ["transcript", "feedback", "blog", "program"],
+      "video": { "youtubeId": "hGSbAc7EFtk", "title": "Beyond agile : Dans les coulisses des licornes géantes de la Tech !", "publishedAt": "2025-12-12", "transcript": true }
+    },
+    {
+      "id": "sous-le-capot-des-llms-toutes-ces-questions-que-vous-n-avez-jamais-ose-poser",
+      "day": "2025-11-13",
+      "type": "talk",
+      "title": "Sous le capot des LLMs : toutes ces questions que vous n'avez jamais osé poser",
+      "speakers": ["Guillaume Laforge — Google"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène, une vulgarisation sans maths : pourquoi les LLM comptent mal les « r » de *strawberry* ? Parce qu'ils manipulent des **tokens** (environ 4 pour 3 mots), construits par des algorithmes comme BPE (transcript).\n- Différence entre modèle de fondation et modèle *instruction tuned*, rôle des tokens spéciaux de fin de tour, tirage du token suivant selon une distribution (top-k, top-p, **température**) (transcript).\n- Bizarreries expliquées : non-déterminisme même à température nulle (arrondis en virgule flottante sur GPU), **confabulation** plutôt qu'hallucination, influence du contexte et des contradictions de l'utilisateur, *reversal curse*, impossibilité d'oublier ce qui a été appris (transcript).\n- Aucun retour de participant trouvé ; résumé fondé sur le seul transcript.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "wIM57aP-5Yw", "title": "Under the hood of LLMs: all those questions you've never dared to ask about them", "publishedAt": "2025-12-12", "transcript": true }
+    },
+    {
+      "id": "mcp-et-a2a-revolutionner-l-interconnexion-et-la-collaboration-des-agents-ia",
+      "day": "2025-11-13",
+      "type": "talk",
+      "title": "MCP et A2A : Révolutionner l'interconnexion et la collaboration des agents IA",
+      "speakers": ["Laurent Grangeau — Google Cloud", "Tony Jarriault — Sogeti (Capgemini)"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène, la distinction clé : **MCP relie un agent à des outils et des données**, **A2A fait dialoguer les agents entre eux** ; les deux protocoles sont présentés comme complémentaires (transcript).\n- MCP en détail : transports STDIO et HTTP streamable, *sampling*, *elicitation*, prompts, ressources et outils, authentification OAuth et délégation *on-behalf-of* pour ne pas donner un jeton administrateur au serveur (transcript).\n- A2A : découverte par **agent card**, négociation des formats, tâches asynchrones notifiées en SSE ; démo d'un agent hôte qui interroge un agent météo et un agent Airbnb (transcript).\n- Démos parfois capricieuses de l'aveu des speakers ; aucun retour de participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "Cp0BHAqSeJA", "title": "MCP and A2A: Revolutionizing AI Agent Interconnection and Collaboration", "publishedAt": "2025-12-12", "transcript": true }
+    },
+    {
+      "id": "le-monstre-invisible-l-empreinte-carbone-de-l-ia",
+      "day": "2025-11-13",
+      "type": "talk",
+      "title": "Le monstre invisible : l'empreinte carbone de l'IA",
+      "speakers": ["Olivier Bierlaire"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène, la question de départ du projet Rebase Green : utiliser l'IA pour verdir le code, est-ce *« pire que le mal »* ? (transcript).\n- Ordres de grandeur cités : l'IA générative dépasserait la consommation électrique de la France vers 2029-2030 ; environ **une tonne de CO2 par milliard de paramètres** à l'entraînement selon le calcul du speaker ; l'inférence pèse autant que l'entraînement à l'échelle de ChatGPT (transcript).\n- Méthode : énergie × PUE × intensité carbone du réseau, plus la fabrication au prorata ; le même modèle hébergé en Allemagne émet bien plus qu'en France (transcript).\n- Leviers : petits modèles, *mixture of experts*, entraînement là où l'électricité est décarbonée, limiter les tokens de sortie, batching, outils plutôt que LLM pour l'arithmétique, autoscaling et *carbon awareness* ; exiger un **étiquetage énergétique des modèles** (transcript).\n- Seule réaction du public lue : en questions, un participant juge douteuse la comparaison avec un vol transatlantique ; le speaker la défend comme simple point de repère (transcript).",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "-LaQKYSXfcs", "title": "The invisible monster: AI's carbon footprint", "publishedAt": "2025-12-12", "transcript": true }
+    },
+    {
+      "id": "45-min-pour-mettre-son-application-a-genoux-le-guide-complet-du-test-de-charge",
+      "day": "2025-11-13",
+      "type": "talk",
+      "title": "45 min pour mettre son application à genoux : le guide complet du test de charge",
+      "speakers": ["Loïc Ortola — Takima", "Mathilde Lorrain — Takima"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène, live coding **Gatling** sur une appli de démo : scénario, protocole et profil d'injection, chemin critique à tester côté API (transcript).\n- Bonnes pratiques : groupes, actions et *feeders* rangés dans des classes comme des tests d'intégration ; **varier les parcours** (répartition aléatoire, extraction d'ID par JSONPath), car un système qui fait toujours la même chose met tout en cache et fausse le test (transcript).\n- Côté plateforme : faciliter l'authentification en environnement de test, exposer une **test gateway**, gérer les jeux de données comme un sujet d'infra, garder un **smoke test** en CI contre la dérive (transcript).\n- Chute de la démo : l'appli Spring Boot, pourtant « bien faite » selon les speakers, ne tient qu'environ 11 utilisateurs concurrents avant les erreurs 503 (transcript).\n- Aucun retour de participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "rBlG3Rsb3YI", "title": "45 minutes to bring your app to its knees: the complete load test guide", "publishedAt": "2025-12-12", "transcript": true }
+    },
+    {
+      "id": "a-la-decouverte-de-la-famille-des-modeles-bert",
+      "day": "2025-11-13",
+      "type": "talk",
+      "title": "A la découverte de la famille des modèles BERT",
+      "speakers": ["Alexia Audevart — datactik"],
+      "feedbackFrom": ["Emmanuel Nhan (blog)"],
+      "summary": "- Programme : l'architecture de **BERT** (Google, 2018), son entraînement par masquage de mots et prédiction de phrase suivante, des cas pratiques (détection de catastrophes dans des tweets, inférence de relations sémantiques) et les variantes RoBERTa, CamemBERT, FlauBERT, DistilBERT.\n- Seul retour lu : Emmanuel Nhan ouvre sa journée avec ce talk et dit avoir *« learned a lot »*, avant de fuir le reste du volet IA.\n- Talk cité sur scène par Didier Plaindoux et Ionut Mihalcea l'après-midi, qui s'appuient sur un modèle dérivé de BERT (transcript de leur session).",
+      "summarySources": ["blog", "program"],
+      "video": { "youtubeId": "LRLmZp7gEPA", "title": "Discovering the BERT model family", "transcript": false }
     },
     {
       "id": "rex-une-approche-moderne-de-gestion-de-clusters-kubernetes",
@@ -160,21 +217,16 @@
     }
   ],
   "sessionsWithoutFeedback": [
-    "Sous le capot des LLMs : toutes ces questions que vous n'avez jamais osé poser (Guillaume Laforge)",
     "Codepocalypse Now: LangChain4j vs. Spring AI (Baruch Sadogursky, Viktor Gamov)",
-    "MCP et A2A : Révolutionner l'interconnexion et la collaboration des agents IA (Laurent Grangeau, Tony Jarriault)",
     "Je malmène ton LLM en direct avec 10 failles de sécurité (Gaëtan Eleouet)",
     "Orchestrer un univers de jeu de rôle avec des agents IA multi-containers (Guillaume Lours, Philippe Charrière)",
     "Parlez à vos données (sans coder) : IA agentique et Claude avec le protocole MCP (Han Héloir)",
-    "Le monstre invisible : l'empreinte carbone de l'IA (Olivier Bierlaire)",
-    "A la découverte de la famille des modèles BERT (Alexia Audevart)",
     "Quand l'IA rejoint le calcul haute performance (Alejandro Estana)",
     "Démêler vrais produits et hallucinations, REX d'un agent téléphonique chercheur de chaussettes (Marie Terrier)",
     "Embellir des QR Codes à l'ère de la GenAI (Raphaël Semeteys)",
     "L'IA et la blockchain, les alliés de la sécurité (Carmen Piciorus)",
     "Apprentissage interactif et IA centrée utilisateur : retour d'expérience (Kevin Delcourt, Sylvie Trouilhet)",
     "Signaux faibles d'une révolution vocale dans les IHM (Simon Gomez)",
-    "45 min pour mettre son application à genoux : le guide complet du test de charge (Loïc Ortola, Mathilde Lorrain)",
     "Kafka 4, fantastique ? (Damien Lucas)",
     "De zéro à Data as a Product en 60 jours (Maria-Eliza Paez)",
     "Un Pixel, puis un autre : faire tourner DOOM sur une liseuse électronique (Moustapha Agack)",
@@ -206,10 +258,11 @@
   ],
   "sources": [
     { "label": "Programme et replays officiels de l'édition 2025", "url": "https://devfesttoulouse.fr/fr/editions/2025" },
-    { "label": "Playlist YouTube DevFest Toulouse 2025", "url": "https://www.youtube.com/playlist?list=PLuZ_sYdawLiVt43B2CU1Cm1GVcVApPAlN" },
+    { "label": "Playlist YouTube DevFest Toulouse 2025 (transcripts automatiques de 11 replays lus le 9 octobre 2026)", "url": "https://www.youtube.com/playlist?list=PLuZ_sYdawLiVt43B2CU1Cm1GVcVApPAlN" },
     { "label": "Page de l'événement GDG Toulouse (date du 13 novembre 2025)", "url": "https://gdg.community.dev/events/details/google-gdg-toulouse-presents-devfest-toulouse-2025/" },
     { "label": "Loxodata : Retour sur le DevFest Toulouse 2025 (Philippe Viegas)", "url": "https://www.loxodata.com/post/devfest-toulouse-2025/" },
     { "label": "Contretemps : Mon parcours sobriété au DevFest Toulouse 2025 (Olivier Azeau)", "url": "https://contretemps.azeau.com/post/mon-parcours-sobriete-au-devfest-toulouse-2025/" },
+    { "label": "Emmanuel Nhan : Devfest Toulouse 2025 (billet du 15 novembre 2025)", "url": "https://www.enhan.eu/devfest-toulouse-2025/" },
     { "label": "Néosoft : Another World, une belle leçon d'architecture logicielle (Jérôme Audouy)", "url": "https://www.neosoft.fr/nos-publications/blog-tech/retour-sur-le-devfest-toulouse-2026-another-world-une-belle-lecon-darchitecture-logicielle/" },
     { "label": "Post LinkedIn d'Ippon Technologies, clap de fin", "url": "https://fr.linkedin.com/posts/ippon-technologies_devfest-toulouse-2025-clap-de-fin-activity-7398763120250372096-tExu" },
     { "label": "Posts LinkedIn lus : DevFest Toulouse (annonces des talks d'Olivier Azeau et de Rachel Dubois, avec commentaires de Thomas Corrège, Philippe Antona, Charles de Magneval, Céline Chantry-Darmon, Rachel Dubois), Olivier Azeau (commentaires de Mathieu Passenaud, Olivier Poncet), Ippon Technologies" }

@@ -8,6 +8,326 @@
   "city": "Paris",
   "venue": "Institut Pasteur (conférences) ; IIM Digital School, Nanterre (ateliers)",
   "url": "https://www.paris-web.fr/2024",
-  "status": "pending",
-  "sessions": []
+  "programUrl": "https://www.paris-web.fr/2024",
+  "theme": "Le web invisible",
+  "dateConfidence": "ok",
+  "note": "19e édition sur le thème « The invisible web » (appel à orateurices) : 16 conférences sur une seule salle les 26 et 27/09 à l'Institut Pasteur, avec LSF, vélotypie et traduction simultanée de la conférence en anglais, puis 15 ateliers le 28/09 à Nanterre. L'édition a aussi célébré les 30 ans du W3C.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-09",
+  "revisit": "Aucun post LinkedIn trouvé et seulement trois comptes-rendus de blog (dont un signé par une animatrice d'atelier) ; le fil Mastodon repose surtout sur un participant (Stéphane Bortzmeyer). Chercher d'autres récaps (Alsacréations, Temesis, SFEIR, Opquast) et les vidéos des trois conférences sans sous-titres récupérés.",
+  "corpus": "Trois comptes-rendus de blog publiés du 30/09 au 08/10/2024 (Sophie Drouvroy, Access42, Eleven Labs), environ 120 messages Mastodon #ParisWeb du 26/09 au 08/10/2024 et le programme officiel. Les sous-titres français des vidéos Vimeo intégrées au site ont été lus pour 13 conférences, plus la transcription écrite publiée par Olivier Guillard.",
+  "limits": "Synthèse rétrospective à J+2 ans : aucun post LinkedIn n'est remonté et le fil Mastodon est dominé par les live-toots d'un seul participant, souvent ironiques. Le compte-rendu d'Access42 est signé par une animatrice d'atelier (Coryse Quibel). Les vidéos de trois conférences (Milbergue, Lescano Carroll, Guillard) n'ont pas pu être téléchargées, et douze des quinze ateliers ne sont documentés que par leur annonce.",
+  "tldr": "Sur le thème du **web invisible**, Paris Web 2024 a déplacé l'accessibilité **de la conformité vers les usages réels** (tester au lecteur d'écran, se méfier du taux RGAA, penser aux handicaps cognitifs et à la cinétose) et rendu visible la **matérialité du numérique** (câbles, zones blanches, sobriété), dans une salle unique toujours saluée pour son inclusivité.",
+  "keyTakeaways": [
+    "**Tester soi-même au lecteur d'écran**, comme on teste dans un navigateur : NVDA lit aussi le CSS (`display`), l'attribut `title` se comporte différemment selon le mode de navigation, et un code de confirmation avec majuscules peut bloquer un utilisateur aguerri (Emmanuel Pelletier).",
+    "Ne pas piloter l'accessibilité au **taux de conformité RGAA** : il porte sur un échantillon, ignore le volume d'erreurs et l'impact usager ; prioriser par chemin critique et vérifier que le contact de la déclaration de conformité répond (Sébastien Delorme).",
+    "Les outils de surcouche relèvent de l'assistance, pas de l'accessibilité : *« Lucie ne peut pas remplacer Shiva »* (Sébastien Delorme).",
+    "Annoter les maquettes (alternatives textuelles, textes réservés aux lecteurs d'écran) et définir qui fait quoi avec l'ARRM du W3C ; chercher des alliés, *« trouvez-vous des huskies »* (Tamara Sredojevic et Nora Goerne).",
+    "Imposer l'**authentification forte** aux comptes qui accèdent à des données personnelles, ne jamais coder la crypto soi-même, et soigner le vocabulaire (« code temporaire » plutôt que « jeton ») (Agnès Haasser).",
+    "Respecter `prefers-reduced-motion`, bannir les GIF animés en boucle et offrir un bouton pause : la **cybercinétose** est un handicap oublié (Christophe Breheret-Girardin).",
+    "Partir d'un service utilisable sans JavaScript, puis enrichir avec HTML over the wire (htmx, Hotwire, Unpoly) et les nouveautés CSS (scroll-snap, View Transitions) (Anthony Ricaud).",
+    "Faire de l'option sobre l'**état par défaut** et nommer clairement les paramètres de qualité, au lieu de présenter l'écologie comme une expérience dégradée (Thomas Thibault).",
+    "Concevoir pour les zones blanches : afficher l'essentiel d'abord, dire combien de données coûte un téléchargement, prévoir l'offline-first avec Service Workers (Olivier Guillard).",
+    "Plaider en coopérant plutôt qu'en menaçant : **« show, don't tell »**, mettre les personnes handicapées au centre des échanges avec les décideurs (Lainey Feingold)."
+  ],
+  "sessions": [
+    {
+      "id": "mots-a-maux-comment-le-langage-reflete-et-entretient-les-parties-les-plus-toxiques-de-notre-industrie",
+      "day": "2024-09-26",
+      "type": "talk",
+      "title": "Mots à maux : comment le langage reflète et entretient les parties les plus toxiques de notre industrie",
+      "speakers": ["Magali Milbergue"],
+      "feedbackFrom": ["Eleven Labs (Stéphane Einhorn, Alice Fauquet)", "Sophie Drouvroy (blog)", "Stéphane Bortzmeyer (Mastodon)", "Marie et Julien (Mastodon)"],
+      "summary": "- Conférence d'ouverture : **le jargon d'un métier reflète le groupe qui le parle** et entretient ses travers ; comment rendre la tech plus inclusive par le langage (programme).\n- Retenu par Eleven Labs : une citation de Barthes sur le langage qui oblige à dire ; **choisir le mot juste** (« grosse » plutôt que l'euphémisme « forte ») ; la règle du masculin qui l'emporte vient d'une réforme du XVIIe siècle, pas d'une nécessité linguistique ; l'écriture inclusive dépasse la typographie.\n- Point discuté : selon Eleven Labs, l'expression **« personne en situation de handicap »** efface le handicap en le présentant comme temporaire ; en questions-réponses, une personne handicapée dit ne pas aimer cette expression (Bortzmeyer).\n- Moment de débat relevé sur Mastodon : *« Le point médian n'est pas accessible »*, phrase dont Bortzmeyer prédit qu'elle *« ne va pas faire consensus »*.\n- Accueil : approche jugée pédagogique, avec une vraie maîtrise de la démonstration (Drouvroy) ; Marie et Julien relèvent avec ironie la juxtaposition avec la conférence suivante.",
+      "summarySources": ["program", "blog", "feedback"],
+      "video": {
+        "url": "https://www.paris-web.fr/2024/conference/mots-a-maux-comment-le-langage-reflete-et-entretient-les-parties-les-plus-toxiques-de-notre-industrie",
+        "title": "Mots à maux - comment le langage reflète et entretient les parties les plus toxiques de notre industrie",
+        "transcript": false
+      }
+    },
+    {
+      "id": "orejime-un-projet-open-source-et-accessible-compte-de-fee-ou-drama-project",
+      "day": "2024-09-26",
+      "type": "talk",
+      "title": "Orejime, un projet open-source et accessible : compte de fée ou drama project ?!",
+      "speakers": ["Simon Bonaventure — Empreinte Digitale"],
+      "feedbackFrom": ["Eleven Labs (Stéphane Einhorn, Alice Fauquet)", "Sophie Drouvroy (blog)", "Stéphane Bortzmeyer (Mastodon)"],
+      "summary": "- Sur scène : aucun gestionnaire de cookies du marché n'était **pleinement accessible** ; les contributions d'Empreinte Digitale au projet Klaro ont été fusionnées puis écrasées, d'où un **fork baptisé Orejime**, traité comme un projet de production (transcript).\n- Coût annoncé : environ **un mois-homme au départ**, puis moins d'une semaine par an de maintenance, soit moins de 3 % d'un ETP sur cinq ans ; librairie divisée par trois en poids (transcript).\n- Effets inattendus : adoption par service-public.fr, environ 240 sites du gouvernement luxembourgeois et l'équivalent belge de la CNIL ; backlinks appréciés du marketing ; contributions externes (finnois, occitan) ; fierté des équipes et argument de recrutement (transcript).\n- Limites assumées : aucun chiffre d'affaires, outil offert aux concurrents, et regret de ne pas avoir dialogué avec le mainteneur de Klaro avant de forker (transcript, retenu aussi par Eleven Labs).\n- Côté salle : Drouvroy continue de recommander l'outil ; Bortzmeyer regrette que le gestionnaire de cookies ne soit pas expliqué et pique l'emploi d'« open source » par un adhérent de l'APRIL.",
+      "summarySources": ["transcript", "blog", "feedback"],
+      "video": {
+        "url": "https://www.paris-web.fr/2024/conference/orejime-un-projet-open-source-et-accessible-compte-de-fee-ou-drama-project",
+        "title": "Orejime, un projet open-source et accessible : compte de fée ou drama project ?!",
+        "transcript": true
+      }
+    },
+    {
+      "id": "il-ny-a-pas-que-les-single-page-apps-dans-la-vie",
+      "day": "2024-09-26",
+      "type": "talk",
+      "title": "Il n'y a pas que les Single Page Apps dans la vie",
+      "speakers": ["Anthony Ricaud"],
+      "feedbackFrom": ["Eleven Labs (Stéphane Einhorn, Alice Fauquet)", "Stéphane Bortzmeyer (Mastodon)", "lamecarlate (Mastodon)", "Marie et Julien (Mastodon)", "tsadiq, Thain (Mastodon)"],
+      "summary": "- Sur scène : la SPA est devenue l'**architecture par défaut**, alors que *« l'ingénierie, c'est choisir la solution adaptée pour un contexte particulier »* (transcript).\n- Inconvénients listés : spinners, page inerte tant que le JavaScript n'est pas exécuté (réseau instable, bloqueurs, erreurs), navigation suivante pas forcément plus rapide (expérience de 2021 sur le site de L'Équipe), coût d'un Node en production, API qui séparent les équipes, et churn de l'écosystème (transcript).\n- Deux griefs historiques sont réglés depuis 2019 dans Chrome : le **flash blanc** entre pages et l'absence de back/forward cache (transcript, retenu par Eleven Labs).\n- Recette proposée : service utilisable sans JavaScript, puis **HTML over the wire** (htmx, Hotwire Turbo, Unpoly) et Stimulus ; démos accent-color, scroll-behavior, scroll-snap et View Transitions (transcript).\n- Réception : *« Programmer en JavaScript [...] c'est être un hamster dans la roue »* repris par Bortzmeyer ; le carrousel en CSS pur a séduit (lamecarlate) ; Marie et Julien ironise en proposant les transitions de page d'IE 5.5, et la citation de script.aculo.us a fait sourire les vétérans (tsadiq, Thain).",
+      "summarySources": ["transcript", "blog", "feedback"],
+      "video": {
+        "url": "https://www.paris-web.fr/2024/conference/il-ny-a-pas-que-les-single-page-apps-dans-la-vie",
+        "title": "Il n'y a pas que les Single Page Apps dans la vie",
+        "transcript": true
+      }
+    },
+    {
+      "id": "defendre-et-industrialiser-laccessibilite-en-tant-quux-designer",
+      "day": "2024-09-26",
+      "type": "talk",
+      "title": "Défendre et industrialiser l'accessibilité en tant qu'UX designer",
+      "speakers": ["Tamara Sredojevic", "Nora Goerne"],
+      "feedbackFrom": ["Access42 (Coryse Quibel)", "Eleven Labs (Stéphane Einhorn, Alice Fauquet)", "Sophie Drouvroy (blog)", "Stéphane Bortzmeyer (Mastodon)", "Marie et Julien (Mastodon)"],
+      "summary": "- Sur scène, Nora Goerne applique la posture UX à l'accessibilité : **comprendre ce qui bloque** (personnes, processus, outils) avant de proposer ; adapter l'argumentaire à chaque interlocuteur (qualité du code pour les devs, image de marque pour le marketing, risque juridique pour la direction) ; répartir les rôles avec l'**ARRM du W3C** et se situer avec un modèle de maturité (transcript, sous-titres automatiques).\n- Tamara Sredojevic raconte son arrivée à la MAIF : un alt inutile sur un pictogramme révèle qu'**aucun processus d'annotation des maquettes** n'existait ; il a fallu trois mois pour s'accorder sur les alternatives, un mois seulement ensuite pour les textes réservés aux lecteurs d'écran, avec l'appui d'un retour d'audit (transcript).\n- Signe de maturité : une collègue pose d'elle-même la question des utilisateurs handicapés en réunion ; *« trouvez-vous des huskies »* (transcript).\n- Retenu par les participants : cadrer les processus et définir les responsabilités (Access42), *« ça peut être moi ou quelqu'un que je connais »* (Eleven Labs), pédagogie et répétition comme clés (Drouvroy) ; *« On change le code, et ça prend trois sprints pour être intégré »* relevé par Bortzmeyer.\n- Voix critique : Marie et Julien doute que l'argument de la qualité du code convainque les développeurs et juge qu'on se décharge sur les designers en leur faisant spécifier jusqu'au texte alternatif.",
+      "summarySources": ["transcript", "blog", "feedback"],
+      "video": {
+        "url": "https://www.paris-web.fr/2024/conference/defendre-et-industrialiser-laccessibilite-en-tant-quux-designer",
+        "title": "Défendre et industrialiser l'accessibilité en tant qu'UX designer",
+        "transcript": true
+      }
+    },
+    {
+      "id": "du-calendrier-lunaire-aux-notifications-du-smartphone-la-notion-du-temps",
+      "day": "2024-09-26",
+      "type": "talk",
+      "title": "Du calendrier lunaire aux notifications du smartphone : la notion du temps",
+      "speakers": ["Flora Brochier — Designers Éthiques", "Esther Jacquet"],
+      "feedbackFrom": ["Eleven Labs (Stéphane Einhorn, Alice Fauquet)", "Stéphane Bortzmeyer (Mastodon)", "Marie et Julien (Mastodon)"],
+      "summary": "- Sur scène : le **temps personnel** (sablier interne, ligne passé-présent-futur) est malmené par le scroll infini et l'autoplay, qui maintiennent dans le présent ; publics sensibles évoqués : jeunes enfants, personnes schizophrènes (transcript).\n- Le **temps collectif** s'accélère depuis des siècles (cadran solaire, horloge, chemin de fer : *« C'est le train qui a inventé le retard »*) ; les outils ne libèrent pas de temps, ils font faire davantage ; le système économique contraint les usages sociaux (transcript).\n- Présentation du projet **Alternative Patterns** de Designers Éthiques sur les notifications : 33 entretiens, prototypage à venir, pour concevoir des notifications plus respectueuses (transcript).\n- Retenu : redonner aux utilisateurs le contrôle de leur temps dans les interfaces (Eleven Labs).\n- Critiques : Marie et Julien signale un **contresens sur l'expérience du marshmallow** (les recherches récentes la relient au contexte socio-économique) et rappelle que les notifications existaient avant le BlackBerry ; Bortzmeyer résume l'expérience au premier degré avec ironie.",
+      "summarySources": ["transcript", "blog", "feedback"],
+      "video": {
+        "url": "https://www.paris-web.fr/2024/conference/du-calendrier-lunaire-aux-notifications-du-smartphone-la-notion-du-temps",
+        "title": "Du calendrier lunaire aux notifications du smartphone : la notion du temps",
+        "transcript": true
+      }
+    },
+    {
+      "id": "accessibilite-lia-pour-faire-pousser-mes-tomates-inclusives",
+      "day": "2024-09-26",
+      "type": "talk",
+      "title": "Accessibilité : l'IA pour faire pousser mes tomates inclusives",
+      "speakers": ["Sébastien Delorme — Ideance"],
+      "feedbackFrom": ["Eleven Labs (Stéphane Einhorn, Alice Fauquet)", "Sophie Drouvroy (blog)", "Stéphane Bortzmeyer (Mastodon)"],
+      "summary": "- Titre tiré du générateur de titres de conférences Paris Web : *« Je ne vais pas parler d'IA. Ni de tomates, d'ailleurs »* (transcript, relevé par Bortzmeyer).\n- Premier sujet, le **taux de conformité RGAA** : calculé sur un échantillon de pages, aveugle au volume d'erreurs et à l'impact usager ; un site de streaming à 94 % sans sous-titres ni audiodescription, ou un formulaire à 98 % bloqué par un CAPTCHA, reste inaccessible (transcript).\n- Conseils : prioriser par **chemin critique et impact**, impliquer des utilisateurs handicapés, parler de « taux de conformité » et non de « note » qui décourage les équipes ; grille critères RGAA / impact publiée sur le GitHub d'Ideance ; vérifier que le contact de la déclaration de conformité existe et sait répondre (transcript).\n- Second sujet, les **surcouches** : mise en scène avec Sylvie et son chien guide face à un chien robot, pour montrer qu'une surcouche relève de l'assistance, pas de l'accessibilité (transcript).\n- Retenu : la fixation sur le pourcentage induit en erreur (Eleven Labs) ; exposé clair et pédagogique sur la communication autour de la déclaration (Drouvroy).",
+      "summarySources": ["transcript", "blog", "feedback"],
+      "video": {
+        "url": "https://www.paris-web.fr/2024/conference/accessibilite-lia-pour-faire-pousser-mes-tomates-inclusives",
+        "title": "Accessibilité : l'IA pour faire pousser mes tomates inclusives",
+        "transcript": true
+      }
+    },
+    {
+      "id": "appuyez-sur-entree-pour-envoyer-ce-message",
+      "day": "2024-09-26",
+      "type": "talk",
+      "title": "Appuyez sur Entrée pour envoyer ce message",
+      "speakers": ["Thomas Parisot"],
+      "feedbackFrom": ["Eleven Labs (Stéphane Einhorn, Alice Fauquet)", "Stéphane Bortzmeyer (Mastodon)", "lamecarlate (Mastodon)"],
+      "summary": "- Lecture de paysage du courriel, en trois temps : le **contenu** (message brut, en-têtes, encodages, Unicode, images en base64), la **transmission** (DNS, dialogue SMTP entre serveurs) et le **transport** (boucle locale, nœuds de raccordement, data centers, fibre, câbles sous-marins) (transcript).\n- Constat : tout ce qui code et transporte le message repose sur des **standards ouverts** lisibles gratuitement, mais les tuyaux appartiennent à des opérateurs privés, dont Google et Meta qui posent leurs propres câbles (transcript).\n- Ancrage matériel : l'incendie de l'immeuble de raccordement de sa ville a coupé paiements et billetterie jusqu'à 30 km ; son propre courriel était hébergé à Seattle, ce qu'il compte changer (transcript).\n- Proposition de vocabulaire relevée : **« foyer numérique »** plutôt que serveur, que Bortzmeyer verrait bien appliqué au fédivers ; lamecarlate prolonge avec l'histoire du « 500-mile email ».\n- Retenu par Eleven Labs : protocoles standardisés et réseau physique derrière un « cloud » qui n'a rien d'immatériel.",
+      "summarySources": ["transcript", "blog", "feedback"],
+      "video": {
+        "url": "https://www.paris-web.fr/2024/conference/appuyez-sur-entree-pour-envoyer-ce-message",
+        "title": "Appuyez sur Entrée pour envoyer ce message",
+        "transcript": true
+      }
+    },
+    {
+      "id": "penser-laccessibilite-numerique-avec-les-handicaps-cognitifs",
+      "day": "2024-09-26",
+      "type": "talk",
+      "title": "Penser l'accessibilité numérique avec les handicaps cognitifs",
+      "speakers": ["Lison Fanuel — Tanaguru"],
+      "feedbackFrom": ["Access42 (Coryse Quibel)", "Eleven Labs (Stéphane Einhorn, Alice Fauquet)", "Sophie Drouvroy (blog)", "Stéphane Bortzmeyer (Mastodon)"],
+      "summary": "- Docteure en psychologie cognitive, l'oratrice distingue **trouble cognitif**, trouble psychiatrique et déficit intellectuel, et liste les causes (neurodéveloppement, AVC, traumatismes, vieillissement, sommeil, médicaments) (transcript).\n- Les WCAG ne traitent explicitement ces troubles que depuis 2018 (groupe COGA) : 4 critères en 2.1, 5 en 2.2, dont seuls deux sont repris dans le RGAA 4 (transcript, retenu par Eleven Labs).\n- Cinq fonctions passées en revue avec des pistes : **attention** (TDAH, héminégligence : hiérarchie visuelle, contenus alignés à gauche, une information par page), **mémoire** (repères de navigation, pas de délais d'expiration), **langage** (dyslexie, aphasie : langage clair, vitesse de lecture réglable, recherche tolérante aux fautes), **perception** (agnosie, dyschromatopsie : labels visibles, alternatives au CAPTCHA), **praxies** (transcript).\n- Réception : troubles cognitifs démystifiés avec humour (Access42, Drouvroy) ; Bortzmeyer retient que ce handicap *« inclut beaucoup de troubles différents (avec des solutions différentes) »* et cite les délais d'expiration de SNCF Connect.",
+      "summarySources": ["transcript", "blog", "feedback"],
+      "video": {
+        "url": "https://www.paris-web.fr/2024/conference/penser-laccessibilite-numerique-avec-les-handicaps-cognitifs",
+        "title": "Penser l'accessibilité numérique avec les handicaps cognitifs",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-technologie-des-polices-variables",
+      "day": "2024-09-27",
+      "type": "talk",
+      "title": "La technologie des polices variables",
+      "speakers": ["Damien Collot — Monotype"],
+      "feedbackFrom": ["Eleven Labs (Stéphane Einhorn, Alice Fauquet)", "Stéphane Bortzmeyer (Mastodon)", "Marie et Julien (Mastodon)", "Christophe Breheret-Girardin (orateur, sur scène)"],
+      "summary": "- Suite de sa conférence 2023 sur typographie et accessibilité : les polices variables pourraient **adapter la lecture à chacun**, mais l'orateur n'en connaît qu'une pensée pour l'accessibilité, Lexend (transcript).\n- Pédagogie technique : masters, instances et axes ; héritage des Multiple Master des années 1990, renaissance en 2016 ; exemples d'usages surtout expressifs (identités animées) et quelques usages fonctionnels (mode sombre, adaptation à l'environnement) (transcript, retenu par Eleven Labs).\n- Pourquoi si peu de polices variables accessibles : dessin compatible entre masters, contrôle de toutes les interpolations, coût élevé (transcript).\n- Accueil mitigé dans la salle : *« ça sert à rien et c'est illisible »* entendu par Bortzmeyer, jeux de mots de Marie et Julien ; Christophe Breheret-Girardin a ajouté le matin même une diapositive sur les polices variables animées qui le rendent malade.",
+      "summarySources": ["transcript", "blog", "feedback"],
+      "video": {
+        "url": "https://www.paris-web.fr/2024/conference/la-technologie-des-polices-variables",
+        "title": "La technologie des polices variables",
+        "transcript": true
+      }
+    },
+    {
+      "id": "be-a-dolphin-not-a-shark-using-cooperation-over-conflict-to-advance-digital-accessibility",
+      "day": "2024-09-27",
+      "type": "talk",
+      "title": "Be a Dolphin not a Shark: Using cooperation over conflict to advance digital accessibility",
+      "speakers": ["Lainey Feingold — LFLegal"],
+      "feedbackFrom": ["Access42 (Coryse Quibel)", "Eleven Labs (Stéphane Einhorn, Alice Fauquet)", "Sophie Drouvroy (blog)", "arkhi, sabderemane, Emmanuelle Aboaf, Thain, lena, Marie et Julien (Mastodon)", "Lainey Feingold (speaker, Mastodon)"],
+      "summary": "- Seule conférence en anglais, traduite en direct puis interprétée en LSF et vélotypée : *« On ne voit ça nulle part ailleurs »* (Emmanuelle Aboaf).\n- Sur scène, l'avocate américaine raconte 30 ans de **négociation structurée** : distributeurs parlants obtenus des banques sans procès, puis le premier accord d'accessibilité web d'une banque en 2000, étiquettes de médicaments parlantes, feux piétons sonores, application de la Major League Baseball (transcript).\n- Fondement : **« show, don't tell »**, mettre des personnes handicapées face aux décideurs ; une juriste parle du moment le plus marquant de sa carrière en voyant une démonstration sur plage braille (transcript).\n- Le requin inspire la peur, et *« fear is not a sustainable strategy »* ; la peur explique selon elle le fiasco des surcouches (transcript). Compétences retenues par Eleven Labs : écoute, confiance, empathie, patience, et savoir se retirer quand la négociation échoue.\n- Réception très chaleureuse : *« truly inspirational »* (arkhi), l'image de la glace fondue pour l'accessibilité tardive (sabderemane), *« Nothing about us without us »* (Emmanuelle Aboaf), marathon plutôt que sprint (Drouvroy) ; Marie et Julien plaisante sur le comportement réel des dauphins.",
+      "summarySources": ["transcript", "blog", "feedback"],
+      "video": {
+        "url": "https://www.paris-web.fr/2024/conference/be-a-dolphin-not-a-shark-using-cooperation-over-conflict-to-advance-digital-accessibility",
+        "title": "Be a Dolphin not a Shark: Using cooperation over conflict to advance digital accessibility",
+        "transcript": true
+      }
+    },
+    {
+      "id": "linstabilite-de-nos-tests-nous-empeche-de-delivrer",
+      "day": "2024-09-27",
+      "type": "talk",
+      "title": "L'instabilité de nos tests nous empêche de délivrer",
+      "speakers": ["Sofia Lescano Carroll"],
+      "feedbackFrom": ["Eleven Labs (Stéphane Einhorn, Alice Fauquet)", "Stéphane Bortzmeyer (Mastodon)"],
+      "summary": "- Contexte (programme) : sur un monolithe où les équipes grandissent, des **tests aléatoirement en échec** bloquent la CI alors que l'application fonctionne, et leur correction passe après les fonctionnalités.\n- Retenu par Eleven Labs : les tests instables sapent la confiance des équipes ; causes typiques (dates, délais, attentes mal comprises) ; **quantifier le problème, informer des conséquences, suivre un processus constant** ; outils cités (CircleCI, Datadog, Allure, PHPStan) ; parfois, supprimer un test inutile est la meilleure solution.\n- Lecture critique de Bortzmeyer, qui ironise sur le vocabulaire : *« C'est quoi, ces conférences #ParisWeb qui parlent le Medef dans le texte ? »*.\n- Vidéo non récupérée : résumé fondé sur le programme et les retours.",
+      "summarySources": ["program", "blog", "feedback"],
+      "video": {
+        "url": "https://www.paris-web.fr/2024/conference/linstabilite-de-nos-tests-nous-empeche-de-delivrer",
+        "title": "L'instabilité de nos tests nous empêche de délivrer",
+        "transcript": false
+      }
+    },
+    {
+      "id": "quel-design-pour-un-numerique-ecologiquement-contraint",
+      "day": "2024-09-27",
+      "type": "talk",
+      "title": "Quel design pour un numérique écologiquement contraint ?",
+      "speakers": ["Thomas Thibault — Designers Éthiques / Limites Numériques"],
+      "feedbackFrom": ["Eleven Labs (Stéphane Einhorn, Alice Fauquet)", "Stéphane Bortzmeyer (Mastodon)", "busmagique (Mastodon)"],
+      "summary": "- Rappel des impacts matériels, puis un constat : la page web de l'iPhone 16 pèse **60 Mo**, plus que Windows 95 (transcript, relevé par Bortzmeyer).\n- Le projet de recherche **Limites Numériques** (CNRS, Université de Strasbourg, Designers Éthiques) recense 24 leviers et des centaines d'inspirations ; cinq sont présentés : interfaces qui montrent leur empreinte (icône de téléchargement plutôt que lecture), **saisonnaliser** le numérique (Solar Protocol), réduire flux et puissance (contenus à date de péremption, contraintes créatives des jeux 8 bits), accompagner des usages moins numériques (services par SMS, offline), **donner le contrôle** des paramètres (transcript).\n- Enquête sur les paramètres mobiles : jamais pensés pour l'écologie, réduction présentée comme une version dégradée (bouton de la COP 28), réglages par défaut les plus gourmands ; piste : faire de la sobriété l'état normal (transcript, retenu par Bortzmeyer).\n- Retenu par Eleven Labs : démystifier le « cloud », dates d'expiration des contenus, contrôle des médias ; busmagique complète avec Invidious pour n'écouter que l'audio de YouTube.",
+      "summarySources": ["transcript", "blog", "feedback"],
+      "video": {
+        "url": "https://www.paris-web.fr/2024/conference/quel-design-pour-un-numerique-ecologiquement-contraint",
+        "title": "Quel design pour un numérique écologiquement contraint ?",
+        "transcript": true
+      }
+    },
+    {
+      "id": "double-authentification-de-quoi-parle-t-on",
+      "day": "2024-09-27",
+      "type": "talk",
+      "title": "Double authentification : de quoi parle-t-on ?",
+      "speakers": ["Agnès Haasser"],
+      "feedbackFrom": ["Access42 (Coryse Quibel)", "Eleven Labs (Stéphane Einhorn, Alice Fauquet)", "Sophie Drouvroy (blog)", "Stéphane Bortzmeyer (Mastodon)", "lamecarlate, tsadiq, Marie et Julien (Mastodon)"],
+      "summary": "- Conférence illustrée de **canevas brodés au point de croix**, qui commence par sa conclusion : imposer l'authentification forte à quiconque accède à des données personnelles, la proposer aux internautes ; *« la sécurité des données, c'est la sécurité des gens »* (transcript, retenu par Access42).\n- Contexte : fuites de données (CNAV, RED by SFR) et menaces de mort rendent chaque fuite dangereuse ; l'ANSSI déconseille le SMS depuis 2021 (transcript).\n- Définitions : identification et authentification (*« Je suis Céline Dion »*), facteurs de connaissance, possession et inhérence ; **double authentification n'est pas authentification forte** ; TOTP par secret partagé, WebAuthn par clé asymétrique ; *« la crypto, ce n'est pas de la pâtisserie »*, on utilise des bibliothèques (transcript).\n- Vraie vie : 15 minutes pour installer le module, mais le jargon (« jeton ») nuit ; Aidants Connect parle de « carte numérique » et de **« code temporaire »** (transcript).\n- Réception : Bortzmeyer salue le seul exposé citant des RFC ; *« mille fois mieux »* que des images générées par IA (lamecarlate) ; questions surtout UX en informelle, où la « carte de codes » d'une banque est critiquée (tsadiq) ; pédagogie et humour salués (Drouvroy).",
+      "summarySources": ["transcript", "blog", "feedback"],
+      "video": {
+        "url": "https://www.paris-web.fr/2024/conference/double-authentification-de-quoi-parle-t-on",
+        "title": "Double authentification : de quoi parle-t-on ?",
+        "transcript": true
+      }
+    },
+    {
+      "id": "vos-presentations-et-vos-sites-me-donnent-litteralement-envie-de-vomir",
+      "day": "2024-09-27",
+      "type": "talk",
+      "title": "Vos présentations et vos sites me donnent littéralement envie de vomir",
+      "speakers": ["Christophe Breheret-Girardin — Zenika"],
+      "feedbackFrom": ["Eleven Labs (Stéphane Einhorn, Alice Fauquet)", "Access42 (Coryse Quibel)", "Marie et Julien (Mastodon)"],
+      "summary": "- Témoignage à la première personne sur la **cybercinétose** : conflit entre ce que voient les yeux et ce que perçoit le vestibule, avec nausées, sueurs froides et vertiges ; *« un parent pauvre »* de l'accessibilité, encore plus oublié que le daltonisme (transcript).\n- Déclencheurs montrés en direct : GIF animés en boucle (rotation surtout), parallaxe, vidéos en lecture automatique sur LinkedIn, animations permanentes, effets de flou, réalité virtuelle (étude Ubisoft : 45 % de joueurs sensibles) (transcript).\n- Demandes : pas de GIF animés, bouton **pause**, respect de `prefers-reduced-motion` sans lequel le réglage système ne sert à rien (transcript, retenu par Eleven Labs).\n- Écho dans la salle : Access42 regrette plus largement des présentations aux images très lumineuses ou animées ; Marie et Julien reprend le titre pour viser les diapositives remplies d'images générées par IA.",
+      "summarySources": ["transcript", "blog", "feedback"],
+      "video": {
+        "url": "https://www.paris-web.fr/2024/conference/vos-presentations-et-vos-sites-me-donnent-litteralement-envie-de-vomir",
+        "title": "Vos présentations et vos sites me donnent littéralement envie de vomir",
+        "transcript": true
+      }
+    },
+    {
+      "id": "au-dela-du-rgaa-penser-reellement-aux-usagers-de-lecteurs-decran",
+      "day": "2024-09-27",
+      "type": "talk",
+      "title": "Au-delà du RGAA : penser réellement aux usagers de lecteurs d'écran",
+      "speakers": ["Emmanuel Pelletier"],
+      "feedbackFrom": ["Eleven Labs (Stéphane Einhorn, Alice Fauquet)", "Sophie Drouvroy (blog)", "Stéphane Bortzmeyer (Mastodon)"],
+      "summary": "- Sondage en salle : beaucoup testent dans un navigateur, **trois personnes** testent régulièrement au lecteur d'écran (transcript).\n- Quatre cas réels : un `<br>` qui coupe « République / Française » sur le site du DSFR, et la solution « propre » en `display: block` qui échoue parce que **NVDA lit le CSS**, d'où un `role=\"presentation\"` pourtant déconseillé ; l'attribut `title` vocalisé ou non selon le mode de navigation ; une recherche d'Element bien balisée en ARIA mais inutilisable faute de test de parcours ; un code de confirmation à majuscules qu'un testeur aveugle expérimenté doit lire sur sa plage braille (transcript).\n- Message : les usagers ne sont pas tous experts de leur outil, il faut que ça marche avec les fonctions de base ; s'approprier les tests réels, y compris sur les e-mails (transcript, retenu par Eleven Labs).\n- Réception : présentation simple et drôle (Drouvroy) ; Bortzmeyer retient le pragmatisme sur `role=presentation` et préfère tester avec lynx.",
+      "summarySources": ["transcript", "blog", "feedback"],
+      "video": {
+        "url": "https://www.paris-web.fr/2024/conference/au-dela-du-rgaa-penser-reellement-aux-usagers-de-lecteurs-decran",
+        "title": "Au-delà du RGAA : penser réellement aux usagers de lecteurs d'écran",
+        "transcript": true
+      }
+    },
+    {
+      "id": "design-pour-loffline-strategies-pour-des-experiences-utilisateur-ininterrompues",
+      "day": "2024-09-27",
+      "type": "talk",
+      "title": "Design pour l'offline : stratégies pour des expériences utilisateur ininterrompues",
+      "speakers": ["Olivier Guillard — Institut des Arts Appliqués de Strasbourg"],
+      "feedbackFrom": ["Eleven Labs (Stéphane Einhorn, Alice Fauquet)", "Stéphane Bortzmeyer (Mastodon)", "Marie et Julien (Mastodon)"],
+      "summary": "- Transcription publiée par l'orateur : les **zones blanches** concernent 400 millions de personnes sans couverture mobile, 2,7 milliards n'ayant jamais utilisé Internet en 2023 ; réponses d'infrastructure (SMS, réseaux maillés, Taara, Starlink et ses problèmes de souveraineté).\n- Design : écrans squelettes plutôt que spinners, messages d'erreur utiles, information hiérarchisée, **dire combien de données coûte** un téléchargement, permettre pause et suppression.\n- Développement : CSS critique, chargement différé, dégradation élégante et amélioration progressive, WebP/AVIF, compression ; puis **offline-first** avec Service Workers, IndexedDB et PWA (exemple Starbucks).\n- Retours critiques de Bortzmeyer : exemple du GPS *« vraiment mauvais »* (Organic Maps marche hors ligne), messages d'humour qui lui donnent *« envie de tout cramer »*, et l'offline-first que *« le navigateur devrait faire »* ; Marie et Julien dénonce les sites qui n'affichent rien dès que la connexion faiblit.",
+      "summarySources": ["transcript", "blog", "feedback"],
+      "video": {
+        "url": "https://www.paris-web.fr/2024/conference/design-pour-loffline-strategies-pour-des-experiences-utilisateur-ininterrompues",
+        "title": "Design pour l'offline : stratégies pour des expériences utilisateur ininterrompues",
+        "transcript": true
+      }
+    },
+    {
+      "id": "concevez-un-web-mesure-avec-la-methode-de-lecumoire",
+      "day": "2024-09-28",
+      "type": "workshop",
+      "title": "Concevez un web mesuré avec la Méthode de l'Écumoire",
+      "speakers": ["Alizée Rault", "Damien Legendre"],
+      "feedbackFrom": ["emue (Mastodon)"],
+      "summary": "- Atelier double (3 h) : modéliser le **juste périmètre** d'un projet entre besoins des usagers, objectifs et sobriété numérique, supports sous licence CC BY-SA (programme).\n- Retour participant : expérimenter la méthode pour *« concevoir des services numériques conscients des limites planétaires »*, avec le sentiment d'un *« cerveau musclé »* (emue).",
+      "summarySources": ["program", "feedback"]
+    },
+    {
+      "id": "reduire-lempreinte-environnementale-dun-site",
+      "day": "2024-09-28",
+      "type": "workshop",
+      "title": "Réduire l'empreinte environnementale d'un site",
+      "speakers": ["Guillaume Wolf"],
+      "feedbackFrom": ["emue (Mastodon)"],
+      "summary": "- Atelier technique (3 h) : analyser le code et l'EcoIndex d'un vrai site statique, puis appliquer de petites optimisations aux effets importants (programme).\n- Retour participant : les *« astuces des dev pour réduire l'empreinte environnementale d'un site existant »* (emue).",
+      "summarySources": ["program", "feedback"]
+    },
+    {
+      "id": "action-ameliorez-laccessibilite-de-vos-contenus-sur-les-reseaux-sociaux",
+      "day": "2024-09-28",
+      "type": "workshop",
+      "title": "Action ! Améliorez l'accessibilité de vos contenus sur les réseaux sociaux",
+      "speakers": ["Coryse Quibel — Access42"],
+      "feedbackFrom": ["Coryse Quibel (speaker, blog Access42)"],
+      "summary": "- Atelier (1 h 30) : analyser de vrais posts (emojis, hashtags, images, vidéos, effets typographiques) et leur rendu au lecteur d'écran pour corriger les contenus éditoriaux (programme).\n- Bilan de l'animatrice (speaker) : son premier atelier public, qui a attiré communicants, community managers et designers, enrichi par les retours de collègues malvoyants.",
+      "summarySources": ["program", "blog"]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Atelier : Créez vos propres bookmarklets accessibles (Johan Senn, Jean-Pierre Gay)",
+    "Atelier : Gérer des équipes neurodiverses, le manuel manquant (Myriam Jessier)",
+    "Atelier : Like a Wrecking Ball, déconstruire les biais brique par brique (Magali Milbergue)",
+    "Atelier : Le jeu où la planète gagne à tous les coups (Amélie Poirier, Cristella Henriques)",
+    "Atelier : Tous·tes ensemble, l'atelier de l'inclusion (Luz Delgado Bautista, Candice Larmangeat)",
+    "Atelier prospectif : En 2035, l'avenir dont nous serons les héros·ïnes ? (Catherine Smet)",
+    "Atelier : Gamification pour promouvoir l'accessibilité numérique (Damien Gomez)",
+    "Atelier : Immersion dans les situations de handicap (Emmanuelle Aboaf, Angi Guyard)",
+    "Atelier : Quelles questions poser à son designer avant une intégration ? (Morgane Hervé)",
+    "Atelier : Analyse métier (Guillaume Barbier)",
+    "Atelier : Easy Checks pour vérifier l'accessibilité (Anne-Sophie Tranchet, Gauthier Fiorentino)",
+    "Atelier : Rendre visible l'invisible, modèle de maturité d'accessibilité (Cécile Jouve)"
+  ],
+  "sources": [
+    { "label": "Programme officiel 2024 (pages de conférence avec vidéo Vimeo sous-titrée et supports)", "url": "https://www.paris-web.fr/2024" },
+    { "label": "Appel à orateurices 2024 : thème « The invisible web » (archive)", "url": "https://web.archive.org/web/2024/https://appel.paris-web.fr/" },
+    { "label": "Eleven Labs (Stéphane Einhorn, Alice Fauquet) : compte-rendu des 16 conférences (08/10/2024)", "url": "https://blog.eleven-labs.com/fr/paris-web-2024/" },
+    { "label": "Access42 (Coryse Quibel, animatrice d'atelier) : compte-rendu Paris Web 2024 (08/10/2024)", "url": "https://access42.net/paris-web-2024-compte-rendu/" },
+    { "label": "Sophie Drouvroy : « Paris Web 2024 » (30/09/2024)", "url": "https://www.sophie-drouvroy.com/blog/paris-web-2024/" },
+    { "label": "Olivier Guillard : transcription écrite de « Design pour l'offline » (speaker)", "url": "https://www.paris-web.fr/media/pages/2024/design-pour-loffline-strategies-pour-des-experiences-utilisateur-ininterrompues/7fcd06d9bd-1729079561/og_transcript_conference.pdf" },
+    { "label": "Agnès Haasser : supports de « Double authentification » (PDF)", "url": "https://www.paris-web.fr/media/pages/2024/double-authentification-de-quoi-parle-t-on/ca23c0ff08-1728372059/presentation-agnes-haasser-paris-web-2024_compressed.pdf" },
+    { "label": "Fil #ParisWeb sur Mastodon (26/09 au 08/10/2024) : Stéphane Bortzmeyer (live-toots des deux jours), Marie et Julien (@mariejulien), lamecarlate, tsadiq, Thain, arkhi, sabderemane, Emmanuelle Aboaf (@eaboaf), lena, erick, emue, timothee, camille_haxa, busmagique, oliv06, Lainey Feingold (speaker), Agnès Haasser (@tut_tuuut, speaker), compte Paris Web", "url": "https://mastodon.social/tags/ParisWeb" },
+    { "label": "Emmanuelle Aboaf (Mastodon, 27/09/2024) : la chaîne traduction, LSF et vélotypie de la conférence en anglais", "url": "https://a11y.info/@eaboaf/113208456544980848" },
+    { "label": "Marie et Julien (Mastodon, 26/09/2024) : critique des images générées par IA dans les diapositives", "url": "https://mastodon.social/@mariejulien/113204114971791632" },
+    { "label": "emue (Mastodon, 30/09/2024) : retour sur la journée d'ateliers", "url": "https://mastodon.design/@emue/113227570147756413" },
+    { "label": "Recherche LinkedIn : aucun post de participant remonté pour l'édition 2024" }
+  ]
 }

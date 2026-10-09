@@ -7,7 +7,714 @@
   "city": "Marne-la-Vallée",
   "venue": "Hotel New York – The Art of Marvel, Disneyland Paris",
   "url": "https://event.afup.org/forum-php-2024/",
+  "programUrl": "https://event.afup.org/forum-php-2024/programme/",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "Trois salles en parallèle (nouveauté 2024), retour des ateliers, 37 conférencières et conférenciers, 27 sponsors, environ 650 à 700 participants selon les comptes-rendus ; label LEAD (Label Événement à Ambition Durable) obtenu au niveau argent.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-09",
+  "revisit": "Corpus fait de comptes-rendus d'entreprises sponsors (JoliCode, Les-Tilleuls.coop, Deezer), souvent employeurs de speakers, et de transcripts ; aucun post LinkedIn ni thread Mastodon/Bluesky trouvé (deux recherches web sans résultat). Récap Ekino (Medium, 18/10/2024) et deux autres articles Medium non lus (accès bloqué). À compléter : posts de participants, notes joind.in/OpenFeedback, sketchnotes (Mathieu Desnouveaux cité par JoliCode), retours sur la conférence de Julien Joye et les ateliers.",
+  "corpus": "Cinq comptes-rendus publics lus : JoliCode (deux articles, 15 et 17/10/2024, huit auteurs pour le jour 2), Les-Tilleuls.coop (deux articles, une dizaine d'auteurs, octobre 2024) et Deezer Newsroom (novembre 2024). Seize vidéos de la playlist officielle AFUP ont été transcrites (sous-titres automatiques) : les deux keynotes AFUP, la conférence de clôture de Vincent Bontems, les lightning talks et douze talks. Programme officiel et interviews speakers de l'AFUP en appui.",
+  "limits": "Aucun retour individuel (LinkedIn, Mastodon, blog personnel) : le corpus reflète le regard de trois entreprises sponsors, dont les auteurs commentent parfois leurs propres collègues (Dunglas, Bluchet, Agé chez Les-Tilleuls.coop ; Wurtz chez JoliCode ; Vizinho et Lepot chez Deezer). Les sessions sans compte-rendu ni transcript lu sont listées à part ; les ateliers et coups de projecteur sponsors ne sont presque pas documentés. Les transcripts sont automatiques (noms propres déformés), et trois d'entre eux (ZDD, objets paresseux, Particularly Horrible Programs) n'ont été lus que partiellement.",
+  "tldr": "**Une édition plus technique et plus large (trois salles), où l'écosystème PHP a surtout parlé de ses fondations : PHP 8.4 et les objets paresseux natifs, le débogage jusque dans le C, une faille glibc transformant toute lecture de fichier en exécution de code, et la fragilité des mainteneurs open source ; l'IA n'y apparaît qu'en marge, entre retour d'expérience Copilot prudent et clôture critique.**",
+  "keyTakeaways": [
+    "Face à un bug « impossible », construire d'abord un reproducteur minimal, recompiler avec les symboles de débogage et sortir GDB/LLDB, puis envoyer un rapport de bug détaillé, voire un patch, au projet amont (Dunglas).",
+    "Considérer toute faille de lecture de fichier en PHP comme une exécution de code à distance potentielle (CVE-2024-2961) et vérifier la mise à jour de la glibc, y compris là où le polyfill mbstring passe par iconv (Fol).",
+    "Connaître l'état de maintenance de ses dépendances et financer les projets dont on dépend, en présentant la dépense comme une **assurance** plutôt qu'un don (Reinders Folmer).",
+    "Préparer la migration vers PHP 8.4 : rendre explicites les types nullables (dépréciation des `= null` implicites), tester visibilité asymétrique et property hooks (Rethans).",
+    "Pour déployer sans interruption, rendre chaque changement rétrocompatible avec la version précédente et procéder release par release, par exemple une colonne non nullable en deux temps (Milianni).",
+    "Réduire le gaspillage en livraison : travailler en pair ou en mob, découper en tranches verticales, refactorer avec la méthode Mikado sans branche longue, viser la livraison continue (Noback).",
+    "Introduire un assistant de code par une expérimentation ouverte aux développeurs, un cadrage sécurité avec le RSSI et une relecture systématique, sans réduire le bénéfice à un chiffre de productivité (Brouard).",
+    "Exploiter les fonctionnalités avancées de SQL (CTE, CTE récursives) avant d'alourdir le code PHP, quitte à les mapper via des vues avec Doctrine (Timothée Martin).",
+    "Adosser le numérique responsable à des référentiels (RGESN, GR491, WSG du W3C) et à des outils de linting comme ecoCode, en l'intégrant dans la boucle DevOps (Morgaut)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-d-ouverture",
+      "day": "2024-10-10",
+      "type": "keynote",
+      "title": "Keynote d'ouverture",
+      "speakers": ["Équipe AFUP"],
+      "feedbackFrom": [],
+      "summary": "- **Le label LEAD obtenu au niveau argent** : l'AFUP s'était engagée avec Disney sur trois axes (zéro déchet, bas carbone, impact sociétal positif), d'où le questionnaire sur les déplacements, les tours de cou à rendre et des **buffets végétariens**.\n- Deux objectifs manqués et assumés : la **parité** (27 % de conférencières pour 33 % visés, à comparer aux 10 % de femmes dans l'écosystème selon le baromètre des salaires AFUP) et l'alimentation de proximité, impossible à l'échelle des volumes commandés par Disney.\n- Réponse aux questionnaires de satisfaction précédents : **une troisième salle**, le retour des ateliers et une programmation « bien plus technique ».\n- Chiffres de l'organisation : 27 sponsors, 37 conférencières et conférenciers, plus de 200 jours-personnes de travail répartis sur 20 bénévoles ; une cinquantaine de bénévoles font vivre l'association toute l'année (antennes, AFUP Day, baromètre des salaires, mentoring).\n- Appel à laisser des retours aux speakers via OpenFeedback et rappel du code de conduite, avec un numéro de contact anonyme.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "V-u7gk7fbTI",
+        "title": "Keynote ouverture - Équipe AFUP - Forum PHP 2024",
+        "transcript": true
+      }
+    },
+    {
+      "id": "whats-new-in-php-8-4",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "What's new in PHP 8.4",
+      "speakers": ["Derick Rethans — PHP Foundation"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (Vincent Amstoutz, Vincent Chalamon)"],
+      "summary": "- Sur scène, les deux nouveautés phares : la **visibilité asymétrique** (`public private(set)`) qui supprime les getters de lecture seule, et les **property hooks** (`get`/`set` sur une propriété, y compris des propriétés virtuelles), utiles pour valider une valeur avec beaucoup moins de code.\n- Plus petites évolutions : `new` sans parenthèses avant un appel de méthode, nouveau parseur **HTML5** dans l'espace de noms `Dom`, compilateur JIT réécrit (plus lisible, plus portable vers ARM), attribut `#[\\Deprecated]`, sous-classes PDO par driver via `PDO::connect`, modes d'arrondi en énumération, coût bcrypt passé de 10 à 12, `grapheme_str_split` pour les emojis composés.\n- **Dépréciation des nullables implicites** (`Type $x = null`) : Rethans dit avoir dû corriger « plusieurs centaines » d'occurrences dans son propre code, en comptant sur des outils comme Rector.\n- Nouveau cycle de vie des versions : deux ans de correctifs plus deux ans de sécurité, fin de support alignée sur la fin d'année, cycle de pré-versions raccourci ; politiques regroupées dans un dépôt `php/policies`.\n- Aveu honnête en Q&A : il n'active pas le JIT, ses sites étant trop simples pour en profiter.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "d2XTUwxC2xc",
+        "title": "What's new in PHP 8.4 - Derick RETHANS - Forum PHP 2024",
+        "transcript": true
+      }
+    },
+    {
+      "id": "creer-sa-malware-sandbox-en-php",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "Créer sa Malware Sandbox en PHP",
+      "speakers": ["Alexandre Daubois — Decathlon"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Les-Tilleuls.coop (Thibaut Arnoud)"],
+      "summary": "- Point de départ : un audit où les anciens endpoints d'upload ne contrôlaient rien et les nouveaux seulement la taille et l'extension.\n- Antivirus externes, empreintes ou exécution en VM jugés trop coûteux ; à la place, une classe PHP qui vérifie les cas courants : **caractères non ASCII, directory traversal, droits d'exécution, magic bytes**, et le contenu des archives ; ClamAV pour des besoins plus poussés.\n- Lecture critique de JoliCode : conférence « fluide et agréable », mais une solution qui leur est apparue « un peu simpliste ».",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "eo4Pn2LG5KE",
+        "title": "Créer sa Malware Sandbox en PHP - Alexandre DAUBOIS - Forum PHP 2024",
+        "transcript": false
+      }
+    },
+    {
+      "id": "l-equipe-technique-vue-comme-un-orchestre",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "L'équipe technique vue comme un orchestre : l'individu au service du groupe",
+      "speakers": ["Adriana Vizinho — Deezer"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (Julien Lary)", "Deezer Newsroom (employeur de la speakeuse)"],
+      "summary": "- Sur scène, une head of engineering et flûtiste semi-professionnelle part d'un constat : la **dérive vers l'empilement de process** uniformise les individus, et il est difficile de s'y opposer sans passer pour « une fainéante ».\n- Parallèle détaillé orchestre/équipe tech : hiérarchie (pupitres, premier violon, timbalier), process omniprésents, niveaux mélangés. Mais **l'orchestre déçoit rarement son public** : date de concert non décalable et programme choisi avec lucidité selon les forces disponibles.\n- **Initiative individuelle sans process** : l'anecdote du violoniste qui renvoie au timbalier sa partition égarée en avion en papier ; l'absurdité d'une matrice de décision pour un hautbois en panne, qui déresponsabiliserait le musicien.\n- Le rôle du manager, comme du chef : **faire au mieux avec l'équipe qu'on a**. Un dysfonctionnement est le plus souvent de sa responsabilité, et ajouter une page Confluence est la solution de facilité. Seul moment où la tech retrouve cette cohésion selon elle : l'incident critique en production.\n- Les-Tilleuls.coop y voit un sujet « loin d'être technique » mais utile à qui gère ou gérera une équipe ; Deezer retient l'importance de la cohésion et de la prise d'initiative.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "3mfNhPXBQy0",
+        "title": "L'équipe technique vue comme un orchestre : l'individu au service du groupe - Adriana VIZINHO",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-nouveautes-dans-symfony-7-x",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "Les nouveautés dans Symfony 7.x",
+      "speakers": ["Nicolas Grekas — Symfony"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Les-Tilleuls.coop (Julien Lary)", "Deezer Newsroom"],
+      "summary": "- Rappel du rythme de publication (correctifs mensuels, mineure tous les six mois, majeure tous les deux ans) et recommandation de **mettre à jour ses dépendances régulièrement**, comme une routine d'équipe (Les-Tilleuls).\n- Nouveautés retenues : **PHPUnit 11 par défaut et fin du phpunit-bridge**, attributs `#[Map*]` pour mapper la requête, `#[WhenNot]`, `ConsoleAlarmEvent` en 7.2, **serializers nommés** pour éviter les conflits entre API Platform et Jane (JoliCode).\n- Composants en discussion : ObjectMapper, JsonEncoder, FeatureFlags, AccessToken ; un composant Uri pourrait plutôt intégrer PHP.\n- Pas de vidéo dans la playlist officielle.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "comment-deboguer-xdebug",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "Comment déboguer Xdebug... ou n'importe quel autre bug bizarre en PHP",
+      "speakers": ["Kévin Dunglas — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Les-Tilleuls.coop (Vincent Amstoutz, Vincent Chalamon ; employeur du speaker)", "Deezer Newsroom"],
+      "summary": "- Récit sur scène : des freezes signalés sur Symfony Docker puis Laravel Octane, tous deux sous **FrankenPHP avec Xdebug** ; le premier rapport, trop pauvre, avait été fermé.\n- Méthode : un **arbre de décision** (bibliothèque populaire ? version récente ? usage standard ?), puis un **reproducteur minimal** (trois lignes dont `error_reporting(0)`), recompilation de PHP, FrankenPHP et Xdebug avec les symboles de débogage, et **LLDB/GDB** pour obtenir une backtrace (récursion infinie dans Xdebug). Autres outils cités : core dumps, `lsof`, `strace`.\n- Cause : Xdebug remplaçait `error_reporting` à chaque requête, ce qui n'est pas sûr en mode **ZTS** (threads), d'où le correctif inspiré du PHP Internals Book. Une journée de code, mais quatre mois entre le premier rapport (décembre 2023) et la fusion, faute de temps des contributeurs.\n- Message final : la **communication** compte autant que la technique ; financer les mainteneurs. En Q&A, l'IA est jugée utile pour filtrer les rapports triviaux, pas pour ce type de bug.\n- JoliCode : la conférence « a captivé l'audience » et devrait donner le courage de « plonger avec détermination dans les vendors ».",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "GgDCBYBO6P0",
+        "title": "Comment déboguer Xdebug ou n'importe quel autre bug bizarre en PHP - Kévin DUNGLAS - Forum PHP 2024",
+        "transcript": true
+      }
+    },
+    {
+      "id": "github-copilot-une-integration-sans-turbulences",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "GitHub Copilot : une intégration sans turbulences dans notre DSI",
+      "speakers": ["Audrey Brouard — Harmonie Mutuelle"],
+      "feedbackFrom": ["Blog JoliCode"],
+      "summary": "- Démarche **bottom-up** racontée sur scène : sondage à l'été 2023 (86 % y voient une opportunité), essai de deux mois ouvert aux ~150 développeurs avec un canal Teams et 25 « super évaluateurs », passage en CODIR, mise en production le 1er février 2024.\n- Résultats : 26 % de suggestions acceptées, des usages surtout en autocomplétion puis en **génération de tests a posteriori** sur du code legacy ; 3h45 gagnées par semaine en moyenne déclarée, chiffre que la speakeuse dit elle-même ne pas aimer (« le mot productivité, je voudrais vraiment le bannir »).\n- Cadre sécurité pour un hébergeur de données de santé : licence Business uniquement, blocage des suggestions issues de code public, relecture obligatoire et suivi qualité dans SonarQube. Licence attribuée sur demande du manager, revue mensuelle des licences inutilisées.\n- Un an après : 72 licences (environ 50 % des développeurs), sans promotion ni obligation. Vigilance sur les **juniors** (risque de dépendance) et sur la qualité de la base de code, que Copilot reproduit.\n- Réserve de JoliCode : malgré les engagements de la licence entreprise, le doute demeure sur des fichiers locaux envoyés dans le prompt et conservés « dans des logs à la Silicon Valley ».",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "bSD8_GV_UEI",
+        "title": "GitHub Copilot : une intégration sans turbulences dans notre DSI - Audrey BROUARD - FORUM PHP 2024",
+        "transcript": true
+      }
+    },
+    {
+      "id": "standaaardisez-vos-tests",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "StandAAArdisez vos tests !",
+      "speakers": ["Nerea Enrique — ekino"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (Vincent Chalamon)"],
+      "summary": "- Présentation du pattern **Arrange, Act, Assert** (Bill Wake, 2001) pour structurer les tests ; un bon test est maintenable, rapide et protège des régressions.\n- Le **Test Data Builder** facilite l'étape Arrange sans dupliquer le code.\n- Conclusion retenue : AAA est utile mais doit être complété par d'autres pratiques. Le récap Ekino (Medium), qui en parle comme d'un pattern très utilisé en interne, n'a pas pu être lu.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "nit-4SggJNM",
+        "title": "StandAAArdisez vos tests ! - Nerea ENRIQUE - Forum PHP 2024",
+        "transcript": false
+      }
+    },
+    {
+      "id": "php-parallel-accelerer-ses-temps-d-execution",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "PHP/Parallel : Accélérer sensiblement ses temps d'exécution",
+      "speakers": ["Thierry Kauffmann — Arawa"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Les-Tilleuls.coop (Kévin Dunglas)", "Deezer Newsroom"],
+      "summary": "- Retour d'expérience sur **DiViM-S**, orchestrateur libre en PHP qui pilote jusqu'à 150 serveurs BigBlueButton pour l'Éducation nationale, en allumant les machines seulement quand la charge ou l'agenda l'exige.\n- Cœur technique : l'extension **parallel** de Joe Watkins, du vrai multithreading sur le principe « partagez la mémoire en communiquant ». Deezer retient 100 connexions SSH en deux secondes au lieu de trois minutes en séquentiel.\n- Limites : pas d'objets par référence entre threads, pas de `yield` ni de déclaration de classe dans une tâche ; PHP doit être compilé en **ZTS**, ce que Dunglas présente comme un argument pour FrankenPHP (où l'extension est disponible).\n- JoliCode et Les-Tilleuls relaient l'appel à soutenir financièrement Joe Watkins.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "nJU_sUIXN_g",
+        "title": "PHP/Parallel : Accélérer sensiblement ses temps d'exécution - Thierry KAUFFMANN - Forum PHP 2024",
+        "transcript": false
+      }
+    },
+    {
+      "id": "cte-la-puissance-inexploitee-de-votre-base-sql",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "CTE : la puissance inexploitée de votre base de données SQL",
+      "speakers": ["Timothée Martin"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Les-Tilleuls.coop (Nicolas Philippe)"],
+      "summary": "- Salle comble pour du SQL, à la surprise du speaker selon JoliCode.\n- Les **CTE** (`WITH`) clarifient les sous-requêtes, se chaînent, s'utilisent en écriture, et les **CTE récursives** (en fait des boucles) parcourent des graphes ; PostgreSQL sait détecter les cycles avec `CYCLE`.\n- Performances : « ça dépend », à mesurer, mais on évite des allers-retours avec le code métier.\n- Contournement du manque de support par Doctrine : mapper des vues en lecture seule ou passer par `NativeQuery` et `ResultSetMapping`.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "qgGWWToOcUQ",
+        "title": "CTE : la puissance inexploitée de votre base de données SQL - Timothée MARTIN - FORUM PHP 2024",
+        "transcript": false
+      }
+    },
+    {
+      "id": "le-grand-cycle-de-la-vie-d-une-variable",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "Le grand cycle de la vie (d'une variable)",
+      "speakers": ["Benoit Viguier — Lendable"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Les-Tilleuls.coop (Vincent Amstoutz)"],
+      "summary": "- Vingt minutes « claires et didactiques » (JoliCode) sur l'allocation et la libération mémoire dans le Zend Engine, utiles pour les processus longs (workers, crons).\n- Notions couvertes : garbage collector et `gc_status`, références circulaires, **copy on write** (qui ne s'applique pas aux objets), `WeakReference` et `WeakMap` pour des caches qui ne retiennent pas les objets.\n- Conseils retenus : pas d'exception dans les destructeurs.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "FPsfvvoQ7PY",
+        "title": "Le grand cycle de la vie (d'une variable) - Benoit VIGUIER - Forum PHP 2024",
+        "transcript": false
+      }
+    },
+    {
+      "id": "throw-new-exception-oui-mais-laquelle",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "throw new Exception(); Oui mais laquelle ?!",
+      "speakers": ["Olivier Dolbeau"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Les-Tilleuls.coop (Vincent Chalamon)"],
+      "summary": "- Une exception n'est pas un bug mais un **cas prévisible hors du nominal**.\n- Dans une bibliothèque : anticiper les erreurs, une interface commune à toutes les exceptions (exemple de `symfony/http-client`), ne jamais lever une exception étrangère.\n- Dans un produit final : réutiliser d'abord les exceptions des bibliothèques, puis créer une exception métier si nécessaire, et en dernier recours les exceptions natives.\n- **Ne pas tout attraper** : une erreur 500 quand la base est tombée est normale.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "mtJen82cmMM",
+        "title": "throw new Exception(); Oui mais laquelle ?! - Olivier DOLBEAU - Forum PHP 2024",
+        "transcript": false
+      }
+    },
+    {
+      "id": "un-parser-de-php-en-php",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "Un parser de PHP en PHP : le cœur des outils d'analyse statique",
+      "speakers": ["Mathieu Noël"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Les-Tilleuls.coop (Alan Poulain)"],
+      "summary": "- Lexer, tokens, parser, AST : la plupart des outils (PHPStan, Rector, php-cs-fixer, PhpMetrics) reposent sur **nikic/PHP-Parser**, avec démonstration d'une règle de style maison.\n- **Facteur bus** : Nikita Popov n'étant plus aussi actif, le speaker plaide pour un parser intégré au cœur de PHP ; alternatives jugées limitées (tolerant-php-parser, php-ast, pxp).\n- Correction de JoliCode : PHP expose bien `token_get_all()` (utilisé par PHP-Parser), et php-ast ne fait qu'exposer l'AST déjà construit par le moteur.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "3_CM6cZvDiQ",
+        "title": "Un parser de PHP en PHP : le cœur des outils d'analyse statique - Mathieu NOËL - Forum PHP 2024",
+        "transcript": false
+      }
+    },
+    {
+      "id": "de-0-a-tracing-distribue",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "De « 0 » à « tracing distribué » en quelques lignes de code, c'est possible !",
+      "speakers": ["Vincent Lepot — Deezer"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (Julien Lary)", "Deezer Newsroom (employeur du speaker)"],
+      "summary": "- Démonstration en direct sur une application distribuée qui présente un problème de performance et une erreur, résolus grâce au troisième pilier de l'observabilité : **les traces**.\n- Quatre étapes OpenTelemetry : backend de stockage (Grafana Tempo), extensions PHP (`opentelemetry`, protobuf), paquets Composer d'**auto-instrumentation** (Symfony, Laravel, PDO), configuration.\n- Bénéfices cités : repérer les requêtes N+1 et les appels synchrones lents, améliorer l'expérience utilisateur, le chiffre d'affaires et la durée de vie du matériel.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "EA4I8vItY2U",
+        "title": "De \"0\" à \"tracing distribué\" en quelques lignes de code, c'est possible ! - Vincent LEPOT",
+        "transcript": false
+      }
+    },
+    {
+      "id": "resurrecting-the-dead",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "Resurrecting the Dead",
+      "speakers": ["Juliette Reinders Folmer"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Les-Tilleuls.coop (Vincent Chalamon)"],
+      "summary": "- Sur scène, une **« mainteneuse accidentelle »** (Requests, PHP Parallel Lint, PHP_CodeSniffer) : un patch, puis la CI à réparer, puis la pression de la communauté. PHP_CodeSniffer (plus de cinq millions de téléchargements par mois) a été repris en fork avec la bénédiction de l'ancien mainteneur, en gardant le nom du paquet Composer.\n- Cycle de vie d'un projet (jeune, mature, zombie, mort) et causes d'abandon : la vie, la maladie (témoignage sur un co-mainteneur atteint d'une tumeur cérébrale), le **burn-out** aggravé par les entreprises qui envoient des contributeurs au lieu de financer.\n- Succession : documenter, activer la communauté, identifier et coacher des candidats, **valider la confiance** (rappel de l'attaque xz-utils), partager « les clés du château ».\n- Formule reprise par JoliCode : *« si quelque chose a l'air de juste fonctionner, c'est que quelqu'un se donne à fond derrière »*. Financer = **s'assurer**, pas donner. Le guide de contribution de PHPCS interdit le code généré par IA, faute de pouvoir se défendre juridiquement.\n- Bilan après dix mois : neuf releases, support de PHP 8.2 et 8.3, premier nouveau sniff accepté depuis trois ans.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "67JnqTOEQdI",
+        "title": "Resurrecting the Dead - Juliette REINDERS FOLMER - Forum PHP 2024",
+        "transcript": true
+      }
+    },
+    {
+      "id": "pmu-plugin-composer-monorepository",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "PMU: un plugin composer pour la gestion de Monorepository en PHP",
+      "speakers": ["Antoine Bluchet — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (Vincent Amstoutz ; employeur du speaker)"],
+      "summary": "- Monorepo contre polyrepo : les équipes en polyrepo sont souvent isolées, ce qui complique communication et CI/CD.\n- Après Lerna, Nx, Bazel, Turborepo côté JS et Mono ou monorepo-builder côté PHP, puis splitsh/lite pour API Platform 4, création de **PMU** faute de fonctionnalités suffisantes.\n- Commandes ajoutées à Composer : `composer graph`, `composer check-dependencies`, `composer blend`, et le **Project Linking** par liens symboliques dans les vendors.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "VQiHkbUxA4U",
+        "title": "PMU: un plugin composer pour la gestion de Monorepository en PHP - Antoine BLUCHET - Forum PHP",
+        "transcript": false
+      }
+    },
+    {
+      "id": "une-gestion-dynamique-des-permissions-en-php",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "Une gestion dynamique des permissions en PHP",
+      "speakers": ["Marion Agé — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Les-Tilleuls.coop (Vincent Chalamon ; employeur de la speakeuse)"],
+      "summary": "- Rappel des notions (authentification, autorisation, DAC, MAC, RBAC, ABAC) puis limites des **Voters Symfony** quand le métier exige des droits objet par objet.\n- Solution maison : permissions stockées et évaluées en base, administrables sans toucher au code, optimisées par lazy loading des Voters, index et cache.\n- Exposition au front via JWT ou API, avec CASL et **Mercure** pour mettre à jour les droits en temps réel.\n- JoliCode juge la présentation trop complète pour être résumée et renvoie aux slides.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "qEJ0_OnjWEE",
+        "title": "Une gestion dynamique des permissions en PHP - Marion AGÉ - Forum PHP 2024",
+        "transcript": false
+      }
+    },
+    {
+      "id": "how-to-eliminate-waste-in-your-development-process",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "How to Eliminate Waste in your Development Process",
+      "speakers": ["Matthias Noback"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Les-Tilleuls.coop (Julien Lary)"],
+      "summary": "- Sur scène, deux principes : **la performance de l'équipe avant la performance individuelle**, et un flux de valeur régulier. Le mythique « 10x programmer » produit vite mais crée dépendance et gaspillage.\n- **Pair et mob programming** (un driver, des navigateurs) : frustrant au début, puis tout le monde apprend les étapes « magiques », partage le domaine, décide mieux, et la code review devient inutile. Pour soi-même, une mini-rétrospective toutes les 20 minutes.\n- Où la valeur se coince : backlog, branches longues, revue, déploiement. **Contraintes accidentelles** dénoncées : ticket obligatoire dans chaque commit, estimation de tout, sprint fermé, deux approbations par merge request.\n- Pour le refactoring, la **méthode Mikado** (essayer naïvement, noter le prérequis, tout annuler, commencer par le prérequis fusionnable) ; pour les fonctionnalités, le **découpage vertical** ; en toile de fond, la livraison continue.\n- JoliCode retient la caricature du lead qui crie « attention, je déploie » dans l'open space comme « mauvais signe » ; Les-Tilleuls note la critique d'un formalisme excessif des méthodes.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "LyvsrfSeUes",
+        "title": "How to Eliminate Waste in your Development Process - Matthias NOBACK - Forum PHP 2024",
+        "transcript": true
+      }
+    },
+    {
+      "id": "l-inevitable-chemin-vers-le-devgreenops",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "L'inévitable chemin vers le DevGreenOps",
+      "speakers": ["Alexandre Morgaut — Capgemini"],
+      "feedbackFrom": [],
+      "summary": "- Le speaker, qui anime une guilde numérique responsable, veut faire de l'approche green une **exigence non fonctionnelle** comme la performance, la sécurité ou l'accessibilité.\n- Alliés et « faux amis » : performance, cloud, FinOps, cache ou builds optimisés aident, sauf s'ils servent d'excuse pour multiplier les ressources (caches préalimentés en permanence, builds relancés sans cesse).\n- Conseils techniques : découper les flux selon leur durée de cache plutôt que tout regrouper ; HTTP/2 et HTTP/3 réduisent l'intérêt de minimiser le nombre de requêtes ; processeurs ARM côté cloud. Règles des 3P, 3U (utile, utilisable, utilisé) et 3R, avec l'idée de **retirer les fonctionnalités inutilisées**.\n- Cadre réglementaire qui devient contraignant (loi REEN, **RGESN** avec moyens de contrôle, CSRD, WSG du W3C) ; outils de mesure, questionnaires (NumEcoDiag) et linting **ecoCode** (règles PHP comme sortir le `count()` d'une boucle).\n- Passage sur l'IA : beaucoup d'entreprises ont abandonné leurs engagements carbone avec le boom de l'IA.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "R4G4HTJqF6Y",
+        "title": "L'inévitable chemin vers le DevGreenOPs - Alexandre MORGAUT - FORUM PHP 2024",
+        "transcript": true
+      }
+    },
+    {
+      "id": "php-particularly-horrible-programs",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "PHP: Particularly Horrible Programs",
+      "speakers": ["Gina Banyard — PHP Foundation"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Les-Tilleuls.coop (Alan Poulain)"],
+      "summary": "- En ouverture, un plaidoyer pour la **PHP Foundation**, présentée comme l'assurance des entreprises que le moteur est maintenu (« il y a trois ans […] il y avait deux personnes »).\n- Puis un « one woman show » (JoliCode) de bizarreries du langage, souvent liées au **type juggling** : `'007' == '7'`, incrément de `'Zz'`, classe readonly modifiée via `ArrayObject`, comparaisons de flottants dépendant de `precision`, jusqu'à un segfault ; plusieurs ont été corrigées depuis, certaines par la speakeuse.\n- Les-Tilleuls rappelle que beaucoup de ces pièges s'évitent avec le **mode strict**.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "eENRCERBG_E",
+        "title": "PHP: Particularly Horrible Programs - Gina BANYARD - Forum PHP 2024",
+        "transcript": true
+      }
+    },
+    {
+      "id": "gerer-des-gros-volumes-de-donnees-avec-php",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "Gérer des gros volumes de données avec PHP",
+      "speakers": ["Joël Wurtz — JoliCode"],
+      "feedbackFrom": ["Blog JoliCode (employeur du speaker)"],
+      "summary": "- Import de catalogues de marketplace : ne plus traiter les lignes inchangées grâce à un **hash par ligne**, une table temporaire (`LOAD DATA INFILE`) et des jointures, pour n'importer que le delta.\n- Sur redirection.io : **générateurs PHP** et streaming de bout en bout, qui réduisent la mémoire au point de supprimer des couches de cache.\n- Conclusion citée : *« il n'y a jamais de solution magique au traitement de gros volumes de données »*, il faut d'abord comprendre le besoin pour simplifier.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "qlpBiIss56A",
+        "title": "Gérer des gros volumes de données avec PHP - Joël WURTZ - Forum PHP 2024",
+        "transcript": false
+      }
+    },
+    {
+      "id": "atelier-api-platform-4",
+      "day": "2024-10-10",
+      "type": "workshop",
+      "title": "API Platform 4 : de la RAD à l'extensibilité",
+      "speakers": ["Antoine Bluchet — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (employeur du speaker)"],
+      "summary": "- Atelier de deux heures sur inscription : partir des fonctionnalités RAD d'API Platform (avec Symfony et **avec Laravel**), puis complexifier avec CQRS et DDD via les Providers et Processors.\n- Seul retour : celui de l'employeur de l'animateur.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "lightning-talks",
+      "day": "2024-10-10",
+      "type": "lightning",
+      "title": "Lightning-talks",
+      "speakers": ["Clément Talleu — Les-Tilleuls.coop", "Jacques Bodin-Hullin — Monsieur Biz"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop"],
+      "summary": "- **Herms**, bot Discord de covoiturage pour l'événement (Symfony Console et ReactPHP), dans la lignée du label LEAD.\n- **PHP Redis OM** (Talleu) : un object mapper qui implémente l'interface Doctrine pour stocker par exemple des paniers e-commerce dans Redis sans réécrire les contrôleurs.\n- Des **cycles agiles d'un mois** (trois semaines de développement, une de validation métier, une de déploiement servant de cooldown) contre l'épuisement des sprints de deux semaines.\n- Une bibliothèque **Flow** de programmation par flux asynchrones (Darkwood), puis un plaidoyer pour les **builds reproductibles** (chemins absolus, dates, métadonnées tar, Nix).\n- **Shape Up** adapté en agence (Bodin-Hullin) : façonner, parier, construire, sur des cycles de trois semaines, en remplaçant l'estimation en points par un « appétit ».",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "E6RWVpXneBE",
+        "title": "Lightning-talks - Forum PHP 2024",
+        "transcript": true
+      }
+    },
+    {
+      "id": "un-peu-plus-pres-des-etoiles",
+      "day": "2024-10-10",
+      "type": "keynote",
+      "title": "Un peu plus près des étoiles",
+      "speakers": ["Albane Veyron"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (Alan Poulain)"],
+      "summary": "- Première « conférence alien » de l'édition (sujet hors PHP en fin de journée) : un parcours de l'astrophysique (formation des étoiles, l'étoile DG Tau B) au coaching professionnel, autour du rêve et de la curiosité.\n- Qualifiée de présentation « digne des TED talks : travaillée, interactive et belle », parfaite pour clore la journée.",
+      "summarySources": ["blog", "program"],
+      "video": {
+        "youtubeId": "yGtDIvOwRhY",
+        "title": "Un peu plus près des étoiles - Albane VEYRON - Forum PHP 2024",
+        "transcript": false
+      }
+    },
+    {
+      "id": "l-aventure-d-une-requete-http",
+      "day": "2024-10-11",
+      "type": "talk",
+      "title": "L'aventure d'une requête HTTP, ou le chemin de la vie des devs",
+      "speakers": ["Pascal Martin — Bedrock"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Les-Tilleuls.coop (Kévin Dunglas)", "sketchnote de Mathieu Desnouveaux (cité par JoliCode)"],
+      "summary": "- Suivre une requête de la barre d'adresse au serveur pour balayer logiciel, réseau, hébergement, front, back, tests, CI/CD, sécurité et légal.\n- Accent sur l'**observabilité** (Wireshark, Sysdig) pour comprendre ce qui se passe en coulisse.\n- Formule retenue : *« notre métier est un assemblage de multiples compétences »* ; la conférence comme boussole pour choisir ses prochaines technologies et pistes de carrière. Dunglas la décrit comme « léchée ».",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "penIr9E0Qbo",
+        "title": "L'aventure d'une requête HTTP, ou le chemin de la vie des devs - Pascal MARTIN - Forum PHP 2024",
+        "transcript": false
+      }
+    },
+    {
+      "id": "une-monade-simplement-c-est-quoi",
+      "day": "2024-10-11",
+      "type": "talk",
+      "title": "Une Monade, simplement, c'est quoi ?",
+      "speakers": ["Gina Banyard — PHP Foundation"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (Vincent Chalamon)", "Deezer Newsroom"],
+      "summary": "- Démystification par l'exemple : une monade combine des fonctions en enveloppant leurs retours dans un type à effets additionnels, utile surtout pour la **gestion d'erreurs**.\n- Implémentations PHP de `Either` (`L | R`), `Maybe` (`null | T`), `Exception` (`T | Exception`) et `List`.\n- Deezer y voit une approche proche du pattern Pipeline, différente des réflexes orientés objet.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "qTyEKwq6_bk",
+        "title": "Une Monade, simplement, c'est quoi ? - Gina BANYARD - Forum PHP 2024",
+        "transcript": false
+      }
+    },
+    {
+      "id": "creer-des-interfaces-d-administration-avec-symfony-ux-et-sylius",
+      "day": "2024-10-11",
+      "type": "talk",
+      "title": "Créer des interfaces d'administration rapidement avec Symfony UX et Sylius",
+      "speakers": ["Loïc Frémont — Sylius"],
+      "feedbackFrom": ["Blog JoliCode"],
+      "summary": "- La **Grid Sylius standalone**, découplée du système de ressources, permet des back-offices hors e-commerce ; les hooks Twig remplacent les « event templates ».\n- Démonstration : entité, formulaire et grid générés avec MakerBundle, attribut `#[AsResource]`, filtres et actions, autocomplétion via `ux_autocomplete`.\n- Réserve de JoliCode : Symfony UX très peu abordé et documentation pas encore écrite, même si le code est utilisable.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "VgtygyxbdyM",
+        "title": "Créer des interfaces d'administration rapidement avec Symfony UX et Sylius - Loïc FRÉMONT",
+        "transcript": false
+      }
+    },
+    {
+      "id": "utiliser-une-faille-de-la-glibc-pour-attaquer-le-moteur-php",
+      "day": "2024-10-11",
+      "type": "talk",
+      "title": "Utiliser une faille de la glibc pour attaquer le moteur PHP",
+      "speakers": ["Charles Fol — Lexfo"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Les-Tilleuls.coop (Thibaut Arnoud)"],
+      "summary": "- Sur scène, le chercheur raconte une découverte fortuite : en automatisant des chaînes de filtres `php://filter` (pour faire passer `/etc/passwd` pour du JSON, outil wrapwrap), un crash le mène à un **dépassement de tampon vieux de 24 ans dans iconv de la glibc**, lors d'une conversion vers ISO-2022-CN-EXT.\n- Un seul octet (0x48) écrit hors tampon suffit à corrompre la liste chaînée de l'allocateur PHP, puis à réécrire un pointeur de fonction : **toute lecture de fichier devient une exécution de code à distance**, de PHP 7 à aujourd'hui, avec un payload qui tient dans une requête GET (démo sur Magento via une XXE).\n- Surfaces concernées : `file_get_contents`, `getimagesize`, XXE, `LOAD DATA LOCAL INFILE`, parseurs (HTML vers PDF, XLIFF, SVG), appels directs à `iconv` (Roundcube) et même le **polyfill mbstring** de Symfony qui s'appuie sur iconv.\n- Divulgation saluée : équipe glibc « compétente, rapide et sympa », CVE-2024-2961. Trois semaines de travail pour l'exploit, détaillé sur le blog Ambionics.\n- JoliCode résume : *« une faille de lecture de fichier se transforme très rapidement en RCE et c'est le carnage »*.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "9ooN6N7gZ5U",
+        "title": "Utiliser une faille de la glibc pour attaquer le moteur PHP - Charles FOL - Forum PHP 2024",
+        "transcript": true
+      }
+    },
+    {
+      "id": "welcome-to-the-age-of-static-analysis",
+      "day": "2024-10-11",
+      "type": "talk",
+      "title": "Welcome to the Age of Static Analysis and Automated Refactoring",
+      "speakers": ["Matthias Noback"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (Vincent Chalamon)"],
+      "summary": "- L'analyse statique (PHPStan, Psalm) anticipe les erreurs comme un humain qui lit le code, en construisant un AST et en appliquant des règles.\n- Ce sont les normes du projet qui en fixent l'usage ; une fois en place, la **revue de code peut se concentrer sur la conception**.\n- **Rector** pousse le refactoring automatisé bien au-delà de ce que fait PHPStan.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "jVZyN-BI1qg",
+        "title": "Welcome to the Age of Static Analysis and Automated Refactoring - Matthias NOBACK - Forum PHP 2024",
+        "transcript": false
+      }
+    },
+    {
+      "id": "et-si-on-repensait-les-orms",
+      "day": "2024-10-11",
+      "type": "talk",
+      "title": "Et si on repensait les ORMs ?",
+      "speakers": ["Baptiste Langlade"],
+      "feedbackFrom": ["Deezer Newsroom"],
+      "summary": "- Présentation de l'ORM **Formal**, conçu à partir du DDD et de l'immuabilité, face aux limites des ORM actuels dans les workers (mémoire, entités mutables, identifiants imposés).\n- Deezer retient la revendication du speaker que Formal est « 40 % plus rapide que Doctrine » et ses multiples backends (SQL, système de fichiers, Elasticsearch).\n- Pas de vidéo dans la playlist officielle ; un seul retour, sans regard critique.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "les-objets-paresseux-en-php",
+      "day": "2024-10-11",
+      "type": "talk",
+      "title": "Les objets paresseux en PHP",
+      "speakers": ["Nicolas Grekas — Symfony"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Les-Tilleuls.coop (Nicolas Philippe)"],
+      "summary": "- Sur scène : la paresse sert la performance (le mailer jamais instancié), **casse les références circulaires** et permet de réinitialiser un objet, comme l'EntityManager de Doctrine « closed » dans un worker Messenger.\n- Les quatre stratégies de Martin Fowler : lazy initialization, value holder, **virtual proxy** et **ghost object**, ces deux dernières déjà fournies par VarExporter et utilisées par Doctrine.\n- **Support natif en PHP 8.4** via `ReflectionClass::newLazyGhost` et les proxys (travail de Grekas et Arnaud Le Blanc), qui permet notamment de rendre lazy des classes `final`.\n- Mécanisme « bas niveau » : on l'utilisera surtout à travers des bibliothèques. Seule différence de comportement observable selon lui : une exception d'initialisation survient plus tard.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "tZNIObmh2NA",
+        "title": "Les objets paresseux en PHP - Nicolas GREKAS - Forum PHP 2024",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-business-of-bisecting",
+      "day": "2024-10-11",
+      "type": "talk",
+      "title": "The Business of Bisecting",
+      "speakers": ["Pauline Vos"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (Justine Delalleau)", "Deezer Newsroom"],
+      "summary": "- `git bisect` pour isoler le commit fautif d'une régression, mais aussi d'un build anormalement long ou de tests qui ralentissent la CI.\n- Astuces : renommer good/bad, `git bisect replay`, **automatisation par script**.\n- Condition de réussite : des **commits atomiques**. Conférence qualifiée de « captivante ».",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "Ze83PO9-iVU",
+        "title": "The Business of Bisecting - Pauline VOS - Forum PHP 2024",
+        "transcript": false
+      }
+    },
+    {
+      "id": "optimiser-les-performances-de-votre-api-avec-automapper",
+      "day": "2024-10-11",
+      "type": "talk",
+      "title": "Optimiser les performances de votre API avec AutoMapper",
+      "speakers": ["Joël Wurtz — JoliCode"],
+      "feedbackFrom": ["Blog JoliCode (employeur du speaker)", "Deezer Newsroom"],
+      "summary": "- **AutoMapper**, bibliothèque de JoliCode, génère du code de mapping au lieu de s'appuyer sur des métadonnées comme le Serializer, d'où des gains de performance sur une application API Platform.\n- Migration **endpoint par endpoint**, normalizers custom transformés en transformers, section dédiée dans le Profiler.\n- Recommandation : **« 1 endpoint = 1 DTO »**, pour un typage fort et la fin des groupes de sérialisation. Salle comble selon JoliCode.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "0F-C8BP5i_0",
+        "title": "Optimiser les performances de votre API avec AutoMapper - Joel WURTZ - FORUM PHP 2024",
+        "transcript": false
+      }
+    },
+    {
+      "id": "twigcomponent-et-livecomponent",
+      "day": "2024-10-11",
+      "type": "talk",
+      "title": "L'Orienté Objet au Cœur du Templating Symfony : Découvrez TwigComponent et LiveComponent",
+      "speakers": ["Felix Eymonot"],
+      "feedbackFrom": ["Blog JoliCode"],
+      "summary": "- Découper les templates en composants liés chacun à une classe PHP : réutilisabilité, encapsulation, modularité, interaction.\n- Objectif selon JoliCode : des templates orientés objet « auxquels les développeurs back n'auraient pas peur de toucher », testables avec `InteractWithTwigComponents`.\n- **LiveComponents**, surcouche inspirée de Livewire, pour modifier les données en direct sur la page.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "H2r3957IQr0",
+        "title": "L'Orienté Objet au Cœur du Templating Symfony : TwigComponent et LiveComponent - Felix EYMONOT",
+        "transcript": false
+      }
+    },
+    {
+      "id": "ecrire-du-php-avec-seulement-6-caracteres",
+      "day": "2024-10-11",
+      "type": "talk",
+      "title": "Écrire du Php avec seulement 6 caractères",
+      "speakers": ["Benoit Viguier — Lendable"],
+      "feedbackFrom": ["Blog JoliCode", "Deezer Newsroom"],
+      "summary": "- Présentation humoristique, « presque digne d'un one-man show » (JoliCode), sur le mantra « sous contrainte, on devient plus créatif ».\n- Le défi aurait finalement été tenu avec **cinq caractères** selon JoliCode, au prix d'un simple echo pesant 240 Ko.\n- Pas de vidéo dans la playlist officielle.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "webhooks-at-scale",
+      "day": "2024-10-11",
+      "type": "talk",
+      "title": "Webhooks at scale",
+      "speakers": ["Fabien Paitry — Yousign"],
+      "feedbackFrom": ["Blog JoliCode"],
+      "summary": "- Environ **120 000 webhooks par jour** chez Yousign, via RabbitMQ et des workers Symfony ; des envois par lots vers un endpoint muet pouvaient saturer la file.\n- Rejet de la solution « quick and dirty » (ajouter des workers) au profit d'une politique **fail fast** : timeout ramené à 1 seconde au premier appel, file dédiée aux retries.\n- **Circuit breaker** (ouvert, semi-ouvert, fermé) par nom de domaine, avec la bibliothèque Ganesha intégrée au HttpClient Symfony.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "ujHAwcJsZ5A",
+        "title": "Webhooks at scale - Fabien PAITRY - Forum PHP 2024",
+        "transcript": false
+      }
+    },
+    {
+      "id": "decouverte-de-castor",
+      "day": "2024-10-11",
+      "type": "talk",
+      "title": "Découverte de Castor : Le Task Runner PHP qui Simplifie votre Workflow",
+      "speakers": ["Grégoire Pineau"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Les-Tilleuls.coop (Kévin Dunglas)"],
+      "summary": "- **Castor**, task runner écrit en PHP dont les tâches sont écrites en PHP : attributs, réflexion et composants Symfony pour une expérience développeur soignée.\n- Fonctions natives citées par Dunglas : mode watch, parallélisme, HTTP, `.env`, SSH, YAML, cache, notifications desktop, et distribution en **binaire statique** embarquant PHP (static-php-cli).\n- Dunglas, qui avoue « une aversion pour les Makefile » hors C/C++, conclut : *« Adoptez un castor ! »*.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "uR8t06HD_n0",
+        "title": "Découverte de Castor : Le Task Runner PHP qui Simplifie votre Workflow - Grégoire PINEAU - Forum PHP",
+        "transcript": false
+      }
+    },
+    {
+      "id": "dis-siri-mets-des-elephpants-dans-ma-domotique",
+      "day": "2024-10-11",
+      "type": "talk",
+      "title": "Dis Siri, mets des éléPHPants dans ma domotique",
+      "speakers": ["David Buros — Monsieur Biz"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Les-Tilleuls.coop (Marion Agé)"],
+      "summary": "- Domotique à petit budget sur **Home Assistant**, Zigbee, MQTT et Zigbee2MQTT : températures, consommation électrique par appareil, jusqu'au solde du compte bancaire.\n- Modules PHP maison qui interrogent des API tierces et publient en MQTT, empaquetés en binaire avec FrankenPHP, pour éviter d'écrire du Python.\n- Sujet rarement abordé en conférence PHP, salué par les deux blogs.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "578lSTzSxds",
+        "title": "Dis Siri, mets des éléPHPants dans ma domotique - David BUROS - Forum PHP 2024",
+        "transcript": false
+      }
+    },
+    {
+      "id": "le-zero-downtime-deployment-en-pratique",
+      "day": "2024-10-11",
+      "type": "talk",
+      "title": "Le Zéro Downtime Deployment en pratique",
+      "speakers": ["Smaïne Milianni — Yousign"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Les-Tilleuls.coop (Vincent Amstoutz)"],
+      "summary": "- Sur scène, l'argument : mettre en production n'importe quand (l'équipe Yousign déployait le vendredi même de la conférence), sans page de maintenance ni mise en production à 6 h, avec des rollbacks simples.\n- **Deux règles** : chaque changement est rétrocompatible avec la version en production, et les changements se font release par release (N+1 compatible avec N, jamais N+2 avec N).\n- Cas pratiques : colonne non nullable en deux releases, propriétés de messages RabbitMQ avec valeur par défaut, évolution de contrats d'API ; outils `safe-migrations` et `zdd-message-bundle`.\n- Limites assumées : utile seulement si l'on déploie souvent, et une maintenance reste parfois nécessaire (« faut pas être dogmatique »). Conseils : documentation par cas, post-mortems, un **référent ZDD** dans l'équipe.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "av52OxqzCvM",
+        "title": "Le Zéro Downtime Deployment en pratique - Smaïne MILIANNI - Forum PHP 2024",
+        "transcript": true
+      }
+    },
+    {
+      "id": "wordpress-une-cause-perdue",
+      "day": "2024-10-11",
+      "type": "talk",
+      "title": "WordPress: Une cause perdue?",
+      "speakers": ["Cyrille Coquard"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Les-Tilleuls.coop (Kévin Dunglas)"],
+      "summary": "- Ouverture provocante (WordPress est-il « de la merde » ?) puis réhabilitation : le CMS propulse près de 44 % des sites et rend la création accessible à tous, avec une dette technique remontant à 2003.\n- Pour les plugins : PHPUnit, Composer avec **Mozart** ou Strauss pour éviter les conflits de dépendances, injection de dépendances, event dispatcher objet, et le framework **Launchpad** du speaker.\n- Critiques de JoliCode : code des slides illisible depuis la salle, et silence sur le conflit WP Engine / Automattic. Les-Tilleuls compare avec Acorn, qu'ils utilisent.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "vADmGrdP7tg",
+        "title": "WordPress: Une cause perdue? - Cyrille COQUARD - Forum PHP 2024",
+        "transcript": false
+      }
+    },
+    {
+      "id": "covariance-contravariance-et-diamant",
+      "day": "2024-10-11",
+      "type": "talk",
+      "title": "Covariance, Contravariance et Diamant",
+      "speakers": ["Alexandre Daubois — Decathlon"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Les-Tilleuls.coop (Vincent Chalamon)"],
+      "summary": "- Pourquoi PHP permet d'élargir le type d'un argument (contravariance) mais pas celui d'un retour (covariance) : le **principe de substitution de Liskov**.\n- Génériques documentés avec PHPStan ; problème du diamant en héritage multiple, et les traits comme « alternative » qui apportent leurs propres problèmes.\n- Les deux blogs renvoient aux slides, « une mine de bons exemples ». Pas de vidéo dans la playlist officielle.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "demystifier-l-ia-guide-pratique-pour-les-devs-php",
+      "day": "2024-10-11",
+      "type": "talk",
+      "title": "Démystifier l'IA : Un guide pratique pour les devs PHP",
+      "speakers": ["Iana Iatsun"],
+      "feedbackFrom": [],
+      "summary": "- Thèse posée sur scène : l'IA générative est **« une évolution, pas une révolution »** (Turing, numérisation massive, GPU, AlexNet en 2012, transformers) ; sa vraie nouveauté est l'accessibilité par le langage naturel.\n- Pédagogie par la cuisine : acquisition et préparation des données, apprentissages supervisé, non supervisé et par renforcement ; un modèle ne rend qu'une probabilité (« pomme à 85 % »), la **décision reste humaine**, et la responsabilité du choix des données incombe à qui construit le modèle.\n- Outils : API de cloud (OCR, reconnaissance vocale, entités nommées) et modèles ouverts sur Hugging Face. Elle juge impossible le remplacement des développeurs, faute de besoins bien clarifiés.\n- En Q&A : préférer un **modèle spécifique** à un LLM quand le besoin est ciblé (plus précis, plus frugal) ; limites de l'entraînement sur des données générées et du watermarking, qui dépend de la bonne volonté des acteurs.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "u-yrK_-_p9g",
+        "title": "Démystifier l'IA : Un guide pratique pour les devs PHP - Iana IATSUN - Forum PHP 2024",
+        "transcript": true
+      }
+    },
+    {
+      "id": "utiliser-un-framework-pour-ecrire-de-la-documentation",
+      "day": "2024-10-11",
+      "type": "talk",
+      "title": "Utiliser un framework pour écrire de la documentation ?",
+      "speakers": ["Martin Supiot — Alma"],
+      "feedbackFrom": ["Blog JoliCode", "Deezer Newsroom"],
+      "summary": "- Constat d'une équipe en croissance (60 personnes) : la documentation était difficile à utiliser **et à écrire**.\n- Framework **Diátaxis** : explications, tutoriels, guides pratiques et références, avec des titres normés (« Pourquoi… », « Comment… », « Les différents… ») et des templates.\n- Conseils : connaître son audience, désigner des relecteurs et des mainteneurs par document, supprimer l'obsolète, donner une date de validité (astuce Notion). Documenter la documentation a fait écrire et consulter davantage toutes les équipes. Pas de vidéo dans la playlist officielle.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "peut-on-imaginer-un-avenir-sans-ia",
+      "day": "2024-10-11",
+      "type": "keynote",
+      "title": "Peut-on imaginer un avenir sans IA ? (L'innovation à l'épreuve de Dune de Frank Herbert)",
+      "speakers": ["Vincent Bontems"],
+      "feedbackFrom": [],
+      "summary": "- Conférence de clôture d'un philosophe des techniques : utiliser l'univers cohérent de *Dune* (méthode de « science fiction prototyping ») pour « penser un autre monde pour penser notre monde autrement ».\n- Stratégies face à un milieu hostile (s'adapter, transformer le milieu, renoncer, se transformer) : le distille est démonté par la thermodynamique, la terraformation d'Arrakis illustre une **innovation lente et à basse puissance** et l'écologie comme « science des conséquences ».\n- Le Jihad butlérien (« tu ne feras point de machine à l'esprit de l'homme ») hérite d'une vision qu'il juge réactionnaire, mais pose une vraie question : comment la culture peut-elle encore réguler une civilisation technique qu'elle ne comprend plus.\n- Quatre **risques systémiques** de l'IA, issus de ses travaux pour la défense : opacité (vers une « cryptocratie »), vulnérabilité (asymétrie attaque/défense, empoisonnement des données), « débilité » au sens propre (perte des compétences quand l'expert part à la retraite) et insoutenabilité énergétique. Position finale : pas un renoncement total, mais **choisir stratégiquement où mettre de l'IA**.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "tpv3I0tr_34",
+        "title": "Peut-on imaginer un avenir sans IA ? L'innovation à l'épreuve de Dune - Vincent BONTEMS - Forum PHP",
+        "transcript": true
+      }
+    },
+    {
+      "id": "keynote-de-cloture",
+      "day": "2024-10-11",
+      "type": "keynote",
+      "title": "Keynote de clôture",
+      "speakers": ["Équipe AFUP"],
+      "feedbackFrom": [],
+      "summary": "- Remerciements aux 27 sponsors, 37 speakers, bénévoles et à Amélie, « chef d'orchestre » de l'organisation, ainsi qu'aux partenaires Disney et au prestataire vidéo.\n- Les vidéos seront publiées en **calendrier de l'Avent**, comme l'année précédente, dont les vidéos ont fait plus de 34 000 vues, un record pour l'AFUP.\n- Annonce de l'**AFUP Day 2025** (7e édition) le 16 mai à Lille, Lyon et Poitiers, après des éditions complètes dans quatre villes en 2024 ; appel à conférences ouvert jusqu'au 11 novembre.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "6nZbkVH2ZVw",
+        "title": "Keynote de cloture - Forum PHP 2024",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "La goutte d'eau qui fait déborder le Cloud (J. Joye, ekino ; vidéo OCClZfNUMI8)",
+    "[Atelier 2h] PHP/Parallel : développer une application massivement parallèle (T. Kauffmann)",
+    "Coups de projecteur : Les-Tilleuls.coop, ActivInnov, labellisation LEAD (AFUP), Clever Cloud"
+  ],
+  "sources": [
+    {
+      "label": "Programme officiel",
+      "url": "https://event.afup.org/forum-php-2024/programme/"
+    },
+    {
+      "label": "Playlist YouTube officielle Forum PHP 2024 (AFUP)",
+      "url": "https://www.youtube.com/playlist?list=PL9zDdgiGjkIfvFAgepH7ViW-yv6BDeUiE"
+    },
+    {
+      "label": "JoliCode : Ce que nous avons retenu du Forum PHP 2024, jour 1 (15/10/2024)",
+      "url": "https://jolicode.com/blog/ce-que-nous-avons-retenu-du-forum-php-2024-jour-1"
+    },
+    {
+      "label": "JoliCode : Ce que nous avons retenu du Forum PHP 2024, jour 2 (17/10/2024, Anthony Maison et sept autres)",
+      "url": "https://jolicode.com/blog/ce-que-nous-avons-retenu-du-forum-php-2024-jour-2"
+    },
+    {
+      "label": "Les-Tilleuls.coop : Retour sur le Forum PHP 2024, jour 1",
+      "url": "https://les-tilleuls.coop/blog/retour-sur-le-forum-php-2024-jour-1"
+    },
+    {
+      "label": "Les-Tilleuls.coop : Retour sur le Forum PHP, jour 2",
+      "url": "https://les-tilleuls.coop/blog/retour-sur-le-forum-php-jour-2"
+    },
+    {
+      "label": "Deezer Newsroom : Spotlight on Forum PHP 2024 (novembre 2024)",
+      "url": "https://newsroom-deezer.com/2024/11/spotlight-on-forum-php-2024/"
+    },
+    {
+      "label": "Interviews speakers AFUP « La parole est aux speakers »",
+      "url": "https://event.afup.org/category/forum-php-2024/"
+    },
+    {
+      "label": "Non lu : récap Ekino « Retour sur le forum PHP 2024 » sur Medium (18/10/2024, accès bloqué)",
+      "url": "https://medium.com/p/8e9a5a397c17"
+    }
+  ]
 }

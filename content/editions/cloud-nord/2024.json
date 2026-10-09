@@ -7,7 +7,252 @@
   "city": "Lille",
   "venue": "EuraTechnologies",
   "url": "https://conference-hall.io/cloud-nord-2024",
-  "dateConfidence": "sec",
-  "status": "pending",
-  "sessions": []
+  "programUrl": "https://web.archive.org/web/2024/https://agenda.cloudnord.fr/schedule",
+  "dateConfidence": "ok",
+  "note": "Journée unique le 10 octobre 2024 à EuraTechnologies, 3e édition en présentiel. Keynote d'ouverture puis 25 sessions sur 4 salles (Auditorium, Conférence, La Cantina, Lab Innovation) : conférences de 50 min, quickies de 20 min et ateliers. Environ 450 participants d'après la page Conference Hall 2025 (objectif annoncé : 500). Catégories : Cloud, Sécurité, DevOps, Data & IA, Conteneurisation, Architecture, Découverte. 20 sessions filmées, publiées le 29 novembre 2024 et le 11 janvier 2025.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-09",
+  "revisit": "Aucun retour participant lu : pas de post LinkedIn ni d'article de blog accessible, un article du blog Criteo connu seulement par un extrait de moteur de recherche (introuvable sur le site). Chercher les posts LinkedIn d'octobre 2024 (hashtag cloudnord, speakers Chervet, Martignole, Moulin, Semeteys, Grangeau) et l'article Criteo.",
+  "corpus": "Programme officiel 2024 (agenda.cloudnord.fr, descriptifs, speakers et grille horaire), pages Conference Hall 2024 et 2025, page d'accueil archivée de cloudnord.fr ; transcripts automatiques des 20 vidéos de la playlist officielle « Cloud Nord 2024 - Lille » ; dépôt de slides d'Emmanuel Peru. Côté participants, seulement un extrait de recherche mentionnant un article du blog Criteo (keynote de Manuel Davy).",
+  "limits": "Aucun retour de participant lu : les résumés décrivent ce qui a été dit sur scène (transcripts automatiques, parfois bruités), pas la réception par la salle. La keynote et 4 sessions (dont les 2 ateliers de 2 h) n'ont pas été filmées. Recherche web limitée à 8 requêtes, LinkedIn inaccessible sans connexion.",
+  "tldr": "Une journée cloud native **très concrète** (scale-to-zero, Talos, ingestion massive sur AWS, sécurité des conteneurs) où la **sobriété se mesure** (Cloud Carbon Footprint, Impact Framework) et où l'IA est abordée **par ses risques** : code vulnérable, licences « open » trompeuses, observabilité des LLM.",
+  "keyTakeaways": [
+    "Viser le scale-to-zero hors production et la nuit : avec SlimFaas, un seul projet d'AXA France économise environ 230 000 € par an (Chervet, speaker).",
+    "Commencer la démarche GreenOps à partir des données de facturation cloud avec Cloud Carbon Footprint, puis outiller la mesure globale avec Impact Framework (Peru, Dussart).",
+    "Durcir les conteneurs en partant du principe que l'attaquant est déjà dedans : non-root, capabilities retirées, images distroless, système de fichiers en lecture seule, NetworkPolicies ; déboguer avec kubectl debug --target plutôt qu'avec un shell (Baillet).",
+    "Traiter le code généré par l'IA comme celui d'un développeur inexpérimenté : le même prompt a produit du code vulnérable sur cinq assistants, d'où revue et SAST systématiques (Leroy, Spiers).",
+    "« Open weights » ne veut pas dire open source : lire les licences des modèles (seuil de 700 millions d'utilisateurs chez Llama, licence non-production chez Mistral, interdiction d'entraîner un concurrent avec les sorties d'OpenAI) (Semeteys).",
+    "Partitionner un data lake par jour et par client et alerter sur les requêtes sans filtre : une seule requête Athena mal écrite a coûté 300 $ (Pubstack).",
+    "Suivre la tendance des métriques DORA par équipe sans en faire des objectifs ni comparer les équipes, loi de Goodhart oblige (Toublanc, Blanloeil).",
+    "Pour les images Java, séparer dépendances, ressources et classes en couches reproductibles (Jib) : le code applicatif pèse environ 0,5 % du fat jar (Chombeau).",
+    "En recrutement, préférer une mise en situation au tableau blanc à un QCM sur plateforme : OVHcloud l'a généralisée à toute sa DSI (de Labareyre, Grangeau)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-faut-il-avoir-peur-de-l-ia",
+      "day": "2024-10-10",
+      "type": "keynote",
+      "title": "Faut-il avoir peur de l'IA ?",
+      "speakers": ["Manuel Davy — Vekia, La Cité de l'IA"],
+      "feedbackFrom": ["Raphaël Semeteys (speaker d'une autre session, sur scène)", "blog Criteo (extrait de recherche seulement)"],
+      "summary": "- Keynote d'ouverture dans l'Atrium, **non filmée** et sans descriptif dans le programme.\n- Seule trace directe : Raphaël Semeteys y fait référence pendant son talk. Il retient l'explication des **embeddings** (transformer des mots en vecteurs), l'idée que les modèles *« n'ont pas de morale »* et *« prédisent le prochain mot »*, et que l'IA va changer les entreprises *« pas forcément radicalement mais à des petits endroits »*. Il cite aussi une évocation de la blockchain.\n- Un article du blog Criteo listant des enseignements de la journée la mentionne, mais nous n'avons lu qu'un extrait de moteur de recherche.",
+      "summarySources": ["program", "transcript"]
+    },
+    {
+      "id": "talos-chez-ubisoft-serveurs-de-jeux-et-plateforme-serverless",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "Talos chez Ubisoft : serveurs de jeux & plateforme Serverless",
+      "speakers": ["Vincent Behar — Ubisoft", "Christophe Cantella — Ubisoft"],
+      "summary": "- **Talos Linux** : distribution immuable dédiée à Kubernetes, écrite en Go, sans SSH ni shell, pilotée par une API gRPC, avec une douzaine de binaires seulement.\n- Démos : création de cluster, patchs de configuration (modules NVIDIA pour les nœuds GPU), mise à jour de l'OS en schéma A/B avec **rollback en une commande**, puis montée de version Kubernetes.\n- Limites citées : le *mode maintenance* n'est pas sécurisé tant que la configuration n'est pas poussée, et il n'y a pas d'autoscaling natif (Cluster API et cluster autoscaler en complément).\n- **Plateforme serverless** (Cantella) : Knative, scale-to-zero, GPU pour de l'inférence d'IA générative, clusters multi-providers (OpenStack interne et AWS) reliés par KubeSpan (WireGuard). Démo de génération d'image depuis un modèle de 70 Go.\n- **Serveurs de jeu** (Behar) : monolithes stateful en UDP, sensibles à la latence, hébergés avec Agones. Nouvelle génération hybride : control plane dans le cloud public, serveurs de jeu sur machines physiques i3D.net, configurées via Omni (SaaS de Sidero, sous BSL). Pas encore de jeu en production, mais des tests à 40 000 joueurs simulés.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "P9pHhMS5ro4", "title": "Talos chez Ubisoft : serveurs de jeux & plateforme Serverless | Vincent Behar & Christophe Cantella", "publishedAt": "2025-01-11", "transcript": true }
+    },
+    {
+      "id": "20-000-nuages-sous-les-mers",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "20 000 nuages sous les mers",
+      "speakers": ["Nicolas Bouron — Zenika", "Antoine Oili — Zenika"],
+      "summary": "- Thèse : le cloud évoque les airs, mais **97 à 99 % du trafic** intercontinental passe par plus de 450 câbles sous-marins, soit environ 1,4 million de km.\n- Ordres de grandeur : toute la constellation Kuiper offre 11,3 Tbit/s, le seul câble Dunant de Google (2020, atterrissement en Vendée) 250 Tbit/s. Des câbles de la taille d'un tuyau d'arrosage, posés entre 3 000 et 6 000 m.\n- Histoire : premier essai à Calais en 1851, message transatlantique de 1858 mis 17 h à passer, 60 % du réseau britannique en 1914, premier câble optique TAT-8 en 1988.\n- Marché : quatre fabricants (américain, français, japonais, chinois), poseurs comme Orange Marine, et des **GAFAM** devenus propriétaires (une vingtaine de câbles pour Google), ce qui pose la question de la **neutralité du Net**. Rachat annoncé par l'État de 80 % d'Alcatel Submarine Networks.\n- Risques : ancres et chalutiers (environ 60 % des coupures), catastrophes (Tonga, 2022), sabotages et surveillance ; aucune gouvernance mondiale hormis une convention de 1884.\n- Premier talk public pour l'un des deux speakers, issus l'un du conseil DevOps, l'autre du commercial.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "weiKN1X5vhM", "title": "☁️ 20 000 nuages sous les mers ☁️ | Nicolas Bouron & Antoine Oili", "publishedAt": "2024-11-29", "transcript": true }
+    },
+    {
+      "id": "introduction-a-impact-framework",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "Introduction à Impact Framework",
+      "speakers": ["Ludovic Dussart — Zatsit"],
+      "summary": "- Problème posé : chaque outil mesure un périmètre (Cloud Carbon Footprint, co2.js, Scaphandre…), difficile d'obtenir **l'impact global** d'une application.\n- **Impact Framework** (Green Software Foundation) : une CLI qui exécute un *manifeste* YAML décrivant un pipeline de plugins chaînés (observation puis calcul), partageable et rejouable par d'autres.\n- Démo en direct : données simulées (mock-observation), métadonnées d'instances cloud, plugins d'énergie mémoire, réseau et CPU, puis somme SCI. Comparaison d'un WordPress hébergé et du site statique de Zatsit sur un bucket GCS, présentée comme un ordre de grandeur *« à challenger »*.\n- L'export vers Grafana a buggé en direct ; l'outil *« bouge beaucoup »*. Appel à contribuer pendant l'Hacktoberfest.\n- Zatsit maintient aussi un *landscape* d'outils green inspiré de celui de la CNCF.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "bhsqdrMZgN0", "title": "Introduction à Impact Framework | Ludovic Dussart", "publishedAt": "2024-11-29", "transcript": true }
+    },
+    {
+      "id": "comment-ingerer-100-mrd-d-evenements-depuis-des-millions-d-appareils-par-mois",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "Comment ingérer 100 Mrd. d'événements depuis des millions d'appareils par mois ?",
+      "speakers": ["Valentin Maerten — Pubstack", "Erwann Cloarec — Pubstack"],
+      "summary": "- Contexte : Pubstack collecte des données publicitaires pour de grands sites médias, soit **4 milliards de requêtes HTTP et 650 Go par jour**, avec une petite équipe d'une dizaine de développeurs.\n- Ingestion : Cloudflare en entrée (forfait mensuel d'environ 200 $ contre une facturation au trafic chez CloudFront), ALB, conteneurs ECS Fargate autoscalés, conversion JSON vers Protobuf, Kinesis Data Streams puis Firehose vers S3.\n- Kinesis sert de **tampon rejouable** : lors d'une panne OpenSearch, la pipeline a été coupée 7 h sans perdre un événement.\n- Restitution : agrégats dans OpenSearch (13 nœuds réservés, données horaires puis journalières après J+15, 93 jours), data lake Parquet interrogé avec Athena, partitionné par jour et par client, bascule en Infrequent Access après 90 jours. Une requête sans filtre a coûté **300 $**.\n- Exploitation : Step Functions plutôt que du code de glue, un rôle IAM par Lambda, alertes CloudWatch dans Slack, objectif de coût de 0,50 $ par million d'événements, tout en Terraform. *« Je me suis pas connecté en SSH depuis 4 ou 5 ans »*.\n- Lucidité sur le **vendor lock-in** : *« le tout c'est d'en être conscient »*. En questions, le développement en local reste difficile sans OpenSearch ni données.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "sVSsVl-IsrA", "title": "Comment ingérer 100 Mrd. d'événements depuis des millions d'appareils par mois ?", "publishedAt": "2025-01-11", "transcript": true }
+    },
+    {
+      "id": "d-openai-a-opensource-ai",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "D'OpenAI à Opensource AI : naviguer entre propriété commerciale et ouverture collaborative",
+      "speakers": ["Raphaël Semeteys — Worldline"],
+      "summary": "- Lecture d'un expert open source : l'IA générative suit la trajectoire d'Internet et de l'open source (recherche ouverte, usage de masse, entreprise, **commoditisation**), mais beaucoup plus vite.\n- Grille d'ouverture de 0 à 4 sur cinq actifs : **poids du modèle**, jeux de données de pré-entraînement et de fine-tuning, reward model, code.\n- Trajectoires : OpenAI ouvert jusqu'à GPT-2 puis fermé, avec interdiction d'utiliser les sorties pour entraîner un concurrent ; Google qui referme puis ouvre Gemma avec une liste d'usages interdits ; Llama ouvert mais avec une clause au-delà de 700 millions d'utilisateurs mensuels.\n- Les restrictions se **transmettent** : Alpaca et Vicuna héritent de celles de Llama et des données issues d'OpenAI. Mistral combine modèles ouverts, commerciaux et une licence non-production pour Codestral, qui rappelle les éditions community et enterprise.\n- Conclusion : *« open weights »* n'est pas open source ; LLM360 et OLMo sont les plus ouverts. Le speaker a fait faire un étirement de yoga à la salle.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "_gwL7IlQRaM", "title": "D'OpenAI à Opensource AI : naviguer entre propriété commerciale et ouverture collaborative", "publishedAt": "2024-11-29", "transcript": true }
+    },
+    {
+      "id": "maximisez-la-productivite-des-developpeurs-avec-backstage",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "Maximisez la productivité des développeurs avec Backstage : plongez dans l'ingénierie des plateformes et créez un portail interne pour les développeurs",
+      "speakers": ["Laurent Grangeau — Google", "Tony Jarriault — Sogeti"],
+      "summary": "- Le **platform engineering** prolonge DevOps et SRE : unifier outils et bonnes pratiques (CI/CD, sécurité, documentation, observabilité) dans un portail interne plutôt que des dizaines d'onglets.\n- **Backstage** (Spotify, Node et React) : catalogue décrit en YAML dans chaque dépôt, plugins (Cloud Build, GitHub, Kubernetes), documentation vivante traitée comme du code.\n- Démo : catalogue d'une application de 13 microservices, puis *template* qui crée un dépôt Go avec sa CI GitHub Actions. L'onglet Kubernetes échoue en direct (droits manquants).\n- Retour d'expérience honnête : il faut *« être un peu développeur »* pour installer Backstage, et la migration du backend v1 vers v2 rendait la doc peu fiable. Backstage *récupère* l'information plus qu'il ne déploie.\n- Exemple d'un « avionneur français » dont un plugin relance les équipes, puis leur N+1 et N+2, quand un template évolue.\n- En questions, un participant juge les templates trop *« fire and forget »* face à une gestion des dépôts par Terraform.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "IWhIXlVsRls", "title": "Maximisez la productivité des développeurs avec Backstage | Laurent Grangeau & Tony Jarriault", "publishedAt": "2024-11-29", "transcript": true }
+    },
+    {
+      "id": "the-journey-of-computing",
+      "day": "2024-10-10",
+      "type": "lightning",
+      "title": "The Journey of Computing: from individual experiences to investigating fundamental connections with Science",
+      "speakers": ["Hayet Yefsah — Decathlon", "Samira Taibi — Decathlon"],
+      "summary": "- Premier talk de deux ingénieures Ops de Decathlon, **reconverties en 2023** après des parcours en physique et en mathématiques (enseignement).\n- Objectif : déconstruire l'idée que l'informatique serait séparée des sciences dures, chiffres de publications et de recherche interdisciplinaire à l'appui.\n- Figures historiques : Ada Lovelace et Chien-Shiung Wu.\n- Innovations nées de ces liens : ordinateur quantique, réseaux de neurones, modélisation climatique utilisée par le GIEC ; défis à venir : données massives du LHC, IA médicale avec ses enjeux éthiques, simulation avancée.\n- Message : la **diversité des profils** et l'interdisciplinarité aident à comprendre le monde.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "XXWtvXRNDHM", "title": "The Journey of Computing | Hayet Yefsah & Samira Taibi", "publishedAt": "2024-11-29", "transcript": true }
+    },
+    {
+      "id": "api-ops-une-approche-devops-pour-l-api-management",
+      "day": "2024-10-10",
+      "type": "lightning",
+      "title": "API Ops : Une approche DevOps pour l'API Management",
+      "speakers": ["Nejmeddine Ben Ouarred — Sfeir"],
+      "summary": "- Une solution d'**API management** ne se réduit pas à la gateway : portail développeur, analytics, sécurité centralisée et parfois monétisation.\n- Trois modèles de gouvernance : fédérée (rapide mais hétérogène), centralisée (goulet d'étranglement), **hybride** où une équipe centrale fournit l'outillage et les pipelines.\n- API Ops : versionner les proxies (exemple d'Apigee) dans Git et leur appliquer une CI/CD classique : lint OpenAPI avec Spectral, tests, déploiement par environnements, tests de bout en bout.\n- Critère de choix d'un produit : tout ce qui se fait dans l'interface doit être faisable par API.\n- En questions : ce sont les équipes qui agissent sur le code des API, pas une équipe centrale sur les pipelines.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "HvSVjXlzirA", "title": "API Ops : Une approche DevOps pour l'API Management | BEN OUARRED Nejmeddine", "publishedAt": "2024-11-29", "transcript": true }
+    },
+    {
+      "id": "devlake-un-voyage-au-pays-du-dora",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "DevLake : Un voyage au pays du DORA",
+      "speakers": ["Kevin Toublanc — WeScale", "Morgan Blanloeil — WeScale"],
+      "summary": "- Position assumée : *« le DevOps n'est pas un métier »*, mais une culture (CALMS) ; un ingénieur qui ne fait que du Terraform sans partager manque l'essentiel.\n- Les **4 métriques DORA** et l'évolution de leurs seuils entre 2021 et 2023. Mise en garde : loi de Goodhart, ne pas comparer les équipes, suivre la tendance.\n- Retour d'expérience à Bpifrance (DSI de 200 équipes, passage à SAFe, *build it you run it*) : un framework maison capte tous les changements, calcule DORA et produit des notes de version pour les audits.\n- **Apache DevLake** (incubateur Apache) : connecteurs GitLab, Jira, Sonar, webhook pour déclarer déploiements et incidents, tableaux Grafana fournis. Démo : en mode 2023, le délai de détection d'un incident pénalise le temps de rétablissement.\n- Tendances du State of DevOps citées : platform engineering, expérience développeur, et une IA très adoptée mais dont les résultats inspirent peu confiance.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "_T2etV315sQ", "title": "DevLake : Un voyage au pays du DORA | Kevin Toublanc & Morgan Blanloeil", "publishedAt": "2025-01-11", "transcript": true }
+    },
+    {
+      "id": "jib-osez-le-dockerless-pour-vos-projets-java",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "Jib : Osez le Dockerless pour vos projets Java !",
+      "speakers": ["Ludovic Chombeau — Leroy Merlin"],
+      "summary": "- Point de départ : un Dockerfile généré par ChatGPT (JDK, root, un seul gros layer), puis un Dockerfile de docker init complet mais difficile à maintenir.\n- **Jib** (Google) : plugin Maven ou Gradle, sans Dockerfile ni démon Docker, qui découpe l'image en couches dépendances, ressources et classes. Le code ne représente qu'environ **0,5 %** d'un fat jar de 115 Mo.\n- **Reproductibilité** : avec Docker, un simple `touch` sur le jar invalide le layer ; Jib fixe les dates au 1er janvier 1970 pour obtenir des empreintes identiques.\n- Monorepo : configuration commune dans le pom parent, surcharges par module, exclusion d'une librairie partagée.\n- Retour d'expérience : migration en un an et demi, plus de 50 modules en production sans incident lié à Jib. Limites : Java uniquement, pas d'instruction RUN, métadonnées perdues, pas de rebase (contrairement aux buildpacks).\n- Les démos de push vers la registry ont échoué faute de réseau.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "5uAe_PGWnxw", "title": "Jib : Osez le Dockerless pour vos projets Java ! | Ludovic Chombeau (Ludal)", "publishedAt": "2024-11-29", "transcript": true }
+    },
+    {
+      "id": "j-ai-perdu-du-poids-sur-kubernetes-avec-slimfaas",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "J'ai perdu du poids sur Kubernetes avec SlimFaas",
+      "speakers": ["Guillaume Chervet — AXA France"],
+      "summary": "- Témoignage chiffré (en « pingouins » pour euros) : un projet passé de 200 à 42 par jour en production, environ 19 000 par mois sur 4 environnements, soit **environ 230 000 par an** ; un autre projet en économiserait plus de 300 000.\n- **SlimFaas** (licence MIT) : un simple proxy à ajouter, activé par annotation, qui fait du **scale-to-zero**, des appels synchrones et asynchrones avec file d'attente, du retry, du pub/sub en HTTP et gère la visibilité publique ou privée des fonctions.\n- Base interne répliquée avec Raft (3 réplicas en production) ; routes *wake-up* et d'état de l'infrastructure qui permettent de reporter la résilience côté front.\n- Cas d'usage : classification de 10 000 e-mails par jour en moins d'une minute, avec démarrage anticipé des pods selon le type de document.\n- Contraintes réelles : une VM met environ 7 minutes à arriver ; SlimFaas Schedule réveille l'infra le matin et l'éteint le soir.\n- Origine : remplacer OpenFaaS, jugé cher et couplant ; Knative refusé car trop lourd et non multi-tenant ; KEDA jugé *« juste génial »* mais moins fin.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "ovRVG0mOxdc", "title": "J'ai perdu du poids sur Kubernetes avec SlimFaas | Guillaume Chervet", "publishedAt": "2024-11-29", "transcript": true }
+    },
+    {
+      "id": "mesure-ton-empreinte-avec-cloud-carbon-footprint",
+      "day": "2024-10-10",
+      "type": "lightning",
+      "title": "Mesure ton empreinte avec Cloud Carbon Footprint",
+      "speakers": ["Emmanuel Peru — Zatsit"],
+      "summary": "- Rappel : le cloud est **physique** (data centers, besoins énergétiques annoncés en forte hausse avec l'IA), même si son immatérialité le fait oublier.\n- **Cloud Carbon Footprint** (open source, initié par Thoughtworks) s'appuie sur les **données de facturation** : la démarche FinOps devient le point de départ d'une démarche GreenOps, sans agents à déployer.\n- Calcul : émissions opérationnelles (énergie × PUE × intensité carbone) plus part des émissions de fabrication ; sur GCP, facteurs CFE et option Electricity Maps.\n- Exemple chez Zatsit : un petit service hébergé aux États-Unis, environ 5 % de l'usage, pèse **67 % des émissions**.\n- Méthode imparfaite mais transparente ; appel à être *« green by design »*. Slides en Slidev publiées sur GitHub.",
+      "summarySources": ["transcript", "slides", "program"],
+      "video": { "youtubeId": "57EhvNh-IaE", "title": "Mesure ton empreinte avec Cloud Carbon Footprint | Emmanuel Peru", "publishedAt": "2025-01-11", "transcript": true }
+    },
+    {
+      "id": "l-ia-et-l-observabilite-un-mariage-presque-parfait",
+      "day": "2024-10-10",
+      "type": "lightning",
+      "title": "L'IA et l'observabilité : un mariage presque parfait ?",
+      "speakers": ["Yann Beulque — Partenor Hauts-de-France", "Maxence Flament — Partenor Hauts-de-France"],
+      "summary": "- Trois IA pour l'observabilité : générative, prédictive, et **causale**, *« la moins intelligente mais qui rend le plus de services »*.\n- Panorama de Dynatrace, Datadog et Elastic ; démo d'un assistant Elastic qui génère des requêtes à partir de questions en langage naturel, avec une **latence** notable.\n- Observer les LLM : démo de Datadog LLM Observability (sortie en juin 2024, jugée *« embryonnaire »*) sur un chatbot e-commerce : toxicité, tentatives de prompt injection, appel de 16 s dû à trois requêtes OpenAI, regroupement par sujets et sentiment.\n- **Data observability** : une réponse HTTP 200 peut cacher des données erronées, par exemple les bénéficiaires d'un autre client affichés dans une assurance vie.\n- En questions : masquage automatique des données personnelles dans les prompts, mais accès à restreindre.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "kak9mpnAXng", "title": "L'IA et l'observabilité : un mariage presque parfait ? | Yann Beulque & Maxence Flament", "publishedAt": "2024-11-29", "transcript": true }
+    },
+    {
+      "id": "sorting-through-10000-pokemon-cards-for-fun-and-profit",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "Sorting through 10.000 Pokémon cards for fun and profit",
+      "speakers": ["Matthieu Cornillon — Google"],
+      "summary": "- Problème personnel : identifier et revendre 10 000 cartes Pokémon ; seule l'illustration permet de reconnaître une carte de façon fiable.\n- Étape 1, **détection d'objet** : un peu plus de 1 000 photos annotées à la main (environ 10 h, la partie la plus longue), entraînement AutoML sur Vertex AI, séparation 80/20 entre entraînement et test.\n- Étape 2, **embeddings** de 768 dimensions pour les quelque 20 000 cartes existantes, stockés avec **pgvector** dans AlloyDB (*« choisir une technologie ennuyeuse »*).\n- Étape 3, recherche par similarité cosinus ; comparaison entre recherche exacte et index approximatifs (IVFFlat, HNSW, ScaNN).\n- Résultats : une carte française retrouvée dans sa version anglaise, la pré-évolution du Pokémon en deuxième résultat. La même mécanique sert au RAG.\n- En questions : coût faible, export CSV vers une marketplace de cartes avec estimation du prix.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "jLCT7nZ5CH4", "title": "Sorting through 10.000 Pokémon cards for fun and profit | Matthieu Cornillon", "publishedAt": "2025-01-11", "transcript": true }
+    },
+    {
+      "id": "container-and-security",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "Container & Security",
+      "speakers": ["Sébastien Baillet — Lupise"],
+      "summary": "- Hypothèse de travail : **l'attaquant contrôle déjà le conteneur**, il faut l'empêcher d'atteindre le reste du cluster.\n- Règles : ne pas tourner en root, retirer les **capabilities** (Docker en accorde une dizaine par défaut, cinq sont *« game over »*), images de base de confiance et minimales (distroless, Chainguard), système de fichiers en lecture seule, aucun secret dans les layers ni les métadonnées.\n- Déboguer sans shell : comprendre les namespaces Linux, utiliser les conteneurs éphémères avec `kubectl debug --target`, accéder au système de fichiers via `/proc/1/root`.\n- Le patch management se fait sur les **images** (rebuild et redéploiement), pas sur les conteneurs. Environ 80 % du code vient des dépendances : les scanner d'abord (Trivy, Renovate, Copacetic, NeuVector).\n- Pas d'isolation réseau par défaut dans Kubernetes : écrire des NetworkPolicies.\n- En questions : chez Leroy Merlin, 41 % des images de sa plateforme sont distroless ; l'adoption dépend de la présence d'Ops dans les équipes.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "yEuhlKc3jkY", "title": "Container & Security | Sébastien Baillet", "publishedAt": "2024-11-29", "transcript": true }
+    },
+    {
+      "id": "cast-ai-et-son-obsession-pour-l-optimisation-kubernetes",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "CAST AI et son obsession pour l'optimisation Kubernetes",
+      "speakers": ["Yoann Legrand — CAST AI", "Skander Belli — CAST AI"],
+      "summary": "- **Talk d'éditeur** assumé (un commercial, un technique), avec cas clients et modèle de prix.\n- Mesure gratuite en lecture seule de l'écart entre ressources utilisées, demandées et provisionnées.\n- Leviers : choix du type d'instance et *bin packing* (exemple de facture passée de 43 000 à 20 000 $), passage sur **instances spot** avec prédiction des interruptions 30 minutes à l'avance grâce aux données agrégées de tous les clients, repli sur du on-demand.\n- Workload autoscaler : un admission webhook ajuste les requests des pods sans toucher aux déploiements, en mode immédiat ou différé.\n- Revendications non vérifiables ici : jusqu'à 80 % d'économies, 8 $ économisés par dollar payé chez un client.\n- Questions nombreuses de la salle : Terraform, mode lecture seule, métriques Prometheus, pics de CPU au démarrage des applications Java.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "H_xCwtmxD7I", "title": "CAST AI et son obsession pour l'optimisation Kubernetes | Yoann Legrand & Skander Belli", "publishedAt": "2024-11-29", "transcript": true }
+    },
+    {
+      "id": "hacking-code-exploiter-le-code-genere-par-l-ia",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "Hacking code : exploiter le code généré par l'IA",
+      "speakers": ["Tim Leroy — Snyk", "Frédéric Spiers — Gentle IT"],
+      "summary": "- Chiffres cités : 92 % des développeurs utilisent l'IA, et environ **40 % du code généré contient des vulnérabilités**, avec des utilisateurs plus confiants dans leur code.\n- Les LLM se trompent avec aplomb (calcul simple, nombre de « r » dans *strawberry*).\n- Expérience : le même prompt Express donné à cinq assistants (ChatGPT, Gemini, Claude, Perplexity, Mistral) produit une faille XSS ; confrontés, ils proposent **quatre corrections différentes**, dont des librairies mal maintenues.\n- Live coding avec Copilot : une recherche vulnérable à l'**injection SQL**, puis un upload vulnérable au *path traversal* (démontré avec Burp Suite), corrigés par un meilleur prompt et détectés par un outil SAST.\n- Recommandations : formation, politiques d'usage, *« ne faites pas confiance, vérifiez »*, considérer l'IA comme un développeur inexpérimenté.\n- En questions : Spiers observe peu de contrôle réel de l'usage de l'IA par les développeurs en entreprise.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "b5DPctMUE7I", "title": "Hacking code : exploiter le code généré par l'IA | Fredéric Spiers & Tim Leroy", "publishedAt": "2024-11-29", "transcript": true }
+    },
+    {
+      "id": "on-a-34-de-femmes-venez-chez-nous-on-fait-des-trucs-pour-vous",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "« On a 34 % de femmes, venez chez nous, on fait des trucs pour vous ! »",
+      "speakers": ["Anaïs Moulin — Onepoint"],
+      "summary": "- Titre tiré d'un message LinkedIn reçu par la speakeuse, femme en situation de handicap invisible, qui donnait ce talk pour la deuxième fois.\n- Récit fictif de trois amis au même profil (notes, entretiens) pour montrer les effets de la **discrimination positive**, puis histoire : États-Unis dans les années 1960, lois françaises de 1983 (égalité professionnelle) et 1987 (handicap).\n- Avantages chiffrés (accès des femmes aux études, à l'emploi, aux métiers dits masculins) et inconvénients : **syndrome de l'imposteur**, question du mérite, ressentiment des collègues.\n- Alternatives : éducation, lutte contre les préjugés, et **poser la question** quand un traitement paraît injuste, comme elle l'a fait par e-mail auprès d'un recruteur.\n- Conclusion : *« hier on en avait besoin, aujourd'hui ça aide, demain ça doit disparaître »*.\n- En questions, un recruteur témoigne d'hommes très sûrs d'eux et de femmes qui sous-estiment leurs compétences en entretien.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "lfkDB9cTsTI", "title": "\"On a 34 % de femmes, venez chez nous, on fait des trucs pour vous !\" | Anaïs Moulin", "publishedAt": "2024-11-29", "transcript": true }
+    },
+    {
+      "id": "ma-startup-a-grossi-quand-les-fondateurs-cto-partent-et-que-les-principals-engineers-arrivent",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "Ma startup a grossi : quand les fondateurs CTO partent et que les Principals Engineers arrivent",
+      "speakers": ["Nicolas Martignole — Back Market", "Théotime Lévêque — Back Market"],
+      "summary": "- Deux parcours : Lévêque a grandi avec Back Market, Martignole arrive de Doctolib. Back Market compte environ 200 développeurs et deux principal engineers rattachés à la CTO.\n- Le rôle : leadership technique **sans management**, obsession de l'impact (*outcome* plutôt qu'*output*), changements de posture permanents, agenda construit soi-même et sans tickets, travail **par influence**.\n- Débat assumé entre les deux : on ne peut pas être CTO et principal à la fois, et un CTO cofondateur ferait selon Lévêque *« un mauvais principal »*. Chez Doctolib comme chez Back Market, les fondateurs techniques ne sont pas restés CTO.\n- Accompagner une nouvelle CTO venue de grandes entreprises : liste priorisée de sujets classés par sphère de contrôle, d'influence ou de préoccupation, avec des actions proposées ; ne jamais isoler la CTO dans les messages.\n- Question clé à poser à un dirigeant : *« comment je peux te soutenir ? »*.\n- On peut alterner entre management et contribution individuelle ; promotion de la communauté francophone Staff 42 (environ 300 membres).",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "-blkNUh4ghw", "title": "Ma startup a grossi : quand les fondateurs CTO partent et que les Principals Engineers arrivent", "publishedAt": "2025-01-11", "transcript": true }
+    },
+    {
+      "id": "contestes-et-detestes-mais-attestables-les-tests-techniques-dans-le-cadre-des-recrutements",
+      "day": "2024-10-10",
+      "type": "talk",
+      "title": "(con)test-és et (dé)test-és MAIS (at)test-ables ? Les tests techniques dans le cadre des recrutements de profils techs",
+      "speakers": ["Magali de Labareyre — OVHcloud", "Laurent Grangeau — Google"],
+      "summary": "- Duo recruteuse et candidat expérimenté, avec une « météo » par type de test. Déclic : un candidat furieux d'un test jugé irréaliste.\n- Échange entre pairs : agréable pour le candidat mais peu structuré, avec un écart fréquent entre niveau perçu en entretien et en période d'essai. Revue de code : pertinente mais coûteuse (3 h chez AWS).\n- Tests sur plateforme : pratiques pour trier, mais scolaires et stressants ; certains candidats refusent de les passer. Projet à la maison : des candidats y passaient **5 à 15 h**, au risque d'en perdre.\n- Solution retenue chez OVHcloud : le **« test de Thomas »**, une mise en situation au tableau blanc (mettre en ligne une vidéo de chaton face à un product owner), adaptable aux profils dev, SRE, DBA et non tech, généralisée à la DSI pendant plus d'une centaine de recrutements.\n- Conseils : travailler son *personal branding* et ses contributions open source, qui peuvent remplacer le test.\n- En questions : l'IA pour trier les CV reproduit les biais des données (exemple d'Amazon) ; le recrutement reste un échange humain.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "8ApsBD0-z5w", "title": "(con)test-és et (dé)test-és MAIS (at)test-ables? Les tests techniques dans le cadre des recrutements", "publishedAt": "2024-11-29", "transcript": true }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Découvrir Pulumi par la pratique, atelier de 2 h (Alexandre Nédélec, Avanade), non filmé",
+    "Réconciliez-vous avec la sécurité et surmontez ses défis avec Dependency-Track ! (Elisa Degobert, HoppR), non filmé",
+    "Si j'étais un hacker, comment est-ce que je prendrais le contrôle de votre cluster Kubernetes, atelier (Thibault Lengagne, Padok), non filmé",
+    "Confidentialité des données sur les offres SaaS Kafka ou Pulsar (Guillaume Dufrêne, AXA France), non filmé"
+  ],
+  "sources": [
+    { "label": "Page Conference Hall Cloud Nord 2024 (formats, catégories, 5e édition)", "url": "https://conference-hall.io/cloud-nord-2024" },
+    { "label": "Programme 2024 agenda.cloudnord.fr (archive Wayback Machine)", "url": "https://web.archive.org/web/2024/https://agenda.cloudnord.fr/schedule" },
+    { "label": "Page d'accueil cloudnord.fr, octobre 2024 (archive)", "url": "https://web.archive.org/web/20241015124725/https://cloudnord.fr/" },
+    { "label": "Page Conference Hall Cloud Nord 2025 (450 participants en 2024)", "url": "https://conference-hall.io/cloud-nord-2025" },
+    { "label": "Playlist YouTube officielle « Cloud Nord 2024 - Lille » (20 talks et aftermovie)", "url": "https://www.youtube.com/playlist?list=PLVQhat0Bx0WBd1f_zW_qjvEB55BNmExjN" },
+    { "label": "Slides d'Emmanuel Peru (Cloud Carbon Footprint, Slidev)", "url": "https://github.com/emmanuelperu/cloudnord-2024-slides" },
+    { "label": "Blog tech Criteo : article sur CloudNord connu seulement par extrait de recherche, non retrouvé", "url": "https://tech.criteo.com/" },
+    { "label": "Posts LinkedIn : aucun lu (recherche web sans résultat exploitable)" }
+  ]
 }

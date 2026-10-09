@@ -7,8 +7,160 @@
   "city": "Perros-Guirec",
   "venue": "Palais des Congrès",
   "url": "https://devfest.codedarmor.fr/archives/2024/devfest/",
-  "theme": "Objets connectés (IoT)",
+  "programUrl": "https://devfest.codedarmor.fr/archives/2024/devfest/",
+  "theme": "L'IoT et les systèmes embarqués pour les devs",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-09",
+  "revisit": "Aucun retour participant public trouvé (0 post LinkedIn, 0 article de blog en 6 recherches web) : synthèse fondée sur les transcripts automatiques des 7 vidéos officielles et le programme. À reprendre si des posts ou comptes-rendus émergent.",
+  "corpus": "Programme officiel (archives du site Code d'Armor, page GDG Community), transcripts automatiques des 7 vidéos de la playlist officielle « DevFest Perros-Guirec 2024 » publiées le 18 octobre 2024. Six recherches web menées en octobre 2026, deux ans après l'événement, sans retour participant trouvé.",
+  "limits": "Aucun retour de participant n'a été trouvé : les résumés disent ce qui a été dit sur scène, pas ce que la salle en a retenu. Les transcripts sont des sous-titres automatiques (noms propres et chiffres parfois déformés, les plus douteux ont été écartés). Le talk de Thales « Où est Charlie ? », le mot d'introduction et le mot de la fin n'ont pas de vidéo.",
+  "tldr": "Une journée mono-track sur l'**IoT vu du terrain** : réseaux (cellulaire, LoRa, NATS), bornes de charge, déchets, domotique et dashboards, avec en fil rouge la **durée de vie longue des objets, la sécurité imposée par le Cyber Resilience Act** et des utilisateurs finaux rarement techniciens.",
+  "keyTakeaways": [
+    "Choisir une techno radio d'abord pour sa **couverture et sa pérennité** (10 ans de durée de vie visée) et anticiper l'extinction 2G/3G, quitte à remplacer des parcs par vagues (Pascal Fifre, Eco-Compteur).",
+    "Ne pas croire les études de couverture théoriques : **toujours vérifier sur le terrain**, et fournir aux installateurs une appli qui confirme la transmission avant de partir (Pierre Renault, Rennes Métropole ; Pascal Fifre ; Aurélien Conte, Heyliot).",
+    "Sécuriser un objet connecté par **démarrage signé, vérification de chaque mise à jour et isolation des blocs** (MAC, namespaces, microservices), et tout mettre sous Git pour pouvoir reconstruire le système (Fulup Ar Foll, IoT.bzh).",
+    "Placer dans un cœur temps réel (Zephyr sur Cortex-M) ce qui touche à la **sûreté**, car 15 000 lignes se certifient bien plus facilement que les millions de lignes de Linux (Fulup Ar Foll).",
+    "Surveiller la **chaîne de dépendances** (SBOM) : en Rust comme en Python ou JavaScript, une petite fonction peut tirer des dizaines de paquets peu maintenus (Fulup Ar Foll).",
+    "Découpler producteurs et consommateurs de données dans l'espace (pub/sub) puis dans le temps (flux persistés), et prévoir des sites qui **fonctionnent sans réseau** puis se resynchronisent (Thomas Leseney, Netvolt).",
+    "Refuser de porter sur un réseau mutualisé les usages liés à la **sécurité des personnes et des biens** (Pierre Renault, Rennes Métropole).",
+    "Pour la domotique, commencer petit avec du matériel de récupération et viser l'**OS Home Assistant** plutôt que la version conteneur, plus pénible à mettre à jour (Pierre Andrieux, Capgemini).",
+    "Dans un tableau de bord IoT, **n'afficher que ce qui pose problème** et mutualiser les requêtes entre tuiles plutôt qu'une requête par tuile (Pierre Papin, SenX)."
+  ],
+  "sessions": [
+    {
+      "id": "mise-en-oeuvre-de-l-iot-chez-ecocompteur",
+      "day": "2024-10-04",
+      "type": "talk",
+      "title": "Mise en œuvre de l'IoT chez EcoCompteur",
+      "speakers": ["Pascal Fifre — Eco-Compteur"],
+      "feedbackFrom": [],
+      "summary": "- Retour d'expérience du responsable R&D hardware d'Eco-Compteur (Lannion), qui mesure la fréquentation piétons et vélos pour les collectivités : né d'une carte électronique **dans un pot de confiture** sur un sentier, l'entreprise revendique 150 salariés et 30 000 compteurs installés.\n- Grille de lecture d'un système IoT par ses contraintes : volume de données, coûts (composants, batteries lithium, data selon le pays), dimensions, durée de vie, environnement, alimentation, installation, déploiement, maintenance, supervision, interopérabilité, sécurité.\n- Choix du **cellulaire** pour couvrir 55 pays, de la 2G jusqu'au LTE-M et NB-IoT ; leçon de maturité : les opérateurs ont eu **4 ans de retard** sur LTE-M, et les premières stacks étaient boguées, ce qui a bloqué le remplacement des produits 3G.\n- Produits étanches, parfois immergés des semaines ou intégrés par les clients dans des boîtes métalliques ; installateurs peu techniques guidés par une **appli mobile** qui vérifie la transmission sur site.\n- Supervision indispensable : *« un produit IoT qui ne peut plus communiquer […] c'est un produit qui est mort »* ; maintenance à distance limitée par des connexions 2 à 4 fois par jour.\n- Sécurité prise au sérieux *« depuis 2 ans »*, sous la pression du **Cyber Resilience Act** ; pistes d'avenir : LwM2M (sécurité, compression, modèle de données) et transmission satellite pour les zones blanches.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "pEVP20Hxagk",
+        "title": "[DevFest Perros-Guirec 2024] Mise en œuvre de l'IOT chez EcoCompteur",
+        "publishedAt": "2024-10-18",
+        "transcript": true
+      }
+    },
+    {
+      "id": "retour-d-experience-rust-linux-borne-de-charge-vehicule-electrique",
+      "day": "2024-10-04",
+      "type": "talk",
+      "title": "Retour d'expérience sur l'utilisation de Rust/Linux dans une borne de charge véhicule électrique",
+      "speakers": ["Fulup Ar Foll — IoT.bzh", "Valentin Geffroy — IoT.bzh"],
+      "feedbackFrom": [],
+      "summary": "- Projet open source **Tux-EVSE** d'IoT.bzh (Lorient) : une borne dialogue avec la voiture (IEC, puis ISO 15118 en XML binaire, *« super galère »*), avec le cloud (OCPP, du JSON en WebSocket) et avec le réseau électrique (compteur Linky, planification de charge).\n- Une borne est une **belle passerelle pour un attaquant** : réseau d'énergie, maison et opérateur de mobilité à la fois ; plug and charge, services à valeur ajoutée en IPv6 et accès physique multiplient les surfaces d'attaque.\n- Réponses : code signé et vérifié au boot et à chaque mise à jour, contrôle d'accès obligatoire, namespaces et cgroups, chiffrement complet ; le **modèle distribué** (sécurité entre îlots) préféré au *« château fort »*.\n- Architecture asymétrique : Linux sur Cortex-A, **Zephyr sur Cortex-M** via OpenAMP pour le temps réel et la sûreté (détection de branchement, verrou de prise), car *« 15 000 lignes »* se certifient mieux que Linux.\n- Bilan sur Rust, opinion assumée de Fulup Ar Foll : analyse statique mémoire *« hors du commun »*, meilleur code à salaire égal qu'en C++ ; mais **packaging « l'enfer »**, pas de compatibilité binaire entre versions, dépendances en cascade, async difficile ; plus d'un an pour l'intégrer à la CI. Verdict : *« bon mais pas exceptionnel »*.\n- Valentin Geffroy montre le matériel (BeaglePlay, Raspberry Pi, modem PLC, écran LVGL, LoRaWAN) et la chaîne de packaging redpesk Factory ; code et slides publiés, démonstration du matériel proposée à la pause déjeuner.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "KzgN8LLeh0Q",
+        "title": "[DevFest Perros-Guirec 2024] Utilisation de RUST/Linux dans une borne de charge véhicule electrique",
+        "publishedAt": "2024-10-18",
+        "transcript": true
+      }
+    },
+    {
+      "id": "quickie-combiner-iot-et-software-pour-reduire-l-impact-carbone-des-dechets",
+      "day": "2024-10-04",
+      "type": "lightning",
+      "title": "Quickie : combiner IoT et software pour réduire l'impact carbone des déchets",
+      "speakers": ["Aurélien Conte — Heyliot", "Tony Chouteau — Mobil-inn"],
+      "feedbackFrom": [],
+      "summary": "- Deux entreprises intégrées : Heyliot fournit une **sonde de remplissage** laser (mesure jusqu'à 4 m, installation en moins de 5 minutes, autonomie annoncée de 5 à 8 ans) pour les points d'apport volontaire ; Mobil-inn édite iSmartCollect, logiciel de gestion de parc et de tournées.\n- Données remontées via Sigfox, LoRa ou LTE-M (en secours quand les autres réseaux manquent), reçues en callbacks HTTP, décodées et exposées par API ; **synchronisation bidirectionnelle** du parc entre les deux sociétés pour rester invisible au client.\n- Côté terrain : tablette à **gros boutons** pour des agents gantés qui collectent la nuit, saisie manuelle du remplissage si un point n'est pas sondé, création de tournées *« en à peine 5 clics »* à partir d'un seuil de remplissage.\n- Mobil-inn filtre les mesures (valeurs constantes, pics aberrants) pour ne garder que ce qui sert à des utilisateurs *« pas forcément informaticiens »*.\n- Cas cités : Pays de Montbéliard (environ 1 400 sondes) et une collecte de textiles près de Bordeaux (plus de 850 sondes), où le remplissage moyen avant collecte serait passé de moins de la moitié à près de 80 % (chiffres des speakers).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "XqqUFk9imzY",
+        "title": "[DevFest Perros-Guirec 2024] Combiner IoT et software pour réduire l'impact carbone des déchets",
+        "publishedAt": "2024-10-18",
+        "transcript": true
+      }
+    },
+    {
+      "id": "connecter-efficacement-les-applications-d-ia-dans-les-systemes-iot-industriels",
+      "day": "2024-10-04",
+      "type": "talk",
+      "title": "Comment connecter efficacement les applications d'IA dans les systèmes IoT industriels, de l'Edge au Cloud",
+      "speakers": ["Thomas Leseney — Netvolt"],
+      "feedbackFrom": [],
+      "summary": "- Constat : l'IoT industriel produit les données, l'IA s'en nourrit, mais entre une éolienne isolée et un cluster GPU dans le cloud, le chemin est *« tortueux »* ; les sites doivent **continuer à fonctionner sans connectivité**.\n- La pyramide hiérarchique des SI industriels des années 80 n'est pas faite pour l'IoT ; les intégrations point à point finissent en *« gros tas de spaghetti »*.\n- Démarche : découplage spatial (pub/sub, MQTT), puis temporel (flux persistés type Kafka), cache pour redescendre les modèles (type Redis), service mesh pour des milliers de services d'inférence ; mais **4 à 6 technologies**, c'est trop de formation, de surface d'attaque et de clusters pour un industriel.\n- Choix de Netvolt : **NATS** (CNCF, écrit en Go, un binaire d'environ 16 Mo sans dépendance) qui couvre pub/sub, request/reply, flux persistés (JetStream), clé-valeur et exécution de charges ; sécurité zero trust décentralisée.\n- Atout clé : les **leaf nodes**, qui relient un site local à un cluster sans en faire partie, avec stockage local et resynchronisation automatique, y compris vers des partenaires externes.\n- Démo : reconnaissance de visage servie en local, avec bascule transparente vers une instance cloud aux États-Unis quand le service local est coupé (latence visible), puis tirage au sort d'un t-shirt via un microservice dans le navigateur.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "kjLJm4AZrJQ",
+        "title": "[DevFest Perros-Guirec 2024] Connecter efficacement les applications d'IA dans les systèmes IOT",
+        "publishedAt": "2024-10-18",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-reseau-lora-de-rennes-metropole",
+      "day": "2024-10-04",
+      "type": "talk",
+      "title": "Le réseau LoRa de Rennes Métropole, un réseau pionnier dont l'histoire ne fait que commencer",
+      "speakers": ["Pierre Renault — Rennes Ville et Métropole"],
+      "feedbackFrom": [],
+      "summary": "- Huit ans de retour d'expérience d'une collectivité : expérimentation en 2015, réseau en 2016 sur la gestion des bâtiments, passage à l'échelle métropolitaine vers 2019-2020 avec la **télérelève des points d'apport volontaire**.\n- Aujourd'hui environ 70 antennes, plus de 4 000 capteurs, 25 cas d'usage (déchets, énergie, îlots de chaleur avec 120 stations du CNRS et Rennes 2, CO2 dans les écoles) ; réseau **public, mutualisé et réservé à l'intérêt général**, piloté en interne par deux personnes à temps partiel.\n- Pourquoi un réseau propre plutôt qu'un opérateur : maîtrise de l'infrastructure, indépendance technologique, choix de capteurs, et **abonnements évités** qui ont convaincu la direction des finances (coût annoncé d'environ 400 000 € par an).\n- Leçons : les cartes de couverture théoriques *« ça suffit jamais »*, il faut aller sur le terrain ; pas de déploiement industriel possible en gestion technique des bâtiments, *« chaque bâtiment est différent »*.\n- Changement d'échelle à venir : pilotage de l'éclairage public, télérelève de l'eau (jusqu'à 240 000 compteurs à terme), passage visé de 5 000 à 60 000 capteurs.\n- Points durs : un cadre juridique calqué sur la fibre, inadapté ; la gouvernance d'un réseau mutualisé ; la propriété des données ; la cybersécurité (CRA, NIS 2). Refus assumé d'usages sensibles (hygrométrie du Musée de Bretagne, sol connecté en Ehpad).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "SEX8hv5zV50",
+        "title": "[DevFest Perros-Guirec 2024] Le réseau LoRa de Rennes Métropole",
+        "publishedAt": "2024-10-18",
+        "transcript": true
+      }
+    },
+    {
+      "id": "domotique-approche-plus-ecoresponsable-et-factures-reduites",
+      "day": "2024-10-04",
+      "type": "talk",
+      "title": "Comment la domotique peut-elle vous aider à adopter une approche plus écoresponsable tout en réduisant vos factures ?",
+      "speakers": ["Pierre Andrieux — Capgemini"],
+      "feedbackFrom": [],
+      "summary": "- Cas personnel plutôt que client, pour éviter d'anonymiser : la domotique comme **porte d'entrée la plus accessible** de l'IoT ; à main levée, une partie seulement de la salle en fait chez elle.\n- Usages : détecter une fuite d'eau pendant les vacances (vécu par le speaker), connaître le **talon de consommation** électrique, sécurité, confort, accessibilité ; ordres de grandeur cités : environ 150 L d'eau par jour et par personne, 2 223 kWh d'électricité.\n- **Home Assistant** préféré à Jeedom, ThingsBoard, openHAB ou Domoticz pour sa communauté (Python, applis natives, mises à jour quasi hebdomadaires) ; installer l'OS plutôt que la version conteneur, dont un collègue regrette les mises à jour.\n- Limite relevée : base SQL et **historique d'environ 30 jours** par défaut, d'où l'export vers InfluxDB pour les séries temporelles.\n- Installation : vieille Surface Pro de 2014, dongle Zigbee Sonoff et module Lixee branché sur le Linky pour la consommation en temps réel ; démo en direct du dashboard, des groupes de volets, des automatisations et du module énergie (part d'électricité bas carbone).\n- Prochaines étapes : télérelève du compteur d'eau, contribution au projet, modèle de ML pour reconnaître les appareils à leur pic de consommation.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "9hamzZTiUNU",
+        "title": "[DevFest Perros-Guirec 2024] Home Assistant",
+        "publishedAt": "2024-10-18",
+        "transcript": true
+      }
+    },
+    {
+      "id": "pourquoi-votre-iot-merite-mieux-que-grafana",
+      "day": "2024-10-04",
+      "type": "talk",
+      "title": "Pourquoi votre IoT mérite mieux que Grafana",
+      "speakers": ["Pierre Papin — SenX", "Xavier Marin — SenX (absent, malade)"],
+      "feedbackFrom": [],
+      "summary": "- Pierre Papin présente seul, Xavier Marin, créateur de Discovery, étant malade. Point de départ : *« une poubelle ou un avion, c'est des time series »*, et SQL n'est pas fait pour le traitement du signal ; d'où **Warp 10** et son langage WarpScript (environ 1 300 fonctions).\n- Reproches à Grafana pour l'IoT : plugins qui cassent avec les API, **une requête par tuile**, impossibilité de masquer ce qui va bien, intégration dans un autre site limitée à une iframe.\n- **Discovery** : web components open source, *« vrai dashboard as code »* : le dashboard est généré par un script, ce qui permet boucles et conditions (un carré vert si tout va bien, des courbes sinon).\n- Démo dans VS Code sur la sandbox Warp 10 : 520 000 points réduits à 10 000 par **LTTB** pour garder la forme de la courbe, puis une tuile par série générée en boucle, **avec une seule requête** pour toutes les tuiles.\n- Les tuiles communiquent par **événements typés** (variables, styles, SVG, popups), ce qui évite de rafraîchir tout le dashboard ; démos d'une barrière SVG animée et d'un dashboard générant un autre dashboard.\n- Autres nouveautés évoquées : format d'archivage HFiles (utilisé par Clever Cloud selon le speaker) et un agent conversationnel pour séries temporelles ; offre SaaS en marque blanche.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "Rrvi2Ly3IVE",
+        "title": "[DevFest Perros-Guirec 2024] Pourquoi votre IoT mérite mieux que Grafana",
+        "publishedAt": "2024-10-18",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Où est Charlie ? (dans mes données IoT géo-référencées) (Benoit Rouxel et Erwan Duval, Thales ; pas de vidéo)",
+    "Mot d'introduction (organisateurs, non filmé)",
+    "Le mot de la fin (organisateurs, non filmé)"
+  ],
+  "sources": [
+    {
+      "label": "Programme officiel (archives Code d'Armor)",
+      "url": "https://devfest.codedarmor.fr/archives/2024/devfest/"
+    },
+    {
+      "label": "Page de l'événement (GDG Community, GDG Code d'Armor)",
+      "url": "https://gdg.community.dev/events/details/google-gdg-code-darmor-presents-devfest-perros-guirec-2024/"
+    },
+    {
+      "label": "Playlist YouTube DevFest Perros-Guirec 2024 (chaîne Code d'Armor)",
+      "url": "https://www.youtube.com/playlist?list=PLUVP9Ho1VmTm9RmJ1Kx2ZkMBSX185_oAl"
+    },
+    {
+      "label": "Posts LinkedIn et blogs : aucun retour participant trouvé (6 recherches web, octobre 2026)"
+    }
+  ]
 }

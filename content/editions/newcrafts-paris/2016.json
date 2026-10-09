@@ -12,6 +12,7 @@
   "dateConfidence": "ok",
   "note": "« NCrafts Conference 2016 » / « New Crafts 2016 » : software craftsmanship, architecture, design et pratiques. Site ncrafts.io consulté via la Wayback Machine.",
   "status": "pending",
+  "synthesisUpdatedAt": "2026-10-09",
   "sessions": [
     {
       "id": "life-beyond-relational-database-event-sourcing-in-haskell",
@@ -29,6 +30,182 @@
       }
     },
     {
+      "id": "using-fsharp-and-genetic-programming-to-play-computer-bridge",
+      "day": "2016-05-12",
+      "type": "talk",
+      "title": "Using F# and genetic programming to play computer bridge",
+      "speakers": ["Felienne Hermans"],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript), sans retour de participant lu :\n\n- Le programme annonce le récit de la construction de son bot de bridge, inscrit au championnat du monde de bridge informatique de septembre 2016, avec un focus sur la phase d'**enchères**, la plus difficile.\n- Sur scène, elle modélise les enchères en F# comme une correspondance entre des milliards de mains possibles et 35 enchères, via un DSL construit pas à pas. Quatre conseils : **un langage simple vaut mieux qu'un modèle parfait** (les trous se corrigent par des tests ou des assertions), un motif répété annonce une abstraction, lire son langage à voix haute, bien connaître le langage hôte.\n- Les opérateurs infixes surchargés permettent au code de se lire comme du langage naturel.\n- Deuxième partie, la **programmation génétique** : une démo fait muter une chaîne vers une cible (distance de Levenshtein comme fitness), puis des systèmes d'enchères aléatoires sont évalués contre une simulation Monte-Carlo précalculée. Clonage, mutation et croisement deviennent triviaux grâce au DSL, alors que croiser du code source ordinaire demanderait parsing et compilation.\n- Résultats capturés la veille au soir : certaines règles sont sensées, d'autres surprenantes ; elle y voit surtout une source d'idées.\n- Questions de la salle : enchères du partenaire et des adversaires, obligation de déclarer son système en compétition, risque d'optimum local (elle injecte des individus aléatoires), et la simulation à réserver aux cas où *« on manque de connaissance profonde du système »*.",
+      "summarySources": ["program", "transcript"],
+      "video": {
+        "youtubeId": "HHfv7pabsBU",
+        "title": "Felienne Hermans - Using F# and genetic programming to play computer bridge - NewCrafts 2016",
+        "publishedAt": "2026-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "docker-on-windows-why-didnt-we-have-that-from-the-beginning",
+      "day": "2016-05-12",
+      "type": "talk",
+      "title": "Docker on Windows, why didn't we have that from the beginning",
+      "speakers": ["Jean-Laurent de Morlhon — Docker"],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript), sans retour de participant lu :\n\n- Le speaker travaille dans le bureau R&D de Docker à Paris, sur les nouveaux outils **Docker for Mac et Docker for Windows**, alors en bêta privée.\n- Point de départ : l'ancien Docker Toolbox (VirtualBox et Docker Machine) échouait à l'installation sous Windows **plus d'une fois sur deux**, et le client devait être reconfiguré à chaque terminal.\n- Nouvelle approche : l'hyperviseur natif (Hypervisor Framework via xhyve sur Mac, Hyper-V sous Windows) et une VM Alpine allégée (Moby) qui fait tourner les conteneurs.\n- Réseau réécrit en OCaml (bibliothèques MirageOS, par l'équipe d'Unikernel rachetée par Docker) pour rendre les conteneurs accessibles sur localhost sans souci de VPN ; partage de dossiers, événements fichiers, émulation ARM via QEMU. Côté Windows : interface en C#, démons en Go, petit serveur DNS embarqué.\n- Pratiques d'une équipe de 15 à 20 personnes (Paris, Cambridge, San Francisco) : une release par semaine, interdiction de fusionner son propre code, tests d'intégration compliqués par l'absence de virtualisation imbriquée dans les clouds publics.\n- Démos en direct très perturbées par l'absence de réseau. Questions de la salle : named pipes, pas encore de conteneurs Windows ni macOS, stratégie de test.",
+      "summarySources": ["program", "transcript"],
+      "video": {
+        "youtubeId": "C5-R7gCH-vY",
+        "title": "Jean Laurent de Morlhon-Docker on Windows, why didn't we have that from the beginning-NewCrafts 2016",
+        "publishedAt": "2026-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "property-based-testing-and-domain-invariants-for-the-rest-of-us",
+      "day": "2016-05-12",
+      "type": "talk",
+      "title": "Property-based testing (& domain invariants) for the rest of us",
+      "speakers": ["Romeu Moura"],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript), sans retour de participant lu :\n\n- Le programme promet des tests de propriétés **sur du code legacy**, pour réduire la dette de tests avec des tests moins nombreux, plus lisibles et qui documentent mieux le problème.\n- Thèse : un domaine métier regorge de **propriétés, c'est-à-dire d'invariants toujours vrais**, que les experts métier énoncent spontanément ; le BDD les jette pour ne garder que des exemples.\n- Progression du test par exemples (kata du bowling) au test paramétré puis au test de propriété : *« Ne confondez pas manque de familiarité et difficulté. »* Chaque étape révèle un défaut de design (obsession des primitives, agrégat manquant). Une propriété faible se complète par des tests classiques.\n- Sur un exemple de prescription médicale en Java 6, il montre que les valeurs « de remplissage » des tests actuels sont déjà de l'aléatoire figé, et propose des générateurs chaînés avec shrinking.\n- Réponses aux objections : un échec aléatoire en CI se traite comme un bug signalé par la QA ; *« une barre verte est une illusion dangereuse »*.\n- Questions de la salle : voir le test échouer au moins une fois, propriétés techniques (idempotence, sérialisation aller-retour) distinctes des propriétés métier, PBT à tous les niveaux de la pyramide. Talk sans slides, à partir de code commenté.",
+      "summarySources": ["program", "transcript"],
+      "video": {
+        "youtubeId": "4RpwHE_MmAI",
+        "title": "Romeu Moura-Property-based testing (& domain invariants) for the rest of us - NewCrafts 2016",
+        "publishedAt": "2026-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "lets-code-twitter-from-scratch-with-cqrs-and-eventsourcing",
+      "day": "2016-05-12",
+      "type": "talk",
+      "title": "Let's code Twitter from scratch with CQRS & EventSourcing",
+      "speakers": ["Jean Helou", "Florent Pellet"],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript), sans retour de participant lu :\n\n- Le programme pose la question *« et si la complexité d'un logiciel tenait plus au métier qu'à la technique ? »* et annonce un live coding indépendant du langage et du framework.\n- **Live coding à deux voix**, piloté par les tests : un agrégat reçoit des commandes, prend des décisions enregistrées comme **événements immuables**, et ces événements reconstruisent l'état utile à la décision suivante. Support : un clone de Twitter où l'on « quack » des messages.\n- Étapes : publication, suppression, garde contre la double suppression, correction d'un bug en direct, puis une interface d'event store en ajout seul.\n- Côté CQRS, des projections dédiées à la lecture (compteur, timeline), au stockage libre ; un event bus minimal suffirait selon eux en production, *« sans RabbitMQ »*.\n- Nombreuses questions de la salle : trop d'événements signale un mauvais découpage d'agrégat ; corrections par événements de compensation ; projections recalculées quand les requêtes changent ; *« un snapshot détruit de l'information »*.\n- Prolongé le lendemain par l'atelier « CQRS & EventSourcing discovery » (Florent Pellet). Transcription des passages de code très dégradée.",
+      "summarySources": ["program", "transcript"],
+      "video": {
+        "youtubeId": "lWiz8ZauF4A",
+        "title": "Jean Helou Florent PELLET-Let's code Twitter from scratch with CQRS & EventSourcing - NewCrafts 2016",
+        "publishedAt": "2026-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "beyond-flux-going-full-cycle-with-functional-reactive-programming",
+      "day": "2016-05-12",
+      "type": "talk",
+      "title": "Beyond flux: going full cycle with functional reactive programming",
+      "speakers": ["Clément Delafargue — Clever Cloud"],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript), sans retour de participant lu :\n\n- Historique des interfaces web : jQuery, puis le two-way data binding (*« une idée terrible »* pour la complexité), puis la **boucle de rendu unidirectionnelle** de React.\n- Critique de Flux : état encore géré à la main, implémentation de référence peu utilisée, *« 15 implémentations concurrentes »* ; on peut souvent utiliser React sans Flux.\n- Redux simplifie par trois principes : source de vérité unique, état en lecture seule, transformations par fonctions pures, ce qui facilite test, undo/redo et inspection.\n- RxJS et les observables, avec le rappel que le terme FRP vient de Conal Elliott et désigne en principe le temps continu.\n- **Cycle.js** pousse l'idée au bout : l'application est une fonction d'observables vers observables (Model-View-Intent), et des drivers isolent les effets de bord, remplaçables par des mocks pour les tests.\n- Une seule question de la salle, sur F#, à laquelle il répond ne pas connaître assez la plateforme.",
+      "summarySources": ["program", "transcript"],
+      "video": {
+        "youtubeId": "-HJaWEz7R1k",
+        "title": "Clement Delafargue -Beyond flux going full cycle with functional reactive programming-NewCrafts 2016",
+        "publishedAt": "2026-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-end-of-server-management-hosting-have-to-become-a-commodity",
+      "day": "2016-05-12",
+      "type": "talk",
+      "title": "The end of server management: hosting have to become a commodity",
+      "speakers": ["Quentin Adam — Clever Cloud"],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript), sans retour de participant lu :\n\n- Vidéo titrée par erreur « NewCrafts 2025 » : sa description (« Recorded talks from NewCrafts 2016 ») et le programme 2016 (12 mai, 10h45, salle Orval) la rattachent à cette édition.\n- Le programme pose la question : *« assistons-nous à la révolution industrielle de la production intellectuelle ? »* Le speaker, fondateur d'une société d'automatisation de l'hébergement (Clever Cloud), parle depuis son expérience d'entrepreneur.\n- Thèse : **l'ordinateur est le moteur de l'industrialisation du travail intellectuel** ; le logiciel n'est plus un investissement figé (cycle en V, amortissement sur trois ans) mais un service en amélioration continue, et le développeur devient architecte de la « business factory ».\n- L'hébergement doit devenir **une commodité comme l'électricité** : personne n'achète une centrale pour brancher une cafetière. Serveurs gérés à la main, même dans le cloud, et tâches manuelles des ops ne sont pas industriels.\n- **Infrastructure immuable** : une connexion SSH en production déclenche une alerte rouge chez Clever Cloud ; on ne crée pas d'historique sur un serveur, on redéploie une instance neuve à chaque mise à jour ou panne ; compte l'uptime du service, pas celui du serveur. Le travail du développeur s'arrête au `git push`, déploiement sans fenêtre de maintenance.\n- Sécurité : le nombre de CVE croît, un vieux logiciel n'est pas « éprouvé » mais vieux ; fin de la métaphore de la forteresse, tout chiffrer et authentifier.\n- Lecture critique : DevOps ne signifie pas que les développeurs remplacent les ops (pique contre l'usage naïf de Docker) ; chacun doit choisir son niveau de dépendance et confier à des services managés ce qui n'apporte pas de valeur (exemple de Twilio pour les SMS). Transcription automatique de qualité moyenne.",
+      "summarySources": ["program", "transcript"],
+      "video": {
+        "youtubeId": "BRMASq-8VmQ",
+        "title": "Quentin Adam - The end of server management hosting have to become a commodity - NewCrafts 2025",
+        "publishedAt": "2026-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "distributed-events-with-web-api",
+      "day": "2016-05-12",
+      "type": "talk",
+      "title": "Distributed events with Web API",
+      "speakers": ["Stijn Volders"],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript), sans retour de participant lu :\n\n- Vidéo titrée par erreur « NewCrafts 2025 » : sa description (« Recorded talks from NewCrafts 2016 ») et le programme 2016 (12 mai, 11h45, salle Gallia) la rattachent à cette édition.\n- Retour d'expérience, en production, d'un consultant .NET freelance belge sur le projet de billettique de **De Lijn**, le transporteur public flamand : 4 500 consoles conducteur et 12 000 valideurs, soit 16 500 appareils embarqués synchronisés en 3G.\n- Problème : une **« green list »** des contrats de transport payés en ligne ou par virement, à écrire sur la carte sans contact dès qu'elle passe devant un valideur ; des bus éteints pendant les week-ends et les deux mois de vacances doivent rattraper leur retard.\n- Solution : un flux d'**événements immuables** exposé façon Atom par une Web API, avec une ressource « current » stable ; l'appareil remonte les pages en arrière jusqu'au dernier événement connu, puis les rejoue dans l'ordre comme des projections (une base de plus d'un mois est remplacée par un fichier complet régénéré chaque nuit).\n- **Mise à l'échelle par le cache HTTP** : nginx en reverse proxy, pages anciennes cachées longtemps (un mois), page courante cinq minutes ; selon ses calculs, on passe de près de 200 000 connexions et requêtes base par heure à six.\n- **Bande passante 3G limitée par les ETags** et requêtes conditionnelles (304 Not Modified) : environ 165 Go au lieu de près de 2 To pour la flotte, un gain à mesurer selon la fréquence de modification et la taille des pages.\n- Questions de la salle : l'appareil renvoie un événement quand le contrat est écrit sur la carte, pour qu'il sorte de la liste ; cas de l'abonnement des plus de 65 ans devenu payant (400 000 virements passés par ce mécanisme).",
+      "summarySources": ["program", "transcript"],
+      "video": {
+        "youtubeId": "3FSVdCbDi_k",
+        "title": "Stijn Volders-Distributed events with Web API - NewCrafts 2025",
+        "publishedAt": "2026-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "lets-reboot-ddd",
+      "day": "2016-05-12",
+      "type": "talk",
+      "title": "Let's reboot DDD!",
+      "speakers": ["Jeremie Grodziski", "Thomas Pierrain"],
+      "feedbackFrom": [],
+      "summary": "D'après le descriptif du programme (pas de transcript disponible, aucun retour de participant lu) :\n\n- Vidéo titrée par erreur « NewCrafts 2025 » : sa description (« Recorded talks from NewCrafts 2016 ») et le programme 2016 (12 mai, 11h45, salle Sagres) la rattachent à cette édition. Le programme ne nomme que Jeremie Grodziski ; le titre de la vidéo ajoute Thomas Pierrain.\n- Constat de départ : introduit par Eric Evans en 2004 avec le *Blue Book*, le **Domain-Driven Design** a reçu des retours très positifs mais reste **peu utilisé sur le terrain** dans la plupart des projets.\n- Question posée : le DDD est-il difficile en soi, ou est-ce **la façon dont on le présente** qui le rend difficile à saisir et inaccessible ?\n- Promesse : à partir de leurs expériences *« plus ou moins réussies »*, montrer ce qu'est le DDD avec une approche simple et accessible, et en quoi il aide au quotidien, pour faciliter l'entrée des débutants et « rebooter » le DDD pour les experts.\n- Le contenu réel du talk (48 minutes) reste à résumer : YouTube ne propose pas encore de sous-titres pour cette vidéo.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "GT0u6iauiaM",
+        "title": "Jeremie Grodziski & Thomas Pierrain - Let's reboot DDD! - NewCrafts 2025",
+        "publishedAt": "2026-10-08",
+        "transcript": false
+      }
+    },
+    {
+      "id": "more-software-less-code",
+      "day": "2016-05-13",
+      "type": "talk",
+      "title": "More Software, Less code",
+      "speakers": ["Fredy Fadel — Aspectize"],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript), sans retour de participant lu :\n\n- Le programme annonce pourquoi *« DRY est difficile mais WET est un désastre »*, et des techniques d'AOP en .NET pour rendre le réutilisable réutilisé.\n- Thèse : **coder n'est pas faire du logiciel**. Le code est une façon ancienne de donner des détails à une machine, à minimiser. Le speaker, développeur depuis près de 40 ans et fondateur d'Aspectize (2007), préfère l'idée de « faire pousser » un logiciel jamais fini et toujours livrable.\n- DRY ne veut pas dire factoriser le code : c'est la connaissance qui doit être unique. L'incident left-pad de npm illustre une réutilisation ratée.\n- Proposition : **séparer le code technique du code métier** par la programmation orientée aspect et le principe d'Hollywood ; il évoque aussi des outils sans code (IFTTT, Zapier).\n- Démo du transparent proxy .NET, où quelques lignes concentrent la technique ; il affirme n'avoir écrit qu'*« un seul try/catch en dix ans »*.\n- Pas de vraie séance de questions, le temps restant passant dans la démo.",
+      "summarySources": ["program", "transcript"],
+      "video": {
+        "youtubeId": "EIfna78GbJ8",
+        "title": "Fredy Fadel - More Software, Less code - NewCrafts 2016",
+        "publishedAt": "2026-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "product-vs-craft",
+      "day": "2016-05-13",
+      "type": "talk",
+      "title": "Product vs craft",
+      "speakers": ["Juan Delgado"],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript), sans retour de participant lu :\n\n- Vidéo titrée « NewCrafts 2015 », mais le talk figure au programme 2016 (13 mai, 10h45) et la description indique « Recorded talks from NewCrafts 2016 ».\n- Le speaker, basé à Londres dans un studio de produits digitaux (celui du jeu Monument Valley), dit ne pas venir « troller » le mouvement craft mais ouvrir le débat.\n- Thèse : **la qualité n'est pas une propriété intrinsèque du code**. TDD, CI ou CD sont des outils avec des compromis, à adapter à la vision, à la maturité et au contexte du produit.\n- Exemples : un client mail « le plus beau » face au « plus sûr » ; une startup de billetterie mobile démarrée avec un Google Docs derrière une API ; un écran de connexion minimal au premier sprint qui choque le client ; VMware (fiabilité) face à Facebook (time to market) ; le robot sur Mars et ses règles de style strictes.\n- Citation débattue avec la salle : *« il est acceptable d'écrire du code moche si cela aide vos utilisateurs »*, en précisant que ce n'est pas un passe-droit.\n- Questions de la salle : faire évoluer les compromis une fois le modèle économique validé, dette et code jetable (transparence avec le métier), maintenabilité (présenter les options au client, qui décide).",
+      "summarySources": ["program", "transcript"],
+      "video": {
+        "youtubeId": "KrJXzZ2Meck",
+        "title": "Juan Delgado - Product vs craft - NewCrafts 2015",
+        "publishedAt": "2026-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "production-lessons",
+      "day": "2016-05-13",
+      "type": "talk",
+      "title": "Production Lessons",
+      "speakers": ["Greg Young"],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript), sans retour de participant lu :\n\n- **Talk improvisé** à la place du « Private Eye » annoncé au programme (13 mai, 11h45) : le portable prévu pour la démo a pris l'eau, Greg Young le remplace par un retour d'expérience sur la production.\n- Six Sigma ne suffit pas en logiciel : à 300 000 requêtes par seconde, 3,4 défauts par million font environ un échec par seconde.\n- **Les moyennes cachent les données** : une « moyenne au 95e percentile » ou 99 % de disponibilité sans distribution des pannes ne veulent rien dire ; il conseille histogrammes de percentiles et un cours de statistiques.\n- Les abstractions ont un coût : un bug de `FileStream.Flush` en .NET a pris plus d'un mois à trouver ; la virtualisation aussi (son MacBook surpassait une grosse instance cloud).\n- Conseils : « debugging philosophique » plutôt que débogueur pas à pas, environnement et configuration écrits dans les logs au démarrage, paquet logs et dump mémoire, outils scriptables, files d'attente bornées et surveillées.\n- Sur quatre projets mesurés, 60 à 70 % des tickets de support ne venaient pas de leur code. La couverture n'est qu'une métrique négative ; il préfère des **tests aléatoires ou basés sur un modèle** (Event Store testé avec coupures de courant et partitions réseau).",
+      "summarySources": ["program", "transcript"],
+      "video": {
+        "youtubeId": "72ex5l1yG0E",
+        "title": "Greg Young - Production Lessons - NewCrafts 2016",
+        "publishedAt": "2026-10-08",
+        "transcript": true
+      }
+    },
+    {
       "id": "crafty-communications",
       "day": "2016-05-13",
       "type": "talk",
@@ -42,11 +219,92 @@
         "publishedAt": "2026-10-02",
         "transcript": true
       }
+    },
+    {
+      "id": "mukanren-running-the-little-things-backwards",
+      "day": "2016-05-13",
+      "type": "talk",
+      "title": "µKanren: Running the little things backwards",
+      "speakers": ["Bodil Stokke"],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript), sans retour de participant lu :\n\n- Le programme présente µKanren comme un langage relationnel minimal qui réduit la programmation logique à ses primitives, à implémenter **depuis les premiers principes**.\n- Ouverture : `appendo` exécuté « à l'envers », qui énumère toutes les paires de listes produisant un résultat donné ; une *« magie profonde »* aux composants très simples.\n- Concepts : un état (substitutions et compteur de variables), des flux paresseux d'états, et des **goals, fonctions d'un état vers un flux d'états satisfaisants**, composables.\n- **Live coding** dans Emacs avec Pure, un langage de réécriture de termes : unification, égalité, `call/fresh`, disjonction et conjonction (*« un bind monadique, mais pas de panique »*), puis flux paresseux entrelacés plutôt qu'une recherche en profondeur à la Prolog.\n- L'exemple initial fonctionne, sous les applaudissements, au moment exact où le temps s'achève. Pas de séance de questions formelle ; ressources sur minikanren.org et implémentations dans plusieurs langages sur son GitHub.",
+      "summarySources": ["program", "transcript"],
+      "video": {
+        "youtubeId": "YwljE88txWA",
+        "title": "Bodil Stokke - Mukanren Running the little things backwards - NewCrafts 2016",
+        "publishedAt": "2026-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "congruent-design-salient-testing",
+      "day": "2016-05-13",
+      "type": "lightning",
+      "title": "Congruent Design, Salient Testing",
+      "speakers": ["Cyrille Martraire"],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript), sans retour de participant lu :\n\n- Lightning talk de 12 minutes, qui assume d'expliquer *« des choses simples de façon compliquée »* avec des mots intimidants.\n- **Congruence** : simplifier un modèle tout en gardant la propriété qui compte. Exemples : un graphique en barres pour comparer des hauteurs, le plan du métro de Londres (seule la connexité compte), la projection de Mercator (qui conserve les angles). En DDD, passer du domaine au code, c'est retirer ce qui ne compte pas.\n- **Saillance** : ce qui se remarque par **contraste avec un cas standard**.\n- Cas réel : une méthode de calcul de dates aux nombreux paramètres, avec au moins 200 000 combinaisons selon lui, qu'un collègue jugeait couverte par environ 80 tests.\n- Méthode proposée : partir d'un cas *vanilla* et tester un par un chaque écart réaliste, par exemple avec des test data builders aux valeurs par défaut. *« On ne peut pas avoir toutes les maladies à la fois. »*",
+      "summarySources": ["program", "transcript"],
+      "video": {
+        "youtubeId": "U0cRn4Llgao",
+        "title": "Cyrille Martraire - Congruent Design, Salient Testing - NewCrafts 2016",
+        "publishedAt": "2026-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "advanced-search-for-your-legacy-application",
+      "day": "2016-05-13",
+      "type": "talk",
+      "title": "Advanced search for your legacy application",
+      "speakers": ["David Pilato — Elastic"],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript), sans retour de participant lu :\n\n- Le programme annonce un live coding : ajouter Elasticsearch à une application legacy (RestX, Hibernate, PostgreSQL/MySQL) **sans changer les habitudes de développement** ni écrire de SQL complexe.\n- Le talk s'appuie sur une expérience aux douanes françaises. Cas d'usage : une application Java qui cherche des personnes avec des requêtes `LIKE`.\n- Il écarte l'ETL périodique (pas de temps réel, suppressions mal gérées) et préfère **écrire dans Elasticsearch dans la même transaction que la base**, à partir de l'objet déjà en mémoire, en dénormalisant en un seul document plutôt qu'en recopiant les tables.\n- Live coding : indexation, BulkProcessor, requêtes, mapping personnalisé (autocomplétion par edge n-gram, géolocalisation), agrégations et navigation à facettes sur un million de documents ; un broker ou Logstash peut servir de tampon.\n- Questions de la salle : coût de l'autocomplétion, chiffrement, comparaison avec Solr (*« si vous êtes content de Solr, gardez-le »*).",
+      "summarySources": ["program", "transcript"],
+      "video": {
+        "youtubeId": "SNapCoxudE4",
+        "title": "David Pilato - Advanced search for your legacy application- NewCrafts 2016",
+        "publishedAt": "2026-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rise-of-the-machines-automate-your-development",
+      "day": "2016-05-13",
+      "type": "talk",
+      "title": "Rise of the Machines - Automate Your Development",
+      "speakers": ["Sven Peters — Atlassian"],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript), sans retour de participant lu :\n\n- Vidéo titrée par erreur « NewCrafts 2025 », avec une description qui renvoie aussi à 2025 ; le talk figure pourtant au programme 2016 (13 mai, 15h45, salle Sagres), et le speaker date sa découverte de Hudson à *« il y a dix ans »*.\n- Thèse : l'intégration et le déploiement continus ne sont que **la pointe de l'iceberg** ; l'évangéliste d'Atlassian classe les bots en cinq familles (code, tests, ops, support, reporting), plus « Agent Charlie », des scripts Puppet, shell et Ruby qui installent le poste d'un nouvel arrivant.\n- **Bots de code** : le ticket Jira change d'état à partir de la branche et de la pull request (au-delà des smart commits), hooks Git qui interdisent de brancher depuis un build rouge ou de fusionner avant deux approbations, suggestion automatique de relecteurs, fusion en cascade des correctifs vers les branches plus récentes.\n- **Bots de test** : « Dr. Code » mesure la santé du code (plus de nouveaux tests JUnit 3) et affiche les fautifs sur un « hall of shame », ou un « hall of fame » ; comparaison de captures d'écran ; répartition dynamique des tests fonctionnels ; détecteur de tests instables qui les met en quarantaine et ouvre un ticket (817 cas en six mois chez l'équipe Confluence).\n- **Ops, support, reporting** : alerte PagerDuty envoyée directement à l'équipe propriétaire déclarée dans le descripteur de déploiement, notes de version générées depuis les tickets, bot « Hercules » qui analyse les logs clients avec la base de connaissances, objets et bots pour raccourcir ou rappeler les stand-ups et pour les équipes réparties sur plusieurs fuseaux.\n- Conseils : prendre le temps (10 % du sprint, hackathons trimestriels de 24 heures), et **traiter les scripts comme du code de production** (gestion de version, revue, tests, scripts de déploiement). Créer de la valeur client reste, selon lui, un travail humain. Une seule question de la salle, sur le stockage des métriques des bots, non standardisé.",
+      "summarySources": ["program", "transcript"],
+      "video": {
+        "youtubeId": "WjR89f66hH4",
+        "title": "Sven Peters - Rise of the Machines - Automate Your Development - NewCrafts 2025",
+        "publishedAt": "2026-10-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "a-hundred-times",
+      "day": "2016-05-13",
+      "type": "keynote",
+      "title": "A Hundred Times....",
+      "speakers": ["Christophe Thibaut"],
+      "feedbackFrom": [],
+      "summary": "Sur scène (transcript), sans retour de participant lu :\n\n- **Keynote de clôture**. Le titre renvoie à l'*Art poétique* de Boileau (*« Cent fois sur le métier remettez votre ouvrage »*), cité par le programme : être agile suppose l'excellence technique, et donc d'apprendre un métier que les écoles n'enseignent pas.\n- Constat : les pratiques de qualité restent rares ; selon lui, environ 1 % des développeurs testent ou relisent systématiquement leur code. Le développement serait une **culture populaire plutôt qu'une industrie**.\n- Paradoxe illustré par une histoire : plus la tâche s'avère complexe, moins on teste et relit, car *« l'apparence du travail l'emporte sur sa substance »*.\n- Apprendre ensemble exige un lieu émotionnellement sûr où l'ignorance est permise (étude de Google sur les équipes, Menlo Innovations).\n- Revue des métaphores du métier et des cercles vicieux pression/qualité et « addiction au quick fix », d'après Jerry Weinberg.\n- Conseils : **inverser la courbe du quick and dirty**, brique par brique (tests développeur, revues « dur avec le code, doux avec le développeur », pair et mob programming). Conclusion : *« Ne me posez pas de questions, lisez ces livres. »*",
+      "summarySources": ["program", "transcript"],
+      "video": {
+        "youtubeId": "jdalbu8PIjM",
+        "title": "Christophe Thibaut - A Hundred Times - NewCrafts 2016",
+        "publishedAt": "2026-10-08",
+        "transcript": true
+      }
     }
   ],
   "sources": [
     { "label": "Programme des sessions NCrafts 2016 (ncrafts.io/2016/sessions, Wayback Machine)", "url": "https://web.archive.org/web/20160719231524/http://ncrafts.io:80/2016/sessions" },
     { "label": "Agenda NCrafts 2016 (Wayback Machine)", "url": "https://web.archive.org/web/20160723151202/http://ncrafts.io:80/2016/agenda" },
-    { "label": "Playlist YouTube NewCrafts Conference (Aardling)", "url": "https://www.youtube.com/playlist?list=PLIYFkjdIWfVxEKvmXrh7f6mmBdbXp5NgO" }
+    { "label": "Playlist YouTube NewCrafts Conference (Aardling)", "url": "https://www.youtube.com/playlist?list=PLIYFkjdIWfVxEKvmXrh7f6mmBdbXp5NgO" },
+    { "label": "Sous-titres automatiques YouTube (17 vidéos 2016) dans transcripts/" }
   ]
 }

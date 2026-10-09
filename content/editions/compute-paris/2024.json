@@ -9,7 +9,356 @@
   "url": "https://pydata.org/paris2024/",
   "programUrl": "https://pydata.org/paris2024/schedule",
   "dateConfidence": "ok",
-  "note": "Ancien nom : PyData Paris, relancée en 2024 par QuantStack et NumFOCUS (comité : Sylvain Corlay, Sandrine Pataut, Chiara Biscaro, Olivier Grisel, Emmanuel Jakobowicz, Guillaume Lemaître). Équipe à l'origine de Compute! Paris. Lieu : Cité des Sciences, 30 avenue Corentin Cariou, Paris 19e. Source : pydata.org/paris2024.",
-  "status": "pending",
-  "sessions": []
+  "edition": "Relance de PyData Paris après une pause depuis 2017",
+  "note": "Ancien nom : PyData Paris, relancée en 2024 par QuantStack et NumFOCUS (comité : Sylvain Corlay, Sandrine Pataut, Chiara Biscaro, Olivier Grisel, Emmanuel Jakobowicz, Guillaume Lemaître). Équipe à l'origine de Compute! Paris. Lieu : Cité des Sciences, 30 avenue Corentin Cariou, Paris 19e. Programme : 4 keynotes, 42 talks sur trois salles (Gaston Berger, Louis Armand Est et Ouest), deux sessions de lightning talks, puis une journée de sprints le 27 septembre (pandas, pyarrow, scikit-learn, skrub, geopandas, Jupyter pour l'enseignement, Make Open Data). Source : pydata.org/paris2024 et pretalx.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-09",
+  "revisit": "Corpus de retours participants très mince : un seul compte-rendu détaillé (Amir Cheikh Brahim, blog Devoteam reBirth) et trois posts Mastodon ; aucun post LinkedIn lu (recherche web sans résultat exploitable). À chercher : posts LinkedIn de participants et de speakers (#PyDataParis, pages QuantStack, :probabl., Hugging Face, Mistral AI, Carbonfact, Renault), comptes X/Bluesky de l'époque, et transcrire d'autres talks de la playlist (Dask, pixi, JupyterLite, Solara, MAPIE, metalearners, Code Carbon, lightning talks).",
+  "corpus": "Programme officiel pretalx (46 sessions) et pages pydata.org/paris2024 ; 15 transcripts YouTube (les 4 keynotes et 11 talks) sur les 48 vidéos de la playlist officielle publiées le 26 novembre 2024 ; un billet de participant (Amir Cheikh Brahim, Devoteam reBirth, 21 octobre 2024), les slides d'Olivier Grisel et d'Iisakki Rotko, trois posts Mastodon (septembre et octobre 2024), et l'annonce LinuxFr de Sylvain Corlay (août 2024).",
+  "limits": "Synthèse surtout fondée sur ce qui a été dit sur scène (transcripts automatiques, noms parfois déformés) plutôt que sur des retours d'audience : un seul compte-rendu de participant a été trouvé, aucun post LinkedIn. 31 talks ont une vidéo mais n'ont pas été transcrits ; les lightning talks, l'open mic et les sprints du 27 septembre ne sont pas couverts.",
+  "tldr": "Pour sa relance, PyData Paris 2024 a mis en avant **un écosystème scientifique Python qui défend l'IA ouverte, locale et maîtrisée** (modèles ouverts, fine-tuning léger, décisions sous incertitude) tout en consolidant ses briques (Arrow, Polars, Mamba 2.0, scikit-learn) et en posant la question de leur financement et de leur sécurité.",
+  "keyTakeaways": [
+    "Avant d'appeler un LLM, chercher la brique la plus simple : une RAG locale avec BM25 puis bi-encodeur et reranking fonctionne mieux que laisser le LLM faire la recherche (Jarmul).",
+    "Pour adapter un modèle ouvert : choisir sur le leaderboard et l'arène selon son budget, puis LoRA ou QLoRA et quantification 4 ou 8 bits, sans perte notable jusqu'à 6 bits selon la speaker (Noyan).",
+    "Ne pas utiliser le seuil de 0,5 par défaut : régler le seuil de décision sur une métrique métier (TunedThresholdClassifierCV) ou sur un modèle bien calibré, choisi avec une règle de score strictement propre comme la log loss ou le Brier score (Grisel, Lemaître et Senger).",
+    "Dans un système critique, placer des règles déterministes devant ou à côté du modèle (« Alexa stop », appel d'urgence) et tester par tranches de données versionnées avant toute promotion (Guenon des Mesnards).",
+    "Ne pas faire confiance aveuglément aux métriques RAG calculées par LLM (Ragas) : les cinq LLM juges testés donnent des valeurs différentes, prévoir des valeurs nulles et surveiller le coût (El Mawass et Knorps).",
+    "Pour expliquer la variation d'un KPI à un métier, le décomposer en effet volume et effet moyenne, additifs et visualisables en cascade, plutôt que présenter un modèle (Halford, outil icanexplain).",
+    "Évaluer soi-même les modèles fondation de séries temporelles sur ses propres données : pas de benchmark public standard et risque de contamination des évaluations des auteurs (Baggi et Orlandi).",
+    "Côté entreprises utilisatrices de Python : se préparer au Cyber Resilience Act (politique de sécurité, suivi des vulnérabilités, abonnement aux alertes de sécurité python.org) sans paniquer pour les contributeurs bénévoles (Ho)."
+  ],
+  "sessions": [
+    {
+      "id": "diy-personalization-when-how-and-why-to-build-your-own-models",
+      "day": "2024-09-25",
+      "type": "keynote",
+      "title": "DIY Personalization: When, how and why to build your own models",
+      "speakers": ["Katharine Jarmul — Thoughtworks"],
+      "feedbackFrom": [],
+      "summary": "- Keynote d'ouverture de la relance. Parallèle avec l'histoire de l'informatique : l'IA serait encore entre le stade « mainframe » centralisé et le stade hobbyiste ; la question est de savoir quel sera le **« VisiCalc de l'IA »**, l'usage qui la rendra personnelle. Un vote à main levée de la salle place l'IA entre les étapes 2 et 3.\n- Thèse : sans **confiance**, pas d'adoption générale ; comme pour HTTPS, la sécurité et la vie privée doivent devenir la norme côté utilisateur.\n- Démonstrations personnelles : une RAG locale (BM25, bi-encodeur, reranking, puis llamafile), *« un LLM n'est pas un moteur de recherche »* ; un recommandeur RSS personnel avec scikit-learn (TF-IDF et modèle bayésien, inspectable) ; légendage local de photos sur un Nextcloud ; données de montre via Gadgetbridge.\n- Les bulles de filtres sont selon elle un problème des **recommandeurs centralisés optimisés pour l'engagement** plutôt que de l'IA personnelle (exemple de TikTok et de l'AfD chez les jeunes Allemands).\n- Besoins listés : outils accessibles aux non-programmeurs, visualisation de l'incertitude, portabilité réelle des données RGPD, logiciels local-first (CRDT, Martin Kleppmann), jeux de données de meilleure qualité, protection contre la mémorisation des modèles.\n- En Q&R : le fine-tuning est rendu difficile par la publication des seuls modèles « instruct » ; plaide pour des données souveraines et un financement public plutôt que la course au capital-risque.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "jYwe-YHM4ag",
+        "title": "KEYNOTE: Katharine Jarmul - DIY Personalization: How, when why to offer self-made AI",
+        "publishedAt": "2024-11-26",
+        "transcript": true
+      }
+    },
+    {
+      "id": "would-you-rely-on-chatgpt-to-dial-911",
+      "day": "2024-09-25",
+      "type": "talk",
+      "title": "Would you rely on ChatGPT to dial 911? A talk on balancing determinism and probabilism in production machine learning systems",
+      "speakers": ["Nicolas Guenon des Mesnards — GitGuardian"],
+      "feedbackFrom": [],
+      "summary": "- Ancien d'Alexa, aujourd'hui chez GitGuardian. Part de la courbe des incidents liés à l'IA pour poser le principe : le ML ne sera jamais parfait, il faut **planifier autour de ses erreurs**.\n- Distingue l'aléa à l'inférence (contrôlable : seed, choix du token le plus probable) de l'instabilité au réentraînement, source réelle des régressions inattendues.\n- Mitigations : appels d'API au lieu de générer (blagues, météo, calculs), alignement RLHF et prompt, filtrage en sortie, **décodage contraint** (Outlines, Guidance) pour produire du JSON valide ; garde-fous NeMo Guardrails contournables par la fiction.\n- Pour les cas sans droit à l'erreur, **règles déterministes** en séquence ou en parallèle du modèle, avec un reranker qui laisse les « super règles » l'emporter (architecture d'Alexa).\n- Tests par tranches de données versionnées avec DVC, Parquet et CML dans la CI ; monitoring et rollback rapides comme pour tout logiciel.\n- Cas GitGuardian : un moteur de règles filtre tout GitHub public (13 millions de secrets fuités l'an dernier selon lui), le ML n'intervient qu'ensuite. En Q&R : la priorité va au monitoring et au rollback, puis aux tests, puis aux garde-fous.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "UUNaRYvEJkY",
+        "title": "Nicolas Guenon des Mesnards - Would you rely on ChatGPT to dial 911? | PyData Paris 2024",
+        "publishedAt": "2024-11-26",
+        "transcript": true
+      }
+    },
+    {
+      "id": "evaluating-the-evaluator-rag-eval-libraries-under-the-loop",
+      "day": "2024-09-25",
+      "type": "talk",
+      "title": "Evaluating the evaluator: RAG eval libraries under the loop",
+      "speakers": ["Nour El Mawass — Modus Create", "Maria Knorps — Modus Create"],
+      "feedbackFrom": [],
+      "summary": "- Question posée : la plupart des métriques RAG ont besoin d'un LLM juge, lequel choisir ? Réponse annoncée : *« ça dépend »*.\n- Expérience : une RAG volontairement basique (Llama 13B, ChromaDB) sur 200 questions du jeu NeuralBridge, évaluée avec 4 métriques Ragas (context precision, context recall, faithfulness, answer relevancy) par 5 LLM (Claude, Llama 2, Llama 3, GPT-4, GPT-3.5).\n- Résultat principal : **les juges ne s'accordent pas**, donc la plupart se trompent. Dans 48 % des questions aucun passage pertinent n'était récupéré ; sur ces cas, la faithfulness varie fortement (Claude juge « je ne sais pas » fidèle au contexte, d'autres renvoient une valeur nulle).\n- Exception : GPT-4 et GPT-3.5 sont corrélés à 99 % sur ces données, d'où l'intérêt économique de la version moins chère, sans extrapolation à des domaines techniques.\n- Écueils pratiques : valeurs nulles (limites de débit, réponses vides de Llama 3), Ragas qui ne donne qu'une moyenne et force la température à zéro, **coût** à surveiller avant de mettre ces métriques en CI.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "yrWmK3pXrKk",
+        "title": "El Mawass & Knorps - Evaluating the evaluator- RAG eval libraries under the loop | PyData Paris 2024",
+        "publishedAt": "2024-11-26",
+        "transcript": true
+      }
+    },
+    {
+      "id": "solara-pure-python-web-apps-beyond-prototypes-and-dashboards",
+      "day": "2024-09-25",
+      "type": "talk",
+      "title": "Solara: Pure Python web apps beyond prototypes and dashboards",
+      "speakers": ["Maarten Breddels", "Iisakki Rotko"],
+      "feedbackFrom": ["Iisakki Rotko (speaker, Mastodon)"],
+      "summary": "- D'après le programme : présentation de Solara, framework pour écrire des applications web en pur Python au-delà du prototype et du tableau de bord.\n- Iisakki Rotko dit avoir particulièrement apprécié *« the insightful questions »* reçues et partage ses slides (speaker).\n- Contenu du talk non transcrit ; vidéo disponible.",
+      "summarySources": ["program", "feedback", "slides"],
+      "video": {
+        "youtubeId": "c0EaM17J78o",
+        "title": "Breddels & Rotko - Solara: Pure Python web apps beyond prototypes and dashboards | PyData Paris 2024",
+        "publishedAt": "2024-11-26",
+        "transcript": false
+      }
+    },
+    {
+      "id": "the-expanding-apache-arrow-universe",
+      "day": "2024-09-25",
+      "type": "talk",
+      "title": "The expanding Apache Arrow universe - standardizing and accelerating tabular data access and interchange",
+      "speakers": ["Joris Van den Bossche — Voltron Data"],
+      "feedbackFrom": ["Amir Cheikh Brahim (échange avec le speaker sur pandas et GeoPandas, Devoteam reBirth)"],
+      "summary": "- Arrow comme **standard ouvert de représentation en mémoire des données colonnaires**, l'équivalent du buffer protocol de NumPy pour les tables ; le schéma de 2017 est devenu réalité, la plupart des systèmes de données savent échanger en Arrow.\n- Nouveautés des deux dernières années : type string view (« German style strings ») qui évite de recopier les valeurs lors d'un tri ou d'un filtre, types d'extension standardisés (tenseurs, JSON, UUID, booléen 8 bits, GeoArrow), IPC avec métadonnées séparées, Flight déclaré stable, nanoarrow.\n- **PyCapsule Interface** : Polars, DataFusion, DuckDB et pandas s'échangent désormais des données sans copie et sans appeler explicitement `to_arrow`.\n- Device interface pour partager des données GPU, et ADBC, alternative colonnaire à JDBC/ODBC, avec un driver BigQuery récent.\n- En Q&R : Parquet est le format de fichier compressé, Arrow le format mémoire ; Feather/IPC sur disque convient aux données temporaires.\n- Amir Cheikh Brahim raconte en marge un échange avec le speaker, suivi d'une invitation à contribuer à pandas et de sa première pull request.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "3ehleDhnq18",
+        "title": "Joris Van den Bossche - The expanding Apache Arrow universe | PyData Paris 2024",
+        "publishedAt": "2024-11-26",
+        "transcript": true
+      }
+    },
+    {
+      "id": "unveiling-mamba-2-0-the-future-of-fast-package-management",
+      "day": "2024-09-25",
+      "type": "talk",
+      "title": "Unveiling Mamba 2.0: The Future of Fast Package Management",
+      "speakers": ["Johan Mabille — QuantStack", "Julien Jerphanion — QuantStack"],
+      "feedbackFrom": ["Jannis Leidel (Anaconda, intervention en Q&R)"],
+      "summary": "- Historique : conda (2012), conda-forge (2015), puis Mamba (2019) pour accélérer la résolution avec libsolv ; conda a depuis adopté libmamba comme solveur par défaut.\n- Objectif de Mamba 2 : apporter la **neutralité** à l'écosystème conda-forge, longtemps hébergé gratuitement par Anaconda, point unique de défaillance ; d'où le support des miroirs et des registres OCI, l'absence de canal par défaut et la signature de paquets (The Update Framework).\n- Refactoring de deux ans, par petites itérations : plus de code Python, micromamba et mamba partagent la même base C++, API publique définie, libsolv isolé, transactions cohérentes en cas d'échec.\n- Prochaine étape : intégrer le solveur **resolvo** (celui de pixi), plus lisible et plus rapide, à côté de libsolv.\n- Fin du talk : **publication de Mamba 2.0 en direct sur scène** par fusion de la pull request sur le feedstock conda-forge. Financement cité : Bloomberg et la Chan Zuckerberg Initiative.\n- En Q&R, Jannis Leidel (conda, Anaconda) remercie publiquement l'équipe pour ce travail dont conda a bénéficié ; les speakers reconnaissent avoir perdu du temps en voulant tout changer à la fois au début.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "2Pu72HC1DW8",
+        "title": "Johan Mabille & Julien Jerphanion - Unveiling Mamba 2.0: The Future of Fast Package Management",
+        "publishedAt": "2024-11-26",
+        "transcript": true
+      }
+    },
+    {
+      "id": "polars-plugins-how-you-yes-you-can-extend-polars",
+      "day": "2024-09-25",
+      "type": "talk",
+      "title": "Polars Plugins: how you (yes, you!) can extend Polars",
+      "speakers": ["Marco Gorelli — Quansight Labs"],
+      "feedbackFrom": ["un participant en Q&R (salue la forme de la présentation)"],
+      "summary": "- Polars, projet né en 2020, gagne en adoption (G-Research, Sky, Check Technologies, moteur GPU de NVIDIA).\n- Démonstration en **live coding** : un plugin d'expression Rust qui, à partir des coordonnées d'une ville, dit si l'on y dit « chocolatine » ou « pain au chocolat », avec la crate geo, en six étapes depuis un template cookiecutter.\n- Les plugins s'intègrent à l'**exécution lazy** : la fonction n'est appelée que 40 fois au lieu de 627 car Polars remonte le filtre avant le calcul.\n- Tutoriel en ligne gratuit ; un Rust de base suffit, même en clonant beaucoup.\n- En Q&R : Polars ne vise pas à remplacer pandas à 100 % (le géospatial reste en retrait face à GeoPandas), les deux s'utilisent ensemble ; pas de calcul distribué natif, mais un nouveau moteur streaming annoncé ; Narwhals permet d'écrire du code agnostique de la bibliothèque. Un participant salue publiquement la clarté et l'humour de la présentation.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "8Ex93IG37VI",
+        "title": "Marco Gorelli - Polars Plugins: how you (yes, you!) can extend Polars Dataframes | PyData Paris 2024",
+        "publishedAt": "2024-11-26",
+        "transcript": true
+      }
+    },
+    {
+      "id": "open-source-ai-why-it-matters-and-how-to-get-started",
+      "day": "2024-09-25",
+      "type": "keynote",
+      "title": "Open-source AI: why it matters and how to get started",
+      "speakers": ["Merve Noyan — Hugging Face"],
+      "feedbackFrom": [],
+      "summary": "- Distingue modèles **open source** (licence permissive type Apache 2.0 ou MIT, usage commercial) et simples modèles à poids ouverts ; cite Qwen comme le plus puissant du moment, au niveau des modèles propriétaires selon elle.\n- Pourquoi l'ouvert : confidentialité (on-device, navigateur), personnalisation qui bat un modèle généraliste quand on a des données étiquetées, coût d'inférence maîtrisé, et **stabilité** face aux changements silencieux des API propriétaires.\n- Parcours proposé : trouver un modèle sur le Hub (près d'un million), filtrer par tâche et licence, comparer via l'Open LLM Leaderboard et la LMSYS Chatbot Arena (Elo), servir avec vLLM, llama.cpp ou TGI.\n- Personnaliser : Transformers et chat templates, quantification bitsandbytes 4 et 8 bits, TRL pour le fine-tuning supervisé et l'alignement, **PEFT/LoRA** (0,77 % des paramètres entraînés dans l'exemple).\n- En Q&R : QLoRA pour les gros modèles, pas de dégradation notable jusqu'à 6 bits selon elle ; certains laboratoires « optimisent pour les benchmarks », l'arène humaine est un meilleur indicateur ; o1 serait plutôt de la mémorisation du raisonnement, que l'open source rattrapera.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "-Mv1KGr2FKs",
+        "title": "KEYNOTE: Merve Noyan - Open-source AI: why it matters and how to get started | PyData Paris 2024",
+        "publishedAt": "2024-11-26",
+        "transcript": true
+      }
+    },
+    {
+      "id": "building-with-mistral",
+      "day": "2024-09-26",
+      "type": "keynote",
+      "title": "Building with Mistral",
+      "speakers": ["Sophia Yang — Mistral AI"],
+      "feedbackFrom": [],
+      "summary": "- Présentation de la gamme Mistral un an après la création : modèles premium (Mistral Small 22B, Mistral Large 2 123B sous licence de recherche, licence commerciale payante), Codestral, embeddings, et modèles Apache 2.0 (Pixtral, Mistral NeMo, Codestral Mamba, Mathstral).\n- Mistral Large 2 tient sur un seul nœud H100 et serait au niveau de modèles plus gros selon des évaluations tierces citées ; accent sur le **multilinguisme**.\n- **Pixtral 12B**, premier modèle multimodal, ouvert, gérant des images de taille et en nombre arbitraires ; démonstrations en direct dans Le Chat (reçu en JSON, comparaison d'images, lecture de graphiques).\n- Trois options de personnalisation : function calling, fine-tuning LoRA (dépôt open source mistral-finetune et API), et agents en bêta, avec des workflows multi-agents d'exemple dans le cookbook.\n- En Q&R : pour un grand nombre d'outils, recommande le fine-tuning sur ses fonctions et Mistral Large ; clients déployant les modèles sur site (BNP cité) ; pas d'outil de données synthétiques prévu, seulement des notebooks.\n- Une keynote très orientée produit, la seule d'un éditeur commercial de modèles.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "kMklbMa7GZc",
+        "title": "KEYNOTE: Sophia Yang - Building with Mistral | PyData Paris 2024",
+        "publishedAt": "2024-11-26",
+        "transcript": true
+      }
+    },
+    {
+      "id": "unpack-business-metrics-to-explain-their-evolution",
+      "day": "2024-09-26",
+      "type": "talk",
+      "title": "Unpack business metrics to explain their evolution",
+      "speakers": ["Max Halford — Carbonfact"],
+      "feedbackFrom": ["participants en Q&R (trois questions critiques)"],
+      "summary": "- Point de départ vécu : quand un KPI baisse, les décideurs demandent pourquoi, et les réponses floues créent de la **défiance** envers l'équipe data. Chez Carbonfact, ce sont les clients (marques de mode) qui demandent pourquoi leur empreinte carbone varie.\n- Méthode : décomposer la variation d'une métrique en **effet « inner »** (la moyenne change) et **effet « mix »** (le volume ou la composition change), additifs, avec une interprétation géométrique simple ; s'applique aux totaux, aux moyennes par dimension et aux funnels.\n- Outil open source **icanexplain**, publié la veille, 400 lignes écrites avec Ibis pour tourner sur pandas, Polars ou SQL ; visualisation en waterfall.\n- Pistes : décomposition automatique de tout arbre de métriques (dérivées partielles, autodiff), détection d'anomalies sur les contributions, papier de recherche.\n- En Q&R, débat franc : un chercheur y voit une réinvention des modèles linéaires ou des valeurs de Shapley ; un autre demande des garanties théoriques et pointe l'interaction prix-volume. Réponse de Halford : la relation est connue par construction (revenu = prix x volume), pas besoin de modèle, et des parties prenantes non scientifiques adhèrent parce qu'elles comprennent.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "kiWW4Oty8kY",
+        "title": "Max Halford - Unpack business metrics to explain their evolution | PyData Paris 2024",
+        "publishedAt": "2024-11-26",
+        "transcript": true
+      }
+    },
+    {
+      "id": "foundational-models-for-time-series-forecasting-are-we-there-yet",
+      "day": "2024-09-26",
+      "type": "talk",
+      "title": "Foundational Models for Time Series Forecasting: are we there yet?",
+      "speakers": ["Luca Baggi — xtream", "Gabriele Orlandi — xtream"],
+      "feedbackFrom": [],
+      "summary": "- Sondage en salle : beaucoup font de la prévision, une seule personne a mis un modèle Transformer en production. Selon un ancien responsable du pricing de Zalando cité par les speakers (nom mal restitué par le transcript), ces modèles ne paient qu'avec des centaines de milliers de séries, hors de portée d'une entreprise « à échelle raisonnable ».\n- Promesse des modèles fondation : **prévision zero-shot** et intervalles de prédiction sur une série jamais vue, utiles quand on a peu d'historique ; ils ne remplaceront pas ARIMA ou ETS.\n- Données d'entraînement encore limitées (Monash, LOTSA de Moirai, Time Series Pile), recours aux **données synthétiques** (TSMixup, KernelSynth chez Chronos ; « grammaire » de séries chez TimesFM).\n- Chronos (Amazon) réutilise T5 en quantifiant les valeurs en tokens ; TimesFM (Google) découpe en patchs de 32 points et prédit 128 points.\n- Mise en garde centrale : **pas de benchmark public standard**, risque de contamination des évaluations des auteurs ; faire ses propres tests, des modèles locaux jusqu'aux modèles fondation. Les speakers précisent n'avoir rien mis en production.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "lpQg9yxeVSg",
+        "title": "Baggi & Orlandi-Foundational Models for Time Series Forecasting: are we there yet |PyData Paris 2024",
+        "publishedAt": "2024-11-26",
+        "transcript": true
+      }
+    },
+    {
+      "id": "onyxia-a-user-centric-interface-for-data-scientists-in-the-cloud-age",
+      "day": "2024-09-26",
+      "type": "talk",
+      "title": "Onyxia: A User-Centric Interface for Data Scientists in the Cloud Age",
+      "speakers": ["Joseph Garrone — Insee", "Lino Galiana — Insee", "Frédéric Comte — Mercator Ocean International", "Quentin Gaudel"],
+      "feedbackFrom": ["Amir Cheikh Brahim (l'un de ses deux talks préférés, Devoteam reBirth)"],
+      "summary": "- Onyxia (Insee) : application web open source pour monter un **datalab sur Kubernetes**, chaque utilisateur ayant son namespace, son bucket S3 et son coffre Vault ; tout service est un chart Helm, donc le catalogue suit l'évolution des outils. Plus de 50 instances dans le monde selon le speaker.\n- Lino Galiana (Insee) explique pourquoi il enseigne la data science sur la plateforme SSP Cloud plutôt que sur Google Colab : éviter l'enfermement dans Drive, habituer les étudiants à Git et au stockage objet, GPU sans abonnement.\n- Frédéric Comte (Mercator Ocean) décrit un **jumeau numérique de l'océan** (EDITO) bâti sur une version personnalisée d'Onyxia, avec lancement de notebooks contextualisés depuis la visionneuse par simple URL et services ajoutés par les scientifiques eux-mêmes.\n- Retour de Mercator : déploiement réussi sans contacter l'équipe, puis aide réactive sur l'infrastructure GPU ; une démo vidéo a eu un raté technique.\n- Amir Cheikh Brahim (Devoteam) cite ce talk et celui sur DataLab comme ses préférés et voit Onyxia comme une porte d'entrée peu coûteuse et sans enfermement fournisseur, tout en signalant de possibles défis de personnalisation à l'échelle.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "UFbOBz-Aw1I",
+        "title": "Comte et al. - Onyxia: A User-Centric Interface for Data Scientists in the Cloud Age",
+        "publishedAt": "2024-11-26",
+        "transcript": true
+      }
+    },
+    {
+      "id": "datalab-bridging-scientific-and-industrial-worlds",
+      "day": "2024-09-26",
+      "type": "talk",
+      "title": "DataLab: Bridging Scientific and Industrial Worlds for Advanced Signal and Image Processing",
+      "speakers": ["Pierre Raybaut — Codra"],
+      "feedbackFrom": ["Amir Cheikh Brahim (Devoteam reBirth)"],
+      "summary": "- D'après le programme et le billet de participant : DataLab, plateforme open source de traitement du signal et de l'image en Python, par le créateur de Spyder.\n- Amir Cheikh Brahim retient une interface conviviale, une architecture à plugins, l'intégration avec Jupyter et Spyder et le pilotage à distance, pour aller du prototype au déploiement ; il signale une courbe d'apprentissage pour les non-spécialistes.\n- Contenu du talk non transcrit ; vidéo disponible.",
+      "summarySources": ["program", "blog"],
+      "video": {
+        "youtubeId": "yn1bR-BVfn8",
+        "title": "Pierre Raybaut - Bridging Scientific and Industrial Worlds for Advanced Signal and Image Processing",
+        "publishedAt": "2024-11-26",
+        "transcript": false
+      }
+    },
+    {
+      "id": "open-source-sustainability-and-philanthropy-building-contributor-communities",
+      "day": "2024-09-26",
+      "type": "talk",
+      "title": "Open Source Sustainability & Philanthropy: Building Contributor Communities",
+      "speakers": ["Alyssa Wright — Bloomberg", "Devpriya Dave — Bloomberg"],
+      "feedbackFrom": ["Cheuk Ting Ho, Mark et deux autres participants (questions en Q&R)"],
+      "summary": "- Bloomberg se dit « open source first » et veut passer de la consommation à la contribution : soutien aux fondations, FOSS Contributor Fund voté par les salariés, et programme **« Open Source Dollars for Your Hours »** qui convertit les heures de contribution bénévole en dons caritatifs.\n- Sustaining Open Source Initiative avec pandas (NumFOCUS) : cohortes de 10 semaines, sessions de travail multi-fuseaux, checklist d'environnement, mentors internes et pandas. Bilan annoncé : plus de 100 participants, plus de 40 pull requests, plus de 500 heures.\n- Critères pour reproduire : une entité juridique (fondation), des mentors des deux côtés, une valeur métier, des valeurs partagées et des incitations.\n- En Q&R, questions franches : pourquoi financer ce que maintient un concurrent (réponse : pour ne pas lui laisser la feuille de route) ; un participant calcule environ 10 heures par contributeur et demande le bénéfice réel pour pandas. Réponse : pandas n'est sans doute pas plus rapide, le but est d'**élargir et diversifier le vivier de contributeurs**.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "6tYLW3fQYVg",
+        "title": "Wright & Dave - Open Source Sustainability & Philanthropy: Building Contributor Communities",
+        "publishedAt": "2024-11-26",
+        "transcript": true
+      }
+    },
+    {
+      "id": "counting-down-for-cra-updates-and-expectations",
+      "day": "2024-09-26",
+      "type": "talk",
+      "title": "Counting down for CRA - updates and expectations",
+      "speakers": ["Cheuk Ting Ho — Python Software Foundation"],
+      "feedbackFrom": [],
+      "summary": "- Talk préparé avec Deb Nicholson (directrice de la PSF), déjà donné à EuroPython ; avertissement répété : *« I am not a lawyer »*.\n- Le Cyber Resilience Act européen vise à faire pour le logiciel ce que le marquage CE fait pour le matériel. La première version assimilait la mise à disposition gratuite de code à la vente ; après le lobbying des fondations, le texte crée le statut d'**« open source steward »** aux obligations allégées.\n- La PSF se prépare : politique de cybersécurité publique, gestion des vulnérabilités, statut d'autorité CNA pour CPython, deux experts sécurité financés (Alpha-Omega), coordination avec Open Forum Europe et l'Open Source Policy Alliance.\n- Les entreprises qui vendent un produit en Python restent pleinement responsables ; conseil : un « champion sécurité » par équipe et l'abonnement à la liste security-announce.\n- En Q&R : une licence « sans garantie » n'exonère pas (analogie des bonbons empoisonnés) ; une débutante craint une barrière de plus pour contribuer, la speaker y voit une bonne pratique de plus à adopter.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "KkUo8bD-0cE",
+        "title": "Cheuk Ting Ho - Counting down for CRA: updates and expectations | PyData Paris 2024",
+        "publishedAt": "2024-11-26",
+        "transcript": true
+      }
+    },
+    {
+      "id": "an-update-on-the-latest-scikit-learn-features",
+      "day": "2024-09-26",
+      "type": "talk",
+      "title": "An update on the latest scikit-learn features",
+      "speakers": ["Guillaume Lemaitre — :probabl.", "Stefanie Senger — :probabl."],
+      "feedbackFrom": [],
+      "summary": "- **Metadata routing** (expérimental, quasi complet en 1.5) : faire circuler `sample_weight`, `groups` ou des métadonnées métier à travers cross-validation, grid search et pipelines imbriqués, via `set_fit_request` et `set_score_request` ; exemple d'une étude médicale multi-hôpitaux.\n- Cas d'usage : **TunedThresholdClassifierCV** (1.5) pour régler le seuil de décision sur une fonction d'utilité en euros, avec le montant de la transaction comme métadonnée (détection de fraude), au lieu du seuil de 0,5.\n- Interopérabilité : `set_output(transform=\"polars\")`, entrées Polars acceptées ; **Array API** pour garder le calcul sur GPU avec PyTorch (40 s sur CPU contre 440 ms sur GPU dans l'exemple), encore limitée à quelques estimateurs.\n- Valeurs manquantes gérées nativement par les random forests, catégories détectées depuis le dtype pandas dans HistGradientBoosting.\n- En Q&R : l'Array API reste optionnelle tant qu'elle n'est pas généralisée ; l'équité sera outillée via Fairlearn, pas dans scikit-learn ; une enquête utilisateurs alimente la feuille de route.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "PlCn-hqdMLw",
+        "title": "Lemaitre & Senger - An update on the latest scikit-learn features | PyData Paris 2024",
+        "publishedAt": "2024-11-26",
+        "transcript": true
+      }
+    },
+    {
+      "id": "mlops-at-renault-group-a-generic-pipeline-for-scalable-deployment",
+      "day": "2024-09-26",
+      "type": "talk",
+      "title": "MLOps at Renault Group: A Generic Pipeline for Scalable Deployment",
+      "speakers": ["Alix Tiran-Cappello — Renault Group", "Alexandre Carton — Renault Group"],
+      "feedbackFrom": ["Amir Cheikh Brahim (Devoteam reBirth)"],
+      "summary": "- Retenu par Amir Cheikh Brahim comme le retour d'expérience le plus utile pour un consultant : un pipeline MLOps générique bâti en Python avec **Kubeflow et Vertex AI** sur GCP.\n- Points qu'il relève : pipelines templatisés et en YAML, CLI, GitOps et infrastructure as code ; CI/CD automatisée ; approche Python-first pour que les data scientists se concentrent sur les modèles.\n- Versionnement des modèles avec MLflow et DVC, allocation des ressources via Kubernetes, suivi de dérive avec Grafana et Prometheus ; les speakers ont publié un guide pas à pas.\n- Contenu du talk non transcrit ; résumé fondé sur le billet du participant.",
+      "summarySources": ["blog", "program"],
+      "video": {
+        "youtubeId": "CBK6E-NPdWg",
+        "title": "Carton & Tiran-Cappello - MLOps at Renault: A Generic Pipeline for Scalable Deployment",
+        "publishedAt": "2024-11-26",
+        "transcript": false
+      }
+    },
+    {
+      "id": "handling-predictive-uncertainty-in-machine-learning",
+      "day": "2024-09-26",
+      "type": "keynote",
+      "title": "Handling predictive uncertainty in Machine Learning",
+      "speakers": ["Olivier Grisel — :probabl."],
+      "feedbackFrom": [],
+      "summary": "- Keynote de clôture. Le speaker note que l'incertitude était un sujet *« à la mode »* dans plusieurs talks de la conférence.\n- Cadre : séparer le **modèle probabiliste** (qui prédit des probabilités) du **décideur** (qui transforme ces probabilités en actions selon une fonction d'utilité métier) ; exemples de fraude bancaire, dépistage médical, recommandation et pilotage d'une batterie raccordée au réseau électrique.\n- Pour une décision binaire, une matrice de coûts dépendant du montant donne un seuil optimal en forme close, **à condition que le modèle soit bien calibré** ; sinon recalibrer (isotonique) ou chercher un seuil global par validation croisée (TunedThresholdClassifierCV), en écho au talk scikit-learn de l'après-midi.\n- Les métriques à seuil (accuracy, F1) et de rang (ROC AUC) sont aveugles à la calibration ; seules les **règles de score strictement propres** (log loss, Brier) mesurent à la fois discrimination et calibration. Attention aux class weights qui détruisent la calibration.\n- Démonstration sur un problème XOR bruité : choisir des modèles expressifs et régler les hyperparamètres avec une règle propre donne des modèles raisonnablement calibrés par défaut.\n- En Q&R : pour la régression, discrétiser en classes, régression quantile ou modèles distributionnels (XGBoostLSS, distributional random forests). Slides publiées sur Mastodon le lendemain (speaker).",
+      "summarySources": ["transcript", "slides"],
+      "video": {
+        "youtubeId": "-gYnfA0e5ic",
+        "title": "KEYNOTE: Olivier Grisel - Handling predictive uncertainty in Machine Learning | PyData Paris 2024",
+        "publishedAt": "2024-11-26",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Building web-based engineering applications with JupyterLab components (Trung Le)",
+    "Python 3.12's new monitoring and debugging API (Johannes Bechberger)",
+    "Collaborative editing in Jupyter (David Brochart)",
+    "High Performance Data Visualization for the Web (Tim Paine)",
+    "Jupylates: spaced repetition for teaching with Jupyter (Chiara Marmo, Nicolas M. Thiéry)",
+    "Enhancing RAG-based apps by constructing and leveraging knowledge graphs with open-weights LLMs (Alonso Silva)",
+    "Elevating Data Stories: Exploring Quarto Dashboard (Christophe Dervieux)",
+    "JupyterLite, Emscripten-forge, Xeus, and Mamba (Jeremy Tuloup, Thorsten Beier, Ian Thomas)",
+    "Leveraging LLMs to build supervised datasets suitable for smaller models (Justine Bel-Letoile, Cérès Carton)",
+    "Building Large Scale ETL Pipelines with Dask (Patrick Hoefler)",
+    "Unveiling new maps of biology with Squidpy (Inácio Medeiros)",
+    "Bridging the worlds: pixi reimplements pip and conda in Rust (Nichita Morcotilo)",
+    "Geoscience at Massive Scale (Hendrik Makait)",
+    "xsimd: from xtensor to firefox (Serge « sans » Paille)",
+    "On the structure and reproducibility of Python packages (Maria Knorps, Zhihan Zhang)",
+    "Fast NetworkX and How Accelerated Backends Are Changing Graph Analytics (Erik Welch, Rick Ratzel)",
+    "Color-composite images from the James Webb Space Telescope (Camilla Pacifici, Jesse Averbukh)",
+    "Is your marketing effective? Let Bayes decide! (Emanuele Fabbiani)",
+    "Visualization of the sky in Notebooks: the ipyaladin widget extension (Matthieu Baumann, Manon Marchand)",
+    "Catering Causal Inference: an introduction to metalearners (Kevin Klein, Francesc Martí Escofet)",
+    "sktime: next-generation AI, deep learning and foundation models (Franz Kiraly, Benedikt Heidrich)",
+    "Dreadful Frailties in Propensity Score Matching and How to Fix Them (Alexandre Abraham)",
+    "Chainsail: facilitating sampling of multimodal probability distributions (Simeon Carstens)",
+    "Boosting AI Reliability: Uncertainty Quantification with MAPIE (Louis Lacombe, Thibault Cordier, Valentin Laurent)",
+    "Towards a deeper understanding of retrieval and vector databases (Noé Achache)",
+    "Adaptive Prediction Intervals (Andro Sabashvili)",
+    "Processing medical images at scale on the cloud (Guillaume Desforges)",
+    "Track your code's CO2 emissions with Code Carbon (Luis Blanche, Benoît Courty)",
+    "Lightning talks, sessions 1 et 2"
+  ],
+  "sources": [
+    { "label": "Site officiel PyData Paris 2024", "url": "https://pydata.org/paris2024/" },
+    { "label": "Programme officiel (pretalx)", "url": "https://pretalx.com/pydata-paris-2024/schedule/" },
+    { "label": "Sprints du 27 septembre 2024", "url": "https://pydata.org/paris2024/sprints" },
+    { "label": "Playlist YouTube PyData Paris 2024 (chaîne PyData, 48 vidéos publiées le 26 novembre 2024)", "url": "https://www.youtube.com/playlist?list=PLGVZCDnMOq0pKya8gksd00ennKuyoH7v7" },
+    { "label": "Amir Cheikh Brahim, Exploring the PyData Community and Open Source: Insights from PyData Paris 2024 (Devoteam reBirth, 21 octobre 2024, copie Wayback Machine)", "url": "https://web.archive.org/web/20241108122619/https://rebirth.devoteam.com/2024/10/21/pydata-community-and-open-source-insights/" },
+    { "label": "Sylvain Corlay, annonce PyData Paris 2024 (LinuxFr, 8 août 2024)", "url": "https://linuxfr.org/news/pydata-paris-2024" },
+    { "label": "Olivier Grisel sur Mastodon, slides de la keynote (27 septembre 2024)", "url": "https://sigmoid.social/@ogrisel/113208693817783685" },
+    { "label": "Iisakki Rotko sur Mastodon, retour et slides du talk Solara (4 octobre 2024)", "url": "https://mastodon.social/@iisakkirotko/113200127176152831" },
+    { "label": "Jannis Leidel sur Mastodon, jour 1 (25 septembre 2024)", "url": "https://publicidentity.net/@jezdez/113196892691788332" },
+    { "label": "Compte Mastodon PyData Paris (annonce des vidéos et mises en avant de talks)", "url": "https://mastodon.social/@PyDataParis" },
+    { "label": "Posts LinkedIn : aucun lu (recherche web sans résultat exploitable)" }
+  ]
 }

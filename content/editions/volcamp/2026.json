@@ -12,10 +12,10 @@
   "dateConfidence": "ok",
   "note": "Conférence communautaire et bénévole organisée par l'association Geek&Terroir. 6e édition selon Conference Hall (l'intro du jour 1 parle de « 5e édition en physique »). Programme : 2 keynotes, 36 conférences, 8 lightnings et 6 workshops de 2 h, sur 4 salles (Auditorium, Showroom, FabLab, Workshop) et 7 thèmes. Bilan des organisateurs : 600 personnes, 61 intervenants, 23 bénévoles, 4 sponsors Gold (Michelin, CGI, Accenture, MongoDB), 15 Silver et 4 Bronze. Soirée du jeudi à l'Oval.",
   "status": "synthesized",
-  "synthesisUpdatedAt": "2026-10-08",
-  "revisit": "Revue du 8 octobre (J+6) : toujours aucun post LinkedIn, article ni thread de participant sur le contenu des talks (4 recherches web sans résultat). Les 14 vidéos publiées le 7 octobre sont intégrées avec leur transcript. Restent à intégrer : les retours de participants s'ils paraissent, les vidéos de la salle FabLab du jour 1 (hors Sécurité des LLM), du talk TanStack et de l'Archéologie logicielle si elles sont publiées, et le transcript du talk d'Horacio Gonzalez (nouvelle erreur 429 le 8 octobre).",
-  "corpus": "Programme officiel complet (descriptifs du dépôt GitHub du site), 40 vidéos officielles (26 mises en ligne le 2 octobre, 14 le 7 octobre) dont 39 transcripts automatiques lus en entier (37 sessions et les 2 introductions ; celui d'Ethics as Code est une traduction automatique), les slides publiées du talk Zero Trust, les posts LinkedIn de Volcamp (bilan chiffré du 2 octobre) et quelques commentaires de participants, un post Mastodon de SensioLabs, la page Conference Hall et un article du Journal du Net (23 septembre) citant le cofondateur Pierre Colomb. Corpus revu les 4, 7 et 8 octobre sans nouvelle source de participant.",
-  "limits": "À J+6, la synthèse dit ce qui a été présenté sur scène, presque rien sur la façon dont le public l'a reçu : aucun compte-rendu de participant ni post LinkedIn détaillé trouvé (LinkedIn mal indexé) ; les seules réactions viennent des questions captées en fin de vidéo. Transcripts automatiques de qualité variable (noms propres et chiffres signalés quand ils sont douteux). Ateliers non filmés ; pas de vidéo pour la plupart des talks de la salle FabLab du jour 1, le talk TanStack et l'Archéologie logicielle ; le talk d'Horacio Gonzalez n'est résumé que d'après son descriptif (transcript bloqué par YouTube).",
+  "synthesisUpdatedAt": "2026-10-09",
+  "revisit": "Revue du 9 octobre (J+7) : toujours aucun post LinkedIn, article ni thread de participant sur le contenu des talks (4 nouvelles recherches web sans résultat). Les 6 vidéos publiées le 8 octobre sont intégrées (5 avec transcript). Restent à intégrer : les retours de participants s'ils paraissent, les vidéos des talks TanStack et Compose Multiplatform si elles sont publiées, et les transcripts des deux talks d'Horacio Gonzalez (erreur 429 de YouTube le 9 octobre).",
+  "corpus": "Programme officiel complet (descriptifs du dépôt GitHub du site), 46 vidéos officielles de la playlist 2026 (26 mises en ligne le 2 octobre, dont le talk Organigramme d'Horacio Gonzalez remis en ligne le 5 octobre sous un nouvel identifiant, 14 le 7 octobre, 6 le 8 octobre) dont 44 transcripts automatiques lus en entier (42 sessions et les 2 introductions ; celui d'Ethics as Code est une traduction automatique), les slides publiées du talk Zero Trust, les posts LinkedIn de Volcamp (bilan chiffré du 2 octobre) et quelques commentaires de participants, un post Mastodon de SensioLabs, la page Conference Hall et un article du Journal du Net (23 septembre) citant le cofondateur Pierre Colomb. Corpus revu les 4, 7, 8 et 9 octobre sans nouvelle source de participant.",
+  "limits": "À J+7, la synthèse dit ce qui a été présenté sur scène, presque rien sur la façon dont le public l'a reçu : aucun compte-rendu de participant ni post LinkedIn détaillé trouvé (LinkedIn mal indexé) ; les seules réactions viennent des questions captées en fin de vidéo. Transcripts automatiques de qualité variable (noms propres et chiffres signalés quand ils sont douteux). Ateliers non filmés ; pas de vidéo pour les talks TanStack et Compose Multiplatform ; les deux talks d'Horacio Gonzalez ne sont résumés que d'après leur descriptif (transcripts bloqués par YouTube).",
   "tldr": "Un Volcamp **dominé par le développement assisté par agents**, raconté sans enthousiasme naïf : **specs et documentation redeviennent le code source**, les retours d'expérience (CGI, Michelin, Ralph) chiffrent gains et mensonges des agents, tandis que les keynotes de la **DINUM** et des **Restos du Cœur** rappellent que chaque choix technique est un choix politique.",
   "keyTakeaways": [
     "Avant de lancer un agent, **écrire une vraie spec** : un agent ne pose pas de questions, il devine sans le dire (Boissinot, OpenSpec avec proposal, design, specs en Gherkin et tasks).",
@@ -218,6 +218,61 @@
       "video": { "youtubeId": "TuiaMG806vk", "title": "Ethics as Code - Mettre l'éthique en prod", "publishedAt": "2026-10-07", "transcript": true }
     },
     {
+      "id": "wrap-reshape-or-redesign-adapter-vos-apis-a-un-monde-d-agents",
+      "day": "2026-10-01",
+      "type": "talk",
+      "title": "Wrap, Reshape, or Redesign : adapter vos APIs existantes à un monde d'agents",
+      "speakers": ["Horacio Gonzalez"],
+      "feedbackFrom": [],
+      "summary": "- D'après le **descriptif officiel** uniquement (vidéo publiée le 8 octobre, transcript bloqué par YouTube) : pendant vingt ans, les APIs ont été conçues pour des humains qui compensent, en lisant la doc, en devinant les conventions et en repérant les opérations dangereuses.\n- Leur deuxième consommateur, l'agent LLM, **ne compense pas** : il prend les descriptions au pied de la lettre, choisit la mauvaise action avec assurance et ignore les limites opérationnelles jamais déclarées.\n- La réponse naïve (exposer l'API existante avec quelques descriptions d'outils) ne suffit pas. Le talk propose **trois stratégies** : exposer tel quel (wrap), remodeler en outils plus étroits, orientés intention (reshape), ou refondre quand l'agent révèle un défaut de conception (redesign).\n- Annoncés : des cas avant/après tirés d'une plateforme en production, les compromis de chaque stratégie, et l'idée que concevoir pour les agents améliore souvent la plateforme pour les humains.\n- Lecture critique : contenu réel du talk non vérifié ; le descriptif rejoint l'approche des outils MCP bornés défendue par Nicolas Raymond (CGI).",
+      "summarySources": ["program"],
+      "video": { "youtubeId": "FPm1qZZ5YEM", "title": "Wrap, Reshape, or Redesign - adapter vos APIs existantes à un monde d’agents", "publishedAt": "2026-10-08", "transcript": false }
+    },
+    {
+      "id": "mes-1001-heures-avec-vault-de-vault-a-openbao",
+      "day": "2026-10-01",
+      "type": "talk",
+      "title": "Mes 1001 Heures avec Vault : de Vault à OpenBao, récits de survie d'un SRE",
+      "speakers": ["Jérôme Masson — NumSpot"],
+      "feedbackFrom": [],
+      "summary": "- **Contexte** : le speaker travaille sur Vault depuis 2019, en version open source puis Enterprise chez des partenaires HashiCorp, et sur OpenBao depuis janvier chez NumSpot. Il rappelle le passage de Vault en licence BSL (2023), qui interdit de revendre un gestionnaire de secrets bâti dessus, puis le rachat de HashiCorp par IBM, qui a inquiété ses clients ; OpenBao est le fork de la dernière version open source.\n- **Acte 1, données de santé** : un audit de 10 jours étalés sur 3 mois produit environ 90 recommandations, des plus simples (haute disponibilité avec le backend Raft) aux plus sensibles : policies du moindre privilège, ne jamais délivrer les deux éléments d'authentification par le même canal, et **ne pas garder de token root**. Seul blocage : la limite de 32 Mo du chiffrement en transit, contournée avec un en-tête portant la version de clé sur des fichiers de plusieurs Go.\n- **Démo du token root** : généré dans une CI, sans expiration et visible dans les logs du runner, il donne tout. *« Si je prends tes logs de CI, je te récupère un token root »* ; et une personne capable de desceller seule le coffre est root de fait.\n- **Les limites d'une mission courte** : une configuration complète livrée en 20 jours (stack Ansible et Terraform publiée en open source), mais transmettre 2 à 3 ans de connaissance à une équipe de trois personnes en 20 jours est *« impossible »*.\n- **Acte 2, Vault Enterprise dans une agence de l'État** : 70 jours prévus, environ 200 réalisés ; des recommandations matérielles jugées démesurées (des dizaines de VM avec la reprise d'activité) renégociées, tout en Terraform et scripts shell en air gap, une personne du SOC formée au DevOps, puis une migration d'urgence des certificats après l'arrêt d'une autorité de certification française. *« Le technique c'est toujours 30 % d'un projet et 70 % c'est de l'humain. »*\n- **Acte 3, OpenBao** : les namespaces existent mais *« c'est pas vraiment sécurisé comme on pourrait l'avoir dans la version enterprise »* ; la reprise d'activité passe par un backend PostgreSQL ; démo d'un namespace forcé par point d'accès via Nginx (réécriture d'URL), pour des bulles SecNumCloud. Arguments du changement : coût des licences par siège et souveraineté face à IBM.\n- Lecture critique : un REX dense, démos coupées faute de temps (renvoyées vers un lab publié), chronologie Vault, BSL, IBM et OpenBao un peu confuse à l'oral.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "DE5Ih6SqQec", "title": "Mes 1001 Heures avec Vault - De Vault à OpenBao, récits de survie d'un SRE", "publishedAt": "2026-10-08", "transcript": true }
+    },
+    {
+      "id": "toi-aussi-lance-toi-et-contribue-a-un-projet-open-source",
+      "day": "2026-10-01",
+      "type": "lightning",
+      "title": "Toi aussi lance toi et contribue à un projet open source !",
+      "speakers": ["Thomas Jouve — Sopra Steria"],
+      "feedbackFrom": [],
+      "summary": "- **Point de départ** : dans son homelab Kubernetes, ExternalDNS alimente un Pi-hole ; une mise à jour faite *« yolo »*, sans lire les release notes, casse tout, car Pi-hole a refait son API. Une issue est déjà ouverte et une vingtaine de personnes attendent le correctif.\n- **Se lancer** : architecte Java chez Sopra Steria, il propose de s'en charger en Go, malgré la pression d'un projet suivi par des milliers d'utilisateurs. Le parcours ressemble au travail (fork, tests, doc, merge request, pipeline), mais les mainteneurs sont **très exigeants sur le nombre de lignes** : le contributeur repart, eux restent responsables du code.\n- **Le coauteur inconnu** : un contributeur sans historique propose d'aider sur les tests ; le speaker pense à XZ Utils, enquête et le retrouve dans un débat OpenTofu contre le retrait d'un fournisseur de mail russe.\n- **La CLA** : le coauteur refuse de signer la clause de sanctions de la CLA (listes du Trésor américain) ; Thomas Jouve réécrit ses commits et les porte sous son nom, à ses risques. Il s'interroge : et si un jour les Européens figuraient sur cette liste ? Un code qu'on ne peut plus modifier est-il encore libre pour tous ?\n- **Conseils** : choisir un sujet qui vous bloque ou vous tient à cœur, contribuer aussi par la doc et les issues, prévenir son employeur et utiliser ses ressources personnelles, se souvenir que son nom et sa réputation sont engagés, et écrire court : avec les LLM, *« plus je suis succinct et mieux c'est »*.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "qW35RgAsadU", "title": "Toi aussi lance toi et contribue à un projet open source !", "publishedAt": "2026-10-08", "transcript": true }
+    },
+    {
+      "id": "ce-que-les-developpeurs-haut-niveau-peuvent-reapprendre-des-dev-embarques",
+      "day": "2026-10-01",
+      "type": "talk",
+      "title": "Ce que les développeurs haut niveau peuvent (re)apprendre des dev embarqués",
+      "speakers": ["Damien Hackett"],
+      "feedbackFrom": [],
+      "summary": "- **Le speaker** : développeur Linux embarqué depuis plus de 13 ans (C, C++, Rust), en mission chez un industriel de l'équipement électrique à Grenoble.\n- **L'embarqué a toujours vécu dans un monde fini** : mémoire, CPU et énergie fixés par la carte, impossibles à augmenter chez le client. Le développement haut niveau, libéré par la loi de Moore, redécouvre ces limites avec la pénurie de RAM, et l'accélération par l'IA pourrait aggraver la dérive.\n- **Optimiser régulièrement** : en embarqué, la carte faisait office de CI (le programme ne rentre pas ou plante). Il conseille une boucle d'optimisation après le TDD et le refactoring, des « semaines oxygène » pendant les ponts, et d'optimiser aussi la chaîne CI/CD. Exemples : Voyager 2, la racine carrée inverse de Quake, et Cloudflare qui aurait libéré environ 100 To de RAM en resserrant ses structures (chiffre du speaker).\n- **Le mindset industriel** : minimiser le prix de revient, faire simple (KISS, philosophie Unix), trier les features par risque et impact, mini-itérations dans un cycle en V imposé par les normes, distinguer vérification (conforme à la spec) et validation (la fonction est atteinte). Le nucléaire préfère des processeurs anciens aux bugs connus : *« des fois le legacy a du bon »*.\n- **Convergence IT/OT** : l'informatique industrielle gagne en connectivité et doit rattraper la cybersécurité ; l'IT cherche la stabilité de l'OT.\n- En questions, sur la surface d'attaque : l'air gap n'a jamais été une vraie protection (Stuxnet) ; avec le Cyber Resilience Act, secure boot et mises à jour signées deviennent obligatoires, ce qui place selon lui l'embarqué *« presque plus en avance »* que les applications qui importent des paquets non vérifiés.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "sfuje4xZAdc", "title": "Ce que les développeurs haut niveau peuvent (re)apprendre des dev embarqués", "publishedAt": "2026-10-08", "transcript": true }
+    },
+    {
+      "id": "les-quetes-secondaires-ca-n-est-pas-que-dans-les-jeux-video",
+      "day": "2026-10-01",
+      "type": "talk",
+      "title": "Les quêtes secondaires, ça n'est pas que dans les jeux vidéo !",
+      "speakers": ["Virginie Pageaud"],
+      "feedbackFrom": [],
+      "summary": "- **Point de départ** : bénévole au Snowcamp (Grenoble), où elle organise le tremplin qui accompagne six futurs speakers, Virginie Pageaud y a appris à **communiquer court** (visuels pour les réseaux), à piloter un mini-projet d'un an et à relancer, ce qui l'a aidée quand elle a dû coordonner des équipes au travail.\n- **Le mentorat** révèle ses propres compétences et casse la barrière junior/senior : elle a mentoré des personnes plus expérimentées qu'elle. À reproduire en entreprise en confiant l'accueil des nouveaux à ceux arrivés un ou deux ans plus tôt. Porter le gilet d'organisatrice lui a aussi appris à « jouer un rôle » et à s'affirmer.\n- **Pourquoi ça marche** : la sécurité psychologique (Amy Edmondson, études sur les équipes hospitalières ; projet Aristotle de Google, où elle arrive en premier critère d'efficacité). Les loisirs et le bénévolat offrent plus facilement ce cadre que le travail, où les enjeux sont plus lourds.\n- **Comment ça se transfère** : transfert vertical ou horizontal, décontextualisation puis recontextualisation (Jacques Tardif). Les **connaissances conditionnelles** (savoir quand utiliser quoi) naissent de la pratique répétée ; les personnes en reconversion excellent dans ces analogies (éducation canine, cuisine, maroquinerie).\n- **Trouver ses quêtes** : partir de ce qui fait envie, évaluer ses ressources (temps, argent, seul ou en groupe), *« c'est OK de pas vouloir faire du bénévolat »*, et valoriser ces activités sur son CV en expliquant ce qu'elles apportent.\n- En questions, interrogée sur des besoins spécifiques de sécurité psychologique en tant que femme, elle dit ne pas avoir rencontré de difficulté dans ses loisirs ni au travail, *« dans d'autres cadres, on rencontre ça »*.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "6VMbjVUyO6c", "title": "🎮 Les quêtes secondaires, ça n'est pas que dans les jeux vidéo !", "publishedAt": "2026-10-08", "transcript": true }
+    },
+    {
       "id": "keynote-jour-2-quel-monde-sommes-nous-en-train-de-construire",
       "day": "2026-10-02",
       "type": "keynote",
@@ -237,7 +292,7 @@
       "feedbackFrom": [],
       "summary": "- D'après le **descriptif officiel** uniquement (vidéo publiée, transcript non récupéré) : chaque choix d'infrastructure (Kubernetes, PaaS, serverless, VM) est aussi un choix organisationnel : qui est réveillé à 3 h du matin, combien de temps pour qu'une recrue livre, quels profils recruter.\n- Le talk déploie une même application sur quatre modèles d'infrastructure pour montrer **quatre organigrammes différents** et des coûts absents de la facture cloud.\n- Il propose de choisir l'infrastructure avec une **matrice de modèle opérationnel** (charge cognitive, structure d'équipe, astreintes) plutôt qu'une matrice de fonctionnalités.",
       "summarySources": ["program"],
-      "video": { "youtubeId": "lpuywQGX8RY", "title": "Votre architecture cloud est en réalité un organigramme", "publishedAt": "2026-10-02", "transcript": false }
+      "video": { "youtubeId": "3ivuksqPeKM", "title": "Votre architecture cloud est en réalité un organigramme", "publishedAt": "2026-10-05", "transcript": false }
     },
     {
       "id": "pendant-que-je-dors-mon-agent-livre",
@@ -447,20 +502,25 @@
       "summary": "- **Contexte** : à la DINUM, une mission fournit des alternatives open source à la bureautique pour environ 2,5 millions d'agents ; les speakers portent l'édition de texte (Docs).\n- **Histoire des formats** : les binaires Office 97-2003, l'ODF normalisé via OASIS, puis l'OOXML adopté *« avec grandes difficultés »* en 2008 ; Microsoft n'implémente que la variante transitionnelle, liée à ses anciens binaires, ce qui ruine l'interopérabilité.\n- **Les éditeurs en ligne existants** (Collabora, OnlyOffice, Euro-Office) ne sont pas natifs web : lourds à faire passer à l'échelle, éditions communautaires limitées (20 connexions), support coûteux après recompilation d'OnlyOffice.\n- **Le problème d'usage** : la page blanche skeuomorphique et plus de 1 000 options de mise en forme ; à l'inverse, un pad Markdown a plafonné à 3 000 utilisateurs, faute de mise en forme.\n- **Docs, le juste milieu** : un éditeur par blocs (BlockNote, ProseMirror, Yjs en CRDT) avec moins de 10 options de mise en forme, des raccourcis clavier et des documents vivants façon wiki ; Word reste pour la mise en page finale.\n- **Adoption annoncée** : 1 million de documents, 200 000 utilisateurs dont 50 000 mensuels, 5 000 à 10 000 noms de domaine différents.\n- **Prochaine version** : attribution des modifications et suggestions en branches réconciliables, en finançant Yjs et un nouveau serveur de collaboration. Les speakers saluent une décision allemande de bannir l'OOXML de l'administration (selon eux).",
       "summarySources": ["transcript"],
       "video": { "youtubeId": "JsQo5zTKzNU", "title": "Les formats office nuisent gravement à votre productivité", "publishedAt": "2026-10-07", "transcript": true }
+    },
+    {
+      "id": "archeologie-logicielle-reconstruire-un-jeu-sans-son-code-source",
+      "day": "2026-10-02",
+      "type": "talk",
+      "title": "Archéologie logicielle : reconstruire un jeu sans son code source",
+      "speakers": ["Charles-Meldhine Madi Mnemoi"],
+      "feedbackFrom": [],
+      "summary": "- **Contexte** : avec la fin de Flash, Motion Twin (coopérative, devenue célèbre avec Dead Cells) ferme ses jeux web en 2020. La communauté Eternaltwin lance des reprises open source, dont celle de Mush, jeu multijoueur asynchrone de 2013 ; le speaker, ingénieur IA, en a été co-mainteneur de 2022 à 2025.\n- **Pas de spec, beaucoup de traces** : un wiki complet mais imprécis, des joueurs experts, de rares captures, les logs de 1 700 parties (8 millions de lignes), et un code source partiel publié en 2022 qui ne compile pas. Le travail consiste à transformer ces traces en règles métier.\n- **Méthode 1, les combats** : remplacer les questions vagues aux joueurs par des **situations précises, façon BDD** (given, when, then), confrontées à leurs cas réels. Après 86 messages sans retrouver la règle exacte, l'équipe tranche pour la plus cohérente.\n- **Méthode 2, la courbe des incidents** : rétro-ingénierie statistique sur les logs avec des hypothèses simplificatrices ; un test statistique valide la formule jusqu'au jour 16, au-delà les joueurs experts trouvent le jeu *« un peu trop facile »*.\n- **Les scénarios deviennent des tests automatisés**, avec des fixtures et des fonctions métier (*« s'il faut écrire 80 lignes de setup pour écrire un test, personne n'écrit de test »*) : les règles retrouvées ne se perdent plus dans Discord ou des notebooks.\n- **Organisation** : licence (A)GPL contre la prédation commerciale, merge requests toutes relues (risque supply chain), une version toutes les deux semaines. Les joueurs, présents sur le même Discord, ont fait passer les vaisseaux ennemis et les explorations avant les recherches : *« moi, ça m'a mis une grosse claque »*.\n- **Qui décide quand personne n'est le chef ?** Une fois le jeu presque reproduit, le pouvoir de « ceux qui codent » ne suffit plus (écho explicite au talk de Florent Zara) : création du « 42e étage », instance réunissant mainteneurs, développeurs, modérateurs et trois joueurs, avec une charte de trois piliers (enquête, survie, roleplay). Bilan annoncé : 6 ans, plus de 150 releases, plus de 30 contributeurs, plus de 200 joueurs par jour.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "yp8oUpsVLbE", "title": "Archéologie logicielle - reconstruire un jeu sans son code source", "publishedAt": "2026-10-08", "transcript": true }
     }
   ],
   "sessionsWithoutFeedback": [
-    "Wrap, Reshape, or Redesign : adapter vos APIs existantes à un monde d'agents (Horacio Gonzalez)",
-    "Mes 1001 Heures avec Vault, de Vault à OpenBao (Jérôme Masson)",
-    "Toi aussi lance toi et contribue à un projet open source ! (Thomas Jouve, lightning)",
     "Votre back-office vous ment, avec Compose Multiplatform (Guillaume Rossignol)",
-    "Ce que les développeurs haut niveau peuvent (re)apprendre des dev embarqués (Damien Hackett)",
-    "Les quêtes secondaires, ça n'est pas que dans les jeux vidéo ! (Virginie Pageaud)",
     "Ils sont fous chez TanStack, ils ont mis une DB dans le front ! (Delphin Aubin, Lucas Audart)",
     "Workshop : Vous croyez connaître Git ? Challenge Accepted (Anthony Pena, Yann-Thomas Le Moigne)",
     "Workshop : Créer son propre Jeu de Rôle en Agentic AI avec Spring AI (Arnaud Jean)",
     "Workshop : Atelier LLM, multimodalité et contexte étendu (Laurent Picard)",
-    "Archéologie logicielle : reconstruire un jeu sans son code source (Charles-Meldhine Madi Mnemoi)",
     "Workshop : De Java à l'IA, votre premier système d'agents (Antoine Sabot-Durand, Emmanuel Hugonnet, Yann Blazart)",
     "Workshop : Maîtrisez vos déploiements avec OpenFeature et les Feature Flags (Alexandre Touret)",
     "Workshop : Deepagents et Opensandbox, des coding agents dans votre infrastructure (Keurcien Luu)"
@@ -468,7 +528,8 @@
   "sources": [
     { "label": "Programme officiel Volcamp 2026", "url": "https://www.volcamp.io/talks/" },
     { "label": "Descriptifs des sessions (dépôt GitHub du site)", "url": "https://github.com/Volcamp/volcamp.github.io/tree/master/_talks" },
-    { "label": "Chaîne YouTube Volcamp (40 vidéos 2026 : 26 publiées le 2 octobre, 14 le 7 octobre)", "url": "https://www.youtube.com/channel/UC5iGUFHEJbSTU5wpbT6KIcw" },
+    { "label": "Chaîne YouTube Volcamp", "url": "https://www.youtube.com/channel/UC5iGUFHEJbSTU5wpbT6KIcw" },
+    { "label": "Playlist YouTube Volcamp 2026 (46 vidéos : 26 publiées le 2 octobre, 14 le 7 octobre, 6 le 8 octobre)", "url": "https://www.youtube.com/playlist?list=PLd211O2boFMQ" },
     { "label": "Conference Hall : Volcamp 2026 (6e édition, CFP)", "url": "https://conference-hall.io/volcamp-2026" },
     { "label": "Volcamp sur LinkedIn : bilan de l'édition (600 personnes, 61 intervenants, 23 bénévoles)", "url": "https://fr.linkedin.com/posts/volcampio_votre-conf%C3%A9rence-volcamp-2026-est-finie-activity-7511901607777718272-uE4B" },
     { "label": "Volcamp sur LinkedIn : cérémonie de clôture (commentaires de Lionel Antraigue et Olivier Poncet)", "url": "https://fr.linkedin.com/posts/volcampio_c%C3%A9r%C3%A9monie-de-cl%C3%B4ture-de-cette-tr%C3%A8s-belle-activity-7511812907400175616-YIBd" },
