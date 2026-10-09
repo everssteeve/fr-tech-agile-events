@@ -20,6 +20,7 @@ const isActive = (path: string) => {
   return current.startsWith(target);
 };
 const onSearch = current.startsWith(href('recherche/'));
+const onFavs = current.startsWith(href('favoris/'));
 ---
 <!doctype html>
 <html lang="fr">
@@ -45,9 +46,13 @@ const onSearch = current.startsWith(href('recherche/'));
             <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13 13l4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             <span class="search-label">Rechercher</span>
           </a>
+          <a class={`search favs${onFavs ? ' on' : ''}`} href={href('favoris/')} aria-current={onFavs ? 'page' : undefined} title="Mes favoris et lectures">
+            <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M10 2.6l2.3 4.7 5.2.8-3.8 3.6.9 5.2L10 14.4l-4.6 2.5.9-5.2-3.8-3.6 5.2-.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            <span class="sr-only">Mes favoris</span><span class="fav-n" id="fav-n" hidden></span>
+          </a>
           <button type="button" class="menu-btn" aria-expanded="false" aria-controls="main-nav">
             <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            Menu
+            <span class="menu-label">Menu</span>
           </button>
         </div>
         <nav id="main-nav" aria-label="Navigation principale">
@@ -69,6 +74,8 @@ const onSearch = current.startsWith(href('recherche/'));
       <span>Haut</span>
     </button>
     <script>
+      import { marks, subscribe } from '../lib/library';
+
       const header = document.getElementById('site-header')!;
       const root = document.documentElement;
       // Expose the header height so sticky bars and scroll margins stack under it.
@@ -91,6 +98,14 @@ const onSearch = current.startsWith(href('recherche/'));
           if (search) search.focus();
           else location.href = header.querySelector<HTMLAnchorElement>('.search')!.href;
         }
+      });
+
+      // Bookmark count in the header.
+      const favN = document.getElementById('fav-n')!;
+      subscribe(() => {
+        const n = marks().length;
+        favN.hidden = n === 0;
+        favN.textContent = String(n);
       });
 
       // Back to top: shown once the reader is more than a screen away from the top.
@@ -121,17 +136,27 @@ const onSearch = current.startsWith(href('recherche/'));
   .search, .menu-btn { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--muted); font: inherit; font-size: 14px; text-decoration: none; cursor: pointer; }
   .search:hover, .menu-btn:hover, .search.on { color: var(--ink); border-color: var(--muted); }
   .menu-btn { display: none; }
+  .favs { padding: 0 11px; }
+  .fav-n { font-family: var(--font-m); font-size: 11.5px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 999px; background: var(--accent); color: var(--on-accent); display: inline-grid; place-items: center; }
   @media (max-width: 900px) {
     .brand span { display: none; }
     .menu-btn { display: inline-flex; }
     .search-label { display: none; }
     .search { padding: 0; width: 44px; justify-content: center; }
+    .bar { column-gap: 12px; }
+    .favs { position: relative; }
+    .favs .fav-n { position: absolute; top: -4px; right: -4px; }
     .search, .menu-btn { min-height: 44px; }
     .bar { flex-wrap: wrap; }
     nav { display: none; order: 4; flex-basis: 100%; flex-direction: column; gap: 0; padding-bottom: 8px; }
     nav.open { display: flex; }
     nav a { padding: 12px 8px; font-size: 16px; }
     nav a[aria-current="page"]::after { left: 8px; right: auto; width: 24px; bottom: 6px; }
+  }
+  @media (max-width: 420px) {
+    .actions { gap: 4px; }
+    .menu-btn { padding: 0; width: 44px; justify-content: center; }
+    .menu-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   }
   main { padding-block: 32px 64px; }
   main:focus { outline: none; }

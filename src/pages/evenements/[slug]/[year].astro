@@ -2,6 +2,8 @@
 import type { CollectionEntry } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
 import Video from '../../../components/Video.astro';
+import LibButton from '../../../components/LibButton.astro';
+import { hash } from '../../../lib/library';
 import {
   CATEGORIES, CONFIDENCE, SESSION_TYPES, editionPath, eventPath, formatDay, formatRange, href, isArchiveUrl, loadAll,
   md, mdInline, mdWithToc, monthKey, monthLabel, monthPath, when,
@@ -52,6 +54,13 @@ const updated = e.synthesisUpdatedAt ? `${formatDay(e.synthesisUpdatedAt)} ${e.s
 const description = e.tldr ? e.tldr.replace(/\*/g, '') : `${ev.name} ${e.year} : ${formatRange(e.start, e.end)}, ${e.city}.`;
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 const siteLabel = isArchiveUrl(e.url) ? 'Site archivé' : 'Site officiel';
+// Reader's library ids (src/lib/library.ts).
+const eid = `${e.event}/${e.year}`;
+const page = editionPath(e);
+const sid = (s: Session) => `${eid}#${s.id}`;
+const plain = (t: string) => t.replace(/\*\*(.+?)\*\*/g, '$1').replace(/\*(.+?)\*/g, '$1').replace(/\[(.+?)\]\(.+?\)/g, '$1');
+const videoUrl = (s: Session) =>
+  s.video?.youtubeId ? `https://www.youtube.com/watch?v=${s.video.youtubeId}${s.video.startSeconds ? `&t=${s.video.startSeconds}s` : ''}` : s.video?.url;
 ---
 <Base title={`${ev.name} ${e.year} · synthèse`} description={description}>
   <article class="wrap page">
@@ -87,6 +96,13 @@ const siteLabel = isArchiveUrl(e.url) ? 'Site archivé' : 'Site officiel';
         </nav>
       )}
       {e.note && <p class="note muted">{e.note}</p>}
+      <div class="mine" role="group" aria-label="Ma lecture">
+        <LibButton action="mark" id={eid} kind="edition" title={e.title} from={ev.name} url={page} context={e.title} />
+        {e.status === 'synthesized' && (
+          <LibButton action="read" id={eid} context={`synthèse de ${e.title}`} label="Synthèse lue" cascade={e.sessions.map(sid)} />
+        )}
+        {e.status === 'synthesized' && e.sessions.length > 0 && <span class="progress muted" id="progress" data-n={e.sessions.length}></span>}
+      </div>
     </header>
 
     {e.status !== 'synthesized' ? (
@@ -127,7 +143,7 @@ const siteLabel = isArchiveUrl(e.url) ? 'Site archivé' : 'Site officiel';
                 <input id="sess-q" type="search" placeholder="Titre ou orateur" autocomplete="off" />
                 <ol class="sess-list">
                   {days.map((d) => byDay.get(d)!.map((s) => (
-                    <li data-text={`${s.title} ${s.speakers.join(' ')}`.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()}>
+                    <li data-sid={sid(s)} data-text={`${s.title} ${s.speakers.join(' ')}`.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()}>
                       <a href={`#${s.id}`}>{s.title}</a>
                     </li>
                   )))}
@@ -166,7 +182,12 @@ const siteLabel = isArchiveUrl(e.url) ? 'Site archivé' : 'Site officiel';
           {e.keyTakeaways.length > 0 && (
             <section id="actions" class="block" aria-labelledby="h-actions">
               <h2 id="h-actions">Actions concrètes citées</h2>
-              <ol class="prose takeaways">{e.keyTakeaways.map((t) => <li set:html={mdInline(t)} />)}</ol>
+              <ol class="prose takeaways">{e.keyTakeaways.map((t, i) => (
+                <li>
+                  <span set:html={mdInline(t)} />
+                  <LibButton action="mark" compact id={`${eid}~${hash(t)}`} kind="takeaway" title={plain(t)} from={e.title} url={`${page}#actions`} context={`action concrète n° ${i + 1}`} />
+                </li>
+              ))}</ol>
             </section>
           )}
 
@@ -177,11 +198,15 @@ const siteLabel = isArchiveUrl(e.url) ? 'Site archivé' : 'Site officiel';
                 <section class="day" aria-labelledby={`day-${d || 'x'}`}>
                   <h3 class="dayh" id={`day-${d || 'x'}`}>{cap(dayLabel(d))}</h3>
                   {byDay.get(d)!.map((s) => (
-                    <article class="session" id={s.id}>
+                    <article class="session" id={s.id} data-sid={sid(s)}>
                       <p class="s-head">
                         <span class="s-type">{SESSION_TYPES[s.type]}</span>
                         {s.video && <span class="tag video">▶ vidéo{s.video.transcript ? ' + transcript' : ''}</span>}
                         {s.summarySources.length === 1 && s.summarySources[0] === 'program' && <span class="tag conf">d'après le programme</span>}
+                        <span class="s-actions">
+                          <LibButton action="mark" id={sid(s)} kind="session" title={s.title} from={[e.title, s.speakers.join(', ')].filter(Boolean).join(' · ')} url={`${page}#${s.id}`} video={videoUrl(s)} context={s.title} />
+                          <LibButton action="read" id={sid(s)} context={s.title} parent={eid} />
+                        </span>
                       </p>
                       <h4>
                         {s.title}
@@ -223,6 +248,9 @@ const siteLabel = isArchiveUrl(e.url) ? 'Site archivé' : 'Site officiel';
 </Base>
 
 <script>
+  import { bindLibrary } from '../../../lib/library-ui';
+  import { isRead, subscribe } from '../../../lib/library';
+
   // Session index filter
   const q = document.getElementById('sess-q') as HTMLInputElement | null;
   if (q) {
@@ -243,15 +271,33 @@ const siteLabel = isArchiveUrl(e.url) ? 'Site archivé' : 'Site officiel';
   // Copy a link to a session
   const toast = document.getElementById('toast')!;
   let timer = 0;
+  const say = (msg: string) => {
+    toast.textContent = msg;
+    toast.classList.add('on');
+    clearTimeout(timer);
+    timer = window.setTimeout(() => toast.classList.remove('on'), 2000);
+  };
+
+  // Reader's library: bookmarks and read state, kept in this browser.
+  bindLibrary(say);
+  const progress = document.getElementById('progress');
+  const sessions = [...document.querySelectorAll<HTMLElement>('.session[data-sid]')];
+  const tocItems = [...document.querySelectorAll<HTMLElement>('.sess-list li[data-sid]')];
+  subscribe(() => {
+    sessions.forEach((s) => s.classList.toggle('is-read', isRead(s.dataset.sid!)));
+    tocItems.forEach((li) => li.classList.toggle('is-read', isRead(li.dataset.sid!)));
+    if (progress) {
+      const n = Number(progress.dataset.n);
+      const k = sessions.filter((s) => s.classList.contains('is-read')).length;
+      progress.textContent = k === 0 ? '' : k === n ? 'Toutes les sessions lues' : `${k}/${n} session${k > 1 ? 's' : ''} lue${k > 1 ? 's' : ''}`;
+    }
+  });
   document.querySelectorAll<HTMLButtonElement>('.copy').forEach((b) =>
     b.addEventListener('click', async () => {
       const url = `${location.origin}${location.pathname}#${b.dataset.id}`;
       history.replaceState(null, '', `#${b.dataset.id}`);
-      try { await navigator.clipboard.writeText(url); toast.textContent = 'Lien de la session copié'; }
-      catch { toast.textContent = "Lien dans la barre d'adresse"; }
-      toast.classList.add('on');
-      clearTimeout(timer);
-      timer = window.setTimeout(() => toast.classList.remove('on'), 2000);
+      try { await navigator.clipboard.writeText(url); say('Lien de la session copié'); }
+      catch { say("Lien dans la barre d'adresse"); }
     }),
   );
 </script>
@@ -272,6 +318,12 @@ const siteLabel = isArchiveUrl(e.url) ? 'Site archivé' : 'Site officiel';
   .editions .chip:not(.has):not([aria-current]) { color: var(--muted); border-style: dashed; }
   .editions .chip.has:not([aria-current])::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
   .note { margin: 0; font-size: 14px; max-width: 80ch; }
+  .mine { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .progress { font-size: 14px; }
+  .s-actions { margin-left: auto; display: inline-flex; gap: 6px; }
+  .session.is-read h4 { color: var(--muted); }
+  .sess-list li.is-read a::before { content: "✓ "; color: var(--agile); }
+  .takeaways :global(.lib) { vertical-align: middle; margin-left: 6px; }
   .placeholder { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px 24px; max-width: 70ch; display: flex; flex-direction: column; gap: 8px; }
   .placeholder h2 { font-size: 20px; }
   .placeholder p { margin: 0; }

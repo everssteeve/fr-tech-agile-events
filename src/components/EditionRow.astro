@@ -36,7 +36,7 @@ const synth = e.status === 'synthesized';
 const H = headingLevel;
 const plain = (t: string) => t.replace(/\*\*(.+?)\*\*/g, '$1').replace(/\*(.+?)\*/g, '$1');
 ---
-<article class={`row ${st}${synth ? ' synth' : ''}`} data-cat={category} data-synth={synth ? '1' : '0'} data-start={e.start}>
+<article class={`row ${st}${synth ? ' synth' : ''}`} data-cat={category} data-synth={synth ? '1' : '0'} data-start={e.start} data-eid={`${e.event}/${e.year}`} data-n={e.sessions.length}>
   <p class="date"><span class="d">{big}</span><span class="w">{small}</span></p>
   <div class="body">
     <H class="name"><a href={editionPath(e)}>{name}</a></H>
@@ -44,6 +44,8 @@ const plain = (t: string) => t.replace(/\*\*(.+?)\*\*/g, '$1').replace(/\*(.+?)\
     {e.tldr && <p class="tldr">{plain(e.tldr)}</p>}
   </div>
   <p class="tags">
+    <span class="tag fav" data-lib="fav" hidden>★ favori</span>
+    <span class="tag read" data-lib="read" hidden></span>
     {st === 'live' && <span class="tag live">en cours</span>}
     {!hideCategory && <span class={`tag cat-${category}`}>{CATEGORIES[category].short}</span>}
     {synth && <span class="tag done">{e.sessions.length} session{e.sessions.length > 1 ? 's' : ''} résumée{e.sessions.length > 1 ? 's' : ''}</span>}
@@ -52,6 +54,27 @@ const plain = (t: string) => t.replace(/\*\*(.+?)\*\*/g, '$1').replace(/\*(.+?)\
     {conf && <span class="tag conf">{conf}</span>}
   </p>
 </article>
+<script>
+  import { isMarked, isRead, readEntries, subscribe } from '../lib/library';
+
+  // Reader's library: show bookmarked and read editions in every list.
+  const rows = [...document.querySelectorAll<HTMLElement>('.row[data-eid]')];
+  if (rows.length) subscribe(() => {
+    const read = readEntries().map(([id]) => id);
+    rows.forEach((r) => {
+      const id = r.dataset.eid!;
+      const n = Number(r.dataset.n);
+      const k = Math.min(n, read.filter((x) => x.startsWith(`${id}#`)).length);
+      const done = isRead(id) || (n > 0 && k === n);
+      const fav = r.querySelector<HTMLElement>('[data-lib="fav"]')!;
+      const tag = r.querySelector<HTMLElement>('[data-lib="read"]')!;
+      fav.hidden = !isMarked(id);
+      tag.hidden = !done && k === 0;
+      tag.textContent = done ? '✓ lue' : `${k}/${n} lues`;
+      r.classList.toggle('is-read', done);
+    });
+  });
+</script>
 <style>
   .row { position: relative; display: grid; grid-template-columns: 104px 1fr auto; gap: 4px 16px; padding: 14px 8px; border-bottom: 1px solid var(--line); align-items: start; border-radius: 6px; }
   .row:hover { background: var(--surface); }

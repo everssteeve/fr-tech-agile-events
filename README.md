@@ -12,6 +12,7 @@ Site : https://everssteeve.github.io/fr-tech-agile-events/
   - `content/editions/<slug>/<année>.json` : une édition (dates, sessions, vidéos, sources) ;
   - `content/editions/<slug>/<année>.md` : synthèse globale de l'édition.
 - Règles de rédaction des synthèses : [`docs/SYNTHESIS_GUIDE.md`](docs/SYNTHESIS_GUIDE.md).
+- Favoris et lectures du lecteur (`/favoris/`) : stockés dans le navigateur (localStorage, clé `ftae:library`), sans compte ni serveur ; logique dans `src/lib/library.ts`, boutons `src/components/LibButton.astro`. Export/import JSON pour changer d'appareil.
 
 ```sh
 pnpm install

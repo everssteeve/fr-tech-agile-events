@@ -68,3 +68,20 @@ h2 { font-family: var(--font-d); font-weight: 700; font-size: clamp(22px, 3vw, 2
 .chip[aria-pressed="true"], .chip[aria-current="page"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 .chip .sw { width: 9px; height: 9px; border-radius: 50%; }
 @media (pointer: coarse) { .chip { min-height: 44px; } }
+
+/* Reader's library toggles (LibButton.astro): bookmark star and read check */
+.lib { appearance: none; font: inherit; font-size: 13.5px; display: inline-flex; align-items: center; gap: 6px; min-height: 32px; padding: 0 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--muted); cursor: pointer; white-space: nowrap; transition: border-color .15s ease-out, color .15s ease-out, background-color .15s ease-out; }
+.lib:hover { color: var(--ink); border-color: var(--muted); }
+.lib svg { flex: none; }
+.lib.mark svg path { fill: none; }
+.lib.mark[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); background: var(--accent-bg); }
+.lib.mark[aria-pressed="true"] svg path { fill: currentColor; }
+.lib.read .tick { stroke: currentColor; opacity: .4; }
+.lib.read[aria-pressed="true"] { color: var(--agile); border-color: var(--agile); background: var(--agile-bg); }
+.lib.read[aria-pressed="true"] circle { fill: currentColor; }
+.lib.read[aria-pressed="true"] .tick { stroke: var(--agile-bg); opacity: 1; }
+.lib.compact { padding: 0; width: 32px; justify-content: center; }
+@media (pointer: coarse) { .lib { min-height: 44px; } .lib.compact { width: 44px; } }
+@media (prefers-reduced-motion: reduce) { .lib { transition: none; } }
+.tag.read { background: var(--agile-bg); color: var(--agile); }
+.tag.fav { background: var(--accent-bg); color: var(--accent); }

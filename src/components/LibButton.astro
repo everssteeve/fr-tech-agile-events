@@ -1,0 +1,41 @@
+---
+/**
+ * Toggle button for the reader's library (src/lib/library.ts): bookmark ("Favori") or read state ("Lu").
+ * State is applied client-side by the page script through `data-mark` / `data-read` and `aria-pressed`.
+ */
+import type { MarkKind } from '../lib/library';
+
+interface Props {
+  action: 'mark' | 'read';
+  id: string;
+  /** Context for screen readers, e.g. the session title. */
+  context: string;
+  /** Bookmark snapshot (action="mark"). */
+  kind?: MarkKind;
+  title?: string;
+  from?: string;
+  url?: string;
+  video?: string;
+  /** Icon only (the label stays available to screen readers). */
+  compact?: boolean;
+  /** Visible label override (default "Favori" / "Lu"). */
+  label?: string;
+  /** Read toggle: ids marked along with this one (an edition's sessions); the toggle shows as on once they are all read. */
+  cascade?: string[];
+  /** Read toggle: id of the whole this item belongs to, unread along with it. */
+  parent?: string;
+}
+const { action, id, context, kind, title, from, url, video, compact = false, label, cascade, parent } = Astro.props;
+const text = label ?? (action === 'mark' ? 'Favori' : 'Lu');
+const data = action === 'mark'
+  ? { 'data-mark': id, 'data-kind': kind, 'data-title': title, 'data-from': from, 'data-url': url, 'data-video': video }
+  : { 'data-read': id, 'data-cascade': cascade?.length ? JSON.stringify(cascade) : undefined, 'data-parent': parent };
+---
+<button type="button" class:list={['lib', action, { compact }]} aria-pressed="false" {...data}>
+  {action === 'mark' ? (
+    <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M10 2.6l2.3 4.7 5.2.8-3.8 3.6.9 5.2L10 14.4l-4.6 2.5.9-5.2-3.8-3.6 5.2-.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+  ) : (
+    <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><circle cx="10" cy="10" r="7.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path class="tick" d="M6.6 10.2l2.3 2.3 4.5-4.6" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  )}
+  <span class:list={[{ 'sr-only': compact }]}>{text}</span><span class="sr-only"> : {context}</span>
+</button>

@@ -1,0 +1,211 @@
+---
+import Base from '../../layouts/Base.astro';
+import { editionPath, href, loadAll } from '../../lib/data';
+
+// Edition titles and session counts, so the reading history can be shown without loading the search index.
+const { editions } = await loadAll();
+const index = Object.fromEntries(
+  editions.map((e) => [`${e.data.event}/${e.data.year}`, { t: e.data.title, u: editionPath(e.data), n: e.data.sessions.length }]),
+);
+---
+<Base title="Mes favoris" description="Vos favoris et vos lectures : conférences, sessions, vidéos et conseils mis de côté.">
+  <div class="wrap page">
+    <header class="head">
+      <h1>Mes favoris</h1>
+      <p class="lede">Les conférences, sessions, vidéos et conseils que vous avez mis de côté avec <span class="ic">☆ Favori</span>, et les synthèses que vous avez marquées <span class="ic">✓ Lu</span>.</p>
+      <p class="muted small" id="where">Ils sont enregistrés dans ce navigateur, sans compte. Pour les retrouver sur un autre appareil, exportez-les puis importez le fichier (en bas de page).</p>
+    </header>
+
+    <section aria-labelledby="h-marks" class="block">
+      <h2 id="h-marks" tabindex="-1">Favoris <span class="count" id="marks-count"></span></h2>
+      <div class="chips" role="group" aria-label="Type de favori">
+        <button type="button" class="chip" data-k="" aria-pressed="true">Tout <span class="n"></span></button>
+        <button type="button" class="chip" data-k="edition" aria-pressed="false">Conférences <span class="n"></span></button>
+        <button type="button" class="chip" data-k="session" aria-pressed="false">Sessions <span class="n"></span></button>
+        <button type="button" class="chip" data-k="video" aria-pressed="false">Vidéos <span class="n"></span></button>
+        <button type="button" class="chip" data-k="takeaway" aria-pressed="false">Conseils <span class="n"></span></button>
+      </div>
+      <ol class="items" id="marks"></ol>
+      <p class="empty" id="marks-empty" hidden>
+        Aucun favori pour l'instant. Sur la page d'une édition, le bouton <span class="ic">☆ Favori</span> met de côté la conférence, une session (et sa vidéo) ou une action concrète.
+        <a href={href('')}>Parcourir le calendrier →</a>
+      </p>
+    </section>
+
+    <section aria-labelledby="h-read" class="block">
+      <h2 id="h-read">Mes lectures <span class="count" id="read-count"></span></h2>
+      <ol class="items" id="reads"></ol>
+      <p class="empty" id="reads-empty" hidden>Aucune lecture enregistrée. Marquez une synthèse ou une session comme lue pour la retrouver ici et la repérer dans le calendrier.</p>
+    </section>
+
+    <section aria-labelledby="h-save" class="block save">
+      <h2 id="h-save">Sauvegarde</h2>
+      <div class="tools">
+        <button type="button" class="chip" id="export">Exporter (fichier JSON)</button>
+        <label class="chip file">Importer un fichier<input type="file" id="import" accept="application/json,.json" class="sr-only" /></label>
+        <button type="button" class="chip danger" id="clear">Tout effacer…</button>
+      </div>
+      <p class="muted small" id="save-status" role="status" aria-live="polite"></p>
+    </section>
+  </div>
+  <script is:inline type="application/json" id="edition-index" set:html={JSON.stringify(index)} />
+</Base>
+
+<script>
+  import {
+    clearAll, exportJson, importJson, isRead, marks, persistent, readEntries, removeMark, subscribe, type Mark,
+  } from '../../lib/library';
+
+  const index = JSON.parse(document.getElementById('edition-index')!.textContent!) as Record<string, { t: string; u: string; n: number }>;
+  const KIND: Record<Mark['kind'], string> = { edition: 'Conférence', session: 'Session', takeaway: 'Conseil', month: 'Synthèse du mois' };
+  const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+  const date = (iso: string) => new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+  const status = document.getElementById('save-status')!;
+
+  if (!persistent()) {
+    document.getElementById('where')!.textContent = "Ce navigateur bloque le stockage local (navigation privée ?) : vos favoris et lectures ne seront pas conservés après cette visite.";
+  }
+
+  // Bookmarks
+  let filter = '';
+  const chips = [...document.querySelectorAll<HTMLButtonElement>('.chips .chip')];
+  const match = (m: Mark, k: string) => !k || (k === 'video' ? !!m.video : m.kind === k);
+  chips.forEach((c) => c.addEventListener('click', () => {
+    filter = c.dataset.k!;
+    chips.forEach((x) => x.setAttribute('aria-pressed', String(x === c)));
+    renderMarks();
+  }));
+
+  const list = document.getElementById('marks')!;
+  function renderMarks() {
+    const all = marks();
+    chips.forEach((c) => { c.querySelector('.n')!.textContent = String(all.filter((m) => match(m, c.dataset.k!)).length); });
+    document.getElementById('marks-count')!.textContent = all.length ? String(all.length) : '';
+    const shown = all.filter((m) => match(m, filter));
+    list.innerHTML = shown.map((m) => `
+      <li class="item k-${m.kind}">
+        <span class="k">${KIND[m.kind]}${isRead(m.id) ? ' · lu' : ''}</span>
+        <div class="main">
+          ${m.kind === 'takeaway'
+            ? `<a class="t quote" href="${esc(m.url)}">${esc(m.title)}</a>`
+            : `<a class="t" href="${esc(m.url)}">${esc(m.title)}</a>`}
+          <span class="s">${m.context ? `${esc(m.context)} · ` : ''}ajouté le ${date(m.addedAt)}</span>
+          ${m.video ? `<a class="v" href="${esc(m.video)}" target="_blank" rel="noopener">▶ Voir la vidéo<span class="sr-only"> (nouvel onglet)</span> ↗</a>` : ''}
+        </div>
+        <button type="button" class="rm" data-id="${esc(m.id)}" aria-label="Retirer des favoris : ${esc(m.title.slice(0, 80))}">Retirer</button>
+      </li>`).join('');
+    const empty = document.getElementById('marks-empty')!;
+    empty.hidden = shown.length > 0;
+    if (all.length && !shown.length) empty.textContent = 'Aucun favori de ce type.';
+  }
+  list.addEventListener('click', (e) => {
+    const b = (e.target as HTMLElement).closest<HTMLButtonElement>('.rm');
+    if (!b) return;
+    // The list is re-rendered: keep keyboard focus at the same position.
+    const i = [...list.querySelectorAll('.rm')].indexOf(b);
+    removeMark(b.dataset.id!);
+    const rms = list.querySelectorAll<HTMLElement>('.rm');
+    (rms[Math.min(i, rms.length - 1)] ?? document.getElementById('h-marks'))!.focus();
+    status.textContent = 'Favori retiré.';
+  });
+
+  // Reading history, grouped by edition (an edition is read when marked, or when all its sessions are).
+  function renderReads() {
+    const byEdition = new Map<string, { last: string; sessions: number }>();
+    for (const [id, at] of readEntries()) {
+      const eid = id.split('#')[0]!;
+      if (!index[eid]) continue;
+      const g = byEdition.get(eid) ?? { last: at, sessions: 0 };
+      if (id.includes('#')) g.sessions++;
+      if (at > g.last) g.last = at;
+      byEdition.set(eid, g);
+    }
+    const rows = [...byEdition.entries()].sort((a, b) => b[1].last.localeCompare(a[1].last));
+    document.getElementById('read-count')!.textContent = rows.length ? String(rows.length) : '';
+    document.getElementById('reads')!.innerHTML = rows.map(([eid, g]) => {
+      const ed = index[eid]!;
+      const done = isRead(eid) || (ed.n > 0 && g.sessions >= ed.n);
+      const state = done ? '✓ Lue' : `${Math.min(g.sessions, ed.n)}/${ed.n} sessions lues`;
+      return `<li class="item"><span class="k ${done ? 'done' : ''}">${state}</span><div class="main"><a class="t" href="${ed.u}">${esc(ed.t)}</a><span class="s">dernière lecture le ${date(g.last)}</span></div></li>`;
+    }).join('');
+    document.getElementById('reads-empty')!.hidden = rows.length > 0;
+  }
+
+  subscribe(() => { renderMarks(); renderReads(); });
+
+  // Backup
+  document.getElementById('export')!.addEventListener('click', () => {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([exportJson()], { type: 'application/json' }));
+    a.download = `favoris-retours-de-conf-${new Date().toISOString().slice(0, 10)}.json`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+    status.textContent = 'Fichier exporté.';
+  });
+  document.getElementById('import')!.addEventListener('change', async (e) => {
+    const input = e.target as HTMLInputElement;
+    const file = input.files?.[0];
+    if (!file) return;
+    try {
+      const n = importJson(await file.text());
+      status.textContent = n ? `${n} élément${n > 1 ? 's' : ''} importé${n > 1 ? 's' : ''}.` : 'Rien de nouveau dans ce fichier.';
+    } catch {
+      status.textContent = "Ce fichier n'est pas un export de vos favoris.";
+    }
+    input.value = '';
+  });
+  // Two-step clear (no browser confirm dialog).
+  const clear = document.getElementById('clear') as HTMLButtonElement;
+  let armed = 0;
+  clear.addEventListener('click', () => {
+    if (!armed) {
+      clear.textContent = 'Confirmer : tout effacer';
+      clear.classList.add('armed');
+      armed = window.setTimeout(() => { armed = 0; clear.textContent = 'Tout effacer…'; clear.classList.remove('armed'); }, 4000);
+      return;
+    }
+    clearTimeout(armed);
+    armed = 0;
+    clearAll();
+    clear.textContent = 'Tout effacer…';
+    clear.classList.remove('armed');
+    status.textContent = 'Favoris et lectures effacés.';
+  });
+</script>
+
+<style>
+  .page { display: flex; flex-direction: column; gap: 36px; max-width: 860px; }
+  .head { display: flex; flex-direction: column; gap: 10px; }
+  .lede { margin: 0; font-size: 17px; max-width: 64ch; }
+  .small { font-size: 14px; margin: 0; max-width: 72ch; }
+  .ic { font-family: var(--font-m); font-size: .85em; white-space: nowrap; border: 1px solid var(--line); border-radius: 999px; padding: 1px 7px; background: var(--surface); }
+  .block { display: flex; flex-direction: column; gap: 12px; }
+  .block > h2 { border-bottom: 2px solid var(--ink); padding-bottom: 6px; display: flex; align-items: baseline; gap: 10px; }
+  .block > h2:focus { outline: none; }
+  .count { font-family: var(--font-m); font-size: 15px; font-weight: 400; color: var(--muted); }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip .n { font-family: var(--font-m); font-size: 12px; opacity: .75; }
+  .items { list-style: none; margin: 0; padding: 0; }
+  .items :global(.item) { display: grid; grid-template-columns: 120px minmax(0, 1fr) auto; gap: 4px 16px; padding: 14px 8px; border-bottom: 1px solid var(--line); align-items: start; }
+  .items :global(.k) { font-family: var(--font-m); font-size: 12px; color: var(--muted); padding-top: 3px; }
+  .items :global(.k.done) { color: var(--agile); }
+  .items :global(.main) { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .items :global(.t) { font-weight: 700; text-underline-offset: 3px; overflow-wrap: anywhere; }
+  .items :global(.t.quote) { font-weight: 400; font-family: var(--font-d); font-size: 17px; line-height: 1.4; }
+  .items :global(.s) { font-size: 14px; color: var(--muted); }
+  .items :global(.v) { font-size: 14px; text-underline-offset: 3px; padding-block: 4px; align-self: flex-start; }
+  .items :global(.rm) { font: inherit; font-size: 13.5px; color: var(--muted); background: none; border: 1px solid var(--line); border-radius: 999px; padding: 0 12px; min-height: 32px; cursor: pointer; }
+  .items :global(.rm:hover) { color: var(--accent); border-color: var(--accent); }
+  @media (pointer: coarse) { .items :global(.rm) { min-height: 44px; } }
+  @media (max-width: 600px) {
+    .items :global(.item) { grid-template-columns: minmax(0, 1fr) auto; }
+    .items :global(.k) { grid-column: 1 / -1; padding: 0; }
+  }
+  .empty { margin: 0; padding: 16px 20px; background: var(--surface); border: 1px dashed var(--line); border-radius: 10px; color: var(--muted); max-width: 70ch; }
+  .empty a { color: var(--ink); text-underline-offset: 3px; white-space: nowrap; }
+  .tools { display: flex; flex-wrap: wrap; gap: 8px; }
+  .file { position: relative; }
+  .file:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .danger:hover, .danger.armed { color: var(--accent); border-color: var(--accent); }
+  .danger.armed { background: var(--accent-bg); }
+</style>
