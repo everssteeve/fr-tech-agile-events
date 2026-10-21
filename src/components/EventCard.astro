@@ -1,0 +1,36 @@
+---
+import { CATEGORIES, eventPath, formatRange, type EditionEntry, type EventEntry } from '../lib/data';
+
+interface Props {
+  event: EventEntry;
+  count: number;
+  synth: number;
+  next?: EditionEntry;
+  /** Show the category swatch (lists not grouped by category). */
+  showCategory?: boolean;
+}
+const { event: e, count, synth, next, showCategory = false } = Astro.props;
+const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+---
+<li data-text={norm(`${e.data.name} ${e.data.city}`)}>
+  <h3><a href={eventPath(e.id)}>{e.data.name}</a></h3>
+  <p class="city">
+    {showCategory && <span class="sw" style={`background:var(--${e.data.category})`} title={CATEGORIES[e.data.category].label} aria-hidden="true"></span>}
+    {showCategory ? `${CATEGORIES[e.data.category].short} · ${e.data.city}` : e.data.city}
+  </p>
+  <p class="small">{count} édition{count > 1 ? 's' : ''}{synth > 0 && ` · ${synth} synthèse${synth > 1 ? 's' : ''}`}</p>
+  {next && <p class="next">Prochaine : {formatRange(next.data.start, next.data.end)}</p>}
+</li>
+<style>
+  li { position: relative; padding: 12px 8px; border-bottom: 1px solid var(--line); border-radius: 6px; }
+  li:hover { background: var(--surface); }
+  h3 { font-family: var(--font-b); font-size: 16.5px; margin: 0; }
+  h3 a { text-decoration: none; }
+  h3 a::after { content: ""; position: absolute; inset: 0; }
+  li:hover h3 a { text-decoration: underline; text-underline-offset: 3px; }
+  p { margin: 0; }
+  .city { color: var(--muted); font-size: 14px; display: flex; align-items: center; gap: 6px; }
+  .sw { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+  .small { font-family: var(--font-m); font-size: 12.5px; color: var(--muted); margin-top: 4px; }
+  .next { font-size: 13.5px; color: var(--accent); font-weight: 700; margin-top: 2px; }
+</style>

@@ -1,83 +1,136 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { CATEGORIES, eventPath, formatRange, loadAll, when } from '../../lib/data';
+import EventCard from '../../components/EventCard.astro';
+import { CATEGORIES, ONLINE, eventCities, loadAll, slugify, when } from '../../lib/data';
 import type { Category } from '../../lib/data';
 
 const { events, editions } = await loadAll();
+const cards = events
+  .sort((a, b) => a.data.name.localeCompare(b.data.name, 'fr'))
+  .map((e) => {
+    const eds = editions.filter((x) => x.data.event === e.id);
+    const next = eds.filter((x) => when(x.data) !== 'past').sort((a, b) => a.data.start.localeCompare(b.data.start))[0];
+    return { e, count: eds.length, synth: eds.filter((x) => x.data.status === 'synthesized').length, next };
+  });
 const groups = (Object.keys(CATEGORIES) as Category[]).map((cat) => ({
   cat,
-  items: events
-    .filter((e) => e.data.category === cat)
-    .sort((a, b) => a.data.name.localeCompare(b.data.name, 'fr'))
-    .map((e) => {
-      const eds = editions.filter((x) => x.data.event === e.id);
-      const next = eds.filter((x) => when(x.data) !== 'past').sort((a, b) => a.data.start.localeCompare(b.data.start))[0];
-      return { e, count: eds.length, synth: eds.filter((x) => x.data.status === 'synthesized').length, next };
-    }),
+  items: cards.filter(({ e }) => e.data.category === cat),
 }));
-const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+
+// By city: most active cities first, then alphabetical; online events last.
+const byCity = new Map<string, typeof cards>();
+for (const c of cards) for (const city of eventCities(c.e.data.city)) byCity.set(city, [...(byCity.get(city) ?? []), c]);
+const cities = [...byCity]
+  .map(([city, items]) => ({ city, id: `v-${slugify(city)}`, items }))
+  .sort((a, b) => Number(a.city === ONLINE) - Number(b.city === ONLINE) || b.items.length - a.items.length || a.city.localeCompare(b.city, 'fr'));
 ---
-<Base title="Événements suivis" description="Toutes les séries d'événements tech et agiles suivies, avec leurs éditions.">
+<Base title="Événements suivis" description="Toutes les séries d'événements tech et agiles suivies, avec leurs éditions, par thème ou par ville.">
   <div class="wrap page">
     <header class="head">
       <h1>Événements suivis</h1>
-      <p class="lede">{events.length} conférences et rencontres, regroupées par thème. Chaque fiche liste les éditions et leurs synthèses.</p>
-      <div class="filter">
-        <label for="ev-q">Filtrer</label>
-        <input id="ev-q" type="search" placeholder="Nom ou ville" autocomplete="off" />
-        <span class="muted" id="ev-count" aria-live="polite"></span>
+      <p class="lede">{events.length} conférences et rencontres, regroupées par thème ou par ville. Chaque fiche liste les éditions et leurs synthèses.</p>
+      <div class="tools">
+        <div class="chips" role="group" aria-label="Regrouper les événements">
+          <button type="button" class="chip" data-view="theme" aria-pressed="true">Par thème</button>
+          <button type="button" class="chip" data-view="ville" aria-pressed="false">Par ville</button>
+        </div>
+        <div class="filter">
+          <label for="ev-q">Filtrer</label>
+          <input id="ev-q" type="search" placeholder="Nom ou ville" autocomplete="off" />
+          <span class="muted" id="ev-count" aria-live="polite"></span>
+        </div>
       </div>
     </header>
-    {groups.map((g) => (
-      <section class="grp" aria-labelledby={`h-${g.cat}`}>
-        <h2 id={`h-${g.cat}`}><span class="sw" style={`background:var(--${g.cat})`} aria-hidden="true"></span>{CATEGORIES[g.cat].label} <small>{g.items.length}</small></h2>
-        <ul class="grid">
-          {g.items.map(({ e, count, synth, next }) => (
-            <li data-text={norm(`${e.data.name} ${e.data.city}`)}>
-              <h3><a href={eventPath(e.id)}>{e.data.name}</a></h3>
-              <p class="city">{e.data.city}</p>
-              <p class="small">{count} édition{count > 1 ? 's' : ''}{synth > 0 && ` · ${synth} synthèse${synth > 1 ? 's' : ''}`}</p>
-              {next && <p class="next">Prochaine : {formatRange(next.data.start, next.data.end)}</p>}
-            </li>
-          ))}
-        </ul>
-      </section>
-    ))}
+    <div class="view" data-view="theme">
+      {groups.map((g) => (
+        <section class="grp" aria-labelledby={`h-${g.cat}`}>
+          <h2 id={`h-${g.cat}`}><span class="sw" style={`background:var(--${g.cat})`} aria-hidden="true"></span>{CATEGORIES[g.cat].label} <small>{g.items.length}</small></h2>
+          <ul class="grid">
+            {g.items.map((c) => <EventCard event={c.e} count={c.count} synth={c.synth} next={c.next} />)}
+          </ul>
+        </section>
+      ))}
+    </div>
+    <div class="view" data-view="ville" hidden>
+      <nav class="jump" aria-label="Aller à une ville">
+        {cities.map((c) => <a href={`#${c.id}`} data-for={c.id}>{c.city} <small>{c.items.length}</small></a>)}
+      </nav>
+      {cities.map((c) => (
+        <section class="grp" id={c.id} aria-labelledby={`h-${c.id}`}>
+          <h2 id={`h-${c.id}`}>{c.city} <small>{c.items.length}</small></h2>
+          <ul class="grid">
+            {c.items.map((x) => <EventCard event={x.e} count={x.count} synth={x.synth} next={x.next} showCategory />)}
+          </ul>
+        </section>
+      ))}
+    </div>
     <p class="muted" id="ev-none" hidden>Aucun événement ne correspond.</p>
   </div>
 </Base>
 <script>
   const q = document.getElementById('ev-q') as HTMLInputElement;
-  const items = [...document.querySelectorAll<HTMLLIElement>('.grid li')];
   const count = document.getElementById('ev-count')!;
-  q.addEventListener('input', () => {
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>('button[data-view]')];
+  const views = [...document.querySelectorAll<HTMLElement>('.view')];
+  const active = () => views.find((v) => !v.hidden)!;
+
+  const filter = () => {
     const v = q.value.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
-    let n = 0;
-    items.forEach((li) => { const ok = !v || li.dataset.text!.includes(v); li.hidden = !ok; if (ok) n++; });
-    document.querySelectorAll<HTMLElement>('.grp').forEach((s) => { s.hidden = !s.querySelector('li:not([hidden])'); });
+    const view = active();
+    // An event listed under several cities counts once.
+    const seen = new Set<string>();
+    view.querySelectorAll<HTMLLIElement>('.grid li').forEach((li) => {
+      const ok = !v || li.dataset.text!.includes(v);
+      li.hidden = !ok;
+      if (ok) seen.add(li.querySelector('a')!.getAttribute('href')!);
+    });
+    view.querySelectorAll<HTMLElement>('.grp').forEach((s) => {
+      s.hidden = !s.querySelector('li:not([hidden])');
+      const link = view.querySelector<HTMLElement>(`.jump a[data-for="${s.id}"]`);
+      if (link) link.hidden = s.hidden;
+    });
+    const n = seen.size;
     count.textContent = v ? `${n} résultat${n > 1 ? 's' : ''}` : '';
     document.getElementById('ev-none')!.hidden = n > 0;
-  });
+  };
+
+  const show = (name: string, push = true) => {
+    if (!buttons.some((b) => b.dataset.view === name)) name = 'theme';
+    buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.view === name)));
+    views.forEach((v) => (v.hidden = v.dataset.view !== name));
+    if (push) {
+      const url = new URL(location.href);
+      if (name === 'theme') url.searchParams.delete('vue');
+      else url.searchParams.set('vue', name);
+      url.hash = '';
+      history.replaceState(null, '', url);
+    }
+    filter();
+  };
+
+  buttons.forEach((b) => b.addEventListener('click', () => show(b.dataset.view!)));
+  q.addEventListener('input', filter);
+  show(new URLSearchParams(location.search).get('vue') ?? 'theme', false);
 </script>
 <style>
   .page { display: flex; flex-direction: column; gap: 36px; }
   .head { display: flex; flex-direction: column; gap: 12px; }
   .lede { color: var(--muted); font-size: 17px; margin: 0; }
+  .tools { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px 24px; }
+  .chips { display: flex; gap: 8px; }
   .filter { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
   .filter label { font-weight: 700; }
   .filter input { font: inherit; min-height: 44px; padding: 0 12px; width: min(100%, 320px); border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); }
+  .view { display: flex; flex-direction: column; gap: 36px; }
+  .view[hidden] { display: none; }
+  .jump { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 14.5px; }
+  .jump a { text-decoration: none; white-space: nowrap; }
+  .jump a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .jump a[hidden] { display: none; }
+  .jump small { font-family: var(--font-m); font-size: 12px; color: var(--muted); }
+  .grp { scroll-margin-top: 16px; }
   h2 { display: flex; align-items: center; gap: 10px; border-bottom: 2px solid var(--ink); padding-bottom: 6px; }
   h2 small { font-family: var(--font-m); font-size: 13px; color: var(--muted); font-weight: 400; }
   .sw { width: 12px; height: 12px; border-radius: 50%; }
   .grid { list-style: none; padding: 0; margin: 12px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 0 24px; }
-  .grid li { position: relative; padding: 12px 8px; border-bottom: 1px solid var(--line); border-radius: 6px; }
-  .grid li:hover { background: var(--surface); }
-  .grid h3 { font-family: var(--font-b); font-size: 16.5px; margin: 0; }
-  .grid h3 a { text-decoration: none; }
-  .grid h3 a::after { content: ""; position: absolute; inset: 0; }
-  .grid li:hover h3 a { text-decoration: underline; text-underline-offset: 3px; }
-  .grid p { margin: 0; }
-  .city { color: var(--muted); font-size: 14px; }
-  .small { font-family: var(--font-m); font-size: 12.5px; color: var(--muted); margin-top: 4px !important; }
-  .next { font-size: 13.5px; color: var(--accent); font-weight: 700; margin-top: 2px !important; }
 </style>

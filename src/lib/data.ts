@@ -154,3 +154,27 @@ export async function loadAll() {
   const monthByKey = new Map(months.map((m) => [m.data.month, m]));
   return { events, editions: sorted, eventBySlug, synthesisById, months, monthByKey };
 }
+
+/** Suburbs and nearby towns folded into the city a reader would look for. */
+const CITY_ALIASES: Record<string, string> = {
+  Nanterre: 'Paris',
+  Montrouge: 'Paris',
+  'La Défense': 'Paris',
+  'Issy-les-Moulineaux': 'Paris',
+  'Marne-la-Vallée': 'Paris',
+  Villeurbanne: 'Lyon',
+  Talence: 'Bordeaux',
+  'Le Bouscat': 'Bordeaux',
+  Carquefou: 'Nantes',
+  Biot: 'Sophia Antipolis',
+  Bidart: 'Biarritz',
+  Marseille: 'Aix-Marseille',
+  'Aix-en-Provence': 'Aix-Marseille',
+  'Gardanne / Aix-Marseille': 'Aix-Marseille',
+};
+
+export const ONLINE = 'En ligne';
+
+/** Cities an event is listed under: aliases resolved, multi-city values ("Bordeaux, Lille") split. */
+export const eventCities = (city: string): string[] =>
+  [...new Set(city.split(',').map((c) => c.trim()).filter(Boolean).map((c) => CITY_ALIASES[c] ?? c))];
