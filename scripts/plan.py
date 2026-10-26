@@ -11,6 +11,7 @@ Queues, each with a nightly budget so the backlog is worked through progressivel
 - history:  events whose past editions (last 20 years) have not been looked up yet;
 - months:   monthly syntheses older than one of their edition syntheses (computed before tonight's work;
             the Claude step re-checks after step 4).
+Editions listed in FOCUS (comma-separated `<slug>/<year>`) go first, whatever their queue.
 Also flips "scheduled" editions whose end date has passed to "pending".
 """
 
@@ -29,6 +30,7 @@ HISTORY_YEARS = 20
 BACKLOG_PER_DAY = int(os.environ.get("BACKLOG_PER_DAY", "10"))
 REVISITS_PER_DAY = int(os.environ.get("REVISITS_PER_DAY", "5"))
 HISTORY_PER_DAY = int(os.environ.get("HISTORY_PER_DAY", "4"))
+FOCUS = [f.strip() for f in os.environ.get("FOCUS", "").split(",") if f.strip()]
 
 
 def end_date(d: dict) -> date:
@@ -102,12 +104,27 @@ def main() -> None:
 
     backlog.sort(key=lambda x: x[0], reverse=True)
     revisits.sort(key=lambda x: x[0])
+    focus = []
+    for f in FOCUS:
+        p = ROOT / "content/editions" / f"{f}.json"
+        if not p.exists() or (d := load_json(p)) is None:
+            print(f"WARNING: FOCUS edition {f} not found or invalid")
+            continue
+        detail = f" ; à compléter : {d['revisit']}" if d.get("revisit") else ""
+        focus.append({"file": str(p.relative_to(ROOT)), "title": d["title"], "end": end_date(d).isoformat(),
+                      "reason": f"priorité demandée{detail}"})
+    focused = {f["file"] for f in focus}
     plan = {
         "today": today.isoformat(),
         "historyFromYear": today.year - HISTORY_YEARS,
-        "to_synthesize": window
-        + [b for _, b in backlog[:BACKLOG_PER_DAY]]
-        + [r for _, r in revisits[:REVISITS_PER_DAY]],
+        "to_synthesize": focus
+        + [
+            i
+            for i in window
+            + [b for _, b in backlog[:BACKLOG_PER_DAY]]
+            + [r for _, r in revisits[:REVISITS_PER_DAY]]
+            if i["file"] not in focused
+        ],
         "history_discovery": history_todo[:HISTORY_PER_DAY],
         "months_to_update": months_todo,
         "queues": {
