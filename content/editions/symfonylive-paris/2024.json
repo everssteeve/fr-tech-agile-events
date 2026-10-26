@@ -5,9 +5,199 @@
   "start": "2024-03-28",
   "end": "2024-03-29",
   "city": "Paris",
+  "venue": "Cité internationale universitaire de Paris",
   "url": "https://live.symfony.com/2024-paris/",
+  "programUrl": "https://live.symfony.com/2024-paris/schedule",
+  "edition": "15e édition",
   "dateConfidence": "ok",
-  "note": "Dates officielles (live.symfony.com/all) ; talks en français. Lieu non retrouvé.",
-  "status": "pending",
-  "sessions": []
+  "note": "Dates officielles (live.symfony.com/all, planning archivé). Conférence en français sur une seule salle (« Symfony Room ») : 1 keynote, 13 talks et un créneau de lightning talks en fin de première journée, précédés de formations les 26 et 27 mars chez SensioLabs à Asnières-sur-Seine. Lieu : Cité internationale universitaire de Paris (SensioLabs, Les-Tilleuls.coop, description de la vidéo best of). « 15e édition » selon Les-Tilleuls.coop.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-26",
+  "revisit": "Aucun post LinkedIn de participant retrouvé (recherche LinkedIn infructueuse) ; Mastodon et Bluesky ne donnent que des messages d'organisateurs, de sponsors ou de speakers. Corpus fait de comptes-rendus d'agences, dont plusieurs sponsors ou employeurs de speakers. Replays payants, aucun transcript. Chercher des posts LinkedIn de participants et l'article Medium d'Imen Ezzine sur PHP-VCR (annoncé par SensioLabs).",
+  "corpus": "Planning officiel (archivé), dépôt GitHub communautaire des slides, 5 comptes-rendus d'entreprises publiés entre le 30/03 et le 01/07/2024 (Antistatique, JoliCode, Les-Tilleuls.coop, Codéin, Magnétic), le récit de SensioLabs et son interview de trois speakers, les slides de la keynote (Speaker Deck) et une poignée de messages Mastodon et Bluesky d'organisateurs et sponsors.",
+  "limits": "Corpus dominé par des sponsors ou employeurs de speakers (JoliCode, Les-Tilleuls.coop, SensioLabs, Codéin), d'où une tonalité très positive ; seuls JoliCode et Magnétic formulent une critique. Aucun retour individuel de réseau social, aucun transcript (replays réservés aux participants et acheteurs, seule une vidéo best of de 2 minutes est sur YouTube) ; le contenu des lightning talks n'est connu que partiellement et sans tous les noms des orateurs.",
+  "tldr": "Une édition tournée vers le **front-end sans (trop de) JavaScript** avec Symfony UX, Live Components et Turbo, complétée par des talks très pratiques sur **les logs, les tests et les performances**, et une keynote inattendue de Fabien Potencier sur les entrailles de Git.",
+  "keyTakeaways": [
+    "Avant de partir sur une SPA, évaluer l'approche **« Radical Simplicity »** (Twig, Symfony UX, AssetMapper, Turbo, Mercure) ; garder une API et un front JavaScript pour le headless, le mobile ou plusieurs consommateurs (Dunglas, JoliCode, Les-Tilleuls.coop, Codéin).",
+    "Écrire des **messages de log fixes et uniques**, mettre les variables dans le contexte, enrichir avec des processors et journaliser aussi les chemins qui réussissent, en particulier crons, workers et traitements asynchrones (Pineau, Codéin, Les-Tilleuls.coop, Antistatique).",
+    "Distinguer **rôle (fonction) et permission (action)** : sortir le contrôle d'accès des contrôleurs et le centraliser dans des Voters, appelés via `isGranted` (Chalas, Codéin, JoliCode).",
+    "Tester les API externes **sans mocks en enregistrant puis rejouant les vraies réponses** avec PHP-VCR (Ezzine, JoliCode, Codéin, Magnétic).",
+    "Traiter les **tests instables** comme une dette : former l'équipe, réserver du temps, désactiver le temps de corriger, relire les tests comme du code, outiller la détection (Lescano, JoliCode, Codéin, Magnétic).",
+    "Migrer annotations et configuration YAML vers les **attributs PHP**, de préférence avec Rector, SensioFrameworkExtraBundle étant en fin de vie (Tamarelle, JoliCode, Les-Tilleuls.coop).",
+    "Suivre les versions mineures : `composer update` chaque mois et préparer la version suivante tous les six mois plutôt que de rester sur une LTS (Grekas, selon Codéin).",
+    "Se méfier de l'**over-engineering** : abstractions et composants « réutilisables » ajoutent poids, complexité et risques (lightning talk, JoliCode, Codéin)."
+  ],
+  "sessions": [
+    {
+      "id": "using-git-magic-for-the-symfony-mono-repo",
+      "day": "2024-03-28",
+      "type": "keynote",
+      "title": "Using Git magic for the Symfony mono-repo",
+      "speakers": ["Fabien Potencier — Symfony"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Les-Tilleuls.coop", "Blog Codéin (Simon Jenn)", "Blog Antistatique (Justine)"],
+      "summary": "- Symfony est développé dans **un seul dépôt** (`symfony/symfony`), puis découpé automatiquement en dépôts en lecture seule par composant pour Packagist, en conservant auteurs, dates et messages de commits (slides, Les-Tilleuls.coop).\n- Plongée dans le **modèle objet de Git** (commits, trees, blobs, plumbing et porcelain) pour expliquer comment reconstruire l'historique d'un sous-répertoire (slides, JoliCode, Antistatique).\n- L'outil **splitsh-lite** remplace `git subtree split` : d'environ 50 secondes à environ 0,5 seconde par découpage, pour 187 paquets sur 4 branches actives (slides).\n- Pas d'annonce de nouveau composant ; JoliCode juge le sujet *« surprenant »* et niche pour une keynote, mais l'explication des internes de Git précieuse.\n- Justine (Antistatique) parle d'un sujet *« très dense »* qui lui donne envie d'améliorer la gestion de ses propres mono-repos.",
+      "summarySources": ["slides", "blog", "program"]
+    },
+    {
+      "id": "applications-riches-en-javascript-facon-symfony",
+      "day": "2024-03-28",
+      "type": "talk",
+      "title": "Applications riches en JavaScript, façon Symfony !",
+      "speakers": ["Kévin Dunglas — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Les-Tilleuls.coop", "Blog Codéin (Simon Jenn)", "Blog Magnétic", "Blog Antistatique"],
+      "summary": "- Deux familles d'architecture : la **« Radical Simplicity »** (monolithe FrankenPHP et Symfony, Twig, Symfony UX, AssetMapper, Turbo Drive et Frames, Mercure et Turbo Streams pour le temps réel) et la SPA classique (React, Vue, Angular) (Les-Tilleuls.coop, JoliCode).\n- Atouts de la première : pas de build JavaScript, moins de technologies, développement plus rapide ; les pages restent utilisables sans JavaScript (JoliCode, Codéin).\n- Une SPA reste justifiée pour une API headless, des frontends non HTML, l'IoT ou plusieurs services consommateurs ; la distribution API Platform génère alors des clients Next.js, Nuxt ou Expo et un back-office React Admin (JoliCode, Les-Tilleuls.coop, Codéin).\n- Message retenu par JoliCode : prendre du recul en début de projet pour **ne pas ajouter de complexité inutile**.\n- Codéin note le rappel des capacités de FrankenPHP mais précise ne pas avoir testé les performances du mode worker.",
+      "summarySources": ["blog", "slides", "program"]
+    },
+    {
+      "id": "vos-logs-meritent-mieux-que-la-config-par-defaut",
+      "day": "2024-03-28",
+      "type": "talk",
+      "title": "Vos logs méritent mieux que la config par défaut",
+      "speakers": ["Grégoire Pineau — JoliCode"],
+      "feedbackFrom": ["Blog Antistatique (Kevin Wenger)", "Blog Codéin (Simon Jenn)", "Blog Les-Tilleuls.coop", "Blog Magnétic", "Blog JoliCode"],
+      "summary": "- Les logs, l'un des trois piliers de l'observabilité : quoi écrire, où, comment exploiter Monolog (processors, channels, handlers, formatters) et où envoyer les logs (programme, Les-Tilleuls.coop).\n- Règles retenues : **un message fixe et unique, sans variable**, les données dans le contexte ; un niveau de log qui dit quelle action mener ; une vingtaine de channels au plus (Codéin).\n- *« Avoir des logs partout et même quand cela se passe bien »*, surtout dans les crons, workers et traitements asynchrones ; transports non bloquants, JSON, échantillonnage des messages répétés (Les-Tilleuls.coop, Codéin).\n- Outils cités : Elastic, Loki et Grafana en auto-hébergé, Datadog ou New Relic en SaaS (Codéin).\n- Le talk le plus salué du corpus : *« petite pépite »* et *« réelle révélation »* pour Kevin Wenger (Antistatique), *« pleine de conseils avisés »* pour Les-Tilleuls.coop ; Magnétic l'a appliqué tout de suite à un projet en cours.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "ne-pas-confondre-role-et-permission",
+      "day": "2024-03-28",
+      "type": "talk",
+      "title": "Ne pas confondre Rôle et Permission",
+      "speakers": ["Robin Chalas"],
+      "feedbackFrom": ["Blog Codéin (Simon Jenn)", "Blog JoliCode"],
+      "summary": "- Constat : des **hiérarchies de rôles interminables** qui se diffusent partout dans le code et le rendent difficile à faire évoluer (programme).\n- Un rôle désigne une fonction (*« rôle : fonction de quelqu'un dans la société »*, JoliCode) ; une permission autorise une action ; un rôle regroupe plusieurs permissions (Codéin).\n- *« Le contrôleur n'est pas censé gérer le contrôle d'accès »* : passer par `isGranted`, idéalement en attribut, plutôt que comparer l'utilisateur au contenu ; `hasRole` ignore la hiérarchie (Codéin).\n- Pour les règles fines, passer du **RBAC à l'ABAC** et centraliser la logique dans des **Voters** (`make:voter`) (JoliCode, Codéin).",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "un-serializer-sous-steroides",
+      "day": "2024-03-28",
+      "type": "talk",
+      "title": "Un Serializer sous stéroïdes",
+      "speakers": ["Baptiste Leduc — JoliCode", "Mathias Arlaud"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Les-Tilleuls.coop", "Blog Codéin (Simon Jenn)", "Blog Antistatique"],
+      "summary": "- Limites du Serializer actuel : héritage complexe difficile à personnaliser, coût de la Reflection, typage limité, mémoire sur les grosses collections (Les-Tilleuls.coop, Codéin).\n- Briques présentées : le composant **TypeInfo** (unions, intersections, enums, génériques), **JsonEncoder** qui écrit en flux avec peu de mémoire, et **AutoMapper** (jolicode/automapper) ; le tout combiné dans un TurboSerializer expérimental (JoliCode, Les-Tilleuls.coop).\n- Gains annoncés : environ 10 fois plus rapide selon Les-Tilleuls.coop, *« jusqu'à 40 fois »* selon JoliCode ; les deux chiffres viennent du même talk et ne sont pas réconciliés dans les sources.\n- Limite relevée par JoliCode : JsonEncoder ne permet pas les transformations avancées de la normalisation.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "experience-l-i-v-e-components",
+      "day": "2024-03-28",
+      "type": "talk",
+      "title": "Expérience L-I-V-E (Components)",
+      "speakers": ["Simon André — SensioLabs"],
+      "feedbackFrom": ["Blog Codéin (Simon Jenn)", "Blog Magnétic", "Interview SensioLabs (speaker)"],
+      "summary": "- Les **Live Components** apportent de l'interactivité depuis PHP : live props liées aux champs, live actions en AJAX, événements dans les deux sens, chargement différé ou polling (Codéin).\n- Intégration avec Forms, la sécurité, AssetMapper, le profiler et les tests ; des composants routables qui mettent à jour l'URL (Codéin).\n- Présentation au passage de **UX Icons**, tout juste sorti, qui télécharge automatiquement les icônes SVG (Simon André, speaker).\n- *« Il est possible de ne pas écrire une seule ligne de javascript »* (Codéin) ; Magnétic juge ses premiers essais de Symfony UX convaincants.\n- Le speaker voulait faire connaître un outil peu connu et dit avoir réécrit un tiers du talk la veille (interview SensioLabs).",
+      "summarySources": ["blog", "slides", "program"]
+    },
+    {
+      "id": "comment-tester-une-api-externe-en-ayant-0-mocks",
+      "day": "2024-03-28",
+      "type": "talk",
+      "title": "Comment tester une API externe en ayant 0 Mocks ?",
+      "speakers": ["Imen Ezzine — SensioLabs"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Codéin (Simon Jenn)", "Blog Magnétic", "Interview SensioLabs (speaker)"],
+      "summary": "- Tour des options : appels réels (rate limit, latence), sandbox à maintenir, API en conteneur local, **mocks coûteux à maintenir** et qui divergent du contrat (JoliCode, Codéin).\n- Solution : **PHP-VCR**, qui enregistre les vraies réponses HTTP lors du premier appel puis les rejoue ; on réenregistre si l'API change (JoliCode, Codéin).\n- JoliCode apprécie des tests plus rapides et une maintenance simplifiée ; Magnétic, qui utilisait déjà une approche proche, y voit une confirmation.\n- Premier talk de la speaker, préparé lors d'un midi interne chez SensioLabs ; elle prévoyait de le redonner à l'API Platform Conference (interview SensioLabs, speaker).",
+      "summarySources": ["blog", "slides", "program"]
+    },
+    {
+      "id": "lightning-talks",
+      "day": "2024-03-28",
+      "type": "lightning",
+      "title": "Lightning talks",
+      "speakers": ["Grégoire Pineau — JoliCode", "Nicolas Grekas — Symfony"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Codéin (Simon Jenn)", "Blog Antistatique"],
+      "summary": "- Créneau de 45 minutes en fin de première journée (programme) ; liste complète des orateurs non publiée, seuls Pineau et Grekas sont nommés dans les comptes-rendus.\n- Un talk contre l'**over-engineering** : effets de mode, abstraction excessive, composants rendus réutilisables puis tordus pour chaque besoin, performance recherchée là où elle n'est pas perçue (JoliCode, Codéin).\n- **Castor**, le task runner PHP de JoliCode présenté par Grégoire Pineau, alternative aux Makefiles avec autocomplétion et exécution parallèle (JoliCode, Codéin, Antistatique).\n- Autocomplétion dans les commandes symfony/console et démo Turbo Stream *« (presque) réussie »* de Nicolas Grekas (JoliCode).",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "les-nouveautes-de-symfony-7-1",
+      "day": "2024-03-29",
+      "type": "talk",
+      "title": "Les nouveautés de Symfony 7.1",
+      "speakers": ["Nicolas Grekas — Symfony"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Les-Tilleuls.coop", "Blog Codéin (Simon Jenn)", "Blog Antistatique"],
+      "summary": "- Ouverture sur **comment contribuer** à Symfony, du clone à la pull request (Les-Tilleuls.coop, Antistatique).\n- Nouveautés 7.1 : composant TypeInfo, composant Emoji et filtre Twig `emojify`, nouveaux bridges Notifier et Mailer, attribut `#[Lazy]`, client HTTP avec throttling, recherche dans le profiler (JoliCode, Les-Tilleuls.coop, Codéin).\n- Pistes pour 7.2 : JsonEncoder, FeatureFlags, AccessToken et un **ObjectMapper** inspiré notamment de l'AutoMapper de JoliCode (Les-Tilleuls.coop, JoliCode).\n- Conseil de mise à jour : `composer update` mensuel et passage à la version suivante tous les six mois, versions non LTS recommandées (Codéin).",
+      "summarySources": ["blog", "slides", "program"]
+    },
+    {
+      "id": "petite-therapie-de-couple-je-vous-apprends-a-aimer-le-front-end",
+      "day": "2024-03-29",
+      "type": "talk",
+      "title": "Petite thérapie de couple : je vous apprends à aimer le front-end",
+      "speakers": ["Matheo Daninos — SensioLabs"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Codéin (Simon Jenn)", "Blog Antistatique", "Blog Magnétic", "Interview SensioLabs (speaker)"],
+      "summary": "- Migration d'une application vers **AssetMapper et Symfony UX**, adieu `node_modules` (programme).\n- Architecture par composants : Twig Components et Anonymous Components, CVA et Storybook pour un design system, Live Components, Stimulus, Turbo Frames et Streams (JoliCode, Codéin).\n- *« Le contrôleur est cantonné à traiter la request et la response »* : les composants deviennent des services (Codéin) ; JoliCode apprécie la séparation back et front qui évite des PR back pour ajouter une variable de template.\n- Justine et Kevin (Antistatique), backend, trouvent le front peu accessible mais le talk convaincant.\n- Le speaker voulait montrer aux développeurs back-end qu'ils n'ont pas à avoir peur du front ; talk tiré de son workshop de 7 heures de la veille (interview SensioLabs, speaker).",
+      "summarySources": ["blog", "slides", "program"]
+    },
+    {
+      "id": "l-instabilite-de-nos-tests-nous-empeche-de-delivrer",
+      "day": "2024-03-29",
+      "type": "talk",
+      "title": "L'instabilité de nos tests nous empêche de délivrer",
+      "speakers": ["Sofia Lescano"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Codéin (Simon Jenn)", "Blog Magnétic", "Blog Antistatique"],
+      "summary": "- Un test **flaky** échoue sans modification du code testé : *« il peut passer 9 fois sur 10, et crasher la 10e fois ! »* (JoliCode).\n- Causes vues sur un monolithe partagé par de nombreux développeurs : dates et ids en dur, années bissextiles, dates futures devenues passées, aléatoire, temps d'attente Cypress, dépendances entre tests, services externes (JoliCode, Magnétic, Codéin).\n- Remèdes **techniques et humains** : former l'équipe, allouer du temps, désactiver le temps de corriger, relire les tests comme du code ; Allure, CircleCI et Datadog pour détecter (JoliCode, Codéin).\n- Position partagée par JoliCode : ne pas bloquer les déploiements sans pour autant ignorer ces tests ; Antistatique avoue en riant avoir déjà relancé des tests jusqu'à ce qu'ils passent.",
+      "summarySources": ["blog", "slides", "program"]
+    },
+    {
+      "id": "de-web-app-a-progressive-web-app",
+      "day": "2024-03-29",
+      "type": "talk",
+      "title": "De Web App à Progressive Web App",
+      "speakers": ["Florent Morselli"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Codéin (Simon Jenn)"],
+      "summary": "- Point de départ : une application utilisée dans des lieux sans réseau (JoliCode).\n- Briques d'une PWA : manifest, service workers (cache, retry), Background Synchronization API pour une file d'attente hors ligne ; difficultés avec les jetons CSRF et les credentials à durée limitée (JoliCode).\n- Outil présenté : **spomky-labs/pwa-bundle**, basé sur AssetMapper et le routeur Symfony (JoliCode, Codéin).\n- *« Les PWA sont indépendantes des App Stores »*, même si on peut les y publier (Codéin).",
+      "summarySources": ["blog", "slides", "program"]
+    },
+    {
+      "id": "cqrs-es-avec-symfony-c-est-trop-bien",
+      "day": "2024-03-29",
+      "type": "talk",
+      "title": "CQRS/ES avec Symfony, c'est (trop) bien !",
+      "speakers": ["Jérémy Romey"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop", "Blog Codéin (Simon Jenn)"],
+      "summary": "- Partir du CRUD pour passer à une conception **orientée événements métier**, en s'appuyant sur le vocabulaire de l'Event Storming (événement, commande, read model, policy, agrégat, projection) (Les-Tilleuls.coop).\n- Implémentation avec EventDispatcher, Messenger, Serializer, Uid, des repositories Doctrine comme event store, Webhook et Scheduler pour les événements système (Les-Tilleuls.coop, programme).\n- Les policies réagissent aux événements en émettant des commandes ; les agrégats portent les règles, illustrées par un exemple fil rouge : *« on ne peut pas changer de couleur de la voiture plus de deux fois »* (Codéin).",
+      "summarySources": ["blog", "slides", "program"]
+    },
+    {
+      "id": "introduction-au-continuous-profiling",
+      "day": "2024-03-29",
+      "type": "talk",
+      "title": "Introduction au Continuous Profiling",
+      "speakers": ["Thomas di Luccio — Platform.sh"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Codéin (Simon Jenn)", "Blog Antistatique"],
+      "summary": "- Le profiling classique (Blackfire : CPU, mémoire, SQL, HTTP) est **trop coûteux pour tourner en continu** en production (JoliCode).\n- Le continuous profiling échantillonne toute l'activité du serveur à faible impact : il montre le poids de chaque activité plutôt qu'une chronologie, et les périodes sont difficiles à comparer (Codéin).\n- *« L'information est fiable si l'utilisation de l'application est représentative »* (Codéin).\n- Antistatique juge le sujet *« très intéressant »* et compte le mettre en place.",
+      "summarySources": ["blog", "slides", "program"]
+    },
+    {
+      "id": "faites-plus-avec-moins-de-code-grace-aux-attributs-php",
+      "day": "2024-03-29",
+      "type": "talk",
+      "title": "Faites plus avec moins de code grâce aux attributs PHP",
+      "speakers": ["Jérôme Tamarelle — MongoDB"],
+      "feedbackFrom": ["Blog JoliCode", "Blog Les-Tilleuls.coop", "Blog Codéin (Simon Jenn)", "Blog Antistatique"],
+      "summary": "- Fonctionnement des **attributs PHP 8** et tour des attributs natifs (`SensitiveParameter`, `Override`, `Attribute`), JetBrains, Doctrine et Symfony (Les-Tilleuls.coop, Codéin).\n- La plupart de la configuration du conteneur peut se déclarer en attributs ; *« Fini le temps où il fallait déclarer tout un tas de configuration YAML »* (JoliCode).\n- SensioFrameworkExtraBundle est en fin de vie ; **Rector** automatise la migration depuis les annotations et le YAML (Les-Tilleuls.coop, JoliCode, Codéin).\n- Bonnes pratiques : un attribut par ligne, routes dans les contrôleurs, *« de façon générale, faire moins de config »* (Codéin) ; Antistatique retient l'attribut `#[Deprecated]` annoncé pour PHP.",
+      "summarySources": ["blog", "slides", "program"]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Formation : Introduction à API Platform (Kévin Dunglas, 27/03, mentionnée par Les-Tilleuls.coop et sur Mastodon)",
+    "Formation : Les composants Messenger et Workflow (Benjamin Zaslavsky, 26-27/03)",
+    "Formation : Se réconcilier avec le front-end grâce à Symfony UX (Mathéo Daninos, 26-27/03)"
+  ],
+  "sources": [
+    { "label": "Programme officiel (planning)", "url": "https://live.symfony.com/2024-paris/schedule" },
+    { "label": "Page de l'édition et replays (accès participants et acheteurs)", "url": "https://live.symfony.com/2024-paris/" },
+    { "label": "Dépôt GitHub des slides (SymfonyLive/paris-2024-talks)", "url": "https://github.com/SymfonyLive/paris-2024-talks" },
+    { "label": "Vidéo « SymfonyLive Paris 2024 - best of » (YouTube, 09/04/2024)", "url": "https://www.youtube.com/watch?v=RvbiMR5I6BY" },
+    { "label": "Antistatique : SymfonyLive 2024 dans la Ville Lumière (Justine et Kevin Wenger, 30/03/2024)", "url": "https://antistatique.net/blog/symfonylive-2024-dans-la-ville-lumiere" },
+    { "label": "JoliCode : une nouvelle édition du Symfony Live Paris 2024 (08/04/2024)", "url": "https://jolicode.com/blog/une-nouvelle-edition-du-symfony-live-paris-2024" },
+    { "label": "SensioLabs : l'interview des 3 speakers de SensioLabs (Elise Hamimi, 08/04/2024)", "url": "https://blog.sensiolabs.com/fr/2024/04/08/linterview-des-3-speakers-de-sensiolabs-lors-du-symfonylive-paris-2024/" },
+    { "label": "Les-Tilleuls.coop : notre retour sur les conférences (Julien Lary, 11/04/2024)", "url": "https://les-tilleuls.coop/blog/symfonylive-paris-2024-notre-retour-sur-les-conferences" },
+    { "label": "SensioLabs : two days of conference and fun (Jules Daunay, 16/04/2024)", "url": "https://sensiolabs.com/blog/2024/symfonylive-paris-2024-two-days-of-conference-and-fun" },
+    { "label": "Codéin : retour sur la conférence Symfony Live 2024 (Simon Jenn, 22/04/2024)", "url": "https://www.codein.fr/blog/symfonylive2024" },
+    { "label": "Magnétic : retour sur le Symfony Live 2024 Paris (Marc Thomas, Sebastian Schawohl, 01/07/2024)", "url": "https://www.magnetic.coop/retour-sur-le-symfony-live-2024-paris/" },
+    { "label": "Slides de la keynote de Fabien Potencier (Speaker Deck)", "url": "https://speakerdeck.com/fabpot/using-some-git-magic-on-the-symfony-mono-repository" },
+    { "label": "Mastodon et Bluesky : messages de @symfony, @cooptilleuls et Kévin Dunglas (organisateur, sponsor, speaker)" },
+    { "label": "Posts LinkedIn : aucun post de participant retrouvé" }
+  ]
 }

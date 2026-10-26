@@ -8,7 +8,401 @@
   "venue": "Beffroi de Montrouge",
   "url": "https://sessionize.com/androidmakers-by-droidcon-2024/",
   "dateConfidence": "ok",
-  "note": "Dates (25 et 26 avril 2024) relevées sur androidmakers.droidcon.com (Wayback Machine, février 2024) et Sessionize ; lieu : Beffroi de Montrouge (Sessionize). Playlist « Android Makers by droidcon 2024 » sur la chaîne YouTube Android Makers.",
-  "status": "pending",
-  "sessions": []
+  "note": "Dates (25 et 26 avril 2024) relevées sur androidmakers.droidcon.com (Wayback Machine, février 2024) et Sessionize ; lieu : Beffroi de Montrouge (Sessionize). Programme (données de l'app officielle, API Confetti, conférence « androidmakers2024 ») : 61 créneaux hors pauses sur quatre salles (Moebius, Blin, 2.02, 2.04) et un « Dev Lounge / Office Hours » (office hours Compose, KMP, IA, on-device ML, GreenIT et accessibilité, rebranding ; App-Clinic ; deux émissions live du podcast Devlicious avec Nicolas Guillot et Gaël Duval). Ouverture par Emmanuel et Fanny Demey le jeudi, Erica Stanley (Google) le vendredi matin, clôture par Romain Guy (Google). Hashtag officiel #AMxDC24. App officielle en Compose Multiplatform. Playlist YouTube « Android Makers by droidcon 2024 » (46 vidéos, publiées à partir du 2 mai 2024).",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-26",
+  "revisit": "Aucun post LinkedIn ni article de blog de participant trouvé (7 recherches web sans résultat exploitable) ; corpus participant limité à une vingtaine de posts Mastodon #AMxDC24, presque tous de speakers ou d'organisateurs. Synthèse fondée sur 21 transcripts YouTube.",
+  "corpus": "Programme complet (61 créneaux avec descriptifs, via l'API de l'app officielle) ; 21 transcripts automatiques de la playlist officielle (46 vidéos publiées entre le 2 et le 22 mai 2024 pour celles vérifiées), dont les trois keynotes et la table ronde MobileOps ; une vingtaine de posts Mastodon (androiddev.social) #AMxDC24 et #AndroidMakers d'avril et mai 2024, de Márton Braun, Marco Gomiero, Jean-Baptiste Vincey, Caroline Mouden, Renaud Mathieu et Screenshotbot.",
+  "limits": "Aucun retour de participant non-speaker trouvé : les posts Mastodon sont ceux de speakers ou d'organisateurs, souvent de simples annonces ; aucun post LinkedIn ni Bluesky lu (Bluesky inaccessible sans compte, recherche web infructueuse). La synthèse dit donc ce qui a été présenté sur scène, pas ce que la salle en a retenu. Ateliers (Nicole Terc, Marco Gomiero), office hours et App-Clinic ne sont pas filmés ; 25 vidéos n'ont pas été transcrites. Transcripts automatiques : noms propres et entreprises parfois déformés (non repris quand incertains) ; la keynote d'ouverture n'a été lue qu'en traduction automatique française.",
+  "tldr": "Une édition **charnière entre la maturité de Compose et l'arrivée de Kotlin Multiplatform stable** : performance mesurée jusqu'à l'assembleur, migrations progressives (Views vers Compose, Android vers KMP), sécurité de la chaîne de build, avec une IA générative encore abordée comme un terrain d'exploration et un risque (clés d'API volées) plus que comme un outil quotidien.",
+  "keyTakeaways": [
+    "Mesurer avant d'optimiser, sur un vrai téléphone (si possible le plus lent de ses utilisateurs), avec la bibliothèque Jetpack Benchmark, et garder les benchmarks en CI pour détecter les régressions (Guy).",
+    "Avant toute micro-optimisation, mettre à jour Compose, activer R8 (environ 30 % de gain au démarrage attendu) et générer Baseline et Startup Profiles (Guy, Kozak).",
+    "Ne jamais embarquer une clé d'API d'IA générative dans l'APK : passer par un proxy serveur (Firebase Functions par exemple) protégé par App Check, et fixer un plafond de dépenses (Pintó).",
+    "Activer la vérification des dépendances Gradle (checksums SHA-256 et signatures PGP), filtrer les dépôts par groupe et vérifier le wrapper et la distribution Gradle en CI (Holloway-George).",
+    "Migrer vers KMP par étapes, en gardant le projet livrable à chaque étape : domaine, puis data (kotlinx-datetime, Ktor, SQLDelight), ressources, injection (Koin), et seulement ensuite l'app iOS (Robiez, Carlier).",
+    "Dans une app hybride Views et Compose, surveiller frozen frames et OOM dès le début : la ViewCompositionStrategy par défaut se comporte mal dans des RecyclerView imbriqués (Back Market).",
+    "Pour une refonte sous contrainte de date, figer le scope avec le management, livrer les assets par lots priorisés et garder un dernier sprint vide en tampon (Deezer).",
+    "Ne pas pousser ses utilisateurs à changer de téléphone : supprimer les fonctionnalités inutiles, alléger images et dépendances, tester sur un appareil d'entrée de gamme (Demey).",
+    "Mesurer la mémoire de toute la chaîne d'outillage (IDE, daemons Gradle et Kotlin, workers de test) plutôt que d'augmenter le heap au hasard (Hafferssas)."
+  ],
+  "sessions": [
+    {
+      "id": "the-environmental-impact-of-mobile-apps-truth-or-dare",
+      "day": "2024-04-25",
+      "type": "keynote",
+      "title": "The environmental impact of mobile apps: Truth or Dare?",
+      "speakers": ["Emmanuel Demey", "Fanny Demey"],
+      "feedbackFrom": [],
+      "summary": "- Ouverture de l'édition. Le numérique pèserait **3 à 4 % des émissions mondiales** de gaz à effet de serre (environ 2,5 % en France), et environ 60 % de cet impact vient des **équipements des utilisateurs**, surtout de leur fabrication, devant réseaux et data centers.\n- Huit appareils par personne en moyenne, plus de 60 % des terminaux remplacés dans les deux premières années ; une part de ces remplacements tient à l'**obsolescence logicielle** perçue (*« mon téléphone est trop lent »*). Exemple chiffré : 221 kg de roches extraites pour 300 g de métaux dans un smartphone.\n- Adaptation aux apps mobiles d'un référentiel de bonnes pratiques d'écoconception web, en cinq axes : **spécification** (supprimer les fonctionnalités peu utilisées), réseau (lazy loading, cache, offline first, un seul outil d'analytics au plus), mémoire, stockage (WebP, vectoriel, minification) et compatibilité (tester sur un appareil d'entrée de gamme).\n- Démonstration sur le site même d'Android Makers : les photos des speakers en PNG pèsent la moitié des 15 Mo chargés ; en WebP, plus de 90 % de gain par image.\n- Message final : *« ne soyez pas celui qui pousse vos utilisateurs à renouveler leur téléphone »*. Aucun retour de participant trouvé ; transcript lu en traduction automatique.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "CaDgIxq5q2A",
+        "title": "The environmental impact of mobile apps : Truth or Dare?",
+        "publishedAt": "2024-05-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "accessibility-and-interaction-in-a-world-beyond-screens",
+      "day": "2024-04-26",
+      "type": "keynote",
+      "title": "Accessibility and Interaction in a World Beyond Screens",
+      "speakers": ["Erica Stanley — Google"],
+      "feedbackFrom": [],
+      "summary": "- Keynote du vendredi par la directrice d'ingénierie Google Play (apps growth and engagement), ancienne responsable XR de Firefox Reality chez Mozilla.\n- Point de départ : environ **1,3 milliard de personnes** vivent avec un handicap significatif (une sur six). L'inclusion ne se résume pas à une liste de cases à cocher, elle se joue à chaque étape, de l'idéation au marketing.\n- Les interfaces évoluent de la ligne de commande aux interfaces graphiques puis vers des **interfaces « organiques »** (voix, toucher, gestes, mouvements des yeux, interfaces cerveau-machine) ; chaque micro-interaction doit être pensée pour l'accessibilité.\n- Exemples d'usages : réalité mixte pour des patients atteints de démence, voix et objets connectés pour les personnes à mobilité réduite, BCI rendant la parole à une patiente. La voix est à éviter dans les environnements bruyants ou quand l'erreur coûte cher.\n- Outils cités : MediaPipe, ARCore, OpenBCI. Keynote plus inspirante que technique ; aucun retour de participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "9UJ1v8EIFkY",
+        "title": "Accessibility and Interaction in a World Beyond Screens",
+        "publishedAt": "2024-05-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "practical-optimizations",
+      "day": "2024-04-26",
+      "type": "keynote",
+      "title": "Practical Optimizations",
+      "speakers": ["Romain Guy — Google"],
+      "feedbackFrom": ["Márton Braun (Mastodon, speaker d'une autre session)"],
+      "summary": "- Session de clôture sur les optimisations faites **à l'intérieur de Jetpack Compose**, pour enseigner des techniques plutôt que des recettes. Méthode : profiler (en commençant par les allocations), questionner le code, puis **toujours écrire un benchmark**, car *« presque une optimisation sur deux ne fait rien ou empire les choses »*.\n- Conseils matériels : jamais d'émulateur, le téléphone le plus lent possible (un Pixel 2), et un congélateur ou un ventilateur pour éviter la surchauffe pendant les benchmarks, conseils salués par Márton Braun.\n- Exemples : inverser deux boucles pour lire la mémoire linéairement (plus de quatre fois plus rapide grâce aux caches CPU) ; sortir le `throw` d'un `check` pour alléger le code (47 à 26 instructions) ; préférer une fonction de premier niveau à un companion object ; techniques **SWAR** pour `Offset` (1 300 à 650 instructions) et le parsing des vector drawables.\n- Nouvelle structure **ScatterMap** dans androidx.collection : un octet de surcoût par entrée au lieu de 32 à 49, insertion 1,7 fois et itération 1,8 fois plus rapides. Outil présenté : Kotlin Explorer, pour voir le bytecode Dex et l'assembleur ARM.\n- Avant toute micro-optimisation : **mettre à jour Compose** (premier rendu de Jetsnack : 52 ms avec la version de l'été 2023, environ 25 ms attendus avec celle de mai 2024), activer R8 (environ 30 % de gain attendu au démarrage) et générer Baseline et Startup Profiles.",
+      "summarySources": ["transcript", "program", "feedback"],
+      "video": {
+        "youtubeId": "5cxw_fdpnoA",
+        "title": "Practical Optimizations",
+        "publishedAt": "2024-05-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "kotlin-multiplatform-at-stable-and-beyond",
+      "day": "2024-04-25",
+      "type": "talk",
+      "title": "Kotlin Multiplatform at Stable and Beyond",
+      "speakers": ["Márton Braun — JetBrains"],
+      "feedbackFrom": [],
+      "summary": "- Rappel du fonctionnement de KMP (source sets communs et spécifiques, `expect`/`actual`) et de l'historique : alpha en 2020, nouveau modèle mémoire en beta en 2022, **stable fin 2023** avec garanties de compatibilité.\n- Améliorations de la version stable : hiérarchie de source sets par défaut, configuration cache Gradle complet, compilation incrémentale des klib, nouvel allocateur mémoire pour Kotlin/Native, nouveau portail de documentation et « Kotlin Swift interopedia ».\n- Interop Swift : le passage obligé par les en-têtes Objective-C limite génériques et fonctionnalités avancées ; un export direct vers Swift est en préparation, sans annonce.\n- Démos dans Fleet : navigation, renommage et débogage croisés Swift et Kotlin, wizard kmp.jetbrains.com ; Compose Multiplatform (alpha sur iOS) avec ressources, lifecycle, ViewModel et navigation portés en multiplateforme ; Amper, build system déclaratif expérimental.\n- Une démo Android finit par échouer (*« la magie des démos »*). Pas de retour de participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "il32V2MNdPc",
+        "title": "Kotlin Multiplatform at Stable and Beyond",
+        "publishedAt": "2024-05-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ton-app-en-kmp-dans-la-vraie-vie",
+      "day": "2024-04-25",
+      "type": "talk",
+      "title": "Ton app en KMP dans la vraie vie : notre méthode en 7 étapes",
+      "speakers": ["Antoine Robiez — Worldline", "Baptiste Carlier — Decathlon"],
+      "feedbackFrom": [],
+      "summary": "- Point de départ : une app de menu de cantine que des parents réclament sur iOS. Règle de la méthode : le projet doit **compiler et rester livrable à chaque étape**.\n- Étapes : module partagé, domaine, data (java.util.Date vers kotlinx-datetime, Retrofit vers Ktor, Room vers SQLDelight, DataStore tout juste stable sur KMP), ressources (moko-resources), injection (Hilt vers Koin, qui peuvent cohabiter : Decathlon a migré une app de plus de 600 modules, *« pas en un jour »*).\n- Étape 6, l'app iOS : l'export passe par Objective-C (Int en Int32, Flow et annulation des suspend mal gérés, sealed classes et paramètres par défaut perdus) ; le plugin SKIE corrige l'essentiel.\n- Étape 7, *« pleurer »* : il reste toute l'UI iOS, à faire en Swift, avec un développeur iOS « adopté » ou en Compose Multiplatform.\n- Limites assumées : la migration de la base de données casse l'approche progressive, il faut se synchroniser avec l'équipe iOS, et l'écosystème bouge vite. Pas de retour de participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "AckQ3zAl954",
+        "title": "Ton app en KMP dans la vraie vie : notre méthode en 7 étapes",
+        "publishedAt": "2024-05-17",
+        "transcript": true
+      }
+    },
+    {
+      "id": "mobileops-une-approche-indispensable",
+      "day": "2024-04-25",
+      "type": "roundtable",
+      "title": "[Table Ronde] Mobileops, une approche indispensable du développement mobile",
+      "speakers": ["David Bonnet — Datadog", "Gérard Paligot — Decathlon", "Robin Caroff", "Willy Rouvre"],
+      "feedbackFrom": [],
+      "summary": "- Tous ont commencé la CI avec un Mac mini fragile ; Datadog a aujourd'hui une équipe CI avec des VM macOS mais conseille de **prendre du managé** plutôt que de le faire soi-même (un Mac sur AWS se paie 24 h minimum).\n- Ordres de grandeur chez Decathlon : une cinquantaine d'apps, près de 200 ingénieurs mobiles, 100 % des projets sur Bitrise, avec un quota de builds qui oblige à ne garder que les workflows utiles.\n- Pratiques : Fastlane pour ne pas dépendre de la CI, analyse statique, Firebase Test Lab ou BrowserStack, vrais appareils quand c'est possible, **100 % des fonctionnalités derrière un feature flag** chez Decathlon, flags liés à la version de l'app, métriques DORA.\n- La CI est un vecteur d'attaque : le SDK open source de Datadog a reçu des PR malveillantes tentant d'exécuter des scripts.\n- Débat : GraphQL et BFF défendus par l'animateur, Gérard Paligot plus sceptique (cache HTTP, adoption faible) et le server-driven UI jugé *« une belle galère »*. Pas de retour de participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "iSjkv4Rd9YQ",
+        "title": "[Table Ronde] Mobileops, une approche indispensable  du développement mobile",
+        "publishedAt": "2024-05-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "getting-started-with-genai-for-android-apps",
+      "day": "2024-04-25",
+      "type": "talk",
+      "title": "Getting Started with GenAI for Android Apps",
+      "speakers": ["Elaine Dias Batista"],
+      "feedbackFrom": [],
+      "summary": "- Parcours en étapes pour un développeur Android : jouer avec les chats, mieux prompter (zero, one ou few-shot), utiliser les API (SDK Gemini officiel, client OpenAI non officiel), passer par les extensions Firebase, puis aller vers le cloud ou **l'inférence locale**.\n- Notions posées : tokens, fenêtre de contexte (un million de tokens pour Gemini 1.5 en preview), température, hallucinations, coûts au token ; la gratuité de l'API Gemini prenait fin la semaine suivante.\n- Appeler les API directement depuis l'app sert à prototyper, **pas à la production** : il faut passer par un backend.\n- Panorama on-device : MediaPipe (LLM inference et génération d'images), TensorFlow Lite, llama.cpp, LangChain (et ses portages Dart et Java), Gemini Nano encore réservé au Pixel 8 Pro et aux Galaxy S24.\n- Sondages à main levée : presque toute la salle a essayé un chat, environ 20 % l'utilisent dans leur flux de travail, 5 à 10 % ont touché aux API. Pas de retour de participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "YC1oJ09oWTg",
+        "title": "Getting Started with GenAI for Android Apps",
+        "publishedAt": "2024-05-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "three-ways-to-use-ai-on-android",
+      "day": "2024-04-25",
+      "type": "talk",
+      "title": "Three ways to use AI on Android: The Good, the Bad and the Ugly",
+      "speakers": ["Marcel Pintó"],
+      "feedbackFrom": [],
+      "summary": "- Ancien de l'équipe DevRel Android de Google devenu créateur d'apps indépendant, il raconte une app de réponses générées par Gemini et le vol de sa clé d'API.\n- **The Bad** : clé en dur dans `BuildConfig`, récupérable en décompilant l'APK ; l'obfuscation ou le Base64 n'y changent rien.\n- **The Ugly** : clé chiffrée récupérée depuis un serveur, encore interceptable (endpoint public, man-in-the-middle, lecture de la mémoire avec des outils de rétro-ingénierie).\n- **The Good** : un **proxy serveur** (Firebase Functions) protégé par App Check, qui garde la clé, contrôle l'utilisateur et le prompt, et permet de changer de modèle ; au prix de la latence, du coût et d'un streaming plus complexe.\n- Recommandations : attestation systématique, jamais de clé dans le versioning ni en SharedPreferences, Android Keystore, et **plafond de dépenses**. *« En sécurité, il n'y a pas de solution miracle »*, seulement des couches. Pas de retour de participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "IJgYBuL6-s4",
+        "title": "Three ways to use AI on Android: The Good, the Bad and the Ugly",
+        "publishedAt": "2024-05-18",
+        "transcript": true
+      }
+    },
+    {
+      "id": "how-to-stop-the-gradle-snatchers",
+      "day": "2024-04-25",
+      "type": "talk",
+      "title": "How to stop the ‘Gradle Snatchers’: Securing your builds from baddies",
+      "speakers": ["Ed Holloway-George — ASOS"],
+      "feedbackFrom": [],
+      "summary": "- Attaques de la **chaîne d'approvisionnement** du build. Premier cas (2018) : une fausse dépendance publiée sur JCenter sous un faux « Jake Wharton » a été résolue avant celle de JitPack à cause de l'ordre des dépôts.\n- Parade : la **vérification des dépendances** de Gradle, checksums SHA-256 (`--write-verification-metadata sha256`) puis signatures PGP, avec un rapport HTML en cas d'échec. Inconvénients : friction initiale, il faut partir d'un état où l'on fait confiance à toutes les dépendances, et c'est du XML.\n- Complément : le **filtrage des dépôts** par groupe (`includeGroup`, `excludeGroupByRegex`), qui évite aussi de divulguer ses dépendances à tous les dépôts.\n- Second cas (2022) : un serveur Minecraft compromis par un `gradle-wrapper.jar` modifié dans une PR d'apparence anodine. Parades : l'action GitHub de validation du wrapper et `distributionSha256Sum` (commande à lancer deux fois).\n- Ces attaques sont rares mais réelles ; la meilleure dépendance reste celle qu'on n'ajoute pas. Talk aussi publié en article de blog par le speaker. Pas de retour de participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "loIWpxsMNkg",
+        "title": "How to stop the ‘Gradle Snatchers’: Securing your builds from baddies",
+        "publishedAt": "2024-05-10",
+        "transcript": true
+      }
+    },
+    {
+      "id": "what-it-takes-to-patch-high-impact-vulnerabilities-webp-cve",
+      "day": "2024-04-25",
+      "type": "talk",
+      "title": "What it Takes to Patch High Impact Vulnerabilities: A Retrospective on WebP CVE",
+      "speakers": ["Antonio Nappa"],
+      "feedbackFrom": [],
+      "summary": "- Retour sur la faille WebP de septembre 2023 : un **dépassement de tampon sur le tas** exploitable à distance, signalé en exploitation active, touchant Chrome, Firefox, iOS et les apps embarquant la bibliothèque native, dont Flutter.\n- Les grands éditeurs ont patché en un mois environ, mais selon l'échantillon du speaker, **60 % des apps Flutter restaient vulnérables** cinq à six mois après le correctif.\n- Hypothèses avancées : tutoriels obsolètes, toolchain qui casse à la montée de version, SDK hérités jamais mis à jour.\n- Recommandations : suivre les standards, détecter les anomalies, surveiller ses dépendances natives ; *« votre chaîne est aussi solide que son maillon le plus faible »*.\n- Limites : méthodologie des chiffres peu détaillée, fin de talk promotionnelle. Pas de retour de participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "uHqyytH3pdA",
+        "title": "What it Takes to Patch High Impact Vulnerabilities: A Retrospective on WebP CVE",
+        "publishedAt": "2024-05-10",
+        "transcript": true
+      }
+    },
+    {
+      "id": "unleash-your-programming-creativity",
+      "day": "2024-04-25",
+      "type": "talk",
+      "title": "Unleash your programming creativity",
+      "speakers": ["Xavier F. Gouchet — Datadog"],
+      "feedbackFrom": [],
+      "summary": "- Démonte des idées reçues : la créativité ne serait réservée qu'à l'art, innée ou synonyme d'originalité. La programmation est présentée comme *« un art bâti sur la logique »* (citation d'Erica Heidi).\n- Cadres théoriques : les trois créativités de Margaret Boden (combinatoire, exploratoire, transformationnelle) et le processus de Wallas (préparation, incubation, illumination, évaluation, élaboration), rapproché de la démarche d'ingénierie.\n- Leviers : apprendre les règles pour les enfreindre, maîtriser ses outils, rester curieux, **se reposer et rêvasser**, accepter l'échec ; pratiques : hackathons, Innovation Week de Datadog deux fois par an, side projects, SCAMPER.\n- Exemple vécu : un article sur les juke-box a inspiré l'architecture du lecteur de Deezer quand il y travaillait.\n- Sur l'IA : sans intention ni sens de la valeur ; une semaine d'essai de Copilot a donné des résultats inégaux. Conclusion en chanson à la guitare. Pas de retour de participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "TQarSvdxItQ",
+        "title": "Unleash your programming creativity",
+        "publishedAt": "2024-05-04",
+        "transcript": true
+      }
+    },
+    {
+      "id": "why-is-adaptive-layout-a-nightmare",
+      "day": "2024-04-25",
+      "type": "talk",
+      "title": "Why is adaptive layout a nightmare?",
+      "speakers": ["David Ta", "Gérard Paligot — Decathlon"],
+      "feedbackFrom": [],
+      "summary": "- Avec les layouts adaptatifs, barre de navigation et FAB remontent au niveau de l'app ; une route par écran tablette ferait exploser le graphe de navigation. Les speakers ont refondu leurs modules (composants UI, écran, app, design system aligné sur Figma) pour éviter les dépendances cycliques.\n- Outils : WindowInsets, WindowManager, **window size classes** (compact, medium, expanded plutôt que téléphone ou tablette), puis les scaffolds Material 3 adaptatifs (ListDetailPaneScaffold, SupportingPaneScaffold, NavigationSuiteScaffold).\n- Conseil : commencer par le **mode paysage**, usage principal des tablettes et pliables.\n- Critiques : scaffolds en *« very very early alpha »* (slides réécrites à chaque présentation), spécifications Material contradictoires sur les marges, FAB incompatible avec le rail, size classes indisponibles pour un sous-composant. Conclusion : encore trop instable pour une app professionnelle. Pas de retour de participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "tIc-H-GIkzg",
+        "title": "Why is adaptive layout a nightmare?",
+        "publishedAt": "2024-05-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "unblocking-the-main-thread",
+      "day": "2024-04-25",
+      "type": "talk",
+      "title": "Unblocking The Main Thread: Solving ANRs and Frozen Frames",
+      "speakers": ["Sinan Kozak — Delivery Hero"],
+      "feedbackFrom": [],
+      "summary": "- Contexte : l'app des livreurs de Delivery Hero, utilisée environ 8 h par jour, d'où l'importance des fuites mémoire et des frames gelées (au-delà de 700 ms), avant l'ANR.\n- Mesure : Firebase Performance, JankStats, puis Perfetto ; la Play Console ne garde pas d'historique des ANR et la stack trace arrive trop tard.\n- Gains concrets : **partager les pools de threads** entre RxJava, OkHttp, Coil et coroutines (180 à 130 threads) ; injecter en `Lazy` ou `Provider` (quatre équipes initialisaient chacune leurs EncryptedSharedPreferences à environ 300 ms) ; mettre en cache un intercepteur OkHttp coûteux.\n- Autres leviers : R8, LeakCanary, WebP, modifiers Compose en version lambda, Baseline Profiles (indispensables avec plus de 50 releases par an).\n- Limites : pas de solution magique, il faut mesurer et A/B tester ; LazyColumn n'égale pas encore RecyclerView. Pas de retour de participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "BSB7ZLNm9ac",
+        "title": "Unblocking The Main Thread: Solving ANRs and Frozen Frames",
+        "publishedAt": "2024-05-06",
+        "transcript": true
+      }
+    },
+    {
+      "id": "how-to-lead-testimonial-of-a-lead-android-engineer",
+      "day": "2024-04-25",
+      "type": "talk",
+      "title": "How to Lead? Testimonial of a Lead Android Engineer",
+      "speakers": ["Julien Salvi"],
+      "feedbackFrom": [],
+      "summary": "- Le rôle de lead présenté comme une **passerelle** entre filière d'expertise (staff, principal) et filière management, à doser selon les besoins de l'équipe (quatre personnes dans son cas).\n- Rituels : sprint de deux semaines avec une release, une heure de test collectif avec le QA, un après-midi de « chapter » en mob programming et un de learning time par sprint, daily et estimation asynchrones.\n- Recrutement : adapter le test au niveau, impliquer l'équipe, chercher **le meilleur fit plutôt que le meilleur profil** ; rédiger un « manager README ».\n- Citations : *« on guide les gens, on ne les contrôle pas »*, *« les données doivent aider, pas passer en premier »*.\n- Limites reconnues : retour d'expérience à adapter, objectifs trimestriels toujours difficiles à fixer. Pas de retour de participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "xGWwIE3p9PA",
+        "title": "How to Lead? Testimonial of a Lead Android Engineer",
+        "publishedAt": "2024-05-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rebranding-de-l-extreme",
+      "day": "2024-04-25",
+      "type": "talk",
+      "title": "Rebranding de l’extrême : 3 mois pour tout changer !",
+      "speakers": ["Jean-Baptiste Vincey — Deezer", "Julie Gléonnec — Deezer"],
+      "feedbackFrom": ["Jean-Baptiste Vincey (speaker, Mastodon)"],
+      "summary": "- Refonte complète de l'identité de Deezer, app de 15 ans, en environ **trois mois** (date fixée au 7 novembre), avec des designs finaux arrivés en septembre.\n- Technique : un thème « Barbie » (rose, Comic Sans) surcharge tous les tokens pour repérer les valeurs en dur ; tokens réorganisés en core et sémantiques ; le jour J, seules trois lignes changent.\n- Gestion du risque : scope figé avec le management, specs vues comme des concepts et pas du pixel perfect, **dernier sprint laissé vide**, icônes livrées par lots priorisés (au lancement, 4 lots sur 7 couvraient 97 à 98 % de ce que voient les utilisateurs).\n- Organisation : Scrum of Scrums, branche dédiée, build quotidien distribué à tous les salariés, des dizaines de retours par jour sur Slack ; soumission aux stores deux semaines avant en managed publishing, sortie sans bêta ni déploiement progressif.\n- Bilan : un incident d'images corrigé côté backend a cassé iOS ; notes plus négatives à court terme puis remontée, meilleur accueil hors de France. Le speaker se dit content d'avoir vu la salle *« si nombreuse »* et a publié ses slides.",
+      "summarySources": ["transcript", "program", "slides", "feedback"],
+      "video": {
+        "youtubeId": "II-lf0l2A6c",
+        "title": "Rebranding de l’extrême : 3 mois pour tout changer !",
+        "publishedAt": "2024-05-20",
+        "transcript": true
+      }
+    },
+    {
+      "id": "boosting-compose-ui-from-sluggish-to-snappy",
+      "day": "2024-04-26",
+      "type": "talk",
+      "title": "Boosting Compose UI from Sluggish to Snappy",
+      "speakers": ["Akshay Chordiya — Tinder", "Tasha Ramesh — Tinder"],
+      "feedbackFrom": [],
+      "summary": "- Tinder introduit Compose dans les nouvelles features et constate qu'*« il est très facile d'écrire du code Compose peu performant »*. Démo en direct sur un clone volontairement saccadé, « Janky Tinder ».\n- Mesure : Macrobenchmark et métrique FrameTiming (frameOverrunMs), composition tracing dans Perfetto, Layout Inspector pour compter les recompositions (jusqu'à 192).\n- Correctifs : ne mesurer que les cartes visibles, modifiers en version lambda (`graphicsLayer` plutôt qu'`offset`), lecture différée des états, `derivedStateOf`, `ImmutableList` après lecture des Compose compiler metrics.\n- Résultat : environ **40 % de gain au p50 et 30 % au p90** sur un Pixel 3a, à prendre *« avec des pincettes »* (un appareil, peu d'itérations).\n- Conseil final : mesurer sur un build release marqué `profileable`. Pas de retour de participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "yzQ9n7SGnWU",
+        "title": "Boosting Compose UI from Sluggish to Snappy",
+        "publishedAt": "2024-05-06",
+        "transcript": true
+      }
+    },
+    {
+      "id": "36-15-cash-app",
+      "day": "2024-04-26",
+      "type": "talk",
+      "title": "36･15 Cash App",
+      "speakers": ["Benoit Quenaudon — Cash App"],
+      "feedbackFrom": [],
+      "summary": "- Visite guidée de l'app Android de Cash App : 56 millions d'utilisateurs actifs, une soixantaine de développeurs Android, et des **simplifications assumées** (portrait seul, pas de tablette, redémarrage au changement de configuration).\n- Stack : Wire (protobuf), OkHttp, SQLDelight, Dagger ; presenters passés de Rx (*« un cauchemar »* dès qu'il y a des boucles ou des `if`) aux coroutines puis à **Molecule** ; flux unidirectionnel et base de données comme source de vérité unique.\n- Tests : Turbine pour les flows, Paparazzi pour les captures d'écran sur la JVM (avec de faux écarts entre Mac Intel et Apple Silicon).\n- Livraison : trunk-based, petites PR empilées, feature flags déployés à 1 % puis 5 %, alpha quotidienne avec signalement de bug par double tap, lint découpé en shards.\n- Ce qui a raté : une organisation trop bottom-up a produit des doublons (deux équipes ont livré chacune leur envoi de Bitcoin). Pas de retour de participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "l_XylCiDkws",
+        "title": "36･15 Cash App",
+        "publishedAt": "2024-05-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "building-libraries-for-the-next-25-years",
+      "day": "2024-04-26",
+      "type": "talk",
+      "title": "Building libraries for the next 25 years",
+      "speakers": ["Martin Bonnin"],
+      "feedbackFrom": [],
+      "summary": "- Leçons tirées de la maintenance d'Apollo Kotlin (client GraphQL) pour concevoir des bibliothèques durables.\n- Décisions à prendre tôt : supporter Java ou non (coroutines et Compose y sont inutilisables), et JavaScript, sans threads. Éviter les data classes dans les API publiques, préférer les builders ; ajouter un cas à une sealed class casse les utilisateurs.\n- Compatibilité : distinguer ruptures de source, d'ABI et de comportement ; outils : `@Deprecated` avec `ReplaceWith`, `@RequiresOptIn`, binary-compatibility-validator, changement de package à chaque version majeure (comme OkHttp).\n- Publication : Maven Central jugé confus (plusieurs portails), plugin vanniktech maven-publish recommandé.\n- Prises de position : l'opt-in « expérimental » perd son sens si tout le monde l'active, *« il est OK d'utiliser des alphas en production »*, et pour une API *« ennuyeux et cohérent, c'est toujours mieux »*. Pas de retour de participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "y9_i0utqTCw",
+        "title": "Building libraries for the next 25 years",
+        "publishedAt": "2024-05-15",
+        "transcript": true
+      }
+    },
+    {
+      "id": "composables-dans-les-vues",
+      "day": "2024-04-26",
+      "type": "talk",
+      "title": "Composables dans les Vues : L'Interopérabilité et la Confrontation des Cycles de Vie",
+      "speakers": ["Mohammed Boukadir — Back Market", "Pierre-Emmanuel Altieri — Back Market"],
+      "feedbackFrom": [],
+      "summary": "- Back Market (plus de 200 modules) migre son design system vers Compose sans big bang : les Views gardent leur API mais délèguent à un composable (`AbstractComposeView`), ce qui garde une source de vérité unique ; environ six mois pour trois développeurs à temps partiel.\n- Effets secondaires découverts en production : alertes Datadog sur les **frozen frames**, OutOfMemoryError dans Crashlytics, scroll saccadé.\n- Enquête avec les profilers GPU et CPU, puis Perfetto et des requêtes SQL pour compter les compositions. Cause : la `ViewCompositionStrategy` par défaut, mise en échec par des RecyclerView imbriqués et des ComposeView retirées d'un conteneur.\n- Correctifs : remplacer les listes imbriquées par des composables, ne pas changer la stratégie par défaut dans les composants du design system, avoir du monitoring **avant** le changement. *« Dès que vous faites un setContent, vous êtes déjà en mode interopérabilité »*.\n- Critique : documentation Google sur le sujet peu mise en avant. Pas de retour de participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "wGcEUqq6SoE",
+        "title": "Composables dans les Vues : L'Interopérabilité et la Confrontation des Cycles de Vie",
+        "publishedAt": "2024-05-13",
+        "transcript": true
+      }
+    },
+    {
+      "id": "structuring-modules-in-an-android-app-project",
+      "day": "2024-04-26",
+      "type": "talk",
+      "title": "Structuring modules in an Android app project",
+      "speakers": ["Kinnera Priya Putti"],
+      "feedbackFrom": [],
+      "summary": "- Contexte : une société de mobilité qui publie plus de 100 apps en marque blanche à chaque sprint, avec plus de 150 modules.\n- Typologie de modules (library, feature, domain, plateforme) et recommandation d'un **graphe de dépendances peu profond**.\n- Séparer interface et implémentations, choisies par flavor via ServiceLoader avec une implémentation no-op (par exemple un seul SDK d'analytics embarqué) ; dossiers imbriqués par type ; CODEOWNERS pour router les revues ; modules publiés sur Nexus.\n- Outillage : analyse de dépendances pour détecter dépendances inutilisées, mauvaise configuration `api`/`implementation` et modules qui pourraient être de simples modules JVM.\n- Honnêteté sur les limites : ServiceLoader jugé « discutable », structure revue quatre fois en un an ; *ce qui marche pour votre équipe prime sur les best practices*. Pas de retour de participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "dSCNkNeg5Pk",
+        "title": "Structuring modules in an Android app project",
+        "publishedAt": "2024-05-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "memory-footprint-in-large-scale-android-projects",
+      "day": "2024-04-26",
+      "type": "talk",
+      "title": "Memory footprint in large scale Android projects",
+      "speakers": ["Oussama Hafferssas — Trainline"],
+      "feedbackFrom": [],
+      "summary": "- Thèse : IDE, daemon Gradle, daemon Kotlin, workers de test et app sont **autant de JVM**, chacune avec son tas ; augmenter le heap au hasard, comme le conseillent Stack Overflow ou ChatGPT, ne règle rien.\n- Démos de profilage sur l'app open source DuckDuckGo : avec trop peu de mémoire, le garbage collector coûte plusieurs secondes par build, jusqu'à 20 à 30 s sur de gros projets ; mesurer en release, comme sur la CI.\n- Tests unitaires : ils tournent dans des workers séparés (environ 250 Mo par défaut) ; chez Trainline, un heap dump a révélé une fuite dans Mockito, après correction 300 Mo suffisent.\n- Crash de la JVM quand la somme des tas dépasse la RAM : réglage manuel module par module ; deux daemons (IDE et terminal) doublent la consommation. Environ 30 Go rien que pour l'outillage, d'où la suggestion de machines à 64 Go ou d'IDE dans le cloud.\n- *« Il n'y a pas de nombre magique »*. Pas de retour de participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "SGEP2RVy5Vc",
+        "title": "Memory footprint in large scale Android projects",
+        "publishedAt": "2024-05-19",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Tap it! Shake it! Fling it! Sheep it! The Gesture Animations Workshop, parties I et II (Nicole Terc)",
+    "The complete guide to Compose animations (Eliza Camber)",
+    "Hitchhiker's Guide to Kotlin/Compose Multiplatform samples and libraries (John O'Reilly)",
+    "What if ADB does not have to be that complicated? (Alessandro Mautone)",
+    "Comment transformer son téléphone en terminal de paiement (Alfred Bourély)",
+    "Boosting your Android CI through integrating Build Cache (Tamás Bazsonyi)",
+    "Say cheese! Elevate your camera app with CameraX and Jetpack Compose (Jolanda Verhoef)",
+    "One test suite for instrumentation and Robolectric tests (Carmen Alvarez)",
+    "On-Device Machine Learning for Android with MediaPipe (Paul Ruiz)",
+    "The state of code coverage for Kotlin (Evgeny Mandrikov, Marharyta Nedzelska)",
+    "Practical Intro to OpenCV & TensorFlow Lite (Etienne Caron)",
+    "Crime Scene InvestiGITor (Benjamin Kadel)",
+    "Behind the mirror, Kotlin Reflection (Danny Preussler)",
+    "Android, Compose, Multiplatform & Server: Inject them all with Koin (Arnaud Giuliani)",
+    "What can my foldable do? (Francesco Romano)",
+    "Introducing Kotlin Multiplatform in an existing mobile app, atelier en deux parties (Marco Gomiero)",
+    "Bytecode analysis for everyone! (Konstantin Zolotov)",
+    "Git Good with Android Studio (Márton Braun)",
+    "What Connects an Electronic Stethoscope and a Baby Monitor? A Case Study on BLE Issues (Ewelina Skowron)",
+    "Let's compose this presentation! (Romain Boisselle, Salomon Brys)",
+    "Du cross-platform embarqué/desktop/mobile avec Slint (Edouard Marquez)",
+    "Petites scènes du métro, ou comment utiliser le métro pour améliorer son app (Alizee Sala)",
+    "Let's test Gemini, Google's AI in an Android application! (Ailton Lopes Mendes, Justine Pataco)",
+    "Now smile (also in 3D)! Exploring AR, ML and Camera related APIs on Android (Walmyr Carvalho)",
+    "Demystifying CTFs: manipulating Android apps (Merab Tato Kutalia)",
+    "Handling focus in 2024: supporting different navigation ways with Compose (Tiphaine)",
+    "Code AOSP: No time to EOL (die) (James Gatt)",
+    "Building a Joystick Controller using Compose Multiplatform (Filippo Scognamiglio, Renaud Mathieu)",
+    "Office hours (Compose, KMP, IA, on-device ML, GreenIT et accessibilité, rebranding), App-Clinic et émissions live Devlicious"
+  ],
+  "sources": [
+    { "label": "Sessionize Android Makers by droidcon 2024 (dates, lieu, formats)", "url": "https://sessionize.com/androidmakers-by-droidcon-2024/" },
+    { "label": "Programme complet via l'API de l'app officielle (Confetti, conférence androidmakers2024)", "url": "https://confetti-app.dev/graphql" },
+    { "label": "Playlist YouTube « Android Makers by droidcon 2024 » (46 vidéos)", "url": "https://www.youtube.com/playlist?list=PLn7H9CUCuXAtxPltq2mEHc_Wbgckrd4B-" },
+    { "label": "Posts Mastodon #AMxDC24 sur androiddev.social (Márton Braun, Marco Gomiero, Jean-Baptiste Vincey, Caroline Mouden, Renaud Mathieu, Screenshotbot, PAUG)", "url": "https://androiddev.social/tags/AMxDC24" },
+    { "label": "Slides « Extreme Rebranding » de Jean-Baptiste Vincey (Speaker Deck)", "url": "https://speakerdeck.com/jbvincey/extreme-rebranding" },
+    { "label": "Ressources de l'atelier KMP de Marco Gomiero", "url": "https://www.marcogomiero.com/talks/2024/existing-kmp-project-workshop-android-makers/" },
+    { "label": "Ressources de « Git Good with Android Studio » (Márton Braun)", "url": "https://zsmb.co/appearances/android-makers-2024-day2/" },
+    { "label": "Posts LinkedIn : aucun trouvé (7 recherches web)" }
+  ]
 }

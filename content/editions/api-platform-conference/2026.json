@@ -2,12 +2,288 @@
   "event": "api-platform-conference",
   "year": 2026,
   "title": "API Platform Conference 2026",
+  "edition": "6e édition",
   "start": "2026-09-17",
   "end": "2026-09-18",
   "city": "Lille",
   "venue": "Euratechnologies",
   "url": "https://api-platform.com/con/2026/",
+  "programUrl": "https://api-platform.com/en/con/2026/conferences",
+  "theme": "IA, FrankenPHP et architectures résilientes (« technical excellence and business pragmatism »)",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "6e édition, hybride (Euratechnologies, Lille, et en ligne), organisée par Les-Tilleuls.coop. Bilan officiel : 29 talks, 26 partenaires, une soirée communautaire, une application d'assistant de conférence. Annonces : Mercure 1.0, API Platform 4.4 et 5.0.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-26",
+  "revisit": "Corpus participants très mince : aucun post LinkedIn ni article de blog de participant trouvé (8 recherches web), seulement quelques posts Mastodon. La synthèse repose surtout sur 10 transcripts et le programme. À reprendre pour chercher des retours LinkedIn et les transcripts des 3 vidéos sans sous-titres (Hurteau, Leune, Goma).",
+  "corpus": "Programme officiel (28 sessions listées) et page bilan de l'organisateur ; 14 vidéos de la chaîne YouTube Les-Tilleuls.coop / API Platform publiées du 5 au 26 octobre 2026, dont 10 avec transcript automatique ; article du blog Les-Tilleuls.coop sur API Platform 4.4 et 5.0 (1er octobre) et article sur l'assistant IA de la conférence (7 septembre) ; une vingtaine de posts Mastodon sous #APIPlatformCon, dont 4 de participants.",
+  "limits": "Aucun retour participant détaillé : les résumés décrivent ce qui a été dit sur scène (transcripts), pas ce qu'en a retenu le public. Les transcripts sont des sous-titres automatiques (noms propres parfois déformés). Une partie des vidéos était encore en cours de publication à J+38 ; 15 sessions n'ont ni vidéo ni retour.",
+  "tldr": "Une édition tournée vers l'avenir : **les APIs restent le socle de l'ère des agents** (MCP intégré à API Platform 5.0, Mercure 1.0), et **FrankenPHP s'impose comme le runtime PHP de référence**, scruté sous l'angle de la performance, de l'observabilité et de nouveaux usages (desktop, workers de fond).",
+  "keyTakeaways": [
+    "Pour exposer une API à un agent, préférer des **outils MCP taillés par tâche métier** (avec prompts) à une génération brute depuis OpenAPI : 57 outils et environ 10 000 tokens de contexte dans la démo d'Antoine Bluchet.",
+    "Migrer vers API Platform 5.0 en passant d'abord par 4.4, corriger les dépréciations (`#[ApiFilter]` remplacé par les paramètres, commande `api:upgrade-filter`), puis monter en 5.0 ; une majeure par an désormais.",
+    "Mercure 1.0 s'appuie sur des standards (URL Pattern, Rich Authorization Requests d'OAuth) ; il est inclus dans FrankenPHP et disponible nativement dans le broadcast de Laravel.",
+    "Le mode classique de FrankenPHP n'est pas plus rapide que PHP-FPM : le gain vient du **worker mode**, à doser selon le risque accepté (reset du kernel, services resettables, ou rien) (Benjamin Eberlei).",
+    "Pour régler threads et workers FrankenPHP, observer la file d'attente des requêtes pendant un test de charge, par exemple avec l'outil TUI présenté par Alexandre Daubois.",
+    "Garder un humain dans la boucle de revue pour le **sens** du code (pourquoi il est écrit ainsi), que l'agent ne voit pas, et continuer à coder soi-même pour ne pas perdre les fondamentaux (Diana Scharf).",
+    "Pour obtenir du temps open source de son employeur, parler son langage : positionnement, présence dans la phase de découverte, trafic à forte intention, statistiques Packagist et GitHub (Pauline Vos).",
+    "Le premier déploiement ne devrait plus être un bizutage pour les débutants : outiller (FrankenDeploy, expérimental) plutôt que d'exiger Linux, SSH, pare-feu et Docker d'emblée (Yoan Bernabeu)."
+  ],
+  "sessions": [
+    {
+      "id": "opening-keynote-mercure-1-0",
+      "day": "2026-09-17",
+      "type": "keynote",
+      "title": "Opening Keynote",
+      "speakers": ["Kévin Dunglas (Les-Tilleuls.coop, Tilia)"],
+      "feedbackFrom": [],
+      "summary": "- Keynote consacrée à la **sortie de Mercure 1.0**, déjà taguée et disponible (y compris sur l'offre cloud) au moment du talk ; présentation au passage de **Tilia**, nouvelle structure issue de Les-Tilleuls.coop dédiée à l'automatisation et aux workflows IA.\n- Rappel de l'écosystème : API Platform (11 ans, plus de 51 dépôts, près de 1 000 contributeurs), support natif de Symfony et Laravel, FrankenPHP comme serveur par défaut, contributions à Caddy, PHP et même Go.\n- Mercure : hub en Go qui maintient les connexions SSE que PHP, le serverless ou Rails ne savent pas tenir ; topics, autorisation, reconnexion et rejeu automatiques. Utilisé pour France Titres, l'UEFA ou la COP26 (speaker). Argument : **SSE est aussi le choix d'OpenAI et Anthropic** pour streamer leurs réponses.\n- Nouveautés 1.0 : abandon des URI templates au profit du standard **URL Pattern** (`matchURLPattern`), autorisations alignées sur la RFC **Rich Authorization Requests** d'OAuth (JWT générables par Keycloak), outil `mercure token`, défauts plus sûrs, mode de compatibilité avec l'ancien protocole.\n- Intégrations : inclus dans FrankenPHP, bundle Symfony mis à jour, **support natif dans le broadcast de Laravel** (Laravel Echo), `mercure: true` sur une ressource API Platform, admin et create-client mis à jour automatiquement.\n- Annonce un prolongement côté MCP et SSE dans la keynote d'Antoine Bluchet l'après-midi.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "yegtXUWYSus",
+        "title": "API Platform Conference 2026 - Kévin Dunglas - Opening Keynote",
+        "publishedAt": "2026-10-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "de-zero-a-la-prod-le-deploiement-symfony-enfin-accessible-aux-debutant-es",
+      "day": "2026-09-17",
+      "type": "talk",
+      "title": "De zéro à la prod : le déploiement Symfony enfin accessible aux débutant·es",
+      "speakers": ["Yoan Bernabeu (créateur de contenu, tech lead)"],
+      "feedbackFrom": [],
+      "summary": "- Constat tiré de sa chaîne YouTube : **« comment je déploie ? »** est la question la plus fréquente des débutants, qui se heurtent à un mur (Linux, SSH, Docker, Nginx, certificats) ; PaaS payants, Kubernetes hors de portée.\n- Présente **FrankenDeploy**, CLI open source et expérimentale basée sur FrankenPHP : `init` scanne le projet (version PHP, extensions, base, bundler, Messenger), `server setup` configure pare-feu et fail2ban, `doctor` fait l'état des lieux, puis une seule commande déploie.\n- Garde-fous : refus de déployer sans variables d'environnement critiques, **dump de la base avant migration** (pas de déploiement si le dump échoue), rollback du code seulement, jamais de la base.\n- Limites assumées : un seul serveur, pas encore plusieurs workers Messenger ; Debian et Ubuntu uniquement.\n- Message final : les agents de code (Claude Code) ont permis d'aller au bout du projet ; *« ça doit plus être la punition pour un débutant de faire son premier déploiement »*.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "k08GPkzltbo",
+        "title": "API Platform Conference 2026 - Yoan Bernabeu - De zéro à la prod : le déploiement Symfony accessible",
+        "publishedAt": "2026-10-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "observer-frankenphp-la-dx-au-service-de-la-performance",
+      "day": "2026-09-17",
+      "type": "talk",
+      "title": "Observer FrankenPHP : La DX au service de la performance",
+      "speakers": ["Alexandre Daubois (Les-Tilleuls.coop)"],
+      "feedbackFrom": [],
+      "summary": "- Point de départ : à 3 h du matin, prod en panne, **on finit toujours en SSH avec htop** ; les dashboards Grafana faits par les ops ne sont jamais ouverts, et htop ne montre qu'un processus FrankenPHP opaque à 500 % de CPU, pas ses threads.\n- Présente un outil d'observabilité en terminal (Go, Bubble Tea), recommandé dans la doc FrankenPHP : **zéro configuration**, il détecte le processus FrankenPHP ou Caddy, interroge chaque seconde les endpoints metrics et l'OS, calcule les percentiles et affiche threads, workers, requêtes en attente, latences par route.\n- Astuce : sans directive de log, il ajoute à chaud un listener TCP via l'API admin de Caddy, surveillé et nettoyé à l'arrêt.\n- Sécurité et prod : sockets Unix, TLS, fuzz testing, comparaison à temps constant ; environ 15 Mo de RAM ; mode démon exposant ses métriques en Prometheus, multi-instance (TOML), sidecar Kubernetes, snapshots avant et après déploiement pour la CI.\n- Usage clé : **régler threads et workers de façon empirique** en regardant la file d'attente pendant un test de charge.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "iO9xrPeQBQ4",
+        "title": "API Platform Conference 2026 - Alexandre Daubois - Observer FrankenPHP",
+        "publishedAt": "2026-10-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "are-apis-still-relevant-in-the-ai-era",
+      "day": "2026-09-17",
+      "type": "keynote",
+      "title": "Are APIs Still Relevant in the AI Era",
+      "speakers": ["Antoine Bluchet, alias Soyuka (Les-Tilleuls.coop)"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (organisateur)"],
+      "summary": "- Démo d'une application de gestion de garage pilotée par des agents : derrière l'interface « à la Jarvis », **beaucoup d'APIs** (plaques d'immatriculation, catalogue de pièces TecDoc, lubrifiants, et API Platform pour l'historique), branchées via MCP.\n- Un même `#[ApiResource]` sert une collection HTTP classique et un **outil MCP** à l'entrée regroupée, pour que l'agent fasse moins d'appels.\n- Trois façons d'exposer une API à un agent : **OpenAPI** (rapide mais 57 outils et environ 10 000 tokens à l'initialisation), **passerelle hypermédia** (un seul outil qui découvre l'API via Hydra, projet `hydra-mcp-bridge`), **outils manuels par tâche** avec prompts, qui permettent même à un petit modèle de réussir.\n- Prototype : faire passer le SSE de MCP par **Mercure** embarqué dans FrankenPHP.\n- **Tag en direct d'API Platform 4.4 et 5.0** : nombre de PR presque doublé (« agents ») donc plus de revue, nouvel installeur, dépréciation de `#[ApiFilter]` (retrait en 6.0) et commande `api:upgrade-filter` *« fully vibe coded »*, filtres composables, méthode HTTP QUERY, identifiants JSON:API, OpenAPI 3.2, UI Scalar.\n- Proposition : **une version majeure par an** au lieu de tous les deux ans. Réponse à la question du titre : oui, car permissions, règles métier et accès aux données restent dans l'API.",
+      "summarySources": ["transcript", "blog", "program"],
+      "video": {
+        "youtubeId": "9_B_ZoebjFY",
+        "title": "API Platform Conference 2026 - Antoine Bluchet - Are APIs Still Relevant in the AI Era",
+        "publishedAt": "2026-10-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-php-runtime-i-want-to-see",
+      "day": "2026-09-17",
+      "type": "talk",
+      "title": "The PHP runtime I want to see",
+      "speakers": ["Nicolas Grekas (Symfony)"],
+      "feedbackFrom": [],
+      "summary": "- Le **shared nothing** de PHP est une force (pas de fuite mémoire, pas de reconnexion à gérer), mais chaque requête paie la taxe de « redécouvrir le monde », et il faut ajouter cron, supervisord, consumers et Redis pour combler les trous.\n- Vision : **un seul processus FrankenPHP** qui sert le HTTP et fait tourner des **background workers** déclarés dans la config Caddy, sans changer les contrôleurs.\n- Principes de conception : FrankenPHP (Go) possède les threads, pas PHP (d'où l'inadaptation de l'extension parallel) ; coordination par nom ; fonction `tick` pour arrêter proprement ; descripteur « sonnette » pour `stream_select` ; mémoire partagée **un seul écrivain, plusieurs lecteurs** (`set_vars` / `get_vars`).\n- Exemple : un worker suit Redis Sentinel et publie l'adresse du master, lue instantanément par les requêtes HTTP ; prototype d'API de tâches asynchrones (vignettes) et dégradation gracieuse hors FrankenPHP.\n- Statut : 4 pull requests en discussion, non fusionnées ; limites sur l'arrêt forcé des threads (Windows, macOS).\n- Appel final : le **runtime est l'angle mort** de l'écosystème PHP et mérite l'attention de la communauté et de la PHP Foundation.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "we_VnX18RQw",
+        "title": "API Platform Conference 2026 - Nicolas Grekas - The PHP runtime I want to see",
+        "publishedAt": "2026-10-26",
+        "transcript": true
+      }
+    },
+    {
+      "id": "mcp-votre-api-a-un-nouvel-utilisateur",
+      "day": "2026-09-17",
+      "type": "talk",
+      "title": "MCP : votre API a un nouvel utilisateur (et ce n'est pas un humain)",
+      "speakers": ["Marion Hurteau"],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif officiel uniquement (vidéo sans sous-titres exploitables) : après le front et les développeurs, **l'agent IA devient le troisième usager** d'une API.\n- Avec MCP, la dernière version d'API Platform transforme les ressources en **outils qu'un agent découvre et utilise**, sans dupliquer leur description, avec des exemples concrets.\n- Antoine Bluchet y renvoyait dans sa keynote pour le détail de l'intégration MCP dans API Platform (speaker).",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "2TOLCl27Usg",
+        "title": "API Platform Conference 2026 - Marion Hurteau - MCP : votre API a un nouvel utilisateur",
+        "publishedAt": "2026-10-05",
+        "transcript": false
+      }
+    },
+    {
+      "id": "rex-passer-un-cms-legacy-en-worker-mode",
+      "day": "2026-09-17",
+      "type": "talk",
+      "title": "REX : Passer un CMS legacy en worker mode",
+      "speakers": ["Xavier Leune (Alke Tech)"],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif officiel uniquement (vidéo sans sous-titres exploitables) : récit d'une étude comparant **mod_php et les modes worker de RoadRunner et FrankenPHP** sur le CMS d'un grand groupe média français.\n- Promesse : points d'attention, pièges, benchmarks chiffrés, et ce qui différencie réellement RoadRunner de FrankenPHP ; le worker mode y est présenté comme un **changement de paradigme**, pas un simple changement de runtime.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "yvMpD1vVurY",
+        "title": "API Platform Conference 2026 - Xavier Leune - REX : Passer un CMS legacy en worker mode",
+        "publishedAt": "2026-10-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "no-oss-no-users-why-investing-in-open-source-matters",
+      "day": "2026-09-17",
+      "type": "talk",
+      "title": "No OSS, No Users: Why Investing in Open Source Matters",
+      "speakers": ["Pauline Vos (MongoDB)"],
+      "feedbackFrom": [],
+      "summary": "- Sondage en salle : environ la moitié a déjà contribué à l'open source, presque toujours **hors temps de travail** ; presque tous voudraient en faire plus.\n- Son équipe PHP chez MongoDB maintient l'extension, la lib, Doctrine ODM (repris en interne quand le mainteneur historique ne pouvait plus) et l'intégration Eloquent, et contribue à Symfony, Laravel et aux SDK IA.\n- Quatre raisons business : **l'écosystème compte autant que le produit**, la maintenance interne crée la confiance, la **présence dans la phase de découverte** fidélise (on change rarement d'outil), et les relations avec les mainteneurs donnent une place à la table des décisions.\n- La direction veut des chiffres : suivre le trafic à forte intention (tutoriels, docs), Packagist, statistiques GitHub (clones, référents), ossinsight.io, avant et après une action.\n- Hors éditeurs de bases de données : raisonner position de marché, nouveaux usages (API publique, SDK), économies opérationnelles ; à défaut, **chercher un emploi payé pour faire de l'open source**.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "Q6IAFLgT36k",
+        "title": "API Platform Conference 2026 - Pauline Vos - No OSS, No Users: Why Investing in Open Source Matters",
+        "publishedAt": "2026-10-26",
+        "transcript": true
+      }
+    },
+    {
+      "id": "building-desktop-apps-with-frankenphp",
+      "day": "2026-09-18",
+      "type": "talk",
+      "title": "Building Desktop Apps with FrankenPHP",
+      "speakers": ["Johan Janssens (Joomla)"],
+      "feedbackFrom": [],
+      "summary": "- Détour historique : JavaScript n'a pas changé entre 1995 et Electron, c'est son **runtime** qui l'a emmené partout ; PHP, lui, a surtout appris à « mieux mourir » (CGI, FastCGI, FPM).\n- Thèse : la question n'est pas « FrankenPHP rend-il PHP plus rapide ? » ; le shared nothing est une **superpuissance**, et FrankenPHP apporte un **runtime résident** qui ouvre à PHP tout l'écosystème Go.\n- Recette : FrankenPHP utilisé comme **bibliothèque Go** (sans Caddy ni HTTP), plus **Wails** pour la web view multiplateforme, plus un PHP compilé en thread-safe (ZTS) via static-php-cli : quelques dizaines de lignes de Go.\n- Les requêtes passent par un **schéma personnalisé** en mémoire, sans port ni TCP ; démos de calculatrice, HTMX concurrent, todo SQLite, explorateur de fichiers.\n- Distribution : le code PHP est empaqueté en **PHAR au format zip**, lu par Go ; résultat, un seul binaire (deux petits correctifs envoyés à FrankenPHP).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "VGnTzTWQYDc",
+        "title": "API Platform Conference 2026 - Johan Janssens - Building Desktop Apps with FrankenPHP",
+        "publishedAt": "2026-10-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "why-silence-is-not-always-golden",
+      "day": "2026-09-18",
+      "type": "talk",
+      "title": "Why Silence Is Not Always Golden",
+      "speakers": ["Helvira Goma"],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif officiel uniquement (vidéo sans sous-titres exploitables) : la musique n'est **pas neutre** pour un développeur ; rythme, tempo et paroles peuvent soutenir ou saboter concentration, raisonnement et débogage.\n- Approche annoncée : recherches en neurosciences et sciences cognitives, débat silence contre bande-son, expériences audio en direct, playlists.\n- Seul talk du programme centré sur le bien-être et la concentration plutôt que sur la technique.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "1kzG2sMw2XE",
+        "title": "API Platform Conference 2026 - Helvira Goma - Why Silence Is Not Always Golden",
+        "publishedAt": "2026-10-26",
+        "transcript": false
+      }
+    },
+    {
+      "id": "is-frankenphp-the-fastest-way-to-run-php",
+      "day": "2026-09-18",
+      "type": "talk",
+      "title": "Is FrankenPHP the Fastest Way to Run PHP?",
+      "speakers": ["Benjamin Eberlei (Tideways)"],
+      "feedbackFrom": [],
+      "summary": "- Réponse nuancée, chiffres Tideways à l'appui. **FrankenPHP classique contre PHP-FPM : performances quasi identiques** ; les écarts des benchmarks synthétiques mesurent surtout le serveur web (compression de Caddy), et ZTS rend même FrankenPHP un peu plus lent en théorie.\n- Sous charge, des **latences de queue** (P99) ont été remontées à l'équipe FrankenPHP, qui a déjà livré des correctifs ; sur un cas réel de production, le mode classique restait moins bon que FPM.\n- Le vrai levier est le **worker mode** : il économise autoload (environ 5 % du temps), création d'objets (jusqu'à 10 % sur Magento, 4 % sur Symfony) et bootstrap ; sur leur cas, le temps de réponse est divisé par deux, et la réutilisation des connexions Redis réduit aussi l'I/O.\n- Trois niveaux de risque : reset du kernel à chaque requête, services resettables, ou rien. Plus l'application est ancienne, plus l'état partagé est difficile à maîtriser.\n- Décision de Tideways : **rester sur FPM pour l'instant** (pas d'expérience opérationnelle de Caddy, endpoints déjà à 20 ms). Swoole va plus loin mais c'est un *« dialecte »* de PHP.\n- Espoir : l'initiative visant à rendre ZTS sans surcoût, qui profiterait à FrankenPHP comme à FPM, et l'extension parallel.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "3tQ7o4jjAtE",
+        "title": "API Platform Conference 2026 - Benjamin Eberlei - Is FrankenPHP the Fastest Way to Run PHP?",
+        "publishedAt": "2026-10-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "love-humans-use-ai",
+      "day": "2026-09-18",
+      "type": "talk",
+      "title": "Love Humans, Use AI",
+      "speakers": ["Diana Scharf (Beyond Code)"],
+      "feedbackFrom": [],
+      "summary": "- Constat : les nouvelles questions sur Stack Overflow sont passées d'environ 200 000 par mois au pic à 1 300 ; on ne quitte plus son « agent harness ».\n- Distinction clé : l'agent excelle en **compréhension logique** (ce que fait le code) mais pas en **compréhension sémantique** (pourquoi il est ainsi : RGPD, A/B test oublié…) ; d'où la nécessité d'une **revue humaine**, illustrée par Laravel Herd et ses plus de 80 000 utilisateurs.\n- Juniors : emploi des 22-25 ans en baisse de 20 % ; étude « The Widening Gap » (2024) : l'IA creuse l'écart et crée une **« illusion de compétence »** ; continuer à apprendre en codant soi-même, parler de « dette cognitive ».\n- Joie de coder : sondage de Jeffrey Way, presque à égalité entre « la joie a disparu » et « plus enthousiaste que jamais ». Conseil : **garder pour soi la partie qu'on aime** (effet IKEA), personne ne rentre plus tôt grâce aux agents, on livre juste plus.\n- Trois conseils : aller vers les autres développeurs, protéger son cerveau et ses juniors, protéger sa tranquillité (ignorer le hype). Pas anti-IA : *« build a future together with AI, not by AI »*.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "i3aFQ4vEYfs",
+        "title": "API Platform Conference 2026 - Diana Scharf - Love Humain, Use AI",
+        "publishedAt": "2026-10-26",
+        "transcript": true
+      }
+    },
+    {
+      "id": "building-a-framework-by-accident",
+      "day": "2026-09-18",
+      "type": "talk",
+      "title": "Building a framework by accident",
+      "speakers": ["Brent Roose (JetBrains)"],
+      "feedbackFrom": [],
+      "summary": "- Origine de **Tempest** : un framework MVC « jetable » codé en live stream, que la communauté a refusé de laisser mourir ; aujourd'hui en v3, environ 100 contributeurs, 4 réguliers, 120 000 lignes, 31 composants.\n- Slogan : *« the framework that gets out of your way »*. Pièce maîtresse : la **discovery**, qui scanne projet et vendor pour trouver routes, migrations, commandes, configs, sans structure imposée ; composant autonome, réutilisable par exemple pour ajouter des attributs de route à Laravel.\n- Choix forts : **uniquement la dernière version de PHP**, avec montée de version automatisée par Rector (hygiène face aux failles trouvées plus vite par l'IA), commandes console déduites des signatures, ORM découplé, configs typées en classes, moteur de templates maison.\n- **Support du worker mode FrankenPHP** facilité par le conteneur au cœur du framework (interface resettable) ; l'orateur souhaite que FrankenPHP devienne le runtime par défaut de PHP.\n- Fil rouge : la puissance d'une communauté open source.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "JmEEQDCVb8s",
+        "title": "API Platform Conference 2026 - Brent Roose - Building a framework by accident",
+        "publishedAt": "2026-10-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "table-ronde-a-la-french-mehdi-medjaoui",
+      "type": "roundtable",
+      "title": "API Platform Conference 2026 x À La French : table ronde avec Mehdi Medjaoui",
+      "speakers": [
+        "Mehdi Medjaoui (Olympe, animation)",
+        "Emmanuel Durand (EuraTechnologies)",
+        "Xavier Leune (Alke Tech, AFUP)",
+        "Kévin Dunglas (Les-Tilleuls.coop, Tilia)",
+        "Horacio Gonzalez (Clever Cloud)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après la description de la vidéo uniquement (pas de transcript) : table ronde de 35 minutes enregistrée avec le podcast **À La French**, partenaire média de l'édition.\n- Thème annoncé : les visions de la tech des invités, façonnées par leurs parcours, leurs **engagements politiques** et leurs choix techniques.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "EEShIRFFH00",
+        "title": "API Platform Conference 2026 x À La French (avec Mehdi Medjaoui)",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Symfony on Laravel Cloud: What Could Go Wrong? (Jérémy Nikolic)",
+    "From Zend Framework 1 to API Platform 4: Migration recipe (Robin Chalas)",
+    "DDD x API Platform: 4 years later (Mathias Arlaud)",
+    "Des APIs sécurisées sans perdre la tête (Mathieu Santostefano)",
+    "PHP, Mercure et IoT : quand PHP devient plus que Full Stack (Yohan Giarelli)",
+    "Running FrankenPHP Locally with DDEV (Stephan Hochdörfer)",
+    "Passer d'un monolithe à une galaxie d'applications avec API Platform (Imen Ezzine et Benjamin Georgeault)",
+    "De GPT-3 aux agents : 5 ans d'évolution d'une stack LLM en PHP (Sébastien Rogier)",
+    "Own your content, keynote (Derick Rethans)",
+    "Les en-têtes HTTP comme première ligne de défense des APIs et du front (Florent Morselli)",
+    "UX DataTables : réinventer les tableaux avec Symfony, API Platform et Mercure (Tanguy Lemarié)",
+    "API Platform : le hub sémantique qu'on mérite (et comment piloter du Go avec) (Matthieu Werner)",
+    "L'exception qui confirme la règle (Smaïne Milianni)",
+    "Extension 101 : invisibles mais indispensables (Damien Fernandes)",
+    "Building Resilient Architecture: Event-Driven Design with API Platform, Messenger & Redis (Abdellah El Ghailani)"
+  ],
+  "sources": [
+    { "label": "Programme officiel (talks)", "url": "https://api-platform.com/en/con/2026/conferences" },
+    { "label": "Bilan officiel de l'édition 2026", "url": "https://api-platform.com/en/con/2026/review" },
+    { "label": "Chaîne YouTube Les-Tilleuls.coop / API Platform (vidéos 2026)", "url": "https://www.youtube.com/channel/UCGP6SKfBAQDlEO2QZXPb_Ew/videos" },
+    { "label": "Aftermovie 2026", "url": "https://www.youtube.com/watch?v=DD-q0BZJHhU" },
+    { "label": "Blog Les-Tilleuls.coop : Sortie d'API Platform 4.4 et 5.0", "url": "https://les-tilleuls.coop/blog/sortie-api-platform-4-4-et-5-0" },
+    { "label": "Blog Les-Tilleuls.coop : Comment nous avons créé un assistant IA pour l'API Platform Conference 2026", "url": "https://les-tilleuls.coop/blog/comment-nous-avons-cree-un-assistant-ia-pour-lapi-platform-conference-2026" },
+    { "label": "Album photos Flickr", "url": "https://www.flickr.com/photos/194052559@N02/albums/72177720335675015" },
+    { "label": "Posts Mastodon #APIPlatformCon : Stephan Hochdörfer (speaker), Tanega, Barren Karen (@totoche), Stefan Koopmanschap, SensioLabs (sponsor), comptes API Platform et Les-Tilleuls.coop", "url": "https://mastodon.social/tags/apiplatformcon" }
+  ]
 }

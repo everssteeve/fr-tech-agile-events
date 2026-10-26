@@ -16,7 +16,7 @@
   "synthesisUpdatedAt": "2026-10-26",
   "corpus": "15 comptes-rendus publics lus (blogs d'entreprises : OVHcloud, Ippon, OCTO, Lunatech, Onepoint/dev.to, MARGO, Darkwood, Criteo/Medium, Néosoft, Takima ×2 ; blogs personnels : Denis Germain/zwindler (3 récaps quotidiens), Julien Wittouck, David Micheneau, Estéban Soubiran), publiés entre le 22 avril et le 16 juin 2026, plus un post LinkedIn d'entreprise (Crédit Agricole Technologies et Services), la description de la vidéo récap officielle et **8 transcripts** (les 6 keynotes, Éloge de la simplicité, L'Agentic Coding chez Doctolib). S'y ajoutent des interviews Studio Devoxx de speakers, transcrites et signalées comme hors session (Paul Pinault, Albane Fagot-Veyron en deux parties, Sylvain Wallez), publiées entre septembre et octobre 2026.",
   "limits": "Aucun post LinkedIn individuel n'a pu être lu (la recherche web ne remonte que les posts officiels ou d'entreprises) : le corpus est un corpus de **blogs**, plus détaillé mais biaisé vers les entreprises sponsors/speakers (OVHcloud, Ippon, Takima, Criteo…) et vers l'IA. Sur 259 sessions, une cinquantaine seulement ont un retour, souvent d'une seule source ; le blog Darkwood, aux résumés proches des descriptifs officiels, n'est utilisé qu'en complément.",
-  "tldr": "**L'IA a colonisé le programme (65 talks sur 259) mais l'édition marque son passage de la démo à l'ingénierie : agents, protocoles, évaluation, sécurité et plateforme — tandis que les keynotes et les talks les plus appréciés rappellent que le vrai sujet reste humain et organisationnel.**",
+  "tldr": "**L'IA a colonisé le programme (65 talks sur 259) mais l'édition marque son passage de la démo à l'ingénierie : agents, protocoles, évaluation, sécurité et plateforme. Les keynotes et les talks les plus appréciés rappellent pourtant que le vrai sujet reste humain et organisationnel.**",
   "keyTakeaways": [
     "Utiliser l'IA en **« système 2 »** : relire, contredire, savoir lire le code qu'elle produit plutôt que la suivre « sans réfléchir » (Devillers, Fressinet).",
     "**Partir du besoin terrain**, pas de la plateforme : sans adoption ni sponsorship, un POC techniquement réussi ne part pas en production (Canonne).",
@@ -383,15 +383,16 @@
         "Christophe Frézier (Onepoint, dev.to)",
         "Blog Darkwood"
       ],
-      "summary": "- Pipeline d'évaluation en **trois étapes** et nécessité de **jeux de données de validation** (Frézier).\n- Enjeu central : *« gérer les compromis entre la créativité et le contrôle, essentiels pour les systèmes déployés en production »*.\n- Point de vigilance relevé par Darkwood : le **LLM-as-a-judge** automatise l'évaluation mais introduit ses propres biais — le jugement humain reste nécessaire.",
+      "summary": "- Sur scène, Erin Pacquetet part d'un cas fil rouge : un **chatbot RAG d'assurance** dont le POC plaît, mais à qui le métier demande *« est-ce qu'on est sûr que ça marche bien ? »* avant la mise en production.\n- Le paradoxe de l'IA générative : on l'utilise pour des entrées et sorties qu'on ne contrôle pas, d'où un **compromis entre créativité et contrôle**. Le pipeline d'évaluation sert à passer d'un test manuel et qualitatif à des **scores reproductibles**, lancés à chaque modification de prompt et avant chaque mise en production.\n- Trois étapes (simuler les entrées, générer les sorties, les évaluer) et trois familles de scénarios : **idéal, réaliste** (mots-clés, fautes, contexte partiel) **et adverse** (prompt injection, jailbreak). La qualité opérationnelle (latence, coût) compte autant que la qualité de réponse.\n- Le cœur du dispositif est le **dataset d'évaluation** (entrées et sorties attendues) : long à écrire, il force métier et dev à confronter un cahier des charges théorique et contradictoire (court mais complet, sûr mais enjoué) et devient leur point de convergence.\n- Quatre familles de métriques, toutes des proxys de l'humain : déterministes (string matching, idéal pour une sortie contrainte comme l'agent de tri true/false), sémantiques (jugées dépassées), **LLM-as-a-judge** sur une tâche étroite (chercher omissions et contradictions) et évaluation humaine. Il faut vérifier l'**alignement juge/humain** et distinguer métriques bloquantes et secondaires.\n- Côté participants, Frézier retient le pipeline en trois étapes et les jeux de validation ; Darkwood souligne que le LLM-as-a-judge introduit ses propres biais, ce que la speakeuse reconnaît aussi (variance d'un run à l'autre).",
       "summarySources": [
+        "transcript",
         "blog"
       ],
       "video": {
         "youtubeId": "KK_7eCa0GK8",
         "title": "Mesurer l'immesurable : Comment évaluer les systèmes à base d'IA générative ?",
         "publishedAt": "2026-05-12",
-        "transcript": false
+        "transcript": true
       }
     },
     {

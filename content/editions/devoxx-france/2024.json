@@ -6,8 +6,670 @@
   "start": "2024-04-17",
   "end": "2024-04-19",
   "city": "Paris",
+  "venue": "Palais des Congrès (Porte Maillot)",
   "url": "https://web.archive.org/web/20240104183707/https://www.devoxx.fr/",
+  "programUrl": "https://web.archive.org/web/20240407165216/https://www.devoxx.fr/2024/03/08/le-programme-devoxx-france-2024/",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "12e édition, 17-19 avril 2024, Palais des Congrès de Paris, avec pour la première fois le 1er étage en plus du 2e. Programme annoncé : 6 keynotes de 20 min, 116 conférences, 46 tools-in-action, 52 lunch talks, 12 deep dives, 24 hands-on labs, BOF du jeudi soir ; 4 500 visiteurs par jour annoncés (plus de 4 000 selon Criteo), 306 speakers dont 51 primo-speakers, 54 volontaires et 65 stands (keynote d'ouverture). L'API du CFP archivée liste 278 sessions ; Data & AI et Development & Languages sont les deux plus gros tracks (41 sessions chacun). Replays publiés le 3 mai 2024 sur la chaîne YouTube Devoxx France ; les hands-on labs ne sont pas filmés.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-26",
+  "revisit": "Corpus participants limité à trois sources (Criteo, série Onepoint, blog d'Olivier Thierry) : aucun post LinkedIn lu, et aucun compte-rendu 2024 trouvé chez Zenika, Ippon, Octo, SFEIR ou WeScale ; la recherche web a très peu remonté de résultats.",
+  "corpus": "Trois corpus de participants publiés entre le 1er mai et le 4 juin 2024 : la revue collective de Criteo (13 auteurs, Medium, 9 mai), la série Onepoint sur dev.to (5 billets : intro, frontend, data/IA, backend, build & deploy, une dizaine de contributeurs) et le récap d'Olivier Thierry, lui-même speaker. Plus **11 transcripts** (les 6 keynotes, Model Mitosis, le micro-frontend Leroy Merlin, Tristan Nitot, IA ou IA pas, Au-delà du Craft), l'API du CFP archivée (descriptifs et favoris) et les notes de l'épisode 310 des Cast Codeurs.",
+  "limits": "Aucun post LinkedIn ni thread Mastodon/Bluesky n'a été lu, et la recherche n'a trouvé aucun compte-rendu des grands cabinets habituels (Zenika, Ippon, Octo, SFEIR, WeScale). Deux des trois sources sont des entreprises exposantes ou très présentes en speakers (Criteo, Onepoint), qui commentent parfois les talks de collègues. Sur 278 sessions, une quarantaine seulement ont un retour ; les sessions les plus mises en favori après Model Mitosis (architecture hexagonale, négociation salariale, tests délégués à une IA, Java 21) n'en ont aucun. Les jours précis de la plupart des sessions n'ont pas pu être retrouvés (API sans créneaux horaires).",
+  "tldr": "**Une édition plus grande (un étage de plus) où l'IA générative est partout dans les talks, mais où les keynotes parlent surtout de limites** : métaux, planète, cyberguerre, médecine ; et le talk le plus plébiscité reste un live coding d'architecture, Model Mitosis.",
+  "keyTakeaways": [
+    "Partir d'un **monolithe modulaire** et ne découper qu'au fil des tensions de modèle : dupliquer puis spécialiser les concepts, garder un shared kernel non partagé entre équipes (Topçu, Chevalier).",
+    "Traiter l'IA générative comme **un outil de pairing**, à placer là où sa créativité sert, et pas comme un remplaçant des développeurs (Vincent, Gloriau, retenu par Arnaud Perin).",
+    "Considérer chaque entrée d'un LLM comme **un vecteur d'attaque** : restreindre les entrées, prévoir des garde-fous, garder l'humain dans la décision (Thales, Bpifrance, Bibault).",
+    "**Optimiser le logiciel existant avant d'ajouter des features** : la loi de Moore ne compense plus la loi de Wirth, et l'empreinte du numérique croît d'environ 6 % par an (Nitot).",
+    "Faire la sécurité dès le développement : les développeurs sont *« la première ligne de défense »* face aux attaques étatiques (Poupard).",
+    "Allonger la durée de vie des appareils par le logiciel : la maintenance longue durée est un sujet d'innovation, pas une punition (Crépet, Pitron).",
+    "Sécuriser sa **chaîne d'approvisionnement** logicielle avec SBOM, signatures (cosign, Sigstore) et SLSA (Sghiouar, retenu par Onepoint).",
+    "Supprimer les secrets partagés avec des identifiants temporaires (Vault, Boundary) et tracer tous les accès (Padok, retenu par Onepoint et Olivier Thierry).",
+    "Concevoir pour un monde partiellement dégradé : jitter, délestage, désactivation des fonctions coûteuses, technologies *« boring »* (Pascal Martin, retenu par Paola Valdivia).",
+    "Mettre en question l'usage des estimations et livrer par petits incréments pour décider sur du feedback réel (Woody Zuill, retenu avec réserves par Marco Casadei)."
+  ],
+  "sessions": [
+    {
+      "id": "bienvenue-a-devoxx-france-2024",
+      "day": "2024-04-17",
+      "type": "keynote",
+      "title": "Bienvenue à Devoxx France 2024",
+      "speakers": ["Nicolas Martignole — Devoxx France", "Zouheir Cadi — indépendant", "Antonio Goncalves — Microsoft"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : pas de slides, mais une visite filmée en direct des lieux par les organisateurs, du retrait des badges à la régie technique, avec un « manuel d'exploitation » de la conférence.\n- **Nouveauté de l'édition** : pour sa 12e année, Devoxx France occupe aussi **le premier étage** du Palais des Congrès (salles de lab de 60 places, espace zen, billards, 60 % des déjeuners).\n- Chiffres annoncés : **306 speakers dont 51 qui n'avaient jamais parlé en conférence**, 54 volontaires en rouge, 65 stands. Tout est filmé sauf les hands-on labs.\n- Les goodies ne sont plus glissés dans les sacs mais distribués sur un stand, *« pour faire un peu moins de déchets »* ; le thème visuel de l'année est un clin d'œil *« geek »* à Paris 2024 (transcription automatique peu claire sur ce point).",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "6DWoteHTNrE",
+        "title": "Keynote d'ouverture et visite des coulisses de Devoxx France 2024",
+        "publishedAt": "2024-05-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ia-en-medecine-ou-en-sommes-nous",
+      "day": "2024-04-17",
+      "type": "keynote",
+      "title": "IA en médecine : où en sommes-nous ?",
+      "speakers": ["Jean-Emmanuel Bibault — oncologue, chercheur en IA appliquée à la santé (HEGP, Inserm)"],
+      "feedbackFrom": ["Florian Riche (Criteo)", "Arnaud Perin (Criteo)", "Vivek Claver (Criteo)", "Eric Terrien (Onepoint)", "Olivier Thierry"],
+      "summary": "- **Sur scène** : un panorama d'usages du machine learning en médecine, à partir du type de données. Données tabulaires (prédiction à 10 ans du décès par cancer de la prostate, avec XGBoost et valeurs de Shapley), imagerie (CheXNet, mammographie, longévité prédite sur un scanner), dermatologie, fond d'œil, et même Instagram pour dépister la dépression.\n- Côté LLM, il cite des études de 2023 : **85 % de bonnes réponses à l'USMLE**, et GPT-4 qui trouve le bon diagnostic dans 87 % des cas contre 65 % pour des médecins, avec un rôle attendu sur les **maladies rares**. ChatGPT y est même jugé plus « empathique » que les médecins.\n- Limites : **attaques adversariales** capables de retourner un diagnostic, biais de données (algorithme de dermatologie inefficace sur peau noire, label d'hôpital appris à la place de la maladie), questions éthiques.\n- **Réception** : première keynote de l'édition, *« excellente »* pour Arnaud Perin. Florian Riche note que l'orateur passe vite sur la technique, s'étonne de la familiarité supposée du public, et retient les risques de sécurité et la **perte de compétences** des médecins. Eric Terrien s'amuse de voir *« les javaistes mal à l'aise »* quand l'orateur répète qu'ils connaissent la base du machine learning. Olivier Thierry retient que l'IA sera *« un assistant incontournable »* d'ici 10 à 15 ans.\n- Écart entre sources : Criteo rapporte environ 70 % contre 50 % pour la comparaison LLM et médecins ; le transcript donne 87 % contre 65 %.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "NzcVlEfBjlI",
+        "title": "IA en médecine : où en sommes-nous ?",
+        "publishedAt": "2024-05-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "un-monde-shoote-aux-metaux",
+      "day": "2024-04-18",
+      "type": "keynote",
+      "title": "Un monde shooté aux métaux",
+      "speakers": ["Guillaume Pitron — journaliste, Psyché-16", "Agnès Crépet — Fairphone, Ninja Squad"],
+      "feedbackFrom": ["Vivek Claver (Criteo)", "Eric Terrien (Onepoint)"],
+      "summary": "- **Sur scène** : un smartphone contient 50 à 60 métaux, et son **« sac à dos écologique »** atteint un ratio de 1 200 pour 1 (182 kg de matière pour 150 g de téléphone, selon l'institut Wuppertal). De 2020 à 2050, l'humanité consommerait plus de métaux que depuis 70 000 ans (Pitron).\n- La substitution et le recyclage ne suffisent pas : l'histoire des métaux est *« une addition permanente »*, de 7 métaux dans l'Antiquité à 80 aujourd'hui. *« Le nuage commence par une entaille dans le sol. »*\n- **Retour d'expérience Fairphone** (Crépet) : 23 matériaux suivis sur une soixantaine, actions à la mine (Fair Cobalt Alliance, transferts d'argent directs aux mineurs), et mise en garde contre les lois de transparence qui font fuir la demande et nourrissent la contrebande (loi Dodd-Frank en RDC).\n- Appel aux développeurs : faire durer les appareils, car une stack Android tient 2 à 3 ans ; *« c'est cool de faire de la maintenance »* si l'objectif est de prolonger le matériel.\n- **Réception** : peu commentée. Vivek Claver la relie à l'IA (les GPU sont faits de ces métaux), Eric Terrien la classe parmi des keynotes *« toutes intéressantes »*.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "_lUk2Cylk_s",
+        "title": "Un monde shooté aux métaux",
+        "publishedAt": "2024-05-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "programming-s-greatest-mistakes",
+      "type": "keynote",
+      "title": "Programming's Greatest Mistakes",
+      "speakers": ["Mark Rendle — Rendle Labs"],
+      "feedbackFrom": ["Emmanuel Guérin (Criteo)", "Eric Terrien (Onepoint)"],
+      "summary": "- **Sur scène** (en anglais, sur le ton du stand-up) : des erreurs de programmation célèbres et leur coût. Le bug de l'an 2000 (environ 500 milliards de dollars) et ses répliques (Exchange en 2022, 2038 sous Unix), Mars Climate Orbiter perdu sur une confusion entre livres-force et newtons (327 millions de dollars), le vol inaugural d'Ariane 5 et son code 16 bits copié-collé.\n- Mentions honorables : Heartbleed, Log4j, la faille ECDSA de Java, et Stanislav Petrov qui refuse de croire une fausse alerte nucléaire. Leçon finale : *« don't trust computers »*.\n- **Réception** : *« un récit hilarant »* de 60 ans d'erreurs (Emmanuel Guérin), *« un stand-up en anglais »* (Eric Terrien). Mark Rendle donnait aussi le même jour un talk sur l'histoire des langages jusqu'à JavaScript, cité par Onepoint pour son humour.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "ywIRwq3CoyA",
+        "title": "Programming’s Greatest Mistakes",
+        "publishedAt": "2024-05-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "cybersecurite-et-cyberdefense-un-sujet-geopolitique",
+      "type": "keynote",
+      "title": "Cybersécurité et cyberdéfense : un sujet géopolitique",
+      "speakers": ["Guillaume Poupard — ancien directeur général de l'ANSSI, Docaposte"],
+      "feedbackFrom": ["Olivier Thierry", "Eric Terrien (Onepoint)"],
+      "summary": "- **Sur scène** : trois étages de menace. La **cybercriminalité** (rançongiciels depuis 2017-2018, hôpitaux attaqués en 2019, PME et collectivités démunies), l'**espionnage**, invisible mais qui occupait 80 % de l'énergie de l'ANSSI, et surtout le **sabotage** à visée géopolitique.\n- Récits : l'attaque de TV5 Monde en 2015, faussement revendiquée par des djihadistes ; WannaCry puis NotPetya en 2017, qui visait l'Ukraine et a paralysé Saint-Gobain via une usine vendue mais encore opérée. L'Ukraine, mieux préparée depuis, résiste aux attaques qui accompagnent l'invasion.\n- Il ne croit pas au « grand soir » cyber mais à **une pression permanente** à chaque tension entre États.\n- Conclusion adressée aux développeurs : en prenant en compte la sécurité, *« vous créez une première ligne de défense qui est de loin la plus robuste et la plus importante »*.\n- **Réception** : *« un poil angoissante mais passionnante »* (Olivier Thierry) ; *« l'incontournable »* cybersécurité pour Eric Terrien.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "Iw5JztDeSRE",
+        "title": "Cybersécurité et cyberdéfense : un sujet géopolitique - Guillaume Poupard",
+        "publishedAt": "2024-05-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-modeliser-l-etat-du-monde-en-2100-le-rapport-meadows",
+      "type": "keynote",
+      "title": "Comment modéliser l'état du monde en 2100 ? Le Rapport Meadows",
+      "speakers": ["Anatole Chouard — vulgarisateur scientifique, chaîne « Chez Anatole »"],
+      "feedbackFrom": ["Eric Terrien (Onepoint)"],
+      "summary": "- **Sur scène** : la genèse du rapport *Limits to Growth* (Club de Rome, équipe du MIT, 1972) et de la **dynamique des systèmes** de Jay Forrester : identifier les sous-systèmes (alimentation, industrie, population, pollution, ressources), leurs interactions, puis les quantifier dans le modèle World3.\n- Ce n'est *« pas une prédiction »* mais une forme de courbes : dans le scénario de référence, la pollution monte et les ressources baissent jusqu'à un dépassement puis un effondrement ; doubler les ressources ne fait que décaler le problème.\n- Il compare avec le rapport *Earth for All* (2022) : plus fin (10 régions, limites planétaires), mais selon lui **moins nuancé** que Meadows (deux scénarios, ton de « guide de survie »).\n- Ouverture et clôture par deux expériences de Dennis Meadows avec la salle (croiser les bras, applaudir sur « 3 ») : changer d'habitude est inconfortable, et *« le plus important c'est l'action »*.\n- **Réception** : Eric Terrien parle de « psychohistoire » et range la keynote parmi des sujets variés traités *« entre humour et gravité »*. Pas d'autre retour trouvé.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "qrD7JiLzCKE",
+        "title": "Comment modéliser l’état du monde en 2100 ? Le Rapport Meadows (Anatole CHOUARD)",
+        "publishedAt": "2024-05-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-cast-codeurs-en-chair-en-os-et-en-beret",
+      "day": "2024-04-19",
+      "type": "other",
+      "title": "Les Cast Codeurs en chair, en os et en béret",
+      "speakers": ["Arnaud Héritier — Doctolib", "Emmanuel Bernard — Red Hat", "Katia Aresti — Red Hat", "Antonio Goncalves — Microsoft"],
+      "feedbackFrom": ["Les Cast Codeurs (speakers)", "Criteo"],
+      "summary": "- Enregistrement en direct de l'épisode 310 du podcast, en clôture de la conférence, publié le 24 avril 2024.\n- Les Cast Codeurs présentent 2024 comme *« l'année où le sous-titrage était un personnage à part entière de Devoxx France »* et conseillent la vidéo plutôt que l'audio (speaker).\n- Criteo confirme : la **transcription en direct** affichée dans toutes les salles a produit *« quelques confusions et blagues mémorables »*, reprises dans l'épisode. Olivier Thierry remercie aussi *« la transcription automatique »* pour les fous rires.",
+      "summarySources": ["blog", "program"],
+      "video": {
+        "youtubeId": "kEX-2H3mEh8",
+        "title": "Les Cast Codeurs en chair, en os et en béret 2024 - VOSTFR",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "model-mitosis-ne-plus-se-tromper-entre-les-microservices-et-le-monolithe",
+      "type": "talk",
+      "title": "Model Mitosis : ne plus se tromper entre les microservices et le monolithe",
+      "speakers": ["Julien Topçu — Shodo", "Josian Chevalier — Shodo"],
+      "feedbackFrom": ["Damien Lucas (Onepoint)", "Emmanuel Guérin (Criteo)", "Olivier Thierry"],
+      "summary": "- **Sur scène** : un jeu de rôle développeur contre architecte, dans l'univers du Mandalorian, autour d'une appli de réservation de « spatio-trains ». Le développeur a tout mis dans un seul domaine, l'architecte veut des microservices tout de suite ; aucun des deux n'a raison.\n- La démarche, inspirée de la **mitose cellulaire** : séparer recherche et réservation dans un **monolithe modulaire**, isoler les concepts communs dans un *shared kernel* qui représente *« l'incertitude des frontières »*, puis **dupliquer et spécialiser** à chaque tension de modèle.\n- Règles du shared kernel : purement métier, même sens, mêmes invariants pour tous les modules, et **jamais partagé entre équipes**. Ne passer en microservices que si le noyau résiduel est stable, sinon on obtient un monolithe distribué.\n- **Réception** : session la plus mise en favori du programme (1 140) et la plus louée du corpus. *« De loin la plus divertissante et enrichissante de cette édition »* (Onepoint), *« une des meilleures conférences que j'ai eu l'occasion de voir »*, *« menée avec brio, telle une pièce de théâtre »* (Olivier Thierry), *« special kudos »* pour le live coding et l'humour (Emmanuel Guérin).",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "HNQJW5iMZgQ",
+        "title": "Model Mitosis : ne plus se tromper entre les microservices et le monolithe",
+        "publishedAt": "2024-05-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "l-architecture-micro-frontend-comment-transformer-son-site-web-en-puzzle-geant-collaboratif",
+      "type": "talk",
+      "title": "L'architecture micro frontend : comment transformer son site web en puzzle géant collaboratif",
+      "speakers": ["Maxime Ribera — Leroy Merlin / Adeo", "Ludovic Lagatie — Leroy Merlin / Adeo"],
+      "feedbackFrom": ["Christophe Frézier (Onepoint)", "Olivier Thierry"],
+      "summary": "- **Sur scène** : des iframes aux micro-frontends, puis la solution maison de Leroy Merlin, un **agrégateur** qui compose des fragments (SPA, web components) gérés par des équipes dédiées, avec un *registry* où chaque micro-frontend s'enregistre.\n- Point fort : l'**expérience développeur**. Un développeur lance son fragment en local, et une simple configuration (une ligne en base) fait pointer un site de recette vers son poste, sans coût d'infrastructure.\n- En questions, ils reconnaissent que le plus dur est **l'organisation des équipes** et la conduite du changement, en feature teams qui bougent souvent.\n- **Réception** : *« gros coup de cœur de cette édition »* pour Christophe Frézier, qui salue la démo live sur leroymerlin.fr. Le module déployé sur le portable a fini par planter sous le spam de plus de 800 personnes, mais le reste du site est resté debout. *« Mon coup de cœur »* aussi pour Olivier Thierry : *« les retours d'expérience sur des projets de ce type sont rares »*.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "t4VrZypugA8",
+        "title": "L’architecture micro frontend : comment transformer son site web en puzzle géant collaboratif",
+        "publishedAt": "2024-05-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "et-si-on-divisait-par-4-l-empreinte-carbone-du-numerique",
+      "type": "talk",
+      "title": "Et si on divisait par 4 l'empreinte carbone du numérique ?",
+      "speakers": ["Tristan Nitot — OCTO Technology"],
+      "feedbackFrom": ["Damien Lucas (Onepoint)"],
+      "summary": "- **Sur scène** : la fin de la loi de Moore et la **loi de Wirth** (*« le logiciel ralentit aussi vite que le matériel accélère »*), alors que l'empreinte du numérique augmente d'environ **6 % par an** au lieu de baisser.\n- Exemple de Matt Parker : un script Python de 32 jours ramené à 15 minutes par la communauté, puis à quelques millisecondes. Mais il faut s'arrêter avant le code *« immaintenable »* : ne pas être *« des ayatollahs de l'optimisation »*.\n- Sa proposition : faire monter les développeurs en compétences, puis optimiser régulièrement les parties critiques, pour libérer du matériel au lieu d'en racheter et garder de la place pour innover.\n- **Réception** : retenue par Onepoint parmi trois conférences « originales ». Damien Lucas parle d'une conférence qui veut *« nous ouvrir les yeux sur des choses simples »*, avec une page web 150 fois plus lourde qu'il y a 25 ans.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "bGINbV8oxMY",
+        "title": "Et si on divisait par 4 l'empreinte carbone du numérique ?",
+        "publishedAt": "2024-05-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ia-ou-ia-pas-nous-l-ia-qui-remplace-les-devs-on-y-croit-pas-encore",
+      "type": "talk",
+      "title": "IA ou IA pas ? Nous l'IA qui remplace les devs on y croit pas (encore) !",
+      "speakers": ["Matthieu Vincent — Sopra Steria", "Yann Gloriau — Sopra Steria"],
+      "feedbackFrom": ["Arnaud Perin (Criteo)"],
+      "summary": "- **Sur scène** : deux vétérans de Sopra Steria, qui y déploient l'IA pour 2 000 développeurs. Ils rappellent qu'on promettait déjà la fin des développeurs avec le COBOL (*common business oriented language*), et rappellent l'avocat aux jurisprudences inventées.\n- Retour d'expérience sur la **modernisation COBOL vers Java** : peu convaincant, l'IA connaît mal le COBOL ; mieux vaut que des humains lisent l'ancien code pour « prompter » ce que doit faire le nouveau, et repenser les usages plutôt que traduire.\n- Conclusion : un LLM est **créatif, pas déterministe**. Il faut l'utiliser là où cette créativité sert, choisir le modèle adapté au besoin, et *« garder le contrôle »*, car *« elle ne crée pas de savoir »*.\n- **Réception** : Arnaud Perin retient, *« avec beaucoup d'humour »*, que l'IA est *« un excellent outil de pairing, rien de plus (du moins aujourd'hui) »*.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "mxhpCvSmFK4",
+        "title": "IA ou IA pas ? Nous l’IA qui remplace les devs on y croit pas (encore) !",
+        "publishedAt": "2024-05-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "au-dela-du-craft-revisitez-votre-relation-avec-le-software-craft",
+      "type": "talk",
+      "title": "Au-delà du Craft : Revisitez Votre Relation avec le Software Craft",
+      "speakers": ["Cyrille Martraire — Arolla"],
+      "feedbackFrom": ["Arnaud Perin (Criteo)"],
+      "summary": "- **Sur scène** : une histoire du software craftsmanship depuis *« l'époque obscure »* de 1999 (plannings longs, grosses specs, complexité vendue comme « cool »).\n- Métaphores : le test et le refactoring sont **l'équivalent de l'hygiène et de la sécurité** dans les autres métiers ; on nettoie le chantier au fur et à mesure, comme en cuisine.\n- Le vrai sujet est **la complexité** (au sens de Cynefin) : passer de systèmes décomposables à des systèmes où il faut essayer plutôt qu'étudier. L'agile et le craft sont *« notre nouveau système d'exploitation »* pour ça, mais il ne faut pas *« rester coincé en 2009 »*.\n- **Réception** : Arnaud Perin retient l'importance de rester agile *« dans sa forme la plus simple »* et de privilégier l'équipe sur l'outillage ; *« comme d'habitude, son talk était objectif »*.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "fGaMNUB3Cao",
+        "title": "Au-delà du Craft : Revisitez Votre Relation avec le Software Craft",
+        "publishedAt": "2024-05-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-doc-va-bien-ne-t-en-fais-pas",
+      "type": "talk",
+      "title": "La doc va bien, ne t'en fais pas",
+      "speakers": ["Damien Lucas — Onepoint"],
+      "feedbackFrom": ["Arnaud Perin (Criteo)", "Olivier Thierry"],
+      "summary": "- Présentation de modèles de documentation, en particulier **arc42**, pour organiser diagrammes d'architecture, ADR, spécifications et vues (Arnaud Perin).\n- *« Un talk très inspirant qui donnerait presque envie d'écrire de la documentation ! »* (Olivier Thierry).\n- La documentation est un thème récurrent de l'édition : *cod == doc* (Gilles Legoux, Criteo, lunch talk), *Sauve un dév, écris une doc !* (Sarah Haïm-Lubczanski), ADR.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "zQ0A75HqFuA",
+        "title": "La doc va bien, ne t'en fais pas",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "comment-ca-marche-l-ia-generative-llm-rag-sous-le-capot",
+      "type": "talk",
+      "title": "Comment ça marche l'IA Generative ? LLM, RAG sous le capot.",
+      "speakers": ["Arnaud Pichery — Dataiku", "Aurélien Coquard — Dataiku"],
+      "feedbackFrom": ["Arnaud Perin (Criteo)", "Vivek Claver (Criteo)"],
+      "summary": "- Les fondamentaux des LLM et du **RAG** : ce qui se passe en coulisses (Arnaud Perin).\n- Vivek Claver, sans citer un talk précis, décrit le RAG comme le cœur de nombreuses sessions : embeddings des documents, recherche des plus proches, puis prompt construit avec ces extraits ; il est frappé de voir *« à quel point l'écosystème est déjà développé »*.\n- La vidéo est de loin la plus vue de l'édition parmi celles relevées (environ 34 000 vues au 26 octobre 2026).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "47BlShlc4E8",
+        "title": "Comment ça marche l'IA Générative ? LLM, RAG sous le capot.",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "java-rencontre-l-ia-integrer-les-llms-avec-langchain4j",
+      "type": "talk",
+      "title": "Java rencontre l'IA : Comment intégrer les LLMs dans vos applications avec LangChain4j",
+      "speakers": ["Lize Raes — Open Tide"],
+      "feedbackFrom": ["Eric Terrien (Onepoint)"],
+      "summary": "- Présentation de LangChain4j, adaptation au monde Java de la librairie Python LangChain.\n- Eric Terrien *« regrette l'omniprésence des sujets LLM et notamment sur LangChain4J »*, tout en reconnaissant que c'est cohérent pour un salon orienté Java.\n- LangChain4j revient ailleurs dans le programme : hands-on labs (Microsoft ; Worldline et Open Tide), deep dive Google et DataStax, session « Meet with an OSS project ».",
+      "summarySources": ["blog", "program"],
+      "video": {
+        "youtubeId": "0FEUmI2Ou10",
+        "title": "Java rencontre l'IA : Comment intégrer les LLMs dans vos applications avec LangChain4j",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "monster-ai-l-odyssee-de-back-market",
+      "type": "talk",
+      "title": "Monster AI : l'odyssée de Back Market vers une plateforme IA générative sur-mesure",
+      "speakers": ["Florian Valeye — Back Market", "Thomas Lavie — Back Market"],
+      "feedbackFrom": ["Eric Terrien (Onepoint)"],
+      "summary": "- Tools-in-action : les étapes de la mise en place d'un LLM interne chez Back Market et des fonctions pour entraîner les chatbots.\n- Eric Terrien s'en dit *« convaincu »* et retient l'implémentation de **feedback** utilisateur et l'**hyperspécialisation** des modèles à partir du RAG.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "uITaFpcwMjo",
+        "title": "Monster AI : l'odyssée de Back Market vers une plateforme IA générative sur-mesure",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "securite-du-genai-et-des-llm-une-nouvelle-ere-d-hacking-ethique",
+      "type": "talk",
+      "title": "Sécurité du GenAI & des LLM : Une nouvelle ère d'Hacking éthique",
+      "speakers": ["Katarzyna Kapusta — Thales", "Nicolas Bouillet — Thales Digital Factory", "Romain Ferrari — Thales", "Renan Berthier — Thales"],
+      "feedbackFrom": ["Arij Sakhraoui (Criteo)"],
+      "summary": "- Des chercheurs de Thales évaluent la sécurité des LLM par une simulation **red team / blue team**.\n- Message principal : **chaque entrée d'un LLM est un vecteur d'attaque potentiel** ; par précaution, leurs LLM internes n'acceptent que du texte. Exemple d'une chaîne construite pour contourner toutes les protections du modèle.\n- **Réception** : *« une excellente vue d'ensemble »*, peu technique mais complète, sans noyer le public sous les détails (Arij Sakhraoui).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "8_QTH7mEkfM",
+        "title": "Sécurité du GenAI & des LLM: Une nouvelle ère d'Hacking éthique",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "panorama-des-risques-vulnerabilites-ia-generative",
+      "type": "talk",
+      "title": "Panorama des risques, vulnérabilités et pistes pour une utilisation plus sûre de l'IA générative",
+      "speakers": ["Willy Malvault — Bpifrance", "Aurélien Fournet — Serma Safety and Security"],
+      "feedbackFrom": ["Olivier Thierry"],
+      "summary": "- Panorama des risques et vulnérabilités de l'IA générative et des pistes de mitigation.\n- Olivier Thierry la trouve *« claire et dynamique »* et dit avoir découvert des risques qu'il n'avait pas envisagés.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "eD6Tuh0irPc",
+        "title": "Panorama des risques, vulnérabilités et pistes pour une utilisation plus sûre de l'IA générative",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "du-clic-a-la-conversation-remplacons-boutons-et-formulaires-par-un-llm",
+      "type": "talk",
+      "title": "Du Clic à la Conversation : remplaçons boutons et formulaires par un LLM !",
+      "speakers": ["Marie-Alice Blete — Worldline"],
+      "feedbackFrom": ["Florian Riche (Criteo)"],
+      "summary": "- L'autrice d'un livre sur le développement d'applications LLM teste si un LLM peut **remplacer un formulaire**, avec trois approches : usage « naïf », LLM en **machine à états** (le prompt change selon l'état), LLM en **agent**. Tests avec GPT-3.5 et GPT-4, aux résultats très différents.\n- Elle compare le potentiel des LLM pour les interfaces à l'arrivée de la souris.\n- **Réception** : Florian Riche retient surtout le **non-déterminisme**, critique pour des saisies qui exigent 100 % d'exactitude ; l'oratrice reste optimiste sur des techniques de fiabilisation *« pas encore là »*.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "DN8WtezZKYA",
+        "title": "Du Clic à la Conversation : remplaçons boutons et formulaires par un LLM !",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "high-speed-ddd-revisited",
+      "type": "talk",
+      "title": "High-Speed DDD (revisited)",
+      "speakers": ["Thomas Pierrain — Agicap"],
+      "feedbackFrom": ["Paola Valdivia (Criteo)"],
+      "summary": "- Le DDD est *« une approche mais aussi une boîte à outils »*. Ajouter des conditions dans le code existant livre vite mais crée de la **dette fonctionnelle**.\n- Trois patterns de survie pour livrer vite en gardant des contextes nets : *hidden supportive context*, *umbilical ACL* et extraction de contexte.\n- Rappel de Martin Fowler : YAGNI *« ne s'applique pas à l'effort pour rendre le logiciel plus facile à modifier »* (Paola Valdivia).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "chOTMfhiNgs",
+        "title": "High-Speed DDD (revisited)",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "une-application-resiliente-dans-un-monde-partiellement-degrade",
+      "type": "talk",
+      "title": "Une application résiliente, dans un monde partiellement dégradé",
+      "speakers": ["Pascal Martin — Bedrock Streaming"],
+      "feedbackFrom": ["Paola Valdivia (Criteo)"],
+      "summary": "- *« Nines don't matter if users aren't happy »* : les systèmes distribués sont *« dans un état permanent de service partiellement dégradé »*.\n- Recettes : **jitter** aléatoire (TTL de cache, jobs, tokens), désactivation automatique des fonctions coûteuses en cas de dégradation, **load shedding**, et *« choose boring technology »*.\n- Paola Valdivia salue aussi les photos de chat qui illustrent le propos.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "exk5343fTuM",
+        "title": "⚡Une application résiliente, dans un monde partiellement dégradé ⚡",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "css-renait-de-ses-cendres",
+      "type": "talk",
+      "title": "CSS renaît de ses cendres : (re)devenez copains avec votre feuille de style",
+      "speakers": ["Yohan Lasorsa — Microsoft", "Olivier Leplus — AWS"],
+      "feedbackFrom": ["Paola Valdivia (Criteo)", "Christophe Frézier (Onepoint)"],
+      "summary": "- Depuis 2022, les grands navigateurs collaborent sur des axes d'**interopérabilité** (tableau de bord web-platform-tests), dont l'accessibilité.\n- Paola Valdivia retient les **view transitions**, avec une mise en garde contre l'abus d'animations. Christophe Frézier découvre des fonctions CSS oubliées *« et pourtant (en majorité) bien utilisables »*, et cite aussi le talk de Fabien Zibi sur les tests de CSS.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "cAikQZzKqB4",
+        "title": "CSS renaît de ses cendres: (re)devenez copains avec votre feuille de style (Y. LASORSA et O. LEPLUS)",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "la-compression-web-comment-reprendre-le-controle",
+      "type": "talk",
+      "title": "La compression Web : comment (re)prendre le contrôle ?",
+      "speakers": ["Hubert Sablonnière — Clever Cloud", "Antoine Caron — Scaleway"],
+      "feedbackFrom": ["Christophe Frézier (Onepoint)", "Florian Allainmat (Onepoint)", "David Maurin (Onepoint)"],
+      "summary": "- 45 minutes sur l'histoire de gzip, le fonctionnement de la décompression et les méthodes de compression dans les navigateurs.\n- Trois avis Onepoint unanimes : *« très bien structurée »* (Allainmat), *« un incontournable à regarder en replay »* (Maurin), *« une top conf »* avec des web components créés uniquement pour la démonstration (Frézier).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "AF99cb1SCqM",
+        "title": "La compression Web : comment (re)prendre le contrôle ?",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "react-server-components-effet-de-mode-ou-reel-progres",
+      "type": "talk",
+      "title": "React Server Components : Effet de mode ou réel progrès ?",
+      "speakers": ["Thomas Simonnet — WeScale"],
+      "feedbackFrom": ["Olivier Thierry"],
+      "summary": "- Tour d'horizon des React Server Components.\n- *« Un bon tour d'horizon »*, *« mission accomplie »* pour Olivier Thierry, qui donnait lui-même un talk sur les modes de rendu front (*Rendez-moi mon front !*).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "MzmEPQFHgIk",
+        "title": "React Server Components : Effet de mode ou réel progrès ?",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "nous-sommes-tous-rassembles-we-are-all-to-gather",
+      "type": "talk",
+      "title": "Nous sommes tous rassemblés - We are all to gather",
+      "speakers": ["Rémi Forax — Université Gustave Eiffel"],
+      "feedbackFrom": ["Damien Lucas (Onepoint)"],
+      "summary": "- Présentation des **gatherers** (Java 22 en preview), qui permettent d'implémenter n'importe quelle opération intermédiaire d'un stream, de `map` à des opérations inédites.\n- *« Un must en termes de pédagogie »*, pour débutants comme confirmés (Damien Lucas).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "UASse8a7FzE",
+        "title": "Nous sommes tous rassemblés - We are all to gather",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "bootiful-spring-boot-3-3",
+      "type": "talk",
+      "title": "Bootiful Spring Boot 3.3",
+      "speakers": ["Josh Long — Spring, Broadcom"],
+      "feedbackFrom": ["Damien Lucas (Onepoint)"],
+      "summary": "- Live coding depuis Spring Initializr : nouveautés Java (records, sealed types, pattern matching), générateur d'histoires avec Spring AI et OpenAI, **virtual threads** activés par une propriété, puis compilation native.\n- Une présentation déjà connue mais mise à jour, *« très rafraîchissante avec beaucoup d'humour »* (Damien Lucas).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "tA_KKK1zXzc",
+        "title": "Bootiful Spring Boot 3.3",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "sous-le-capot-d-une-application-jvm-jfr-jmc",
+      "type": "talk",
+      "title": "Sous le capot d'une application JVM - Java Flight Recorder / Java Mission Control",
+      "speakers": ["Guillaume Darmont — Malt"],
+      "feedbackFrom": ["Damien Lucas (Onepoint)"],
+      "summary": "- JFR comparé à la boîte noire d'un avion, JMC au logiciel qui l'exploite ; démonstration itérative sur une appli de calcul de hash.\n- En préparant le talk, l'orateur a trouvé un problème de performance ancien dans le JDK, corrigé dans la version suivante (Damien Lucas).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "wa_EtTUx-z0",
+        "title": "Sous le capot d'une application JVM - Java Flight Recorder / Java Mission Control",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "cloud-native-apps-with-micronaut-4-and-graalvm",
+      "type": "workshop",
+      "title": "Cloud Native apps with Micronaut 4 and GraalVM",
+      "speakers": ["Cédric Champeau — Oracle Labs", "Graeme Rocher — Oracle Labs"],
+      "feedbackFrom": ["Emmanuel Guérin (Criteo)"],
+      "summary": "- Deep dive de 3 h avec le créateur de Micronaut : faire **un maximum de travail au build** (injection de dépendances résolue à la compilation) puis compiler en natif avec GraalVM, pour des démarrages en millisecondes.\n- Emmanuel Guérin se réjouit aussi de voir beaucoup d'exemples en Kotlin dans les talks de l'édition.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "TZmyQRFBNWs",
+        "title": "Cloud Native apps with Micronaut 4 and GraalVM",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "instrumenter-applications-natives-spring-boot-quarkus-opentelemetry",
+      "type": "talk",
+      "title": "Instrumenter vos applications natives Spring Boot et Quarkus avec OpenTelemetry",
+      "speakers": ["Sandra Ahlgrimm — Microsoft", "Bruno Baptista — Red Hat", "Jean Bisutti — Microsoft"],
+      "feedbackFrom": ["Jiawen Zhu (Criteo)"],
+      "summary": "- Explications et live coding pour activer OpenTelemetry sur des images natives GraalVM déployées sur Azure ; un mélange jugé utile par Jiawen Zhu.\n- OpenTelemetry est très présent au programme (tools-in-action Datadog, hands-on lab, BOF, retour d'expérience Murex).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "-bc4Twgcl0c",
+        "title": "Instrumenter vos applications natives Spring Boot et Quarkus avec OpenTelemetry",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "gatewayapi-10-ans-de-maturation",
+      "type": "talk",
+      "title": "GatewayAPI, 10 ans de maturation pour une nouvelle API Kubernetes",
+      "speakers": ["Kevin Davin — Gradle"],
+      "feedbackFrom": ["Sylvain Metayer (Onepoint)"],
+      "summary": "- La ressource Ingress porte trop de responsabilités et n'est pas portable. La Gateway API est **orientée rôles** : GatewayClass pour le fournisseur, Gateway pour l'opérateur du cluster, HTTPRoute ou GRPCRoute pour les développeurs.\n- Elle empiète sur une partie des services des *service mesh*, dont le traffic splitting (Sylvain Metayer).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "uId-zaLEpr0",
+        "title": "GatewayAPI, 10 ans de maturation pour une nouvelle API Kubernetes",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "multi-kubernetes-multi-regions-au-secours",
+      "type": "talk",
+      "title": "Multi Kubernetes, Multi Régions, Au-secours !",
+      "speakers": ["Aurélien Moreau — Takima", "Nicolas Lavacry — Casden Banque Populaire"],
+      "feedbackFrom": ["Sylvain Metayer (Onepoint)"],
+      "summary": "- Retour d'expérience scénarisé (entreprise fictive avec un marché américain et un marché français) : Kubernetes supporte mal la latence entre nœuds sur deux continents, d'où plusieurs clusters et des outils pour garantir latence, qualité de service et intégrité des données.\n- Une démo *« parfaitement maîtrisée »* (Sylvain Metayer).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "ADp3fonoDWM",
+        "title": "Multi Kubernetes, Multi Régions, Au-secours !",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "notre-dependance-a-l-open-source-est-effrayante-slsa-sbom-sigstore",
+      "type": "talk",
+      "title": "Notre dépendance à l'Open Source est effrayante. SLSA, SBOM et Sigstore à la rescousse",
+      "speakers": ["Abdellfetah Sghiouar — Google"],
+      "feedbackFrom": ["Sylvain Metayer (Onepoint)"],
+      "summary": "- Nos applications dépendent de logiciels tiers sur lesquels on n'a pas la main : faut-il les utiliser sans vérifier leur intégrité ?\n- Outils de traçabilité présentés : **cosign** pour signer les images avant déploiement, **SBOM** pour lister les paquets, SLSA (Sylvain Metayer, *« très intéressante »*).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "MEJ-ae_D8X4",
+        "title": "Notre dépendance à l'Open Source est effrayante. SLSA, SBOM et Sigstore à la rescousse",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "le-cauchemar-des-attaquants-une-infrastructure-sans-secret",
+      "type": "talk",
+      "title": "Le cauchemar des attaquants : une infrastructure sans secret",
+      "speakers": ["Thibault Lengagne — Padok"],
+      "feedbackFrom": ["Sylvain Metayer (Onepoint)"],
+      "summary": "- Architecture **zero-credentials** avec Vault et Boundary : un seul mot de passe par utilisateur, des identifiants temporaires et une traçabilité complète des accès, du développement à la production.\n- *« Fini les rotations de mot de passe à n'en plus finir »* ; plusieurs petites démos donnent envie de déployer ça une fois l'équipe grandie (Onepoint).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "U3AL2pqPg3I",
+        "title": "Le cauchemar des attaquants : une infrastructure sans secret",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "la-fin-des-mots-de-passe-partages-avec-vault-et-boundary",
+      "type": "talk",
+      "title": "La fin des mots de passes partagés avec Vault et Boundary",
+      "speakers": ["Clément Fages — Padok", "Joséphine Saint-Joanis — Padok"],
+      "feedbackFrom": ["Olivier Thierry"],
+      "summary": "- Tools-in-action complémentaire du talk de Thibault Lengagne, sur la suppression des secrets partagés avec Vault et Boundary.\n- *« J'ai beaucoup aimé la clarté de leurs explications »* (Olivier Thierry).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "OSWoPqJgr5k",
+        "title": "La fin des mots de passes partagés avec Vault et Boundary",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "l-agc-retour-sur-l-ordinateur-qui-a-amene-l-humanite-sur-la-lune",
+      "type": "talk",
+      "title": "L'AGC : retour sur l'ordinateur qui a amené l'humanité sur la Lune",
+      "speakers": ["Olivier Poncet", "Romain Berthon"],
+      "feedbackFrom": ["William Montaz (Criteo)"],
+      "summary": "- L'Apollo Guidance Computer : quatre fois moins puissant qu'un Nokia 3310, mais un exploit de miniaturisation, avec un ordonnancement de tâches et une interface DSKY très éloignée du material design.\n- Robustesse : pendant l'alunissage, un capteur sature la file de tâches, l'AGC redémarre dans un mode particulier et reste plus de 30 secondes sans répondre.\n- William Montaz, qui en fait son talk préféré, retient la **mémoire à tores de ferrite** tissée à la main : *« pensez-y la prochaine fois que vous déboguez pas à pas »*.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "hnQnEfylGyo",
+        "title": "L'AGC : retour sur l'ordinateur qui a amené l'humanité sur la Lune",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "creer-sa-propre-vm-avec-compilation-jit-pour-les-nuls",
+      "type": "talk",
+      "title": "Créer sa propre VM avec compilation JIT pour les nuls",
+      "speakers": ["Olivier Poncet"],
+      "feedbackFrom": ["Pierre Sudron (Criteo)", "Olivier Thierry"],
+      "summary": "- Pari : un runtime JIT complet en moins de 40 minutes, sans LLVM. Une calculatrice RPN est transformée en bytecode, puis en code machine x86 placé dans un buffer exécutable et appelé via l'ABI C, puis réutilisé.\n- Pierre Sudron, qui n'a vu que ce talk, en fait *« le meilleur talk »* de son édition, suivi *« au bord de [son] siège »*. Olivier Thierry, qui le voit en clôture, salue un orateur *« dont le talent de vulgarisateur n'est donc pas une légende »*, même si le sujet est loin de son travail.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "6f7uOc7V5ww",
+        "title": "Créer sa propre VM avec compilation JIT pour les nuls",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "j-ai-termine-les-9-advents-of-code-lecons-apprises",
+      "type": "talk",
+      "title": "J'ai terminé les 9 Advents of Code : Leçons Apprises",
+      "speakers": ["Teiva Harsanyi — Google"],
+      "feedbackFrom": ["SC. (Criteo)"],
+      "summary": "- Contrairement à LeetCode, l'Advent of Code est un événement saisonnier qui crée une communauté.\n- Leçons retenues : types de graphes (orienté ou non, cyclique ou non) et algorithmes associés, complexité et structures de données (accès mémoire prévisible), YAGNI, et **tests de comportement** plutôt que d'implémentation (*« test behavior, not an implementation »*).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "NfkHfDD0aGA",
+        "title": "J'ai terminé les 9 Advents of Code : Leçons Apprises",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "les-equipes-distribuees-ca-peut-marcher",
+      "type": "talk",
+      "title": "Les équipes distribuées, ça peut marcher ?",
+      "speakers": ["Bertrand Delacrétaz — Adobe, Apache"],
+      "feedbackFrom": ["Marco Casadei (Criteo)"],
+      "summary": "- Expérience de l'open source (fuseaux, langues et cultures différents, pas de chef) et pattern de **décision asynchrone** : brainstorm, 3 à 7 options, recherche de consensus, puis décision avec un mécanisme anti-blocage (vote des principaux intéressés).\n- Outils : un canal partagé (il préfère les listes de diffusion avec des tags dans l'objet) et un système de tickets pour tracer les décisions ; attention au coût caché des réunions et aux différences culturelles.\n- Marco Casadei y voit une alternative pertinente pour Criteo.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "YvNWTZYEI_w",
+        "title": "Les équipes distribuées, ça peut marcher?",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "beyond-estimates-estimates-and-noestimates",
+      "type": "workshop",
+      "title": "Beyond Estimates (Estimates and NoEstimates) - Let's Explore the Possibilities",
+      "speakers": ["Woody Zuill — indépendant"],
+      "feedbackFrom": ["Marco Casadei (Criteo)"],
+      "summary": "- Deep dive de 3 h : distinguer demander, produire et utiliser une estimation. Les estimations logicielles sont **difficiles et imprécises**, même pour des gens expérimentés ; décider sur elles fausse les priorités.\n- Exercice en salle : estimer le temps pour tracer une grille de morpion, la remplir et la faire valider ; les estimations dérivent à chaque contrainte ajoutée.\n- Alternative : cycles courts avec feedback rapide, et la règle du **« double Pareto »** (80/20 80/20) pour trouver la partie qui apporte l'essentiel de la valeur.\n- Lecture critique : Marco Casadei ne pense pas que ce soit le meilleur processus pour tous les développements, mais salue *« des questions pertinentes »* sur un outil que tout le monde utilise.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "3oZ1MfQp4ys",
+        "title": "Beyond Estimates (Estimates and  NoEstimates ) - Let's Explore the Possibilities",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "tout-ce-que-vous-n-avez-jamais-voulu-savoir-sur-les-fuseaux-horaires",
+      "type": "talk",
+      "title": "Tout ce que vous n'avez jamais voulu savoir sur les fuseaux horaires",
+      "speakers": ["Julien Deniau — Mapado"],
+      "feedbackFrom": ["Damien Lucas (Onepoint)"],
+      "summary": "- Les subtilités des fuseaux horaires par des exemples concrets et amusants (la France est présente sur 12 fuseaux), et des façons de stocker et manipuler correctement dates et heures.\n- *« Si vous pensiez savoir comment travailler avec des dates, vous vous trompez peut-être ! »* (Onepoint, parmi trois conférences « originales » de l'édition).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "Q25M9VR-gaw",
+        "title": "Tout ce que vous n'avez jamais voulu savoir sur les fuseaux horaires",
+        "publishedAt": "2024-05-03",
+        "transcript": false
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "L'Architecture Hexagonale par la pratique (Julien Topçu, 1 121 favoris)",
+    "Debugguez votre salaire ! (Shirley Almosni Chiche, 881 favoris)",
+    "Je délègue tous mes tests à une IA (Valentin Dumas, Takima)",
+    "Les nouveautés de Java 21 (Jean-Michel Doudoux)",
+    "Architecture Hexagonale : comment venir à bout du code spaghetti ? (Kévin Llopis)",
+    "Au-delà des heures : la semaine de 4 jours comme levier d'égalité (Albane Veyron)",
+    "Revue de code : on n'est pas venu-e-s pour souffrir ! (Pauline Rambaud, Anne-Laure de Boissieu)",
+    "Robustum, des tests fonctionnels aux tests de performance (Orange)",
+    "Faire simple, la clé de la durabilité (Bertrand Delacrétaz)",
+    "La fin des archis event-based ? Orchestration avec Temporal (Hugo Caupert)",
+    "Renovate/Dependabot (Jean-Philippe Baconnais, Lise Quesnel)",
+    "Comment K8S a changé le monde de l'Ops (Aurélien Moreau, Loïc Ortola)",
+    "Rendre une application multitenant sans embêter les développeurs (Mirakl)",
+    "C4 model, la solution pour standardiser mes schémas d'architecture ? (Jérôme Gauthier)",
+    "Ma vie en vente flash sur le Dark Web ?! (Nicolas Comet)",
+    "Et l'ANSSI dit « Voici comment sécuriser un container » (Yann Schepens)",
+    "Sauve un dév, écris une doc ! (Sarah Haïm-Lubczanski)",
+    "Instrumentez vos applications Java avec OpenTelemetry ! (Bruce Bujon)",
+    "Quand la cybersécurité n'est pas qu'une affaire de failles (Sonia Seddiki)"
+  ],
+  "sources": [
+    { "label": "Devoxx France : « Le programme Devoxx France 2024 » (8 mars 2024, archive)", "url": "https://web.archive.org/web/20240407165216/https://www.devoxx.fr/2024/03/08/le-programme-devoxx-france-2024/" },
+    { "label": "API publique du CFP 2024 (278 sessions, descriptifs et favoris, archive)", "url": "https://web.archive.org/web/20241001135336/https://devoxxfr2024.cfp.dev/api/public/talks" },
+    { "label": "YouTube : playlist Devoxx France 2024", "url": "https://www.youtube.com/playlist?list=PLTbQvx84FrARars1vXos7mlPdvYJmsEoK" },
+    { "label": "YouTube : playlist Devoxx France 2024 - Keynotes", "url": "https://www.youtube.com/playlist?list=PLTbQvx84FrATzvq3tiM0Bg4kjcn0sqyHd" },
+    { "label": "YouTube : playlist Devoxx France 2024 - Conférences", "url": "https://www.youtube.com/playlist?list=PLTbQvx84FrARmVH_dQVkzJbZS4VQ4rbFb" },
+    { "label": "Criteo R&D Blog : « A comprehensive review of DevoxxFR 2024 » (13 auteurs, 9 mai 2024)", "url": "https://medium.com/criteo-engineering/a-comprehensive-review-of-devoxxfr-2024-a52ca6b4b98e" },
+    { "label": "Onepoint (dev.to) : « Devoxx France 2024 », Damien Lucas (16 mai 2024)", "url": "https://dev.to/onepoint/devoxx-france-2024-8o" },
+    { "label": "Onepoint (dev.to) : « Notre retour (frontend) sur Devoxx 2024 », Christophe Frézier (13 mai 2024)", "url": "https://dev.to/onepoint/notre-retour-frontend-sur-devoxx-2024-1jgg" },
+    { "label": "Onepoint (dev.to) : « Mais oui IA de la data à Devoxx France 2024 », Eric Terrien (23 mai 2024)", "url": "https://dev.to/onepoint/mais-oui-ia-de-la-data-a-devoxx-france-2024--4kpe" },
+    { "label": "Onepoint (dev.to) : « Notre retour (backend) sur Devoxx 2024 », Damien Lucas (23 mai 2024)", "url": "https://dev.to/onepoint/notre-retour-backend-sur-devoxx-2024-4knc" },
+    { "label": "Onepoint (dev.to) : « Notre retour (Build & Deploy) sur Devoxx France 2024 », Sylvain Metayer (30 mai 2024)", "url": "https://dev.to/onepoint/notre-retour-build-deploy-sur-devoxx-france-2024-kg7" },
+    { "label": "Olivier Thierry : « Mon Devoxx France 2024 » (1er mai 2024, speaker)", "url": "https://www.olivierthierry.com/devoxx-france-2024/" },
+    { "label": "Les Cast Codeurs, épisode 310 : « Les Cast Codeurs à Devoxx France 2024, sous-titre édition »", "url": "https://lescastcodeurs.com/2024/04/24/lcc-310-les-cast-codeurs-a-devoxx-france-2024-sous-titre-edition/" },
+    { "label": "Posts LinkedIn : aucun lu (recherche sans résultat exploitable)" }
+  ]
 }
