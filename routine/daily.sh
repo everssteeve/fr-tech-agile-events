@@ -42,6 +42,8 @@ uv run scripts/youtube_scan.py
 
 # Each run is a fresh Claude session with its own web-search budget.
 export CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION="${CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION:-200}"
+# claude -p stops background subagents 10 min after its last turn by default, cutting syntheses and the final steps short.
+export CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS=0
 
 # An interrupted session (usage limit, crash) still leaves valid work behind: keep going and commit it.
 claude -p "$(cat routine/daily-prompt.md)" \
