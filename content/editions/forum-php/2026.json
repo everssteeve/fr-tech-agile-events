@@ -9,6 +9,228 @@
   "url": "https://event.afup.org",
   "programUrl": "https://event.afup.org/forum-php-2026/programme/",
   "dateConfidence": "ok",
-  "status": "scheduled",
-  "sessions": []
+  "note": "Cinquième édition consécutive à l'Hotel New York - The Art of Marvel. 33 speakers dont 11 nouveaux venus, trois salles en parallèle, programme découpé en thèmes (IA, Gouvernance, Écosystème, Sécurité, Archi, Humain, Alien). Nouveauté : un « bar IA ». Édition organisée dans un contexte financier difficile pour l'AFUP.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-11",
+  "revisit": "J+2 (11/10/2026) : toujours aucun post LinkedIn indexé ni récap de blog (JoliCode, Les-Tilleuls.coop, Dn'D, Marmelab, Laravel France vérifiés), aucun nouveau support sur Speaker Deck ; la recherche Bluesky publique est désormais bloquée (403), seuls les fils de comptes connus ont pu être relus. Vidéos annoncées à partir du 1er décembre 2026 (salles ABCDEF et HJK). À reprendre dans une à deux semaines : récaps d'agences, posts LinkedIn, slides des speakers, puis transcripts des vidéos.",
+  "corpus": "Lu à J+1 (10/10/2026) : le programme officiel et ses descriptifs, l'annonce et la page programme de l'AFUP, une quinzaine de posts Bluesky et Mastodon publiés du 5 au 9 octobre (compte AFUP, sponsors Les-Tilleuls.coop/Tilia, JoliCode, Deezer, SensioLabs ; participants Damien Alexandre, Grégoire Pineau ; speakers Guillaume Lours, Stéphane Hulard, Sebastian Bergmann, Benjamin Eberlei), et trois supports publiés par leurs speakers (slides de Hulard et Bergmann, dépôt de démo de Lours). Relu à J+2 (11/10/2026) : fils Bluesky et Mastodon de l'AFUP et des sponsors (deux posts de clôture de l'AFUP), hashtag #ForumPHP sur Mastodon, blogs de JoliCode, Les-Tilleuls.coop, Dn'D, Marmelab et Laravel France, profils Speaker Deck de plusieurs speakers : aucun retour nouveau sur une session.",
+  "limits": "Corpus très mince et biaisé : surtout des comptes d'organisateur, de sponsors et de speakers, quasiment aucun retour de participant « simple ». Aucun post LinkedIn ni récap de blog trouvé à J+2, aucune vidéo (publication prévue à partir du 1er décembre). Plusieurs résumés de sessions reposent uniquement sur le descriptif officiel, ce qui dit ce qui était annoncé et non ce qui a été dit sur scène.",
+  "tldr": "**À en juger par le programme et les premiers posts, un Forum PHP centré sur la maîtrise de l'IA plus que sur son enthousiasme (agents isolés en sandbox, tests comme spécifications, revue humaine, frugalité, droit de ralentir), porté par un écosystème qui livre (Symfony 8.2, Mercure 1.0, workers FrankenPHP) et tenu malgré un contexte financier tendu pour l'AFUP.**",
+  "keyTakeaways": [
+    "Laisser un agent de code travailler en mode « YOLO » seulement dans un environnement isolé (Docker Sandboxes) avec une liste blanche réseau, plutôt que de valider à l'aveugle des demandes de permission (Lours, speaker).",
+    "Écrire les spécifications sous forme de tests et laisser l'agent implémenter : tests, analyse statique et frontières d'architecture vérifiées automatiquement sont ce qui sécurise les agents et ce qui rend les humains rapides (Bergmann, speaker).",
+    "Mesurer avec un profiler avant d'optimiser un ORM : le N+1 et le coût d'hydratation sont les deux pièges majeurs (Hulard, speaker).",
+    "Ne charger que ce dont on a besoin (DTO via `SELECT NEW`, chargement partiel) et mapper des vues SQL en entités en lecture seule pour le reporting (Hulard, speaker).",
+    "Activer en production les caches de métadonnées et de parsing DQL de Doctrine, et cacher l'ORM derrière des repositories exprimés en langage métier (Hulard, speaker).",
+    "Réutiliser ressources, validation et sécurité d'API Platform pour exposer des outils MCP aux agents, sans écrire une seconde description pour l'IA (Bluchet, descriptif officiel).",
+    "Reprendre le contrôle d'un legacy sans tout réécrire : audit de performance, cache HTTP, monitoring, monorepo, trunk-based development, feature flags (Gomez Caballe et Jaillot, descriptif et post JoliCode).",
+    "Avant d'ajouter de l'IA générative, se demander si elle est nécessaire : un spectre va du code déterministe au grand LLM (Mothiron, descriptif officiel)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-d-ouverture",
+      "day": "2026-10-08",
+      "type": "keynote",
+      "title": "Ice-breaker et keynote d'ouverture",
+      "speakers": ["Équipe AFUP"],
+      "feedbackFrom": ["Compte Bluesky AFUP (organisateur)"],
+      "summary": "- Mot d'ordre affiché par l'AFUP à l'ouverture : **« l'humain au cœur de la tech »**.\n- L'**ice-breaker** a été développé par l'équipe d'Elao ; il a lancé un **jeu de mise en relation** (une « enquête », sponsorisé par Typesense) qui court sur les deux jours.\n- Nouvelle mascotte, un **éléphant enquêteur** dessiné par Mathieu Desnouveaux (Boursobank), à la Une de la gazette distribuée aux participants.\n- Ouverture d'un **bar IA** le matin : des experts répondent aux questions d'organisation d'équipe, de soucis techniques, de désintérêt ou de fatigue liés à l'IA.\n- Seules sources : les posts de l'organisateur ; le contenu de la keynote elle-même n'est pas connu.",
+      "summarySources": ["feedback", "program"]
+    },
+    {
+      "id": "les-nouveautes-de-symfony-8-2",
+      "day": "2026-10-08",
+      "type": "talk",
+      "title": "Les nouveautés de Symfony 8.2",
+      "speakers": ["Nicolas Grekas — Symfony"],
+      "feedbackFrom": ["Damien Alexandre"],
+      "summary": "- **Annoncé** : Symfony 8.2 est la première version après que le **backlog de revue est passé d'environ 300 PR à une quinzaine**, d'où une version très dense ; au menu, consommation parallèle des messages, e-mails chiffrés PGP, import maps plus fiables, et la façon dont le processus de revue et les LLM ont changé le projet.\n- **Retenu en salle** : *« Le nombre de PR ouvertes sur Symfony a chuté de façon spectaculaire, 3 fois plus de PR mergées, backlog clean… La version 8.2 va être énorme »* (Damien Alexandre, posté pendant le créneau du talk).\n- Le chiffre « 3 fois plus de PR mergées » n'est connu que par ce post ; la part exacte attribuée aux LLM dans ce désengorgement reste à vérifier sur la vidéo.",
+      "summarySources": ["program", "feedback"]
+    },
+    {
+      "id": "exposer-son-metier-aux-agents-ia-avec-api-platform",
+      "day": "2026-10-08",
+      "type": "talk",
+      "title": "Exposer son métier aux agents IA avec API Platform",
+      "speakers": ["Antoine Bluchet — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Tilia / Les-Tilleuls.coop (employeur du speaker)"],
+      "summary": "- **Question posée** : qu'est-ce qui permet à un agent IA d'agir dans une application, et comment exposer les opérations métier **sans écrire une seconde description pour l'IA** ?\n- **Thèse** : les ressources, la validation, la sérialisation et la sécurité d'API Platform sont réutilisables ; la couche CQRS permet de transformer les ressources en **outils MCP** (descriptif officiel).\n- Démonstration sur une application de gestion de garage automobile (post live de Tilia, l'offre IA de Les-Tilleuls.coop).\n- Aucun retour de participant extérieur à l'employeur du speaker.",
+      "summarySources": ["program", "feedback"]
+    },
+    {
+      "id": "vos-coding-agents-en-mode-yolo-mais-en-toute-securite",
+      "day": "2026-10-08",
+      "type": "talk",
+      "title": "Vos coding agents en mode YOLO… mais en toute sécurité",
+      "speakers": ["Guillaume Lours"],
+      "feedbackFrom": ["Guillaume Lours (speaker)"],
+      "summary": "- **Constat** : les modes « bypass permissions » laissent l'agent exécuter n'importe quoi sur la machine du dev, et la **« fatigue des permissions »** pousse à valider sans lire (descriptif officiel).\n- **Réponse** : les **Docker Sandboxes**, qui combinent VM et conteneurs pour isoler l'agent, contrôler le trafic réseau sortant et tenir clés d'API et identifiants hors de sa portée.\n- **Quatre démos** publiées par le speaker : Claude Code installe PHP et Composer dans une sandbox vierge puis corrige seul deux bugs d'un caractère dans le Symfony demo jusqu'à ce que les 53 tests PHPUnit passent ; une stack Compose (nginx, php-fpm, Postgres) tourne dans la sandbox ; une **politique réseau** bloque puis autorise une requête ; accès optionnel à un serveur MCP via la passerelle de la sandbox.\n- Le dépôt pré-autorise uniquement les deux hôtes dont Composer a besoin : **liste blanche réseau plutôt qu'ouverture large** (speaker).",
+      "summarySources": ["program", "slides"]
+    },
+    {
+      "id": "la-lucidite-comme-architecture",
+      "day": "2026-10-08",
+      "type": "talk",
+      "title": "La lucidité comme architecture",
+      "speakers": ["Joel Gomez Caballe", "Bastien Jaillot"],
+      "feedbackFrom": ["Compte Bluesky JoliCode"],
+      "summary": "- Retour d'expérience à deux voix sur une **plateforme de billetterie** lancée en 2014 sous Symfony 2, devenue **plus de 150 sites**, avec microservices et *« DDD parfois trop tôt »* (JoliCode).\n- Une dette **technique, organisationnelle et humaine** ; l'équipe a **repris le contrôle sans tout réécrire** : audit de performance, cache HTTP, monitoring, monorepo, trunk-based development, feature flags et simplification (descriptif officiel).\n- Le talk aborde aussi le **versant psychologique de la dette technique**.\n- Seul écho : le post de JoliCode, qui présente « le talk de Bastien et Joël » (lien vraisemblable avec la société, non vérifié).",
+      "summarySources": ["program", "feedback"]
+    },
+    {
+      "id": "leveraging-production-data-for-ai-assisted-software-development",
+      "day": "2026-10-08",
+      "type": "talk",
+      "title": "Leveraging Production Data for AI Assisted Software Development",
+      "speakers": ["Benjamin Eberlei"],
+      "feedbackFrom": ["Benjamin Eberlei (speaker)"],
+      "summary": "- **Constat** : sans garde-fous, le développement assisté par IA produit du code bogué, difficile à maintenir et incohérent (descriptif officiel).\n- **Proposition** : combiner analyse statique, outils de test et **données d'exécution en production** pour livrer du code assisté par IA de façon fiable.\n- Le speaker présente le sujet comme son **principal axe de recherche** : comment faire remonter les signaux de production dans la boucle de développement. Première venue au Forum PHP (speaker).",
+      "summarySources": ["program", "feedback"]
+    },
+    {
+      "id": "table-ronde-l-impact-de-l-ia-sur-le-metier-de-dev",
+      "day": "2026-10-08",
+      "type": "roundtable",
+      "title": "Table ronde : l'impact de l'IA sur le métier de dev",
+      "speakers": [
+        "Xavier Leune (modérateur)",
+        "Quentin Adam — Clever Cloud",
+        "Greg Lhotellier — Dev With AI",
+        "Quentin Vanbutsele — ESIEA"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Annoncé** : un tour de l'impact réel et ressenti de l'IA sur le métier, de la place de la tech dans les organisations et de la **formation des futurs développeurs**.\n- Trois angles : l'organisation chez Clever Cloud (Adam), l'effet de l'IA sur l'écosystème vu depuis la communauté Dev With AI, revendiquée à plus de 2 500 développeurs (Lhotellier), la formation et les **fractures numériques** (Vanbutsele, enseignant à l'ESIEA).\n- Résumé fondé sur le seul descriptif officiel : aucun retour lu, vidéo attendue en décembre.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "orm-puissance-pieges-et-bonnes-pratiques",
+      "day": "2026-10-08",
+      "type": "talk",
+      "title": "ORM : Puissance, pièges et bonnes pratiques pour une couche données maîtrisée",
+      "speakers": ["Stéphane Hulard — CH Studio"],
+      "feedbackFrom": ["Stéphane Hulard (speaker, slides)"],
+      "summary": "- Thèse de conclusion : **les ORM ne sont ni magiques ni le problème, c'est leur usage qui l'est** (slides).\n- Active Record (Eloquent, Propel, Cycle) contre Data Mapper (Doctrine, Atlas) ; ne pas choisir un ORM pour la portabilité entre bases, un changement de moteur étant rare.\n- **Deux pièges majeurs** : le **N+1** (fetch joins DQL, `EAGER` pour les relations toujours utiles, `with()` côté Eloquent) et le **coût d'hydratation**, très lourd au-delà d'environ deux LEFT JOIN ; plus le syndrome du `SELECT *`, corrigé par des DTO (`SELECT NEW`). **Mesurer** avec le Symfony Profiler ou la Debugbar Laravel.\n- Bonnes pratiques : maîtriser la cardinalité des relations, préférer l'unidirectionnel, éviter l'héritage sur les grosses tables, activer les caches de métadonnées et de DQL, limiter l'`EntityManager` aux repositories.\n- **Sortir de l'ORM quand il le faut** : SQL natif pour le reporting, les traitements de masse et les requêtes critiques ; vues (matérialisées sous PostgreSQL) mappées en entités `readOnly`. Attention aux désynchronisations quand on mélange les deux sur les mêmes données.\n- Repositories derrière des interfaces en langage métier (`findByCountry`, `save`) pour garder le code testable.",
+      "summarySources": ["slides", "program"]
+    },
+    {
+      "id": "l-ecosystem-security-team-de-la-php-foundation-de-l-interieur",
+      "day": "2026-10-08",
+      "type": "talk",
+      "title": "L'Ecosystem Security Team de la PHP Foundation de l'intérieur",
+      "speakers": ["Alexandre Daubois — PHP Foundation"],
+      "feedbackFrom": ["Les-Tilleuls.coop (post live, qui compte le speaker parmi « ses » conférences)"],
+      "summary": "- **Constat** : une grande partie du web tourne sur PHP, mais la sécurité de l'écosystème n'a jamais eu de responsable dédié ; la PHP Foundation a créé une **Ecosystem Security Team** pour identifier, prioriser et informer (descriptif officiel).\n- Coulisses : outils, choix des projets, correctifs, et **la part qui reste humaine**.\n- Illustration par une **faille mineure sur API Platform** (post live de Les-Tilleuls.coop). Le speaker a rejoint la PHP Foundation à l'été 2026 (blog Les-Tilleuls.coop, 15/07/2026).",
+      "summarySources": ["program", "feedback"]
+    },
+    {
+      "id": "j-ai-analyse-236-go-de-code-php",
+      "day": "2026-10-08",
+      "type": "talk",
+      "title": "J'ai analysé 236 Go de code PHP : état des lieux d'un écosystème",
+      "speakers": ["Jean-François Lépine"],
+      "feedbackFrom": [],
+      "summary": "- **Annoncé** : environ 236 Go de dépôts Git PHP open source passés dans les outils d'analyse du speaker pour dresser **le portrait du PHP de 2026**.\n- Au programme : adoption des fonctionnalités du langage, longueur des méthodes, dette, différences entre frameworks, persistance de vieux patterns ; la méthodologie et les **limites de l'étude** sont aussi présentées.\n- Descriptif officiel uniquement : les chiffres eux-mêmes ne sont pas connus à ce stade.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "speed-is-a-byproduct-of-trust",
+      "day": "2026-10-09",
+      "type": "talk",
+      "title": "Speed is a byproduct of trust",
+      "speakers": ["Sebastian Bergmann — PHPUnit"],
+      "feedbackFrom": ["Sebastian Bergmann (speaker, support en ligne)"],
+      "summary": "- Première présentation de ce talk, condensé d'un **atelier d'une journée en 40 minutes** (speaker).\n- **Double échec** : les outils à base de LLM promettent la vitesse mais, sans fondations, la vitesse devient de l'**imprudence** (dette qui s'accumule plus vite, frontières d'architecture qui s'érodent, défauts qui arrivent plus tôt en production) ; à l'inverse, le contrôle sans vitesse ne tient pas face aux attentes du marché.\n- **Filets de sécurité automatisés** : tests, analyse statique (PHPStan), vérification automatique des frontières d'architecture, y compris entre code métier et framework ; critères pour évaluer l'existant et ordre d'adoption.\n- **Pattern final** : l'humain écrit les spécifications sous forme de tests, l'agent génère l'implémentation.\n- Idée centrale : *« the practices that make working with coding agents safe are the same practices that make human development fast »*.",
+      "summarySources": ["slides", "program"]
+    },
+    {
+      "id": "mercure-1-0",
+      "day": "2026-10-09",
+      "type": "talk",
+      "title": "Mercure 1.0 : bâtir des applications temps réel n'a jamais été aussi simple, rapide et sécurisé",
+      "speakers": ["Kévin Dunglas — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Tilia / Les-Tilleuls.coop (employeur du speaker)"],
+      "summary": "- **Sortie de Mercure 1.0**, huit ans après la création du protocole temps réel et de son serveur Go (descriptif officiel ; version annoncée en septembre à Lille selon Les-Tilleuls.coop).\n- Intégrations avec Symfony UX, API Platform et FrankenPHP ; cas d'usage nouveaux : **streaming de tokens de LLM** et suivi d'agents IA.\n- **Salle comble** selon le post live de Tilia. Talk prolongé l'après-midi par un atelier de deux heures.",
+      "summarySources": ["program", "feedback"]
+    },
+    {
+      "id": "le-runtime-php-dont-je-reve",
+      "day": "2026-10-09",
+      "type": "talk",
+      "title": "Le runtime PHP dont je rêve",
+      "speakers": ["Nicolas Grekas — Symfony"],
+      "feedbackFrom": [],
+      "summary": "- **Annoncé** : un runtime PHP où un **état peut persister entre les requêtes** sans renoncer au modèle une requête par processus.\n- Proposition : des **background workers dans FrankenPHP**, scripts PHP longue durée hors du cycle HTTP qui publient des données lisibles directement par les contrôleurs, sans sérialisation, TTL ni redémarrage.\n- Descriptif officiel uniquement.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "alors-que-tout-accelere-nous-avons-choisi-de-ralentir",
+      "day": "2026-10-09",
+      "type": "talk",
+      "title": "Alors que tout accélère, nous avons choisi de ralentir",
+      "speakers": ["Xavier Gorse"],
+      "feedbackFrom": [],
+      "summary": "- **Annoncé** : après plus d'un an de code majoritairement généré par IA, l'équipe a trouvé **épuisants les changements de contexte permanents à forte charge** et a choisi de ralentir.\n- Partage de pratiques individuelles et collectives testées, dont un workflow qui **marque volontairement des pauses** aux bons moments.\n- Descriptif officiel uniquement ; écho direct du thème de la fatigue évoqué par le bar IA.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "ia-frugale-la-meilleure-ia-est-celle-qu-on-n-utilise-pas",
+      "day": "2026-10-09",
+      "type": "talk",
+      "title": "IA frugale : la meilleure IA est celle qu'on n'utilise pas",
+      "speakers": ["Lucile Mothiron"],
+      "feedbackFrom": [],
+      "summary": "- **Annoncé** : se demander si l'IA générative est nécessaire avant de l'ajouter à un projet.\n- Empreinte environnementale de l'IA, **spectre allant du code déterministe aux grands LLM**, grille de décision inspirée du référentiel AFNOR et du Frugal AI Hub de Cambridge.\n- Cas en direct : un tri d'e-mails qui consomme bien moins d'énergie qu'une approche tout-LLM.\n- Descriptif officiel uniquement.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "l-ia-dans-l-image",
+      "day": "2026-10-09",
+      "type": "talk",
+      "title": "L'IA dans l'image : La mort du réel ou le moment qu'on attendait toutes et tous ?",
+      "speakers": ["Niels Ackermann — photojournaliste"],
+      "feedbackFrom": [],
+      "summary": "- **Annoncé** : trois ans après l'arrivée de l'IA générative grand public, un photojournaliste suisse examine son effet sur sa profession et sur **notre rapport au réel** : perte ou occasion de réinventer le métier ?\n- Présentation de **Dalia**, une échelle open source pour mesurer la part de l'IA dans son travail.\n- Conférence « Alien » de clôture, hors PHP ; descriptif officiel uniquement.",
+      "summarySources": ["program"]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "PHP Défensif : arrêtez de faire confiance, défendez votre code ! (T. Dutrion, talk et atelier)",
+    "Mago, ou comment Rust et l'IA réinventent l'outillage qualité PHP (Y. Blot)",
+    "Past, Present, Future: The PHPUnit Story (S. Bergmann)",
+    "Biscuit en PHP : un petit besoin d'authz, un long détour par Rust (P. Tondereau)",
+    "Sous le capot du protocole MCP : codons un serveur en PHP pur (A. Bouchard, Temma)",
+    "Avant que PHP n'exécute ton premier echo : ce que la couche réseau coûte vraiment (N. Perussel)",
+    "10 situations de travail banales qui peuvent devenir un enfer avec un handicap invisible (C. Chaumet)",
+    "Laravel : la magie, puis la maîtrise… (J. Stein)",
+    "Lightning talks",
+    "L'énergie, de la thermodynamique à la physique quantique (M. Lachièze-Rey)",
+    "Souveraineté numérique à l'ère de l'IA (Q. Adam, Clever Cloud ; pas de descriptif publié)",
+    "Ce que coûte vraiment `return new Response()` (M. Arlaud)",
+    "Au-delà d'AbstractVoter : domptez vos permissions Symfony (M. Ruffelaere, SensioLabs)",
+    "L'expérience agentique, ou comment tirer le maximum des IAs sur votre code (F. Zaninotto, Marmelab)",
+    "De l'anarchie au repo : organiser l'IA en équipe (J. Boï)",
+    "FrankenPHP & Worker Mode : mon application Symfony est-elle vraiment prête ? (K. Martins)",
+    "Architecturer un assistant IA en PHP : deux ans de décisions, d'erreurs et d'améliorations (M. Benhaïm)",
+    "Zero Trust : chiffrer vos données avant de les envoyer au SGBD (B. Georgeault)",
+    "La review qu'on aurait dû faire depuis toujours : reprendre sa place de reviewer humain à l'ère des agents IA (G. Crispyn)",
+    "Cyber Resilience Act : guide de survie pour devs PHP (R. Foucard, TYPO3)",
+    "PHP dans votre poche : créer des applications mobiles avec NativePHP (E. Courtial)",
+    "Le progrès réside dans les BC Breaks (G. Banyard)",
+    "Atelier Mercure 1.0 (K. Dunglas)",
+    "Coups de projecteur sponsors (JoliCode/Jane, Activinnov, Clever Cloud)",
+    "Keynote de clôture (équipe AFUP)"
+  ],
+  "sources": [
+    { "label": "Programme officiel", "url": "https://event.afup.org/forum-php-2026/programme/" },
+    { "label": "AFUP : Le Forum PHP 2026 est annoncé", "url": "https://afup.org/news/1257-forumphp2026-annonce" },
+    { "label": "AFUP : Le programme du Forum PHP 2026 est sorti (07/07/2026)", "url": "https://afup.org/news/1261-programme-forumphp2026-sorti" },
+    { "label": "Interviews speakers AFUP (catégorie Forum PHP 2026)", "url": "https://event.afup.org/category/forum-php-2026/" },
+    { "label": "Slides de Stéphane Hulard : ORM, puissance, pièges et bonnes pratiques", "url": "https://public.chstudio.fr/talks/orm-power-pitfalls-and-best-practices-for-a-mastered-data-layer/fr-forum-php-afup-2026.html" },
+    { "label": "Support de Sebastian Bergmann : Speed is a byproduct of trust", "url": "https://phpunit.expert/presentations/speed-is-a-byproduct-of-trust.html" },
+    { "label": "Dépôt de démo de Guillaume Lours (Docker Sandboxes)", "url": "https://github.com/glours/afup-sbx-demo" },
+    { "label": "Compte Bluesky de l'AFUP (posts du 5 au 10/10/2026)", "url": "https://bsky.app/profile/afup.org" },
+    { "label": "AFUP sur Mastodon : post de clôture du 09/10/2026", "url": "https://mastodon.online/@afup/117411722652215550" },
+    { "label": "Posts Bluesky et Mastodon lus : Damien Alexandre, Grégoire Pineau, JoliCode, Les-Tilleuls.coop, Tilia, DeezerDevs, SensioLabs, Guillaume Lours, Stéphane Hulard, Sebastian Bergmann, Benjamin Eberlei" },
+    { "label": "Chaîne YouTube AFUP (vidéos 2026 annoncées à partir du 01/12/2026)", "url": "https://www.youtube.com/@afupPHP" }
+  ]
 }

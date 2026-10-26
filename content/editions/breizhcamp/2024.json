@@ -6,8 +6,553 @@
   "start": "2024-06-26",
   "end": "2024-06-28",
   "city": "Rennes",
+  "venue": "Université de Rennes",
   "url": "https://2024.breizhcamp.org/",
+  "programUrl": "https://2024.breizhcamp.org/conference/programme/",
+  "theme": "Star Wars (habillage repris par de nombreux speakers)",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "12e édition, du 26 au 28 juin 2024 : mercredi consacré aux universités (2 h) et à quelques conférences, jeudi et vendredi aux conférences (55 min), tools in action (25 min) et quickies de midi (15 min) ; 102 sessions au programme officiel. Selon la keynote d'équipe du vendredi : un 5e amphi, de 75 à 98 sessions, 339 propositions reçues, 42 sponsors, 1 000 personnes par jour (billetterie par loterie) et 41 bénévoles. Captation vidéo et application mobile assurées par CYIM.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-10",
+  "revisit": "Aucun post LinkedIn ni article de blog de participant retrouvé (recherche web infructueuse, LinkedIn non indexé) ; la réception repose sur la restitution de la facilitatrice graphique et trois messages Mastodon. Les ~70 autres vidéos de la playlist restent à lire.",
+  "corpus": "Programme officiel (JSON du site, 102 sessions hors pauses), playlist YouTube « Breizhcamp 2024 » (96 vidéos, publiées le 27 et 28 juin puis le 7 septembre 2024), dont 27 transcripts automatiques lus (les quatre keynotes et 23 sessions). Côté réception : la restitution de Sophie Sorel-Giffo, facilitatrice graphique de l'événement, en keynote de clôture (elle a interrogé des participants pendant deux jours), trois messages Mastodon (Ploum, Tamarico, panmaster) et un billet de blog de Ploum (speaker) qui renvoie à sa keynote.",
+  "limits": "Corpus de réception très mince et collecté plus de deux ans après l'événement : aucun post LinkedIn, aucun compte-rendu de blog ni sketchnote publié n'a été retrouvé (la fresque de Sophie Sorel-Giffo n'est connue que par sa restitution orale). Les résumés reposent donc surtout sur des sous-titres automatiques (noms propres parfois incertains), c'est-à-dire sur ce qui a été dit sur scène ; le choix des 27 sessions suit la diversité des thèmes, pas leur popularité, faute de données d'audience.",
+  "tldr": "Un BreizhCamp en costume Star Wars mais **résolument critique envers les bulles technologiques** : de la keynote « Pouet Pouet Coin Coin » de Ploum au craft responsable, aux biais racistes, à l'autisme et à l'IA sobre, l'édition plaide pour **revenir aux bases, mesurer et inclure** plutôt que suivre la hype, tandis que l'IA générative n'occupe qu'une poignée de sessions très terre à terre (RAG chez Ouest-France, IA industrialisée à La Poste).",
+  "keyTakeaways": [
+    "Investir dans des savoirs durables (dactylographie, commandes Unix, éditeur, Git) plutôt que dans chaque nouvelle couche à la mode, et oser demander « pourquoi ? » avant de construire (Ploum).",
+    "Ne découper en microservices qu'après avoir vu apparaître de vraies tensions de modèle et un besoin métier de runtimes séparés ; en attendant, dupliquer et spécialiser au sein d'un monolithe modulaire avec un shared kernel transitoire (Topçu et Chevalier).",
+    "Traiter l'organisation comme un choix de design : un context map et Team Topologies permettent de faire coïncider relations métier et relations entre équipes, la réorganisation venant en dernier recours (Julien Topçu, loi de Conway).",
+    "Se poser les trois questions « utile, utilisable, utilisé ? » avant tout développement, et réserver l'IA générative aux cas où l'on est vraiment bloqué (Cécilia Bossard) ; mesurer (CodeCarbon) puis élaguer, quantifier ou distiller ses modèles (Rivière et Vivoix).",
+    "Faire les dix « easy checks » du W3C à chaque sprint et, si l'on ne retient qu'une chose, tout tester au clavier (Lair et Gauffriau).",
+    "Bannir l'implicite avec une personne autiste : consignes écrites, cadre et rituels explicites, droit à l'erreur, environnement sensoriel adapté (Angi Guyard).",
+    "Préférer la sécurité psychologique à l'injonction à la bienveillance, qui peut servir à faire taire la contestation dans un rapport de force asymétrique (Toanen et Sorel-Giffo).",
+    "Avant de réécrire une application, la restabiliser (incidents qui coûtent de l'argent), mesurer son entropie et isoler le code métier de la technique, par exemple avec ArchUnit (Alexandre Jeambrun).",
+    "Prévoir l'aiguillage, les filtres de date et la recherche par entité dès qu'un RAG sort du prototype : la version naïve « recherche vectorielle puis génération » ne tient pas face aux vrais usages (Ouest-France).",
+    "Vérifier la licence de chaque brique (BSL, SSPL, Commons Clause) avant de l'intégrer à une offre SaaS, et soutenir les mainteneurs isolés dont dépend tout l'écosystème (Brianceau, Pousse)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-ploum-pouet-pouet-coin-coin",
+      "day": "2024-06-27",
+      "type": "keynote",
+      "title": "Keynote d'ouverture : Comprendre les bulles, Pouet Pouet Coin Coin",
+      "speakers": ["Lionel Dricot alias Ploum — auteur, blogueur"],
+      "feedbackFrom": ["Sophie Sorel-Giffo (facilitation graphique, restitution de clôture)", "Tamarico (Mastodon)", "panmaster (Mastodon, mention)", "Alexis « Horgix » Chotard (speaker de l'édition, clin d'œil en ouverture de son talk)", "Ploum (speaker, Mastodon et blog)"],
+      "summary": "- Sur scène, sans slides : invité à parler d'IA, Ploum oppose la **sérendipité** du web d'avant (le « syndrome Wikipédia ») à la réponse unique, nette et souvent fausse des IA, qui libère enfin l'humain pour *« remplir des tableaux Excel et faire des slides PowerPoint »*.\n- **La bulle**, illustrée par le « pouet pouet » qu'on abandonne pour le « coin coin » : un enthousiasme irraisonné, poussé par les vendeurs qui savent que c'est une bulle, et dont l'État financeur est souvent le dernier pigeon. Repère proposé : *« si vous voyez qu'on commence à parler d'un sujet sur LinkedIn, c'est qu'il est urgent de passer à autre chose »*.\n- Pour les utilisateurs, chaque redesign casse un workflow ; l'informatique est devenue une **pensée magique** sans intuition possible, même chez les ingénieurs cloisonnés dans leur couche (anecdote du code automobile ingérable).\n- Remède : une **informatique durable, l'« antibulle »**, faite de connaissances qui durent (dactylographie, Unix et ses pipes, vim ou emacs, Git) plutôt que de compétences sur du logiciel propriétaire qui ne serviront plus en changeant d'employeur.\n- Appel final : la responsabilité des geeks est de **dire non**, ou au moins de demander « pourquoi », face au site qui espionne pour vendre des SUV.\n- Réception : résumée en clôture par Sophie Sorel-Giffo (bulle, retour aux bases, « savoir dire non ») ; Tamarico salue sur Mastodon sa fresque de la keynote ; Horgix ouvre son talk du vendredi en montrant des mind maps plutôt que des slides, en référence à Ploum. Ploum (speaker) a republié la vidéo sous le titre « Comprendre les bulles » et y revient sur son blog (*« apprenez la dactylographie »*).",
+      "summarySources": ["transcript", "feedback", "blog"],
+      "video": {
+        "youtubeId": "EWdUv6_KVQ0",
+        "title": "BreizhCamp 2024 - Keynote jeudi matin",
+        "publishedAt": "2024-06-27",
+        "transcript": true
+      }
+    },
+    {
+      "id": "keynote-braillerap-embosseuse-braille-open-source",
+      "day": "2024-06-27",
+      "type": "keynote",
+      "title": "Keynote BrailleRAP : embosseuse braille open source",
+      "speakers": ["Stéphane Godin — BrailleRAP, bénévole My Human Kit"],
+      "feedbackFrom": ["Sophie Sorel-Giffo (facilitation graphique, restitution de clôture)"],
+      "summary": "- Sur scène : le braille ne concerne qu'environ 10 % des déficients visuels (la plupart le deviennent avec l'âge), mais, selon l'OMS citée par le speaker, 90 % de ceux qui vivent de leur travail le lisent. Une embosseuse du commerce coûte environ 2 000 €, inaccessible à une petite école rurale ou dans les pays du Sud.\n- Genèse rennaise : un hackathon My Human Kit et Airbus en 2016 (un clou sur une imprimante 3D), puis en 2018 une machine dédiée, sous licence open hardware, construite en fablab : **un électroaimant pousse le poinçon**, joints de robinet pour l'entraînement du papier, firmware Marlin modifié.\n- Logiciel : de NatBraille à AccessBrailleRAP (2023), basé sur liblouis (200 standards de braille), compatible lecteurs d'écran ; la machine embosse aussi des graphiques vectoriels (cartes, schémas, plans de carrefours via OpenStreetMap), avec une version A3.\n- Diffusion mondiale (Inde, Argentine, Maroc, Singapour, ateliers au Cameroun, 5e prix du Hackaday Prize) ; **le facteur clé a été la documentation**, un manuel d'assemblage de 160 pages. Plus de 200 contributeurs, financement NLnet et Climate Change Lab.\n- En Q&R : environ 300 €, aucune pièce à plus de 40 €, entièrement réparable, mais environ 3 minutes par page ; la réparation par une personne non voyante reste un objectif lointain. Démonstrations le vendredi dans le hall.\n- Réception : reprise dans la restitution de clôture (machine *« dix fois moins chère que celle du marché »*, projet bien documenté) ; une histoire « autour du braille » figure parmi ce qui a interpellé positivement les participants interrogés.",
+      "summarySources": ["transcript", "feedback"],
+      "video": {
+        "youtubeId": "qbZpsiFbTXY",
+        "title": "BreizhCamp 2024 - Keynote jeudi soir",
+        "publishedAt": "2024-06-28",
+        "transcript": true,
+        "startSeconds": 250
+      }
+    },
+    {
+      "id": "keynote-equipe-vendredi-matin",
+      "day": "2024-06-28",
+      "type": "keynote",
+      "title": "Keynote de l'équipe organisatrice (vendredi matin)",
+      "speakers": ["Équipe d'organisation du BreizhCamp", "Sophie Sorel-Giffo — facilitatrice graphique"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène, sur le ton de l'autodérision : une commission de sécurité qui trouve l'équipe *« carrée »* après 12 ans, un dossier de sécurité monté pour accueillir plus de monde, des sponsors prévenus que les stands seront contrôlés l'an prochain.\n- Coulisses : un système d'information maison (billetterie, sponsors, facturation) repris par une stagiaire, une alternante en communication accueillies par le sponsor Liksi, un vrai planning de communication, moins de goodies *« pour avoir moins de déchets »*.\n- Chiffres annoncés : un 5e amphi, **de 75 à 98 sessions**, **339 propositions**, 42 sponsors, **1 000 personnes par jour** tirées au sort, de 35 à 41 bénévoles.\n- Limites assumées : pas de 4G ni de Wi-Fi public à la fac, d'où la consigne de préparer des ateliers hors ligne l'an prochain.\n- Remerciements à l'université, aux sponsors et à CYIM (captation vidéo, application mobile) ; dates 2025 déjà réservées ; présentation de Sophie Sorel-Giffo, qui dessine les keynotes et une fresque d'ambiance à partir des anecdotes des participants.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "01JaqaHhKPw",
+        "title": "Keynote équipe - Vendredi matin",
+        "publishedAt": "2024-09-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "keynote-cloture-restitution-graphique",
+      "day": "2024-06-28",
+      "type": "keynote",
+      "title": "Keynote de clôture : restitution de la facilitation graphique",
+      "speakers": ["Sophie Sorel-Giffo — facilitatrice graphique"],
+      "feedbackFrom": ["Sophie Sorel-Giffo (synthèse des échanges avec les participants)"],
+      "summary": "- Sur scène : la facilitatrice graphique résume les keynotes (bulles et retour aux bases de Ploum, BrailleRAP, bilan de l'équipe) puis restitue ce que lui ont dit les participants interrogés pendant deux jours sur **« qu'est-ce que vous venez faire au BreizhCamp ? »**.\n- Ce qu'elle a entendu : une ambiance qui ressemble *« plus à une convention Star Wars qu'à un séminaire professionnel »*, voire à *« une grande cousinade »*, avec des conférences techniques *« de qualité mais aussi avec un petit grain de folie »*.\n- Motivations citées : challenger ses idées, découvrir d'autres façons d'écrire du code, retrouver d'anciens collègues, se faire un réseau, rencontrer des entreprises, faire sa veille, s'ouvrir à des usages hors tech (le braille, l'observation du Soleil avec JSol'Ex).\n- Constat transversal rapporté : **des sujets de société infusent jusque dans les conférences techniques** (écologie, inclusion, racisme), ce que les participants jugent *« plutôt positif »*.\n- C'est la seule trace collective de réception de l'édition retrouvée ; elle repose sur un échantillon non précisé de participants volontaires.",
+      "summarySources": ["transcript", "feedback"],
+      "video": {
+        "youtubeId": "XtsBtKUVZds",
+        "title": "Keynote de clôture - Vendredi soir",
+        "publishedAt": "2024-09-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "generation-xz",
+      "day": "2024-06-26",
+      "type": "talk",
+      "title": "Génération XZ",
+      "speakers": ["Mathieu Pousse"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène : la chronologie de la **backdoor XZ Utils** (2024) visant OpenSSH, depuis l'arrivée en 2021 du contributeur « Jia Tan » sur un projet maintenu par une seule personne.\n- **L'ingénierie sociale** d'abord : des comptes apparus pour l'occasion se plaignent de la lenteur du projet et poussent à céder la maintenance ; en un peu plus d'un an, Jia Tan obtient le commit direct, la mailing list et la publication des releases.\n- Technique : compilation dynamique, PLT et GOT, détournement des **GNU indirect functions** (ifunc) pour s'exécuter au moment de l'édition de liens, code caché dans des fichiers de test binaires ajoutés la veille d'une release, détection des débogueurs.\n- La découverte par Andres Freund, intrigué par une lenteur de SSH, a évité une diffusion dans les versions LTS de Debian, Red Hat et Ubuntu.\n- Morale proposée en Q&R : pas de leçon simple, mais *« s'il y avait un peu plus de gens qui faisaient un petit peu d'open source »* et plus de financement des mainteneurs, ce type d'attaque serait plus difficile ; le code fermé ne serait pas plus sûr, faute de quiconque pour l'analyser.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "-19yl6GcICU",
+        "title": "Génération XZ (Mathieu Pousse)",
+        "publishedAt": "2024-09-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-apps-ecologiques-c-est-pas-automatique",
+      "day": "2024-06-26",
+      "type": "talk",
+      "title": "Les apps écologiques, c'est pas automatique ?",
+      "speakers": ["Johanna Duigou — Orange Business, Green Code Initiative"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène : la **« boulimie énergétique »** des apps mobiles (Apollo 11 et ses 14 Ko de RAM face à une app sociale actuelle) ; les constructeurs décarbonent la fabrication, mais l'usage reste le levier des développeurs.\n- Le RGESN (V2 publiée en mai 2024) est jugé utile mais peu contraignant et trop généraliste pour le mobile.\n- Les **green code smells** : un référentiel mobile de la Green Code Initiative, issu de travaux de recherche (Olivier Le Goaër), en huit catégories (API optimisées, lazy loading, libération des ressources, veille, batching, sobriété).\n- Outillage : le plugin SonarQube ecoCode (environ 40 règles Android, une quinzaine iOS) ; à nuancer selon le contexte, par exemple forcer la luminosité pour scanner un billet.\n- Une étude présentée compare natif et cross-platform : Flutter et React Native talonnent le natif en efficience énergétique.\n- En Q&R : la démarche est encore *« à ses débuts »*, le lien entre règles et mesure n'est pas établi ; la techno doit être choisie selon l'usage, PWA comprise.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "f7vC9emoHL0",
+        "title": "Les apps écologiques, c'est pas automatique ? (Johanna Duigou)",
+        "publishedAt": "2024-09-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "htmx-un-retour-aux-templates-ou-le-futur-du-front-end",
+      "day": "2024-06-26",
+      "type": "talk",
+      "title": "HTMX - Un retour aux templates ou le futur du front-end ?",
+      "speakers": ["Harold Favereau — Liksi"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène, *« pas de bashing »* : htmx, une bibliothèque d'environ 14 Ko qui déclenche des requêtes via des attributs `hx-*` et remplace des fragments de page par du HTML renvoyé par le serveur, plutôt que du JSON rendu côté client.\n- Démo sur une application Pokémon (slides aux couleurs Star Wars) : pagination, recherche, comportements placés au plus près des éléments du DOM.\n- Atouts : premier chargement plus rapide, bien moins de complexité (pas d'état client ni de cycle de rendu), API back plus flexible car non partagée avec une équipe front.\n- Limites : drag and drop, offline, interfaces très interdépendantes ; *« vous allez pas faire »* un Google Sheets ou un Google Maps en htmx, mais Gmail ou Twitter s'y prêteraient.\n- Conclusion : *« soyez pragmatique, pas dogmatique »*, les technos sont des outils, *« pas des religions »*.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "nNfs6fm26AE",
+        "title": "HTMX - Un retour aux templates ou le futur du front-end ? (Harold Favereau)",
+        "publishedAt": "2024-09-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "atelier-10-tests-simples-accessibilite",
+      "day": "2024-06-26",
+      "type": "workshop",
+      "title": "Atelier : 10 tests simples pour améliorer l'accessibilité de votre site",
+      "speakers": ["François-Xavier Lair — onepoint", "Henri Gauffriau — onepoint"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène (université de 2 h, salle bien plus remplie que prévu, aux trois quarts développeurs front) : l'accessibilité est un droit universel ; seuls 2 % des personnes handicapées sont en fauteuil, **80 % des handicaps sont invisibles**, et il faut compter les handicaps temporaires et situationnels.\n- Méthode : les **easy checks du W3C**, dix tests que tout le monde peut faire, à passer à chaque sprint plutôt qu'en audit final, parce que ce sont *« ces petites choses-là »* qu'on retrouve en audit.\n- Tests pratiqués : titre de page, alternatives textuelles, contrastes, zoom, structure, labels et erreurs de formulaire, avec les inspecteurs d'accessibilité des navigateurs.\n- Message principal : *« si vous devez retenir qu'une seule chose »*, **tout tester au clavier**.\n- Bénéfices induits rappelés (référencement, sous-titres utiles à tous), mais *« si on fait de l'accessibilité c'est pour les utilisateurs »*.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "z2Ajgwh4KVk",
+        "title": "Atelier : 10 tests simples pour améliorer l'accessibilité d… (François-Xavier Lair, Henri Gauffriau)",
+        "publishedAt": "2024-09-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "model-mitosis-microservices-ou-monolithe",
+      "day": "2024-06-27",
+      "type": "talk",
+      "title": "Model Mitosis : ne plus se tromper entre les microservices et le monolithe",
+      "speakers": ["Julien Topçu — Shodo", "Josian Chevalier — Shodo"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène, en saynète entre un « architecte » et un « développeur 10x » flanqués d'un assistant IA baptisé C-3PO : une app de réservation de spatio-trains où la réservation réutilise le modèle de la recherche, d'où une **tension de modèle** (une liste de tarifs là où il n'en faut qu'un).\n- Dupliquer pour faire des microservices ne découple rien si les concepts restent couplés : on obtient un **monolithe distribué**.\n- Méthode de la « mitose » : séparer d'abord par **comportements** (les ports de l'architecture hexagonale), dupliquer et spécialiser les concepts qui divergent (FareOption côté recherche, SelectedFare côté réservation), garder le reste dans un **shared kernel transitionnel**, passer par une couche anticorruption.\n- Chaque nouvelle fonctionnalité (calcul des taxes, consultation d'anciennes réservations) révèle une tension qui fait maigrir le shared kernel ; le résidu peut être un *generic subdomain* (Money, remplaçable par une bibliothèque).\n- Règles : ne mettre dans le shared kernel que des concepts au sens, aux invariants et aux règles identiques, ne pas le partager entre équipes ; ne passer en microservices que pour une vraie raison métier (charges de lecture et d'écriture différentes, rythme de changement), *« pas j'ai envie de mettre Kubernetes »*.\n- Clin d'œil récurrent : l'assistant IA produit du code qui ne compile pas, *« les organiques ne sont pas encore prêts à remplacer l'intelligence artificielle »* dit-il, l'inverse étant démontré sur scène.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "57AQRHo3HEw",
+        "title": "Model Mitosis : ne plus se tromper entre les microservices et le m… (Julien Topçu, Josian Chevalier)",
+        "publishedAt": "2024-09-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "manifeste-pour-un-artisanat-logiciel-responsable",
+      "day": "2024-06-27",
+      "type": "talk",
+      "title": "Manifeste pour un artisanat logiciel responsable",
+      "speakers": ["Cécilia Bossard — Shodo"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène : un état des lieux de l'exclusion numérique (illectronisme de 15 % des Français, pauvreté, zones blanches, validisme, biais des IA comme l'outil de recrutement d'Amazon, départ de la moitié des femmes de la tech avant 35 ans) et de la pollution (extraction minière, **80 % de l'impact dans la fabrication des terminaux**, effet rebond).\n- Numérique responsable, *« plutôt acceptable »* : d'abord se demander si un service est nécessaire, puis réduire le scope, écoconcevoir, viser la durée ; trois questions, **utile, utilisable, utilisé ?**\n- Le craft a des pratiques responsables (qualité, partage, mentorat, amélioration continue, pragmatisme) mais aussi des travers : IDE et plugins gourmands, IA génératives coûteuses à réserver aux cas bloquants, *CV driven development*, **gatekeeping** et dogmatisme, avec une critique de *Clean Code* comme « bible ».\n- Proposition : amender le Manifeste du craft (optimisation, durabilité, valeur démontrable, communauté inclusive sans élitisme, accessibilité dès la conception, ne pas aller contre les objectifs de développement durable de l'ONU, une sorte de serment d'Hippocrate des devs).\n- En Q&R : convaincre les donneurs d'ordre par la performance et le coût serveur, rappeler l'obligation légale d'accessibilité ; une objection sur le coût des smartphones durables pour les plus pauvres, à laquelle elle répond en visant des apps qui tournent sur de vieux appareils.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "yhwFDGP6NZk",
+        "title": "Manifeste pour un artisanat logiciel responsable (Cécilia Bossard)",
+        "publishedAt": "2024-09-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "d-observateur-a-responsable-biais-racistes-ux",
+      "day": "2024-06-27",
+      "type": "talk",
+      "title": "D'observateur à responsable : enrayer l'impact des biais racistes dans l'expérience utilisateur",
+      "speakers": ["Marcy Ericka Charollois — consultante inclusion et diversité en UX"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène : un témoignage personnel sur le racisme vécu enfant puis en entretien d'embauche, et le récit d'un projet primé de bagage connecté pour Louis Vuitton mené par une équipe très diverse.\n- Passer d'un produit **« white driven »** à un produit **« diversity driven »** : sondage à main levée qui montre une salle très majoritairement masculine, blanche, valide, neurotypique, d'où une responsabilité particulière.\n- Exemples d'échecs : Face ID et les tatouages maoris (tā moko), distributeurs de savon qui ne détectent pas les peaux noires, étiquetage raciste de Google Photos, filtres de beauté qui éclaircissent, ATS qui répond « Bonjour arabe », retard de diagnostic des cancers de la peau sur peaux noires.\n- Pistes concrètes : alternatives à *master/slave*, formulaires tolérants (noms d'une lettre, sans prénom, caractères spéciaux), lecture de droite à gauche, design system et emojis inclusifs, recettes d'entretien utilisateur sûres.\n- Rappel de la responsabilité de la tech dans l'extraction minière au Congo ; conclusion : *« la richesse culturelle renforce la cohésion »*. En Q&R, le débat porte sur neutralité ou diversification des représentations.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "-Grdu2PnIgs",
+        "title": "D'observateur à responsable : enrayer l'impact des biais racistes dans l'… (Marcy Ericka Charollois)",
+        "publishedAt": "2024-09-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "discuter-avec-ses-articles-de-journaux-le-rag",
+      "day": "2024-06-27",
+      "type": "talk",
+      "title": "Discuter avec ses articles de journaux : le RAG, kesako ?",
+      "speakers": ["Victor Klötzer — Ouest-France", "Cédric Jézéquel — Ouest-France"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène : un rappel historique (perceptron, hivers de l'IA, Deep Blue, AlphaGo, Transformers) et une mise au point : un LLM ne fait que **prédire le texte le plus probable**, il n'a ni mémoire ni connaissance, d'où les hallucinations et l'intérêt du *retrieval augmented generation*.\n- Deux assistants maison : l'un sur la documentation technique, l'autre pour une dizaine de journalistes de la rédaction sportive.\n- Ce que les retours utilisateurs ont imposé : la version naïve « recherche vectorielle puis génération » ne suffit pas. Il a fallu un **aiguillage** vers des actions dédiées (un classement ATP doit sortir sous forme de tableau), des **filtres de date** (ne pas remonter un match de 2023), une recherche par entités nommées, de l'augmentation de requête.\n- Démo en direct avec des questions de la salle, avec quelques ratés assumés : *« c'est un modèle mathématique probabiliste, donc imparfait »*.\n- Conclusion : le RAG demande *« une intelligence humaine »* pour adapter découpage, recherche, pré et post-traitement à chaque type de document, une part de bricolage à automatiser.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "bc4HfUU02MY",
+        "title": "Discuter avec ses articles de journaux : le RAG, kesako ? (Victor Klötzer, Cédric Jézéquel)",
+        "publishedAt": "2024-09-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "loi-de-conway-conception-produit-organisation",
+      "day": "2024-06-27",
+      "type": "talk",
+      "title": "Loi de Conway : Lorsque votre conception produit se fâche avec votre organisation",
+      "speakers": ["Julien Topçu — Shodo"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène, en « IT Zone » uchronique : le site d'un grand cabinet de conseil qui expose son organigramme plutôt que de répondre au visiteur, déjà dénoncé par Jakob Nielsen en 1997.\n- Preuves convoquées : l'étude Microsoft sur Windows Vista (2008), où **la structure de l'organisation prédit mieux les bugs en production que la couverture de tests** ; le *Mythical Man-Month* ; un cas vécu de feature teams par pays qui ont rempli le code de `if pays`.\n- **La loi de Conway** (1968) : choisir une organisation, c'est déjà faire des choix de design et exclure des solutions possiblement meilleures.\n- Réponse proposée : le modèle BAPO (business, architecture, process, organisation, dans cet ordre) plutôt que l'OPAB habituel, mis en œuvre avec le DDD stratégique (Event Storming, bounded contexts, context map comparant relations métier et relations d'équipes) et **Team Topologies** (charge cognitive, modes d'interaction).\n- Mise en garde : la manœuvre inverse n'est pas une *silver bullet* ; agir d'abord sur la communication, réorganiser en dernier recours car *« si vous pétez ça toutes les deux semaines, les gens vont péter un câble »*.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "5OVctDglYEI",
+        "title": "Conway's Law: When your product design clashes with your organization (Julien Topçu)",
+        "publishedAt": "2024-09-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-recherche-a-l-ere-de-l-ia",
+      "day": "2024-06-27",
+      "type": "talk",
+      "title": "La recherche à l'ère de l'IA",
+      "speakers": ["David Pilato — Elastic"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène, avec des exemples Star Wars : les limites de la recherche lexicale (analyseurs, stop words, stemming) qui transforme *« ce ne sont pas ces droïdes-là que vous cherchez »* en son contraire.\n- La **recherche vectorielle** expliquée par des personnages placés sur des axes réaliste/cartoon et humain/machine, puis les embeddings générés par des modèles (dont E5) exécutés dans Elasticsearch.\n- RAG en fin de talk, en écho au talk de Ouest-France juste avant : on envoie les résultats de la recherche au LLM avec une consigne de ne répondre qu'à partir d'eux ; possible en local avec Ollama.\n- Annonce d'un type de champ `semantic_text` qui simplifie indexation et requête sémantique ; intérêt de garder filtrage et sécurité au niveau document.\n- Le talk signale par un bandeau ce qui relève de la version commerciale.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "mzK6kym03K8",
+        "title": "La recherche à l'ère de l'IA (David Pilato)",
+        "publishedAt": "2024-09-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-bienveillance-je-trouve-que-c-est-de-la",
+      "day": "2024-06-27",
+      "type": "talk",
+      "title": "La bienveillance, (je trouve que) c'est de la 💩",
+      "speakers": ["Malo Toanen — Zenika", "Luc Sorel-Giffo — Purecontrol"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène : la bienveillance, valeur affichée par les deux entreprises des speakers, se mesure surtout en cas de tension ; écoute active (Carl Rogers) et **communication non violente** (observation, sentiment, besoin, demande) sont présentées, puis jouées dans une saynète que la salle juge *« un peu faux »*, *« formaté »*, proche des cérémonies agiles.\n- Dérives involontaires : forcer le dialogue avec quelqu'un qui n'est pas en état, s'attarder sur la forme au point d'**invalider une colère légitime** (exemple de la charge domestique), hyper-responsabilisation des parents par certains livres d'éducation.\n- « Bienveillance washing » : un *« concept mobilisateur »* et un *« signifiant creux »*, dont chacun projette sa définition ; dans un rapport de force asymétrique (commercial et consultant), *« c'est pour ton bien »* sert à faire taire la contestation.\n- Alternative proposée : la **sécurité psychologique**, qui ne prétend pas vouloir le bien de l'autre mais permet à chacun de s'exprimer et d'expérimenter sans peur.\n- Conclusion sur une citation de Kant contre le *« gouvernement paternel »*, le plus grand despotisme concevable.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "YfwnrYkIo4g",
+        "title": "La bienveillance, (je trouve que) c'est de la 💩 (Malo Toanen, Luc Sorel-Giffo)",
+        "publishedAt": "2024-09-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "heberger-son-propre-serveur-de-messagerie",
+      "day": "2024-06-27",
+      "type": "talk",
+      "title": "Est-il (encore) possible d'héberger son propre serveur de messagerie ?",
+      "speakers": ["Hugues Lepesant — Claranet"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène : point de départ, le durcissement des règles d'envoi annoncé par Google et Yahoo pour 2024 (*« c'est facile quand on héberge plus de 2 milliards de boîtes mail d'imposer de nouvelles règles aux autres »*).\n- Histoire de l'e-mail depuis ARPANET et les RFC 821 et 822, puis les mécanismes désormais indispensables : reverse DNS, SPF, DKIM, DMARC et ses rapports, MTA-STS ; BIMI et DANE jugés inutiles pour un particulier.\n- Retour d'expérience d'un auto-hébergeur depuis 2007 : deux MX (un en datacenter, un dans sa cave) filtrés par OpenBSD spamd, la plupart du trafic étant du spam ; le throttling de certains fournisseurs à gérer.\n- Position : **un choix militant**, une liberté qui a un prix en argent et en attention ; des solutions clés en main existent (iRedMail, Grommunio).\n- Réponse à la question du titre : oui, c'est encore possible.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "9NBUgcQqGk4",
+        "title": "Est-il (encore) possible d'héberger son propre serveur de messagerie ? (Hugues Lepesant)",
+        "publishedAt": "2024-09-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "alerte-tout-brule-gerer-des-incidents-techniques",
+      "day": "2024-06-28",
+      "type": "talk",
+      "title": "Alerte, tout brûle ! Comment gérer des incidents techniques",
+      "speakers": ["Alexis « Horgix » Chotard — PayFit"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène, avec des mind maps au lieu de slides *« suite à la keynote d'ouverture de Ploum »* : le cas d'un ticket client de 2021 où le support répond poliment qu'*« il se peut qu'il y ait eu des latences »*, faute de savoir ce qui se passe en interne.\n- Chez PayFit, le mot « incident » n'existait pas en 2021 (un board Jira partagé) ; trois ans plus tard, une gestion jugée *« OK »*.\n- Principes : un incident est *« n'importe quoi qui vous éloigne de votre travail planifié avec un certain degré d'urgence »* ; **faire confiance à l'instinct des gens** pour en déclarer un ; rôles clairs, communication vers le support et les clients, modes dégradés à penser comme du produit avec les PM, postmortems.\n- Démo d'incident.io (Slack, war room, timeline, génération de postmortem), découvert sur un stand de KubeCon ; l'orateur dit n'y avoir aucun intérêt financier.\n- Progresser par étapes : d'abord que les gens déclarent, puis des postmortems, puis le suivi des actions. *« Ayez de l'empathie »*, en particulier pour le support client.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "PaiTnz_O8sQ",
+        "title": "Alert, Everything's on Fire! How to Manage Technical Incidents (Alexis \"Horgix\" Chotard)",
+        "publishedAt": "2024-09-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "linguist-detecter-les-langages-de-400-millions-de-depots",
+      "day": "2024-06-28",
+      "type": "talk",
+      "title": "Linguist : Détecter les langages de 400+ millions de dépôts Git",
+      "speakers": ["Paul Chaignon — Cisco"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène, par un ancien mainteneur bénévole : Linguist, bibliothèque Ruby open source créée par GitHub et utilisée aussi par GitLab, reconnaît **plus de 700 langages** à partir du seul nom et contenu des fichiers.\n- Usages : statistiques de langages d'un dépôt, recherche de code, coloration syntaxique (le cas qui *« casse le plus de choses »* en cas d'erreur), masquage des fichiers générés ou vendorisés.\n- Fonctionnement : une succession d'heuristiques simples (extension, nom de fichier, shebang, règles de désambiguïsation, classifieur) plutôt qu'un modèle unique, contraintes par le volume.\n- Format ludique : la salle devine le langage d'extraits de code via une petite application.\n- Fin du talk : comment contribuer pour corriger une détection ou ajouter un langage.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "-H2x1ctvG3s",
+        "title": "Linguist: Detecting languages in 400+ million Git repositories (Paul Chaignon)",
+        "publishedAt": "2024-09-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "defier-l-entropie-reecrire-ou-reprendre-le-controle",
+      "day": "2024-06-28",
+      "type": "talk",
+      "title": "Défier l'entropie : réécrire ses applications ou reprendre le contrôle ?",
+      "speakers": ["Alexandre Jeambrun — OCTO Technology"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène, la réponse d'emblée : **plutôt reprendre le contrôle que réécrire**.\n- Trois sources d'entropie : les humains (organisation, management, recrutement, pyramide de séniorité, turnover), la technologie (nouveaux frameworks, failles, obsolescence) et l'environnement (réglementation, budget, standards à la mode, visibles en strates dans le code).\n- Complexité essentielle, technique et accidentelle d'après *No Silver Bullet* ; seule la dernière se réduit.\n- Leviers : restabiliser d'abord la production, **mesurer** (responsabilités par classe, dépendance à la technique contrôlée par ArchUnit, usage des fonctionnalités, turnover, temps d'amélioration continue, approches de *Your Code as a Crime Scene*).\n- La réécriture est *« le côté obscur de la force »*, la voie qu'on imagine facile. En Q&R, l'anecdote d'un robot de trading devenu incontrôlable qui a fait perdre 11 millions d'euros en 30 secondes ; une organisation qui *« tue les messagers »* ne peut pas rendre ses équipes autonomes.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "Vud-FkPtOVE",
+        "title": "Défier l'entropie : réécrire ses applications ou reprendre le contrôle ? (Alexandre Jeambrun)",
+        "publishedAt": "2024-09-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "integrer-au-mieux-une-personne-autiste-en-entreprise",
+      "day": "2024-06-28",
+      "type": "talk",
+      "title": "Comment intégrer au mieux une personne autiste en entreprise",
+      "speakers": ["Angi Guyard — Shodo"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène, par une développeuse non diagnostiquée qui se reconnaît dans de nombreuses caractéristiques, talk relu par des personnes autistes et des psys : l'autisme comme **spectre** (communication verbale et non verbale, interactions sociales, stéréotypies, intérêts spécifiques, particularités sensorielles, prosopagnosie, prosodie).\n- **Bannir l'implicite** : la mère qui dit « c'est le bazar ici » sans demander de ranger, *« est-ce que tu peux me passer le sel ? »* ; préférer des consignes explicites et écrites, faire reformuler, accorder le droit à l'erreur.\n- Donner de la « data » : plan d'accès et déroulé d'entretien, interlocuteurs, rituels et process tenus (ou exceptions expliquées), livret d'accueil.\n- Laisser les stéréotypies s'exprimer (objets de fidgeting proposés sans obligation) ; comprendre l'écholalie comme camouflage ; reconnaître la surstimulation, le *shutdown* puis le *meltdown*, et réduire les stimuli plutôt que questionner.\n- Expliciter aussi l'informel (invitations, retours positifs) et instaurer un cadre de sécurité psychologique ; ressources citées (Julie Dachez, Temple Grandin, centres ressources autisme).",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "qN0_HC-Q3kM",
+        "title": "Comment intégrer au mieux une personne autiste en entreprise (Angi Guyard)",
+        "publishedAt": "2024-09-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-brouteurs-d-ia",
+      "day": "2024-06-28",
+      "type": "lightning",
+      "title": "Les brouteurs d'IA",
+      "speakers": ["Nicolas Ledez — CGWire (Kitsu)"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène (quickie volontairement *« pas du tout sérieux »*, à titre personnel) : un faux graveur laser à 16,79 € en dropshipping, puis des mois à jouer le jeu des « brouteurs », escrocs sentimentaux opérant depuis la Côte d'Ivoire.\n- Mécanique observée : passage d'Instagram à Hangouts plus permissif, vidéo en boucle injectée via la caméra virtuelle de VLC, mêmes pavés de texte envoyés par plusieurs « fiancées », demandes de coupons PCS, collecte de photos pour de futurs profils et du chantage.\n- Contre-attaque : faux virements retouchés avec les outils de développement du navigateur, adresse IP révélée par un lien.\n- Bascule récente : une arnaque « coucou papa » sur WhatsApp à laquelle il répond avec ChatGPT ; l'IA rend le phishing *« vraiment très bien fait »*, sans fautes, jusqu'aux deepfakes en visio.\n- Conseil final : *« il vaut mieux passer pour un con que devenir pauvre »*.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "acrTn6MjpSU",
+        "title": "Les brouteurs d'IA (Nicolas Ledez)",
+        "publishedAt": "2024-09-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "apis-coeur-html",
+      "day": "2024-06-28",
+      "type": "talk",
+      "title": "APIs ❤️ HTML",
+      "speakers": ["Benoit Averty — Zenika"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène : point de départ, une mission de choix entre React, Angular et Vue pour un client rennais, où *« il y a finalement assez peu de critères différenciants »*.\n- Rappel des approches : multipage, SPA, SSR avec hydratation ; leurs coûts (beaucoup de JavaScript, mauvais pour *« la planète »* et l'expérience utilisateur, interactivité disponible seulement à la fin).\n- Proposition : un **« pas de côté »** hypermédia, des API qui renvoient du HTML (HATEOAS au sens propre), avec htmx, la stack Astro, htmx et Alpine.js, ou Remix pour rester dans React.\n- En Q&R : échapper les entrées utilisateur côté serveur, tester par snapshots ou de bout en bout (Playwright, Cypress), former des développeurs polyvalents, faire deux API distinctes si humains et machines consomment les mêmes données.\n- Un participant souligne que rendre du HTML côté serveur *« c'est comme ça qu'on faisait avant »* ; réponse : l'innovation est dans la façon de concevoir l'API plus que dans la technique.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "y0TpOMZ_tJ8",
+        "title": "APIs ❤️ HTML (Benoit Averty)",
+        "publishedAt": "2024-09-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "des-ia-industrialisees-a-la-poste",
+      "day": "2024-06-28",
+      "type": "talk",
+      "title": "Des IA industrialisées à La Poste",
+      "speakers": ["Nabil Oulbaz — La Poste", "Nicolas Payneau — La Poste"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène (David Mazin, annoncé au programme, remplacé par Nabil Oulbaz), *« vous allez pas voir de code »* : le tri automatisé de **30 millions de plis par jour**, avec 500 ms pour décider de la direction d'un pli, des modèles en data center et en edge dans les centres de tri.\n- Récit d'échec : en 2019 le premier pipeline d'IA lit l'adresse de l'expéditeur au lieu de celle du destinataire, sur les plis des impôts ; retour à l'ancien OCR, **4 mois** pour corriger et redéployer.\n- D'où un « centre d'éducation » maison : outil de labellisation adapté aux postiers (environ 2 millions d'annotations, 75 personnes formées, nouveau métier de labelliseur par fenêtres de 30 minutes), réentraînement et déploiement automatisés (Java, Python, Kafka, Docker).\n- Résultats annoncés : 24 modèles (YOLOX nano notamment) spécialisés par cas d'usage, **12 à 25 points** de tri automatisé gagnés selon le contexte, de 80 % à 92 à 95 % sur le courrier.\n- Leçons : automatiser toute la chaîne, superviser aussi les GPU, détecter au plus tôt les fausses directions ; outillage interne frugal (Nexus, stack Elastic) plutôt que MLflow. Les LLM sont écartés à cause de la contrainte des 500 ms.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "Hox1YNQ6_lA",
+        "title": "Des IA industrialisées à La Poste (Nabil Oulbaz, Nicolas Payneau)",
+        "publishedAt": "2024-09-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rendre-le-cloud-carbon-aware",
+      "day": "2024-06-28",
+      "type": "talk",
+      "title": "Rendre le cloud « carbon-aware »",
+      "speakers": ["Olivier Bierlaire — Carbonifer"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène, *« le côté vert de la force »* : contre l'idée entendue en salle qu'*« on a mis toute notre infrastructure sur le cloud, il y a pas de CO2 »*, le cloud émet l'équivalent d'un pays comme la France, sans compter eau, mines et bruit.\n- Contexte réglementaire : la **CSRD** et le scope 3, qui touchent aussi les fournisseurs des grands groupes ; décodage de *carbon neutral*, *net zero* et du « 100 % renouvelable » acheté sur le marché plutôt que réellement consommé.\n- Leviers par ordre : réduire et redimensionner, tenir compte du mix électrique, puis la **carbon awareness** (déplacer des charges dans le temps ou l'espace, ordonnancer les tâches asynchrones selon l'intensité carbone du réseau).\n- En Q&R : des calculs fournisseurs jugés opaques (une étude AWS contestée), des outils de comptabilité carbone qui convertissent des euros en CO2, l'idée d'un budget carbone par équipe à côté du FinOps ; comparer les fournisseurs par leur PUE.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "eiVSRxqE5_w",
+        "title": "Rendre le cloud \"carbon-aware\" (Olivier Bierlaire)",
+        "publishedAt": "2024-09-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "green-ai-potion-magique-poison",
+      "day": "2024-06-28",
+      "type": "talk",
+      "title": "Green AI : comment éviter que la potion magique de l'IA ne se transforme en poison ?",
+      "speakers": ["Reynald Rivière — OCTO Technology", "Charles Vivoix — OCTO Technology"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène, en Astérix plutôt qu'en Star Wars (*« on découvre une page avec Star Wars, zut »*) : distinguer l'IA *for green* de la **Green AI**, la manière de construire des modèles moins coûteux.\n- Constats présentés : environ 1 % des émissions mondiales attribuées à l'IA selon les speakers, une consommation d'énergie multipliée par 300 000 depuis le début des années 2010, 700 m³ d'eau pour entraîner GPT-3 ; la croissance des modèles dépasse la loi de Moore depuis les réseaux convolutionnels.\n- Méthode : mesurer avec **CodeCarbon**, puis optimiser par élagage (pruning), quantification et distillation de connaissances, avec un faible coût en performance.\n- Matériel : puces neuromorphiques à base de memristors, prometteuses pour l'embarqué.\n- Messages finaux : *« ne sautez pas sur la dernière IA à la mode »*, demandez au PO s'il faut vraiment 99,9 % de performance ; c'est le rôle de toute l'équipe, pas seulement du data scientist.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "6qTbWq593Vk",
+        "title": "Green AI : comment éviter que la potion magique de l'IA ne se tra… (Reynald Rivière, Charles Vivoix)",
+        "publishedAt": "2024-09-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "l-open-source-n-est-pas-deja-mort",
+      "day": "2024-06-28",
+      "type": "talk",
+      "title": "L'open-source n'est pas (déjà) mort",
+      "speakers": ["Alexandre Brianceau — éditeur de logiciel open source"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène, par le CEO d'un éditeur open source français bootstrappé (GPLv3, modèle open core) qui précise n'être *« pas un expert juridique »* : la chronologie des changements de licence depuis 2016 (MariaDB et la BSL, Elastic, Redis et la Commons Clause, MongoDB et la SSPL), et les forks qui ont suivi (Valkey, OpenSearch).\n- Le cas HashiCorp : passage en BSL en 2023, fork OpenTF devenu **OpenTofu** sous pression juridique, déclaration du CEO que *« le véritable open source est mort »*, rachat par IBM peu après.\n- Analyse personnelle : ces changements visent moins les grands clouds que la rentabilité exigée par les investisseurs avant une introduction en Bourse ou une vente, avec des effets de bord sur les petits concurrents et des factures qui triplent.\n- Conséquence pratique : vérifier les licences de toute sa stack (ne pas utiliser Redis dans une offre SaaS, par exemple), un travail rarement fait hors des grands groupes.\n- Conclusion : l'open source n'est pas mort (fondation d'environ 90 % des logiciels selon GitHub), mais il est en danger sur les licences, le financement des mainteneurs et le pillage.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "YAC9FD9p9U8",
+        "title": "Open-source is not (yet) dead (Alexandre Brianceau)",
+        "publishedAt": "2024-09-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "je-malmene-ta-prod-en-direct-avec-15-failles-de-secu",
+      "day": "2024-06-28",
+      "type": "talk",
+      "title": "Je malmène ta prod en direct avec 15 failles de sécu",
+      "speakers": ["Gaëtan Eleouet — Meritis"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène : la plupart des formations sécurité des développeurs se résument à *« il ne faut pas cliquer »*, alors que **72 % des failles des applications web viennent du code applicatif** (chiffre de 2021 cité).\n- Pas d'outil magique : *« une grande partie des failles c'est du code métier »*, et un outil qui promet le contraire relève de la promesse commerciale.\n- Démo en direct sur une application fictive de popularité autour de Marie-Antoinette : une quinzaine de faiblesses CWE exploitées les unes après les autres (identifiants exposés, injections, CSRF, SSRF, journalisation des événements critiques) selon le triptyque confidentialité, intégrité, disponibilité.\n- Ressources : le Top 10 OWASP et surtout les **OWASP Cheat Sheets**, orientées pratique par techno.\n- Fin : la sécurité est aussi celle des personnes dans les équipes ; des équipes diverses pensent mieux aux scénarios d'attaque. Les scanners automatiques sont un bon début, pas un substitut à un pentest.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "yUzCctPS904",
+        "title": "Je malmène ta prod en direct avec 15 failles de sécu (Gaëtan Eleouet)",
+        "publishedAt": "2024-09-07",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Voyage au cœur d'Appwrite (Lucas Audart, Mickael Alves)",
+    "La doc va bien, ne t'en fais pas (Damien Lucas)",
+    "Angular change de logo mais pas que (Florian Allainmat, David Maurin)",
+    "QR Codes : suivez les points sans vous perdre ! (Benoît Masson, Sébastien Chédor)",
+    "Cracking the Quantum Code (Laurent Grangeau)",
+    "Fresque de la Data (Sandra Pietrowska, Franck Cussac, non filmée)",
+    "Let's React : 8 ans plus tard ! (Mathieu Ancelin, Sébastien Prunier)",
+    "Les normes de messagerie pour une meilleure expérience e-mail (Antoine G)",
+    "Parcours initiatique sur l'authentification avec Keycloak (Jérôme Marchand, Adrien Wattez)",
+    "Cinq critères pour muscler vos échanges HTTP (Charline Humeau, Nicolas Giraud, non filmée)",
+    "Un code à l'épreuve du temps avec le Supple Design (Sylvain Decout)",
+    "Du code source à l'exécutable : la compilation en Rust (Édouard Siha)",
+    "Automatiser les tests d'API avec Bruno (Alan Duchene)",
+    "Migration de projets Terraform vers Terragrunt (Jérôme Marchand)",
+    "Et si on ouvre grand les bras aux SIG ? (Talab Ou Ali Halima)",
+    "RetEx : optimisation du temps de démarrage d'une application Java Spring (Daria Hervieux)",
+    "Flink vs Kafka Streams (Sébastien Coulle)",
+    "Testcontainers : tu ne douteras plus de tes fonctionnalités, jeune Pydawan·e (Luc Sorel-Giffo)",
+    "Keycloak & Authorization : A New Hope (Sébastien Brousse)",
+    "Il faut sauver le dernier giga de RAM (Damien Lucas, Ivan Béthus, non filmée)",
+    "JSol'Ex : traitement d'images solaires en Java (Cédric Champeau, cité dans la restitution de clôture)",
+    "Le langage Mojo : un nouvel espoir pour l'IA ? (Jean-Luc Tromparent)",
+    "Une seconde pour traiter un milliard de lignes en Java ? (Maxime Reynier)",
+    "Bug Bounty (Florian Girard, Florent Le Borgne)",
+    "SOPS, passez un savon à vos secrets en clair ! (Sylvain Métayer)",
+    "Playwright (Benjamin Cavy)",
+    "La Diva, la Rockstar et le consultant (Antoine Cailly)",
+    "Introduction aux threads virtuels en Spring Boot 3 (Emmanuelle Rouillé)",
+    "Structure d'un virus informatique et outils de détection (Nailya Bogrova, non filmée)",
+    "Comment faire une bonne campagne de green washing solutionniste ? (Maxime Dupont)",
+    "Tests JavaScript : reconstituer le puzzle (Jean-François Greffier)",
+    "Redis, le plus sous-estimé des plus utilisés ! (Adrien Wattez, Mickaël Barroux)",
+    "MongoDB en scale-up : sortir d'un enfer monolithique (Alexis « Horgix » Chotard, Caroline Becker)",
+    "Jeu mobile de palet breton multijoueur en temps réel (Vincent Ogloblinsky)",
+    "5 ans avec Flutter (Youen Garel, Can Yalin)",
+    "De HTTP 1 à 3, pourquoi et comment ? (Alexis Delhelle)",
+    "La Clean Archi ça marche aussi dans le front ! (Dorian Lamandé)",
+    "Les feature flags : le couteau suisse de votre flow de développement (Benjamin Cavy)",
+    "Mon Elasticsearch a perdu la boule (Maxime Odye)",
+    "L'architecture micro-frontends, un nouvel espoir ? (Gregory Houllier)",
+    "asdf, un outil pour toutes vos versions (Sylvain Métayer)",
+    "C4 model (Jérôme Gauthier)",
+    "Des batches à moindre coût environnemental ! (Édouard Siha)",
+    "Exegol : le hacking à base de conteneurs (Antoine Mayer)",
+    "Présentez avec style grâce à OBS ! (Martin Bahier)",
+    "Déverrouiller sa porte en une commande Slack (Alexis Morelle)",
+    "Compose to Kube, Episode IV (Nicolas De Loof, Guillaume Lours)",
+    "/e/OS, mon smartphone Android sans Google (Benoît Masson)",
+    "SQL Test Kit (Victor Landeau)",
+    "OpenFeature : vers la normalisation des feature flags (Morgan Blanloeil)",
+    "De l'IA dans mon API Gateway ? (Mathieu Ancelin)",
+    "Quel Vector d'attaque pour votre pipeline d'ingestion de logs ? (François Dubrez)",
+    "Android ♥ Kotlin (Caroline Mouden)",
+    "Gleam, un langage né sous une bonne étoile (Pascal Le Merrer)",
+    "Gérer une partie de votre dette technique avec Renovate (David De Carvalho)",
+    "Racine carrée, bit-shifting et paracétamol (Audren Burlot)",
+    "JPA ne serait-il pas finalement quantique ? (Alexandre Thomazo)",
+    "Ce que j'aurais aimé savoir avant que ma JVM n'explose en prod (Hugo Metivier)",
+    "Cartographier l'univers de Star Wars avec Neo4j (Thomas Martin, Mickaël Barroux)",
+    "BackToBasics : texte et numérique (Guillaume Collic)",
+    "Comment s'assurer de perdre des données avec Apache Kafka ! (Ludovic Boutros, Adam Souquieres)",
+    "Le développement embarqué, c'est pour vous aussi (Damien Hackett)",
+    "Comment j'ai trouvé le sens de la vie grâce à WebAssembly (Théo Gianella)",
+    "Le côté obscur des pull requests (Hadrien Mens-Pellen)",
+    "Dédramatisons l'accessibilité (Charline Humeau, Céline Merand)",
+    "Pourquoi toujours utiliser une pagination par curseur ? (Sébastien Chédor)",
+    "Elasticsearch Query Language : ES|QL (David Pilato)",
+    "Construire son framework d'entreprise au-dessus de Spring Boot (Maxime Odye, Alexandre Baron)",
+    "Optimisation de performance : bénéfice ou sacrifice ? (Emmanuel-Lin Toulemonde)",
+    "Stockage web : le guide galactique (Anthony Le Goas)",
+    "Unleashing the Force of Spring Boot 3 (Guillaume Yan)",
+    "Apache Software Foundation, comment ça marche ? (JB Onofré)",
+    "Et si vous mettiez vos jobs de CI/CD sur une étagère ? (Jean-Philippe Baconnais, Jules Agostini)",
+    "La quête de la réactivité : l'odyssée des Signals (Stéphane Spassevitch)",
+    "Orchestrez vos workflows métier avec Temporal.io (Gwendal Leclerc)"
+  ],
+  "sources": [
+    { "label": "Site officiel BreizhCamp 2024", "url": "https://2024.breizhcamp.org/" },
+    { "label": "Programme officiel BreizhCamp 2024", "url": "https://2024.breizhcamp.org/conference/programme/" },
+    { "label": "Playlist YouTube « Breizhcamp 2024 » (96 vidéos)", "url": "https://www.youtube.com/playlist?list=PLv7xGPH0RMUSa01SXi__a8r2rvrVJbgaU" },
+    { "label": "Appel à propositions BreizhCamp 2024 (Sessionize)", "url": "https://sessionize.com/breizhcamp-2024" },
+    { "label": "Ploum (speaker), Mastodon : annonce de la vidéo de sa keynote (04/07/2024)", "url": "https://mamot.fr/@ploum/112728705812047174" },
+    { "label": "Ploum (speaker) : Comprendre les bulles, Pouet Pouet Coin Coin (vidéo IndyMotion)", "url": "https://indymotion.fr/w/1FBN53pHuK3QBzFUL4sL6n" },
+    { "label": "Ploum (speaker) : Le marketing, une religion malveillante, incompétente et dangereuse (blog, 18/08/2024, renvoie à la keynote)", "url": "https://ploum.net/2024-08-18-religion-marketing.html" },
+    { "label": "Tamarico, Mastodon : sur la keynote et la fresque de Sophie Sorel-Giffo (27/06/2024)", "url": "https://piaille.fr/@Tamarico/112687780423665091" },
+    { "label": "panmaster, Mastodon : avant la keynote d'ouverture (27/06/2024)", "url": "https://mamot.fr/@panmaster/112687288703505642" },
+    { "label": "LinuxFr.org : annonce de la publication des vidéos (13/09/2024)", "url": "https://linuxfr.org/news/videos-des-dernieres-conferences-breizhcamp-jdll-et-transcriptions-april" },
+    { "label": "Posts LinkedIn et articles de blog de participants : aucun retrouvé par la recherche web au 10/10/2026" }
+  ]
 }

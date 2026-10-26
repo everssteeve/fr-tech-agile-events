@@ -12,10 +12,9 @@
   "dateConfidence": "ok",
   "note": "Conférence gratuite de l'AFPy : sprints les 30 et 31 octobre, conférences et ateliers les 1er et 2 novembre (3 plénières, 16 conférences longues, 49 conférences courtes et ateliers au programme). Édition des 20 ans de l'AFPy. Environ 450 personnes selon le rapport de transparence (~390 le samedi selon Françoise Conil).",
   "status": "synthesized",
-  "synthesisUpdatedAt": "2026-09-28",
-  "revisit": "Retours participants minces : aucun post LinkedIn post-événement trouvé (seulement des annonces de speakers), une quinzaine de comptes Mastodon dont un seul live-toot détaillé (Ash_Crow), 5 blogs dont 3 de speakers ; ateliers, sprints hors Django et lightning talks non couverts ; 23 transcripts Indymotion téléchargés (transcripts/pyconfr2025/) non encore exploités.",
-  "corpus": "Programme officiel complet (pycon.fr/2025), rapport de transparence du code de conduite (déc. 2025), 31 transcripts de vidéos Indymotion lus (ouverture, 3 plénières, 27 conférences, sur 56 vidéos publiées), une soixantaine de pouets Mastodon publiés du 28 octobre 2025 au 6 février 2026 (surtout le live-toot d'Ash_Crow, plus Julie, Django, FLOZz, Françoise Conil, Julien Maupetit…), et 5 billets de blog (Django Software Foundation, Martin Kirchgessner, Karen Jex, Hashbang, Le Calamar).",
-  "limits": "Corpus presque entièrement issu de Mastodon et de blogs de la communauté libre : aucun retour LinkedIn trouvé, et plusieurs sources viennent de speakers (Jex, Hashbang, Poulailleau, Kirchgessner). Les ateliers, les sprints hors Django et les lightning talks restent quasi non documentés, et une douzaine de sessions ne sont résumées qu'à partir de leur transcript, sans aucun retour participant. Les sous-titres automatiques Indymotion sont imparfaits (deux vidéos anglaises reconnues en finnois et en gallois, inexploitables).",
+  "synthesisUpdatedAt": "2026-10-11",
+  "corpus": "Programme officiel complet (pycon.fr/2025), rapport de transparence du code de conduite (déc. 2025), 54 transcripts de vidéos Indymotion lus (ouverture, 3 plénières, 50 conférences : toutes les 56 vidéos publiées sauf deux aux sous-titres inexploitables), une soixantaine de pouets Mastodon publiés du 28 octobre 2025 au 6 février 2026 (surtout le live-toot d'Ash_Crow, plus Julie, Django, FLOZz, Françoise Conil, Julien Maupetit…), 5 billets de blog (Django Software Foundation, Martin Kirchgessner, Karen Jex, Hashbang, Le Calamar) et la page perso de Pierre Augier sur les sprints.",
+  "limits": "Corpus presque entièrement issu de Mastodon et de blogs de la communauté libre : aucun retour LinkedIn trouvé malgré de nouvelles recherches en octobre 2026, et plusieurs sources viennent de speakers (Jex, Hashbang, Poulailleau, Kirchgessner, Augier). Une trentaine de sessions ne sont résumées qu'à partir de leur transcript automatique, sans aucun retour participant. Les ateliers, les sprints hors Django et les lightning talks, non filmés, restent sans trace publique trouvée ; deux vidéos anglaises (Kalvāns, Weldon) ont des sous-titres inexploitables.",
   "tldr": "Une PyConFR **communautaire, gratuite et très « libre »** pour les 20 ans de l'AFPy : beaucoup d'outillage concret (tests, packaging, docs, htmx, lakehouses), une IA abordée avec **prudence et esprit critique**, et un fil rouge fort sur **l'inclusion et le soin des personnes**.",
   "keyTakeaways": [
     "Pour accélérer une suite de tests Django/pytest : **ne pas hacher les mots de passe comme en prod** (MD5 en test), couper le réseau pour débusquer les appels réels, désactiver la couverture en local, `--reuse-db`, et paralléliser un peu (2 à 4 workers, pas `-n auto`) (Haasser et Vuillard).",
@@ -41,9 +40,10 @@
       ],
       "feedbackFrom": [
         "Django Software Foundation (blog et Mastodon)",
-        "Ash_Crow (Mastodon)"
+        "Ash_Crow (Mastodon)",
+        "Pierre Augier (speaker, page perso)"
       ],
-      "summary": "- **27 contributeurs** sur deux jours (blog Django ; 25 annoncés sur Mastodon) : admin, commandes, traductions, accessibilité, site djangoproject.com, marketing.\n- *« La moitié de la salle était totalement novice en open source »* (trad.), certains s'appuyant sur le tutoriel Django Girls.\n- Thibaud Colas y insiste sur l'importance de **recueillir des témoignages d'utilisateurs** de Django (Ash_Crow).\n- Autres sprints au programme : traduction de docs.python.org, Mercurial, py-edu-fr, Ansible, OneGeo Chat, FeretUI.",
+      "summary": "- **27 contributeurs** sur deux jours (blog Django ; 25 annoncés sur Mastodon) : admin, commandes, traductions, accessibilité, site djangoproject.com, marketing.\n- *« La moitié de la salle était totalement novice en open source »* (trad.), certains s'appuyant sur le tutoriel Django Girls.\n- Thibaud Colas y insiste sur l'importance de **recueillir des témoignages d'utilisateurs** de Django (Ash_Crow).\n- Autres sprints au programme : traduction de docs.python.org, Mercurial, py-edu-fr, Ansible, OneGeo Chat, FeretUI. Pierre Augier dit avoir participé à ceux de py-edu-fr (préparer deux formations, « Python initiation » et « Python avancé pour la science ») et de Mercurial, sans en donner le bilan (page perso, speaker).",
       "summarySources": [
         "blog",
         "feedback",
@@ -428,6 +428,268 @@
         "url": "https://indymotion.fr/w/wD8LGbV3cQXhj8fXhuXHRp",
         "title": "Michael Scherer - Bonnes pratiques de l'intégration d'OIDC et de SAML pour permettre le changement de login",
         "publishedAt": "2026-01-11",
+        "transcript": true
+      }
+    },
+    {
+      "id": "tout-ce-dont-votre-package-a-besoin",
+      "day": "2025-11-01",
+      "type": "talk",
+      "title": "Tout ce dont votre package a besoin",
+      "speakers": [
+        "Joseph Barbier"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Indépendant dans la data et mainteneur de packages open source, il couvre trois sujets : `pyproject.toml` et dépendances, tests, documentation.\n- **Minimiser les dépendances** : FastAPI en tire beaucoup en cascade ; parfois mieux vaut copier une fonction (si la licence le permet). Plage de versions en open source, version figée en closed source.\n- Tests en quatre niveaux, jusqu'à une matrice GitHub Actions Python 3.10 à 3.14 sur Ubuntu, Windows et macOS : *« c'est tout le temps Windows où il y a des problèmes »*.\n- Doc : *« personne ne va aller lire le code source de votre projet »* ; il faut une landing page qui fait comprendre l'usage en 10 secondes (plotnine cité en modèle), structurée selon Diátaxis.\n- En questions : borner la version maximale de NumPy oblige à suivre les sorties ; uv-secure cité pour les failles des dépendances.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/wViv3UNTtdeiSiLLg9QVTz",
+        "title": "Joseph Barbier - Tout ce dont votre package a besoin",
+        "publishedAt": "2026-02-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "doc-busters",
+      "day": "2025-11-01",
+      "type": "talk",
+      "title": "Doc Busters",
+      "speakers": [
+        "Sarah Haïm-Lubczanski",
+        "Pauline Rambaud"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Duo architecte de documentation et développeuse back-end : pourquoi ne comprend-on pas certaines docs ? Un sondage Mastodon fait remonter les pires (Eleventy, Ember.js, NiceGUI, Javadoc en getX).\n- **Trouvabilité** : Sendmail, sans doc en ligne après son rachat, finit documenté par un contributeur : *« si jamais vous ne rendez pas votre doc trouvable, quelqu'un la mettra en ligne pour vous »*.\n- Contenu et UX : une option de driver PostgreSQL en Go qui désactive en silence la vérification SSL ; bons exemples avec la doc Python, les pages man et le portail développeur Mercedes.\n- Méthode de lecture : formuler sa question, lire le getting started, repérer l'organisation (Diátaxis), croiser avec la communauté et *« parlez aux gens »* (une semaine seule dans la doc New Relic contre une demi-après-midi avec un collègue).\n- L'IA aide à résumer ou traduire mais interprète mal le contexte et propose du code déprécié. Pas de questions en salle, l'heure du repas étant arrivée.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/o4xS6V23dh1cseeKqqDqSg",
+        "title": "Sarah Haïm-Lubczanski/Pauline Rambaud - Doc Busters",
+        "publishedAt": "2026-01-31",
+        "transcript": true
+      }
+    },
+    {
+      "id": "from-fields-to-code-open-source-python-tools-for-european-farmers",
+      "day": "2025-11-01",
+      "type": "talk",
+      "title": "From Fields to Code: Open-Source Python Tools for European Farmers",
+      "speakers": [
+        "Felipe Arruda Pontes — Université de Maastricht"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **OpenAgri** : projet Horizon Europe (18 partenaires, 7 pays, rattaché à AgStack de la Linux Foundation) pour démocratiser l'agriculture numérique avec des briques open source.\n- Les petits agriculteurs se méfient du coût, du cloud, des IA boîtes noires et du verrouillage fournisseur ; 14 pilotes dans plus de 10 pays (bétail en France, ravageurs en Belgique, irrigation en Pologne…).\n- Architecture : tableau de bord React, microservices Python (DRF, FastAPI) en images Docker, edge computing pour le tracteur hors wifi.\n- Interopérabilité par un modèle sémantique commun (RDF, JSON-LD), mais le mapping depuis Pydantic ou DRF se fait à la main, *« à force de sang, de sueur, de larmes »* (trad.) ; appel à la salle pour un paquet Python.\n- En questions : des modèles Pydantic partagés recréeraient l'enfermement redouté ; Docker Compose reste difficile pour des non-techniciens.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/xwQHr3pDm7KCffuc5KRWBW",
+        "title": "Felipe Arruda Pontes - From Fields to Code : Open-Source Python Tools for European Farmers",
+        "publishedAt": "2026-01-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "proteger-les-secrets-de-vos-clients",
+      "day": "2025-11-01",
+      "type": "talk",
+      "title": "Protéger les secrets de vos clients",
+      "speakers": [
+        "David Rigaudie"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Développeur freelance et organisateur de meetups Python à Clermont-Ferrand. Cas d'usage : un robot SaaS qui se connecte derrière une mire de login doit **retrouver le mot de passe en clair**, le hachage ne convient donc pas.\n- Solution : HashiCorp Vault avec la bibliothèque hvac ; mise en place pas à pas (Docker Compose, moteur KV, policies, AppRole).\n- Un namespace par utilisateur pour isoler les secrets : *« si vous enlevez cet attribut, tout le monde aura accès à tout le monde »*. En prod, clés d'unseal découpées en parts avec seuil.\n- Retour franc : Keycloak essayé sans succès avant Vault, et *« j'ai vraiment galéré »*, la doc des policies n'étant *« vraiment pas simple »*. Un participant suggère une classe qui masque la valeur dans les logs.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/gjThdHNMapX74atitEXDs2",
+        "title": "David Rigaudie - Protéger les secrets de vos clients",
+        "publishedAt": "2026-02-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "accro-au-cafe",
+      "day": "2025-11-01",
+      "type": "talk",
+      "title": "Accro au café ? Prenez des photos et suivez l'utilisation de la machine du bureau !",
+      "speakers": [
+        "Rémi Cardona"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Projet perso : lire par photo les écrans de statistiques de la machine Jura du bureau (environ 50 000 tasses), en écartant volontairement le dongle Bluetooth pour **le chemin difficile de l'analyse d'image**.\n- Tesseract inadapté aux photos de biais ; PaddleOCR détecte presque tout mais met environ une minute par image et rate certains nombres.\n- Pipeline : segmentation FastSAM (Ultralytics), redressement OpenCV (OCR ramené à 23 s), RapidFuzz pour rapprocher les libellés, calcul d'angle pour associer libellé et valeur.\n- Pas de courbe finale : la machine a été changée quatre fois, et *« globalement, l'évolution, c'est beaucoup trop de café »*. Code annoncé en publication.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/6x7aU2PeAKtciX4y31qhhN",
+        "title": "Rémi Cardona - Accro au café ? Prenez des photos et suivez l'utilisation de la machine du bureau !",
+        "publishedAt": "2025-12-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "running-every-street-in-paris-with-python-and-postgis",
+      "day": "2025-11-01",
+      "type": "talk",
+      "title": "Running Every Street in Paris with Python and PostGIS",
+      "speakers": [
+        "Vinayak Mehta"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Auteur de Camelot, inspiré par Tom Murphy (Pittsburgh) et Ricky Gates (San Francisco) : **courir toutes les rues de Paris** en suivant sa progression automatiquement (environ 40 % parcourues).\n- Chaque course Strava déclenche un webhook qui met à jour sa description ; parcours dessinés à la main, le problème du postier chinois étant trop complexe au départ.\n- Pipeline : OSMnx avec filtre personnalisé, GeoPandas pour fusionner les segments (environ 5 400 rues), PostGIS via SQLAlchemy pour apparier la trace GPX aux rues.\n- Limites : les carrefours en étoile faussent l'appariement ; pistes avec Viterbi. En questions : *« chaque course de 10 km couvre 0,5 % de la ville »* (trad.).",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/3o3VRtFwLyjJwxDP3jRTwM",
+        "title": "Vinayak Mehta - Running Every Street in Paris with Python and PostGIS",
+        "publishedAt": "2026-01-11",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-gerer-un-changelog-facilement-quand-on-est-plusieurs",
+      "day": "2025-11-01",
+      "type": "talk",
+      "title": "Comment gérer un changelog facilement quand on est plusieurs ?",
+      "speakers": [
+        "Cyrille Pontvieux — Systra"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Un CHANGELOG unique provoque des conflits Git à chaque merge, et pire, après un rebase une entrée peut atterrir sous une version déjà publiée : *« c'est complètement silencieux »*.\n- Rappel : le changelog s'adresse aux utilisateurs, les messages de commit aux développeurs.\n- Son outil : **un petit fichier par changement**, rangé par catégorie (Fixed, Changed…), avec `add`, `commit`, `list` et `merge <version>` qui reconstruit CHANGELOG.md au format Keep a Changelog, intégrable en CI.\n- Sans dépendance (bibliothèque standard), typé, 91 % de couverture, avec un portage Rust pour les projets non Python. Sondage : deux mains levées pour l'automatisation, la même personne.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/nwqLA1poNMNV26dBcDDFah",
+        "title": "Cyrille Pontvieux - Comment gérer un changelog facilement quand on est plusieurs ?",
+        "publishedAt": "2026-01-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-elegant-dependency-injection-mechanism-of-fastapi",
+      "day": "2025-11-01",
+      "type": "talk",
+      "title": "The Elegant Dependency Injection Mechanism of FastAPI",
+      "speakers": [
+        "Mohamed Rebai"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Étudiant (double diplôme à Polytechnique) avec 2 ans de FastAPI : *« l'injection de dépendances est un concept très, très simple »* (trad.).\n- Un même mécanisme couvre la **gestion du cycle de vie des ressources** (dépendances avec `yield`) et le prétraitement (token, clé d'API), là où d'autres frameworks utilisent middlewares ou guards.\n- Quatre phases : déclaration (`Depends` avec `Annotated`), analyse par introspection au démarrage, résolution en profondeur avec cache par requête, nettoyage via `AsyncExitStack` en ordre inverse.\n- Pièges : une exception attrapée dans une dépendance doit être relancée, sinon elle est avalée ; une exception dans le `finally` n'atteint jamais le client.\n- En questions : `dependency_overrides` pour les tests ; démarche surtout pédagogique, pour comprendre les bonnes pratiques de la doc.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/53aWNLeoPu8osV5PKbFWA4",
+        "title": "Mohamed Rebai - The Elegant Dependency Injection Mechanism of FastAPI",
+        "publishedAt": "2026-02-01",
+        "transcript": true
+      }
+    },
+    {
+      "id": "creer-des-cartes-avec-python-vive-la-donnee-geographique",
+      "day": "2025-11-01",
+      "type": "talk",
+      "title": "Créer des cartes avec Python : vive la donnée géographique !",
+      "speakers": [
+        "Michaël Favel-Guidet",
+        "Émeline Lesmanne"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Bases : la Terre en ellipsoïde, projections (WGS84 en degrés, Web Mercator en mètres et limité à 85,06°), formats vectoriels (GeoJSON, GeoParquet), raster et multidimensionnels (NetCDF).\n- Une bibliothèque par cas : GeoPandas, rasterio, xarray ; avec GeoPandas, **toujours déclarer le CRS** puis convertir.\n- Pièges : la jointure spatiale place les communes en bordure dans deux départements, et les codes INSEE réservent des surprises.\n- Visualisation : choroplèthe Matplotlib, puis Folium (`.explore()` en deux lignes, couches, TimeSliderChoropleth) ; PostGIS ou GeoParquet et COG conseillés en stockage.\n- En questions : OpenStreetMap, Nominatim et Copernicus comme sources ouvertes, GDAL omniprésent.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/81nvuTNrz7cwM9fW9rBrjb",
+        "title": "Michaël Favel-Guidet/Émeline Lesmanne - Créer des cartes avec Python : vive la donnée géographique !",
+        "publishedAt": "2026-02-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "gerer-ses-dependances-python-sans-douleur-avec-uv",
+      "day": "2025-11-01",
+      "type": "talk",
+      "title": "Gérer ses dépendances Python sans douleur avec uv",
+      "speakers": [
+        "Anaïs Gatard"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Cheffe d'entreprise en reconversion, passée de venv et pipenv à uv il y a six mois : rapidité, simplicité (`uv init`, `uv add`, `uv run`), lockfile, et surtout **pas besoin d'activer l'environnement** (cron, CI).\n- Démo face à pipenv : `.venv` de 4,6 Mo contre 11 Mo grâce au cache global, installation de FastAPI en environ 1 s contre 12.\n- Versions de Python isolées sans installation système, pratique pour déboguer un vieux projet ou tester 3.14.\n- Limites : outil jeune (*« dans six mois ça sera des autres commandes »*), ChatGPT propose des commandes périmées, migration depuis Pipfile peu fluide.\n- Démo chahutée où le public l'aide ; un participant élargit le panorama (Poetry, PDM plus fidèle aux standards, pixi) et signale un cache parfois trop agressif.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/oR1NMgqiza27ukmGxpUYRq",
+        "title": "Anaïs Gatard - Gérer ses dépendances Python sans douleur avec uv",
+        "publishedAt": "2026-02-01",
+        "transcript": true
+      }
+    },
+    {
+      "id": "construire-un-type-frozendict",
+      "day": "2025-11-01",
+      "type": "talk",
+      "title": "Construire un type frozendict (dictionnaire immutable)",
+      "speakers": [
+        "Antoine Rozo — Alma"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Besoin : un dict hachable, utilisable comme clé ou valeur par défaut, en Python pur. Python a `tuple` et `frozenset`, pas de dict immuable.\n- Échecs instructifs : dataclass `frozen=True` contournée par `object.__setattr__`, `MappingProxyType` qui n'est qu'une vue modifiable et non hachable.\n- Idée clé : **hériter d'un type immuable existant**, `frozenset`, en y stockant des paires dont le hash est celui de la clé, puis envelopper le tout dans un dérivé de `super` pour masquer le frozenset.\n- Conclusion assumée : *« c'est pas très beau, mais ça fonctionne »*, en espérant *« un vrai type FrozenMap dans Python »*. En questions : l'ordre d'insertion n'est pas conservé.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/1GAEdaD7hCJs4YHy7gfkL7",
+        "title": "Antoine Rozo - Construire un type frozendict (dictionnaire immutable)",
+        "publishedAt": "2025-12-31",
+        "transcript": true
+      }
+    },
+    {
+      "id": "micropython-programmation-python-pour-microcontroleurs",
+      "day": "2025-11-01",
+      "type": "talk",
+      "title": "MicroPython : programmation Python pour microcontrôleurs",
+      "speakers": [
+        "Amine Bendahmane"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Venu de la robotique : des cibles à ~32 Ko de RAM, sans OS. MicroPython n'est *« pas forker Python et l'alléger, c'est vraiment une réimplémentation »* (Python 3.4 et une partie de 3.10).\n- Démo du module `machine` (LED, gênée par un problème d'alimentation), MQTT et wifi ; pas de NumPy, et des fonctions homonymes qui ne se comportent pas comme en CPython.\n- Limites honnêtes : **2 à 5 fois plus lent que le C++** selon un article MDPI, plus gourmand en batterie, tas qui se fragmente ; compilation `.mpy` et décorateurs natifs pour accélérer.\n- Usage conseillé : prototypage, réseau, électroménager ; C, C++ ou Rust pour le temps réel, approche hybride possible. En questions : MicroPython ouvre l'embarqué à des amateurs, l'ESA l'utilise sur des satellites.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/drzdCHBuCBvFq8Jxy2d8CY",
+        "title": "Amine Bendahmane - MicroPython : programmation Python pour microcontrôleurs",
+        "publishedAt": "2026-01-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "migrer-l-annuaire-ldap-d-un-nextcloud",
+      "day": "2025-11-01",
+      "type": "talk",
+      "title": "Migrer l'annuaire LDAP d'un Nextcloud",
+      "speakers": [
+        "Armando Femat Ortiz — Worteks"
+      ],
+      "feedbackFrom": [],
+      "summary": "- REX client : un **changement de nom de la structure** impose un nouvel annuaire LDAP, la racine portant ce nom.\n- Piège : Nextcloud identifie les comptes non par l'UID mais par l'`entryUUID`, généré aléatoirement ; le client avait recréé un annuaire « identique » sans le conserver, ce qui aurait créé de nouveaux comptes.\n- Script python-ldap : correspondance anciens et nouveaux entryUUID, remplacement dans toutes les tables, renommage des dossiers ; puis le client lourd cesse de synchroniser.\n- Morale : *« on s'est dit ça va très bien se passer, on va mettre une heure et qu'on met trois semaines »*. La migration préparait aussi un passage à OpenID Connect.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/miqE4mTzGiM2VzYVvSDiD8",
+        "title": "Armando Femat Ortiz - Migrer l'annuaire LDAP d'un Nextcloud",
+        "publishedAt": "2026-02-05",
         "transcript": true
       }
     },
@@ -825,36 +1087,215 @@
         "publishedAt": "2026-02-01",
         "transcript": true
       }
+    },
+    {
+      "id": "advanced-alchemy-surcouche-puissante-de-sqlalchemy",
+      "day": "2025-11-02",
+      "type": "talk",
+      "title": "Advanced Alchemy : surcouche puissante de SQLAlchemy",
+      "speakers": [
+        "Julien Courtès — Litestar"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Mainteneur de Litestar : SQLAlchemy est puissant (unit of work) mais coûteux plus tard (upsert ou merge, JSONB, filtres dynamiques, insertions en masse).\n- Advanced Alchemy ajoute commandes Alembic, types portables (GUID, DateTimeUTC, EncryptedString, stockage de fichiers), mixins dont des **colonnes d'audit**, et des couches repository et service, en sync ou async.\n- Intégrations Litestar, FastAPI, Flask, Sanic, avec Pydantic, msgspec ou dataclasses ; changer de framework ne touche que la déclaration de route.\n- En questions : *« on propose des choses mais rien n'est obligatoire »* ; migration possible modèle par modèle, ordre d'insertion en masse géré par la bibliothèque.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/9hVpGwu1BHAy7k5a9qLfu3",
+        "title": "Julien Courtès - Advanced Alchemy : Surcouche puissante de SQLAlchemy",
+        "publishedAt": "2026-01-04",
+        "transcript": true
+      }
+    },
+    {
+      "id": "retour-d-experience-une-base-de-projet-reutilisable-avec-litestar",
+      "day": "2025-11-02",
+      "type": "talk",
+      "title": "Retour d'expérience : une base de projet réutilisable avec Litestar",
+      "speakers": [
+        "Irina Mitiaïeva — SLB",
+        "Cyril Monmouton — SLB"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Contexte SLB : un framework maison de 2017 sur aiohttp, rigide et limité à OpenAPI v2, d'où *« on veut tout brûler et commencer à nouveau »*.\n- Choix de Litestar, convaincus par **ses benchmarks de performance** : async, typé, msgspec intégré, injection de dépendances, OpenAPI autogénérée.\n- Une base de projet clé en main pour faire basculer des équipes marquées par l'inertie : contrôleurs CRUD, DTO pour masquer les champs internes, hooks de démarrage pour les clients HTTPX, gestion d'exceptions.\n- Middleware de logging configurable (obfuscation des headers, corps non journalisé, utile pour le RGPD) et plugin OpenTelemetry à la place de leur instrumentation manuelle ; démo laborieuse mais aboutie avec Jaeger.\n- En questions, face à FastAPI : msgspec natif et plus d'outils fournis par défaut, plugins maintenus par l'équipe du framework.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/ndLMk2xqsqDeWLZkP7TPVQ",
+        "title": "Irina Mitiaïeva/Cyril Monmouton - Retour d'expérience : une base de projet réutilisable avec Litestar",
+        "publishedAt": "2026-01-11",
+        "transcript": true
+      }
+    },
+    {
+      "id": "a-la-sauce-python-metaclasses-decorateurs-et-orm-fait-maison",
+      "day": "2025-11-02",
+      "type": "talk",
+      "title": "À la sauce Python : métaclasses, décorateurs et ORM fait maison",
+      "speakers": [
+        "Pierre Verkest"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Habitué d'Odoo, il part d'une doc qui déconseille les métaclasses. Sondage piège : tout le monde en a utilisé, dès qu'on a créé une classe, puisque *« une métaclasse est la classe d'une classe »*.\n- Cycle de vie détaillé (`__prepare__`, `__new__`, `__init__`, `__init_subclass__`) ; mélanger deux métaclasses en héritage multiple **fait échouer la résolution**, ce qui contraint les utilisateurs d'une bibliothèque.\n- Démo d'un mini ORM (*« toute similarité avec un ORM existant serait complètement fortuite »*) avec registre de modèles et descripteurs, volontairement vulnérable aux injections SQL.\n- Même résultat avec un décorateur de classe, qu'il juge plus explicite ; les métaclasses restent utiles pour l'ordre des attributs ou imposer une implémentation. Bonus : un tri du MRO par nom, *« je vous déconseille de faire ça en prod »*.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/eHtruKVi2xfaEYymh78Ax5",
+        "title": "Pierre Verkest - À la sauce Python : métaclasses, décorateurs et ORM fait maison",
+        "publishedAt": "2026-01-04",
+        "transcript": true
+      }
+    },
+    {
+      "id": "cartographier-les-dommages-causes-aux-batiments-avec-python-et-sentinel-1",
+      "day": "2025-11-02",
+      "type": "talk",
+      "title": "Cartographier les dommages causés aux bâtiments avec Python et les satellites Sentinel-1",
+      "speakers": [
+        "Frédéric Lamy — Handicap International",
+        "Pierre-Henri Dubois — Handicap International"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Présenté par Frédéric Lamy seul. Les bâtiments détruits servent de **proxy de la contamination** par les restes explosifs de guerre, pour prioriser déminage et plaidoyer ; l'imagerie optique très haute résolution coûterait ~13 millions de dollars pour couvrir l'Ukraine une fois.\n- Outil : le Pixelwise T-Test open source d'Ollie Ballinger (UCL), *« un test T, qui est fait à l'échelle d'un pixel »*, sur la rétrodiffusion radar Sentinel-1 avant et après le choc.\n- Stack : Jupyter, Google Earth Engine (gratuit pour les ONG), geemap, Folium, ArcPy.\n- Résultats : le port de Beyrouth ressort nettement ; à Marioupol, AUC de 0,70 contre la vérité terrain UNOSAT, un peu mieux avec lissage.\n- En questions : seuil statistique à recalibrer, fenêtre de deux mois trop longue après un séisme ; *« on est vraiment à un stade de pilote »*.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/3m3SB7fjWZPaB5LaWroUHe",
+        "title": "Frédéric Lamy - Cartographier les dommages causés aux bâtiments avec Python et les satellites Sentinel-1",
+        "publishedAt": "2026-01-04",
+        "transcript": true
+      }
+    },
+    {
+      "id": "pas-d-algo-pas-de-bug",
+      "day": "2025-11-02",
+      "type": "talk",
+      "title": "Pas d'algo, pas de bug, pas de bug pas de problème. Pas de problème… pas de problème",
+      "speakers": [
+        "Matthieu Sauboua-Beneluz"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Développeur Java et .NET, il présente sur un ton très humoristique la **programmation par contrainte** avec le solveur Z3 : *« l'utilisateur décrit le problème et l'ordinateur le résout »*.\n- Exemples : un code de cadenas résolu en force brute puis par contraintes, les 8 dames (92 solutions, après une erreur qui en donnait 43 000), la résolution de dépendances de paquets sans dependency hell.\n- Bilan : utile pour la planification et l'ordonnancement, mais coût d'entrée élevé car il faut *« réfléchir à l'envers »* ; OR-Tools et Prolog cités.\n- Chute : *« plutôt que de résoudre le problème de votre cadenas, cassez-le »*. En questions : plans de table et emplois du temps universitaires comme cas d'usage.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/w4nBUe975cVuGETKrGfoBw",
+        "title": "Matthieu Sauboua-Beneluz - Pas d'algo, pas de bug, pas de bug pas de problème. Pas de problème… pas de problème",
+        "publishedAt": "2026-02-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "du-comportement-humain-au-comportement-du-code-quand-l-aba-rencontre-la-programmation",
+      "day": "2025-11-02",
+      "type": "talk",
+      "title": "Du comportement humain au comportement du code : quand l'ABA rencontre la programmation",
+      "speakers": [
+        "Ewa Kadziolka"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Ancienne éducatrice spécialisée auprès d'enfants autistes (méthode ABA), en reconversion comme développeuse full stack.\n- Recadrage : *« ce n'est pas un comportement indésirable ou problématique, c'est un comportement inadapté à la situation »*, et cela vaut aussi pour le code.\n- Elle transpose au débogage la **grille ABC** (antécédents, comportement, conséquences) : où, quand, avec quelles versions et dépendances, dans quel état ; dans son cas, une clé d'API mal copiée et un prompt mal formulé.\n- Remèdes : lire les erreurs, logger, débogueur, tests, mais aussi revue de code, pauses, sommeil et journal de ses erreurs. Démo d'un petit agent IA générant un texte en italien, malgré une fenêtre fermée par erreur.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/mJ9tSemECUptNA4MTPRfjG",
+        "title": "Ewa Kadziolka - Du comportement humain au comportement du code : Quand l'ABA rencontre la programmation",
+        "publishedAt": "2026-01-04",
+        "transcript": true
+      }
+    },
+    {
+      "id": "swh-fuse-or-how-to-put-a-whole-code-archive-behind-a-folder",
+      "day": "2025-11-02",
+      "type": "talk",
+      "title": "swh-fuse, or how to put a whole code archive behind a folder",
+      "speakers": [
+        "Martin Kirchgessner — Software Heritage"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Software Heritage : 400 millions de dépôts, 26 milliards de fichiers uniques ; le projet Code Commons veut y ajouter licences (ScanCode) et langages (HyperPolyglot).\n- swh-fuse expose un dépôt archivé comme un dossier (FUSE, pyfuse3), mais pyfuse3 bloque et l'API publique est limitée en débit.\n- Passage sur clusters HPC avec copie locale de l'archive, services branchés via des **objets `Protocol` du module typing** et une factory configurable.\n- Jusqu'à 400 processus par machine avec `ProcessPoolExecutor` ; premier essai raté à 10 000 processus sous Nix, corrigé en préchargeant les imports et en réglant `chunksize`, sinon *« ils consomment tout l'itérateur avant de démarrer quoi que ce soit »* (trad.).\n- Leçon : les méthodes classiques suffisent pour des tâches longues ; le free threading ne sert à rien tant que les bibliothèques natives bloquent (essai sous 3.14 sans GIL infructueux).",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/uiD5uX2WFe9kagAvL5yR9D",
+        "title": "Martin Kirchgessner - swh-fuse, or how to put a whole code archive behind a folder",
+        "publishedAt": "2026-01-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "canaille-un-fournisseur-d-identite-leger-en-python",
+      "day": "2025-11-02",
+      "type": "talk",
+      "title": "Canaille, un fournisseur d'identité léger en Python",
+      "speakers": [
+        "Éloi Rivard — Yaal Coop"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Serveur OAuth2 et OpenID Connect né à Supercoop, supermarché coopératif bordelais où Keycloak était trop lourd pour des bénévoles : *« il n'y a pas de configuration nécessaire, mais tout est configurable »*.\n- Fonctions : MFA, groupes, **certification OpenID Connect** obtenue deux mois avant, provisionnement SCIM, backends LDAP et SQL, audit d'accessibilité ; pytest-iam lance un vrai serveur dans les tests.\n- Stack : Flask, Authlib (dont l'équipe est devenue co-mainteneuse), Pydantic Settings, Dramatiq, SQLAlchemy, HTMX.\n- Audit de sécurité par Radically Open Security, 20 recommandations ANSSI sur 27 couvertes (WebAuthn manquant) ; financement Yaal Coop, NLnet et bénévolat.\n- Encore en alpha : *« ça fait cinq ans que je travaille sur Canaille et ce n'est pas terminé »*.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/k23UERehsxXhKkVQYnyHfu",
+        "title": "Éloi Rivard - Canaille, un fournisseur d'identité léger en Python",
+        "publishedAt": "2026-01-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rex-de-developpeuse-comment-j-ai-change-de-stack-technique",
+      "day": "2025-11-02",
+      "type": "talk",
+      "title": "REX de développeuse : comment j'ai changé de stack technique",
+      "speakers": [
+        "Marjolaine Bouquet"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Développeuse depuis 2002 : 13 ans de Delphi, passage au C# en 2015, puis au web en 2024 ; un talk sans Python, ou presque.\n- Premières marches : **un nouvel IDE et une nouvelle syntaxe** (F9 et F5 inversés entre RAD Studio et Visual Studio, affectation et comparaison différentes).\n- Ce qui aide : ses études, la pratique de l'objet, un ancêtre commun (Anders Hejlsberg) ; sa culture Delphi de la mémoire lui fait trouver une fuite que des devs habitués au garbage collector n'avaient pas vue : *« quand on apprend un nouveau langage, on ne repart jamais vraiment de zéro »*.\n- Conseils : doc, livres, IA en vérifiant ses sources, meetups, et ne pas se laisser enfermer dans des cases : *« Osez, allez-y. »* Prochain langage ? *« Peut-être Python ? »*",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/paiS3ixBDD7dDcP1nLBC4h",
+        "title": "Marjolaine Bouquet - REX de développeuse : comment j'ai changé de stack technique",
+        "publishedAt": "2026-02-01",
+        "transcript": true
+      }
+    },
+    {
+      "id": "des-structures-de-donnees-qui-vont-vous-etonner",
+      "day": "2025-11-02",
+      "type": "talk",
+      "title": "Des structures de données qui vont vous étonner",
+      "speakers": [
+        "Pascal Martin — Bedrock"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Trois structures méconnues pour des besoins concrets, illustrées en Python parce que tous ses collègues (JS, Go, PHP) le lisent.\n- Édition de texte : gap buffer (Emacs), rope, piece table (VS Code).\n- **Bloom filter** : faux positifs possibles, jamais de faux négatif ; exemples d'Akamai (75 % des URL appelées une seule fois, mises en cache au second appel), PostgreSQL, Cassandra ; 1 million de clés à 1 ‰ d'erreur tiennent en 1,88 Mo.\n- Saisie prédictive : trie puis radix tree, qui fusionne les nœuds à enfant unique.\n- Message : *« savoir choisir la bonne forme de roue […] ça fait partie des compétences nécessaires dans nos métiers »*. En questions : dimensionner le filtre selon le volume et le taux d'erreur toléré.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/oH6TP9phRgQ9buPVjT4NFj",
+        "title": "Pascal Martin - Des structures de données qui vont vous étonner",
+        "publishedAt": "2026-01-09",
+        "transcript": true
+      }
     }
   ],
   "sessionsWithoutFeedback": [
     "Empowering Science Education with Python (Okoro Nosakhare)",
-    "Tout ce dont votre package a besoin (Joseph Barbier, vidéo)",
     "QuerySet.explain() : Make it Make Sense (Aivars Kalvāns)",
     "SSO : mode d'emploi et pièges à éviter (Carmen Alvarez)",
-    "Doc Busters (Sarah Haïm-Lubczanski, Pauline Rambaud, vidéo)",
-    "From Fields to Code: Open-Source Python Tools for European Farmers (Felipe Arruda Pontes, vidéo)",
-    "Protéger les secrets de vos clients (David Rigaudie, vidéo)",
-    "Accro au café ? (Rémi Cardona, vidéo)",
-    "Running Every Street in Paris with Python and PostGIS (Vinayak Mehta, vidéo)",
-    "Comment gérer un changelog facilement quand on est plusieurs ? (Cyrille Pontvieux, vidéo)",
-    "Créer des cartes avec Python (Michaël Favel-Guidet, Emeline Lesmanne, vidéo)",
-    "The Elegant Dependency Injection Mechanism of FastAPI (Mohamed Rebai, vidéo)",
-    "Gérer ses dépendances Python sans douleur avec uv (Anaïs Gatard, vidéo)",
     "Anxiété : peut-on monitorer sa santé mentale ? (Jeffd)",
-    "Construire un type frozendict (Antoine Rozo, vidéo)",
-    "MicroPython : programmation Python pour microcontrôleurs (Amine Bendahmane, vidéo)",
-    "Migrer l'annuaire LDAP d'un Nextcloud (Armando Femat Ortiz, vidéo)",
-    "Advanced Alchemy : surcouche de SQLAlchemy (Julien Courtès, vidéo)",
-    "Retour d'expérience : une base de projet réutilisable avec Litestar (Irina Mitiaieva, Cyril Monmouton, vidéo)",
-    "À la sauce Python : métaclasses, décorateurs et ORM fait maison (Pierre Verkest, vidéo)",
-    "Cartographier les dommages aux bâtiments avec Sentinel-1 (Frédéric Lamy, Pierre-Henri Dubois, vidéo)",
-    "Pas d'algo, pas de bug (Matthieu Sauboua-Beneluz, vidéo)",
-    "Du comportement humain au comportement du code : l'ABA (Ewa Kadziolka, vidéo)",
-    "swh-fuse (Martin Kirchgessner, vidéo)",
-    "Canaille, un fournisseur d'identité léger en Python (Éloi Rivard, vidéo)",
-    "REX de développeuse : comment j'ai changé de stack technique (Marjolaine Bouquet, vidéo)",
-    "Des structures de données qui vont vous étonner (Pascal Martin, vidéo)",
     "Atelier « Et si on codait aussi la mixité ? » (Houleymatou Baldé)",
     "Atelier CI/CD avec Nox (Michaël Favel-Guidet)",
     "Atelier Python sans GIL et le GPU (Rostan Tabet)",
@@ -933,6 +1374,10 @@
     },
     {
       "label": "Pouets Mastodon #pyconfr / #pyconfr2025 lus : Ash_Crow, Julie (pouet.chapril.org), Django (fosstodon), FLOZz, Françoise Conil, Julien Maupetit, Arthur Vuillard, Agnès Haasser, Karen Jex, Martin Kirchgessner, AFPy, mdk, sam, frague59, jmny"
+    },
+    {
+      "label": "Présentations et sprints à la PyConFR 2025 (Pierre Augier, page perso)",
+      "url": "https://augierpi.gricad-pages.univ-grenoble-alpes.fr/presentations-and-abstracts-for-pyconfr-2025.html"
     },
     {
       "label": "Discourse AFPy : vidéos de la PyConFR 2025",

@@ -2,11 +2,363 @@
   "event": "afup-day",
   "year": 2024,
   "title": "AFUP Day 2024",
+  "edition": "6e édition",
   "start": "2024-05-24",
   "city": "Lille, Lyon, Nancy, Poitiers",
   "venue": "Théâtre La Comédie (Lille), CPE Lyon (Lyon), IUT Nancy-Charlemagne (Nancy), Cobalt (Poitiers)",
   "url": "https://event.afup.org/afup-day-2024/",
-  "note": "Quatre villes le même jour (vendredi 24 mai 2024).",
-  "status": "pending",
-  "sessions": []
+  "programUrl": "https://event.afup.org/afup-day-2024/",
+  "dateConfidence": "ok",
+  "note": "Quatre villes le même jour (vendredi 24 mai 2024), une track par ville : 9 talks à Lille, 9 à Lyon, 9 à Nancy, 10 à Poitiers. 38 speakers dont une vingtaine de nouveaux, billet à 85 €. Environ 530 participants et quatre sites complets selon le compte-rendu de la TYPO3 Association ; près de 270 personnes à Lyon selon Les-Tilleuls.coop. Aucune captation vidéo repérée.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-11",
+  "revisit": "Corpus participant mince : deux comptes-rendus d'une même entreprise sponsor et speaker (Les-Tilleuls.coop, Lille et Lyon), un compte-rendu de la TYPO3 Association pour Poitiers, quelques posts Mastodon ; Nancy n'a aucun retour détaillé. Aucun post LinkedIn trouvé ; chaîne YouTube AFUP non vérifiée (Bash refusé, page bloquée par l'écran de consentement) ; budget de 8 recherches web épuisé.",
+  "corpus": "Programmes officiels des quatre villes, **deux comptes-rendus Les-Tilleuls.coop** (Lyon, 27/05/2024, 9 talks ; Lille, 04/06/2024, 9 talks), le **compte-rendu de Rachel Foucard pour la TYPO3 Association** (Poitiers, 06/06/2024, 4 talks cités) et une dizaine de posts Mastodon du 23 au 29 mai 2024 (Les-Tilleuls.coop, marmelab, Frédéric Hardy, CH Studio). S'y ajoutent trois jeux de slides Speaker Deck (Galati, Bourlard, Hemery) et 19 interviews de speakers publiées par l'AFUP avant l'événement (mars à mai 2024).",
+  "limits": "Les deux comptes-rendus détaillés viennent de Les-Tilleuls.coop, sponsor et employeur d'au moins deux speakers lillois (Chalamon, Dunglas) : ton uniformément positif, peu de critique. **Nancy n'a aucun retour de participant** (seulement un post de marmelab, employeur d'un speaker) et ses sessions documentées reposent sur les interviews d'avant l'événement, signalées (speaker). Poitiers ne compte qu'un seul compte-rendu, bref. Aucun post LinkedIn, aucune page Joind.in, aucune vidéo trouvés. Les titres sont préfixés par la ville.",
+  "tldr": "**Une journée PHP très tournée vers l'architecture et le métier de développeur** dans quatre villes complètes : découplage, DDD et hexagonal, reprise de legacy, outillage de l'écosystème (API Platform 3, Composer, Serializer, conteneurs, profiling), avec une IA quasi absente et quelques talks remarqués hors code (semaine de 4 jours, magie et communication, open source rentable).",
+  "keyTakeaways": [
+    "Dans un legacy, **commencer par une seule bonne pratique** suffit à enclencher un cercle vertueux ; refactoriser en trois temps : préparer et découper, sécuriser, puis modifier (Hammaoui, d'après Les-Tilleuls et son interview).",
+    "Les microservices sans maturité technique ni connaissance métier mènent au « monolithe distribué » ; un **monolithe modulaire** peut être plus performant et plus fiable (Jacquot et Stefanski, d'après Les-Tilleuls).",
+    "Profiler gratuitement est possible : sampling ou instrumentation, flame graphs, et des outils libres comme **Excimer**, xhprof ou Pyroscope (Silvestre, d'après Les-Tilleuls).",
+    "Conteneuriser PHP : préférer les images Debian à Alpine, utiliser FrankenPHP plutôt que PHP-FPM, et ne pas sous-estimer la complexité de Kubernetes (Dunglas, d'après Les-Tilleuls).",
+    "Connaître les fonctionnalités de PostgreSQL (CTE, MERGE, JSON Path, index spécialisés, FDW) évite d'écrire en PHP ce que la base fait mieux (Avrot, d'après Les-Tilleuls).",
+    "Découpler avec mesure : contrôleurs à action unique, DTO via `MapRequestPayload`, pas d'objet Request dans les services, et **dupliquer plutôt que rendre illisible** (Chalas, d'après Les-Tilleuls).",
+    "DDD et architecture hexagonale sont distincts : le DDD est neutre vis-à-vis de l'architecture, l'hexagonal est un bon style pour isoler un modèle de domaine (Galati, slides).",
+    "Construire une **stratégie de test collective et documentée** en répondant à Qui, Quoi, Comment, Quand, Où (Bourlard, slides).",
+    "Raccourcir progressivement les cycles de release jusqu'à rendre la livraison banale, et garder le pipeline simple (Chevrel, interview, speaker)."
+  ],
+  "sessions": [
+    {
+      "id": "lille-api-platform-2-7-vers-3-x-upgrade-path",
+      "day": "2024-05-24",
+      "type": "talk",
+      "title": "[Lille] API Platform 2.7 vers 3.x : l'upgrade-path ultime !",
+      "speakers": ["Vincent Chalamon — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (employeur du speaker)"],
+      "summary": "- Talk d'ouverture de Lille : migrer de la v2, plus maintenue, vers API Platform 3 (programme).\n- Les-Tilleuls retient que *« les outils de migration automatisés fournis par API Platform font l'essentiel du boulot »*.\n- Le talk se concentre sur les **cas difficiles**, qui surviennent quand le code personnalisé s'est écarté des bonnes pratiques.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "lille-introduire-de-la-qualite-dans-un-projet-legacy",
+      "day": "2024-05-24",
+      "type": "talk",
+      "title": "[Lille] Introduire de la qualité dans un projet legacy",
+      "speakers": ["Rachid Hammaoui"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop", "Rachid Hammaoui, interview AFUP du 29/04/2024 (speaker)"],
+      "summary": "- Une checklist progressive : audit du code, conventions, revue de code, analyse statique, stratégie de test, puis refactoring (Les-Tilleuls, qui juge les conseils bons).\n- Méthode de refactorisation retenue : *« Préparer / Découper, Sécuriser et verrouiller, enfin Modifier »*.\n- Dans son interview (speaker), il rappelle qu'*« un projet legacy est avant tout un projet qui a réussi »* et qu'**il suffit d'initier une bonne pratique** pour enclencher un cercle vertueux.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "lille-profiler-son-application-php-en-toute-gratuite",
+      "day": "2024-05-24",
+      "type": "talk",
+      "title": "[Lille] Profiler son application PHP en toute gratuité",
+      "speakers": ["Valentin Silvestre"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop"],
+      "summary": "- Distinction entre profilers **par sampling et par instrumentation**, lecture des flame graphs et call graphs (Les-Tilleuls).\n- Panorama d'outils libres (xhprof, Pyroscope, **Excimer**, son favori) et propriétaires (Blackfire, jugé le plus agréable à utiliser, Tideways).\n- Point de départ : *« Trouver pourquoi une application est lente n'est pas forcément chose aisée »*.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "lille-php-particularly-horrible-programs",
+      "day": "2024-05-24",
+      "type": "talk",
+      "title": "[Lille] PHP: Particularly Horrible Programs",
+      "speakers": ["Gina Banyard — PHP Foundation"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop"],
+      "summary": "- Live coding par une core-contributrice de PHP : de nombreuses façons de faire **se comporter l'interpréteur de manière absurde** (Les-Tilleuls).\n- Beaucoup de ces bizarreries ont déjà été corrigées dans le langage.\n- Consigne retenue : *« À ne surtout pas refaire à la maison ! »*",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "lille-release-management-de-firefox",
+      "day": "2024-05-24",
+      "type": "talk",
+      "title": "[Lille] Release Management de Firefox",
+      "speakers": ["Pascal Chevrel — Mozilla"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop", "Pascal Chevrel, interview AFUP du 08/04/2024 (speaker)"],
+      "summary": "- Comment Mozilla livre Firefox **toutes les deux semaines** à des centaines de millions d'utilisateurs, et gère les remontées de bugs (programme, Les-Tilleuls).\n- Les-Tilleuls salue un *« Retour d'expérience at scale extrêmement intéressant »*, utile notamment aux mainteneurs de logiciels libres.\n- Conseils de l'interview (speaker) pour les petites équipes : pipeline simple, automatisation pesée au regard de son coût de maintenance, **cycles raccourcis progressivement** jusqu'à rendre la livraison routinière.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "lille-api-platform-v3-developpeuse-csharp",
+      "day": "2024-05-24",
+      "type": "lightning",
+      "title": "[Lille] J'ai testé API Platform V3, qu'est ce que j'en pense en tant que développeuse C# ?",
+      "speakers": ["Laura Durieux"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop"],
+      "summary": "- Format court (20 min) : une développeuse C#/.NET, qui n'avait plus fait de PHP depuis ses études, construit une API avec API Platform en stream Twitch (programme, Les-Tilleuls).\n- Les-Tilleuls juge le défi réussi et parie que *« Laura n'utilisera pas C# pour sa prochaine API »*.\n- Le compte-rendu, rédigé par l'entreprise qui maintient API Platform, ne détaille ni les points forts ni les faiblesses relevés.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "lille-microservices-maxi-supplice",
+      "day": "2024-05-24",
+      "type": "talk",
+      "title": "[Lille] Microservices, maxi supplice",
+      "speakers": ["Yann Jacquot — Theodo", "Alexis Stefanski — CircularX"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop", "Interview AFUP du 13/05/2024 (speakers)"],
+      "summary": "- Contexte (interview, speakers) : un projet né en 7 puis 4 microservices, fortement couplés, avec des requêtes à **plus de 44 s au p95** chez de gros clients ; en réalité un *« monolithe distribué »*.\n- Migration menée par 4 développeurs et ops en environ 3 mois : instrumentation, itérations peu risquées, ADR et appui du CTO pour convaincre le management.\n- Les-Tilleuls retient la cause, des microservices adoptés **sans maturité technique ni connaissance métier**, et le résultat : *« un monolithe bien structuré et modulaire »*, plus performant, plus fiable et moins complexe.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "lille-gitlab-et-drupal",
+      "day": "2024-05-24",
+      "type": "lightning",
+      "title": "[Lille] Gitlab et Drupal",
+      "speakers": ["Ines Wallon"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop"],
+      "summary": "- Format court : mise en place de **GitLab CI** sur des projets Drupal, revue de code, écoconception et collaboration d'équipe (programme).\n- Les-Tilleuls note que *« la plupart de ses conseils peuvent aussi s'appliquer dans les projets PHP utilisant d'autres CMS »*.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "lille-applications-php-conteneurisees",
+      "day": "2024-05-24",
+      "type": "talk",
+      "title": "[Lille] Applications PHP conteneurisées : retour d'expériences et bonnes pratiques",
+      "speakers": ["Kévin Dunglas — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop (employeur du speaker)", "Kévin Dunglas, interview AFUP du 15/04/2024 (speaker)"],
+      "summary": "- Talk de clôture de Lille, appuyé sur les squelettes Docker d'API Platform et de Symfony (programme).\n- Les-Tilleuls retient **13 astuces** de confort et de performance, dont la préférence pour les **images Debian plutôt qu'Alpine**, et le passage du starter-kit Symfony Docker à **FrankenPHP**, plus performant que PHP-FPM.\n- Sur Kubernetes : *« il ne faut pas négliger la complexité qu'il introduit »* ; Skaffold est présenté comme outil d'appoint.\n- Dans son interview (speaker), il juge qu'un déploiement classique ou Docker Compose suffit aux petites applications, Kubernetes demandant une équipe qui le connaît *« sur le bout des doigts »*.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "lyon-attributs-en-php-de-la-magie-a-l-adoption",
+      "day": "2024-05-24",
+      "type": "talk",
+      "title": "[Lyon] Attributs en PHP : un regard rétrospectif de la magie à l'adoption",
+      "speakers": ["Kevin Balicot"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop"],
+      "summary": "- Des annotations Doctrine parsées dans la PHPDoc aux **attributs natifs de PHP 8.0**, sans parsing de chaînes et mieux gérés par les IDE ; Symfony en propose désormais 48 (Les-Tilleuls).\n- Cas d'usage montrés : feature flags et profiler maison.\n- Mises en garde : *« un attribut ne doit pas devenir une dépendance forte »*, et un traitement lourd à l'exécution (dans un listener) peut coûter en performance.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "lyon-tresors-caches-de-postgresql",
+      "day": "2024-05-24",
+      "type": "talk",
+      "title": "[Lyon] À la Recherche des Trésors Cachés de PostgreSQL",
+      "speakers": ["Lætitia Avrot — EDB"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop", "Post Mastodon de Stéphane (@s_hulard)"],
+      "summary": "- Objectif affiché : *« que l'on sache que ces fonctionnalités existent »* et que l'on aille ensuite lire la documentation (Les-Tilleuls).\n- Tour d'horizon : transactions, commentaires sur les objets SQL, index spécialisés, Foreign Data Wrappers, MERGE et CTE, fonctions JSON (JSON Path, JSON tables).\n- Message central : beaucoup de développeurs écrivent en PHP **ce que la base ferait mieux**.\n- Limite relevée par Les-Tilleuls : certaines fonctionnalités ne passent pas par l'ORM Doctrine, *« un autre débat »*.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "lyon-roles-permissions-marque-blanche-feature-flipping",
+      "day": "2024-05-24",
+      "type": "talk",
+      "title": "[Lyon] Rôles & permissions : comment développer une marque blanche avec du Feature Flipping",
+      "speakers": ["Florian Bogey"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop"],
+      "summary": "- Distinction retenue : les rôles sont des groupes statiques, *« les permissions sont des règles métier spécifiques »* évaluées dynamiquement sur une ressource (Les-Tilleuls).\n- Cas GL Events : un extranet **multi-tenant sur une seule instance et une seule base**, personnalisé par variable d'environnement selon le domaine ; feature flipping maison à base de Voters et d'un CRUD en back-office.\n- Performance : requêtes simples et mise en cache des calculs partagés (Redis), ce qui demande de la discipline.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "lyon-semaine-de-4-jours-levier-d-egalite",
+      "day": "2024-05-24",
+      "type": "talk",
+      "title": "[Lyon] Au-delà des heures : la semaine de 4 jours comme levier d'égalité",
+      "speakers": ["Albane Veyron"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop", "Albane Veyron, interview AFUP du 12/03/2024 (speaker)"],
+      "summary": "- Définition : *« diminuer le temps de travail tout en gardant un salaire complet »*, à distinguer d'un contrat à 4/5 (Les-Tilleuls).\n- Bénéfices avancés : équilibre de vie, moins d'arrêts maladie, **réduction des inégalités** (notamment pour les mères), moindre turnover, gains environnementaux.\n- L'interview (speaker) s'appuie sur une enquête auprès d'environ 500 personnes et cite une baisse de 71 % de l'épuisement professionnel dans des entreprises britanniques.\n- Lecture critique : ces chiffres sont rapportés sans méthodologie ; la speaker insiste elle-même sur un format **adapté et co-construit**.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "lyon-rendre-le-serializer-de-symfony-plus-rapide",
+      "day": "2024-05-24",
+      "type": "talk",
+      "title": "[Lyon] Et donc du coup, j'ai voulu rendre le Serializer de Symfony plus rapide...",
+      "speakers": ["Mathias Arlaud"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop"],
+      "summary": "- Constat : le Serializer est puissant mais lent, surtout avec Doctrine et de grosses collections, à cause de l'API Reflection (Les-Tilleuls).\n- Pistes présentées : le composant **TypeInfo** (expérimental dans Symfony 7.1), un **JsonEncoder en streaming** qui réutilise ses calculs, et des mappers comme l'automapper de JoliCode.\n- Travail encore en cours ; le speaker voit ces événements comme *« une occasion de discuter avec d'autres contributeurs »*.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "lyon-composer-101",
+      "day": "2024-05-24",
+      "type": "lightning",
+      "title": "[Lyon] Composer 101 : Gérer Efficacement ses Dépendances PHP",
+      "speakers": ["Alexandre Daubois"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop"],
+      "summary": "- Format court pour débutants : `require`, `install`, `update`, et des commandes méconnues comme **`bump`, `audit` et `status`** (Les-Tilleuls).\n- Autres points : SemVer et flags de stabilité, SHA Git pour les dépendances de dev, optimisation de l'autoload, vérification des versions de PHP et des extensions.\n- Perspective évoquée : le projet PIE de la PHP Foundation pour installer les extensions. Les-Tilleuls parle d'une *« chouette présentation »*.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "lyon-plongee-dans-l-injection-de-dependances",
+      "day": "2024-05-24",
+      "type": "talk",
+      "title": "[Lyon] Plongée dans l'injection de dépendances",
+      "speakers": ["Florian Merle"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop"],
+      "summary": "- Construction d'un conteneur de dépendances maison, racontée comme un road trip à moto, pour *« démystifier le fonctionnement des conteneurs de dépendances »* et non pour la production (Les-Tilleuls).\n- Notions parcourues : **PSR-11** (`get`, `has`), services, paramètres, autowiring, itérateurs tagués pour une chaîne de responsabilité, décoration avec `@.inner`.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "lyon-ddd-archi-hexagonale",
+      "day": "2024-05-24",
+      "type": "talk",
+      "title": "[Lyon] DDD !== Archi hexagonale",
+      "speakers": ["Benoit Galati"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop"],
+      "summary": "- Les slides posent les définitions : l'architecture hexagonale (Cockburn) sépare un intérieur métier d'un extérieur technique, **les dépendances pointant toujours vers l'intérieur**, via ports et adapters ; le DDD (Evans, Vernon) aligne métier et technique par des patterns stratégiques (langage ubiquitaire, bounded context, context mapping) et tactiques (agrégats, value objects, repositories…).\n- Idées reçues démontées : le DDD ne serait que pour les domaines complexes, exigerait un langage commun à toute l'entreprise, un domaine « pur ».\n- Conclusion des slides : **le DDD simplifie plutôt qu'il ne complique**, il est neutre vis-à-vis de l'architecture, et l'hexagonal est un très bon style pour isoler un modèle de domaine.\n- Les-Tilleuls retient la démo d'une même petite application en DDD seul, en hexagonal seul, puis combinés : *« ils ne vont pas nécessairement de pair »*.",
+      "summarySources": ["blog", "slides", "program"]
+    },
+    {
+      "id": "lyon-recettes-de-decouplage-equilibre-avec-symfony",
+      "day": "2024-05-24",
+      "type": "talk",
+      "title": "[Lyon] Recettes de découplage équilibré avec Symfony",
+      "speakers": ["Robin Chalas"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop"],
+      "summary": "- Talk de clôture : le couplage zéro n'est pas toujours utile, mais certaines isolations facilitent la maintenance et le changement de bibliothèque (Les-Tilleuls).\n- Pratiques retenues : **contrôleurs à action unique**, injection explicite, pas d'`AbstractController` systématique, DTO avec `MapRequestPayload`, services applicatifs, commandes et handlers Messenger, interfaces devant les repositories Doctrine, pas d'objet Request dans les services.\n- Garde-fous : se méfier des services « manager » fourre-tout et accepter un peu de duplication : *« Parfois, il vaut mieux dupliquer du code que d'avoir un code non lisible »*.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "nancy-anatomie-d-un-projet-open-source-profitable",
+      "day": "2024-05-24",
+      "type": "talk",
+      "title": "[Nancy] Anatomie d'un projet open-source profitable",
+      "speakers": ["François Zaninotto — marmelab"],
+      "feedbackFrom": ["François Zaninotto, interview AFUP du 06/05/2024 (speaker)", "Posts Mastodon de marmelab (employeur du speaker)"],
+      "summary": "- Talk non technique : comment react-admin finance une équipe dédiée **sans levée de fonds ni marketing agressif** ; *« nous sommes payés pour faire de l'open-source »* (interview, speaker).\n- Facteurs cités : qualité du code, réactivité, approche produit, documentation, support, animation de communauté et gestion financière.\n- Positions de l'interview : sponsoring et dons n'ont pas marché pour lui ; il a fallu plus de 15 ans pour rendre un projet rentable ; les licences « source available » peuvent limiter l'exploitation par les grandes entreprises.\n- Aucun retour de participant trouvé ; marmelab salue seulement les talks, l'organisation et le public.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "nancy-scaler-une-application-php-de-plus-de-20-ans",
+      "day": "2024-05-24",
+      "type": "talk",
+      "title": "[Nancy] Comment scaler une application PHP vieille de plus de 20 ans ... sans frozen zone ?",
+      "speakers": ["Arnaud Lahaxe — BoursoBank"],
+      "feedbackFrom": ["Arnaud Lahaxe, interview AFUP du 17/04/2024 (speaker)"],
+      "summary": "- Site de BoursoBank vieux de plus de 20 ans, *« sur laquelle travaillent 70 devs avec plusieurs livraisons par jour »*, avec des pics de trafic à l'ouverture des marchés (interview, speaker).\n- Leviers annoncés : **architecture N-tiers**, cache HTTP **Varnish**, profiling Blackfire et sensibilisation des développeurs à la performance (programme).\n- Aucun retour de participant trouvé.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "nancy-combat-pour-la-coherence-et-l-harmonie-du-front",
+      "day": "2024-05-24",
+      "type": "talk",
+      "title": "[Nancy] Combat pour la cohérence et l'harmonie du front",
+      "speakers": ["Tiphaine Perra — BoursoBank", "Anthony Demangel — BoursoBank"],
+      "feedbackFrom": ["Interview AFUP du 24/04/2024 (speakers)"],
+      "summary": "- Garder un design et un code cohérents entre plusieurs interfaces web : industrialiser la génération des éléments graphiques et obtenir un consensus entre parties prenantes (programme, interview).\n- Sujets annoncés : maintenance, évolutivité, communication entre applications, diffusion jusqu'aux applications anciennes.\n- Lecture des speakers : *« les conflits viennent souvent d'un manque d'information/compréhension »*. Aucun retour de participant trouvé.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "nancy-containers-the-hard-way",
+      "day": "2024-05-24",
+      "type": "talk",
+      "title": "[Nancy] Containers, the hard way",
+      "speakers": ["Julien Redel — Siagilus"],
+      "feedbackFrom": ["Julien Redel, interview AFUP du 10/04/2024 (speaker)"],
+      "summary": "- Comprendre ce qu'est vraiment un conteneur en le **construisant pas à pas**, après un rappel du contexte (programme).\n- Bénéfices listés dans l'interview (speaker) : portabilité, gestion des dépendances, isolation, déploiement et scalabilité, pour tout type de projet.\n- Aucun retour de participant trouvé.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "poitiers-une-application-de-bureau-en-php",
+      "day": "2024-05-24",
+      "type": "talk",
+      "title": "[Poitiers] Une application de bureau en PHP ? Vraiment ?",
+      "speakers": ["James Hemery — Yield Studio"],
+      "feedbackFrom": ["Rachel Foucard (TYPO3 Association)", "James Hemery, interview AFUP du 18/04/2024 (speaker)"],
+      "summary": "- Présentation de **NativePHP** pour créer des applications de bureau macOS, Windows et Linux en PHP, avec live coding (slides publiées le jour même et dépôt GitHub du code).\n- Argument de l'interview (speaker) : les PWA manquent encore de fonctionnalités natives.\n- Rachel Foucard (TYPO3) dit avoir été **surprise** qu'une application de bureau puisse être écrite en PHP.",
+      "summarySources": ["blog", "slides", "program"]
+    },
+    {
+      "id": "poitiers-symfony-architecture-hexagonale-et-cqrs",
+      "day": "2024-05-24",
+      "type": "talk",
+      "title": "[Poitiers] Symfony, Architecture Hexagonale et CQRS",
+      "speakers": ["Arnaud Langlade"],
+      "feedbackFrom": ["Rachel Foucard (TYPO3 Association)", "Arnaud Langlade, interview AFUP du 11/04/2024 (speaker)"],
+      "summary": "- Structurer une application avec **hexagonal et CQRS** en n'utilisant que quelques composants Symfony (programme).\n- Rachel Foucard (TYPO3) salue une explication **pédagogique**.\n- Nuances de l'interview (speaker) : inutile pour du CRUD simple ; les patterns tactiques du DDD *« ne sont utiles que pour des applications métier »* ; commencer par des ateliers avec les experts métier (example mapping, event storming).",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "poitiers-definir-sa-strategie-de-test",
+      "day": "2024-05-24",
+      "type": "talk",
+      "title": "[Poitiers] Définir sa stratégie de test",
+      "speakers": ["Donovan Bourlard — Yousign"],
+      "summary": "- Les slides partent d'un constat : sans direction, les tests dérivent (doublons, scénarios oubliés, compensation par des tests end-to-end) ; conseil : **commencer les revues de code par la lecture des tests**.\n- Rappel de la pyramide (environ 70 % unitaires, 20 % composants et intégration, 10 % fonctionnels) et des types de tests (contrat, performance, résilience, sécurité…).\n- Méthode illustrée par une refonte du site de l'AFUP : répondre à **Qui, Quoi, Comment, Quand, Où** (outils cités : PHPUnit, PHPSpec, Pest, Behat, Cypress, K6, Panther).\n- Conclusion : une stratégie **construite collectivement, documentée et évolutive**, adossée à un processus qualité plus large (PHPStan, Deptrac, tickets bien affinés). Aucun retour de participant trouvé.",
+      "summarySources": ["slides", "program"]
+    },
+    {
+      "id": "poitiers-les-chaines-de-caracteres-101",
+      "day": "2024-05-24",
+      "type": "talk",
+      "title": "[Poitiers] Les chaînes de caractères 101",
+      "speakers": ["Marion Hurteau"],
+      "feedbackFrom": ["Rachel Foucard (TYPO3 Association)"],
+      "summary": "- Jeux de caractères, collations, Unicode et graphèmes, entre théorie et pratique (programme).\n- Rachel Foucard (TYPO3) doutait d'apprécier le sujet et l'a trouvé **« drôle, subtil et fascinant »** (traduit de l'anglais).",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "poitiers-magie-et-communication",
+      "day": "2024-05-24",
+      "type": "talk",
+      "title": "[Poitiers] Magie & Communication",
+      "speakers": ["Julien Deroses"],
+      "feedbackFrom": ["Rachel Foucard (TYPO3 Association)", "Julien Deroses, interview AFUP du 14/03/2024 (speaker)"],
+      "summary": "- Techniques des magiciens et des communicants pour **capter et garder l'attention** lors d'une prise de parole (programme).\n- Rachel Foucard (TYPO3) retient des **tours de magie de bluff** réalisés sur scène.\n- Parallèle de l'interview (speaker) : la mise au point d'un tour ressemble au développement logiciel, de l'idée au prototype puis aux itérations.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "poitiers-event-sourcing-vu-par-un-jeune-developpeur",
+      "day": "2024-05-24",
+      "type": "talk",
+      "title": "[Poitiers] L'Event Sourcing, vu par un jeune développeur",
+      "speakers": ["Valmont Pehaut-Pietri"],
+      "feedbackFrom": ["Valmont Pehaut-Pietri, interview AFUP du 25/04/2024 (speaker)"],
+      "summary": "- Introduction narrative à l'event sourcing à partir de l'expérience d'un développeur junior (programme).\n- Positions de l'interview (speaker) : utile pour le suivi précis d'événements (audit, réservation), complémentaire de CQRS, mais **coûteux en complexité, en formation et en performance** (reconstruction par rejeu, snapshots) ; mieux vaut maîtriser le CRUD d'abord.\n- Aucun retour de participant trouvé.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "poitiers-clean-code-or-dirty-code",
+      "day": "2024-05-24",
+      "type": "talk",
+      "title": "[Poitiers] Clean code or Dirty code ?",
+      "speakers": ["Frédéric Bouchery — CCMBenchmark"],
+      "feedbackFrom": ["Frédéric Bouchery, interview AFUP du 07/05/2024 (speaker)"],
+      "summary": "- Ce que recouvre le « clean code », comment PHP peut le compliquer et comment le code se dégrade même sans y toucher (programme).\n- Thèses de l'interview (speaker) : *« Il n'est pas possible de mesurer la propreté d'un code »* ; privilégier le court terme tient rarement **au-delà de deux ans** ; la qualité est *« du temps investi »* ; le turnover accroît l'entropie.\n- Nuance : une startup visant une revente rapide peut accepter une qualité moindre. Aucun retour de participant trouvé.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "poitiers-manage-and-prevent-vulnerabilities",
+      "day": "2024-05-24",
+      "type": "lightning",
+      "title": "[Poitiers] Manage and prevent vulnerabilities",
+      "speakers": ["Ambroise Rougier — Yogosha"],
+      "feedbackFrom": ["Ambroise Rougier, interview AFUP du 15/05/2024 (speaker)"],
+      "summary": "- Format court : preuve de concept d'une faille dans un environnement PHP (détection, exploitation, correctif) et méthode de Yogosha pour traiter les signalements (programme).\n- Message de l'interview (speaker) : **la prévention vaut mieux que la réaction** ; partir d'une politique de risque, puis *« créer une culture de la sécurité »* dans tout le processus DevSecOps.\n- Sur l'IA, il la voit à la fois comme renfort de l'analyse et comme *« la nouvelle zone d'attaque »*. Aucun retour de participant trouvé.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "poitiers-intelligence-artificielle-en-production",
+      "day": "2024-05-24",
+      "type": "lightning",
+      "title": "[Poitiers] Intelligence Artificielle en production",
+      "speakers": ["Iana Iatsun — Banque de France"],
+      "feedbackFrom": ["Iana Iatsun, interview AFUP du 04/04/2024 (speaker)"],
+      "summary": "- Seule session du programme sur l'IA : pratiques **MLOps** pour passer un modèle de machine learning en production (programme).\n- Points de l'interview (speaker) : la qualité des données d'entraînement détermine celle du modèle ; *« Il ne faut pas sous-estimer le temps nécessaire pour le nettoyage et l'exploration des données »* ; des biais dans les données remettent tout le système en question.\n- Aucun retour de participant trouvé.",
+      "summarySources": ["program", "blog"]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "[Nancy] EventStore & PHP (M. Veber)",
+    "[Nancy] OpenTelemetry (D. Kayumbi Hodieb)",
+    "[Nancy] Gamechanging CSS! (R. Goetter)",
+    "[Nancy] Architecture et pattern en mode SaaS (E. Bouard)",
+    "[Nancy] TDD : principe, architecture synergique, types et stratégie de tests (J.-P. Laginier)"
+  ],
+  "sources": [
+    { "label": "AFUP Day 2024, page générale (4 villes)", "url": "https://event.afup.org/afup-day-2024/" },
+    { "label": "Programme Lille", "url": "https://event.afup.org/afup-day-2024/afup-day-2024-lille/programme/" },
+    { "label": "Programme Lyon", "url": "https://event.afup.org/afup-day-2024/afup-day-2024-lyon/programme/" },
+    { "label": "Programme Nancy", "url": "https://event.afup.org/afup-day-2024/afup-day-2024-nancy/programme/" },
+    { "label": "Programme Poitiers", "url": "https://event.afup.org/afup-day-2024/afup-day-2024-poitiers/programme/" },
+    { "label": "Les-Tilleuls.coop, « AFUP Day Lyon 2024 » (27/05/2024)", "url": "https://les-tilleuls.coop/blog/afup-day-lyon-2024" },
+    { "label": "Les-Tilleuls.coop, « Retour sur AFUP Day Lille 2024 » (04/06/2024)", "url": "https://les-tilleuls.coop/blog/retour-sur-afup-day-lille-2024" },
+    { "label": "Rachel Foucard, « TYPO3 Visits AFUP Day 2024 in Poitiers », TYPO3 Association (06/06/2024)", "url": "https://news.typo3.com/archive/typo3-visits-afup-day-2024-in-poitiers" },
+    { "label": "Benoit Galati, slides « DDD !== Archi hexagonale » (Speaker Deck)", "url": "https://speakerdeck.com/bgalati/2024-05-24-afup-day-2024-ddd-equals-equals-archi-hexagonale" },
+    { "label": "Donovan Bourlard, slides « Définir sa stratégie de test » (Speaker Deck)", "url": "https://speakerdeck.com/awkan/afup-day-poitiers-2024-definir-sa-stragegie-de-test" },
+    { "label": "James Hemery, slides « Une application de bureau en PHP ? Vraiment ? » (Speaker Deck)", "url": "https://speakerdeck.com/jameshemery/une-application-de-bureau-en-php-vraiment-afup-day-poitiers-2024" },
+    { "label": "AFUP, interviews « La parole est aux speakers » de l'AFUP Day 2024 (19 lues, mars à mai 2024)", "url": "https://event.afup.org/category/afup-day-2024" },
+    { "label": "Mastodon, hashtags #afupday et #afupday2024 (Les-Tilleuls.coop, marmelab, Frédéric Hardy de Norsys, CH Studio, @s_hulard), 23 au 29 mai 2024", "url": "https://phpc.social/tags/afupday" },
+    { "label": "LinkedIn, Joind.in, YouTube : aucun retour ni vidéo trouvé sur l'édition 2024 (recherches du 11/10/2026)" }
+  ]
 }

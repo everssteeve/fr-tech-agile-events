@@ -12,9 +12,9 @@
   "dateConfidence": "ok",
   "note": "Jeudi 6 novembre 2025, Folies Bergère (« November 6th 2025 », site officiel archivé). Une journée, une piste : 8 talks de 20 minutes avec Q&A et 6 lightning talks de 10 minutes l'après-midi ; maîtresse de cérémonie Anne-Claire Baschet (Mirakl) ; 1 500 participants annoncés ; clôture par le lancement de l'European AI Championship et une soirée Dust. Side-events : ateliers Labelia/Datacraft (4/11) et Pruna AI (5/11).",
   "status": "synthesized",
-  "synthesisUpdatedAt": "2026-09-28",
-  "corpus": "Agenda et page d'accueil officiels archivés (Wayback Machine, 14 sessions), playlist dotAI 2025 de la chaîne dotConferences (13 vidéos publiées le 14/11/2025, dont 10 transcrites), un compte-rendu de participant (blog de Bartosz Teleńczuk, 7/11/2025), un fil Bluesky de participant (Charles Vin, 6-7/11) et un post Bluesky de speaker (Gaël Varoquaux). Sept recherches web (LinkedIn, blogs, presse) n'ont rien apporté d'autre.",
-  "limits": "Retours participants très minces : **un seul compte-rendu détaillé** et un fil Bluesky, aucun post LinkedIn lisible (mur de connexion, résultats limités aux annonces d'avant l'événement). Les résumés reposent surtout sur les transcriptions automatiques ; trois lightning talks (Chopra, Charpentier, Gouze) ne sont connus que par le blog, et celui d'Alex Laterre (InstaDeep) n'a ni vidéo ni titre retrouvé.",
+  "synthesisUpdatedAt": "2026-10-11",
+  "corpus": "Agenda et page d'accueil officiels archivés (Wayback Machine, 14 sessions), playlist dotAI 2025 de la chaîne dotConferences (13 vidéos publiées le 14/11/2025, toutes transcrites, dont les 3 lightning talks Gouze, Chopra et Charpentier ajoutés le 11/10/2026), un compte-rendu de participant (blog de Bartosz Teleńczuk, 7/11/2025), un fil Bluesky de participant (Charles Vin, 6-7/11) et un post Bluesky de speaker (Gaël Varoquaux). Sept recherches web (LinkedIn, blogs, presse) n'ont rien apporté d'autre ; une seconde passe le 11/10/2026 (sept recherches, Bluesky, YouTube) n'a trouvé que des annonces d'avant l'événement (Maddyness, FrenchWeb).",
+  "limits": "Retours participants très minces : **un seul compte-rendu détaillé** et un fil Bluesky, aucun post LinkedIn lisible (mur de connexion, résultats limités aux annonces d'avant l'événement). Les résumés reposent surtout sur les transcriptions automatiques (13 vidéos sur 14 sessions) ; seul le lightning talk d'Alex Laterre (InstaDeep) n'a ni vidéo ni titre retrouvé et n'est connu que par le blog.",
   "tldr": "Une journée sur **la fiabilité de l'IA en production** : typer et contraindre les sorties des LLM (Gupta, Louf), confier aux petits modèles les tâches ennuyeuses (Potencier), faire collaborer des agents qui se vérifient entre eux (Polu), tout en rappelant que **l'humain reste dans la boucle** et que l'autonomie des agents en production n'en est qu'au niveau 2 (Palcuie).",
   "keyTakeaways": [
     "Traiter chaque appel LLM comme une fonction typée : outil = union, appels parallèles = tableau d'unions, agent = boucle while avec un état (Gupta).",
@@ -25,7 +25,8 @@
     "Ne pas licencier les SRE : cartographier l'autonomie des agents de production sur les niveaux de la voiture autonome (détection, réponse, prévention) ; on est aujourd'hui au niveau 2 (Palcuie, retenu par Teleńczuk).",
     "Séparer fit et transform dans la préparation des données pour pouvoir rejouer le pipeline sur des données nouvelles et faire de la validation croisée (Varoquaux).",
     "Commencer petit pour gagner la confiance dans une livraison pilotée par l'IA : laisser d'abord l'IA choisir la première cohorte canary (Ndukwe).",
-    "Mesurer l'énergie à l'inférence, qui pèse la majorité de la consommation de l'IA, et la réduire par quantization, cache, compilation et flash attention (Charpentier, via Teleńczuk)."
+    "Mesurer l'énergie à l'inférence, qui pèse la majorité de la consommation de l'IA, et la réduire par quantization, cache, compilation et factorisation (Charpentier).",
+    "Avant de brancher un agent sur les données, faire le data modeling : un périmètre restreint de jeux de données fiables, documentés et non ambigus, avec le schéma directement dans le contexte (Gouze)."
   ],
   "sessions": [
     {
@@ -79,9 +80,9 @@
       "title": "AI Agents for data: get insights, not SQL",
       "speakers": ["Claire Gouze — nao Labs"],
       "feedbackFrom": ["Bartosz Teleńczuk (blog)"],
-      "summary": "- *Vidéo publiée, non transcrite ; résumé d'après un unique compte-rendu.*\n- Les agents ne tirent des insights des données internes qu'à deux conditions : des **modèles de données propres** et des **règles de documentation strictes** (Teleńczuk).\n- Pour le blogueur, c'est *« peut-être le cœur de toute la discussion »* : l'IA est puissante mais ses bénéfices ne sont pas automatiques.",
-      "summarySources": ["blog"],
-      "video": { "youtubeId": "GeqST1LbjeM", "title": "AI Agents for data: get insights, not SQL - Claire Gouze - nao", "publishedAt": "2025-11-14", "transcript": false }
+      "summary": "- Sur scène : accroche provocatrice, *« les équipes data sont remplacées par l'IA, et j'en fais partie »* ; mais le travail data est **tridimensionnel** : il faut le contexte du code, celui des données (schéma) et celui du métier (définitions des indicateurs).\n- Six étapes pour un agent fiable : text-to-SQL avec le schéma ; outils d'exécution SQL et de lecture du schéma, MCP vers les catalogues ; **schéma pré-découvert et profilé directement dans le contexte** plutôt que derrière un outil ; optimisation du contexte (RAG, gestion de la fenêtre) ; **data modeling** ; enfin des **sous-agents par domaine de données** sous un orchestrateur.\n- Point clé : la donnée est sale ; *« si votre IA voit de l'ambiguïté dans vos données, vos collègues la voient aussi »* : restreindre l'agent à une vingtaine de jeux de données fiables, documentés et non ambigus.\n- Présentation de nao, éditeur de code IA pour la data (fork de VS Code connecté à l'entrepôt). Conclusion : un entrepôt représente bien plus de tokens qu'un dépôt de code, *« l'IA ne fera pas le data modeling pour vous »* ; les équipes data ne seront pas remplacées mais accélérées.\n- Retenu par un participant : les deux conditions, **modèles de données propres** et **règles de documentation strictes**, *« peut-être le cœur de toute la discussion »* : les bénéfices de l'IA ne sont pas automatiques (Teleńczuk).",
+      "summarySources": ["transcript", "blog"],
+      "video": { "youtubeId": "GeqST1LbjeM", "title": "AI Agents for data: get insights, not SQL - Claire Gouze - nao", "publishedAt": "2025-11-14", "transcript": true }
     },
     {
       "id": "ai-and-memory-a-wall-to-cross",
@@ -90,9 +91,9 @@
       "title": "AI and memory: A wall to cross!",
       "speakers": ["Tejas Chopra — Netflix"],
       "feedbackFrom": ["Bartosz Teleńczuk (blog)"],
-      "summary": "- *Vidéo publiée, non transcrite ; résumé d'après un unique compte-rendu.*\n- Les LLM sont de plus en plus **limités par la mémoire**, dont la taille sur les puces IA progresse moins vite que le calcul : sans précautions d'infrastructure d'entraînement et d'architecture, **le calcul reste sous-utilisé** (Teleńczuk).",
-      "summarySources": ["blog"],
-      "video": { "youtubeId": "JyocX-G6h8o", "title": "AI and memory: A wall to cross! - Tejas Chopra - Netflix", "publishedAt": "2025-11-14", "transcript": false }
+      "summary": "- Sur scène : *« l'IA n'est plus limitée par le calcul, elle est limitée par la mémoire »*. Chiffres avancés par le speaker : calcul multiplié par 60 000 en vingt ans contre 100 pour la DRAM, taille des transformers multipliée par 200 en deux ans contre 2 pour la mémoire : c'est le **« mur de la mémoire »**.\n- Conséquences : des GPU coûteux **au repos en attente de données**, des GPU achetés surtout pour faire tenir le modèle (jusqu'à 12 To de mémoire pour un entraînement contre ~80 Go par GPU), des saturations « at capacity » de ChatGPT attribuées à la mémoire ; un accès hors puce environ mille fois plus lent qu'une opération de calcul.\n- Palliatifs actuels jugés non durables : compression, pruning, distillation, recalcul des gradients, mémoire hiérarchisée (tenseurs chauds sur GPU, froids ailleurs), sharding. Pistes matérielles : HBM3e, CXL pour mutualiser la mémoire, calcul en mémoire, empilement 3D.\n- Message : concevoir l'IA **« memory first »** et repenser la loi de Moore en bande passante plutôt qu'en calcul.\n- Retenu par un participant : sans précautions d'infrastructure d'entraînement et d'architecture, **le calcul reste sous-utilisé** (Teleńczuk).",
+      "summarySources": ["transcript", "blog"],
+      "video": { "youtubeId": "JyocX-G6h8o", "title": "AI and memory: A wall to cross! - Tejas Chopra - Netflix", "publishedAt": "2025-11-14", "transcript": true }
     },
     {
       "id": "lightning-talk-instadeep",
@@ -111,9 +112,9 @@
       "title": "Optimize AI Energy",
       "speakers": ["Bertrand Charpentier — Pruna AI"],
       "feedbackFrom": ["Bartosz Teleńczuk (blog)"],
-      "summary": "- *Vidéo publiée, non transcrite ; résumé d'après un unique compte-rendu.*\n- L'**inférence représenterait 80 % de l'énergie consommée par l'IA** ; des choix d'implémentation (quantization, cache, compilation, flash attention, factorisation) réduisent fortement énergie et émissions (Teleńczuk).\n- Réserve du blogueur : l'**effet rebond** peut annuler ces gains, d'où l'intérêt complémentaire des petits modèles spécialisés.",
-      "summarySources": ["blog"],
-      "video": { "youtubeId": "UldTRcPl0E8", "title": "Optimize AI Energy - Bertrand Charpentier - Pruna AI", "publishedAt": "2025-11-14", "transcript": false }
+      "summary": "- Sur scène : *« l'IA est chère, lente et mauvaise pour l'environnement »* ; l'énergie a porté chaque percée (transformers, kernels, GPU). Selon le speaker, l'IA consommerait ~600 TWh, 1,3 fois la consommation électrique française, et **l'inférence domine le coût** ; l'énergie part dans le déplacement des données et dans le calcul.\n- Exemple : Flux Kontext édite une image en 14 s sur un H100 ; un client à 100 000 appels par jour consomme 280 kWh, l'équivalent pour lui de 500 semi-marathons.\n- Quatre techniques combinées : **quantization** (16 à 8 bits), **cache** des étapes de débruitage presque identiques, **compilation** (fusion de kernels, à la manière de flash attention), **factorisation** des opérations matricielles ; quelques lignes avec la bibliothèque open source de Pruna, testée à l'atelier de la veille.\n- Résultats annoncés : 14 s ramenées à 1,8 s (environ 8 fois moins d'énergie) ; chez un fournisseur d'inférence, 16 modèles image et vidéo accélérés de 2 à 8 fois, environ 5 fois moins d'énergie par an, 140 k d'économies d'énergie et 90 ans de temps de calcul évités.\n- Retenu par un participant : l'inférence pèserait **80 % de l'énergie de l'IA** ; réserve sur l'**effet rebond**, d'où l'intérêt complémentaire des petits modèles spécialisés (Teleńczuk).",
+      "summarySources": ["transcript", "blog"],
+      "video": { "youtubeId": "UldTRcPl0E8", "title": "Optimize AI Energy - Bertrand Charpentier - Pruna AI", "publishedAt": "2025-11-14", "transcript": true }
     },
     {
       "id": "llms-as-constrained-generators",
@@ -193,7 +194,7 @@
     { "label": "Bluesky : Charles Vin sur le talk d'ouverture (6/11/2025)", "url": "https://bsky.app/profile/charles.vin/post/3m4xaxzfsts2m" },
     { "label": "Bluesky : Gaël Varoquaux sur son talk (speaker, 17/11/2025)", "url": "https://bsky.app/profile/gaelvaroquaux.bsky.social/post/3m5tpkhyygs2j" },
     { "label": "Page partenaire leboncoin tech (Wayback Machine)", "url": "https://web.archive.org/web/2025/https://www.dotai.io/leboncointech" },
-    { "label": "Posts LinkedIn : aucun lisible trouvé (recherches web du 28/09/2026)" }
+    { "label": "Posts LinkedIn : aucun lisible trouvé (recherches web du 28/09/2026 et du 11/10/2026)" }
   ],
-  "revisit": "corpus participant très mince : un seul compte-rendu de blog (Teleńczuk) et un fil Bluesky (Charles Vin), aucun post LinkedIn lu ; 3 lightning talks non transcrits (Gouze, Chopra, Charpentier) et talk InstaDeep sans vidéo ni titre"
+  "revisit": "corpus participant toujours très mince : un blog (Teleńczuk) et un fil Bluesky (Charles Vin), aucun post LinkedIn lu ; seconde passe du 11/10/2026 sans nouveau retour (recherche Bluesky par API refusée en 403). Les 13 vidéos sont désormais transcrites ; reste le talk InstaDeep (Laterre) sans vidéo ni titre"
 }
