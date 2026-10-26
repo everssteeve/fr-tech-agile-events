@@ -11,11 +11,11 @@
   "edition": "14e édition",
   "theme": "Matrix",
   "programUrl": "https://www.breizhcamp.org",
-  "note": "14ᵉ édition, du 24 au 26 juin 2026, Campus de Beaulieu (Université de Rennes), sur le thème de Matrix. Bilan annoncé en keynote de clôture : « 1024+ participants », plus de 110 talks et 119 speakers, en pleine canicule. Édition marquée par un budget contraint (moins de sponsors, frais d'avocat pour défendre la marque) : ni t-shirts, ni soirée « Meet & Greet ». 93 vidéos publiées, les keynotes du matin en direct puis la plupart des sessions les 5 et 6 août 2026. En septembre 2026, le BreizhCamp signe la lettre ouverte de l'AFUP pour la survie des événements techniques en France.",
+  "note": "14ᵉ édition, du 24 au 26 juin 2026, Campus de Beaulieu (Université de Rennes), sur le thème de Matrix. Bilan annoncé en keynote de clôture : « 1024+ participants », plus de 110 talks et 119 speakers, en pleine canicule. Édition marquée par un budget contraint (moins de sponsors, frais d'avocat pour défendre la marque) : ni t-shirts, ni soirée « Meet & Greet ». 93 vidéos publiées, les keynotes du matin en direct puis la plupart des sessions les 5 et 6 août 2026 ; 15 autres vidéos mises en ligne le 19 octobre 2026, dont quatre qui remplacent des vidéos d'août devenues indisponibles. En septembre 2026, le BreizhCamp signe la lettre ouverte de l'AFUP pour la survie des événements techniques en France.",
   "status": "synthesized",
-  "synthesisUpdatedAt": "2026-10-10",
-  "corpus": "Trois comptes-rendus de blog détaillés, tous écrits par des speakers : Julien Wittouck (codeka.io, 26/06/2026), David Drugeon-Hamon (À l'encre rouillée, 27/06/2026, 10 talks) et Alexandre Muller (blog Néosoft, 07/08/2026, IA, sécurité et souveraineté). S'y ajoutent la vidéo-récap et un post LinkedIn de sponsors (Néosoft, Groupama G2S), quelques posts Mastodon, une vingtaine de posts Bluesky (24/06-15/09/2026 : photos de sessions par un participant, posts de speakers dont une capture OpenFeedback) et la playlist officielle de 93 vidéos, dont 16 transcripts automatiques lus (keynotes, clôture, introduction, et 11 talks dont les principaux talks IA et sécurité).",
-  "limits": "Aucun retour d'un participant non speaker : les trois blogs sont écrits par des speakers qui ne couvrent que leur parcours, et aucun post LinkedIn individuel n'a pu être lu (recherche bridée, nouvelle tentative infructueuse le 10/10/2026). L'édition utilisait OpenFeedback, mais l'instance publique n'a pas été retrouvée : seule la capture d'un speaker (Rust) est exploitée. Les replays YouTube n'ont aucun commentaire. Les talks IA et sécurité sont documentés surtout par leurs transcripts (sous-titres automatiques), donc sans réception du public ; environ 50 sessions restent sans aucun contenu. Les jours de la plupart des sessions sont inconnus.",
+  "synthesisUpdatedAt": "2026-10-26",
+  "corpus": "Trois comptes-rendus de blog détaillés, tous écrits par des speakers : Julien Wittouck (codeka.io, 26/06/2026), David Drugeon-Hamon (À l'encre rouillée, 27/06/2026, 10 talks) et Alexandre Muller (blog Néosoft, 07/08/2026, IA, sécurité et souveraineté). S'y ajoutent la vidéo-récap et un post LinkedIn de sponsors (Néosoft, Groupama G2S), quelques posts Mastodon, une vingtaine de posts Bluesky (24/06-15/09/2026 : photos de sessions par un participant, posts de speakers dont une capture OpenFeedback) et les vidéos officielles (93 en août, 15 de plus le 19/10/2026), dont 30 transcripts automatiques lus : keynotes, clôture, introduction, les principaux talks IA et sécurité, et depuis octobre six ateliers de deux heures (tests, architecture front, Micronaut, Docker, sécurité inter-langages).",
+  "limits": "Aucun retour d'un participant non speaker : les trois blogs sont écrits par des speakers qui ne couvrent que leur parcours, et aucun post LinkedIn individuel n'a pu être lu (recherche bridée, nouvelle tentative infructueuse le 10/10/2026). L'édition utilisait OpenFeedback, mais l'instance publique n'a pas été retrouvée : seule la capture d'un speaker (Rust) est exploitée. Dix-sept sessions, dont les ateliers et plusieurs talks IA et sécurité, ne sont documentées que par leurs transcripts (sous-titres automatiques, noms propres parfois incertains), donc sans réception du public ; environ 40 sessions restent sans aucun contenu. Les jours de la plupart des sessions sont inconnus.",
   "tldr": "**Une édition « Matrix » sous la canicule et un budget serré**, qui a conjugué **conscience critique du numérique** (enshittification, souveraineté, IA de défense, tech « pop culture »), **artisanat du dev** (Rust pour le métier, livrer directement en prod, dev containers, event sourcing), une **IA abordée par ses coûts et ses limites** (tokens, contexte, autonomie du développeur) et une **forte veine sécurité** (supply chain CI/CD, OAuth2 + DPoP, passkeys), portée par une communauté qui appelle à **monter sur scène l'an prochain**.",
   "keyTakeaways": [
     "Traiter les devs et les ops comme des clients de ses outils internes : un outil mal conçu sera contourné par des scripts shell « invisibles » (Klauk, via Wittouck).",
@@ -178,16 +178,17 @@
       "feedbackFrom": [
         "Julien Wittouck (codeka.io)"
       ],
-      "summary": "- Considérer les **développeurs et les ops comme des clients** des plateformes internes, avec un **onboarding optimisé** : la Developer Experience progresse, l'« Ops Experience » reste oubliée.\n- Idée retenue : un outil interne mal conçu **ne sera pas utilisé** et sera contourné par des **scripts shell cachés**, soit une dette technique invisible.",
+      "summary": "- **Sur scène (transcript)** : Fanny Klauk oppose le client qu'on bichonne au lundi matin d'une développeuse (build cassé, documentation périmée) ou d'un ops (alertes bruyantes, tickets ambigus). Elle propose de traiter la plateforme interne comme un produit dont les devs et les ops sont les **clients**, et étend la developer experience aux ops sous le nom de « tech expérience » : boucles de feedback, charge cognitive réduite, état de flow.\n- Le parcours proposé avance par étapes : accueil (un onboarding conçu avec les outils du design thinking, personas et empathy map), outils, collectif, sentiment d'utilité, puis transmission.\n- Un outil interne lent, peu fiable ou redondant sera contourné par des scripts non cartographiés, une **dette invisible** à lire comme *« une alerte »* plutôt que comme un frein au changement. Remèdes cités : sondages anonymes, « vis ma vie », rétrospectives utiles, value stream mapping.\n- Sécurité psychologique, kaizen, célébration des petits succès, écoute active et communication non violente complètent le propos. En Q&R, elle conseille de gagner du temps de partage de façon empirique : essayer, puis montrer les gains.\n- Retour de Julien Wittouck : il retient les devs et les ops comme clients des plateformes internes, avec un onboarding optimisé ; la Developer Experience progresse, l'« Ops Experience » reste oubliée, et un outil interne mal conçu sera contourné par des **scripts shell cachés**, soit une dette technique invisible.",
       "summarySources": [
+        "transcript",
         "blog",
         "program"
       ],
       "video": {
-        "youtubeId": "3R3Dx114oL0",
+        "youtubeId": "eZxt75YgqX0",
         "title": "Dev & Ops : des clients comme les autres ? - Fanny Klauk",
-        "publishedAt": "2026-08-05",
-        "transcript": false
+        "publishedAt": "2026-10-19",
+        "transcript": true
       }
     },
     {
@@ -202,16 +203,17 @@
         "Julien Wittouck (codeka.io)",
         "David Drugeon-Hamon (À l'encre rouillée)"
       ],
-      "summary": "- Talk jugé original : un **replay de jeu vidéo** n'est pas une vidéo mais une liste d'événements rejouée par le moteur, et le même principe s'applique à l'**event sourcing**.\n- Permet de « remonter dans le temps » pour observer les états passés d'un système ; démonstrations jugées claires.\n- David Drugeon-Hamon, ami du speaker, retient le journal d'événements comme piste d'audit et un talk *« rafraîchissant et didactique »* : un parallèle *« plutôt évident pourtant totalement différent sur le papier »*.",
+      "summary": "- **Sur scène (transcript)** : un replay de jeu ne stocke pas de vidéo mais un état initial et la liste des entrées, que le moteur rejoue avec une fonction déterministe (exemples de StarCraft, des démos de Doom, de la killcam des FPS) ; démonstration avec un petit jeu de plateforme.\n- Même principe côté backend : une API qui suit les entrées et sorties des salles du BreizhCamp, avec des événements immuables nommés au passé, un event store et des projections. Pour le speaker, le CRUD, *« c'est le screenshot de fin »*, l'event sourcing le replay complet.\n- Apports : voyage dans le temps, **piste d'audit** (finance, santé, justice), migrations et tests de charge rejoués depuis le flux.\n- Limites assumées : coût de relecture compensé par des snapshots, pas de correction directe, versioning des flux, outillage rare. À éviter pour un simple catalogue, un POC ou une deadline proche. Une reconstruction en direct échoue (*« petit fail »*).\n- Retours participants : talk jugé original par Julien Wittouck, qui retient la possibilité de « remonter dans le temps » et des démonstrations claires. David Drugeon-Hamon, ami du speaker, retient le journal d'événements comme piste d'audit et un talk *« rafraîchissant et didactique »* : un parallèle *« plutôt évident pourtant totalement différent sur le papier »*.",
       "summarySources": [
+        "transcript",
         "blog",
         "program"
       ],
       "video": {
-        "youtubeId": "NsRvBkNZbOU",
+        "youtubeId": "BAF1uRe528c",
         "title": "Rejouer une partie, rejouer le système de la matrice : des replays de jeux vidéo à … - Pierre Fervel",
-        "publishedAt": "2026-08-06",
-        "transcript": false
+        "publishedAt": "2026-10-19",
+        "transcript": true
       }
     },
     {
@@ -417,9 +419,9 @@
         "blog"
       ],
       "video": {
-        "youtubeId": "n4kYHGtkqt0",
+        "youtubeId": "AQXVal0cowU",
         "title": "GitLab CI/CD sous attaque : secrets volés, pipelines détournés, d… - Stéphane Robert, Aurelien Coget",
-        "publishedAt": "2026-08-06",
+        "publishedAt": "2026-10-19",
         "transcript": true
       }
     },
@@ -575,16 +577,17 @@
       "feedbackFrom": [
         "David Drugeon-Hamon (À l'encre rouillée)"
       ],
-      "summary": "- Numspot vise la qualification **SecNumCloud** de l'ANSSI : postes d'administration **airgap et immuables**, pipeline CI/CD qui déploie les images en 30 minutes, base RAG pour naviguer dans une documentation complexe.\n- Jugé *« très intéressant pour apercevoir les coulisses d'un cloud provider français »* (Drugeon-Hamon).",
+      "summary": "- **Sur scène (transcript)** : l'équipe du SI interne de Numspot raconte la construction du poste d'administration des admins cloud exigé pour la qualification **SecNumCloud** : environ 1 600 heures d'ingénierie, un poste né en décembre 2025 et déjà en deuxième version, construit à partir du référentiel et des guides de l'ANSSI.\n- Sans accès Internet ni droits d'administration locaux, le poste n'est jamais mis à jour mais réinstallé. La base de confiance naît d'une vérification des sources à plusieurs (« cérémonie des quatre yeux »), puis chaque poste est reconstruit par boot réseau (PXE) en moins de 30 minutes.\n- Durcissement détaillé (Secure Boot, TPM, options de montage et paramètres noyau restrictifs, tout le trafic dans le VPN, répertoire personnel chiffré), mesuré avec Lynis : score de 31 en version 1, 74 aujourd'hui. Veille CVE à partir d'un inventaire exporté hors du poste ; documentation publique de l'ANSSI chargée dans un RAG.\n- Q&R : CVE classées par priorité, avec un premier délai de 48 heures pour les plus graves ; une dizaine ou une quinzaine de postes ; un poste non à jour est coupé au niveau du VPN.\n- Retour de David Drugeon-Hamon : postes **airgap et immuables**, pipeline CI/CD qui déploie les images en 30 minutes, base RAG pour naviguer dans une documentation complexe ; *« très intéressant pour apercevoir les coulisses d'un cloud provider français »*. Le transcript situe plutôt ces 30 minutes dans la reconstruction d'un poste par boot réseau.",
       "summarySources": [
+        "transcript",
         "blog",
         "program"
       ],
       "video": {
-        "youtubeId": "mU_JQTKIW9w",
+        "youtubeId": "rHats9TSK3c",
         "title": "REX – Construire un poste d’administration conforme SecNumCloud - David Gandra, Chris Navas",
-        "publishedAt": "2026-08-05",
-        "transcript": false
+        "publishedAt": "2026-10-19",
+        "transcript": true
       }
     },
     {
@@ -720,29 +723,239 @@
         "publishedAt": "2026-08-05",
         "transcript": false
       }
+    },
+    {
+      "id": "safety-et-undefined-behavior-lab-interactif-de-securite-inter-langages",
+      "type": "workshop",
+      "title": "Safety et Undefined Behavior : lab interactif de sécurité inter-langages",
+      "speakers": [
+        "Julien Laurenceau"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, aucun retour participant trouvé)** : lab de deux heures animé avec un quiz maison en temps réel. Le public clique sur la ligne fautive d'extraits de code qui **compilent et passent les tests** mais cassent en production ; une heatmap révèle les réponses et le micro passe aux participants assis devant.\n- Tour des langages : injection HTML, MD5 et attaque par extension de longueur, `scanf` en C, valeur par défaut mutable en Python, secret resté dans une couche d'image Docker, `pickle.load`, macro C, `new Date` et nombres octaux en JavaScript, bouton HTML `submit` par défaut, PodDisruptionBudget à zéro dans Kubernetes.\n- Cas réels ensuite : boucle infinie d'un `sleep` en bash sur des runners GitHub mis en pause, regex en n² à l'origine d'une panne mondiale chez Cloudflare, failles de sudo et du heartbeat d'OpenSSL, TOCTOU sur le montage de volumes Kubernetes, `unsafe` dans une crate Rust, prototype pollution dans `jQuery.extend`, décodage d'URL fait après le nettoyage du chemin dans un reverse proxy.\n- Le speaker raconte aussi ses erreurs : une ressource Terraform IAM qui a coupé deux fois en une heure l'accès de toute l'équipe à un projet GCP de test, et une connexion de base de données retenue pendant toute la durée d'un websocket dans son application de quiz (Rust, HTMX).\n- Q&R : Rust l'a surtout *« convaincu de partir des autres langages »*, pour un développement sans chasse permanente aux bugs ; côté équipe, linters, tests et scan des dépendances. C'était sa *« première vraie conférence »*, avec quelques explications confuses sur les failles les plus techniques, ce qu'il reconnaît.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "9LSF-3VQNW8",
+        "title": "Safety et Undefined Behavior : Lab interactif de sécurité inter-langages - Julien Laurenceau",
+        "publishedAt": "2026-10-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "1h50min-pour-creer-une-app-front-avec-la-clean-archigonale",
+      "type": "workshop",
+      "title": "1h50min pour créer une App Front avec la Clean Archigonale",
+      "speakers": [
+        "Dorian Lamandé — Octo",
+        "Guillaume Chauvet — Octo"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, aucun retour participant trouvé)** : atelier où l'on code en Vue une boutique d'équipement pour sauver le BreizhCamp d'une « invasion de vilains », guidé par des tests unitaires rouges à faire passer. Fil rouge : *« isoler, c'est gagner »*.\n- La « clean archigonale » marie clean architecture (use cases, presenters, entités) et architecture hexagonale (ports et adapters) ; les use cases se voient dès l'ouverture du dépôt (**screaming architecture**).\n- Règle martelée : les règles métier vont dans les entités (méthodes du type `canBuy`), jamais dans les presenters. Sur leur projet, six refontes graphiques en deux ans et demi n'ont fait perdre aucune règle, et passer de fichiers JSON à un CMS n'a demandé qu'un nouvel adapter.\n- Un petit bus d'événements en TypeScript (publish/subscribe) laisse les use cases publier des événements de domaine pour rafraîchir d'autres composants, sans store ; penser à se désabonner.\n- L'IA est permise, mais elle *« prend des initiatives »* (libellés, couleurs, règles non demandées) que les speakers, dans le rôle de PO, refusent.\n- Limites posées en clôture : inutile derrière un BFF, pour une console d'administration ou du CRUD sans logique, et le CQS convient mieux en lecture. Atouts : des tests en quelques millisecondes et un cadre rassurant pour les débutants. La correction en live coding fait déborder l'atelier au-delà de 1 h 50.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "-rnnWIB_K6Q",
+        "title": "1h50min pour créer une App Front avec la Clean Archigonale ©️ - Dorian Lamandé, Guillaume Chauvet",
+        "publishedAt": "2026-10-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "arretez-de-miser-sur-vos-tests-unitaires",
+      "type": "workshop",
+      "title": "Arrêtez de miser sur vos tests unitaires !",
+      "speakers": [
+        "Jean-Michel Leclercq"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, aucun retour participant trouvé)** : lab de deux heures (Docker, Java 21 ou 25). Le speaker précise qu'il n'est pas contre les tests unitaires, mais contre leur **confiance trompeuse** : fragiles au refactoring et truffés de mocks, ils affichent 100 % de couverture sans empêcher les bugs en production.\n- Point de départ : une API Spring Boot (PostgreSQL, S3, API externe) couverte à 100 % par des tests Mockito. Étape par étape : MockMvc avec comparaison JSON stricte, Testcontainers pour un vrai PostgreSQL, WireMock pour les appels sortants, LocalStack pour S3.\n- Astuces d'assertion (captors, comparaison récursive d'AssertJ, requêtes non reconnues par WireMock) et un cas vécu : un jeton JWT oublié sur un appel sortant, que ce type de test aurait détecté.\n- Version finale : quelques tests en boîte noire au vocabulaire métier, pour la même couverture.\n- Q&R : TDD pratiqué sur ce type de tests, conteneur démarré une seule fois, latence simulée dans WireMock ; un participant rappelle que ces tests complètent les tests unitaires, ce que le speaker admet. Générer des tests unitaires avec l'IA reste *« mieux que rien »*. Démonstrations gênées par un PC qui gèle et une connexion qui tombe.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "1cDKSvKO3xo",
+        "title": "Arrêtez de miser sur vos Tests Unitaires ! - Jean-Michel Leclercq",
+        "publishedAt": "2026-10-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "au-dela-de-la-hype-gerer-des-embeddings-a-l-echelle-du-milliard",
+      "type": "talk",
+      "title": "Au-delà de la hype : gérer des embeddings à l'échelle du milliard",
+      "speakers": [
+        "Pietro Mele",
+        "Lucian Precup"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, aucun retour participant trouvé)** : retour d'expérience de spécialistes des moteurs de recherche (Elasticsearch, OpenSearch) sur la recherche vectorielle, indispensable au RAG et à la recherche conversationnelle. Le **milliard de vecteurs** arrive vite : catalogues par magasin (exemple de Carrefour), puis découpage des documents en morceaux (chunking).\n- Le coût se calcule : documents × morceaux × dimensions × taille d'un nombre ; exemple cité, environ 4 To de disque pour 100 millions de documents. Un vecteur ne s'interroge qu'avec le modèle qui l'a produit, d'où l'importance du choix du modèle (benchmarks publics) et des GPU pour l'indexation.\n- Recherche des plus proches voisins : force brute inutilisable à l'échelle, clusters (IVF) et graphe à niveaux (HNSW), expliqué comme un zoom progressif sur une carte. Conseil pratique : fusionner les segments.\n- Pour tenir en mémoire : quantification scalaire, par produit ou binaire (BBQ), vecteurs sur disque avec second tri, rotation aléatoire ; laisser un maximum de RAM au cache du système de fichiers plutôt qu'à la JVM, et router les documents semblables vers la même partition. Chaque gain se paie en précision.\n- Une panne de vidéoprojecteur, attribuée à la chaleur, coupe les slides en cours de route ; il ne reste pas de temps pour les questions.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "FTXtzxa-KNc",
+        "title": "Au-delà de la hype : gérer des embeddings à l'échelle du milliard dans… - Pietro Mele, Lucian Precup",
+        "publishedAt": "2026-10-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "atelier-micronaut-on-code-on-compare-on-decortique",
+      "type": "workshop",
+      "title": "Atelier Micronaut : on code, on compare, on décortique",
+      "speakers": [
+        "Guillaume Yan"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, aucun retour participant trouvé)** : atelier de deux heures autour d'une application au thème Matrix (REST, PostgreSQL, client HTTP, Kafka, architecture hexagonale), construite étape par étape avec une branche de rattrapage, en comparant à chaque fois avec Spring.\n- Principe clé : Micronaut fait **tout à la compilation**, d'où un démarrage rapide et une mémoire stable, mais l'ordre des annotation processors compte.\n- Pièges relevés : DTO à déclarer sérialisables, pas de lazy loading dans Micronaut Data JDBC, mapper limité sur les sous-objets nuls et les listes, client HTTP synchrone qui bloque la boucle d'événements Netty.\n- Bilan nuancé : écosystème moins mûr que celui de Spring (une librairie d'audit citée n'existe que pour Spring), documentation parfois floue ; le speaker déconseille Micronaut pour un monolithe. La version 5 venait de sortir ; la correction de l'étape Kafka est expédiée en fin de créneau.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "Q6AbtxLtcsA",
+        "title": "Atelier Micronaut : on code, on compare, on décortique - Guillaume Yan",
+        "publishedAt": "2026-10-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "aimer-le-dev-a-l-ere-de-l-ia",
+      "type": "talk",
+      "title": "Aimer le dev à l'ère de l'IA",
+      "speakers": [
+        "Mathieu Durand",
+        "Stéphane Spassevitch"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, aucun retour participant trouvé)** : deux développeurs d'ESN, l'un attaché au craft (SOLID, dojos, XP), l'autre venu au métier en 2020 pour créer des produits, partent d'un *« spleen »* ressenti à l'hiver 2026 et d'une peur perçue chez les développeurs au Devoxx. Leur parcours va de Copilot aux agents, jusqu'à ne plus écrire de code à la main, sauf « à la marge ». Sondage à main levée : une majorité de la salle préférait le métier d'avant l'IA.\n- Constat : on passe *« de faire à superviser »*. Coûts cachés : une **dette cognitive** (multitâche épuisant, études citées sur la mémoire et la perte de compétences), des équipes réduites (une équipe passée de six personnes à « un et demi »), moins de dialogue entre pairs, et une « obésité logicielle » faute de friction.\n- Effets de bord : écrire du code ne pèserait qu'environ 11 % de la journée, les PR « creuses » s'accumulent et épuisent les lead devs, et le gain de productivité mesuré ne profiterait qu'aux plus expérimentés, au détriment du vivier de juniors.\n- Pistes : adopter la posture de « product engineer » qui challenge le quoi et le pourquoi, garder conception, DDD, architecture hexagonale et observabilité, savoir dire non (*« Je mets pas de Kubernetes si on n'en a pas besoin »*).\n- Remettre de la friction : *« avoir le courage d'éteindre Copilot ou Claude »* quand on veut apprendre, s'en tenir à trois agents au plus et accepter d'attendre. En Q&R, ils redoutent une catastrophe pour les juniors d'ici cinq à huit ans. Plusieurs études sont citées sans source vérifiable à l'oral.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "RJIyFUiTlkE",
+        "title": "Aimer le dev à l'ère de l'IA - Mathieu Durand, Stéphane Spassevitch",
+        "publishedAt": "2026-10-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-proposer-une-ux-passwordless-a-base-de-passkeys",
+      "type": "talk",
+      "title": "Comment proposer une UX passwordless à base de passkeys",
+      "speakers": [
+        "Daria Hervieux",
+        "Nailya Bogrova"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, aucun retour participant trouvé)** : après une histoire de l'authentification (sceaux, mots de passe militaires, empreintes, passeport, mot de passe informatique, cryptographie asymétrique), les speakers montrent qu'une passkey réunit en **un seul geste** ce que l'on sait, ce que l'on est et ce que l'on possède.\n- Une passkey est une paire de clés liée à un seul domaine, donc résistante au phishing par conception ; la clé privée ne quitte jamais l'authentificateur, comparé à un coffre-fort.\n- Trois démonstrations en direct : Windows Hello sur le portable, clé matérielle certifiée FIDO protégée par un PIN avec attestation, passkey synchronisée par le gestionnaire de mots de passe de Google puis utilisée depuis un téléphone via QR code et Bluetooth.\n- WebAuthn s'adapte du grand public (clés synchronisées) jusqu'au zero trust (matériel et attestation obligatoires). Le risque se déplace vers l'appareil, le compte cloud et la **récupération** ; l'intégration de base dans Spring Boot a pris 5 minutes à la speaker.\n- Q&R : une passkey perdue ne se récupère pas, il faut prévoir un parcours pour la recréer ; les grands sites gardent encore le mot de passe en parallèle. Le public interroge la souveraineté d'une synchronisation portée par Apple, Google ou Microsoft, l'ingénierie sociale et l'absence de passkeys dans France Identité, question à laquelle les speakers n'ont pas de réponse.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "ZwtjLee7i3c",
+        "title": "Comment proposer une UX passwordless à base de passkeys - Daria Hervieux, Nailya Bogrova",
+        "publishedAt": "2026-10-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rendez-vos-tests-spring-boot-rapides-robustes-et-maintenables",
+      "day": "2026-06-24",
+      "type": "workshop",
+      "title": "Rendez vos tests Spring Boot rapides, robustes et maintenables",
+      "speakers": [
+        "Thomas Piscitelli"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, aucun retour participant trouvé)** : atelier de deux heures en fin d'après-midi, par 30 °C, pensé pour des juniors : refactorer en direct la suite de tests d'une application Spring Boot (l'affectation de dinosaures dans des parcs) qui affiche plus de 80 % de couverture.\n- Les `@SpringBootTest` chargent toute l'application et coûtent cher : place au **slice testing** (WebMvcTest, JdbcTest), puis à MockWebServer pour tester réellement la sérialisation HTTP.\n- Passer de H2 à un vrai PostgreSQL via Testcontainers fait apparaître un bug de requête propre à H2, invisible jusque-là.\n- Côté métier, instancier les vrais services et ne simuler que les sorties rend reproductible un bug « de prod » ; des fakes en mémoire remplacent les mocks Mockito, fragiles à chaque changement de signature. En Q&R, garantir que le fake se comporte comme le SQL reste sans solution idéale, reconnaît le speaker.\n- Un seul smoke test du contexte suffit. C'est la première version en deux heures de cet atelier, pour un speaker habitué aux conférences.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "kgYumH9tGuk",
+        "title": "Rendez vos tests Spring Boot rapides,robustes et maintenables - Thomas Piscitelli",
+        "publishedAt": "2026-10-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "docker-deep-dive-apprends-a-dompter-les-baleines",
+      "type": "workshop",
+      "title": "Docker Deep Dive : apprends à dompter les baleines !",
+      "speakers": [
+        "Alice Simon — Sopra Steria",
+        "Matthieu Vincent — Sopra Steria"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, aucun retour participant trouvé)** : format long de deux heures, presque entièrement en démonstrations, sur ce que Docker offre aujourd'hui gratuitement : BuildKit et Buildx, registre local, builds multi-stage (une image *« un petit facteur 15 »* plus légère).\n- **Supply chain** : provenance et SBOM au moment du build, Docker Scout pour lister CVE et licences, Docker Hardened Images sans CVE sur la démo.\n- Docker Bake remplace les longues lignes de commande par un fichier versionné (builds parallèles, variables, secrets absents de l'image finale) ; le cache se partage entre runners CI via un registre ou S3.\n- Compose poussé loin : healthchecks et `depends_on`, limites CPU et mémoire, `extends`, `include`, profils ; en bonus, des outils de lint et d'analyse d'image.\n- Conseils de production : utiliser un vrai registre (Harbor, Artifactory, GitLab), OVHcloud proposant un Harbor managé *« si vous êtes souverain »* ; précharger les bases de CVE pour ne pas ralentir les pipelines. Démonstrations perturbées par la chaleur et le réseau, avec bascule sur une machine de secours.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "db8BmqwFWOo",
+        "title": "🐳 Docker Deep Dive : Apprends à dompter les baleines ! - Alice Simon, Matthieu Vincent",
+        "publishedAt": "2026-10-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-bien-mettre-en-place-une-mauvaise-gestion-des-mots-de-passe",
+      "type": "talk",
+      "title": "Comment bien mettre en place une mauvaise gestion des mots de passe",
+      "speakers": [
+        "Loïc Guibert"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, aucun retour participant trouvé)** : une heure sur la complexité des mots de passe, qui démonte nos intuitions (échelles logarithmiques, cadenas, jeu de 32 cartes deviné en 5 questions) pour introduire l'**entropie**.\n- Démonstration principale : allonger un mot de passe augmente l'entropie bien plus vite qu'élargir le jeu de caractères, et imposer des catégories (majuscule, chiffre, caractère spécial) peut même la réduire. Exemple de phrase de passe : « Néo Trinity Morphéus ».\n- Références : la recommandation CNIL de 2022 (80 bits, ou environ 50 bits avec restrictions d'accès) ; selon lui, l'outil de calcul de la CNIL surestime l'entropie, ce qu'il dit avoir signalé.\n- Recommandations : phrases de passe avec une longueur maximale (pour éviter un déni de service au hachage), calcul de complexité côté client et côté serveur, algorithmes de hachage éprouvés (Argon2, scrypt, PBKDF2), MFA, messages d'erreur sans indice. Au sens du RGPD, la responsabilité pèse sur toute la chaîne (éditeur, PO, direction), pas sur l'utilisateur.\n- Q&R prolongées : troncature de bcrypt, gestionnaires de mots de passe, origine historique de la règle des 8 caractères, coût CPU limité au moment de la création ou du changement du mot de passe.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "6JXWO72PR6E",
+        "title": "Comment bien mettre en place une mauvaise gestion des mots de passe - Loïc Guibert",
+        "publishedAt": "2026-10-19",
+        "transcript": true
+      }
+    },
+    {
+      "id": "vous-pensiez-que-la-dette-technique-etait-le-pire",
+      "type": "talk",
+      "title": "Vous pensiez que la dette technique était le pire ? Voici la dette de conception",
+      "speakers": [
+        "Josian Chevalier — Shodo",
+        "Julien Topçu — Shodo"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript, aucun retour participant trouvé)** : talk joué en saynète, ouvert sur une parodie du *Seigneur des anneaux* (*« One model to rule them all »*). Deux développeurs d'une application de croisières s'affrontent : l'un enchaîne les régressions dans un modèle de recherche qui a absorbé la sélection puis la réservation.\n- Distinction centrale : la dette technique est un **choix délibéré** (définition de Ward Cunningham), alors que la dette de conception accidentelle devient de l'entropie (couplage, perte de cohésion, peur de modifier). KISS, DRY ou YAGNI poussent à réutiliser un modèle au lieu d'en créer un nouveau.\n- Des « tensions de modèle » servent de signaux : booléens `selected` ou `book` greffés sur la recherche, état éparpillé, invariant porté par le mauvais objet. Remède : faire émerger des modèles distincts (une sélection en agrégat, une réservation à part).\n- À l'échelle de l'architecture, un cycle de vie de réservation fragmenté entre deux services donne un monolithe distribué, compensé par des « processus rustines » (50 feature toggles, un rôle dédié à leur synchronisation, pique visant le RTE). La loi de Conway et des managers « shadow designers » referment le cercle.\n- Les heuristiques ne sont *« aucunement des garanties »* : il faut un faisceau d'indices. Elles sont publiées dans un dépôt, et les speakers préviennent que la GenAI *« va accélérer la dette de conception »*. Pour corriger, ils renvoient à leurs talks précédents au BreizhCamp.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "8oOzf13Tw_U",
+        "title": "Vous pensiez que la dette technique était le pire? Voici la dette … - Josian Chevalier, Julien Topçu",
+        "publishedAt": "2026-10-19",
+        "transcript": true
+      }
     }
   ],
   "sessionsWithoutFeedback": [
     "Le parcours de Doctolib vers une plateforme de données médicales (S. Lukes, C. Anciaux)",
     "La revanche des VMs : sandboxing avec NerdBox (N. De Loof)",
-    "Vous pensiez que la dette technique était le pire ? (J. Chevalier, J. Topçu)",
-    "Au-delà de la hype : embeddings à l'échelle du milliard (P. Mele, L. Precup)",
-    "Aimer le dev à l'ère de l'IA (M. Durand, S. Spassevitch)",
     "Comment l'IA va vous aider à réduire votre impact carbone (N. Ledez)",
     "Burn-out : The Matrix Reboot (P. Fervel)",
     "Petit guide pour prendre des décisions éthiques en entreprise (C. Bossard, J. Paliès)",
     "Concevoir accessible pour les personnes déficientes visuelles (A. Faubry, C. Corfmat)",
     "RGPD, souverain, SecNumCloud… comment choisir son cloud ? (J. Mouchotte, M. Charles)",
-    "Comment proposer une UX passwordless à base de passkeys (D. Hervieux, N. Bogrova)",
     "Sécuriser son réseau Kubernetes avec Cilium (P. Chaignon)",
     "Dix pièges à éviter lors de l'intégration de Keycloak (T. Denmat)",
-    "Safety et Undefined Behavior : lab interactif de sécurité inter-langages (J. Laurenceau)",
     "Retour d'expérience – la quête du homelab parfait (M. Vincent)",
-    "Arrêtez de miser sur vos tests unitaires ! (J.-M. Leclercq)",
     "Arrêtez le « feeling » : pilotez vos pratiques avec des policies (A. Chotard, 25/06, slides publiées)",
     "Moins d'infra, plus de produit : notre chemin vers les services managés (A. Chotard, PayFit, 26/06, slides publiées)",
     "HTMX, de manière simplix ! (S. Trebel, T. Labarussias, 25/06)",
-    "…et environ 45 autres sessions visibles dans la playlist"
+    "…et environ 40 autres sessions visibles dans la playlist"
   ],
   "sources": [
     {
@@ -750,8 +963,8 @@
       "url": "https://www.breizhcamp.org"
     },
     {
-      "label": "Playlist YouTube Breizhcamp 2026 (93 vidéos)",
-      "url": "https://www.youtube.com/playlist?list=PLBKn2K9c0VXI"
+      "label": "Playlist YouTube Breizhcamp 2026",
+      "url": "https://www.youtube.com/playlist?list=PLEVsFwFmRJeM"
     },
     {
       "label": "Keynote jeudi matin (live, introduction des organisateurs)",
@@ -800,6 +1013,10 @@
     {
       "label": "Blog BreizhCamp — Lettre ouverte pour la survie des événements techniques en France (08/09/2026)",
       "url": "https://www.breizhcamp.org/blog/2026-09-08-lettre-ouverte"
+    },
+    {
+      "label": "Chaîne YouTube BreizhCamp (15 vidéos de l'édition mises en ligne le 19/10/2026)",
+      "url": "https://www.youtube.com/@BreizhCamp"
     }
   ],
   "revisit": "Revu le 10/10/2026 : 7 recherches web (LinkedIn, blogs, OpenFeedback) sans nouveau post LinkedIn ni blog de participant ; ajout de posts Bluesky (surtout de speakers) et d'une capture OpenFeedback. Restent : retrouver l'instance OpenFeedback publique de l'édition (votes et commentaires de toutes les sessions) et des retours du public sur les talks IA et sécurité, toujours connus par transcript seulement."

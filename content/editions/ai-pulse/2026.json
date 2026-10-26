@@ -2,11 +2,925 @@
   "event": "ai-pulse",
   "year": 2026,
   "title": "ai-PULSE 2026",
+  "edition": "4e édition",
   "start": "2026-10-13",
+  "end": "2026-10-13",
   "city": "Paris",
   "venue": "Station F",
   "url": "https://www.ai-pulse.eu",
+  "theme": "ENTER. SHIFT. CTRL.",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "Journée unique le 13 octobre 2026 à Station F (live YouTube « 4th Edition » et communiqué Scaleway du 13/10). Programme organisé autour de trois thèmes présentés par Scaleway en août : ENTER (l'IA abaisse la barrière d'entrée sur de nouveaux marchés), SHIFT (positions, modèles et catégories bougent plus vite) et CTRL (garder la main sur ses données, modèles et agents), qui donnent leur nom aux trois playlists de replays. Une fréquentation de « 2 000+ » n'est citée que par des agrégateurs d'événements, non confirmée par une source officielle lue.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-26",
+  "revisit": "Aucun retour de participant lu : 12 recherches web le 26/10/2026 (LinkedIn, #aiPULSE, presse FR, blogs) n'ont ramené que presse et communiqués. Les 36 vidéos 2026 (live d'ouverture uB62scVCtio et 35 replays) n'avaient encore aucun sous-titre YouTube, automatique ou manuel, et ai-pulse.eu renvoie 403 aux outils. À reprendre : transcripts dès que YouTube les génère (live d'ouverture en priorité : Krikorian, Zdravkovic, Schölkopf, Ponce, Qwen), recherche LinkedIn par nom de speaker, lecture du programme officiel via un navigateur.",
+  "corpus": "Liste des 13 intervenants du live d'ouverture (description YouTube) et descriptifs des 35 replays des playlists ENTER, SHIFT et CTRL publiés le 22/10/2026 ; billet Scaleway sur les thèmes (10/08/2026) et communiqués Scaleway et iliad du 13/10. Presse : Maddyness (13/10, mis à jour le 21/10), Journal du Net (13/10), StorageNewsletter, Telecompaper ; deux billets de développeurs qui analysent les annonces sans dire avoir assisté à l'événement (Elouan Laurent, 15/10 ; Taha Echakiri sur dev.to, 18/10).",
+  "limits": "Corpus entièrement composé de sources de l'organisateur, de presse centrée sur les annonces et de descriptifs officiels : aucun post LinkedIn ni compte-rendu de participant retrouvé à J+13. Aucun transcript n'était disponible, donc les sessions sont résumées d'après leurs descriptifs et la keynote d'ouverture (2 h 12) n'est connue que par la presse. Le programme complet (horaires, scènes, workshops non filmés) n'a pas pu être lu sur le site officiel.",
+  "tldr": "Une 4e édition placée sous le triptyque **« ENTER. SHIFT. CTRL. »**, sans annonce fracassante ni star selon Maddyness : Mistral y a présenté **Mistral Large 4 en open weight**, Scaleway **de nouvelles GPU Zones à Copenhague (NVIDIA B300) et Stockholm (AMD MI355X)**, et le programme a misé sur **la souveraineté, les alternatives au GPU, les world models et l'IA pour la science**.",
+  "keyTakeaways": [
+    "Distinguer capacité annoncée et capacité disponible : les clusters de Stockholm et Copenhague et l'offre Jotunn8 n'ont ni date de mise en service ni prix publics (Taha Echakiri, Elouan Laurent).",
+    "Avant de choisir un modèle d'inférence managé, tester une vingtaine de requêtes réelles sur deux modèles ; une PME peut démarrer en serverless, un grand compte sur données sensibles doit viser un déploiement dédié (Elouan Laurent).",
+    "Activer le cache de tokens et l'API Batches (moitié prix) pour réduire la facture : dans un exemple RAG, de 234 € à 162 € HT par mois, un calcul dont l'auteur prévient lui-même : « C'est de l'arithmétique, pas une mesure » (Elouan Laurent).",
+    "Multiplier les familles d'accélérateurs donne un levier sur les prix mais impose de maintenir une seconde pile logicielle (Taha Echakiri).",
+    "L'open weight sert d'argument de souveraineté : héberger les poids chez soi sans que données et méthodes d'entraînement soient publiées (Mistral, via Maddyness) ; en génomique, le modèle ouvert exécutable en local devient une exigence car l'ADN ne peut pas partir chez un tiers (Hugging Face, descriptif).",
+    "Avant de donner des permissions réelles à un agent, tester les instructions malveillantes cachées dans les documents qu'il lit (Giskard, descriptif).",
+    "Quand le travail d'un agent traverse plusieurs organisations, rendre explicites le lignage des données, l'autorité de l'agent et l'état du processus (Dataiku, descriptif).",
+    "Avant d'acheter des GPU, vérifier qu'ils ne passent pas leur temps à attendre le réseau (Nokia, descriptif).",
+    "Pour réduire les coûts IA, évaluer des modèles open weight (Kimi, DeepSeek) sur les capacités qui comptent pour son cas d'usage (Twin, descriptif)."
+  ],
+  "sessions": [
+    {
+      "id": "mistral-large-4-pierre-stock",
+      "day": "2026-10-13",
+      "type": "keynote",
+      "title": "Mistral Large 4 en coulisses",
+      "speakers": [
+        "Pierre Stock — Mistral AI",
+        "Aude Durand — groupe iliad"
+      ],
+      "feedbackFrom": [
+        "Maddyness (presse, 13/10/2026)",
+        "Journal du Net (presse, 13/10/2026)"
+      ],
+      "summary": "- Pierre Stock présente sur scène, avec Aude Durand, **Mistral Large 4** (« ML4 », surnommé *« Le Chonk »*), quelques jours après sa sortie : l'équipe a voulu *« put all our scientific expertise into this model »* (Maddyness).\n- Fiche annoncée : **nativement multimodal, 1 000 milliards de paramètres**, publié en **open weight**, ce qui permet aux entreprises d'héberger les poids sur leur propre infrastructure sans que données et méthodes d'entraînement soient publiées.\n- Entraîné sur **3 800 GPU NVIDIA Grace Blackwell** dans les datacenters européens de Mistral ; usages mis en avant : cybersécurité, finance, industrie manufacturière.\n- Revendication de Mistral : le meilleur modèle open weight développé en Europe ou aux États-Unis. Maddyness nuance : les classements agrégés le placent parmi les meilleurs modèles ouverts, mais **la plupart des labos chinois gardent une longueur d'avance**.\n- Côté Scaleway, le Journal du Net indique que Mistral Large 4 doit arriver sur l'API d'inférence « dans les prochaines semaines ».\n- Résumé fondé sur la presse uniquement : le live d'ouverture n'a pas de transcript disponible.",
+      "summarySources": [
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "uB62scVCtio",
+        "title": "Opening Keynotes | ai-PULSE 2026 | 4th Edition",
+        "publishedAt": "2026-10-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "keynote-scaleway-damien-lucas-2026",
+      "day": "2026-10-13",
+      "type": "keynote",
+      "title": "Keynote Scaleway : annonces 2026",
+      "speakers": [
+        "Damien Lucas — Scaleway"
+      ],
+      "feedbackFrom": [
+        "Maddyness (presse, 13/10/2026)",
+        "Journal du Net (presse, 13/10/2026)",
+        "Elouan Laurent (blog, 15/10/2026, analyse des annonces)",
+        "Taha Echakiri (dev.to, 18/10/2026, analyse des annonces)"
+      ],
+      "summary": "- **Trois GPU Zones** à terme : Paris, **Copenhague** (des milliers de NVIDIA HGX B300) et **Stockholm**, où un supercalculateur **AMD Instinct MI355X** (696 GPU selon le JDN) sera le premier de Scaleway hors de France ; Lisa Su (AMD) a salué le projet en vidéo (Maddyness).\n- **Régions** : Milan passe à trois zones de disponibilité ; Stockholm et Francfort en auront trois chacune en 2027 (communiqué).\n- **Matériel européen** : offre d'inférence avec **VSORA et ZML** sur la puce Jotunn8, installée au premier semestre 2027 selon le JDN, avec de premiers clients signés.\n- **Modèles et plateforme** : plus de 40 modèles sur les Generative APIs, dont LightOn OCR 3, DeepSeek V4.1-Flash et GLM 5.3 ; cached tokens, limites de débit personnalisables, partenariat Dataiku ; rappel du rachat de Qarnot Computing (juillet 2026).\n- **Projets exploratoires** : Quantum Builders Program, Unified Computing Service CPU/GPU/quantique prévu en 2027, world models de Presage pour optimiser le cloud, étude de datacenters en orbite avec Alatyr. Sur l'espace, Damien Lucas ironise : *« Le nôtre, c'est de savoir comment on change une alimentation »* (JDN).\n- **Message souveraineté** : l'accès au calcul IA devient *« a strategic priority for European organisations »* (Maddyness) ; Scaleway promet *« l'immunité face aux lois extraterritoriales et une indépendance technologique totale »* (JDN).\n- **Lecture critique** : pour Taha Echakiri, *« announced capacity and available capacity are two different things »* (aucune date ni prix pour Stockholm et Copenhague, Jotunn8 vu comme *« a direction of travel »*) ; Elouan Laurent lit Jotunn8 *« comme un projet, pas comme un produit »* et note que les modèles serverless tournent encore à Paris. Ni l'un ni l'autre ne dit avoir assisté à l'événement.\n- À lire comme une keynote commerciale de l'organisateur.",
+      "summarySources": [
+        "feedback",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "uB62scVCtio",
+        "title": "Opening Keynotes | ai-PULSE 2026 | 4th Edition",
+        "publishedAt": "2026-10-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "bioptimus-zelda-mariet",
+      "day": "2026-10-13",
+      "type": "keynote",
+      "title": "Bioptimus : modèles de fondation pour la biologie",
+      "speakers": [
+        "Zelda Mariet — Bioptimus"
+      ],
+      "feedbackFrom": [
+        "Journal du Net (presse, 13/10/2026)"
+      ],
+      "summary": "- Bioptimus entraîne des **modèles de fondation sur la biologie** : biopsies, protéines, génétique (JDN).\n- Promesse affichée : **prédire la réponse d'un patient à un traitement** ou évaluer le grade d'une tumeur ; ce sont des affirmations de la start-up, rapportées comme telles.\n- Ordre de grandeur cité : une biopsie pèse *« environ 30 gigaoctets »*, ce qui pose la question du calcul et du stockage.\n- Pour le journaliste du JDN, Bioptimus semble *« sortir du lot »* grâce à des applications déjà concrètes.\n- Titre de session non confirmé (programme officiel inaccessible) ; résumé fondé sur la presse uniquement.",
+      "summarySources": [
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "uB62scVCtio",
+        "title": "Opening Keynotes | ai-PULSE 2026 | 4th Edition",
+        "publishedAt": "2026-10-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "ke-sai-geiger-scholkopf",
+      "day": "2026-10-13",
+      "type": "keynote",
+      "title": "KE:SAI : Kyutai et ELLIS Tübingen",
+      "speakers": [
+        "Andreas Geiger — KE:SAI, Université de Tübingen",
+        "Bernhard Schölkopf — ELLIS Institute Tübingen, Max Planck Institute for Intelligent Systems"
+      ],
+      "feedbackFrom": [
+        "Journal du Net (presse, 13/10/2026)"
+      ],
+      "summary": "- Les deux chercheurs figurent dans la liste des intervenants du live d'ouverture ; Andreas Geiger y est présenté comme CEO de « KE ».\n- Le JDN décrit **KE:SAI** comme cofondé par **Kyutai et l'ELLIS Institute Tübingen**, avec un **partenariat avec Valeo sur la conduite autonome**.\n- Une infrastructure d'entraînement doit être publiée prochainement (JDN).\n- Contenu réel des interventions inconnu : pas de transcript et aucun retour de participant ; l'association des deux speakers à une même séquence est déduite de la presse.",
+      "summarySources": [
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "uB62scVCtio",
+        "title": "Opening Keynotes | ai-PULSE 2026 | 4th Edition",
+        "publishedAt": "2026-10-13",
+        "transcript": false
+      }
+    },
+    {
+      "id": "presage-world-models-cloud",
+      "day": "2026-10-13",
+      "type": "talk",
+      "title": "What World Models Can Teach Us About the Cloud",
+      "speakers": [
+        "Tony Tung — PRESAGE"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Constat : **des agents IA commencent à déployer du logiciel et à provisionner des ressources**, ce qui accélère les changements d'infrastructure et alourdit le coût d'une mauvaise décision.\n- Proposition : des **Digital World Models** pour évaluer un changement avant déploiement et repérer les interventions qui empêchent une panne de se propager.\n- Question centrale : quand une prédiction est-elle **assez fiable pour agir**, et comment traiter l'incertitude.\n- Contexte : Tony Tung (ex-Meta selon le JDN) intervient aussi dans la liste du live d'ouverture, et Scaleway a annoncé le même jour un partenariat exploratoire avec Presage.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "d15ZGv-XnuQ",
+        "title": "PRESAGE | What World Models Can Teach Us About the Cloud",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "kyutai-mira-world-model",
+      "day": "2026-10-13",
+      "type": "talk",
+      "title": "MIRA: Building a World Model at Game Speed",
+      "speakers": [
+        "Manu Orsini — Kyutai"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **MIRA**, développé par Kyutai et General Intuition avec Epic Games, simule des parties **multijoueurs de Rocket League** en générant l'action en réponse aux commandes des joueurs.\n- Le talk décrit comment combiner génération vidéo de qualité, physique complexe (collisions, buts) et réactivité aux entrées des joueurs.\n- Enjeu technique annoncé : **tenir le temps réel**, la contrainte qui distingue un world model jouable d'une vidéo générée.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "l8WPjzaRm18",
+        "title": "Kyutai | MIRA: Building a World Model at Game Speed",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "panel-world-models-interaction",
+      "day": "2026-10-13",
+      "type": "roundtable",
+      "title": "Building World Models That Hold Up When You Interact",
+      "speakers": [
+        "Jean Ponce — École normale supérieure (modération)",
+        "Chema Garabito — Speridlabs",
+        "Baptiste Bellot-Gurlet — Runway",
+        "Elisa Seghetti — Saturn Dynamics"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Point de départ : une scène générée paraît crédible **jusqu'à ce qu'un agent bouge, modifie un objet ou revienne sur ses pas** ; la **cohérence dans le temps** devient le problème central.\n- Trois approches comparées : représentations 3D persistantes, génération vidéo conditionnée par l'action, simulation pour l'IA incarnée.\n- Le panel discute de ce qui décide de l'utilité d'un world model : architecture, données d'entraînement et évaluation.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "C-0o_3B549k",
+        "title": "Runway | Saturn Dynamics | Enhanced Lab | Building World Models That Hold Up When You Interact",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "bleu-robotics-kyber-robots",
+      "day": "2026-10-13",
+      "type": "roundtable",
+      "title": "From Robot Arms to Humanoids: Building the AI That Puts Machines to Work",
+      "speakers": [
+        "Jean-Baptiste Mouret — Bleu Robotics",
+        "Jean-Baptiste Kempf — KYBER"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Conversation sur une question : **quelle part de l'intelligence d'un robot se transfère d'une machine ou d'une tâche à l'autre ?**\n- Bleu Robotics développe un logiciel d'IA universel pour bras industriels, manipulateurs mobiles et humanoïdes.\n- Enjeu mis en avant : passer de la démonstration mise en scène à un **travail fiable en usine**, malgré le changement de matériel et de conditions.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "p6UVBCtpiic",
+        "title": "Kyber & Bleu Robotics | From Robot Arms to Humanoids: Building the AI That Puts Machines to Work",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "harmattan-ai-autonomie-defense",
+      "day": "2026-10-13",
+      "type": "talk",
+      "title": "Autonomy at Scale: AI, Multi-Robot Systems, and the Future of Defense",
+      "speakers": [
+        "Martin de Gourcuff — Harmattan AI"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le machine learning permet à une **flotte de robots** de percevoir un environnement contesté, de se coordonner en temps réel et de s'adapter au-delà de ce qu'un opérateur gère seul.\n- Domaines cités : défense aérienne, renseignement (ISR), guerre électronique.\n- Argument de conception : un système autonome conçu pour une mission peut y être **verrouillé**, donc plus difficile à détourner qu'un outil généraliste ou opéré par un humain.\n- C'est l'un des replays les plus vus de la série au 26/10 (une centaine de vues), un indicateur très faible.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "iG7oz7aYe6A",
+        "title": "Harmattan AI | Autonomy at Scale: AI, Multi-Robot Systems, and the Future of Defense",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "reachy-mini-workshop-scaleway",
+      "day": "2026-10-13",
+      "type": "workshop",
+      "title": "AI in the Physical World: Bringing Life to the Reachy Mini Robot",
+      "speakers": [
+        "Nicolas Limage — Scaleway",
+        "Emilien Maudet — Scaleway"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Atelier pratique : connecter le robot **Reachy Mini** à des modèles hébergés sur Scaleway.\n- Objectif : transformer des capacités IA du cloud en **comportements interactifs** du robot.\n- Premier pas proposé vers l'« IA physique » pour des développeurs ; replay le plus vu de la série au 26/10 (moins de 150 vues).\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "17mPNKDJz7Y",
+        "title": "Scaleway | AI in the Physical World: Bringing Life to the Reachy Mini Robot",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "panel-beyond-the-gpu",
+      "day": "2026-10-13",
+      "type": "roundtable",
+      "title": "Beyond the GPU: What Will Power the Next Wave of AI?",
+      "speakers": [
+        "VSORA",
+        "SiPearl",
+        "ZML",
+        "SpiNNcloud",
+        "Scaleway"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Contexte : l'inférence s'étend et les **contraintes énergétiques** se resserrent ; la puissance brute ne suffit plus.\n- Questions : quelles charges justifient des **puces spécialisées**, où les architectures établies gardent l'avantage, et quel logiciel rend ces alternatives utilisables.\n- Critères discutés : performance par watt et **adoption par les développeurs**, condition pour qu'une architecture alternative entre en production.\n- En écho, Scaleway a annoncé le même jour une offre d'inférence VSORA et ZML sur Jotunn8.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "PhdseXeZM-E",
+        "title": "Beyond the GPU: What Will Power the Next Wave of AI? | VSORA, SiPearl, ZML, SpiNNcloud & Scaleway",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "amd-open-model-inference",
+      "day": "2026-10-13",
+      "type": "talk",
+      "title": "Making Open-Model Inference Work at Scale",
+      "speakers": [
+        "Ramine Roane — AMD"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Les modèles open weight ouvrent un marché de **services d'inférence rentables** pour clouds, start-up et entreprises, à condition de tenir la performance et les coûts.\n- Arbitrages abordés : latence contre débit, **utilisation des GPU**, coût par token, sur des déploiements AMD Instinct MI355X.\n- Rôle de places de marché comme OpenRouter pour relier fournisseurs d'inférence et demande des développeurs.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "6rbSdny0GqQ",
+        "title": "AMD | Making Open-Model Inference Work at Scale",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "fujitsu-monaka-inference-agentique",
+      "day": "2026-10-13",
+      "type": "talk",
+      "title": "AI Inference Infrastructure for the Agentic AI Era",
+      "speakers": [
+        "Fujitsu Limited"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Les agents (collecte d'information, décision, exécution) font de **l'inférence** la charge dominante, avec des exigences de performance, d'efficacité énergétique, de sécurité et de souveraineté.\n- Présentation du processeur Arm **FUJITSU-MONAKA**, conçu pour une inférence sobre et sécurisée, et présenté comme une alternative qui diversifie la chaîne d'approvisionnement.\n- Collaboration avec Scaleway sur une infrastructure IA souveraine de nouvelle génération.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "IM0FmWqro8E",
+        "title": "Fujitsu Limited | AI Inference Infrastructure for the Agentic AI Era",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "nokia-goulot-reseau-ia",
+      "day": "2026-10-13",
+      "type": "talk",
+      "title": "Your GPUs Are Waiting: AI’s Networking Bottleneck",
+      "speakers": [
+        "Pavan Kurapati — Nokia"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Thèse : **acheter plus de GPU n'accélère rien s'ils attendent les données**.\n- Sur de grands clusters d'entraînement, congestion et latences de communication deviennent des contraintes coûteuses.\n- Le talk relie conception réseau, **taux d'utilisation des GPU** et temps de complétion des jobs.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "3jAwLAhvHoA",
+        "title": "Nokia | Your GPUs Are Waiting: AI’s Networking Bottleneck",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "panel-open-infrastructure",
+      "day": "2026-10-13",
+      "type": "roundtable",
+      "title": "Scaling AI Through Open Infrastructure",
+      "speakers": [
+        "Giga Computing",
+        "Scaleway",
+        "HPE",
+        "Digital Realty",
+        "Bull"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Avec la hausse des densités de puissance, puces, serveurs, alimentation et refroidissement doivent évoluer ensemble ; leur **fragmentation enferme chez un fournisseur**.\n- Le panel défend les **standards ouverts** pour rendre l'infrastructure haute densité interopérable et extensible.\n- Sujets : intégration du **refroidissement liquide**, conciliation de designs globaux avec les règles environnementales et de sécurité locales, architectures modulaires pour protéger l'investissement.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "M5lWeQr0tho",
+        "title": "Scaling AI Through Open Infrastructure | Giga Computing, Scaleway, HPE, Digital Realty & Bull",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "black-forest-labs-open-weight-production",
+      "day": "2026-10-13",
+      "type": "talk",
+      "title": "Unlocking Open Weight: Bridging the Gap Between Download and Production",
+      "speakers": [
+        "Anthony Charbonnier — Black Forest Labs"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Une fois publiés en **open weight**, les modèles génératifs sont emmenés par la communauté sur des matériels et des usages bien au-delà de leur conception initiale.\n- Retour d'expérience tiré des dernières versions de **FLUX** : l'architecture ouverte accélère les cycles d'innovation.\n- Le talk détaille l'ingénierie nécessaire entre le téléchargement d'un checkpoint et un pipeline de production résilient à haut débit (latence, orchestration).\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "t_ufZTur_M8",
+        "title": "Black Forest labs | Unlocking Open Weight: Bridging the Gap Between Download and Production",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "twin-couts-ia-open-weight",
+      "day": "2026-10-13",
+      "type": "talk",
+      "title": "Keeping AI Costs Under Control With Open Weight Language Models",
+      "speakers": [
+        "Julius de Bruijn — Twin"
+      ],
+      "feedbackFrom": [],
+      "summary": "- L'IA est devenue un **poste de coût majeur** ; Twin explique comment il a réduit sa facture IA.\n- Méthode : tester, valider et déployer des **modèles open weight comme Kimi et DeepSeek**, en partant d'évaluations sur les capacités qui comptent pour ses cas d'usage.\n- Message : choisir le modèle d'après ses propres évaluations plutôt que par défaut.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "NL8vdtgUw54",
+        "title": "Twin  | Keeping AI Costs Under Control With Open Weight Language Models",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "stripe-economie-des-tokens",
+      "day": "2026-10-13",
+      "type": "talk",
+      "title": "Building Sustainable AI Businesses in the Token Economy",
+      "speakers": [
+        "Arielle Le Bail — Stripe"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Chaque prompt, appel d'API ou workflow agentique a **un coût réel** : les modèles économiques doivent lier le revenu à la valeur reçue et protéger les marges quand l'usage croît.\n- Nouveau risque nommé : le **« token theft »** (abus d'essais gratuits, multi-comptes, usage impayé).\n- Perspective : quand des agents transigent à vitesse machine, l'intelligence en temps réel et les paiements deviennent centraux.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "ecV0-6tRqS0",
+        "title": "Stripe | Building Sustainable AI Businesses in the Token Economy",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "giskard-securite-agents",
+      "day": "2026-10-13",
+      "type": "talk",
+      "title": "When AI Can Act: Rethinking Security for Agents",
+      "speakers": [
+        "Alex Combessie — Giskard"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Connecter un modèle à des outils, des données et des systèmes métier **change la nature d'une faille** : une instruction malveillante cachée dans un document peut déclencher une extraction ou une action non autorisée.\n- Le talk porte sur le **test des agents** à travers ces interactions et la détection des faiblesses avant déploiement.\n- Question clé : les garde-fous tiennent-ils quand l'agent dispose de **permissions réelles** ?\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "y9kfvDxwspc",
+        "title": "Giskard | When AI Can Act: Rethinking Security for Agents",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "dataiku-tracer-actions-agents",
+      "day": "2026-10-13",
+      "type": "talk",
+      "title": "Tracking AI Agent Actions Across Organizational Boundaries",
+      "speakers": [
+        "Florian Douetteau — Dataiku"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Point de départ, la « bitter lesson » : les méthodes générales qui passent à l'échelle avec le calcul battent les règles humaines, et chaque génération de modèles absorbe l'échafaudage construit autour de la précédente.\n- Limite proposée par Florian Douetteau : **aux frontières entre parties qui doivent se faire confiance**.\n- D'où l'importance croissante du **lignage des données, de l'autorité de l'agent et de l'état du processus** quand le travail passe entre agents, personnes et organisations. Dataiku a annoncé le même jour un partenariat avec Scaleway.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "-aFpBWrTWj8",
+        "title": "Dataiku | Tracking AI Agent Actions Across Organizational Boundaries",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "cepter-agents-infrastructures-energie",
+      "day": "2026-10-13",
+      "type": "talk",
+      "title": "When AI Has to Be Right: Building Agents for Energy Infrastructure",
+      "speakers": [
+        "Duxi Orsini-Rosenberg — Cepter"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Contexte : des ingénieurs IA travaillent avec des **avocats spécialisés** qui analysent contrats et permis de projets énergétiques, où un détail manqué peut changer une décision d'investissement.\n- Leçons d'ingénierie : contexte structuré pour guider la recherche des agents, possibilité pour l'expert d'inspecter et contester, difficulté à détecter **les erreurs et omissions qu'une réponse convaincante dissimule**.\n- Évaluation : jeux de données synthétiques et expérience des avocats quand les données clients ne sont pas utilisables.\n- Ambition affichée : des systèmes à terme pleinement autonomes, dépassant le standard actuel du travail expert.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "p74OTryehfg",
+        "title": "Cepter | When AI Has to Be Right: Building Agents for Energy Infrastructure",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "sahar-osia-agents-observables",
+      "day": "2026-10-13",
+      "type": "talk",
+      "title": "Inside OSiA: Building Sovereign and Observable AI Agents for Open-Source Investigations",
+      "speakers": [
+        "Gauthier Schweitzer — Sahar",
+        "Clément Apavou — Sahar"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **OSiA** est un agent d'enquête en sources ouvertes qui coordonne des recherches web et réseaux sociaux, synthétise et prépare des filtres pour l'outil Cobalt.\n- Architecture pensée pour l'**observabilité** : chaque étape de recherche traçable, chaque source liée, chaque décision auditable.\n- Thèse : c'est cette observabilité qui rend l'outil **souverain**, c'est-à-dire auditable et contrôlable de bout en bout par l'analyste.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "BEhynEYo73w",
+        "title": "Sahar | Inside OSiA: Building Sovereign and Observable AI Agents for Open-Source Investigations",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "zalando-agentic-engineering",
+      "day": "2026-10-13",
+      "type": "talk",
+      "title": "Scaling Agentic Engineering in an Enterprise Environment",
+      "speakers": [
+        "Bartosz Ocytko — Zalando"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Retour d'expérience de l'adoption de pratiques d'**ingénierie agentique dans plus de 250 équipes** chez Zalando.\n- Trois volets annoncés : les effets observés de l'IA sur les ingénieurs et les bases de code, les **garde-fous** pour une adoption sûre et gouvernée, et les cas où les LLM apportent le plus.\n- Seul retour d'expérience de génie logiciel à grande échelle parmi les replays publiés.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "QtvKh_d_HkY",
+        "title": "Zalando SE | Scaling Agentic Engineering in an Enterprise Environment",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "toucan-analytics-agents",
+      "day": "2026-10-13",
+      "type": "talk",
+      "title": "Everything Changed but the Numbers: Reinventing Analytics With AI Agents",
+      "speakers": [
+        "Toucan"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Toucan s'est réinventé **quatre fois en douze ans** : data storytelling, analytics embarqués, IA conversationnelle, puis agents qui construisent des data apps sur mesure en quelques minutes.\n- Fil rouge : l'interface a changé à chaque fois, mais **les données devaient rester aussi fiables**.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "snPD3NgyKdU",
+        "title": "Toucan | Everything Changed but the Numbers: Reinventing Analytics With AI Agents",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "yeswehack-donnees-vulnerabilites-ia",
+      "day": "2026-10-13",
+      "type": "talk",
+      "title": "What Large-Scale Vulnerability Data Reveals About AI-Powered Security",
+      "speakers": [
+        "Selim Jaafar — YesWeHack"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Remise en cause d'un consensus vieux de six mois, *« AI finds volume, humans find what matters »* : selon YesWeHack, **les données ne le confirment plus**.\n- Matériau : les données d'un agrégateur de vulnérabilités (bug bounty, pentest agentique maison, triage qui reproduit les exploits, dédoublonne et évalue la sévérité).\n- Leçon annoncée : ce qu'un test ne remonte jamais, c'est **ce qu'il n'a pas été configuré pour chercher**.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "O07f4UwmmS8",
+        "title": "YesWeHack | What Large-Scale Vulnerability Data Reveals About AI-Powered Security",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "eset-ia-detection-menaces",
+      "day": "2026-10-13",
+      "type": "talk",
+      "title": "Fast, Accurate, Lightweight: Engineering AI for Threat Detection",
+      "speakers": [
+        "Juraj Janosik — ESET"
+      ],
+      "feedbackFrom": [],
+      "summary": "- L'IA change la cybersécurité, mais *« not necessarily in the ways the headlines would have you believe »* : la course au déploiement et à l'autonomie crée **une nouvelle surface d'attaque**.\n- Panorama des menaces IA actuelles à partir de la R&D d'ESET et de leçons apprises.\n- Position : l'avenir de la cybersécurité n'appartient **ni aux optimistes ni aux catastrophistes** de l'IA.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "2k9ao5uPRJw",
+        "title": "Eset | Fast, Accurate, Lightweight: Engineering AI for Threat Detection",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "corti-architecture-ia-souveraine",
+      "day": "2026-10-13",
+      "type": "talk",
+      "title": "Building Architecture for Sovereign AI: Lessons from Healthcare, Life Sciences and Beyond",
+      "speakers": [
+        "Lars Maaløe — Corti"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Thèse : sans plan d'IA souveraine, l'entreprise prend un risque, mais **la souveraineté ne suffit pas** ; il faut égaler les meilleurs modèles fermés tout en étant plus rapide, fiable et moins cher en production.\n- Architecture de Corti, construite pour la santé : infrastructure souveraine, **modèles spécialisés** et orchestration contrôlée.\n- Corti ouvre cette architecture à d'autres secteurs depuis 2026.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Pm3S_3pEn5k",
+        "title": "Corti | Building Architecture for Sovereign AI: Lessons from Healthcare, Life Sciences and Beyond",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "hugging-face-carbon-genomique",
+      "day": "2026-10-13",
+      "type": "talk",
+      "title": "Decoding the Language of Life: AI for Science",
+      "speakers": [
+        "Loubna Ben Allal — Hugging Face"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Lire un génome coûte peu, l'interpréter reste largement non résolu ; or les modèles fermés refusent beaucoup de prompts de biologie et l'ADN est trop sensible pour être envoyé à un tiers : **les modèles ouverts exécutables en local deviennent une exigence**.\n- Retour d'expérience sur **Carbon**, famille de modèles de fondation génomiques ouverts qui égalent des modèles bien plus gros pour une fraction du coût.\n- L'ADN met à l'épreuve la recette LLM standard : **curation, tokenisation et fonction de perte** doivent changer.\n- Usages montrés : noter des mutations, générer de l'ADN qui se replie en vraies protéines, produire des représentations riches.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "QKJUCMIesP4",
+        "title": "Hugging Face | Decoding the Language of Life: AI for Science",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "karavela-modeles-fondation-neurosciences",
+      "day": "2026-10-13",
+      "type": "talk",
+      "title": "Decode First, Diagnose Later: Why Foundation Models Need to Learn to Read Minds",
+      "speakers": [
+        "Alexis Thual — Karavela"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Contre-pied : au lieu d'entraîner sur les données cérébrales disponibles, Karavela **conçoit sa propre acquisition IRM** pour produire les données dont le modèle a besoin.\n- Objectif de pré-entraînement : passer de l'activité cérébrale au **langage**, présenté comme le signal le plus informatif pour des représentations qui généralisent.\n- Visée clinique : suivre comment les maladies neurodégénératives et psychiatriques altèrent la cognition.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "lmOoSWq_M-M",
+        "title": "Karavela | Decode First, Diagnose Later: Why Foundation Models Need to Learn to Read Minds",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "entalpic-decouverte-materiaux",
+      "day": "2026-10-13",
+      "type": "talk",
+      "title": "From Trial and Error to AI-Driven Materials Discovery",
+      "speakers": [
+        "Lucile Ritchie — Entalpic"
+      ],
+      "feedbackFrom": [],
+      "summary": "- La découverte de matériaux reste largement **empirique**, et la simulation coûte cher et limite le nombre de candidats testés.\n- L'Atomistic Discovery Engine combine modèles génératifs et prédictifs et simulations physiques pour **classer les candidats** avant validation expérimentale.\n- Domaines : matériaux semi-conducteurs et catalyse.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "NjSi08FFbBo",
+        "title": "Entalpic | From Trial and Error to AI-Driven Materials Discovery",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "fundamental-modeles-tabulaires",
+      "day": "2026-10-13",
+      "type": "talk",
+      "title": "Bringing Foundation Models to Enterprise Tables",
+      "speakers": [
+        "Neil Leiser — Fundamental"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Prévision de demande, pannes, risque de crédit : aujourd'hui **un modèle par tâche**, chacun avec son cycle de développement.\n- Les **Large Tabular Models** (NEXUS, pré-entraîné sur des milliards de lignes et colonnes) proposent une base commune qui se transfère à de nouveaux jeux de données.\n- Sujets : économie du prédictif avec pré-entraînement, et cas où les modèles spécialisés gardent leur place.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Um8iIHUd9Ng",
+        "title": "Fundamental | Bringing Foundation Models to Enterprise Tables",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "scaleway-modeles-tabulaires-sans-entrainement",
+      "day": "2026-10-13",
+      "type": "talk",
+      "title": "Fitting Without Training With Tabular Foundation Models",
+      "speakers": [
+        "Juan Pablo Fuquen — Scaleway"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Les modèles de fondation tabulaires utilisent des **exemples étiquetés comme contexte** pour prédire sur de nouvelles données, sans réentraînement par jeu de données.\n- Démo de bout en bout : préparation des données, sélection du contexte, validation sur données tenues à l'écart, prédiction, interprétabilité.\n- Points de vigilance : le choix des exemples pèse sur la précision et le coût, *« no training »* demande quand même de l'ingénierie, et **limites de contexte et coût d'inférence** contraignent l'usage.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "ufq1_QWtHNc",
+        "title": "Scaleway | Fitting Without Training With Tabular Foundation Models",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "lighton-ocr-recherche",
+      "day": "2026-10-13",
+      "type": "talk",
+      "title": "Building Frontier OCR & AI Search for the Real World",
+      "speakers": [
+        "Jean-Adrien Ducastaing — LightOn"
+      ],
+      "feedbackFrom": [],
+      "summary": "- LightOn présente sa dernière génération de modèles légers d'**OCR**, d'embeddings multi-vecteurs et de reranking, pour une recherche de pointe sous budget de calcul serré.\n- Message : les modèles ne suffisent pas ; le talk traite des compromis d'ingénierie pour des applications de recherche fiables en conditions réelles.\n- Le même jour, LightOn OCR 3 a rejoint le catalogue d'inférence de Scaleway.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "yXK88DWue54",
+        "title": "LightOn | Building Frontier OCR & AI Search for the Real World",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "prewave-risques-supply-chain",
+      "day": "2026-10-13",
+      "type": "talk",
+      "title": "Mastering Supply Chain Volatility: A Look Inside Prewave's Risk Intelligence Engine",
+      "speakers": [
+        "Prewave"
+      ],
+      "feedbackFrom": [],
+      "summary": "- La maîtrise des chaînes d'approvisionnement est présentée comme **une exigence d'infrastructure**, plus seulement de conformité.\n- Architecture détaillée : NLP multilingue, **graphes de connaissances dynamiques** et pipelines de ML qui transforment des millions de données non structurées en alertes en temps réel.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "M8UVtZBjiNk",
+        "title": "Prewave | Mastering Supply Chain Volatility: A Look Inside Prewave's Risk Intelligence Engine",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "gradium-voice-operating-system",
+      "day": "2026-10-13",
+      "type": "talk",
+      "title": "Building the Voice Operating System",
+      "speakers": [
+        "Neil Zeghidour — Gradium"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Thèse : si **la voix devient le prochain système d'exploitation**, les règles d'architecture logicielle vont changer.\n- Parcours de l'IA conversationnelle, des commandes vocales applicatives aux pipelines temps réel à très faible latence.\n- Les architectures **en cascade** actuelles ne seraient qu'une étape vers une couche native **full-duplex**.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "qutb_0wAXoQ",
+        "title": "Gradium | Building the Voice Operating System",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "elevenlabs-agent-vocal-temps-reel",
+      "day": "2026-10-13",
+      "type": "talk",
+      "title": "Bringing Ulysses Home: From Voice Cloning to Real-Time Conversation",
+      "speakers": [
+        "Jean-Denis Zafar — ElevenLabs"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Démo live d'un **agent vocal qui réserve un vol pour Ithaque**.\n- Briques détaillées : clonage de voix instantané ou professionnel, vérification de la voix et isolation du locuteur, **appel d'outils et streaming à faible latence**.\n- Angle : ce qu'il faut pour livrer de l'IA vocale au-delà de la démo.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "VJ1HAoO0KB0",
+        "title": "ElevenLabs | Bringing Ulysses Home: From Voice Cloning to Real-Time Conversation",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "pyannoteai-speaker-intelligence",
+      "day": "2026-10-13",
+      "type": "talk",
+      "title": "Garbage In, Garbage Out: Why Speaker Intelligence Matters When Training Voice AI",
+      "speakers": [
+        "Vincent Molina — pyannoteAI"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Les enregistrements d'entraînement des modèles vocaux sont sales : interruptions, voix superposées, bruit. **Si le pipeline ne sait pas qui parle et quand, le modèle apprend la confusion.**\n- Les labs doivent découper des milliers d'heures en extraits propres à un seul locuteur avant d'entraîner STT, TTS ou speech-to-speech.\n- Thèse : la **diarisation** (« speaker intelligence ») doit être la première étape de la préparation des données.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "LPG0pyznFhk",
+        "title": "PyannoteAI | Garbage In, Garbage Out: Why Speaker Intelligence Matters When Training Voice AI",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "panel-financement-talents-ia-europe",
+      "day": "2026-10-13",
+      "type": "roundtable",
+      "title": "Backing Europe’s AI Talent from Research Breakthrough to Global Business",
+      "speakers": [
+        "Doreen Pernel — Scaleway (modération)",
+        "Anaïs Monlong — IRIS",
+        "Stefano Pelagallo — CDP Venture Capital",
+        "Carole Cazassus — Supernova Invest",
+        "Sébastien Le Roy — Serena"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Constat : une bonne équipe de recherche et un prototype prometteur **ne font pas une entreprise finançable** ; il faut du calcul, des clients et une économie prouvée pendant que la technologie bouge.\n- Où le financement européen peut peser : aider les chercheurs à devenir fondateurs, relier la deep tech à l'industrie, financer le passage de l'avantage technique à l'échelle commerciale.\n- Seule session consacrée au financement parmi les replays publiés.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "7XUvWyl2AzY",
+        "title": "Backing Europe’s AI Talent from Research Breakthrough to Global Business",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "qbitsoft-optimisation-quantique",
+      "day": "2026-10-13",
+      "type": "workshop",
+      "title": "From Quantum Optimization to Real-World Applications",
+      "speakers": [
+        "Ghada Ben Slama — QbitSoft"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Approche pragmatique : identifier des **problèmes d'optimisation réels** où le quantique s'intègre aux workflows existants (finance, assurance).\n- Déroulé d'un cas : formulation, modélisation mathématique, conception d'une solution quantique ou hybride.\n- Démo live et discussion des difficultés à passer de la formulation théorique à une solution implémentable.\n- D'après le descriptif officiel du replay (pas de sous-titres YouTube disponibles au 26/10/2026, aucun retour de participant trouvé).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "zfrKiN5TqfI",
+        "title": "QbitSoft | From Quantum Optimization to Real-World Applications",
+        "publishedAt": "2026-10-22",
+        "transcript": false
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Keynote d'ouverture : Raffi Krikorian (Mozilla)",
+    "Keynote d'ouverture : Andrej Zdravkovic (AMD)",
+    "Keynote d'ouverture : Leonard Strouk (Living Models)",
+    "Keynote d'ouverture : Esmie Wang Hui (Alibaba Europe, Qwen)",
+    "Keynote d'ouverture : Justin Carpentier (Inria, équipe Willow)",
+    "Keynote d'ouverture : Jean Ponce (ENS–PSL, NYU, Enhance Lab)",
+    "Keynote d'ouverture : Tony Tung (PRESAGE), voir aussi sa session filmée",
+    "Workshops et démos non filmés (programme officiel non lu)"
+  ],
+  "sources": [
+    {
+      "label": "Site officiel ai-PULSE 2026",
+      "url": "https://www.ai-pulse.eu"
+    },
+    {
+      "label": "Blog Scaleway : The story behind our ai-PULSE 2026 themes (10/08/2026)",
+      "url": "https://www.scaleway.com/en/blog/ai-pulse-2026-themes/"
+    },
+    {
+      "label": "YouTube : Opening Keynotes | ai-PULSE 2026 | 4th Edition (live du 13/10)",
+      "url": "https://www.youtube.com/watch?v=uB62scVCtio"
+    },
+    {
+      "label": "Playlist YouTube : ai-PULSE 2026 | 4th Edition",
+      "url": "https://www.youtube.com/playlist?list=PLRUtQNERdzxY"
+    },
+    {
+      "label": "Playlist YouTube : ai-PULSE 2026 | ENTER Conferences",
+      "url": "https://www.youtube.com/playlist?list=PLQcdcT5kYDus"
+    },
+    {
+      "label": "Playlist YouTube : ai-PULSE 2026 | SHIFT Conferences",
+      "url": "https://www.youtube.com/playlist?list=PLA7Nu_PfynJk"
+    },
+    {
+      "label": "Playlist YouTube : ai-PULSE 2026 | CTRL Conferences",
+      "url": "https://www.youtube.com/playlist?list=PLFJVjVLsGcLA"
+    },
+    {
+      "label": "Communiqué Scaleway : Scaleway accélère pour donner à l'Europe les moyens de ses ambitions dans l'IA (13/10/2026)",
+      "url": "https://www.scaleway.com/fr/news/scaleway-accelere-pour-donner-a-leurope-les-moyens-de-ses-ambitions-dans-lia/"
+    },
+    {
+      "label": "Communiqué Scaleway (EN) : Scaleway scales up to power Europe's AI ambitions",
+      "url": "https://www.scaleway.com/en/news/scaleway-scales-up-to-power-europes-ai-ambitions/"
+    },
+    {
+      "label": "Groupe iliad : ai-PULSE 2026, communiqué",
+      "url": "https://www.iliad.fr/fr/actualites/article/ai-pulse-2026-scaleway-accelere-pour-donner-a-l-europe-les-moyens-de-ses-ambitions-dans-l-ia"
+    },
+    {
+      "label": "Maddyness : At Station F, Mistral Defends Its New Model and Scaleway Boosts Its Computing Capacity with Nvidia and AMD (Maxence Fabrion, 13/10/2026)",
+      "url": "https://www.maddyness.com/uk/2026/10/13/at-station-f-mistral-defends-its-new-model-and-scaleway-boosts-its-computing-capacity-with-nvidia-and-amd"
+    },
+    {
+      "label": "Journal du Net : AI Pulse 2026, Scaleway muscle son offre IA pour imposer son cloud en Europe (Benjamin Polge, 13/10/2026)",
+      "url": "https://www.journaldunet.com/cloud/1556529-ai-pulse-2026-scaleway-muscle-son-offre-ia-avec-amd-vsora-et-de-nouveaux-llm/"
+    },
+    {
+      "label": "StorageNewsletter : ai-PULSE 2026, Scaleway Scales up to Power Europe's AI Ambitions (14/10/2026)",
+      "url": "https://www.storagenewsletter.com/2026/10/14/ai-pulse-2026-scaleway-scales-up-to-power-europes-ai-ambitions/"
+    },
+    {
+      "label": "Telecompaper : Scaleway plans GPU Zone in Denmark and supercomputer in Sweden",
+      "url": "https://www.telecompaper.com/news/scaleway-plans-gpu-zone-in-denmark-and-supercomputer-in-sweden--1585530"
+    },
+    {
+      "label": "Blog d'Elouan Laurent : Scaleway ai-PULSE 2026, GPU, modèles, prix (15/10/2026)",
+      "url": "https://elouanlaurent.com/blog/scaleway-ai-pulse"
+    },
+    {
+      "label": "dev.to, Taha Echakiri : Scaleway Adds GPU Zones in Two Countries on Two Accelerator Families (18/10/2026)",
+      "url": "https://dev.to/echakiri/scaleway-adds-gpu-zones-in-two-countries-on-two-accelerator-families-g8c"
+    },
+    {
+      "label": "Posts LinkedIn : aucun post de retour de participant retrouvé au 26/10/2026"
+    }
+  ]
 }

@@ -12,6 +12,415 @@
   "theme": "Cloud native, cybersécurité, green IT (100 % REX)",
   "dateConfidence": "ok",
   "note": "Environ 450 visiteurs annoncés. Numéro d'édition déduit (3e en 2023, 5e en 2025). Pas de DevOps D-Day en 2024 : sa 9e édition a été repoussée au 30 janvier 2025.",
-  "status": "pending",
-  "sessions": []
+  "status": "synthesized",
+  "sessions": [
+    {
+      "id": "rag-et-llm-open-source-vers-des-ia-generatives-plus-responsables",
+      "day": "2024-06-06",
+      "type": "talk",
+      "title": "RAG et LLM Open Source ? Vers des IA Génératives plus responsables",
+      "speakers": [
+        "Benjamin Bernard — Crédit Mutuel Arkéa",
+        "Pierre Therrode — SNCF Connect & Tech"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène**, l'une des deux conférences d'ouverture : deux entreprises que tout sépare (une banque, un site de vente de billets de train) présentent leur projet commun **Tock** (The Open Conversation Kit), boîte à outils open source de chatbots née en 2016 chez SNCF Connect & Tech, ouverte en 2017, sous licence Apache 2.\n- Explication du **RAG** par l'analogie d'un livre dont on arrache les pages : FAQ et pages produits découpées en paragraphes, vectorisées, puis seuls les passages proches de la question sont injectés dans le prompt.\n- Démo sur le site du Crédit Mutuel de Bretagne : réponse contextualisée (virement de 200 € d'un Livret A vers un LDD, avec le passage obligé par le compte courant), **effet mémoire** de la conversation, puis bascule vers un conseiller humain qui voit tout l'historique.\n- **Garde-fous par le prompt** : le bot est un *« conseiller documentaire »*, pas bancaire ; interdit de proposition commerciale, de conseil en placement ou de supposition sur la situation financière du client, car la banque reste responsable du conseil. Créativité du modèle réduite pour limiter les dérives.\n- Côté « responsable » : la démo utilise OpenAI et Azure OpenAI, mais Arkéa publie sur Hugging Face des modèles plus légers affinés en interne, qui tournent sur peu de GPU, voire sur CPU ; la limite avouée est le coût d'une infrastructure d'inférence toujours allumée, rentable seulement avec beaucoup de cas d'usage.\n- Une dizaine d'organisations utilisent Tock (dont Enedis et Orange) ; le partage entre entreprises est présenté comme une garantie de pérennité.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "lYmUeYoVkwc",
+        "title": "RAG et LLM Open Source ? Vers des IA Génératives plus responsables.",
+        "publishedAt": "2024-06-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "vol-wax2024-platform-engineering-chez-air-corsica",
+      "day": "2024-06-06",
+      "type": "talk",
+      "title": "Vol WAX2024 : la chaîne de valeur propulsée par le Platform Engineering chez Air Corsica",
+      "speakers": [
+        "Frédéric Léger — freelance",
+        "Emilien Escalle — CTO freelance",
+        "Jean-François Vovard — Air Corsica (DSI)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène**, l'autre conférence d'ouverture, mise en scène comme un vol : le DSI d'Air Corsica (1,7 million de passagers par an, jusqu'à 400 vols par semaine, une dizaine de personnes à l'informatique) et deux freelances racontent deux ans de travail.\n- Approche **platform engineering** découverte en chemin : portail développeur, golden paths, templates CI/CD, images Docker et modules Terraform/Terragrunt en inner source, environnements dynamiques (review apps), GitOps avec Argo CD (pattern *app of apps*), trois clusters (tools, dev, prod) et OpenTelemetry vers Datadog.\n- Projet pilote : le site vitrine sous Drupal, *« pas cloud native ready »*, qui a demandé des transformations applicatives et des jeux de données minimaux pour les review apps.\n- **Leçons** : *« la pratique est plus dure que la théorie »*, *« l'humain en premier, la plateforme en second »*, *« glue is valuable »* (la valeur est dans l'interconnexion des outils, pas dans Argo CD).\n- **Faiblesses assumées** : dépendance à AWS (RDS) et à GitHub Actions, montée en compétences longue, outils parfois immatures (contributions upstream faites le soir).\n- Succès mesuré à l'adoption : deux nouveaux projets lancés directement sur la plateforme, plus de mises en production par an. En questions, pas de test de reprise après sinistre, et du rolling update natif plutôt que du blue-green, compliqué avec Drupal.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "Xb8PKOdTilA",
+        "title": "Vol WAX2024 : la chaîne de valeur propulsée par le Platform Engineering chez Air Corsica",
+        "publishedAt": "2024-06-21",
+        "transcript": true
+      }
+    },
+    {
+      "id": "strategie-cloud-hybride-chez-michelin",
+      "day": "2024-06-06",
+      "type": "talk",
+      "title": "Stratégie cloud hybride chez Michelin ?",
+      "speakers": [
+        "Thierry Cognon — Michelin",
+        "Guillaume Hospital — Michelin"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : plus de 20 000 serveurs dont la moitié dans 120 sites industriels, 2 000 applications, environ 12 000 changements par an ; une infrastructure qui a doublé entre 2016 et 2023.\n- **Un cloud par raison** : Azure dès 2016 par curiosité, AWS arrivé avec les acquisitions et gardé pour la concurrence, Oracle Cloud pour migrer en un an l'ERP mondial depuis des Exadata en fin de vie, Alibaba Cloud imposé par la réglementation chinoise, et **OVHcloud SecNumCloud** pour les applications les plus sensibles (classification D1), jusque-là uniquement sur site, à cause des lois extraterritoriales américaines.\n- Frustration racontée du Covid : des ventes en baisse, des applications à 50 % de charge et une facture d'infrastructure inchangée. Ambition : des coûts qui suivent la courbe des revenus, avec *« la philosophie du cloud »* appliquée aussi aux datacenters internes.\n- Organisation en plateformes depuis 2018 (cloud, edge, observabilité, IA), compétences réinternalisées, inner source depuis un an, infrastructure pensée comme un produit pour la communauté DevOps.\n- Industrie 4.0 : data lake d'usine, puis vision par ordinateur (par exemple surveiller les stocks de matière) avec des modèles **entraînés sur GPU dans le cloud puis redescendus en usine** pour l'inférence.\n- **Questions de la salle** : ITIL et agile *« cohabitent »* selon la pérennité des applications ; les sujets sensibles concernent surtout la R&D en France.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "0PsrMd3Dob0",
+        "title": "Stratégie cloud hybride chez Michelin ?",
+        "publishedAt": "2024-07-01",
+        "transcript": true
+      }
+    },
+    {
+      "id": "guide-de-survie-d-une-application-haute-dispo-sur-un-cluster-kube-mutualise",
+      "day": "2024-06-06",
+      "type": "talk",
+      "title": "Guide de survie d'une application haute-dispo sur un cluster Kube mutualisé",
+      "speakers": [
+        "François Berthault — FGTECH"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : deux ans d'exploitation d'une plateforme d'observabilité maison sur deux clusters mutualisés (GKE et Rancher, une centaine de nœuds et une centaine d'équipes chacun). Si l'application tombe, 5 000 serveurs déclenchent des alertes ; une interruption se prévoyait trois semaines à l'avance.\n- Message central : **on ne part pas en production sans observabilité**. Logs (sur un cluster partagé, `kubectl logs` ne garde que 3 ou 4 heures), métriques techniques et métier, traces, puis profiling (Pyroscope), tests de charge (k6), chaos (kube-monkey, Litmus) et politiques Kyverno.\n- Sur un cluster mutualisé, la haute dispo ne se résume pas aux replicas : évictions de pods sous pression, PodDisruptionBudget, topologie et priorités, stratégies de déploiement (rolling, blue-green, canary à 10 % pour traquer une fuite mémoire).\n- Optimisation ensuite : HPA, **KEDA** sur ses propres métriques Prometheus, VPA, et le redimensionnement des pods sans redémarrage (*in-place resize*) découvert à la KubeCon ; ne pas combiner HPA et VPA sur les mêmes métriques.\n- Lecture critique du speaker lui-même : la moitié de ces conseils n'ont pas de sens sur un cluster d'un seul nœud ; *« si tu es tout seul et que tu n'as qu'un seul nœud, ne fais pas du Kube »*.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "rUptZQVtUbg",
+        "title": "Guide de survie d'une application haute-dispo sur un cluster Kube mutualisé.",
+        "publishedAt": "2024-06-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-cauchemar-des-attaquants-une-infrastructure-sans-secrets",
+      "day": "2024-06-06",
+      "type": "talk",
+      "title": "Le cauchemar des attaquants : une infrastructure sans secrets",
+      "speakers": [
+        "Thibault Lengagne — Padok (groupe Theodo)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : la démarche **« zero creds »** de Padok vise à supprimer les secrets longue durée, citant des fuites récentes (token GitHub chez Mercedes-Benz) et les rapports de Verizon, Google et Datadog.\n- Méthode : cartographier tous les secrets, puis les éradiquer en trois vagues : **humains** (SSO, oauth2-proxy, Boundary + Vault pour les accès réseau et des mots de passe de base générés pour 24 h), **CI/CD** (scan de l'historique Git, authentification OIDC à la place des secrets de pipeline), **workloads** (secrets dynamiques Vault).\n- Démo : PostgreSQL et Vault dans Kubernetes ; chaque pod reçoit ses propres identifiants éphémères via l'injecteur Vault, ce qui améliore aussi l'auditabilité.\n- Bénéfices annoncés : après un incident, *« en attendant 15 minutes, tous les secrets vont se rotate »* ; un attaquant doit rejouer son attaque en continu.\n- **Questions de la salle** : rotation de 24 h en staging, **15 minutes en production** ; la priorité habituelle chez les clients est l'OIDC en CI/CD, qui supprime parfois des centaines de secrets ; Vault devient un composant critique (redondance Raft, polices simples et unitaires).",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "2SaFFzyNuig",
+        "title": "Le cauchemar des attaquants : une infrastructure sans secrets.",
+        "publishedAt": "2024-06-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "jeux-de-donnees-hors-production-construction-ou-anonymisation",
+      "day": "2024-06-06",
+      "type": "talk",
+      "title": "Jeux de données de mes environnements hors production : construction ou anonymisation ?",
+      "speakers": [
+        "Laurent Grangeau — Google",
+        "Tony Jarriault"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : copier les données de production en développement reste courant et contraire aux recommandations de la CNIL (une donnée est anonyme si elle empêche individualisation, corrélation et inférence). Tester avec quelques gigas au lieu de plusieurs téraoctets cache aussi des problèmes de performance.\n- Gradation des solutions : scripts avec la librairie **Faker** (y compris dans PostgreSQL) ; **GCP Data Loss Prevention** pour classifier (environ 150 infotypes prédéfinis) puis masquer, regrouper, hacher ou chiffrer en préservant le format, le traitement se faisant côté production ; **Dataflow** avec un générateur open source pour produire en masse des données synthétiques à partir du schéma BigQuery.\n- Démo : anonymisation de CSV, de logs et même du texte d'une image ; génération de lignes synthétiques réalistes.\n- Piste ouverte : les LLM pour détecter les données sensibles et générer des jeux de test, avec la remarque qu'un modèle qui refuse de générer des numéros de carte se contourne facilement.\n- Conclusion : *« pas de solution idéale »*, tout dépend du contexte. Le talk a manqué de temps et les questions ont été renvoyées hors de la salle.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "-KDU62gG2gA",
+        "title": "Jeux de données de mes environnements hors production : construction ou anonymisation ?",
+        "publishedAt": "2024-07-01",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-differents-modes-de-synchronisation-des-data-platforms-chez-carrefour",
+      "day": "2024-06-06",
+      "type": "talk",
+      "title": "Les différents modes de synchronisation des Data platforms chez Carrefour",
+      "speakers": [
+        "Guillaume Blaquière — Carrefour"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : Carrefour (80 millions de clients, 40 pays, plus de 3 milliards de tickets de caisse par an) a un modèle fédéré où chaque pays a sa data platform ; le groupe consolide tout dans BigQuery (projet United) pour des produits comme Links, qui revend aux industriels des données de ventes agrégées.\n- Le problème : **quand lancer la consolidation** ? La France est quasi temps réel, le Brésil a six heures de décalage, l'Espagne charge un export Cloudera parfois en échec. Imposer une heure commune aux pays est *« impossible chez Carrefour »*.\n- Progression racontée : scheduler à heure fixe, parallélisation, puis l'idée d'un **fan-in événementiel** où chaque pays publie un rapport d'exécution et où l'aval décide de traiter ou d'attendre (exemple : 40 % des caisses brésiliennes manquantes après une coupure).\n- La solution proposée par Google (Cloud Workflows avec URL de callback) est écartée : trop complexe à opérer pour les petits pays. Le speaker a donc écrit un petit outil open source (Cloud Run, Pub/Sub, Firestore), en test avec la France et la Belgique.\n- **Questions de la salle** : propriété des données vis-à-vis des fournisseurs, durées de conservation différentes par pays, récupération des 30 derniers jours avec dédoublonnage ; passer au delta est *« beaucoup politique »*, car les pays financent pour une valeur qu'ils ne voient pas.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "yDwefLxWbR8",
+        "title": "Les différents modes de synchronisation des Data platforms chez Carrefour.",
+        "publishedAt": "2024-06-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "guide-touristique-des-outils-de-securite-orientes-cloud",
+      "day": "2024-06-06",
+      "type": "talk",
+      "title": "Guide touristique des outils de sécurité orientés Cloud",
+      "speakers": [
+        "Rachid Zarouali"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène**, une croisière d'île en île calquée sur le Top 10 Kubernetes de l'OWASP, avec un outil open source par problème : mauvaises configurations (kubeaudit), images douteuses ou typosquattées (Connaisseur, signature d'images, R2Devops pour les pipelines), RBAC trop large (rbac-tool, rbac-police), authentification (Paralus), vulnérabilités (KubeClarity, Grype avec VEX), détection à l'exécution (Falco, Tetragon).\n- Constat d'auditeur : le premier carton rouge reste presque toujours un conteneur privilégié avec tous les droits, *« assez simple à corriger »*. Le RBAC est *« chiant »* mais c'est toute la sécurité du cluster.\n- Démo partielle de politiques Tetragon et Falco, puis présentation de M9 Sweeper, qui regroupe plusieurs de ces outils dans une interface.\n- **Questions de la salle** : bloquer ou alerter ? Tetragon coupe immédiatement, Falco remonte une alerte ; le speaker préfère alerter, après un export de base de 14 heures coupé par une règle.\n- Sur une vingtaine d'images hétérogènes qui accumulent les CVE : partir des images officielles, reconstruire en CI/CD (notifications OpenCVE) et redéployer progressivement avec Argo, ne jamais patcher à chaud.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "PXvst1Hh79Y",
+        "title": "Guide touristique des outils de sécurité orientés Cloud.",
+        "publishedAt": "2024-06-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "c-est-l-heure-du-check-up-de-vos-pipelines-ci-cd",
+      "day": "2024-06-06",
+      "type": "talk",
+      "title": "C'est l'heure du Check-Up de vos pipelines CI/CD !",
+      "speakers": [
+        "Thomas Boni — R2Devops"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène**, retour d'une mission de conseil : un client migré sur GitLab sans CI. Le pipeline promis en *« 10 lignes de YAML »* a demandé syntaxe, entretiens avec l'équipe, workflow Git, choix d'outils, images maison à maintenir et mise en forme des rapports, pour finir en centaines de lignes.\n- Le pipeline, copié dans toutes les équipes, échoue quelques mois plus tard à un **audit de sécurité** : YAML codé en dur partout, secrets en clair, images non maîtrisées.\n- Remédiation : templates centralisés (les équipes finissent par vouloir des templates complets par type de projet), variables masquées et protégées, puis Vault ; liste de registres de confiance et images reconstruites en interne ; **aucune installation d'outil dans les jobs**, versions figées ; éviter l'over-engineering (`needs`) ; audits réguliers.\n- D'où le produit R2Devops (démo limitée par un problème technique), qui cartographie les pipelines d'une instance GitLab. Le speaker cite le Top 10 OWASP CI/CD, un benchmark de sécurité de la supply chain et la directive NIS 2 attendue en octobre.\n- Lecture critique : talk de fondateur, dont la seconde moitié présente son produit. En questions, il reconnaît qu'on ne peut pas verrouiller les fichiers `.gitlab-ci.yml` sans GitLab Ultimate.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "eO0AKAr09p0",
+        "title": "C'est l'heure du Check-Up de vos pipelines CI/CD !",
+        "publishedAt": "2024-06-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "alerte-verte-des-po-pm-en-mode-decouverte",
+      "day": "2024-06-06",
+      "type": "talk",
+      "title": "Alerte verte ! Des PO/PM en mode découverte",
+      "speakers": [
+        "Juliette Laplace — Exalt"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène**, seul talk orienté produit : le numérique pèserait environ 4 % des émissions de gaz à effet de serre, et l'agilité (priorisation par la valeur, itérations, retours utilisateurs, équipes pluridisciplinaires) est présentée comme un levier de sobriété.\n- Viser ni le site surchargé ni l'interface austère qui *« perd sa cible »* : garder un effet « waouh » sans empiler les couches (exemple de Google face à Yahoo). KISS et YAGNI comme garde-fous.\n- Objectifs chiffrés et SMART : sur une refonte, viser -50 % de poids et -70 % de fonctionnalités au départ ; sur une création, ne pas dépasser le MVP de plus de 5 à 10 % de fonctionnalités. Supprimer les données inutiles (un client stockait les lieux de naissance sans s'en servir).\n- Croiser au moins trois ou quatre outils d'écoscore, car ils ne mesurent pas la même chose. Exemples inspirants : images réduites à quatre couleurs (de 1,4 Mo à 22,5 Ko), Low-tech Magazine alimenté à l'énergie solaire.\n- **Questions de la salle** : la gouvernance passe par la pédagogie, les « cinq pourquoi » et la preuve du retour sur investissement ; la speaker anticipe une réglementation sur le RGESN d'ici un ou deux ans, sur le modèle du RGAA.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "lNvOBrakeAM",
+        "title": "Alerte verte ! Des PO/PM en mode découverte.",
+        "publishedAt": "2024-06-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "diagram-as-code-au-service-du-greenops",
+      "day": "2024-06-06",
+      "type": "talk",
+      "title": "L'approche Diagram as Code au service du GreenOps : comment réduire son empreinte carbone",
+      "speakers": [
+        "Xavier Quesnot"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : le quotidien de « Bob », architecte cloud, qui dessine, écrit des *« soupes de YAML »*, documente, estime les coûts et doit maintenant estimer l'impact carbone.\n- Rappels sur le PUE et l'intensité carbone de l'électricité (Electricity Maps) : la même charge consomme moins avec un PUE de 1,4 qu'avec un PUE de 2, et la région choisie change l'empreinte.\n- Proposition : un outil de **diagram as code** développé depuis un an par sa société, qui modélise une infrastructure, estime coût et carbone dès la conception (données ADEME et fournisseurs), génère du code et analyse les pipelines GitHub Actions.\n- **Questions de la salle** : comment estimer un cluster ou du serverless dont la charge varie (moyenne et tendance, trafic pas encore pris en compte) ; la rétro-ingénierie d'une infrastructure existante est en cours ; le produit est jugé *« assez early »* par le speaker lui-même.\n- Lecture critique : talk centré sur la présentation d'un produit, avec peu de retour d'expérience chiffré.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "FOh4AN67ITA",
+        "title": "L'approche Diagram as Code au service du GreenOps : comment réduire son empreinte carbone.",
+        "publishedAt": "2024-06-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "impact-et-innovation-l-ecoconception-du-site-corporate-de-sncf-connect-tech",
+      "day": "2024-06-06",
+      "type": "talk",
+      "title": "Impact et Innovation : L'Écoconception du Site Corporate de SNCF Connect & Tech",
+      "speakers": [
+        "Amira Dkhil — SNCF Connect & Tech",
+        "Sylvain Bousselier — SNCF Connect & Tech",
+        "Remi Brissaud — SNCF Connect & Tech"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : sondage dans la salle sur le tiers qui pèse le plus (terminaux, réseaux, datacenters) ; la majorité répond les datacenters, alors que ce sont **les terminaux utilisateurs**.\n- Démarche : formation aux 115 bonnes pratiques Green IT, puis au **RGESN** avec Temesis ; revue mensuelle d'un tableau des critères, user stories et definition of done dédiées, revue de code par un expert à chaque sprint.\n- Les « cinq commandements » du développeur front : mobile first, librairies à jour, code efficient, **challenger le besoin** (un carrousel remplacé par une déclinaison d'un composant d'onglets existant, sans librairie supplémentaire), outils de mesure.\n- Choix techniques : Next.js gardé (prefetch désactivé, rendu côté serveur), cache OPcache et Redis côté Drupal, pas d'embed YouTube (20 requêtes et 3,6 Mo avant tout clic), environnements de recette éteints la nuit. Page la plus lourde : 27 requêtes, environ 37 Ko d'images.\n- Lecture critique : l'hébergement AWS est justifié par la documentation d'Amazon sur l'énergie renouvelable, sans regard externe. En questions, l'équipe admet un report de la sortie du site lié à l'écoconception et place l'accessibilité avant l'écoconception en cas de conflit.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "pMJ19SKOtoU",
+        "title": "Impact et Innovation : L'Écoconception du Site Corporate de SNCF Connect & Tech.",
+        "publishedAt": "2024-06-21",
+        "transcript": true
+      }
+    },
+    {
+      "id": "histoire-de-la-construction-d-une-architecture-k8s-resiliente-sur-aws",
+      "day": "2024-06-06",
+      "type": "talk",
+      "title": "Histoire de la construction d'une Architecture K8s résiliente et hautement disponible sur AWS",
+      "speakers": [
+        "Gaël Migliorini — HPS",
+        "Sébastien Reynier — HPS"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : HPS, éditeur marocain de logiciels de paiement présent dans 90 pays, refond un monolithe Oracle/PL-SQL en microservices cloud native, aussi exploité en SaaS. Exigences : quatre à cinq neuf, RPO et RTO proches de zéro, zéro interruption au déploiement.\n- **Portabilité** avant tout : les banques imposent OpenShift, AWS, GCP ou Azure, donc ni lambda ni serverless ; Kafka préféré à Pulsar (pourtant plus rapide) parce que les banques le connaissent.\n- Résilience en trois couches : cloud (multi-AZ, multirégion en warm standby, Aurora Global Database), Kubernetes (probes, graceful shutdown, PDB), application (retries, timeouts et logs **intégrés dans des SDK internes** plutôt que laissés aux bonnes pratiques d'une centaine de développeurs).\n- Patterns de transactions : commit en deux phases orchestré par Kafka pour le back-office, saga chorégraphiée avec événements de *reversal* pour les autorisations ; stratégie maison de rebalancing Kafka pour les services stateful.\n- **Questions de la salle** : multicloud jugé trop coûteux en compétences ; services managés (EKS, MSK) acceptés faute d'experts Kafka ; Kafka non répliqué entre régions (perte de quelques transactions tolérée) ; bascule régionale encore manuelle, *« largement améliorable »*.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "N0w3FcoVpo0",
+        "title": "Histoire de la construction d'une Architecture K8s résiliente et hautement disponible sur AWS.",
+        "publishedAt": "2024-06-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "shift-left-integration-d-infrastructures-complexes-par-le-test",
+      "day": "2024-06-06",
+      "type": "talk",
+      "title": "Shift Left : intégration d'infrastructures complexes par le test",
+      "speakers": [
+        "Vincent Lebret-Soler — FGTECH",
+        "Théophile Orliac — FGTECH"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : deux missions loin du Kubernetes standard, dont une plateforme aéronautique déconnectée, accessible sur badge et partagée entre équipes (parfois trois semaines sans accès), où il faut mettre à jour des éléments de sécurité par des scripts Bash sur des VM, switchs, PDU et capteurs.\n- Réponse : un **environnement de simulation en Docker Compose**, un conteneur par application ou équipement, réseaux virtuels, et des mocks de complexité croissante (netcat qui répond à tout, petite API Flask, conteneurs SSH, CLI propriétaires imitées).\n- Effet principal : on va sur la plateforme **pour collecter de l'information** (réponses réelles des équipements), puis on teste en non-régression chez soi ; l'équipe a ainsi travaillé un mois de décembre sans plateforme.\n- Limites : maintenir le mock quand la plateforme cible change, convaincre des administrateurs système de l'intérêt du test, éviter l'*over-testing* (*« j'étais rendu à simuler l'authentification avec une base de données »*).\n- **Questions de la salle** : Containerlab suggéré pour les équipements réseau (inconnu des speakers, et images constructeurs rarement disponibles) ; commencer minimal et n'ajouter de la complexité qu'au besoin.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "lSirltY-mqg",
+        "title": "Shift Left: intégration d'infrastructures complexes par le test.",
+        "publishedAt": "2024-06-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-faire-survivre-votre-cluster-k8s-sans-acces-internet",
+      "day": "2024-06-06",
+      "type": "talk",
+      "title": "Comment faire survivre votre cluster k8s lorsqu'il n'a pas d'accès Internet",
+      "speakers": [
+        "Christophe Jauffret — Nutanix"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : le premier appel au support après une installation Kubernetes est souvent un `ImagePullBackOff`. Les fournisseurs travaillent avec Internet ouvert, les clients derrière proxys, DMZ, filtrage et inspection TLS.\n- Réseau filtré : lister les images (sous-commandes de kubeadm ou Cluster API) et les **vraies URL** derrière les redirections de registry.k8s.io et les CDN avec crane, depuis le même sous-réseau que le cluster ; configurer les proxys du runtime, éventuellement par mutation Kyverno.\n- Isolement complet : registre local (Harbor), réplication des images, distributions qui gèrent nativement les bundles air-gap (NKP, OpenShift).\n- Réseaux contraints (edge, usines, magasins, navires) : registres locaux répliqués et **image streaming** (lazy pulling, stargz, plugin d'accélération Harbor) : un pod Nginx démarre en moins de 3 secondes au lieu de plus de 3 minutes sur un lien bridé.\n- **Questions de la salle** : perte de visibilité réseau avec un proxy L7, restrictions par IP source sur des nœuds dynamiques (plages IPAM, egress gateways).",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "rXLUdoKKyTo",
+        "title": "Comment faire survivre votre cluster k8s lorsqu'il n'a pas d'accès Internet",
+        "publishedAt": "2024-06-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "vm-ou-bare-metal-ou-executer-vos-workloads-kubernetes",
+      "day": "2024-06-06",
+      "type": "talk",
+      "title": "VM ou Bare Metal, où exécuter vos workloads Kubernetes ?",
+      "speakers": [
+        "Gauthier Leblanc — Nutanix"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : un avant-vente Nutanix refait en labo une étude de 2021 commandée par VMware, jugée datée et peu représentative. Arguments théoriques pour la VM : déploiement rapide (trois nœuds en 3 minutes, plus de 100 en un quart d'heure), firmware intégré, ségrégation de clusters.\n- Test : application Bookinfo, quatre nœuds physiques. En **bare metal**, en relevant la limite de 110 pods par nœud (maxPods, plages IP du CNI, inodes, timeouts), le cluster plafonne vers **4 000 pods** et devient instable.\n- En **VM** (112 workers de 110 pods, CPU sur-alloué 2 pour 1), **10 380 pods** tournent sans réglage particulier. Démarrage moyen d'un pod : 8 s en VM contre 4 s en bare metal, mais sur bien moins de pods côté bare metal et avec un registre distant saturé côté VM.\n- Conclusion : rester dans les recommandations CNCF (*scale out* plutôt que *scale up*) et préférer la sécurité au *« tuning en permanence »*, comparé à un overclocking à l'azote liquide.\n- **Questions de la salle** : HyperShift et KubeVirt (*« un cauchemar en termes de débogage »* selon lui) ; la dépendance éditeur après le rachat de VMware par Broadcom ; refaire le test avec kubeadm et OpenShift (2 500 pods par nœud annoncés). Lecture critique : le speaker reconnaît que le test est un one-shot, et il vend un hyperviseur.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "G63NCUeIZLM",
+        "title": "VM ou Bare Metal, où exécuter vos workloads Kubernetes ?",
+        "publishedAt": "2024-07-01",
+        "transcript": true
+      }
+    },
+    {
+      "id": "gestion-des-services-cloud-azure-et-gcp-avec-backstage",
+      "day": "2024-06-06",
+      "type": "talk",
+      "title": "Gestion des services Cloud Azure et GCP avec Backstage",
+      "speakers": [
+        "Nicolas Muller",
+        "Cédric Torcq"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène**, un talk en dialogue joué (avec un clin d'œil au talk Air Corsica du matin) sur l'adoption de **Backstage** dans le contexte d'Air France-KLM, qui utilise déjà GitHub, Terraform, Azure, GCP, ServiceNow et DevLake.\n- Le problème : portails « clicodromes », infrastructure déployée puis jamais maintenue (*life cycle management*), relances par mail, dette technique. L'idée : livrer aux développeurs un code d'infrastructure simplifié, avec des conventions plutôt que des blocages, et un contrôle a posteriori.\n- Huit mois plus tard dans le récit : une équipe transverse de DevOps champions réunie chaque semaine, des plugins écrits par plusieurs directions, des templates Terraform versionnés, un **tableau de bord LCM** qui relance automatiquement les pull requests en attente (jusqu'au N+2), une élévation de privilèges temporaire en lecture sur les bases de production.\n- Backstage comme **orchestrateur au milieu**, pas comme remplaçant : il alimente DevLake (DORA metrics dans Grafana) et s'appuie sur ServiceNow ; la valeur est le cadre qui permet à toutes les équipes de contribuer.\n- **Questions de la salle** : migration vers le nouveau backend faite en 15 jours ; une équipe de développement peut devenir propriétaire d'un module Terraform ; Backstage passe sur le chemin critique avant les Jeux olympiques, à cause de l'accès d'urgence aux bases.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "X5i6cOWl4wQ",
+        "title": "Gestion des services Cloud Azure et GCP avec Backstage",
+        "publishedAt": "2024-07-01",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-l-open-source-peut-aider-a-comprendre-les-impacts-environnementaux-du-numerique",
+      "day": "2024-06-06",
+      "type": "talk",
+      "title": "Comment l'open-source peut aider à la compréhension des impacts environnementaux du numérique ?",
+      "speakers": [
+        "Benoît Petit — Hubblo, Boavizta"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène**, clôture de la journée : raisonner en **limites planétaires** (six sur neuf dépassées), pas seulement en carbone. Sans méthodes, données et outils ouverts, l'affichage environnemental est invérifiable : l'impact de fabrication d'un pouce d'écran va d'environ 3 à 26 kg CO2e selon les sources.\n- Les datacenters consommaient plus de 400 TWh en 2022 et pourraient dépasser 800 TWh en 2026 (agrégat d'études repris par l'Agence internationale de l'énergie), malgré des PUE au plus bas : **l'efficacité est insuffisante**.\n- Outils open source passés en revue : Scaphandre (consommation par processus sur serveurs physiques), API Boavizta, Ecocode (règles Sonar), API Green Score, Cloud Carbon Footprint, Carbonifer (Terraform), EcoLogits et CodeCarbon pour l'IA.\n- Messages : *« évaluer n'est pas agir »*, **questionner le besoin** d'abord, découpler le cycle de vie du logiciel de celui du matériel (LineageOS, PC incompatibles avec Windows 11), penser aux effets rebond, agir aussi en citoyen (Data For Good, HOP).\n- Défi lancé pour la WAX 2025 : des talks du type *« comment nous servons 100 000 utilisateurs par jour avec au total 1 Go de RAM »*.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "fRrDhxuJAiU",
+        "title": "Comment l'open-source peut aider à la compréhension des impacts environnementaux du numérique ?",
+        "publishedAt": "2024-06-21",
+        "transcript": true
+      }
+    }
+  ],
+  "synthesisUpdatedAt": "2026-10-26",
+  "revisit": "Aucun retour participant public trouvé (4 recherches web, LinkedIn et blogs) ; programme archivé non relu (Wayback Machine inaccessible depuis l'outil). Relire le programme archivé (horaires, salles, sessions non filmées) et chercher des posts LinkedIn de participants et de speakers (#wax, #waxconf, juin 2024).",
+  "corpus": "Les 18 vidéos de la playlist « WAX CONF 2024 » de la chaîne YouTube des Filles et des Garçons de la Tech (publiées les 21 et 28 juin et le 1er juillet 2024), avec leurs descriptifs et leurs transcripts automatiques, lus en large partie. Aucun post LinkedIn ni article de participant trouvé.",
+  "limits": "Synthèse fondée sur ce qui a été dit sur scène et sur les questions-réponses filmées, pas sur l'accueil du public. Programme archivé non relu : l'ordre des sessions, les salles et d'éventuelles sessions non filmées restent inconnus. Transcripts automatiques bruités (noms d'outils corrigés quand c'était évident) ; plusieurs talks sont portés par des éditeurs qui présentent leur produit (Nutanix, R2Devops, outil de diagram as code).",
+  "tldr": "Une journée **100 % retours d'expérience** où Kubernetes se vit en conditions réelles (clusters mutualisés, sans Internet, VM contre bare metal), où la sécurité passe par la **suppression des secrets** et la maîtrise des pipelines, et où le numérique responsable va du **besoin challengé** à la mesure open source.",
+  "keyTakeaways": [
+    "Une plateforme interne se juge à son adoption : partir d'un projet pilote réel, soigner la colle entre les briques plutôt que les briques elles-mêmes, et former les équipes (Air Corsica ; Backstage chez Air France-KLM).",
+    "Supprimer les secrets longue durée par étapes : SSO, puis OIDC en CI/CD (le gain le plus rapide), puis secrets dynamiques Vault ; en production, une rotation toutes les 15 minutes est atteignable (Lengagne, Padok).",
+    "Un pipeline CI/CD se gouverne : templates versionnés, images de confiance reconstruites en interne, aucune installation d'outil pendant les jobs, audits réguliers (Boni).",
+    "Sur Kubernetes, rester dans les clous de la CNCF (110 pods par nœud, scale out) plutôt que tuner sans fin : en labo, 10 380 pods en VM contre un plafond instable vers 4 000 en bare metal (Leblanc, biais d'éditeur à garder en tête).",
+    "Sur un cluster partagé, l'observabilité vient avant la mise en production, puis PDB, topologie et autoscaling (KEDA sur ses propres métriques) ; pas de Kubernetes pour un seul nœud (Berthault).",
+    "Pour la résilience applicative, intégrer retries, timeouts et graceful shutdown dans des SDK internes plutôt que dans des consignes, et choisir des briques que les clients connaissent, quitte à perdre en performance (HPS).",
+    "Ne jamais copier la production en développement : générer (Faker, Dataflow) ou anonymiser à la source (DLP) selon le besoin (Grangeau et Jarriault).",
+    "Le premier levier d'écoconception est de challenger le besoin : un carrousel remplacé par un composant existant, pas d'embed vidéo, des objectifs chiffrés sur le poids et les fonctionnalités (SNCF Connect & Tech ; Laplace).",
+    "Mesurer avec des outils ouverts et vérifiables, en gardant en tête qu'évaluer n'est pas agir et que l'efficacité seule ne compense pas la hausse des usages (Petit).",
+    "Un chatbot génératif en banque se cadre par le prompt (pas de conseil, pas de proposition commerciale) et garde une sortie vers un humain qui voit tout l'historique (Bernard et Therrode)."
+  ],
+  "sessionsWithoutFeedback": [],
+  "sources": [
+    {
+      "label": "Playlist YouTube « WAX CONF 2024 » (chaîne Les Filles et Les Garçons de la Tech, 18 vidéos avec descriptifs et transcripts)",
+      "url": "https://www.youtube.com/playlist?list=PLRPw82JR0FUjpAPkz2S6HcXOryFjYH94P"
+    },
+    {
+      "label": "Programme officiel 2024 archivé (Wayback Machine, juin 2024), référencé mais non relu pour cette synthèse",
+      "url": "https://web.archive.org/web/20240624011357/https://www.waxconf.fr/schedule/wax-conference"
+    },
+    {
+      "label": "Site officiel archivé (Wayback Machine, juin 2024)",
+      "url": "https://web.archive.org/web/20240623231436/https://www.waxconf.fr/"
+    },
+    {
+      "label": "Slides de 11 talks publiées sur Google Drive (liens dans les descriptions des vidéos), non lues"
+    },
+    {
+      "label": "Posts LinkedIn de participants : aucun trouvé"
+    }
+  ]
 }
