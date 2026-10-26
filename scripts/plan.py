@@ -26,9 +26,9 @@ from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parent.parent
 WINDOW_DAYS = 14
 HISTORY_YEARS = 20
-BACKLOG_PER_DAY = int(os.environ.get("BACKLOG_PER_DAY", 10))
-REVISITS_PER_DAY = int(os.environ.get("REVISITS_PER_DAY", 5))
-HISTORY_PER_DAY = int(os.environ.get("HISTORY_PER_DAY", 4))
+BACKLOG_PER_DAY = int(os.environ.get("BACKLOG_PER_DAY", "10"))
+REVISITS_PER_DAY = int(os.environ.get("REVISITS_PER_DAY", "5"))
+HISTORY_PER_DAY = int(os.environ.get("HISTORY_PER_DAY", "4"))
 
 
 def end_date(d: dict) -> date:
@@ -42,13 +42,23 @@ def end_date(d: dict) -> date:
     return date.fromisoformat(s)
 
 
+def load_json(p: Path) -> dict | None:
+    """Parse a content file; an invalid one is reported and skipped so one bad file can't stall the routine."""
+    try:
+        return json.loads(p.read_text())
+    except json.JSONDecodeError as e:
+        print(f"WARNING: skipping invalid JSON {p.relative_to(ROOT)}: {e}")
+        return None
+
+
 def main() -> None:
     today = datetime.now(ZoneInfo("Europe/Paris")).date()
     window: list[dict] = []
     backlog: list[tuple[str, dict]] = []
     revisits: list[tuple[str, dict]] = []
     for p in sorted((ROOT / "content/editions").glob("*/*.json")):
-        d = json.loads(p.read_text())
+        if (d := load_json(p)) is None:
+            continue
         end = end_date(d)
         if end >= today:
             continue
@@ -66,7 +76,8 @@ def main() -> None:
     # Monthly syntheses to (re)write: a month with a synthesized edition updated after the month synthesis.
     month_updates: dict[str, str] = {}
     for p in (ROOT / "content/editions").glob("*/*.json"):
-        d = json.loads(p.read_text())
+        if (d := load_json(p)) is None:
+            continue
         if d["status"] == "synthesized" and len(d["start"]) >= 7:
             m = d["start"][:7]
             month_updates[m] = max(month_updates.get(m, ""), d.get("synthesisUpdatedAt", ""))
@@ -83,7 +94,8 @@ def main() -> None:
 
     history_todo = []
     for p in sorted((ROOT / "content/events").glob("*.json")):
-        ev = json.loads(p.read_text())
+        if (ev := load_json(p)) is None:
+            continue
         if not (ev.get("history") or {}).get("checkedAt"):
             known = sorted(int(f.stem) for f in (ROOT / "content/editions" / p.stem).glob("*.json"))
             history_todo.append({"event": p.stem, "name": ev["name"], "website": ev.get("website"), "knownYears": known})
