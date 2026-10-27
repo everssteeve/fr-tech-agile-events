@@ -32,9 +32,13 @@ const onFavs = current.startsWith(href('favoris/'));
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <link rel="icon" href={href('favicon.svg')} type="image/svg+xml" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" />
+    <script is:inline>
+      // Apply the reader's theme choice before first paint (no flash). "auto" follows the system.
+      try {
+        const t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+      } catch {}
+    </script>
   </head>
   <body>
     <a class="skip" href="#contenu">Aller au contenu</a>
@@ -50,6 +54,12 @@ const onFavs = current.startsWith(href('favoris/'));
             <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M10 2.6l2.3 4.7 5.2.8-3.8 3.6.9 5.2L10 14.4l-4.6 2.5.9-5.2-3.8-3.6 5.2-.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
             <span class="sr-only">Mes favoris</span><span class="fav-n" id="fav-n" hidden></span>
           </a>
+          <button type="button" class="search theme-btn" id="theme-btn" data-mode="auto">
+            <svg class="i-auto" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 3.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg>
+            <svg class="i-light" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 1.8v2.4M10 15.8v2.4M1.8 10h2.4M15.8 10h2.4M4.2 4.2l1.7 1.7M14.1 14.1l1.7 1.7M4.2 15.8l1.7-1.7M14.1 5.9l1.7-1.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <svg class="i-dark" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M16.5 12.3A7 7 0 0 1 7.7 3.5a7 7 0 1 0 8.8 8.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            <span class="sr-only" id="theme-label">Thème : automatique</span>
+          </button>
           <button type="button" class="menu-btn" aria-expanded="false" aria-controls="main-nav">
             <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             <span class="menu-label">Menu</span>
@@ -100,6 +110,30 @@ const onFavs = current.startsWith(href('favoris/'));
         }
       });
 
+      // Theme: three states cycled by one button (automatic → light → dark). The choice is kept per browser.
+      const themeBtn = document.getElementById('theme-btn')!;
+      const themeLabel = document.getElementById('theme-label')!;
+      const MODES = ['auto', 'light', 'dark'] as const;
+      const NAMES = { auto: 'automatique', light: 'clair', dark: 'sombre' };
+      type Mode = (typeof MODES)[number];
+      const showTheme = (m: Mode) => {
+        themeBtn.dataset.mode = m;
+        themeLabel.textContent = `Thème : ${NAMES[m]}`;
+        themeBtn.title = `Thème ${NAMES[m]} (changer)`;
+      };
+      const current = root.dataset.theme;
+      showTheme(current === 'light' || current === 'dark' ? current : 'auto');
+      themeBtn.addEventListener('click', () => {
+        const next = MODES[(MODES.indexOf(themeBtn.dataset.mode as Mode) + 1) % MODES.length];
+        if (next === 'auto') delete root.dataset.theme;
+        else root.dataset.theme = next;
+        try {
+          if (next === 'auto') localStorage.removeItem('theme');
+          else localStorage.setItem('theme', next);
+        } catch {}
+        showTheme(next);
+      });
+
       // Bookmark count in the header.
       const favN = document.getElementById('fav-n')!;
       subscribe(() => {
@@ -121,48 +155,52 @@ const onFavs = current.startsWith(href('favoris/'));
   </body>
 </html>
 <style>
-  .skip { position: absolute; left: 12px; top: -60px; z-index: 30; background: var(--ink); color: var(--bg); padding: 10px 14px; border-radius: 6px; text-decoration: none; }
-  .skip:focus { top: 8px; }
-  header.site { border-bottom: 1px solid var(--line); background: var(--surface); position: sticky; top: 0; z-index: 20; }
-  .bar { display: flex; align-items: center; gap: 8px 24px; padding-block: 8px; }
-  .brand { font-family: var(--font-d); font-weight: 800; font-size: 20px; text-decoration: none; display: flex; align-items: baseline; gap: 10px; margin-right: auto; padding-block: 6px; }
-  .brand span { font-family: var(--font-m); font-weight: 400; font-size: 11.5px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
-  nav { display: flex; gap: 4px; order: 2; }
-  nav a { text-decoration: none; color: var(--muted); font-size: 15px; padding: 10px 10px; border-radius: 6px; position: relative; }
+  .skip { position: absolute; left: var(--space-3); top: -60px; z-index: var(--z-top); background: var(--ink); color: var(--bg); padding: var(--space-2-5) var(--space-3-5); border-radius: var(--radius-sm); text-decoration: none; }
+  .skip:focus { top: var(--space-2); }
+  header.site { border-bottom: 1px solid var(--line); background: var(--surface); position: sticky; top: 0; z-index: var(--z-header); }
+  .bar { display: flex; align-items: center; gap: var(--space-2) var(--space-6); padding-block: var(--space-2); }
+  .brand { font-family: var(--font-d); font-weight: 800; font-size: var(--text-heading); white-space: nowrap; text-decoration: none; display: flex; align-items: baseline; gap: var(--space-2-5); margin-right: auto; padding-block: var(--space-1-5); }
+  .brand span { font-family: var(--font-m); font-weight: 400; font-size: var(--text-mono); color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+  nav { display: flex; gap: var(--space-1); order: 2; }
+  nav a { text-decoration: none; color: var(--muted); font-size: var(--text-ui); padding: var(--space-2-5); border-radius: var(--radius-sm); position: relative; white-space: nowrap; }
   nav a:hover { color: var(--ink); background: var(--surface-2); }
   nav a[aria-current="page"] { color: var(--ink); }
-  nav a[aria-current="page"]::after { content: ""; position: absolute; left: 10px; right: 10px; bottom: 4px; height: 2px; background: var(--accent); }
-  .actions { display: flex; align-items: center; gap: 6px; order: 3; }
-  .search, .menu-btn { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--muted); font: inherit; font-size: 14px; text-decoration: none; cursor: pointer; }
+  nav a[aria-current="page"]::after { content: ""; position: absolute; left: var(--space-2-5); right: var(--space-2-5); bottom: var(--space-1); height: 2px; background: var(--accent); }
+  .actions { display: flex; align-items: center; gap: var(--space-1-5); order: 3; }
+  .search, .menu-btn { display: inline-flex; align-items: center; gap: var(--space-1-5); min-height: var(--space-10); padding: 0 var(--space-3); border: 1px solid var(--line-strong); border-radius: var(--radius-pill); background: var(--surface); color: var(--muted); font: inherit; font-size: var(--text-small); text-decoration: none; cursor: pointer; }
   .search:hover, .menu-btn:hover, .search.on { color: var(--ink); border-color: var(--muted); }
   .menu-btn { display: none; }
-  .favs { padding: 0 11px; }
-  .fav-n { font-family: var(--font-m); font-size: 11.5px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 999px; background: var(--accent); color: var(--on-accent); display: inline-grid; place-items: center; }
+  .favs, .theme-btn { padding: 0 var(--space-2-5); }
+  .theme-btn svg { display: none; }
+  .theme-btn[data-mode="auto"] .i-auto, .theme-btn[data-mode="light"] .i-light, .theme-btn[data-mode="dark"] .i-dark { display: block; }
+  .fav-n { font-family: var(--font-m); font-size: var(--text-mono); min-width: 18px; height: 18px; padding: 0 5px; border-radius: var(--radius-pill); background: var(--accent); color: var(--on-accent); display: inline-grid; place-items: center; }
+  @media (max-width: 1180px) { .brand span { display: none; } }
   @media (max-width: 900px) {
-    .brand span { display: none; }
     .menu-btn { display: inline-flex; }
     .search-label { display: none; }
-    .search { padding: 0; width: 44px; justify-content: center; }
-    .bar { column-gap: 12px; }
+    .search { padding: 0; width: var(--target-touch); justify-content: center; }
+    .bar { column-gap: var(--space-3); }
     .favs { position: relative; }
-    .favs .fav-n { position: absolute; top: -4px; right: -4px; }
-    .search, .menu-btn { min-height: 44px; }
+    .favs .fav-n { position: absolute; top: calc(-1 * var(--space-1)); right: calc(-1 * var(--space-1)); }
+    .search, .menu-btn { min-height: var(--target-touch); }
     .bar { flex-wrap: wrap; }
-    nav { display: none; order: 4; flex-basis: 100%; flex-direction: column; gap: 0; padding-bottom: 8px; }
+    nav { display: none; order: 4; flex-basis: 100%; flex-direction: column; gap: 0; padding-bottom: var(--space-2); }
     nav.open { display: flex; }
-    nav a { padding: 12px 8px; font-size: 16px; }
-    nav a[aria-current="page"]::after { left: 8px; right: auto; width: 24px; bottom: 6px; }
+    nav a { padding: var(--space-3) var(--space-2); font-size: var(--text-body); }
+    nav a[aria-current="page"]::after { left: var(--space-2); right: auto; width: var(--space-6); bottom: var(--space-1-5); }
   }
   @media (max-width: 420px) {
-    .actions { gap: 4px; }
-    .menu-btn { padding: 0; width: 44px; justify-content: center; }
+    .brand { font-size: var(--text-lede); }
+    .bar { column-gap: var(--space-2); }
+    .actions { gap: var(--space-1); }
+    .menu-btn { padding: 0; width: var(--target-touch); justify-content: center; }
     .menu-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   }
-  main { padding-block: 32px 64px; }
+  main { padding-block: var(--space-8) var(--space-16); }
   main:focus { outline: none; }
-  footer.site { border-top: 1px solid var(--line); padding-block: 20px 32px; font-size: 13.5px; color: var(--faint); }
-  .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+  footer.site { border-top: 1px solid var(--line); padding-block: var(--space-5) var(--space-8); font-size: var(--text-fine); color: var(--muted); }
+  .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2) var(--space-6); }
   .foot p { margin: 0; }
-  .to-top { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 25; display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--ink); background: var(--ink); color: var(--bg); font: inherit; font-size: 14px; cursor: pointer; }
+  .to-top { position: fixed; right: var(--space-4); bottom: calc(var(--space-4) + env(safe-area-inset-bottom, 0px)); z-index: var(--z-fab); display: inline-flex; align-items: center; gap: var(--space-1-5); min-height: var(--target-touch); padding: 0 var(--space-4); border-radius: var(--radius-pill); border: 1px solid var(--ink); background: var(--ink); color: var(--bg); font: inherit; font-size: var(--text-small); cursor: pointer; }
   .to-top:hover { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 </style>

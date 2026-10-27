@@ -76,27 +76,27 @@ const plain = (t: string) => t.replace(/\*\*(.+?)\*\*/g, '$1').replace(/\*(.+?)\
   });
 </script>
 <style>
-  .row { position: relative; display: grid; grid-template-columns: 104px 1fr auto; gap: 4px 16px; padding: 14px 8px; border-bottom: 1px solid var(--line); align-items: start; border-radius: 6px; }
+  .row { position: relative; display: grid; grid-template-columns: var(--date-col) 1fr auto; gap: var(--space-1) var(--space-4); padding: var(--space-3-5) var(--space-2); border-bottom: 1px solid var(--line); align-items: start; border-radius: var(--radius-sm); }
   .row:hover { background: var(--surface); }
   .row.live { background: var(--hl); }
   p { margin: 0; }
   .date { font-family: var(--font-m); font-variant-numeric: tabular-nums; display: flex; flex-direction: column; }
-  .d { font-weight: 600; font-size: 15px; }
-  .w { font-size: 12px; color: var(--muted); }
-  .body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-  .name { font-family: var(--font-b); font-weight: 700; font-size: 16.5px; line-height: 1.35; margin: 0; overflow-wrap: anywhere; }
+  .d { font-weight: 600; font-size: var(--text-ui); }
+  .w { font-size: var(--text-mono); color: var(--muted); }
+  .body { display: flex; flex-direction: column; gap: var(--space-0-5); min-width: 0; }
+  .name { font-family: var(--font-b); font-weight: 700; font-size: var(--text-body); line-height: 1.35; margin: 0; overflow-wrap: anywhere; }
   .name a { text-decoration: none; }
   /* The whole row is clickable, but only the name is the link (short accessible name). */
-  .name a::after { content: ""; position: absolute; inset: 0; border-radius: 6px; }
+  .name a::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius-sm); }
   .name a:focus-visible { outline: none; }
   .name a:focus-visible::after { outline: 2px solid var(--accent); outline-offset: -2px; }
   .row:hover .name a { text-decoration: underline; text-underline-offset: 3px; }
   .row.past:not(.synth) .name { color: var(--muted); font-weight: 600; }
-  .where { color: var(--muted); font-size: 14px; }
-  .tldr { font-size: 14.5px; margin-top: 4px; max-width: 70ch; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-  .tags { display: flex; flex-wrap: wrap; gap: 5px; justify-content: flex-end; max-width: 250px; }
+  .where { color: var(--muted); font-size: var(--text-small); }
+  .tldr { font-size: var(--text-small); margin-top: var(--space-1); max-width: var(--measure-prose); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .tags { display: flex; flex-wrap: wrap; gap: var(--space-1-5); justify-content: flex-end; max-width: var(--tags-col); }
   @media (max-width: 640px) {
-    .row { grid-template-columns: 76px 1fr; }
+    .row { grid-template-columns: var(--date-col-sm) 1fr; }
     .tags { grid-column: 2; justify-content: flex-start; max-width: none; }
   }
 </style>

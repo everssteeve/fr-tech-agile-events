@@ -50,7 +50,7 @@ Audit technique : accessibilité 2/4, performance 2/4, responsive 2/4, thèmes 3
 ## Hors périmètre de cette passe
 
 - Les tirets cadratins et l'excès de gras sont dans le contenu généré : le guide de rédaction est mis à jour pour les éviter, la correction du stock se fera au fil des régénérations.
-- Polices Google Fonts non auto-hébergées (3 familles, 8 graisses) : gain modeste, à traiter plus tard.
+- ~~Polices Google Fonts non auto-hébergées~~ : traité le 27 octobre 2026 (voir ci-dessous).
 
 ## Implémenté (26 septembre 2026)
 
@@ -66,3 +66,14 @@ Audit technique : accessibilité 2/4, performance 2/4, responsive 2/4, thèmes 3
 - **Typographie** : espaces fines insécables françaises au rendu ; guide de rédaction : pas de tiret cadratin, gras limité.
 
 Détecteur impeccable après correctifs : 0 constat sur `src/`.
+
+## Design system (27 octobre 2026)
+
+Le design system « Retours de conf' » formalise les tokens et les composants. Six évolutions sont appliquées :
+
+- espacements, rayons, tailles de texte et niveaux d'empilement nommés (`--space-*`, `--radius-*`, `--text-*`, `--z-*`) : plus de valeur en px dans les styles des composants et des pages ;
+- échelle de texte resserrée à 11 crans, un seul style `.lead` pour les chapôs ;
+- `--line-strong` (3:1 minimum) sur toutes les bordures de contrôles ;
+- `--faint` supprimé au profit de `--muted` ;
+- choix du thème : bouton à trois états (automatique, clair, sombre) dans le header, appliqué avant le premier rendu ;
+- polices auto-hébergées via Fontsource (sous-ensembles latin), plus aucune requête vers Google Fonts.
