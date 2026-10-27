@@ -6,8 +6,385 @@
   "start": "2024-02-08",
   "end": "2024-02-09",
   "city": "Tours",
+  "venue": "Faculté des Sciences et Techniques de l'Université de Tours",
   "url": "https://2024.touraine.tech",
+  "programUrl": "https://2024.touraine.tech/#schedule",
+  "theme": "#BackToSchool",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "6ᵉ édition, 8 et 9 février 2024, Faculté des Sciences et Techniques de l'Université de Tours, mot-clé « #BackToSchool » affiché sur le site. Billet à 30 € (early bird) ou 50 €, conférences, pauses et repas des deux midis inclus. 88 speakers listés sur le site ; formats conférence (50 min), lightning (15 min) et hands-on (120 min). Keynote d'ouverture : VideoLAN (Jean-Baptiste Kempf) ; keynote de clôture : Babylon.js et impression 3D (Sylvain Gougouzian). Environ 70 vidéos publiques dans la playlist officielle.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-27",
+  "revisit": "Aucun retour participant lu : 5 recherches web (blogs, Medium, dev.to, site:linkedin.com, #TNT24) sans résultat sur l'édition 2024. Chercher les posts LinkedIn des speakers et participants (février 2024, #TNT24, #tourainetech, page linkedin.com/company/tourainetech), les comptes Mastodon/Bluesky de Touraine Tech, les blogs des speakers (Victor Lambret, Pascal Martin, Lætitia Avrot, Jean-François Garreau) et les slides (Speaker Deck), ainsi que le programme du vendredi (Wayback Machine) pour dater les sessions.",
+  "corpus": "Aucun retour participant public trouvé. La synthèse repose sur le site officiel (2024.touraine.tech : programme du jeudi, liste des 88 speakers, billetterie), la playlist YouTube officielle (environ 70 vidéos publiques) et 20 transcripts automatiques (2 keynotes et 18 talks) lus en octobre 2026.",
+  "limits": "Les résumés disent ce qui a été présenté sur scène, pas ce que le public en a pensé : aucun post LinkedIn, blog ou sketchnote sur 2024 n'a été trouvé. Le programme du vendredi n'était pas lisible sur le site archivé : les sessions absentes du programme du jeudi n'ont pas de jour. Les transcripts sont des sous-titres automatiques (noms propres et chiffres parfois déformés) ; celui de Guillaume Laforge s'arrête avant les démos. Le choix des 20 sessions résumées suit la variété des thèmes, pas leur popularité.",
+  "tldr": "**Une 6ᵉ édition très large, où l'IA générative fait son entrée sans dominer** : keynotes sur **VLC, projet étudiant devenu logiciel mondial**, et sur l'impression 3D en Babylon.js, beaucoup de talks sur la **livraison et la fiabilité** (découpage, Accelerate, résilience, retour au monolithe) et une place forte de **l'humain et de l'inclusion** (autisme, douceur, charge mentale, artisanat responsable), le tout sans retour participant public trouvé.",
+  "keyTakeaways": [
+    "Pour prévoir, compter les tickets plutôt qu'estimer : les publications citées montrent que les méthodes simples font aussi bien ou mieux que le jugement, les story points ou l'IA, et que la pression augmente les erreurs (Lambret).",
+    "Découper finement : feature flags pour séparer mise en production et mise en service, règles de rétrocompatibilité, revues de moins de 400 lignes, et ne pas faire de la PR le seul moyen d'itérer (Bertrand).",
+    "Concevoir pour un monde partiellement dégradé : timeouts courts, retries limités avec backoff, jitter sur les caches et les crons, asynchrone plutôt que des appels synchrones en cascade (Martin).",
+    "Sortir d'un « monolithe distribué » par étapes (4, 3, 2, puis 1 service), avec un filet de sécurité (rollback, monitoring, tests de charge) et en impliquant le produit même sur un chantier technique (Stefanski / Jacquot).",
+    "Démarrer une transformation DevOps par une prise de conscience (Quick Check DORA) et une Value Stream Map, sur quelques capacités seulement, et ne jamais faire des métriques un objectif individuel (Revy).",
+    "Un chatbot sur ses documents, c'est du RAG, pas du réentraînement : soigner le découpage, tester plusieurs modèles, surveiller coûts, usage des données et injections de prompt (Vassard).",
+    "Faire tester l'accessibilité par de vrais utilisateurs : sur un Memory, labels, `input type=\"image\"`, `alt` dynamiques et `aria-live` ont suffi, pour environ 5 % de code en plus (Boisgontier).",
+    "Pour intégrer une personne autiste : bannir l'implicite, verbaliser ses intentions, fournir un livret d'accueil et surtout demander ; ce qui aide les personnes autistes aide tout le monde (Angi).",
+    "Le terminal pèse le plus dans l'empreinte du numérique (80 % de la pollution vient de la fabrication, selon Bossard) : écoconcevoir en amont, puis outiller la chaîne DevOps (images légères, purge des artefacts, extinction la nuit) (Bossard, Vincent).",
+    "Contre la charge mentale : une source unique de tâches, des créneaux bloqués, refuser les réunions sans description, et ne pas être le point de défaillance unique de son équipe (Garreau)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-videolan",
+      "day": "2024-02-08",
+      "type": "keynote",
+      "title": "Keynote d'ouverture : VideoLAN",
+      "speakers": ["Jean-Baptiste Kempf — VideoLAN"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : VLC, un projet *« qui n'aurait pas dû exister »*. Au milieu des années 1990, des étudiants de l'École Centrale Paris veulent un meilleur réseau pour jouer ; VideoLAN (« vidéo sur réseau local ») naît vers 1998, et il faut deux ans de lutte avec l'école pour le passer en open source.\n- **Ordres de grandeur annoncés** : environ 1 million de téléchargements par jour, environ 500 millions d'utilisateurs, 4,9 milliards de téléchargements sur le site.\n- **Communauté sans argent** : aucun salarié, 100 à 150 contributeurs par an, un noyau de 5 à 10 personnes sur IRC, décisions au consensus : *« celui qui code a le pouvoir »*.\n- **Trois raisons techniques du succès** : un cœur modulaire d'environ 100 000 lignes de C, une grande tolérance aux fichiers corrompus (on lit un fichier en cours de téléchargement), des codecs intégrés qui ont tué les « codec packs » vérolés.\n- Exemples : un contributeur d'Alep, avec deux heures d'électricité par jour, a codé le rendu des écritures complexes ; le décodeur AV1 dav1d compte environ 225 000 lignes d'assembleur écrites à la main.\n- Questions : lettres d'avocats et brevets de codecs (*« beaucoup de bluff »*), menaces reçues ; les vrais problèmes restent la sécurité et l'absence de support. Aucun retour participant public trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "v8AtcYiKZGA",
+        "title": "VideoLAN - Jean-Baptise Kempf",
+        "transcript": true
+      }
+    },
+    {
+      "id": "de-javascript-a-l-impression-3d-babylon-js",
+      "day": "2024-02-08",
+      "type": "keynote",
+      "title": "Keynote de clôture : De JavaScript à l'impression 3D. Promenons-nous dans les jardins de Babylon.js",
+      "speakers": ["Sylvain Gougouzian"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : un side project né pour son fils qui s'ennuyait en classe, **des cartes perforées pour apprendre l'algorithmie aux enfants sans écran**, sur le principe des livres dont vous êtes le héros ; de quoi illustrer la différence entre langage interprété et compilé.\n- **Matériau** : PLA (à base d'amidon de maïs, souple, environ 30 min d'impression et 1 à 2 g par carte), la résine étant trop cassante pour des cartes fines.\n- **Sous le capot de l'imprimante** : G-code (firmware Marlin), slicers comme Cura ou PrusaSlicer, format STL fondé sur un maillage.\n- **Pourquoi Babylon.js** : comparaison avec Three.js sur un simple cylindre ; il retient *« la simplicité du code »*, TypeScript natif, des opérations CSG (union, soustraction) pour percer les trous, cartes décrites en JSON et **export STL intégré**.\n- Questions : recyclage des chutes de PLA pas encore essayé, découpe laser envisagée. Aucun retour participant public trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "nipdSOV5I3Q",
+        "title": "De JavaScript à l'impression 3D. Promenons-nous dans les jardins de Babylon.js - Sylvain Gougouzian",
+        "transcript": true
+      }
+    },
+    {
+      "id": "noestimates-vs-story-points-fact-checking-dessine",
+      "type": "talk",
+      "title": "NoEstimates vs Story Points : fact-checking dessiné",
+      "speakers": ["Victor Lambret"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : confronter story points et NoEstimates à la littérature académique, en hiérarchisant les sources par niveau de preuve. Point de départ : sur environ 1 450 projets, un dépassement moyen de 27 %, et un projet sur six en « cygne noir ».\n- **Story points** : sur un jeu de données d'environ 450 000 tickets open source (Spring, MongoDB, Apache, Atlassian), la corrélation entre points et temps passé est moyenne à faible et décroche au-delà de 5 points ; d'où le conseil de **découper**.\n- **Biais d'estimation** : libellé de la tâche, excès de détails, ordre d'estimation, **pression sur l'équipe**. Ce qui aide : historique, checklist, marge dans le sprint ; le planning poker aide chez des pros, pas chez des étudiants.\n- **Méthodes simples d'abord** : compter, puis calculer, juger en dernier recours (McConnell) ; selon une synthèse d'Armstrong, *« les méthodes complexes qu'on cherche à mettre en œuvre pour gagner en précision en fait elles augmentent les erreurs »*. Un réseau de neurones ne bat une médiane simple qu'une fois sur deux.\n- Son expérience de projection par comptage de tickets : erreur médiane d'environ 12,5 % à un an. Chez un client, remplacer toutes les estimations par 5 donnait les mêmes courbes.\n- Conclusion : garder l'estimation collective pour produire des artefacts (petites tâches, tests d'acceptation), livrer petit, et viser des projets *« sous contrôle »* plutôt qu'à l'heure. Aucun retour participant public trouvé.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "9UG2ZfmBk5M",
+        "title": "NoEstimates vs Story Points : fact-checking dessiné - Victor Lambret",
+        "transcript": true
+      }
+    },
+    {
+      "id": "grosse-fonctionnalite-petites-livraisons-l-art-du-decoupage",
+      "day": "2024-02-08",
+      "type": "talk",
+      "title": "Grosse fonctionnalité, petites livraisons : l'art du découpage",
+      "speakers": ["Yann Bertrand — Zenika"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : trois raisons de découper finement : apporter de la valeur régulièrement, livrer plus souvent avec moins de risque, mieux concevoir. Démos sous Minecraft.\n- **Livrer sans exposer** : fonctionnalité cachée, **feature flag** (qui découple mise en production et mise en service), déploiements progressifs (blue/green, canary, A/B testing).\n- **Rétrocompatibilité** : ne jamais modifier ni retirer un élément utilisé, toujours ajouter avec une valeur par défaut ; exemple de migration d'un champ date en double écriture.\n- **Découpages** : par équipe front/back avec un contrat d'interface, par tranche fonctionnelle (MVP), ou sur du code endetté avec des tests de caractérisation (Golden Master).\n- **Revue de code** : une étude Cisco citée montre que la densité de défauts trouvés baisse avec la taille ; recommandation de 400 lignes maximum par revue. *« Mettez 10 lignes de code en revue : 10 défauts détectés. 500 lignes : c'est bon, ça passe. »*\n- Taille de lot optimale entre coût de stockage et coût de transaction ; aller vers le synchrone (mob review, pair et mob programming, trunk-based) car *« la PR, ce n'est pas le seul moyen d'itérer »*. Aucun retour participant public trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "O9abqCUV0Qg",
+        "title": "Grosse fonctionnalité, petites livraisons : l'art du découpage - Yann Bertrand",
+        "transcript": true
+      }
+    },
+    {
+      "id": "accelerer-sa-transformation-devops-avec-accelerate",
+      "day": "2024-02-08",
+      "type": "talk",
+      "title": "Accélérer sa transformation DevOps ... avec Accelerate !",
+      "speakers": ["Jean-Rémy Revy — Ippon Technologies"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : Accelerate (Nicole Forsgren et al., 2018) prouve statistiquement l'intérêt des pratiques DevOps (les entreprises performantes ont un delivery performant) mais **ne dit pas comment se transformer**.\n- Rappel des catégories low, medium, high et elite, et de ce qui réduit le burnout : culture générative, processus écrits mais légers.\n- **Limites du livre** : pas de chemin de progression, rien sur l'amont produit ni la vision systémique.\n- **Retour d'expérience** (plus de 50 équipes accompagnées) : premiers chantiers presque toujours la gestion de version et des branches, l'intégration continue, les tests. Outil clé : la **Value Stream Map** pour distinguer temps de travail et temps d'attente.\n- Une transformation prend des mois (3 à 6 pour passer de low à medium, souvent plus en contexte institutionnel) ; danger de la loi de Goodhart si les métriques deviennent des objectifs individuels.\n- Citations : *« Vous ne pouvez pas livrer moins vite que le marché si vous voulez survivre »*, mais *« ça sert à rien de livrer vite quelque chose qui fonctionne pas »*. Conseil final : Quick Check DORA, commencer petit, itérer. Aucun retour participant public trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "a-6C4wxaujs",
+        "title": "Accélérer sa transformation DevOps ... avec Accelerate ! - Jean-Rémy Revy",
+        "transcript": true
+      }
+    },
+    {
+      "id": "microservices-maxi-supplice",
+      "day": "2024-02-08",
+      "type": "talk",
+      "title": "Microservices, maxi supplice",
+      "speakers": ["Alexis Stefanski — CircularX", "Yann Jacquot — Theodo"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : retour d'expérience chez CircularX (SaaS de reconditionnement) : **fusionner quatre « microservices » PHP fortement couplés** (chacun avec sa base MySQL) en un monolithe. Symptômes : appels HTTP en cascade, pool PHP-FPM saturé, un « monolithe distribué ».\n- **Méthode** : un filet de sécurité (rollback, Sentry, tests de charge k6 et Grafana), une équipe pluridisciplinaire, et des **étapes intermédiaires** (4, puis 3, 2, 1 service), l'ordre étant choisi d'après les appels à réécrire et les clés étrangères.\n- **Outillage** : API Gateway pour basculer les URL, réplication bidirectionnelle AWS DMS pour garder un retour arrière, répétitions en préproduction, bascules de moins d'une heure.\n- **Ratés racontés** : timeout de 29 s non modifiable, base partagée saturée par la réplication, SSO du plus gros client oublié, monitoring sans données pendant trois semaines sans alerte.\n- **Résultats annoncés** : endpoint principal passé de 20 à 30 s à moins de 5 s, chantier de trois mois.\n- Message : *« ce type de problème ce n'est pas une fatalité »* ; les microservices demandent une maturité technique et métier, mieux vaut commencer par un monolithe modulaire. Ce n'est pas un réquisitoire contre les architectures distribuées. Aucun retour participant public trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "73wbGIrN_pA",
+        "title": "Microservices, maxi supplice - Alexis Stefanski - Yann Jacquot",
+        "transcript": true
+      }
+    },
+    {
+      "id": "une-application-resiliente-dans-un-monde-partiellement-degrade",
+      "day": "2024-02-08",
+      "type": "talk",
+      "title": "Une application résiliente, dans un monde partiellement dégradé",
+      "speakers": ["Pascal Martin — Bedrock"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : *« Les systèmes distribués ne sont jamais opérationnels, ils existent dans un état permanent de service partiellement dégradé. »* L'objectif est de réduire le *blast radius* de chaque panne.\n- **Les « neuf »** : 99,99 % laissent environ 52 minutes de panne par an, et les taux se multiplient quand les services dépendent les uns des autres ; un SLA est un remboursement, pas une garantie.\n- **Architecture** : des microservices tous synchrones forment un « monolithe distribué » ; préférer l'asynchrone et une copie locale de la donnée.\n- **Réglages concrets** : timeouts courts (le timeout ORM de 30 s par défaut a fait tomber des plateformes), retries limités avec backoff exponentiel, **jitter** sur les durées de cache et les crons (anecdote de tous les crons copiés à 4 h).\n- **Observabilité** : SLI, SLO, budget d'erreur ; une alerte doit être actionnable et réveiller l'équipe qui peut réparer.\n- Autres pistes : feature flags, canary, mode dégradé, load shedding, Chaos Monkey, instances spot, technologies « ennuyeuses », postmortems. *« La résilience c'est l'histoire de la panne qui n'est pas arrivée. »* Aucun retour participant public trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "Kw_fLVKfRU0",
+        "title": "Une application résiliente, dans un monde partiellement dégradé - Pascal MARTIN",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ahead-of-time-et-native-avec-spring-boot-3",
+      "day": "2024-02-08",
+      "type": "talk",
+      "title": "Ahead Of Time et Native avec Spring Boot 3",
+      "speakers": ["Stéphane Nicoll — équipe Spring"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : la compilation native GraalVM est *« une nouvelle option qu'on vous offre »*, pas une migration imposée ; le moteur AOT de Spring exécute au build les mêmes chemins que sur la JVM.\n- **Conseil de migration** : avancer par étapes (Java 17 sur Boot 2, puis Boot 3) et viser le dernier patch d'une ligne, pas sa première version.\n- **Bénéfices** : démarrage en millisecondes, pas de warmup JIT, moins de mémoire, surface d'attaque réduite, packaging compact.\n- **Coûts** : *« c'est certainement pas un free lunch »* : build lent et gourmand, compatibilité des bibliothèques, monde fermé (on ne peut plus activer des endpoints par une propriété au runtime).\n- **Démo** : build natif d'environ une minute, démarrage en quelques dizaines de millisecondes, échecs volontaires sur la réflexion et les ressources, corrigés avec l'API RuntimeHints ; tests en natif, Buildpacks.\n- Stratégie conseillée : JVM avec optimisations AOT, puis tests en natif, puis exécution native ; bon candidat : la ligne de commande, mauvais : un vieux monolithe « en mode survie ». Aucun retour participant public trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "JH2gbydsJt4",
+        "title": "Ahead Of Time et Native avec Spring Boot 3 - Stéphane Nicoll",
+        "transcript": true
+      }
+    },
+    {
+      "id": "pulumi-gerer-son-infrastructure-avec-son-langage-de-programmation-prefere",
+      "day": "2024-02-08",
+      "type": "talk",
+      "title": "Pulumi : Gérer son infrastructure avec son langage de programmation préféré",
+      "speakers": ["Julien Briault — Restos du Cœur (bénévole)"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : première prise de parole du speaker, bénévole sur le cloud privé OpenStack des Restos du Cœur (sujet de sa keynote en 2025). Thèse : *« L'infrastructure as code, bah ça reste du code »*, autant l'écrire en Python, Go ou Java plutôt qu'en HCL.\n- **Limites des outils historiques** : CloudFormation et Bicep liés à leur cloud, Heat complexe, HCL à apprendre pour Terraform et OpenTofu.\n- **Pulumi** : preview, update, destroy ; stacks par environnement ; conversion de code Terraform et import du state ; Pulumi ESC pour secrets et configuration ; bridge vers la plupart des providers Terraform (il a écrit un provider MAAS).\n- **Démos** sur OpenStack en Python avec un state sur MinIO, couche d'abstraction (zones DNS en YAML et une boucle), runtime YAML déconseillé hors petits projets.\n- **Limites assumées** : code vite désordonné sur les gros projets, où Terraform reste mieux structuré ; documentation légère ; secrets qui peuvent finir dans le state.\n- Verdict : très bien pour les petits projets et les développeurs, communauté réactive. Aucun retour participant public trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "-XR2MD3r6EQ",
+        "title": "Pulumi : Gérer son infrastructure avec son langage de programmation préféré - Julien Briault",
+        "transcript": true
+      }
+    },
+    {
+      "id": "un-chatgpt-sur-vos-propres-donnees-comment-ca-marche",
+      "day": "2024-02-08",
+      "type": "talk",
+      "title": "Un ChatGPT sur vos propres données : comment ça marche ?",
+      "speakers": ["Hugo Vassard — Ippon Technologies"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : un chatbot sur ses documents repose sur le **RAG**, pas sur le réentraînement d'un modèle (jugé lent et *« catastrophe écologique »*). Cas réels : appels d'offres publics, procès-verbaux d'assemblées de copropriété.\n- **Démo** : notice d'un four, PV scanné passé à l'OCR, onglet des sources utilisées, refus correct de répondre sur une année absente du document.\n- **Chaîne LangChain** : chargement des documents, découpage (taille et recouvrement des chunks), embeddings, base vectorielle, récupération des extraits les plus proches, prompt qui se résume à *« voilà des morceaux de texte, voilà une question, maintenant utilise les documents pour répondre »*.\n- **Coûts** : moins de 5 € pour 1 000 questions sur 1 000 pages avec GPT-3.5, nettement plus avec GPT-4 ; infrastructure AWS de quelques centaines à environ 3 000 $ par an selon l'architecture.\n- **Points faibles** : le choix du modèle change tout (*« je teste un autre modèle avant de me dire que c'est de ma faute »*), le RAG ne sait pas résumer, pas de SLA des fournisseurs, usage des données à vérifier, injection de prompt. Aucun retour participant public trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "k6GYsuWSxiQ",
+        "title": "Un ChatGPT sur vos propres données : comment ça marche ? - Hugo Vassard",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-recherche-a-l-ere-de-l-ia",
+      "day": "2024-02-08",
+      "type": "talk",
+      "title": "La recherche à l'ère de l'IA",
+      "speakers": ["David Pilato — Elastic"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : la recherche par mots-clés (Lucene, stemming) perd le sens : chercher « machine » ne trouve pas « droïde ». Elasticsearch, déjà en place dans beaucoup d'entreprises, est aussi une **base vectorielle**.\n- **Embeddings** : modèles « sur étagère » (E5 pour le multilingue, OpenCLIP pour les images), à tester sur son propre cas d'usage ; similarité cosinus, index HNSW.\n- **Bonnes pratiques** : réduire les dimensions, stocker en octets, ne pas chercher pendant une indexation massive, et *« ne vous laissez pas abuser par les benchmarks, nous aussi on a des benchmarks »*.\n- **Recherche hybride** : boosts, préfiltrage kNN, modèle sparse ELSER, fusion RRF.\n- **Démos** : recherche audio par spectrogramme (lui-même chantant), puis RAG sur des documents internes avec sécurité au niveau du document (les questions sur les augmentations dépendent du rôle).\n- Message : le moteur sémantique a surtout besoin de « tout le reste » (sécurité, agrégations, facettes, géo). Aucun retour participant public trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "ugvhva91GIs",
+        "title": "La recherche à l'ère de l'IA - David Pilato",
+        "transcript": true
+      }
+    },
+    {
+      "id": "generative-ai-par-la-pratique-api-palm",
+      "type": "talk",
+      "title": "Generative AI par la pratique : cas concrets d'utilisation d'un LLM avec l'API PaLM",
+      "speakers": ["Guillaume Laforge — Google"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript partiel)** : introduction pédagogique avant les démos. Emboîtement IA, machine learning, deep learning, IA générative, LLM ; architecture **Transformer** (Google, 2017) qui parallélise l'entraînement sur GPU.\n- **Notions** : prédiction du prochain token, embeddings (des mots proches par le sens ont des vecteurs proches, *« pensez plus à ça comme un petit peu l'ADN »*), mécanisme d'attention illustré par des pronoms ambigus.\n- Ordres de grandeur : PaLM 2 entraîné sur environ 3 600 milliards de tokens ; *« plus un modèle est grand plus il va avoir de capacité »*.\n- Un long problème d'affichage HDMI interrompt le talk ; le transcript automatique s'arrête quand il annonce les démos PaLM et Gemini, le cœur pratique n'a donc pas pu être résumé. Aucun retour participant public trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "hOaEM3dTBpQ",
+        "title": "Generative AI par la pratique:cas concrets d'utilisation d'un LLM avec l'API PaLM -Guillaume Laforge",
+        "transcript": true
+      }
+    },
+    {
+      "id": "quand-la-cybersecurite-n-est-pas-qu-une-affaire-de-failles",
+      "day": "2024-02-08",
+      "type": "talk",
+      "title": "Quand la cybersécurité n'est pas qu'une affaire de failles",
+      "speakers": ["Sonia Seddiki"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : à partir de défis CTF, montrer comment des protocoles et formats ordinaires sont **détournés de leur usage** (« usage catachrétique », illustré par les IKEA hackers).\n- **DNS** : rappel du fonctionnement, puis tunnels pour contourner un pare-feu et canal de commande ; cas SolarWinds / Sunburst, avec exfiltration par petits blocs dans des sous-domaines.\n- **DNS rebinding** contre la Same-Origin Policy, avec pour cible typique le service de métadonnées d'une instance cloud et ses identifiants.\n- **Canaux auxiliaires** : reconstituer une clé RSA bit à bit d'après la consommation CPU, attaque temporelle sur un formulaire de login, reconnaissance des frappes clavier au son.\n- **Stéganographie** : bits de poids faible des pixels, caractères Unicode invisibles ; *« la cryptographie dit : même si on intercepte mon message, c'est un charabia. La stéganographie prend le contrepied »*.\n- Contre-mesure générale : *« faire en sorte que toutes les étapes prennent le même temps »*. Aucun retour participant public trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "4IjSPhLuEV0",
+        "title": "Quand la cybersécurité n'est pas qu'une affaire de failles - Sonia Seddiki",
+        "transcript": true
+      }
+    },
+    {
+      "id": "devgreenops-mettons-un-peu-de-green-dans-le-devops",
+      "day": "2024-02-08",
+      "type": "talk",
+      "title": "DevGreenOps : mettons un peu de Green dans le DevOps",
+      "speakers": ["Matthieu Vincent"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : chaque étape de la chaîne DevOps offre des gestes automatisables pour réduire l'empreinte, mais *« optimiser c'est pas éco-concevoir »* : l'essentiel se joue en amont (supprimer les fonctionnalités inutilisées, décommissionner, questionner la technologie).\n- **Référentiels** : 115 bonnes pratiques web, grille dédiée aux API ; plugin SonarQube ecoCode jugé plus utile sur mobile.\n- **Build et images** : ne pas tout lancer à chaque commit, images légères, analyse avec dive ; dépendances inutilisées.\n- **Tests et run** : GreenIT-Analysis (le site de Touraine Tech obtient la note F), politiques de purge GitLab et Artifactory, environnements éphémères, extinction la nuit (kube-downscaler, kube-green), mesure avec Scaphandre, Kepler et Boavizta.\n- Mise en garde : effet rebond et poids des terminaux ; rendre le « green » visible par des tableaux de bord. *« Avec des petites gouttes d'eau on remplit peut-être pas les océans mais au moins des petits verres. »* Aucun retour participant public trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "Sh5OQyFKWw0",
+        "title": "DevGreenOps : mettons un peu de Green dans le DevOps - Matthieu Vincent",
+        "transcript": true
+      }
+    },
+    {
+      "id": "manifeste-pour-un-artisanat-logiciel-responsable",
+      "day": "2024-02-08",
+      "type": "talk",
+      "title": "Manifeste pour un artisanat logiciel responsable",
+      "speakers": ["Cécilia Bossard — Shodo"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : étendre les valeurs du software craftsmanship à la **responsabilité sociale et environnementale**.\n- **Exclusion** : l'illectronisme toucherait environ une personne sur six en France ; biais des IA (outil de recrutement d'Amazon écartant les CV féminins) ; départ précoce des femmes de l'IT.\n- **Environnement** : *« 80 % de la pollution vient de la fabrication des terminaux : si vous ressortez avec un chiffre, c'est bon »* ; coût énergétique des IA génératives ; *« le déchet qui pollue le moins, c'est celui qu'on ne produit pas »*.\n- **Grilles proposées** : les 3 P (People, Planet, Profit) et les 3 U (utile, utilisable, utilisé).\n- Vigilance sur le dogmatisme et le gatekeeping dans le craft lui-même.\n- Conclusion : le craft, c'est prendre soin du code, des collègues, des utilisateurs, et aussi de la planète et de la société. Aucun retour participant public trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "vtDWxUElL1s",
+        "title": "Manifeste pour un artisanat logiciel responsable - Cécilia Bossard",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-integrer-au-mieux-une-personne-autiste-en-entreprise",
+      "day": "2024-02-08",
+      "type": "talk",
+      "title": "Comment intégrer au mieux une personne autiste en entreprise",
+      "speakers": ["Angi"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : l'autisme est un spectre d'origine génétique, ni maladie ni handicap en soi : *« On est autiste, on ne le devient pas et on n'en guérit pas »* ; c'est l'environnement inadapté qui crée la situation de handicap.\n- Caractéristiques présentées : communication, interactions sociales, **difficulté avec l'implicite**, stéréotypies, intérêts restreints, particularités sensorielles.\n- **Métaphore du canari dans la mine** : rendre le travail moins agressif pour les personnes autistes le rend moins agressif pour tous.\n- **Astuces concrètes** : demander le mode de salutation, respecter le consentement au contact, ne pas interdire les stéréotypies, verbaliser ses intentions, fournir un plan et un livret d'accueil, éviter les consignes contradictoires.\n- Surstimulation, *shutdown* et *meltdown* : retirer les stimuli, laisser du temps, ne pas toucher.\n- Message : *« Pour se sentir intégré, il faut l'intégrer : il faut lui dire, expliquer, verbaliser »*, et surtout demander. Aucun retour participant public trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "WYpyjL9-OmU",
+        "title": "Comment intégrer au mieux une personne autiste en entreprise - Angi",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-douceur-est-elle-un-avantage-dans-ce-monde-de-brutes",
+      "day": "2024-02-08",
+      "type": "talk",
+      "title": "La douceur est-elle un avantage dans ce monde de brutes ?",
+      "speakers": ["Anaïs Huet — Ippon Technologies"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : point de départ, un feedback reçu : *« Avec ta petite voix douce on n'est pas sûr que tu puisses gérer des cas difficiles. »* Un sondage à main levée montre que la salle a souvent vécu ce type de remarque.\n- **Voix et pouvoir** : Margaret Thatcher qui baisse sa voix avec un coach, études associant voix grave et leadership, rapport de l'UNESCO sur les assistants vocaux féminins.\n- **Double contrainte** (études Catalyst et Heilman) : les femmes douces jugées agréables mais incompétentes, les directives compétentes mais agressives ; les hommes doux, peu reconnus.\n- **Définir la douceur** : bienveillance en position « +/+ » de l'analyse transactionnelle, empathie cognitive ; *« être doux ça veut pas dire être un paillasson »*.\n- En agilité, facilitateurs, produit et tech doivent dire des choses qui fâchent : la douceur aide (du pair programming plutôt qu'un refus de merge request « bien salé »). Outils : écoute active, communication non violente, feedback positif.\n- Conclusion : *« La douceur est un avantage, une force, et personne, homme ou femme, ne devrait être pénalisé pour ça. »* Aucun retour participant public trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "1W58t-oKvQ0",
+        "title": "La douceur est-elle un avantage dans ce monde de brutes ? - Anaïs Huet",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-rendre-une-web-app-accessible-a-une-personne-non-voyante",
+      "day": "2024-02-08",
+      "type": "talk",
+      "title": "Comment rendre une web app accessible à une personne non voyante ?",
+      "speakers": ["Hervé Boisgontier"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : rendre un jeu très visuel, un Memory, **utilisable au lecteur d'écran** (démo avec NVDA). Plus de 90 % des sites ne seraient pas accessibles, et l'obligation légale va s'étendre.\n- Premier retour d'un testeur non voyant : expliquer le but du jeu, qu'un aveugle de naissance n'a peut-être jamais pratiqué.\n- **Corrections pas à pas** : `label` associé au champ, `input type=\"image\"` plutôt qu'une image cliquable, `alt` dynamique (« carte inconnue en position N », puis le fruit retourné), zones `aria-live` polite ou assertive.\n- **Limites du terrain** : `aria-atomic` et `aria-relevant` mal supportés, délai empirique d'environ 50 ms pour ordonner les annonces, contournements pour TalkBack et Orca avec une zone masquée hors écran.\n- Bilan : *« J'ai rajouté 5,45 % de code »* et *« le test avec des utilisateurs réels c'est extrêmement important »*. Questions sur WCAG et RGAA. Aucun retour participant public trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "cxwhbLOCxng",
+        "title": "Comment rendre une web app accessible à une personne non voyante ? - Hervé Boisgontier",
+        "transcript": true
+      }
+    },
+    {
+      "id": "postgresql-et-l-anarchie-organisee",
+      "type": "talk",
+      "title": "PostgreSQL et l'Anarchie Organisée",
+      "speakers": ["Lætitia Avrot — EDB"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : PostgreSQL fonctionne sans entreprise propriétaire, sans chef de projet ni bug tracker, selon le modèle de l'**« anarchie organisée »** : pas d'objectif commun, des processus très simples, une participation intermittente.\n- **Pas de bug tracker** : un bug signalé est corrigé directement, parfois en quelques minutes.\n- **Qualité avant tout** : rien de nouveau en version mineure, gel des fonctionnalités au printemps, sortie à l'automne, fonctionnalités retirées si elles ne sont pas prêtes (JSON_TABLE en version 15) ; *« je préfère un monde où on prend le temps de faire les choses bien »*.\n- **Garde-fous contre le monde extérieur** : jamais plus de 50 % de la core team dans une même société (règle appliquée après le rachat de 2ndQuadrant par EDB), git auto-hébergé, patchs envoyés sur liste de diffusion, bataille juridique autour de la marque en Espagne.\n- Les clouds proposent parfois des forks fermés. Conclusion : *« on est des artisans du code »*, et la communauté est ouverte à toute contribution. Aucun retour participant public trouvé.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "KOJ9RC9BIcE",
+        "title": "PostgresSQL et l'Anarchie Organisée - Lætitia Avrot",
+        "transcript": true
+      }
+    },
+    {
+      "id": "j-ai-beaucoup-de-taf-mais-je-gere",
+      "type": "talk",
+      "title": "J'ai beaucoup de taf mais je gère",
+      "speakers": ["Jean-François Garreau — SFEIR"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : récit personnel, de la frénésie de veille, de meetups et de side projects jusqu'au **burn-out** après sa prise de direction d'agence, puis l'organisation qu'il en a tirée.\n- **Méthodes essayées** : GTD, Pomodoro (inadapté aux micro-sollicitations), bullet journal, liste unique.\n- **Préceptes** : *« Les super-héros et super-héroïnes ça existe dans la science-fiction et pas dans le vrai monde »* ; revoir ses objectifs ; ne pas être le point de défaillance unique (bus factor) ; savoir dire non et déléguer.\n- **Outillage actuel** : une source unique de tâches (Todoist), inbox zero toutes les une à deux semaines, refus des réunions sans description, créneaux bloqués, refus par défaut des réunions de plus de 6 à 8 personnes : *« si tu veux avoir du temps de moi c'est quand je le décide »*.\n- Conclusion : lutter contre la charge mentale, expérimenter et s'approprier une méthode, la remettre en question (il en est à sa cinquième itération). Aucun retour participant public trouvé.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "PY_HjiM2z44",
+        "title": "J'ai beaucoup de taf 😱 mais je gère 😎 - jean-francois garreau",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Les classes abstraites c'est fini (et c'est la faute à TDD) (Dorra Bartaguiz)",
+    "Tous Designer (Eline Sekerger)",
+    "Maîtriser Angular 17, hands-on (Juliette Parillot, Yann-Thomas Le Moigne)",
+    "De l'ignorance à la dépendance : comment l'IA a changé ma façon de coder ? (Benoît Prioux)",
+    "Késako, il crée son propre runner GitLab quand il démarre son environnement Gitpod (Jean-Phi Baconnais)",
+    "Les aventuriers de la motivation perdue (Noémie Delrue)",
+    "Les super pouvoirs du package java.util.function (Damien Lucas, Jérôme Tama)",
+    "Au secours ! Ils ont recruté Sheldon, Shaun et Raymond ! (Véronique Sermage)",
+    "TinyGo, petit mais costaud ! (Aurélie Vache, Thierry Chantier)",
+    "L'accessibilité ça se manipule, ça se teste, ça se corrige, hands-on (Gauthier Fiorentino, Iris Naudin)",
+    "Discutons avec nos cartes bancaires depuis nos smartphones (Antoine Robiez, Loïc Fallon)",
+    "L'accessibilité, les yeux fermés (Alex Palma)",
+    "Vis ma vie de commerciale dans la tech ! (Louise Guillebaud)",
+    "Est-il (encore) possible d'héberger son propre serveur de messagerie ? (Hugues Lepesant)",
+    "Prenez le contrôle de votre poste avec vos dotfiles (Antoine Meausoone)",
+    "CSS renaît de ses cendres (Olivier Leplus, Yohan Lasorsa)",
+    "Back to basics : j'ai une clé SSH, et maintenant ? (Laurent Grangeau, Ludovic Piot)",
+    "Comment merger sa PR en 10 secondes ? Les mob code reviews (Thibaut Cantet)",
+    "Et pourquoi pas les monorepo ? (Jérémy Chauvin)",
+    "Qu'est-ce que les champignons nous apprennent sur l'intelligence artificielle ? (Marine Sobas)",
+    "La retro de ma « worst life » (Estelle Landry, Jean-François Garreau)",
+    "Comment devenir un parfait « boyscout » ? (Aurélie Guillaume)",
+    "Du code source à l'exécutable : la compilation en Rust (Édouard Siha)",
+    "CSS moderne et préprocesseurs CSS : une coexistence nécessaire ? (Audrey Dubois)",
+    "Découvrir le pentesting : une immersion ludique dans l'univers des CTF (Kévin Descoubes)",
+    "Dédramatisons l'accessibilité (Céline Merand, Charline Humeau)",
+    "ESI : le cache HTTP en petits bouts (Yann Schepens)",
+    "Comment j'ai remplacé mon extincteur par un manuel des castors juniors (Ambre Person, Gwenaël Bec)",
+    "STOP à l'espionnage ! Comment disparaître d'internet ? (Etienne Idoux, Mickael Alves)",
+    "Grafana en action : tests de charge, performance et troubleshooting (Clément Duveau, Robin Marechal)",
+    "Come to the dart side : ma première CLI en Dart (Quentin Klein)",
+    "Dessine-moi un graphique (en CSS) (Gaël Poupard)",
+    "Construire le futur grâce au mentorat (Mathieu Parisot)",
+    "Apprenons à identifier les exigences techniques pour mieux concevoir (Alexandre Touret, Philippe Duval)",
+    "Rebase vers le futur : réécrivez l'historique Git (Loïc Chau)",
+    "À la découverte du token d'authentification Biscuit (Yannick Guern)",
+    "PO/Designer, duo gagnant pour la conception de vos services et produits ? (Noémie M. Rivière)",
+    "Délivrer de l'architecture en continu, concrètement ? (Jean-Rémy Revy, Stéphane Langonnet)",
+    "La preuve de programme vous fera apprécier les tests (William Bartlett)",
+    "Avec Vector, reprenez le contrôle sur vos données d'observabilité (David Drugeon-Hamon)",
+    "Faire de l'embarqué en remote ? (Bastien Jauny)",
+    "Opinions, faits et fakes : le cas de l'écologie (Thomas Gaubert)",
+    "Rendre possible (et sécurisée) l'authentification sans mot de passe (Julien Jimenez, Kevin Heraud)",
+    "Pourquoi Le Figaro a choisi GraphQL pour moderniser ses API (speakers non relevés)",
+    "Deep-Link abuse : vos redirections ne sont pas si sûres (Thomas Boutin)",
+    "La checklist ultime pour rendre vos applications cloud native (Katia Himeur)",
+    "Construire soi-même son clavier mécanique (Benjamin Legrand)",
+    "Documentation as code, par où commencer ? (Nicolas Giraud)",
+    "Woop woop assassin de la police... (François-Xavier Lair)",
+    "3615 Twitch, un bot sur Minitel ? (Sylvain Gougouzian)"
+  ],
+  "sources": [
+    { "label": "Site officiel Touraine Tech 2024 (programme du jeudi, speakers, billetterie)", "url": "https://2024.touraine.tech" },
+    { "label": "Playlist YouTube Touraine Tech 2024 (environ 70 vidéos publiques)", "url": "https://www.youtube.com/playlist?list=PLl0xIhYGSdm9o2-7p5YDrAKibqoSUSHP1" },
+    { "label": "Aftermovie TNT24", "url": "https://www.youtube.com/watch?v=nEbo0zgrArU" },
+    { "label": "Transcripts automatiques YouTube : 2 keynotes et 18 talks" },
+    { "label": "Posts LinkedIn et blogs participants : aucun trouvé pour l'édition 2024 (5 recherches web)" }
+  ]
 }

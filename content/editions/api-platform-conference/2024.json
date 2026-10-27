@@ -8,7 +8,456 @@
   "city": "Lille",
   "venue": "Euratechnologies",
   "url": "https://api-platform.com/con/2024/",
+  "programUrl": "https://api-platform.com/en/con/2024/schedule",
+  "theme": "API Platform 4 et l'arrivée de Laravel ; performance, temps réel, IA et bonnes pratiques PHP",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "4e édition, hybride (Euratechnologies, Lille, et en ligne), organisée par Les-Tilleuls.coop, sur deux salles (anglais et français). Bilan officiel : 25 talks, 25 partenaires, une annonce majeure (API Platform 4 et le support de Laravel), une soirée communautaire ; « this edition broke all records, on every level ».",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-27",
+  "revisit": "Corpus participants très mince : aucun post LinkedIn ni article de blog de participant trouvé (4 recherches web), seulement une quinzaine de posts Mastodon courts. La synthèse repose sur les 25 transcripts et le programme. À reprendre pour chercher des retours LinkedIn et des comptes-rendus de blogs.",
+  "corpus": "Programme officiel (25 sessions sur deux salles, plus des lightning talks) et page bilan de l'organisateur ; les 25 vidéos de la playlist officielle « API Platform Conference 2024 » (publiées du 8 novembre au 20 décembre 2024), toutes avec transcript automatique ; billet de Kévin Dunglas annonçant API Platform 4 (19 septembre 2024) ; une trentaine de posts Mastodon sous #APIPlatformCon (19 au 21 septembre 2024), dont une dizaine de participants ou speakers, les autres étant des annonces du compte officiel.",
+  "limits": "Lu à plus de deux ans de distance, sans aucun post LinkedIn ni article de participant : les résumés décrivent ce qui a été dit sur scène (transcripts), pas ce qu'en a retenu le public, et les rares retours Mastodon sont des réactions d'une ligne. Les transcripts sont des sous-titres automatiques (noms propres et chiffres parfois déformés). Les lightning talks ne sont pas documentés.",
+  "tldr": "L'édition de la **sortie d'API Platform 4, qui ouvre le framework à Laravel** sans abandonner Symfony, entourée de talks de fond sur la performance (sérialisation, cache HTTP, Caddy et FrankenPHP, un milliard de lignes en PHP), le temps réel avec Mercure et un regard encore prudent sur l'IA générative.",
+  "keyTakeaways": [
+    "Migrer vers API Platform 4 en passant d'abord par `api-platform/core` 3.4 et en corrigeant les dépréciations, puis remplacer `core` par les composants voulus ; attention, **PUT n'est plus une opération par défaut** et le préfixe `hydra:` disparaît des réponses (Antoine Bluchet).",
+    "Avec Laravel, un modèle Eloquent et l'attribut `ApiResource` suffisent pour une API REST et GraphQL documentée ; validation par Form Requests, autorisation par Policies, comme dans une appli Laravel classique (Kévin Dunglas, Steve McDougall).",
+    "Abandonner les groupes de sérialisation au profit d'**une classe par représentation** (entité, ressource de lecture, ressource d'écriture) reliées par un provider (Mathias Arlaud).",
+    "On n'a pas forcément besoin de Varnish : depuis la 3.1, API Platform sait purger un cache HTTP intégré à Caddy et FrankenPHP (cache-handler Souin), avec le header `Cache-Status` de la RFC 9211 (Sylvain Combraque).",
+    "Pour tester une API externe, enregistrer de vraies réponses en « cassettes » avec PHP-VCR plutôt que d'écrire des mocks verbeux, et purger les cassettes obsolètes régulièrement (Imen Ezzine).",
+    "Sortir du legacy à petits pas : Golden Master et smoke tests comme filets, méthode Mikado, feature flags en gardant l'ancien code, en commençant par les opérations de lecture (Smaïne Milianni).",
+    "Mesurer avant d'optimiser : dans le défi du milliard de lignes, le profiler montre un goulot CPU, et opcache, JIT et threads (extension parallel) font passer le script de 25 minutes à moins de 13 secondes (Florian Engelhardt).",
+    "Protéger tout endpoint qui appelle un LLM (authentification, rate limiting, plafonds chez le fournisseur) et comprendre la température avant de l'utiliser (Laura Durieux).",
+    "Exiger des SDK une vraie interopérabilité HTTP (PSR-18 via `php-http/discovery`) plutôt qu'une dépendance forcée à Guzzle (Nicolas Grekas)."
+  ],
+  "sessions": [
+    {
+      "id": "opening-keynote-api-platform-laravel",
+      "day": "2024-09-19",
+      "type": "keynote",
+      "title": "Opening Keynote : API Platform Laravel",
+      "speakers": ["Kévin Dunglas — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Kévin Dunglas (speaker, Mastodon)", "Stefan Koopmanschap (Mastodon)"],
+      "summary": "- Annonce principale : **API Platform 4 supporte Laravel** en plus de Symfony. Justification : hors d'Europe, le framework PHP le plus populaire est Laravel (speaker).\n- **Pas d'abandon de Symfony** : le bundle Symfony et le package Laravel exécutent quasiment le même code ; le projet est désormais découpé en packages Composer séparés et peut tourner en PHP vanilla.\n- Avec Eloquent, un modèle et l'attribut `ApiResource` donnent une API REST et GraphQL avec OpenAPI, Swagger UI et JSON-LD/Hydra ; les **métadonnées sont déduites par introspection SQL**, puis mises en cache pour la production.\n- Intégration idiomatique : filtres Eloquent, Form Requests, Gates et Policies, Octane et FrankenPHP en worker mode, config dans `config/api-platform.php`. Mercure dans Laravel Broadcast annoncé « presque prêt ».\n- Crédit appuyé à Antoine Bluchet, auteur de la majeure partie de l'intégration ; citation de Taylor Otwell saluant l'arrivée d'API Platform dans l'écosystème Laravel.\n- Lecture critique (speaker) : l'introspection de la base peut être lente, et les attributs PHP sont peu populaires chez les développeurs Laravel.\n- Côté public, le lien vers la documentation Laravel a circulé dès le matin sur Mastodon (Koopmanschap) ; Dunglas a publié ses slides et un billet de blog le jour même.",
+      "summarySources": ["transcript", "program", "feedback", "blog"],
+      "video": {
+        "youtubeId": "ED1Ihe1Gxnw",
+        "title": "API Platform Conference 2024 - Kévin Dunglas - API Platform Laravel",
+        "publishedAt": "2024-11-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "l-ia-au-service-de-vos-projets-api-platform",
+      "day": "2024-09-19",
+      "type": "talk",
+      "title": "L'IA au service de vos projets API Platform",
+      "speakers": ["Matthieu Werner"],
+      "feedbackFrom": [],
+      "summary": "- Fil rouge : une appli fictive de gestion de tâches menée « avant que le café refroidisse », avec **ChatGPT pour lister les fonctionnalités**, Notion AI pour un Kanban de specs et Lucidchart pour une architecture AWS serverless.\n- ChatGPT génère des entités au format de l'API Platform Schema Generator, importées en ligne de commande, puis l'admin est générée.\n- Dans l'éditeur, comparaison de Cursor (son choix du moment, en mode « privé ») et de GitHub Copilot, sans vainqueur ; usage pour ajouter une propriété ou écrire un test Jest à partir d'un test existant.\n- Tests et CI : Postman (tests fonctionnels générés depuis l'OpenAPI), code review par IA dans une GitHub Action, détection d'anomalies de Datadog ; assistant auto-hébergé chez OVHcloud pour garder la maîtrise des données.\n- Bilan : *« Par rapport à ce que ça me fait gagner, c'est plus un investissement qu'un coût. »* Réserves : supervision humaine indispensable, dialogue de sourds quand l'IA se trompe, coût des outils, impact écologique.\n- Sur la question du remplacement des développeurs : non, il y aurait même **de plus en plus besoin de devs**, le généré étant « souvent un peu à côté de la plaque ».",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "K7ijY6xDQeE",
+        "title": "API Platform Conference 2024 - Matthieu Werner - L'IA au service de vos projets API Platform",
+        "publishedAt": "2024-12-13",
+        "transcript": true
+      }
+    },
+    {
+      "id": "evil-tech-how-devs-became-villains",
+      "day": "2024-09-19",
+      "type": "talk",
+      "title": "Evil Tech: How Devs Became Villains",
+      "speakers": ["Sergès Goma"],
+      "feedbackFrom": [],
+      "summary": "- Format court (20 minutes) ouvert par un concours de rire maléfique avec deux volontaires du public.\n- Constat : les titres de presse sur la tech et l'IA sont souvent négatifs, et **l'image du métier de développeur est devenue « plus nuancée »**.\n- Exemples : FTX, le PDG de Telegram et le chiffrement de bout en bout, le bouton « J'aime » de Facebook conçu pour répandre de la joie ; **un petit bloc de code peut avoir de grands effets négatifs**.\n- Grille de lecture : la roue des valeurs de Shalom H. Schwartz, et la tension entre autodétermination et sécurité qui structure les débats sur la confidentialité.\n- Outil proposé : un « gâteau » des parties prenantes (utilisateurs, fabricants, tiers comme les États) pour écrire les intérêts de chacun et argumenter face à une fonctionnalité problématique.\n- Lecture critique : le talk relativise beaucoup (*« toute cette histoire de méchant, c'est relatif »*, traduit) et la seule réponse concrète reste de documenter les intérêts en jeu.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "csVinoGsMPQ",
+        "title": "API Platform Conference 2024 - Sergès Goma - Evil Tech: How Devs Became Villains",
+        "publishedAt": "2024-12-06",
+        "transcript": true
+      }
+    },
+    {
+      "id": "real-time-message-handling-and-notifications-with-api-platform",
+      "day": "2024-09-19",
+      "type": "talk",
+      "title": "Real-time message handling and notifications with API Platform",
+      "speakers": ["Allison Guilhem — Les-Tilleuls.coop"],
+      "feedbackFrom": [],
+      "summary": "- Rappel des évolutions de HTTP 1.0 à 3 : même HTTP/2 et HTTP/3 ne suffisent pas pour le temps réel.\n- Comparatif : polling, long polling, Server-Sent Events, WebSockets (bidirectionnels mais sans authentification ni reconnexion natives) ; *« implémenter des websockets en PHP n'est pas vraiment une promenade de santé »* (traduit).\n- **Mercure**, basé sur HTTP et SSE, intégré à FrankenPHP : configuration JWT du bundle, `mercure: true` sur la ressource pour publier, topics statiques et dynamiques, et **restrictive updates** pour limiter ce que reçoit chaque abonné. Cas d'usage : alerter un dashboard de casino en ligne d'activités suspectes.\n- Publication asynchrone via Messenger par défaut ; pour les calculs lourds, option `messenger` et `Update` créée à la main.\n- Côté abonné : découverte du hub par le header `Link`, cookie `mercureAuthorization`, reprise via `Last-Event-ID` ; authentification par paramètre d'URL déconseillée.\n- Annonce : une PR Symfony pour un **bus Messenger « parallel »** (extension parallel, ZTS), encore à l'état de proposition et non fonctionnelle.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "hbOpGYfRCKI",
+        "title": "API Platform Conference 2024 - Allison Guilhem - Real-time message handling and notifications",
+        "publishedAt": "2024-12-06",
+        "transcript": true
+      }
+    },
+    {
+      "id": "making-api-platform-serialization-superfast",
+      "day": "2024-09-19",
+      "type": "talk",
+      "title": "Making API Platform serialization superfast",
+      "speakers": ["Mathias Arlaud — baksla.sh"],
+      "feedbackFrom": [],
+      "summary": "- **La performance d'API Platform dépend directement du Serializer de Symfony**, dont la normalisation construit tout le tableau en mémoire (d'où des « out of memory » sur les grosses collections).\n- Rappel du composant **TypeInfo**, coécrit avec Baptiste Leduc et mergé dans Symfony 7.1, qui lit types, PHPDoc et génériques mieux que PropertyInfo.\n- Proposition d'un composant **JsonEncoder** (pas encore mergé) qui génère une fois des fonctions d'encodage à partir des types et écrit le JSON en streaming à mémoire constante ; chiffres annoncés : jusqu'à 40 fois plus rapide que le Serializer dans son benchmark.\n- Les groupes de sérialisation sont une **« erreur conceptuelle »** : 3 groupes donnent 8 représentations, 5 en donnent 32. Recommandation : une classe par représentation, reliées par un provider, avec la proposition de composant ObjectMapper pour le mapping.\n- Lecture critique : il désavoue ce qu'il recommandait sur la même scène quatre ans plus tôt, et deux des composants présentés étaient encore en review, donc pas utilisables immédiatement.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "ObeHMKMmFyk",
+        "title": "API Platform Conference 2024 - Mathias Arlaud - Making API Platform serialization superfast",
+        "publishedAt": "2024-12-06",
+        "transcript": true
+      }
+    },
+    {
+      "id": "api-platform-the-pragmatic-framework",
+      "day": "2024-09-19",
+      "type": "keynote",
+      "title": "Opening Keynote (après-midi) : API Platform, The Pragmatic Framework",
+      "speakers": ["Antoine Bluchet (Soyuka) — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Stefan Koopmanschap (Mastodon)"],
+      "summary": "- Annonce : **API Platform 4.0.0 sort le jour même**. Migration : passer d'abord en `api-platform/core` 3.4, corriger les dépréciations, puis remplacer `core` par les composants voulus.\n- Changements cassants de la 4.0 : `use_symfony_listeners` à false, **PUT retiré des opérations par défaut** (PATCH recommandé), préfixe `hydra:` supprimé des réponses, classes déplacées vers `ApiPlatform\\Metadata`.\n- Philosophie : **« ne combattez pas le framework »**, activer ou désactiver ce dont on a besoin et décorer providers et processors. *« API Platform sépare déjà commandes et requêtes : n'ajoutez pas une couche CQRS par-dessus »* (traduit).\n- Nouveautés 3.4 et 4.0 : nouveaux paramètres de requête (validation JSON Schema, OpenAPI, Hydra, meilleure composition des filtres), erreurs documentées au format Problem Details, point d'extension `handleLinks`.\n- Présentation des **Edge Side APIs** (ressources atomiques, cache HTTP, préchargement Vulcain, push Mercure) et de bibliothèques JS qui suivent les IRI automatiquement.\n- Lecture critique : les endpoints RPC via processor restent « pas idéaux » de son propre aveu, et le retrait de PUT et du préfixe Hydra peut casser des clients existants.",
+      "summarySources": ["transcript", "program", "feedback"],
+      "video": {
+        "youtubeId": "L6Aa2V1HK00",
+        "title": "API Platform Conference 2024 - Antoine Bluchet (Soyuka) - API Platform: The Pragmatic Framework",
+        "publishedAt": "2024-11-13",
+        "transcript": true
+      }
+    },
+    {
+      "id": "api-platform-admin-the-ultimate-admin-generator",
+      "day": "2024-09-19",
+      "type": "talk",
+      "title": "API Platform Admin: The Ultimate Admin Generator",
+      "speakers": ["François Zaninotto — Marmelab"],
+      "feedbackFrom": ["François Zaninotto (speaker, Mastodon)"],
+      "summary": "- Sondage en salle : environ 30 à 40 % utilisent EasyAdmin, 10 % Sonata, 40 % API Platform Admin. Selon lui (avis assumé comme personnel), **API Platform Admin va du CRUD simple à l'app complexe**, là où EasyAdmin bute sur la personnalisation et Sonata impose du boilerplate.\n- Démo en quatre étapes : un **admin complet sans aucune configuration** à partir du schéma Hydra ; des attributs PHP (Mercure, filtres) qui enrichissent API et admin sans JavaScript ; la copie du code des « guessers » (six composants React) ; enfin react-admin et Material UI pour une personnalisation totale.\n- Annonce : **API Platform Admin v4, basé sur react-admin v5**, sorti l'été 2024.\n- Historique : son troisième générateur d'admin après celui de symfony 1 (2008) et ng-admin (2012) ; JSX présenté comme l'ingrédient clé.\n- Après la conférence, il retient surtout que l'admin devient une alternative à Nova pour les applis Laravel (speaker, Mastodon).\n- Lecture critique : la comparaison avec EasyAdmin et Sonata vient du lead developer de react-admin, dépendance centrale de l'outil défendu.",
+      "summarySources": ["transcript", "program", "feedback"],
+      "video": {
+        "youtubeId": "UyAkN85wGNk",
+        "title": "API Platform Conference 2024 - François Zaninotto - API Platform Admin The Ultimate Admin Generator",
+        "publishedAt": "2024-11-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "api-platform-des-developpeurs-d-attributs",
+      "day": "2024-09-19",
+      "type": "talk",
+      "title": "API Platform, des développeurs d'attributs ?",
+      "speakers": ["Clément Talleu — Les-Tilleuls.coop"],
+      "feedbackFrom": [],
+      "summary": "- Point de départ : un lead dev lui a dit en entretien que les gens d'API Platform étaient « des développeurs d'annotations ». Réponse : on est passé des **annotations PHPDoc aux attributs natifs** de PHP 8.\n- Histoire des RFC : huit propositions de 2016 à 2020, adoption en 2020 (51 voix contre 1), puis débat de syntaxe jusqu'à `#[ ]`, retenu parce que `#` ouvre un commentaire dans les anciennes versions de PHP.\n- Un attribut n'est qu'une classe, lue par l'API Reflection, centrale dans Doctrine et API Platform ; Symfony en compte plus d'une centaine, dont 72 dans Validator.\n- Démo : un attribut `#[Encrypt]` appliqué via un processor et un normalizer.\n- Lecture critique : `paginationClientEnabled` laisse un client désactiver la pagination (`?pagination=false`) et **renvoyer toute la base**, ce qui peut faire tomber l'API.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "Sw2K0FZlPWY",
+        "title": "API Platform Conference 2024 - API Platform, des développeurs d'attributs ? Clément Talleu",
+        "publishedAt": "2024-11-29",
+        "transcript": true
+      }
+    },
+    {
+      "id": "generer-une-documentation-d-api-aux-petits-oignons",
+      "day": "2024-09-19",
+      "type": "talk",
+      "title": "Générer une documentation d'API aux petits oignons",
+      "speakers": ["Marion Agé — Les-Tilleuls.coop"],
+      "feedbackFrom": [],
+      "summary": "- API Platform génère OpenAPI et Hydra automatiquement, comme les « petites roulettes » du vélo (fil rouge du talk) ; export possible vers Swagger UI, ReDoc, Scalar, Postman ou l'admin.\n- Réglages peu connus : `docExpansion` et `filter` pour Swagger UI, désactivation des UI inutiles, déclaration de l'authentification par clé d'API ou OAuth.\n- Par opération : résumé, description, tags, exemples. Piège : **`openapi: false` masque l'endpoint de la doc mais il reste accessible**.\n- Pour aller plus loin, décorer `OpenApiFactory` (dépréciation, endpoints externes, serveurs multiples, schémas d'authentification combinés) et soigner les **exemples, essentiels pour les utilisateurs de l'API**.\n- Filtrer les ressources exposées via `ResourceNameCollectionFactory` : *« C'est en aucun cas de la sécurité. »*\n- Découverte présentée : les **OpenAPI Overlays** (expérimentaux), qui modifient la spec par JSONPath sans toucher l'original.\n- Lecture critique : le normalizer Hydra repose sur beaucoup de méthodes privées, ce qui gêne la personnalisation avancée ; elle suggère une contribution au cœur.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "cxDFq01quoo",
+        "title": "API Platform Conference 2024 - Générer une documentation d'API aux petits oignons - Marion Agé",
+        "publishedAt": "2024-11-29",
+        "transcript": true
+      }
+    },
+    {
+      "id": "domain-driven-design-the-basics",
+      "day": "2024-09-19",
+      "type": "talk",
+      "title": "Domain-Driven Design: The Basics",
+      "speakers": ["Stefan Koopmanschap — indépendant"],
+      "feedbackFrom": ["Dmitri Goosens (Mastodon, réaction humoristique)"],
+      "summary": "- Thèse : **le DDD porte sur la conception, pas sur le développement** ; il s'agit d'abord de comprendre le problème (*« le domain-driven design ne concerne pas le développement logiciel »*, traduit).\n- Lectures : le « blue book » d'Eric Evans comme référence, le « red book » de Vaughn Vernon à lire en entier.\n- La plupart des problèmes logiciels sont des problèmes de communication, d'où le **langage ubiquitaire** jusque dans les noms de classes et de méthodes.\n- Sous-domaines et bounded contexts : un « paiement » n'a pas le même sens au checkout et en comptabilité. Outils de découverte : modeling out loud, entretiens répétés, event storming, context map.\n- Concepts : événements de domaine, agrégats, entités découplées de Doctrine, value objects, services nommés clairement.\n- Point de débat : ce n'est pas un retour au waterfall, la démarche peut être continue ; DDD partiel conseillé pour les projets simples.",
+      "summarySources": ["transcript", "program", "feedback"],
+      "video": {
+        "youtubeId": "kK16arOdDxM",
+        "title": "API Platform Conference 2024 - Domain-Driven Design: The Basics - Stefan Koopmanschap",
+        "publishedAt": "2024-11-29",
+        "transcript": true
+      }
+    },
+    {
+      "id": "better-debugging-with-xdebug",
+      "day": "2024-09-19",
+      "type": "talk",
+      "title": "Better Debugging with Xdebug",
+      "speakers": ["Derick Rethans — Xdebug, PHP Foundation"],
+      "feedbackFrom": ["Stefan Koopmanschap (Mastodon)", "Dmitri Goosens (Mastodon, réaction humoristique)"],
+      "summary": "- `xdebug_info()` pour **« déboguer le débogueur »** : modes actifs et journal de diagnostic avec un lien vers la doc pour chaque ligne (*« j'écris de la documentation, j'aimerais juste que plus de gens la lisent »*, traduit).\n- Nouveautés : breakpoints résolus vers la ligne exécutable suivante, closures identifiées, valeurs de retour affichées ; démos dans VS Code et PhpStorm.\n- `xdebug_connect_to_client()` et un outil en ligne de commande pour **s'attacher à un script long déjà lancé** (Linux seulement pour l'instant).\n- En cours : des « native path mappings » pour relier sources et code compilé (templates Twig), visés autour de PHP 8.4 sans garantie.\n- Pseudo-hôtes `xdebug://gateway` et `xdebug://nameserver` pour éviter la configuration spécifique à Docker.\n- Appel au financement par les entreprises d'un outil critique maintenu sur son temps libre depuis plus de vingt ans.",
+      "summarySources": ["transcript", "program", "feedback"],
+      "video": {
+        "youtubeId": "gOH1ElakyLw",
+        "title": "API Platform Conference 2024 - Derick Rethans - Better Debugging with Xdebug",
+        "publishedAt": "2024-11-20",
+        "transcript": true
+      }
+    },
+    {
+      "id": "adopter-un-lapin",
+      "day": "2024-09-19",
+      "type": "talk",
+      "title": "Adopter un lapin",
+      "speakers": ["Frédéric Bouchery — CCM Benchmark"],
+      "feedbackFrom": [],
+      "summary": "- Objectif : expliquer le fonctionnement interne de RabbitMQ, souvent mal compris. Cas d'usage : les résultats d'élections, avec **60 à 80 consumers en parallèle** pour publier les premiers.\n- Pièges : queues et messages non durables par défaut, message non acquitté qui revient en tête, et avec le prefetch **l'ordre de traitement n'est jamais garanti**.\n- On publie sur un **exchange**, jamais sur une queue : topic, direct, fanout ou headers (son préféré, le message portant son routage).\n- Plaidoyer pour une architecture événementielle (« article publié » consommé par plusieurs services) plutôt qu'« un exchange, une queue, un consumer » ; retry via dead letter exchange.\n- Avec API Platform : `messenger: true` envoie le message mais **ne persiste pas l'entité** ; décorer le persist processor Doctrine plutôt que les events kernel.\n- Lecture critique : la plupart des équipes utilisent RabbitMQ comme Messenger (« fais ceci ») et sous-exploitent ses exchanges.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "STBly4WOmHc",
+        "title": "API Platform Conference 2024 - Frédéric Bouchery - Adopter un lapin",
+        "publishedAt": "2024-12-06",
+        "transcript": true
+      }
+    },
+    {
+      "id": "table-ronde-marche-de-l-emploi-2024",
+      "day": "2024-09-19",
+      "type": "roundtable",
+      "title": "Table ronde : tour d'horizon du marché de l'emploi en 2024",
+      "speakers": ["Jeanne Londiche — recruteuse spécialisée PHP", "Olivier Mansour — Theodo", "Clément Talleu — Les-Tilleuls.coop"],
+      "feedbackFrom": [],
+      "summary": "- **Le freelance est beaucoup plus calme** : de nombreux candidats veulent revenir en CDI, l'inverse des années précédentes ; les intervenants y voient le contrecoup de la bulle Covid et une baisse des TJM.\n- Le baromètre des salaires de l'AFUP (cocréé par Olivier Mansour) annonce **une stagnation des salaires, voire une légère baisse pour les juniors**, après 3 à 4 % de hausse par an pendant 13 ans ; barrière vers 60-65 k€ pour les seniors (Londiche).\n- Télétravail : un tiers des répondants en full remote selon le baromètre, avec un effet « prison dorée » ; semaine de 4 jours encore expérimentale ; écart salarial femmes/hommes « constant » (Mansour).\n- Modèle Les-Tilleuls.coop : grille de salaires publique, partage égalitaire des bénéfices, salaires « peut-être un peu en dessous » compensés par le projet social (Talleu).\n- Conseils : chercher **un cadre avec des mentors** plutôt qu'un freelance isolé, faire de la veille et apprendre d'autres langages.\n- Points de débat : les projets perso comme critère de recrutement (Londiche pour, Mansour sceptique) ; « un bon dev change facilement de langage » face à un marché français qui exige la case Symfony ou Laravel.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "fGRc4xxSPDI",
+        "title": "API Platform Conference 2024 - Table ronde : tour d'horizon du marché de l'emploi en 2024",
+        "publishedAt": "2024-11-20",
+        "transcript": true
+      }
+    },
+    {
+      "id": "maximizing-your-apis-in-production-with-the-caddy-web-server",
+      "day": "2024-09-20",
+      "type": "talk",
+      "title": "Maximizing your APIs in Production with the Caddy Web Server",
+      "speakers": ["Matt Holt — Caddy"],
+      "feedbackFrom": [],
+      "summary": "- Avec FrankenPHP, PHP est embarqué dans Caddy : **plus de PHP-FPM ni de FastCGI**, HTTP/3, 103 Early Hints, TLS automatique et sûreté mémoire par défaut.\n- Pistes de performance : embarquer le site dans le binaire, envoyer les Early Hints directement depuis le Caddyfile sans invoquer PHP.\n- Configuration native en JSON, adaptateurs (Caddyfile, YAML, nginx), rechargements sans interruption, et **API d'administration REST** pour modifier la config en direct.\n- Démo live réussie de l'**On-Demand TLS** : le public pointe ses domaines vers une IP et Caddy obtient les certificats à la volée, pensé pour les SaaS à domaines personnalisés.\n- Autres usages : PKI interne pour le TLS entre microservices, plugins compilés avec xcaddy (cache-handler, rate limiter).\n- *« C'est ce que je voulais il y a 20 ans quand j'écrivais du PHP »* (traduit). Lecture critique : les gains de performance cités reposent sur deux témoignages, pas sur un benchmark présenté sur scène.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "T_2V9iVKybQ",
+        "title": "API Platform Conference 2024 - Matt Holt - Maximizing your APIs in Production with Caddy Web Server",
+        "publishedAt": "2024-11-13",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-tester-une-api-externe-en-ayant-0-mocks",
+      "day": "2024-09-20",
+      "type": "talk",
+      "title": "Comment tester une API externe en ayant 0 mocks ?",
+      "speakers": ["Imen Ezzine — SensioLabs"],
+      "feedbackFrom": [],
+      "summary": "- Constat : une application consomme vite plusieurs API (signature, paiement, stockage) ; son projet actuel en consomme au moins sept.\n- Comparatif de l'API réelle, de la sandbox, de la virtualisation locale et des **mocks, verbeux et à risque d'écart avec l'API réelle** (plus de 50 lignes pour un seul cas de token expiré avec `MockHttpClient`).\n- Principe cité : **« Don't mock what you don't own »**.\n- Solution : **PHP-VCR**, qui enregistre une « cassette » au premier appel réel puis la rejoue ; modes `new_episodes` et `once`, request matchers configurables, intégration PHPUnit et Behat.\n- Cas réel : un connecteur Symfony entre le PIM Akeneo et BigCommerce qui synchronise des milliers de produits.\n- Lecture critique : les cassettes vieillissent ; les versionner, bien les nommer et purger les obsolètes chaque mois.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "gL3YZC2nNw4",
+        "title": "API Platform Conference 2024 - Imen Ezzine - Comment tester une API externe en ayant 0 mocks ?",
+        "publishedAt": "2024-11-13",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-se-sortir-du-legacy",
+      "day": "2024-09-20",
+      "type": "talk",
+      "title": "Comment se sortir du legacy",
+      "speakers": ["Smaïne Milianni — Yousign"],
+      "feedbackFrom": [],
+      "summary": "- Définition : le legacy, c'est du **code sans tests** qui rapporte de l'argent. *« Le meilleur moyen de sortir du Legacy c'est de pas y entrer. »*\n- Pour ne pas y entrer : tests respectant les principes FIRST, PHPStan au niveau max comme « niveau zéro des tests », code review, dette documentée puis remboursée, DTO plutôt que tableaux associatifs, dépendances à jour avec Renovate.\n- Pour en sortir : ne pas modifier sans comprendre, ne pas avancer seul ni sans tests, **commencer par les opérations de lecture**.\n- Trois outils : méthode Mikado, **Golden Master testing** (snapshots comparés avant et après refactoring), smoke tests qui appellent toutes les routes pour détecter les erreurs 500.\n- Organisation : auditer et chiffrer pour « vendre » le chantier, baby steps, A/B testing ou feature flags en gardant l'ancien code, monitoring.\n- Nuance du speaker : la priorité donnée à la lecture « va dépendre de votre métier ».",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "y2AmAvNc7iQ",
+        "title": "API Platform Conference 2024 - Smaïne Milianni - Comment se sortir du legacy",
+        "publishedAt": "2024-11-20",
+        "transcript": true
+      }
+    },
+    {
+      "id": "processing-one-billion-rows-in-php",
+      "day": "2024-09-20",
+      "type": "talk",
+      "title": "Processing One Billion Rows in PHP",
+      "speakers": ["Florian Engelhardt — Datadog"],
+      "feedbackFrom": [],
+      "summary": "- Le **1 Billion Row Challenge** (lancé en Java) : agréger environ 13 Go de mesures de stations météo, sans dépendance externe, dans un seul fichier.\n- Script naïf avec `fgetcsv` : **25 minutes** ; le profiler montre un goulot CPU, pas d'entrées/sorties.\n- Optimisations successives : `fgets` et `substr`, références pour éviter les recherches répétées dans la hashmap, **conversion explicite en float** contre le type juggling (13 min 32 s), puis opcache et JIT en CLI (7 min 19 s).\n- Multithreading avec l'extension parallel (12 threads sur des morceaux alignés sur les fins de ligne) : 25 secondes en live avec un binaire PHP compilé en optimisé ; idées de lecteurs de son blog ensuite, jusqu'à **12,76 secondes**.\n- *« PHP est en fait rapide, pas aussi rapide que Java »* (traduit) : le meilleur résultat Java est à 1,5 seconde.\n- Lecture critique du speaker : 25 minutes suffisent souvent pour un script ponctuel, et ses premiers chiffres dépendaient d'un binaire de debug non optimisé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "RJj6vfrqCUM",
+        "title": "API Platform Conference 2024 - Florian Engelhardt - Processing One Billion Rows in PHP",
+        "publishedAt": "2024-11-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "binary-brewing-automating-frankenphp-builds",
+      "day": "2024-09-20",
+      "type": "talk",
+      "title": "Binary Brewing: Automating FrankenPHP Builds",
+      "speakers": ["Boas Falke — bitExpert"],
+      "feedbackFrom": ["Stefan Koopmanschap (Mastodon)", "Boas Falke (speaker, Mastodon)"],
+      "summary": "- Constat : **monter un environnement PHP (serveur web, PHP-FPM, base, plusieurs conteneurs) est fastidieux** ; FrankenPHP réunit tout dans un seul service, build personnalisée de Caddy.\n- Atout mis en avant : la **production de binaires statiques**, en plus du worker mode et de HTTP/3.\n- Cas client : un Raspberry Pi qui remplace un lecteur de codes-barres ; autres usages : tâches planifiées sans conteneur, un seul binaire distribué par release.\n- Pipeline GitLab CI : image « static builder », build sur les tags uniquement, injection des secrets, composer install et static-php-cli ; la compression UPX prend environ 10 minutes même pour une appli basique (désactivable).\n- Démo : un binaire qui sert une page web et lance des commandes Symfony ; projet de démo et équivalent GitHub Actions publiés.\n- Côté ambiance, le speaker dit sur Mastodon en être à sa quatrième participation, « toujours un plaisir ».",
+      "summarySources": ["transcript", "program", "feedback"],
+      "video": {
+        "youtubeId": "Dq621T8yyXo",
+        "title": "API Platform Conference 2024 - Boas Falke - Binary Brewing: Automating FrankenPHP Builds",
+        "publishedAt": "2024-12-20",
+        "transcript": true
+      }
+    },
+    {
+      "id": "construire-un-moteur-de-recherche-avance-avec-elastica-et-api-platform",
+      "day": "2024-09-20",
+      "type": "talk",
+      "title": "Construire un moteur de recherche avancé avec Elastica et API Platform",
+      "speakers": ["Fabien Papet"],
+      "feedbackFrom": [],
+      "summary": "- Besoin d'un éditeur de logiciels pour le bâtiment : recherche produits multichamp avec **tolérance aux fautes, références exactes, favoris, produits privés par client et priorisation**.\n- Le **provider Elasticsearch natif d'API Platform ne gère que l'API search** (ni count, ni Elastica) : l'équipe a écrit un provider Elastica réutilisable branché sur une opération `/search`.\n- Pourquoi Elastica : un vrai modèle objet plutôt que des « tableaux dans des tableaux », la complétion dans l'IDE, le HttpClient de Symfony via les PSR.\n- Ajouts : `track_total_hits` (Elasticsearch plafonne le comptage à 10 000), un filtre « count » sans calcul de pertinence, des filtres métier avec boosts (x10 sur une référence exacte).\n- Première conférence du speaker, qui reconnaît avoir « réinventé la roue » en partie ; pistes : un package, ou une évolution du provider natif.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "6DuwsqGuiCg",
+        "title": "API Platform Conference 2024 - Fabien Papet - Un moteur de recherche avec Elastica & API Platform",
+        "publishedAt": "2024-12-20",
+        "transcript": true
+      }
+    },
+    {
+      "id": "consuming-http-apis-in-php-the-right-way",
+      "day": "2024-09-20",
+      "type": "talk",
+      "title": "Consuming HTTP APIs in PHP the Right Way!",
+      "speakers": ["Nicolas Grekas"],
+      "feedbackFrom": [],
+      "summary": "- Tour du **HttpClient de Symfony** : `toArray()`, upload en streaming, **requêtes parallèles grâce aux réponses « lazy »**, clients « scopés » configurés en YAML.\n- Apports de la communauté : un réglage du cache de connexions de curl qui fait passer un purgeur Varnish d'environ 2 000 connexions ouvertes à presque zéro ; correctif SSE pour consommer des flux OpenAI ; EventSourceHttpClient utilisable avec Mercure.\n- Le **« trauma PSR-7 »** : PSR-17 et PSR-18 imposent plusieurs abstractions, si bien que les SDK finissent par exiger Guzzle (environ 30 000 paquets en dépendent selon lui).\n- Sa réponse : `php-http/discovery` (plugin Composer depuis la 1.17) et la classe `Psr18Client`, qui choisissent ou installent une implémentation.\n- *« Exigez une vraie interopérabilité de la part des auteurs de SDK »* (traduit). Point de débat : il qualifie la promesse PSR de « cassée » en pratique, avec une adoption encore faible de discovery.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "ckkr7e_rGgc",
+        "title": "API Platform Conference 2024 - Nicolas Grekas - Consuming HTTP APIs in PHP the Right Way!",
+        "publishedAt": "2024-12-20",
+        "transcript": true
+      }
+    },
+    {
+      "id": "developper-des-composants-en-isolation-avec-storybook",
+      "day": "2024-09-20",
+      "type": "talk",
+      "title": "Développer des composants en isolation avec Storybook",
+      "speakers": ["Adrien Guernier — Marmelab"],
+      "feedbackFrom": [],
+      "summary": "- Critique de l'**« approche incrémentale »** : développer les composants dans l'appli finale oblige à naviguer pour voir chaque variante, alourdit mocks et tests, et la doc n'est jamais à jour.\n- À l'inverse, **isoler les composants** : chacun a ses variantes (« stories »), ses mocks (MSW avec de simples fichiers JSON), sa doc générée et ses tests d'interaction, qui tournent aussi en CI.\n- Démo : une todo list développée sans API, puis branchée sur une vraie API API Platform sans changer le code.\n- La core team react-admin a **ajouté Storybook à API Platform Admin**, qui s'installe désormais par un simple `docker compose up` ; cet environnement a servi à passer l'admin en v4 (react-admin v5).\n- Lecture critique (sans reproche, précise-t-il) : la DX pour contribuer à API Platform Admin était « compliquée ».",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "mtCAPyb6ddY",
+        "title": "API Platform Conference 2024 - Adrien Guernier - Développer des composants avec Storybook",
+        "publishedAt": "2024-12-13",
+        "transcript": true
+      }
+    },
+    {
+      "id": "integrer-une-ia-generative-dans-api-platform-bonne-idee",
+      "day": "2024-09-20",
+      "type": "talk",
+      "title": "Intégrer une IA générative dans API Platform, bonne idée ?",
+      "speakers": ["Laura Durieux"],
+      "feedbackFrom": [],
+      "summary": "- Contexte : son projet open source **IMPACT**, qui recense des faits sourcés sur les femmes de la tech pour en générer des biographies par IA.\n- Défis listés : consommation de ressources, temps de réponse, propriété des contenus générés, fiabilité (« toujours besoin de l'intervention humaine »), biais, RGPD.\n- Outillage PHP encore pauvre : client déprécié, LLPhant et openai-php limités à PHP 8.1+ ; elle choisit une intégration manuelle avec le HttpClient de Symfony.\n- Implémentation : un state processor sur un endpoint `POST /{id}/generate-biography`, GPT-4o mini, et la **température, à comprendre avant usage**.\n- *« Mettez de la sécurité sur ces endpoints IA parce que sinon ça va vous coûter très cher »* : authentification, rate limiting, plafonds chez le fournisseur.\n- Lecture critique : opacité des géants de la tech sur la consommation des data centers, jeux de données biaisés toujours réutilisés, et une tech qui prend de moins en moins le temps de penser l'impact de ce qu'elle crée.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "oz0mJH7zzrU",
+        "title": "API Platform Conference 2024 - Laura Durieux - Intégrer une IA générative dans API Platform",
+        "publishedAt": "2024-12-13",
+        "transcript": true
+      }
+    },
+    {
+      "id": "all-the-challenges-of-sylius-migration-to-api-platform-3",
+      "day": "2024-09-20",
+      "type": "talk",
+      "title": "All the Challenges of Sylius Migration to API Platform 3",
+      "speakers": ["Łukasz Chruściel — Commerce Weavers"],
+      "feedbackFrom": [],
+      "summary": "- **API Platform 3 arrive avec Sylius 2.0** (alpha déjà taguée), qui saute directement de la 2.7 à la 3.4 ; la 4.0 est déjà en test.\n- Ampleur annoncée : environ 1 700 fichiers et 30 000 lignes modifiés, 73 endpoints shop et 188 endpoints admin.\n- Ce qui a sauvé la migration : des **commandes et handlers sans état (DTO immuables)** qui ont gardé la logique métier intacte, et deux filets de sécurité, des tests Behat partagés entre UI et API et des **tests de contrat** comparant les réponses à des fichiers JSON.\n- Les sous-ressources sont passées de « l'enfer » en 2.7 à bien mieux ; restent les sous-ressources doublement imbriquées et la création de sous-ressources.\n- Sylius a créé des « documentation modifiers » branchés sur l'OpenApiFactory, contribution envisagée à API Platform.\n- *« Se découpler du framework, ce n'est pas pour en changer, c'est pour pouvoir le mettre à jour au fil du temps »* (traduit).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "0hcrOdQANRg",
+        "title": "API Platform Conference 2024 - Łukasz Chruściel - Sylius Migration to API Platform 3",
+        "publishedAt": "2024-12-13",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-cache-http-d-api-platform",
+      "day": "2024-09-20",
+      "type": "talk",
+      "title": "Le cache HTTP d'API Platform",
+      "speakers": ["Sylvain Combraque — indépendant, mainteneur du cache-handler de Caddy (Souin)"],
+      "feedbackFrom": [],
+      "summary": "- Thèse : **on n'a pas forcément besoin de Varnish**. Jusqu'à la 3.1, seul Varnish était supporté, soit deux briques à maintenir et une configuration VCL.\n- Depuis la 3.1, un **purger agnostique** (`PurgerInterface`, `SurrogateKeysPurger`, purger Souin) permet à API Platform de purger directement le cache intégré à Caddy et FrankenPHP ; le commit a mis un an à être mergé.\n- Panorama des RFC sur le cache, de 2068 à 9111, et nouveautés : **`Cache-Status` (RFC 9211)** qui remplace les `X-Cache`, CDN-Cache-Control, drafts sur l'invalidation et `Cache-Groups`.\n- Cache-handler : ESI, stockages en mémoire et distribués (Otter, Redis, etcd) chaînables, regroupement des requêtes identiques pour protéger l'upstream pendant les pics.\n- Démo d'un binaire FrankenPHP unique (Mercure, Vulcain, cache, Redis) : 404 mises en cache, liste invalidée automatiquement après un POST.\n- Lecture critique : avec Varnish, le stockage distribué demande la licence Enterprise.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "fJsd7iHwrMc",
+        "title": "API Platform Conference 2024 - Le cache HTTP d'API Platform - Sylvain Combraque",
+        "publishedAt": "2024-11-29",
+        "transcript": true
+      }
+    },
+    {
+      "id": "artisinal-api-platform",
+      "day": "2024-09-20",
+      "type": "talk",
+      "title": "Artisinal API Platform",
+      "speakers": ["Steve McDougall — Treblle"],
+      "feedbackFrom": ["Stefan Koopmanschap (Mastodon)"],
+      "summary": "- Point de vue d'un développeur Laravel qui utilise API Platform depuis environ six mois, pour sa première participation.\n- Il déroule la **chaîne classique d'une API Laravel** (modèle, migration, routes, contrôleurs, API Resources, pagination, Form Request, Policy, job en file) : beaucoup d'étapes pour un simple CRUD.\n- Le package `api-platform/laravel` : ressource déclarée par attribut ou « à la Laravel » (trait et méthode statique), avec **Form Requests, middlewares (Sanctum) et Policies** branchés directement.\n- Formats configurables (JSON-LD, JSON:API, CSV, OpenAPI) et GraphQL en un `composer require`, même s'il dit « détester GraphQL ».\n- Pourquoi il n'y est pas venu plus tôt : il croyait devoir connaître Symfony ; **« il suffit de connaître PHP »**, lui a répondu Kévin Dunglas.\n- Lecture critique : talk volontairement opinioné et humoristique (*« Kevin et Antoine ont défait toute ma carrière en six mois »*, traduit), plus enthousiaste qu'analytique sur les limites du package.",
+      "summarySources": ["transcript", "program", "feedback"],
+      "video": {
+        "youtubeId": "No3wkxIbe10",
+        "title": "API Platform Conference 2024 - Steve McDougall - Artisinal API Platform",
+        "publishedAt": "2024-12-20",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Lightning talks (jours 1 et 2, contenu non documenté)"
+  ],
+  "sources": [
+    {
+      "label": "Programme officiel (schedule)",
+      "url": "https://api-platform.com/en/con/2024/schedule"
+    },
+    {
+      "label": "Bilan officiel de l'édition 2024",
+      "url": "https://api-platform.com/en/con/2024/review"
+    },
+    {
+      "label": "Playlist YouTube « API Platform Conference 2024 » (25 vidéos)",
+      "url": "https://www.youtube.com/playlist?list=PL3hoUDjLa7eSppJSvwSIeBexYZQWkN0bm"
+    },
+    {
+      "label": "Billet de Kévin Dunglas : API Platform for Laravel (19 septembre 2024)",
+      "url": "https://dunglas.dev/2024/09/api-platform-for-laravel"
+    },
+    {
+      "label": "Blog Symfony : Get ready for the fourth edition of the API Platform Conference",
+      "url": "https://symfony.com/blog/get-ready-for-the-fourth-edition-of-the-api-platform-conference"
+    },
+    {
+      "label": "Posts Mastodon #APIPlatformCon (19 au 21 septembre 2024) : Stefan Koopmanschap (speaker), Dmitri Goosens, François Zaninotto (speaker), Boas Falke (speaker), Kévin Dunglas (speaker), Tanega, Deuchnord, compte officiel API Platform",
+      "url": "https://mastodon.social/tags/apiplatformcon"
+    }
+  ]
 }

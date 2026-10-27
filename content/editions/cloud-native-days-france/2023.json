@@ -3,11 +3,693 @@
   "year": 2023,
   "title": "KCD France 2023",
   "edition": "1re édition",
-  "start": "2023",
+  "start": "2023-03-07",
+  "end": "2023-03-07",
   "city": "Paris",
-  "url": "https://www.youtube.com/playlist?list=PLmZ3gFl2Aqt_Qo4EAITE1ewy1ww5jkU2h",
-  "dateConfidence": "est",
-  "note": "Kubernetes Community Days France, ancien nom de Cloud Native Days France. Environ 1 000 participants. Date exacte non retrouvée (keynote d'ouverture publiée sur YouTube le 23 mars 2023, donc édition au 1er trimestre 2023).",
-  "status": "pending",
-  "sessions": []
+  "venue": "Centre Pompidou",
+  "url": "https://web.archive.org/web/20230315062334/https://www.kcdfrance.fr/",
+  "programUrl": "https://web.archive.org/web/20230604034811/https://www.kcdfrance.fr/programme",
+  "theme": "Cloud Native et DevOps",
+  "dateConfidence": "ok",
+  "note": "Kubernetes Community Days France, ancien nom de Cloud Native Days France. Mardi 7 mars 2023 au Centre Pompidou (site officiel archivé). Une journée, 34 sessions dans trois salles de cinéma (Bleu, Blanc, Rouge), plus de 800 participants annoncés et environ 1 000 selon la presse. Organisé en association 1901 par CNCF Paris, CNCF Lyon et des bénévoles.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-27",
+  "revisit": "Aucun post LinkedIn ni blog de participant indépendant trouvé (recherche web limitée) : le corpus repose sur les transcripts, un blog de sponsor (Scaleway) et deux articles de presse. Chercher des retours LinkedIn (#KCDFrance, mars 2023) et les articles de speakers (Rémi Verchère, WeScale, Enix).",
+  "corpus": "25 transcripts automatiques (sur 37 vidéos de la playlist officielle publiée fin mars 2023), le programme officiel archivé sur la Wayback Machine, le blog de Scaleway (Daniel Maher, 31 mars 2023, avec les impressions de plusieurs collègues), deux articles de presse (Le Monde Informatique et Solutions Numériques, 7 et 8 mars 2023).",
+  "limits": "Pas de retour de participant indépendant : le seul compte-rendu détaillé vient d'un sponsor qui avait aussi un speaker. Les résumés de sessions reposent surtout sur des sous-titres automatiques bruités (noms et chiffres à prendre avec prudence, citations approximatives). Les lightning talks des sponsors n'ont pas été transcrits.",
+  "tldr": "Pour sa première édition au Centre Pompidou, KCD France a surtout été **une journée de retours d'expérience de production** (Pôle emploi, Éducation nationale, Veepee, eTF1, Datadog, Carrefour) : Kubernetes y apparaît **sorti de la hype, devenu une plateforme qu'on outille, sécurise et opère au quotidien**.",
+  "keyTakeaways": [
+    "Dimensionner les pods comme des pods, pas comme les anciennes VM : chez Pôle emploi, la première appli critique migrée en gros pods ne marchait pas, le retuning a divisé les ressources par 4 (Benisty et Nocus).",
+    "Pour un pic prévisible, benchmarker grandeur nature à partir de trafic réel et préchauffer l'infra (min HPA, min nodes, ALB, quotas) : eTF1 a tenu la finale de la Coupe du monde sans couper l'authentification.",
+    "Les opérateurs de bases SQL tiennent leurs promesses, mais la mise à jour de l'opérateur lui-même peut redémarrer tous les clusters gérés : prévoir une fenêtre de maintenance (Enix).",
+    "Un Secret Kubernetes n'est que du base64 : chiffrer etcd, passer par un secret manager et accepter qu'on ne rendra jamais un secret totalement secret, sans complexité qui pousse à contourner (Hourcade, Formance).",
+    "Signer et attester ses builds (SLSA, Sigstore keyless) puis les vérifier à l'admission avec Kyverno, avec un workflow de provenance dans un dépôt séparé (Abdennebi, Sfeir).",
+    "Raisonner en limites et en SLO, rendre les limites physiquement infranchissables, et faire écrire par les devs la procédure de chaque alerte (Bernard, Red Hat).",
+    "Anticiper la MTU dès la conception d'une architecture hybride ou multicloud : le choix du CNI et les jumbo frames EKS se heurtent au reste du réseau (Masson, WeScale).",
+    "Un portail développeur (Backstage) est un produit, pas un projet : il révèle le désordre de la plateforme et demande un sponsor et de la fiabilité (Farhat, Back Market).",
+    "Le chaos engineering est d'abord une culture de l'incident accepté : commencer petit, contrôler l'impact, et pratiquer la reconstruction complète de cluster (Li, Carrefour)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-d-ouverture",
+      "day": "2023-03-07",
+      "type": "keynote",
+      "title": "Keynote d'ouverture",
+      "speakers": [
+        "Jérôme Petazzoni — Enix (maître de cérémonie)",
+        "Solomon Hykes — Dagger",
+        "Partenaires Platinum : OVHcloud, Scaleway, Red Hat"
+      ],
+      "feedbackFrom": [
+        "Daniel Maher (blog Scaleway, sponsor)",
+        "Le Monde Informatique (Jacques Cheminat)",
+        "Solutions Numériques"
+      ],
+      "summary": "- Diffusée en **multi-salle** (Bleu, Blanc, Rouge) faute de salle unique pour près de 1 000 personnes. Petazzoni rappelle que les sponsors couvrent 80 à 90 % du budget de cet événement bénévole.\n- **Solomon Hykes** : Kubernetes sort de la hype pour une phase « réaliste » ; il sera dominant sans jamais avoir 100 % du marché, et la fragmentation va s'accentuer (transcript, Le Monde Informatique).\n- Son sujet actuel est la **« glue » entre le poste du développeur et le cloud** : la CI vue comme une supply chain en graphe (DAG), que Dagger veut rendre programmable (SDK Go, Python, TypeScript, API GraphQL) et exécutable aussi bien en local que sur GitLab CI ou Jenkins.\n- Sur l'IA générative, il prévoit une « guerre monstrueuse » entre Microsoft et Google, vue comme une opportunité pour les startups (Le Monde Informatique).\n- Interventions sponsors : Red Hat (OpenShift, consoles développeur avec Tekton et Argo CD, versions managées sur AWS et Azure) ; OVHcloud (IAM, KMS, stockage ReadWriteMany, contrat de droit français, registry à prix forfaitaire) ; Scaleway en sketch humoristique sur la prononciation de « kubectl ».\n- Clôture par l'équipe d'organisation : projet né en 2019, stoppé par le Covid, relancé après KubeCon Valence ; la difficulté principale a été la gestion de projet entre bénévoles.\n- Citation (approximative, sous-titres auto) : *« on est les plombiers dans l'histoire »* (Hykes).",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "OKIehz7p4ug",
+        "title": "Opening keynote #KCDFrance 2023",
+        "publishedAt": "2023-03-23",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rex-education-nationale-kubernetes",
+      "day": "2023-03-07",
+      "type": "keynote",
+      "title": "REX Éducation nationale : mise en place de Kubernetes",
+      "speakers": [
+        "Nicolas Schont — Ministère de l'Éducation nationale",
+        "Luc Bourdot — Ministère de l'Éducation nationale"
+      ],
+      "feedbackFrom": [
+        "Le Monde Informatique",
+        "Daniel Maher (blog Scaleway)"
+      ],
+      "summary": "- Segment de la keynote présentant trois plateformes du ministère (les sous-titres font aussi intervenir un Cédric et Sophie Maucor, non listés au programme).\n- **Santorin**, correction dématérialisée des examens : lancé en 2017, sur Kubernetes depuis 2018 ; en 2022, **5,7 millions de feuilles numérisées** dont 5 millions pour le bac, environ 1 million par jour. HPA et priorités de pods favorisent la réception des copies sur leur traitement ; un modèle de deep learning lit les en-têtes.\n- Chiffres relevés par Le Monde Informatique : 17 To de copies, 112 nœuds, 896 vCPU. Difficultés citées : volumes de stockage, montées de version, legacy ; bénéfice principal jugé budgétaire.\n- **apps.education.fr** (pôle Eole) : né en urgence pendant le confinement de 2020 sous Docker, passé sur Kubernetes fin 2021, hébergé chez Scaleway et OVHcloud ; contrainte : tous les cours commencent à 8 h.\n- **Cloé**, cloud privé pour les développeurs du ministère (Rancher, Harbor, GitLab) : environ 95 projets et 650 agents selon les sous-titres.\n- Scaleway souligne dans son blog que l'Éducation nationale s'appuie sur son infrastructure pendant la période du bac.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "OKIehz7p4ug",
+        "title": "Opening keynote #KCDFrance 2023",
+        "publishedAt": "2023-03-23",
+        "transcript": true,
+        "startSeconds": 2207
+      }
+    },
+    {
+      "id": "construire-des-images-docker-sur-kubernetes-un-long-voyage",
+      "day": "2023-03-07",
+      "type": "talk",
+      "title": "Construire des images Docker sur Kubernetes : un long voyage !",
+      "speakers": [
+        "Laurent Bernaille — Datadog",
+        "Mayeul Blanzat — Datadog"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Point de départ : runners GitLab CI en **Docker-in-Docker**, risqué pour la sécurité, puis buildx + QEMU pour ARM avec des builds émulés d'environ 4 heures.\n- Choix retenu : **BuildKit déployé dans Kubernetes en mode rootless** (user namespaces), buildx découvrant les pods x86 et ARM pour assembler l'image multi-arch.\n- 90 à 95 % des images passent directement ; le reste a demandé de vraies enquêtes : attributs SELinux interdits dans un user namespace imbriqué, démons survivant à un `RUN`, et un bug OverlayFS (`trusted.overlay.opaque`) masqué par le cache, corrigé en passant aux noyaux 5.11.\n- Résultat : plusieurs centaines d'images en production, des milliers de builds par jour, **le build ARM passe de 4 h à 10-15 minutes**, Docker-in-Docker déprécié.\n- Citation (approximative) : *« BuildKit en mode rootless, ça marche, mais c'est encore un peu en avance de phase »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "H2W_ilHQ9n8",
+        "title": "Construire des images Docker sur Kubernetes : un long voyage ! - L. Bernaille et M. Blanzat, Datadog",
+        "publishedAt": "2023-03-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-plus-value-d-un-portail-developpeur-chez-back-market",
+      "day": "2023-03-07",
+      "type": "talk",
+      "title": "La plus-value d'un portail développeur chez Back Market",
+      "speakers": [
+        "Sami Farhat — Back Market"
+      ],
+      "feedbackFrom": [],
+      "summary": "- REX donné en anglais. Contexte fin 2021 : sortie progressive d'un monolithe, propriété des services floue, **création d'un service manuelle prenant des jours**, squad infra devenue goulot.\n- **« Dev portal » basé sur Backstage** : catalogue avec owner obligatoire et plugins (CircleCI, GitHub, Argo CD, Sentry…), templates de bootstrap orchestrant Terraform et GitOps (objectif : moins d'une heure, étapes idempotentes), et scores de couplage du monolithe rendus visibles, ce qui a fait réagir la direction.\n- Défis : obtenir l'adhésion de la direction sans gain chiffrable (POC et sponsor) ; le portail **révèle le désordre de la plateforme**, d'où une refonte du RBAC entre Okta, GitHub et Sentry.\n- Leçons : le portail évolue avec la plateforme, demande un état d'esprit produit, et sa fiabilité conditionne la confiance (pas de liens cassés, pas trop de plugins d'un coup).\n- Citation (approximative) : *« we much prefer to put our efforts in tooling rather than continuous evangelization »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "2XghfHsbRtw",
+        "title": "La plus-value d'un portail développeur chez Back Market - S. Farhat, Back Market",
+        "publishedAt": "2023-03-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "securisez-votre-software-supply-chain-avec-slsa-sigstore-et-kyverno",
+      "day": "2023-03-07",
+      "type": "talk",
+      "title": "Sécurisez votre software supply chain avec SLSA, Sigstore et Kyverno",
+      "speakers": [
+        "Mohamed Abdennebi — Sfeir"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Menace : hausse annoncée de 742 % par an des attaques sur la supply chain entre 2019 et 2022 (confusion de dépendances, typosquatting, Log4Shell).\n- **SLSA** garantit que le binaire déployé correspond au code source via une **attestation de provenance** ; niveaux L1 à L3 de la v1.0 (alors en release candidate), L3 atteignable avec GitHub Actions, Cloud Build ou Tekton.\n- **Sigstore**, « le Let's Encrypt de la signature de code » : Fulcio, Rekor et le mode keyless (certificat de 10 minutes obtenu via OIDC).\n- Trois démos : `cosign sign` d'une image locale, provenance générée par un workflow GitHub réutilisable **hébergé dans un dépôt séparé** géré par la SecOps, puis Kyverno qui refuse l'image locale et accepte celle de la CI.\n- Q&R : Sigstore peut être auto-hébergé ; support npm en cours côté GitHub.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "cWpC96J05gI",
+        "title": "Sécurisez votre software supply chain avec SLSA, Sigstore et Kyverno - M. Abdennebi, Sfeir",
+        "publishedAt": "2023-03-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "l-enfer-des-db-sql-sur-kubernetes-face-a-la-promesse-des-operateurs",
+      "day": "2023-03-07",
+      "type": "talk",
+      "title": "L'enfer des DB SQL sur Kubernetes face à la promesse des opérateurs",
+      "speakers": [
+        "David Donchez — Enix",
+        "Alexandre Buisine — Enix"
+      ],
+      "feedbackFrom": [
+        "Daniel Maher et Thibault Genaitay (blog Scaleway)"
+      ],
+      "summary": "- REX d'infogéreur, présenté **en costumes de pirates**, comparant CloudNativePG, StackGres, l'opérateur Zalando, Moco, l'opérateur MariaDB et Percona.\n- Grille de lecture : documentation, gestion des utilisateurs, switchover, monitoring, sauvegarde et restauration (S3, PITR), extensions, mises à jour.\n- Pièges : rétention par défaut (une base de 5 Go peut produire 500 Go de sauvegardes), restaurer en clonant plutôt qu'en recréant, télémétrie par défaut chez Percona, et **mise à jour de l'opérateur qui peut redémarrer tous les clusters gérés**.\n- Conclusion : les opérateurs permettent de gérer des centaines de bases en libre-service ; *« on n'a pas encore perdu de données avec ces opérateurs »* (approximatif).\n- Retenu par Scaleway : une checklist de mise en production et une recommandation de **CloudNativePG et StackGres** pour PostgreSQL. Thibault Genaitay note que *« tout le monde se pose encore la même question : faut-il faire tourner des bases de données dans Kubernetes ? »*",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "d_ka7PlWo1I",
+        "title": "L'enfer des DB SQL sur Kubernetes face à la promesse des opérateurs - D. Donchez et A. Buisine, Enix",
+        "publishedAt": "2023-03-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rik-un-orchestrateur-de-conteneurs-en-rust",
+      "day": "2023-03-07",
+      "type": "talk",
+      "title": "RIK, un orchestrateur de conteneurs en Rust",
+      "speakers": [
+        "Hugo Amalric — NetExplorer",
+        "Thomas Gouveia — IoTerop"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Projet d'étudiants de Polytech Montpellier (cours de virtualisation de Samuel Ortiz), une douzaine de personnes, vers 2020-2021.\n- Architecture : CLI, contrôleur avec état dans SQLite, scheduler et agent de nœud (« riklet ») en gRPC, s'appuyant sur skopeo, umoci et runc ; **pas de réseau**.\n- Démo sur GCP : arrêt d'un nœud et replanification du workload sur un autre.\n- Leçons : une équipe par composant avec des contrats protobuf a bien marché ; manque de documentation, de tests et de compétences réseau ; *« l'humain plus important que la technique »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "_0-c-AIsPdk",
+        "title": "RIK, un orchestrateur de conteneurs en Rust - H. Amalric, NetExplorer et T. Gouveia, IoTerop",
+        "publishedAt": "2023-03-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "kubernetes-the-not-so-hard-veepee-way",
+      "day": "2023-03-07",
+      "type": "talk",
+      "title": "Kubernetes the not so hard Veepee way",
+      "speakers": [
+        "Loïc Blot — Veepee",
+        "Michaël Todorovic — Veepee"
+      ],
+      "feedbackFrom": [],
+      "summary": "- En 2019, Veepee jonglait entre Kubernetes legacy, Nomad, Rancher, docker-compose et LXC ; la plateforme actuelle a été montée en quelques mois pour la vente des places d'un concert de Céline Dion au Stade de France.\n- Socle : IaaS maison sur KVM, **Kubernetes Namespace as a Service multitenant**, OIDC via Keycloak, kube-router, Traefik, et des contrôleurs maison en Go (machines, namespaces, certificats).\n- Passage à l'échelle : Prometheus shardé avec Thanos, logs via Fluent Bit puis un pool Fluentd central (l'API server « explosait » à 200 nœuds), Argo CD avec ApplicationSets sur une douzaine de clusters et environ 16 000 pods.\n- **Starfish**, outil de charts Helm standard et de CI générée, vise à *« faire disparaître kube d'un point de vue développeur »* (approximatif).\n- Q&R : le plus grand regret est l'inertie des quelque 80 produits à migrer ; pas de vrai capacity planning, *« on est un site de soldes »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "vD8bVD7-iZo",
+        "title": "Kubernetes the not so hard Veepee way - L. Blot et M.Todorovic, Veepee",
+        "publishedAt": "2023-03-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-rendre-les-secrets-kubernetes-vraiment-secrets",
+      "day": "2023-03-07",
+      "type": "talk",
+      "title": "Comment rendre les secrets Kubernetes vraiment… secrets ?",
+      "speakers": [
+        "Julie Hourcade — Formance"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Chiffres cités (rapport Red Hat 2022) : 93 % des répondants ont eu un incident de sécurité lié à Kubernetes en 12 mois, 55 % ont retardé des déploiements pour cette raison.\n- Rappel : un Secret n'est que du base64, *« de l'encodage, pas du chiffrement »* ; chiffrer etcd, faire tourner les secrets, activer les audit logs.\n- Secret managers (cloud ou Vault) et intégrations (Secrets Store CSI Driver, External Secrets Operator) : **le secret redevient clair dans le conteneur** ; compléments possibles : génération dynamique, SOPS ou git-crypt.\n- Conclusion : **trop de sécurité pousse les humains à contourner**, il faut une complexité raisonnable ; *« on ne peut pas rendre totalement secret des secrets »*.\n- Q&R nourrie (rechargement des secrets, problème de l'œuf et de la poule en bare metal, authentification Vault par ServiceAccount).",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "RQqmym_34WY",
+        "title": "Comment rendre les secrets Kubernetes vraiment… secrets ? - J. Hourcade, Formance",
+        "publishedAt": "2023-03-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "voyage-dans-le-monde-du-chaos-engineering",
+      "day": "2023-03-07",
+      "type": "talk",
+      "title": "Voyage dans le monde du Chaos Engineering : immunisez votre infrastructure par l'injection de défaillances",
+      "speakers": [
+        "Si Li — Carrefour"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Analogie avec le vaccin : injecter des défaillances à impact contrôlé, inadapté à un système non élastique ou sans monitoring.\n- Niveau applicatif : un outil qui tue des pods au hasard sur le cluster GKE multi-tenant révèle les erreurs de configuration (un seul réplica, PDB) ; MTTA du Black Friday passé de 6 h à 2 h entre 2021 et 2022 selon la speaker.\n- Niveau infra : LitmusChaos en bêta, et des **« Night of Chaos »** où l'on détruit et reconstruit le cluster : 10 h au lieu des 3 h visées en 2020 (faute de documentation, d'où le passage au 100 % infrastructure as code), 4 h en 2021.\n- Message : *« c'est plutôt une culture : on accepte les incidents »* ; pour convaincre les applis critiques, contrôler l'impact et communiquer beaucoup.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "AygMpeFcOBQ",
+        "title": "Voyage dans le monde du Chaos Engineering - S. Li, Carrefour",
+        "publishedAt": "2023-03-28",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rendre-hautement-disponible-des-milliers-d-ingress-sur-des-clusters-kubernetes-independants",
+      "day": "2023-03-07",
+      "type": "talk",
+      "title": "Rendre hautement disponible des milliers d'ingress sur des clusters Kubernetes indépendants",
+      "speakers": [
+        "Solvik Blum — Numberly",
+        "Laurent Marchaud — Numberly"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Talk de remplacement. Numberly opère deux datacenters parisiens en actif-actif et refuse de fédérer ses clusters (« diviser pour mieux régner »).\n- Solution : **Yggdrasil** (uSwitch), control plane Envoy qui agrège les ingress de plusieurs clusters ; contributions upstream acceptées (certificats TLS, challenges ACME, timeouts, **poids par cluster**).\n- Usage : upgrades de clusters sans stress (poids à 0, réinstallation), et possibilité de louer un gros cluster cloud quelques heures pour un pic ; bascule démontrée en production pendant la Coupe du monde.\n- Citation (approximative) : *« on désactive le cluster… on ne stresse plus »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "pvKJWRWu4Bc",
+        "title": "Rendre dispo des milliers d'ingress sur clusters K8s indépendants - S. Blum et L.Marchaud, Numberly",
+        "publishedAt": "2023-03-29",
+        "transcript": true
+      }
+    },
+    {
+      "id": "revolution-ebpf-un-noyau-linux-dynamique",
+      "day": "2023-03-07",
+      "type": "talk",
+      "title": "Révolution eBPF : un noyau Linux dynamique",
+      "speakers": [
+        "Raphaël Pinson — Isovalent"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Faire entrer une fonctionnalité dans le noyau prend de 1 à 5 ans ; **eBPF étend le noyau à la volée**, sans recompiler ni redémarrer, sous contrôle d'un vérificateur.\n- Apport clé pour Kubernetes : **l'identité** ; les labels injectés dans les maps donnent routage, policies et observabilité au niveau des pods plutôt que des IP (Cilium, Hubble, Tetragon).\n- Réseau : XDP, services en table de hachage au lieu du coût linéaire d'iptables, un Envoy par nœud au lieu de sidecars ; sécurité : Tetragon peut tuer un processus dès l'appel système.\n- Citation reprise de Thomas Graf : *« eBPF c'est un peu au noyau Linux ce que JavaScript est au navigateur »* (approximatif).\n- Q&R : objectif de couvrir environ 80 % des besoins de service mesh sans Istio.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "BO4MWeFkvRM",
+        "title": "Révolution eBPF : Un noyau Linux dynamique - R. Pinson, Isovalent",
+        "publishedAt": "2023-03-29",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comprendre-les-bases-de-gitops",
+      "day": "2023-03-07",
+      "type": "lightning",
+      "title": "Comprendre les bases de GitOps : qu'est-ce que GitOps et pourquoi c'est important ?",
+      "speakers": [
+        "Madou Coulibaly — GitLab"
+      ],
+      "feedbackFrom": [
+        "Daniel Maher (blog Scaleway)"
+      ],
+      "summary": "- Lightning d'introduction, résumé uniquement d'après le blog de Scaleway : GitOps repose sur la **codification, la collaboration et l'automatisation**.\n- Deux stratégies de déploiement présentées : **push** via un pipeline, ou **pull** via un agent qui réconcilie état désiré et état courant.",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "tc4qohTaxbQ",
+        "title": "Comprendre les bases GitOps : qu'est-ce que GitOps? Pourquoi c'est important? - M. Coulibaly, Gitlab",
+        "publishedAt": "2023-03-29",
+        "transcript": false
+      }
+    },
+    {
+      "id": "creer-distribuer-un-plugin-pour-k8s-en-quelques-minutes-easy",
+      "day": "2023-03-07",
+      "type": "talk",
+      "title": "Créer & distribuer un plugin pour K8s en quelques minutes ? Easy !",
+      "speakers": [
+        "Aurélie Vache — OVHcloud",
+        "Sébastien Blanc — Aiven"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Constat : kubectl n'est pas exhaustif et les outils annexes s'installent chacun à leur manière.\n- Recette : **un exécutable nommé `kubectl-<nom>` dans le PATH**, dans n'importe quel langage ; démo live d'un plugin Bash ajoutant des émojis de saison à `kubectl get`.\n- Distribution avec **Krew** (manifeste par OS et architecture) ; leur plugin a été refusé deux fois dans l'index officiel, d'où un index privé ; GoReleaser génère désormais le manifeste Krew.\n- Citation (approximative) : *« du moment qu'on obtient un binaire exécutable, c'est un candidat valide »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "2dmMJbA-2MU",
+        "title": "Créer & distribuer un plugin pour K8s en quelques minutes? Easy! - A. Vache, OVH et S. Blanc, Aiven",
+        "publishedAt": "2023-03-29",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-bien-foirer-sa-certification-ck-a-s",
+      "day": "2023-03-07",
+      "type": "lightning",
+      "title": "Comment bien foirer sa certification CK{A,S}",
+      "speakers": [
+        "Rémi Verchère"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Conseils ironiques tirés de ses échecs à la CKA (2021) puis à la CKS (2022) : ne pas pratiquer en terminal, ignorer les sessions killer.sh, oublier la date d'expiration du voucher.\n- Pendant l'examen : ne pas lire les questions jusqu'au bout et **oublier de changer de contexte kubectl** (son principal piège).\n- Vrai message : se mettre en condition d'examen, utiliser un premier essai comme reconnaissance, et rappeler que beaucoup échouent avant de réussir.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "NHHlKoEdT2M",
+        "title": "Comment bien foirer sa certification CK{A,S} - R. Verchère",
+        "publishedAt": "2023-03-29",
+        "transcript": true
+      }
+    },
+    {
+      "id": "vers-une-culture-ou-tout-le-monde-est-responsable-de-l-indisponibilite",
+      "day": "2023-03-07",
+      "type": "talk",
+      "title": "Vers une culture où tout le monde est responsable de l'indisponibilité",
+      "speakers": [
+        "Emmanuel Bernard — Red Hat"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Retour d'un développeur de librairies devenu architecte d'un **Kafka as a Service** sur OpenShift : il faut vivre l'opération soi-même, même avec des équipes voisines expérimentées.\n- Penser en **limites** (techniques et fonctionnelles) et en **SLO** ; mieux qu'une alerte, rendre la limite physiquement infranchissable (ralentir l'écriture à 80 % du disque).\n- Le code n'est pas tout : une panne du registre d'images (Quay) a empêché de déployer de nouveaux nœuds Kafka.\n- Pratiques d'équipe : opérer le service en interne dès qu'il tourne, alerter sur le système d'alerte, **une procédure par alerte écrite par les devs**, ce qui les pousse à simplifier.\n- Citation (approximative) : *« tu es en train de tuer un chaton à chaque fois que tu me fais tomber un Kafka »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "VFlZfycFr2o",
+        "title": "Vers une culture où tout le monde est responsable de l'indisponibilité - E. Bernard, Red Hat",
+        "publishedAt": "2023-03-29",
+        "transcript": true
+      }
+    },
+    {
+      "id": "opentelemetry-javascript-et-tracing-distribue",
+      "day": "2023-03-07",
+      "type": "talk",
+      "title": "OpenTelemetry, JavaScript et tracing distribué : un jour j'irai vivre en Théorie, car en Théorie tout se passe bien",
+      "speakers": [
+        "Sonia Seddiki — Pitchy"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Déclencheur : une mise en production purement CSS fait tomber l'application, à cause d'un processus tué une semaine plus tôt par une saturation disque ; d'où la distinction **monitoring / observabilité**.\n- OpenTelemetry choisi pour sa neutralité vis-à-vis des vendeurs ; l'auto-instrumentation Node s'est révélée peu configurable, coûteuse et trouée.\n- Solution maison : **décorateurs TypeScript** pour l'instrumentation manuelle et un propagateur de contexte maison pour SQS.\n- Q&R : environ 3 mois d'implémentation ; pas de sampling mais une sélection des spans (4 fois moins d'événements sur les appels AWS).",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "h0_6Q3wCZb8",
+        "title": "OpenTelemetry, JavaScript et tracing distribué - S. Seddiki, Pitchy",
+        "publishedAt": "2023-03-29",
+        "transcript": true
+      }
+    },
+    {
+      "id": "du-cloud-au-baremetal-avec-kubernetes-une-mauvaise-idee",
+      "day": "2023-03-07",
+      "type": "lightning",
+      "title": "Du cloud au baremetal avec Kubernetes, une mauvaise idée ?",
+      "speakers": [
+        "Antoine Legrand — CONNY.de"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Un projet imposait de multiplier les capacités par 20 à 100 en 4 mois : migration d'AWS vers du bare metal, rendue faisable selon lui par l'écosystème CNCF.\n- Aujourd'hui environ 50 serveurs, 3 régions, **2 clusters de production interchangeables** ; une semaine par mois de maintenance.\n- Incidents : Ceph tombé avec toutes ses données, d'où le retour aux volumes locaux avec réplication applicative ; les incidents arrivent surtout pendant les upgrades.\n- Citation (approximative) : *« la phase d'installation, c'est deux, trois mois, et la phase de maintenance, c'est des années »* ; principal frein : le recrutement.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "tdeTcYHA7BY",
+        "title": "Du cloud au baremetal avec Kubernetes, une mauvaise idée ? - A. Legrand, CONNY.de",
+        "publishedAt": "2023-03-29",
+        "transcript": true
+      }
+    },
+    {
+      "id": "performances-et-scaling-pour-les-evenements-speciaux-chez-etf1",
+      "day": "2023-03-07",
+      "type": "talk",
+      "title": "Performances et scaling pour les événements spéciaux chez eTF1",
+      "speakers": [
+        "Hugo Lebaron — eTF1",
+        "Laurent Dechoux — eTF1"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Objectif pour la Coupe du monde 2022 : **ne pas couper l'authentification**, contrairement aux événements passés.\n- **Bench grandeur nature** à partir de captures de trafic réel (k6), avec des cibles de 1,5 M de connexions et 75 000 req/s sur la publicité ; correctifs : appels inutiles supprimés, micro-cache devant Redis, min HPA et min nodes relevés avant chaque match, ALB préchauffés.\n- Pendant la compétition : attaques DDoS dès les huitièmes de finale, contrées par le WAF AWS.\n- Finale : 2,4 M d'utilisateurs simultanés et 500 000 créations de compte, sans incident majeur après trois mois de préparation ; point faible : un proxy Linkerd non benché.\n- Citation (approximative) : *« la préparation, ça paye »* ; suite envisagée : KEDA et Karpenter.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "43KAer32mrY",
+        "title": "Performances et scaling pour les événements spéciaux chez eTF1 - H. Lebaron et L. Dechoux, eTF1",
+        "publishedAt": "2023-03-29",
+        "transcript": true
+      }
+    },
+    {
+      "id": "goldie-d-or-et-les-trois-cni",
+      "day": "2023-03-07",
+      "type": "talk",
+      "title": "Goldie d'or et les trois CNI",
+      "speakers": [
+        "Jérôme Masson — WeScale"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Conte de Boucle d'or pour comparer **Calico, Antrea et Cilium** sur trois clusters EKS : MTU, chiffrement nœud à nœud (WireGuard), cluster mesh.\n- Mesures : la MTU de 9001 (jumbo frames) descend vers 8950 avec les overlays de Calico et Antrea, Cilium la conserve grâce à eBPF ; préférence assumée pour Cilium.\n- Morale : les jumbo frames d'EKS se heurtent au reste de l'architecture (Transit Gateway, VPN, on-prem et autres clouds à 1500), d'où des rejets de paquets incompris ; **anticiper la MTU dès la conception**.\n- Q&R : un spectateur remercie, il venait de rencontrer le problème entre deux datacenters.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "opgQN2MxlvA",
+        "title": "Goldie d'or et les trois CNI - J. Masson, WeScale",
+        "publishedAt": "2023-03-29",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-operateurs-kubernetes-a-la-portee-de-n-importe-quel-developpeur",
+      "day": "2023-03-07",
+      "type": "talk",
+      "title": "Les opérateurs Kubernetes à la portée de n'importe quel développeur",
+      "speakers": [
+        "Stéphane Philippart — OVHcloud"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Live coding d'un même opérateur en trois technologies, par un développeur Java « pas expert Ops ».\n- **Helm** (Operator SDK) : marche la plus basse, mais limité ; **Go** (kubebuilder) : le plus utilisé, tout est possible ; **Java** (Java Operator SDK, Quarkus) : très actif, très orienté Quarkus.\n- Rappel : un opérateur n'est qu'un pod avec une boucle de réconciliation, il peut être écrit dans n'importe quel langage ; son but est de *« réduire les actions manuelles, souvent sources d'erreurs »* (approximatif).",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "ANm7MBpkv1M",
+        "title": "Les opérateurs Kubernetes à la portée de n'importe quel développeur - S. Philippart, OVHcloud",
+        "publishedAt": "2023-03-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "et-si-l-on-construisait-un-cloud-open-source-pour-la-datascience",
+      "day": "2023-03-07",
+      "type": "talk",
+      "title": "Et si l'on construisait un cloud open source pour la datascience ?",
+      "speakers": [
+        "Frédéric Comte — INSEE",
+        "Olivier Levitt — INSEE"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Constat : le poste de travail est un mauvais environnement pour la donnée (dissémination, reproductibilité, passage à l'échelle) ; les DSI investissent peu dans l'analytique.\n- Parti d'un projet en « shadow IT » sur Mesos en 2017, le **SSP Cloud** (Kubernetes, stockage S3 découplé du calcul) est ouvert gratuitement aux agents publics et aux écoles.\n- **Onyxia**, logiciel open source : catalogue de services généré à partir des schémas Helm, contexte utilisateur injecté, commande Helm équivalente toujours affichée pour éviter l'enfermement.\n- Limites : supervision multi-tenant trop dure à 3 000 utilisateurs ; le principal effort de formation reste Git.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "sOOVg4I19BI",
+        "title": "Et si l'on construisait un cloud open source pour la datascience ? - F. Comte et O. Levitt, INSEE",
+        "publishedAt": "2023-03-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "pourquoi-votre-observabilite-vous-coute-trop-cher",
+      "day": "2023-03-07",
+      "type": "lightning",
+      "title": "Pourquoi votre observabilité vous coûte trop cher ?",
+      "speakers": [
+        "Alexandre Mechain — Coralogix"
+      ],
+      "feedbackFrom": [
+        "Daniel Maher (blog Scaleway)"
+      ],
+      "summary": "- Résumé uniquement d'après le blog de Scaleway : **ne pas payer pour collecter ni expédier des données inutiles**, optimiser les niveaux de stockage, transformer les logs de niveau info récurrents en métriques.\n- Daniel Maher y ajoute sa propre recommandation d'outils open source matures (Prometheus, OpenTelemetry).",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Kn_vWc1wkPU",
+        "title": "Pourquoi votre observabilité vous coûte trop cher ? - A. Mechain, Coralogix",
+        "publishedAt": "2023-03-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "introduction-a-kairos",
+      "day": "2023-03-07",
+      "type": "talk",
+      "title": "Introduction à Kairos : à l'intersection de K8s, edge computing et immutabilité",
+      "speakers": [
+        "Nicolas Vermande — Spectro Cloud",
+        "Dmitry Shevrin — Spectro Cloud"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Problème de l'edge : des milliers d'appareils peu puissants, des configurations qui divergent, des disques volés, des déplacements coûteux.\n- Alternatives passées en revue (k3s, Talos, Flatcar, Bottlerocket, k3OS abandonné) ; **Kairos est une méta-distribution** : une image conteneur de n'importe quelle distribution en entrée, un OS immuable en sortie, avec mises à jour atomiques et rollback.\n- Provisionnement par QR code, interface web ou PXE, élection des rôles en P2P ; cluster HA annoncé en moins de 5 minutes.\n- Démo en vidéo, le Wi-Fi ne permettant pas de démo live.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "46qcE5MC6-8",
+        "title": "Kairos : à l'intersection de K8s, edge computing & immutabilité - Vermande et Shevrin, Spectro Cloud",
+        "publishedAt": "2023-03-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "vpc-dans-k8s-pas-aussi-simple-que-ca-en-a-l-air",
+      "day": "2023-03-07",
+      "type": "talk",
+      "title": "VPC dans k8s : pas aussi simple que ça en a l'air",
+      "speakers": [
+        "Louis Portay — Scaleway"
+      ],
+      "feedbackFrom": [
+        "Daniel Maher (blog Scaleway, collègue du speaker)"
+      ],
+      "summary": "- Les réseaux privés sont la fonctionnalité la plus demandée de Kapsule, le Kubernetes managé de Scaleway.\n- Implémentation : IP attribuée par une IPAM interne et déposée dans l'API de métadonnées, interface `kapsule0` configurée par un agent de nœud pour que le CNI s'y attache.\n- Difficulté : le Cloud Controller Manager, public, ne pouvait pas appeler l'IPAM privée ; une route publique a évité de le forker.\n- Bêta privée annoncée pour la fin du mois ; *« avant d'ajouter un changement sur un parc, c'est pas quelque chose qu'on fait à la légère »* (approximatif).",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "FobnKozk2Z8",
+        "title": "VPC dans k8s : Pas aussi simple que ça en a l'air - L. Portay, Scaleway",
+        "publishedAt": "2023-03-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "5-ans-avec-kubernetes-chez-pole-emploi",
+      "day": "2023-03-07",
+      "type": "talk",
+      "title": "5 ans avec Kubernetes : retour sur le déploiement des conteneurs chez Pôle Emploi",
+      "speakers": [
+        "Daniel Benisty — Pôle emploi",
+        "Laurent Nocus — Pôle emploi"
+      ],
+      "feedbackFrom": [
+        "Daniel Maher (blog Scaleway)"
+      ],
+      "summary": "- Échelle : plus de 20 000 pods début 2023, une DSI de 3 000 personnes presque entièrement on-prem, 58 000 agents et environ 470 M de visites par an.\n- Parcours : Docker en 2016, Swarm en 2017, Pivotal PKS en 2018 pour livrer plus petit et plus souvent, RKE2 et Rancher en 2021 pour des nœuds GPU.\n- **Échec fondateur de 2019** : la première application critique migrée en pods aussi gros que les anciennes VM ne fonctionne pas ; après retuning, 4 fois moins de ressources. *« Ne faites pas ça »* (approximatif).\n- Facteurs de réussite : sponsors de haut niveau, droit à l'erreur, sécurité volontairement légère au début puis Kyverno pédagogique puis coercitif, SLO et error budget, NPS de 75 en 2021.\n- Scaleway salue des speakers qui **partagent ouvertement leurs échecs**.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "Jd2y67WDNb4",
+        "title": "5 ans avec K8s : déploiement des conteneurs chez Pôle Emploi - D. Benisty et L. Nocus, Pôle emploi",
+        "publishedAt": "2023-03-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "istio-ambient-mesh-deep-dive",
+      "day": "2023-03-07",
+      "type": "talk",
+      "title": "Istio Ambient Mesh deep dive",
+      "speakers": [
+        "Denis Jannot — Solo.io"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le vrai frein du sidecar est opérationnel : pour entrer dans le mesh ou le mettre à jour, il faut faire redémarrer les pods de chaque équipe.\n- **Ambient** : un proxy L4 par nœud (ztunnel, réécrit en Rust) pour le mTLS, et des proxys L7 « waypoint » par service account ; intégré à la branche principale d'Istio, pas encore prêt pour la production.\n- Démo : passage en ambient par simple label, sans redémarrage ; cohabitation avec des pods en sidecar.\n- Q&R : eBPF convient à la redirection mais pas au mTLS ni au L7 ; *« c'est pas un nouvel Istio, c'est juste un mode supplémentaire »* (approximatif).",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "VGRbSDFHPpE",
+        "title": "Istio Ambient Mesh deep dive - D. Jannot, Solo.io",
+        "publishedAt": "2023-03-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "baleine-et-otarie-deux-amusants-amis-docker-et-podman",
+      "day": "2023-03-07",
+      "type": "talk",
+      "title": "Baleine et otarie, deux amusants amis (Docker et PodMan)",
+      "speakers": [
+        "Charles Sabourdin",
+        "Sébastien Rohaut"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Historique : Docker en 2013, découpé ensuite en containerd et runc ; Podman (Red Hat) sans démon, rootless par défaut, avec la notion de pod.\n- Sécurité : « rootless donc plus sûr » est pour eux un faux débat, Docker sait aussi tourner en rootless et les évasions viennent surtout du noyau.\n- Le réseau rootless en espace utilisateur coûte cher en performance (jusqu'à presque deux fois plus lent selon leur benchmark) ; Podman sait jouer et générer du YAML Kubernetes.\n- Conclusion : pas de meilleur choix, une **émulation mutuelle** et une forte dépendance à la distribution Linux.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "KjcBMe1KJiY",
+        "title": "Baleine et otarie, deux amusants amis (Docker et PodMan) - C. Sabourdin et S. Rohaut",
+        "publishedAt": "2023-03-30",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Une courte introduction sur Cilium et ses apports dans EKS (Reyan Laifa, Devoteam Revolve), vidéo non transcrite",
+    "Analyse contextuelle et conteneurs : focus sur une nouvelle fonctionnalité de la JFrog platform (David Robin, JFrog), vidéo non transcrite",
+    "Shift Happen : sécurité de vos environnements Cloud Native (Stéphane Montri, Palo Alto / Prisma Cloud), vidéo non transcrite",
+    "Kescape par Agaetis, un escape game pour Kube lovers (Florian Ruynat, Pierre Pironin), vidéo non transcrite",
+    "Mettre efficacement en œuvre un mécanisme de sécurité continue et proactif pour protéger K8s (Daniel Virassamy, Mirantis), vidéo non transcrite",
+    "La sécurité Kubernetes : un sport d'équipe (Julien Sobrier, Lacework), vidéo non transcrite",
+    "Accélérer l'adoption de Kubernetes avec KubeVirt et Kasten K10 (Alexandre Arrive-Cornec, Kasten by Veeam), vidéo non transcrite",
+    "Pourquoi choisir une base de données pensée pour K8s ? (Nicolas Wlodarczyk, CockroachDB), vidéo non transcrite",
+    "Le modèle zéro trust appliqué aux conteneurs ! (Lionel Meoni, SUSE), vidéo non transcrite"
+  ],
+  "sources": [
+    {
+      "label": "Site officiel KCD France 2023 (archive Wayback Machine, 15 mars 2023)",
+      "url": "https://web.archive.org/web/20230315062334/https://www.kcdfrance.fr/"
+    },
+    {
+      "label": "Programme officiel (archive Wayback Machine)",
+      "url": "https://web.archive.org/web/20230604034811/https://www.kcdfrance.fr/programme"
+    },
+    {
+      "label": "Playlist YouTube KCD France 2023 (37 vidéos, chaîne @CNDFrance)",
+      "url": "https://www.youtube.com/playlist?list=PLmZ3gFl2Aqt_Qo4EAITE1ewy1ww5jkU2h"
+    },
+    {
+      "label": "Reflections on Kubernetes Community Day France 2023, Daniel Maher (blog Scaleway, sponsor), 31 mars 2023",
+      "url": "https://www.scaleway.com/en/blog/kcd-france-2023/"
+    },
+    {
+      "label": "KCD 2023 : Kubernetes fait son show à Paris, Le Monde Informatique, 7 mars 2023",
+      "url": "https://www.lemondeinformatique.fr/actualites/lire-kcd-2023-kubernetes-fait-son-show-a-paris-89749.html"
+    },
+    {
+      "label": "Solutions Numériques, bilan de la 1re édition, 8 mars 2023",
+      "url": "https://www.solutions-numeriques.com/?p=105562"
+    },
+    {
+      "label": "Posts LinkedIn : aucun lu (aucun résultat exploitable dans la recherche web)"
+    }
+  ]
 }

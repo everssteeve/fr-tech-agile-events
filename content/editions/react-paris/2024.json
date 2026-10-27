@@ -7,8 +7,248 @@
   "city": "Paris",
   "venue": "Fondation Biermans-Lapôtre (Cité internationale universitaire)",
   "url": "https://web.archive.org/web/20240116091856/https://www.react.paris/",
+  "programUrl": "https://web.archive.org/web/20240322000000/https://react.paris/",
+  "theme": "React C'est Magique!",
   "dateConfidence": "ok",
-  "note": "Première édition, organisée par BeJS (équipe de React Brussels). « March 22nd 2024 », « Venue: Fondation Biermans-Lapôtre » (site officiel archivé). Replays : playlists YouTube « React Paris 24 » (https://www.youtube.com/playlist?list=PL53Z0yyYnpWhUzgvr2Nys3kZBBLcY0TA7) et « React Paris 2024 » (https://www.youtube.com/playlist?list=PL53Z0yyYnpWhN9-L-IkVnaRIv1jUcjf7C).",
-  "status": "pending",
-  "sessions": []
+  "note": "Première édition, organisée par BeJS (équipe de React Brussels). « March 22nd 2024 », « Venue: Fondation Biermans-Lapôtre » (site officiel archivé). Une journée mono-track en anglais, en présentiel (complet) et en ligne : 13 talks, MC Marcy Ericka Charollois (Paattern.tech) et Mathieu Sanchez (Acasi, podcast Tronche de Tech), meetups pré-conférence et soirée. Replays : playlists YouTube « React Paris 24 » (https://www.youtube.com/playlist?list=PL53Z0yyYnpWhUzgvr2Nys3kZBBLcY0TA7) et « React Paris 2024 » (https://www.youtube.com/playlist?list=PL53Z0yyYnpWhN9-L-IkVnaRIv1jUcjf7C).",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-27",
+  "revisit": "corpus participant mince : un seul compte-rendu détaillé (Marmelab), un billet de sponsor (React Bricks) et une mention dans This Week in React ; aucun post LinkedIn, X ou Bluesky trouvé en 4 recherches web. Synthèse fondée surtout sur les 13 transcripts.",
+  "corpus": "Programme officiel archivé (Wayback Machine, 22/03/2024) et **13 transcripts sur 13 talks** de la playlist officielle « React Paris 24 » (chaîne BeJS, vidéos publiées le 15/04/2024). Côté participants : le compte-rendu d'Adrien Guernier (blog Marmelab, 07/05/2024), le billet du sponsor React Bricks (11/04/2024), la page de ressources du talk de Josh W. Comeau et deux mentions dans This Week in React (#179 du 27/03/2024, #182 du 17/04/2024).",
+  "limits": "Les résumés décrivent surtout ce qui a été dit sur scène (sous-titres automatiques anglais, bruités sur les noms propres, avec de courtes coupures dans trois vidéos) ; la réception par le public ne repose que sur un blog d'entreprise, un billet de sponsor et une phrase de newsletter, J+1 à J+46. Aucun post LinkedIn ou réseau social n'a été lu. Les meetups pré-conférence ne sont pas documentés.",
+  "tldr": "Pour sa première édition, React Paris installe le **front « web-first »** : la plateforme (popover, anchor, `:has()`), les Server Components et le serveur reprennent la main sur le JavaScript client, avec des débats ouverts sur le CSS-in-JS, le Partial Prerendering et l'IA dans le navigateur.",
+  "keyTakeaways": [
+    "Avant d'ajouter une librairie, vérifier ce que le navigateur offre : `popover` (accessibilité, top layer, light dismiss), anchor positioning, animations pilotées par le scroll, `:has()`, container queries (Kravets, retenu aussi par Marmelab).",
+    "Construire ses formulaires en **progressive enhancement** : Server Actions, `useFormStatus`, `useFormState`, validation Zod côté serveur et `useOptimistic`, en testant l'app JavaScript désactivé (Scharff).",
+    "Ne pas migrer dans la panique un code styled-components : l'app Next 14 reste aussi rapide, seule la compatibilité RSC manque ; surveiller Pigment CSS, wyw-in-js, next-yak (Comeau).",
+    "Le Partial Prerendering exige seulement un flag et des `Suspense`, mais il reste expérimental : **dimensionner les fallbacks** pour éviter le CLS (Choubari).",
+    "Pour une saisie qui rame, `useDeferredValue` ne suffit pas seul : isoler la liste lente dans un composant `React.memo` (Kumar).",
+    "Un front full-stack doit connaître les bases back : jobs en arrière-plan, webhooks typés, cron, rate limiting tôt, pooling de connexions, cache (Sikora).",
+    "Un design system sans équipe dédiée tient avec des champions, un rituel court, un owner tech et un owner design, et **l'interdiction de surcharger les composants** (Cheng, Pigment).",
+    "Migrer un monorepo par petites boucles qui améliorent l'existant, sans gel du code : chez PayFit, 0 bug en prod, dev server de 5 min à 10 s, CI 60 à 80 % plus rapide (Beaussart-Hatchuel).",
+    "Traiter l'IA embarquée comme une **amélioration progressive** : l'app fonctionne sans, l'utilisateur choisit de télécharger le modèle (Martin).",
+    "Pour élargir l'audience d'un projet open source, sortir de l'intersection de niches et extraire une couche universelle (Fu)."
+  ],
+  "sessions": [
+    {
+      "id": "better-faster-stronger-web-ui",
+      "day": "2024-03-22",
+      "type": "keynote",
+      "title": "Better, Faster, Stronger Web UI",
+      "speakers": ["Una Kravets — Google Chrome"],
+      "feedbackFrom": ["Adrien Guernier (blog Marmelab)"],
+      "summary": "- Talk d'ouverture en trois temps (meilleures capacités UI, performance, composants résilients), avec une conviction : **séparer la logique applicative du style**, *« it doesn't make sense to me that you have to write scripting to style a dropdown »*.\n- **Attribut `popover`** : accessibilité, clavier, top layer (fin des `z-index` géants) et light dismiss sans script ; GitHub a cessé d'utiliser les portals React grâce à lui. Animation d'entrée et de sortie avec `@starting-style` et `transition-behavior: allow-discrete`.\n- **Anchor positioning** : `anchor()`, `inset-area` (grille de 9 zones) et `position-try` pour le repli, tout calculé par le navigateur ; démo d'un menu radial en fonctions trigonométriques CSS. Aperçu du `<select>` stylable, encore en chantier.\n- **Animations pilotées par le scroll** et **view transitions** : un partenaire est passé d'environ 50 % à 2 % de CPU ou GPU pendant le scroll.\n- **Composants résilients** : `:has()` (environ la moitié de la salle le connaissait), quantity queries, container queries et typographie fluide, `@property` (Tailwind 4 réécrit autour), `color-mix`, nesting, subgrid. Slides entièrement en HTML et CSS.\n- Réception : talk *« dynamic, clear, and full of resources and use cases »* ; l'auteur retient qu'il vérifiera les capacités du navigateur avant d'ajouter du code (Marmelab).",
+      "summarySources": ["transcript", "blog", "program"],
+      "video": {
+        "youtubeId": "EB6dJTx9t54",
+        "title": "Una kravets -  Better, Faster, Stronger Web UI",
+        "publishedAt": "2024-04-15",
+        "transcript": true
+      }
+    },
+    {
+      "id": "travel-story-building-a-design-system-without-a-dedicated-team",
+      "day": "2024-03-22",
+      "type": "talk",
+      "title": "Travel Story: Building a Design System Without a Dedicated Team",
+      "speakers": ["Yu Ling Cheng — Pigment"],
+      "feedbackFrom": [],
+      "summary": "- Récit de quatre ans de design system chez Pigment, SaaS partie de 8 développeurs en 2020 pour atteindre une trentaine, **sans équipe dédiée**.\n- **V0** : surcouche privée de Material UI (props exposées choisies à la main), styled-components, snapshot tests, Storybook ; couleurs exposées par usage, helper d'espacement typé, icônes nommées comme dans Figma. Avec le recul, elle partirait plutôt d'une librairie non stylée comme React Aria.\n- Quand le système devient « messy », elle **« brande » une Design System Task Force** : champions dans les autres équipes, rétros pour bâtir la confiance, kanban, 1 h par semaine, petites tâches entre deux features et gros refactors rattachés à la roadmap.\n- **V1** en un an environ : peu de variantes, TypeScript pour restreindre les combinaisons de props, checklist commune designers et développeurs, Storybook miroir de la librairie Figma.\n- L'organisation s'allège ensuite : standup de 15 min annulé s'il n'y a pas de sujet, puis un canal Slack ; un owner tech et un owner design tranchent.\n- Leçons : *« start small but do start early »*, une source de vérité (le code), pas de composants couteau suisse, et *« do not let anyone override your design system components »*.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "AjOd90mXwLo",
+        "title": "Yu Ling Cheng - Travel Story: Building a Design System Without a Dedicated Team",
+        "publishedAt": "2024-04-15",
+        "transcript": true
+      }
+    },
+    {
+      "id": "react-components-as-a-service",
+      "day": "2024-03-22",
+      "type": "talk",
+      "title": "React Components as a Service",
+      "speakers": ["Steven Fabre — Liveblocks"],
+      "feedbackFrom": [],
+      "summary": "- Ouverture biographique (de la région toulousaine à Sydney, InVision Studio, Messenger) : convertir l'app InVision en outil collaboratif a mobilisé 7 à 8 personnes pendant un an et demi, d'où Liveblocks.\n- **La collaboration est un iceberg** : au-delà du temps réel (CRDT, peu de mains levées dans la salle), commentaires, notifications, partage, permissions, infrastructure.\n- Thèse reprise de Clerk : *« the component is the next gold standard developer tool »*. Un composant livre back et front typés, UX et accessibilité incluses, et rend les équipes front autonomes.\n- **Méthode** : repérer un pattern UI commun (commentaires, partage, inbox de notifications), partir de l'expérience utilisateur et remonter vers l'infrastructure.\n- **Couches d'abstraction** : API REST, hooks (cache, Suspense, optimistic updates via `useSyncExternalStoreWithSelector`, pas de simple `useEffect` + `setState`), primitives à la Radix pour utiliser son propre design system, composants par défaut.\n- Personnalisation des composants par variables CSS et `color-mix()`, propriétés logiques pour le RTL, API `Intl` pour les dates relatives. Clin d'œil probable au talk d'Una Kravets : bientôt plus besoin de portal.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "EpXSc31CUUw",
+        "title": "Steven Fabre - React Components as a Service",
+        "publishedAt": "2024-04-15",
+        "transcript": true
+      }
+    },
+    {
+      "id": "typescript-powered-backend-essentials-for-frontend-developers",
+      "day": "2024-03-22",
+      "type": "talk",
+      "title": "TypeScript-Powered Backend Essentials for Frontend Developers",
+      "speakers": ["Aleksandra Sikora — The Guild"],
+      "feedbackFrom": [],
+      "summary": "- Constat : *« React especially recently is blurring the boundary between front end and backend »* ; historique de Meteor à tRPC, Blitz, Redwood puis les Server Components.\n- Fil rouge d'une billetterie : une inscription en 4 étapes bloquantes échoue à moitié et l'utilisateur se retrouve avec « user with this email already exists ».\n- **Jobs en arrière-plan avec Inngest** : fonctions déclenchées par événement, retries, événements typés ; webhooks dont les types et schémas sont générés à partir des payloads ; cron pour un digest hebdomadaire ; `waitForEvent` pour relancer un paiement puis libérer le billet.\n- **Temps réel** : polling, WebSockets (subscriptions tRPC typées), pub/sub.\n- **Montée en charge** : cache Redis, **rate limiting à activer tôt** pour éviter les factures d'hébergement (middleware Next.js), pooling de connexions avec Drizzle, load balancing.\n- Message final : pas besoin de tout maîtriser, mais savoir que ces outils existent, *« those backend concepts matter more than ever »*.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "Slj900oLNAU",
+        "title": "Aleksandra sikora - Typescript powered backend essentials for Frontend developers",
+        "publishedAt": "2024-04-15",
+        "transcript": true
+      }
+    },
+    {
+      "id": "anthony-s-roads-to-open-source-the-set-theory",
+      "day": "2024-03-22",
+      "type": "talk",
+      "title": "Anthony's Roads to Open Source - The Set Theory",
+      "speakers": ["Anthony Fu — NuxtLabs"],
+      "feedbackFrom": ["Adrien Guernier (blog Marmelab, cité parmi les talks appréciés)"],
+      "summary": "- Première conférence React du mainteneur de Vite, Vue, Nuxt, Vitest ou UnoCSS, qui annonce le talk « le moins React » de la journée.\n- **Le nombre d'utilisateurs cibles fixe le plafond** : son extension i18n Ally ne touchait au départ que l'intersection VS Code, Vue et i18n. Rendue universelle (plugins, autres frameworks), elle a presque doublé ses étoiles en un mois.\n- **« Set intersection »** : casser les cercles pour sortir de la niche, comme Vite (extrait de Vue) ou TanStack Query (de React vers Vue, Solid, Svelte, Angular).\n- **« Set union »** : rester spécifique mais extraire la couche partagée, comme Nitro (*« pretty much like Vite but for servers »*), unplugin ou l'écosystème UnJS.\n- Exemple côté React : Chakra UI, dupliqué en Vue, qui se reconstruit sur Zag, Panda CSS et Ark UI.\n- Conclusion : *« it's all about collaboration and communities »* ; Atila Fassina et Nicolas Beaussart-Hatchuel s'y réfèrent plus tard dans la journée.",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "7JRa9S4aEEI",
+        "title": "Anthony Fu - Anthony's Roads to Open Source - The Set Theory",
+        "publishedAt": "2024-04-15",
+        "transcript": true
+      }
+    },
+    {
+      "id": "partial-prerendering-hype-or-innovation",
+      "day": "2024-03-22",
+      "type": "talk",
+      "title": "Partial Prerendering: Hype or Innovation?",
+      "speakers": ["Kawtar Choubari — Alobees"],
+      "feedbackFrom": ["Adrien Guernier (blog Marmelab)"],
+      "summary": "- Rappel SSR / SSG et des deux stratégies Next.js ; cas concret : **un seul compteur de vues non caché suffisait à rendre tout son blog dynamique**.\n- **Partial Prerendering** (expérimental, Next.js 14) : un flag et des `Suspense` ; au build, une coquille statique servie par CDN, dont les trous sont remplis en streaming. Démos e-commerce de l'équipe Next.js et de son blog.\n- Côté « hype » : *« it's not ready for production »* (nombreux soucis en canary), **risque de CLS** si le fallback est mal dimensionné (montré dans sa démo), charge mentale, spécifique à Next.js.\n- Côté « innovation » : économie de ressources, fin de la page blanche, aucune nouvelle API, espoir de le voir arriver dans React.\n- Vote à main levée de la salle, réutilisé dans sa conclusion.\n- Réception : talk *« clear, well-explained »*, *« I can't wait to try it on my Next.js project! »* (Marmelab).",
+      "summarySources": ["transcript", "blog", "program"],
+      "video": {
+        "youtubeId": "1Xplez2KRaI",
+        "title": "Kawtar Choubari - Partial Prerendering Hype or Innovation?",
+        "publishedAt": "2024-04-15",
+        "transcript": true
+      }
+    },
+    {
+      "id": "i-wrote-a-book-on-react-things-you-should-know",
+      "day": "2024-03-22",
+      "type": "talk",
+      "title": "I Wrote a Book on React, Things You Should Know",
+      "speakers": ["Tejas Kumar"],
+      "feedbackFrom": [],
+      "summary": "- La salle vote pour la version technique (la partie sur l'écriture du livre passe en fin, « deferred » à dessein) ; exemplaires du livre offerts aux premiers qui postent avec #ReactParis.\n- **Architecture Fiber** : double buffering repris du jeu vidéo, phase render hors écran (`beginWork`, `completeWork`) puis commit ; React peut jeter un travail en cours pour une mise à jour plus prioritaire, *« that's the whole point of the fiber architecture »*.\n- **Démo live** d'une liste filtrée de 40 000 puis 80 000 éléments : `useDeferredValue` ne suffit qu'avec la liste isolée dans `React.memo` (ce que le compilateur React pourrait automatiser), plus un indicateur `deferredQuery !== query`.\n- `useDeferredValue` est *« like debounce except the time is not set by you, it's set by React »* ; `useTransition` donne le même résultat pour une fonction. Environ 4 % de la salle les utilisait en production.\n- Partie livre : conseil reçu pour un premier grand talk, *« pick a topic any topic and just go as deep as possible »* ; les livres sont curés et relus (relecteurs dont Mark Erikson et Ricky Hanlon), Internet va plus vite : *« why not both »*.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "5MZbkow5U8o",
+        "title": "Tejas Kumar - I Wrote a Book on React - Things You Should Know",
+        "publishedAt": "2024-04-15",
+        "transcript": true
+      }
+    },
+    {
+      "id": "enhancing-forms-with-react-server-components",
+      "day": "2024-03-22",
+      "type": "talk",
+      "title": "Enhancing Forms with React Server Components",
+      "speakers": ["Aurora Walberg Scharff — Inmeta"],
+      "feedbackFrom": [],
+      "summary": "- Point de départ : SPA dépendante du JavaScript, cascade SSR puis hydratation, endpoints et tRPC à écrire à la main. *« 100% of your users have slow connections 5% of the time »* ; *« everyone has JavaScript disabled until it's loaded »*.\n- **Live coding** d'une app de blagues en Next 14 : Server Action et `revalidatePath`, bouton qui lit `useFormStatus().pending`, validation Zod `safeParse` renvoyant les erreurs par champ, `useFormState` pour les afficher.\n- Suppression par formulaire avec `action.bind(null, id)` plutôt qu'un `onClick` ; favori en `useOptimistic` dans `startTransition`, l'attribut `action` restant le repli.\n- **Démo finale JavaScript désactivé** : tout fonctionne avec rechargement de page ; avec JavaScript s'ajoutent toasts, reset et mise à jour optimiste (applaudissements).\n- Nuance : *« the client side way is not obsolete »* ; React Hook Form reste compatible, et Next se distingue de Remix, SvelteKit ou Nuxt en séparant l'action de la route.\n- Elle remercie le speaker précédent, a priori Tejas Kumar, d'avoir déjà expliqué `useTransition`.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "V0rRu7cevR0",
+        "title": "Aurora Walberg Scharff - Enhancing Forms with React Server Components",
+        "publishedAt": "2024-04-15",
+        "transcript": true
+      }
+    },
+    {
+      "id": "codebase-conquest-how-nx-turbocharged-our-react-workflow",
+      "day": "2024-03-22",
+      "type": "talk",
+      "title": "Codebase Conquest: How Nx Turbocharged Our React Workflow",
+      "speakers": ["Nicolas Beaussart-Hatchuel — PayFit"],
+      "feedbackFrom": [],
+      "summary": "- Avant : build d'environ 15 min, dev server de 5 min, 1 000 lignes de webpack maison, une base open source importée dans une base privée, lockfiles désynchronisés qui cassaient la prod.\n- **Comparatif** Bazel, Gradle, Lerna, Nx, Pants, Turborepo (renvoi à monorepo.tools) : Nx seul cochait orchestration, graphe, outillage cohérent, contraintes entre projets, exécution distribuée et génération de code. Les autres ne sont pas inutiles, selon le besoin.\n- Nx « integrated » : une version unique de chaque outil (donc pas deux React), migrations automatiques qui marchent « 95 % du temps » ; aujourd'hui il partirait sur Nx Crystal.\n- **Migration sans gel du code** en conservant 7 ans d'historique : boucle « workspace neuf, import, build, corriger dans l'existant » ; le plus dur, 150 dépendances circulaires ramenées à 95. Bascule en 4 commits.\n- Résultats : *« we got zero bug in production »*, bundle allégé, hot reload en 10 s, CI 60 à 80 % plus rapide grâce au cache.\n- Ensuite : frontières de modules par tags et plugin Nx maison, pour sortir la configuration *« out of the minds of engineers and into automation »*.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "T-TRYLNCRYQ",
+        "title": "Nicolas Beaussart-Hatchuel - Codebase Conquest: How Nx Turbocharged Our React Workflow",
+        "publishedAt": "2024-04-15",
+        "transcript": true
+      }
+    },
+    {
+      "id": "fine-solid-patterns",
+      "day": "2024-03-22",
+      "type": "talk",
+      "title": "Fine Solid Patterns",
+      "speakers": ["Atila Fassina — CrabNebula"],
+      "feedbackFrom": [],
+      "summary": "- Thèse : la vraie raison d'adopter la **réactivité fine** n'est pas la performance (*« it's not because of performance »*) mais un modèle mental qui découple données et rendu ; tous les frameworks sauf React s'y mettent.\n- Signaux Solid : `createSignal`, signaux dérivés en simples fonctions, pas de tableau de dépendances ; `createStore`, `produce` (façon Immer) et `reconcile` pour l'état imbriqué.\n- **Annonce sur scène** : SolidStart 1.0 passe en Release Candidate (plus de 200 contributeurs), APIs figées.\n- Méta-framework découplé : Vinxi (Vite + Nitro, en écho au talk d'Anthony Fu), Seroval pour la sérialisation, Solid Router.\n- Fonctionnalités : routeur parallélisé sans cascade, `createAsync`, déduplication par clé de cache, actions en progressive enhancement et **requêtes « single flight »** (la redirection renvoie aussi les données de la page suivante).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "UdDoLty4Ho0",
+        "title": "Atila Fassina - Fine Solid Patterns",
+        "publishedAt": "2024-04-15",
+        "transcript": true
+      }
+    },
+    {
+      "id": "css-in-react-server-components",
+      "day": "2024-03-22",
+      "type": "talk",
+      "title": "CSS in React Server Components",
+      "speakers": ["Josh W. Comeau — The Joy of React"],
+      "feedbackFrom": ["Adrien Guernier (blog Marmelab, cité parmi les talks appréciés)", "React Bricks (sponsor)"],
+      "summary": "- Introduction improvisée au piano par les MC ; Josh reconstruit en direct un styled-components minimal (tagged templates, hash des styles, injection par `useEffect`) pour montrer le registry et `useServerInsertedHTML` en SSR.\n- Rappel des Server Components, non hydratés, dans une *« invincibility bubble »* ; un client component n'est que le composant « classique ».\n- **L'incompatibilité** : sans state, effects ni **context** dans les RSC, le registry et le `ThemeProvider` cassent, et environ 95 % de ses composants devraient passer en `'use client'`. Il a environ 5 500 composants stylés à migrer.\n- Tour des solutions zero-runtime : Panda CSS (classes utilitaires, pas de sélecteurs croisés), Linaria (idéale mais bindings Next pas à jour), wyw-in-js, next-yak, Pigment CSS (MUI).\n- Recommandation : rien d'urgent, une app Next 14 avec styled-components reste aussi rapide ; *« the biggest issue is FOMO »*, et *« a little bit of a renaissance »* s'annonce. Slides, code et liens publiés sur son site.\n- Hors scène : Josh a fini troisième du concours de voitures en Lego du stand React Bricks.",
+      "summarySources": ["transcript", "slides", "blog", "program"],
+      "video": {
+        "youtubeId": "-Bff89trNnE",
+        "title": "Josh W. Comeau - CSS in React Server Components",
+        "publishedAt": "2024-04-15",
+        "transcript": true
+      }
+    },
+    {
+      "id": "lag-what-lag-how-remix-makes-your-app-feel-faster-than-the-internet",
+      "day": "2024-03-22",
+      "type": "talk",
+      "title": "Lag? What Lag? How Remix Makes Your App Feel Faster than the Internet",
+      "speakers": ["Shaundai Person — Netflix"],
+      "feedbackFrom": [],
+      "summary": "- Une app performante est celle que l'utilisateur voit et utilise le plus vite (LCP, First Input Delay) ; le CSR gagne en navigation mais laisse une page blanche, le SSR l'inverse.\n- Démo sur Fakebooks, l'app de facturation du site Remix : les **cascades de requêtes** (parents qui bloquent les enfants) disparaissent quand chaque segment de route charge ses données en parallèle.\n- Moins d'allers-retours et **filtrage côté serveur** plutôt qu'un `.filter` client sur toutes les factures.\n- Remix comme « web framework » : HTTP, cache, HTML et Web APIs avant le JavaScript, *« just the little seasoning on top »*.\n- Après hydratation, seules les données nouvelles sont chargées ; `prefetch` sur `Link` précharge au survol, Remix agit *« like a concierge »*.\n- Lecture critique : elle dit que Remix « gives you server components » pour parler du chargement par route côté serveur, raccourci discutable le jour où d'autres talks présentaient les vrais RSC.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "E_0f6GE146k",
+        "title": "Shaundai Person - Lag? What Lag? How Remix Makes Your App Feel Faster than the Internet",
+        "publishedAt": "2024-04-15",
+        "transcript": true
+      }
+    },
+    {
+      "id": "from-useml-to-usellm-on-device-ai-in-the-browser",
+      "day": "2024-03-22",
+      "type": "talk",
+      "title": "From useML To useLLM: On-Device AI In The Browser",
+      "speakers": ["Nico Martin — Freelance"],
+      "feedbackFrom": ["Adrien Guernier (blog Marmelab)"],
+      "summary": "- Point de départ : la reconnaissance vocale du navigateur ignore le suisse-allemand ; d'où des modèles exécutés dans le navigateur. *« There is no magic in machine learning »*.\n- **TensorFlow.js et backends** : CPU, WebAssembly, WebGL, WebGPU ; détection de visage à 5 fps en CPU, 13 en WebGL, 30 en WebGPU. Extension Chrome pilotée au pincement de doigts.\n- Modèle audio entraîné dans **Teachable Machine** puis testé en direct dans ses slides.\n- **LLM dans le navigateur** : Gemma 2B quantisé en 4 bits (environ 1,4 Go) compilé en WebAssembly et WebGPU avec MLC LLM ; démo dans son éditeur Markdown (génération à environ 32 tokens/s sur MacBook Pro M3, traduction via Transformers.js, 100 % local).\n- Limites : environ 10 fois plus lent sur un autre portable, et *« requiring specific hardware for your users is just not a very web thing »* ; d'où *« use AI as a progressive enhancement »*, avec en prime confidentialité et coût réparti.\n- Réception : talk *« clear, well-explained »* aux démos impressionnantes, mais LLM encore trop lourds pour une app grand public et matériel *« expensive for now »* (Marmelab).",
+      "summarySources": ["transcript", "blog", "program"],
+      "video": {
+        "youtubeId": "7xiogNj9_3s",
+        "title": "Nico Martin - From useML To useLLM: On Device AI In The Browser",
+        "publishedAt": "2024-04-15",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [],
+  "sources": [
+    { "label": "Programme officiel archivé (Wayback Machine, 22/03/2024)", "url": "https://web.archive.org/web/20240322000000/https://react.paris/" },
+    { "label": "Playlist YouTube « React Paris 24 » (13 talks + aftermovie, chaîne BeJS)", "url": "https://www.youtube.com/playlist?list=PL53Z0yyYnpWhUzgvr2Nys3kZBBLcY0TA7" },
+    { "label": "Aftermovie React Paris 2024", "url": "https://www.youtube.com/watch?v=NN3b01vFXJ4" },
+    { "label": "Adrien Guernier, « React Paris 2024 » (blog Marmelab, 07/05/2024)", "url": "https://marmelab.com/blog/2024/05/07/react-paris-2024.html" },
+    { "label": "Diego Salinas Gardón, « React Paris 2024 » (blog React Bricks, sponsor, 11/04/2024)", "url": "https://www.reactbricks.com/blog/react-paris-2024" },
+    { "label": "Josh W. Comeau, ressources du talk (slides, code, librairies)", "url": "https://www.joshwcomeau.com/talk-resources/react-paris-talk-2024" },
+    { "label": "This Week in React #179 (Sébastien Lorber, 27/03/2024)", "url": "https://thisweekinreact.com/newsletter/179" },
+    { "label": "This Week in React #182 (lien vers la playlist, 17/04/2024)", "url": "https://thisweekinreact.com/newsletter/182" },
+    { "label": "Posts LinkedIn, X ou Bluesky : aucun lu (recherches sans résultat)" }
+  ]
 }

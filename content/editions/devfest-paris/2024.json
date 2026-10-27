@@ -3,11 +3,392 @@
   "year": 2024,
   "title": "DevFest Paris 2024",
   "start": "2024-02-06",
+  "end": "2024-02-06",
   "city": "Paris",
-  "venue": "Google France",
+  "venue": "Google France (8 rue de Londres, Paris 9e)",
   "url": "https://conference-hall.io/devfest-paris-2024",
-  "dateConfidence": "sec",
-  "note": "Dans les locaux de Google à Paris ; playlist YouTube GDG France « DevFest Paris 2024 ».",
-  "status": "pending",
-  "sessions": []
+  "programUrl": "https://web.archive.org/web/20240226214837/https://devfest.gdgparis.fr/agenda",
+  "dateConfidence": "ok",
+  "note": "Dans les locaux de Google à Paris ; playlist YouTube GDG France « DevFest Paris 2024 ». Journée unique du mardi 6 février 2024, organisée par le GDG Paris, sur deux salles : Bastille (conférences) et Garnier (ateliers). Programme : 2 keynotes, 13 talks de 30 minutes et 3 ateliers. Au moment de la clôture, un organisateur la présente comme la « première édition after covid » d'un DevFest commencé en 2015, dont la dernière édition remontait à 2020, relancé « un peu plus petit ».",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-27",
+  "revisit": "2026-10-27 : synthèse fondée sur le programme archivé et les transcripts des 5 vidéos (lives de demi-journée), sans aucun retour participant publié. 5 recherches web (LinkedIn, blogs, slides, noms de speakers) n'ont rien remonté de post-événement : à retenter via une recherche LinkedIn directe (#DevFestParis, février 2024) ou les comptes des speakers.",
+  "corpus": "Programme officiel et page speakers (site devfest.gdgparis.fr archivé sur la Wayback Machine le 26/02/2024), fiche GDG Community, playlist YouTube GDG France (5 captations longues des deux salles, publiées les 9 et 12/02/2024) et leurs transcripts automatiques, plus un article de blog de Guillaume Laforge présentant une version antérieure de son talk. Les échanges de questions-réponses avec la salle, présents dans les transcripts, servent de seul indice de réception.",
+  "limits": "Aucun post LinkedIn, article ou sketchnote de participant n'a été trouvé : les résumés décrivent ce qui a été dit sur scène, pas ce qu'en ont retenu les participants. Le talk de Guillaume Laforge, donné en français, a été transcrit par la reconnaissance automatique anglaise et reste inexploitable, son résumé s'appuie donc sur le programme et un article du speaker. Les transcripts automatiques déforment noms propres et chiffres ; les chiffres cités par les speakers sont rapportés tels quels.",
+  "tldr": "Un DevFest de relance, **petit et très Google Cloud**, dans les locaux de Google : l'**IA générative vue par les développeurs** (LLM en Java, LangChain, bases vectorielles, ML sur l'appareil) occupe la moitié de la journée, à côté de solides talks de **sécurité** (passkeys, supply chain, chiffrement de bout en bout) et de **web** (DevTools, Core Web Vitals), le tout encadré par une keynote sur le **stockage de données dans l'ADN** et une clôture qui refuse de réduire le développeur à celui qui écrit du code.",
+  "keyTakeaways": [
+    "L'ADN est un support d'**archivage** prometteur (densité, stabilité, faible empreinte) mais encore trop cher et lent : environ 7 centimes par nucléotide à la synthèse, soit près de 80 dollars pour un tweet (Tiffany Souterre).",
+    "Ignorer le code tiers dans le débogueur grâce aux **ignore lists des source maps** : les frameworks récents les configurent déjà, et on peut ajouter ses propres dossiers à la main dans DevTools (Jecelyn Yeen).",
+    "INP remplace FID le 12 mars 2024 : découper les **tâches de plus de 50 ms**, rendre l'image LCP découvrable dans le HTML (pas de lazy loading ni d'image de fond) et l'appuyer avec fetchpriority (Manuela Castrillon).",
+    "Une passkey est liée à un seul domaine (**« one service, one passkey »**), ce qui supprime le phishing par sosie de site ; côté serveur, une bibliothèque comme SimpleWebAuthn vérifie la signature (Markandey Pathak).",
+    "La sécurité de la supply chain logicielle, c'est d'abord **sécuriser sa CI/CD** : signer les images (cosign), produire des SBOM, et refuser au déploiement ce qui n'est pas signé grâce à un admission controller (Abdel Sghiouar).",
+    "Un LLM est **« une plume »** : pour répondre sur ses propres données, il faut un RAG et donc des embeddings stockés dans une base vectorielle avec un index approximatif (Florent Legras).",
+    "Le **ML sur l'appareil** (MediaPipe) apporte latence faible, fonctionnement hors ligne, confidentialité et coût de calcul reporté sur l'utilisateur ; garder le cloud pour les cas complexes (Jerome Mouton).",
+    "Pour du chiffrement de bout en bout sans expertise crypto : un algorithme standard (AES), jamais d'algorithme maison, et une clé qui **ne passe jamais par le serveur** (par exemple dans un QR code) (Valentin Deleplace).",
+    "Les sorties de LLM restent **non déterministes** : LangChain accélère le prototypage d'agents, mais il faut vérifier les sources et se méfier des « énormes bêtises » (Henry Lagarde).",
+    "Le développeur ne se réduit pas à l'écriture de code : son rôle de **pont entre la technique de l'IA et les usages** devient central, et l'IA doit rester un assistant plutôt que l'inverse (Loïc Knuchel)."
+  ],
+  "sessions": [
+    {
+      "id": "fit-a-data-center-in-your-pocket-with-dna",
+      "day": "2024-02-06",
+      "type": "keynote",
+      "title": "Fit a data center in your pocket with DNA? It's possible",
+      "speakers": [
+        "Tiffany Souterre — Amazon Web Services"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : la speakeuse, developer advocate IA/ML chez AWS et docteure en génie génétique, prévient qu'elle ne parlera *« ni d'AWS ni d'IA »* mais de tech et de biologie.\n- **La crise du stockage** : selon ses chiffres, on a produit environ 80 zettaoctets de données en 2022 pour 6 de capacité de stockage mondiale. Un datacenter, c'est environ un exaoctet, la taille d'un terrain de foot, des millions de dollars de maintenance et des disques à remplacer tous les 10 à 15 ans.\n- **L'ADN comme support** : un exaoctet tiendrait dans **5 grammes d'ADN**, lisible des dizaines de milliers d'années plus tard et conservé dans un simple réfrigérateur. Le codage est trivial : deux bits par base (A, T, C, G).\n- **Expérience réelle** avec l'équipe de l'émission Underscore_ : un message secret converti en séquence, synthétisé par Twist Bioscience (qui s'est inquiété d'une livraison à une adresse sans laboratoire), puis séquencé à l'**Institut Pasteur** sur un MinION, un séquenceur nanopore de la taille d'un téléphone.\n- **Les freins** : environ 7 centimes par nucléotide, soit près de 80 dollars pour un tweet de 280 caractères ; une photo de chat aurait coûté autour de 15 000 dollars, et la lecture prend des jours. D'où un usage visé : l'**archivage** de données rarement lues, avec des coûts qui baissent chaque année.\n- **Questions de la salle (transcript)** : stockage d'une clé de portefeuille Bitcoin dans l'ADN, coût des kits de séquençage (environ 50 euros pour 10 lectures selon elle), éthique : l'ADN synthétique n'a aucune fonction biologique et doit *« rester dans un tube »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "gaDxHXhw3Fc",
+        "title": "DEVFEST PARIS 2024 - 6 Feb Morning Sessions",
+        "publishedAt": "2024-02-09",
+        "transcript": true,
+        "startSeconds": 205
+      }
+    },
+    {
+      "id": "generative-ai-par-la-pratique-llm-en-java-palm-gemini",
+      "day": "2024-02-06",
+      "type": "talk",
+      "title": "Generative AI par la pratique : cas concrets d'utilisation d'un LLM en Java, avec l'API PaLM et Gemini",
+      "speakers": [
+        "Guillaume Laforge — Google"
+      ],
+      "feedbackFrom": [
+        "Article de Guillaume Laforge (speaker, version Devoxx Belgium)"
+      ],
+      "summary": "- **Programme** : talk de 30 minutes en français, niveau débutant, sur l'usage concret d'un LLM depuis Java avec les API PaLM puis **Gemini** de Vertex AI.\n- **Le propos (article du speaker, sur la version donnée à Devoxx Belgium fin 2023)** : montrer qu'un développeur Java peut faire de l'IA générative *« sans avoir besoin de Python »*, avec **LangChain4j** comme framework d'orchestration. Cas d'usage annoncés : recherche dans une documentation, génération d'histoires pour enfants, résumé, extraction d'entités et de mots-clés.\n- **Sur scène** : le transcript automatique, généré en anglais sur un talk en français, est inexploitable. Il ne laisse deviner que des fragments de démos (appels de fonction et météo, extraction du nom, de l'entreprise et du rôle d'une personne dans une biographie, LangChain4j).\n- Ce résumé repose donc sur le descriptif et sur l'article du speaker, pas sur le contenu effectivement présenté le 6 février.",
+      "summarySources": [
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "gaDxHXhw3Fc",
+        "title": "DEVFEST PARIS 2024 - 6 Feb Morning Sessions",
+        "publishedAt": "2024-02-09",
+        "transcript": false,
+        "startSeconds": 2160
+      }
+    },
+    {
+      "id": "utiliser-vertex-ai-langchain-plusieurs-llms-rechercher-documents",
+      "day": "2024-02-06",
+      "type": "workshop",
+      "title": "Utiliser Google Cloud Vertex AI & Langchain avec plusieurs LLMs pour rechercher dans vos documents",
+      "speakers": [
+        "Wenjun Zhao — Pyl Tech",
+        "Oren Nadjar — Pyl Tech",
+        "Ludovic Emo — Pyl Tech"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : l'équipe d'une jeune société de conseil (créée fin 2023) commence par remettre l'IA en perspective. On en parle depuis 1950, ChatGPT n'a fait que la rendre visible, et l'enjeu en entreprise serait surtout l'**économie des API** et l'automatisation, à aborder *« étape par étape »*.\n- **Recherche par similarité** : bases vectorielles, bibliothèques comme celle de Spotify (Annoy puis Voyager), puis RAG sur Vertex AI avec un index vectoriel (Matching Engine) alimenté depuis Cloud Storage et orchestré par **LangChain**.\n- **Même index, plusieurs LLM** : la démo interroge successivement PaLM (bison), Gemini Pro, un modèle OpenAI et Mistral 7B via Hugging Face, avec des clés gérées dans Secret Manager et un déploiement sur Cloud Run. Ils présentent aussi Alexandrie, un moteur de recherche sur PDF provisionné par Terraform et Cloud Build.\n- **Points de vigilance** : les benchmarks publics ne valent qu'*« une boussole »*, le seul vrai test se fait **sur ses propres données** ; les métadonnées permettent de remonter au document source.\n- **Questions de la salle (transcript)** : un participant demande si le *grounding* résiste à l'injection de prompt. Réponse : il est conçu comme un tunnel vers la donnée, mais rien n'empêche qu'*« un mec »* trouve un jour un contournement, et des droits trop permissifs sur le bucket restent de la responsabilité du client.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "bH2gBQ8-L1A",
+        "title": "DEVFEST PARIS 2024 6 FEV 2024 Morning Workshop",
+        "publishedAt": "2024-02-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "modern-web-debugging-with-devtools",
+      "day": "2024-02-06",
+      "type": "talk",
+      "title": "Modern Web debugging with DevTools",
+      "speakers": [
+        "Jecelyn Yeen — Google"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : membre de l'équipe Chrome DevTools, la speakeuse rappelle que l'outil est passé de 4 panneaux en 2009 à **environ 35** aujourd'hui, alors que le navigateur comprend toujours seulement HTML, CSS et JavaScript.\n- **Déboguer, c'est faire de la rétro-ingénierie** : TypeScript, frameworks et bundlers imposent de remonter au code écrit grâce aux **source maps**, dont elle détaille le format (sources, contenu, mappings encodés en VLQ base64).\n- **Nouveautés** : par défaut, DevTools masque désormais les frames de node_modules dans les stack traces et la pile d'appels, groupe les fichiers en « authored » et « deployed » et grise le code ignoré. Cela repose sur l'**ignore list** des source maps (déjà configurée par Angular, Nuxt ou Vite, et supportée aussi par Firefox), et chaque dossier peut être ajouté à la main.\n- **Les limites** : la spec des source maps est en version 3 *« depuis 2011 »*, tient dans *« un énorme Google Doc »*, et ne sait pas représenter les variables supprimées par la minification. Un travail de standardisation est engagé avec le **TC39**, avec les outils de build, les navigateurs et des outils comme Sentry.\n- **Question de la salle (transcript)** : la perte des variables inlinées est-elle corrigeable ? Oui, mais il faut d'abord un accord entre tous les acteurs.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "gaDxHXhw3Fc",
+        "title": "DEVFEST PARIS 2024 - 6 Feb Morning Sessions",
+        "publishedAt": "2024-02-09",
+        "transcript": true,
+        "startSeconds": 3985
+      }
+    },
+    {
+      "id": "core-web-vitals-mastery-in-2024",
+      "day": "2024-02-06",
+      "type": "talk",
+      "title": "Core Web Vitals Mastery in 2024",
+      "speakers": [
+        "Manuela Castrillon — Uber"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : rappel des trois Core Web Vitals et annonce que **INP** (Interaction to Next Paint) remplace FID *« le 12 mars »*, car plus de 90 % du temps passé sur une page vient après la première interaction.\n- **LCP**, la métrique la plus souvent ratée, porte dans 70 à 80 % des cas sur une image : servir aussi le HTML par CDN, rendre l'image **découvrable dans le HTML** (balise img, sans lazy loading ni image de fond), utiliser `fetchpriority` et déprioriser le reste.\n- **CLS** : `aspect-ratio` ou `min-height` pour les contenus dynamiques, compatibilité avec le **back/forward cache** (elle a découvert qu'une extension de gestionnaire de mots de passe le bloquait chez elle), animations limitées à `transform` et `opacity`.\n- **INP** : découper les tâches de plus de 50 ms, retirer le JavaScript inutile au premier chargement, limiter la taille des mises à jour du DOM, utiliser `requestAnimationFrame` avec parcimonie.\n- **Outils** : Lighthouse et PageSpeed Insights, plus les optimisations offertes par les frameworks (projet Aurora). Une question de la salle porte sur le format d'image : elle recommande WebP et des déclinaisons par taille d'écran.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "gaDxHXhw3Fc",
+        "title": "DEVFEST PARIS 2024 - 6 Feb Morning Sessions",
+        "publishedAt": "2024-02-09",
+        "transcript": true,
+        "startSeconds": 5750
+      }
+    },
+    {
+      "id": "auth-wars-rise-of-the-passkeys",
+      "day": "2024-02-06",
+      "type": "talk",
+      "title": "Auth Wars - Rise of the Passkeys",
+      "speakers": [
+        "Markandey Pathak — JP Morgan & Chase"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : *« les mots de passe sont vos ennemis »*, pour les développeurs (stockage, chiffrement, réinitialisation) comme pour les utilisateurs (complexité, partage, phishing). Selon une statistique qu'il qualifie lui-même d'ancienne, environ 80 % des brèches exploitent des mots de passe faibles.\n- **WebAuthn** repose sur la cryptographie à clé publique (*« comme SSH »*) : la clé privée reste sur l'appareil, le serveur ne garde que la clé publique. Les **passkeys** ajoutent la synchronisation dans un écosystème (Google, iCloud) et l'usage d'un autre appareil par QR code.\n- **Fonctionnement** : un challenge aléatoire du serveur contre les rejeux, puis `navigator.credentials.create()` et `get()`, et une passkey liée à un relying party, d'où **« one service, one passkey »** et la fin du phishing par faux domaine.\n- **Démo** : une appli de notes hébergée sur Glitch, inscription et connexion par Touch ID, puis accès depuis un autre appareil.\n- **Questions de la salle (transcript)** : côté serveur, il utilise Node.js, SQLite et SimpleWebAuthn. Selon lui, une passkey rend le second facteur superflu. Sur les tests automatisés, il n'a pas de réponse ; Jecelyn Yeen signale depuis la salle le **panneau WebAuthn de DevTools**, qui simule un authentificateur virtuel.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "gaDxHXhw3Fc",
+        "title": "DEVFEST PARIS 2024 - 6 Feb Morning Sessions",
+        "publishedAt": "2024-02-09",
+        "transcript": true,
+        "startSeconds": 7150
+      }
+    },
+    {
+      "id": "creer-distribuer-plugin-kubernetes",
+      "day": "2024-02-06",
+      "type": "talk",
+      "title": "Créer & distribuer un plugin pour Kubernetes en quelques minutes ? Easy!",
+      "speakers": [
+        "Aurélie Vache — OVHcloud",
+        "Gaëlle Acas — Doctolib"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : faire évoluer `kubectl` lui-même est lent (certaines PR sont ouvertes *« depuis 2016 »*), alors qu'un plugin s'écrit dans **n'importe quel langage** : un exécutable nommé `kubectl-<nom>` placé dans le PATH suffit.\n- **Live coding** d'un plugin Bash « season » qui préfixe chaque ligne de `kubectl get` d'un emoji de saison aléatoire, avec un message d'aide et le principe KISS.\n- **Distribution avec Krew**, le gestionnaire de paquets des plugins kubectl : manifeste YAML par plateforme, archive publique et SHA-256. Leurs plugins Halloween puis Season ont été **refusés deux fois** dans l'index officiel faute de gain de productivité, d'où un **index privé** pour une équipe ou une entreprise.\n- **Plugins recommandés** : view-secret (utilisé *« au minimum une fois par jour »*), view-cert, pod-inspect et neat.\n- **Bonnes pratiques** : un nom explicite, Go comme langage de prédilection, et **GoReleaser** (qui intègre désormais krew-release-bot) dans la CI pour générer releases et manifeste.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "bnicXhfecTQ",
+        "title": "DEVFEST PARIS 2024   6 Feb Afternoon Sessions",
+        "publishedAt": "2024-02-09",
+        "transcript": true,
+        "startSeconds": 40
+      }
+    },
+    {
+      "id": "automate-user-flows-in-chrome-and-beyond",
+      "day": "2024-02-06",
+      "type": "workshop",
+      "title": "Automate user flows in Chrome & beyond",
+      "speakers": [
+        "Jecelyn Yeen — Google"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **En ouverture (transcript)** : l'astuce DevTools qu'elle n'avait pas eu le temps de montrer le matin. Pour inspecter un popup qui disparaît dès qu'on quitte la page, il faut activer **« Emulate a focused page »** dans l'onglet Rendering, bientôt accessible plus directement. L'option n'est pas activée par défaut car elle fausse l'API Page Visibility.\n- **Atelier** : enregistrer un parcours utilisateur avec le panneau **Recorder** de Chrome DevTools sur une appli de commande de café, le rejouer (vitesse ralentie possible), ajuster les sélecteurs et ajouter des assertions (« wait for element », vérifier qu'un cappuccino a trois ingrédients).\n- Captation longue d'un atelier pratique, avec beaucoup de temps de manipulation peu audible.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "i0ApDvsEbGE",
+        "title": "DEVFEST PARIS 2024   6 Feb Afternoon Workshop",
+        "publishedAt": "2024-02-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "mettre-le-monde-en-vecteur",
+      "day": "2024-02-06",
+      "type": "talk",
+      "title": "Mettre le monde en vecteur",
+      "speakers": [
+        "Florent Legras — SFEIR"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : les bases vectorielles ne sont pas nouvelles (recherche visuelle, recherche sémantique), mais les LLM les ont rendues populaires. Pour le speaker, un LLM n'est *« ni plus ni moins qu'une plume »* : il écrit bien mais ne connaît pas vos données, d'où le **RAG**.\n- **Embeddings** : de word2vec (homme/femme, roi/reine) à BERT (le mot dans son contexte), puis l'image, l'audio et la vidéo. Deux vecteurs ne se comparent que s'ils sortent du même modèle et ont la même dimension, d'où le **multimodal** façon CLIP.\n- **Recherche** : la comparaison naïve coûte N×M, d'où des index approximatifs (ScaNN de Google, FAISS de Facebook, HNSW) qui échangent de la précision contre de la vitesse.\n- **Démo** : environ 30 000 synopsis de films Wikipédia (Kaggle), embeddings Vertex AI, produit scalaire brut puis **Vertex AI Vector Search**. Décrire Retour vers le futur en anglais ou en français retrouve les trois films, grâce à un modèle multilingue.\n- **Questions de la salle (transcript)** : le débogage tient de la *« black box »* (mauvais embedding, données absentes ou vecteur mal clusterisé ?). Distinction entre Vertex AI Search (RAG clé en main) et Vector Search. Sa conclusion : *« les LLM c'est bien, mais vector database c'est mieux »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "bnicXhfecTQ",
+        "title": "DEVFEST PARIS 2024   6 Feb Afternoon Sessions",
+        "publishedAt": "2024-02-09",
+        "transcript": true,
+        "startSeconds": 1813
+      }
+    },
+    {
+      "id": "practical-guides-software-supply-chain-security",
+      "day": "2024-02-06",
+      "type": "talk",
+      "title": "Practical guides for enhancing your Software Supply Chain Security",
+      "speakers": [
+        "Abdel Sghiouar — Google"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : *« software supply chain security is a bullshit term »*, c'est du marketing ; concrètement, il s'agit de **rendre la CI/CD plus sûre**. Exemples : SolarWinds, une fuite de clés chez CircleCI, et une chaîne de supermarchés suédoise fermée jusqu'à six jours à cause d'un logiciel tiers compromis.\n- **Deux principes** : *zero trust* (vérifier chaque acteur de la chaîne) et *shift left* (donner aux développeurs la visibilité, pas toute la responsabilité, car *« les développeurs full stack n'existent pas »*).\n- **Cadre et outils** : Sigstore, niveaux **SLSA**, **SBOM** expliqué comme la liste d'ingrédients d'une recette (la provenance étant la recette elle-même). Démo : signature d'une image avec **cosign** et une clé KMS, vérification, puis refus d'une image non signée par le policy controller.\n- **Côté Google Cloud** : Cloud Workstations (*« mon laptop est une machine très bête »*, le code reste dans le cloud comme en interne chez Google), scan continu des dépendances dans Cloud Code, Artifact Registry, Assured OSS, Cloud Build conforme SLSA 3, tableau de bord de posture de sécurité GKE.\n- *« La sécurité n'est pas un but, c'est un chemin »* : la checklist SLSA s'adopte étape par étape. En réponse à une question, il déconseille Cloud Source Repositories au profit de GitHub ou GitLab et recommande **gitsign** pour signer les commits.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "bnicXhfecTQ",
+        "title": "DEVFEST PARIS 2024   6 Feb Afternoon Sessions",
+        "publishedAt": "2024-02-09",
+        "transcript": true,
+        "startSeconds": 3960
+      }
+    },
+    {
+      "id": "ml-for-the-rest-of-us-developers",
+      "day": "2024-02-06",
+      "type": "talk",
+      "title": "ML for the rest of us, developers",
+      "speakers": [
+        "Jerome Mouton — SnapEngage"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : la salle vote pour garder l'anglais. Le speaker, fondateur de deux startups sur Google Cloud et non spécialiste du ML, veut montrer un ML *« que les développeurs peuvent apprécier »*, sans entraîner de modèle.\n- **ML sur l'appareil** (téléphone, navigateur, Raspberry Pi) : latence faible, fonctionnement hors ligne, **données qui ne quittent pas l'appareil**, et un coût de calcul payé par l'utilisateur plutôt que par la facture cloud.\n- **MediaPipe** encapsule toute la chaîne (flux caméra, conversion RGB, enchaînement de petits modèles) et propose Model Maker pour le transfer learning. Démos dans MediaPipe Studio : détection d'objets avec seuil de confiance, segmentation, gestes de la main (21 points), maillage du visage et avatar, poses, sentiment, détection de langue en environ 1,5 ms, classification audio.\n- **Démo maison** : un instrument de musique piloté par la distance entre les doigts, en environ 150 lignes de JavaScript, perturbée par un souci de son. L'axe Z est peu fiable avec une seule caméra.\n- **Nuance finale** : tout ne tient pas sur l'appareil, et les cas complexes restent dans le cloud.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "bnicXhfecTQ",
+        "title": "DEVFEST PARIS 2024   6 Feb Afternoon Sessions",
+        "publishedAt": "2024-02-09",
+        "transcript": true,
+        "startSeconds": 6550
+      }
+    },
+    {
+      "id": "construisez-une-data-platform-cloud-native-sur-google-cloud",
+      "day": "2024-02-06",
+      "type": "workshop",
+      "title": "Construisez une Data Platform Cloud Native sur Google Cloud",
+      "speakers": [
+        "Clément Bosc — Stack Labs",
+        "Matthieu Grandrie — Stack Labs",
+        "Fabien Portes — Stack Labs"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : trois consultants data venus de Toulouse animent un TP guidé (projet Google Cloud fourni et playbook pas à pas) pour construire une **data platform serverless**.\n- **Pourquoi une data platform** : décloisonner les systèmes d'information, centraliser les données et diffuser une culture de la décision *data driven*.\n- **Parcours** : BigQuery comme cœur, compute serverless pour orchestrer les pipelines, chargement incrémental d'un fichier des naissances découpé en morceaux, couche brute puis couche raffinée par des **vues SQL** de dénormalisation, avec un référentiel des départements.\n- **Restitution** dans Looker Studio, en distinguant dimensions et métriques, sur des données de naissances et de prénoms.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "QwNsBQiO0O8",
+        "title": "DEVFEST PARIS 2024   6 Feb Afternoon Workshop 2",
+        "publishedAt": "2024-02-12",
+        "transcript": true,
+        "startSeconds": 270
+      }
+    },
+    {
+      "id": "langchain-votre-nouveau-couteau-suisse",
+      "day": "2024-02-06",
+      "type": "talk",
+      "title": "LangChain : Votre nouveau couteau suisse",
+      "speakers": [
+        "Henry Lagarde — Criteo"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : LangChain est présenté comme un framework de **composabilité**. On change de LLM (OpenAI, Gemini, Mistral auto-hébergé) sans tout réécrire. Le projet a un an et demi et environ 70 000 étoiles GitHub, avec des paquets officiels en Python et en JavaScript et des portages communautaires.\n- **Écosystème** : modules (agents, chains, mémoire, prompt templates, parsers de sortie capables de demander au LLM de corriger un JSON mal formé, document loaders vers Confluence, Notion ou GitHub), LangServe pour exposer une chain en API, LangSmith pour le monitoring, et un Hub de prompts.\n- **Démo** : un agent qui fait une recherche web (Serper) puis génère un PowerPoint via un *structured tool* typé avec Zod, sur GPT-3.5, avec mémoire de conversation. Le speaker reconnaît que l'agent est *« un peu feignant »* et ne génère le fichier qu'une fois sur deux.\n- **Conclusion** : les sorties restent **non prédictibles** ; il faut exiger des sources et *« faire attention »* aux *« énormes bêtises »*.\n- **Question de la salle (transcript)** : sur la vectorisation de documents, il raconte avoir indexé l'essentiel des codes juridiques français dans Pinecone pour sa sœur avocate, *« peut-être 10 lignes de code »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "bnicXhfecTQ",
+        "title": "DEVFEST PARIS 2024   6 Feb Afternoon Sessions",
+        "publishedAt": "2024-02-09",
+        "transcript": true,
+        "startSeconds": 8515
+      }
+    },
+    {
+      "id": "chiffrement-de-bout-en-bout-appli-cloud-et-mobile",
+      "day": "2024-02-06",
+      "type": "talk",
+      "title": "Chiffrement de bout en bout dans une appli Cloud et mobile",
+      "speakers": [
+        "Valentin Deleplace — Google"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : HTTPS protège le transport, pas contre le serveur. Le **chiffrement de bout en bout** empêche l'éditeur, son cloud et un éventuel attaquant interne de lire les données (exemples : WhatsApp, Doctolib, Excalidraw).\n- **Cas réel : Cool Maze**, son appli qui envoie une photo du téléphone vers un ordinateur en scannant un QR code. Démo réussie avec un selfie de la salle. Il revendique de ne pas être expert en crypto et de **ne pas inventer d'algorithme** : AES à clé symétrique.\n- **L'astuce** : la clé passe **dans le QR code**, jamais par le serveur. Deux clés (une « blanche » dans le QR code, une « verte » générée par le mobile) permettent d'uploader la photo avant même le scan ; une photo réduite de 2 Mo à 200 Ko et un QR code plus simple font gagner des centaines de millisecondes.\n- **Détails** : générateur aléatoire cryptographique, paradoxe des anniversaires pour les collisions d'adresses, 84 bits d'entropie dérivés en clé AES 128 bits par PBKDF2, adresse virtuelle dérivée par SHA-256 de la clé. Architecture : App Engine, Firestore en temps réel pour le push serveur, BigQuery à la place de Cloud SQL pour réduire la facture, migration envisagée vers Cloud Run.\n- **Questions de la salle (transcript)** : il admet ne pas avoir ajouté de MAC pour l'intégrité et utiliser un sel constant. La limite de 30 Mo sert à maîtriser les coûts d'un service sans publicité. Sa conclusion : *« se mettre d'accord sur une clé de chiffrement et ne jamais donner la clé au serveur »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "bnicXhfecTQ",
+        "title": "DEVFEST PARIS 2024   6 Feb Afternoon Sessions",
+        "publishedAt": "2024-02-09",
+        "transcript": true,
+        "startSeconds": 9575
+      }
+    },
+    {
+      "id": "les-developpeurs-et-l-ia",
+      "day": "2024-02-06",
+      "type": "keynote",
+      "title": "Les Développeurs et l'IA",
+      "speakers": [
+        "Loïc Knuchel — Doctolib"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : le développeur n'est pas *« celui qui code »* mais celui qui **produit des applications utiles** : comprendre le besoin, clarifier des problèmes flous. S'appuyant sur une BD CommitStrip de 2016, il rappelle que des spécifications précises, *« c'est du code »* ; demain, *« les prompts seront du code »*.\n- **Ruée vers l'IA** : 2023 a été l'année de la découverte, 2024 sera celle de l'intégration dans les produits. Il teste lui-même CodeRabbit (des remarques fausses ou inutiles, mais une vraie variable mal renommée détectée), v0 (bon résultat après 9 itérations, moyen sinon) et tldraw « make real ».\n- **Le développeur comme pont**, *« comme Jake dans Avatar »*, entre la technique de l'IA et les usages, mieux placé qu'un product manager ou un data scientist pour imaginer des cas d'usage et poser des questions d'éthique.\n- **Une échelle d'adoption** : des prompts intégrés à l'appli (génération de SQL, de schémas et de données de test dans son outil Azimutt ; extraction de bonnes pratiques chez Packmind), puis RAG, modèles hébergés via Hugging Face, orchestration LangChain et, hors de portée de la plupart, ses propres modèles.\n- **Sa position** : l'IA doit rester un **assistant** qui aide à créer, pas un générateur dont l'humain corrige la production, mode qu'il juge *« aliénant »*. Le grand défi sera de contrôler et fiabiliser des sorties non reproductibles.\n- **Questions de la salle (transcript)** : sa remarque sur l'agilité qui *« pourrait devenir obsolète »* est relancée ; il précise qu'il s'agit d'une simple observation. Sur la dépendance aux API d'IA, il compare avec Stripe ou Google Maps et cite les modèles ouverts (Mistral, Llama) auto-hébergeables.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "bnicXhfecTQ",
+        "title": "DEVFEST PARIS 2024   6 Feb Afternoon Sessions",
+        "publishedAt": "2024-02-09",
+        "transcript": true,
+        "startSeconds": 12060
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [],
+  "sources": [
+    {
+      "label": "Programme officiel (agenda archivé, Wayback Machine, 26/02/2024)",
+      "url": "https://web.archive.org/web/20240226214837/https://devfest.gdgparis.fr/agenda"
+    },
+    {
+      "label": "Page speakers officielle (archivée)",
+      "url": "https://web.archive.org/web/20240226220304/https://devfest.gdgparis.fr/speakers"
+    },
+    {
+      "label": "Fiche GDG Community : DevFest 2024 Paris",
+      "url": "https://gdg.community.dev/events/details/google-gdg-paris-presents-devfest-2024-paris"
+    },
+    {
+      "label": "Playlist YouTube GDG France « DevFest Paris 2024 » (5 vidéos, transcripts automatiques)",
+      "url": "https://www.youtube.com/playlist?list=PLuZ_sYdawLiW4VAjBbC5EGAJcIP0pSOR3"
+    },
+    {
+      "label": "Guillaume Laforge : Generative AI in practice, concrete LLM use cases in Java with the PaLM API (article du speaker)",
+      "url": "https://dev.to/glaforge/generative-ai-in-practice-concrete-llm-use-cases-in-java-with-the-palm-api-1b7b"
+    },
+    {
+      "label": "Posts LinkedIn : aucun retour participant trouvé (5 recherches web, octobre 2026)"
+    }
+  ]
 }

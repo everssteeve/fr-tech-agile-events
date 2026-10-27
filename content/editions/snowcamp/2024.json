@@ -6,8 +6,405 @@
   "start": "2024-01-31",
   "end": "2024-02-02",
   "city": "Grenoble",
+  "venue": "World Trade Center Grenoble",
   "url": "https://snowcamp2024.sched.com/",
+  "programUrl": "https://snowcamp2024.sched.com/list/descriptions/",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "8ᵉ édition, du 31 janvier au 2 février 2024 au WTC Grenoble (dates du programme sched : universités le mercredi 31, conférences les jeudi 1er et vendredi 2 février ; le blog OVHcloud indique à tort « du 30 janvier au 1er février »). Environ 600 participants selon Criteo et OVHcloud, billetterie épuisée « en une minute » selon Criteo. Programme : 10 universités de 3 h, une keynote par jour, des talks de 45 min et un nouveau format court de 20 min, le « Schuss », sur 4 tracks (Backend, Cloud/DevOps/Sécurité, Language/Architecture/AI, UX/Frontend) plus un track « Hors-piste ». Les sessions n'ont pas été filmées.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-27",
+  "revisit": "aucun post LinkedIn de participant lu (aucun résultat indexé en recherche) ; corpus participant limité à l'article du sponsor Criteo (7 auteurs, dont 3 speakers) et au billet OVHcloud d'un speaker",
+  "corpus": "Deux articles d'entreprise publiés en février 2024 : « Highlights of SnowCamp 2024 » de Criteo Engineering (15/02, sponsor ; retours de Luiza Cicone, Estelle Thou et Sylvain Dedieu sur leurs propres talks, et de Vincent Michau, Eduardo Grajeda et Concetto Antonino Privitera comme participants) et « Back from Snowcamp 2024 » de Stéphane Philippart (OVHcloud, 12/02, sur son propre atelier). S'y ajoutent le programme sched, la page des supports de sessions (GitHub snowcamp), un article dev.to et des slides de speakers, et 6 transcripts de captations des mêmes talks faites dans d'autres conférences.",
+  "limits": "Aucune captation officielle : les transcripts viennent de versions données ailleurs (MiXiT, FlowCon, Sunny Tech, Volcamp, DevFest, Crafts Records), parfois plusieurs mois avant ou après. Les seuls retours de participants viennent de trois salariés d'un sponsor, en quelques lignes chacun, et aucun post LinkedIn n'a pu être lu. 44 des 60 sessions du programme (dont 9 des 10 universités) restent sans aucun contenu public exploité.",
+  "tldr": "**Une 8ᵉ édition complète en une minute, où les retours lus saluent surtout l'architecture et l'organisation (loi de Conway, clean archigonale) et la découverte d'outils**, tandis que l'IA, en forte hausse au programme, est surtout relevée comme une tendance.",
+  "keyTakeaways": [
+    "Avant de corriger une architecture qui « ne va pas », regarder l'organisation qui l'a produite : la loi de Conway explique souvent les découpages arbitraires, et on peut s'en servir (Inverse Conway Maneuver, Team Topologies, DDD stratégique) plutôt que la combattre (Topçu, via Vincent Michau).",
+    "Isoler le code métier des frameworks (ports et adaptateurs, Scream architecture) et choisir sa stratégie de test selon le périmètre : pyramide classique pour le cœur métier, plus de tests d'intégration ou de composants pour le CRUD et la data (Breheret-Girardin, via Eduardo Grajeda).",
+    "Activer Brotli, compresser les fichiers statiques une seule fois au build avec un niveau élevé, garder des niveaux plus bas pour le dynamique et ne pas recompresser les formats déjà compressés comme le JPEG (keynote Caron / Sablonnière).",
+    "Sur le serverless, donner à chaque charge de travail une identité dédiée au moindre privilège plutôt que le compte de service par défaut, éviter les clés statiques et interdire les buckets publics par une politique d'organisation (Godec).",
+    "Côté Angular, passer les composants en `OnPush` avec des données immuables, garder RxJS pour l'asynchrone et convertir en signaux pour l'affichage (Dedieu, speaker).",
+    "Pour apprendre une nouvelle pratique (TDD, DDD), trouver « ses propres experts » un peu plus avancés que soi, pratiquer le pair programming et suivre un cycle planifier, faire, vérifier, adapter (Bouvet).",
+    "Prendre sa carrière en main : piloter ses 1:1 (fréquence, agenda, préparation), viser l'impact plutôt que la production, s'accorder du temps protégé et trouver un mentor (Cicone, speaker).",
+    "Dans une migration cloud native d'ETI, garder Terraform pour le bootstrap et Helm pour les applications, accompagner les équipes de dev avec des templates de CI plutôt que des obligations, et traiter la sécurité tôt (Verchère, slides)."
+  ],
+  "sessions": [
+    {
+      "id": "la-compression-web-comment-reprendre-le-controle",
+      "day": "2024-02-01",
+      "type": "keynote",
+      "title": "La compression Web : comment (re)prendre le contrôle ?",
+      "speakers": [
+        "Antoine Caron",
+        "Hubert Sablonnière"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Keynote d'ouverture du jeudi. Contenu décrit d'après la captation du même talk à MiXiT 2024 (vidéo zxiJXQpRa4E, mai 2024) et le dépôt du talk cité sur la page des supports ; aucun retour de participant n'a été trouvé.\n- Point de départ : nos serveurs compressent sans cesse et les navigateurs décompressent, *« un peu comme si nous jouions au Scrabble en permanence »* (programme). **Minification** (avec perte, connaît la syntaxe) et **compression** (sans perte, ne voit que des octets) vont de pair.\n- Impact chiffré sur jQuery et une page Wikipédia en 3G et 4G ; d'après le Web Almanac, une part notable du JavaScript servi n'est toujours pas compressée.\n- Démos dans les DevTools : négociation `Accept-Encoding` / `Content-Encoding`, et **streaming** : la décompression n'interrompt pas l'affichage progressif de la page.\n- Pédagogie des algorithmes : codage de **Huffman** (1952), **LZ77** (1977), puis deflate, gzip, Zopfli et **Brotli** (dictionnaire intégré d'environ 13 000 mots), avant Zstandard et les dictionnaires partagés encore expérimentaux.\n- Recommandations : activer Brotli, compresser le statique **une seule fois au build**, adapter le niveau pour le dynamique et ne pas compresser les formats déjà compressés (*« Ne compressez pas mes petits chats »*, à propos d'un JPEG).",
+      "summarySources": [
+        "program",
+        "transcript"
+      ]
+    },
+    {
+      "id": "mieux-cultiver-et-mieux-manger-grace-au-logiciel",
+      "day": "2024-02-02",
+      "type": "keynote",
+      "title": "Mieux cultiver et mieux manger grâce au logiciel : la tech au service de l'agriculture",
+      "speakers": [
+        "Mathieu Passenaud — please-open.it",
+        "Bertrand Péchou"
+      ],
+      "feedbackFrom": [
+        "Concetto Antonino Privitera (blog Criteo)"
+      ],
+      "summary": "- Keynote du vendredi en **duo agriculteur / développeur** : le programme propose de *« sortir de nos open spaces »* pour suivre Bertrand Péchou dans ses champs et comprendre pourquoi et comment il utilise ces technologies.\n- Sujets annoncés : **GPS précis au centimètre**, coupure de sections, tracteurs connectés, données, et leur impact sur les enjeux environnementaux et économiques d'une agriculture qui a connu une forte révolution technologique en vingt ans.\n- Côté participants, Concetto Antonino Privitera (Criteo) se dit impressionné par les applications de l'IA à l'agriculture, comme le suivi des cultures et des sols, grâce à la combinaison de la vision par ordinateur et du suivi GPS avancé.\n- Aucune captation ni support trouvés : le contenu réel de la keynote n'est connu qu'à travers le descriptif et ce court retour.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ]
+    },
+    {
+      "id": "viens-dompter-ta-premiere-ia-en-python",
+      "day": "2024-01-31",
+      "type": "workshop",
+      "title": "Viens dompter ta première IA en Python",
+      "speakers": [
+        "Thierry Chantier",
+        "Stéphane Philippart — OVHcloud"
+      ],
+      "feedbackFrom": [
+        "Stéphane Philippart (blog OVHcloud, speaker)"
+      ],
+      "summary": "- Université de 3 h pour débutants : pas besoin d'être data scientist ni expert Python, l'environnement tourne dans le navigateur grâce à **GitPod** (programme).\n- Objectif : spécialiser le modèle de détection d'objets **YOLOv8** pour reconnaître les gestes de la main, puis coder une application web de **pierre-papier-ciseaux** qui l'utilise (speaker).\n- Déroulé en trois temps, chacun sur un produit OVHcloud : notebooks pour la spécialisation, entraînement avec davantage de données, puis déploiement de l'application finale.\n- Slides, code et tutoriels sont publiés. Le billet du speaker est purement descriptif : il ne rapporte aucun retour de participant. Il précise qu'OVHcloud, sponsor l'année précédente, ne l'était pas en 2024 mais animait deux ateliers et un talk.",
+      "summarySources": [
+        "program",
+        "blog"
+      ]
+    },
+    {
+      "id": "quarkus-greener-better-faster-stronger",
+      "day": "2024-02-01",
+      "type": "talk",
+      "title": "Quarkus : Greener, Better, Faster, stronger.",
+      "speakers": [
+        "Jérôme Tama — Onepoint"
+      ],
+      "feedbackFrom": [
+        "Jérôme Tama (article dev.to, speaker)"
+      ],
+      "summary": "- Thèse : la « magie » de Quarkus se cache dans ses **extensions**, qui font le maximum de travail **à la compilation** et ne rendent que les services dont l'application a besoin, d'où moins de mémoire, de CPU et un démarrage plus court (programme, article du speaker).\n- Le speaker part de son expérience sur l'extension Quarkus MinIO et propose d'en développer une en live.\n- L'article associé (publié sur dev.to fin décembre 2023, avec des données de démo au nom de Snowcamp) suit une entreprise fictive qui partage un référentiel de configuration : modules runtime et deployment, `@BuildStep` qui n'enregistrent la source que si l'application en a besoin, **Dev Services** avec Testcontainers, documentation générée avec Antora.\n- Le « green » y est un effet de la réduction d'empreinte mémoire ; l'article ne donne **aucune mesure de consommation énergétique**.\n- Message final : les mainteneurs d'extensions sont responsables de les garder petites et rapides. Aucun retour de participant trouvé.",
+      "summarySources": [
+        "program",
+        "blog"
+      ]
+    },
+    {
+      "id": "2-ans-de-migrations-cloud-native-eti",
+      "day": "2024-02-01",
+      "type": "talk",
+      "title": "2 ans de migrations en environnement \"cloud native\" quand on n'est ni une startup, ni dans le CAC40",
+      "speakers": [
+        "Rémi Verchère — Accenture"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Retour d'expérience décrit d'après les slides publiées (version Snowcamp) : la mission concerne l'**IRSN**, un EPIC d'environ 1 700 personnes dont 35 à la DSI, qui sort d'un contrat d'infogérance jugé coûteux pour aller sur OVHcloud.\n- Échelle : 21 clusters Kubernetes managés répartis sur 11 projets, une forge GitLab d'environ 500 utilisateurs et 800 projets, le tout tenu par une équipe très réduite (« 1,75 Ops »).\n- Choix d'outillage : *« Terraform pour tout »* jugé une **fausse bonne idée** ; retenu : Terraform pour le bootstrap, Helm pour les applications, ArgoCD en POC. Le « day 2 » (mises à jour, sauvegardes avec Velero, observabilité Prometheus / Loki / Grafana / Thanos) occupe une large place.\n- Accompagnement des équipes de dev : modèles de projets et de CI/CD fournis comme **préconisations, sans obligation**, et sécurité par règles d'admission Kyverno.\n- Bilan : reproductibilité et restauration acquises, autonomie en progrès, gains de coût limités. À refaire, il ajouterait plus de compagnonnage, une meilleure répartition Dev / Ops et une sécurité prise en compte plus tôt. Aucun retour de participant trouvé.",
+      "summarySources": [
+        "program",
+        "slides"
+      ]
+    },
+    {
+      "id": "bootez-votre-carriere-senior-engineer-ou-manager",
+      "day": "2024-02-01",
+      "type": "lightning",
+      "title": "Bootez votre carrière : senior engineer ou manager ?",
+      "speakers": [
+        "Luiza Cicone — Criteo"
+      ],
+      "feedbackFrom": [
+        "Luiza Cicone (blog Criteo, speaker)"
+      ],
+      "summary": "- « Schuss » de 20 min, nouveau format court de 2024. Participante depuis la première édition en 2016, la speaker y réalise son rêve de passer de l'autre côté (speaker).\n- Sujet non technique : les parcours d'ingénieur, de senior à **staff+** ou à **lead / engineering manager**, à partir de trois moments clés de son expérience (blog Criteo, slides).\n- Conseils montrés dans les slides : **prendre la main sur ses 1:1** (fréquence, agenda, préparation), viser l'*outcome* plutôt que l'*output*, être patient en se libérant du temps (délégation, « Quiet Friday ») et faire un bilan hebdomadaire de ce qu'on a appris et de qui on a aidé.\n- Sur le doute de soi, les slides citent 50 % de femmes managers concernées, 22 % de femmes dans la tech en Europe et 13 % en management, puis invitent à connaître ses « saboteurs », ses talents, et à **trouver un mentor**.\n- Message principal selon elle : *« take charge of their careers: What is important for you? »*. Elle décrit une **salle comble** et des retours positifs, sans qu'aucun retour d'auditeur ne soit publié.",
+      "summarySources": [
+        "program",
+        "blog",
+        "slides"
+      ]
+    },
+    {
+      "id": "dans-le-monde-de-la-tech-ou-sont-les-femmes",
+      "day": "2024-02-02",
+      "type": "lightning",
+      "title": "Dans le monde de la tech, on se demande souvent en chantant, 'Où sont les femmes ?'",
+      "speakers": [
+        "Estelle Thou — Criteo"
+      ],
+      "feedbackFrom": [
+        "Estelle Thou (blog Criteo, speaker)"
+      ],
+      "summary": "- « Schuss » du track Hors-piste. Point de départ : les professions du numérique ne comptent que **24 % de femmes** en France (Insee 2023, cité au programme).\n- La speaker, en reconversion vers le développement fullstack depuis trois ans, partage son parcours et ce qui lui a permis de s'épanouir chez Criteo (programme).\n- Thèse : l'équilibre des genres dépend autant de la **rétention** que de l'attraction des femmes, et chacun y joue un rôle ; le talk présente les bénéfices de la diversité et des leviers concrets pour la préserver (programme, speaker).\n- Seul retour publié : celui de la speaker, qui juge l'expérience *« incredibly rewarding »*. Aucun retour d'auditeur trouvé.",
+      "summarySources": [
+        "program",
+        "blog"
+      ]
+    },
+    {
+      "id": "plongeons-au-coeur-des-frameworks-frontend-reactivite",
+      "day": "2024-02-02",
+      "type": "talk",
+      "title": "Plongeons au coeur des frameworks frontend modernes pour comprendre leur réactivité",
+      "speakers": [
+        "Sylvain Dedieu — Criteo"
+      ],
+      "feedbackFrom": [
+        "Sylvain Dedieu (blog Criteo, speaker)"
+      ],
+      "summary": "- Contenu décrit d'après la captation du même talk à Volcamp (vidéo xHYqU06klPE, mai 2024) et le texte du speaker sur le blog Criteo.\n- Définition de la réactivité, avec le tableur comme exemple historique, puis la difficulté de garder le DOM synchronisé en JavaScript vanilla dès que l'asynchrone s'en mêle.\n- Trois familles, d'après Miško Hevery : **value based** (React, Angular actuel : on compare l'état et on redessine, simple mais coûteux ; React redessine tout le sous-arbre), **observable based** (Svelte : mise à jour fine des seuls nœuds concernés, mais asynchrone et plus dur à expliquer) et **signal based** (Vue, Solid : synchrone et performant, avec plus de règles).\n- Focus sur Angular : Zone.js, la stratégie `OnPush` à mettre par défaut avec des données immuables, et l'adoption des **signaux** depuis la v16 en vue de se passer de Zone.js.\n- Conseil : *« Tout ce que vous avez à faire d'asynchrone, vous le faites en observable »*, puis on passe en signal pour l'affichage.\n- Côté salle, seul le speaker témoigne : un auditorium *« almost full »* et des *« vibes »* excellentes ; troisième année de suite qu'il parle à Snowcamp.",
+      "summarySources": [
+        "program",
+        "transcript",
+        "blog"
+      ]
+    },
+    {
+      "id": "loi-de-conway-lorsque-les-bonnes-pratiques-ne-suffisent-pas",
+      "day": "2024-02-02",
+      "type": "talk",
+      "title": "Loi de Conway : Lorsque les bonnes pratiques ne suffisent pas",
+      "speakers": [
+        "Julien Topçu — Shodo"
+      ],
+      "feedbackFrom": [
+        "Vincent Michau (blog Criteo)"
+      ],
+      "summary": "- Contenu décrit d'après une version antérieure du talk enregistrée à FlowCon (vidéo GyWUN27Ercg, novembre 2022), celle que référence la page des supports Snowcamp ; la version grenobloise a pu évoluer.\n- Trois cas : un site de cabinet de conseil qui expose son organigramme avant les besoins du client, l'étude Microsoft sur Windows Vista où les **indicateurs organisationnels prédisent mieux les pannes** que les métriques de code, et une agence de voyage dont le code finit découpé par pays comme ses équipes.\n- La loi (Melvin Conway, 1968) : les organisations produisent des designs qui copient leur **structure de communication** ; une organisation choisie exclut d'office certaines solutions.\n- Outils pour en tirer parti : **Inverse Conway Maneuver**, modèle BAPO (business, architecture, process, puis organisation), **DDD stratégique** et Event Storming, **Team Topologies** pour limiter la charge cognitive des équipes. Limite : *« Ce n'est pas une silver bullet »* si le design est rigide.\n- Vincent Michau (Criteo) en fait son talk préféré : on hérite souvent de code et d'organisations où *« something is not right »* sans comprendre pourquoi, et il retient des outils pour **utiliser la loi plutôt que la combattre**.",
+      "summarySources": [
+        "program",
+        "transcript",
+        "feedback"
+      ]
+    },
+    {
+      "id": "adoptez-la-clean-archigonale",
+      "day": "2024-02-02",
+      "type": "talk",
+      "title": "Adoptez la clean archigonale",
+      "speakers": [
+        "Christophe Breheret-Girardin — OCTO Technology"
+      ],
+      "feedbackFrom": [
+        "Eduardo Grajeda (blog Criteo)"
+      ],
+      "summary": "- Contenu décrit d'après la captation à Sunny Tech 2024 (vidéo 3Zl6kA1uilU, juillet 2024).\n- Historique : base de données choisie d'abord, code spaghetti, couches « lasagnes » qui fuient, microservices mal découpés (*« Je suis pas anti microservice, je suis anti microservice fait n'importe comment »*).\n- Principe : la valeur est dans l'**intelligence métier**, pas dans le framework. L'**architecture hexagonale** (ports et adaptateurs) et la **Clean Architecture** (use cases, presenter, « Scream architecture ») l'isolent de la technique ; le DDD complète pour le découpage.\n- Anecdotes d'**Alistair Cockburn**, que le speaker a rencontré : préférer « driving » à « driver », nommer les ports « for + verbe », séparer les adaptateurs de gauche et de droite.\n- Tests : avec l'hexagone, des tests de comportement en boîte noire très rapides ; mais **la pyramide n'est pas universelle** (pyramide inversée pour le CRUD, diamant pour la data). Synthèse proposée : la « clean archigonale », à appliquer sciemment.\n- Eduardo Grajeda (Criteo) en fait un de ses favoris : il apprécie le choix du bon outil selon le contexte, la remise en cause de la pyramide des tests (*« there are cases where having more integration tests makes sense »*) et le partage de la vision de Cockburn.",
+      "summarySources": [
+        "program",
+        "transcript",
+        "feedback"
+      ]
+    },
+    {
+      "id": "une-alternative-libre-a-docker-podman",
+      "day": "2024-02-01",
+      "type": "talk",
+      "title": "Une alternative libre à Docker: Podman",
+      "speakers": [
+        "Florent Benoit — Red Hat"
+      ],
+      "feedbackFrom": [
+        "Eduardo Grajeda (blog Criteo)"
+      ],
+      "summary": "- Point de départ : le **modèle de licence de Docker** peut freiner son adoption en entreprise (programme).\n- Podman implémente l'**API REST de Docker**, ce qui permet de le substituer en gardant ses outils ; il fonctionne en mode **rootless et sans démon**, gère nativement des objets Kubernetes comme les pods et supporte WebAssembly. Démo annoncée de Podman Desktop et du passage vers Kubernetes.\n- Eduardo Grajeda (Criteo) y découvre l'outil et retient sa différence principale avec Docker : pas besoin d'un démon en fonctionnement.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ]
+    },
+    {
+      "id": "practical-introduction-to-opentelemetry-tracing",
+      "day": "2024-02-01",
+      "type": "talk",
+      "title": "Practical introduction to OpenTelemetry tracing",
+      "speakers": [
+        "Nicolas Fränkel — Apache APISIX"
+      ],
+      "feedbackFrom": [
+        "Eduardo Grajeda (blog Criteo)"
+      ],
+      "summary": "- Talk en anglais : suivre une requête à travers les composants d'un système distribué devient critique avec les microservices (programme).\n- Rappel des trois piliers de l'observabilité (logs, métriques, traces) et d'**OpenTelemetry** comme standard ouvert rejoint par Jaeger et Zipkin, avec une démo sur un cas simple.\n- Eduardo Grajeda (Criteo) retient la découverte d'**Apache APISIX** et de son intégration avec OpenTelemetry. Retour bref, sans détail sur la démo.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ]
+    },
+    {
+      "id": "from-zero-to-qwik",
+      "day": "2024-02-02",
+      "type": "talk",
+      "title": "From Zero to Qwik: Building Your First App with Confidence",
+      "speakers": [
+        "Nicolas Frizzarin — SFEIR"
+      ],
+      "feedbackFrom": [
+        "Concetto Antonino Privitera (blog Criteo)"
+      ],
+      "summary": "- Présentation de **Qwik**, troisième framework de Miško Hevery après AngularJS et Angular, fondé sur la **résumabilité** : le programme promet une complexité O(1) au lieu de O(n) et 99 % de JavaScript en moins sur le thread principal.\n- Au menu : le principe de résumabilité, pourquoi il simplifie la performance des applications à fort contenu rendu côté serveur, et l'écriture d'une première application.\n- Concetto Antonino Privitera (Criteo) cite cette introduction comme exemple de sujet intéressant et juge Qwik *« a good alternative to Angular »*.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ]
+    },
+    {
+      "id": "le-developpement-augmente-a-l-ia",
+      "day": "2024-02-02",
+      "type": "talk",
+      "title": "Le développement augmenté à l'IA: tout ce qui va changer",
+      "speakers": [
+        "Yohan Lasorsa — Microsoft"
+      ],
+      "feedbackFrom": [
+        "Concetto Antonino Privitera (blog Criteo)"
+      ],
+      "summary": "- Le programme part d'une boutade : l'IA chez les devs, *« tout le monde en parle, mais très peu ont finalement une réelle expérience du sujet »*. Le speaker partage sa pratique du développement assisté depuis les premières bêtas : astuces, limites, contre-vérités à démonter.\n- Au-delà de la génération de code, l'IA est présentée comme outil de **feedback**, d'amélioration de la qualité, de la sécurité et de l'accessibilité, d'automatisation, et même de transformation du recrutement.\n- Concetto Antonino Privitera (Criteo) note une **forte hausse des sujets IA** par rapport à 2023 et cite ce talk, avec GitHub Copilot, *« which has revolutionized coding »*.\n- Les slides sont publiées (« How to become an IA-enhanced developer ») mais leur contenu n'a pas pu être lu ; aucune captation trouvée.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ]
+    },
+    {
+      "id": "go-serverless-but-is-it-secure",
+      "day": "2024-02-02",
+      "type": "talk",
+      "title": "Go Serverless! But is it secure?",
+      "speakers": [
+        "Natalie Godec — Zencore"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Contenu décrit d'après la captation du même talk au DevFest (chaîne GDG France, vidéo m9sLWY8ddvc, novembre 2023), référencée sur la page des supports ; aucun retour de participant trouvé.\n- Ouverture sur la fuite d'Optus (10 millions de clients) : pas un piratage sophistiqué, mais une **API sans authentification**.\n- Le serverless réduit l'infrastructure mais rend la sécurité moins visible. Danger des **identités par défaut** : sur GCP, le compte de service Compute a le rôle Editor sur tout le projet ; la démo d'une petite application Streamlit montre comment il donne accès à des données personnelles brutes.\n- Recommandations : une identité dédiée par charge de travail, pas de **clés statiques**, restreindre qui peut invoquer le service (IAM, Identity-Aware Proxy, API Gateway), régler l'ingress pour ne pas contourner le load balancer.\n- Démonstration sur un site recensant des dizaines de milliers de **buckets publics** contenant clés SSH et identifiants : il faut les interdire par une politique d'organisation.",
+      "summarySources": [
+        "program",
+        "transcript"
+      ]
+    },
+    {
+      "id": "il-n-est-jamais-trop-tard-pour-redevenir-junior",
+      "day": "2024-02-02",
+      "type": "lightning",
+      "title": "Il n'est jamais trop tard pour redevenir junior",
+      "speakers": [
+        "Yann Bouvet — Lowit"
+      ],
+      "feedbackFrom": [],
+      "summary": "- « Schuss » du track Hors-piste, décrit d'après la captation chez Crafts Records (vidéo zTYru3vNS-A, publiée le 13 février 2024), référencée sur la page des supports ; aucun retour de participant trouvé.\n- Récit : développeur en ESN depuis six ans, sûr de lui, il voit le DDD et l'hexagonal comme des buzzwords, jusqu'à un entretien où il est jugé **« trop junior »** faute de pratiquer le TDD.\n- Rebond : demander du feedback, trier les ressources en trouvant **« ses propres experts »** un peu plus avancés que soi, apprendre avec les autres (meetups, **pair programming** hebdomadaire), accepter de ne plus être la personne la plus compétente de la pièce.\n- Méthode : objectifs à long, moyen et court terme, puis un cycle planifier, faire, vérifier, adapter qu'il reconnaît après coup comme le **PDCA de Deming** ; l'expérience passée sert de cale pour ne pas redescendre.\n- Résultat trois ans plus tard : TDD au quotidien et animation d'Event Storming dans son équipe.",
+      "summarySources": [
+        "program",
+        "transcript"
+      ]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Université : Venez construire un monolithe Spring modulaire (V. Bostoen, B. Einaudi)",
+    "Université : Voyage au cœur d'Appwrite, le backend open source qui challenge Firebase (L. Audart, M. Alves ; dépôt et docs de l'atelier publiés)",
+    "Université : La sécurité, par où commencer ? Install party (D. Aparicio, C. Aparicio ; codelab et code publiés)",
+    "Université : Recette pour des environnements aux petits oignons pour ton déploiement continu (T. Jouve, M. Vincent)",
+    "Université : Comprendre l'IA, construisez votre propre ChatGPT sécurisé avec Node.js et LangChain (Y. Lasorsa, O. Mertens)",
+    "Université : Exploiting AWS Misconfigurations, a Capture the Flag Workshop (Ben, J. Verrons)",
+    "Université : Venez créer un instagram-clone en full-stack en 3 heures (J. Arnaud, O. Leplus)",
+    "Université : Créer des plugins en Rust, TinyGo… pour vos applications Go avec WebAssembly, Wazero et Extism (P. Charrière)",
+    "Université : Docker Compose, zero to hero (G. Lours, N. De Loof)",
+    "Chaos Engineering : REX d'un DevOps ambitieux (G. Belliere ; slides publiées)",
+    "Votre propre kube as a service ? Une aventure dont vous êtes le héros (L. Tournayre)",
+    "ESI : le cache HTTP en petits bouts (Y. Schepens)",
+    "Du Flop au Top : comment améliorer vos POC ? (J. Millet)",
+    "Code Case : les méthodes de la crim adaptées au code (S. Coudert)",
+    "10 tests simples pour améliorer l'accessibilité de votre site (F.-X. Lair)",
+    "Schuss : L'Art Génératif dévoilé (L. Naccache)",
+    "Schuss : Picocli, mets du Java dans ton terminal (S. Philippart)",
+    "Schuss : De la couleur dans nos apps (E. De Saint Steban ; sources publiées)",
+    "Devenez des orfèvres de la CI (L. Anesi, M. Riclet ; slides publiées)",
+    "La checklist ultime pour rendre vos applications cloud native (K. Himeur)",
+    "Au-delà des architectures micro-services, découvrez les architectures composables (L. Carbonne)",
+    "Partez au ski en toute sécurité (B. Marron)",
+    "OAuth2, OpenID : le SSO en live-coding et sans framework (D. Garnier-Moiroux ; code publié)",
+    "STOP à l'espionnage ! Comment disparaître d'internet ? (E. Idoux, M. Alves)",
+    "Le Prompt Engineering pour les nuls (P. Laumay, B. Loup)",
+    "Web dans le cloud, piloter ses décisions par les coûts (M. Werner)",
+    "Le duo gagnant : Antora et AsciiDoc pour une documentation sans frustrations (T. Bouffard, B. Parisel ; slides et démo publiées)",
+    "CSS renaît de ses cendres (J. Arnaud, Y. Lasorsa, O. Leplus)",
+    "Green Java ou comment appliquer l'écoconception à son code (S. Banas)",
+    "Vous pouvez venir à ce talk les yeux fermés (F.-X. Lair)",
+    "Le futur du web est sur la périphérie du réseau (J. Sulpis)",
+    "Arrêtez de cacher la sécurité de votre application à côté des monstres sous votre lit (M. du Mesnil ; slides publiées)",
+    "J'ai voulu m'acheter un jogging : quand une expérience sans couture dessert l'utilisateur (J. Francois-Franco, I. Naudin)",
+    "SELECT 'amazing_features' FROM \"postgresql\" (K. Davin)",
+    "Survivre dans la JS-jungle des outils de tests (L. Quesnel)",
+    "Schuss : Automatisez l'installation de votre poste de travail (S. Metayer ; slides publiées)",
+    "Schuss : Filouter au quotidien à l'aide de petits scripts (S. Favereau)",
+    "JAVA 21 : What's new (V. Linas)",
+    "Mise en place et suivi de la sécurité grâce à la conformité SOC2 : SAST, DAST, pentest (J. Demazière)",
+    "Tester du legacy grâce à l'Approval testing (Charles, Burrito Consulting)",
+    "Ajouter facilement des animations dans sa navigation Web avec la View Transition API (A. Cantin)",
+    "Apprends à dompter la Data sans douter de toi (J. Vauchel)",
+    "Nos solutions sont-elles des problèmes ? Notre métier face au dilemme de la poule et l'œuf (C. Taret)",
+    "Rock with RAG : augmentons les Large Language Models (L. Gudet)"
+  ],
+  "sources": [
+    {
+      "label": "Programme 2024 (sched)",
+      "url": "https://snowcamp2024.sched.com/list/descriptions/"
+    },
+    {
+      "label": "Snowcamp 2024 : supports des sessions (GitHub snowcamp)",
+      "url": "https://github.com/snowcamp/snowcamp-supports-sessions/blob/main/2024.md"
+    },
+    {
+      "label": "Criteo Engineering : Highlights of SnowCamp 2024 (Medium, 15/02/2024 ; Luiza Cicone, Estelle Thou, Sylvain Dedieu, Vincent Michau, Eduardo Grajeda, Concetto Antonino Privitera, Kini)",
+      "url": "https://medium.com/criteo-engineering/highlights-from-snowcamp-2024-e51bb3a1bebb"
+    },
+    {
+      "label": "Stéphane Philippart (OVHcloud) : Back from Snowcamp 2024 (blog OVHcloud, 12/02/2024)",
+      "url": "https://blog.ovhcloud.com/back-from-snowcamp-2024/"
+    },
+    {
+      "label": "Jérôme Tama : Quarkus: Greener, Better, Faster, Stronger (dev.to, décembre 2023)",
+      "url": "https://dev.to/onepoint/quarkus-greener-better-faster-stronger-55ea"
+    },
+    {
+      "label": "Slides de Luiza Cicone : Staff engineer or manager? (PDF)",
+      "url": "https://github.com/luiza-cicone/random/blob/main/SnowCamp_2024.pdf"
+    },
+    {
+      "label": "Slides de Rémi Verchère : 2 ans de migrations cloud native (version Snowcamp)",
+      "url": "https://presentations.verchere.fr/Migration_Cloud_ETI_Snowcamp_2024/"
+    },
+    {
+      "label": "Slides de Yohan Lasorsa : développement augmenté à l'IA (non lues, contenu dynamique)",
+      "url": "https://sinedied.github.io/talks/ai-for-dev/"
+    },
+    {
+      "label": "Captation externe utilisée pour le transcript : La compression Web (MiXiT 2024)",
+      "url": "https://www.youtube.com/watch?v=zxiJXQpRa4E"
+    },
+    {
+      "label": "Captation externe utilisée pour le transcript : Loi de Conway (FlowCon 2022)",
+      "url": "https://www.youtube.com/watch?v=GyWUN27Ercg"
+    },
+    {
+      "label": "Captation externe utilisée pour le transcript : Adoptez la clean archigonale (Sunny Tech 2024)",
+      "url": "https://www.youtube.com/watch?v=3Zl6kA1uilU"
+    },
+    {
+      "label": "Captation externe utilisée pour le transcript : Frameworks frontend et réactivité (Volcamp 2024)",
+      "url": "https://www.youtube.com/watch?v=xHYqU06klPE"
+    },
+    {
+      "label": "Captation externe utilisée pour le transcript : Go Serverless! But is it secure? (GDG France)",
+      "url": "https://www.youtube.com/watch?v=m9sLWY8ddvc"
+    },
+    {
+      "label": "Captation externe utilisée pour le transcript : Il n'est jamais trop tard pour redevenir junior (Crafts Records)",
+      "url": "https://www.youtube.com/watch?v=zTYru3vNS-A"
+    },
+    {
+      "label": "Posts LinkedIn : aucun lu (aucun post sur Snowcamp 2024 remonté en recherche)"
+    }
+  ]
 }

@@ -12,10 +12,10 @@
   "dateConfidence": "ok",
   "note": "Journée unique le 13 octobre 2026 à Station F (live YouTube « 4th Edition » et communiqué Scaleway du 13/10). Programme organisé autour de trois thèmes présentés par Scaleway en août : ENTER (l'IA abaisse la barrière d'entrée sur de nouveaux marchés), SHIFT (positions, modèles et catégories bougent plus vite) et CTRL (garder la main sur ses données, modèles et agents), qui donnent leur nom aux trois playlists de replays. Une fréquentation de « 2 000+ » n'est citée que par des agrégateurs d'événements, non confirmée par une source officielle lue.",
   "status": "synthesized",
-  "synthesisUpdatedAt": "2026-10-26",
-  "revisit": "26/10/2026 (soir) : 31 replays sur 35 résumés d'après transcript, mais toujours aucun retour de participant (6 recherches web supplémentaires, sans résultat). À reprendre : transcript du live d'ouverture uB62scVCtio dès que YouTube le génère (Krikorian, Zdravkovic, Schölkopf, Ponce, Qwen, Mistral Large 4), transcripts des replays 17mPNKDJz7Y, t_ufZTur_M8, NjSi08FFbBo, qutb_0wAXoQ, recherche LinkedIn par nom de speaker, lecture du programme officiel via un navigateur.",
-  "corpus": "Transcripts (sous-titres YouTube apparus après la publication du 22/10) de 31 des 35 replays des playlists ENTER, SHIFT et CTRL, liste des intervenants du live d'ouverture, billet Scaleway sur les thèmes (10/08/2026) et communiqués Scaleway et iliad du 13/10. Presse : Maddyness, Journal du Net, StorageNewsletter, Telecompaper ; deux billets de développeurs qui analysent les annonces à distance (Elouan Laurent, 15/10 ; Taha Echakiri, 18/10).",
-  "limits": "Aucun post LinkedIn ni compte rendu de participant retrouvé à J+13 (18 recherches web au total) : les résumés disent ce qui a été dit sur scène, pas ce que la salle en a retenu. Le live d'ouverture (2 h 12 : Mistral, Scaleway, Bioptimus, KE:SAI, Krikorian, Qwen…) et quatre replays (Reachy Mini, Black Forest Labs, Entalpic, Gradium) n'ont toujours aucun sous-titre ; chiffres et cas clients cités sur scène sont ceux des entreprises, non vérifiés. Programme complet (horaires, workshops non filmés) non lu.",
+  "synthesisUpdatedAt": "2026-10-27",
+  "revisit": "27/10/2026 : 34 replays sur 35 résumés d'après transcript, toujours aucun retour de participant à J+14 (23 recherches web au total, sans résultat). À reprendre une dernière fois : transcript du live d'ouverture uB62scVCtio (Mistral Large 4, keynote Scaleway, Krikorian, Zdravkovic, Schölkopf, Ponce, Qwen) et du replay Gradium qutb_0wAXoQ dès que YouTube les génère ; lecture du programme officiel via un navigateur.",
+  "corpus": "Transcripts (sous-titres YouTube apparus entre le 22 et le 27/10) de 34 des 35 replays des playlists ENTER, SHIFT et CTRL, liste des intervenants du live d'ouverture, billet Scaleway sur les thèmes (10/08/2026) et communiqués Scaleway et iliad du 13/10. Presse : Maddyness, Journal du Net, StorageNewsletter, Telecompaper ; deux billets de développeurs qui analysent les annonces à distance (Elouan Laurent, 15/10 ; Taha Echakiri, 18/10).",
+  "limits": "Aucun post LinkedIn ni compte rendu de participant retrouvé à J+14 (23 recherches web au total, les moteurs ne renvoyant que des fiches d'agrégateurs) : les résumés disent ce qui a été dit sur scène, pas ce que la salle en a retenu. Le live d'ouverture (2 h 12 : Mistral, Scaleway, Bioptimus, KE:SAI, Krikorian, Qwen…) et le replay Gradium n'ont toujours aucun sous-titre ; chiffres et cas clients cités sur scène sont ceux des entreprises, non vérifiés. Programme complet (horaires, workshops non filmés) non lu.",
   "tldr": "Une 4e édition placée sous le triptyque **« ENTER. SHIFT. CTRL. »**, sans annonce fracassante ni star selon Maddyness : Mistral y a présenté **Mistral Large 4 en open weight**, Scaleway **de nouvelles GPU Zones à Copenhague (NVIDIA B300) et Stockholm (AMD MI355X)**, et le programme a misé sur **la souveraineté, les alternatives au GPU, les world models et l'IA pour la science**.",
   "keyTakeaways": [
     "Distinguer capacité annoncée et capacité disponible : les clusters de Stockholm et Copenhague et l'offre Jotunn8 n'ont ni date de mise en service ni prix publics (Taha Echakiri, Elouan Laurent).",
@@ -245,15 +245,16 @@
         "Emilien Maudet — Scaleway"
       ],
       "feedbackFrom": [],
-      "summary": "- Atelier pratique : connecter le robot **Reachy Mini** à des modèles hébergés sur Scaleway.\n- Objectif : transformer des capacités IA du cloud en **comportements interactifs** du robot.\n- Premier pas proposé vers l'« IA physique » pour des développeurs ; replay le plus vu de la série au 26/10 (moins de 150 vues).\n- D'après le descriptif officiel du replay (toujours aucun sous-titre YouTube au 26/10/2026 au soir, aucun retour de participant trouvé).",
+      "summary": "- Projet personnel présenté sur scène : donner de la « chaleur » à un assistant vocal en l'incarnant dans le **Reachy Mini** (Pollen Robotics, Bordeaux, racheté par Hugging Face), en gardant les données sur le portable et en n'envoyant l'inférence qu'au cloud de Scaleway.\n- Architecture : un **seul binaire Go** (boucle de tours limitée à cinq, templating, compaction, mémoire, outils en gRPC), Qwen 3.5 multimodal et Whisper large v3 sur les Generative APIs, Pocket TTS de Kyutai en conteneur local, détection d'activité vocale, reconnaissance du visage et de la voix en local ; outils de recherche web, regard (caméra), minuteurs, calculatrice, MCP.\n- Le « corps » expose ses propres outils (tête, antennes, photo) et gère seul les **mouvements d'attente** et le suivi de visage, hors du LLM ; une mémoire en Markdown sur disque (BM25, faits, relations) remonte d'elle-même dans le contexte.\n- Psychologie : viser *« alive, not human »* pour éviter la vallée de l'étrange ; prompt qui interdit de feindre des émotions, trois phrases maximum, effet miroir du ton, règle du pic et de la fin, questions de relance.\n- Démo en direct (description de la salle, rotation de 90°) ; questions du public sur la latence (due au raisonnement du LLM, à réduire), le passage de la vision au modèle et la synchronisation geste-parole, calculée côté robot.\n- Aucun retour de participant trouvé : résumé fondé sur le transcript (sous-titres YouTube apparus le 27/10/2026) et le descriptif officiel.",
       "summarySources": [
+        "transcript",
         "program"
       ],
       "video": {
         "youtubeId": "17mPNKDJz7Y",
         "title": "Scaleway | AI in the Physical World: Bringing Life to the Reachy Mini Robot",
         "publishedAt": "2026-10-22",
-        "transcript": false
+        "transcript": true
       }
     },
     {
@@ -378,15 +379,16 @@
         "Anthony Charbonnier — Black Forest Labs"
       ],
       "feedbackFrom": [],
-      "summary": "- Une fois publiés en **open weight**, les modèles génératifs sont emmenés par la communauté sur des matériels et des usages bien au-delà de leur conception initiale.\n- Retour d'expérience tiré des dernières versions de **FLUX** : l'architecture ouverte accélère les cycles d'innovation.\n- Le talk détaille l'ingénierie nécessaire entre le téléchargement d'un checkpoint et un pipeline de production résilient à haut débit (latence, orchestration).\n- D'après le descriptif officiel du replay (toujours aucun sous-titre YouTube au 26/10/2026 au soir, aucun retour de participant trouvé).",
+      "summary": "- Anthony Charbonnier (go-to-market) présente Black Forest Labs : une centaine de personnes entre Fribourg et San Francisco, fondée par des auteurs du papier sur la diffusion latente, environ **600 millions de téléchargements** sur Hugging Face, modèles intégrés dans des outils comme Canva ou Adobe ; classements revendiqués en tête ou presque en vidéo et en robotique.\n- Pari technique : **un même backbone** entraîné sur toutes les modalités (image, vidéo, audio, action), la vidéo apprenant au modèle la physique (lumière, causalité) ; le même modèle piloterait des bras robotisés après quelques heures d'entraînement. Les sous-titres automatiques restituent mal le nom des modèles.\n- Pourquoi l'open weight : des milliers de chercheurs et d'entreprises explorent les usages à leur place, exécution hors API (infra propre, portables ASUS ProArt avec modèles préchargés, usines) ; red teaming avant publication, avec *« 10 times less vulnerabilities »* selon un audit tiers commandé par l'entreprise.\n- Modèle économique : **licence dès l'usage commercial**, modèles réservés à l'API, et surtout du sur-mesure par des ingénieurs FDE (fine-tuning sur la PI du client, harness, modération, déploiements à fort débit).\n- Pari final : chaque entreprise possédera sa propre **pile d'intelligence visuelle**, un modèle par licence de films ou par type de véhicule. Sur scène, peu de détails sur l'ingénierie de production annoncée dans le descriptif ; ton commercial.\n- Aucun retour de participant trouvé : résumé fondé sur le transcript (sous-titres YouTube apparus le 27/10/2026) et le descriptif officiel.",
       "summarySources": [
+        "transcript",
         "program"
       ],
       "video": {
         "youtubeId": "t_ufZTur_M8",
         "title": "Black Forest labs | Unlocking Open Weight: Bridging the Gap Between Download and Production",
         "publishedAt": "2026-10-22",
-        "transcript": false
+        "transcript": true
       }
     },
     {
@@ -672,15 +674,16 @@
         "Lucile Ritchie — Entalpic"
       ],
       "feedbackFrom": [],
-      "summary": "- La découverte de matériaux reste largement **empirique**, et la simulation coûte cher et limite le nombre de candidats testés.\n- L'Atomistic Discovery Engine combine modèles génératifs et prédictifs et simulations physiques pour **classer les candidats** avant validation expérimentale.\n- Domaines : matériaux semi-conducteurs et catalyse.\n- D'après le descriptif officiel du replay (toujours aucun sous-titre YouTube au 26/10/2026 au soir, aucun retour de participant trouvé).",
+      "summary": "- La découverte de matériaux reste du **tâtonnement** en laboratoire : bande passante limitée, contraintes concurrentes, savoir dispersé, simulations DFT coûteuses.\n- Cible : les **précurseurs** (un atome métallique entouré de ligands) qui déposent des couches atomiques sur les puces, nécessaires quand la gravure vise le nanomètre ; environ 1 000 précurseurs connus, jusqu'à un million explorables selon Entalpic. La catalyse est un second domaine.\n- Un **entonnoir** : génération par modèles maison (apprentissage par renforcement et transformers), contraintes métier dont la liberté d'exploitation au regard des brevets, prédiction de propriétés (R² de 0,79 sur la pression de vapeur ; 83 % de précision et près de 80 % de rappel au-dessus ou en dessous d'un seuil de fusion), puis simulation des réactions de surface par DFT et potentiels interatomiques appris.\n- Données : plus de 500 000 documents (brevets, publications), plus de 9 millions de relaxations simulées, données de laboratoires partenaires, curation par des chimistes, et le jeu ouvert LeMaterial lancé avec Hugging Face.\n- Premier cas industriel, le craquage de l'ammoniac : de 20 000 catalyseurs générés à **10 testés en laboratoire**. Entalpic (Station F, deux ans, 30 personnes, 10 M$ levés) revendique d'aller *« deep and not broad »*.\n- Aucun retour de participant trouvé : résumé fondé sur le transcript (sous-titres YouTube apparus le 27/10/2026) et le descriptif officiel.",
       "summarySources": [
+        "transcript",
         "program"
       ],
       "video": {
         "youtubeId": "NjSi08FFbBo",
         "title": "Entalpic | From Trial and Error to AI-Driven Materials Discovery",
         "publishedAt": "2026-10-22",
-        "transcript": false
+        "transcript": true
       }
     },
     {
@@ -776,7 +779,7 @@
         "Neil Zeghidour — Gradium"
       ],
       "feedbackFrom": [],
-      "summary": "- Thèse : si **la voix devient le prochain système d'exploitation**, les règles d'architecture logicielle vont changer.\n- Parcours de l'IA conversationnelle, des commandes vocales applicatives aux pipelines temps réel à très faible latence.\n- Les architectures **en cascade** actuelles ne seraient qu'une étape vers une couche native **full-duplex**.\n- D'après le descriptif officiel du replay (toujours aucun sous-titre YouTube au 26/10/2026 au soir, aucun retour de participant trouvé).",
+      "summary": "- Thèse : si **la voix devient le prochain système d'exploitation**, les règles d'architecture logicielle vont changer.\n- Parcours de l'IA conversationnelle, des commandes vocales applicatives aux pipelines temps réel à très faible latence.\n- Les architectures **en cascade** actuelles ne seraient qu'une étape vers une couche native **full-duplex**.\n- D'après le descriptif officiel du replay (toujours aucun sous-titre YouTube au 27/10/2026, aucun retour de participant trouvé).",
       "summarySources": [
         "program"
       ],
@@ -916,7 +919,7 @@
       "url": "https://www.youtube.com/playlist?list=PLFJVjVLsGcLA"
     },
     {
-      "label": "Transcripts : sous-titres YouTube (en-GB) de 31 replays des playlists ENTER, SHIFT et CTRL, lus le 26/10/2026",
+      "label": "Transcripts : sous-titres YouTube (en-GB) de 34 replays des playlists ENTER, SHIFT et CTRL, lus les 26 et 27/10/2026",
       "url": "https://www.youtube.com/@Scaleway-cloud"
     },
     {
@@ -956,7 +959,7 @@
       "url": "https://dev.to/echakiri/scaleway-adds-gpu-zones-in-two-countries-on-two-accelerator-families-g8c"
     },
     {
-      "label": "Posts LinkedIn : aucun post de retour de participant retrouvé au 26/10/2026 (deux passes de recherche)"
+      "label": "Posts LinkedIn : aucun post de retour de participant retrouvé au 27/10/2026 (trois passes de recherche, dont hashtags #aiPULSE et #aipulse2026)"
     }
   ]
 }
