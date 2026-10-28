@@ -4,11 +4,534 @@
   "title": "ai-PULSE 2023",
   "edition": "1re édition",
   "start": "2023-11-17",
+  "end": "2023-11-17",
   "city": "Paris",
   "venue": "Station F",
   "url": "https://web.archive.org/web/20231110/https://www.ai-pulse.eu/",
   "dateConfidence": "ok",
-  "note": "Organisé par Scaleway (groupe iliad).",
-  "status": "pending",
-  "sessions": []
+  "note": "Organisé par Scaleway (groupe iliad). Première édition, journée unique le vendredi 17 novembre 2023 à Station F : keynotes le matin (animées par Aude Durand, directrice générale déléguée d'iliad), sessions techniques l'après-midi sur deux scènes (Master Stage et Central Room). « Over a thousand people » sur place selon l'ouverture, une cinquantaine de speakers annoncés. Sponsors cités sur scène : NVIDIA, DDN, Ampere (AI Platform Alliance), HPE.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-28",
+  "revisit": "Aucun retour de participant (post LinkedIn, blog) retrouvé : la synthèse repose sur les transcripts automatiques et sur la presse. Restent à couvrir : les longs replays MASTER STAGE (seOfvUeiUT0) et CENTRAL ROOM (ApFPSEE8Kc0), non transcrits, qui peuvent contenir d'autres sessions ; le message vidéo d'Emmanuel Macron, en français et non sous-titré dans le replay anglais (voir la version FR Tw0i1fXNpNE) ; l'article « Best quotes from ai-PULSE 2023 » du blog Scaleway (HTTP 403). Chercher des posts LinkedIn publiés du 17 au 30 novembre 2023 (#aiPULSE, Kyutai, noms des speakers).",
+  "corpus": "Transcripts automatiques (sous-titres YouTube anglais) du replay des keynotes du matin (93 min), de 14 talks et panels de l'après-midi publiés sur la playlist « ai-PULSE 2023 - 🇬🇧 version » et du fireside chat publié par NVIDIA. Presse du 16 au 23 novembre 2023 : Maddyness, TechCrunch, ActuIA, FrenchWeb, Univers Freebox, blog NVIDIA, billet de Golem.ai.",
+  "limits": "Aucun retour de participant : les résumés décrivent ce qui a été dit sur scène et ce qu'en a retenu la presse, pas la réception par le public. Les sous-titres automatiques déforment les noms propres : plusieurs panélistes ne sont identifiés que par leur prénom ou leur entreprise. Les longs replays des deux scènes n'ont pas été transcrits et le message d'Emmanuel Macron n'est connu que par la presse et par sa fin en anglais. Beaucoup de talks de sponsors (Ampere, DDN, HPE) relèvent de la présentation commerciale.",
+  "tldr": "Une première édition qui mêle **acte politique** (lancement du laboratoire **Kyutai**, près de 300 M€ pour une IA ouverte, sous le regard d'Eric Schmidt et du gouvernement) et **retours d'ingénieurs** : Mistral 7B, Llama 2, poolside, Nabla et PhotoRoom racontent comment ils entraînent et mettent en production leurs modèles, sur fond de calcul enfin disponible en Europe (Nabu 2023, 1 016 H100) et de **plaidoyer unanime pour l'open source**.",
+  "keyTakeaways": [
+    "Un produit d'IA générative grand public se joue sur la vitesse : PhotoRoom n'a vu aucun effet de sa V1 à 3 minutes de génération, et a dû descendre à environ 2 secondes (Matthieu Rouif).",
+    "Ne pas demander aux utilisateurs d'écrire des prompts : *« people don't want to write prompts »* ; PhotoRoom génère légende et prompt suggéré avec des modèles dédiés.",
+    "Traiter l'API d'un LLM comme une dépendance instable : redondance multi-régions, fallback, tests de non-régression évalués par LLM et vérification fait par fait contre les hallucinations (Martin Raison, Nabla).",
+    "Remplacer un grand modèle généraliste par un petit modèle affiné sur les tâches simples (Mistral 7B affiné chez Nabla) et le faire tourner localement quand c'est possible (Mistral 7B sur MacBook ou iPhone, Arthur Mensch).",
+    "Avant d'entraîner sur un nouveau cluster, le mesurer soi-même : les premiers benchmarks all-reduce de Hugging Face sur Nabu étaient mauvais tant que les conteneurs et les interfaces InfiniBand n'étaient pas bien configurés (Guillaume Salou).",
+    "Soigner les données plus que le volume : la déduplication a été le premier facteur de qualité pour Falcon (Julien Launay) ; *« the data work is undervalued »* aussi en RLHF (LightOn, InstaDeep).",
+    "Pour décider entre attendre le prochain modèle et construire le sien, faire le calcul explicitement : Alan a parié sur son propre modèle de lecture de factures plutôt que d'attendre GPT-4 Vision (panel AI for organizations).",
+    "Dans les environnements critiques, garder l'humain dans la boucle et conserver la trace du processus de décision, pas seulement le résultat (Killian Vermersch, Golem.ai).",
+    "Penser l'empreinte au-delà de la puce : refroidissement, fabrication (80 à 90 % du CO2 selon Gladia) et effet rebond ; Quandela met en garde contre le greenwashing des discours d'efficacité."
+  ],
+  "sessions": [
+    {
+      "id": "ouverture-scaleway-damien-lucas",
+      "day": "2023-11-17",
+      "type": "keynote",
+      "title": "Ouverture : les annonces IA de Scaleway",
+      "speakers": [
+        "Aude Durand — groupe iliad",
+        "Damien Lucas — Scaleway"
+      ],
+      "feedbackFrom": [
+        "Maddyness (presse, 17/11/2023)",
+        "Blog Golem.ai (exposant, 23/11/2023)"
+      ],
+      "summary": "- **Sur scène** : Aude Durand ouvre devant *« over a thousand people »* une journée pensée pour *« the doers and makers of AI »* : leaders et chercheurs le matin, sessions plus pratiques l'après-midi.\n- Damien Lucas (Scaleway) annonce un partenariat **NVIDIA Inception** (crédits cloud gratuits, **allocation prioritaire de H100**), des **GPU L4** pour début 2024, des **instances ARM** (Ampere) et **Apple M2 Pro** disponibles le jour même, et un **Quantum as a Service** avec Quandela, simulé sur GPU.\n- Il présente les premiers usages du supercalculateur **Nabu 2023** : pré-entraînement pour poolside, affinage de Llama 2 par l'équipe data de Free Pro, benchmarks de Hugging Face, entraînements lancés par Mistral AI. Il rappelle aussi le programme de startups open source monté avec Meta, Hugging Face, Station F et HEC.\n- **Côté presse**, Maddyness retient une ouverture « technique » et une ambiance enthousiaste ; Golem.ai (exposant) détaille Nabu (127 DGX H100, 1 016 GPU) et sa petite version Jeroboam.\n- Lecture critique : contrairement à ce qu'annonçait la presse, ce n'est pas Xavier Niel qui ouvre la journée ; il n'arrive sur scène qu'avec Kyutai.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "O-GL-h3KgIA",
+        "title": "[REPLAY] 🇬🇧 Opening Keynotes: ai-PULSE, Europe's Premier AI Conference",
+        "transcript": true,
+        "startSeconds": 36
+      }
+    },
+    {
+      "id": "fireside-chat-jensen-huang-aude-durand",
+      "day": "2023-11-17",
+      "type": "keynote",
+      "title": "Fireside chat : la seconde vague de l'IA",
+      "speakers": [
+        "Jensen Huang — NVIDIA",
+        "Aude Durand — groupe iliad"
+      ],
+      "feedbackFrom": [
+        "Blog NVIDIA (Brian Caulfield, 17/11/2023)",
+        "Maddyness (presse, 17/11/2023)"
+      ],
+      "summary": "- **Sur scène** : retenu à San Francisco par l'APEC, Jensen Huang intervient en visio (dans le replay de la matinée, à partir de 11 min 55).\n- L'Europe a les talents (*« Europe has always been rich with AI expertise »*) : NVIDIA y travaille avec **près de 4 000 startups IA, dont 400 en France**. Il lui faut aussi l'infrastructure, d'où l'importance de Scaleway, et des données régionales.\n- **Nabu 2023** est un clone d'EOS et d'Azure Eagle (10 000 Hopper, 3e du Top500) : *« we call it a server … but in every single way it's a supercomputer »*. Il annonce que la **H200 double les performances d'inférence**, donc divise leur coût par deux, présente l'**AI Foundry** et dit vouloir voir DGX Cloud chez Scaleway.\n- **Seconde vague** : *« every region and every country needs to build their sovereign AI »*, et l'IA gagne les industries traditionnelles (biologie numérique, industrie, robotique).\n- **Open source** : *« if not for Llama 2, if not for the exciting Mistral 7B, how would the energy around generative AI be as great »* ; il salue Hugging Face.\n- Lecture critique : un fournisseur qui vend les GPU de Scaleway, et qui glisse ses propres annonces ; le compte rendu écrit le plus détaillé vient du blog de NVIDIA.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "yuWNb-Iw8vA",
+        "title": "Fireside Chat With Jensen Huang and Aude Durand at ai-PULSE",
+        "publishedAt": "2023-11-20",
+        "transcript": true
+      }
+    },
+    {
+      "id": "panel-schmidt-niel-saade",
+      "day": "2023-11-17",
+      "type": "keynote",
+      "title": "Les donateurs fondateurs de Kyutai : Xavier Niel, Rodolphe Saadé, Eric Schmidt",
+      "speakers": [
+        "Xavier Niel — groupe iliad",
+        "Rodolphe Saadé — CMA CGM",
+        "Eric Schmidt — ancien CEO de Google",
+        "Aude Durand — groupe iliad (animation)"
+      ],
+      "feedbackFrom": [
+        "Maddyness (presse)",
+        "TechCrunch (presse)",
+        "ActuIA (presse)"
+      ],
+      "summary": "- **Sur scène** : trois entretiens successifs menés par Aude Durand. Xavier Niel explique vouloir des modèles créés en Europe et **ouverts** (*« we like to use the word open science »*), et annonce que le financement passe de 100 M€ à **près de 300 M€**.\n- Rodolphe Saadé (CMA CGM, *« a very conservative business, … I wear a tie »*) justifie son engagement par l'usage de l'IA pour optimiser routes et consommation de carburant : *« we should not oppose business and nonprofit initiatives »*.\n- Eric Schmidt : la France a une formation scientifique de niveau mondial, le problème est **Bruxelles et l'AI Act** : *« this is not a technical problem, this is a regulatory problem »* (*« sorry, I'm an American, I can just be obnoxious »*).\n- Il défend un seuil d'enregistrement à 10^26 FLOPS, prédit des modèles fermés plus puissants mais une **adoption plus large de l'open source** (*« open source has always ultimately won »*), tout en reconnaissant un **risque de prolifération** des modèles ouverts.\n- Appel final aux fortunés : *« if you have money, give some of your money to research »*.\n- **Côté presse**, Maddyness résume Schmidt d'un *« problème de régulation, pas d'innovation »* ; TechCrunch rapporte que Niel voit dans la régulation une barrière à l'entrée.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "O-GL-h3KgIA",
+        "title": "[REPLAY] 🇬🇧 Opening Keynotes: ai-PULSE, Europe's Premier AI Conference",
+        "transcript": true,
+        "startSeconds": 1750
+      }
+    },
+    {
+      "id": "lancement-kyutai",
+      "day": "2023-11-17",
+      "type": "keynote",
+      "title": "Lancement de Kyutai, laboratoire de recherche ouverte en IA",
+      "speakers": [
+        "Patrick Pérez — Kyutai",
+        "Hervé Jégou — Kyutai",
+        "Laurent Mazaré — Kyutai",
+        "Edouard Grave — Kyutai",
+        "Neil Zeghidour — Kyutai",
+        "Alexandre Défossez — Kyutai"
+      ],
+      "feedbackFrom": [
+        "TechCrunch (Romain Dillet, 17/11/2023)",
+        "Maddyness (presse)",
+        "ActuIA (presse)"
+      ],
+      "summary": "- **Sur scène** : Patrick Pérez dévoile le nom, **Kyutai** (« sphère » en japonais, qui finit par « ai »), et la mission : *« build and democratize general artificial intelligence through open science »*, en publiant modèles et code et en formant doctorants et stagiaires.\n- Ingrédients : une équipe forte, l'accès à **Nabu 2023** et trois conseillers scientifiques (**Yejin Choi, Yann LeCun, Bernhard Schölkopf**).\n- Chacun présente sa trajectoire : FAISS comme exemple d'open source repris par l'industrie (Jégou), licence permissive incluant **poids et code d'entraînement** (Mazaré), co-création de Llama et modèles plus efficaces, modulaires et capables d'utiliser des outils (Grave), **multimodalité** et AudioLM (Zeghidour), MusicGen et décodage de l'activité cérébrale (Défossez).\n- Objectif concret évoqué : un assistant personnel qui tourne sur un appareil grand public. Prochaine étape : recruter et entraîner les premiers modèles.\n- **Côté presse**, TechCrunch rapporte que Défossez ne vise pas la vitesse de Mistral mais une compréhension scientifique, avec un premier résultat attendu sous un an, et rappelle qu'OpenAI aussi était née à but non lucratif.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "O-GL-h3KgIA",
+        "title": "[REPLAY] 🇬🇧 Opening Keynotes: ai-PULSE, Europe's Premier AI Conference",
+        "transcript": true,
+        "startSeconds": 2928
+      }
+    },
+    {
+      "id": "intervention-gouvernement-macron-barrot",
+      "day": "2023-11-17",
+      "type": "other",
+      "title": "Intervention de Jean-Noël Barrot et message d'Emmanuel Macron",
+      "speakers": [
+        "Jean-Noël Barrot — ministre délégué chargé du Numérique",
+        "Emmanuel Macron — Président de la République (vidéo)"
+      ],
+      "feedbackFrom": [
+        "Maddyness (presse)",
+        "TechCrunch (presse)",
+        "ActuIA (presse)"
+      ],
+      "summary": "- **Sur scène** : Jean-Noël Barrot donne trois raisons de miser sur l'IA (climat, santé, accès aux services publics), puis plaide pour des **modèles français et européens ouverts** : *« the one that builds the model … has much more power on the tool than the one that regulates it »*.\n- Sur l'AI Act, il défend une approche *« radically pro-innovation »* : l'Europe doit être *« an innovation superpower, not a normative superpower »*. Il répond à Eric Schmidt qu'on peut convaincre Bruxelles plutôt que la « contrôler ».\n- Il compare la journée à l'ouverture de Station F en 2017 et voit dans les **premières allocations NVIDIA en Europe** un signal fort : *« we may have lost some battles in the digital era but we certainly have not lost the war »*.\n- Le message vidéo d'Emmanuel Macron, en français, n'est pas sous-titré dans le replay anglais. Sa fin salue *« at least 300 million euro »* investis. Selon la presse, il y dit *« Je crois fortement à l'open source »* (Maddyness) et demande de réguler les usages plutôt que les modèles (TechCrunch).",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "O-GL-h3KgIA",
+        "title": "[REPLAY] 🇬🇧 Opening Keynotes: ai-PULSE, Europe's Premier AI Conference",
+        "transcript": true,
+        "startSeconds": 4260
+      }
+    },
+    {
+      "id": "mistral-ai-open-source-arthur-mensch",
+      "day": "2023-11-17",
+      "type": "talk",
+      "title": "Mistral AI's Open Source Initiative",
+      "speakers": [
+        "Arthur Mensch — Mistral AI"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : six mois après sa création (18 à 20 personnes), Mistral AI a reconstruit toute sa chaîne (données, entraînement, évaluation, inférence) pendant l'été : *« open source is the way to make AI useful »*.\n- **Mistral 7B** (Apache 2.0) bat Llama 2 13B sur tous les benchmarks et tourne sur MacBook (environ 25 tokens/s) ou iPhone 15. Choix clé : la **sliding window attention**, qui divise le cache KV par 4, présenté comme *« the most outstanding problem »* de l'inférence.\n- La communauté en a tiré des dérivés (Zephyr 7B de Hugging Face, versions à contexte 128k). Le modèle est chez trois hyperscalers, bientôt sur Scaleway, et de nouveaux entraînements tournent sur le SuperPOD Scaleway.\n- Aucune annonce : *« we announce when we announce »*, et *« we never comment fundraising »*. En Q&A : modèle entraîné en anglais seulement, publications scientifiques rares.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "5fNtOsu3YvQ",
+        "title": "Mistral AI's Open Source Initiative | Arthur Mensch, Mistral AI | #aiPULSE 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "llm-past-present-future-thomas-scialom",
+      "day": "2023-11-17",
+      "type": "talk",
+      "title": "LLM past, present, and future",
+      "speakers": [
+        "Thomas Scialom — Meta"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : un historique des LLM, de la prédiction du mot suivant vue comme une compression au scaling de GPT-3, à la correction de Chinchilla, puis à **Llama**, qui entraîne plus longtemps des modèles plus petits parce que l'**inférence coûte cher**.\n- Llama 1 a nourri plus de 7 000 projets de recherche. Pour Llama 2, l'annotation de préférences coûte environ dix fois moins cher que le SFT ; reward model et rejection sampling donnent plus de 50 % de victoires contre ChatGPT (GPT-4 en juge).\n- Affirmation forte : *« the language model is already better than most of the humans at writing tasks »*.\n- Perspectives : multimodalité, usage d'outils (Toolformer), robotique ; *« we haven't finished with scaling laws »*. Sur le « perroquet stochastique », il répond franchement *« I don't know »*.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "YKLcprdaFGc",
+        "title": "LLM past, present, and future | Thomas Scialom, Meta | #aiPULSE 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "hugging-face-ml-infrastructure-guillaume-salou",
+      "day": "2023-11-17",
+      "type": "talk",
+      "title": "Revolutionizing ML Infrastructure Choices",
+      "speakers": [
+        "Guillaume Salou — Hugging Face"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : le responsable infrastructure de Hugging Face retrace la croissance de la plateforme (plus de 300 000 modèles, 70 000 datasets, Spaces passés de 300 à plus de 30 000 en deux ans) et BLOOM, entraîné sur Jean Zay : *« it's some kind of the wild west of open source »*.\n- **Retour d'expérience sur Nabu 2023** : les premiers tests all-reduce sont *« not good at all »* face à la cible. Les correctifs : conteneurs imposés par NVIDIA, variables d'environnement, exclusion des interfaces InfiniBand réservées au stockage.\n- Les bibliothèques comme Apex ou Flash Attention sont pénibles à conteneuriser. Sur un benchmark StarCoder de 4 à 64 nœuds, les TFLOPS par GPU baissent quand on ajoute des nœuds, et il note un désaccord sur la formule même de calcul des TFLOPS.\n- Conseil : toujours mesurer soi-même les performances d'un cluster. En Q&A, face aux GPTs d'OpenAI : *« we will still be an open source company »*.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "69Yd2fKFeRc",
+        "title": "Revolutionizing ML Infrastructure Choices | Guillaume Salou, Hugging Face | #aiPULSE 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "poolside-future-of-software",
+      "day": "2023-11-17",
+      "type": "talk",
+      "title": "The future of software is AI, the future of AI is software",
+      "speakers": [
+        "Jason Warner — poolside",
+        "Eiso Kant — poolside"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : les deux cofondateurs, tout juste sortis du mode furtif, racontent *« an OpenAI induced existential crisis »* et leur choix de se concentrer sur une seule capacité, le **code**, comme chemin vers le raisonnement et la planification.\n- Méthode : le **reinforcement learning from code execution feedback**, sur plus de 10 000 dépôts rendus exécutables et des millions de tâches validées par des tests, l'« oracle de vérité » : *« neural networks eat code »*.\n- Prédictions : un assistant IA pour chaque développeur sous 24 mois ; dans 3 à 5 ans, la majorité du logiciel créée par des non-développeurs et des données d'entraînement presque entièrement synthétiques.\n- Point de tension : interrogés sur l'alignement par un représentant de The Future Society, ils rejettent le scénario « Terminator » ; Eiso Kant dit ne voir aucun signe d'emballement des modèles autorégressifs et défend l'interprétabilité.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "8r7HJlLxYdM",
+        "title": "The future of software is AI, the future of AI is software | Poolside | #aiPULSE 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "nabla-llm-healthcare-martin-raison",
+      "day": "2023-11-17",
+      "type": "talk",
+      "title": "An LLM cure for healthcare software",
+      "speakers": [
+        "Martin Raison — Nabla"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : Nabla Copilot transcrit la consultation et rédige la note clinique en temps réel ; gain revendiqué d'environ **2 heures par jour** pour le médecin.\n- **Latence et coût** : GPT-4 via Azure deux fois plus rapide qu'OpenAI, répartition de charge entre régions (x3 à x4), découpage des longues consultations ; la version 32k coûte deux fois plus que la 8k.\n- **Fiabilité** : il critique l'instabilité des API (pannes, modèles changés par Azure qui cassent les prompts) et y répond par redondance, fallback et tests unitaires évalués par LLM.\n- **Hallucinations** : *« in a healthcare context this is obviously unacceptable »* ; vérification fait par fait et relecture facilitée, sans garantie absolue.\n- Whisper affiné pour le vocabulaire médical, **Mistral 7B affiné** pour les tâches simples, aucune donnée stockée par défaut (RGPD, HIPAA).",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "15Zych9Nojw",
+        "title": "An LLM cure for healthcare software | Martin Raison, Nabla | #aiPULSE 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "photoroom-user-centric-genai-matthieu-rouif",
+      "day": "2023-11-17",
+      "type": "talk",
+      "title": "Building a user centric Gen AI product",
+      "speakers": [
+        "Matthieu Rouif — PhotoRoom"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : PhotoRoom enchaîne environ six modèles (détourage, compréhension du produit, génération de scène, ombres, upscale) ; chiffres revendiqués : plus de 50 M$ de revenu récurrent, plus de 2 milliards d'images générées.\n- **Récit d'échec** : la V1 de génération n'a eu aucun effet sur la croissance. Trois leçons : la **vitesse** (de 3 minutes à environ 2 secondes, une session mobile dure 6 à 7 minutes), **zéro hallucination sur le produit vendu**, et *« people don't want to write prompts »*.\n- D'où un **modèle de fondation entraîné from scratch** sur GPU Scaleway, pour maîtriser les droits sur les données (crainte des procès chez les clients B2B), gagner en vitesse et réinjecter les retours utilisateurs ; sortie annoncée *« in a few weeks »*.\n- Lecture critique : talk promotionnel, mais l'aveu de l'échec de la V1 est rare et concret.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "rvBK9sK-7cY",
+        "title": "Building a user centric Gen AI product | Matthieu Rouif, PhotoRoom | #aiPULSE 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ia-environnements-critiques-golem-ai",
+      "day": "2023-11-17",
+      "type": "talk",
+      "title": "GenAI & Analytical AI for sensitive & critical markets",
+      "speakers": [
+        "Killian Vermersch — Golem.ai"
+      ],
+      "feedbackFrom": [
+        "Blog Golem.ai (speaker, 23/11/2023)"
+      ],
+      "summary": "- **Sur scène** : IA analytique (données structurées) et générative (contenu) couvrent presque les mêmes cas d'usage, ce qui embrouille l'acheteur.\n- **Paradoxe** : santé, défense ou cœur de métier ont le plus besoin d'IA mais cumulent les contraintes (données inaccessibles, hors ligne, parfois ni Kubernetes ni conteneurs) ; l'enjeu clé est la **responsabilité** (AI Act, RGPD, propriété intellectuelle).\n- Trois cas : sinistres corporels en assurance (*« keep the human in the loop »*, traçabilité de la décision), sécurité nationale entièrement hors ligne (*« you don't want to be dependent on another country »*), traitement d'e-mails de commandes, avec l'aveu de pannes qui ont coûté du chiffre au client.\n- Il relativise : *« critical environments are less than 5% of the market »*. Le billet de Golem.ai (speaker) présente l'IA analytique comme point de départ pour choisir les usages génératifs acceptables.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "wEDHVkjnOUw",
+        "title": "GenAI & Analytical AI for sensitive & critical markets | Killian Vermersch, Golem.ai | #aiPULSE 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ampere-power-efficiency-jeff-wittich",
+      "day": "2023-11-17",
+      "type": "talk",
+      "title": "The Key to AI's Power Efficiency Revolution",
+      "speakers": [
+        "Jeff Wittich — Ampere Computing"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : les datacenters pèsent environ 3 % de l'électricité mondiale et la puissance disponible stagne ; *« 85% of the compute deployed for AI is expected to be inference »*.\n- D'où le **« right-sizing »** : le CPU suffirait pour l'inférence jusqu'à une dizaine de milliards de paramètres, avec des bibliothèques compatibles PyTorch, TensorFlow et ONNX.\n- Annonces : instances Ampere chez Scaleway et lancement d'une **AI Platform Alliance** (une dizaine de membres) ; un client hébergé sur Scaleway dirait avoir divisé ses coûts par dix par rapport au x86.\n- Pique contre les GPU : *« those DGX boxes … are just pretty expensive space heaters »* quand ils sont sous-utilisés.\n- Lecture critique : talk très commercial, chiffres fournis par le constructeur ; les montants comparés avec NVIDIA sont inintelligibles dans les sous-titres et ne sont pas repris.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "oAkg1kDKwNI",
+        "title": "The Key to AI's Power Efficiency Revolution | Jeff Wittich, Ampere | #aiPULSE 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ddn-infrastructure-efficiency-james-coomer",
+      "day": "2023-11-17",
+      "type": "talk",
+      "title": "Optimizing Infrastructure Efficiency",
+      "speakers": [
+        "James Coomer — DDN"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : le stockage représente environ 5 % du budget d'un SuperPOD ; la question est de savoir comment ces 5 % rendent le reste plus productif.\n- Un système de fichiers parallèle évite le serveur intermédiaire de NFS ; un cache automatique sur les SSD locaux des DGX (« hot nodes ») a été demandé par NVIDIA pour Selene.\n- L'entraînement serait autant écriture que lecture, à cause des **checkpoints** (reprise après panne, fine-tuning, retour en arrière) : *« we can consume up to 43% doing these checkpoint activities »*, ramené à 5-10 %.\n- Conclusion : *« good storage can pay for itself »*. Lecture critique : pitch produit assumé, graphiques fournis par NVIDIA, client de DDN.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "MYnuLe-imZc",
+        "title": "Optimizing Infrastructure Efficiency | James Coomer, DDN | #aiPULSE 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "panel-next-gen-ai-hardware",
+      "day": "2023-11-17",
+      "type": "roundtable",
+      "title": "Next-Gen AI Hardware",
+      "speakers": [
+        "Mark Armstrong — HPE",
+        "Philippe Notton — SiPearl",
+        "James Coomer — DDN",
+        "Représentant de Quandela (prénom Jean selon les sous-titres)"
+      ],
+      "feedbackFrom": [
+        "Page SiPearl (participation de Philippe Notton)"
+      ],
+      "summary": "- **Sur scène** : HPE met en avant ses supercalculateurs du Top500 et le gain de 10 à 20 % que peut apporter l'optimisation logicielle sur des machines à plusieurs centaines de millions d'euros.\n- SiPearl : son processeur équipera Jupiter (Jülich) en 2025, présenté comme une première victoire d'un européen face à un acteur américain ; mémoire HBM embarquée, puces bientôt à plus de 1 500 W, donc plus chères (*« be ready … to afford the cost »*).\n- DDN : le stockage pèse moins d'un vingtième de la consommation ; Quandela annonce son **quantique en service chez Scaleway**, tout en admettant *« not everything is proven yet »*.\n- **Débat énergie** : une étude citée prévoit que l'IA consommera en 2027 autant qu'un pays comme la Suède ou les Pays-Bas. Quandela avertit : *« it's always a bit complicated to talk about energy without trying to make some greenwashing »*, et évoque l'effet rebond.\n- **Souveraineté** (SiPearl) : l'Europe a raté le web et le cloud ; *« if we don't want to miss the second chance we have to do it now »*.\n- Lecture critique : chaque panéliste défend sa gamme ; la nuance vient surtout de Quandela.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "-bxhTpiCpQ0",
+        "title": "Next-Gen AI Hardware | HPE, DDN, SiPearl, Quandela | #aiPULSE 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "panel-inference-cost-efficient-sustainable",
+      "day": "2023-11-17",
+      "type": "roundtable",
+      "title": "How to make Inference as cost-efficient, sustainable and performant as possible?",
+      "speakers": [
+        "Jeff Wittich — Ampere Computing",
+        "Fondateur de Gladia (nom incertain dans les sous-titres)",
+        "CTO de Powder (nom incertain dans les sous-titres)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : un panel annoncé « style débat ». Gladia présente un modèle de transcription revendiqué sans hallucination, entraîné sur 1,5 million d'heures d'audio.\n- Ampere défend l'inférence sur CPU ; Powder, qui analyse des vidéos 4K, fait tourner une cinquantaine de modèles **sur la machine de l'utilisateur**, règle « CPU first ».\n- Ordres de grandeur avancés par Gladia : 80 à 90 % du CO2 viendrait de la **fabrication** du matériel ; un GPU qui chauffe perd des performances.\n- **Désaccord** : le CTO de Powder conteste que le cloud soit plus durable, puisque les puces sont déjà chez l'utilisateur (*« I'm not sure I fully agree with that »*) ; Gladia répond par le parc vieillissant des hôpitaux et le coût d'investissement (*« cloud is a bank »*).\n- Autre constat partagé : *« those latency tails kill you »*, et la pénurie de GPU captés par les grands laboratoires.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "AEMGkWIKbvg",
+        "title": "How to make Inference as cost-efficient, sustainable and performant as possible? | #aiPULSE 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "panel-reinforcement-learning-llm",
+      "day": "2023-11-17",
+      "type": "roundtable",
+      "title": "Reinforcement Learning to turn LLMs into useful tools",
+      "speakers": [
+        "CTO de LightOn (prénom Iacopo selon les sous-titres)",
+        "Alexandre — InstaDeep (responsable de la recherche)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : une explication pédagogique de la chaîne pré-entraînement, SFT puis **RLHF** (reward model, PPO, itérations contre la sur-optimisation), DPO cité comme alternative.\n- LightOn raconte les biais rencontrés : un modèle qui répond « great great great », ou en espagnol parce que les données espagnoles d'Open Assistant étaient meilleures.\n- *« the data work is undervalued … the model is unusable if you don't take care of that part »* ; sur la culture des modèles : *« the way GPT-4 speaks you can see it, it's American »*.\n- Une partie de l'open source rejette le RLHF, perçu comme un outil de « safety », alors que *« the generalization capabilities that we get from RLHF from very few samples are insane »*.\n- Tendances : le RL pour apprendre l'**usage d'outils**, les débats entre LLM ; LightOn annonce une v2 à contexte 8K et une version RLHF sous Apache.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "zljDdhjpvjc",
+        "title": "Reinforcement Learning to turn LLMs into useful tools | LightOn, InstaDeep | #aiPULSE 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "panel-building-datasets",
+      "day": "2023-11-17",
+      "type": "roundtable",
+      "title": "Building Datasets: Tech Constraints, IP Challenges, and Quality Maintenance",
+      "speakers": [
+        "Représentante d'Owkin (partenariats hospitaliers)",
+        "Julien Launay — Adaptive ML",
+        "Pablo (cofondateur de Raive, nom incertain dans les sous-titres)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : Owkin décrit des données de santé multimodales à forte curation ; selon elle, le RGPD ralentit la recherche alors que la grande majorité des patients accepte le partage.\n- Julien Launay (ex-Falcon) : la **déduplication** a été le premier facteur de qualité ; *« sometimes more is not better, … it's a regression to the average »* ; on approche la limite du texte de haute qualité, et *« a vast majority of people don't A/B test »*.\n- Côté image, une petite part de LAION est jugée exploitable, d'où les procès contre les générateurs ; Raive construit un dataset sous licence et un marché des droits d'entraînement, et juge Adobe Firefly « culturellement pauvre ».\n- Points polémiques avancés sans preuve : Midjourney s'entraînerait sur ses propres sorties, la plupart des contenus seraient générés par IA d'ici cinq ans. Débat sur l'effondrement des modèles nourris de données synthétiques.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "JuaJcKz_2Bk",
+        "title": "Building Datasets: Tech Constraints, IP Challenges, and Quality Maintenance | #aiPULSE 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "panel-ai-for-organizations",
+      "day": "2023-11-17",
+      "type": "roundtable",
+      "title": "AI for organizations",
+      "speakers": [
+        "Représentant d'Alan (ancien CTO)",
+        "Renaud Allioux — Preligens",
+        "CEO de Differs (nom incertain dans les sous-titres)",
+        "Cofondateur de MWM (prénom Jean-Baptiste selon les sous-titres)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : comment des entreprises déjà établies adoptent l'IA. Alan a créé une académie interne de l'IA générative ; un stagiaire y a construit seul un outil qui traduit les présentations commerciales en un clic.\n- Constat partagé : *« in fact it's the tech teams that are the most conservative about AI »*. Alan fait un calcul explicite « attendre ou construire » (son propre modèle de lecture de factures plutôt qu'attendre GPT-4 Vision).\n- Preligens (défense, environ 150 ingénieurs) a séparé une petite équipe innovation des opérations et prépare un modèle de fondation géospatial ; Differs note que ses clients retailers veulent de l'IA prédictive, pas générative.\n- **Désaccords** : former en interne (Alan) ou mêler chercheurs et ingénieurs logiciels (Preligens) ; sur la souveraineté, *« if you don't use the last technology you can be sovereign but you are like five years behind »* (Preligens), quand Differs juge que des retailers en difficulté *« don't care about sovereignty »*.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "MAh05kyOHmE",
+        "title": "AI for organizations | Alan, Preligens, Differs, MWM | #aiPULSE 2023",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Autres sessions des replays MASTER STAGE et CENTRAL ROOM, non transcrits (dont les deux conférences techniques NVIDIA annoncées par la presse)"
+  ],
+  "sources": [
+    {
+      "label": "Site ai-PULSE 2023 (archive Wayback Machine, non lisible depuis l'outil)",
+      "url": "https://web.archive.org/web/20231110/https://www.ai-pulse.eu/"
+    },
+    {
+      "label": "Playlist YouTube « ai-PULSE 2023 - 🇬🇧 version » (Scaleway, 18 vidéos)",
+      "url": "https://www.youtube.com/playlist?list=PL8WjEBDU6iMJRybGTGW_bVzcc73eUQyfN"
+    },
+    {
+      "label": "Playlist YouTube « ai-PULSE 2023 - 🇫🇷 version » (Scaleway, 3 replays)",
+      "url": "https://www.youtube.com/playlist?list=PL8WjEBDU6iML8KB1nVdB_tsNT-iYNloa7"
+    },
+    {
+      "label": "Replay « Opening Keynotes » (transcript lu)",
+      "url": "https://www.youtube.com/watch?v=O-GL-h3KgIA"
+    },
+    {
+      "label": "Replay MASTER STAGE (non transcrit)",
+      "url": "https://www.youtube.com/watch?v=seOfvUeiUT0"
+    },
+    {
+      "label": "Replay CENTRAL ROOM (non transcrit)",
+      "url": "https://www.youtube.com/watch?v=ApFPSEE8Kc0"
+    },
+    {
+      "label": "Fireside Chat With Jensen Huang and Aude Durand at ai-PULSE (NVIDIA, YouTube)",
+      "url": "https://www.youtube.com/watch?v=yuWNb-Iw8vA"
+    },
+    {
+      "label": "Transcripts : sous-titres automatiques anglais de 16 vidéos (keynotes, 14 talks et panels, fireside NVIDIA), lus le 28/10/2026"
+    },
+    {
+      "label": "Blog NVIDIA : AI to See « Major Second Wave », NVIDIA CEO Says in Fireside Chat With iliad Group Exec (17/11/2023)",
+      "url": "https://blogs.nvidia.com/blog/fireside-chat-scaleway/"
+    },
+    {
+      "label": "Maddyness : Xavier Niel réunit un casting 5 étoiles pour défendre une IA open source à la française (17/11/2023)",
+      "url": "https://www.maddyness.com/?p=1367954"
+    },
+    {
+      "label": "Maddyness : IA, la conférence de Xavier Niel dans les starting blocks à Station F (16/11/2023)",
+      "url": "https://www.maddyness.com/2023/11/16/ia-la-conference-de-xavier-niel-dans-les-starting-blocks-a-station-f/"
+    },
+    {
+      "label": "TechCrunch : Kyutai is a French AI research lab with a $330 million budget that will make everything open source (17/11/2023)",
+      "url": "https://techcrunch.com/2023/11/17/kyutai-is-an-french-ai-research-lab-with-a-330-million-budget-that-will-make-everything-open-source/"
+    },
+    {
+      "label": "ActuIA : Kyutai, Xavier Niel réaffirme la position de la France dans la course à l'IA (17/11/2023)",
+      "url": "https://www.actuia.com/index.php/actualite/kyutai-xavier-niel-reaffirme-la-position-de-la-france-dans-la-course-a-lia/"
+    },
+    {
+      "label": "FrenchWeb : Xavier Niel, Nvidia et la recherche au menu de la conférence ai-PULSE",
+      "url": "https://www.frenchweb.fr/xavier-niel-nvidia-et-la-recherche-au-menu-de-la-conference-ai-pulse/446023"
+    },
+    {
+      "label": "Univers Freebox : annonce de la conférence (1 000 participants, 50 speakers)",
+      "url": "https://www.universfreebox.com/?p=554137"
+    },
+    {
+      "label": "Univers Freebox : Xavier Niel et Iliad lancent la 1ère conférence européenne sur l'IA à Station F (17/11/2023)",
+      "url": "https://www.universfreebox.com/?p=556949"
+    },
+    {
+      "label": "Golem.ai : Feedback on Europe's first AI conference, ai-PULSE by Scaleway (23/11/2023)",
+      "url": "https://miralia.ai/en/?p=23593"
+    },
+    {
+      "label": "SiPearl : Philippe Notton à ai-PULSE (Next-Gen AI hardware)",
+      "url": "https://sipearl.com/?p=15124"
+    },
+    {
+      "label": "Station F : New AI Startup Program led by Meta with Hugging Face & Scaleway (08/11/2023)",
+      "url": "https://stationf.co/news/meta-aiprogram"
+    },
+    {
+      "label": "Scaleway : The best quotes from ai-PULSE 2023 (non lu, HTTP 403)",
+      "url": "https://www.scaleway.com/en/blog/best-quotes-ai-pulse-2023/"
+    },
+    {
+      "label": "Posts LinkedIn de participants : aucun retrouvé"
+    }
+  ]
 }

@@ -5,9 +5,529 @@
   "start": "2023-12-06",
   "end": "2023-12-08",
   "city": "Paris",
+  "venue": "CNIT Forest (Paris La Défense, Puteaux)",
   "url": "https://web.archive.org/web/20230129/https://www.apidays.global/paris",
+  "theme": "Software and APIs for Smart, Sustainable and Sovereign Societies (quatre piliers : Software, Sovereignty, Society, Sustainability)",
   "dateConfidence": "sec",
-  "note": "Dates annoncées sur la page archivée en janvier 2023 ; playlist YouTube « Apidays Paris 2023 ».",
-  "status": "pending",
-  "sessions": []
+  "note": "Dates annoncées sur la page archivée en janvier 2023 et confirmées par l'OpenAPI Initiative, Axway et Orange ; CNIT Forest rénové (blog Cisco). Environ 3 500 inscriptions selon le rapport de l'OpenAPI Initiative. Playlist YouTube « Apidays Paris 2023 ».",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-28",
+  "revisit": "Aucun post LinkedIn ni compte-rendu de participant indépendant lu (quota de 8 recherches épuisé) ; programme officiel non consulté (Wayback Machine inaccessible), aucun transcript YouTube récupéré (pas d'accès shell à yt-dlp). Synthèse fondée sur les slides publiées et des billets de sponsors ou speakers.",
+  "corpus": "Une soixantaine de decks « Apidays Paris 2023 » publiés par apidays sur Speaker Deck (14 au 29 décembre 2023), dont 26 lus en détail ; rapport post-événement de l'OpenAPI Initiative (14 décembre 2023) ; billets de JSON Schema (Benjamin Granados, 18 décembre 2023), de Cisco DevNet (Stève Sfartz, speaker, 20 décembre 2023) et d'Orange Developer ; page sponsor d'Axway ; une vingtaine de titres de vidéos de la playlist YouTube repérés via la recherche.",
+  "limits": "Aucun retour de participant indépendant : les seules voix extérieures aux slides sont des sponsors, des organisations de standards ou des speakers parlant de leur propre session. Les résumés reposent sur le texte extrait des slides (sans le discours oral) et les keynotes du main stage n'ont pas pu être identifiées faute d'accès au programme archivé. Les jours de session ne sont connus que pour la piste OpenAPI et la keynote Axway.",
+  "tldr": "Une édition très « plateforme » où l'API est traitée comme un **contrat à gouverner à l'échelle** (OpenAPI, AsyncAPI, design first, versioning, sécurité des accès), avec en toile de fond les **API réseau des opérateurs** (Open Gateway, CAMARA) et une première vague de réflexions sur **l'IA générative et la sobriété numérique**.",
+  "keyTakeaways": [
+    "Ne versionner que les changements cassants du contrat, exposer les versions derrière une gateway et **communiquer** (changelog, en-têtes de dépréciation, scopes par version) (Alexandre Touret, Worldline).",
+    "Traiter le contrat d'API comme un actif mesurable : modèle de maturité et scoring automatique des documents OpenAPI, modularisation des gros fichiers (Stève Sfartz, Cisco).",
+    "Centraliser catalogue et gouvernance mais garder l'exécution fédérée, pour réduire les shadow APIs (Tim Biedenkapp, adorsys ; Ado Trakic, Capital One).",
+    "Sécuriser d'abord le contrôle d'accès (Broken Access Control, n°1 de l'OWASP API) : moindre privilège, authentification centralisée, RBAC et zero trust (Danielle Kayumbi, Deezer).",
+    "Un programme API échoue plus souvent sur la coordination, la documentation, le DevOps et la sécurité que sur la technique : « No Doc, No App » (François Lasne, Murex).",
+    "En GraphQL, documenter la nullabilité : un changement « rétrocompatible » peut casser les clients (Martin Bonnin, Apollo GraphQL).",
+    "Pour GraphQL, combiner plusieurs techniques de rate limiting fondées sur le coût des requêtes plutôt qu'un simple quota (Meenakshi Dhanani, Postman).",
+    "Démarrer une initiative API par la demande métier, puis rationaliser, puis productiser via une marketplace, avec un API Owner au centre (Ibrahima Ndiaye, RATP).",
+    "Piloter l'IA générative par les tâches plutôt que par les métiers, et décider dès maintenant de l'usage du temps gagné (Cyril Vart, Fabernovel)."
+  ],
+  "sessions": [
+    {
+      "id": "the-api-marketplace-a-key-component-for-a-successful-api-strategy",
+      "day": "2023-12-07",
+      "type": "keynote",
+      "title": "The API Marketplace, a key component for a successful API strategy",
+      "speakers": [
+        "Katharina Haack — Commerzbank",
+        "Emmanuel Méthivier — Axway"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Keynote annoncée le 7 décembre à 15 h 50 par la page événement d'Axway (sponsor), avec une Product Owner API Strategy & Governance de **Commerzbank**.\n- Sujet : la **marketplace d'API** comme pièce centrale d'une stratégie API, prolongée par un workshop d'Axway la veille (Laurent Marchal) sur l'adoption des API via une marketplace.\n- Contenu réel non documenté : aucune slide ni retour trouvé ; seule la page sponsor (aujourd'hui redirigée) a été vue via un extrait de recherche.",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "oai-track-openapi-initiative",
+      "day": "2023-12-06",
+      "type": "other",
+      "title": "OAI Track : piste OpenAPI Initiative (3 sessions)",
+      "speakers": [
+        "Erik Wilde — Getting APIs to Work",
+        "Frank Kilcommins — SmartBear",
+        "Simon Harrer — INNOQ",
+        "Oleg Nenashev — WireMock",
+        "Yan Sun — IATA",
+        "Badr Nass Lahsen — CyberArk",
+        "Nolan Sullivan — Speakeasy",
+        "Steven Willmott — Timewarp",
+        "Stève Sfartz — Cisco",
+        "Emmanuel Bastien — Shell",
+        "Dave Shanley — Princess Beef Heavy Industries"
+      ],
+      "feedbackFrom": [
+        "Rapport post-événement de l'OpenAPI Initiative (organisateur de la piste)"
+      ],
+      "summary": "- **Troisième et plus grande piste OAI** à ce jour : 11 présentations en 3 sessions, deux le 6 décembre et une le 8 décembre.\n- Session 1, **tendances des spécifications** : état d'OpenAPI (Wilde), spécification API Workflows (Kilcommins), OpenAPI pour le **data mesh et les data contracts** (Harrer), extensibilité d'OpenAPI (Nenashev).\n- Session 2, **améliorer les API par leur description** : standards du transport aérien (Sun), OpenAPI 3.1 et Spring Boot 3 (Nass Lahsen), specs prêtes pour la **génération de code** (Sullivan), découverte et recherche d'API (Willmott).\n- Session 3, **gouvernance par les descriptions** : documents OpenAPI à l'échelle (Sfartz), design first (Bastien), qualité, conformité et contrôle du changement (Shanley).\n- Selon l'OAI, **salles pleines** et nombreuses discussions avec les speakers après les sessions ; affluence plus forte le 6 décembre, la session du 8 après-midi étant en concurrence avec sept autres pistes.\n- Lecture critique : bilan rédigé par l'organisateur de la piste, sans voix extérieure.",
+      "summarySources": [
+        "blog",
+        "program"
+      ]
+    },
+    {
+      "id": "how-openapi-supports-airline-industry-standards-and-beyond",
+      "day": "2023-12-06",
+      "type": "talk",
+      "title": "How OpenAPI Supports Airline Industry Standards and Beyond",
+      "speakers": [
+        "Yan (Peter) Sun — IATA"
+      ],
+      "feedbackFrom": [],
+      "summary": "- IATA (300+ compagnies, 83 % du trafic mondial) bâtit ses standards d'API sur **OAS 3.0 en design first** : modèle de données AIDM, ruleset de linter de style, bibliothèque de JSON Schema.\n- Distinction clé : *« \"Open\" does NOT mean \"Free\" »* ; une API ouverte est **découvrable**, le fournisseur garde le contrôle des accès.\n- **IATA Open API Hub**, portail unique du secteur : 3 200+ organisations inscrites, 50+ API ouvertes et 100+ API listées (chiffres annoncés à novembre 2023).\n- Appel aux compagnies et partenaires à rejoindre le programme. Résumé tiré des slides seules.",
+      "summarySources": [
+        "slides"
+      ]
+    },
+    {
+      "id": "why-api-contracts-matter",
+      "type": "talk",
+      "title": "Why API Contracts Matter",
+      "speakers": [
+        "Stève Sfartz — Cisco"
+      ],
+      "feedbackFrom": [
+        "Stève Sfartz (speaker, blog Cisco DevNet)"
+      ],
+      "summary": "- Définit le **contrat d'API** et présente le **modèle de maturité** utilisé chez Cisco pour noter la qualité des contrats.\n- Stratégies et outillage OpenAPI pour **scorer automatiquement** les API ; tests et observation du trafic réel pour vérifier que les API *« behave as per their contract »* (speaker).\n- Prolongement côté stand : démonstration de Panoptica sur la détection de **dérive d'API** à partir du trafic (Cisco DevNet, sponsor).",
+      "summarySources": [
+        "blog",
+        "slides"
+      ]
+    },
+    {
+      "id": "managing-openapi-documents-at-scale",
+      "day": "2023-12-08",
+      "type": "talk",
+      "title": "Managing OpenAPI Documents at Scale",
+      "speakers": [
+        "Stève Sfartz — Cisco"
+      ],
+      "feedbackFrom": [
+        "Stève Sfartz (speaker, blog Cisco DevNet)",
+        "Rapport de l'OpenAPI Initiative"
+      ],
+      "summary": "- Session de la piste OAI consacrée à la gestion du **portefeuille d'API REST de Cisco** : standardisation, gestion de versions, automatisation, **modularisation** des documents.\n- Problèmes propres aux **très gros documents OpenAPI** : maintenance, conformité, cohérence (speaker).\n- L'approche **API first** est présentée comme ce qui impose des pratiques homogènes de design, de versioning et de documentation.",
+      "summarySources": [
+        "blog",
+        "slides"
+      ]
+    },
+    {
+      "id": "api-design-first-a-case-for-a-better-language",
+      "day": "2023-12-08",
+      "type": "talk",
+      "title": "API design first: A case for a better language",
+      "speakers": [
+        "Emmanuel Bastien — Shell"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le design d'API est passé de *« a by-product of the server implementation »* à *« a working design document »*.\n- Workflow proposé : esquisser, **valider des prototypes qui tournent sans effort de développement**, revue par les pairs, merge pour release.\n- OpenAPI brut est difficile à écrire : panorama des alternatives (code first, éditeurs graphiques, préprocesseurs JSON) et surtout des **DSL** : TypeSpec (style objet), Oxlip (style fonctionnel), Taxi.\n- Résumé tiré des slides ; l'employeur (Shell) vient du rapport de l'OAI.",
+      "summarySources": [
+        "slides",
+        "blog"
+      ]
+    },
+    {
+      "id": "elevating-event-driven-world-a-deep-dive-into-asyncapi-v3",
+      "type": "talk",
+      "title": "Elevating Event-Driven World: A Deep Dive into AsyncAPI v3",
+      "speakers": [
+        "Łukasz Górnicki — Postman"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Part du **« Pub/Sub Nightmare »** : le support du **request/reply** figure parmi les trois principales attentes de la communauté.\n- AsyncAPI 3.0 décrit **les opérations que l'application effectue**, et non la manière dont les autres l'appellent ; documents émetteur et récepteur à garder séparés (dériver l'un de l'autre est « NOT RECOMMENDED »).\n- **Réutilisabilité** (« Reuse all the things! ») et request/reply en version statique (exemple Slack) ou dynamique (file de réponse).\n- Appel à rejoindre la communauté AsyncAPI. Résumé tiré des slides.",
+      "summarySources": [
+        "slides"
+      ]
+    },
+    {
+      "id": "graphql-nullability-state-of-the-union",
+      "type": "talk",
+      "title": "GraphQL Nullability, State of the Union",
+      "speakers": [
+        "Martin Bonnin — Apollo GraphQL"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Le null est surchargé** : *« Error null != Semantic null »*.\n- Post-mortem : une vidéo fraîchement uploadée sans titre a cassé les clients, alors que *« This was a backward compatible schema change! »*.\n- Les données partielles créent un **jeu de devinettes** : 10 champs, 1 024 combinaisons d'états.\n- Propositions du groupe de travail : `@semanticNonNull`, strict nullability, Client Controlled Nullability (`@catch`)… En attendant, **documenter la nullabilité** dans le schéma et rejoindre le nullability-wg.",
+      "summarySources": [
+        "slides"
+      ]
+    },
+    {
+      "id": "not-your-grandmas-rate-limiting",
+      "type": "talk",
+      "title": "Not Your Grandma's Rate Limiting",
+      "speakers": [
+        "Meenakshi Dhanani — Postman"
+      ],
+      "feedbackFrom": [],
+      "summary": "- En GraphQL, un quota de requêtes ne suffit pas : il faut une **analyse du coût des requêtes** (complexité de type, taille des données).\n- La pagination change radicalement le coût d'un même champ ; le calcul de complexité a lui-même un coût sur les requêtes profondes.\n- Le coût peut servir à l'équilibrage de charge, à la prévention des attaques et à la **monétisation**.\n- Conclusion : une bonne stratégie *« consists of not one but a combination of all these techniques »* ; pistes futures, compilation de requêtes et ML pour ajuster les règles.",
+      "summarySources": [
+        "slides"
+      ]
+    },
+    {
+      "id": "real-life-rest-api-versioning",
+      "type": "talk",
+      "title": "Real-Life REST API Versioning: Strategies and Best Practices",
+      "speakers": [
+        "Alexandre Touret — Worldline"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Questions préalables : *« Do I really need to version this API? »* et combien de versions on peut tenir en parallèle.\n- **On ne versionne que les changements cassants** du contrat (renommer ou supprimer un paramètre, ajouter un paramètre obligatoire), illustré par un passage d'auteur unique à liste d'auteurs.\n- Comparaison URL, en-tête custom, media type ; coût opérationnel du multi-version (code, artefacts, configuration, scripts de base) et parade par une **gateway qui expose et transforme**, avec un runtime par version.\n- Gouvernance du cycle de vie : identifier les consommateurs (clés, observabilité), changelog, dépréciation par en-têtes HTTP, scopes par version.\n- Conclusion : éviter de versionner si possible, travailler la modularité et *« Communicate! »*.",
+      "summarySources": [
+        "slides"
+      ]
+    },
+    {
+      "id": "forget-typescript-choose-rust-to-build-robust-fast-and-cheap-apis",
+      "type": "talk",
+      "title": "Forget TypeScript, Choose Rust to build Robust, Fast and Cheap APIs",
+      "speakers": [
+        "Zacaria Chtatar — HaveSomeCode"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Thèse : *« TypeScript is not enough »* face aux exigences d'échelle, de sécurité et d'empreinte mémoire.\n- **Rendre les états invalides irreprésentables** (enums, `Result`) et sûreté mémoire sans garbage collector.\n- Exemples cités par le speaker : index de recherche GitHub reconstruit en 36 h avec Rust et Kafka, proxy HTTP de Cloudflare, pics de latence du GC Go chez Discord.\n- Contreparties assumées : **3 à 6 mois** pour devenir productif, temps de build. Conseil : commencer par des CLI, lambdas ou microservices.\n- Résumé tiré des slides ; la vidéo existe mais son transcript n'a pas été récupéré.",
+      "summarySources": [
+        "slides"
+      ],
+      "video": {
+        "youtubeId": "eSo3e3ugn5g",
+        "title": "apidays Paris 2023 - Forget TypeScript, Choose Rust to Build Robust, Fast and Cheap APIs",
+        "transcript": false
+      }
+    },
+    {
+      "id": "unlock-network-potential-using-the-open-gateway-api-codes",
+      "type": "talk",
+      "title": "Unlock Network Potential Using The Open Gateway API Codes",
+      "speakers": [
+        "David Del Val — Telefónica"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Les opérateurs détiennent des capacités précieuses (localisation, identité, paiement, connectivité) mais leur intégration est *« Ad-hoc, high cost, legal, contracts & mono-telco »*.\n- **Open Gateway** (initiative GSMA) les expose via des **API globales et standardisées**, issues du projet CAMARA : SIM Swap, Device Location, Carrier Billing, Quality on Demand.\n- Le **consentement et la vie privée restent à la charge de l'opérateur** ; agrégateurs et clouds sont la porte d'entrée la plus simple pour les développeurs.\n- Cas d'usage : événements sportifs immersifs, paiement sur facture opérateur, lutte contre la fraude. Aucun chiffre d'adoption dans les slides.",
+      "summarySources": [
+        "slides"
+      ],
+      "video": {
+        "youtubeId": "C_QUbadHuSI",
+        "title": "Apidays Paris 2023 - Revolutionizing Telecom: Open Gateway APIs Explained",
+        "transcript": false
+      }
+    },
+    {
+      "id": "panel-open-gateway-ecosysteme-operateurs",
+      "type": "roundtable",
+      "title": "Panel sur l'écosystème Open Gateway et la standardisation des API réseau",
+      "speakers": [
+        "Orange",
+        "Telefónica",
+        "Deutsche Telekom",
+        "Vonage",
+        "Microsoft",
+        "GSMA"
+      ],
+      "feedbackFrom": [
+        "Blog Orange Developer (participant au panel)"
+      ],
+      "summary": "- Panel réunissant opérateurs, fournisseurs cloud et GSMA sur la manière dont l'industrie **ouvre les réseaux mobiles aux développeurs** via Open Gateway et la standardisation des API (titre exact non retrouvé).\n- Côté Orange, deux autres interventions : **Otilia Anton** sur l'usage des API CAMARA via Orange Developer, et **Bruno Salinier** (Orange Business) avec **Nicolas Muhadri** (StreamMind) sur les API **Live Identity** au service d'une offre d'identité numérique.\n- Message porté par Orange : *« APIs are a critical interface for connecting systems and data »* ; la collaboration entre opérateurs, clouds et organismes de standardisation est présentée comme le fait marquant.\n- Lecture critique : récit d'un participant sponsor, sans voix extérieure.",
+      "summarySources": [
+        "blog"
+      ]
+    },
+    {
+      "id": "passer-de-0-a-une-multiplication-d-apis",
+      "type": "talk",
+      "title": "Passer de 0 à une multiplication d'APIs",
+      "speakers": [
+        "Ibrahima Ndiaye — RATP Group"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Avertissement d'entrée : talk non technique, pas un REX RATP, *« une approche parmi d'autres »*.\n- Trois phases : **Prolifération** (API à la demande du métier, en co-design), **Raffinement** (analyser, classer, combiner, gouverner), **Cible** (productiser via une marketplace).\n- **L'importance de l'API Owner**, dont le rôle évolue de gardien du temple à évangéliste puis promoteur.\n- Cite les prédictions de Mehdi Medjaoui (cofondateur d'apidays) : plus d'API que de salariés dans le Fortune 100 et un Chief API Officer dans le Fortune 1000 d'ici 2030.",
+      "summarySources": [
+        "slides"
+      ],
+      "video": {
+        "youtubeId": "5L8ZOwmK5aU",
+        "title": "Apidays Paris 2023 - Passer de 0 à une multiplication d'APIs... by Ibrahima Ndiaye",
+        "transcript": false
+      }
+    },
+    {
+      "id": "aivolution-or-aipocalypse",
+      "type": "talk",
+      "title": "AIvolution or AIPocalypse",
+      "speakers": [
+        "Cyril Vart — Fabernovel"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Thèse : l'IA générative *« will change employment tasks but will not massively wipe out jobs »* ; **un métier n'est qu'une liste de tâches**.\n- Chiffres OIT 2023 cités : 5,5 % des emplois menacés dans les pays riches contre 0,4 % dans les pays pauvres, risque deux fois plus élevé pour les femmes ; **la polarisation de l'emploi est un vrai risque**.\n- Coût environnemental rappelé (eau et carbone de l'entraînement de GPT-3) : *« far from neutral »*.\n- Recommandation : décider dès maintenant de l'usage du temps gagné et laisser les enjeux sociaux, environnementaux et business guider les usages.",
+      "summarySources": [
+        "slides"
+      ]
+    },
+    {
+      "id": "agi-and-apis-crafting-the-future-of-intelligent-integration-at-scale",
+      "type": "talk",
+      "title": "AGI & APIs: Crafting the Future of Intelligent Integration at Scale",
+      "speakers": [
+        "Marcel Meyer — adorsys"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Les API comme **ponts** entre de futurs systèmes d'IA générale, les données et les systèmes qu'ils pilotent.\n- Exigences pour des API « AGI-ready » : sécurité, scalabilité, modularité, contrats cohérents, documentation et versioning, gestion d'erreurs robuste, **validation stricte des données**.\n- Risques : vie privée, biais ; recommandation d'audits et de détection de biais intégrés au design d'API.\n- Lecture critique : propos prospectif, sans chiffres ; plusieurs exemples relèvent de l'IA spécialisée actuelle.",
+      "summarySources": [
+        "slides"
+      ]
+    },
+    {
+      "id": "state-of-tech-sustainability-2023",
+      "type": "talk",
+      "title": "State of Tech Sustainability 2023: Tools and Organizations",
+      "speakers": [
+        "Gaël Duez — Green IO"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Rétrospective façon voilier : *« Sustainability is a journey not a destination »* et *« much more than electricity consumption »*.\n- Trois **vents du changement** comparés entre 2022 et 2023 : régulation et investisseurs, salariés, utilisateurs et clients.\n- Comptabilité carbone : *« CO2e = $ x Emission Factors »*, à comprendre pour se placer du bon côté de l'équation.\n- Cartographie des communautés et outils (CO2.js, outils carbone des clouds) ; ancrages proposés : **données et normes**. Résumé tiré des slides.",
+      "summarySources": [
+        "slides"
+      ]
+    },
+    {
+      "id": "crafting-sustainable-bytes-for-a-greener-digital-future",
+      "type": "talk",
+      "title": "Crafting Sustainable Bytes for a Greener Digital Future",
+      "speakers": [
+        "Pindy Bhullar — Green Software Foundation"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Présentation d'une thèse en cours sur la **décarbonation du cycle de vie des projets logiciels**, adossée au cadre TCFD.\n- Objectif : un *« Integrated Climate Optimisation Framework »* pour planifier et piloter les projets IT ; questionnaire sur le suivi des émissions scope 1, 2 et 3 (résultats non encore disponibles).\n- Rappel des leviers de la Green Software Foundation : **carbon awareness** par déplacement temporel ou spatial de la demande, et demand shaping.",
+      "summarySources": [
+        "slides"
+      ]
+    },
+    {
+      "id": "ambient-intelligence-for-smarter-and-sustainable-societies",
+      "type": "talk",
+      "title": "Ambient Intelligence for Smarter and Sustainable Societies: The IoT, API, and AI Harmony",
+      "speakers": [
+        "Saheed Abiola Lasisi — JPMorgan Chase & Co."
+      ],
+      "feedbackFrom": [],
+      "summary": "- L'**intelligence ambiante** : une technologie qui soutient le quotidien sans commande explicite, rendue nécessaire par l'urbanisation.\n- **Synergie IoT, API ouvertes et IA**, avec style guides d'API et AsyncAPI pour la communication temps réel des objets.\n- Briques citées : FIWARE pour les smart cities, **Mobile Edge Computing** pour réduire la latence. Talk le plus directement aligné sur le thème « Smart, Sustainable and Sovereign Societies ».",
+      "summarySources": [
+        "slides"
+      ]
+    },
+    {
+      "id": "the-federated-future-reimagining-banking-with-strategic-api-management",
+      "type": "talk",
+      "title": "The Federated Future: Reimagining Banking with Strategic API Management",
+      "speakers": [
+        "Tim Biedenkapp — adorsys"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Principe clé : *« Centralize catalogs and governance but keep execution federated »*.\n- **Shadow APIs** présentées comme le premier vecteur d'attaque et un angle mort de sécurité.\n- Architecture en couches (System, Process, Channel) sous gouvernance commune, plan de contrôle central pilotant des gateways on-premise et multi-cloud ; ajout d'une couche cloud pour **prolonger la vie de l'APIM existant**.\n- Lecture critique : chiffres de marché cités sans source dans les slides.",
+      "summarySources": [
+        "slides"
+      ]
+    },
+    {
+      "id": "building-apis-at-scale-delivering-products-faster",
+      "type": "talk",
+      "title": "Building APIs At Scale: Delivering Products Faster",
+      "speakers": [
+        "Ado Trakic — Capital One"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Capital One se présente comme *« a bank a tech company would build »* (12 000+ technologues internes).\n- **Design distribué, gouvernance centralisée** pour des milliers d'équipes, via un centre d'excellence Platform Services (outillage, standards, formation, coaching).\n- **DX Review** à chaque étape (plan, design, dev, prod) et à chaque nouvelle version majeure ou mineure ; certification en ligne et design coaches par ligne métier.\n- Conclusion : *« Evolve Continually (gather customers input) »*.",
+      "summarySources": [
+        "slides"
+      ]
+    },
+    {
+      "id": "7-mistakes-when-putting-in-place-an-api-program",
+      "type": "talk",
+      "title": "7 Mistakes When Putting In Place An API Program",
+      "speakers": [
+        "François Lasne — Murex"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Les **sept erreurs** : sous-estimer la coordination entre rôles internes ; oublier les besoins clients (le succès, c'est l'adoption) ; attendre de l'argent vite ; négliger la documentation ; négliger le DevOps (multi-cloud, gateways, monitoring, support 24/7) ; croire que l'API fait ce qui est prévu (dérive implémentation/contrat) ; sous-estimer la sécurité.\n- Formules : *« Your Success is about your partner success »*, *« No Doc, No App »*.\n- Conclusion : *« API is about Connecting Machine, BUT ALSO PEOPLE »*.",
+      "summarySources": [
+        "slides"
+      ]
+    },
+    {
+      "id": "api-buzzword-to-a-bs",
+      "type": "talk",
+      "title": "API: buzzword to a BS?",
+      "speakers": [
+        "Rafik Ferroukh — Allianz Technology"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Contre-pied au hype : l'API est d'abord **un contrat** responsable d'un objet ou besoin métier, avec entrées et sorties bien définies.\n- *« Learn API before going to API Management… »* ; ne lancer un POC que s'il existe un vrai besoin métier.\n- Conclusion : *« Learn to walk before you run »*. Slides partiellement non extractibles (vidéos, images).",
+      "summarySources": [
+        "slides"
+      ]
+    },
+    {
+      "id": "iam-for-api-security-strategy",
+      "type": "talk",
+      "title": "IAM for API security strategy",
+      "speakers": [
+        "Danielle Kayumbi — Deezer"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Les API traitent plus de 83 % du trafic web (Akamai) et concentrent la majorité des brèches ; le **Broken Access Control** est le risque n°1.\n- Exemples marquants : faille de la Nissan Leaf (un simple numéro de châssis suffisait), pacemaker où *« A simple denial-of-service attack has the potential to kill »*.\n- Questions à se poser avant d'exposer : que faut-il exposer, pour qui, et *« What's the worst thing someone can do with your API? »*.\n- Réponse : **authentification et autorisation centralisées**, moindre privilège, RBAC, zero trust ; démonstration OAuth avec Keycloak, client GraphQL et flux client credentials.",
+      "summarySources": [
+        "slides"
+      ],
+      "video": {
+        "youtubeId": "n4Nlir4ya3I",
+        "title": "Apidays Paris 2023 - The Essential Guide to API Security Strategies",
+        "transcript": false
+      }
+    },
+    {
+      "id": "democratizing-api-access",
+      "type": "talk",
+      "title": "Unlocking Collaboration with Internal Developer Portals & Marketplaces: Democratizing API Access",
+      "speakers": [
+        "Daniel Kocot — codecentric"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Trois profils de consommateurs (portés par la technologie, le business ou l'innovation) : les plateformes internes servent le premier, les marketplaces le second.\n- L'accès devrait être simple, *« But reality looks different »* : les API restent complexes à manipuler.\n- Objectifs : premier accès facile et sécurisé, transfert de données fluide, monétisation qui commence par le **troc** et un modèle de facturation simple.\n- Conclusion à contre-courant : *« For access it's not enough to use a portal or marketplace »*.",
+      "summarySources": [
+        "slides"
+      ]
+    },
+    {
+      "id": "kafka-in-event-driven-architectures",
+      "type": "talk",
+      "title": "Kafka in Event-Driven Architectures",
+      "speakers": [
+        "Hassane Moustapha — ENGIE"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Rappel des composants d'une EDA (producteurs, consommateurs, canaux, event store optionnel) et de ses bénéfices : découplage, scalabilité indépendante, tolérance aux pannes, quasi temps réel.\n- Démarche en six étapes, de l'identification des événements à leur enrichissement ultérieur.\n- Cas réel de **cash-out** (envoi d'argent à des personnes non bancarisées) avec Kafka et Kafka Streams pour la détection de fraude et le monitoring. Pas de résultats chiffrés.",
+      "summarySources": [
+        "slides"
+      ]
+    },
+    {
+      "id": "proteger-vos-creations-musicales-grace-a-la-blockchain-et-aux-apis",
+      "type": "talk",
+      "title": "Protéger vos créations musicales grâce à la Blockchain et aux APIs",
+      "speakers": [
+        "Vincent Poulain — Sacem Lab",
+        "Delphine Rabéjac — Sacem Lab"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Composer n'a jamais été aussi simple, *« mais la protéger reste compliqué et coûteux »* : **MusicStart** fournit une preuve d'antériorité.\n- Empreinte (hash) des fichiers inscrite sur une blockchain publique : *« On ne peut ni effacer ni modifier. On ne peut qu'ajouter »*.\n- Choix de **Tezos** pour sa faible consommation (comparée à Bitcoin) ; la protection du droit moral est présentée comme un enjeu de **souveraineté des créateurs**.\n- Accès programmatique par API annoncé pour 2024.",
+      "summarySources": [
+        "slides"
+      ]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Kubernetes Gateways (Pubudu Gunatilaka, WSO2)",
+    "Unleashing Telecom Power (Ricardo Villarreal, Microsoft)",
+    "5GFF: Network APIs to the Edge and Beyond (Kevin Smith, Vodafone)",
+    "Securing Microservice-based APIs (Michal Trojanowski, Curity)",
+    "I Have an OAuth2 Access Token, Now what do I do with it (Matthew Auburn, Morgan Stanley)",
+    "API Security Challenges for Cloud-native Software Architects (Pierre Versali, Devoteam)",
+    "Cloud APIs, ChatGPT 4-Turbo, and Attack Path Visualization (Doug Dooley, Data Theorem)",
+    "Building A Secure API Platform: A Data-driven Approach (Malcolm Sparks, JUXT)",
+    "Sécuriser des APIs sans effort (Stéphane Murer, Marc Baptista, Malakoff Humanis)",
+    "Productizing and Monetizing APIs (Derric Gilling, Moesif)",
+    "How to Scale APIs-as-a-Product for Future Success (Samir Amzani, Postman)",
+    "How to Build a Successful API Product (Bruno Pedro)",
+    "Everything You Always Wanted to Know About AsyncAPI (Lukasz Gornicki, Postman)",
+    "Boosting Event-Driven Development with AsyncAPI and Microcks (Hugo Guerrero, Red Hat)",
+    "Productizing AsyncAPI for Data Replication and Changed Data Capture (Julien Testut, Oracle)",
+    "AsyncAPI For Platform Self-Service: A GitOps Tale (João Dias, Rui Eusébio, Kuehne+Nagel)",
+    "Revolutionize Your Business with Event-Driven Design (Omid Eidivandi, Groupe La Centrale)",
+    "State of OpenAPI et introduction de la piste OAI (Erik Wilde)",
+    "API Workflows Specification (Frank Kilcommins, SmartBear)",
+    "OpenAPI pour data mesh et data contracts (Simon Harrer, INNOQ)",
+    "OpenAPI Extensibility: The Good, The Bad and The Ugly (Oleg Nenashev, WireMock)",
+    "OpenAPI 3.1 and Spring-Boot 3: What's New? (Badr Nass Lahsen, CyberArk)",
+    "Get Your OpenAPI Spec Ready For Code Generation (Nolan Sullivan, Speakeasy)",
+    "API Discovery: Standards, Publishing & Search (Steven Willmott)",
+    "Qualité, conformité et contrôle du changement (Dave Shanley)",
+    "The API Gateway Cookbook (Josh Twist, Zuplo)",
+    "Essential API Management Features (Andrew Slivker, Nevatech)",
+    "Modernizing API Management with GitOps (Erwan Paccard, Michael Matur, Traefik Labs)",
+    "Harmonizing Cloud Horizons: hybrid APIM GCP, Azure, on-premises (Harry Bouras, Alexey Leyman, DHL IT Services)",
+    "How to Master the Lifecycle of your APIs (Ivan Frain, Susan Vrona Bejina, Theotime Macrez, PwC)",
+    "API Strategies to Accelerate Productivity and Digital Business (Eileen Lowry, IBM ; Adrian Grünther, MHP)",
+    "How API Fit to a Modern Enterprise Integration Platform (Pascal Gacina, CGI)",
+    "Smart Proxization Of Your API (Christophe Bandini, Arnaud Gavazzi, Naoplay)",
+    "Improving API delivery outcomes (Ikenna Nwaiwu, 10x Banking)",
+    "API Observability (Jose Haro Peralta, microapis.io)",
+    "Building an Inventory (Maria Teresa Pereira, KPMG Portugal)",
+    "Monitor Discourse via API (Usman Ahmad, Grafana Labs)",
+    "The Butterfly Effect: Transforming Legacy Documentation (Polina Zaichkina, Codat)",
+    "Improving Your Documentation Using a Framework Built on Data Signals (Ioana Kanda, Miguel Martin Sioco, TomTom)",
+    "Product Managers and API Documentation (Gareth Faull, LSEG)",
+    "Building APIs That Developers Love: Feedback Collection Tips (Gael Imperial, Anna Tsolakou, Amadeus)",
+    "API Code And Documentation Generation Through AI (Robert van Mölken, Exoblock)",
+    "AI at the Service of Data (Kamel Tansaout, Marjory)",
+    "Accelerate and master your API integration (William Da Cunha, Marjory)",
+    "Why can't you ignore Product Management as a No-Code engineer (Manon Mercier)",
+    "How to use NoCode as a Microservice (Benjamin Buléon, Anthony Manto, Gojob)",
+    "The Impact of API in E-Commerce (Feliana Citradewi, LiVert)",
+    "Connecting People With Best-In-Class Logistics APIs (Karsten Wagner, DHL)",
+    "EcoStruxure openness platform (Philippe Raffin, Schneider Electric ; Farooq Syed Mehboob, Torry Harris)",
+    "Accelerating and Securing Transversal Processes Automation (Ranto Rafidinitrimo, STMicroelectronics)",
+    "Panel APIs et industrie 4.0 (7 décembre, connu par un podcast apidays)",
+    "Workshop Axway : adoption des API via une marketplace (Laurent Marchal, 6 décembre)"
+  ],
+  "sources": [
+    {
+      "label": "Page apidays Paris archivée (Wayback Machine, janvier 2023)",
+      "url": "https://web.archive.org/web/20230129/https://www.apidays.global/paris"
+    },
+    {
+      "label": "Playlist YouTube « Apidays Paris 2023 »",
+      "url": "https://www.youtube.com/playlist?list=PLmEaqnTJ40OryW56Qo3c-C7hXcaR89xii"
+    },
+    {
+      "label": "Slides « Apidays Paris 2023 » sur Speaker Deck (compte apidays / FOST)",
+      "url": "https://speakerdeck.com/search?q=%22apidays+Paris+2023%22"
+    },
+    {
+      "label": "OpenAPI Initiative : rapport post-événement de l'OAI Track (14 décembre 2023)",
+      "url": "https://www.openapis.org/?p=2886"
+    },
+    {
+      "label": "OpenAPI Initiative : annonce de l'OAI Track",
+      "url": "https://www.openapis.org/?p=2995"
+    },
+    {
+      "label": "JSON Schema : API Days Paris 2023 Recap (Benjamin Granados, 18 décembre 2023)",
+      "url": "https://json-schema.org/blog/posts/apidays-paris-2023-recap"
+    },
+    {
+      "label": "Cisco DevNet : Managing API Contracts and OpenAPI Documents at Scale (Stève Sfartz, 20 décembre 2023)",
+      "url": "https://blogs.cisco.com/developer/apidaysparis02"
+    },
+    {
+      "label": "Orange Developer : API Days 2023",
+      "url": "https://developer.orange.com/blog/api-days-2023"
+    },
+    {
+      "label": "Axway : page événement apidays Paris 2023 (keynote et workshop, page désormais redirigée)",
+      "url": "https://go2.axway.com/2023_Apidays-PARIS_LP.html"
+    },
+    {
+      "label": "Posts LinkedIn : aucun lu (aucun résultat exploitable dans les recherches)"
+    }
+  ]
 }

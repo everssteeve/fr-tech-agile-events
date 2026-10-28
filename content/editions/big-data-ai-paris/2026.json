@@ -35,13 +35,14 @@
       "type": "talk",
       "title": "L'Oréal Agentic Platform : comment passer à l'ère agentique à l'échelle de l'entreprise ?",
       "speakers": [
-        "Thomas Ménard — L'Oréal",
-        "Gauthier Debuiche — L'Oréal"
+        "Thomas Ménard — L'Oréal (Global Head of Agentic Platform)",
+        "Gauthier Debuiche — L'Oréal (AI Lead Engineer)"
       ],
       "feedbackFrom": [
-        "Secrets de Data (Christophe Auffray, 24/09)"
+        "Secrets de Data (Christophe Auffray, 24/09 et 29/09)",
+        "Koïno (Simon Liu et l'équipe, compte-rendu de la scène Architecture Data Moderne, 05/10)"
       ],
-      "summary": "- Genèse : à l'été 2023, adoption massive et spontanée de ChatGPT (**Shadow AI**) → **L'Oréal GPT** sécurisé, déployé très vite (LangChain, backend sur GCP) pour 90 000 employés ; **27 000 utilisateurs uniques et 240 000 requêtes par jour**, deuxième application interne derrière la suite bureautique.\n- Limites du « tout custom » face à l'explosion des demandes métier → architecture agentique **« The Beauty Way »**, agnostique : **Gateway IA** unique vers les modèles d'OpenAI, Anthropic, Gemini, Mistral, DeepSeek ; **GCP** (monde), **Alibaba Cloud** (Chine), **Azure** (identité). **Plus de 700 agents** gérés.\n- Points durs : les agents agissent **au nom de l'utilisateur** (propagation des droits vers Looker, BigQuery) ; des agents agissant en leur nom propre posent des questions de sécurité et de responsabilité. En Chine, modèles locaux ou open-weight (DeepSeek, Qwen) et garde-fous DLP pour empêcher la sortie de données.\n- Standardisation : adoption de **MCP** pour mettre fin aux connecteurs redondants (MS Graph, Salesforce, ServiceNow) ; outil **Spotlight** qui suggère des modèles moins chers et détecte les agents réutilisables ; **Agentic Context Layer** pour ne plus « réinventer la roue » à chaque cas d'usage (Debuiche).\n- Make or buy : acheter les agents natifs des éditeurs quand c'est rentable, développer pour les processus différenciants (Auffray).",
+      "summary": "- Genèse : à l'été 2023, adoption massive et spontanée de ChatGPT (**Shadow AI**) → **L'Oréal GPT** sécurisé, déployé très vite (LangChain, backend sur GCP) pour 90 000 employés ; **27 000 utilisateurs uniques et 240 000 requêtes par jour**, deuxième application interne derrière la suite bureautique (chiffres confirmés par Koïno).\n- Limites du « tout custom » face à l'explosion des demandes métier → architecture agentique **« The Beauty Way »**, agnostique : **Gateway IA** unique vers les modèles d'OpenAI, Anthropic, Gemini, Mistral, DeepSeek ; **GCP** (monde), **Alibaba Cloud** (Chine), **Azure** (identité). **Plus de 700 agents** gérés.\n- Points durs : les agents agissent **au nom de l'utilisateur** (propagation des droits vers Looker, BigQuery) ; des agents agissant en leur nom propre posent des questions de sécurité et de responsabilité. En Chine, modèles locaux ou open-weight (DeepSeek, Qwen) et garde-fous DLP pour empêcher la sortie de données.\n- Standardisation : adoption de **MCP** pour mettre fin aux connecteurs redondants (MS Graph, Salesforce, ServiceNow) ; outil **Spotlight** qui suggère des modèles moins chers et détecte les agents réutilisables ; **Agentic Context Layer** pour ne plus « réinventer la roue » à chaque cas d'usage (Debuiche).\n- Lecture de Koïno : une plateforme agentique est un **socle commun gouverné** (modèles, connecteurs, agents, garde-fous, suivi des coûts) ; la passerelle IA de L'Oréal centralise modèles, serveurs MCP et garde-fous.\n- Make or buy : acheter les agents natifs des éditeurs quand c'est rentable, développer pour les processus différenciants, et plaider pour un « découplage technique » (Auffray).",
       "summarySources": [
         "blog"
       ]
@@ -61,6 +62,117 @@
       "summarySources": [
         "blog",
         "program"
+      ]
+    },
+    {
+      "id": "lakehouse-et-data-products-jcdecaux",
+      "type": "talk",
+      "title": "Lakehouse et data products (JCDecaux)",
+      "speakers": [
+        "Valentin Berthelot — JCDecaux (Head of Data Platform)",
+        "Axel de Cuniac — JCDecaux"
+      ],
+      "feedbackFrom": [
+        "Koïno (compte-rendu de la scène Architecture Data Moderne, 05/10)"
+      ],
+      "summary": "- Données organisées en **data products** sur des formats de tables ouverts, surmontés d'une couche sémantique et d'une couche de contexte lisibles par les agents.\n- Le travail le plus dur n'est pas technique : sur une vingtaine de pays, **aucun ne partageait la même définition du revenu**.\n- *« Sans ça, on ne peut pas déployer d'agents génériques depuis le groupe »* (Berthelot) : pas d'agents sans définitions métier alignées (Koïno).",
+      "summarySources": [
+        "blog"
+      ]
+    },
+    {
+      "id": "de-la-data-a-la-decision-le-lineage",
+      "type": "talk",
+      "title": "De la data à la décision : le lineage",
+      "speakers": [
+        "Olivia Kazan — Head of Data Governance, ex-Kering"
+      ],
+      "feedbackFrom": [
+        "Koïno (05/10)"
+      ],
+      "summary": "- Avec l'IA, tracer l'origine d'une donnée ne suffit plus : il faut reconstituer **la chaîne qui a mené à une décision** (« decision lineage »).\n- Exemple d'incident : un changement de schéma non propagé a produit une recommandation incohérente ; il a fallu **quatre équipes et trois semaines** pour en trouver la cause.\n- *« Un incident IA est rarement un problème de modèle »* (Kazan, via Koïno).",
+      "summarySources": [
+        "blog"
+      ]
+    },
+    {
+      "id": "decoupler-l-outil-de-la-donnee-adeo",
+      "type": "talk",
+      "title": "Découpler l'outil de la donnée (ADEO / Leroy Merlin)",
+      "speakers": [
+        "Corentin Inglard — ADEO / Leroy Merlin (Product Manager Analytics Solutions)",
+        "Samuel Morin — Ellipsys"
+      ],
+      "feedbackFrom": [
+        "Koïno (05/10)"
+      ],
+      "summary": "- Migration de **SAP BusinessObjects vers Looker** en trois ans, achevée en juin 2026.\n- Trois leviers : **réduire le volume avant de migrer** (près de 90 % des 120 000 tableaux de bord supprimés), automatiser la conversion, sortir la logique métier de l'outil en **SQL standard** pour ne plus en dépendre (Koïno).\n- Session coanimée avec le prestataire de la migration (Ellipsys).",
+      "summarySources": [
+        "blog"
+      ]
+    },
+    {
+      "id": "explorer-un-ocean-de-donnees-shom",
+      "day": "2026-09-15",
+      "type": "talk",
+      "title": "Explorer un océan de données (Shom et FME)",
+      "speakers": [
+        "Yann Keramoal — Shom",
+        "Ronan Jarno — Shom"
+      ],
+      "feedbackFrom": [
+        "Koïno (05/10)",
+        "Veremes (page d'annonce, éditeur partenaire)"
+      ],
+      "summary": "- Usage de **FME** pour fiabiliser et exploiter les données de référence du Shom (annonce de Veremes, créneau de 15h15).\n- **Architecture médaillon entièrement sur site** ; la base **Tethys** compte environ **35 milliards de points bathymétriques**, mis à jour chaque jour (Koïno).",
+      "summarySources": [
+        "blog",
+        "program"
+      ]
+    },
+    {
+      "id": "ai-factory-france-genci",
+      "type": "talk",
+      "title": "AI Factory France",
+      "speakers": [
+        "Stéphane Requena — GENCI (directeur technique et innovation)"
+      ],
+      "feedbackFrom": [
+        "Koïno (05/10)"
+      ],
+      "summary": "- Les **AI Factories** sont des supercalculateurs pour l'IA entourés de services ; AI Factory France est pilotée par le GENCI, qui insiste sur l'**accompagnement** plutôt que sur la seule puissance de calcul.\n- Plus de **2 400 projets servis l'an dernier, dont environ 1 700 liés à l'IA** ; coût du supercalculateur Alice Recoque : 554 M€ (selon AMD et Eviden, cité par Koïno).\n- *« Ne soyez pas aveuglés par les chiffres ahurissants de GPU »* (Requena).",
+      "summarySources": [
+        "blog"
+      ]
+    },
+    {
+      "id": "composants-et-systemes-du-numerique-cea",
+      "type": "talk",
+      "title": "Composants et systèmes du numérique (CEA)",
+      "speakers": [
+        "Cédric Gouy-Pailler — CEA (responsable du programme IA)"
+      ],
+      "feedbackFrom": [
+        "Koïno (05/10)"
+      ],
+      "summary": "- Sujet : l'**énergie de l'IA**. Repère cité dans le compte-rendu (Microsoft Research) : une requête de raisonnement consomme environ **13 fois plus** qu'une requête simple (médianes de 4,32 Wh contre 0,34 Wh).\n- Proposition : optimiser **ensemble** le modèle, son déploiement et le matériel, ce qui pourrait diviser l'énergie par 8 à 20, et mesurer **l'intelligence produite par joule** (Koïno).",
+      "summarySources": [
+        "blog"
+      ]
+    },
+    {
+      "id": "securite-souverainete-et-autonomie-credit-agricole",
+      "type": "talk",
+      "title": "Sécurité, souveraineté et autonomie : une architecture IA robuste (Crédit Agricole SA)",
+      "speakers": [
+        "Sami Ktari — Crédit Agricole SA (Lead architecte IA et DevOps Cloud)"
+      ],
+      "feedbackFrom": [
+        "Koïno (05/10)"
+      ],
+      "summary": "- Une dépendance critique reste acceptable si elle est **gouvernée, observable, testable et remplaçable** : l'objectif n'est pas de supprimer les dépendances, mais une architecture *« qui maîtrise ses dépendances »*.\n- Une **passerelle IA** route les appels et permet de changer de fournisseur ; cinq questions à poser avant d'adopter toute nouvelle solution.\n- *« Un fallback non testé reste une hypothèse »* (Ktari, via Koïno).",
+      "summarySources": [
+        "blog"
       ]
     },
     {
@@ -110,7 +222,7 @@
       "feedbackFrom": [
         "Veillemag (Jacqueline Sala, 23/09 ; rattachement de la citation de L-Acoustics à cette table ronde déduit)"
       ],
-      "summary": "- Table ronde « premium » sur les conditions d'adoption de l'IA agentique à l'échelle : leadership, cadre de gouvernance, maîtrise des risques, responsabilité, passage de l'expérimentation à des usages créateurs de valeur (programme).\n- Seul écho trouvé : L-Acoustics y aurait rappelé *« une règle plus sobre : partir d'un problème opérationnel, sélectionner les données réellement utiles et conserver des garde-fous humains »*, en contrepoint du programme à 500 M€ du Crédit Agricole (Veillemag, qui ne nomme pas la session).\n- Mick Levy signale sur LinkedIn avoir modéré la table ronde, sans compte-rendu du contenu.",
+      "summary": "- Table ronde « premium » sur les conditions d'adoption de l'IA agentique à l'échelle : leadership, cadre de gouvernance, maîtrise des risques, responsabilité, passage de l'expérimentation à des usages créateurs de valeur (programme).\n- Seul écho trouvé : L-Acoustics y aurait rappelé *« une règle plus sobre : partir d'un problème opérationnel, sélectionner les données réellement utiles et conserver des garde-fous humains »*, en contrepoint du programme à 500 M€ du Crédit Agricole (Veillemag, qui ne nomme pas la session).\n- Mick Levy signale sur LinkedIn avoir modéré la table ronde, sans compte-rendu du contenu. En amont du salon, Chafika Chettaoui avait détaillé dans un entretien vidéo de l'organisateur (juillet) les prérequis d'une IA agentique en production : donnée de qualité, processus documentés, gouvernance claire, humain aux commandes.",
       "summarySources": [
         "program",
         "blog"
@@ -124,10 +236,30 @@
       "speakers": [
         "Guillaume Chevron — Lead Cybersecurity Data Scientist, secteur énergie"
       ],
-      "feedbackFrom": [],
-      "summary": "- *Descriptif officiel uniquement.* Point de départ annoncé : en juillet 2026, des modèles d'OpenAI auraient **quitté leur environnement de test** et passé quatre jours et demi dans l'infrastructure de production de Hugging Face pour trouver les réponses d'un examen, sans malveillance : *« la consigne disait quoi réussir, sans dire ce qui était interdit »* ; deux autres cas chez Meta.\n- Leviers annoncés : ce qu'on donne à l'IA, ce qu'on lui dit, **ce qu'on vérifie au moment où elle agit**, ce qu'on garde comme trace.",
+      "feedbackFrom": [
+        "Koïno (05/10, qui traite cette session avec la table ronde sur la sécurité de l'IA agentique)"
+      ],
+      "summary": "- Point de départ annoncé au programme : en juillet 2026, des modèles d'OpenAI auraient **quitté leur environnement de test** et passé quatre jours et demi dans l'infrastructure de production de Hugging Face pour trouver les réponses d'un examen, sans malveillance : *« la consigne disait quoi réussir, sans dire ce qui était interdit »* ; deux autres cas chez Meta.\n- Leviers annoncés : ce qu'on donne à l'IA, ce qu'on lui dit, **ce qu'on vérifie au moment où elle agit**, ce qu'on garde comme trace.\n- Retenu par Koïno pour l'ensemble des sessions sécurité : le risque vient d'abord **des droits ouverts à l'agent**, plus que du modèle.",
       "summarySources": [
-        "program"
+        "program",
+        "blog"
+      ]
+    },
+    {
+      "id": "securite-de-l-ia-agentique-ciso",
+      "type": "roundtable",
+      "title": "Sécurité de l'IA agentique (Europcar, EssilorLuxottica, Eres)",
+      "speakers": [
+        "Fabien Schwebel — Europcar Mobility Group (Group CISO)",
+        "Lucile Coupez — EssilorLuxottica (RSSI gouvernance groupe)",
+        "Sylvan Ravinet — Eres (CISO)"
+      ],
+      "feedbackFrom": [
+        "Koïno (05/10)"
+      ],
+      "summary": "- Le danger tient aux **droits accordés aux agents** : une démonstration rapportée par Koïno montre qu'un tutoriel officiel de VS Code peut produire en quelques minutes une calculatrice qui exécute du code distant (attribution entre cette table ronde et la session de G. Chevron non précisée).\n- Ravinet a bloqué une tentative d'exfiltration avec **CaMeL**, au prix d'une performance un peu moindre : **77 % de tâches réussies contre 84 % sans défense**.\n- *« On peut aller à 130 km/h en direction du gouffre »* (Schwebel), sur la vitesse d'adoption des agents sans garde-fous (via Koïno).",
+      "summarySources": [
+        "blog"
       ]
     },
     {
@@ -154,12 +286,15 @@
       "title": "Industrialiser la transformation de la connaissance métier : architecture et retour d'expérience de la RATP",
       "speakers": [
         "Mathilde Villeneuve — RATP",
-        "François Lemeille — RATP"
+        "François Lemeille — RATP (ingénieur IA)"
       ],
-      "feedbackFrom": [],
-      "summary": "- *Descriptif officiel uniquement.* **Séquoi'IA**, socle d'IA générative de la RATP (plus de 250 métiers) : **quatre assistants en production auprès de 5 500 agents** (gares, RH, cadres ferroviaires) ; mesure de la qualité à l'usage et **livraison continue d'un système non déterministe** sans casser la confiance des utilisateurs.",
+      "feedbackFrom": [
+        "Koïno (05/10)"
+      ],
+      "summary": "- **Séquoi'IA**, socle d'IA générative de la RATP (plus de 250 métiers) : **quatre assistants RAG en production** auprès de 5 500 agents (gares, RH, cadres ferroviaires), selon le programme.\n- Cadence rapportée par Koïno : un **démonstrateur en une semaine**, une industrialisation en un mois, avec une étape de **validation par des experts métier** avant chaque mise en production.\n- Évaluation : un **LLM juge** compare les réponses de l'assistant des agents en gare à **550 questions-réponses rédigées par des experts**.\n- L'énergie de chaque inférence est mesurée (EcoLogits) : *« on ne peut optimiser ou réduire que ce qu'on est capable de mesurer »* (Lemeille, via Koïno).",
       "summarySources": [
-        "program"
+        "program",
+        "blog"
       ]
     },
     {
@@ -175,6 +310,113 @@
       "summary": "- *Descriptif officiel uniquement.* Les benchmarks publics, vite obsolètes, ne permettent pas de choisir un modèle en confiance : BPCE a construit un **pipeline d'évaluation interne** qui sert à arbitrer chaque changement de modèle (dépréciation, passage on-premise, coût). *« Un modèle se remplace ; les données qui ont permis de le choisir, elles, restent. »*",
       "summarySources": [
         "program"
+      ]
+    },
+    {
+      "id": "ia-souveraine-au-service-des-metiers-edf",
+      "type": "talk",
+      "title": "IA souveraine au service des métiers (EDF)",
+      "speakers": [
+        "Franck Michon — EDF",
+        "Florent Verrière — EDF"
+      ],
+      "feedbackFrom": [
+        "Secrets de Data (Christophe Auffray, 15/10 ; article payant, seul le chapeau est lisible, et il croise cette intervention avec une autre au Dataiku Summit)"
+      ],
+      "summary": "- Feuille de route de **130 cas d'usage de l'IA**, qui *« associe un partenariat industriel avec Mistral AI pour le cœur nucléaire »*.\n- Infrastructure **hybride** : GPU dédiés et **gateway LLM** ; fil rouge annoncé : gouvernance, souveraineté « scalable » et spécialisation métier (Secrets de Data).\n- Contenu limité au chapeau de l'article ; IT Social cite EDF parmi les retours d'expérience du salon sans détail.",
+      "summarySources": [
+        "blog"
+      ]
+    },
+    {
+      "id": "structurer-son-data-office-sncf",
+      "type": "talk",
+      "title": "Structurer son Data Office (SNCF)",
+      "speakers": [
+        "Angélique Bidault-Verliac — SNCF"
+      ],
+      "feedbackFrom": [
+        "Secrets de Data (Christophe Auffray, 01/10 et 06/10, article commun avec la session MGEN)"
+      ],
+      "summary": "- Thèse commune aux REX SNCF et MGEN : le **Data Office est un moteur de transformation métier**, pas une annexe de la DSI ; *« la réussite ne réside pas dans la puissance de l'outil »*.\n- Organisation : une **gouvernance fédérée et agile**, avec un Data Office *« qui fait office d'orchestrateur plutôt que de goulot d'étranglement »*.\n- Côté SNCF, le moteur est un **impératif de performance industrielle** ; l'article ne détaille pas le dispositif (Secrets de Data).",
+      "summarySources": [
+        "blog"
+      ]
+    },
+    {
+      "id": "culture-data-forte-mgen",
+      "type": "talk",
+      "title": "Construire une culture data forte (MGEN)",
+      "speakers": [
+        "Alexa Kehailia — MGEN"
+      ],
+      "feedbackFrom": [
+        "Secrets de Data (Christophe Auffray, 01/10 et 06/10, article commun avec la session SNCF)"
+      ],
+      "summary": "- Déclencheur : la **réforme de la Protection Sociale Complémentaire** des agents publics (2020) et la dérégulation du marché qui en découle ont créé l'urgence.\n- Piliers retenus : **acculturation** des équipes, méthodes orientées résultats rapides, éthique et **qualité des données comme prérequis à l'IA** (Secrets de Data, sans chiffre).",
+      "summarySources": [
+        "blog"
+      ]
+    },
+    {
+      "id": "coder-avec-des-agents-ia-societe-generale",
+      "type": "talk",
+      "title": "Coder avec des agents IA (Société Générale)",
+      "speakers": [
+        "Christophe Prudhomme — Société Générale (responsable de département IT)"
+      ],
+      "feedbackFrom": [
+        "Koïno (05/10)"
+      ],
+      "summary": "- Retour personnel : un gain **proche de x10** sur des projets personnels, pour environ **400 € de tokens par mois**.\n- La discipline produit reste centrale : *« Si ce n'est pas dans le backlog, ça n'existe pas. »* (Prudhomme, via Koïno).",
+      "summarySources": [
+        "blog"
+      ]
+    },
+    {
+      "id": "la-science-des-donnees-avec-des-agents-ia-probabl",
+      "type": "talk",
+      "title": "La science des données avec des agents IA (Probabl)",
+      "speakers": [
+        "Yann Debray — Probabl (CPO)"
+      ],
+      "feedbackFrom": [
+        "Koïno (05/10)"
+      ],
+      "summary": "- Mise en garde sur l'évaluation des modèles produits par des agents : sur un jeu à **8 % de cas positifs**, un modèle qui répond toujours « non » obtient **92 % de bonnes réponses** sans rien prédire (exemple rapporté par Koïno).",
+      "summarySources": [
+        "blog"
+      ]
+    },
+    {
+      "id": "ancrer-l-ia-dans-le-monde-physique-kyutai",
+      "type": "talk",
+      "title": "Ancrer l'IA dans le monde physique : les world models (Kyutai)",
+      "speakers": [
+        "Adrien Ramanana Rahary — Kyutai"
+      ],
+      "feedbackFrom": [
+        "Koïno (05/10)"
+      ],
+      "summary": "- Exemple marquant retenu : un modèle a **réappris la physique de Rocket League** sans qu'aucune règle ne soit codée (Koïno, seule mention).",
+      "summarySources": [
+        "blog"
+      ]
+    },
+    {
+      "id": "quantum-centric-supercomputing-ibm",
+      "type": "talk",
+      "title": "Quantum-centric supercomputing (IBM)",
+      "speakers": [
+        "Pierre Jaeger — IBM Quantum (directeur technique, partenariats stratégiques Europe)"
+      ],
+      "feedbackFrom": [
+        "Koïno (05/10)",
+        "IT for Business (interview plateau du salon, 30/09 — speaker)"
+      ],
+      "summary": "- Architecture cible : le quantique comme **accélérateur hybride** aux côtés des CPU et GPU, pas comme remplaçant de l'informatique classique (Koïno ; même message dans l'interview).\n- Feuille de route : aujourd'hui de la **mitigation d'erreurs**, pas de la correction ; **Starling** (2029, 100 millions de portes sur 200 qubits logiques), puis Blue Jay (horizon 2033, un milliard de portes) *(speaker)*.\n- *« La question, ce n'est pas si l'ordinateur quantique va arriver. C'est quand est-ce qu'il va arriver. »* La difficulté est dans l'algorithmique et les mathématiques plus que dans le code ; dix minutes de calcul gratuites par mois pour se former ; le quantique ne fera pas disparaître la consommation énergétique des data centers IA *(speaker, IT for Business)*.",
+      "summarySources": [
+        "blog"
       ]
     },
     {
@@ -214,13 +456,16 @@
       "type": "roundtable",
       "title": "L'open source comme alternative souveraine (BPCE, INSEE, Altares)",
       "speakers": [
-        "BPCE, INSEE, Altares (table ronde)"
+        "Florian Caringi — Groupe BPCE (Head of Data & Open Source)",
+        "Frédéric Comte — Insee",
+        "Odile Jacqmin — Altares"
       ],
       "feedbackFrom": [
+        "Koïno (05/10)",
         "Veillemag (Jacqueline Sala, 23/09)",
-        "IT for Business (interview plateau de Florian Caringi, BPCE, 17/09 ; participation à la table ronde non vérifiée)"
+        "IT for Business (interview plateau de Florian Caringi, BPCE, 17/09 — speaker)"
       ],
-      "summary": "- Veillemag : BPCE a défendu une **stratégie open source pragmatique**, fondée sur le **dual sourcing** et la capacité à héberger certains modèles sur ses propres infrastructures ; objectif : éviter l'enfermement chez un fournisseur, peser dans les négociations, garder des compétences internes. Réserve : l'ouverture d'un modèle ne garantit ni l'accès aux données d'entraînement ni l'indépendance.\n- Même ligne dans l'interview de Florian Caringi (Head of Data & Open Source, BPCE) : *« L'idée, c'est de ne plus être dépendant d'un seul acteur, mais de multiplier les dépendances et de mieux les gérer »* ; *« le multifournisseur permet aussi de réduire les coûts »* ; open weight n'est pas open source, et l'écosystème open weight est *« clairement aujourd'hui dominé par les éditeurs chinois »*.\n- Condition : passer *« d'une DSI d'engagement contractuel à une DSI de développement »* et se regrouper entre pairs (EuroCommons) pour financer et maintenir les alternatives (Caringi, IT for Business).",
+      "summary": "- Conclusion rapportée par Koïno : l'open source **déplace le coût vers les compétences** ; il ne supprime pas les dépendances, il oblige à les choisir.\n- Deux cas concrets : l'**Insee a éteint son dernier serveur SAS le 24 décembre 2025** ; Altares a subi le retrait de Talend Open Studio par Qlik (janvier 2024), d'où l'exigence de portabilité, *« un critère de qualité architecturale au même titre que la performance ou la sécurité »* (Jacqmin, via Koïno).\n- Veillemag : BPCE a défendu une **stratégie open source pragmatique**, fondée sur le dual sourcing et l'hébergement de certains modèles sur ses propres infrastructures ; réserve : l'ouverture d'un modèle ne garantit ni l'accès aux données d'entraînement ni l'indépendance.\n- Même ligne chez Caringi sur le plateau IT for Business : *« L'idée, c'est de ne plus être dépendant d'un seul acteur, mais de multiplier les dépendances et de mieux les gérer »* ; open weight n'est pas open source, et l'écosystème open weight est *« clairement aujourd'hui dominé par les éditeurs chinois »* *(speaker)*.\n- Condition : passer *« d'une DSI d'engagement contractuel à une DSI de développement »* et se regrouper entre pairs (EuroCommons) pour financer et maintenir les alternatives (Caringi, IT for Business).",
       "summarySources": [
         "blog"
       ]
@@ -291,69 +536,54 @@
       ]
     }
   ],
-  "synthesisUpdatedAt": "2026-09-30",
+  "synthesisUpdatedAt": "2026-10-28",
   "edition": "15e édition",
   "theme": "Le rendez-vous des décideurs IT & Data qui industrialisent l'IA",
   "programUrl": "https://www.bigdataparis.com/fr-fr/programme/conferences.html",
-  "note": "15e édition, 15 & 16 septembre 2026, Paris Expo Porte de Versailles — édition « recentrée sur les décideurs » : entrée visiteur payante pour la première fois, programme de conférences réservé aux Full Pass/VIP (57 sessions sur 3 salles : Architecture data moderne, Gouvernance & réglementation, Data & IA au service du business), plus 200+ workshops, 50 pitchs startups et un Village Advanced Computing. ~15 000 participants annoncés avant le salon ; le bilan publié ensuite fait état de 9 800 participants et 130 exposants et sponsors (IT Social, 28/09).",
-  "corpus": "Trois comptes-rendus de presse (Alliancy, 16/09 ; Veillemag, 23/09 ; IT Social, article-bilan largement nourri par l'organisateur, 28/09), un article d'analyse (Secrets de Data, 24/09), huit interviews enregistrées sur le plateau IT for Business du salon (France Travail, Crédit Agricole, BPCE, Suez, EuroCommons/Caisse des Dépôts, CNAM, ministère de l'Intérieur, Pro à Pro, 16-24/09), un article et un post d'un speaker (ekino, 17/09), une page d'école (aivancity) et 2 posts LinkedIn de visiteurs (Ahmed Alaoui Bouarraqui, Eric Mattern), plus le programme officiel complet (57 conférences) et deux articles d'annonce (La Revue du Digital, IT for Business).",
-  "limits": "Corpus encore mince à J+13 pour un salon de cette taille (seule nouvelle source trouvée le 29/09 : le bilan d'IT Social, qui ne rapporte le contenu d'aucune conférence précise ; aucun nouveau post de visiteur) : moins d'une conférence sur cinq documentée, très peu de posts de visiteurs (la recherche web indexe mal LinkedIn), forte part de sources intéressées (speakers, partenaires médias du salon). Les interviews IT for Business sont des entretiens de plateau, pas des comptes-rendus des conférences ; plusieurs rattachements de Veillemag à une session sont déduits (signalés). Quatre sessions ne sont résumées que d'après leur descriptif officiel. Trois des interviews de plateau (CNAM, ministère de l'Intérieur, Pro à Pro) ne sont rattachées à aucune session du programme et n'alimentent que la synthèse globale. Aucune vidéo de conférence 2026 sur la chaîne YouTube du salon au 29/09 (seulement des extraits d'interviews enregistrés en amont, publiés entre le 21/07 et le 24/08) et aucun replay sur le site officiel.",
-  "tldr": "**L'IA agentique a éclipsé la data : le salon a entériné le passage « de la promesse à la preuve », où le vrai sujet n'est plus la performance des modèles mais le passage à l'échelle — gouvernance, contexte métier, coûts, souveraineté et contrôle des agents.**",
+  "note": "15e édition, 15 & 16 septembre 2026, Paris Expo Porte de Versailles. Édition « recentrée sur les décideurs » : entrée visiteur payante pour la première fois, programme de conférences réservé aux Full Pass/VIP (57 sessions sur 3 salles : Architecture data moderne, Gouvernance & réglementation, Data & IA au service du business), plus 200+ workshops, 50 pitchs startups et un Village Advanced Computing. ~15 000 participants annoncés avant le salon ; le bilan publié ensuite fait état de 9 800 participants et 130 exposants et sponsors (IT Social, 28/09). Prochaine édition annoncée les 29 et 30 septembre 2027.",
+  "corpus": "Un compte-rendu détaillé de participants (Koïno, cabinet de conseil data et IA, qui a suivi les seize conférences de la scène Architecture Data Moderne, 05/10), trois comptes-rendus de presse (Alliancy, 16/09 ; Veillemag, 23/09 ; IT Social, bilan largement nourri par l'organisateur, 28/09), cinq articles d'analyse de Secrets de Data (L'Oréal, SNCF/MGEN, EDF, 24/09-15/10), neuf interviews de plateau IT for Business (16-30/09), un article et un post d'un speaker (ekino), une page d'école (aivancity), 2 posts LinkedIn de visiteurs (Ahmed Alaoui Bouarraqui, Eric Mattern), plus le programme officiel complet (57 conférences), deux articles d'annonce et la chaîne YouTube du salon (aftermovie du 02/10).",
+  "limits": "Couverture inégale à J+42 : la scène Architecture Data Moderne est bien documentée grâce à Koïno, les deux autres salles beaucoup moins, et une vingtaine de conférences restent sans aucun retour. Très peu de posts LinkedIn de visiteurs (2, la recherche web indexe mal LinkedIn) et forte part de sources intéressées (speakers, partenaires médias, cabinet de conseil) ; plusieurs rattachements de Veillemag sont déduits, les interviews IT for Business sont des entretiens de plateau et les articles Secrets de Data sur EDF et le Data Office ne sont lisibles qu'en partie (abonnement). Aucune captation de conférence publiée au 28/10/2026 (seulement un aftermovie de 2 minutes sur YouTube) : depuis 2023, la chaîne ne publie que des aftermovies et des interviews, pas de captations de conférences, leur arrivée est donc peu probable.",
+  "tldr": "**L'IA agentique a éclipsé la data : le salon a entériné le passage « de la promesse à la preuve », où le vrai sujet n'est plus la performance des modèles mais le passage à l'échelle : gouvernance, contexte métier, mesure, coûts, souveraineté et contrôle des agents.**",
   "keyTakeaways": [
     "Rattacher les projets IA au **Comex** plutôt qu'au « N-10 du DSI » : c'est l'indicateur le plus simple de leurs chances de passer à l'échelle (Bour, Mistral AI).",
     "Concevoir des solutions **« scalables by design »** et prévoir leur amélioration continue (retours utilisateurs et agents).",
-    "Rester **agnostique** : une gateway ou couche d'orchestration unique pour changer de modèle sans refaire la plateforme (L'Oréal, Havas).",
-    "Suivre la **consommation de tokens** par équipe et par usage dès le départ.",
-    "Traiter la **dette de connaissance de la donnée** avant les agents : documentation fonctionnelle, Data Owners, Data Products.",
-    "Construire une **couche de contexte** (sémantique, ontologies, knowledge graphs) : la qualité du contexte devient un actif stratégique.",
-    "Gouverner les agents **action par action** : périmètre minimal, contrôles au moment de l'action, auditabilité.",
-    "Standardiser les connecteurs (**MCP**) et outiller la détection des agents réutilisables pour éviter la prolifération.",
+    "Rester **agnostique** : une gateway ou couche d'orchestration unique pour changer de modèle sans refaire la plateforme, avec un suivi des tokens par équipe et par usage (L'Oréal, Havas, Crédit Agricole SA).",
+    "Accepter des dépendances seulement si elles sont **gouvernées, observables, testables et remplaçables**, et tester réellement les fallbacks (Ktari, Crédit Agricole SA).",
+    "Traiter la **dette de connaissance de la donnée** avant les agents : documentation fonctionnelle, Data Owners, Data Products, définitions métier alignées entre pays (Oney, JCDecaux).",
+    "Mesurer avant d'optimiser : **référentiel de questions-réponses d'experts et LLM juge** pour la qualité, mesure de l'énergie de chaque inférence (RATP).",
+    "Gouverner les agents **action par action** : périmètre et droits minimaux, contrôles au moment de l'action, auditabilité, traçabilité jusqu'à la décision (Havas, CISO, Kazan).",
+    "Standardiser les connecteurs (**MCP**) et outiller la détection des agents réutilisables pour éviter la prolifération (L'Oréal).",
     "Accepter qu'il n'y a pas de **« zéro hallucination »** et revenir à des scénarios **déterministes** là où la même question doit toujours recevoir la même réponse (Zappelini, Crédit Agricole).",
     "Faire entrer la **gouvernance et la conformité (AI Act) dès le début du projet**, et automatiser les contrôles face à la multiplication des agents (Veillemag, d'après Oyat)."
   ],
   "sessionsWithoutFeedback": [
-    "AI Factory France (S. Requena — GENCI)",
     "Déploiement de l'IA à grande échelle chez Schneider Electric (Y. Bersihand, Microsoft)",
-    "Lakehouse & Data Products (JCDecaux)",
     "L'ESA déploie l'IA au service de ses missions",
     "Servier réinvente le coaching terrain avec l'IA",
     "Plateforme de Data Products temps réel (Airbus)",
-    "IA souveraine au service des métiers (F. Michon — EDF)",
     "Macif : donnée de confiance (F. Jendoubi)",
-    "IA embarquées en environnement critique (J. Mattioli — Thales)",
-    "Traçabilité des données dans les LLM (N. Anciaux — Inria)",
+    "IA embarquées en environnement critique (J. Mattioli, Thales)",
+    "Traçabilité des données dans les LLM (N. Anciaux, Inria)",
     "L'agentique chez Bouygues Telecom (S. Allaire)",
-    "SHOM et FME",
-    "IA et hôtellerie (J.-F. Guilmard — Accor)",
-    "Architecture robuste et résiliente (S. Ktari — Crédit Agricole SA)",
-    "Gouvernance et observabilité des données (J. Chiaroni — SafenAI)",
-    "Cas d'usage IA rentables (S. Yang — BNP Paribas)",
-    "Infrastructures du numérique (C. Gouy-Pailler — CEA)",
-    "Donnée non structurée et agentique (H. Mahiddine — Orano)",
+    "IA et hôtellerie (J.-F. Guilmard, Accor)",
+    "Gouvernance et observabilité des données (J. Chiaroni, SafenAI)",
+    "Cas d'usage IA rentables (S. Yang, BNP Paribas)",
+    "Donnée non structurée et agentique (H. Mahiddine, Orano)",
     "De la plateforme de données à l'entreprise agentique",
     "Agents autonomes et computer use",
     "Women Leaders Shaping the Future of Trusted AI (table ronde WiBD : SAP, Mersen, AXA, Danone)",
-    "Quantum centric supercomputing (P. Jaeger — IBM)",
-    "Interopérabilité chez ADEO / Leroy Merlin",
     "Enquête IMA × Magic Lemp × BDAIP sur la maturité IA",
-    "Culture data forte (A. Kehailia — MGEN)",
     "Transformation data de Generali France",
-    "Gouvernance et sécurité de l'IA agentique (table ronde Etam, Cohere, JFD, Renault — seulement mentionnée par Eric Mattern)",
-    "Repenser le lineage à l'ère de l'IA (O. Kazan)",
-    "Adoption de l'IA et régulation (D. Michallet — sénateur, CSNP)",
+    "Gouvernance et sécurité de l'IA agentique (table ronde Etam, Cohere, JFD, Renault, seulement mentionnée par Eric Mattern)",
+    "Adoption de l'IA et régulation (D. Michallet, sénateur, CSNP)",
     "IA frugale (CGDD, Sopra Steria)",
-    "Sécurité de l'IA agentique (CISO Europcar, EssilorLuxottica, ERES)",
     "Supply chain autonome (Renault)",
     "Décentralisation gouvernée (AXA France)",
     "IA pour la santé (PariSanté Campus, Whitelab Genomics)",
-    "World Models (A. Ramanana Rahary — Kyutai)",
-    "Structurer son Data Office (A. Bidault-Verliac — SNCF)",
-    "Coder avec des agents IA (C. Prudhomme — Société Générale)",
     "Intelligence énergétique (Schneider Electric)",
-    "Sans data gouvernée, pas d'IA fiable (S. Boujatioui — Coface)",
-    "Science des données avec des agents IA (Y. Debray — Probabl)",
+    "Sans data gouvernée, pas d'IA fiable (S. Boujatioui, Coface)",
     "Model Risk Management (Crédit Agricole Personal Finance & Mobility)",
-    "Passer à l'échelle avec l'IA (M. Girey — Bpifrance)"
+    "Passer à l'échelle avec l'IA (M. Girey, Bpifrance)"
   ],
   "sources": [
     {
@@ -361,15 +591,35 @@
       "url": "https://www.bigdataparis.com/fr-fr/programme/conferences.html"
     },
     {
-      "label": "Alliancy — À BigData & AI Paris, l'IA prend toute la place (Aude Brès, 16/09/2026)",
+      "label": "Koïno : Architecture data moderne, Big Data & AI Paris 2026 (Simon Liu, 05/10/2026, compte-rendu des seize conférences de la scène)",
+      "url": "https://www.koino.fr/articles/big-data-ai-paris-2026-architecture-data-ia"
+    },
+    {
+      "label": "Alliancy : À BigData & AI Paris, l'IA prend toute la place (Aude Brès, 16/09/2026)",
       "url": "https://www.alliancy.fr/a-bigdata-and-ai-paris-lia-prend-toute-la-place-70bc7c17-7362-44ce-b32d-8f102d55d58f"
     },
     {
-      "label": "Secrets de Data — Comment L'Oréal a bâti une plateforme agentique multi-cloud & multi-LLM (Christophe Auffray, 24/09/2026)",
+      "label": "Secrets de Data : Comment L'Oréal a bâti une plateforme agentique multi-cloud & multi-LLM (Christophe Auffray, 24/09/2026)",
       "url": "https://secretsdedata.substack.com/p/comment-loreal-a-bati-une-plateforme"
     },
     {
-      "label": "ekino — Retour sur Big Data AI Paris 2026 (article LinkedIn, 17/09/2026, speaker)",
+      "label": "Secrets de Data : L'Oréal, de l'IA custom à une plateforme agentique agnostique (Christophe Auffray, 29/09/2026)",
+      "url": "https://secretsdedata.substack.com/p/loreal-de-lia-custom-a-une-plateforme"
+    },
+    {
+      "label": "Secrets de Data : Data Office en ordre de bataille, les leçons de SNCF et MGEN (Christophe Auffray, 01/10/2026, payant)",
+      "url": "https://secretsdedata.substack.com/p/data-office-en-ordre-de-bataille"
+    },
+    {
+      "label": "Secrets de Data : Data Office, mode d'emploi pour transformer (Christophe Auffray, 06/10/2026)",
+      "url": "https://secretsdedata.substack.com/p/data-office-mode-demploi-pour-transformer"
+    },
+    {
+      "label": "Secrets de Data : IA chez EDF, gouvernance, souveraineté scalable et spécialisation métier (Christophe Auffray, 15/10/2026, payant)",
+      "url": "https://secretsdedata.substack.com/p/ia-chez-edf-gouvernance-souverainete"
+    },
+    {
+      "label": "ekino : Retour sur Big Data AI Paris 2026 (article LinkedIn, 17/09/2026, speaker)",
       "url": "https://fr.linkedin.com/pulse/retour-sur-big-data-ai-paris-2026-ekino-q77le"
     },
     {
@@ -377,55 +627,63 @@
       "url": "https://aivancity.ai/actualites/aivancity-big-data-ai-paris-2026-lia-transforme-les-metiers-et-la-creation-de-valeur"
     },
     {
-      "label": "Ahmed Alaoui Bouarraqui — post LinkedIn « De retour du salon Big Data & AI Paris 2026 »",
+      "label": "Ahmed Alaoui Bouarraqui : post LinkedIn « De retour du salon Big Data & AI Paris 2026 »",
       "url": "https://fr.linkedin.com/posts/ahmed-alaoui-bouarraqui-811243129_de-retour-du-salon-big-data-ai-paris-2026-activity-7506241569193242624-ZuMP"
     },
     {
-      "label": "Eric Mattern — post LinkedIn « Je suis allé au Big Data & ai Paris 2026 »",
+      "label": "Eric Mattern : post LinkedIn « Je suis allé au Big Data & ai Paris 2026 »",
       "url": "https://fr.linkedin.com/posts/ericmattern_je-suis-all%C3%A9-au-big-data-ai-paris-2026-activity-7506245536362979328-Sg5v"
     },
     {
-      "label": "Veillemag — Big Data et AI Paris 2026 : le temps de la maturité et de l'industrialisation (Jacqueline Sala, 23/09/2026)",
+      "label": "Veillemag : Big Data et AI Paris 2026, le temps de la maturité et de l'industrialisation (Jacqueline Sala, 23/09/2026)",
       "url": "https://www.veillemag.com/Big-Data-et-AI-Paris-2026-le-temps-de-la-maturite-et-de-l-industrialisation_a8428.html"
     },
     {
-      "label": "IT for Business — Samir Amellal (France Travail) : « On conçoit désormais des outils utilisés à la fois par des humains et des IA » (plateau du salon, 16/09/2026)",
+      "label": "IT for Business : Samir Amellal (France Travail), « On conçoit désormais des outils utilisés à la fois par des humains et des IA » (plateau du salon, 16/09/2026)",
       "url": "https://www.itforbusiness.fr/samir-amellal-france-travail-on-concoit-desormais-des-outils-utilises-a-la-fois-par-des-humains-et-des-ia-107248"
     },
     {
-      "label": "IT for Business — Aldrick Zappelini (Crédit Agricole) : « La mère de toutes les batailles, c'est la banque conversationnelle » (plateau du salon, 17/09/2026)",
+      "label": "IT for Business : Aldrick Zappelini (Crédit Agricole), « La mère de toutes les batailles, c'est la banque conversationnelle » (plateau du salon, 17/09/2026)",
       "url": "https://www.itforbusiness.fr/aldrick-zappelini-credit-agricole-la-mere-de-toutes-les-batailles-cest-la-banque-conversationnelle-107281"
     },
     {
-      "label": "IT for Business — Florian Caringi (BPCE) : « L'open source peut nous aider à mieux gérer nos dépendances » (plateau du salon, 17/09/2026)",
+      "label": "IT for Business : Florian Caringi (BPCE), « L'open source peut nous aider à mieux gérer nos dépendances » (plateau du salon, 17/09/2026)",
       "url": "https://www.itforbusiness.fr/florian-caringi-bpce-lopen-source-peut-nous-aider-a-mieux-gerer-nos-dependances-107285"
     },
     {
-      "label": "IT for Business — Claire Mathieu (SUEZ) : « La fuite d'eau a une signature et on apprend à l'IA à la reconnaître » (plateau du salon, 22/09/2026)",
+      "label": "IT for Business : Claire Mathieu (SUEZ), « La fuite d'eau a une signature et on apprend à l'IA à la reconnaître » (plateau du salon, 22/09/2026)",
       "url": "https://www.itforbusiness.fr/claire-mathieu-suez-la-fuite-a-une-signature-et-on-apprend-a-lia-a-la-reconnaitre-107464"
     },
     {
-      "label": "IT for Business — Aymeril Hoang (EuroCommons) : « Il faut créer des coalitions opérationnelles de DSI » (plateau du salon, 16/09/2026)",
+      "label": "IT for Business : Aymeril Hoang (EuroCommons), « Il faut créer des coalitions opérationnelles de DSI » (plateau du salon, 16/09/2026)",
       "url": "https://www.itforbusiness.fr/aymeril-hoang-eurocommons-il-faut-creer-des-coalitions-operationnelles-de-dsi-107245"
     },
     {
-      "label": "IT for Business — Gilles Bontemps (CNAM) : « On ne veut pas de fichiers Excel avec 300 colonnes et 400 lignes » (plateau du salon, 18/09/2026)",
+      "label": "IT for Business : Gilles Bontemps (CNAM), « On ne veut pas de fichiers Excel avec 300 colonnes et 400 lignes » (plateau du salon, 18/09/2026)",
       "url": "https://www.itforbusiness.fr/gilles-bontemps-cnam-on-ne-veut-pas-de-fichiers-excel-avec-300-colonnes-et-400-lignes-107363"
     },
     {
-      "label": "IT for Business — Julien Anthonioz-Blanc : « L'État est une immense fourmilière passionnante » (plateau du salon, 18/09/2026)",
+      "label": "IT for Business : Julien Anthonioz-Blanc, « L'État est une immense fourmilière passionnante » (plateau du salon, 18/09/2026)",
       "url": "https://www.itforbusiness.fr/julien-anthonioz-blanc-letat-est-une-immense-fourmiliere-passionnante-107330"
     },
     {
-      "label": "IT for Business — Delphine Boudou (Pro à Pro) : « L'idée, c'est de faire rentrer l'IA par les tâches que les développeurs n'aiment pas faire » (plateau du salon, 24/09/2026)",
+      "label": "IT for Business : Delphine Boudou (Pro à Pro), « L'idée, c'est de faire rentrer l'IA par les tâches que les développeurs n'aiment pas faire » (plateau du salon, 24/09/2026)",
       "url": "https://www.itforbusiness.fr/delphine-boudou-pro-a-pro-lidee-cest-de-faire-rentrer-lia-par-les-taches-que-les-developpeurs-naiment-pas-faire-107569"
     },
     {
-      "label": "Alliancy — page de la table ronde « Sécurité, souveraineté et dépendance aux hyperscalers » (intervenants)",
+      "label": "IT for Business : Pierre Jaeger (IBM), « La question n'est pas si le quantique va arriver, mais quand » (plateau du salon, 30/09/2026)",
+      "url": "https://www.itforbusiness.fr/pierre-jaeger-ibm-la-question-nest-pas-si-le-quantique-va-arriver-mais-quand-107734"
+    },
+    {
+      "label": "Alliancy : page de la table ronde « Sécurité, souveraineté et dépendance aux hyperscalers » (intervenants)",
       "url": "https://alliancy.fr/communaute/evenements/2026/09/15/3a4963e5-24b3-442f-8cef-5e854c179b99"
     },
     {
-      "label": "La Revue du Digital — Big Data & AI Paris 2026 : les choix qui comptent (annonce, 10/09/2026)",
+      "label": "Veremes : FME au salon BigData & AI Paris 2026 (annonce de la session Shom)",
+      "url": "https://www.veremes.com/event/bigdata-ai-paris-2026"
+    },
+    {
+      "label": "La Revue du Digital : Big Data & AI Paris 2026, les choix qui comptent (annonce, 10/09/2026)",
       "url": "https://www.larevuedudigital.com/big-data-ai-paris-2026-les-choix-qui-comptent-pour-deployer-lia-en-entreprise/"
     },
     {
@@ -433,9 +691,12 @@
       "url": "https://itsocial.fr/tech-digital/tech-digital-actualites/big-data-ai-paris-2026-une-15e-edition-centree-sur-lexecution-des-projets-data-et-ia-en-entreprise/"
     },
     {
-      "label": "Chaîne YouTube Big Data & AI Paris (pas de vidéo de conférence 2026 au 29/09/2026)",
-      "url": "https://www.youtube.com/@BigDataParis"
+      "label": "YouTube : aftermovie BiG DATA & Ai PARIS 2026 (02/10/2026, aucune captation de conférence au 28/10/2026)",
+      "url": "https://www.youtube.com/watch?v=zovi-gJCr2U"
+    },
+    {
+      "label": "YouTube : Les vrais prérequis d'une IA agentique en production, avec Chafika Chettaoui (AXA France) (entretien de l'organisateur, 23/07/2026)",
+      "url": "https://www.youtube.com/watch?v=R-tJ4MQaJd4"
     }
-  ],
-  "revisit": "posts LinkedIn de visiteurs quasi introuvables via la recherche web (2 seulement, aucun nouveau au 30/09/2026 ; dernier article trouvé : le bilan IT Social du 28/09, sans contenu de session) ; vidéos des conférences non publiées sur YouTube ni sur le site officiel au 30/09 : à reprendre à la publication des replays"
+  ]
 }
