@@ -2,12 +2,766 @@
   "event": "forum-php",
   "year": 2023,
   "title": "Forum PHP 2023",
+  "edition": "23e édition",
   "start": "2023-10-12",
   "end": "2023-10-13",
   "city": "Marne-la-Vallée",
   "venue": "Hotel New York – The Art of Marvel, Disneyland Paris",
   "url": "https://event.afup.org/forum-php-2023/",
+  "programUrl": "https://event.afup.org/forum-php-2023/programme/",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "Deuxième année à l'Hotel New York – The Art of Marvel. Environ 600 participants contre 780 l'année précédente (keynote d'ouverture), 29 sponsors, 29 speakers sur deux salles ; 203 propositions de 127 speakers au CFP (AFUP). Faute de budget, la vélotypie (sous-titrage en direct) a été supprimée. Nouveautés : premier bilan carbone du forum, fresque LEGO collaborative, lightning talks hors-tech « Histoires extraordinaires », soirée communautaire refondue autour d'un jeu de mise en relation. Vidéos publiées une par jour du 1er au 25 décembre 2023 (calendrier de l'avent de l'AFUP).",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-29",
+  "revisit": "J+3 ans (29/10/2026) : synthèse fondée sur 30 transcripts de talks, mais retours de participants minces : deux récaps de sponsors (Deezer, SensioLabs), un seul commentaire public sur afup.org, aucun post LinkedIn indexé ; les trois articles Medium d'ekino (jours 1 et 2, REX d'un débutant) sont connus seulement par leur extrait (HTTP 403). À reprendre : lire les articles ekino, chercher des posts LinkedIn et Twitter/X d'octobre 2023 par nom de speaker, et les commentaires joind.in/openfeedback ; transcrire Karlitschek et Zalewski (vidéos sans sous-titres).",
+  "corpus": "Lu à J+3 ans (29/10/2026) : le programme officiel, 30 transcripts automatiques de talks et de keynotes de la playlist officielle « Forum PHP 2023 » (plus cinq interviews « Les Off du Forum PHP » et l'aftermovie, utilisés comme contexte), le récap détaillé de l'équipe Deezer (3 novembre 2023, une dizaine de talks), le billet de SensioLabs (21 novembre 2023), deux news de l'AFUP (bilan et calendrier des vidéos), un commentaire de participant sur afup.org et les extraits des trois articles Medium d'ekino (17 et 19 octobre 2023).",
+  "limits": "Corpus de retours très mince et biaisé vers les sponsors : Deezer et SensioLabs tenaient un stand, ekino comptait un speaker (Eyili) et ses articles n'ont pas pu être lus en entier ; aucun post LinkedIn indexé, un seul commentaire public. L'essentiel des résumés repose donc sur ce qui a été dit sur scène (transcripts automatiques, noms propres parfois incertains), pas sur ce qu'en ont retenu les participants. Deux talks (Karlitschek, Zalewski) n'ont pas de transcript ; les quatre présentations de speakers et les trois « coups de projecteur » sponsors ne sont pas documentés.",
+  "tldr": "**Un Forum PHP de crise douce (environ 600 participants contre 780, vélotypie supprimée faute de budget) mais au programme très solide : un PHP moderne et outillé (serverless avec Bref, 103 Early Hints et FrankenPHP, asynchrone avec Revolt, API Platform sur Laravel, PHP 8 et ses pièges), une place inédite pour l'humain (burn-out, mentorat, apprentissage, femmes et numérique, temps de travail) et un premier pas, encore pragmatique, vers les LLM.**",
+  "keyTakeaways": [
+    "Partir du principe que les objets sont immutables par défaut : `DateTimeImmutable` plutôt que `DateTime`, classes `readonly` et méthodes « with » qui renvoient une nouvelle instance (Eyili, speaker).",
+    "Avant de migrer vers PHP 8, traquer les comparaisons chaîne/entier (`switch`, `in_array`, tris) et passer à `===`, faire tourner les tests sur les versions suivantes et s'appuyer sur l'analyse statique (Seguy, speaker ; retenu par Deezer).",
+    "Envoyer un 103 Early Hints le plus tôt possible, avant les requêtes Doctrine : depuis le serveur web pour les ressources fixes, depuis PHP (FrankenPHP, Symfony 6.3) pour les dynamiques ; les navigateurs qui ne le comprennent pas l'ignorent (Dunglas, speaker).",
+    "Avant de créer un index Postgres, raisonner sur tout le workload de la table : un index ralentit toutes les écritures, et beaucoup de missions commencent par en supprimer (Avrot, speaker).",
+    "En asynchrone, combiner les promesses (`all`, `race`) au lieu d'enchaîner des `await` : faire une seule chose asynchrone à la fois, c'est du synchrone (Viguier, speaker).",
+    "Remplacer les explosions combinatoires de tests fonctionnels par du property-based testing : moins de tests, plus de cas couverts, des bugs trouvés en quelques minutes (Langlade, speaker).",
+    "Rendre chaque équipe responsable de l'observabilité de son périmètre : logs, métriques, traces et alertes ; supprimer toute alerte qui n'appelle pas d'action immédiate ; former les nouveaux à l'astreinte par une semaine en binôme (Milianni, speaker).",
+    "Ne jamais attraper une exception en silence, mettre au moins un log et tenir des ADR immuables : leçons d'un SaaS migré vers Kubernetes (Planchat, speaker ; retenu par Deezer).",
+    "Écrire un texte alternatif pour chaque image (vide si décorative) en se demandant pourquoi l'image est là : l'alt sert le lecteur, pas le SEO (Guyard, speaker).",
+    "Pour réduire le contexte envoyé à un LLM, commencer par une recherche de similarité sur des embeddings (pgvector) avant d'envisager le fine tuning (Thoonsen, speaker)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-d-ouverture",
+      "day": "2023-10-12",
+      "type": "keynote",
+      "title": "Keynote d'ouverture",
+      "speakers": [
+        "Équipe AFUP"
+      ],
+      "feedbackFrom": [],
+      "summary": "- L'AFUP se présente : **23 ans d'existence, 600 adhérents dont une soixantaine d'entreprises**, deux salariés et une cinquantaine de bénévoles ; actions citées : Forum PHP, AFUP Day, baromètre des salaires, mentorat, antennes locales.\n- Programme de **29 speakers**, mélange de sujets techniques, de retours d'expérience et de sujets métier ; feedback via Open Feedback.\n- Animations : fresque LEGO, quiz, lightning talks hors-tech, soirée communautaire au Disney Village avec un jeu ; nouveauté, un **premier bilan carbone** du forum fondé sur une enquête transports.\n- Constat franc sur la fréquentation : **environ 600 participants contre 780 l'année précédente**, *« ce manque de participation nous a obligé à couper certains budgets, je pense notamment à la vélotypie »*.\n- Remerciements aux 29 sponsors (Les-Tilleuls.coop, Clever Cloud, SensioLabs, JoliCode parmi les sponsors or, d'après une transcription approximative).",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "ieRCemkF2ts",
+        "title": "Keynote d'ouverture - Équipe AFUP - Forum PHP 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "why-php-is-still-awesome-in-2023",
+      "day": "2023-10-12",
+      "type": "keynote",
+      "title": "Why PHP is still awesome in 2023",
+      "speakers": [
+        "Frank Karlitschek — Nextcloud"
+      ],
+      "feedbackFrom": [
+        "Loïc Caillieux (commentaire afup.org)",
+        "Blog ekino (extrait)"
+      ],
+      "summary": "- Keynote d'ouverture en anglais du fondateur et CEO de Nextcloud, qui a écrit son premier code PHP il y a 25 ans avec PHP 3 (descriptif officiel).\n- Thèse annoncée : **l'évolution continue de PHP, son écosystème et sa compatibilité avec les technologies modernes** en font le bon choix pour une plateforme cloud sécurisée, scalable et communautaire comme Nextcloud.\n- D'après l'extrait du récap d'ekino, il a d'abord présenté Nextcloud comme alternative aux clouds privés, puis expliqué pourquoi le projet a choisi PHP.\n- Lecture critique d'un participant : *« Less product presentation and more community, process or PHP insight would have been great »* (Loïc Caillieux, afup.org).\n- Vidéo publiée sans transcript exploitable : contenu connu par le descriptif et ces retours indirects.",
+      "summarySources": [
+        "program",
+        "feedback",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "4_kyVCGGzfY",
+        "title": "Why PHP is still awesome in 2023 - Frank KARLITSCHEK - Forum PHP 2023",
+        "transcript": false
+      }
+    },
+    {
+      "id": "symfony-se-met-au-front",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "Symfony se met au front, à votre tour maintenant !",
+      "speakers": [
+        "Mathéo Daninos"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Thèse : Symfony, Laravel et Rails **se mettent au front** pour réduire la rupture back/front ; le but n'est pas de remplacer JavaScript mais de *« le remettre à sa juste place »*.\n- Parcours de Symfony UX : **Twig Components**, puis **Live Components** (`LiveProp`, `LiveAction`) avec une démo de pagination sans écrire de JS, comparés aux composants Blade et à Livewire.\n- Stimulus, *« petit framework JS avec peu d'ambition »* : un Live Component n'est qu'un contrôleur Stimulus.\n- Build : passage de Webpack aux import maps avec AssetMapper ; contre-exemple du *« dossier de 4 Go »* pour un carré rouge animé.\n- En questions : Stimulus face à Alpine.js relève d'un alignement d'écosystème, pas d'une concurrence ; l'autocomplétion PhpStorm couvre les composants avec classe, pas encore les anonymes.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "NIMcDatUPEk",
+        "title": "Symfony se met au front, a votre tour maintenant! - Matheo DANINOS - Forum PHP 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "augmentez-votre-couverture-supprimez-des-tests",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "Augmentez votre couverture : supprimez des tests !",
+      "speakers": [
+        "Baptiste Langlade"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Contexte : une API Symfony de GED testée uniquement en fonctionnel, **environ 730 tests et 1 h 15 de CI**, dont la combinatoire explose à chaque nouvelle fonctionnalité.\n- *« En tant qu'humain on n'est pas armé pour gérer une complexité qui est exponentielle »* : réponse par le **property-based testing** (héritier de QuickCheck), avec BlackBox, son propre framework utilisable dans PHPUnit.\n- « Tests dynamiques » : chaque scénario devient une classe réutilisable pour initialiser les autres ; ajouter un nouveau type d'emplacement n'a demandé qu'une ligne, et 9 tests sont devenus 3.\n- Bugs trouvés : un Elasticsearch mal configuré en quelques minutes, un `%` non échappé dans un LIKE après deux ans ; une donnée en échec devient un test de non-régression en deux lignes.\n- Limites reconnues : migration encore en cours, extension PHPUnit nécessaire pour afficher les valeurs générées.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "ZIM1OIjvk5s",
+        "title": "Augmentez votre couverture : supprimez des tests !  - Baptiste LANGLADE - Forum PHP 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "sso-simplifiez-et-securisez-l-authentification",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "Single Sign-On (SSO) : simplifiez et sécurisez l'authentification dans vos applications PHP",
+      "speakers": [
+        "Olivier Mairet — OpenClassrooms"
+      ],
+      "feedbackFrom": [
+        "Blog Deezer"
+      ],
+      "summary": "- Besoin né du B2B d'OpenClassrooms : distinction entre **OAuth 2 (autorisation), OpenID Connect et SAML** ; vocabulaire IdP, SP, metadata, assertion.\n- Deux flows détaillés (initié par l'IdP ou par l'application), contenu de l'AuthnRequest et vérifications de la réponse (audience, validité temporelle, signature).\n- Librairies : onelogin/php-saml (utilisée chez eux), SimpleSAMLphp, LightSAML.\n- Provisioning via **SCIM**, avec un piège vécu : certains IdP désactivent un compte par PUT ou PATCH `active=false` au lieu de DELETE, il faut gérer les deux ; alternative, le provisioning just-in-time.\n- Retenu par Deezer : le choix de SAML 2.0 pour sa facilité de configuration et le chiffrement des données.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "f2GX4HSSkko",
+        "title": "SSO : Simplifiez et sécurisez l'authentification dans vos applications PHP - Olivier  MAIRET",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-contribuer-a-php",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "Comment contribuer à PHP ?",
+      "speakers": [
+        "Gina/George Banyard — PHP Foundation"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Speaker payé par la **PHP Foundation** pour la maintenance et la revue de code du cœur ; appel aux entreprises à donner via Open Collective.\n- Ressources d'entrée : tutoriel de Dmitry Stogov, PHP Internals Book, recherche dans le code source, salon Stack Overflow « room 11 ».\n- **Live coding** : ajout d'une fonction de recherche dans un tableau par callback en 30 à 35 minutes, de `ext/standard/array.c` aux tests PHPT, avec une fuite mémoire détectée par ASan et corrigée en direct ; *« Je suis aussi un gros adepte du copier-coller »*.\n- En questions : le cœur accepte peu de nouvelles fonctions, le C se justifie pour un binding vers une lib C, des capacités internes ou la performance ; la porte d'entrée, ce sont les extensions, avant le compilateur et la VM, puis OPcache et le JIT.\n- Un tiers à la moitié de son temps à la Fondation part en revue de code.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "05tImPvGRqw",
+        "title": "Comment contribuer à PHP ? - Gina/George BANYARD - Forum PHP 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "j-ai-cree-un-service-saas",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "J'ai créé un service SaaS, voyons ce qu'il ne faut pas faire",
+      "speakers": [
+        "Grégory Planchat — Gyroscops"
+      ],
+      "feedbackFrom": [
+        "Blog Deezer"
+      ],
+      "summary": "- Retour d'expérience d'un SaaS de connecteurs de données passé de serveurs dédiés à **Kubernetes** (Istio, Helm, Knative, Tekton), stack choisie d'après la maturité CNCF ; un premier outil serverless abandonné trois semaines après le choix, quand le projet a annoncé son arrêt.\n- Conseils : un nouvel outil doit être maîtrisé et apporter de la valeur, **éviter les technologies à la mode**, KISS et YAGNI valent aussi pour l'infra ; CQRS et event sourcing ont eu un coût de formation sous-estimé.\n- Incident de login dû à une exception silencieuse : *« mettez au moins un log »*, les logs étant *« les petits cailloux qui vont vous permettre de retrouver votre chemin quand vous êtes dans le noir »*.\n- ADR obligatoires, dans un seul dépôt, relus en PR et immuables ; côté produit, passer vite du MVP au produit minimum vendable.\n- Retenu par Deezer : le coût humain et financier des nouvelles technologies, les ADR et *« no silent exception catch »*.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "kjCzLgkR3ck",
+        "title": "J’ai créé un service SaaS, voyons ce qu’il ne faut pas faire - Grégory PLANCHAT - Forum PHP 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "un-moteur-de-collision-en-php",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "Un moteur de collision en PHP ?",
+      "speakers": [
+        "Maxime Veber — Wishibam"
+      ],
+      "feedbackFrom": [
+        "Blog SensioLabs"
+      ],
+      "summary": "- Défi assumé comme inutile : porter un mini-jeu JavaScript en **PHP pur**, fenêtre comprise, via la bibliothèque C SDL (extension PHP ou package FFI).\n- La physique repose sur Box2D, en C++, donc inaccessible directement par **FFI** ; échecs successifs avec une extension maison, SWIG et une réécriture assistée par ChatGPT.\n- Solution : un wrapper C++ qui expose des fonctions C, compilé en bibliothèque partagée et appelé en FFI.\n- Pistes réelles : physique côté serveur, boucle d'événements avec Amp ou ReactPHP ; *« C'est que du PHP, on est plutôt content de ça, même si ça sert vraiment à rien »*.\n- SensioLabs retient la démonstration d'un petit jeu vidéo construit directement en PHP.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "Mgs2AZ2enfw",
+        "title": "Un moteur de collision en PHP ? - Maxime VEBER - Forum PHP 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-positive-alt-itude",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "La positive alt-itude ! Un outil d'inclusion pour votre accessibilité",
+      "speakers": [
+        "Angi Déborah Guyard"
+      ],
+      "feedbackFrom": [
+        "Blog SensioLabs"
+      ],
+      "summary": "- Ouverture par une démo de lecteur d'écran ; références WCAG et RGAA.\n- Règle de base : **un alt tout le temps**, vide pour une image décorative ; sans alt, le lecteur annonce seulement « image ».\n- Question à se poser : pourquoi cette image existe ? Exemples concrets : photo d'actualité, camembert (titre puis données par ordre d'importance), image contenant du texte, œuvre d'art à décrire richement.\n- À éviter : « photo » seul, le nom de fichier, le bourrage de mots-clés ; *« Les alt c'est pas fait pour votre SEO, c'est fait pour adapter votre contenu à un public qui ne peut pas le voir »*.\n- En questions, réserve sur l'IA génératrice d'alt, qui ignore le contexte : au mieux un point de départ à retravailler.\n- SensioLabs met ce talk en avant pour son utilité auprès des personnes malvoyantes.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "20AO3UAkoSs",
+        "title": "La positive alt-itude ! Un outil d'inclusion pour votre accessibilité - Angi Déborah GUYARD",
+        "transcript": true
+      }
+    },
+    {
+      "id": "mentors-super-heros-ou-super-vilains",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "Mentors : super-héros ou super-vilains ?",
+      "speakers": [
+        "Pauline Rambaud — Bedrock"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Témoignage : un premier stage raté (pas d'ordinateur pendant 15 jours, PR corrigées à sa place), des remarques sexistes à l'école, puis une alternance chez Bedrock avec un mentor qui l'a fait passer *« de dernière de la classe à major de promo »*.\n- Le **mentorat préparé comme un cours** : feuille de route sur un an (PHP vanilla, micro-framework, Symfony), objectifs fixés à deux, difficulté croissante.\n- Pratiques : faire reformuler, 1:1 avec feedback dans les deux sens, revue de code expliquée, egoless programming, oser les « questions bêtes ».\n- Vigilance : le temps (mentor débordé, mentoré qui n'ose pas dire qu'il bloque) et la santé psychologique ; *« Être expérimenté veut pas dire qu'on est capable de partager ses connaissances »*.\n- Nuance de la speakeuse : pas de solution miracle, et sa réussite tient aussi à son obstination.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "Xo-XR8Lz33M",
+        "title": "Mentors: super-héros ou super-vilains ? - Pauline RAMBAUD - Forum PHP 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "utilisez-la-spl-au-quotidien",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "Utilisez la bibliothèque standard PHP (SPL) au quotidien",
+      "speakers": [
+        "Florian Merle — Akawaka"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Fil rouge : un lecteur de musique en PHP ; on utilise déjà la SPL sans le savoir (exceptions, autoload de Composer, SplObjectStorage dans Symfony).\n- Les tableaux PHP sont des hashmaps *« optimisés pour toutes les situations, donc pour rien »* ; tour des structures SPL (liste doublement chaînée, file, tas, file de priorité).\n- Critiques : ordre surprenant de SplPriorityQueue à priorité égale, méthodes mal nommées ou en doublon, et à l'insertion une liste chaînée **deux fois plus lente qu'un tableau** dans son benchmark.\n- Recommandation : préférer l'extension **php-ds** (ou son polyfill) ; pour les itérateurs SPL, le gain est surtout un code découpé, composable et testable.\n- Limite assumée : le gain de performance ne compte que sur de gros volumes.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "oh-pbz7BC7s",
+        "title": "Utilisez la bibliothèque standard PHP (SPL) au quotidien - Florian MERLE - Forum PHP 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "burn-out-dans-l-it-le-commencement",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "Burn-out dans l'IT, le commencement !",
+      "speakers": [
+        "Thomas Boileau"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Définitions (Maslach, Pines) et trois dimensions qui s'entretiennent : épuisement émotionnel, cynisme, perte du sentiment d'accomplissement ; le burn-out est un processus, distinct de la dépression.\n- Sujet : le **burn-out étudiant en reconversion**, raconté à travers « Virginie », 51 ans, en bootcamp de six mois, qui travaille jusqu'à 4 h du matin et finit par retourner à son ancien métier malgré son diplôme.\n- Facteurs : discriminations (âge, genre, situation familiale), mythe de la passion, success stories d'une *« minorité bruyante »*, gatekeeping, solitude, *« l'échec n'est pas une option »*.\n- Charge contre le marketing des bootcamps : salaires promis irréalistes et marché moins en pénurie qu'annoncé, selon le speaker.\n- *« C'est qui vos collègues demain ? C'est les étudiants et étudiantes d'aujourd'hui »* ; le speaker précise que tout repose sur son expérience de mentor, rien de scientifique.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "OEgFM1yL2Rc",
+        "title": "Burn-out dans l'IT, le commencement ! - Thomas BOILEAU - Forum PHP 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "reactphp-amp-revoltphp-comparatif",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "ReactPHP, Amp, RevoltPHP : comparatif des frameworks asynchrones",
+      "speakers": [
+        "Benoit Viguier — Lendable"
+      ],
+      "feedbackFrom": [
+        "Blog Deezer"
+      ],
+      "summary": "- Historique : ReactPHP (2012, promesses), Amp (2013, générateurs puis fibers), **Revolt (2021), boucle d'événements commune** construite sur les fibers par des membres des deux équipes.\n- Trois briques indispensables : fonctions asynchrones, boucle d'événements, concurrence ; avec les fibers, Amp et react/async donnent un code linéaire.\n- Piège démontré : enchaîner des `await` donne 6 s au lieu de 3 ; *« si vous faites qu'un seul truc asynchrone à la fois, bah c'est du synchrone »*, d'où les combinateurs (`all`, `race`).\n- Interopérabilité : Amp et React tournent sur la même boucle Revolt ; Symfony HttpClient a une implémentation Amp.\n- Choix conseillé : Revolt pour écrire une bibliothèque, Amp pour un projet neuf, React étant *« en transition »*.\n- Deezer en retient la comparaison de syntaxe, des fibers et de la force des communautés.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "yoGruvGijfA",
+        "title": "ReactPhp, Amp, RevoltPhp: comparatif des frameworks asychrones - Benoit VIGUIER - Forum PHP 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "equilibre-pro-perso-temps-de-travail-remuneration",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "Équilibre pro/perso : expérimentations autour du temps de travail et de la rémunération",
+      "speakers": [
+        "Xavier Gorse — Elao"
+      ],
+      "feedbackFrom": [
+        "News AFUP (bilan)"
+      ],
+      "summary": "- Contexte : une agence lyonnaise de 15 personnes, 18 ans d'existence ; déclencheur, l'annonce de la semaine de quatre jours chez LDLC.\n- Besoins exprimés en interne : flexibilité (quatre jours, plus de congés ou plus de rémunération), visibilité, transparence ; objectifs d'équité, d'adaptabilité et de sécurité financière.\n- Dispositif : une **grille de salaire sur quatre axes**, une grille d'impact (glue work, conférences, open source) financée par une cagnotte redistribuée, et un **configurateur** pour répartir son budget entre salaire, épargne, primes, temps de travail et avantages.\n- Résultats annoncés : aucune baisse de salaire, environ +20 % de masse salariale ; première itération limitée au temps de travail.\n- Limites dites sur scène : avenant à chaque baisse, avantages légalement collectifs, contexte économique, modèle non transposable tel quel ; sur les biais de l'évaluation entre pairs et le risque d'individualisme, il n'a *« aucune garantie »*.\n- L'AFUP cite ce sujet parmi les thèmes bien accueillis de l'édition.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "5doHhHdiiTI",
+        "title": "Équilibre pro/perso: expérimentations autour du temps de travail et de la rémunération- Xavier GORSE",
+        "transcript": true
+      }
+    },
+    {
+      "id": "lights-and-shadows-of-bdd-in-sylius",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "Lights and shadows of BDD in Sylius (and probably other companies as well)",
+      "speakers": [
+        "Mateusz Zalewski — Sylius"
+      ],
+      "feedbackFrom": [
+        "Blog SensioLabs"
+      ],
+      "summary": "- Talk en anglais sur les **avantages et inconvénients du BDD**, vus depuis l'équipe cœur de Sylius et du point de vue des utilisateurs de Sylius et de Symfony (SensioLabs).\n- SensioLabs le cite parmi les trois talks marquants de l'édition, sans détailler le contenu.\n- Vidéo publiée sans transcript exploitable : résumé limité au titre et au billet de sponsor.",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "8Zp9WkJoTPo",
+        "title": "Lights and shadows of BDD in Sylius (and probably other companies as well) - Mateusz ZALEWSKI",
+        "transcript": false
+      }
+    },
+    {
+      "id": "les-journalistes-se-moquent-des-logiciels-libres",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "Les journalistes se moquent des logiciels libres, je vous explique pourquoi",
+      "speakers": [
+        "Loris Guémart — Arrêt sur images"
+      ],
+      "feedbackFrom": [
+        "Blog Deezer"
+      ],
+      "summary": "- Constat chiffré par le journaliste : aucun journaliste au Forum PHP, Le Monde publie environ deux fois plus d'articles sur les annonces de Microsoft que sur tout le libre, VLC n'a eu de vrais articles qu'à ses 20 ans.\n- Explications recueillies auprès de confrères : un journalisme tech devenu **consumériste** et piloté par l'audience, des GAFAM qui choient la presse, des algorithmes de recommandation qui renforcent l'effet.\n- Cœur du problème : parler du libre est forcément militant, ce qui heurte la posture de neutralité ; l'AFUP elle-même a abandonné ses attachés de presse.\n- Conseil : être pédagogue plutôt que *« curé »*, et vendre des angles qui intéressent (burn-out, sexisme) en y glissant le libre.\n- Échange en salle avec David Legrand (Next INpact) : Arrêt sur images ne parle *« jamais »* du libre, reconnaît le speaker.\n- Deezer a trouvé ce talk *« outside the box »* rafraîchissant.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "vVfj3-8HGnM",
+        "title": "Les journalistes se moquent des logiciels libres, je vous explique pourquoi - Loris GUÉMART",
+        "transcript": true
+      }
+    },
+    {
+      "id": "histoires-extraordinaires-lightning-talks-hors-tech",
+      "day": "2023-10-12",
+      "type": "lightning",
+      "title": "Histoires extraordinaires : la session de lightning talks hors-tech",
+      "speakers": [
+        "Baptiste Langlade",
+        "Lilou (16 ans)",
+        "Fred (nom incertain dans la transcription)"
+      ],
+      "feedbackFrom": [
+        "News AFUP (bilan)"
+      ],
+      "summary": "- Première édition de ce format **hors-tech**, présenté par l'AFUP comme une nouveauté de l'année.\n- Baptiste Langlade : un grave accident dans la petite enfance, des expériences sur sa propre perception sous morphine, et sa passion actuelle pour les théories de la conscience d'Antonio Damasio.\n- Lilou, 16 ans : huit ans entre apprentissage en famille et voyages dans une dizaine de pays, *« je n'ai jamais remis les pieds à l'école mais je sais que j'apprendrai toute ma vie »*.\n- Fred : l'ascension du Kilimanjaro sans être sportif, sommet de nuit dans une tempête de glace ; *« il vaut mieux avoir des remords que des regrets »*.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "SdzDyHxLdAo",
+        "title": "Histoires extraordinaires : la session de lightning-talks hors-tech - Forum PHP 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "index-wars-postgres",
+      "day": "2023-10-13",
+      "type": "talk",
+      "title": "Index Wars : le pouvoir des Jedi des index dans l'univers de Postgres",
+      "speakers": [
+        "Lætitia Avrot — EDB"
+      ],
+      "feedbackFrom": [
+        "Blog Deezer",
+        "Blog ekino (extrait)"
+      ],
+      "summary": "- **Un index n'est pas gratuit** : il accélère peut-être une lecture mais ralentit toutes les écritures ; il faut raisonner sur tout le workload, et ses missions commencent souvent par supprimer des index redondants.\n- Bases : une fonction sur la colonne empêche l'usage de l'index, l'ordre des colonnes compte, index sur expression, partiels, couvrants (INCLUDE).\n- Tour des types : B-tree, Hash, BRIN, GIN, GiST, SP-GiST, Bloom, HNSW via pgvector ; classes d'opérateurs pour LIKE.\n- Pièges et maintenance : une mise à jour d'OS peut changer la collation et corrompre les index ; ne jamais désactiver l'autovacuum ; lire EXPLAIN ANALYZE ; astuce BEGIN, DROP INDEX, observer, ROLLBACK.\n- *« Le plus gros problème, c'est qu'ils savent même pas qu'ils ne savent pas »*.\n- Deezer a apprécié la vue d'ensemble et les pistes pour approfondir.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "oEhY4hfXqlM",
+        "title": "Index Wars: Le pouvoir des Jedi des Index dans l'univers de Postgres - Lætitia AVROT- Forum PHP 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "changements-de-comportements-en-php-8",
+      "day": "2023-10-13",
+      "type": "talk",
+      "title": "Changements de comportements en PHP 8",
+      "speakers": [
+        "Damien Seguy — Exakat"
+      ],
+      "feedbackFrom": [
+        "Blog Deezer"
+      ],
+      "summary": "- Inventaire ouvert de **114 changements de comportement** entre PHP 7 et 8 (le speaker estime en avoir manqué autant) : même code, résultat différent.\n- Gros morceau : la **comparaison chaîne/entier** (`0 == \"foo\"`) et ses effets sur `switch`, `in_array`, les tris et les opérateurs de comparaison.\n- Autres exemples : constantes non définies devenues fatales, associativité du ternaire, priorité des opérateurs, propriétés dynamiques dépréciées en 8.2, ressources devenues objets (qui cassent les tests `is_resource`), `max` sur tableau vide.\n- Remèdes : `===`, typage, tests ou staging sur les versions suivantes, analyse statique ; *« on change juste suffisamment pour que ça vous embête »*.\n- Nuance : la plupart des changements ne touchent que 5 à 20 % des projets.\n- Deezer retient les changements non documentés sur les tris et les comparaisons, et les recommandations de tests multi-versions.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "6WGoOH_KV7o",
+        "title": "Changements de comportements en PHP 8 - Damien SEGUY - Forum PHP 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-mutabilite-m-a-tue-l-immutabilite-m-a-sauve",
+      "day": "2023-10-13",
+      "type": "talk",
+      "title": "La mutabilité m'a tué, l'immutabilité m'a sauvé",
+      "speakers": [
+        "Sadetdin Eyili — ekino"
+      ],
+      "feedbackFrom": [
+        "Blog Deezer",
+        "Blog ekino (extrait)"
+      ],
+      "summary": "- Première conférence du speaker, à partir d'un bug réel : un cron de renouvellement d'événements récurrents modifie aussi l'événement d'origine, parce que `DateTime::add()` **mute l'objet partagé**.\n- Le `clone` partout est *« un coup de scotch sur une grosse fissure »* ; la vraie correction, `DateTimeImmutable`.\n- Même leçon sur un value object `Price` : classe `readonly` et méthodes « with » qui renvoient une nouvelle instance.\n- Subtilités : `readonly` ne veut pas dire immutable, toutes les propriétés doivent l'être, et un constructeur public peut être rappelé (remède : constructeur privé et méthode de création statique).\n- *« Partez du principe que tous vos objets sont immutables par défaut »* ; limite admise en questions, les entités Doctrine restent mutables.\n- ekino (employeur du speaker) se dit fier de cette première ; Deezer retient l'immutabilité par défaut avec `readonly` et les withers.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "RyR22GQYBaU",
+        "title": "La mutabilité m’a tué, l’immutabilité m’a sauvé - Sadetdin EYILI - Forum PHP 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "php-en-serverless-sous-le-capot",
+      "day": "2023-10-13",
+      "type": "talk",
+      "title": "PHP en serverless, comment ça marche sous le capot ?",
+      "speakers": [
+        "Matthieu Napoli — Bref"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Chiffres annoncés pour Bref, projet lancé six ans plus tôt : près de 150 contributeurs, plus de 100 000 déploiements et **13 milliards d'invocations par mois**.\n- Démo live : le public envoie des requêtes par QR code et voit les instances Lambda monter en cascade.\n- Sous le capot : microVM Firecracker, runtime API, `bootstrap.php`, puis conversion de l'événement en FastCGI pour PHP-FPM ; le code tourne donc comme sur un serveur classique, une requête à la fois par instance.\n- Coûts et limites : cold start de 200 à 300 ms (environ 0,5 % des requêtes en production), inadapté au temps réel strict, coût difficile à prévoir ; exemples de clients à un milliard de requêtes par mois.\n- *« Le serverless ce n'est plus très hype, c'est vieux, ennuyeux, parce que ça marche »*, mais *« si ce que vous utilisez marche très bien, restez avec »*.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "mEH_Qo_tWq0",
+        "title": "PHP en serverless, comment ça marche sous le capot ? - Matthieu NAPOLI - Forum PHP 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "phpstorm-3",
+      "day": "2023-10-13",
+      "type": "talk",
+      "title": "PhpStorm = <3",
+      "speakers": [
+        "Charles Desneuf — freelance"
+      ],
+      "feedbackFrom": [
+        "Blog ekino (extrait)"
+      ],
+      "summary": "- Démo quasi entièrement en live : introduire un Builder dans un test bruité **sans presque rien taper**.\n- Refactorings automatiques sur le kata Tennis Game : rename sémantique, extract/inline variable, extract method avec détection des doublons, extract class, move ; « métaphore de la vague » : extraire, modifier, puis inliner pour tout propager.\n- Tests lancés depuis l'IDE, live templates personnalisés, postfix completion, et un prompt personnalisé dans l'assistant IA pour générer des builders.\n- *« Si vous savez pas quoi faire, passez une journée à faire Alt+Entrée sur tous les trucs »* ; le speaker précise ne pas être payé par JetBrains.\n- Transcript partiellement inintelligible pendant la démo.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "AgLvuQ2HLzw",
+        "title": "Phpstorm = ﹤3 - Charles  DESNEUF - Forum PHP 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "webperf-103-early-hints",
+      "day": "2023-10-13",
+      "type": "talk",
+      "title": "Webperf : boostez vos apps PHP avec le code de statut HTTP 103 Early Hints",
+      "speakers": [
+        "Kévin Dunglas — Les-Tilleuls.coop"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Principe : une réponse informative **103** avec `Link rel=preload` laisse le navigateur charger CSS, JS et images pendant que PHP calcule ; remplaçant plus simple de HTTP/2 Server Push, retiré de Chrome.\n- Gain cité : environ 30 % sur le LCP selon Google et Shopify ; HTTP/2 et HTTP/3 uniquement, support Chromium, expérimental ailleurs.\n- Blocage côté PHP : PHP-FPM ne sait pas envoyer plusieurs réponses via FastCGI ; **FrankenPHP** le permet, et Symfony 6.3 expose `sendEarlyHints()`.\n- Côté serveur : Caddy et Apache oui, Nginx non ; *« il n'y a que des avantages, pas d'inconvénients »* puisque les navigateurs qui l'ignorent ne risquent rien.\n- En questions : extension en cours aux API via Vulcain ; contrairement au push, le navigateur ne retélécharge pas ce qu'il a en cache.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "1WW_SC_nh5w",
+        "title": "Webperf : boostez vos apps PHP avec le code de statut HTTP 103 Early Hints - Kévin DUNGLAS",
+        "transcript": true
+      }
+    },
+    {
+      "id": "open-closed-principle-etendre-pas-extends",
+      "day": "2023-10-13",
+      "type": "talk",
+      "title": "Open/Closed principle : on a dit étendre pas extends !",
+      "speakers": [
+        "Thomas Dutrion — Echos Annonces"
+      ],
+      "feedbackFrom": [
+        "Blog Deezer"
+      ],
+      "summary": "- Thèse : « ouvert à l'extension » **ne veut pas dire héritage** ; une chaîne de classes héritées casse l'encapsulation et la responsabilité unique.\n- Alternatives montrées : composition, **décorateurs** (classes `final`, `#[AsDecorator]` dans Symfony), observer et dispatcher d'événements immutables.\n- `switch` et `match` comme signes de code fermé : les remplacer par une collection de handlers injectée (tagged locator).\n- Middlewares PSR-15 cités ; la version en callbacks est jugée illisible : *« faites-le pas »*.\n- Nuance : avec les décorateurs on ne sait plus qui décore quoi, c'est un choix d'équipe ; *« faut juste y penser »*.\n- Deezer retient la composition plutôt que l'héritage et les collections de handlers.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "g9fw5Zl4RF4",
+        "title": "Open/Closed principle : on a dit étendre pas extends ! - Thomas DUTRION - Forum PHP 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "streams-nous-sous-estimons-tous-predis",
+      "day": "2023-10-13",
+      "type": "talk",
+      "title": "Streams : nous sous-estimons tous Predis !",
+      "speakers": [
+        "Alexandre Daubois — Wanadev Digital"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Problème : un catalogue JSON de plusieurs gigaoctets généré dans un seul process PHP épuise la mémoire, et le contournement par fichier temporaire tombe avec la migration vers Kubernetes.\n- Options écartées (système de fichiers, mémoire non partagée, base de données) ; solution : les **Streams Redis** via Predis, Redis étant déjà présent pour les sessions.\n- Des workers écrivent chacun un fragment, un worker final consolide ; la concaténation explosant encore la mémoire, écriture par morceaux avec des générateurs.\n- Bibliothèque publiée, Lazy Stream, pour écrire en une passe vers GCS, S3 ou FTP.\n- Autocritique : *« On a pris le problème d'aujourd'hui, on l'a remis à demain et on était content »* ; une migration vers API, cache et CDN est à l'étude.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "84SmSYccpZY",
+        "title": "Streams : Nous sous-estimons tous Predis ! - Alexandre DAUBOIS - Forum PHP 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "apprendre-a-apprendre",
+      "day": "2023-10-13",
+      "type": "talk",
+      "title": "Apprendre à apprendre : de petit dev tu deviendras grand",
+      "speakers": [
+        "Aline Leroy"
+      ],
+      "feedbackFrom": [
+        "Blog ekino (extrait)"
+      ],
+      "summary": "- Speakeuse reconvertie dans le développement depuis trois ans, ancienne éducatrice spécialisée.\n- Apprendre, c'est créer des liens solides entre neurones (plasticité) : on comprend ce qu'on peut se représenter.\n- Conseils : métacognition, découpage, couper les notifications (on n'est pas multitâche), Pomodoro, et surtout **les pauses, où les connexions se consolident** (le bug résolu le lendemain en deux minutes).\n- Méthodes actives : prise de notes en deux colonnes inspirée de Barbara Oakley, faire des liens plutôt que catégoriser, régularité souple, partager ce qu'on apprend.\n- *« Apprendre ne doit pas être une souffrance »*.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "lTN7mK2dVlw",
+        "title": "Apprendre à apprendre: de petit dev tu deviendras grand - Aline LEROY - Forum PHP 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "apprendre-et-partager-autrement",
+      "day": "2023-10-13",
+      "type": "talk",
+      "title": "(Et si on apprenait à) Apprendre et partager autrement",
+      "speakers": [
+        "Aurélie Vache — OVHcloud"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Thèse : nous apprenons tous différemment, mais l'école et les livres tech imposent un moule unique.\n- Parcours : des passions (dessin, LEGO) mises de côté pendant des années, puis en 2020 un pod Kubernetes dessiné en pokéball, suivi de sketchnotes, d'ebooks autoédités, d'un livre illustré et de vidéos courtes.\n- Publics visés : personnes neuroatypiques, juniors, et tout le monde ; *« Arrêtons de vouloir mettre des gens dans des cases »*.\n- Conseils : garder 30 minutes à une heure par semaine pour soi, **partager pour aider plutôt que pour la visibilité**.\n- En questions : des collègues TDA/H aidés par les résumés illustrés ; un format long à préparer.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "n_sewloNWmg",
+        "title": "(Et si on apprenait à) Apprendre et partager autrement - Aurélie VACHE - Forum PHP 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "you-build-it-you-run-it-observabilite",
+      "day": "2023-10-13",
+      "type": "talk",
+      "title": "You Build It, You Run It, l'observabilité pour les devs",
+      "speakers": [
+        "Smaïne Milianni — Yousign"
+      ],
+      "feedbackFrom": [
+        "Blog Deezer",
+        "Blog ekino (extrait)"
+      ],
+      "summary": "- Trois piliers (logs, métriques, traces) plus un quatrième, **les alertes** ; objectif, réduire le temps de rétablissement.\n- Organisation chez Yousign (monolithe Symfony, une trentaine de devs, sept squads) : chaque squad est autonome sur l'observabilité de son périmètre et désigne un « runner » d'astreinte, formé par **une semaine de binôme en shadow** plutôt qu'un QCM.\n- Gestion d'incident : priorités P1 à P5, war room, status page, post-mortem outillé ; outils Opsgenie, Sentry, Graylog, Datadog, Redash.\n- Règles : *« C'est en runnant qu'on devient runner »*, mieux vaut trop de dashboards que pas du tout, mais une alerte sans action immédiate doit être supprimée.\n- Deezer retient le rôle d'une équipe developer experience et le message *« A development is not finished once the code is pushed to production »*.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "BwoJYLPXUoQ",
+        "title": "You Build It, You Run it, l'observabilité pour les devs - Smaïne MILIANNI - Forum PHP 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "deux-ia-personnelles-open-source-avec-openai",
+      "day": "2023-10-13",
+      "type": "talk",
+      "title": "Retour d'expérience sur la création de deux IA personnelles open source avec OpenAI",
+      "speakers": [
+        "Maxime Thoonsen — Theodo"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Pédagogie d'un LLM : prédiction du mot suivant, *« très très bête mais ça marche extrêmement bien »*.\n- Le contexte étant limité, **recherche sémantique par embeddings** : découper les sources, vectoriser, retrouver les cinq passages les plus proches dans Postgres avec pgvector, puis interroger le modèle.\n- Présentation de **LLPhant**, sa bibliothèque PHP inspirée de LangChain : plusieurs vector stores, function calling (démo d'un assistant commercial qui envoie un mail), agent autonome encore très expérimental.\n- Cas d'usage : gestion de connaissance interne, recherche e-commerce en langage naturel.\n- En questions : commencer par la similarité avant le fine tuning, qui expose aux hallucinations ; alternatives open source en progrès, OpenAI encore devant selon lui.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "x1X_HVOSMVc",
+        "title": "Retour d'expérience sur la création de 2 IA personnelles open source avec OpenAI - Maxime THOONSEN",
+        "transcript": true
+      }
+    },
+    {
+      "id": "api-platform-compatible-avec-laravel",
+      "day": "2023-10-13",
+      "type": "talk",
+      "title": "Comment nous avons rendu API Platform compatible avec Laravel",
+      "speakers": [
+        "Antoine Bluchet — Les-Tilleuls.coop"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Démo : un attribut `ApiResource` sur un modèle Eloquent suffit à obtenir Swagger UI, JSON-LD et des erreurs en JSON dans une application Laravel.\n- Clé du chantier : **API Platform 3.2 se libère du kernel HTTP de Symfony** grâce à des chaînes de providers et de processors, et chaque composant devient un paquet séparé.\n- Branchement dans Laravel par un service provider, routes générées depuis les métadonnées, types tirés des modèles.\n- État : prototype en PR, pagination, filtres, GraphQL, validation et sécurité restent à faire ; annonces d'un financement participatif pour une LTS et d'un partenariat officiel avec Laravel.\n- Conseil : *« Si ton projet marche déjà, gardez ce qui marche »* ; migrer de Symfony vers Laravel est déconseillé pour l'instant.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "aSZPIiqe3cg",
+        "title": "Comment nous avons rendu API Platform compatible avec Laravel - Antoine BLUCHET - Forum PHP 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "femmes-et-numerique-enjeux-et-solutions",
+      "day": "2023-10-13",
+      "type": "talk",
+      "title": "Femmes et numérique : enjeux et solutions",
+      "speakers": [
+        "Isabelle Collet — Université de Genève"
+      ],
+      "feedbackFrom": [
+        "Blog Deezer",
+        "Blog ekino (extrait)"
+      ],
+      "summary": "- Thèse : *« je ne fais pas de différence »* est sincère mais faux, on mobilise malgré soi des stéréotypes ; ni progrès linéaire, ni fatalité biologique.\n- Données : environ 17 % de femmes dans le numérique en Europe ; aux États-Unis, la part des femmes en informatique s'effondre dans les années 1980 avec la micro-informatique et la pop culture.\n- Biais des IA (traductions genrées, images générées) : *« Statistiquement probable ne veut pas dire pertinent »* ; menace du stéréotype démontrée par une même figure présentée comme « géométrie » ou « dessin ».\n- Écart de salaire constant dans le baromètre AFUP, avec un échantillon de femmes peut-être trop petit selon elle.\n- Solutions éprouvées : « intéresser, recruter, socialiser », exemples de NTNU et de Carnegie Mellon, faire des écoles et des entreprises des espaces sûrs.\n- Deezer l'a trouvé très intéressant ; dernier talk avant la clôture.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "SBzenQ0ReLA",
+        "title": "Femmes et numérique : enjeux et solutions - Isabelle COLLET - Forum PHP 2023",
+        "transcript": true
+      }
+    },
+    {
+      "id": "keynote-de-cloture",
+      "day": "2023-10-13",
+      "type": "keynote",
+      "title": "Keynote de clôture",
+      "speakers": [
+        "Équipe AFUP"
+      ],
+      "feedbackFrom": [
+        "Blog Deezer"
+      ],
+      "summary": "- Remerciements aux 29 sponsors, aux speakers et à **plus de 50 bénévoles**, à la société de captation vidéo et aux équipes de Disney.\n- *« On sait que la période elle est plus compliquée, c'est plus difficile de participer à des conférences, mais vous êtes là »*.\n- Résultats du jeu de la soirée communautaire (équipe « Axolotl » gagnante d'après Deezer) ; rappel du baromètre des salaires, en place depuis dix ans.\n- Annonce de l'**AFUP Day 2024** le 24 mai dans quatre villes (Lille, Lyon, Nancy, Poitiers), CFP ouvert jusqu'au 13 novembre avec accompagnement des débutants.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "ZxpsvxHSDWg",
+        "title": "Keynote de clôture - Équipe AFUP - Forum PHP 2023",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Présentation des speakers (Équipe AFUP, quatre créneaux)",
+    "Coup de projecteur : démo API Platform (Les-Tilleuls.coop, Antoine Bluchet et Kévin Dunglas)",
+    "Coup de projecteur : présentation de Clever Cloud (Steven Le Roux)",
+    "Coup de projecteur : présentation de Yousign (Pierre Klopfer)"
+  ],
+  "sources": [
+    {
+      "label": "Programme officiel du Forum PHP 2023",
+      "url": "https://event.afup.org/forum-php-2023/programme/"
+    },
+    {
+      "label": "Chaîne YouTube AFUP (playlists « Forum PHP 2023 » et « Les off du Forum PHP 2023 »)",
+      "url": "https://www.youtube.com/@afupPHP"
+    },
+    {
+      "label": "Deezer Newsroom, « Back from Forum PHP 2023 » (3 novembre 2023)",
+      "url": "https://newsroom-deezer.com/2023/11/back-from-forum-php-2023/"
+    },
+    {
+      "label": "SensioLabs, « PHP Forum 2023: A Marvelous edition for SensioLabs » (21 novembre 2023)",
+      "url": "https://sensiolabs.com/blog/2023/php-forum-2023-a-marvelous-edition-for-sensiolabs"
+    },
+    {
+      "label": "ekino sur Medium, « Retour sur le Forum PHP 2023 : Jour 1 » (17 octobre 2023, lu en extrait)",
+      "url": "https://medium.com/p/3eb49af9a827"
+    },
+    {
+      "label": "ekino sur Medium, récap du jour 2 (19 octobre 2023, lu en extrait)",
+      "url": "https://medium.com/p/08fa1f9ce83f"
+    },
+    {
+      "label": "ekino sur Medium, retour d'expérience d'un développeur débutant (lu en extrait)",
+      "url": "https://medium.com/p/94f4e7763ead"
+    },
+    {
+      "label": "AFUP, « Le Forum PHP 2023 passé, l'AFUP se concentre sur l'AFUP Day 2024 »",
+      "url": "https://afup.org/news/1196-forumphp-passe-lafup-seconcentre-sur-lafupday2024"
+    },
+    {
+      "label": "AFUP, « Une vidéo du Forum PHP 2023 par jour, le calendrier de l'avent » (30 novembre 2023)",
+      "url": "https://afup.org/news/1198-une-video-par-jour-calendrier-de-lavent-forumphp2023"
+    },
+    {
+      "label": "Page du talk de Frank Karlitschek sur afup.org (commentaire de Loïc Caillieux)",
+      "url": "https://afup.org/talks/4456-why-php-is-still-awesome-in-2023"
+    },
+    {
+      "label": "LinkedIn : aucun post indexé trouvé"
+    },
+    {
+      "label": "Playlist YouTube « Forum PHP 2023 » (chaîne AFUP)",
+      "url": "https://www.youtube.com/playlist?list=PL9zDdgiGjkIceBsejIGb66joh8xt8nABj"
+    },
+    {
+      "label": "Playlist YouTube « Les off du Forum PHP 2023 » (interviews)",
+      "url": "https://www.youtube.com/playlist?list=PL9zDdgiGjkIcU6b3WOYEyNRFKgAwTL6re"
+    }
+  ]
 }

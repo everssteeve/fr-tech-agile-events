@@ -12,10 +12,10 @@
   "dateConfidence": "ok",
   "note": "13e édition, du 25 au 27 juin 2025 : mercredi consacré aux formats longs (universités), jeudi et vendredi aux conférences, quickies et tools in action ; une centaine de sessions sur 5 salles, 96 speakers, près de 700 personnes par jour ; billetterie par loterie (75 € les deux jours, 90 € les trois jours).",
   "status": "synthesized",
-  "synthesisUpdatedAt": "2026-10-01",
-  "revisit": "Deux comptes-rendus seulement (un speaker, Estéban Soubiran, et le blog d'un sponsor, Orange Business) et aucun post LinkedIn individuel lu ; les deux keynotes du vendredi ne sont ni filmées ni documentées.",
-  "corpus": "Programme officiel (JSON du site, 95 sessions hors pauses), playlist YouTube « Breizhcamp 2025 » (91 vidéos), dont 19 transcripts automatiques lus (les deux keynotes filmées du jeudi, 4 universités et 13 talks), un billet de blog de speaker (Estéban Soubiran, 29/06/2025), un article d'Orange Business (Johanna Duigou, 22/07/2025) et la vidéo-récap du sponsor Néosoft.",
-  "limits": "Aucun retour d'un participant non lié à l'événement : un blog de speaker, un blog de sponsor, aucun post LinkedIn individuel retrouvé par la recherche web. Les résumés reposent surtout sur des sous-titres automatiques (noms propres parfois incertains), donc sur ce qui a été dit sur scène, pas sur la réception ; les keynotes du vendredi matin et de clôture ne sont pas dans la playlist, et environ 75 sessions filmées restent sans contenu lu.",
+  "synthesisUpdatedAt": "2026-10-29",
+  "revisit": "Recherche relancée le 29/10/2026 (8 recherches web : posts LinkedIn, blogs d'ESN, dev.to et Medium, Bluesky et Mastodon, noms de speakers ; fil Bluesky officiel ; playlist 2025 revérifiée) : aucun nouveau retour de participant trouvé, seul un transcript supplémentaire a été lu. Manquent toujours des retours LinkedIn individuels et toute trace des deux keynotes du vendredi (absentes de la playlist).",
+  "corpus": "Programme officiel (JSON du site, 95 sessions hors pauses), playlist YouTube « Breizhcamp 2025 » (91 vidéos), dont 20 transcripts automatiques lus (les deux keynotes filmées du jeudi, 4 universités et 14 talks), un billet de blog de speaker (Estéban Soubiran, 29/06/2025), un article d'Orange Business (Johanna Duigou, 22/07/2025), la vidéo-récap du sponsor Néosoft et le fil Bluesky officiel (@breizhcamp.org, juin-juillet 2025). Recherche complémentaire du 29/10/2026 : aucun post LinkedIn individuel ni billet de blog nouveau remonté par les moteurs de recherche.",
+  "limits": "Aucun retour d'un participant non lié à l'événement : un blog de speaker, un blog de sponsor, un fil Bluesky officiel sans avis sur les talks, aucun post LinkedIn individuel retrouvé par la recherche web (deux passes, octobre 2026). Les résumés reposent surtout sur des sous-titres automatiques (noms propres parfois incertains), donc sur ce qui a été dit sur scène, pas sur la réception ; les keynotes du vendredi matin et de clôture ne sont pas dans la playlist, et environ 70 sessions filmées restent sans contenu lu.",
   "tldr": "Un BreizhCamp **résolument artisanal et peu porté sur l'IA** (deux sessions seulement) : craft et architecture modulaire, accessibilité, sécurité et sobriété dominent, et la keynote des Restos du Cœur devenus « cloud provider » open source donne le ton, **« 1 € dépensé, c'est un repas qui n'est pas distribué »**.",
   "keyTakeaways": [
     "Partir en **monolithe modulaire** (Spring Modulith, pattern Hive) et n'extraire un microservice que pour un vrai besoin, en figeant puis en réduisant le couplage existant avec ArchUnit (Piscitelli, Topçu et Pierrain).",
@@ -172,6 +172,22 @@
       "video": {
         "youtubeId": "Db2AttBSDtw",
         "title": "La réactivité et les signaux : démystifions la magie du frontend - Estéban Soubiran",
+        "publishedAt": "2025-07-14",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-ddd-c-est-complique-attendez-de-mal-l-appliquer",
+      "day": "2025-06-25",
+      "type": "talk",
+      "title": "Le DDD, c'est compliqué ? Attendez de mal l'appliquer !",
+      "speakers": ["Nathan Castelein — Shodo"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène, un retour d'expérience sur ses propres erreurs (première version du talk) : en 2020, dans une équipe de 8 qui industrialise OpenStack en Go, une remarque en code review (*« tu ne devrais pas ajouter ça dans le domaine »*) le lance dans le DDD, découvert en enchaînant les replays de conférences « comme une série Netflix ».\n- **L'erreur de départ** : un mail à l'équipe avec vidéos et livres, puis un POC en solo de 6 à 8 semaines limité au DDD tactique (value objects, entités, domaine isolé par inversion de dépendances), mergé avec la règle « tout le nouveau code en DDD ».\n- Bilan 2 à 3 ans après : deux code bases toujours distinctes, beaucoup de boilerplate, des concepts appliqués « parce que le DDD dit que c'est comme ça », le DDD devenu une blague dans l'équipe, un PO aussi perdu que les devs ; *« j'avais fait une version gastronomique de mes spaghettis »*.\n- Acquis réels : tests unitaires plus clairs grâce à l'inversion de dépendances, et les **value objects** comme meilleur point d'entrée, simples et à valeur immédiate.\n- Ce qu'il referait : apprendre en profondeur (journal, résumés), se méfier du **culte du cargo**, apprendre et coder ensemble sur le temps de travail (book club, cercles, katas, mob), et partir du **DDD stratégique** (bounded contexts, sous-domaines, langage ubiquitaire, context map, event storming) : *« il y a pas de tactique sans stratégie »*. Exemple : OpenStack, qu'il tenait pour de la technique, faisait en fait partie de son domaine.\n- Posture : fini le *solution push*, place à une conduite du changement explicite. En Q&R, un participant objecte que le stratégique oblige à embarquer tout le métier ; réponse : y aller par petites gouttes, mais sans lui on applique du tactique au mauvais endroit.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "29EECx9tbW4",
+        "title": "Le DDD, c’est compliqué ? Attendez de mal l’appliquer ! - Nathan Castelein",
         "publishedAt": "2025-07-14",
         "transcript": true
       }
@@ -345,7 +361,6 @@
     "1re règle du code club : il est interdit de trop coder (Ali El Amrani)",
     "ProgramAtion in Franglais (William Bartlett)",
     "HTMX, ou le retour de l'AJAX (Stéphane Trebel)",
-    "Le DDD, c'est compliqué ? Attendez de mal l'appliquer ! (Nathan Castelein)",
     "Décodons nos pipelines (Hafsa El Maizi)",
     "Rendre ses tests concis et évolutifs grâce à JUnit 5 (Juliette de Rancourt)",
     "Vous pouvez venir à cet atelier les yeux fermés (François-Xavier Lair, Henri Gauffriau)",
@@ -424,6 +439,7 @@
     { "label": "Johanna Duigou (Orange Business) — BreizhCamp 2025 : la technique en scène pour un buzz hors champ (22/07/2025)", "url": "https://perspective.orange-business.com/fr/breizhcamp-2025-technique-en-scene-buzz-hors-champ-developpement-et-ia/" },
     { "label": "Néosoft — [RENNES] Retour en images sur le BreizhCamp 2025 (vidéo sponsor)", "url": "https://www.youtube.com/watch?v=DKM-iM1fqwM" },
     { "label": "Slides de la keynote de Julien Briault (Speaker Deck)", "url": "https://speakerdeck.com/ju_hnny5/breizhcamp-2025-comment-transformons-nous-les-restos-du-coeur-en-cloud-provider-keynote" },
-    { "label": "Posts LinkedIn : aucun post individuel retrouvé par la recherche web" }
+    { "label": "Compte Bluesky officiel @breizhcamp.org (annonce des vidéos le 14/07/2025)", "url": "https://bsky.app/profile/breizhcamp.org" },
+    { "label": "Posts LinkedIn : aucun post individuel retrouvé par la recherche web (recherches du 01/10/2026 et du 29/10/2026)" }
   ]
 }

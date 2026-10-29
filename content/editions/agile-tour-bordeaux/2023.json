@@ -5,8 +5,257 @@
   "start": "2023-10-26",
   "end": "2023-10-27",
   "city": "Bordeaux",
+  "venue": "Campus 3iS Bordeaux, 36 rue des Terres Neuves, Bègles (et en ligne)",
   "url": "https://agiletourbordeaux.fr/evenements/atbdx-edition-2023/",
-  "note": "Mode mixte : sur site et en ligne.",
-  "status": "pending",
-  "sessions": []
+  "theme": "Qualité et résilience : complices de votre amélioration continue",
+  "dateConfidence": "ok",
+  "note": "Mode mixte : sur site et en ligne. Gratuit sur billet (Weezevent), accès en ligne limité. Deux jours de conférences et d'ateliers au campus de l'école 3iS, qui assurait aussi la captation. CFP sur Sessionize du 17 mai au 31 juillet 2023, frais de déplacement et d'hébergement des speakers pris en charge. Selon l'appel à orateurs 2024, l'édition 2023 a accueilli plus de 350 participants sur place et 400 visiteurs à distance. Trois keynotes portées par des femmes (Rachel Jolin Dubois en ouverture, Alice Barralon l'après-midi du premier jour, une troisième dont seul le prénom, Aurélie, est cité sur scène) et un Forum ouvert le second jour, d'après les transcripts.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-29",
+  "revisit": "2026-10-29 : synthèse fondée presque uniquement sur les 20 transcripts YouTube ; aucun retour de participant trouvé (7 recherches web sans post LinkedIn, blog ni sketchnote), programme officiel introuvable (page de l'édition sans grille, Sessionize non publié, Wayback Machine inaccessible). À reprendre : grille complète et speakers (Wayback de agiletourbordeaux.fr fin 2023, sessionize), posts LinkedIn de fin octobre 2023 des speakers et participants, sketchnotes de « N'oublie pas ta bulle », identité de la keynote d'Aurélie, dates de publication des vidéos.",
+  "corpus": "Les 20 vidéos de la playlist YouTube « Agile Tour Bordeaux 2023 », toutes lues via leur transcript automatique (souvent bruité sur les noms propres), complétées par la page officielle de l'édition, la page CFP Sessionize 2023, l'appel à orateurs 2024 (chiffres de fréquentation) et la page conférences de Rachel Jolin Dubois (keynote). Recherche faite en octobre 2026, trois ans après l'événement.",
+  "limits": "Aucun retour de participant lu : les résumés décrivent ce qui a été dit sur scène, pas ce qu'en a retenu le public. Le programme officiel n'a pas été retrouvé : jours déduits des renvois entre speakers (« ce matin », « hier ») et laissés vides quand ils se contredisent, speakers et entreprises parfois incertains (transcription automatique), et ateliers non filmés (slow code retreat, atelier unFIX, atelier sur le sabotage, Forum ouvert) connus seulement par allusion.",
+  "tldr": "Une édition placée sous le signe de **la qualité et de la résilience**, où les speakers ont surtout ramené l'agilité à ses fondamentaux techniques et systémiques (tests, CI/CD, Lean, loi de Conway) et rappelé que **les pratiques ne valent que par le système et les humains qui les portent**.",
+  "keyTakeaways": [
+    "Lire les anti-patterns agiles comme les symptômes d'un système, les rendre visibles (boucles causales, VSM) et **danser avec le système** à petits pas plutôt que d'empiler coachs, outils et frameworks (Rachel Jolin Dubois).",
+    "Standardiser **les réponses aux besoins, pas les pratiques** : un playbook qui décrit pour chaque pratique ses objectifs, conditions d'usage, limites et coût (Sébastien Goodwin).",
+    "Avant de réorganiser, regarder **ce que l'organigramme fait déjà au code** (loi de Conway) et changer d'abord les canaux de communication (Julien Topcu).",
+    "Viser une livraison en production au moins chaque semaine avec trunk-based development, feature flags et un pipeline où **chaque commit est une release candidate** (Froville et Garcia de Oliveira, Héral).",
+    "Remplacer les story points par **le flux** : limite de WIP, âge des items, cycle time et prévisions Monte-Carlo (Farouk Choulak).",
+    "Organiser des **Game Days** de chaos engineering avec des équipes mêlées pour apprendre des pannes avant qu'elles n'arrivent (Anne-Laure Gaillard).",
+    "Tester aussi la restauration des sauvegardes et traiter le code de test comme du code de production (mêmes règles Sonar, mutation testing) (Frantz Degrigny).",
+    "Faire une place aux introvertis : **créneaux de solitude non négociables**, brainwriting, contenu envoyé avant les ateliers (Anaïs Huet).",
+    "Intégrer la valeur sociale et écologique dans la notion de valeur et **reconnaître la dette environnementale** comme la dette technique (Alice Barralon).",
+    "Partir de la qualité de la relation plutôt que des problèmes : un feedback renseigne d'abord sur celui qui le donne, et exiger qu'on en tienne compte en fait une demande (Laurent Bossavit)."
+  ],
+  "sessions": [
+    {
+      "id": "agile-anti-patterns-when-agile-hurts-quality",
+      "day": "2023-10-26",
+      "type": "keynote",
+      "title": "Agile Anti-Patterns: When 'Agile' Hurts Quality",
+      "speakers": ["Rachel Jolin Dubois — Spotify"],
+      "feedbackFrom": [],
+      "summary": "- Keynote d'ouverture (environ 47 minutes) d'une coach agile et product manager chez Spotify, qui dit avoir donné une de ses premières conférences à la première édition, en 2009.\n- Constat de départ : agilité et qualité allaient ensemble (XP, excellence technique du Manifeste), mais presque personne dans la salle ne vit une qualité non négociable ; *« Corriger des bugs en prod, ce n'est pas une stratégie technique acceptable. »*\n- Galerie d'anti-patterns par ordre d'horreur croissante : **agile cosmétique**, Water-Scrum-Fall, feature factory externalisée, obsession de la vélocité jusqu'à la facturation au point, culture du héros, déploiement massif d'un framework à l'échelle.\n- Ce qui ne marche pas selon elle : changer la culture sans être CEO, agir seul (elle évoque deux burn-out), le *« toujours plus de ce qui ne marche pas »* (coachs, certifications, outils), le one size fits all, la cause racine unique.\n- Proposition : lecture systémique (diagrammes de boucles causales, Event Storming ou VSM adaptés), engager tout le monde (Kata, Popcorn Flow, Open Space Agility) et **danser avec le système** à petits pas ; elle préfère parler de régénération que de transformation, et estime le taux de réussite des transformations à moins de 20 %.\n- Session la plus citée par les autres speakers de l'édition (Goodwin, Huet, Barralon, Bossavit, Héral, le trio Waterfall/Agilité), notamment pour l'idée de « danser avec le système ».",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "BP-JC9btUHA", "title": "Rachel Jolin Dubois - Agile Anti-Patterns: When 'Agile' Hurts Quality", "transcript": true }
+    },
+    {
+      "id": "il-faut-standardiser-les-pratiques-de-nos-equipes-agiles-en-etes-vous-surs",
+      "day": "2023-10-26",
+      "type": "talk",
+      "title": "« Il faut standardiser les pratiques de nos équipes Agiles ! » En êtes-vous sûrs ?",
+      "speakers": ["Sébastien Goodwin"],
+      "feedbackFrom": [],
+      "summary": "- Coach agile depuis 2012 et formateur Kanban accrédité, il identifie trois erreurs : confondre standard et standardisation, des pratiques trop prescriptives, une mauvaise compréhension des besoins.\n- Exemple : le Scrum Guide 2013 imposait les trois questions du Daily, la version 2020 part de l'objectif et laisse le format libre.\n- Méthode : exprimer chaque pratique comme une user story ; une demande de standardisation venue d'un manager est **une solution qui cache un autre besoin**.\n- Outil proposé, le **playbook** : pour chaque pratique, un nom, ses objectifs, sa description, ses conditions d'usage, ses limites, ses effets de bord et son coût. *« On veut standardiser les réponses, mais pas les pratiques. »*\n- Cas réel : Scrum réussit avec six équipes de dev puis échoue quand on y intègre des business analysts dont le manager reste traditionnel ; le vrai périmètre du changement était les managers.\n- Les pratiques évoluent de façon explicite (rétros, kaizen) ou implicite, ce qu'il éclaire par la théorie des pratiques sociales (Bourdieu, Shove, Schatzki, Kemmis).",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "q3L8m3mm2ik", "title": "Sébastien Goodwin ‐ “Il faut standardiser les pratiques de nos équipes Agiles !” En êtes-vous sûrs ?", "transcript": true }
+    },
+    {
+      "id": "les-basiques-du-lean-au-service-de-l-agilite-et-de-l-amelioration-continue",
+      "day": "2023-10-26",
+      "type": "talk",
+      "title": "Les basiques du Lean au service de l'Agilité et de l'amélioration continue",
+      "speakers": [],
+      "feedbackFrom": [],
+      "summary": "- Talk d'une coach qui accompagne depuis 2010 les DSI d'un grand groupe bancaire (Lean, Continuous Delivery, agilité à l'échelle) ; son nom n'est pas lisible dans le transcript. Talk déjà donné à FlowCon 2022, avec un court exercice entre voisins.\n- Thèse : *« Le Lean et l'agile, c'est la même chose, c'est les deux facettes d'une même pièce. »*\n- Le **management visuel** vient du Lean, avec trois niveaux de maturité (partage, pilotage, performance), et doit faire ressortir les irritants.\n- Les trois familles de gaspillage : Muri (surcharge), Mura (irrégularité), Muda (dont l'enregistrement de réunions que personne ne regarde).\n- SIPOC puis VSM ; cas bancaire où donner aux développeurs l'accès à la recette, jusque-là tenue par une équipe centrale, a **divisé le délai par trois** en trois à six mois.\n- Également : limites de WIP, approche orientée solution, standardisation pour réduire la variabilité et la charge cognitive, et rappel que la base de la maison Lean est le respect des personnes et l'amélioration continue.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "310nlzehqsw", "title": "Les basiques du Lean au service de l'Agilité et de l’amélioration continue", "transcript": true }
+    },
+    {
+      "id": "quelle-est-la-place-des-introverti-e-s-dans-une-equipe-agile",
+      "day": "2023-10-26",
+      "type": "talk",
+      "title": "Quelle est la place des introverti·e·s dans une équipe agile ?",
+      "speakers": ["Anaïs Huet"],
+      "feedbackFrom": [],
+      "summary": "- Coach agile se disant plutôt introvertie, venue en participante en 2022 ; point de départ : un test de type MBTI en rétro, dans une équipe de coachs où elle était la seule introvertie.\n- Définition retenue : *« Introversion et extraversion, c'est une question d'énergie »*, sur un spectre (ambiversion au milieu), en partie inné et en partie acquis (Jung, Laurie Helgoe, Kagan).\n- Le biais négatif contre l'introversion remonte à l'industrialisation (Susan Cain, *Quiet*) ; en entreprise, stéréotypes et open spaces bruyants.\n- Une phrase d'un collègue résume la critique : **l'agilité a été faite par des extravertis pour les extravertis**.\n- Pistes : créneaux de solitude aussi non négociables que les événements Scrum, brainwriting, règle des deux pieds, contenu envoyé avant les ateliers, casques et espaces calmes, télétravail partiel.\n- Les forces des deux profils se complètent ; la question finale devient : quelle place faisons-nous à notre propre introversion ?",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "ovuVGTXzAzs", "title": "Anaïs Huet ‐ Quelle est la place des introverti·e·s dans une équipe agile ?", "transcript": true }
+    },
+    {
+      "id": "resilience-et-agilite",
+      "day": "2023-10-26",
+      "type": "keynote",
+      "title": "Résilience et agilité",
+      "speakers": ["Alice Barralon"],
+      "feedbackFrom": [],
+      "summary": "- Keynote de l'après-midi du premier jour (annoncée comme telle par Rachel Jolin Dubois), portée « avec une casquette scrum.org » et une approche de coaching systémique ; la speaker rappelle que la résilience est **la thématique de l'année**.\n- Cadre : résilience comme capacité à surmonter les chocs, atténuation contre adaptation (GIEC), six des neuf limites planétaires dépassées ; *« Il n'y a plus d'agilité sur une planète brûlée. »*\n- Le mot « environnement » n'apparaît que cinq fois dans le Scrum Guide, toujours au sens d'environnement de travail ; la communauté oscille entre déni, résistance et résignation (le triangle de l'inaction).\n- Propositions : ajouter **une valeur sociale et écologique à la notion de valeur**, porter la stratégie par des OKR, appliquer YAGNI et la triade éviter, substituer, améliorer, et répartir les responsabilités entre PO, Scrum Master, développeurs et parties prenantes.\n- Reconnaître **la dette environnementale** comme la dette technique, et contribuer à la révision du Scrum Guide ; références à l'Agile Sustainability Manifesto et à l'agile radical.\n- Exercice en binômes de projection vers 2070 ; *« L'écologie, c'est pas une croyance, c'est un constat de réalité. »*",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "z7NmbI2lCLg", "title": "Alice Barralon - Résilience et agilité", "transcript": true }
+    },
+    {
+      "id": "ci-cd-demystifie-accelerez-votre-processus-de-developpement",
+      "day": "2023-10-26",
+      "type": "talk",
+      "title": "CI/CD démystifié : Accélérez votre processus de développement",
+      "speakers": ["Jérôme Froville — Pôle emploi", "Rodrigo Garcia de Oliveira — Pôle emploi"],
+      "feedbackFrom": [],
+      "summary": "- Talk à deux voix de l'équipe Incubateur de la DSI de Pôle emploi, qui accompagne les équipes produit vers le continuous delivery, raconté à travers une équipe fictive, les « chatons agiles ».\n- Cadre : le modèle **Agile Fluency** (Shore et Larsen) ; pour exceller sur la valeur, il faut d'abord exceller sur la livraison et l'équipe.\n- Leur définition opérationnelle du continuous delivery, inspirée d'Accelerate : **au moins une mise en production par semaine** et des incidents impactants corrigés en moins d'une journée.\n- Diagnostic de l'équipe fictive : PO isolé et user stories de plusieurs pages, feature branches, dépendance aux Ops et au tech lead, livraisons big bang le week-end.\n- Remèdes : expertise intégrée durablement à l'équipe, sprints d'une semaine, découpage vertical fin (Elephant Carpaccio, 3C de Ron Jeffries), trunk-based development, feature flipping, pair et mob programming, TDD, observabilité et déploiement progressif ; *« Chaque commit est une release candidate. »*\n- Ce modèle de livraison sert ensuite à expérimenter sur la valeur : persévérer ou pivoter.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "FWTlazzKQhM", "title": "CI/CD démystifié : Accélérez votre processus de développement - J. Froville et R. Garcia de Oliveira", "transcript": true }
+    },
+    {
+      "id": "scrum-et-kanban",
+      "day": "2023-10-26",
+      "type": "talk",
+      "title": "Scrum et Kanban",
+      "speakers": ["Farouk Choulak"],
+      "feedbackFrom": [],
+      "summary": "- Talk de fin de journée (vers 18 h) d'un des organisateurs de l'Agile Tour Bordeaux, ancien développeur, directeur de programme et DSI devenu coach agile.\n- Objectif : démonter l'opposition supposée entre Scrum et Kanban qu'il lit en ligne, y compris chez ChatGPT ; les deux guides visent la valeur, l'itératif et la prédictibilité.\n- **Scrum fournit le cadre, Kanban les pratiques de flux** : un alliage plutôt qu'un hybride ou un « Scrumban ».\n- Pratiques détaillées : définition du workflow, visualisation, limite de WIP au niveau du système, gestion active des items, SLE.\n- Quatre métriques (WIP, throughput, cycle time et **âge des items**, la plus importante selon lui) ; les prévisions Monte-Carlo et les percentiles remplacent les story points en planning, revue et rétro.\n- *« Pour livrer plus, faites-en moins. »* Il rappelle aussi que l'événement reste entièrement gratuit, avec un tarif sponsor inchangé depuis une dizaine d'années.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "UMZd5Bnt-Xc", "title": "Farouk Choulak - Scrum et Kanban", "transcript": true }
+    },
+    {
+      "id": "du-manifeste-agile-au-manifeste-convivialiste-a-la-recherche-de-la-resilience-perdue",
+      "day": "2023-10-26",
+      "type": "talk",
+      "title": "Du manifeste agile au manifeste convivialiste, à la recherche de la résilience perdue…",
+      "speakers": [],
+      "feedbackFrom": [],
+      "summary": "- Talk à deux voix de deux coachs (prénommés Xavier et Benoît dans le transcript, noms de famille et entreprises illisibles) qui se sont rencontrés sur une mission d'accompagnement d'équipe ; quiz avec jeux de cartes à gagner.\n- La résilience d'équipe illustrée par le sport : Brésil-Allemagne 2014 en contre-exemple, France-Nouvelle-Zélande 1999 en exemple.\n- Présentation du **manifeste convivialiste** (2013, mis à jour en 2020) : commune naturalité, commune humanité, commune socialité, légitime individuation, opposition créatrice, et l'impératif de maîtrise de l'hubris.\n- Mise en relation avec la culture du Manifeste agile (modèle de Schneider, via Michael Sahota), les stades de maturité d'équipe d'Olivier Devillard (jamais acquis) et les cinq dysfonctionnements de Lencioni.\n- Pistes concrètes : rétros en plein air, savoir se poser plutôt que courir après plus de vélocité, ancrer les moments réussis ; *« La personne n'est pas le problème, le problème est le problème. »*",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "ZqJKe7ONybY", "title": "Du manifeste agile au manifeste convivialiste, à la recherche de la résilience perdue…", "transcript": true }
+    },
+    {
+      "id": "accelerate-fast-et-unfix-sont-dans-un-bateau",
+      "type": "talk",
+      "title": "Accelerate, FAST et unFIX sont dans un bateau",
+      "speakers": [],
+      "feedbackFrom": [],
+      "summary": "- Talk à trois voix d'intervenants lyonnais (dont Yanis pour Accelerate et Mathieu pour FAST ; le troisième, coach agile, n'est pas identifiable dans le transcript), avec échanges avec la salle.\n- **Accelerate** : quatre ans de recherche, 4 métriques, 24 capacités à régler comme les potards d'une table de mixage à partir d'objectifs clairs ; *« aller vite pour stabiliser »*, et culture générative au sens de Westrum. Les PME ont du mal à suivre.\n- **FAST** (Ron Quartel) : alternative à Scrum fondée sur le forum ouvert, pour des collectifs de 14 à 200 personnes, équipes qui se forment elles-mêmes sur des cycles d'environ deux jours.\n- **unFIX** (Jurgen Appelo) : boîte à outils pour modéliser l'organisation actuelle et visée (Delegation Poker, niveaux de participation).\n- Image retenue : FAST est le moteur, unFIX la carrosserie et le volant, Accelerate le mécano ; former décideurs et PO, éviter le big bang, car *« on peut pas s'en sortir avec un PO qui sait pas où on va »*.\n- Le talk renvoie à un atelier unFIX l'après-midi même. Jour non retenu : le talk cite la keynote « de ce matin » (jour 1), mais deux speakers du jour 2 situent une session Accelerate le même jour qu'eux.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "h_T8dfdbZ3c", "title": "Accelerate, FAST et unFIX sont dans un bateau", "transcript": true }
+    },
+    {
+      "id": "loi-de-conway-lorsque-les-bonnes-pratiques-ne-suffisent-pas",
+      "day": "2023-10-27",
+      "type": "talk",
+      "title": "Loi de Conway : Lorsque les bonnes pratiques ne suffisent pas",
+      "speakers": ["Julien Topcu — Shodo"],
+      "feedbackFrom": [],
+      "summary": "- Talk mis en scène comme un épisode de « La Quatrième Dimension » par un tech coach de Shodo (DDD, software craftsmanship).\n- Preuves de la **loi de Conway** : sites web calqués sur l'organigramme, étude de 2008 sur Windows Vista où la structure organisationnelle prédit mieux les bugs que la couverture de tests, site de vente de billets de train découpé par pays comme ses feature teams.\n- Choisir une organisation, c'est déjà faire un choix de design ; les canaux de communication croissent de façon non linéaire (Brooks).\n- Critique de SAFe, qui risque de produire un monolithe distribué : *« Ce n'est pas Sonar qui va vous sauver si vous faites du SAFe. »*\n- Sorties proposées : manœuvre de Conway inverse, modèle BAPO de Jan Bosch, DDD stratégique (Event Storming, context map) et Team Topologies ; **changer la communication avant toute réorganisation** et rendre d'abord le système flexible.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "b5D_wpPgyeA", "title": "Julien Topcu - Loi de Conway : Lorsque les bonnes pratiques ne suffisent pas", "transcript": true }
+    },
+    {
+      "id": "mettons-les-developpeurs-au-coeur-de-l-organisation-produit",
+      "day": "2023-10-27",
+      "type": "talk",
+      "title": "Mettons les développeurs au cœur de l'organisation produit",
+      "speakers": ["Christophe Héral"],
+      "feedbackFrom": [],
+      "summary": "- REX d'un VP Engineering d'une startup bordelaise d'une trentaine de personnes (extension navigateur de codes promo et cashback), ancien lead et coach craft.\n- Point de départ : releases en lots testées à la main (une release d'août 2022 a pris un mois), trop de travail en parallèle, code couplé, culture du héros.\n- Bascule : **une métrique par équipe et une autonomie totale sur le comment**, une seule problématique à la fois (loi de Little), petites équipes d'un PM et deux ou trois devs, suppression du rôle de lead.\n- Les développeurs co-conçoivent la solution fonctionnelle, écrivent les US, livrent chaque semaine et apprennent de la prod ; *« On est des développeurs, on n'est pas des codeurs. »*\n- Outillage : feature flags et A/B tests, trunk-based development, pair et mob programming, tests automatisés (sanity checks passés de 2 h à 15 min), CI/CD, monitoring avec alertes fonctionnelles ; ni sprints ni estimations, ni Scrum Master, testeur, architecte ou lead.\n- Inspirations : Lean, XP, DevOps, Accelerate, Team Topologies ; credo : *« Faire moins de choses pour aller plus vite. »*",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "y51hB1MvUBY", "title": "Christophe Héral ‐ Mettons les développeurs au cœur de l'organisation produit", "transcript": true }
+    },
+    {
+      "id": "ameliorer-son-feedback-eviter-les-boucles-folles",
+      "day": "2023-10-27",
+      "type": "talk",
+      "title": "Améliorer son feedback, éviter les boucles folles",
+      "speakers": ["Laurent Bossavit"],
+      "feedbackFrom": [],
+      "summary": "- Talk ponctué de saynètes (sa peur, la girafe de la CNV), déjà donné à Newcrafts, appuyé sur les valeurs d'XP et le livre *What Did You Say?* issu du cercle de Jerry Weinberg.\n- La peur bloque le feedback mais montre où sont les conversations qui ont de la valeur : *« Le courage, c'est pas l'absence de peur, c'est agir efficacement en confrontant sa peur. »*\n- Un feedback **renseigne d'abord sur celui qui le donne** ; exiger que l'autre en tienne compte en fait une demande, et un feedback unilatéral destiné à changer l'autre relève de la manipulation. La triangulation par un tiers est un anti-pattern.\n- Critique de la trivialisation du feedback comme outil de management (« shit sandwich », recettes syntaxiques, formations au service de l'entretien annuel) ; il distingue feedback expert, usager, évaluatif et interpersonnel.\n- Lecture systémique : une relation est une boucle de rétroaction qui peut s'emballer, le délai amplifie le problème, et la **boucle internalisée** (ruminer contre une image de l'autre) peut mener au burn-out ; il faut extérioriser (Virginia Satir, jeux de rôle, médiation).\n- Il s'appuie plusieurs fois sur les diagrammes de boucles causales de la keynote de la veille.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "88SvRqTQCvY", "title": "Laurent Bossavit - Améliorer son feedback, éviter les boucles folles", "transcript": true }
+    },
+    {
+      "id": "waterfall-agilite-de-l-utilite-de-se-confronter-et-de-travailler-ensemble",
+      "day": "2023-10-27",
+      "type": "talk",
+      "title": "Waterfall, Agilité : de l'utilité de se confronter et de travailler ensemble",
+      "speakers": ["Christian (co-organisateur)", "Anthony (Scrum Master, équipe d'Agile Niort)", "Alain Delachaux — Capgemini"],
+      "feedbackFrom": [],
+      "summary": "- Talk théâtralisé à trois : un arbitre, un camp agile et un « Père Castor » fan du waterfall ; salle coupée en deux camps et vote sur le type d'organisation.\n- Constat : les organisations sont hybrides et **le client est écrasé entre deux camps** qui s'affrontent.\n- Mise en perspective : waterfall (Benington 1956, cycle en V), lois de Steve Denning, histoire des organisations de 1945 à Internet, configurations de Mintzberg, *The Culture Map* d'Erin Meyer.\n- Outil de positionnement des équipes « sorti du four il y a quelques heures » et matrice instabilité du contexte × maîtrise du sujet : ne rien faire, Scrum, Kanban pour le run, waterfall quand le sujet est maîtrisé et stable.\n- Conseils : petits pas, ne pas bouger tous les curseurs à la fois, ne rien faire reste une option, réunions avec objectif, timekeeper et compte rendu RIDAR ; *« Tous les modèles sont faux, mais certains sont utiles. »*",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "XJ8kx6imBA8", "title": "Waterfall, Agilité : de l'utilité de se confronter et de travailler ensemble", "transcript": true }
+    },
+    {
+      "id": "je-te-promets-le-chaos",
+      "type": "talk",
+      "title": "Je te promets le chaos",
+      "speakers": ["Anne-Laure Gaillard — ManoMano"],
+      "feedbackFrom": [],
+      "summary": "- Talk d'une staff QE de ManoMano, ancienne testeuse fonctionnelle, qui ouvre par **une fausse panne** en pleine projection pour faire vivre un incident en production.\n- Rappels : histoire du DevOps (Patrick Debois, Flickr et ses dix déploiements par jour, DevOpsDays 2009), CALMS, métriques DORA, et son ajout du DevSecOps.\n- Chaos engineering : Netflix, Chaos Monkey, Gorilla et Kong ; puis les **Game Days** pratiqués chez ManoMano, avec rôles de vilains et de héros, équipes hétérogènes, en prod ou en test selon le risque.\n- Ce qu'elle en retient : l'apprentissage, les post-mortems et le lien entre équipes ; exemples de pannes révélées (base non démarrée, Kafka arrêté sans message d'erreur).\n- La résilience se pense dès la conception, en associant SRE et Ops à la stratégie de test ; *« La qualité, c'est l'affaire de tous. »* Elle invite les agilistes à faciliter des Game Days.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "kVYkMuLB6Wc", "title": "Je te promets le chaos - Anne-Laure Gaillard", "transcript": true }
+    },
+    {
+      "id": "et-si-nos-mauvaises-pratiques-de-test-etaient-le-frein-a-notre-agilite",
+      "type": "talk",
+      "title": "Et si nos mauvaises pratiques de test étaient LE frein à notre agilité ?",
+      "speakers": ["Frantz Degrigny"],
+      "feedbackFrom": [],
+      "summary": "- Coach agile et formateur, il construit son talk en **sept niveaux de maturité du test**, chacun illustré par une mauvaise et une bonne pratique observées sur le terrain ; il dit avoir choisi le sujet après des talks sur le test jugés superficiels l'année précédente.\n- Automatiser d'abord : livrer souvent sans tests automatisés est un hold-up (exemple d'une grande entreprise ferroviaire qui tirait au sort ses tests manuels, avant un gros crash).\n- Une stratégie de test délibérée et partagée avec le métier (une demi-page suffit), un patrimoine de test lisible par tous (Gherkin, example mapping hebdomadaire).\n- Le testeur agile coache l'équipe plutôt que de tester à la fin ; campagnes rigoureuses et couverture agrégée.\n- Le code de test suit **les mêmes règles que le code de production** (Sonar, mutation testing) ; le risque industriel est maximal après une longue période de confiance (Challenger) : tester la restauration des sauvegardes.\n- *« Du point de vue utilisateur, il n'y a que le run. »* Le transcript s'arrête aux questions, sans la conclusion annoncée.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "5xc4XdGkiLs", "title": "Frantz Degrigny - Et si nos mauvaises pratiques de test était LE frein à notre agilité ?", "transcript": true }
+    },
+    {
+      "id": "tests-unitaires-essentiels-et-compliques-a-la-fois",
+      "type": "talk",
+      "title": "Tests unitaires : essentiels et compliqués à la fois",
+      "speakers": ["Arnaud Langlade"],
+      "feedbackFrom": [],
+      "summary": "- Talk avec code d'exemple d'un ingénieur indépendant qui accompagne des équipes sur les bonnes pratiques.\n- Les tests unitaires donnent un feedback rapide et permettent **le refactoring sans peur** ; schéma Arrange, Act, Assert.\n- Couplage et entrées/sorties : inversion de dépendance, implémentation en mémoire pour les tests, architecture hexagonale ; *« Si le fake est dur à implémenter, c'est qu'il y a un problème de responsabilité unique. »*\n- Ne pas tester les méthodes privées (signe d'un god object à découper), injecter horloge et chiffreur contre le non-déterminisme, ne pas casser l'encapsulation avec des getters.\n- Nommer les tests par le comportement attendu, car *« les tests, c'est une documentation gratuite »* ; supprimer les tests instables, vérifier qu'un test peut échouer, puis passer au TDD.\n- En questions : méthode Mikado pour le legacy, préférence pour les fakes plutôt que les frameworks de mocks.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "AOhqbqvVBs0", "title": "Arnaud Langlade - Tests unitaires : essentiels et compliqués à la fois.", "transcript": true }
+    },
+    {
+      "id": "old-crafts",
+      "type": "talk",
+      "title": "Old Crafts",
+      "speakers": ["Sam Cranford"],
+      "feedbackFrom": [],
+      "summary": "- Talk interactif d'un agiliste de plus de vingt ans (membre de l'XP User Group de Denver en 2000), lassé d'entendre que l'agile serait une idée nouvelle et risquée ; le public colle des post-it sur les influences de l'agile.\n- Généalogie proposée : Lean, empirisme, open source, Cynefin, pensée systémique, Deming, Weinberg, Norm Kerth, artisanat et guildes.\n- Les manifestes ont une longue histoire (GNU, Slow Food, Software Craftsmanship 2009), comme la protection des travailleurs (Hammurabi, guildes, syndicats) ; les luddites étaient contre le mauvais usage de la technologie, pas contre elle.\n- Deming : cesser de dépendre de l'inspection, ce qui mène au TDD, et rendre la fierté du travail.\n- Influences philosophiques : wabi-sabi, taoïsme, pleine conscience et slow code, arts martiaux (dojos, katas), stoïcisme, Ubuntu.\n- Conclusion : **rien n'est nouveau**, ce sont des recombinaisons, et les humains oublient les leçons du passé. Le speaker dit avoir animé le matin même une slow code retreat.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "l7F73BPzMSs", "title": "Sam Cranford - Old Crafts", "transcript": true }
+    },
+    {
+      "id": "la-matrice-de-competences-agile",
+      "type": "talk",
+      "title": "La matrice de compétences Agile",
+      "speakers": ["Mathieu Allouche"],
+      "feedbackFrom": [],
+      "summary": "- Talk très interactif d'un coach organisationnel, ancien DSI de PME, sur un modèle testé deux ans avec plus de vingt équipes ; il ouvre sur la résilience des équipes.\n- Constat : les projets échouent par manque de compétences, de moyens ou d'engagement.\n- La matrice croise compétences, niveau et nombre requis, équipiers, et une grille niveau, intérêt, RACI ; méthode en cinq temps à refaire à chaque phase (objectifs, compétences clés, auto-évaluation, points critiques, plan).\n- L'auto-évaluation crée l'engagement ; **le manque d'intérêt est un signal de désengagement**.\n- Leviers : montée en compétences, binômes, mobilité interne, recrutement ou prestation ; 20 à 30 compétences par équipe.\n- *« Je l'utilise comme un outil d'engagement plus que comme un outil de contrôle. »*",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "BfHABrbiNUs", "title": "Mathieu Allouche - La matrice de compétences Agile", "transcript": true }
+    },
+    {
+      "id": "la-reconnaissance-une-valeur-agile-negligee",
+      "type": "talk",
+      "title": "La reconnaissance, une valeur agile négligée",
+      "speakers": ["Amina Bourguiba"],
+      "feedbackFrom": [],
+      "summary": "- Talk d'une coach agile spécialisée dans les transformations à l'échelle, pour sa première venue à l'Agile Tour Bordeaux.\n- Définition : un ressenti, après une interaction ou une appréciation, qui apporte valeur et considération ; après la maîtresse d'école et le manager, **la reconnaissance entre pairs** devient essentielle.\n- Trois raisons de la travailler : le besoin d'estime, trois sphères (identité, investissement, résultat), et les interactions au cœur du Manifeste agile.\n- Quatre initiatives : repérer les signes de reconnaissance (analyse transactionnelle), en donner une qui compte (réactive, équitable, sincère, personnalisée), des pratiques collectives (colonne remerciements en rétro), en parler explicitement (Team Canvas, son atelier Recognition Map).\n- Limites : hypocrisie, posture d'attente, compétition liée aux objectifs individuels ; *« Tout sauf l'indifférence. »*",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "ENfwHwYZCm0", "title": "Amina Bourguiba - La reconnaissance, une valeur agile négligée", "transcript": true }
+    },
+    {
+      "id": "n-oublie-pas-ta-bulle",
+      "type": "talk",
+      "title": "N'oublie pas ta bulle",
+      "speakers": [],
+      "feedbackFrom": [],
+      "summary": "- Retour d'expérience collectif et court d'un groupe d'intervision de coachs aux métiers variés (Gestalt-thérapie, validation aéronautique, comptabilité publique, coaching indépendant) ; noms peu lisibles dans un transcript au début très dégradé. Des sketchnotes réalisés par une membre étaient affichés dans la salle.\n- L'intervision comme **espace d'entraînement entre pairs**, ouvert à tous les métiers ; cadre posé dès le départ (bienveillance, non-jugement, confiance) et évolution du groupe lue avec Tuckman.\n- Déroulé d'une séance : météo, objectifs, coaching tournant où chacun propose une question et le coaché choisit celle qui résonne, puis débrief.\n- Une séance trop chargée en émotions a dérapé, le coaché étant traité comme un cobaye : d'où quatre « A » (affirmer, assumer, affiner, afficher le cadre). *« Le cadre, c'est fondamental, c'est le garant de la confiance. »*\n- La « bulle » en trois temps (groupe, exercice, groupe) est présentée comme transposable à une réunion d'équipe agile ; six participants leur paraît le bon nombre.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "OLrZqcCEq7k", "title": "N'oublie pas ta bulle", "transcript": true }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Keynote d'Aurélie (citée par Rachel Jolin Dubois parmi les trois keynoteuses ; nom complet et sujet non trouvés)",
+    "Slow code retreat, atelier (Sam Cranford, le matin de son talk)",
+    "Atelier unFIX (avec Thomas Mor, cité par le talk Accelerate, FAST et unFIX)",
+    "Atelier sur le sabotage (cité par Rachel Jolin Dubois, animateurs non identifiés)",
+    "Forum ouvert du second jour",
+    "Intervention d'un ou une Professional Scrum Trainer (citée par Farouk Choulak, identité non confirmée)"
+  ],
+  "sources": [
+    { "label": "Page officielle de l'édition 2023 (dates, lieu, thème, sans grille)", "url": "https://agiletourbordeaux.fr/evenements/atbdx-edition-2023/" },
+    { "label": "Appel à orateurs Sessionize 2023 (thème, CFP)", "url": "https://sessionize.com/agile-tour-bordeaux-2023/" },
+    { "label": "Appel à orateurs Sessionize 2024 (fréquentation 2023 : plus de 350 sur place, 400 à distance)", "url": "https://sessionize.com/agile-tour-bordeaux-2024" },
+    { "label": "Playlist YouTube « Agile Tour Bordeaux 2023 » (20 replays)", "url": "https://www.youtube.com/playlist?list=PLrcEggfr4Kw5K7bALMmHuH5GRdu6bMa2T" },
+    { "label": "Page conférences de Rachel Jolin Dubois (keynote Agile Tour Bordeaux 2023)", "url": "https://racheldubois.fr/index.php/conferences/" },
+    { "label": "Posts LinkedIn : aucun retour de participant trouvé (7 recherches web, octobre 2026)" }
+  ]
 }
