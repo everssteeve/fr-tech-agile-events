@@ -7,8 +7,168 @@
   "city": "Paris",
   "venue": "Maison Action Solidarité (Paris 13e)",
   "url": "https://paristestconf.com/edition-2026/",
+  "programUrl": "https://paristestconf.com/wp-content/uploads/2026/04/PTC2026-Lineup.pdf",
   "dateConfidence": "ok",
   "note": "Site officiel : « Le 31 mars 2026 […] la 7e édition de la ParisTestConf, à la Maison Action Solidarité » ; 3 tracks de talks, 1 track autour du jeu Bugs End, 21 speakers.",
-  "status": "pending",
-  "sessions": []
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-30",
+  "revisit": "Un seul retour participant lu (post LinkedIn de Sébastien Pousse, happn) ; aucune vidéo ni article de blog trouvés ; synthèse appuyée surtout sur les slides publiées. Deux decks (Fournier/Collavini, Leroux-Huet) non lus (PDF trop lourds).",
+  "corpus": "Programme officiel (grille PDF et page Édition 2026), 12 decks de slides publiés par les organisateurs en avril 2026 (dont un via SlideShare), page Sessionize de l'appel à orateurs et un post LinkedIn d'un participant (Sébastien Pousse, équipe QA de happn), lu sept mois après l'événement.",
+  "limits": "Corpus participant quasi inexistant : les résumés décrivent ce que disent les slides, pas ce que la salle en a retenu. Aucune vidéo publiée pour 2026 ; deux decks non lus ; extraits SlideShare du talk de Dorra Bartaguiz à revérifier sur le deck original.",
+  "tldr": "Une journée communautaire du test où **l'IA entre dans l'exécution des tests (agents, self-healing, TDD augmenté) sans remplacer le jugement du testeur**, à côté de sujets de fond : biais, BDD, exploration sans specs, temps et fuseaux horaires, Kafka.",
+  "keyTakeaways": [
+    "Utiliser un agent IA pour exécuter des scénarios manuels écrits en Gherkin, et garder un scripting assisté pour la régression (Bruno Legeard, slides).",
+    "Traiter le self-healing comme une roue de secours, pas comme le moteur de l'automatisation : surveiller faux négatifs et coût LLM (Bouchet et Pescheteau, slides).",
+    "Vérifier la couverture annoncée par une IA : 100 % annoncés, 33 % mesurés au global dans le cas présenté par Dorra Bartaguiz (slides).",
+    "Ne pas confondre BDD et test : le BDD sert à construire avant de coder, avec des exemples concrets ; les 3 amigos sur une spec finie ou le Gherkin écrit après le dev sont des contre-modèles (Rose Lutz, slides).",
+    "Pour les dates : datetime avec timezone, stockage en UTC, conserver la timezone d'origine et la version IANA, convertir à l'affichage (Julien Lenormand, slides).",
+    "En architecture événementielle, tester l'idempotence, les poison pills, les dépendances lentes et la relecture massive, et investir dans l'observabilité (AXA France, slides ; retenu aussi par Sébastien Pousse).",
+    "Passer du QA gatekeeper au QA coach : la qualité devient une responsabilité partagée, avec des rituels comme les QA Kickoffs (Abbadi et Fresi, slides).",
+    "Mesurer l'efficacité sur plusieurs axes (vitesse, qualité, prédictibilité, cadence) en gardant en tête la loi de Goodhart (Alexandre Aubert, slides).",
+    "Déjouer ses biais de test par une équipe pluridisciplinaire, du recul et des tests découpés (Noémie M. Rivière, slides)."
+  ],
+  "sessions": [
+    {
+      "id": "casting-oscar-du-test",
+      "day": "2026-03-31",
+      "type": "talk",
+      "title": "Casting : Oscar du Test !",
+      "speakers": ["Séverine Cabocel", "Cynthia Lefevre"],
+      "feedbackFrom": [],
+      "summary": "- Deck très visuel sur **les parcours qui mènent au métier de testeur** : dès le départ, anciens développeurs, profils métier, ou ni l'un ni l'autre.\n- **Les qualités mises en avant** : création, jeu, curiosité, exploration, œil critique, persuasion.\n- Panorama des **formations** (M2 ITVL du Mans, EQL, ENI, Cnam, MIAGE, EPSI, Udemy) et des **certifications** (ISTQB CTFL, IREB).\n- Formule affichée : *« Je ne râle pas Je communique ! »*.\n- Résumé tiré des seules slides, sans retour de participant.",
+      "summarySources": ["program", "slides"]
+    },
+    {
+      "id": "qa-engineering-quelle-est-la-prochaine-etape-pour-m-ameliorer",
+      "day": "2026-03-31",
+      "type": "talk",
+      "title": "« QA Engineering » : quelle est la prochaine étape pour m'améliorer ?",
+      "speakers": ["Alexandre Aubert (Piano Analytics)"],
+      "feedbackFrom": ["Sébastien Pousse (happn, LinkedIn)"],
+      "summary": "- Retour d'expérience d'un Head of software engineering, structuré en **5 phases** : réagir, investir dans le test, améliorer les pratiques de dev, passer au Quality Engineering, gagner en efficacité.\n- Indicateurs montrés sur les slides : **bugs en production de 36 à 24**, bugs détectés en interne, taux de fuite (de 41,67 % à 50 %).\n- **L'efficacité se mesure sur 4 axes** : vitesse (lead time, cycle time, time to review), qualité, prédictibilité, cadence.\n- Mise en garde par la **loi de Goodhart** : *« lorsqu'une mesure devient un objectif, elle cesse d'être une bonne mesure »* ; d'où *« Considérer l'ensemble des indicateurs pour évaluer une progression »*.\n- Côté salle, Sébastien Pousse (happn) retient *« Mesurer pour mieux livrer : Lead Time, Cycle Time et taux de fuite deviennent nos alliés »* ; le post ne nomme pas le talk, le rattachement est déduit des indicateurs cités.",
+      "summarySources": ["program", "slides", "feedback"]
+    },
+    {
+      "id": "tester-sans-specs-l-art-de-l-exploration",
+      "day": "2026-03-31",
+      "type": "talk",
+      "title": "Tester sans specs, l'art de l'exploration !",
+      "speakers": ["Prescillia Seck Ndedi (Sunstice)"],
+      "feedbackFrom": [],
+      "summary": "- Contexte présenté : un projet dans **l'assurance**, 10 testeurs, des itérations d'une semaine, sans spécifications exploitables.\n- Outils : **Keyword Driven Testing** et un **cycle en 7 étapes** qui mène jusqu'à l'alignement avec le métier.\n- Pratique du **« Modeling-Out-Loud »** : modéliser à voix haute pour faire émerger les règles.\n- Message clé : *« L'objectif n'est pas de devenir « expert métier » mais d'orienter les choix »*.\n- Résumé tiré des seules slides.",
+      "summarySources": ["program", "slides"]
+    },
+    {
+      "id": "comment-bien-biaiser-ses-tests",
+      "day": "2026-03-31",
+      "type": "talk",
+      "title": "Comment bien biaiser ses tests ?",
+      "speakers": ["Noémie M. Rivière (Duchess France)"],
+      "feedbackFrom": [],
+      "summary": "- Talk d'une senior product designer : distinguer **heuristique et biais cognitif**, sur fond du Codex des quelque 250 biais.\n- **14 biais** présentés en fiches : c'est quoi, exemple, comment le déjouer.\n- **Parades** : équipe pluridisciplinaire, prise de recul, découpage des tests.\n- Constat affiché : *« Les tests, qu'ils soient utilisateurs ou fonctionnels, sont rarement neutres »*.\n- Le post de Sébastien Pousse (happn) retient un thème *« Shift Left Design & Cognitif »* (identifier les biais, collaborer tôt avec le design), probablement nourri par ce talk et par celui sur le feedback design.",
+      "summarySources": ["program", "slides"]
+    },
+    {
+      "id": "je-n-ai-plus-de-qa-c-est-grave-docteur",
+      "day": "2026-03-31",
+      "type": "talk",
+      "title": "Je n'ai plus de QA, c'est grave docteur",
+      "speakers": ["Fatima-Zahrae Abbadi (Odaseva)", "Jean-François Fresi (Shift Op Solutions)"],
+      "feedbackFrom": [],
+      "summary": "- **Du QA gatekeeper au QA coach** (Quality Assistance) : le rôle passe du contrôle à l'accompagnement des équipes.\n- **4 modèles d'organisation** : pas de QA, QA intégré, QA transverse, hybride.\n- Exemples cités sur les slides : Netflix, ManoMano, OpenClassrooms, Atlassian (QA Kickoffs, **-50 % de rejets**), Odaseva, Cdiscount.\n- Modèle de **maturité en 4 phases** emprunté à Dan Buckland.\n- Formule de conclusion : *« La qualité n'est pas un département. C'est une responsabilité partagée. »*",
+      "summarySources": ["program", "slides"]
+    },
+    {
+      "id": "quand-les-tests-deviennent-asynchrones-kafka-axa-france",
+      "day": "2026-03-31",
+      "type": "talk",
+      "title": "Quand les tests deviennent asynchrones : leçons apprises sur Kafka chez AXA France",
+      "speakers": ["Guillaume Dufrêne (AXA France)", "Nadia Randriamanantena (AXA France)"],
+      "feedbackFrom": ["Sébastien Pousse (happn, LinkedIn)"],
+      "summary": "- Rappels sur **l'architecture événementielle et Kafka** (topics, partitions, consumer groups) appliqués au test.\n- **Tests en production** outillés avec AKHQ.\n- **Nouveaux patterns d'anomalie** à tester : poison pill, dépendance lente, idempotence, relecture massive, conformité.\n- **Observabilité** : OpenTelemetry, Elastic, Dynatrace.\n- Côté salle, Sébastien Pousse retient *« l'importance de l'idempotence et de l'observabilité »*, tout en notant que son équipe n'utilise pas Kafka.",
+      "summarySources": ["program", "slides", "feedback"]
+    },
+    {
+      "id": "le-temps-c-est-de-l-argent-et-beaucoup-de-bugs",
+      "day": "2026-03-31",
+      "type": "talk",
+      "title": "Le temps c'est de l'argent … et beaucoup de bugs",
+      "speakers": ["Julien Lenormand"],
+      "feedbackFrom": [],
+      "summary": "- Cas d'actualité : **le passage à l'heure d'été du 29 mars 2026**, deux jours avant la conférence.\n- **Taxonomie des pièges du temps** : non-continuité, non-unicité, non-monotonicité, entre autres.\n- **Règle proposée** : datetime avec timezone, conversion en UTC, stockage de la timezone d'origine et de la version IANA, conversion au moment de l'affichage.\n- **Outils** : Temporal, java.time, Noda Time, freezetime, libfaketime.\n- Sur l'IA : utile pour le property-based testing, mais elle *« fait très souvent des erreurs basiques »* sur ce sujet.",
+      "summarySources": ["program", "slides"]
+    },
+    {
+      "id": "le-bdd-n-est-pas-une-methode-de-test",
+      "day": "2026-03-31",
+      "type": "talk",
+      "title": "Et si on arrêtait d'enfoncer des clous avec un tournevis ? Le BDD n'est pas une méthode de test",
+      "speakers": ["Rose Lutz"],
+      "feedbackFrom": [],
+      "summary": "- Distinction centrale : **le BDD sert à construire avant de coder, le test sert à critiquer après**.\n- BDD, Gherkin et Cucumber sont **séparables** : on peut faire l'un sans les autres.\n- **Erreurs fréquentes** : le BDD comme seule stratégie de test, des 3 amigos sur une spec déjà finie, du Gherkin écrit après le développement, tout automatiser en end-to-end.\n- Démarche **Discover / Formulate / Automate** et mémo **BRIEF** pour de bons scénarios.\n- Principe affiché : *« Pas de BDD sans Exemples concrets »*.",
+      "summarySources": ["program", "slides"]
+    },
+    {
+      "id": "et-si-nos-scenarios-de-test-devenaient-investissables",
+      "day": "2026-03-31",
+      "type": "workshop",
+      "title": "Et si nos scénarios de test devenaient INVESTissables ?",
+      "speakers": ["Imen Naguez"],
+      "feedbackFrom": [],
+      "summary": "- Atelier sur deux créneaux (10h15 à 12h) : appliquer **INVEST**, d'habitude réservé aux user stories, aux scénarios de test, via un quiz.\n- Cadre **5S** pour un bon scénario : Simple, Spécifique, Solide, SMART, Scriptable.\n- Exercice du **« Tourniquet 5S »** en 4 équipes (support d'exercices publié).\n- Conventions proposées : formulations standardisées et nommage **[DOMAINE]_[SOUS-DOMAINE]_[OBJECTIF]**.",
+      "summarySources": ["program", "slides"]
+    },
+    {
+      "id": "self-healing-tests-automatises-ia",
+      "day": "2026-03-31",
+      "type": "talk",
+      "title": "Comment le self-healing va révolutionner vos tests automatisés grâce à l'IA ?",
+      "speakers": ["Antoine Bouchet (qanary)", "Steven Pescheteau (qanary)"],
+      "feedbackFrom": [],
+      "summary": "- Point de départ : **le paradoxe de l'automatisation**, dont le coût de maintenance finit par peser plus que le gain.\n- Démonstration des **Playwright Agents** (Planner, Generator, Healer), de correctifs via Claude Code et d'approches multi-agents.\n- **Limites** : risque de faux négatifs (un test « réparé » qui masque un vrai bug) et coût des appels LLM.\n- Position finale : *« Le self-healing doit être une roue de secours, pas le moteur principal. »*",
+      "summarySources": ["program", "slides"]
+    },
+    {
+      "id": "tdd-augmente-ia-generative",
+      "day": "2026-03-31",
+      "type": "talk",
+      "title": "TDD augmenté : quand l'IA générative s'invite dans nos pratiques",
+      "speakers": ["Dorra Bartaguiz"],
+      "feedbackFrom": [],
+      "summary": "- Cas pratique : un **calcul de date de dépistage** développé en TDD avec Copilot et Claude Haiku 4.5.\n- **L'IA annonce 100 % de couverture** ; la vérification mesure **33 % au global et 95 % sur le domaine**.\n- Garde-fous proposés : **property-based testing et mutation testing** pour juger la qualité réelle des tests générés.\n- Deck lu via SlideShare (synthèse et extraits) : détails à revérifier sur le support original.",
+      "summarySources": ["program", "slides"]
+    },
+    {
+      "id": "et-si-l-ia-rendait-l-automatisation-inutile",
+      "day": "2026-03-31",
+      "type": "talk",
+      "title": "Et si l'IA rendait l'automatisation inutile ?",
+      "speakers": ["Bruno Legeard (Smartesting)"],
+      "feedbackFrom": ["Sébastien Pousse (happn, LinkedIn)"],
+      "summary": "- Démonstration : **Browser Use exécute un scénario Gherkin sans code** d'automatisation (28 s, 0,08 $ sur l'exemple).\n- Typologie des **agents testeurs**.\n- Mesure présentée : sur plus de 150 scénarios et 30 applications, **plus de 85 % d'exécutions totalement correctes** (article soumis à ISSTA 2026).\n- Recommandation : **agent IA pour le test manuel, scripting assisté pour la régression**.\n- Côté salle, Sébastien Pousse (happn) dit que son équipe explore déjà des approches *« No-Code »* où *« l'IA exécute directement du Gherkin sans accesseurs »* (rattachement au talk déduit du sujet, le post ne nomme pas le speaker).",
+      "summarySources": ["program", "slides", "feedback"]
+    },
+    {
+      "id": "bugs-end",
+      "day": "2026-03-31",
+      "type": "other",
+      "title": "Bugs End (animation sur la journée)",
+      "speakers": ["Marc Hage Chahine", "Julien Cahu"],
+      "feedbackFrom": [],
+      "summary": "- Quatrième track de la journée, en salle Ateliers : **animation continue autour du jeu Bugs End**.\n- Le programme ne donne aucun détail sur le déroulé ; aucun retour trouvé.",
+      "summarySources": ["program"]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "« J'aime pas le bouton vert » ou comment rater votre feedback design (Camille Fournier, Margot Collavini) : slides publiées mais non lues",
+    "Au secours, performance en hausse ! Test flaky et mystère thermique (Matthieu Leroux-Huet) : slides publiées mais non lues"
+  ],
+  "sources": [
+    { "label": "Page Édition 2026 (programme et slides)", "url": "https://paristestconf.com/edition-2026/" },
+    { "label": "Grille horaire officielle (PDF)", "url": "https://paristestconf.com/wp-content/uploads/2026/04/PTC2026-Lineup.pdf" },
+    { "label": "Appel à orateurs Sessionize ParisTestConf 7 (formats, organisation)", "url": "https://sessionize.com/paristestconf-7/" },
+    { "label": "Slides de Dorra Bartaguiz (SlideShare)", "url": "https://fr.slideshare.net/slideshow/tdd-augmente-quand-l-ia-generative-s-invite-dans-nos-pratiques/286802419" },
+    { "label": "Slides des autres sessions : liens sur la page Édition 2026 (PDF, avril 2026)" },
+    { "label": "LinkedIn : post de Sébastien Pousse (happn), « Happn x Paris Test Conf 2026 », lu via un repost" }
+  ]
 }

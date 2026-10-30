@@ -6,8 +6,383 @@
   "start": "2023-09-28",
   "end": "2023-09-30",
   "city": "Paris",
-  "venue": "Institut Pasteur (conférences)",
+  "venue": "Institut Pasteur (conférences) ; IIM Digital School, Nanterre (ateliers)",
   "url": "https://www.paris-web.fr/2023",
-  "status": "pending",
-  "sessions": []
+  "programUrl": "https://www.paris-web.fr/2023",
+  "dateConfidence": "ok",
+  "note": "18e édition : 18 conférences sur une piste unique les 28 et 29/09 à l'Institut Pasteur, prolongées par des « informelles » (échanges en petit comité avec l'orateurice), avec LSF, vélotypie et traduction des deux conférences en anglais, puis 17 ateliers le 30/09 à l'IIM (Nanterre). Pas de diffusion en direct cette année ; vidéos sous-titrées publiées sur Vimeo du 7 au 21/12/2023. Hommage à Molly Holzschlag en ouverture. Plus de 450 participant·es selon le dossier partenaires 2024 de l'association.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-30",
+  "revisit": "Transcripts non lus : les vidéos 2023 sont sur Vimeo (pas sur PeerTube) et le lecteur Vimeo a refusé l'accès (HTTP 401) ; récupérer les sous-titres français des 18 vidéos. Seulement deux posts LinkedIn lus et aucun compte-rendu d'Access42, Temesis ou Opquast trouvé ; cinq conférences (Archambeau, Collot, Sulpis, Makelele, Clouzeau) n'ont que peu ou pas de retours.",
+  "corpus": "Environ 200 messages Mastodon #ParisWeb du 25/09 au 16/10/2023 (live-toots surtout d'Arnaud Malon, Marie et Julien, Stéphanie Walter, dje_renard), six billets de blog publiés du 28/09 au 11/10/2023 (Arnaud Malon, Anne-Sophie sur Hello Bokeh, Guillaume sur blog.whoz.me, et trois billets d'orateurices : Delphine Malassingne, Richard Hanna, Adrian Roselli), deux posts LinkedIn (Emmanuelle Aboaf, Albane Fagot-Veyron), le programme officiel et quatre supports de présentation lus (Peynot, Chandelier et Delafosse, De Vries, Aboaf et Doublier).",
+  "limits": "Synthèse rétrospective à J+3 ans, sans transcript : les résumés reposent sur les retours, les descriptifs et les diapositives, pas sur le contenu exact des vidéos. Le corpus est dominé par un participant (Arnaud Malon, live-toots et compte-rendu détaillé) et par des personnes déjà engagées sur l'accessibilité ; LinkedIn est quasi absent. Plusieurs retours sont signés par des orateurices sur leur propre session, et quatorze des dix-sept ateliers ne sont documentés que par leur annonce.",
+  "tldr": "Sur une **piste unique** prolongée par des informelles, Paris Web 2023 a parlé accessibilité **en partant du validisme et des usages réels** (textes clairs, ARIA à bon escient, WCAG imparfaites, IA à double tranchant) et a basculé l'écoconception vers une **critique plus radicale du numérique** (décroissance, « l'écoconception ne suffit pas »), dans une ambiance que les participants jugent plus éthique et humaine que technique.",
+  "keyTakeaways": [
+    "Partir du constat que **la société est validiste** et que ce sont les concepteurs qui créent, ou non, les situations de handicap ; 80 % des handicaps sont invisibles (Delphine Malassingne, Emmanuelle Aboaf et Thanh Lan Doublier).",
+    "N'utiliser ARIA que là où HTML ne suffit pas, et bien choisir : `aria-expanded`, `aria-pressed`, `aria-current`, `aria-describedby`, landmarks ; un menu sert aux actions, une navigation aux liens ; éviter `role=\"application\"` et `aria-roledescription` (Hidde de Vries).",
+    "Traiter les WCAG comme un outil nécessaire mais pas suffisant : définitions mouvantes, trous dans la raquette, et WCAG 3 ne réglera pas le problème selon l'orateur (Adrian Roselli, résumé par Arnaud Malon).",
+    "Écrire clair est un critère d'accessibilité (WCAG 3.1.5) : langage courant, phrases courtes, information organisée ; distinguer FALC (relu par des personnes concernées) et langage clair (norme ISO 24495-1) (Morgane Hauguel, Arnaud Malon, Guillaume de blog.whoz.me).",
+    "Un bandeau cookies doit offrir **refus et acceptation à égalité** : un clic de plus fait chuter le refus de 17 % à 4 % (étude DITP citée), et un recueil de consentement inaccessible n'est pas conforme au RGPD (Harmonie Peynot, Arnaud Malon).",
+    "Pour une date lointaine (naissance), préférer un champ texte enrichi à un sélecteur de date, réservé aux dates proches ; le problème a été repéré par l'analytics (MAIF, Sébastien Chalmé et Émilie Dumaine).",
+    "Démarrer l'écoconception collectivement : manifeste d'équipe, indicateurs simples (poids, requêtes), diagnostic RGESN, déclaration publique ; ne jamais qualifier un site d'« écologique » (Richard Hanna, speaker).",
+    "Penser au-delà de l'efficience : effet rebond, solutionnisme, **renoncer à numériser** et viser une décroissance maîtrisée plutôt qu'une récession subie (Richard Hanna, Maxime Bréhin, retenu par Arnaud Malon).",
+    "Avec l'IA, garder des humains dans la boucle : la transcription automatique aide les personnes sourdes mais exige suppléance mentale et correction, et les jeux de données reproduisent les stéréotypes (Emmanuelle Aboaf et Thanh Lan Doublier).",
+    "Faire pousser l'accessibilité en interne par la sensibilisation, l'appui de la hiérarchie et un **bus factor** supérieur à un : en faire un requis de début de projet et former régulièrement (Lena Chandelier et Arnaud Delafosse)."
+  ],
+  "sessions": [
+    {
+      "id": "lia-et-le-handicap-progres-ou-exclusion",
+      "day": "2023-09-28",
+      "type": "talk",
+      "title": "L'IA et le handicap : progrès ou exclusion ?",
+      "speakers": ["Thanh Lan Doublier", "Emmanuelle Aboaf"],
+      "feedbackFrom": ["Arnaud Malon (blog et Mastodon)", "Emmanuelle Aboaf (LinkedIn, speaker)"],
+      "summary": "- Conférence d'ouverture par deux développeuses sourdes : **l'IA aide-t-elle ou isole-t-elle les personnes handicapées ?** (programme). Rappels des diapositives : 1 personne sur 5 handicapée en France, 80 % des handicaps invisibles.\n- Biais des données : une IA générative sur-représente le fauteuil roulant, stéréotype du handicap ; *« Mon dataset n'est pas représentatif du besoin »* (diapositives).\n- Apports : sous-titrage automatique de plus en plus efficace, avatars LSF (KEIA, Elioz), Seeing AI, Be My Eyes et son Virtual Volunteer ; limites : voix atypiques, vocabulaire technique, **suppléance mentale** pour corriger les erreurs (diapositives).\n- Risques : chatbot Eliza impliqué dans un suicide, influence sur les personnes fragiles, article 22 du RGPD sur les décisions automatisées (diapositives).\n- Retenu par Arnaud Malon : conférence *« très documentée »* ; les IA souffrent de *« biais tristement humains »* mais font gagner du temps si un humain corrige, avec en conclusion *« Nothing about us without us »*.\n- L'oratrice résume sur LinkedIn : l'IA peut aider mais exclure en présence de biais (speaker).",
+      "summarySources": ["program", "slides", "blog", "feedback"],
+      "video": {
+        "url": "https://vimeo.com/892367789",
+        "title": "L'IA et le handicap : progrès ou exclusion ?",
+        "publishedAt": "2023-12-07",
+        "transcript": false
+      }
+    },
+    {
+      "id": "web-et-decroissance-vers-un-web-stationnaire",
+      "day": "2023-09-28",
+      "type": "talk",
+      "title": "Web et décroissance : vers un web « stationnaire » ?",
+      "speakers": ["Maxime Bréhin"],
+      "feedbackFrom": ["Arnaud Malon (blog et Mastodon)", "yoanmalie (Mastodon)"],
+      "summary": "- Mini-conférence : qu'est-ce que la décroissance et **quelle place pour le web dans une société qui l'embrasserait** ? (programme).\n- Chiffres relevés : le numérique aurait consommé 10 à 15 % de l'électricité mondiale en 2019 (Malon) ; *« 15000 km parcouru en moyenne par une donnée numérique »* (yoanmalie).\n- Phrase relayée en live : *« Cessons de nous émerveiller devant la nouveauté. Le progrès technique est un leurre. »* (Malon, Mastodon).\n- Retenu par Malon : l'essentiel de l'impact vient de la fabrication des équipements, que des sites *« obèses »* poussent à renouveler ; mieux vaut *« une décroissance maîtrisée qu'une récession subie »*.\n- Informelle prolongée sur la low-tech, la permaentreprise et la nécessité d'*« une forme de radicalité »* ; on y a entendu *« Clairement, il faut tout foutre par terre »* et une question sur le COBOL comme développement « stationnaire » (Malon).",
+      "summarySources": ["program", "blog", "feedback"],
+      "video": {
+        "url": "https://vimeo.com/892605603",
+        "title": "Web et décroissance : vers un web « stationnaire » ?",
+        "publishedAt": "2023-12-08",
+        "transcript": false
+      }
+    },
+    {
+      "id": "table-ronde-femmes-de-la-tech",
+      "day": "2023-09-28",
+      "type": "roundtable",
+      "title": "Table ronde « Femmes de la tech »",
+      "speakers": ["Gaëlle Kubila", "Marcy Ericka Charollois", "Anais Sparesotto", "Magali Milbergue", "Emmanuelle Aboaf"],
+      "feedbackFrom": ["Anne-Sophie (blog Hello Bokeh)", "sophiealdt (Mastodon)", "Delphine Malassingne (blog)", "Emmanuelle Aboaf (LinkedIn, speaker)"],
+      "summary": "- Table ronde sur les **communautés de femmes de la tech**, mixtes ou en non-mixité, alors qu'il y a *« moins de femmes dans la tech qu'il n'y en avait il y a cinq ans »* (programme).\n- Phrase retenue par Anne-Sophie (Hello Bokeh), de Marcy Ericka Charollois : *« La safe place est une volonté, pas une finalité. C'est un travail qui se mène au fil de l'eau ; à recalibrer à chaque nouvelle arrivée. »*\n- Effet immédiat chez une participante : *« Je viens de faire le compte des femmes développeuses avec qui j'ai directement travaillé en 13 ans : 8 »* (sophiealdt).\n- Une panéliste insiste sur la pair-aidance contre le syndrome de l'imposteur et cite 40 % de femmes qui quittent la tech en dix ans (Emmanuelle Aboaf, speaker, LinkedIn).\n- Delphine Malassingne cite les prises de parole d'Anais Sparesotto, Marcy Ericka Charollois et Magali Milbergue parmi ses coups de cœur de l'édition.",
+      "summarySources": ["program", "blog", "feedback"],
+      "video": {
+        "url": "https://vimeo.com/892673935",
+        "title": "Table ronde « Femmes de la tech »",
+        "publishedAt": "2023-12-08",
+        "transcript": false
+      }
+    },
+    {
+      "id": "css-viewport-units-v2-on-pousse-encore-plus-loin-la-reactivite",
+      "day": "2023-09-28",
+      "type": "talk",
+      "title": "CSS Viewport Units v2 : on pousse encore plus loin la réactivité",
+      "speakers": ["Josiane Makelele"],
+      "feedbackFrom": ["Arnaud Malon (blog)"],
+      "summary": "- Mini-conférence sur les **nouvelles variantes d'unités de viewport** CSS et leur impact sur le responsive design (programme).\n- Retenu par Arnaud Malon : un sujet bien amené (unités existantes, besoins non couverts), mais un *« sentiment mitigé »* sur les solutions.\n- Point de débat : Malon refuse de juger le support suffisant parce qu'il couvrirait 80 % des internautes, ou de recourir à une béquille JavaScript : *« Fermer la porte à 1 personne sur 5, ce n'est pas acceptable. »*",
+      "summarySources": ["program", "blog"],
+      "video": {
+        "url": "https://vimeo.com/894403480",
+        "title": "CSS Viewport Units v2 : on pousse encore plus loin la réactivité",
+        "publishedAt": "2023-12-14",
+        "transcript": false
+      }
+    },
+    {
+      "id": "cabinets-de-conseil-en-si-et-numerique-responsable-incompatibles",
+      "day": "2023-09-28",
+      "type": "talk",
+      "title": "Cabinets de conseil en SI et numérique responsable, incompatibles ?",
+      "speakers": ["Charlotte Grivot", "Gaëtan Robine"],
+      "feedbackFrom": ["Arnaud Malon (blog et Mastodon)"],
+      "summary": "- Conférence partenaire (mc2i) : retour d'expérience d'un cabinet de conseil qui veut **concilier accompagnement client et numérique responsable**, bonnes pratiques et écueils (programme).\n- Retenu par Arnaud Malon : *« Le rôle d'une agence conseil, c'est de donner des conseils »* ; la démarche de mc2i lui semble intéressante.\n- En live, la mention d'une fresque l'amène à se demander si une *« fresque de l'accessibilité »* existe (Malon, Mastodon).",
+      "summarySources": ["program", "blog"],
+      "video": {
+        "url": "https://vimeo.com/893345567",
+        "title": "Cabinets de conseil en SI et numérique responsable, incompatibles ?",
+        "publishedAt": "2023-12-11",
+        "transcript": false
+      }
+    },
+    {
+      "id": "wcagmire",
+      "day": "2023-09-28",
+      "type": "talk",
+      "title": "WCAGmire",
+      "speakers": ["Adrian Roselli"],
+      "feedbackFrom": ["Arnaud Malon (blog et Mastodon)", "dje_renard (Mastodon)", "Marie et Julien (Mastodon)", "Stéphanie Walter (Mastodon)", "Adrian Roselli (blog, speaker)"],
+      "summary": "- Conférence en anglais sur le **bourbier des WCAG** : langage difficile, exemples inadaptés, failles connues, définitions mouvantes (programme).\n- Retenu par Arnaud Malon (coup de cœur) : les WCAG sont *« nécessaire[s] mais pas suffisant[es] pour concevoir accessible »*, avec la notion de pertinence et le problème de la mesure. dje_renard salue les *« difficultés d'interprétation des WCAG, exemples à la clé »*.\n- En questions-réponses, WCAG 3 ne nettoiera pas ce désordre selon l'orateur : *« Short answer is no »* (résumé de Malon).\n- L'orateur avait scripté son talk pour les vélotypistes et interprètes et traduit ses diapositives par machine ; *« automated checkers »* devenu *« dames automatisées »* a fait sourire la salle (Stéphanie Walter ; Roselli, speaker).\n- Lecture ironique de Marie et Julien : les gens du WCAG feraient évoluer les critères pour contrer les *« astuces trop malines »* des designers.",
+      "summarySources": ["program", "slides", "blog", "feedback"],
+      "video": {
+        "url": "https://vimeo.com/893345014",
+        "title": "WCAGmire",
+        "publishedAt": "2023-12-11",
+        "transcript": false
+      }
+    },
+    {
+      "id": "le-contenu-doit-etre-redige-de-la-maniere-la-plus-claire-et-la-plus-simple-possible",
+      "day": "2023-09-28",
+      "type": "talk",
+      "title": "Le contenu doit être rédigé de la manière la plus claire et la plus simple possible : les textes dans l'accessibilité numérique",
+      "speakers": ["Morgane Hauguel"],
+      "feedbackFrom": ["Arnaud Malon (blog et Mastodon)", "Guillaume (blog.whoz.me)", "dje_renard (Mastodon)", "yoanmalie (Mastodon)"],
+      "summary": "- Autour du **critère WCAG 3.1.5** : à quels besoins répond-il, que veut dire un texte « le plus clair possible », comment le généraliser ? (programme).\n- Conseils relevés en live : langage courant, phrases courtes et simples, information organisée, souci des lecteurs (Malon, Mastodon). Tour d'horizon du FALC, d'autres méthodes et des outils de mesure de complexité (Malon, coup de cœur).\n- Guillaume (blog.whoz.me) retient **cinq standards** (facile à lire, FALC, français facile, français simple, langage clair), dont deux seulement détaillés, et regrette l'absence de bibliographie ; il complète lui-même avec la norme ISO 24495-1.\n- Accueil très favorable : *« Tous les services com et toutes les administrations devraient voir la présentation »* (dje_renard) ; *« superbe présentation »* (yoanmalie).",
+      "summarySources": ["program", "blog", "feedback"],
+      "video": {
+        "url": "https://vimeo.com/893344655",
+        "title": "Le contenu doit être rédigé de la manière la plus claire et la plus simple possible : les textes dans l'accessibilité numérique",
+        "publishedAt": "2023-12-11",
+        "transcript": false
+      }
+    },
+    {
+      "id": "la-fin-de-lempire-des-dark-patterns-le-rgpd-contre-attaque",
+      "day": "2023-09-28",
+      "type": "talk",
+      "title": "La fin de l'Empire des Dark patterns ? Le RGPD contre-attaque !",
+      "speakers": ["Harmonie Peynot"],
+      "feedbackFrom": ["Arnaud Malon (blog et Mastodon)"],
+      "summary": "- Mini-conférence : comment les principes du RGPD (information *« concise, transparente, compréhensible »*, minimisation, consentement *« libre, spécifique, éclairé et univoque »*, protection dès la conception) **s'opposent aux designs trompeurs** (diapositives).\n- Galerie de dark patterns des bandeaux cookies : bouton refuser masqué ou peu contrasté, « Fermer et accepter », culpabilisation, demande répétée (la CNIL recommande de conserver le choix six mois). Un clic de plus fait passer le taux de refus *« de 17 % à 4 % »* (étude DITP citée).\n- Sanctions citées : Google 150 M€ (CNIL, 2022), Facebook et Microsoft 60 M€, TikTok, Apple, une décision italienne et un jugement de Cologne ; perspective des *« bright / fair patterns »* qui mettent en avant l'option la plus protectrice (diapositives).\n- Retenu par Arnaud Malon (coup de cœur) : **un recueil de consentement inaccessible n'est pas conforme au RGPD** ; il recommande le jeu *Terms and Conditions Apply* cité par l'oratrice.",
+      "summarySources": ["program", "slides", "blog"],
+      "video": {
+        "url": "https://vimeo.com/893344273",
+        "title": "La fin de l'Empire des Dark patterns ? Le RGPD contre-attaque !",
+        "publishedAt": "2023-12-11",
+        "transcript": false
+      }
+    },
+    {
+      "id": "aria-the-good-parts",
+      "day": "2023-09-28",
+      "type": "talk",
+      "title": "ARIA, the good parts",
+      "speakers": ["Hidde de Vries"],
+      "feedbackFrom": ["Arnaud Malon (blog et Mastodon)", "Stéphanie Walter (Mastodon)"],
+      "summary": "- Conférence en anglais qui clôt la première journée : la première règle d'ARIA dit de l'éviter si HTML suffit, mais certains usages **améliorent réellement l'interface** (programme).\n- Patterns recommandés : landmarks étiquetés, `aria-expanded` sur ce qui se déplie, `aria-pressed` pour les boutons bascule, `aria-describedby` pour les erreurs, `aria-current` pour la page courante, `aria-live` avec parcimonie (diapositives).\n- À éviter : `aria-label` en premier recours (échec du critère *Label in Name* si décalage avec le visible), `role=\"application\"`, `aria-roledescription` (diapositives).\n- Distinction retenue par Arnaud Malon : *« It's a navigation if the user navigates somewhere (it has links). It's a menu if the user picks an action (it has buttons) »*.\n- Accueil : *« trop passionnante »* pour live-tooter (Malon) ; Stéphanie Walter relaie des *« great slides »*.",
+      "summarySources": ["program", "slides", "blog", "feedback"],
+      "video": {
+        "url": "https://vimeo.com/893344190",
+        "title": "ARIA, the good parts",
+        "publishedAt": "2023-12-11",
+        "transcript": false
+      }
+    },
+    {
+      "id": "ecoconception-web-et-si-ca-ne-suffisait-pas",
+      "day": "2023-09-29",
+      "type": "talk",
+      "title": "Écoconception web, et si ça ne suffisait pas ?",
+      "speakers": ["Richard Hanna"],
+      "feedbackFrom": ["Arnaud Malon (blog et Mastodon)", "sophiealdt (Mastodon)", "dje_renard (Mastodon)", "lena (Mastodon)", "Richard Hanna (blog, speaker)"],
+      "summary": "- Ouverture du second jour **sans diapositives**, avec un chansigne, par un ancien de la DINUM qui a travaillé sur le RGESN ; l'orateur l'annonçait *« 100% militant »* (Mastodon).\n- Sur scène, relevé en live : le problème est moins la consommation que **l'obsolescence des terminaux** causée par des services de plus en plus lourds ; *« Recyclage des déchets, c'est un joli mot marketing. Moi je parle de traitement. »* (Malon).\n- Méthode proposée : travail collectif, manifeste, indicateurs simples, diagnostic RGESN, déclaration d'écoconception ; mais il faut *« repenser complètement nos services numériques, voire en abandonner »* (Malon ; billet de l'orateur).\n- Dans son billet, l'orateur relie le numérique aux logiques coloniales (extraction minière, déchets, captation de l'attention) et conclut que *« le système d'exploitation le plus installé dans le monde […] est le capitalisme colonial »* (speaker).\n- Réception partagée : *« intéressante mais déprimante »* (sophiealdt) ; Malon a aimé le début mais la fin l'a *« quelque peu perdu »* ; trait ironique de yoanmalie sur l'Internationale non chantée.",
+      "summarySources": ["program", "blog", "feedback"],
+      "video": {
+        "url": "https://vimeo.com/894403522",
+        "title": "Écoconception web, et si ça ne suffisait pas ?",
+        "publishedAt": "2023-12-14",
+        "transcript": false
+      }
+    },
+    {
+      "id": "nous-creons-linaccessibilite",
+      "day": "2023-09-29",
+      "type": "talk",
+      "title": "Nous créons l'inaccessibilité",
+      "speakers": ["Delphine Malassingne"],
+      "feedbackFrom": ["Arnaud Malon (blog et Mastodon)", "Emmanuelle Aboaf (LinkedIn et Mastodon)", "Albane Fagot-Veyron (LinkedIn)", "Stéphane Deschamps (cité par l'oratrice)", "Delphine Malassingne (blog, speaker)"],
+      "summary": "- Mini-conférence : plutôt que l'obligation légale ou l'image de marque, **revenir à la notion de situation de handicap** ; ceux qui conçoivent les sites créent, ou non, l'inaccessibilité (programme).\n- Retenu par Arnaud Malon, peut-être sa conférence préférée : *« la société est validiste, il faut en avoir conscience pour faire le choix de l'inclusion »* ; il pensait ne rien apprendre après quinze ans sur le sujet et s'est trompé.\n- Emmanuelle Aboaf reprend la démonstration chiffrée : sur 500 personnes dans l'amphi, 75 ont un handicap dont 80 % invisibles ; des participants lui ont parlé de dyslexie, daltonisme, endométriose, maladies chroniques (LinkedIn).\n- Albane Fagot-Veyron, première participation : comprendre l'ampleur du validisme et *« faire de meilleurs choix »* (LinkedIn) ; *« très bonne explication qui repart de la base »* (Stéphane Deschamps, cité par l'oratrice).\n- Informelle : comment nommer le handicap, comment créer de l'empathie, *« surtout pas les duo day »* (Malon). L'oratrice raconte sa crainte d'un sujet difficile à formuler et sa recherche d'équilibre *« sans accuser mais sans déresponsabiliser »* (speaker).",
+      "summarySources": ["program", "blog", "feedback"],
+      "video": {
+        "url": "https://vimeo.com/893709974",
+        "title": "Nous créons l'inaccessibilité",
+        "publishedAt": "2023-12-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "le-guide-du-jardinier-de-laccessibilite-numerique",
+      "day": "2023-09-29",
+      "type": "talk",
+      "title": "Le guide du jardinier de l'accessibilité numérique : choisir les meilleures graines pour la faire pousser et l'entretenir",
+      "speakers": ["Arnaud Delafosse", "Lena Chandelier"],
+      "feedbackFrom": ["Arnaud Malon (blog et Mastodon)", "Adrian Roselli (Mastodon)"],
+      "summary": "- Retour d'expérience chez l'opérateur suisse Salt, dans un pays où peu de cantons imposent l'accessibilité au privé (*« 3 cantons sur 26 »*) : préférer une **approche humaine** aux approches légale et technique (diapositives).\n- Métaphore du jardin : planter la graine dès l'entretien d'embauche, sensibiliser (handicap, usages, norme), obtenir l'appropriation par les collègues, l'appui de la hiérarchie pour arbitrer, le choix de prestataires compétents (diapositives).\n- Pérennité : **#busFactor**, faire de l'accessibilité un requis en début de projet, embaucher une deuxième personne, centraliser les ressources, former régulièrement (diapositives).\n- Retenu par Malon : *« l'inaccessibilité est souvent un problème de méconnaissance »* ; intéressant mais il n'a *« pas appris grand chose »*. En live : *« Breaking news : Les gens ne sont pas méchants »*.\n- Adrian Roselli, non francophone, note une salle *« really into it »*.",
+      "summarySources": ["program", "slides", "blog", "feedback"],
+      "video": {
+        "url": "https://vimeo.com/894403832",
+        "title": "Le guide du jardinier de l'accessibilité numérique : choisir les meilleures graines pour la faire pousser et l'entretenir",
+        "publishedAt": "2023-12-14",
+        "transcript": false
+      }
+    },
+    {
+      "id": "lutilisateurice-forcee-qui-naime-pas-linformatique",
+      "day": "2023-09-29",
+      "type": "talk",
+      "title": "L'utilisateurice forcée, qui n'aime pas l'informatique",
+      "speakers": ["Tony Archambeau"],
+      "feedbackFrom": [],
+      "summary": "- Mini-conférence, résumée d'après le seul descriptif officiel : Olivier, paysagiste, a choisi son métier pour fuir les écrans mais doit remplir un **rapport d'intervention sur smartphone** imposé par l'appel d'offres de son employeur (programme).\n- Son collègue Mickaël, illettré, doit lui aussi utiliser une application métier : le sujet est la **conception pour des utilisateurs contraints**, peu à l'aise ou exclus du numérique (programme).\n- L'orateur a fondé il y a plus de dix ans une solution web et mobile pour ouvriers et techniciens (programme). Aucun retour de participant trouvé.",
+      "summarySources": ["program"],
+      "video": {
+        "url": "https://vimeo.com/894404423",
+        "title": "L'utilisateurice forcée, qui n'aime pas l'informatique",
+        "publishedAt": "2023-12-14",
+        "transcript": false
+      }
+    },
+    {
+      "id": "quel-est-le-meilleur-composant-pour-ameliorer-lefficience-dune-saisie-de-date",
+      "day": "2023-09-29",
+      "type": "talk",
+      "title": "Quel est le meilleur composant pour améliorer l'efficience d'une saisie de date ?",
+      "speakers": ["Sébastien Chalmé", "Émilie Dumaine"],
+      "feedbackFrom": ["Arnaud Malon (blog et Mastodon)", "Anne-Sophie (blog Hello Bokeh)"],
+      "summary": "- Conférence partenaire (MAIF) : synthèse d'une **étude de 2022 comparant des composants de saisie de date** selon le contexte (dates proches, dates lointaines), après mise en conformité RGAA, retours utilisateurs et analyse de données (programme).\n- Le problème des dates lointaines a été repéré grâce au plan de marquage et à l'analytics (Malon, Mastodon).\n- Conclusion retenue : un sélecteur de date convient aux dates proches, **un champ texte, enrichi au besoin, est plus efficace pour une date lointaine** ; Malon apprécie la méthodologie UX et l'accessibilité prise en compte dès la conception et dans les tests.\n- Surprise pour deux participants : *« passionant »* alors qu'il pensait ne pas être intéressé (Malon) ; la preuve *« qu'une conférence sponsor pouvait être excellente »* (Anne-Sophie, Hello Bokeh).",
+      "summarySources": ["program", "blog", "feedback"],
+      "video": {
+        "url": "https://vimeo.com/894404785",
+        "title": "Quel est le meilleur composant pour améliorer l'efficience d'une saisie de date ?",
+        "publishedAt": "2023-12-14",
+        "transcript": false
+      }
+    },
+    {
+      "id": "le-pouvoir-de-linconscient-les-biais-cognitifs-qui-faconnent-la-recherche-en-ligne",
+      "day": "2023-09-29",
+      "type": "talk",
+      "title": "Le pouvoir de l'inconscient : les biais cognitifs qui façonnent la recherche en ligne",
+      "speakers": ["Myriam Jessier"],
+      "feedbackFrom": ["Anne-Sophie (blog Hello Bokeh)", "Stéphanie Walter (Mastodon)", "dje_renard (Mastodon)", "arkhi (Mastodon)", "Adrian Roselli (blog)"],
+      "summary": "- Les **biais cognitifs qui influencent la recherche en ligne**, leurs implications éthiques et des stratégies pour en atténuer l'impact (programme).\n- Rappel relayé par Stéphanie Walter : les biais touchent tout le monde, on se croit souvent moins biaisé que les autres, et cela affecte aussi la recherche Google.\n- L'oratrice a montré, avec son accord, une diapositive d'Adrian Roselli mal traduite par machine pour illustrer les dangers de la traduction automatique (Roselli).\n- Accueil enthousiaste : *« une expérience théâtrale incroyable »*, *« joyeux, frais et ça faisait réfléchir »* (Anne-Sophie, Hello Bokeh) ; *« Incroyable »* (dje_renard) ; *« super sportive pour la LSF »* (arkhi). Une informelle a suivi.",
+      "summarySources": ["program", "blog", "feedback"],
+      "video": {
+        "url": "https://vimeo.com/896790928",
+        "title": "Le pouvoir de l'inconscient : les biais cognitifs qui façonnent la recherche en ligne",
+        "publishedAt": "2023-12-21",
+        "transcript": false
+      }
+    },
+    {
+      "id": "la-lisibilite-en-typographie",
+      "day": "2023-09-29",
+      "type": "talk",
+      "title": "La lisibilité en typographie",
+      "speakers": ["Damien Collot"],
+      "feedbackFrom": [],
+      "summary": "- Résumé d'après le seul descriptif officiel : *« Votre typographie parle à votre place »* ; conseils et bonnes pratiques pour maîtriser sa voix typographique (programme).\n- **Quinze principes fondamentaux de la lisibilité** : choix sérif ou sans-sérif, hauteur d'œil, et autres paramètres de composition (programme).\n- Aucun retour de participant trouvé.",
+      "summarySources": ["program"],
+      "video": {
+        "url": "https://vimeo.com/896790778",
+        "title": "La lisibilité en typographie",
+        "publishedAt": "2023-12-21",
+        "transcript": false
+      }
+    },
+    {
+      "id": "rgesn-retour-dexperience-sur-sa-prise-en-compte-par-les-metiers-du-web",
+      "day": "2023-09-29",
+      "type": "talk",
+      "title": "RGESN : retour d'expérience sur sa prise en compte par les métiers du Web",
+      "speakers": ["Christophe Clouzeau"],
+      "feedbackFrom": ["Arnaud Malon (blog)"],
+      "summary": "- Deux ans après sa publication, retour terrain sur le **Référentiel général d'écoconception de services numériques** : difficultés, bénéfices de la conception à la mise en ligne, perspectives (programme).\n- Retenu par Arnaud Malon : le RGESN est *« plus complexe à utiliser, et à intégrer, que le RGAA »*, mais la démarche gagnerait à être mieux connue.\n- Bémol du même participant : il pensait en apprendre davantage, sa veille couvrant déjà l'essentiel.",
+      "summarySources": ["program", "blog"],
+      "video": {
+        "url": "https://vimeo.com/894801562",
+        "title": "RGESN : retour d'expérience sur sa prise en compte par les métiers du Web",
+        "publishedAt": "2023-12-15",
+        "transcript": false
+      }
+    },
+    {
+      "id": "du-css-aux-shaders-webgl-panorama-des-techniques-danimation-en-2023",
+      "day": "2023-09-29",
+      "type": "talk",
+      "title": "Du CSS aux shaders WebGL : panorama des techniques d'animation en 2023",
+      "speakers": ["Julien Sulpis"],
+      "feedbackFrom": [],
+      "summary": "- Conférence de clôture, résumée d'après le descriptif officiel : construire une **boîte à outils d'animation la plus complète possible**, des API natives (CSS) jusqu'aux shaders WebGL, pour choisir la technique adaptée à chaque animation (programme).\n- Seule conférence franchement technique du second jour ; une participante dit avoir préféré discuter dans les couloirs *« pendant les conférences sur WebGL »* (Anne-Sophie, Hello Bokeh), signe d'un public peu tourné vers le front-end pointu.",
+      "summarySources": ["program", "blog"],
+      "video": {
+        "url": "https://vimeo.com/896790752",
+        "title": "Du CSS aux shaders WebGL : panorama des techniques d'animation en 2023",
+        "publishedAt": "2023-12-21",
+        "transcript": false
+      }
+    },
+    {
+      "id": "atelier-animer-pour-sensibiliser-a-laccessibilite-echanges",
+      "day": "2023-09-30",
+      "type": "workshop",
+      "title": "Animer pour sensibiliser à l'accessibilité – Échanges",
+      "speakers": ["Delphine Malassingne"],
+      "feedbackFrom": ["Anne-Sophie (blog Hello Bokeh)", "David (commentaire de blog)", "Delphine Malassingne (blog, speaker)"],
+      "summary": "- Atelier d'échange : les sensibilisations passent trop souvent par des **« mises en situation » qui parodient le handicap** ; partager et imaginer d'autres animations (programme).\n- Ressources partagées : démonstration de navigation avec plage braille, jeu Feeling malvoyance, articles d'Access42 et du CLHEE critiquant la simulation de handicap par des personnes valides (billet de l'oratrice).\n- Une cinquantaine de personnes, dont beaucoup de formateurs et formatrices ; l'objectif était que le contenu vienne de la salle (speaker).\n- Anne-Sophie (Hello Bokeh) y a vu *« pour la première fois »* un regroupement de nombreux formateurs en accessibilité et en est repartie avec des pistes ; un commentateur salue *« un vrai débat »*.",
+      "summarySources": ["program", "blog", "feedback"]
+    },
+    {
+      "id": "atelier-mettons-les-choses-au-langage-clair",
+      "day": "2023-09-30",
+      "type": "workshop",
+      "title": "Mettons les choses au (langage) clair : se familiariser aux bonnes pratiques de la rédaction claire et simple",
+      "speakers": ["Morgane Hauguel"],
+      "feedbackFrom": ["Anne-Sophie (blog Hello Bokeh)"],
+      "summary": "- Atelier pratique prolongeant la conférence de la veille : repérer les principales **sources de difficulté à l'écrit**, découvrir des bonnes pratiques faciles et s'exercer sur des exemples concrets (programme).\n- Anne-Sophie (Hello Bokeh) salue l'*« exploit de s'adresser aussi bien aux novices (avec des conseils concrets) qu'aux plus experts »* avec des pistes de généralisation.\n- Support publié sur le site de Paris Web (programme).",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "atelier-entretiens-utilisateurs",
+      "day": "2023-09-30",
+      "type": "workshop",
+      "title": "Entretiens utilisateurs : identifiez les améliorations clés pour votre site ou service",
+      "speakers": ["Myriam Jessier", "Stéphanie Walter"],
+      "feedbackFrom": ["Stéphanie Walter (Mastodon, speaker)"],
+      "summary": "- Atelier double : **préparer et animer des entretiens utilisateurs** et transformer ces discussions en données utiles, avec un guide et un jeu de cartes (programme).\n- Une version texte de l'atelier (préparation, conduite, formulation des questions), avec aide-mémoire et cartes, a été publiée le jour même sur le blog de Stéphanie Walter (speaker).",
+      "summarySources": ["program", "blog"]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "« Bonjour, je voudrais un site web ! » : clarifier les besoins avec l'analyse métier (Guillaume Barbier)",
+    "De grâce, annotez vos designs avec de l'accessibilité ! (Nicolas Got, Vincent Aniort)",
+    "Mettre le web en page(s) (Lucie Anglade, Guillaume Ayoub)",
+    "« Pair-Creating » (Maxime Federov, Candice Poyet)",
+    "Statut, TJM et clients, les bases du freelance (Raphaël Yharrassarry)",
+    "Faire sa veille et continuer à se former sans se planter (Juliette Audema)",
+    "Je veux un VRAI sous-titrage ! 10 ans après (Sophie Drouvroy)",
+    "Jeu du design inclusif (Luz Delgado Bautista)",
+    "Une séance d'entrainement pour muscler son écoute (Albane Veyron)",
+    "De débutant·e à expert·e : comment améliorer sa position d'allié·e ? (Marcy Ericka Charollois, Magali Milbergue)",
+    "Le serious game pour auditer de façon éco-responsable (Lola Sandevoir, Amélie Poirier)",
+    "Prise de parole en public, passez à l'action ! (Frédéric Fuchs, Liv Lefebvre)",
+    "Escape game accessible (Zougane Haffez, Damien Gomez)",
+    "Stratégie de tests a11y : comment les organiser ? (Guillaume Moizan, Romy Duhem-Verdière)"
+  ],
+  "sources": [
+    { "label": "Programme officiel Paris Web 2023", "url": "https://www.paris-web.fr/2023" },
+    { "label": "Vidéos 2023 sur le compte Vimeo de Paris Web", "url": "https://vimeo.com/parisweb" },
+    { "label": "Arnaud Malon : (mon) Paris Web 2023 (archive)", "url": "https://web.archive.org/web/20240522051354/https://www.6x8.org/2023/10/mon-paris-web-2023/" },
+    { "label": "Anne-Sophie (Hello Bokeh) : Souviens-toi, Paris Web 2023", "url": "https://blog.hello-bokeh.fr/2023/10/02/souviens-toi-paris-web-2023/" },
+    { "label": "Guillaume (blog.whoz.me) : retour sur la conférence de Morgane Hauguel", "url": "https://blog.whoz.me/non-classe/le-contenu-doit-etre-redige-clairement-retour-sur-la-conference-paris-web-2023/" },
+    { "label": "Delphine Malassingne : Mon Paris Web 2023", "url": "https://articles.nissone.com/2023/10/mon-paris-web-2023/" },
+    { "label": "Delphine Malassingne : Nous créons l'inaccessibilité (speaker)", "url": "https://articles.nissone.com/2023/10/nous-creons-l-inaccessibilite-paris-web-2023/" },
+    { "label": "Delphine Malassingne : Animer pour sensibiliser à l'accessibilité (speaker)", "url": "https://articles.nissone.com/2023/10/animer-pour-sensibiliser-a-l-accessibilite-echanges-paris-web-2023/" },
+    { "label": "Richard Hanna : Écoconception des services numériques, et si ça ne suffisait pas ? (speaker)", "url": "https://richardhanna.dev/blog/2023/ecoconception-ne-suffit-pas.html" },
+    { "label": "Adrian Roselli : Paris Web 2023, WCAGmire (speaker)", "url": "https://adrianroselli.com/2023/09/paris-web-2023-wcagmire.html" },
+    { "label": "Hidde de Vries : ARIA, the good parts (diapositives)", "url": "https://talks.hiddedevries.nl/hDiDOG/aria-the-good-parts" },
+    { "label": "Emmanuelle Aboaf et Thanh Lan Doublier : L'IA et handicap (diapositives)", "url": "https://docs.google.com/presentation/d/1tXaGNvvwOb2gMTEezws7xXNDeZx_FfQbdsNb6JhDnDc/" },
+    { "label": "Stéphanie Walter : le guide expert pour réussir ses entretiens utilisateurs (speaker)", "url": "https://stephaniewalter.design/fr/blog/le-guide-expert-pour-reussir-ses-entretiens-utilisateurs/" },
+    { "label": "LinkedIn : Emmanuelle Aboaf (IA et handicap, table ronde)", "url": "https://fr.linkedin.com/posts/emmanuelle-aboaf_handicap-ia-inclusion-activity-7113428979943895040-LIR2" },
+    { "label": "LinkedIn : Emmanuelle Aboaf (Nous créons l'inaccessibilité)", "url": "https://fr.linkedin.com/posts/emmanuelle-aboaf_parisweb-a11y-accessibilit%C3%A9-activity-7113800566077562880-tw_-" },
+    { "label": "LinkedIn : Albane Fagot-Veyron (Nous créons l'inaccessibilité)", "url": "https://www.linkedin.com/feed/update/urn:li:activity:7113436519897399296/" },
+    { "label": "Mastodon #ParisWeb (environ 200 messages, 25/09 au 16/10/2023) : Arnaud Malon (zemoko), Marie et Julien, Stéphanie Walter, dje_renard, yoanmalie, sophiealdt, Emmanuelle Aboaf, Adrian Roselli, Delphine Malassingne, Richard Hanna, arkhi, annso, compte officiel @ParisWeb" },
+    { "label": "Paris Web : il n'y aura pas de diffusion en direct en 2023", "url": "https://www.paris-web.fr/actualites/2023/07/il-ny-aura-pas-de-diffusion-en-direct-en-2023.php" }
+  ]
 }

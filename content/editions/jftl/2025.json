@@ -7,8 +7,117 @@
   "city": "Montrouge",
   "venue": "Beffroi de Montrouge",
   "url": "https://cftl.fr/jftl-archives-2-2/jftl-2025/",
+  "programUrl": "https://cftl.fr/wp-content/uploads/2025/04/PROGRAMME-JFTL-2025.pdf",
   "dateConfidence": "ok",
-  "note": "cftl.fr : édition 2025 « qui s'est déroulée le 17 juin au Beffroi de Montrouge » ; programme et supports en ligne.",
-  "status": "pending",
-  "sessions": []
+  "note": "cftl.fr : édition 2025 « qui s'est déroulée le 17 juin au Beffroi de Montrouge » ; programme et supports en ligne. Le communiqué de presse CP1 annonce le 18 juin dans son titre mais les 16 et 17 juin dans son texte (tutoriels la veille) ; programme officiel et page d'archive confirment le 17 juin.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-30",
+  "revisit": "Aucun retour participant public trouvé (LinkedIn, blogs) malgré 9 recherches web : synthèse fondée uniquement sur le programme officiel et les slides publiées par le CFTL. À compléter avec des posts LinkedIn de participants ou de speakers.",
+  "corpus": "Programme officiel (PDF), communiqué de presse CP1 de mai 2025, page d'archive cftl.fr avec les supports de 22 interventions, dont 6 decks lus en entier (keynotes de Tristan Nitot et Laurent Delannoy, IA d'exécution des tests manuels, Vibe Testing, Gardez l'œil sur les IAs, Testons pour développer plus vert). Aucun post de participant ni article de blog retrouvé.",
+  "limits": "Corpus 100 % officiel : ce que disent les slides, pas ce que la salle en a retenu ni l'accueil réservé aux talks. Aucune vidéo publiée. Les slides des formats « 20 minutes pour convaincre » (sponsors) n'ont pas été lues, et 16 sessions ne sont connues que par leur titre. Quelques écarts de speakers entre programme et page d'archive (sessions Kereval et Canal+).",
+  "tldr": "Une JFTL placée sous le signe d'un **testeur qui pilote et vérifie l'IA plutôt que de la subir**, avec en contrepoint une forte présence de la **sobriété numérique** et de l'inclusion.",
+  "keyTakeaways": [
+    "Traiter l'IA à la fois comme **outil de test** et comme **objet à tester** : dans les deux cas, ne jamais croire un résultat sur parole (Idhammou et El Bouzayani, Onepoint).",
+    "Un agent d'exécution de tests manuels réussit **61 %** des exécutions sur un benchmark ouvert de ~100 cas : utile, mais chaque « succès » reste à vérifier (Blanc et Gavaldo).",
+    "Le testeur glisse de la vérification et du reporting vers le **pilotage, la supervision et l'arbitrage** des résultats de l'IA (Blanc et Gavaldo).",
+    "Comparer les LLM sur la qualité, le coût et la vitesse avant de les intégrer à l'outillage de test ; prévoir 1 à 5 minutes de correction par type de test généré (Helleboid, Orange).",
+    "Viser une **optimisation du logiciel d'un facteur 2 tous les 2 ans** (« loi d'erooM ») pour ne plus renouveler le matériel (Nitot, Octo).",
+    "Mesurer l'empreinte des parcours sur **terminaux réels** : c'est là que se concentre l'essentiel de l'impact ; de petites corrections de configuration donnent les premiers gros gains (Air France KLM).",
+    "L'inclusion de testeurs neuroatypiques améliore la couverture et la qualité des tests ; *« L'inclusion n'est pas une faveur, c'est un facteur de performance »* (Delannoy, Avencod)."
+  ],
+  "sessions": [
+    {
+      "id": "une-ia-d-execution-des-tests-manuels-quel-impact-pour-le-role-de-testeur",
+      "day": "2025-06-17",
+      "type": "talk",
+      "title": "Une IA d'exécution des tests manuels : quel impact pour le rôle de testeur ?",
+      "speakers": ["Xavier Blanc — Université de Bordeaux", "Eric Gavaldo — XQual"],
+      "feedbackFrom": ["slides des speakers"],
+      "summary": "- Point de départ : décomposer ce que fait un testeur qui exécute un test manuel (**lire, voir, analyser, agir, comparer, discuter**) et associer une brique d'IA à chaque geste.\n- **AI TestRunner** : prototype d'agent (labo IA de Smartesting) intégré à l'outil de test management XQual, avec trois agents : *Orchestrator*, *Actor*, *Assertor*.\n- **Benchmark reproductible** et ouvert (publication ISSTA 2025) : 3 applications, ~100 cas de tests manuels écrits par des testeurs professionnels. Le prototype réussit **61 %** des exécutions (GPT-4o, Sonnet et Gemini à des niveaux proches) ; 26 tests ne passent avec aucun modèle.\n- Quatre issues possibles (succès, échec, non-exécutable, incertain) : *« même en cas de succès, toujours douter et vérifier »* ; les faux échecs révèlent souvent des procédures ou des IHM à améliorer.\n- Pour le testeur concepteur : **moins de vérification et de reporting, plus de pilotage, de supervision et d'arbitrage** ; l'IA devient un « 4e amigo » aux côtés du dev, du test et du métier.",
+      "summarySources": ["slides"]
+    },
+    {
+      "id": "gardez-l-oeil-sur-les-ias",
+      "day": "2025-06-17",
+      "type": "talk",
+      "title": "Gardez l'œil sur les IAs : la différence entre résultats attendus et résultats obtenus",
+      "speakers": ["Nabil Idhammou — Onepoint", "Abir El Bouzayani — Onepoint"],
+      "feedbackFrom": ["slides des speakers"],
+      "summary": "- Le testeur face à l'IA sous deux angles : **outil pour les tests** et **objet à tester**. Problème commun : l'écart entre ce qu'on attend et ce qu'on obtient d'un système opaque et imprévisible.\n- *« Une IA peut se tromper… avec aplomb. Et l'erreur peut passer inaperçue »* : non-déterminisme, model drift, données hors distribution, piratage de récompense, sycophance.\n- Chiffres cités pour tempérer la hype : 42 % des entreprises ont abandonné la majorité de leurs initiatives IA en 2024 ; 66 % des organisations ne parviennent pas à passer leurs pilotes IA en production (sources IBM, S&P Global, Informatica citées sur les slides).\n- REX d'un « Backlog Intelligent Manager » qui note la maturité des user stories avec un LLM ; question ouverte du **testeur d'architecture** face aux pannes en cascade dans les workflows multi-agents.\n- Posture proposée : **ne pas subir l'IA, ne pas se retirer, toujours vérifier**, et chercher à provoquer l'inattendu. *« Pas un métier en voie de disparition, mais un métier en voie de revalorisation. »*",
+      "summarySources": ["slides"]
+    },
+    {
+      "id": "testons-pour-developper-plus-vert",
+      "day": "2025-06-17",
+      "type": "talk",
+      "title": "Testons pour développer plus vert !",
+      "speakers": ["Woody Grochulski — Air France KLM", "Florence Guerlais — Air France KLM", "Thierry Bitch — Air France KLM"],
+      "feedbackFrom": ["slides des speakers"],
+      "summary": "- Contexte : tableau de bord de durabilité IT d'Air France KLM (Green Score sur 89 % des applications Java, Angular et Swift) et outil interne **ARGOS** qui suit chaque semaine les bonnes pratiques d'éco-coding (ecoCode).\n- Choix de **Greenspector** pour mesurer la consommation réelle de parcours utilisateurs scriptés sur **terminaux physiques**, là où se situe l'essentiel de l'impact (80 % selon l'étude ADEME/Arcep citée). D'après les slides, ce choix est né d'une rencontre à la 14e JFTL (2022).\n- Déploiement en « Green Scan » piloté par le centre d'excellence test : pas de modification de l'application, scripting, mesure et analyse faits par le COE.\n- REX : une pop-up publicitaire mal configurée consommait plus que tout le parcours d'achat ; une refonte du paiement a amélioré les temps de réponse de **36 %** ; les applis mobiles AF et KLM passent du certificat Bronze (oct. 2023) à Argent (août 2024).\n- Leçon mise en avant : *« ce sont souvent des petites modifications (configuration, optimisation des assets) qui nous donnent les premiers gros bénéfices »*. Points faibles relevés : découpage des parcours, automatisation web, sensibilité des mesures.",
+      "summarySources": ["slides"]
+    },
+    {
+      "id": "inclusion-et-diversite-decouvrez-des-testeurs-hors-normes",
+      "day": "2025-06-17",
+      "type": "keynote",
+      "title": "Inclusion & Diversité : découvrez des testeurs hors normes",
+      "speakers": ["Laurent Delannoy — Avencod"],
+      "feedbackFrom": ["slides du speaker"],
+      "summary": "- Fil rouge : *« L'inclusion n'est pas une faveur, c'est un facteur de performance. »*\n- Chiffres posés : 14,5 % de la population (7 millions de personnes) en situation de handicap ; obligation d'emploi de 6 %, contre 1,2 % dans le secteur de la tech.\n- Le métier du test (rigueur, sens du détail, esprit critique, maîtrise technologique) présenté comme **compatible avec des profils neuroatypiques**, via le modèle d'entreprise adaptée du numérique d'Avencod.\n- REX **« Testing Factory »** avec Airbus Helicopters et Capgemini (Sogeti) : partie d'un constat de 10 % de perte de productivité du bureau d'études imputée aux outils, sur 5 applications cœur (CATIA, VPM, 3D Experience…) et plus de 5 000 utilisateurs ; une rencontre en 2019 a mené à plusieurs embauches.\n- Apports revendiqués de l'inclusion neurodivergente : **meilleure couverture de tests**, meilleure qualité, regard différent sur les problèmes complexes, à condition d'un management centré sur l'humain.",
+      "summarySources": ["slides"]
+    },
+    {
+      "id": "ai-4-test-vibe-testing",
+      "day": "2025-06-17",
+      "type": "talk",
+      "title": "AI 4 Test : Vibe Testing",
+      "speakers": ["Yann Helleboid — Orange"],
+      "feedbackFrom": ["slides du speaker"],
+      "summary": "- Question posée : *« Une IA peut-elle être un bon assistant pour les activités de test ? »* (l'IA pour les tests unitaires, jugée très efficace, est volontairement laissée de côté).\n- **Comparatif de 8 LLM** (Claude 3.5 et 3.7 Sonnet, Gemini 1.5 Pro et 2.0 Flash, GPT-4.1 nano, GPT-4o, GPT-4o mini, Mistral Large) sur la qualité, la rapidité et le coût de génération et d'évaluation : optimiser l'efficacité plutôt que viser le plus gros modèle.\n- **Démo live** sur une petite application web : plan de test au format IEEE 29119-3, tests fonctionnels, de performance et de sécurité d'API, tests web et d'accessibilité, puis tests d'acceptance générés à partir de simples copies d'écran. Tout passe.\n- Bilan chiffré : le code généré ne fonctionne **pas à 100 %**, mais se corrige en **1 à 5 minutes par type de test**, pour quelques dollars ; l'impact sur la planète reste une inconnue (*« mais c'est pas bon »*).\n- Conclusions : *« L'IA ne remplace pas le testeur. Le testeur IA remplace le testeur non IA »* ; l'IA est gourmande, fait gagner du temps (à date) et dépend de la qualité des données.",
+      "summarySources": ["slides"]
+    },
+    {
+      "id": "faire-tourner-le-numerique-de-demain-sur-le-materiel-d-hier",
+      "day": "2025-06-17",
+      "type": "keynote",
+      "title": "Faire tourner le numérique de demain sur le matériel d'hier",
+      "speakers": ["Tristan Nitot — Octo Technology"],
+      "feedbackFrom": ["slides du speaker"],
+      "summary": "- Keynote de clôture (17h). Constat : la loi de Moore a poussé à ajouter des fonctionnalités plutôt qu'à optimiser ; **loi de Wirth** : *« le logiciel ralentit aussi vite que le matériel accélère »* (page web moyenne x150 en 25 ans, mémoire minimale Office + Windows x171 en deux décennies).\n- Conséquence : des terminaux jetés alors qu'ils fonctionnent (80 % des smartphones, après 3 ans en moyenne, selon Fairphone), alors que la **fabrication** pèse 83 % des émissions de GES du numérique en France (étude iNum 2020).\n- Le potentiel de l'optimisation illustré par des exemples : un script de 5-6 heures ramené à quelques minutes par profilage, un entraînement de modèle ML passé de 15 heures à 10 secondes chez Octo.\n- Proposition : la **loi d'erooM** (« Effort Radicalement Organisé d'Optimisation en Masse »), optimiser le logiciel d'un facteur 2 tous les 2 ans pour libérer de la puissance **sans changer le matériel**. Méthode : continuer le craft, identifier les éléments critiques consommateurs de ressources, les optimiser.\n- Annonce d'une refcard EROOM et d'une démarche open source à diffuser dans les DSI.",
+      "summarySources": ["slides"]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Ouverture (Olivier Denoo, président du CFTL ; slides publiées)",
+    "Keynote #1 : Women in AI and Testing (Klaudia Dussa-Zieger, imbus / ISTQB ; pas de slides publiées)",
+    "Chroniques d'une testeuse logiciel, retour sur une reconversion (Asli Le Dain, Consort Group ; slides publiées)",
+    "Le Risk-Based Testing par couches : le principe des lasagnes (Mariarosa Quintero Bernabeu, Caroline Schutz et Richard Hönig, mgm technology partners ; slides publiées)",
+    "Test de la sécurité d'une application de génération d'histoires pour enfants basée sur l'IA (Aymeric Sanchez et Anne-Laure Wozniak selon le programme, Sarah Leroy selon la page d'archive, Kereval ; slides publiées)",
+    "Bugs & Botanique, la présentation dont vous êtes le héros (Marc Hage Chahine et Julien Cahu, K-Lagan ; format long ; slides publiées)",
+    "Test Lead, Test Manager, Coach QA : comment s'y retrouver (Fatima-Zahrae Abbad, Odaseva, et Jean-François Fresi, Shift Op Solutions ; slides publiées)",
+    "Modélisation et pyramides pour harmoniser les tests (Fabienne Anceau et Julien Kermorvant, Randstad ; slides publiées)",
+    "Mobiliser pour mieux tester : les clés d'une stratégie de test collaborative (Eric Chaumette et Maxime Bureau, HOP!, Vincent Mériau et Frédéric Deléon, OPEN ; slides publiées)",
+    "Canal+ : optimiser la qualité et la performance de MyCanal grâce aux tests de charge end-to-end avancés (Alain Cancel, Nathan Veyret et Karim Atwa selon le programme, Stéphane Landelle selon la page d'archive ; slides publiées)",
+    "Méta-modélisation et tests pilotés par les données (Ismail Ktami, Werin Group ; slides publiées)",
+    "Kit de survie du testeur en éco-conception (Guillaume Kerrien, Fair Num, et Lydie Huon, Yeita ; format long ; slides publiées)",
+    "Testing Power : se transformer en super-héros de l'automatisation (Aude Murguet, Sopra Steria, et Gilles Puyfourcat, iMSA ; slides publiées)",
+    "Quelle est votre dette de conception de tests ? Évitez l'inévitable ! (Wim Decoutere, AE ; slides publiées)",
+    "Ludopédagogie et qualité logicielle : jouer pour mieux apprendre (Guillaume Cousin, SSID ; slides publiées)",
+    "Approche visuelle, collaborative et automatisée pour tester mieux (Alix Bouchon et Bruno Wintenberger, ADIS ; slides publiées)",
+    "20 minutes pour convaincre : OPEN, Mr Suricate, REX BPCE de Digital.ai Testing (sponsors)"
+  ],
+  "sources": [
+    { "label": "Page d'archive JFTL 2025 (programme et supports des intervenants)", "url": "https://cftl.fr/jftl-archives-2-2/jftl-2025/" },
+    { "label": "Programme officiel JFTL 2025 (PDF)", "url": "https://cftl.fr/wp-content/uploads/2025/04/PROGRAMME-JFTL-2025.pdf" },
+    { "label": "Communiqué de presse CP1 JFTL 2025 (CFTL)", "url": "https://cftl.fr/wp-content/uploads/2025/05/CP1-JFTL-25_compressed.pdf" },
+    { "label": "Solutions Numériques : « 17e édition de la Journée Française des Tests Logiciels le 17 juin »", "url": "https://www.solutions-numeriques.com/?p=237552" },
+    { "label": "Dossier sponsors JFTL 2026 (photo et chiffres de public de la JFTL 2025)", "url": "https://cftl.fr/wp-content/uploads/2025/10/Doc-Sponsors_JFTL2026_compressed.pdf" },
+    { "label": "Slides : Faire tourner le numérique de demain sur le matériel d'hier (Tristan Nitot)", "url": "https://cftl.fr/wp-content/uploads/2025/06/JFTL-2025-17h00-MOEBIUS-Keynote3-Tester-avec-le-materiel.pdf" },
+    { "label": "Slides : Inclusion & Diversité (Laurent Delannoy)", "url": "https://cftl.fr/wp-content/uploads/2025/06/JFTL2025-Keynote-inclusion-du-handicap-dans-le-test-v1.7.pdf" },
+    { "label": "Slides : Une IA d'exécution des tests manuels (Xavier Blanc, Eric Gavaldo)", "url": "https://cftl.fr/wp-content/uploads/2025/06/JFTL-2025-10h40-MOEBIUS-JFTL-2025-Une-IA-dexecution-des-tests-manuels.pdf" },
+    { "label": "Slides : AI 4 Test, Vibe Testing (Yann Helleboid)", "url": "https://cftl.fr/wp-content/uploads/2025/06/JFTL-2025-14h30-MOEBIUS-JFTL-2025-AI_4_TEST_VF.pdf" },
+    { "label": "Slides : Gardez l'œil sur les IAs (Nabil Idhammou, Abir El Bouzayani)", "url": "https://cftl.fr/wp-content/uploads/2025/06/11h30-BLIN-Gardez-loeil-sur-les-IAs-v.1.pdf" },
+    { "label": "Slides : Testons pour développer plus vert ! (Air France KLM)", "url": "https://cftl.fr/wp-content/uploads/2025/06/11h30-SALLE-2.2-JFTL-2025-Testons-plus-vert_VF.pdf" },
+    { "label": "Posts LinkedIn de participants : aucun trouvé à date (recherches du 2026-10-30)" }
+  ]
 }

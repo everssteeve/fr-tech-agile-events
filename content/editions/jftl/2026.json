@@ -7,8 +7,186 @@
   "city": "Montrouge",
   "venue": "Beffroi de Montrouge",
   "url": "https://cftl.fr/jftl-archives-2-2/jftl-2026/",
+  "programUrl": "https://cftl.fr/wp-content/uploads/2026/04/Programme-JFTL26.pdf",
   "dateConfidence": "ok",
-  "note": "cftl.fr : édition 2026 « qui s'est déroulée le 9 juin au Beffroi de Montrouge » ; programme et supports en ligne.",
-  "status": "pending",
-  "sessions": []
+  "note": "cftl.fr : édition 2026 « qui s'est déroulée le 9 juin au Beffroi de Montrouge » ; programme et supports en ligne. Trois keynotes, quatre parcours de conférences (IA, automatisation, méthodes, QA), une table ronde, des démos éditeurs et trois « 20 minutes pour convaincre » ; journée de tutoriels la veille (8 juin) selon InformatiqueNews.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-30",
+  "revisit": "Aucun retour participant public retrouvé (8 recherches web, zéro post LinkedIn ou article de blog post-événement sur la JFTL 2026) ; synthèse bâtie sur les slides officielles publiées par le CFTL. À reprendre si des posts LinkedIn, articles ou vidéos apparaissent.",
+  "corpus": "Programme officiel (page cftl.fr et PDF d'avril 2026), slides PDF de six sessions lues en détail (keynote d'ouverture, MGDIS/Niji, Smartesting, vanity metrics, BNP Paribas Cardif, Société Générale) sur 23 supports publiés par le CFTL, un article d'annonce d'InformatiqueNews (5 juin 2026) et un compte rendu institutionnel du TSQB. Recherche menée le 2026-10-30, soit J+143.",
+  "limits": "Aucun retour de participant lu : les résumés reflètent ce que les orateurs ont mis sur leurs slides, pas ce que la salle en a retenu, et les slides ne disent pas ce qui a été dit à l'oral. Pas de vidéo publiée retrouvée. Les sessions plus orientées organisation et culture (keynotes 2 et 3, table ronde, SAP, Decathlon, K-LAGAN) ne sont pas résumées, ce qui surpondère la part IA de l'édition.",
+  "tldr": "Une JFTL dominée par l'IA sous deux angles, **tester avec l'IA et tester l'IA** : les retours d'expérience convergent sur un testeur qui ne disparaît pas mais **monte en stratégie, en jugement et en gouvernance** des agents.",
+  "keyTakeaways": [
+    "Pour tester un agent IA, commencer par la boîte noire (taux de réussite sur un « golden set » de tâches représentatives), puis ouvrir la boîte : composants et trajectoire de l'agent (Legeard).",
+    "Remplacer le verdict binaire par des seuils gradués (0,8 à 1 réussite, 0,5 à 0,8 avertissement, en dessous échec) et rejouer plusieurs fois pour mesurer la variabilité (Legeard).",
+    "Construire une infrastructure de test dédiée à l'agent : traces d'exécution, métriques, jeux d'essai, campagnes de benchmark entre versions (Legeard : 700 scénarios, plus de 100 campagnes en 18 mois).",
+    "Industrialiser l'IA dans le test avec un socle souverain et maîtrisé plutôt que du « Shadow IA », et viser « 1 usage, 1 LLM, 1 prompt » (MGDIS/Niji).",
+    "Former d'abord, prompter ensuite : la formation des testeurs est présentée comme le vrai moteur de l'adoption (MGDIS/Niji).",
+    "Écarter les vanity metrics (couverture, nombre de tests, taux de passage, durée de test) au profit de KPI qui répondent à une question, révèlent un risque et déclenchent une action (Fresi et Abid).",
+    "Déployer le BDD par vagues avec un POC représentatif, un coaching de 6 à 10 semaines par squad et des niveaux de maturité mesurables (BNP Paribas Cardif).",
+    "Ne pas confondre exigence et spécification avant de déléguer à une IA : sans travail de formulation, ce qu'on délègue est « incomplete by construction » (Pamart).",
+    "Gouverner des agents par un « harnais » (permissions, observabilité, points de contrôle, traces) et apprendre de chaque dérive plutôt que la corriger en silence (Rousseau et Hedeoud-Perrot)."
+  ],
+  "sessions": [
+    {
+      "id": "vers-une-gouvernance-antifragile",
+      "day": "2026-06-09",
+      "type": "keynote",
+      "title": "Vers une gouvernance antifragile : décider à l'ère des collectifs humain agent",
+      "speakers": [
+        "Gabriel Rousseau",
+        "Karim Hedeoud-Perrot"
+      ],
+      "feedbackFrom": [],
+      "summary": "D'après les slides publiées (aucun retour de participant lu) :\n- **La rupture** : *« On n'automatise plus, on délègue. Et déléguer sans contractualiser, c'est juste espérer. »* Automatiser confie un comment à un outil au comportement spécifié ; déléguer confie un quoi à un mandataire au **comportement émergent**, contrôlé à l'exécution.\n- **Le harnais** rend la délégation gouvernable : permissions, observabilité, points de contrôle et traces, présentés comme les clauses d'un **contrat de délégation**.\n- Pour les testeurs, **ce qu'on teste change de nature** : un comportement émergent, un collectif d'agents en interaction, la conformité à une intention plutôt qu'à une spec. *« Votre métier ne disparaît pas. Il monte d'un cran. »*\n- **La dérive est structurelle** : *« la dérive n'est pas un bug »*, elle découle de l'autonomie de l'agent ; l'incertitude se compose entre agent, collectif et environnement.\n- Trois piliers d'une gouvernance antifragile : **rendre les écarts visibles** (l'agent signale son doute), **organiser l'arbitrage humain** (qui tranche, sur quoi, en combien de temps), **faire de l'erreur une ressource**.\n- Mise en garde des orateurs : l'antifragilité *« ne veut pas dire improvisation »*, elle exige chocs contrôlés, revues post-incident et boucles de rétroaction formalisées.",
+      "summarySources": [
+        "slides",
+        "program"
+      ]
+    },
+    {
+      "id": "de-l-ia-generative-aux-tests-augmentes",
+      "day": "2026-06-09",
+      "type": "talk",
+      "title": "De l'IA générative aux tests augmentés : les 7 leçons apprises pour industrialiser l'IA dans le cycle de test",
+      "speakers": [
+        "Anthony Labarre (MGDIS)",
+        "Gilles Nouais (Niji)",
+        "Betty Beaugé (Niji)"
+      ],
+      "feedbackFrom": [],
+      "summary": "D'après les slides publiées (aucun retour de participant lu) :\n- **Contexte** : éditeur MGDIS (secteur public), 120 personnes en production dont 20 testeurs, 4 à 6 versions majeures par an ; la direction cherche des leviers d'optimisation.\n- **Dispositif** : trois assistants maison (conformité de l'exigence, détection de cas de test similaires, génération en Gherkin) branchés sur Jira et Squash, hébergés sur les **endpoints IA d'OVHcloud** (Llama 3.3 70B, Mistral Small) pour la souveraineté ; coût d'infrastructure annoncé entre 50 et 60 € HT par mois.\n- **Leçons clés** : IA souveraine pour éviter le « Shadow IA » ; résultats probants sur de petites fonctionnalités mais non exhaustifs quand la combinatoire grandit, d'où le RAG et le contrôle par les testeurs ; **découper le prompt** plutôt qu'un prompt unique ; **« 1 usage, 1 LLM, 1 prompt »**, le même prompt donnant des résultats différents selon le modèle ; **« Skills first, prompts after »** ; **l'IA copilote, le testeur pilote**.\n- **Impact affiché** : conception d'un cas de test passée de 4 h à 5 à 10 minutes, coût du premier scénario de 120 € à 10 €, équipe de conception passée de 4 à 3 personnes ; le temps gagné est réinvesti dans le raffinement des exigences avec les PO.\n- **Vision** : le **« QA Strategist, chef d'orchestre de ses agents »** décide quoi tester, comment, et avec quel budget. À la question « le métier de testeur va-t-il disparaître ? », la réponse des slides est « NON ».\n- Lecture critique : les gains sont auto-déclarés par l'éditeur ; la réduction d'effectif (-25 %) cohabite avec un discours de revalorisation du métier.",
+      "summarySources": [
+        "slides",
+        "program"
+      ]
+    },
+    {
+      "id": "tester-les-agents-ia",
+      "day": "2026-06-09",
+      "type": "talk",
+      "title": "Tester les agents IA : défis, techniques et retour d'expériences",
+      "speakers": [
+        "Bruno Legeard (Smartesting)"
+      ],
+      "feedbackFrom": [],
+      "summary": "D'après les slides publiées (aucun retour de participant lu) :\n- **Agent IA = LLM de raisonnement + mémoire + outils + garde-fous.** Les benchmarks agentiques progressent vite (GAIA de 65 % à 75 %, WebArena de 60 % à 72 % en six mois selon l'orateur).\n- **Quatre difficultés spécifiques** : non-déterminisme, oracle de test flou, exécution en plusieurs étapes, auto-amélioration. D'où un **changement de paradigme** : *« Focus sur le comportement de l'agent, pas seulement le résultat »*.\n- **Trois niveaux de test** : tâche de bout en bout, sous-systèmes (planification, outils, mémoire), trajectoire. Stratégie : **boîte noire d'abord**, puis ouvrir la boîte ; *« Lorsqu'un agent échoue, vous déboguez le chemin, pas seulement la réponse. »*\n- **Techniques** : agent « as a judge », tests par propriétés, mesure de variabilité sur plusieurs exécutions, seuils de défaillance gradués ; supervision humaine synchrone, asynchrone ou hybride, elle-même à tester (EU AI Act).\n- **Deux retours d'expérience** : un agent de conception de tests avec RAG (350 items de test dont 300 générés, 4 ateliers avec utilisateurs clés) et un agent d'exécution de tests fonctionnels sur IHM (plus de 700 scénarios sur plus de 50 applications, plus de 100 campagnes d'évaluation en 18 mois). Leçon : construire une **infrastructure de test dédiée à l'agent**.\n- L'orateur, responsable du labo IA de Smartesting, présente aussi des agents de son entreprise : retour d'expérience d'éditeur.",
+      "summarySources": [
+        "slides",
+        "program"
+      ]
+    },
+    {
+      "id": "arreter-les-vanity-metrics",
+      "day": "2026-06-09",
+      "type": "talk",
+      "title": "Arrêter les vanity metrics",
+      "speakers": [
+        "Jean-François Fresi (Shift Op Solutions)",
+        "Ramy Abid (Alpharho-solutions)"
+      ],
+      "feedbackFrom": [],
+      "summary": "D'après les slides publiées (aucun retour de participant lu) :\n- **Définition** : *« Une métrique qui rassure sans aider à décider, prioriser, ni réduire le risque réel. »* Elle flatte l'ego, crée une illusion de contrôle et oriente dans la mauvaise direction.\n- **L'indicateur pastèque** : vert dehors, rouge dedans. *« Le danger n'est pas dans le rouge, il est dans le vert qui ment. »*\n- **Cinq cas vécus, un seul pattern** : 95 % de couverture mais aucun parcours métier critique couvert ; 1 200 tests automatisés devenus du bruit (*« On relance jusqu'à ce que ça passe »*) ; moins de 20 bugs par mois alors que 800 ont été traités en six mois ; 98 % de tests passants déconnectés des usages ; six semaines de QA sans gain de qualité.\n- **Changement de paradigme** : passer de « mesurer pour rassurer » à **« mesurer pour comprendre »**, et partir de la question *« Qu'est-ce que nous cherchons vraiment à comprendre ? »*.\n- **Un KPI utile** répond à une question, révèle un risque, aide à arbitrer, déclenche l'action et reste lisible. Pièges cités : partir des KPI existants, en empiler plus de douze, choisir ce qui est facile à extraire.",
+      "summarySources": [
+        "slides",
+        "program"
+      ]
+    },
+    {
+      "id": "les-aventuriers-du-bdd",
+      "day": "2026-06-09",
+      "type": "talk",
+      "title": "Les aventuriers du BDD : déployer le BDD dans 75 squads (part 1)",
+      "speakers": [
+        "Jean-Marc Pires (BNP Paribas Cardif)"
+      ],
+      "feedbackFrom": [],
+      "summary": "D'après les slides publiées (aucun retour de participant lu ; seule la première moitié du support a été lue) :\n- **Contexte** : DSI d'environ 1 500 personnes, 14 tribes et 75 squads, passage à l'agile à l'échelle, CoE test certifié **TMMi niveau 3** ; premier déploiement du BDD en 2020, BDD et TDD généralisés depuis 2025.\n- **Gains recherchés** : shift left (livraisons plus rapides, qualité), harmonisation des pratiques entre tribes, maturité agile (communication, structure des stories).\n- **Méthode de déploiement** : espace Confluence dédié, atelier de sensibilisation d'une demi-journée avec toute la squad, puis **coaching de 6 à 10 semaines** où le coach passe d'animateur des « 3 amigos » à simple réviseur sollicité à la demande.\n- **POC avant industrialisation** (juin à août 2025) sur 3 puis 5 squads représentatives, choisies parmi celles qui sont intéressées ou neutres pour éviter les freins trop forts.\n- **Indicateurs** : first pass yield (« bon du premier coup »), temps moyen de développement d'une story, taux d'adoption, satisfaction ; quatre niveaux de maturité, de « pas de BDD » à des scénarios d'acceptation automatisés.\n- **Écueils** : squads sans testeur (qui porte la vision qualité ?), squads peu disponibles (sessions 3 amigos dépriorisées, accompagnement allongé), maturités hétérogènes (certaines squads font *« du V avec des tickets User Story qui sont des tâches »*).",
+      "summarySources": [
+        "slides",
+        "program"
+      ]
+    },
+    {
+      "id": "un-developpeur-infiltre-chez-les-testeurs",
+      "day": "2026-06-09",
+      "type": "talk",
+      "title": "Un développeur infiltré chez les testeurs : comment faire échouer le BDD, l'ATDD et le TDD, surtout à l'ère du Spec Driven Development",
+      "speakers": [
+        "Pierre-Yves Pamart (Société Générale)"
+      ],
+      "feedbackFrom": [],
+      "summary": "D'après les slides publiées, en anglais (aucun retour de participant lu ; environ les deux tiers du support lus) :\n- **Format ironique** : suivre une équipe orientée software craftsmanship qui veut utiliser l'IA, avec pour mission de « ruiner leur approche » à travers **11 techniques de sabotage**.\n- **Vibe coding n'est pas Spec-Driven Development** : le premier convient au prototypage, le second est fait pour *« systems that need to survive reality »*, avec un niveau de spécification croissant du POC au système critique (preuves formelles, mutation testing).\n- **Exigence n'est pas spécification** : une user story exprime une intention, une spécification contient un détail exploitable ; sans ce travail de formulation, ce qu'on délègue à l'IA est *« incomplete by construction »*.\n- **Cucumber n'est pas le BDD** : outillage Gherkin et CI ne sont, au mieux, que la dernière étape ; le BDD commence par la découverte (Example Mapping, trois amigos) et la formulation.\n- Autres sabotages : Gherkin « anémique » (technique, sans règles ni contexte), sauter la conception, aplatir BDD, ATDD et TDD en *« Just start with a test, right? »*, et nourrir les agents de matériau *« plausible-but-wrong »*.",
+      "summarySources": [
+        "slides",
+        "program"
+      ]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Ouverture (Olivier Denoo, président du CFTL)",
+    "20 minutes pour convaincre : OPEN (plateforme agentique pour la QA)",
+    "L'automatisation des tests au tribunal (Frédéric Assante Di Capillo, Séverine Cabocel, Michael Granier)",
+    "RAG NA ROCK (Xavier Blanc, Université de Bordeaux)",
+    "Robot hybride pour mission critique : sécuriser 142 milliards d'euros avec l'automatisation et des tests intelligents (Julien Agoulon, Emmanuel Nocet, Open)",
+    "Keynote : When Women Lead Tech, from Entry Level to Executive Management (Natia Sirbiladze)",
+    "20 minutes pour convaincre : Mr Suricate",
+    "Redéfinir la qualité de l'IA grâce aux tests contradictoires et au red teaming (Violaine Mansard-Auduberteaud, Alexandra Guimaraes Teixeira, Applause)",
+    "Permis de conduire IA (Nabil Idhammou, David Jedat, Marius Ortega, Groupe Onepoint)",
+    "En route vers l'auto-maintenance des tests (Mr Suricate ; orateurs différents selon le PDF du programme et la page post-événement)",
+    "Agilité à l'échelle et TMMi : quelle valeur ajoutée de l'IA ? (Gil Burdallet, BNP Paribas Leasing Solutions)",
+    "Qualité sans compromis, l'approche data-driven en environnement agile (Rémy Darras, Sabir Archkak, Decathlon)",
+    "Des 7 principes du test aux 7 principes de la qualité (en agile) ? (Julien Cahu, Sabeur Rahmouni, K-LAGAN)",
+    "Migration SAP vers S/4HANA : la QA acteur central (Emmanuel Pene, Melodie Chapelier)",
+    "Engagez-vous qu'ils disaient ! (Daphné Hervé, RCA)",
+    "Table ronde : Parler du test pour faire rayonner la qualité (Fanny Velsin, Florence Guerlais, Nancaïdah Toure Chauvin)",
+    "20 minutes pour convaincre : Digital.ai (retour d'expérience Isagri sur le continuous testing)",
+    "Keynote : Le bonheur sinon rien ! (Bernard Rulmont)",
+    "Démos éditeurs : Agilitest, ARCAD Software, Kalifast, Athenco, OpenText, Unguess, Mr Suricate, UiPath, Smartesting"
+  ],
+  "sources": [
+    {
+      "label": "Page officielle JFTL 2026 (programme et slides de toutes les sessions)",
+      "url": "https://cftl.fr/jftl-archives-2-2/jftl-2026/"
+    },
+    {
+      "label": "Programme JFTL 2026 (PDF CFTL, avril 2026)",
+      "url": "https://cftl.fr/wp-content/uploads/2026/04/Programme-JFTL26.pdf"
+    },
+    {
+      "label": "Slides keynote : Vers une gouvernance antifragile",
+      "url": "https://cftl.fr/wp-content/uploads/2026/06/MOEBIUS-9h20-Keynote-GOUVERNANCE-ANTIFRAGILE-DECISION-INTELLIGENCE-REF-V1.pdf"
+    },
+    {
+      "label": "Slides MGDIS / Niji : 7 leçons pour industrialiser l'IA dans le test",
+      "url": "https://cftl.fr/wp-content/uploads/2026/06/MOEBIUS-10H40-REX-MGDIS-usage-de-l-IA-presentation-0.4.pdf"
+    },
+    {
+      "label": "Slides Bruno Legeard : Tester les agents IA",
+      "url": "https://cftl.fr/wp-content/uploads/2026/06/MOEBIUS-11h30-Tester-les-agents-IA-Bruno-Legeard.pptx.pdf"
+    },
+    {
+      "label": "Slides : Arrêter les vanity metrics",
+      "url": "https://cftl.fr/wp-content/uploads/2026/06/SALLE-2.2-10h40-Arreter-les-vanity-metrics.pdf"
+    },
+    {
+      "label": "Slides BNP Paribas Cardif : Les aventuriers du BDD",
+      "url": "https://cftl.fr/wp-content/uploads/2026/06/GRAND-SALON-10h40-BNPP-Cardif_Les-aventuriers-du-BDD-part-1_version-finale.pdf"
+    },
+    {
+      "label": "Slides Pierre-Yves Pamart : Un développeur infiltré chez les testeurs",
+      "url": "https://cftl.fr/wp-content/uploads/2026/06/GRAND-SALON-11h30-Un-developpeur-inflitre.pdf"
+    },
+    {
+      "label": "InformatiqueNews : JFTL 2026, tester l'IA (annonce du 5 juin 2026)",
+      "url": "https://www.informatiquenews.fr/jftl-2026-tester-ia-dsi-111818"
+    },
+    {
+      "label": "TSQB : retour sur la participation du TSQB à la JFTL 2026",
+      "url": "https://tsqb.net/retour-sur-la-participation-du-tsqb-a-la-jftl-2026-a-paris/"
+    },
+    {
+      "label": "Posts LinkedIn : aucun retrouvé (recherche du 2026-10-30)"
+    }
+  ]
 }

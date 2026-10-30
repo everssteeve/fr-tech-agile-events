@@ -4,11 +4,211 @@
   "title": "ParisTestConf 2025",
   "edition": "6e édition",
   "start": "2025-03-25",
+  "end": "2025-03-25",
   "city": "Paris",
   "venue": "Maison des Associations de Solidarité (Paris 13e)",
   "url": "https://paristestconf.com/edition-2025/",
+  "programUrl": "https://paristestconf.com/wp-content/uploads/2025/04/ptc-2025-line-up.pdf",
   "dateConfidence": "ok",
-  "note": "Site officiel : 6e édition le 25 mars 2025 à la Maison des Associations (Paris 13e) ; 3 tracks de talks, 1 track d'atelier, 22 speakers, 2 vélotypistes.",
-  "status": "pending",
-  "sessions": []
+  "note": "Site officiel : 6e édition le 25 mars 2025 à la Maison des Associations (Paris 13e) ; 3 tracks de talks, 1 track d'atelier, 22 speakers, 2 vélotypistes. Organisée par l'Association Française de la Qualité et du Test (AFQT), sans sponsor, intégralement en français.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-30",
+  "revisit": "Corpus participants très mince : un billet de blog d'un speaker (La Taverne du Testeur) et un billet d'équipe QA Bedrock lu dans sa pull request GitHub ; aucun post LinkedIn retrouvé (6 recherches web). Slides de Vincent Dauce non lues (PDF > 10 Mo).",
+  "corpus": "Programme officiel (page édition et line-up horaire), 17 decks de slides publiés par l'organisation (16 lus), le site de démo d'Emmanuelle Aboaf, l'article de Marc Hage Chahine sur La Taverne du Testeur (31 mars 2025) et le retour de quatre QA de Bedrock Streaming (billet rédigé en juillet 2025, lu dans sa pull request GitHub). La plupart des résumés reposent donc sur les slides.",
+  "limits": "Aucune vidéo : l'édition n'a pas été filmée (la playlist YouTube connue ne contient que 2021). Aucun post LinkedIn retrouvé ; les deux retours écrits viennent d'un speaker (atelier Bugs et botanique) et d'une équipe QA venue pour la deuxième fois, tous deux très positifs. Les slides donnent la structure des talks mais pas le discours oral ni les échanges avec la salle.",
+  "tldr": "Une journée de test **horizontale et inclusive** : la qualité y est abordée par tous les métiers (dev, QA, UX, Scrum Master, DevOps, sécurité), avec une **QA qui remonte vers la conception et l'utilisateur** et une forte présence de l'**accessibilité**.",
+  "keyTakeaways": [
+    "Tester la demande avant de construire : pretotypes (fausse porte, Turc mécanique, Pinocchio) et mesure de l'engagement réel (pré-commande) plutôt que des opinions (Rivière, retenu par Bedrock et Hage Chahine).",
+    "Penser la stratégie de test comme une pyramide à quatre faces (construction, garantie produit, investigation, résilience), chacune portée par des rôles différents : « les tests c'est l'affaire de tous » (Breheret-Girardin).",
+    "Traiter les tests flaky comme un problème humain autant que technique : les mesurer, relire le code de test, les signaler vite, les isoler temporairement puis prioriser leur correction (Lescano Carroll, retenu par Bedrock).",
+    "Lancer le test de performance en continu sans attendre l'iso-prod : tests courts et bloquants dans la CI, tests lourds planifiés non bloquants, « une question, un test » (Leroux-Huet).",
+    "Intégrer l'accessibilité dès le début du projet et la vérifier avec un vrai lecteur d'écran (VoiceOver, TalkBack), en vue de l'obligation européenne du 28 juin 2025 (Aboaf, Ferreira).",
+    "Faire de la QA l'ambassadrice des utilisateurs : doubles écoutes avec le service client, verbatims dans les personas, KPI tournés vers le NPS et les retours plutôt que la seule couverture de code (Fournier).",
+    "Ritualiser le post-mortem en 24 à 72 h, sans recherche de coupable, avec timeline factuelle, 5 pourquoi ou Ishikawa et actions suivies (Maggi).",
+    "Réduire le « Single Point Of Knowledge » par une documentation revue en équipe (commentaires conventionnels, boucle safe-to-fail) plutôt que par la seule transmission orale (Graveaud)."
+  ],
+  "sessions": [
+    {
+      "id": "une-documentation-de-qualite-pour-avoir-des-logiciels-operationnels",
+      "day": "2025-03-25",
+      "type": "talk",
+      "title": "Une documentation de qualité pour avoir des logiciels opérationnels !",
+      "speakers": ["Geoffrey Graveaud — inside"],
+      "feedbackFrom": ["Billet Bedrock Streaming (Arthur Bochard, Claire Delgado, Dana Purecel, Stéphanie Borrel)"],
+      "summary": "- **Renversement du Manifeste agile** : là où Agile 2001 préfère « des produits opérationnels plus qu'une documentation exhaustive », DevOps (State of DevOps, modèle DORA) fait de la **qualité de la documentation** une capacité clé (slides).\n- Le risque central est le **SPOK, Single Point Of Knowledge**, souvent aussi le SPOC : *« Le savoir d'une organisation rentre chez lui tous les soirs »* (slides). Ordre de grandeur affiché : 10 minutes pour documenter contre 3 heures de rétro-ingénierie.\n- Trois critères : **clarté, pertinence, information accessible**.\n- Processus **safe-to-fail** : revue solo, commentaires préfixés P/I/C et conventional comments, revue en équipe, puis ajustement ; alignement obtenu en trois mois selon les slides.\n- Limite assumée, avec Dave Snowden : *« On sait plus que l'on ne peut dire, on dit plus que l'on ne peut écrire »*. Conclusion : « ça dépend de votre contexte ».\n- L'équipe Bedrock en a retenu la boucle de revue et les conseils de « trouvabilité » (auteur et contact nommés, liens, tags, fusion des doublons).",
+      "summarySources": ["slides", "blog"]
+    },
+    {
+      "id": "pretotyping-prototyping-tester-pour-derisquer",
+      "day": "2025-03-25",
+      "type": "talk",
+      "title": "Pretotyping & prototyping : tester pour dérisquer !",
+      "speakers": ["Noémie Rivière — Senior product designer"],
+      "feedbackFrom": ["Marc Hage Chahine (La Taverne du Testeur)", "Billet Bedrock Streaming"],
+      "summary": "- **Tester dès la stratégie et la conception**, pas seulement en développement et en production : la plupart des produits échouent faute de demande, pas faute d'exécution (slides, d'après Alberto Savoia, *The Right It*).\n- Chiffres affichés : 42 % des échecs de startups liés à une mauvaise lecture du marché ; 6 % des fonctionnalités d'un produit utilisées en moyenne (sources MindTheProduct et FindStack citées sur les slides).\n- **Techniques de pretotypage** : Turc mécanique, Pinocchio, fausse porte, produit minimal, réétiquetage… *« L'utilisateur ne sait pas que c'est faux ! »*\n- **Mesurer l'engagement réel** par paliers (likes, données personnelles, pré-commande) ; passer ensuite au prototype, par exemple via un design sprint.\n- REX : un programme de fidélité validé en magasin (tests positifs, budget validé) et un cas bancaire présenté comme un échec.\n- Retenu par Bedrock : *tester la demande avant d'investir lourdement*, et impliquer la QA dès la Discovery. Marc Hage Chahine y voit un talk sur la **qualité au plus tôt (shift left)** porté par une designer UX/UI.",
+      "summarySources": ["slides", "blog"]
+    },
+    {
+      "id": "comment-tester-l-accessibilite-d-un-site-internet",
+      "day": "2025-03-25",
+      "type": "talk",
+      "title": "Comment tester l'accessibilité d'un site internet ?",
+      "speakers": ["Emmanuelle Aboaf"],
+      "feedbackFrom": ["Billet Bedrock Streaming"],
+      "summary": "- Talk en **live coding** sur un site de démo volontairement inaccessible (emma11y/tester-a11y), construit autour de six erreurs parmi les plus fréquentes du rapport WebAIM.\n- Constat rapporté par Bedrock : seuls **5 % des sites** seraient accessibles aux personnes handicapées (observatoire cité par la speaker), et *l'accessibilité ne s'ajoute pas en fin de projet*, sous peine de tout reprendre.\n- Pièges CSS/HTML : `display: none`, `outline: none`, `overflow: hidden`, iframes sans titre.\n- Six cas pratiques : **contrastes** (4,5:1 et 3:1), langue de la page, alternatives d'images, labels et erreurs de formulaire, libellés de boutons, distinction liens/boutons ; usage d'ARIA (`aria-live`, `aria-pressed`…).\n- Outillage : axe, pa11y, tests d'accessibilité Playwright, Lighthouse CI ; références RGAA et design system de l'État.",
+      "summarySources": ["blog", "slides"]
+    },
+    {
+      "id": "arretez-les-triangles-et-les-quadrants-construisez-une-vraie-pyramide-de-tests",
+      "day": "2025-03-25",
+      "type": "talk",
+      "title": "Arrêtez les triangles et les quadrants, construisez une vraie pyramide de tests !",
+      "speakers": ["Christophe Breheret-Girardin — Zenika"],
+      "feedbackFrom": ["Marc Hage Chahine (La Taverne du Testeur)", "Billet Bedrock Streaming"],
+      "summary": "- Critique des modèles historiques (matrice de Marick, quadrants de Crispin et Gregory, pyramide de Cohn) : la pyramide classique est un « triangle » qui ne parle que du développement, les quadrants ne disent rien de l'effort (slides).\n- Proposition : **une pyramide, quatre faces**. Tests de **construction** (statiques, unitaires, intégration, portés par les devs), de **garantie produit** (acceptation, régression, parcours UX, A/B, PO + QA + devs), d'**investigation** (exploratoire, utilisabilité, accessibilité, RGPD, centrés QA) et de **résilience** (sécurité, performance, charge).\n- Chaque face va du moins cher et rapide au plus cher et lent ; la forme se déforme selon le contexte (inversée pour du CRUD, en losange pour la data).\n- Formules : *« Les tests ne sont pas une garde à vue »*, *« les tests c'est l'affaire de tous ! »*.\n- Retenu par Bedrock : changer la perception des tests, *non pas une contrainte mais une source de valeur*, et identifier où la QA apporte le plus. Marc Hage Chahine résume la proposition comme une pyramide faite de quatre triangles, chacun avec son objectif et sa répartition de tests.",
+      "summarySources": ["slides", "blog"]
+    },
+    {
+      "id": "retour-d-experience-sur-la-creation-de-pepiniere-de-tests",
+      "day": "2025-03-25",
+      "type": "talk",
+      "title": "Retour d'expérience sur la création de pépinière de tests, un mélange de reconversion et d'handicap",
+      "speakers": ["Solène Lapouge — Apside", "Aurelia Ribeira — Apside"],
+      "feedbackFrom": [],
+      "summary": "- Point de départ : un appel d'offres pour une équipe de 30 testeurs, dans un métier présenté comme **en tension** (plus de 3 000 offres publiées au 1er janvier 2024 selon les slides).\n- Modèle de la **pépinière** : une école (EQL, École de la Qualité Logicielle), une entreprise adaptée (Apside) et un client (AXA France), avec le **CDD Tremplin** comme support contractuel.\n- Données Agefiph 2023 affichées : taux d'emploi de 39 % pour les travailleurs handicapés contre 68 % pour l'ensemble.\n- Entonnoir de sélection : 21 profils, 11 soumis aux tests techniques, 7 retenus après entretien ; formation intensive de 58 jours.\n- **La confiance comme socle** : encadrante ayant suivi le même parcours ; freins identifiés, le syndrome de l'imposteur et la *« peur de mal faire et faire du mal »*.\n- Résumé tiré des seules slides (titre affiché : « D'un projet loupé à une aventure humaine »).",
+      "summarySources": ["slides"]
+    },
+    {
+      "id": "travailler-avec-chatgpt-co-quel-impact-pour-la-sante-mentale-des-testeurs",
+      "day": "2025-03-25",
+      "type": "talk",
+      "title": "Travailler avec ChatGPT & Co : quel impact pour la santé mentale des testeurs ?",
+      "speakers": ["Anne Kramer — Smartesting"],
+      "feedbackFrom": [],
+      "summary": "- Deux avertissements en ouverture : *« L'IA n'est pas (encore) intelligente »* et *« L'IA souffre de démence »* (fenêtre de contexte limitée), avec une démonstration du fonctionnement par tokens et probabilités (slides).\n- Bonnes pratiques : surveiller les tokens, **nouvelle tâche, nouvelle conversation**, structurer le prompt (contexte, rôle, instruction, contraintes, format, données), n-shot et prompt chaining.\n- Exemple appliqué au test : génération de scénarios Gherkin et de partitions d'équivalence.\n- Prospective : « l'IA générative, acte 2 » et les cinq étapes de l'IA selon OpenAI.\n- La santé mentale n'apparaît sur les slides que sous forme de question (« notre collègue virtuel peut-il souffrir ? ») : l'angle annoncé a sans doute été traité à l'oral, non documenté ici.",
+      "summarySources": ["slides"]
+    },
+    {
+      "id": "l-instabilite-de-nos-tests-nous-empeche-de-delivrer",
+      "day": "2025-03-25",
+      "type": "talk",
+      "title": "L'instabilité de nos tests nous empêche de délivrer",
+      "speakers": ["Sofia Lescano Carroll — Benevity"],
+      "feedbackFrom": ["Billet Bedrock Streaming"],
+      "summary": "- Un test **flaky** donne des résultats différents sans changement de code ni de test ; il peut passer « 199 fois sur 200 » (slides).\n- Effet principal : *« Il y a tellement de bruit qu'on ne prend plus au sérieux les vrais problèmes »* ; Bedrock retient l'**érosion de la confiance** de l'équipe dans les résultats.\n- Causes illustrées en PHP : dates (31 mars devenant « 31 février »), données aléatoires, identifiants, changement de base (« 234 tests à corriger »), feature flags, ordre et dépendances, sandbox de paiement.\n- Réponses : un problème **humain et technique** ; mesurer (CircleCI, Datadog, Allure), relire le code de test et pas seulement le code, règles PHPStan dédiées, merge queue.\n- Processus retenu par Bedrock : prouver que l'instabilité vient du test, signaler vite, créer un ticket, désactiver temporairement pour ne pas bloquer la livraison, prioriser la correction, et revoir la stratégie si l'instabilité persiste.\n- Formule de fin : *« Le comble du test instable : avoir un autre test instable qui empêche de le fixer »*.",
+      "summarySources": ["slides", "blog"]
+    },
+    {
+      "id": "test-logiciel-en-sante-un-monde-un-peu-a-part",
+      "day": "2025-03-25",
+      "type": "talk",
+      "title": "Test logiciel en Santé, un monde (un peu) à part",
+      "speakers": ["Julien Beaudaux — Gordios", "Valentin Besse — Gordios"],
+      "feedbackFrom": [],
+      "summary": "- Enjeux d'un dispositif médical : **sûreté, sécurité, conformité et performance** ; rappels du Therac-25 et des pompes à insuline Medtronic rappelées pour risque de piratage (slides).\n- Cadre normatif : ISO 13485, IEC 62304, ISO 14971, IEC 62366. *« Qui dit démonstration dit preuve… qui dit preuve dit documents… qui dit documents dit traçabilité. »*\n- Le testeur participe à la **gestion des risques** : il détermine la classe de risque (A, B, C) et calibre les tests en conséquence.\n- Assumé sur les slides : *« pas d'agile dans le médical »*, le cycle en V reste imposé par la réglementation.\n- Le testeur constitue le dossier d'audit (preuves, logs, matrice de traçabilité) ; une bonne qualité est un juste milieu entre structure et flexibilité.\n- Résumé tiré des seules slides.",
+      "summarySources": ["slides"]
+    },
+    {
+      "id": "faster-better-stronger-debloquer-le-test-de-performances-en-continu",
+      "day": "2025-03-25",
+      "type": "talk",
+      "title": "Faster Better Stronger : comment débloquer le test de performances en continu ?",
+      "speakers": ["Matthieu Leroux-Huet — BlackScale IT"],
+      "feedbackFrom": [],
+      "summary": "- Le test de performance sert à *« découvrir, diagnostiquer, décider, protéger, économiser »* ; il ne se réduit pas au test de charge (slides).\n- Parcours en sept étapes : stratégie, paramètres, automatisation, exécution, analyse, pipelines, « shifter ».\n- Formules : *« La CI/CD n'est pas un fourre-tout »*, *« L'iso-prod n'est pas obligatoire »*, *« Mockez & cadencez »*, *« Une question, un test »*, *« Slow is smooth, smooth is fast »*.\n- **UI ou protocole ? Les deux** : Playwright ou Cypress d'un côté, Gatling ou k6 de l'autre ; *« Sans les devs pas de salut »*.\n- Tests courts et critiques **systématiques et bloquants**, tests lourds **planifiés et non bloquants** ; analyser la trace brute plutôt que les seuls temps de réponse.\n- Résumé tiré des seules slides.",
+      "summarySources": ["slides"]
+    },
+    {
+      "id": "la-securite-peut-aussi-shift-left",
+      "day": "2025-03-25",
+      "type": "talk",
+      "title": "La sécurité peut aussi « Shift Left »",
+      "speakers": ["Xavier Maso"],
+      "feedbackFrom": [],
+      "summary": "- Objectif affiché : *« Montrer concrètement qu'il est possible de faire de la sécurité en cours de développement »*, pour les QA, les devs et les ingénieurs sécurité (slides).\n- Fil conducteur : la **boucle DevSecOps**, une pratique par étape : modélisation des menaces (plan), revue de code (code), analyse de composition et SBOM (build), analyses statique et dynamique (test).\n- Outils : ZAP pour le DAST, Semgrep et CodeQL pour le SAST, OWASP dep-scan et SBOM (SPDX, CycloneDX) pour le SCA ; ressources OWASP (Top 10, cheatsheets, Juice Shop).\n- **Threat modeling** : les quatre questions du Threat Modeling Manifesto, diagramme de flux de données puis STRIDE ou LINDDUN.\n- Conclusion inspirée du manifeste : préférer une culture de détection et de correction à la conformité de façade.\n- Résumé tiré des slides, lues partiellement (sections DAST, SAST et SCA connues par le sommaire seulement).",
+      "summarySources": ["slides"]
+    },
+    {
+      "id": "la-qa-user-centric-une-approche-du-test-a-l-ecoute-des-utilisateurs",
+      "day": "2025-03-25",
+      "type": "talk",
+      "title": "La QA user-centric, une approche du test à l'écoute des utilisateurs",
+      "speakers": ["Camille Fournier — ilek"],
+      "feedbackFrom": ["Billet Bedrock Streaming"],
+      "summary": "- **Mettre l'utilisateur au centre de la qualité** : doubles écoutes avec le service client, verbatims intégrés aux personas, capitalisation des retours (slides, parcours de la speaker de HelloAsso à Deezer puis ilek).\n- Écueil de la **« cacophonie »** : ne pas surpondérer ceux qui se plaignent le plus, tenir compte du contexte et de la saisonnalité (retenu par Bedrock), avec une approche data-driven.\n- **QA dès la conception** : tester les maquettes, relire les user stories, participer à la recherche utilisateur ; transversalité QA, UX et produit, sans tomber dans un rôle flou ou la sur-sollicitation.\n- KPI proposés : sortir de la seule couverture de code ou des bugs critiques, suivre la criticité des bugs en production, le nombre de retours et le NPS ; rôle d'**ambassadeur des utilisateurs**.\n- Message final : *« Encourager et mesurer la satisfaction utilisateur »*.",
+      "summarySources": ["slides", "blog"]
+    },
+    {
+      "id": "les-tests-ces-saboteurs-de-l-agilite",
+      "day": "2025-03-25",
+      "type": "talk",
+      "title": "Les Tests : Ces Saboteurs de l'Agilité",
+      "speakers": ["Natacha Fourmy"],
+      "feedbackFrom": ["Marc Hage Chahine (La Taverne du Testeur), attribution déduite du sujet"],
+      "summary": "- Les tests vus comme **frein à l'agilité** : trop longs, mal priorisés, dette technique, blocage de la livraison, retour sur des sujets « terminés » (slides).\n- Repères : quadrants de tests agiles et pyramide de tests.\n- Leviers : exécution parallèle, pipelines efficaces, *« documentation as code des tests »*, collaboration devs et testeurs, appui d'un lead QA si besoin.\n- Indicateurs : anomalies en production, temps d'exécution des tests, couverture de code ; pratiques : pair testing, tests exploratoires, « no test case ».\n- Marc Hage Chahine décrit une présentation de Scrum Master sur la place des testeurs en agile, *« énergique et pleine d'humour »* ; le rapprochement avec ce talk est une déduction, l'article ne nomme pas la speaker.",
+      "summarySources": ["slides", "blog"]
+    },
+    {
+      "id": "mise-en-place-de-tests-d-integration-sur-une-app-react",
+      "day": "2025-03-25",
+      "type": "talk",
+      "title": "Mise en place de tests d'intégration sur une app React : performances, apprentissages et limites",
+      "speakers": ["Joris Langlois — KNP Labs"],
+      "feedbackFrom": [],
+      "summary": "- Limites d'une couverture 100 % unitaire sur une app Redux : composants très couplés, faux positifs et faux négatifs, *« on teste l'implémentation plutôt que le comportement »* (slides).\n- Référence à Kent C. Dodds : *« Write tests. Not too many. Mostly integration. »*\n- Solution : **MSW (Mock Service Worker) et React Testing Library**, pour intercepter les appels réseau au plus bas niveau ; sélecteurs et effets de bord testés indirectement.\n- Limites assumées : tests plus lents (environ 50 s pour 500 tests), tout est asynchrone, certains tests deviennent instables.\n- Pistes : valider les fixtures contre les schémas JSON du backend, modèle SMURF de Google.\n- Résumé tiré des seules slides.",
+      "summarySources": ["slides"]
+    },
+    {
+      "id": "de-l-incident-a-l-excellence-le-role-des-post-mortems-dans-la-qualite",
+      "day": "2025-03-25",
+      "type": "talk",
+      "title": "De l'incident à l'excellence : le rôle des post-mortems dans la qualité",
+      "speakers": ["Benoit Maggi — Piano"],
+      "feedbackFrom": ["Billet Bedrock Streaming"],
+      "summary": "- *« L'objectif d'un postmortem est d'identifier la cause profonde d'un incident pour en réduire sa récurrence »* (slides) ; les incidents arriveront, la question est d'en tirer des actions.\n- **Un document en quatre parties** : faits (timeline, données, non négociable), analyse (cause et effet, facteurs contributifs), actions (corriger, automatiser, tester, formaliser), communication (impact client, métriques).\n- **Une rétrospective** préparée dans les 24 à 72 h, animée en culture **blameless**, avec 5 pourquoi ou Ishikawa ; Bedrock retient aussi le conseil d'un brise-glace pour faire baisser la tension.\n- Inscrit dans une boucle PDCA ; métriques suivies : nombre d'incidents, MTTR, change failure rate, SLA et SLO.\n- Pour Bedrock, le post-mortem dépasse l'analyse technique : il sert à améliorer les processus.",
+      "summarySources": ["slides", "blog"]
+    },
+    {
+      "id": "des-lego-des-bonnes-pratiques-et-du-fun",
+      "day": "2025-03-25",
+      "type": "workshop",
+      "title": "Des Lego, des bonnes pratiques et du fun !",
+      "speakers": ["Cécile Especel — KNP Labs"],
+      "feedbackFrom": [],
+      "summary": "- Atelier de 2 h 15 inspiré des exercices Lego de Mike Bowler et Bryan Beecham, en **quatre jeux** : clean code, simplicité, refacto, intégration continue (slides).\n- Clean code : construire à partir d'un tas trié puis non trié et comparer les temps.\n- Simplicité : « et si chaque brique coûtait 1000 € », changeriez-vous votre architecture ?\n- Refacto : nouvelles exigences toutes les 30 s, avec puis sans droit de refactorer.\n- Intégration continue : cinq équipes construisent un ensemble commun en itérations de 3 minutes ; *« Intégration continue = collaboration + outils pour automatiser »*.\n- Message aux managers : budgéter du temps pour *« du bon boulot (pensé / testé / corrigé / adapté) »*. Résumé tiré des seules slides.",
+      "summarySources": ["slides"]
+    },
+    {
+      "id": "bugs-et-botanique-la-presentation-dont-vous-etes-le-heros",
+      "day": "2025-03-25",
+      "type": "workshop",
+      "title": "Bugs et botanique : la présentation dont vous êtes le héros",
+      "speakers": ["Marc Hage Chahine", "Julien Cahu — K-LAGAN"],
+      "feedbackFrom": ["Marc Hage Chahine (speaker, La Taverne du Testeur)"],
+      "summary": "- Atelier interactif sur la **gestion des bugs**, par l'analogie d'un jardin familial et de ses « désagréments constatés » (allergie au pollen, herbe dans le potager, cerisier au milieu de l'aire de jeu) (slides et article du speaker).\n- Plusieurs politiques mises en débat : zéro bug, correction selon l'impact, jusqu'à épuisement du budget, ou *« On ne corrige pas ! »*.\n- Avec 50 unités de temps et 500 €, la salle analyse chaque désagrément (conformité, impact, évolution), puis chiffre et vote des solutions.\n- Résultat affiché : **27 jardins finaux différents pour 84 parcours** ; *« Il n'y a pas une unique bonne solution »*.\n- Conclusion : *« Les bugs, comme le test, dépendent du contexte ! »* ; le testeur a un rôle important dans le choix de la résolution, qui peut aller jusqu'à faire d'un bug une fonctionnalité.",
+      "summarySources": ["slides", "blog"]
+    },
+    {
+      "id": "test-d-accessibilite-avec-lecteur-d-ecran-mobile",
+      "day": "2025-03-25",
+      "type": "workshop",
+      "title": "Test d'accessibilité avec lecteur d'écran mobile",
+      "speakers": ["Antonio Ferreira — DEO"],
+      "feedbackFrom": [],
+      "summary": "- Panorama des lecteurs d'écran : NVDA, JAWS, **VoiceOver** (iOS) et **TalkBack** (Android) ; enquête WebAIM 2023 affichée (VoiceOver 70,6 %, TalkBack 34,7 %), avec le conseil d'*« utiliser vos propres métriques »* (slides).\n- Prise en main pratique : activation, gestes à un, deux et trois doigts, rotor ; exercices sur des sites réels (par exemple trouver un prix sur apple.fr).\n- Contexte réglementaire : obligation européenne **applicable au 28 juin 2025**, norme EN 301 549 (WCAG 2.1 AA et compléments), référentiels RAAM et BITV.\n- Critères les plus souvent en échec : alternatives d'images, structure (titres, listes), nom, rôle et valeur (aria-label), annonce des mises à jour dynamiques.\n- Résumé tiré des seules slides.",
+      "summarySources": ["slides"]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Explorer le monde non déterministe (Vincent Dauce) : slides publiées mais non lues (PDF > 10 Mo)"
+  ],
+  "sources": [
+    { "label": "Page officielle de l'édition 2025 (programme et slides)", "url": "https://paristestconf.com/edition-2025/" },
+    { "label": "Line-up horaire PDF", "url": "https://paristestconf.com/wp-content/uploads/2025/04/ptc-2025-line-up.pdf" },
+    { "label": "Sessionize ParisTestConf 6 (appel à orateurs, AFQT)", "url": "https://sessionize.com/paristestconf-6/" },
+    { "label": "La PTC, la conférence de la qualité pour toutes et tous (Marc Hage Chahine, La Taverne du Testeur, 31 mars 2025)", "url": "https://latavernedutesteur.fr/2025/03/31/la-ptc-la-conference-de-la-qualite-pour-toutes-et-tous/" },
+    { "label": "Paris Test Conf 2025 : Conference Feedback (Bedrock Streaming, A. Bochard, C. Delgado, D. Purecel, S. Borrel ; lu dans la pull request, publication non vérifiée)", "url": "https://github.com/BedrockStreaming/tech.bedrockstreaming.com/pull/473" },
+    { "label": "Site de démo d'Emmanuelle Aboaf (tester-a11y)", "url": "https://emma11y.github.io/tester-a11y/" },
+    { "label": "Posts LinkedIn : aucun retrouvé" }
+  ]
 }

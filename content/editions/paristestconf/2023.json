@@ -4,11 +4,151 @@
   "title": "ParisTestConf 2023",
   "edition": "5e édition",
   "start": "2023-10-10",
+  "end": "2023-10-10",
   "city": "Paris",
   "venue": "Maison des Associations de Solidarité (Paris 13e)",
   "url": "https://paristestconf.com/edition-2023/",
+  "programUrl": "https://paristestconf.com/edition-2023/",
   "dateConfidence": "ok",
-  "note": "Site officiel (archive janv. 2024) : « La cinquième édition de la ParisTestConf a eu lieu le 10 octobre 2023 à la Maison des Associations de Solidarité à Paris », retour en présentiel.",
-  "status": "pending",
-  "sessions": []
+  "note": "Site officiel (archive janv. 2024) : « La cinquième édition de la ParisTestConf a eu lieu le 10 octobre 2023 à la Maison des Associations de Solidarité à Paris », retour en présentiel. Page édition : plus de 250 participants, deux tracks en parallèle et trois keynotes. Sessionize : première édition en présentiel depuis 3 ans, intégralement en français.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-30",
+  "revisit": "Aucun retour de participant trouvé : ni post LinkedIn ni billet de blog (6 recherches web) ; le seul article lu est l'annonce par Marc Hage Chahine de sa propre keynote. Synthèse fondée sur les transcripts automatiques des 10 vidéos ; slides publiées non lues ; talk de Laetitia Avrot sans vidéo publique.",
+  "corpus": "Programme et liens de la page officielle de l'édition, appel à orateurs Sessionize, transcripts automatiques (sous-titres YouTube) des 10 vidéos publiées le 26 octobre 2023 sur la chaîne ParisTestConf, et le billet de Marc Hage Chahine (La Taverne du Testeur, 3 novembre 2023) annonçant la vidéo et les slides de sa keynote.",
+  "limits": "Aucun retour de participant retrouvé : les résumés décrivent ce qui a été dit sur scène, pas ce que la salle en a retenu. Les transcripts sont des sous-titres automatiques (noms propres et chiffres parfois déformés, corrigés seulement quand le contexte est sans ambiguïté). Le talk PostgreSQL de Laetitia Avrot n'a pas de vidéo publique (vidéo privée dans la playlist) ni de slides publiées.",
+  "tldr": "Une édition qui élargit le test à **la qualité comme système** : qualité durable, lean et Quality Engineering en keynotes, et des talks qui convergent vers une **stratégie de test pilotée par le risque et le contexte**, portée par toute l'équipe plutôt que par le seul testeur.",
+  "keyTakeaways": [
+    "Construire la stratégie de test à partir des risques : matrice impact x probabilité par fonctionnalité, puis risque affiché sur chaque ticket pour prioriser l'effort (Fournier).",
+    "Cartographier récursivement les parties critiques du système avec toutes les parties prenantes (métier, QA, dev, support, ops) avant de choisir les types de tests (Bartaguiz).",
+    "Adapter la forme de la pyramide à l'architecture : pyramide pour un cœur métier hexagonal, pyramide inversée pour du simple passe-plat, diamant pour un périmètre orienté données (Breheret-Girardin).",
+    "Se méfier de la couverture de code comme objectif : un taux de 80 % se truque, le mutation testing mesure mieux la qualité des tests (Bartaguiz, Breheret-Girardin).",
+    "Animer des example mappings de 25 minutes sur une seule story, en gardant surtout les cartes d'exemples concrets, et les enchaîner avec event storming et cartes CRC (Boucard).",
+    "Standardiser l'environnement d'automatisation dans un conteneur Docker et brancher les tests dans un pipeline CI pour un feedback immédiat ; traiter les tests flaky par leurs causes racines, souvent les environnements et les jeux de données (Fresi).",
+    "Prendre une posture de coach qualité, même sans le titre : bilan de santé d'équipe, liste des étonnements, écoute active, questions ouvertes (Ayadi).",
+    "Accompagner les personnes en reconversion à plusieurs niveaux : buddy QA, promotion de pairs, guilde, manager qui objective les progrès face au syndrome de l'imposteur (Moulins).",
+    "Commencer une démarche Quality Engineering par l'organisation et le management avant l'outillage, sinon les tests automatisés ne sont pas maintenus (Craske)."
+  ],
+  "sessions": [
+    {
+      "id": "les-defis-de-la-qualite-durable",
+      "day": "2023-10-10",
+      "type": "keynote",
+      "title": "Les défis de la qualité durable",
+      "speakers": ["Marc Hage Chahine", "Stanislas Bobiec"],
+      "feedbackFrom": ["Marc Hage Chahine (speaker, La Taverne du Testeur)"],
+      "summary": "- Keynote d'ouverture issue d'un **groupe de travail pluridisciplinaire** (dont Benjamin Butel, de l'organisation de la PTC), parti de deux familles de problèmes : humains (usages détournés, désengagement des équipes) et écologiques (*« 4 % des émissions de CO2 »* attribuées au numérique).\n- La **qualité durable** se situe au croisement du Green IT et de l'écoconception, du bien-être des personnes qui construisent le logiciel et de la priorité donnée aux utilisateurs ; c'est d'abord *« un état d'esprit »*, proche de l'état d'esprit agile.\n- Proposition : ajouter un **critère humain** (éthique, durabilité des usages, impact) aux caractéristiques qualité des normes ISO. Critique assumée de l'« IT for green » : une solution technologique seule n'apporte rien.\n- Indicateurs par axes (Green IT, inclusivité, utilisateurs, pérennité et documentation), avec une règle : ne pas suivre un indicateur qu'on ne peut ou ne veut pas suivre.\n- Penser aussi aux **non-utilisateurs**, à la localisation (hébergement, sous-traitance, minerais) et viser le *« durable by design »*, au plus tôt mais sans qu'il soit jamais trop tard.\n- Conclusion : *« les formations et conférences ça ne suffit pas »*, il est temps d'agir ; méfiance envers le greenwashing. Marc Hage Chahine a ensuite publié la vidéo et un support enrichi pour être lisible sans le discours (speaker).",
+      "summarySources": ["transcript", "blog"],
+      "video": { "youtubeId": "teU0701fMRU", "title": "PTC2023 - Marc Hage Chahine & Stanislas Bobiec - Keynote - Les défis de la qualité durable", "publishedAt": "2023-10-26", "transcript": true }
+    },
+    {
+      "id": "boostez-votre-processus-de-decouverte-avec-example-mapping",
+      "day": "2023-10-10",
+      "type": "talk",
+      "title": "Boostez votre processus de découverte avec Example Mapping !",
+      "speakers": ["Bruno Boucard"],
+      "feedbackFrom": [],
+      "summary": "- L'**example mapping** structure la conversation autour d'**une seule user story**, en 25 minutes, entre PO, développeurs et QE ; si l'atelier déborde, la story ne respecte sans doute pas INVEST.\n- Rappel attribué à Liz Keogh : avoir des conversations est plus important que les capturer, et plus important que les automatiser. Les exemples s'écrivent simplement, **sans Given/When/Then**, avec des valeurs concrètes ; les questions vont sur des cartes rouges.\n- À la fin, ce sont **les cartes vertes (exemples)** qui comptent ; la trace durable est dans les tests d'acceptation, qui rappellent la règle métier.\n- Au-delà : relier l'**event storming** (règles métier du domaine), l'example mapping et les **cartes CRC** pour passer du problème à un début de modèle de classes compréhensible par le PO, jusqu'à la « formulation » directe en code avec des noms de tests explicites.\n- Ce « mashup » d'ateliers s'est construit sur plusieurs années (example mapping dès 2013, CRC en remplacement d'UML en 2019) ; conseil : pratiquer beaucoup, tester l'enchaînement avant de le systématiser, viser une vision « glocale ».\n- Questions-réponses : le Gherkin systématique n'est pas toujours utile, l'example mapping l'est dès que la règle est complexe ; présentation rapide du DDD (bounded contexts, charge cognitive).",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "etAxDwZZ430", "title": "PTC2023 - Bruno Boucard - Boostez votre processus de découverte avec Example Mapping !", "publishedAt": "2023-10-26", "transcript": true }
+    },
+    {
+      "id": "accelerer-l-automatisation-par-le-devops",
+      "day": "2023-10-10",
+      "type": "talk",
+      "title": "Accélérer l'automatisation par le DevOps",
+      "speakers": ["Jean-François Fresi"],
+      "feedbackFrom": [],
+      "summary": "- Automatiser, c'est **industrialiser** : le DevOps comme philosophie pour lever le « mur de la confusion » entre dev et ops, pas seulement comme outillage.\n- Trois difficultés observées : configurations hétérogènes d'une équipe à l'autre, installations de Robot Framework ou Selenium qui prennent plusieurs jours (*« ça marche chez moi »*), et besoin de tester en continu et de partager les résultats.\n- **Démo Docker** : environnement conteneurisé multi-navigateurs ouvert dans VS Code, VNC et noVNC pour voir et déboguer, volumes pour retrouver code et rapports en local. Coûts assumés : compétence à maintenir et machines plus puissantes.\n- **Démo pipeline GitLab CI** : déploiement d'OpenCart conteneurisé, tests Selenium/Cucumber publiés dans Xray, puis Lighthouse (performance, accessibilité, SEO) ; l'environnement est détruit après usage.\n- Message : *« automatiser c'est pas que scripter »* ; se former à Docker ou aux pipelines, un à la fois, et partager ses retours.\n- Questions : le merge automatique demande une forte maturité ; les **tests flaky** viennent surtout de l'instabilité des environnements et des jeux de données, il faut une stratégie de données.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "eTZgc4ROd3g", "title": "PTC2023 - Jean-François Fresi - Accélérer l'automatisation par le DevOps", "publishedAt": "2023-10-26", "transcript": true }
+    },
+    {
+      "id": "testeur-et-agilite-un-mode-operatoire-quand-on-est-entoure-de-25-developpeurs",
+      "day": "2023-10-10",
+      "type": "talk",
+      "title": "Testeur et Agilité : un mode opératoire quand on est entouré de 25 développeurs",
+      "speakers": ["Anaïs Fournier — Antidot"],
+      "feedbackFrom": [],
+      "summary": "- Contexte : **une seule testeuse pour 25 développeurs** répartis en cinq équipes, au moins une release mineure par semaine et deux majeures par an. La bonne question n'est pas le ratio mais *comment travailler à 26*.\n- **Stratégie par les risques** : produit découpé en une vingtaine de composants et une soixantaine de « capabilities », notées en impact client et probabilité de bug, avec PO, devs et support.\n- Le risque est aussi porté **sur chaque ticket Jira** (onglet dédié, bordure colorée sur le board) pour prioriser la semaine et rendre le risque visible à tous.\n- **Cinq temps forts** : la testeuse en consultante dès le raffinage (Three Amigos sur les stories à haut risque, scénarios partagés tôt, checklists passées par PO ou devs), tests sur la branche du développeur, plus de 22 000 tests automatisés à la charge des devs, tests en production (dont scans de sécurité ZAP), non-régression manuelle aux releases majeures (une vingtaine de bugs non critiques trouvés en juillet 2023).\n- Indice d'efficacité présenté : les bugs remontés par les clients restent stables de 2016 à 2023 alors que clients et développeurs augmentent fortement.\n- Points encore ouverts : peu de temps pour la veille, l'outillage et la maintenance des tests. Message : le test n'est pas un goulot d'étranglement, *« tester utile »*.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "NiKnemnUspM", "title": "PTC2023 - Anaïs Fournier - Un mode opératoire quand on est entouré de 25 développeurs", "publishedAt": "2023-10-26", "transcript": true }
+    },
+    {
+      "id": "tenir-ses-promesses",
+      "day": "2023-10-10",
+      "type": "keynote",
+      "title": "Tenir ses promesses !",
+      "speakers": ["Cécile Roche — Institut Lean France"],
+      "feedbackFrom": [],
+      "summary": "- Ingénieure hardware passée par Thales et la qualité, la speaker part d'une frustration : des processus construits avec les équipes qui ne marchent plus une fois mis en procédures, parce que **les gens ne sont pas des machines**.\n- Lecture business du lean : la réussite vient de la **satisfaction des clients**, la rentabilité de la **créativité des personnes**. *« Faites d'abord le bon truc et ensuite faites-le bien. »*\n- Un produit doit être vu, désirable, compris, utile et fiable ; la satisfaction commence par une **émotion**. Innover, c'est de la créativité qui rencontre un client : *« think inside the box »*.\n- Définition proposée : la performance est une promesse, **la qualité est la façon de tenir la promesse** ; il n'existe donc pas de « surqualité », seulement de la surperformance.\n- La productivité n'est pas un gros mot si elle signifie faire moins de bêtises : recommencer faute d'avoir compris le besoin, corriger, faire des choses inutiles, réinventer. Paradoxe : pour aller plus vite, il faut prendre du temps.\n- Les indicateurs orientent les comportements (exemple de la maintenance et de l'exploitation ferroviaires aux objectifs opposés) ; la confiance ne se décrète pas, elle dépend des conditions de travail. Les conflits sont nécessaires à l'innovation si on organise la conversation.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "DMTh36NFuhY", "title": "PTC2023 - Cécile Roche - Keynote - Tenir ses promesses !", "publishedAt": "2023-10-26", "transcript": true }
+    },
+    {
+      "id": "decouvrir-le-role-du-quality-coach-et-sa-boite-a-outils",
+      "day": "2023-10-10",
+      "type": "talk",
+      "title": "Découvrir le rôle du Quality Coach et sa boîte à outils",
+      "speakers": ["Emna Ayadi — Sogeti"],
+      "feedbackFrom": [],
+      "summary": "- Retour d'expérience : test lead sur un projet mis en pause pour raisons budgétaires, la speaker devient **quality coach** dans une transformation agile, après une formation auprès d'Anne-Marie Charrett.\n- Le coaching se distingue de l'enseignement (directif) et du mentorat : on ne donne pas la réponse, on fait réfléchir. Le passage du test à l'**ingénierie de la qualité** en fait un enjeu d'équipe.\n- Le quality coach mobilise plusieurs postures (coaching individuel et collectif, facilitation, formation, mentoring) ; c'est aussi une **posture que chacun peut prendre** sans le titre, dès la prochaine rétrospective.\n- Défis vécus : agenda vide puis saturé (prioriser, poser un contrat de coaching), niveau de détail attendu par le management, valeur qui met du temps à apparaître, rôle mal identifié, chevauchement avec le coach agile (point régulier à trois avec le management).\n- **Boîte à outils** : bilan de santé d'équipe inspiré de Spotify avec vote à cartes, liste des étonnements (*verwondering*), écoute active, entonnoir de questions sur le succès, les obstacles, les options et la prochaine étape, et un jeu d'amélioration de la qualité autour de trois P (process, produit, people).",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "huvLITZ70tk", "title": "PTC2023 - Emna Ayadi - Découvrir le rôle du Quality Coach et sa boite à outils", "publishedAt": "2023-10-26", "transcript": true }
+    },
+    {
+      "id": "sortons-de-la-pyramide-pour-construire-une-strategie-de-test",
+      "day": "2023-10-10",
+      "type": "talk",
+      "title": "Sortons de la pyramide pour construire une stratégie de test",
+      "speakers": ["Dorra Bartaguiz — Arolla"],
+      "feedbackFrom": [],
+      "summary": "- Récit d'un parcours de développeuse qui découvre, mission après mission, les **familles de tests** : unitaires, intégration (étroits et larges), end-to-end, health checks, performance, A/B testing.\n- Sur le terrain, la pyramide **mute** : losange (diamant), cornet de glace, sablier, que la speaker préfère appeler papillon.\n- Côté développeurs : **property-based testing** (entrées générées pour vérifier un invariant) et **mutation testing**, qui mesure la qualité des tests là où une couverture de 80 % peut être atteinte sans aucune assertion.\n- TDD (red, green, refactor, petits pas) et BDD ; l'example mapping aide à trouver le premier test. Automatiser les scénarios n'exige pas Cucumber ou SpecFlow, et la living documentation a déjà permis à des utilisateurs de repérer des écarts.\n- **Construire une stratégie** : impliquer toutes les parties prenantes, partir des risques, cartographier les parties critiques de façon récursive et partager cette carte ; reprise de Nicolas Fédou : réfléchir à la stratégie pour faire *« moins mais mieux »*. Viser la pyramide ou 80 % de couverture n'est pas une stratégie.\n- Appel à partager ses connaissances, y compris ses échecs.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "sfd3z9YcUp0", "title": "PTC2023 - Dorra Bartaguiz - Sortons de la pyramide pour construire une stratégie de test", "publishedAt": "2023-10-26", "transcript": true }
+    },
+    {
+      "id": "comment-une-conception-logicielle-influence-votre-strategie-de-test",
+      "day": "2023-10-10",
+      "type": "talk",
+      "title": "Comment une conception logicielle influence votre stratégie de test",
+      "speakers": ["Christophe Breheret-Girardin — Octo Technology"],
+      "feedbackFrom": [],
+      "summary": "- Point de départ : du code spaghetti aux lasagnes (architecture en couches calquée sur la base de données), puis aux microservices mal découpés ; et une pyramide de tests **appliquée partout à tort**.\n- Contre la couverture comme objectif : effet cobra et loi de Goodhart, *« dès que la mesure devient un objectif »* elle cesse d'être une bonne mesure. Formule : *« tester c'est coder »*. Le QA doit être dans l'équipe, en consultant test auprès des développeurs.\n- **Une architecture et une stratégie par type de périmètre** : cœur métier complexe en architecture hexagonale avec tests unitaires de comportement (pyramide) ; périmètre essentiel mais simple en transaction script (pyramide inversée) ; périmètre orienté données en Active Record (diamant, beaucoup d'intégration) ; CQRS et event sourcing combinant les deux.\n- Tests statiques (IDE, linters, TypeScript) à la base du « trophée » de Kent C. Dodds.\n- **Microservices** : tester sans attendre les autres équipes grâce aux contrats (consumer driven, provider driven, contrats exécutables), outils cités : Pact, Spring Cloud Contract, Specmatic. Un monolithe bien découpé peut suffire (exemples de Doctolib et Back Market cités).\n- Conclusion : *« il n'y a pas de silver bullet »*, tout dépend du contexte. Livre Culture Test (Octo) mis en jeu dans la salle.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "vK0ysktgYTo", "title": "PTC2023 - C. Breheret-Girardin - Comment une conception logicielle influence votre stratégie de test", "publishedAt": "2023-10-26", "transcript": true }
+    },
+    {
+      "id": "les-7-vies-d-une-qa-analyst-en-reconversion",
+      "day": "2023-10-10",
+      "type": "talk",
+      "title": "Les 7 vies d'une QA Analyst en reconversion",
+      "speakers": ["Audrey Moulins — leboncoin"],
+      "feedbackFrom": [],
+      "summary": "- Parcours non linéaire : graphisme, communication et marketing, perte de sens, puis **reconversion vers le test** déclenchée par la naissance de son fils.\n- Entrée par un programme de reconversion de leboncoin, « Les Fantastiques », cinq femmes venues d'autres métiers ; obstacle principal avant cela : *« revenez quand vous aurez de l'expérience »*.\n- Avis sur l'ISTQB : un badge utile pour recruter mais *« un peu old school »*, comparé au code de la route ; la formation, très cycle en V, était décalée d'un contexte agile.\n- **Quatre formes d'accompagnement** : buddy QA senior qui laisse chercher d'abord, promotion de pairs (avec le relais d'une promotion de développeuses plus ancienne), guilde de 45 QA réunie une journée par sprint, manager qui oppose des faits au syndrome de l'imposteur.\n- Les compétences d'avant comptent : communication, curiosité, prise de parole. Devenue lead de la guilde QA.\n- Questions : environ 60 feature teams sans QA dans chacune, shift left depuis trois ans, tests automatisés désormais portés par les développeurs, QA présents au grooming pour « ventiler » les tests.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "piktFBBNQ80", "title": "PTC2023 - Audrey Moulins - Les 7 vies d'une QA Analyst en reconversion", "publishedAt": "2023-10-26", "transcript": true }
+    },
+    {
+      "id": "quality-engineering-la-croissance-durable-par-la-qualite",
+      "day": "2023-10-10",
+      "type": "keynote",
+      "title": "Quality Engineering : la croissance durable par la qualité",
+      "speakers": ["Antoine Craske"],
+      "feedbackFrom": [],
+      "summary": "- Le monde n'est plus seulement VUCA mais **BANI** (fragile, anxieux, non linéaire, incompréhensible) : budgets contraints, investissements en baisse, clients volatils, recrutements difficiles.\n- Objectif : passer d'un système de production logicielle **fragile** à **antifragile** (Taleb). Une étude McKinsey citée avec prudence : 95 % des organisations annoncent de gros investissements numériques sans capacités internes pour les porter.\n- Deux causes de fragilité : le **court-termisme** (l'image du hamburger contre la salade) et la non-remédiation des problèmes structurels ; d'où une approche systémique.\n- Définition : le Quality Engineering est *« l'application de la qualité totale à la production logicielle »* ; principe : la qualité donne la vitesse.\n- Le cadre **MAMOS**, développé avec une communauté de praticiens, couvre méthodes, architecture, management, organisation et compétences, avec des indicateurs business, employés et livraison (métriques DORA, prévisibilité).\n- Démarche : partir d'un problème de qualité ou de vitesse lié au métier, chercher les causes racines, suivre outputs et outcomes. Pour passer de la QA au Quality Engineering, traiter **organisation et management avant l'outillage**.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "Di2Z1eeWyOw", "title": "PTC2023 - Antoine Craske - Keynote - Quality Engineering : La croissance durable par la qualité", "publishedAt": "2023-10-26", "transcript": true }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "PostgreSQL : ceux qui errent ne sont pas toujours perdus (Laetitia Avrot) : ni slides publiées ni vidéo publique"
+  ],
+  "sources": [
+    { "label": "Page officielle de l'édition 2023 (programme, slides, playlist)", "url": "https://paristestconf.com/edition-2023/" },
+    { "label": "Playlist YouTube ParisTestConf 2023 (10 vidéos publiques)", "url": "https://www.youtube.com/playlist?list=PLMXjuFj7QC6aBfqBmPRuhKFBWAwltRYKh" },
+    { "label": "Appel à orateurs Sessionize ParisTestConf 2023", "url": "https://sessionize.com/paristestconf-2023/" },
+    { "label": "[PTC] Les défis de la qualité durable (Marc Hage Chahine, La Taverne du Testeur, 3 novembre 2023, speaker)", "url": "https://latavernedutesteur.fr/2023/11/03/ptc-les-defis-de-la-qualite-durable/" },
+    { "label": "Slides d'Emna Ayadi sur Speaker Deck", "url": "https://speakerdeck.com/emna__ayadi/decouvrir-le-role-du-quality-coach-et-sa-boite-a-outils" },
+    { "label": "Posts LinkedIn : aucun retrouvé" }
+  ]
 }

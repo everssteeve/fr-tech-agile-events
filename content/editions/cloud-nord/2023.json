@@ -7,8 +7,269 @@
   "city": "Lille",
   "venue": "EuraTechnologies",
   "url": "https://conference-hall.io/cloud-nord-2023",
-  "dateConfidence": "sec",
-  "note": "Environ 400 participants.",
-  "status": "pending",
-  "sessions": []
+  "dateConfidence": "ok",
+  "note": "Environ 400 participants. Journée unique le 12 octobre 2023 à EuraTechnologies, 2e édition en présentiel d'après Conference Hall (300 personnes en 2022). Le site annonçait « 30+ talks », « 400+ participants » et « 35+ orateurs ». Formats : conférence de 50 min, quickie de 20 min, hands-on de 2 h. Catégories : Cloud & DevOps, Architecture, Méthodes et pratiques de développement, Découverte. 23 sessions filmées (dont les deux keynotes), publiées entre le 20 novembre et le 7 décembre 2023, plus un aftermovie.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-30",
+  "revisit": "Aucun retour participant nommé : pas de post LinkedIn ni d'article de blog trouvé en 6 recherches web, seulement des témoignages anonymes dans l'aftermovie officiel. Grille horaire et titres des sessions non filmées introuvables (agenda.cloudnord.fr est une application JavaScript non archivée). Chercher les posts LinkedIn d'octobre 2023 (hashtag cloudnord, speakers Blanc, Lapouge, Wittouck, Revy, Germain) et les sessions de Chervet et Doublier (AXA France), Comet (Ubisoft), Piot et Grangeau.",
+  "corpus": "Page Conference Hall 2023 (formats, catégories, 4e édition), page cloudnord.fr/2023 archivée (liste des intervenants et entreprises, chiffres annoncés) ; transcripts automatiques des 23 sessions et de l'aftermovie de la playlist officielle « Cloud Nord 2023 », publiés entre novembre et décembre 2023. Côté participants, seulement les témoignages anonymes de l'aftermovie.",
+  "limits": "Aucun retour de participant nommé : les résumés décrivent ce qui a été dit sur scène (sous-titres automatiques bruités, noms propres parfois déformés), pas la réception par la salle. Programme horaire et titres des sessions non filmées introuvables ; la speakeuse de « De villageoise à l'itWoman » n'est pas identifiée dans nos sources. Recherche web limitée à 8 requêtes, LinkedIn inaccessible.",
+  "tldr": "Une journée cloud native **résolument pratique** (internes de Kubernetes, autoscaling, Terraform, buildpacks, Nix, Dagger) où la sécurité passe par **la suppression des secrets statiques** et où les coûts du cloud se discutent **avant de migrer**, encadrée par deux keynotes sur l'avenir du cloud (Wasm, eBPF) et sur la reconversion.",
+  "keyTakeaways": [
+    "Remplacer les clés d'accès longues par de la fédération d'identité : OIDC entre GitHub Actions et le cloud (conditions sur le subject et l'audience), Workload Identity sur GKE, secrets dynamiques Vault pour PostgreSQL (Bogaert, Billiet, Merieau, Verrons).",
+    "Supprimer une clé AWS volée ne suffit pas : un token de fédération généré avant la suppression reste valide, il faut aussi bloquer le rôle (Merieau, Verrons).",
+    "Dimensionner requests et limits par des tests de charge itératifs, surveiller le throttling CPU et piloter le HPA sur des métriques métier (Rexed).",
+    "Refactoriser avant d'ajouter des ressources Terraform, concevoir les modules comme des fonctions propres au domaine et pousser la complexité vers les feuilles ; tfautomv génère les moved blocks à partir du plan (Busser).",
+    "Se poser les questions de compétences, de maintenance et de PaaS avant de migrer vers le cloud, et compter son propre temps dans le calcul des coûts (Werner).",
+    "Mesurer l'âge et le retard de version des images qui tournent en production, et réduire la surface d'attaque avec des images de base minimales (Behar, Fradin).",
+    "Accelerate n'est pas clé en main : commencer par les pratiques techniques (intégration continue d'abord) puis traquer les temps d'attente du flux, par exemple 5 jours de travail effectif pour 25 jours d'attente sur un mois (Revy).",
+    "Dans un data hub, garder les règles métier hors de la plateforme et miser sur documentation et observabilité, car *« c'est toujours la faute du data hub »* (Morisseau).",
+    "Ajouter un identifiant de tenant partout coûte cher : environ 300 fichiers modifiés chez Kestra avant même de pouvoir créer un tenant (Mathieu)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-d-ouverture-le-cloud-dans-5-ans",
+      "day": "2023-10-12",
+      "type": "keynote",
+      "title": "Keynote d'ouverture : le Cloud dans 5 ans",
+      "speakers": ["Sébastien Blanc — Aiven"],
+      "feedbackFrom": ["Sébastien Blanc (speaker, aftermovie)"],
+      "summary": "- Titre fixé *« ce matin »* : le cloud dans 5 ans. Point de départ, un livre trouvé dans une boîte à livres en Italie, *La Vallée du risque*, écrit en 1989-1990 par un journaliste installé dans la Silicon Valley. Il prédit beaucoup mais **rate Internet**, cité une seule fois.\n- Leçon retenue : l'**inertie** des technologies (l'ARNm déjà évoqué dans le livre, 30 ans avant son usage massif).\n- **WebAssembly et WASI** côté serveur : live coding d'un serveur web en Rust avec Spin, puis d'une application d'IA déployée en trois commandes. Il cite le tweet de Solomon Hykes (2019) selon lequel Docker n'aurait pas existé avec Wasm et WASI, mais prévoit une **cohabitation avec les conteneurs** pour 10 à 15 ans.\n- **eBPF** présenté comme une révolution à venir pour le cloud.\n- Être un **bon citoyen du cloud** : déclarer requests et limits, traquer les clusters zombies (un cluster oublié lui a coûté cher après Devoxx France), l'outil open source d'AXA pour éteindre pods et namespaces inutiles, choisir un runtime sobre (Java 21 et ses threads virtuels).\n- Final ludique : un chatbot vocal qui crée des déploiements Kubernetes. Dans l'aftermovie, il dit avoir fini un niveau de Doom en direct.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "0Bx1GmcxgEE", "title": "Keynote d'ouverture | Sébastien Blanc", "publishedAt": "2023-12-06", "transcript": true }
+    },
+    {
+      "id": "observabilite-decisions-eclairees-numerique-responsable",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "Observabilité : prenez des décisions éclairées pour un numérique responsable !",
+      "speakers": ["Guillaume Van Ghelder — Open", "Jacques Buchaillot — Open", "Luc Lefebvre — Open"],
+      "summary": "- Image d'ouverture : monter dans un avion dont le pilote a bricolé son propre tableau de bord, sans tour de contrôle. C'est l'état de beaucoup de SI selon les speakers.\n- La supervision éclatée (métriques, logs, traces) ne suffit pas : il faut une **donnée centralisée** pour décider. Chiffre cité (New Relic) : 72 % des DSI utilisent plus de deux outils d'observabilité.\n- Proposition organisationnelle : des **champions de l'observabilité** dans chaque équipe agile, en plus d'une équipe outillage, et un gros effort d'acculturation.\n- Côté numérique responsable : la fabrication des équipements pèse l'essentiel de l'impact (78 % cité, 21 % pour l'usage). Mesurer en continu plutôt qu'attendre un bilan carbone tous les 3 à 4 ans, avec des tags communs et des dashboards par produit.\n- Lucidité finale : l'observabilité peut coûter *« plus cher que les services »* observés, elle doit donc prouver son utilité.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "ELipnGO7ozc", "title": "Observabilité : prenez des décisions éclairées pour un numérique responsable ! | Open", "publishedAt": "2023-11-20", "transcript": true }
+    },
+    {
+      "id": "demystifions-les-composants-internes-de-kubernetes",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "Démystifions les composants internes de Kubernetes",
+      "speakers": ["Denis Germain — Deezer"],
+      "summary": "- Constat : beaucoup font tourner de la prod sur Kubernetes sans savoir comment il marche. Personne dans la salle n'avait suivi *Kubernetes The Hard Way*.\n- Redéfinition : un conteneur est *« une boîte »* isolée, pas forcément Linux (micro-VM, Windows, Wasm).\n- **Démo en live** : assemblage d'un cluster pièce par pièce, API server (une cinquantaine d'API), etcd (Raft), controller manager et ses boucles de contrôle, scheduler, kubelet, runtime (containerd), CNI (Cilium), ingress controller.\n- Rappels utiles : la panique autour de Kubernetes 1.24 visait le dockershim, pas Docker ; il n'existe **pas d'ingress controller officiel** ; regarder sérieusement la **Gateway API**.\n- Conclusion : une fois démonté, Kubernetes est *« plutôt simple »*. Code et slides en ligne pour refaire la démo.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "Zv54GvQT6hI", "title": "Démystifions les composants internes de Kubernetes | Denis Germain", "publishedAt": "2023-11-21", "transcript": true }
+    },
+    {
+      "id": "journal-de-bord-d-un-capitaine-de-datahub",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "Journal de bord d'un capitaine de datahub",
+      "speakers": ["Philippe Morisseau"],
+      "summary": "- REX sur **5 ans** (depuis juin 2018) de construction d'un data hub sur Azure pour un client du commerce d'ultra-proximité qui voulait mieux connaître ses clients face à Amazon.\n- Contraintes de départ : Azure imposé, première version avant Noël, budget serré en run comme en maintenance.\n- Convictions : data mesh, démarche DevOps, **générateur d'API** qui produit code et documentation, serverless, observabilité, FinOps dès le départ.\n- Récit en étapes : la vélocité grimpe, puis la complexité revient quand un partenaire se retire et que le client fait absorber ses fonctions métier par le data hub (2022).\n- Leçons : garder les règles métier **hors du data hub** (intermédiation seulement), documenter et observer pour pouvoir prouver où est le problème car *« c'est toujours la faute du data hub »*, et voir le data hub comme la partie transactionnelle d'une data platform plus large.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "jRLBLrG_hKU", "title": "Journal de bord d'un capitaine de datahub | Philippe Morisseau", "publishedAt": "2023-11-22", "transcript": true }
+    },
+    {
+      "id": "l-intelligence-artificielle-expliquee-en-20-minutes",
+      "day": "2023-10-12",
+      "type": "lightning",
+      "title": "L'intelligence artificielle expliquée en 20 minutes !",
+      "speakers": ["Stéphane Philippart — OVHcloud"],
+      "summary": "- Quickie d'un développeur *« pas data scientist »* qui veut comprendre ce qu'il y a derrière les prompts.\n- Ce que l'IA n'est pas : elle ne crée pas à partir de rien, ne raisonne pas, n'a ni émotion ni intuition. *« Ce n'est pas de l'intelligence »* au sens propre.\n- Trois catégories (IA faible, forte, super-intelligence) : nous sommes dans l'IA faible, **une aide à la décision**. Le machine learning représenterait 95 % des usages.\n- Apprentissages supervisé, non supervisé, par renforcement ; neurones comme fonctions mathématiques ; **transfer learning** (spécialiser YOLO pour reconnaître des marques de bouteilles) comme usage le plus courant pour un développeur.\n- Points d'attention : compatibilité GPU des frameworks, coûts de stockage et d'entraînement dans le cloud, et la question de l'énergie dépensée pour des images *« rigolotes »*.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "g_wR-x5U_wc", "title": "L'intelligence artificielle expliquée en 20 minutes ! | Stéphane Philippart", "publishedAt": "2023-11-23", "transcript": true }
+    },
+    {
+      "id": "zenml-le-dagger-io-des-pipelines-ml",
+      "day": "2023-10-12",
+      "type": "lightning",
+      "title": "ZenML, le dagger.io des pipelines ML !",
+      "speakers": ["François Serra — ADEO"],
+      "summary": "- Analogie : comme Dagger pour la CI, **ZenML** permet d'écrire ses pipelines de machine learning en Python, de les tester en local et de les faire tourner ailleurs.\n- Spécificité du MLOps : la **donnée change** au cours du temps, il faut versionner données, paramètres et artefacts (datasets, modèles) qui circulent entre les étapes.\n- Démo : classification de pingouins avec deux modèles, mise en cache des étapes inchangées, puis bascule vers un cluster Kubernetes local par simple changement de *stack* (construction et push d'image automatiques). Le wifi a perturbé la démo.\n- Intérêt cité chez ADEO : rendre les data scientists autonomes sans passer par un ML engineer ou un Ops, avec Vertex AI comme cible possible.\n- Différence avec Airflow (en questions) : des abstractions propres au ML (model registry, experiment tracker, feature store).",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "FDqvOf7OoWc", "title": "ZenML, le dagger.io des pipelines ML ! | François Serra", "publishedAt": "2023-11-23", "transcript": true }
+    },
+    {
+      "id": "maitrisez-votre-code-terraform-refactoring-et-tfautomv",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "Maîtrisez votre code Terraform : bonnes pratiques de refactoring et introduction à tfautomv",
+      "speakers": ["Arthur Busser — Pigment"],
+      "summary": "- Workflow : **refactoriser d'abord** pour faciliter le changement voulu, plutôt que copier-coller puis nettoyer (exemple de buckets passés en for_each).\n- **tfautomv** lit le plan JSON, apparie les ressources que Terraform veut détruire et recréer en comparant leurs attributs, et génère les moved blocks. Il est volontairement conservateur : la moindre différence empêche le move.\n- Thèse : *« un module Terraform, c'est une fonction »*, Terraform est un langage fonctionnel. Les meilleurs modules sont **propres à votre domaine** (cluster produit, cluster outillage chez Pigment).\n- Heuristiques : pousser la complexité vers les feuilles, ne pas configurer de provider dans les modules, définir un langage commun (inspiré du DDD) sur des mots comme « environnement ».\n- Découper les stacks selon le cycle de vie des équipes qui les appliquent. Premier talk devant une salle aussi grande pour le speaker.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "4wDAgcHaA-g", "title": "Maîtrisez votre code Terraform: bonnes pratiques de refactoring et introduction à tfautomv |A.Busser", "publishedAt": "2023-11-22", "transcript": true }
+    },
+    {
+      "id": "regles-d-autoscaling-efficaces-pour-kubernetes",
+      "day": "2023-10-12",
+      "type": "lightning",
+      "title": "Comment créer des règles d'autoscaling efficaces pour notre cluster Kubernetes ?",
+      "speakers": ["Henrik Rexed — Dynatrace"],
+      "summary": "- Histoire reconstituée d'un client du retail : un site annexe peu fréquenté dont la facture d'infrastructure inquiète. Le sujet est l'argent plus que l'écologie.\n- Démarche : baseline, puis itérations sur **requests et limits** avec des tests de charge K6 et des mesures.\n- Piège central : le **throttling CPU** (cycles de 100 ms, pauses forcées au-delà de la limite) dégrade fortement les temps de réponse.\n- Autoscaling : le HPA sur CPU ne suffit pas ; exposer des **métriques métier** via le metrics server de Keptn Lifecycle Toolkit (projet initié par Dynatrace, providers Dynatrace, Prometheus, Datadog).\n- En questions : faut-il supprimer les limites CPU ? Débat reconnu, mais le speaker défend leur usage sur un cluster partagé.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "d6Uwfuzdb0c", "title": "Comment créer des règles d'autoscaling efficace pour notre cluster Kubernetes ? | Henrik Rexed", "publishedAt": "2023-11-21", "transcript": true }
+    },
+    {
+      "id": "buildez-vos-images-oci-avec-un-meta-build-system",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "Buildez vos images OCI correctement avec un meta build system",
+      "speakers": ["Nicolas Bernard — S3NS"],
+      "summary": "- Dernière session de la journée. Pas un talk de bonnes pratiques Dockerfile, mais une présentation des **meta build systems** (lignée Bazel et Buck2, Nix à part).\n- Un build ne se résume pas à une commande : outils, versions, architecture, configuration doivent être maîtrisés pour être **reproductibles**.\n- **Nix** : à la fois gestionnaire de paquets, build system et langage. Démo de nix-shell pour fournir à toute l'équipe les mêmes outils (Terraform, kubectl, plugins) dans les mêmes versions, et génération de SBOM.\n- Construction d'une image Docker avec Nix, dépendances sur une couche séparée ; identifiants calculés sur le **hash des entrées**, ce qui permet un cache partagé entre CI et postes développeurs.\n- Contexte : S3NS, coentreprise de Thales et Google, vise la qualification SecNumCloud 3.2.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "sMMB9mZ82kc", "title": "Buildez vos images OCI correctement avec un meta build system | Nicolas Bernard", "publishedAt": "2023-12-05", "transcript": true }
+    },
+    {
+      "id": "venez-decouvrir-la-puissance-de-netlify",
+      "day": "2023-10-12",
+      "type": "lightning",
+      "title": "Venez découvrir la puissance de Netlify",
+      "speakers": ["Emmanuel Demey"],
+      "summary": "- Quickie **improvisé** : le speaker, coorganisateur du DevFest Lille, remplace au pied levé un speaker absent (sollicité la veille à 17 h), sans slides.\n- Netlify présenté comme l'équivalent de la partie historique de Firebase : hosting, environnements de prévisualisation par pull request, fonctions cloud.\n- Démo des **edge functions** comme middleware pour une authentification basique sur un mini-site interne, configurée dans netlify.toml.\n- Déploiement CLI, variables d'environnement, puis branchement sur GitHub. Le tout dans l'offre gratuite ; pas de base de données temps réel, mais rien n'empêche d'appeler une base externe.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "PP2Ez0T7KaM", "title": "Venez découvrir la puissance de Netlify | Emmanuel Demey", "publishedAt": "2023-11-30", "transcript": true }
+    },
+    {
+      "id": "de-villageoise-a-l-itwoman",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "De villageoise à l'itWoman... Quelles actions pour faire de ton rêve TECH une réalité ?",
+      "speakers": [],
+      "summary": "- Récit personnel d'une développeuse (diplômée ingénieure en 2016, 7 ans d'expérience) partie d'un village, qui a toujours été **la seule femme de son équipe**. Son nom n'est pas lisible dans les sous-titres automatiques.\n- Chiffres cités : 31 % de femmes dans le numérique, 16 % chez les développeurs ; 84 % des personnes extérieures au secteur pensent que l'informatique est pour les hommes.\n- Obstacles décrits : stéréotypes familiaux, cantonnement aux *« petites tâches »*, exclusion, racisme ; leviers : les **rôles modèles**, la communication, la persévérance.\n- Propositions : promouvoir les métiers dès l'école, **donner leur chance aux reconversions** (clé immédiate pour féminiser les équipes) sans vendre de *« rêves bidons »*, et que les femmes de la tech prennent davantage la parole.\n- En questions : elle a lancé une campagne associative et dit ne pas savoir encore si les entreprises qui la sollicitent visent un impact réel ou leur marque employeur. Une participante salue un témoignage qui montre aux femmes *« qu'elles sont pas seules »*.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "9-WCdAE-vFQ", "title": "De villageoise à l'itWoman ... Quelles actions pour faire de ton rêve TECH une réalité ?", "publishedAt": "2023-11-30", "transcript": true }
+    },
+    {
+      "id": "it-works-on-my-machine-dagger",
+      "day": "2023-10-12",
+      "type": "lightning",
+      "title": "It works on my machine",
+      "speakers": ["Edouard Cattez — Ippon Technologies"],
+      "summary": "- Quickie sur **Dagger** : écrire sa CI/CD dans le langage du projet (ici Node.js), *« pas de YAML »*, et l'exécuter en local dans des conteneurs (Podman).\n- Démo : fonctions réutilisables (npm install), tests, build puis publication d'une image sur ttl.sh ; le workflow GitHub Actions se réduit à quelques lignes.\n- Intention : que le développeur s'intéresse à ce qui se passe après son code. SDK Python et GraphQL, Java annoncé.\n- En questions : secrets injectés par la CI, services annexes possibles, et un argument vécu, la pipeline continue de tourner en local quand GitLab ou ses runners tombent. Outil open source et gratuit.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "915vfNHTIkg", "title": "It works on my machine | Edouard Cattez", "publishedAt": "2023-11-30", "transcript": true }
+    },
+    {
+      "id": "exploitation-de-vulns-dans-aws-le-hacker-le-newbie-et-la-cloudsec",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "Exploitation de vulns dans AWS : le Hacker, le Newbie et la CloudSec",
+      "speakers": ["Benjamin Merieau — PayFit", "Jean Verrons"],
+      "summary": "- Format joué à trois rôles : un newbie qui copie Stack Overflow, un hacker, une CloudSec qui corrige.\n- **GitHub Actions** : injection via un titre d'issue, clés d'accès volées. Le hacker génère un **token de fédération** STS qui survit à la suppression de la clé. Remèdes : variables d'environnement plutôt qu'interpolation, OIDC et assume role avec conditions sur le subject et l'audience, attention au parsing JSON dans Terraform qui avait annulé une condition.\n- **S3 et CloudFront** pour héberger des photos, puis une EC2 vulnérable à une **SSRF** qui donne accès au service de métadonnées (IMDS) et aux credentials du rôle.\n- **Lambda** : un eval sur une entrée contrôlée par l'attaquant, détecté par Semgrep, et une technique de persistance sur le runtime Python.\n- Message : l'isolation d'une Lambda ne protège pas d'un code vulnérable. Slides et sources partagées.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "PmhtOpXckjc", "title": "Exploitation de vulns dans AWS: le Hacker, le Newbie et la CloudSec |Benjamin Merieau & Jean Verrons", "publishedAt": "2023-11-28", "transcript": true }
+    },
+    {
+      "id": "concevoir-un-saas-multitenant",
+      "day": "2023-10-12",
+      "type": "lightning",
+      "title": "Concevoir un SaaS multitenant",
+      "speakers": ["Loïc Mathieu — Kestra"],
+      "summary": "- Quickie sur le multitenant, *« simuler plusieurs instances logiques dans une instance physique »* pour maîtriser les coûts.\n- Quatre modèles comparés : une instance par tenant (complexité déplacée hors de l'application), une base par tenant, un schéma par tenant (la base devient un point unique de défaillance, d'où des proxys PostgreSQL chez certains acteurs SaaS), un identifiant de tenant partout.\n- Choix de Kestra pour son offre cloud : **tenant ID** résolu dans la couche API et propagé dans chaque requête et message. *« Si on en manque une, c'est une faille de sécurité. »*\n- Coût réel : environ 140 fichiers modifiés côté open source et 160 côté Enterprise, 3 000 lignes, avant même de pouvoir créer un tenant.\n- En questions : isolation physique exigée par certains gros clients concurrents entre eux, bucket et worker group par tenant envisagés.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "JkBT4kVa9D8", "title": "Concevoir un SaaS multitenant | Loïc Mathieu", "publishedAt": "2023-11-28", "transcript": true }
+    },
+    {
+      "id": "accelerer-sa-transformation-devops-avec-accelerate",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "Accélérer sa transformation DevOps... avec Accelerate !",
+      "speakers": ["Jean-Rémy Revy — Ippon Technologies"],
+      "summary": "- Talk rythmé par un quiz avec lots. Base : le livre *Accelerate* et les rapports State of DevOps de DORA, dont l'édition 2023 compte 36 000 répondants selon le speaker.\n- Les capacités (techniques, processus inspirés du Lean, culture générative) sont corrélées à la performance, mais **Accelerate n'est pas clé en main** : ni ordre ni priorité.\n- Sa pratique : commencer par des sujets technologiques, *« intégration continue »* en premier, avant d'affronter processus et organisation.\n- Exemple de value stream mapping : sur un mois, 5 jours de travail effectif pour 25 jours d'attente, donc inutile d'automatiser les tests pour gagner une demi-journée. Un verrou levé par simple formation aux tests.\n- Utiliser les résultats de l'étude comme **arguments** pour convaincre, en sachant que les interprétations restent discutables.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "An6gArsC_5M", "title": "Accélérer sa transformation DevOps ... avec Accelerate ! | Jean-Rémy Revy", "publishedAt": "2023-11-27", "transcript": true }
+    },
+    {
+      "id": "web-dans-le-cloud-piloter-ses-decisions-par-les-couts",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "Web dans le cloud, piloter ses décisions par les coûts",
+      "speakers": ["Matthieu Werner — JoliCode"],
+      "summary": "- Projet fictif agrégeant ses missions web (Symfony, Elasticsearch, Redis, pics de charge sur des ventes flash). Point de départ : un infogéreur et des serveurs **dimensionnés au pif** (huit frontaux pour rien).\n- Questions à se poser **avant** de migrer : un PaaS ne suffirait-il pas ? Qui assume la maintenance ? L'équipe maîtrise-t-elle le cloud et l'infrastructure as code (Terraform) ?\n- Les architectures très découpées en microservices et équipes peuvent coûter *« un bras »*. FinOps oui, mais un poste dédié n'est pas toujours justifié.\n- Astuces : brancher API Gateway directement sur DynamoDB (templates VTL dans la spec OpenAPI) pour supprimer une Lambda inutile, en documentant bien pour les développeurs suivants ; une extension Slack servant 35 000 requêtes pour un coût nul.\n- Leçon : **compter son propre temps** dans l'équation des économies.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "kEthCSQpuBc", "title": "Web dans le cloud, piloter ses décisions par les coûts | Matthieu Werner", "publishedAt": "2023-11-27", "transcript": true }
+    },
+    {
+      "id": "faconner-les-architectures-du-futur-avec-dapr",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "Façonner les architectures du futur avec Dapr",
+      "speakers": ["Christophe Gigax — Hager Group"],
+      "summary": "- Problème : au-delà de quelques microservices, on ne sait plus *« qui appelle qui »*, le débogage et les tests deviennent difficiles.\n- **Dapr** : un sidecar avec lequel l'application est la seule à communiquer (HTTP ou gRPC) pour l'état, le pub/sub, les secrets, l'invocation de service. L'infrastructure réelle est décrite en configuration.\n- Démo en local (Redis par défaut pour l'état et le pub/sub) puis sur Kubernetes avec trois microservices et un formulaire React.\n- En questions : open source et gratuit, configuration partagée entre sidecars, possibilité d'options propres à un composant, offres managées comme Diagrid par les créateurs du projet.\n- Le speaker est MVP Microsoft et anime le MTG (Microsoft Tech Group) à Strasbourg.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "bjkW2MnBCwg", "title": "Façonner les architectures du future avec Dapr | Christophe Gigax", "publishedAt": "2023-11-25", "transcript": true }
+    },
+    {
+      "id": "arretons-de-rotater-des-cles-credential-less",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "Arrêtons de « rotater » des clés ! Et si on osait le credential-less ?",
+      "speakers": ["Gaetan Bogaert — SFEIR", "Louis Billiet — SFEIR"],
+      "summary": "- *Hot take* : gérer des credentials, c'est être *« à un commit du drame »*. Après une rotation en urgence, les speakers ont visé le credential-less sur une stack existante (Go, GitHub, Artifact Registry, GKE, Cloud Storage, Cloud SQL).\n- Rappel : une application ne peut s'authentifier que sur ce qu'elle sait, d'où l'intérêt de **tokens courts** plutôt que des clés de service valables des mois (90 jours au mieux dans leur expérience).\n- **Workload Identity Federation** pour la CI externe, **Workload Identity** sur GKE (annotation du compte de service Kubernetes), jugé *« très rapide »* à mettre en place.\n- Pour PostgreSQL : **Vault** et ses secrets dynamiques ou statiques avec rotation (15 s en démo), illustré par un sondage tabulations contre espaces.\n- Démo sur Google Cloud mais standard transposable. En questions, un participant juge Vault lourd et suggère Cloud SQL Proxy ; les speakers reconnaissent l'option et l'arrivée de l'authentification IAM directe.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "ACpdWKNLYaU", "title": "Arrêtons de \"rotater\" des clés ! Et si on osait le credential-less ? |Gaetan Bogaert & Louis Billiet", "publishedAt": "2023-11-25", "transcript": true }
+    },
+    {
+      "id": "ma-wardley-map-me-dit-de-ne-pas-apprendre-kubernetes",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "Ma Wardley Map me dit de ne pas apprendre Kubernetes, que dit la vôtre ?",
+      "speakers": ["Olivier Wulveryck — OCTO Technology"],
+      "summary": "- Point de départ : l'échec de son offre SRE chez OCTO en 2017, faute d'avoir pris en compte **le contexte** de l'époque.\n- Inspiration : Mark Burgess au Config Management Camp, puis Simon Wardley, qui combine Sun Tzu et la boucle OODA dans un cycle stratégique (paysage, climat, doctrine, leadership).\n- Les **cartes de Wardley** : axe de la chaîne de valeur et axe d'évolution en quatre stades (genèse, sur mesure, produit, commodité), illustré par Docker et les smartphones. L'agilité excelle dans l'espace exploratoire, la standardisation dans l'espace industriel.\n- Une carte est fausse par nature et **collaborative** : *« le voyage est aussi intéressant que la destination »*, les premières cartes finissent à la poubelle.\n- Réponse au titre : apprendre Kubernetes à la dure est passionnant mais rarement utile au métier, sauf si l'on en a vraiment besoin.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "c07EBSKSITY", "title": "Ma Wardley Map me dit de ne pas apprendre Kubernetes, que dit la vôtre ? | Olivier Wulveryck", "publishedAt": "2023-11-24", "transcript": true }
+    },
+    {
+      "id": "standardisez-vos-eda-avec-asyncapi",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "Standardisez votre monde d'événements en documentant vos EDA avec AsyncAPI !",
+      "speakers": ["Ludovic Dussart — Ineat"],
+      "summary": "- Problème : dans une architecture événementielle, il faut des **contrats d'échange** documentés entre producteurs et consommateurs.\n- REX chez ADEO sur un produit de *costing* (calcul du prix de cession d'articles) qui échange via Kafka et des schémas Avro.\n- **AsyncAPI** reprend la structure d'OpenAPI, ce qui facilite l'adoption ; partenariat avec Postman depuis 2020 (une dizaine de salariés financés) avec une gouvernance restée open source.\n- Le générateur sait lire les schémas Avro (et Protobuf, RAML), donc une **documentation vivante** alignée sur le code, publiée via Maven et GitHub Actions. Approche contract-first ; Springwolf existe côté Spring.\n- Le speaker contribue au projet et invite à le faire pendant l'Hacktoberfest.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "pFMmQVppV6s", "title": "Standardisez votre monde d'événements en documentant vos EDA avec AsyncAPI ! | Ludovic Dussart", "publishedAt": "2023-11-24", "transcript": true }
+    },
+    {
+      "id": "continuous-container-checkup",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "Continuous Container Checkup : et si on regardait ce qu'il y a dans nos conteneurs ?",
+      "speakers": ["Vincent Behar — Ubisoft", "Louis Fradin — Ubisoft"],
+      "summary": "- Outil né d'un hackathon chez Ubisoft, inspiré de la pratique du **build horizon** de Google : donner une date d'expiration aux builds pour que les vieux services ne deviennent pas des passoires.\n- Première question : quel est l'âge des images qui tournent dans nos clusters ? Personne dans la salle ne savait répondre.\n- L'outil corrèle âge, **retard de version** (tags comparés en semantic versioning via crane), versions des paquets (ecosyste.ms, endoflife.date) et vulnérabilités, avec un gros travail de filtrage des faux positifs.\n- Correction recommandée : réduire la surface d'attaque, notamment avec des images de base minimales (distroless).\n- Exploitation : analyse toutes les heures avec cache, métriques Prometheus configurables, checks personnalisables ; seul point faible cité, le re-téléchargement des images.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "OHZzP6Kkl6I", "title": "Continuous Container Checkup - Et si on regardait ce qu'il y a dans nos conteneurs ?", "publishedAt": "2023-12-06", "transcript": true }
+    },
+    {
+      "id": "laissez-tomber-vos-dockerfile-adoptez-un-buildpack",
+      "day": "2023-10-12",
+      "type": "talk",
+      "title": "Laissez tomber vos Dockerfile, adoptez un buildpack !",
+      "speakers": ["Julien Wittouck — CodeKaïo"],
+      "summary": "- Ouverture sur ses propres *« très mauvais »* Dockerfiles et sur un exemple officiel Spring Boot (2022) qui recompile l'application à chaque démarrage.\n- Anatomie d'une image OCI : un manifeste JSON, des couches tar.gz et une configuration (architecture, variables, utilisateur, ports).\n- **Cloud Native Buildpacks** : un builder (Paketo, porté par Cloud Foundry et VMware) détecte le langage, construit les couches et exporte l'image. Démo Java avec inspection des couches.\n- Avantages : plus de Dockerfile copié dans des dizaines de dépôts, cache et réutilisation des couches, **SBOM** généré pour le RSSI.\n- Limite reconnue : la personnalisation (version du runtime, options JVM) demande de nombreuses variables.\n- Le speaker était aussi relecteur du CFP de l'édition.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "_kvdnCKz4gk", "title": "Laissez tomber vos Dockerfile, adoptez un buildpack ! | Julien Wittouck", "publishedAt": "2023-12-07", "transcript": true }
+    },
+    {
+      "id": "keynote-de-cloture-coucher-un-rhinoceros-a-la-demande",
+      "day": "2023-10-12",
+      "type": "keynote",
+      "title": "Keynote de clôture : quand la reconversion s'avère plus difficile que coucher un rhinocéros à la demande",
+      "speakers": ["Solène Lapouge — Apside"],
+      "summary": "- Récit de reconversion : enfant, elle voulait être **soigneuse d'éléphants** ; parcours scolaire difficile (harcèlement), bac et BTS agricoles, puis soigneuse animalière et formatrice en MFR.\n- Une maladie auto-immune (spondylarthrite ankylosante) devenue agressive en 2019 l'oblige à changer de voie.\n- Entrée dans le test logiciel par une préparation opérationnelle à l'emploi de 3 mois, conditionnée à une promesse d'embauche qu'Apside lui accorde ; école du test en décembre 2022.\n- Message : une reconversion fait **tout remettre en question** (salaire, position, retour à l'école) sans garantie que le nouveau métier plaise.\n- Les anecdotes de soigneuse (réunion du matin qui ressemble à un daily, collègues et boîtes de croquettes) rapprochent les deux mondes ; le titre vient d'une rhinocéros dressée à se coucher sur demande.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "B_CKbrGlAU0", "title": "Keynote de clôture | Solène Lapouge", "publishedAt": "2023-12-07", "transcript": true }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Session de Guillaume Chervet et Thanh Lan Doublier (AXA France), titre inconnu, non filmée",
+    "Session de Nicolas Comet (Ubisoft), titre inconnu, non filmée",
+    "Session de Ludovic Piot (theGarageBandOfIT), titre inconnu, non filmée",
+    "Session de Laurent Grangeau (Google), titre inconnu, non filmée",
+    "Table ronde annoncée sur le site, contenu inconnu"
+  ],
+  "sources": [
+    { "label": "Page Conference Hall Cloud Nord 2023 (formats, catégories, 4e édition)", "url": "https://conference-hall.io/cloud-nord-2023" },
+    { "label": "Page Cloud Nord 2023 archivée (intervenants, entreprises, chiffres annoncés)", "url": "https://web.archive.org/web/20240224001826/https://cloudnord.fr/2023" },
+    { "label": "Playlist YouTube officielle Cloud Nord 2023 (23 sessions et aftermovie)", "url": "https://www.youtube.com/playlist?list=PLVQhat0Bx0WADohrt6oUkXS6Z6K6mGetH" },
+    { "label": "Aftermovie Cloud Nord 2023 (témoignages anonymes de participants et sponsors)", "url": "https://www.youtube.com/watch?v=hVhAPWs7sVQ" }
+  ]
 }
