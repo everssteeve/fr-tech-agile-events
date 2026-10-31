@@ -8,7 +8,474 @@
   "city": "Lille",
   "venue": "Euratechnologies",
   "url": "https://api-platform.com/con/2023/",
+  "programUrl": "https://api-platform.com/en/con/2023/schedule",
+  "theme": "API Platform 3.2 et FrankenPHP 1.0 bêta ; décentralisation du web, migrations et performance",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "3e édition, hybride (Euratechnologies, Lille, et en ligne), organisée par Les-Tilleuls.coop, sur deux salles (anglais et français), précédée d'ateliers en français les 19 et 20 septembre. Bilan officiel : une vingtaine de talks, 25 speakers, 3 lightning talks, plus de 300 personnes sur place, 250 en ligne, 14 sponsors et partenaires, une soirée communautaire.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-31",
+  "revisit": "Aucun post LinkedIn lu (une recherche ciblée, zéro résultat) et un seul billet de participant indépendant (Stefan Koopmanschap). 8 talks n'ont pas de transcript intégré : API Platform, opendata et schemaless API (R1MNtsgeopo), Materialized View (rVr7t88Kf50), Developing an API without API Platform (0wN-ZWgLH18), Valider vos données (LYr9pNFTHd0), API Platform, Svelte et buzz-words (vFZFYkpyT9w), Loggastic (JBU_jgu1S2A), Rejoignez le Fediverse (6YlbJyeBpRc), L'impact d'API Platform sur l'Open Source (26_uYTmVpf4). À reprendre pour ces transcripts et pour des retours LinkedIn.",
+  "corpus": "Programme officiel (24 sessions sur deux salles, plus les lightning talks) et page bilan ; 15 des 23 vidéos de la playlist officielle (publiées du 27 octobre au 22 décembre 2023) lues en transcript ; comptes-rendus jour 1 et jour 2 du blog Les-Tilleuls.coop (28 et 29 septembre 2023) ; billets de Stefan Koopmanschap (23 septembre), de Boas Falke et Holger Dörner (29 septembre) et de Kévin Dunglas (21 septembre), article de Vincent Chalamon, slides de Dunglas et de Łukasz Chruściel ; 107 posts Mastodon sous #APIPlatformCon (11 septembre au 2 octobre 2023), dont une quarantaine de participants ou speakers, les autres venant des comptes organisateurs.",
+  "limits": "Lu à trois ans de distance et sans post LinkedIn. Les seuls comptes-rendus talk par talk viennent de l'organisateur, donc sans regard critique ; les retours indépendants se limitent à un billet et à des réactions Mastodon d'une ligne. Les 8 talks sans transcript sont résumés d'après le descriptif officiel et le blog de l'organisateur, et la session de Stefan Koopmanschap est absente de la playlist. Les transcripts sont pour partie des sous-titres automatiques (noms propres et chiffres parfois déformés), et les chiffres cités sur scène n'ont pas été recoupés.",
+  "tldr": "L'édition où **FrankenPHP 1.0 bêta et API Platform 3.2 changent le socle d'exécution de PHP**, entre documentation exécutable en WebAssembly, premiers signes du support de Laravel, retours de migrations douloureuses et un fil inattendu sur la décentralisation du web.",
+  "keyTakeaways": [
+    "Mesurer FrankenPHP sur ses propres projets : il remplace le couple serveur web et PHP-FPM par un seul binaire ou une seule image, et le mode worker annonce un facteur 3 sur API Platform, sous réserve des limites connues à l'époque (fibers, Alpine, connexions Doctrine longues) (Kévin Dunglas).",
+    "Abandonner `input` et `output`, que l'équipe veut retirer, au profit de `stateOptions` avec `entityClass` et d'un mapping entité vers DTO dans un provider et un processor génériques (Ryan Weaver, Antoine Bluchet).",
+    "Ne pas mettre de contrôleur custom dans API Platform : décorer les providers et processors, ou sortir vers une route Symfony classique. *« Just stop fighting API Platform »* (core team, session Q&A).",
+    "Ne se lancer dans une migration qu'avec des tests fonctionnels : les tests unitaires partent à la poubelle, les fonctionnels servent de filet (Bastien Jaillot).",
+    "Traquer le N+1 avec le profiler, mais sans tout joindre : la règle est de charger autant que nécessaire et pas plus, l'hydratation coûtant aussi cher que les requêtes (Łukasz Chruściel).",
+    "Limiter les sous-ressources à deux niveaux et préférer un endpoint filtré plat dès que le client devrait enchaîner les appels (Mathias Arlaud).",
+    "Pour une migration de base vers une API, passer méthode par méthode derrière un repository et un feature flag, afin de pouvoir revenir sur Doctrine immédiatement (Smaïne Milianni).",
+    "Comprendre `no-cache` (validation obligatoire) et `no-store` (rien en cache) avant toute chose, et n'invalider activement que si la performance l'exige (David Buchmann).",
+    "Valider les jetons OIDC localement dans la plupart des cas, et réserver l'appel au serveur d'autorisation aux contextes qui exigent une révocation immédiate ; utiliser PKCE sans client secret pour une PWA (Vincent Chalamon).",
+    "Se demander si une idée doit être construite : *« Not every great idea has to be built if there's no way to mitigate harm »* (Pauline Vos)."
+  ],
+  "sessions": [
+    {
+      "id": "opening-keynote",
+      "day": "2023-09-21",
+      "type": "keynote",
+      "title": "Opening keynote",
+      "speakers": ["Kévin Dunglas — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Stefan Koopmanschap (blog, Mastodon)", "Pauline Vos (Mastodon)", "Stephan Hochdörfer (Mastodon)", "dgoosens (Mastodon)", "Blog Les-Tilleuls.coop"],
+      "summary": "- Diagnostic : PHP ne parle pas HTTP directement. Il faut un serveur web, PHP-FPM et FastCGI, soit deux services à configurer et à déployer ensemble, là où une appli Next.js tient dans une seule image.\n- Annonce : **FrankenPHP 1.0 bêta**, serveur d'applications écrit en Go sur Caddy, qui embarque le vrai interpréteur PHP. HTTP/3, HTTPS automatique, Early Hints et Mercure natifs, images Docker et binaires statiques pour Linux et macOS.\n- Le mode worker, optionnel, garde l'application en mémoire : plus de trois fois plus rapide sur un hello world API Platform selon ses benchmarks, un gain d'autant plus grand que l'appli est lourde.\n- API Platform 3.2 bêta, tagguée la veille, embarque FrankenPHP par défaut ; une variante FPM reste fournie. Builds Docker six fois plus rapides, et un hello world passe de 7 minutes à 1 minute dans GitHub Actions.\n- Limites annoncées : fibers inutilisables, variantes Alpine instables avec Symfony, connexions longues avec Doctrine.\n- Teasing : à SymfonyCon, un outil pour produire un binaire unique contenant l'application PHP.\n- Côté public, les réactions tombent en direct sur Mastodon (*« THIS IS AWESOME »*, dgoosens). Koopmanschap teste FrankenPHP dès le talk suivant et le fait tourner en local très vite, sans oser encore passer en production depuis la conférence.",
+      "summarySources": ["transcript", "slides", "blog", "feedback", "program"],
+      "video": {
+        "youtubeId": "Xo6w8YMjeNg",
+        "title": "API Platform Conference 2023 - Kévin Dunglas - Opening Keynote",
+        "publishedAt": "2023-12-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "api-platform-opendata-et-schemaless-api",
+      "day": "2023-09-21",
+      "type": "talk",
+      "title": "API Platform, opendata et schemaless API",
+      "speakers": ["Xavier Leune — CCM Benchmark Group"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop"],
+      "summary": "- Résumé fondé sur le descriptif officiel et le blog de l'organisateur, sans transcript.\n- À partir de jeux de données ouverts, comment déployer API Platform quand **ce sont les utilisateurs, pas l'équipe technique, qui définissent le schéma** de l'API.\n- Retour d'expérience sur des données complexes : fichiers RDF, optimisation SQL, modèles de structuration, cache HTTP (blog Les-Tilleuls.coop).\n- Question centrale : comment intégrer de nouvelles données sans aucun développement ?",
+      "summarySources": ["program", "blog"],
+      "video": {
+        "youtubeId": "R1MNtsgeopo",
+        "title": "API Platform Conference 2023 - Xavier Leune - API Platform, opendata et schemaless API",
+        "publishedAt": "2023-11-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "materialized-view-postgresql-api-platform",
+      "day": "2023-09-21",
+      "type": "talk",
+      "title": "Comment utiliser une Materialized View PostgreSQL avec API Platform ?",
+      "speakers": ["Damien Levallois"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop"],
+      "summary": "- Résumé fondé sur le descriptif officiel et le blog de l'organisateur, sans transcript.\n- Lier une API Resource à une **vue matérialisée PostgreSQL** pour accélérer des lectures lentes, et savoir quand ne pas en abuser.\n- Mise en place avec Doctrine et cas concret : la gestion d'un stock de véhicules, avec une architecture simplifiée et un moteur de recherche amélioré.\n- Problèmes de synchronisation et de mise à jour traités avec Symfony Messenger.",
+      "summarySources": ["program", "blog"],
+      "video": {
+        "youtubeId": "rVr7t88Kf50",
+        "title": "API Platform Conference 2023 - Damien Levallois - Utiliser une Materialized View avec API Platform ?",
+        "publishedAt": "2023-11-10",
+        "transcript": false
+      }
+    },
+    {
+      "id": "developing-an-api-without-api-platform",
+      "day": "2023-09-21",
+      "type": "talk",
+      "title": "Developing an API without API Platform",
+      "speakers": ["Alexandre Salomé — Platform.sh"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop", "Antoine Bluchet (speaker, dans son talk)"],
+      "summary": "- Résumé fondé sur le descriptif officiel et le blog de l'organisateur, sans transcript.\n- Défi : recréer les fonctions principales du framework à partir d'une appli Symfony, avec une architecture guidée par les événements.\n- Bilan : le code reste simple, mais il manque la négociation de contenu, la pagination et d'autres options natives.\n- Chute relevée par le blog de l'organisateur : **son architecture est celle d'API Platform**, sans qu'il le sache. Bluchet y fait écho l'après-midi : ces event listeners sont bien la façon dont API Platform fonctionne.",
+      "summarySources": ["program", "blog"],
+      "video": {
+        "youtubeId": "0wN-ZWgLH18",
+        "title": "API Platform Conference 2023 - Alexandre Salomé - Developing an API without API Platform",
+        "publishedAt": "2023-11-17",
+        "transcript": false
+      }
+    },
+    {
+      "id": "cache-http-pour-les-api-rest",
+      "day": "2023-09-21",
+      "type": "talk",
+      "title": "Cache HTTP pour les API REST",
+      "speakers": ["David Buchmann — Liip"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop"],
+      "summary": "- Image d'ouverture : un bus d'enfants qui demandent sans arrêt « quand est-ce qu'on arrive ? », la même question appelant la même réponse.\n- Deux modèles : l'expiration (`max-age`, `s-maxage`) et la validation (`ETag`, `If-None-Match`, réponse 304). `stale-if-error` et `stale-while-revalidate` ajoutent de la résilience.\n- Piège de vocabulaire : **`no-cache` autorise le stockage avec validation, seul `no-store` l'interdit**.\n- Dans API Platform, la configuration par défaut varie sur `Authorization`, soit un cache par utilisateur : efficace avec peu d'utilisateurs, inefficace pour une API publique. Piste : varier sur un hash des permissions.\n- Invalidation : à éviter tant que la performance suffit. `Ban` peut ralentir Varnish, les tags Xkey sont rapides.\n- Les listes paginées sont le cas difficile : un élément qui change bouge les autres pages. Les Edge Side Includes permettent de cacher les entrées séparément de la liste.\n- Conclusion : le cache ne rend pas l'appli plus rapide, il l'aide à tenir la charge. Mesurer avant et après.",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "nUK4pAQ5uxE",
+        "title": "API Platform Conference 2023 - David Buchmann - Cache HTTP pour les API REST",
+        "publishedAt": "2023-11-17",
+        "transcript": true
+      }
+    },
+    {
+      "id": "converting-a-legacy-app-to-api-platform",
+      "day": "2023-09-21",
+      "type": "talk",
+      "title": "Converting a legacy app to API Platform",
+      "speakers": ["Boas Falke — bitExpert", "Holger Dörner — bitExpert"],
+      "feedbackFrom": ["Boas Falke et Holger Dörner (speakers, blog)", "Stefan Koopmanschap (Mastodon)", "Blog Les-Tilleuls.coop"],
+      "summary": "- Récit en conte de fées, porté par la mascotte Webby : réécrire en PHP le backend Python d'une application de maintenance prédictive de machines à coudre, resté à l'état de prototype.\n- Contraintes : ne casser ni le front React ni le schéma d'une base partagée avec d'autres applications.\n- Réponse technique : étendre l'OpenAPI factory avec un `oneOf` et des classes de sortie pour **documenter un endpoint historique qui renvoie deux formes différentes**, puis construire de vraies ressources à côté.\n- Boss final : l'application s'installe via un .exe sur un portable Windows à l'usine. Installeur refait avec NSIS dans la CI, autour d'un XAMPP réduit.\n- Contre le conseil de ne jamais réécrire, ils concluent : *« There are things that you should never do unless you use API Platform. »*\n- Premier talk en conférence pour les deux speakers, rodé en meetups (speakers, blog). Koopmanschap : *« Epic talk »*, avec l'envie d'une version plus longue.",
+      "summarySources": ["transcript", "program", "blog", "feedback"],
+      "video": {
+        "youtubeId": "EU3I412gfSw",
+        "title": "API Platform Conference 2023 - Boas Falke / Holger Dörner - Converting a legacy app to API Platform",
+        "publishedAt": "2023-11-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "valider-vos-donnees-avec-api-platform",
+      "day": "2023-09-21",
+      "type": "talk",
+      "title": "Valider vos données avec API Platform",
+      "speakers": ["Thibaut Arnoud — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop"],
+      "summary": "- Résumé fondé sur le descriptif officiel et le blog de l'organisateur, sans transcript.\n- Tour du composant Validator : contraintes standard et personnalisées, groupes de validation.\n- L'opération Delete n'est **pas validée par défaut** ; solutions par un Processor personnalisé ou par configuration à partir de la 3.2.\n- `collect_denormalization_errors` renvoie une erreur propre au client plutôt qu'une erreur de typage PHP.\n- Fin sur JSON Schema, pour valider la requête avant la désérialisation.",
+      "summarySources": ["program", "blog"],
+      "video": {
+        "youtubeId": "LYr9pNFTHd0",
+        "title": "API Platform Conference 2023 - Thibaut Arnoud - Valider vos données avec API Platform",
+        "publishedAt": "2023-11-24",
+        "transcript": false
+      }
+    },
+    {
+      "id": "api-platform-revolution",
+      "day": "2023-09-21",
+      "type": "talk",
+      "title": "API Platform revolution",
+      "speakers": ["Antoine Bluchet (Soyuka) — API Platform"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop", "Stefan Koopmanschap (Mastodon)"],
+      "summary": "- Rythme de sortie : une mineure tous les six mois, une majeure tous les deux ans. Environ 250 commits entre deux mineures, 65 contributeurs.\n- 3.1 : `standard_put` (remplacement réel, défaut en version 4), `collectDenormalizationErrors` à éviter en production, composants disponibles séparément.\n- 3.2 : écriture sur les sous-ressources, `handleLinks`, erreurs traitées comme des ressources et alignées sur JSON Problem, types union et intersection.\n- Changement de fond : **remplacer les listeners du kernel par une chaîne de providers et processors décorés**, ce qui partage la logique avec GraphQL et supprime la dépendance aux priorités. Activable par un flag ; l'équipe demande des retours.\n- Documentation réécrite : guides en PHP exécutables, testés avec PHPUnit et lancés dans le navigateur en WebAssembly, y compris Swagger UI, sans aucune requête réseau.\n- Pour la suite : un talk accepté au Forum PHP sur la compatibilité avec Laravel, et *« Be ready for API Platform 4 »*.\n- Sur le support de la 2.7 : pas de script de migration YAML sans contribution, ou sans *« time and money »*.",
+      "summarySources": ["transcript", "program", "blog", "feedback"],
+      "video": {
+        "youtubeId": "jVUDgp05gKg",
+        "title": "API Platform Conference 2023 - Antoine Bluchet - API Platform revolution",
+        "publishedAt": "2023-10-27",
+        "transcript": true
+      }
+    },
+    {
+      "id": "need-for-speed-removing-speed-bumps-in-api-projects",
+      "day": "2023-09-21",
+      "type": "talk",
+      "title": "Need for Speed: Removing speed bumps in API Projects",
+      "speakers": ["Łukasz Chruściel — Commerce Weavers"],
+      "feedbackFrom": ["Stefan Koopmanschap (blog)", "Łukasz Chruściel (speaker, Mastodon)", "Blog Les-Tilleuls.coop"],
+      "summary": "- Pourquoi : argument business (chiffre d'Amazon cité sur scène, 100 ms de moins pour 1 % de revenu) et argument énergétique.\n- Son sondage place la base de données et le nombre de requêtes loin devant le framework. Message : penser **complexité algorithmique**, car tout va vite sur un petit jeu de données.\n- Le serializer visite tout, le N+1 frappe donc plus fort en API. Sur un exemple très simple, 11 requêtes, puis 4 avec EAGER et des groupes de sérialisation, puis 1 avec un provider custom, au prix de la pagination.\n- Mais les jointures coûtent et l'hydratation aussi : *« fetch as much data as you need but not more »*.\n- Piège Doctrine : un prix en `decimal` lu comme float provoque un UPDATE parasite à chaque flush.\n- Côté design : objets atomiques liés par IRI, sparse fieldsets, pas de « god endpoints ». Un projet envoyait 15 Mo pour lire deux champs.\n- Read models pré-calculés : Sylius vit depuis des années avec un prix de panier non recalculé à la volée, sans plainte selon lui.\n- Côté public, Koopmanschap retient beaucoup d'astuces utiles et compte revenir à la vidéo au premier problème de performance. Slides et dépôt d'exemple publiés (speaker).",
+      "summarySources": ["transcript", "slides", "program", "blog", "feedback"],
+      "video": {
+        "youtubeId": "IX2c6XQo1IU",
+        "title": "API Platform Conference 2023 - Łukasz Chruściel - Need for Speed: Removing speed bumps in your APIs",
+        "publishedAt": "2023-10-27",
+        "transcript": true
+      }
+    },
+    {
+      "id": "gestion-de-webhooks-standardises",
+      "day": "2023-09-21",
+      "type": "talk",
+      "title": "Gestion de webhooks standardisés avec API Platform, OpenAPI et Symfony Webhook",
+      "speakers": ["Allison Guilhem — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop"],
+      "summary": "- Rappel des standards (REST, linked data), puis opposition entre polling et push : le webhook évite de redemander sans cesse une information.\n- OpenAPI 3.0 ne décrit que le callback lié à une requête initiale. **OpenAPI 3.1 fait du webhook un élément de premier niveau**, indépendant des chemins, sur une proposition de Lorna Mitchell.\n- Le webhook reste vu comme un mauvais élève : peu standardisé, avec des enjeux de sécurité et de charge.\n- Cas pratique : une API de stock dont les clients faisaient du polling. Le webhook devient une ressource, déclenchée par un event Doctrine ou un Processor personnalisé.\n- Documentation : par décoration de l'OpenAPI factory, et une pull request en cours pour le faire via un attribut.\n- Envoi et réception avec les composants Symfony Webhook et RemoteEvent, Messenger, signature par secret et parseurs dédiés.",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "TJVbkbB-560",
+        "title": "API Platform Conference 2023 - Allison Guilhem - Webhooks avec API Platform, OpenAPI et SF Webhook",
+        "publishedAt": "2023-11-17",
+        "transcript": true
+      }
+    },
+    {
+      "id": "api-platform-svelte-et-un-max-de-buzz-words",
+      "day": "2023-09-21",
+      "type": "talk",
+      "title": "API Platform, Svelte et un max de buzz-words",
+      "speakers": ["Alex Rock — Orbitale.io"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop"],
+      "summary": "- Résumé fondé sur le descriptif officiel et le blog de l'organisateur, sans transcript.\n- Construction pas à pas d'un projet full stack avec Svelte, OpenAPI, API Platform, Symfony et un peu de DDD.\n- Le blog de l'organisateur y voit une recette éprouvée pour des sites plus performants et maintenables, avec aussi EasyAdmin et Tailwind.",
+      "summarySources": ["program", "blog"],
+      "video": {
+        "youtubeId": "vFZFYkpyT9w",
+        "title": "API Platform Conference 2023 - Alex Rock - API Platform, Svelte et un max de buzz-words",
+        "publishedAt": "2023-12-15",
+        "transcript": false
+      }
+    },
+    {
+      "id": "tracking-user-activity-logs-using-loggastic",
+      "day": "2023-09-21",
+      "type": "talk",
+      "title": "Tracking user activity logs using Loggastic",
+      "speakers": ["Paula Čučuk — Locastic"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop"],
+      "summary": "- Résumé fondé sur le descriptif officiel et le blog de l'organisateur, sans transcript.\n- **Loggastic**, bibliothèque open source qui journalise les modifications CRUD sur les entités : auteur, date, changements.\n- Enregistrement dans une table dédiée, d'autres adapters étant prévus, et indexation dans Elasticsearch pour la recherche.\n- Visualisation par template Twig ; intégration à API Platform annoncée comme à venir au moment du talk.",
+      "summarySources": ["program", "blog"],
+      "video": {
+        "youtubeId": "JBU_jgu1S2A",
+        "title": "API Platform Conference 2023 - Paula Čučuk - Tracking user activity logs using Loggastic",
+        "publishedAt": "2023-11-24",
+        "transcript": false
+      }
+    },
+    {
+      "id": "subresources-the-easy-way-with-api-platform-3",
+      "day": "2023-09-21",
+      "type": "talk",
+      "title": "Subresources, the easy way with API Platform 3",
+      "speakers": ["Mathias Arlaud — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop"],
+      "summary": "- Fil rouge : une API pour la Coupe du monde de rugby et un client qui ajoute sans cesse une dernière fonctionnalité.\n- Selon REST, une sous-ressource n'existe pas : c'est une ressource accessible depuis une autre. Le critère pratique est la relation « appartient à ».\n- `ApiSubresource` a disparu : l'ancien système, en lecture seule et plein de cas limites, a été l'une des raisons majeures de la refonte de la version 3. **On déclare désormais des opérations scopées** avec `uriTemplate` et `uriVariables`.\n- Outils montrés : `itemUriTemplate`, `NotExposed`, `CreateProvider`, `uriTemplate` sur `ApiProperty` contre l'over-fetching, redirection vers la ressource canonique.\n- Limite assumée : sur un modèle stade, match, commande, ligne, siège, la navigation coûterait près de 90 000 appels. Mieux vaut un endpoint filtré plat. Sa règle : deux niveaux d'imbrication au plus.\n- Beaucoup de ces options sont expérimentales et il appelle à les tester. Il a écrit une pull request deux jours avant le talk pour combler un manque repéré en le préparant.",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "bTdQZyU0AwE",
+        "title": "API Platform Conference 2023 - Mathias Arlaud - Subresources, the easy way with API Platform 3",
+        "publishedAt": "2023-11-10",
+        "transcript": true
+      }
+    },
+    {
+      "id": "un-pas-vers-la-decentralisation-oidc",
+      "day": "2023-09-21",
+      "type": "talk",
+      "title": "Un pas vers la décentralisation, reprenons le contrôle grâce à OIDC !",
+      "speakers": ["Vincent Chalamon — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop"],
+      "summary": "- Première question : en a-t-on besoin ? Pas d'enclume pour enfoncer un clou. L'article associé réserve OIDC aux systèmes à plusieurs services.\n- Clarification : identification, authentification, autorisation. OAuth gère l'autorisation, OpenID Connect ajoute l'identité par un `id_token`.\n- Démonstration à badge : il se fait passer pour Kévin Dunglas pour montrer l'intérêt du multifacteur. Il rappelle la distinction de l'ANSSI entre authentification forte et multifacteur.\n- Mise en pratique : **Keycloak séparé de l'API**, derrière Caddy, avec un realm dédié, plutôt qu'un bundle dans l'application.\n- Flux Authorization Code. La PWA et Swagger UI sont des clients publics : PKCE, jamais de client secret dans le navigateur. Côté PWA, NextAuth.js.\n- Deux stratégies Symfony : `oidc_user_info`, plus sûre mais avec un appel réseau à chaque requête, et `oidc`, locale et plus rapide, recommandée dans la majorité des cas.\n- Défi lancé pour l'édition suivante : l'autorisation fine (Casbin, Permit.io, Auth0).",
+      "summarySources": ["transcript", "blog", "program"],
+      "video": {
+        "youtubeId": "ICQwJCDYYPo",
+        "title": "API Platform Conference 2023 - Vincent Chalamon - Un pas vers la décentralisation grâce à OIDC !",
+        "publishedAt": "2023-12-08",
+        "transcript": true
+      }
+    },
+    {
+      "id": "create-the-dto-system-of-your-dreams",
+      "day": "2023-09-22",
+      "type": "talk",
+      "title": "Create the DTO System of your Dreams: stateOptions + entityClass",
+      "speakers": ["Ryan Weaver — SymfonyCasts"],
+      "feedbackFrom": ["Stefan Koopmanschap (blog)", "Blog Les-Tilleuls.coop"],
+      "summary": "- Clé de lecture : une ressource vit par son provider et son processor. Sur une entité, Doctrine les offre, avec pagination et filtres ; sur un DTO, il faut tout écrire.\n- Pourquoi un DTO : champs custom propres, moins de groupes de sérialisation, séparation des responsabilités.\n- `stateOptions` avec `entityClass` rebranche Doctrine sur un DTO, mais c'est insuffisant : pas de champ custom, et l'objet central change selon l'opération, ce qui rend la sécurité incohérente.\n- Solution : **faire du DTO l'objet central dans tous les cas**, avec un provider et un processor qui appellent ceux de Doctrine et convertissent entre entité et DTO. Rendus génériques, ils ne laissent à écrire que le mapping.\n- Mapping : il a écrit `MicroMapper` faute d'avoir trouvé mieux, volontairement manuel et ennuyeux.\n- Aveu : par paresse, il préfère mettre `ApiResource` sur ses entités, même si Antoine et Kévin le lui déconseillent.\n- Koopmanschap dit avoir été perdu à mi-parcours, avant de comprendre que c'était voulu, et s'étonne du peu de code nécessaire.",
+      "summarySources": ["transcript", "program", "blog", "feedback"],
+      "video": {
+        "youtubeId": "IVJjADhU7WM",
+        "title": "API Platform Conference 2023 - Ryan Weaver - Create the DTO system of your dreams",
+        "publishedAt": "2023-11-10",
+        "transcript": true
+      }
+    },
+    {
+      "id": "remplacer-une-base-de-donnees-par-une-api",
+      "day": "2023-09-22",
+      "type": "talk",
+      "title": "Remplacer une base de données par une API sans toucher l'existant, Mission Impossible ?",
+      "speakers": ["Smaïne Milianni"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop"],
+      "summary": "- REX d'il y a trois ans, toujours en production selon lui : une équipe API migre des tables legacy, une équipe e-commerce exploite un gros monolithe, et les deux partagent une base.\n- La double écriture asynchrone permet d'avancer, mais sans garantie de livraison et avec le risque de deux sources de vérité.\n- L'écriture vers l'API est facile à repérer dans le code, la lecture beaucoup moins, car elle est partout. C'est le vrai sujet.\n- Solution : un `HttpRepository` injecté dans le repository Doctrine, et un denormalizer qui reconstruit **un objet legacy complété par la base** pour les colonnes et relations non migrées. Un subscriber `postLoad` gère les relations inverses.\n- Migration méthode par méthode derrière un feature flag, pour revenir sur Doctrine immédiatement.\n- Leçons : une migration progressive est faite de compromis, les relations Doctrine peuvent être toxiques, documenter pour les successeurs, le trésor est dans le `vendor`.\n- Dimension humaine : parachuté lead dev un lundi après une reconversion, il raconte son syndrome de l'imposteur. Le blog de l'organisateur retient une conférence très drôle.",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "qSje7nefgHY",
+        "title": "API Platform Conference 2023 - Smaïne Milianni - Migrer une BDD vers une API sans toucher l’existant",
+        "publishedAt": "2023-11-03",
+        "transcript": true
+      }
+    },
+    {
+      "id": "bright-and-exciting-future-of-the-decentralized-web",
+      "day": "2023-09-22",
+      "type": "talk",
+      "title": "The bright and exciting future of the decentralized web",
+      "speakers": ["Pauline Vos"],
+      "feedbackFrom": ["Stefan Koopmanschap (blog, Mastodon)", "Kévin Dunglas (Mastodon)", "Blog Les-Tilleuls.coop"],
+      "summary": "- Précision d'entrée : ce n'est pas un talk blockchain. Décentralisé ne veut pas dire distribué : Kubernetes distribue sans décentraliser.\n- Récit : un web pensé pour partager le savoir, devenu centralisé par le modèle du big data. Citation de Robert Cailliau reprise par Dunglas sur Mastodon : le client est l'annonceur, vous êtes le produit.\n- Coûts cités : 57 % du trafic web passant par les FAANG en 2018 (chiffre de la speaker), eau et énergie des data centers, surveillance de masse, manipulation politique.\n- **Solid** : un pod personnel où l'on accorde lecture et écriture service par service, données portables. Pilotes cités en Flandre et au NHS.\n- Fediverse : ActivityPub fait voir un billet WriteFreely comme un toot Mastodon. Déception sur Bluesky, seul sur son protocole.\n- IPFS : contenu adressé par hash, difficile à censurer, avec un miroir de Wikipédia en exemple.\n- Elle renvoie aux principes de DWeb et conclut sur la vigilance : ne pas tout construire.\n- Réception la plus forte chez Koopmanschap, pour qui c'est le talk le plus inspirant : il veut creuser le fediverse et adore l'idée de Solid. Dunglas parle d'un excellent talk.",
+      "summarySources": ["transcript", "program", "blog", "feedback"],
+      "video": {
+        "youtubeId": "dpkFCdy6sPU",
+        "title": "API Platform Conference 2023 - Pauline Vos - The bright and exciting future of the decentralized web",
+        "publishedAt": "2023-10-27",
+        "transcript": true
+      }
+    },
+    {
+      "id": "php-kitchen-nightmares",
+      "day": "2023-09-22",
+      "type": "talk",
+      "title": "PHP's Kitchen Nightmares",
+      "speakers": ["Stefan Koopmanschap — Ingewikkeld"],
+      "feedbackFrom": ["Pauline Vos (Mastodon)", "Kévin Dunglas (Mastodon)", "Blog Les-Tilleuls.coop"],
+      "summary": "- Résumé fondé sur le descriptif officiel et le blog de l'organisateur : pas de vidéo dans la playlist officielle.\n- Extraits de l'émission *Kitchen Nightmares* pour illustrer ce qui dérape dans les équipes de développement, et les conseils du chef Ramsay transposés.\n- Le client a toujours raison, *« sauf quand il a tort »* (citation rapportée par le blog) : lui parler pour comprendre son besoin plutôt que deviner, et éviter le sur-design.\n- La plupart des conseils relèvent des **compétences humaines plus que techniques**.\n- Pauline Vos dit avoir appris en s'amusant ; Dunglas parle de masterclass de cuisine.",
+      "summarySources": ["program", "blog", "feedback"]
+    },
+    {
+      "id": "rejoignez-le-fediverse-avec-api-platform",
+      "day": "2023-09-22",
+      "type": "talk",
+      "title": "Rejoignez le Fediverse avec API Platform !",
+      "speakers": ["Jérôme Tanghe — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop", "Jérôme Tanghe (speaker, Mastodon)"],
+      "summary": "- Résumé fondé sur le descriptif officiel et le blog de l'organisateur, sans transcript.\n- **ActivityPub**, protocole W3C basé sur REST, fait communiquer Mastodon, Pixelfed, PeerTube et d'autres réseaux.\n- Chaque acteur a une inbox et une outbox publique ; les messages sont du texte, des médias ou des actions (suivre, aimer, partager).\n- Le point délicat est la sécurité : signature des en-têtes avec une paire de clés RSA par utilisateur. Le reste est simple à implémenter selon lui.\n- Le talk prolonge celui de Pauline Vos, qui signale une bibliothèque API Platform expérimentale pour ActivityPub.",
+      "summarySources": ["program", "blog", "feedback"],
+      "video": {
+        "youtubeId": "6YlbJyeBpRc",
+        "title": "API Platform Conference 2023 - Jérôme Tanghe - Rejoignez le Fediverse avec API Platform !",
+        "publishedAt": "2023-12-08",
+        "transcript": false
+      }
+    },
+    {
+      "id": "lightning-talks",
+      "day": "2023-09-22",
+      "type": "lightning",
+      "title": "Lightning talks",
+      "speakers": ["Florent Huck — Platform.sh", "Valmont Pehaut Pietri — Alximy", "Kevin Verschaeve — Exotec"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop"],
+      "summary": "- Trente minutes hors retransmission, sept minutes par sujet libre, d'après le seul blog de l'organisateur.\n- Florent Huck : déploiement d'API Platform sur un PaaS (le blog écrit « PASS »).\n- Valmont Pehaut Pietri : initiation à l'univers de la bière.\n- Kevin Verschaeve : ses commandes zsh préférées.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "une-histoire-d-epouvante-qui-finit-bien",
+      "day": "2023-09-22",
+      "type": "talk",
+      "title": "Une histoire d'épouvante qui finit bien : récit d'une migration d'une API custom vers API Platform 2.x puis 3",
+      "speakers": ["Bastien Jaillot — JoliCode"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop"],
+      "summary": "- REX sur une API B2B « boring » à fortes cardinalités, avec un CTO qui préfère investir dans la performance d'API Platform pour gagner ses fonctions.\n- 2.3 et 2.4 : inutilisable sur ce projet. Blackfire en main, il pousse des patchs dans Symfony, API Platform et Doctrine, et atteint 64 % de gain en développement. **Le framework était bien le problème à l'époque**, pas la donnée, contrairement à ce que dit Chruściel pour 2023.\n- 2.5 à 2.7 : composer update et tout passe. Ensuite vient la 3 : la commande de migration ne gère pas le YAML, et **8 000 lignes sont réécrites à la main**.\n- Migrer providers et processors touche plus de 100 classes, en une pull request illisible et sans bascule progressive.\n- Anecdote : des dépréciations non traitées envoient 20 000 € de logs en une semaine chez Datadog.\n- Conseils : tests fonctionnels avant tout, abandon du YAML, DTO, UUID plutôt qu'ID entiers. Avec Varnish, 99 % des requêtes ne touchent pas l'application.\n- Il assume sa gêne face aux classes `final`, qui donnent presque envie de forker, et ne testerait pas FrankenPHP sur sa production.\n- Verdict : une crise d'adolescence coûteuse mais justifiée, et l'espoir qu'elle ne se répète pas en version 4.",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "nbUd4NKdWhI",
+        "title": "API Platform Conference 2023 - Bastien Jaillot - Migration d'une API custom vers API Platform 3",
+        "publishedAt": "2023-11-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "developing-apis-with-symfony-in-2023",
+      "day": "2023-09-22",
+      "type": "talk",
+      "title": "Developing APIs with Symfony in 2023",
+      "speakers": ["Nicolas Grekas — Symfony"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop"],
+      "summary": "- Calendrier : Symfony 6.4 LTS et 7.0 fin novembre 2023. Pour 7.0, PHP 8.2 minimum, retrait des chemins dépréciés et **fin des annotations au profit des attributs**. Une majeure doit rester ennuyeuse.\n- Principe rappelé : un attribut reste déclaratif et n'introduit aucun couplage, la classe reste testable hors Symfony.\n- Pour les API : `MapRequestPayload` mappe et valide un JSON vers un DTO, avec un 422 en cas d'échec. *« It's not a replacement for API Platform »*, mais c'est utile pour une petite API.\n- Injection de dépendances : `AsAlias`, `Autowire(lazy: true)`, `AutowireCallable`, paramètres retirés du container s'ils commencent par un point.\n- HttpClient : URI templates, plusieurs `base_uri` pour le failover.\n- UUID v7, ordonné dans le temps et meilleur pour les index, sera le défaut de Symfony 7.\n- Une discussion en cours sur `APP_RUNTIME_MODE` pour distinguer worker et FPM relie le talk à celui de Dunglas.",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "g6Q65q4QAD0",
+        "title": "API Platform Conference 2023 - Nicolas Grekas - Developing APIs with Symfony in 2023",
+        "publishedAt": "2023-12-01",
+        "transcript": true
+      }
+    },
+    {
+      "id": "q-a-session-api-platform-core-team",
+      "day": "2023-09-22",
+      "type": "roundtable",
+      "title": "Q&A Session - API Platform Core Team",
+      "speakers": ["Kévin Dunglas — Les-Tilleuls.coop", "Antoine Bluchet (Soyuka) — API Platform", "Vincent Chalamon — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Stefan Koopmanschap (Mastodon)", "Blog Les-Tilleuls.coop"],
+      "summary": "- `input` et `output` : Bluchet veut les retirer, ne laissant que `output: false`, au profit de l'approche de Ryan Weaver.\n- **Pas de contrôleur custom** sur les routes gérées par API Platform : c'est un framework orienté ressources, et ces contrôleurs court-circuitent sécurité et validation. *« Just stop fighting API Platform. »* Le transcript automatique n'identifie pas les intervenants, d'où une attribution à la core team.\n- `MapRequestPayload` de Symfony convient à une petite API interne, pas à une API de production. Des attributs similaires branchés sur API Platform sont à l'étude.\n- Pourquoi Laravel : donner l'outil à plus de développeurs et diffuser JSON-LD. L'intégration technique n'est pas le plus dur, c'est de savoir comment les développeurs Laravel veulent travailler. Symfony ne change pas.\n- Monolithe multi-API : possible mais discutable, ils préfèrent des applications séparées derrière une API management.\n- GraphQL : pas de grosse limitation connue, l'essentiel repose sur une bibliothèque tierce.\n- Chalamon compare la migration de la 2.x vers la 3 au passage de l'enfance à l'adolescence. Stable de la 3.2 annoncée pour la fin du mois si la bêta tient, et appel à tester.",
+      "summarySources": ["transcript", "program", "blog", "feedback"],
+      "video": {
+        "youtubeId": "E8PptMaE58Y",
+        "title": "API Platform Conference 2023 - Core Team - Q&A session",
+        "publishedAt": "2023-12-15",
+        "transcript": true
+      }
+    },
+    {
+      "id": "l-impact-d-api-platform-sur-l-open-source",
+      "day": "2023-09-22",
+      "type": "talk",
+      "title": "L'impact d'API Platform sur l'Open Source",
+      "speakers": ["Loïc Frémont — Sylius"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop"],
+      "summary": "- Résumé fondé sur le descriptif officiel et le blog de l'organisateur, sans transcript.\n- Sylius Resource, Sylius Grid et Monofony comme exemples de l'influence d'API Platform sur d'autres projets.\n- **Monofony**, micro-framework Symfony construit notamment sur des briques Sylius, génère vite un CRUD avec filtres, statistiques, authentification et documentation OpenAPI.",
+      "summarySources": ["program", "blog"],
+      "video": {
+        "youtubeId": "26_uYTmVpf4",
+        "title": "API Platform Conference 2023 - Loïc Frémont - L'impact d'API Platform sur l'Open Source",
+        "publishedAt": "2023-12-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "le-modele-cooperatif-outil-de-lutte-pour-l-egalite",
+      "day": "2023-09-22",
+      "type": "talk",
+      "title": "Le modèle coopératif, un puissant outil de lutte pour l'égalité en entreprise",
+      "speakers": ["Marion Agé — Les-Tilleuls.coop", "Cécile Staehle — Troopers"],
+      "feedbackFrom": ["Blog Les-Tilleuls.coop"],
+      "summary": "- Histoire : des associations ouvrières nées contre le salariat au XIXe siècle, avec la figure de Jeanne Deroin, jusqu'à la Confédération générale des Scop.\n- Fonctionnement : une personne, une voix ; dirigeants élus ; salariés détenant au moins 51 % du capital et 65 % des voix ; part travail et réserves obligatoires. Les deux sociétés ne versent pas de dividendes.\n- Idées reçues démontées : ça marche à 70 personnes (Les-Tilleuls.coop), et seules 8 % des Scop viennent d'une reprise d'entreprise en difficulté. Mais travailler dans l'ESS ne dispense pas de clients classiques.\n- Outils : décision par consentement, élection sans candidat, vote silencieux, holacratie chez Troopers, assemblée mensuelle ouverte à tous aux Tilleuls, droit de veto sur les projets.\n- Mesures concrètes : charte parentalité, congé menstruel d'un jour par mois, grille de salaires transparente, salaire unique évolutif en construction chez Troopers.\n- Ces mesures sont possibles dans toute entreprise, mais **aucune n'a eu à convaincre un Comex** : elles viennent des coopérateurs et sont validées collectivement.\n- Chiffres cités : 29 % de dirigeantes en coopérative, contre 12 % en PME et ETI.\n- Lecture critique (speakers) : charge mentale, travail invisible, implication inégale. Le statut ne règle pas tout.",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "7uJW0cyCgV8",
+        "title": "API Platform Conference 2023 - Marion Agé & Cécile Staehle - Le modèle coopératif",
+        "publishedAt": "2023-12-01",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [],
+  "sources": [
+    {
+      "label": "Programme officiel (schedule)",
+      "url": "https://api-platform.com/en/con/2023/schedule"
+    },
+    {
+      "label": "Bilan officiel de l'édition",
+      "url": "https://api-platform.com/en/con/2023/review"
+    },
+    {
+      "label": "Playlist YouTube « API Platform Conference 2023 »",
+      "url": "https://www.youtube.com/playlist?list=PL3hoUDjLa7eQ4jnGymiYRBmmOBz_skNmM"
+    },
+    {
+      "label": "Blog Les-Tilleuls.coop : compte-rendu du jour 1 (28 septembre 2023)",
+      "url": "https://les-tilleuls.coop/blog/retour-api-platform-conference-2023"
+    },
+    {
+      "label": "Blog Les-Tilleuls.coop : compte-rendu du jour 2 (29 septembre 2023)",
+      "url": "https://les-tilleuls.coop/blog/retour-sur-api-platform-con-2023-jour-2"
+    },
+    {
+      "label": "Stefan Koopmanschap : Decentralized DTO and speedy FrankenPHP (23 septembre 2023, lu via la Wayback Machine)",
+      "url": "https://web.archive.org/web/2024/https://skoop.dev/blog/2023/09/23/decentralized_dto_and_speedy_frankenphp_api_platform_con_2023/"
+    },
+    {
+      "label": "bitExpert : retour de Boas Falke et Holger Dörner (speakers, 29 septembre 2023)",
+      "url": "https://blog.bitexpert.de/blog/api-platform-con-2023"
+    },
+    {
+      "label": "Kévin Dunglas : The PHP Revolution Is Underway, FrankenPHP 1.0 Beta (21 septembre 2023)",
+      "url": "https://dunglas.dev/2023/09/the-php-revolution-is-underway-frankenphp-1-0-beta/"
+    },
+    {
+      "label": "Slides de la keynote de Kévin Dunglas",
+      "url": "https://speakerdeck.com/dunglas/the-php-revolution-is-underway-frankenphp-1-dot-0-beta"
+    },
+    {
+      "label": "Slides de Łukasz Chruściel, Need for Speed",
+      "url": "https://www.slideshare.net/ukaszChruciel1/need-for-speed-removing-speed-bumps-in-api-projects"
+    },
+    {
+      "label": "Vincent Chalamon : article tiré du talk OIDC (blog Les-Tilleuls.coop)",
+      "url": "https://les-tilleuls.coop/blog/un-pas-vers-la-decentralisation-reprenons-le-controle-grace-a-oidc"
+    },
+    {
+      "label": "Blog Les-Tilleuls.coop : annonce du programme (11 septembre 2023)",
+      "url": "https://les-tilleuls.coop/en/blog/api-platform-con-next-week"
+    },
+    {
+      "label": "Blog Les-Tilleuls.coop : premières vidéos et aftermovie (27 octobre 2023)",
+      "url": "https://les-tilleuls.coop/en/blog/three-recordings-from-the-api-platform-con-2023-unveiled"
+    },
+    {
+      "label": "Posts Mastodon #APIPlatformCon : Stefan Koopmanschap, Pauline Vos, Kévin Dunglas, Stephan Hochdörfer, Alex Rock, Łukasz Chruściel, Boas Falke, Jérôme Tanghe, dgoosens, tsadiq, comptes API Platform et Les-Tilleuls.coop"
+    }
+  ]
 }

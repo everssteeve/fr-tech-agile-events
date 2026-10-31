@@ -2,12 +2,240 @@
   "event": "cloud-nord",
   "year": 2026,
   "title": "Cloud Nord 2026",
+  "edition": "7e édition",
   "start": "2026-10-30",
   "city": "Lille",
   "venue": "Université Catholique de Lille",
   "url": "https://cloudnord.fr",
   "programUrl": "https://cloudnord.fr/schedule/",
   "dateConfidence": "ok",
-  "status": "scheduled",
-  "sessions": []
+  "note": "Journée unique, keynote et 21 sessions sur 3 salles (Amphi St Louis, Amphi RS 031, Salle RS 105), environ 300 participants annoncés sur le site et billetterie complète. Formats : 12 sessions de 50 min, 6 de 20 min, 3 ateliers de 120 min. L'annonce du CFP parle d'un nouveau lieu, la Faculté de Gestion, Économie et Sciences. La 7e édition est le chiffre donné par le compte LinkedIn de Cloud Nord.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-31",
+  "revisit": "Édition synthétisée à J+1, corpus très mince : aucune vidéo publiée, aucun article de blog, deux posts de retour vus seulement par extrait de recherche (Stephane Theou, Mazlum Tosun ; leurs profils LinkedIn répondent HTTP 999). Budget de 10 recherches épuisé le 2026-10-31. À reprendre : playlist YouTube 2026, posts du hashtag CloudNord2026, posts des speakers, slides, et contenu de la keynote de Patrick Perrot.",
+  "corpus": "Site officiel (programme, 21 descriptifs de sessions, page d'accueil, page speakers), page support de Blind ops, billet de Denis Germain (21 septembre 2026) et article Clever Cloud sur etcd (juin 2025) ; 6 posts du compte LinkedIn Cloud Nord lus sur sa page publique, tous antérieurs à la journée ou publiés le jour même ; 2 posts de retour vus seulement par extrait de recherche (Stephane Theou, Mazlum Tosun, speaker). Lecture faite le 31 octobre 2026, à J+1.",
+  "limits": "À J+1, les retours sont encore rares : aucun compte-rendu, aucune vidéo, aucune slide trouvés. Presque tous les résumés décrivent donc ce que le programme annonçait, pas ce qui a été dit sur scène ni la réception par la salle. Les retours d'OpenFeedback n'ont pas été consultés, le mur social du site apparaît vide, le hashtag LinkedIn et les profils sont inaccessibles sans connexion, et le sujet de la keynote n'est pas publié.",
+  "tldr": "Une 7e édition complète, dont le programme met **l'IA au travail dans les équipes et l'exploitation** et interroge **la souveraineté et l'ouverture réelle de la pile**, couche par couche ; à J+1, on connaît encore l'affiche mieux que la réception.",
+  "keyTakeaways": [
+    "Passer d'un CLAUDE.md difficile à maintenir à une bibliothèque de skills partagés, versionnés et relus : c'est la voie annoncée par GroupBees pour industrialiser l'assistant en équipe (programme).",
+    "Déléguer une landing zone à des agents IA impose des garde-fous (sécurité, tests, validations) et une relecture humaine, avec une attention aux coûts : c'est le fil annoncé par Arnaud Gaches (programme).",
+    "Renverser l'économie de la reconnaissance : laisser presque tout ouvert avec des leurres pour consommer le temps de l'attaquant, plutôt que de bloquer (Le Roux, programme).",
+    "Auditer l'ouverture couche par couche : Bruno Verachten juge Xen et XCP-ng ouverts, UEFI, bootloader et BMC partiellement, Intel ME et AMD PSP fermés (programme).",
+    "Pour répondre à un incident en cascade, le graphe de dépendances compte autant que la télémétrie : c'est la thèse de Louis Fradin, éditeur du secteur, à partir de la panne Cloudflare du 18 novembre 2025 (programme).",
+    "Reprendre la main sur GitLab CI en trois temps : tester avec Gitlab-ci-local, moderniser avec les composants CI/CD, passer à l'échelle avec GitLab Functions (beta) ou Dagger (Baconnais, Gauduchon, programme).",
+    "Protéger un prototype sans toucher à son code : OAuth2-Proxy délègue l'authentification à un fournisseur externe, Anubis vise à écarter les LLM (Aparicio, programme)."
+  ],
+  "sessions": [
+    {
+      "id": "ia-for-ops-on-scaleway",
+      "day": "2026-10-30",
+      "type": "talk",
+      "title": "IA for OPS on Scaleway",
+      "speakers": ["Arnaud Gaches — Onepoint"],
+      "feedbackFrom": ["Stephane Theou (extrait de recherche)"],
+      "summary": "- **Descriptif officiel** : REX sur une landing zone Scaleway complète construite par une équipe d'agents IA, *« sans perdre le contrôle ni sa CB »*.\n- Périmètre annoncé : IAM, VPC, IaaS, conteneurs, inférence Mistral, n8n, sauvegarde, monitoring, alerting et FinOps.\n- Méthode annoncée : cadrage, répartition des tâches, base documentaire, spécification, planification, délégation et **relecture humaine**.\n- Le talk promet aussi les incidents, les erreurs en cascade, les garde-fous et les échanges avec le support Scaleway.\n- Retour : un post de Stephane Theou, vu seulement par extrait de recherche, juge très intéressant un talk sur l'usage de Claude pour bâtir une landing zone Scaleway. Le rapprochement avec cette session se fait par le sujet.",
+      "summarySources": ["program", "feedback"]
+    },
+    {
+      "id": "as-tu-un-usage-responsable-du-numerique",
+      "day": "2026-10-30",
+      "type": "workshop",
+      "title": "As-tu un usage responsable du numérique ? Viens vérifier !",
+      "speakers": ["Sophie Pruvost — TECHSYS"],
+      "summary": "- **Descriptif officiel** : atelier de 120 min fondé sur les **Métacartes « Numérique Éthique »**, un outil libre d'intelligence collective.\n- Quatre phases : choisir des critères éthiques, y confronter ses usages, mettre en commun et s'engager sur des actions, puis réfléchir à sa démarche individuelle et sociétale.\n- Les participants doivent repartir avec une liste d'alternatives et un atelier facile à reproduire ; les supports de TECHSYS doivent rejoindre les communs des Métacartes.\n- Aucun retour de participant lu à ce jour.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "industrialiser-l-ia-en-equipe-des-skills-qui-encodent-vos-conventions",
+      "day": "2026-10-30",
+      "type": "talk",
+      "title": "Industrialiser l'IA en équipe : des skills qui encodent vos conventions",
+      "speakers": ["Guillaume Leroy"],
+      "feedbackFrom": ["Mazlum Tosun (speaker, extrait de recherche)"],
+      "summary": "- **Descriptif officiel** : comment GroupBees a industrialisé Claude Code, en passant d'un `CLAUDE.md` devenu difficile à maintenir à une **bibliothèque de skills modulaires et partagés**.\n- Ces skills encodent architecture, Dockerfile, CI, tests, commits, PR et déploiement.\n- Démo annoncée : d'une idée à une application déployée sur GCP, avec et sans skills.\n- Gouvernance annoncée : versionnage, relecture, détection d'obsolescence, méthode transposable à Cursor ou Copilot.\n- À vérifier : le programme ne nomme que Guillaume Leroy, mais un post de Mazlum Tosun (GroupBees), vu seulement par extrait de recherche, remercie ceux venus écouter ce talk comme le sien. Il figure aussi sur la page speakers.",
+      "summarySources": ["program", "feedback"]
+    },
+    {
+      "id": "honeyswamp-active-defense-to-ruin-attackers",
+      "day": "2026-10-30",
+      "type": "talk",
+      "title": "HoneySwamp: Active Defense to Ruin Attackers",
+      "speakers": ["Steven Le Roux — Clever Cloud"],
+      "summary": "- **Descriptif officiel** : la reconnaissance est la phase la moins coûteuse pour l'attaquant. HoneySwamp, inspiré de portspoof, veut **inverser cette asymétrie** en consommant son temps et ses ressources.\n- Plutôt que de bloquer les flux, l'approche laisse presque tout ouvert, avec surtout des leurres.\n- Mécanismes annoncés : tarpitting, token bombing, canary tokens, breadcrumbs, émulation de CVE, intégration au traffic management.\n- Le talk promet un REX de production chez Clever Cloud contre les scanners automatisés, avec des métriques.\n- Aucun retour de participant lu à ce jour.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "100-open-source-au-dessus-de-cette-ligne",
+      "day": "2026-10-30",
+      "type": "talk",
+      "title": "100 % open source, au-dessus de cette ligne",
+      "speakers": ["Bruno Verachten — Vates"],
+      "summary": "- **Descriptif officiel** : descente de la pile, de la VM au silicium, en évaluant à chaque couche si le code est réellement ouvert.\n- Hyperviseur et toolstack (Xen, XCP-ng) : jugés ouverts.\n- UEFI, bootloader et BMC : partiellement ouverts ; coreboot et OpenBMC existent mais sont peu utilisés.\n- Intel ME et AMD PSP : **fermés et non auditables**.\n- Fin annoncée sur RISC-V et OpenSBI, piste plus ouverte sur laquelle le speaker travaille en amont.\n- Aucun retour de participant lu à ce jour.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "comment-developper-une-application-dans-un-dataspace-souverain",
+      "day": "2026-10-30",
+      "type": "lightning",
+      "title": "Comment développer une application dans un dataspace souverain : découvrir, vérifier et consommer une API",
+      "speakers": ["Gilbert Winiga Djamena — KAPIA-RGI"],
+      "summary": "- **Descriptif officiel** : une application de coaching sportif veut intégrer de l'IA sans dépendre d'une API opaque.\n- Logique de dataspace souverain, inspirée de GAIA-X et IDS : les fournisseurs décrivent leurs services, apportent des preuves, publient leurs règles d'usage et contractualisent l'accès.\n- Parcours annoncé : catalogue, self-description, comparaison des contraintes, négociation du contrat, consommation.\n- Conclusion annoncée : une grille de **souveraineté opérationnelle** (qui contrôle l'accès, son évolution et la sortie).\n- Aucun retour de participant lu à ce jour.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "coupable-le-proces-d-un-container-malveillant-dans-kubernetes",
+      "day": "2026-10-30",
+      "type": "lightning",
+      "title": "Coupable ! Le procès d'un container malveillant dans Kubernetes",
+      "speakers": ["Paul-Alexandre Chrétien — HoppR"],
+      "summary": "- **Descriptif officiel** : une « audience » de 20 min sur la **défense en profondeur** d'un cluster Kubernetes.\n- Quatre acteurs : Trivy Operator (inspection à l'exécution), Kyverno (policies), Falco (détection en temps réel) et Policy Reporter (journalisation pour l'audit).\n- Aucun retour de participant lu à ce jour.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "atelier-llm-generations-avancees-multimodalite-contexte-etendu",
+      "day": "2026-10-30",
+      "type": "workshop",
+      "title": "Atelier LLM - Générations avancées - Multimodalité & contexte étendu",
+      "speakers": ["Laurent Picard — Google"],
+      "summary": "- **Descriptif officiel** : atelier de 120 min sans prérequis, sur la **multimodalité** et les contextes pouvant atteindre un million de tokens.\n- Trois cas : transcrire une vidéo en identifiant les locuteurs en un seul prompt, extraire un graphe de connaissances d'un corpus d'environ 1 M de tokens, générer des images cohérentes à partir d'archives visuelles.\n- Aucun retour de participant lu à ce jour.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "sous-le-capot-des-cni-deep-dive-dans-le-reseau-kubernetes",
+      "day": "2026-10-30",
+      "type": "talk",
+      "title": "Sous le capot des CNI : Deep dive dans le réseau Kubernetes",
+      "speakers": ["Benoit Touron — Sfeir"],
+      "summary": "- **Descriptif officiel** : session avancée, surtout en **démo live** sur un cluster.\n- Point de départ : les mécanismes du noyau Linux qui créent un conteneur, lui donnent une IP et le font communiquer.\n- Suite : la gestion des pods par Kubernetes via son plugin réseau, et la différence entre les principaux CNI.\n- Aucun retour de participant lu à ce jour.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "houston-on-a-un-probleme-avec-etcd",
+      "day": "2026-10-30",
+      "type": "talk",
+      "title": "Houston, on a un problème avec ETCD",
+      "speakers": ["Pierre Zemb — Clever Cloud", "Alexandre Burgoni — Clever Cloud"],
+      "summary": "- **Descriptif officiel** : à grande échelle, en Kubernetes managé, etcd devient vite un goulot d'étranglement, et une courte indisponibilité peut déstabiliser le control-plane.\n- Clever Cloud a **réécrit etcd en couche stateless** compatible avec son protocole, avec FoundationDB pour le stockage.\n- Internals annoncés : watchers, révisions, traitement d'un `kubectl apply`.\n- Contexte (blog Clever Cloud, juin 2025, antérieur au talk) : plafond de 8 Go, milliers d'instances à gérer avec un cluster par client, gouvernance jugée fragilisée. L'implémentation s'appelle Materia etcd.\n- Aucun retour de participant lu à ce jour.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "platform-engineering-a-l-echelle-de-decathlon-ce-qu-on-a-appris-en-5-ans",
+      "day": "2026-10-30",
+      "type": "talk",
+      "title": "Platform Engineering à l'échelle de Décathlon, ce qu'on a appris en 5 ans",
+      "speakers": ["Christophe Furmaniak — Décathlon"],
+      "feedbackFrom": ["Stephane Theou (extrait de recherche)"],
+      "summary": "- **Descriptif officiel** : l'histoire du Platform Engineering chez Décathlon, depuis une époque où le terme n'était pas encore employé.\n- L'entreprise fournit aujourd'hui à ses utilisateurs internes des **environnements complets en environ 20 minutes**.\n- Le talk promet les défis, les choix effectués et les prochaines étapes.\n- Retour : un post de Stephane Theou, vu seulement par extrait de recherche, salue un talk intéressant, tenu malgré une extinction de voix.",
+      "summarySources": ["program", "feedback"]
+    },
+    {
+      "id": "construire-un-data-center-dans-son-garage",
+      "day": "2026-10-30",
+      "type": "talk",
+      "title": "Construire un Data Center dans son garage : histoire d'une solution sur mesure",
+      "speakers": ["Aeddis Desauw — OVHcloud"],
+      "summary": "- **Descriptif officiel** : à partir de l'association **Deuxfleurs**, montrer qu'un data center de garage, sur de vieilles machines, peut assurer une qualité de service suffisante pour plus de 600 sites.\n- Le point de départ : l'hébergement web est facile à acheter, mais certains le reconstruisent encore eux-mêmes.\n- Aucun retour de participant lu à ce jour.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "securisez-vos-prototypes-avec-oauth2-proxy-anubis",
+      "day": "2026-10-30",
+      "type": "lightning",
+      "title": "Sécurisez vos prototypes avec OAuth2-Proxy, Anubis",
+      "speakers": ["David Aparicio — Eudonet"],
+      "summary": "- **Descriptif officiel** : lightning talk avec démo live.\n- **OAuth2-Proxy**, reverse proxy open source, protège des applications internes sans toucher à leur code, en déléguant l'authentification (Google, Azure, Keycloak).\n- **Anubis** sert à empêcher l'utilisation de LLM sur les prototypes.\n- Aucun retour de participant lu à ce jour.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "blind-ops-quand-votre-stack-vous-cache-l-incendie",
+      "day": "2026-10-30",
+      "type": "lightning",
+      "title": "Blind ops : quand votre stack vous cache l'incendie",
+      "speakers": ["Nuno Araujo — HoppR"],
+      "summary": "- **Descriptif officiel et page support** : REX interactif de 20 min, une simulation d'incident où le public vote sur 5 décisions, chaque erreur ajoutant des minutes de pénalité.\n- Scénario : une application de paiement, avec 10 000 € de pénalité par minute. Une boucle de tentatives sature le disque de logs, le broker est tué par l'OOM Killer, ELK ne répond plus et les health checks **restent au vert**.\n- Le bilan compare l'incident sans observabilité et avec OpenTelemetry et OpenObserve (broker mort détecté en 30 s, selon la page support). Le speaker précise ne détenir aucune action de l'outil.\n- Le support reste rejouable en ligne (cloudnord.zboss.fr).\n- Aucun retour de participant lu à ce jour.",
+      "summarySources": ["program", "slides"]
+    },
+    {
+      "id": "ajouter-de-l-ia-a-nos-applications",
+      "day": "2026-10-30",
+      "type": "workshop",
+      "title": "Ajouter de l'IA à nos applications : et si c'était aussi simple qu'ajouter une librairie ?",
+      "speakers": ["Stéphane Philippart — OVHcloud"],
+      "summary": "- **Descriptif officiel** : atelier de 120 min pour démarrer avec les LLM **en Java, sans changer de stack**, avec Quarkus et LangChain4j.\n- Public visé : des développeurs qui utilisent déjà l'IA au quotidien mais hésitent à l'intégrer à leurs applications.\n- L'environnement est fourni via des CDE : un ordinateur et un navigateur suffisent.\n- Aucun retour de participant lu à ce jour.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "a-la-croisee-de-la-devex-et-de-gitlab-3-jalons-pour-reprendre-le-controle-de-votre-ci",
+      "day": "2026-10-30",
+      "type": "talk",
+      "title": "A la croisée de la DevEx et de GitLab : 3 jalons pour reprendre le contrôle de votre CI !",
+      "speakers": ["Jean-Phi Baconnais — Zenika", "Baptiste Gauduchon — BGA Consulting"],
+      "summary": "- **Descriptif officiel** : pipelines longues, projets legacy et templates difficiles à tester dégradent la DevEx.\n- **Tester** : Gitlab-ci-local pour exécuter certains jobs rapidement.\n- **Moderniser** : migrer vers les composants CI/CD (réutilisation, sécurisation, standardisation).\n- **Passer à l'échelle** : GitLab Functions (beta) et l'approche container native de Dagger.\n- Aucun retour de participant lu à ce jour.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "cloud-souverain-et-si-cette-fois-on-ne-laissait-pas-la-main-aux-bullshiteurs",
+      "day": "2026-10-30",
+      "type": "roundtable",
+      "title": "Cloud Souverain : Et si cette fois, on ne laissait pas la main aux bullshiteurs ?",
+      "speakers": ["Audric Duchet — Techsys"],
+      "summary": "- **Descriptif officiel** : conférence participative au format FishBall, discussion ouverte et non dirigée.\n- Constat : *« Souverain, c'est le mot à la mode de cette année 2026 »* ; labels et consortiums affaiblissent, selon le descriptif, la promesse du SecNumCloud.\n- Objectif : débattre des critères qui séparent un cloud souverain d'une coquille vide et construire ensemble un **Cloudiscore**, dont une première grille à emporter.\n- Aucun retour de participant lu à ce jour : on ne sait pas si la grille a abouti.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "topologie-pas-telemetrie-tracer-les-pannes-en-cascade-dans-le-cloud",
+      "day": "2026-10-30",
+      "type": "talk",
+      "title": "Topologie, pas télémétrie : tracer les pannes en cascade dans le cloud",
+      "speakers": ["Louis Fradin — Anyshift"],
+      "summary": "- **Descriptif officiel** : *« Cette chaîne-là n'est pas dans la télémétrie. Elle est dans la topologie. »*\n- Cas d'école : l'incident Cloudflare du 18 novembre 2025, 500 détectées en quelques secondes, mais plus de 3 h avant le début du core recovery.\n- Le talk promet de construire le **graphe de dépendances** depuis AWS, Kubernetes, Terraform, GitHub et Datadog, puis de le donner à une IA pour aller de l'alerte au commit fautif.\n- Lecture critique : le descriptif cite un témoignage client de MotherDuck (20 min à 2 h ramenées à 30 s). C'est un argument d'éditeur, non vérifié ici.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "j-ai-mis-kubernetes-dans-512-mo-de-ram",
+      "day": "2026-10-30",
+      "type": "talk",
+      "title": "J'ai mis Kubernetes dans 512 Mo de RAM. Et il restait de la place pour DOOM.",
+      "speakers": ["Denis Germain — Lucca"],
+      "summary": "- **Descriptif officiel** : démo live d'un Kubernetes mono-nœud sur un **Raspberry Pi Zero 2 W** (512 Mo, environ 20 $), conclue par un stress test *« Does it run DOOM? »*.\n- Sujets annoncés : optimiser un OS minimal, ce qui bloque Kubernetes sur certains OS minimalistes, et où Kubernetes est pertinent ou contre-productif en edge et IoT.\n- Le speaker, non retenu au départ, a remplacé à la demande des organisateurs un speaker empêché, et n'envisage pas de redonner ce talk (speaker, billet du 21 septembre). Le sujet vient de son article pour Sysops Pratique.\n- Aucun retour de participant lu à ce jour.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "on-a-toujours-fait-comme-ca",
+      "day": "2026-10-30",
+      "type": "lightning",
+      "title": "On a toujours fait comme ça",
+      "speakers": ["Emmanuel Peru — zatsit"],
+      "summary": "- **Descriptif officiel** : une dizaine de **biais cognitifs** qui nuisent aux projets tech, dont statu quo, planning fallacy, coût irrécupérable, effet IKEA et normalisation de la déviance.\n- Chaque biais est nommé, sourcé et illustré, sans culpabiliser.\n- Contre-leviers annoncés : regard extérieur, décisions réversibles, sécurité psychologique.\n- Aucun retour de participant lu à ce jour.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "maintenir-une-app-benevole-tech-galeres-et-resilience",
+      "day": "2026-10-30",
+      "type": "lightning",
+      "title": "Maintenir une app bénévole : Tech, galères et résilience.",
+      "speakers": ["Sébastien Ferrer — OVHcloud"],
+      "summary": "- **Descriptif officiel** : une application de suivi de symptômes chroniques lancée bénévolement en 2020, utilisée par **11 000 personnes** sur Android (Angular, Ionic Capacitor).\n- Cinq ans de maintenance seul : dette technique, évolutions d'Android, incident critique sur les permissions et l'accès aux fichiers.\n- La part moins visible : mails, bêta-testeurs, priorisation, savoir dire non.\n- Aucun retour de participant lu à ce jour.",
+      "summarySources": ["program"]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Keynote d'ouverture (Patrick Perrot, Inspection Générale, Gendarmerie nationale) : sujet gardé secret par les organisateurs, non publié au programme"
+  ],
+  "sources": [
+    { "label": "Programme officiel Cloud Nord 2026 et pages de sessions", "url": "https://cloudnord.fr/schedule/day-1" },
+    { "label": "Site officiel Cloud Nord (date, lieu, environ 300 participants, 21 sessions)", "url": "https://cloudnord.fr" },
+    { "label": "Page speakers Cloud Nord 2026", "url": "https://cloudnord.fr/speakers" },
+    { "label": "Page LinkedIn Cloud Nord (posts sur l'organisation, les sponsors et la billetterie)", "url": "https://www.linkedin.com/company/cloud-nord/" },
+    { "label": "Post LinkedIn Cloud Nord, veille de l'événement (imprévus, son de la captation)", "url": "https://fr.linkedin.com/posts/cloud-nord_apr%C3%A8s-un-apres-midi-charg%C3%A9e-en-rebondissements-activity-7521702796883136512-kg-X" },
+    { "label": "Post LinkedIn Cloud Nord, annonce de la journée (keynote secrète, 3 salles, OpenFeedback)", "url": "https://fr.linkedin.com/posts/cloud-nord_cloud-nord-2026-cest-demain-cloud-activity-7521518955212079104-3BGM" },
+    { "label": "Post LinkedIn Cloud Nord, bénévoles (7e édition)", "url": "https://fr.linkedin.com/posts/cloud-nord_dans-lombre-mais-au-c%C5%93ur-de-cloud-nord-activity-7520764245848952832-uezP" },
+    { "label": "Post LinkedIn Cloud Nord, sponsors", "url": "https://fr.linkedin.com/posts/cloud-nord_sponsors-cloud-nord-activity-7518227089674715137-GbM_" },
+    { "label": "Post LinkedIn Cloud Nord, événement complet", "url": "https://fr.linkedin.com/posts/cloud-nord_cloudnord2026-activity-7518955565876707328-sXha" },
+    { "label": "Support interactif de Blind ops (Nuno Araujo)", "url": "https://cloudnord.zboss.fr" },
+    { "label": "Denis Germain, « Retrouvez-moi à Cloud Nord 2026 et au DevFest Toulouse ! »", "url": "https://blog.zwindler.fr/2026/09/21/retrouvez-moi-cloud-nord-2026-devfest-toulouse/" },
+    { "label": "Clever Cloud, « Why we (finally) built our own managed Kubernetes » (contexte etcd)", "url": "https://www.clever.cloud/blog/company/2025/06/27/why-we-finally-built-our-own-managed-kubernetes-etcd" },
+    { "label": "Clever Cloud, « Upcoming Events 2026 »", "url": "https://www.clever.cloud/blog/event/2026/09/02/upcoming-events-2026/" },
+    { "label": "Posts LinkedIn connus par extrait de recherche seulement : Stephane Theou, Mazlum Tosun (speaker)" }
+  ]
 }

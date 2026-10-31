@@ -11,10 +11,10 @@
   "dateConfidence": "ok",
   "note": "Trois villes le même jour (vendredi 16 mai 2025), une track par ville : 8 talks à Lille, 10 à Lyon, 9 à Poitiers. Plus de 440 participants selon le bilan de l'AFUP ; édition placée sous le signe des 30 ans de PHP. Pas de captation vidéo publiée sur la chaîne de l'AFUP.",
   "status": "synthesized",
-  "synthesisUpdatedAt": "2026-10-03",
-  "revisit": "Corpus participant mince : trois comptes-rendus d'entreprises (deux pour Lille, un pour Lyon), aucun retour pour Poitiers, aucun post LinkedIn post-événement trouvé ; budget de recherche web épuisé (7 requêtes).",
-  "corpus": "Programmes officiels des trois villes, **bilan de l'AFUP** (19/05/2025) et **trois comptes-rendus d'entreprises** : Monsieur Biz pour Lille (19/05/2025, 4 auteurs, 8 talks), Efficience IT pour Lille (Louis-Arnaud Catoire, 27/05/2025, 8 talks), Webqam pour Lyon (Sébastien Noirie, 3 talks). S'y ajoutent l'interview pré-événement de Nicolas Perussel, le transcript de la reprise de « Débrider la capacité des Workers » au Forum PHP 2025 et des slides de Vincent Amstoutz sur le même sujet que son talk lyonnais.",
-  "limits": "Aucun post LinkedIn de participant ni commentaire Joind.in trouvé (pages Joind.in vides). Les deux comptes-rendus lillois viennent de sponsors et restent descriptifs, proches des résumés du programme ; celui d'Efficience IT a été mis à jour en mars 2026. **Poitiers n'a aucun retour de participant** : ses deux sessions documentées le sont par le speaker lui-même (interview) ou par la vidéo d'une autre conférence. Les titres sont préfixés par la ville.",
+  "synthesisUpdatedAt": "2026-10-31",
+  "revisit": "Lille est désormais bien couvert (deux comptes-rendus, sept sketchnotes), mais Poitiers n'a toujours aucun retour de participant sur le fond des talks et six talks lyonnais ne sont connus que par le programme et l'interview d'avant-événement. Aucun post LinkedIn lisible : recherches web sans résultat le 03/10/2026 et le 31/10/2026, publications inaccessibles sans compte.",
+  "corpus": "Programmes officiels des trois villes, **bilan de l'AFUP** (19/05/2025), **trois comptes-rendus d'entreprises** (Monsieur Biz et Efficience IT pour Lille, Webqam pour Lyon) et **sept sketchnotes de Mathieu Desnouveaux** sur les talks lillois (publiées le 19/05/2025). S'y ajoutent une vingtaine de posts Bluesky et Mastodon du jour même ou des jours suivants, 15 interviews de speakers publiées avant l'événement par l'AFUP, les transcripts des reprises de deux talks au Forum PHP 2025 (Workers, pagination), la vidéo et la transcription de l'intro sponsor Temma à Lyon, et des slides (Fernandes, Amstoutz).",
+  "limits": "Aucun post LinkedIn de participant ni commentaire Joind.in lu (pages Joind.in vides, notes OpenFeedback non consultables). **Quatorze sessions reposent pour l'essentiel sur le programme et une interview du speaker publiée avant l'événement** : elles disent ce qui était annoncé, pas ce qui a été dit ni comment cela a été reçu. Les comptes-rendus lillois viennent de sponsors et restent descriptifs ; celui d'Efficience IT a été mis à jour en mars 2026. Mathieu Desnouveaux, auteur des sketchnotes, est aussi speaker à Lille, et les textes de ses pages ont pu être enrichis après coup. **Poitiers n'a aucun retour de participant sur le fond des talks**, seulement quelques posts d'ambiance. Les titres sont préfixés par la ville.",
   "tldr": "**Une journée PHP très « artisanat logiciel » dans trois villes** : reprise de legacy et clean architecture, performance (cache prédictif, lazy-loading, workers, Black Friday), qualité des tests et sécurité de l'écosystème, avec une IA encore très discrète au programme.",
   "keyTakeaways": [
     "Moderniser un legacy **progressivement** (PHP 8, Docker, CI GitLab, Symfony) plutôt que par une réécriture brutale (Fatrez, d'après Monsieur Biz et Efficience IT).",
@@ -24,7 +24,9 @@
     "Pour des workers PHP à fort débit, **éviter les collisions par le sharding** plutôt que par des locks, et utiliser mémoire partagée et sémaphores pour la coordination (Mercier-Rojas, transcript Forum PHP 2025).",
     "Commencer par étudier le cycle de vie des données (criticité, durée de conservation, reconstructibilité) pour choisir le bon stockage (Mercier-Rojas).",
     "Mesurer la qualité des tests par le **mutation testing** (Infection, Pest, score MSI) plutôt que par la seule couverture (Amstoutz, programme et slides).",
-    "Ne pas craindre les tests en production s'ils sont préparés : observabilité, APM, traces de bout en bout et Game Days d'abord (Perussel, speaker)."
+    "Ne pas craindre les tests en production s'ils sont préparés : observabilité, APM, traces de bout en bout et Game Days d'abord (Perussel, speaker).",
+    "Pour paginer plusieurs sources hétérogènes sans exposer l'architecture, **chiffrer l'état de la pagination dans un token opaque** et prendre à chaque tour l'élément le plus récent parmi les sources (Desnouveaux, transcript Forum PHP 2025).",
+    "Limiter la durée de vie des feature flags : prévoir leur suppression dès leur création (Cavy, speaker, interview d'avant-événement)."
   ],
   "sessions": [
     {
@@ -33,9 +35,9 @@
       "type": "talk",
       "title": "[Lille] Minority report : optimisez votre expérience utilisateur avec du cache par anticipation",
       "speakers": ["Clément Talleu — Les-Tilleuls.coop"],
-      "feedbackFrom": ["Blog Monsieur Biz (J. Bodin-Hullin, M. Huran, D. Buros, M. Leclercq)", "Blog Efficience IT (L.-A. Catoire)"],
-      "summary": "- Stratégies de **cache prédictif** adaptées aux parcours de chaque utilisateur, avec Symfony, pour rendre l'interface plus réactive (programme).\n- Efficience IT retient l'idée de *« pré-calculer et stocker les données susceptibles d'être demandées »*, avec des gains *« parfois spectaculaires »*.\n- Monsieur Biz y voit la preuve que *« l'avenir de la performance web est résolument côté client »*, même en conditions extrêmes.",
-      "summarySources": ["blog", "program"]
+      "feedbackFrom": ["Blog Monsieur Biz (J. Bodin-Hullin, M. Huran, D. Buros, M. Leclercq)", "Blog Efficience IT (L.-A. Catoire)", "Sketchnote de Mathieu Desnouveaux"],
+      "summary": "- Stratégies de **cache prédictif** adaptées aux parcours de chaque utilisateur, avec Symfony, pour rendre l'interface plus réactive (programme).\n- Efficience IT retient l'idée de *« pré-calculer et stocker les données susceptibles d'être demandées »*, avec des gains *« parfois spectaculaires »*.\n- Monsieur Biz y voit la preuve que *« l'avenir de la performance web est résolument côté client »*, même en conditions extrêmes.\n- La sketchnote de Mathieu Desnouveaux précise la méthode : extraire le graphe des visites des logs serveur, calculer les probabilités de changement de page avec des **chaînes de Markov**, puis précharger la suite via des headers preload et prefetch, pour supprimer le premier chargement lourd.",
+      "summarySources": ["blog", "feedback", "program"]
     },
     {
       "id": "lille-rex-comment-reprendre-en-main-son-legacy",
@@ -43,9 +45,9 @@
       "type": "talk",
       "title": "[Lille] REX : Comment reprendre en main son legacy ?",
       "speakers": ["Nicolas Fatrez"],
-      "feedbackFrom": ["Blog Monsieur Biz (J. Bodin-Hullin, M. Huran, D. Buros, M. Leclercq)", "Blog Efficience IT (L.-A. Catoire)"],
-      "summary": "- Point de départ (Efficience IT) : un système d'information figé pendant une décennie, *« un monolithe PHP 5 sans tests, sans versioning, déployé manuellement par FTP »*.\n- Méthode : **migration progressive** sans rupture majeure, vers PHP 8, Docker, GitLab CI, Symfony, design patterns et déploiement continu, puis cache.\n- Monsieur Biz salue un **message rassurant** pour les équipes qui vivent avec du legacy.",
-      "summarySources": ["blog", "program"]
+      "feedbackFrom": ["Blog Monsieur Biz (J. Bodin-Hullin, M. Huran, D. Buros, M. Leclercq)", "Blog Efficience IT (L.-A. Catoire)", "Sketchnote de Mathieu Desnouveaux"],
+      "summary": "- Point de départ (Efficience IT) : un système d'information figé pendant une décennie, *« un monolithe PHP 5 sans tests, sans versioning, déployé manuellement par FTP »*.\n- Méthode : **migration progressive** sans rupture majeure, vers PHP 8, Docker, GitLab CI, Symfony, design patterns et déploiement continu, puis cache.\n- La sketchnote de Mathieu Desnouveaux détaille les étapes : Docker pour réconcilier la production et Git, formation de l'équipe, Composer, scripts de migration automatique, migration d'encodage, secrets sortis du code, puis **Symfony par briques**.\n- Monsieur Biz salue un **message rassurant** pour les équipes qui vivent avec du legacy.",
+      "summarySources": ["blog", "feedback", "program"]
     },
     {
       "id": "lille-optimisation-pagination-multi-source-suivi-virements",
@@ -54,8 +56,14 @@
       "title": "[Lille] Optimisation de la Pagination Multi-Source pour le Suivi des Virements",
       "speakers": ["Mathieu Desnouveaux — BoursoBank"],
       "feedbackFrom": ["Blog Monsieur Biz (J. Bodin-Hullin, M. Huran, D. Buros, M. Leclercq)", "Blog Efficience IT (L.-A. Catoire)"],
-      "summary": "- Cas BoursoBank : suivre des virements dont les données proviennent de **plusieurs canaux de transaction** et les présenter dans une pagination unique (programme).\n- Les deux comptes-rendus retiennent le défi de **fusionner et paginer des sources hétérogènes** à grande échelle, sans détailler la solution technique.",
-      "summarySources": ["blog", "program"]
+      "summary": "- Contenu tiré du transcript de la **reprise du talk au Forum PHP 2025** (pas de captation à Lille). BoursoBank y annonce 8 millions de clients, environ 400 000 virements par jour et 1 million d'appels quotidiens à l'API de suivi.\n- Problème : cinq partenaires (virements bancaires, temporisés, instantanés, internationaux, SMS), chacun avec sa pagination et son protocole (SQL, REST, SOAP, format fixe), à fusionner en une liste triée par date qui **masque l'origine des données**. Paginer source par source perd des virements ou casse l'ordre d'une page à l'autre.\n- Solution : un *source retriever* par partenaire normalise les données ; à chaque tour, on retient le virement le plus récent parmi les têtes de collection et on avance l'offset de sa source. Cet état est chiffré en **token opaque** que le client renvoie pour la page suivante.\n- Une source épuisée sort du curseur ou est rechargée avec un offset à zéro. Les filtres de recherche voyagent dans le token, et le mécanisme a été réutilisé pour les opérations multi-comptes et les documents.\n- Performance : chaque page impose d'appeler les cinq partenaires, d'où un cache Varnish et un cache Redis devant chaque partenaire. Une refonte d'interface a fait monter l'usage de l'API de **300 % en deux ou trois jours**.\n- Limites reconnues en questions : pas d'accès direct à une page numérotée (d'où le scroll infini), données arrivant dans une source déjà retirée, et pas d'agrégation asynchrone à cause des contraintes réglementaires sur le stockage des données clients.\n- Retours à Lille : les deux comptes-rendus retiennent le défi de **fusionner et paginer des sources hétérogènes**, sans détailler la solution.",
+      "summarySources": ["transcript", "blog", "program"],
+      "video": {
+        "youtubeId": "vcu5XSO1N-8",
+        "title": "Optimisation de la Pagination Multi-Source pour le Suivi des Virements - Mathieu DESNOUVEAUX - Forum PHP 2025 (reprise du talk, pas la captation AFUP Day)",
+        "publishedAt": "2025-12-02",
+        "transcript": true
+      }
     },
     {
       "id": "lille-migration-rad-vers-clean-architecture",
@@ -63,9 +71,9 @@
       "type": "talk",
       "title": "[Lille] Retour d'expérience sur la migration d'un RAD vers une Clean Architecture",
       "speakers": ["Nathan Pretot — Tribee"],
-      "feedbackFrom": ["Blog Monsieur Biz (J. Bodin-Hullin, M. Huran, D. Buros, M. Leclercq)", "Blog Efficience IT (L.-A. Catoire)"],
-      "summary": "- Transformation progressive d'une application Symfony développée en RAD : **séparation des responsabilités, isolement du domaine métier**, meilleure testabilité (Efficience IT).\n- Monsieur Biz note le recours au **DDD et à l'architecture hexagonale**, avec des gains de testabilité et de performance, et insiste sur l'importance de la documentation et de la formation de l'équipe.\n- Garde-fou retenu par Efficience IT : éviter la **sur-ingénierie**.",
-      "summarySources": ["blog", "program"]
+      "feedbackFrom": ["Blog Monsieur Biz (J. Bodin-Hullin, M. Huran, D. Buros, M. Leclercq)", "Blog Efficience IT (L.-A. Catoire)", "Sketchnote de Mathieu Desnouveaux"],
+      "summary": "- Transformation progressive d'une application Symfony développée en RAD : **séparation des responsabilités, isolement du domaine métier**, meilleure testabilité (Efficience IT).\n- Monsieur Biz note le recours au **DDD et à l'architecture hexagonale**, avec des gains de testabilité et de performance, et insiste sur l'importance de la documentation et de la formation de l'équipe.\n- La sketchnote de Mathieu Desnouveaux retient la formule de départ, *« Rien ne marche, mais tout marche ! »*, et le fil suivi : Ubiquitous Language pour que le code raconte le métier, entités et value objects, ports et adapters, CQRS.\n- Garde-fou retenu par Efficience IT : éviter la **sur-ingénierie**.",
+      "summarySources": ["blog", "feedback", "program"]
     },
     {
       "id": "lille-devenez-cto-sans-quitter-votre-poste-de-developpeur",
@@ -73,9 +81,9 @@
       "type": "talk",
       "title": "[Lille] Devenez CTO sans quitter votre poste de développeur",
       "speakers": ["Pierre Marichez"],
-      "feedbackFrom": ["Blog Monsieur Biz (J. Bodin-Hullin, M. Huran, D. Buros, M. Leclercq)", "Blog Efficience IT (L.-A. Catoire)"],
-      "summary": "- Parcours d'un développeur devenu CTO *« sans jamais quitter la technique »* (Efficience IT).\n- Conseils retenus : **management technique et délégation intelligente** ; une progression de carrière reste possible en gardant les mains dans le code (Monsieur Biz).\n- Seul talk de Lille centré sur la carrière plutôt que sur le code.",
-      "summarySources": ["blog", "program"]
+      "feedbackFrom": ["Blog Monsieur Biz (J. Bodin-Hullin, M. Huran, D. Buros, M. Leclercq)", "Blog Efficience IT (L.-A. Catoire)", "Sketchnote de Mathieu Desnouveaux"],
+      "summary": "- Parcours d'un développeur devenu CTO *« sans jamais quitter la technique »* (Efficience IT).\n- Conseils retenus : **management technique et délégation intelligente** ; une progression de carrière reste possible en gardant les mains dans le code (Monsieur Biz).\n- La sketchnote de Mathieu Desnouveaux résume les étapes (dev avec un mentor, software craftsmanship, tech lead, responsable d'équipe PHP, CTO *hands-on*) et les points clés : remettre de la communication entre les équipes, savoir dire stop, déléguer.\n- Seul talk de Lille centré sur la carrière plutôt que sur le code.",
+      "summarySources": ["blog", "feedback", "program"]
     },
     {
       "id": "lille-symfony-ux-dans-la-vraie-vie-e-commerce",
@@ -83,9 +91,9 @@
       "type": "talk",
       "title": "[Lille] Symfony UX dans la vraie vie : cas d'usage sur un projet e-commerce",
       "speakers": ["Amélie Guers — Widop"],
-      "feedbackFrom": ["Blog Monsieur Biz (J. Bodin-Hullin, M. Huran, D. Buros, M. Leclercq)", "Blog Efficience IT (L.-A. Catoire)"],
-      "summary": "- Projet e-commerce sous **Sylius** enrichi avec Symfony UX pour obtenir *« des interfaces dynamiques avec un minimum de JavaScript »* (Efficience IT).\n- Briques citées par Monsieur Biz : **Turbo Drive, Turbo Frame, Stimulus, Live Components**.",
-      "summarySources": ["blog", "program"]
+      "feedbackFrom": ["Blog Monsieur Biz (J. Bodin-Hullin, M. Huran, D. Buros, M. Leclercq)", "Blog Efficience IT (L.-A. Catoire)", "Sketchnote de Mathieu Desnouveaux"],
+      "summary": "- Projet e-commerce sous **Sylius** enrichi avec Symfony UX pour obtenir *« des interfaces dynamiques avec un minimum de JavaScript »* (Efficience IT).\n- Briques citées par Monsieur Biz : **Turbo Drive, Turbo Frame, Stimulus, Live Components**.\n- Conseil noté sur la sketchnote de Mathieu Desnouveaux : la démarche vaut aussi pour un projet existant, en **commençant par ajouter des Live Components**.",
+      "summarySources": ["blog", "feedback", "program"]
     },
     {
       "id": "lille-architecture-multi-tenant-symfony-api-platform-postgresql",
@@ -93,9 +101,9 @@
       "type": "talk",
       "title": "[Lille] Mise en œuvre d'une architecture multi-tenant avec Symfony, API Platform et PostgreSQL",
       "speakers": ["Mehdi Zaidi — Les-Tilleuls.coop"],
-      "feedbackFrom": ["Blog Monsieur Biz (J. Bodin-Hullin, M. Huran, D. Buros, M. Leclercq)", "Blog Efficience IT (L.-A. Catoire)"],
-      "summary": "- Objectif : du multi-tenant qui **préserve le comportement natif** de l'application et reste compatible avec API Platform (programme).\n- Efficience IT liste les stratégies d'isolation comparées : *« schéma par tenant, base par tenant, discrimination par colonne »*.\n- Monsieur Biz le juge *« très technique, pragmatique et riche de retours d'expérience »*.",
-      "summarySources": ["blog", "program"]
+      "feedbackFrom": ["Blog Monsieur Biz (J. Bodin-Hullin, M. Huran, D. Buros, M. Leclercq)", "Blog Efficience IT (L.-A. Catoire)", "Sketchnote de Mathieu Desnouveaux", "Post Bluesky Les-Tilleuls.coop"],
+      "summary": "- Objectif : du multi-tenant qui **préserve le comportement natif** de l'application et reste compatible avec API Platform (programme).\n- Efficience IT liste les stratégies d'isolation comparées : *« schéma par tenant, base par tenant, discrimination par colonne »*.\n- La sketchnote de Mathieu Desnouveaux retient l'**identification du tenant à la Kernel Request**, suivie de la connexion à la bonne base : le contrôleur garde le même code avec des données séparées. Des vues globales aident à déboguer entre tenants.\n- Monsieur Biz le juge *« très technique, pragmatique et riche de retours d'expérience »*. Les-Tilleuls.coop, employeur du speaker, présente ce talk comme sa première conférence.",
+      "summarySources": ["blog", "feedback", "program"]
     },
     {
       "id": "lille-le-lazy-loading-est-plus-que-vous-ne-le-pensez",
@@ -103,9 +111,9 @@
       "type": "talk",
       "title": "[Lille] Le lazy-loading est plus que vous ne le pensez !",
       "speakers": ["Baptiste Leduc — JoliCode"],
-      "feedbackFrom": ["Blog Monsieur Biz (J. Bodin-Hullin, M. Huran, D. Buros, M. Leclercq)", "Blog Efficience IT (L.-A. Catoire)"],
-      "summary": "- Talk de niveau confirmé : le lazy-loading **au-delà de l'ORM**, via les ghost objects et value holders de Symfony (Efficience IT).\n- Monsieur Biz le rattache aux contextes **contraints en mémoire**, où différer le chargement améliore les performances.",
-      "summarySources": ["blog", "program"]
+      "feedbackFrom": ["Blog Monsieur Biz (J. Bodin-Hullin, M. Huran, D. Buros, M. Leclercq)", "Blog Efficience IT (L.-A. Catoire)", "Sketchnote de Mathieu Desnouveaux"],
+      "summary": "- Talk de niveau confirmé : le lazy-loading **au-delà de l'ORM**, via les ghost objects et value holders de Symfony (Efficience IT).\n- La sketchnote de Mathieu Desnouveaux retient **quatre patterns** (Initialization, Value Holder, Virtual Proxies, Ghost Object), leur intégration à PHP 8.4, et un cas de PIM : les appels partent en tâche de fond et ne bloquent que si la donnée est réellement lue.\n- Monsieur Biz le rattache aux contextes **contraints en mémoire**, où différer le chargement améliore les performances.",
+      "summarySources": ["blog", "feedback", "program"]
     },
     {
       "id": "lyon-gestion-des-failles-de-securite-ecosysteme-php",
@@ -123,9 +131,9 @@
       "type": "talk",
       "title": "[Lyon] L'Output Buffer : vous ne le connaissez peut-être pas mais lui vous connait",
       "speakers": ["Damien Fernandes — Wanadev"],
-      "feedbackFrom": ["Blog Webqam (S. Noirie)"],
-      "summary": "- Récit personnel autour d'un mécanisme présent partout en PHP mais peu connu des développeurs (programme).\n- Webqam dit avoir **redécouvert les fonctions `ob_`**, en particulier le callback de `ob_start`.\n- Exemple concret retenu : la **première merge request du speaker sur Symfony**, où cette technique a facilité le traitement du flux de sortie.",
-      "summarySources": ["blog", "program"]
+      "feedbackFrom": ["Blog Webqam (S. Noirie)", "Damien Fernandes, post Bluesky du 19/05/2025 (speaker)"],
+      "summary": "- Récit personnel autour d'un mécanisme présent partout en PHP mais peu connu des développeurs (programme).\n- Webqam dit avoir **redécouvert les fonctions `ob_`**, en particulier le callback de `ob_start`.\n- Exemple concret retenu : la **première merge request du speaker sur Symfony**, où cette technique a facilité le traitement du flux de sortie.\n- Les slides situent cette contribution dans le train du retour du Forum PHP 2024 : intégrer la barre de debug du WebProfiler aux réponses streamées, en capturant le contenu pour y injecter son HTML. Elles pointent le risque de **saturer la mémoire**, puis montrent l'imbrication des buffers *en poupées russes* sur un FizzBuzz.\n- Retour du speaker sur Bluesky : *« Première fois en tant que speaker à Lyon devant plus de 200 personnes. Beaucoup de stress, surtout en clôture, mais quelle expérience ! »* (speaker).",
+      "summarySources": ["blog", "slides", "program"]
     },
     {
       "id": "lyon-des-structures-de-donnees-qui-vont-vous-etonner",
@@ -133,9 +141,85 @@
       "type": "lightning",
       "title": "[Lyon] Des structures de données qui vont vous étonner",
       "speakers": ["Pascal Martin — Bedrock"],
-      "feedbackFrom": ["Blog Webqam (S. Noirie)"],
-      "summary": "- Format court (20 min) : des structures de données moins connues que les listes chaînées et les tables de hachage, avec un rappel de la **notation Big-O** et des usages pratiques (programme).\n- Webqam apprécie surtout la **forme**, une présentation structurée et précise, et recommande le blog technique du speaker.",
+      "feedbackFrom": ["Blog Webqam (S. Noirie)", "Pascal Martin, posts Bluesky du 21/05/2025 (speaker)"],
+      "summary": "- Format court (20 min) : des structures de données moins connues que les listes chaînées et les tables de hachage, avec un rappel de la **notation Big-O** et des usages pratiques (programme).\n- Webqam apprécie surtout la **forme**, une présentation structurée et précise, et recommande le blog technique du speaker.\n- Le speaker précise que c'était la première fois qu'il donnait ce talk en public. Il n'y a pas d'enregistrement, et il ne publie pas ses slides (speaker).",
       "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "lyon-temma-php-way-of-life",
+      "day": "2025-05-16",
+      "type": "other",
+      "title": "[Lyon] Temma et PHP Way of Life (intro sponsor)",
+      "speakers": ["Amaury Bouchard — Temma"],
+      "feedbackFrom": ["Amaury Bouchard, article de blog du 01/06/2025 (speaker)"],
+      "summary": "- Créneau sponsor de neuf minutes, consacré surtout au **manifeste PHP Way of Life** plutôt qu'au framework Temma (transcription publiée par le speaker).\n- Thèse : les langages et frameworks alternent phases de complexification et de simplification, et le monde PHP s'est trop inspiré de Java.\n- Exemples cités : strict types non activés dans le code de Symfony, 100 % de couverture sans test d'intégration, JavaScript inutile sur un site transactionnel classique, abandon de l'ORM par le co-créateur de Propel.\n- Conclusion : les bonnes pratiques d'entreprises de plusieurs centaines de développeurs ne valent pas forcément pour *« une équipe de 8 personnes »*.\n- Retours rapportés par le speaker lui-même : très positifs, et il dit avoir été félicité pour avoir abordé *« un sujet de fond »* plutôt que sa solution (speaker).",
+      "summarySources": ["transcript", "blog", "program"],
+      "video": {
+        "youtubeId": "YPBhX98JVV4",
+        "title": "AFUP Day Lyon 2025 - Présentation Temma et PHP Way of Life",
+        "publishedAt": "2025-06-01",
+        "transcript": true
+      }
+    },
+    {
+      "id": "lyon-etl-ce-qu-il-vous-manquait-pour-integrer-vos-clients",
+      "day": "2025-05-16",
+      "type": "talk",
+      "title": "[Lyon] L'ETL, ce qu'il vous manquait pour intégrer vos clients",
+      "speakers": ["Nicolas Jourdan"],
+      "feedbackFrom": ["Nicolas Jourdan, interview AFUP du 17/03/2025 (speaker)", "Post Bluesky Elao"],
+      "summary": "- Un client prioritaire impose ses propres interfaces : l'ETL évite de tordre ses API et d'ajouter du spécifique coûteux (programme).\n- Dans son interview d'avant l'événement (speaker) : *« L'ETL n'est pas réservé aux grandes entreprises. »* Pour les gros volumes, il conseille traitement en flux, parallélisation et cache intermédiaire.\n- Seule trace du jour même : Elao résume sur Bluesky un fil rouge à base de *boîte de mandarines qui espère dominer le marché mondial du smartphone*.",
+      "summarySources": ["feedback", "program", "blog"]
+    },
+    {
+      "id": "lyon-comprendre-et-appliquer-le-pattern-repository",
+      "day": "2025-05-16",
+      "type": "talk",
+      "title": "[Lyon] Comprendre et Appliquer le Pattern Repository en PHP",
+      "speakers": ["Pablo Godinez — Evaneos"],
+      "feedbackFrom": ["Pablo Godinez, interview AFUP du 14/04/2025 (speaker)"],
+      "summary": "- Démystifier un pattern souvent mal appliqué à cause de mauvais exemples en ligne, en confrontant la définition de la littérature aux pratiques des projets PHP (programme).\n- Doctrine permet une implémentation fidèle ; pour qui évite les ORM, le talk annonce des alternatives inspirées de l'Event Sourcing (programme).\n- Dans son interview d'avant l'événement (speaker) : *« Le pattern Repository est avant tout une spécification, plus qu'une simple implémentation »*.\n- Aucun retour de participant trouvé.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "lyon-open-source-pourquoi-comment",
+      "day": "2025-05-16",
+      "type": "lightning",
+      "title": "[Lyon] Open-source : pourquoi ? comment ?",
+      "speakers": ["Julien Deniau — Mapado"],
+      "feedbackFrom": ["Julien Deniau, interview AFUP du 05/03/2025 (speaker)"],
+      "summary": "- Format court (20 min) : l'open source vu par les contributeurs, pour celles et ceux qui hésitent à se lancer (programme).\n- Dans son interview d'avant l'événement (speaker) : contribuer ne se limite pas au code (issues, revues), et il vaut mieux discuter avant une PR de fonctionnalité : *« Le bon choix est souvent d'ouvrir une « issue » pour en discuter avec les mainteneurs »*.\n- Le speaker a publié ses slides le jour même, mais la version en ligne a été modifiée depuis (références de 2026) : elle ne reflète plus le talk de Lyon.\n- Aucun retour de participant trouvé.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "lyon-detecter-les-battements-du-coeur-humain-en-php",
+      "day": "2025-05-16",
+      "type": "lightning",
+      "title": "[Lyon] Détecter les battements du cœur humain en PHP",
+      "speakers": ["Alexandre Daubois — Decathlon Travel"],
+      "feedbackFrom": ["Alexandre Daubois, interview AFUP du 25/03/2025 (speaker)"],
+      "summary": "- Format court (20 min) : détecter le rythme cardiaque par photopléthysmographie optique, avec du PHP et rien d'autre, pour passer en revue des méthodes et bibliothèques méconnues (programme).\n- Dans son interview d'avant l'événement (speaker), il présente l'expérience comme un prétexte à apprendre (*« ce sera le voyage qui nous intéressera plus que la destination ! »*) et ne croit pas à un avenir médical de PHP : *« N'allez pas entraîner un modèle d'IA avec PHP. »*\n- Aucun retour de participant sur le contenu trouvé.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "lyon-votre-app-a-l-epreuve-de-black-friday",
+      "day": "2025-05-16",
+      "type": "talk",
+      "title": "[Lyon] Votre app à l'épreuve de Black Friday",
+      "speakers": ["Thomas Di Luccio — Platform.sh"],
+      "feedbackFrom": ["Thomas Di Luccio, interview AFUP du 11/03/2025 (speaker)"],
+      "summary": "- Histoires d'horreur sur des applications PHP mal préparées, puis une feuille de route : clonage des environnements de production, génération de trafic, observabilité en temps réel (programme).\n- Dans son interview d'avant l'événement (speaker), il mise sur l'automatisation dans les pipelines : *« Je conseille d'écrire un test de performance supplémentaire avec chaque PR/MR. »*\n- Aucun retour de participant trouvé.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "lyon-async-sans-stress-les-erreurs-a-ne-plus-commettre",
+      "day": "2025-05-16",
+      "type": "talk",
+      "title": "[Lyon] Async sans stress : Les erreurs à ne plus commettre",
+      "speakers": ["Ismaile Abdallah — DrData"],
+      "feedbackFrom": ["Ismaile Abdallah, interview AFUP du 20/03/2025 (speaker)"],
+      "summary": "- Avec Symfony Messenger, la montée en charge fait apparaître problèmes de performance, saturation des files et erreurs silencieuses (programme).\n- Dans son interview d'avant l'événement (speaker) : *« il est crucial d'avoir un environnement de test ISO Prod »*, et éviter les mises à jour en SQL pur sans Doctrine, qui menacent l'intégrité des données sous forte charge.\n- Il préfère Messenger à une intégration directe de RabbitMQ, qui oblige à gérer soi-même configuration, retries et logs.\n- Aucun retour de participant trouvé.",
+      "summarySources": ["program", "blog"]
     },
     {
       "id": "lyon-debusquez-les-failles-cachees-phpinfection-pest",
@@ -170,23 +254,79 @@
       "feedbackFrom": ["Nicolas Perussel, interview AFUP du 13/05/2025 (speaker)"],
       "summary": "- REX sur l'**empoisonnement volontaire du réseau** pour simuler les conditions de production et vérifier la résilience quand une brique critique tombe (programme).\n- Dans son interview d'avant l'événement (speaker), le CTO PHP d'ekino cite Netflix, LinkedIn et Shopify, et conseille de tester en production avec prudence : *« load balance une partie du trafic sur une partie spécifique et regarde ce qui se passe »*.\n- Prérequis selon lui : l'**observabilité** (*« Les logs sont cruciaux mais il faut qu'ils soient correctement valorisés »*), un APM et du tracing de bout en bout, plus des **Game Days** pour entraîner les humains autant que les systèmes.\n- Aucun retour de participant trouvé.",
       "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "poitiers-migration-jeu-apero-afup-vue-vers-symfony-live-component",
+      "day": "2025-05-16",
+      "type": "talk",
+      "title": "[Poitiers] J'ai migré un jeu apéro AFUP de Vue.js vers Symfony Live Component",
+      "speakers": ["Jérémy Romey"],
+      "feedbackFrom": ["Jérémy Romey, interview AFUP du 04/03/2025 (speaker)", "Posts Bluesky et Mastodon de @welcomattic"],
+      "summary": "- REX de migration d'un jeu, de Vue.js avec API REST vers les Live Components : pourquoi, comment, avantages et inconvénients (programme).\n- Dans son interview d'avant l'événement (speaker), il les juge adaptés quand le frontend est le seul consommateur des données et qu'il n'y a pas deux équipes dédiées, avec une réserve : *« pour un très fort trafic, cela peut poser des problèmes : une API permet de mettre en place un cache HTTP »*.\n- Le talk a ouvert la journée à Poitiers (post de @welcomattic), sans retour sur le fond.",
+      "summarySources": ["feedback", "program", "blog"]
+    },
+    {
+      "id": "poitiers-embeddings-transformation-de-la-recherche-d-information",
+      "day": "2025-05-16",
+      "type": "talk",
+      "title": "[Poitiers] Embeddings : transformation de la recherche d'information",
+      "speakers": ["Iana Iatsun"],
+      "feedbackFrom": ["Iana Iatsun, interview AFUP du 10/03/2025 (speaker)"],
+      "summary": "- Moteurs de recherche à index contre moteurs de réponse à base de grands modèles de langage, et architectures qui combinent rapidité des index et compréhension sémantique (programme).\n- Dans son interview d'avant l'événement (speaker), elle insiste sur la compréhension des bases de l'IA : *« les algorithmes ne raisonnent pas, mais se contentent de reproduire les informations qu'ils ont apprises »*.\n- Aucun retour de participant trouvé.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "poitiers-feature-flags-couteau-suisse-flow-de-developpement",
+      "day": "2025-05-16",
+      "type": "talk",
+      "title": "[Poitiers] Les feature flags : le couteau suisse de votre flow de développement",
+      "speakers": ["Benjamin Cavy — MAIF"],
+      "feedbackFrom": ["Benjamin Cavy, interview AFUP du 19/03/2025 (speaker)"],
+      "summary": "- Dissocier le déploiement de l'activation pour rendre les mises en production moins effrayantes et livrer du code non finalisé, avec les dérives à éviter (programme).\n- Dans son interview d'avant l'événement (speaker) : *« Selon moi, les features flags doivent généralement avoir une durée de vie très limitée. »* Exception citée : un flag de mise en maintenance, conservé pour les incidents.\n- Ses conseils : commencer avec peu de flags, prendre un outil dédié quand leur nombre augmente, et prévoir **un ticket de suppression dès la création**.\n- Aucun retour de participant trouvé.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "poitiers-sous-titrer-les-medias-de-l-accessibilite-a-la-recommandation",
+      "day": "2025-05-16",
+      "type": "talk",
+      "title": "[Poitiers] Sous-titrer les médias : de l'accessibilité à la recommandation",
+      "speakers": ["Matthieu Parmentier"],
+      "feedbackFrom": ["Matthieu Parmentier, interview AFUP du 26/03/2025 (speaker)"],
+      "summary": "- Histoire du sous-titrage, créé dans les années 80 pour les sourds et malentendants, jusqu'à son rôle dans les algorithmes de recherche et de recommandation (programme).\n- Dans son interview d'avant l'événement (speaker), il voit les réseaux sociaux suivre le mouvement d'accessibilité plus vite que les médias traditionnels, et cite le coût de l'audiodescription comme frein : *« C'est aujourd'hui 5 fois plus coûteux que le sous-titrage pour les personnes sourdes et malentendantes. »*\n- Aucun retour de participant trouvé.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "poitiers-consommer-les-api-http-en-php-comme-il-faut",
+      "day": "2025-05-16",
+      "type": "talk",
+      "title": "[Poitiers] Consommer les API HTTP en PHP comme il faut !",
+      "speakers": ["Nicolas Grekas"],
+      "feedbackFrom": ["Nicolas Grekas, interview AFUP du 06/05/2025 (speaker)"],
+      "summary": "- Du protocole HTTP à la DX d'un SDK : bonnes pratiques SOLID, avec php-http/discovery et symfony/http-client (programme).\n- Dans son interview d'avant l'événement (speaker), il donne la priorité à la documentation : *« La priorité, c'est une doc technique claire, avec des exemples simples et des cas d'usage concrets. »* Un SDK doit justifier sa valeur ajoutée sans alourdir les dépendances.\n- Aucun retour de participant trouvé.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "poitiers-j-heberge-mon-projet-en-2025-les-options",
+      "day": "2025-05-16",
+      "type": "talk",
+      "title": "[Poitiers] J'héberge mon projet en 2025, les options",
+      "speakers": ["Bastien Jaillot — JoliCode"],
+      "feedbackFrom": ["Bastien Jaillot, interview AFUP du 09/04/2025 (speaker)"],
+      "summary": "- Tour des architectures (mutualisé, VPS, PaaS, FaaS, dédié, cloud) et des contraintes actuelles : cron, mail, workers, sécurité, mises à jour, stockage (programme).\n- Dans son interview d'avant l'événement (speaker) : *« le déploiement est plus accessible, mais la maîtrise de ce qu'on déploie est plus complexe. »* Il recommande les sites statiques pour la performance et la sobriété énergétique.\n- Aucun retour de participant trouvé.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "poitiers-shift-left-securite-applications-php",
+      "day": "2025-05-16",
+      "type": "talk",
+      "title": "[Poitiers] Shift Left pour renforcer la sécurité des applications PHP",
+      "speakers": ["Ambroise Rougier — Yogosha"],
+      "feedbackFrom": ["Ambroise Rougier, interview AFUP du 13/03/2025 (speaker)"],
+      "summary": "- REX de Yogosha sur un PoC de sécurité intégrée à la CI : scan de vulnérabilités, SAST, fuzzing, DAST (programme).\n- Dans son interview d'avant l'événement (speaker), il juge Dependabot ou Renovate insuffisants : *« Le code applicatif reste la source principale de vulnérabilités. »*\n- Il ajoute que *« Faire des tests fonctionnels et unitaires, c'est déjà faire de la sécurité »*, et recommande d'anonymiser les données sensibles avant d'exposer du code à une IA.\n- Aucun retour de participant trouvé.",
+      "summarySources": ["program", "blog"]
     }
   ],
-  "sessionsWithoutFeedback": [
-    "[Lyon] L'ETL, ce qu'il vous manquait pour intégrer vos clients (N. Jourdan)",
-    "[Lyon] Comprendre et Appliquer le Pattern Repository en PHP (P. Godinez, Evaneos)",
-    "[Lyon] Open-source : pourquoi ? comment ? (J. Deniau, Mapado)",
-    "[Lyon] Détecter les battements du cœur humain en PHP (A. Daubois, Decathlon Travel)",
-    "[Lyon] Votre app à l'épreuve de Black Friday (T. Di Luccio, Platform.sh)",
-    "[Lyon] Async sans stress : Les erreurs à ne plus commettre (I. Abdallah, DrData)",
-    "[Poitiers] J'ai migré un jeu apéro AFUP de Vue.js vers Symfony Live Component (J. Romey)",
-    "[Poitiers] Embeddings : transformation de la recherche d'information (I. Iatsun)",
-    "[Poitiers] Les feature flags : le couteau suisse de votre flow de développement (B. Cavy)",
-    "[Poitiers] Sous-titrer les médias : de l'accessibilité à la recommandation (M. Parmentier)",
-    "[Poitiers] Consommer les API HTTP en PHP comme il faut ! (N. Grekas)",
-    "[Poitiers] J'héberge mon projet en 2025, les options (B. Jaillot)",
-    "[Poitiers] Shift Left pour renforcer la sécurité des applications PHP (A. Rougier)"
-  ],
+  "sessionsWithoutFeedback": [],
   "sources": [
     { "label": "AFUP Day 2025, page générale (3 villes)", "url": "https://event.afup.org/afup-day-2025/" },
     { "label": "Programme Lille", "url": "https://event.afup.org/afup-day-2025/afup-day-2025-lille/programme/" },
@@ -196,10 +336,18 @@
     { "label": "Monsieur Biz, « AFUP Day Lille 2025 : une journée de conférences pour la communauté PHP » (19/05/2025)", "url": "https://monsieurbiz.com/fr/blog/afup-day-lille-2025" },
     { "label": "Efficience IT, « Retour sur l'AFUP Day 2025 Lille » (Louis-Arnaud Catoire, 27/05/2025)", "url": "https://www.itefficience.com/article/retour-sur-lafup-day-2025-lille-php-a-lhonneur-communaute-au-coeur" },
     { "label": "Webqam, « Retour sur l'AFUP Day Lyon 2025 avec l'équipe Custom Platform » (Sébastien Noirie)", "url": "https://www.webqam.fr/blog/afup-day-2025-lyon/" },
+    { "label": "Mathieu Desnouveaux, sept sketchnotes de l'AFUP Day Lille 2025 (19/05/2025)", "url": "https://www.desnouveaux.fr/sketchnotes/topic/afup-day/" },
+    { "label": "AFUP, interviews de speakers « La parole est aux speakers » (mars à mai 2025)", "url": "https://event.afup.org/category/afup-day-2025" },
     { "label": "AFUP, « La parole est aux speakers : Nicolas Perussel » (13/05/2025)", "url": "https://event.afup.org/afupday2025-interview-nicolas-perussel/" },
     { "label": "YouTube AFUP, « Débrider la capacité des Workers », reprise au Forum PHP 2025", "url": "https://www.youtube.com/watch?v=g1dqnX1h154" },
+    { "label": "YouTube AFUP, « Optimisation de la Pagination Multi-Source pour le Suivi des Virements », reprise au Forum PHP 2025", "url": "https://www.youtube.com/watch?v=vcu5XSO1N-8" },
+    { "label": "Amaury Bouchard, « Ma présentation à l'AFUP Day Lyon 2025 : Temma et PHP Way of Life », vidéo et transcription (01/06/2025)", "url": "https://www.geek-directeur-technique.com/2025/06/01/ma-presentation-a-lafup-day-lyon-2025-temma-et-php-way-of-life" },
+    { "label": "Damien Fernandes, slides « L'Output Buffer »", "url": "https://damienfern.github.io/talk_output_buffer" },
+    { "label": "Julien Deniau, slides « Open-source : pourquoi ? comment ? » (version en ligne modifiée depuis le talk)", "url": "https://julien.deniau.me/open-source-howto/dist/" },
     { "label": "Vincent Amstoutz, slides « Detect hidden defects: Check your PHP tests » (Symfony Online, juin 2025)", "url": "https://speakerdeck.com/vinceamstoutz/detect-hidden-defects-check-your-php-tests" },
+    { "label": "AFUP sur Bluesky, annonces du 16/05/2025 sur la panne d'électricité à Lyon", "url": "https://bsky.app/profile/afup.org" },
+    { "label": "Bluesky et Mastodon, posts lus (mai 2025) : AFUP Poitiers, AFUP Lyon, Mathieu (@welcomattic), Jérémy Romey, Julien Deniau, Damien Fernandes, Pascal Martin, Mathieu Desnouveaux, Kévin Dunglas, Les-Tilleuls.coop, Elao, JoliCode, SensioLabs" },
     { "label": "Joind.in : pages Lille, Lyon et Poitiers sans commentaire", "url": "https://joind.in/event/afup-day-2025-lyon" },
-    { "label": "LinkedIn : aucun post de participant sur l'édition 2025 trouvé (recherches du 03/10/2026)" }
+    { "label": "LinkedIn : aucun post de participant sur l'édition 2025 trouvé (recherches du 03/10/2026 et du 31/10/2026)" }
   ]
 }

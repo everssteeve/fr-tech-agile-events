@@ -12,10 +12,10 @@
   "dateConfidence": "ok",
   "note": "7 juillet : journée « Deep Dive » (sessions et ateliers de 3 h) ; 8 et 9 juillet : keynotes, conférences de 50 min, « Snorkeling Sessions » de 25 min, track Red Hat et ateliers « We're not just coders » (cuisine, café, sport, musique). Environ 700 participants, 50 conférences et 30 ateliers annoncés (Sophianet, mai 2025).",
   "status": "synthesized",
-  "synthesisUpdatedAt": "2026-10-01",
-  "revisit": "Un seul retour de participants trouvé (article collectif du blog Criteo R&D) et aucun post LinkedIn lu malgré 7 recherches web. Synthèse reposant surtout sur 31 transcripts de vidéos officielles. Pistes : posts LinkedIn des speakers et participants (#rivieradev), slides publiées sur les pages de session, sketchnotes.",
-  "corpus": "Programme officiel (2025.rivieradev.fr/schedule), 31 transcripts de vidéos de la chaîne YouTube Riviera DEV (publiées les 28 et 30 juillet 2025), un compte-rendu collectif du blog Criteo R&D (août 2025, 8 sessions commentées et le retour d'un speaker) et l'annonce Sophianet (mai 2025).",
-  "limits": "Corpus de retours très mince : un seul article de participants (Criteo), aucun post LinkedIn retrouvé. La plupart des résumés décrivent ce qui a été dit sur scène (transcripts auto, noms parfois mal transcrits) et non la réception. Les ateliers « We're not just coders », la track Red Hat (sauf deux sessions vues par Criteo) et une quarantaine de sessions restent sans contenu.",
+  "synthesisUpdatedAt": "2026-10-31",
+  "revisit": "Corpus de retours encore mince : trois sources de participants (Criteo, Corinne Krych, Olivier Audard) et aucun post LinkedIn lu malgré 14 recherches web (pages LinkedIn inaccessibles, Bluesky fermé). Le 9 juillet n'a presque aucun retour. Pistes : posts LinkedIn des speakers, slides publiées non lues (Gateway API, Quand Java rencontre l'AI, Roq), vidéo Java SE indisponible.",
+  "corpus": "Programme officiel (2025.rivieradev.fr), 31 transcripts de vidéos de la chaîne YouTube Riviera DEV, un compte-rendu collectif du blog Criteo R&D (août 2025), deux billets de Corinne Krych (9 juillet 2025), 9 posts Mastodon d'Olivier Audard (8 juillet 2025), le billet d'Alexandre Touret sur son atelier (speaker, 15 juillet 2025), des slides publiées sur les pages de session et l'annonce Sophianet (mai 2025).",
+  "limits": "Retours de participants peu nombreux et très inégaux : Audard ne commente que le 8 juillet, Krych neuf sessions, et aucun post LinkedIn n'a été lu. La plupart des résumés décrivent ce qui a été dit sur scène (transcripts auto, noms parfois mal transcrits), et douze sessions reposent sur des slides ou des notes, sans vidéo. Les ateliers « We're not just coders » et une vingtaine de sessions restent sans contenu.",
   "tldr": "Une édition **très ancrée dans le terrain** : l'IA est présente (keynote de Monsieur Phi contre les « perroquets stochastiques », RAG, coder avec l'IA), mais ce sont **les retours d'expérience concrets** (Restos du Cœur devenu cloud, Amadeus, Spotify, backdoor XZ) et l'esprit « We're not just coders » qui donnent le ton.",
   "keyTakeaways": [
     "Ne pas conclure trop vite qu'un LLM « ne sait pas » faire quelque chose : un échec avec un prompt ne prouve rien, seul un succès informe sur une capacité (Thibaut Giraud, retenu par Criteo).",
@@ -26,7 +26,8 @@
     "Préparer les stories avec l'Example Mapping : 30 minutes maximum, et tant qu'il reste des questions (fiches roses) la story n'est pas prête (Arnaud Langlade).",
     "Tester l'accessibilité par des tests de bout en bout « user centriques » (rôle et nom accessible) : les outils automatiques ne détectent qu'un peu plus de la moitié des problèmes (Servical et Njako Molom).",
     "Les canaries automatisés exigent des requêtes Prometheus robustes : fenêtres assez longues, pas de division par un trafic quasi nul, seuils d'erreurs calculés (James Searby, Amadeus).",
-    "Ne pas copier le « modèle Spotify » : sans transparence ni sécurité psychologique, squads et tribes ne servent à rien (Rachel Dubois)."
+    "Ne pas copier le « modèle Spotify » : sans transparence ni sécurité psychologique, squads et tribes ne servent à rien (Rachel Dubois).",
+    "Mettre à jour ses dépendances par petits incréments automatisés plutôt que par grosses PR groupées, et regarder ce que cela révèle de la qualité de sa CI (Fabrice Pipart et Vincent Léon, Amadeus)."
   ],
   "sessions": [
     {
@@ -78,13 +79,23 @@
       }
     },
     {
+      "id": "ameliorer-les-competences-et-les-infrastructures-avec-les-katas-d-architecture",
+      "day": "2025-07-07",
+      "type": "workshop",
+      "title": "Améliorer les compétences et les infrastructures avec les katas d'architecture",
+      "speakers": ["Alexandre Touret", "Yassine Benabbas — Worldline"],
+      "feedbackFrom": ["Alexandre Touret (speaker, blog)"],
+      "summary": "- Atelier de 3 h non filmé ; résumé d'après les slides et le billet de l'animateur, donc un point de vue de speaker. Yassine Benabbas coanime, bien que le programme ne cite qu'Alexandre Touret.\n- (speaker) Plus de 60 participants et plus de 10 équipes accompagnées sur les hypothèses, la page blanche et la validation des conceptions.\n- Rappels : modèle C4, exigences non fonctionnelles (SLO, RTO, RPO, volumétrie), et l'architecture selon Grady Booch, où **l'importance d'une décision se mesure au coût du changement**.\n- Sujet « Eco-Voyage Solidaire » : une plateforme de tourisme durable pour voyageurs, associations et prestataires, avec paiements, dons et capteurs IoT. Format : conception en équipe puis revue par les pairs.\n- Le billet publie trois solutions (équipes de Christian Ceelen et de Nikita Rousseau, proposition de l'auteur, qu'il dit incomplète). L'équipe Rousseau souligne le manque de temps et l'intérêt de clarifier le vocabulaire métier avant la technique.\n- Leçons (speaker) : des solutions différentes sont normales, un design *« needs to be challenged by peers »*, et il faut viser le plus simple en externalisant le non-cœur de métier, comme le paiement.",
+      "summarySources": ["blog", "slides", "program"]
+    },
+    {
       "id": "les-llm-revent-ils-de-cavaliers-electriques",
       "day": "2025-07-08",
       "type": "keynote",
       "title": "Les LLM rêvent-ils de cavaliers électriques ?",
       "speakers": ["Thibaut Giraud (Monsieur Phi)"],
-      "feedbackFrom": ["Blog Criteo R&D"],
-      "summary": "- **Sur scène** : Thibaut Giraud s'attaque à la thèse des **« perroquets stochastiques »** (Bender et coautrices, 2021) avec l'exemple des échecs : bien prédire le coup suivant d'une partie en notation algébrique suppose de reconstruire l'échiquier.\n- GPT-3.5-turbo-instruct joue autour de **1800 Elo** en mode complétion avec un en-tête PGN ; un petit ChessGPT (50 M de paramètres) entraîné en 2 jours atteint 99,8 % de coups légaux et des sondes y retrouvent l'état de l'échiquier.\n- **Asymétrie** : un échec avec un prompt ne prouve rien, puisqu'on ne peut pas explorer tout l'espace des prompts (image d'extraterrestres concluant d'un micro-trottoir que l'humanité ne sait pas aller sur la Lune).\n- Chute : *« continuer de soutenir que les LLM sont des perroquets stochastiques, c'est se comporter soi-même en perroquet stochastique »*.\n- **Côté participants** (Criteo) : une keynote d'ouverture « great » et très interactive (le public devait deviner la suite d'une séquence avant de découvrir qu'il s'agissait d'une partie d'échecs). Leçons retenues : seul un résultat positif informe sur une capacité, et la qualité de l'entraînement est clé.",
+      "feedbackFrom": ["Blog Criteo R&D", "Corinne Krych (blog)"],
+      "summary": "- **Sur scène** : Thibaut Giraud s'attaque à la thèse des **« perroquets stochastiques »** (Bender et coautrices, 2021) avec l'exemple des échecs : bien prédire le coup suivant d'une partie en notation algébrique suppose de reconstruire l'échiquier.\n- GPT-3.5-turbo-instruct joue autour de **1800 Elo** en mode complétion avec un en-tête PGN ; un petit ChessGPT (50 M de paramètres) entraîné en 2 jours atteint 99,8 % de coups légaux et des sondes y retrouvent l'état de l'échiquier.\n- **Asymétrie** : un échec avec un prompt ne prouve rien, puisqu'on ne peut pas explorer tout l'espace des prompts (image d'extraterrestres concluant d'un micro-trottoir que l'humanité ne sait pas aller sur la Lune).\n- Chute : *« continuer de soutenir que les LLM sont des perroquets stochastiques, c'est se comporter soi-même en perroquet stochastique »*.\n- **Côté participants** (Criteo) : une keynote d'ouverture « great » et très interactive (le public devait deviner la suite d'une séquence avant de découvrir qu'il s'agissait d'une partie d'échecs). Leçons retenues : seul un résultat positif informe sur une capacité, et la qualité de l'entraînement est clé.\n- Corinne Krych (blog) juge elle aussi l'étiquette de perroquet stochastique trop simpliste et retient que les succès en disent plus sur le potentiel des LLM que les échecs.",
       "summarySources": ["transcript", "blog", "program"],
       "video": {
         "youtubeId": "ThpD253Jvq0",
@@ -115,8 +126,8 @@
       "type": "talk",
       "title": "Retrieval Augmented Generation (RAG) : Obtenez des réponses de qualité avec des techniques avancées",
       "speakers": ["Guillaume Laforge — Google"],
-      "feedbackFrom": ["Blog Criteo R&D"],
-      "summary": "- **Sur scène** : le RAG compense date de coupure, données privées et hallucinations ; son atout préféré est l'**explicabilité** par les sources citées.\n- Ingestion : un découpage naïf coupe les phrases ; mieux vaut le chevauchement ou une **fenêtre glissante de phrases**, et surtout les « hypothetical questions » (on vectorise les questions auxquelles répond chaque chunk). Un modèle d'embedding mal adapté au français empêchait le Pass Culture de remonter les bonnes offres.\n- Retrieval : compression de requête, HyDE (un peu de gain, de la latence), routage, reranking ; RAG agentique de LangChain4j qui découpe une question en sous-recherches.\n- Conclusion : *« ça dépend »*, il faut évaluer sur ses propres jeux de données (Ragas, promptfoo).\n- **Côté participants** (Criteo) : session « technically rich » avec live coding Java et LangChain4j ; retenu : adapter le pipeline au cas d'usage, pas de solution universelle, et l'apport des grandes fenêtres de contexte, y compris pour aider au découpage.",
+      "feedbackFrom": ["Blog Criteo R&D", "Corinne Krych (blog)"],
+      "summary": "- **Sur scène** : le RAG compense date de coupure, données privées et hallucinations ; son atout préféré est l'**explicabilité** par les sources citées.\n- Ingestion : un découpage naïf coupe les phrases ; mieux vaut le chevauchement ou une **fenêtre glissante de phrases**, et surtout les « hypothetical questions » (on vectorise les questions auxquelles répond chaque chunk). Un modèle d'embedding mal adapté au français empêchait le Pass Culture de remonter les bonnes offres.\n- Retrieval : compression de requête, HyDE (un peu de gain, de la latence), routage, reranking ; RAG agentique de LangChain4j qui découpe une question en sous-recherches.\n- Conclusion : *« ça dépend »*, il faut évaluer sur ses propres jeux de données (Ragas, promptfoo).\n- **Côté participants** (Criteo) : session « technically rich » avec live coding Java et LangChain4j ; retenu : adapter le pipeline au cas d'usage, pas de solution universelle, et l'apport des grandes fenêtres de contexte, y compris pour aider au découpage.\n- Corinne Krych (blog) en retient les limites des LLM (pas de temps réel, données privées inaccessibles, hallucinations, fenêtre de tokens) et le schéma récupérer, enrichir, générer. Slides publiées sur Speaker Deck.",
       "summarySources": ["transcript", "blog", "program"],
       "video": {
         "youtubeId": "ShR965xeiOI",
@@ -124,6 +135,16 @@
         "publishedAt": "2025-07-28",
         "transcript": true
       }
+    },
+    {
+      "id": "mcp-en-action-connecter-les-ia-aux-systemes-d-entreprise",
+      "day": "2025-07-08",
+      "type": "talk",
+      "title": "MCP en action : Connecter les IA aux systèmes d'entreprise",
+      "speakers": ["Zineb Bendhiba — Red Hat"],
+      "feedbackFrom": ["Olivier Audard (Mastodon)", "Corinne Krych (blog)"],
+      "summary": "- Pas de vidéo trouvée ; résumé d'après le programme et les notes de participants.\n- Programme : exploration de MCP à travers **Wanaku**, serveur MCP open source basé sur Quarkus et Apache Camel, développé dans l'équipe de la speaker, avec son retour d'expérience.\n- Corinne Krych (blog) retient l'intégration d'agents à des outils, en local ou à distance, et que les LLM étant sans état, **l'application doit gérer mémoire et contexte** ; LangChain4j est cité pour Java.\n- **Salle comble** selon Olivier Audard (Mastodon).",
+      "summarySources": ["feedback", "blog", "program"]
     },
     {
       "id": "reduire-la-consommation-energetique-de-votre-parc-applicatif",
@@ -158,13 +179,23 @@
       }
     },
     {
+      "id": "a-qute-story-rethinking-templating-in-quarkus",
+      "day": "2025-07-08",
+      "type": "talk",
+      "title": "A Qute story: rethinking templating in Quarkus",
+      "speakers": ["Martin Kouba — Red Hat"],
+      "feedbackFrom": [],
+      "summary": "- Track Red Hat, en anglais (pas de vidéo trouvée ni de retour de participant ; résumé d'après les slides publiées et le programme).\n- Histoire de Qute, moteur de templates de Quarkus créé il y a environ six ans, avec pour objectifs syntaxe simple, extensibilité, validation au build, compatibilité réactive et native.\n- **Bilan franc du mainteneur** : performances et intégration réussies, mais syntaxe alourdie par les demandes, extensibilité parfois contraire à l'optimisation, validations complexes rendues optionnelles.\n- Sous le capot : au build, chaque expression est vérifiée contre les types connus et du bytecode est généré ; une validation en échec fait échouer le build.\n- Démo de fragments avec HTMX pour rafraîchir une partie de page ; pistes futures : parser, syntaxe et plus de contributeurs.",
+      "summarySources": ["slides", "program"]
+    },
+    {
       "id": "tu-te-mets-combien-en-responsive-css-edition-2025",
       "day": "2025-07-08",
       "type": "talk",
       "title": "Tu te mets combien en responsive CSS ? Edition 2025",
       "speakers": ["Théo Gianella", "Julien Sulpis"],
-      "feedbackFrom": ["Blog Criteo R&D"],
-      "summary": "- **Sur scène** : 10 niveaux de maquettes de difficulté croissante intégrées en live ; philosophie du *« Sois comme l'eau, mon ami »* : abandonner l'illusion du pixel perfect.\n- Unités : `ch` pour la longueur de ligne, `em`/`rem` pour tenir un zoom texte à 200 %, **`clamp()`** pour une taille fluide ; `dvh`, `svh`, `lvh` désormais largement disponibles.\n- Images avec `picture`, `srcset` et `sizes` ; media queries réservées aux vrais changements de structure ; grid avec `repeat(auto-fill, minmax(...))` ; grid n'est pas *« l'évolution »* de flex.\n- Niveau 9 : une même carte change d'apparence selon la place disponible grâce aux **container queries**. Niveau 10 : le monde réel, *« pas de formule magique »*.\n- **Côté participants** (Criteo) : *« one of the standout sessions »*, live coding drôle et technique ; retenu : le CSS est loin d'être un problème résolu et demande un apprentissage continu, avec une « empathie de design » pour les nouveaux appareils.",
+      "feedbackFrom": ["Blog Criteo R&D", "Corinne Krych (blog)"],
+      "summary": "- **Sur scène** : 10 niveaux de maquettes de difficulté croissante intégrées en live ; philosophie du *« Sois comme l'eau, mon ami »* : abandonner l'illusion du pixel perfect.\n- Unités : `ch` pour la longueur de ligne, `em`/`rem` pour tenir un zoom texte à 200 %, **`clamp()`** pour une taille fluide ; `dvh`, `svh`, `lvh` désormais largement disponibles.\n- Images avec `picture`, `srcset` et `sizes` ; media queries réservées aux vrais changements de structure ; grid avec `repeat(auto-fill, minmax(...))` ; grid n'est pas *« l'évolution »* de flex.\n- Niveau 9 : une même carte change d'apparence selon la place disponible grâce aux **container queries**. Niveau 10 : le monde réel, *« pas de formule magique »*.\n- **Côté participants** (Criteo) : *« one of the standout sessions »*, live coding drôle et technique ; retenu : le CSS est loin d'être un problème résolu et demande un apprentissage continu, avec une « empathie de design » pour les nouveaux appareils.\n- Corinne Krych (blog) retient le rappel historique (« Responsive Web Design », Ethan Marcotte, 2010) et la fluidité préférée à la précision au pixel.",
       "summarySources": ["transcript", "blog", "program"],
       "video": {
         "youtubeId": "i-lXLG107h0",
@@ -174,14 +205,24 @@
       }
     },
     {
+      "id": "ce-que-les-ide-ne-veulent-pas-que-vous-sachiez",
+      "day": "2025-07-08",
+      "type": "talk",
+      "title": "Ce que les IDE ne veulent pas que vous sachiez !",
+      "speakers": ["Benjamin Buléon — Gojob"],
+      "feedbackFrom": [],
+      "summary": "- Pas de vidéo trouvée ni de retour de participant ; résumé d'après le programme et les 20 premières slides seulement.\n- Fonctionnement interne des IDE, illustré avec Neovim, en cinq temps : qu'est-ce qu'un IDE, parsing et coloration syntaxique, Language Server Protocol, ajout de fonctionnalités, Debug Adapter Protocol.\n- Tokenisation (lexer) pour colorer, puis **AST** (parser) pour comprendre le code : validation de syntaxe, portée des variables, refactorisation, coloration plus intelligente.",
+      "summarySources": ["slides", "program"]
+    },
+    {
       "id": "comment-j-ai-porte-doom-sur-navigateur-grace-au-webassembly",
       "day": "2025-07-08",
       "type": "talk",
       "title": "Comment j'ai porté Doom sur navigateur grâce au WebAssembly",
       "speakers": ["Yassine Benabbas — Worldline"],
-      "feedbackFrom": [],
-      "summary": "- Objectif : démystifier le portage de jeux, *« c'est vraiment accessible, surtout fun »* (contenu tiré de la vidéo).\n- Base : ManagedDoom (portage .NET) compilé vers Wasm avec le **template wasmbrowser** ; environ **70 % du code** était déjà compatible.\n- Méthode : bouchons pour les classes SFML manquantes, puis implémentation pas à pas ; la boucle de jeu devient un appel récursif à `requestAnimationFrame`.\n- Son via AudioContext (streaming fait main pour éviter les grésillements) ; image remplie **colonne par colonne**, car le moteur de raycasting dessine par colonnes.\n- Démo : le public joue sur mobile via QR code, jeu hors ligne en PWA.",
-      "summarySources": ["transcript", "program"],
+      "feedbackFrom": ["Olivier Audard (Mastodon)"],
+      "summary": "- Objectif : démystifier le portage de jeux, *« c'est vraiment accessible, surtout fun »* (contenu tiré de la vidéo).\n- Base : ManagedDoom (portage .NET) compilé vers Wasm avec le **template wasmbrowser** ; environ **70 % du code** était déjà compatible.\n- Méthode : bouchons pour les classes SFML manquantes, puis implémentation pas à pas ; la boucle de jeu devient un appel récursif à `requestAnimationFrame`.\n- Son via AudioContext (streaming fait main pour éviter les grésillements) ; image remplie **colonne par colonne**, car le moteur de raycasting dessine par colonnes.\n- Démo : le public joue sur mobile via QR code, jeu hors ligne en PWA.\n- **Côté participants** : *« Très fun, on valide! »* (Olivier Audard, Mastodon).",
+      "summarySources": ["transcript", "feedback", "program"],
       "video": {
         "youtubeId": "g2AeuXFd7_8",
         "title": "Riviera DEV 2025 - Yassine Benabbas - Comment j'ai porté Doom sur navigateur grâce au WebAssembly",
@@ -206,14 +247,24 @@
       }
     },
     {
+      "id": "ai-tools-en-pratique-avec-nushell",
+      "day": "2025-07-08",
+      "type": "talk",
+      "title": "AI Tools en pratique avec Nushell",
+      "speakers": ["Laurent Doguin"],
+      "feedbackFrom": ["Corinne Krych (blog)"],
+      "summary": "- Pas de vidéo trouvée ; résumé d'après le programme et les notes de Corinne Krych (blog).\n- Programme : les AI tools ramènent à des **réponses déterministes en exécutant du code** ; le talk construit un framework d'IA simple avec Nushell pour transformer n'importe quel processus CLI en AI tool.\n- Notes de participante : bases vectorielles, pattern ReAct et prompts « Pensées, Actions, Observations » ; points d'attention sur l'identité, les permissions et l'enchaînement d'outils, comparé à des pipelines BPM.",
+      "summarySources": ["blog", "program"]
+    },
+    {
       "id": "quick-wins-to-improve-your-react-app-performance",
       "day": "2025-07-08",
       "type": "talk",
       "title": "Stop shooting yourself in the foot: Quick wins to improve your react app's performance",
       "speakers": ["Opher Vishnia — Hud"],
-      "feedbackFrom": [],
-      "summary": "- Talk en anglais mis en scène comme une enquête policière sur *« la mort des performances »* (contenu tiré de la vidéo).\n- Piège 1 : **`useContext`** avec une value recréée à chaque rendu re-rend tous les consommateurs ; mémoïser avec `useMemo`/`useCallback`.\n- Piège 2 : **`useEffect`** à n'utiliser qu'*« en dernier recours »* : valeurs dérivées calculées dans un effet, nettoyages oubliés et fuites mémoire.\n- Piège 3 : **la mémoïsation est fragile** (children ou styles en ligne qui la cassent) ; inutile de tout mémoïser.\n- Méthode : trouver ce qui re-rend, puis pourquoi (React DevTools, React Scan, why-did-you-render). Le React Compiler automatise la mémoïsation, mais seulement sur une base de code qui respecte les règles de React.",
-      "summarySources": ["transcript", "program"],
+      "feedbackFrom": ["Olivier Audard (Mastodon)"],
+      "summary": "- Talk en anglais mis en scène comme une enquête policière sur *« la mort des performances »* (contenu tiré de la vidéo).\n- Piège 1 : **`useContext`** avec une value recréée à chaque rendu re-rend tous les consommateurs ; mémoïser avec `useMemo`/`useCallback`.\n- Piège 2 : **`useEffect`** à n'utiliser qu'*« en dernier recours »* : valeurs dérivées calculées dans un effet, nettoyages oubliés et fuites mémoire.\n- Piège 3 : **la mémoïsation est fragile** (children ou styles en ligne qui la cassent) ; inutile de tout mémoïser.\n- Méthode : trouver ce qui re-rend, puis pourquoi (React DevTools, React Scan, why-did-you-render). Le React Compiler automatise la mémoïsation, mais seulement sur une base de code qui respecte les règles de React.\n- **Côté participants** : de *« bonnes astuces/outils »* pour éviter les erreurs de performance, et *« la mise en scène digne d'un polar »* appréciée (Olivier Audard, Mastodon).",
+      "summarySources": ["transcript", "feedback", "program"],
       "video": {
         "youtubeId": "EL5ZQAyDiVY",
         "title": "Riviera DEV 2025 - Opher Vishnia - Stop shooting yourself in the foot: quick wins for your React app",
@@ -227,9 +278,9 @@
       "type": "talk",
       "title": "Dites adieu aux sessions interminables de product backlog refinement avec l'Example Mapping",
       "speakers": ["Arnaud Langlade"],
-      "feedbackFrom": [],
-      "summary": "- Constat vécu : refinements longs et descendants, digressions, questions sans réponse une fois le code commencé ; c'est *« l'ignorance des devs »* qui part en production (Brandolini, cité). Contenu tiré de la vidéo.\n- **L'Example Mapping** (Matt Wynne) réunit les « trois amis » 30 minutes maximum par story : fiches jaunes (story), bleues (règles), vertes (exemples), roses (questions).\n- **Tant qu'il reste des fiches roses, la story n'est pas prête** ; une règle avec trop d'exemples cache une nouvelle règle ; un atelier qui déborde signale une story trop grosse (un export s'est révélé être une épique de 15 à 20 stories).\n- Trier les règles « must » et « nice to have » aide à découper ; des stories de taille homogène donnent une vélocité prédictible sans estimation.\n- En pratique : créneau quotidien de 30 minutes après le daily, exemples transformés en tests, Miro en remote avec scribe et animateur tournants. En questions, il se dit critique envers Scrum et SAFe et préfère un Kanban minimal (*« strictement personnel »*).",
-      "summarySources": ["transcript", "program"],
+      "feedbackFrom": ["Olivier Audard (Mastodon)", "Corinne Krych (blog)"],
+      "summary": "- Constat vécu : refinements longs et descendants, digressions, questions sans réponse une fois le code commencé ; c'est *« l'ignorance des devs »* qui part en production (Brandolini, cité). Contenu tiré de la vidéo.\n- **L'Example Mapping** (Matt Wynne) réunit les « trois amis » 30 minutes maximum par story : fiches jaunes (story), bleues (règles), vertes (exemples), roses (questions).\n- **Tant qu'il reste des fiches roses, la story n'est pas prête** ; une règle avec trop d'exemples cache une nouvelle règle ; un atelier qui déborde signale une story trop grosse (un export s'est révélé être une épique de 15 à 20 stories).\n- Trier les règles « must » et « nice to have » aide à découper ; des stories de taille homogène donnent une vélocité prédictible sans estimation.\n- En pratique : créneau quotidien de 30 minutes après le daily, exemples transformés en tests, Miro en remote avec scribe et animateur tournants. En questions, il se dit critique envers Scrum et SAFe et préfère un Kanban minimal (*« strictement personnel »*).\n- **Côté participants** : *« Super conf, très intéressante et actionnable rapidement »*, avec de *« nombreux retours d'expérience très concrets »* (Olivier Audard, Mastodon). Corinne Krych (blog) retient le constat de développeurs passifs en refinement et la formule de Brandolini.",
+      "summarySources": ["transcript", "feedback", "blog", "program"],
       "video": {
         "youtubeId": "AHq1wBvx_nQ",
         "title": "Riviera DEV 2025 - Arnaud Langlade - Example Mapping",
@@ -259,9 +310,9 @@
       "type": "talk",
       "title": "Developers & Designers: What if we really spoke the same language?",
       "speakers": ["Camille Le Roux — Datadog"],
-      "feedbackFrom": ["Blog Criteo R&D"],
-      "summary": "- Session interactive d'une heure (pas de vidéo trouvée ; résumé d'après le blog Criteo) sur la collaboration développeurs et designers, nourrie de l'expérience de Camille Le Roux chez Amadeus et Datadog.\n- Iceberg de l'expérience utilisateur, bases du design thinking, mesure de l'UX (métriques déclaratives, comportementales, de performance, analytics, A/B tests).\n- Pratiques de Datadog retenues : **impliquer les devs tôt** dans les discussions UX, outils et langage partagés (Figma en mode développeur avec de vraies données métier), **handoff continu** plutôt qu'un événement ponctuel, culture du feedback et des tests collaboratifs.",
-      "summarySources": ["blog", "program"]
+      "feedbackFrom": ["Blog Criteo R&D", "Olivier Audard (Mastodon)"],
+      "summary": "- Session interactive d'une heure (pas de vidéo trouvée ; résumé d'après le blog Criteo) sur la collaboration développeurs et designers, nourrie de l'expérience de Camille Le Roux chez Amadeus et Datadog.\n- Iceberg de l'expérience utilisateur, bases du design thinking, mesure de l'UX (métriques déclaratives, comportementales, de performance, analytics, A/B tests).\n- Pratiques de Datadog retenues : **impliquer les devs tôt** dans les discussions UX, outils et langage partagés (Figma en mode développeur avec de vraies données métier), **handoff continu** plutôt qu'un événement ponctuel, culture du feedback et des tests collaboratifs.\n- Olivier Audard (Mastodon) juge le talk *« bien utile »* pour mettre en place ou améliorer la collaboration entre équipes dev et design, et ainsi la qualité des produits.",
+      "summarySources": ["blog", "feedback", "program"]
     },
     {
       "id": "how-difficult-can-it-be-to-write-efficient-code",
@@ -270,8 +321,8 @@
       "title": "How difficult can it be to write efficient code?",
       "speakers": ["Roberto Cortez — Red Hat"],
       "feedbackFrom": ["Blog Criteo R&D"],
-      "summary": "- Session de la track Red Hat (pas de vidéo trouvée ; résumé d'après le blog Criteo) sur l'efficacité du code backend dans l'écosystème JVM.\n- Point de départ : la citation complète de *« premature optimization is the root of all evil »*, pour se concentrer sur les optimisations qui comptent.\n- Série de défis de code analysés avec **Async Profiler** : les choix quotidiens, souvent négligés, pèsent lourd une fois l'application déployée à l'échelle.\n- Retenu par Criteo : surveiller, observer et **mesurer** avant d'optimiser ; le profilage et les tests de performance font partie du travail.",
-      "summarySources": ["blog", "program"]
+      "summary": "- Session de la track Red Hat (pas de vidéo trouvée ; résumé d'après le blog Criteo) sur l'efficacité du code backend dans l'écosystème JVM.\n- Point de départ : la citation complète de *« premature optimization is the root of all evil »*, pour se concentrer sur les optimisations qui comptent.\n- Série de défis de code analysés avec **Async Profiler** : les choix quotidiens, souvent négligés, pèsent lourd une fois l'application déployée à l'échelle.\n- Retenu par Criteo : surveiller, observer et **mesurer** avant d'optimiser ; le profilage et les tests de performance font partie du travail.\n- Les slides publiées confirment la méthode : *« You cannot guess performance optimization. MEASURE IT! »*, Async Profiler pour le CPU et les allocations, JMH pour les microbenchmarks, et réduire les allocations économise à la fois RSS et CPU. Conclusion : identifier les chemins critiques, *« no obsessions »*, *« measure, measure, measure »*.",
+      "summarySources": ["blog", "slides", "program"]
     },
     {
       "id": "crafting-intelligent-applications-with-quarkus-langchain4j",
@@ -305,9 +356,9 @@
       "type": "lightning",
       "title": "Platform engineering + IA - The next-gen DevOps",
       "speakers": ["Dhruv Kumar — CloudBees (en remplacement de Sylvain Deyris)"],
-      "feedbackFrom": [],
-      "summary": "- Snorkeling session en anglais (contenu tiré de la vidéo), donnée par Dhruv Kumar qui remplace Sylvain Deyris annoncé au programme.\n- Chiffre d'ouverture : selon une enquête citée, les développeurs **codent environ 50 minutes par jour**.\n- Réponse proposée : le **platform engineering** (plateforme interne en self-service, golden paths sécurisés, modèle de données SDLC commun qui alimente aussi les métriques DORA).\n- IA : *« l'IA n'est bonne qu'à hauteur des données qui la nourrissent »* ; exemples de tests sélectionnés par l'IA et de serveurs MCP pour interroger vulnérabilités ou feature flags.\n- Lecture critique : talk qui se termine en promotion de CloudBees Unify ; une objection du public sur l'inutilité des tests générés pour viser 100 % de couverture reste sans réponse audible.",
-      "summarySources": ["transcript", "program"],
+      "feedbackFrom": ["Corinne Krych (blog)"],
+      "summary": "- Snorkeling session en anglais (contenu tiré de la vidéo), donnée par Dhruv Kumar qui remplace Sylvain Deyris annoncé au programme.\n- Chiffre d'ouverture : selon une enquête citée, les développeurs **codent environ 50 minutes par jour**.\n- Réponse proposée : le **platform engineering** (plateforme interne en self-service, golden paths sécurisés, modèle de données SDLC commun qui alimente aussi les métriques DORA).\n- IA : *« l'IA n'est bonne qu'à hauteur des données qui la nourrissent »* ; exemples de tests sélectionnés par l'IA et de serveurs MCP pour interroger vulnérabilités ou feature flags.\n- Lecture critique : talk qui se termine en promotion de CloudBees Unify ; une objection du public sur l'inutilité des tests générés pour viser 100 % de couverture reste sans réponse audible.\n- **Côté participants** : Corinne Krych (blog) note que seulement 11 % du temps des développeurs irait au code (ordre de grandeur proche des 50 minutes par jour) et retient l'apport de la plateforme sur la standardisation du SDLC, la sécurité et les métriques DORA.",
+      "summarySources": ["transcript", "blog", "program"],
       "video": {
         "youtubeId": "skZk2ZQO04Y",
         "title": "Riviera DEV 2025 - Dhruv Kumar - Platform engineering + IA - The next-gen DevOps",
@@ -321,9 +372,9 @@
       "type": "lightning",
       "title": "Creating a culture of learning inside your company",
       "speakers": ["Joaquín Engelmo (Kini) — Criteo"],
-      "feedbackFrom": ["Joaquín Engelmo (speaker, blog Criteo R&D)"],
-      "summary": "- Snorkeling session non filmée ; résumé d'après le retour du speaker lui-même sur le blog Criteo (slides publiées).\n- Première conférence du speaker hors d'Espagne, sur un sujet qu'il pratique depuis environ 16 ans : **l'apprentissage continu**, pilier de l'agilité, de l'extreme programming et du craft.\n- Message : l'apprentissage n'est pas seulement un bénéfice personnel, il doit être **inscrit dans la culture de l'entreprise** ; il partage les activités testées, les obstacles et excuses rencontrés et les retours collectés.\n- (speaker) Accueil jugé très chaleureux par l'organisation et dîner des speakers *« absolutely fantastic »*.",
-      "summarySources": ["blog", "program"]
+      "feedbackFrom": ["Joaquín Engelmo (speaker, blog Criteo R&D)", "Olivier Audard (Mastodon)"],
+      "summary": "- Snorkeling session non filmée ; résumé d'après le retour du speaker lui-même sur le blog Criteo (slides publiées).\n- Première conférence du speaker hors d'Espagne, sur un sujet qu'il pratique depuis environ 16 ans : **l'apprentissage continu**, pilier de l'agilité, de l'extreme programming et du craft.\n- Message : l'apprentissage n'est pas seulement un bénéfice personnel, il doit être **inscrit dans la culture de l'entreprise** ; il partage les activités testées, les obstacles et excuses rencontrés et les retours collectés.\n- (speaker) Accueil jugé très chaleureux par l'organisation et dîner des speakers *« absolutely fantastic »*.\n- **Côté participants** : *« Actions à mettre en place, challenges (excuses ^^) et retour d'expérience. Très sympa! »* (Olivier Audard, Mastodon).",
+      "summarySources": ["blog", "feedback", "program"]
     },
     {
       "id": "from-bob-and-alice-to-verifiable-credentials",
@@ -347,15 +398,25 @@
       "type": "lightning",
       "title": "Tips & Astuces pour créer une application prenant en charge divers handicaps",
       "speakers": ["Enzo Conty"],
-      "feedbackFrom": [],
-      "summary": "- Snorkeling session (contenu tiré de la vidéo) : *« on fait l'accessibilité pour tout le monde »*, et c'est surtout du bon sens.\n- Trois idées reçues démontées : l'OMS compte **environ 15 % de la population mondiale** concernée ; un produit « trop complexe » est surtout mal conçu ; accessible ne veut pas dire moche.\n- **Cela ne coûte cher que si on s'y prend tard.** Conseils : polices redimensionnables, contraste d'au moins 4,5:1, sémantique correcte pour VoiceOver et TalkBack, erreurs signalées de deux façons, OpenDyslexic, boutons atteignables au pouce.\n- Bonus « accessibilité territoriale » : applications légères pour vieux téléphones. Il s'oppose aux « modes accessibles » séparés, jugés ségrégants.",
-      "summarySources": ["transcript", "program"],
+      "feedbackFrom": ["Olivier Audard (Mastodon)"],
+      "summary": "- Snorkeling session (contenu tiré de la vidéo) : *« on fait l'accessibilité pour tout le monde »*, et c'est surtout du bon sens.\n- Trois idées reçues démontées : l'OMS compte **environ 15 % de la population mondiale** concernée ; un produit « trop complexe » est surtout mal conçu ; accessible ne veut pas dire moche.\n- **Cela ne coûte cher que si on s'y prend tard.** Conseils : polices redimensionnables, contraste d'au moins 4,5:1, sémantique correcte pour VoiceOver et TalkBack, erreurs signalées de deux façons, OpenDyslexic, boutons atteignables au pouce.\n- Bonus « accessibilité territoriale » : applications légères pour vieux téléphones. Il s'oppose aux « modes accessibles » séparés, jugés ségrégants.\n- **Côté participants** : Olivier Audard (Mastodon) salue définitions, idées reçues démystifiées et bonnes pratiques, un rappel très utile avec la directive européenne entrée en vigueur le 28 juin.",
+      "summarySources": ["transcript", "feedback", "program"],
       "video": {
         "youtubeId": "YeEGVH1DIos",
         "title": "Riviera DEV 2025 - Enzo Conty - Tips & tricks pour créer une app prenant en charge les handicaps",
         "publishedAt": "2025-07-28",
         "transcript": true
       }
+    },
+    {
+      "id": "parlons-de-votre-dependance-aux-dependances",
+      "day": "2025-07-08",
+      "type": "lightning",
+      "title": "Parlons de votre dépendance aux dépendances",
+      "speakers": ["Fabrice Pipart — Amadeus", "Vincent Léon — Amadeus"],
+      "feedbackFrom": [],
+      "summary": "- Snorkeling session (pas de vidéo trouvée ni de retour de participant ; résumé d'après les slides publiées) construite comme une **cure de désintoxication** : la courbe du deuil de Kübler-Ross, du déni à l'acceptation.\n- Diagnostic chez Amadeus : environ 40 millions d'artefacts, 170 To, 65 millions de lectures par jour dans Artifactory. Log4Shell rappelle le coût de l'inventaire et de la migration.\n- Avant : une PR hebdomadaire ou mensuelle de plus de 20 dépendances. Maintenant : **de petites mises à jour incrémentales**, où chaque montée porte un risque réduit.\n- Renovate préféré à l'outillage maison (limité, devenu cher) et à Dependabot auto-hébergé (limité). Son défaut et sa qualité sont les mêmes : *« so configurable »*.\n- Réponses aux objections : presets partagés, regroupement pour réduire le bruit, dashboard, `stabilityDays` contre le risque d'une version compromise, auto-merge *« with caution »*.\n- Lecture critique : Renovate **révèle la qualité de votre CI**. Si une montée majeure ne casse rien, ou si le build passe et la prod casse, le problème est ailleurs.",
+      "summarySources": ["slides", "program"]
     },
     {
       "id": "an-intro-to-ebpf-with-go",
@@ -379,9 +440,9 @@
       "type": "lightning",
       "title": "De l'ultra low tech pour sauver les cultures : comment on a mis au point le système d'effarouchement le moins cher du marché",
       "speakers": ["Mathieu Passenaud — Please Open.it"],
-      "feedbackFrom": [],
-      "summary": "- Snorkeling session (contenu tiré de la vidéo) : palombes et pigeons ravagent les levées de tournesol, et les effaroucheurs du marché coûtent de 780 à 2 000 €.\n- Premier proto pour environ 6 € : Arduino, relais, photorésistance et **klaxon de voiture** de récupération, qui couvre 2 à 3 hectares.\n- Itérations : ATtiny et batterie d'alarme dans une petite bouteille, banc de test automatisé, puis PCB à 2 € commandé à 1 500 unités.\n- Preuve chiffrée par les cartes de rendement des moissonneuses : **rendement multiplié par 3** dans les zones protégées.\n- Les revendeurs agricoles l'ont refusé, produit *« pas assez cher »* et *« pas assez innovant »*.",
-      "summarySources": ["transcript", "program"],
+      "feedbackFrom": ["Olivier Audard (Mastodon)"],
+      "summary": "- Snorkeling session (contenu tiré de la vidéo) : palombes et pigeons ravagent les levées de tournesol, et les effaroucheurs du marché coûtent de 780 à 2 000 €.\n- Premier proto pour environ 6 € : Arduino, relais, photorésistance et **klaxon de voiture** de récupération, qui couvre 2 à 3 hectares.\n- Itérations : ATtiny et batterie d'alarme dans une petite bouteille, banc de test automatisé, puis PCB à 2 € commandé à 1 500 unités.\n- Preuve chiffrée par les cartes de rendement des moissonneuses : **rendement multiplié par 3** dans les zones protégées.\n- Les revendeurs agricoles l'ont refusé, produit *« pas assez cher »* et *« pas assez innovant »*.\n- **Côté participants** : *« Un talk vraiment passionnant »*, avec énormément de questions, et *« un rappel que la tech doit avant tout servir à résoudre des problèmes concrets »* (Olivier Audard, Mastodon).",
+      "summarySources": ["transcript", "feedback", "program"],
       "video": {
         "youtubeId": "4FzZ5iUxoJY",
         "title": "Riviera DEV 2025 - Mathieu Passenaud - De l’ultra low tech pour sauver les cultures",
@@ -395,15 +456,35 @@
       "type": "keynote",
       "title": "The Cost of Inaction",
       "speakers": ["Quentin Adam — Clever Cloud", "Nicolas Leroux"],
-      "feedbackFrom": [],
-      "summary": "- Keynote d'ouverture du 9 juillet (contenu tiré de la vidéo, en français). Galerie des inactions : DEC, Kodak, Xerox, Blockbuster, BlackBerry.\n- **Raison d'être contre activité** : Kodak devait permettre de faire des photos, pas fabriquer du film ; quand les deux divergent, l'entreprise meurt.\n- **Le coût de l'inaction croît avec le temps** : migrer du Struts aujourd'hui coûte bien plus qu'il y a 10 ans. Quentin Adam affirme que *« la dette technique est un mythe »* : ce sont des investissements rentables ou non, vocabulaire qui parle à un board.\n- Constats macroéconomiques sur la France (balance des paiements dégradée par le numérique, rapport Villani non suivi) et appel aux développeurs : *« release early, release often »*, utiliser l'IA dès maintenant, prendre du leadership.\n- Chute : *« l'inaction, ce n'est pas un confort, c'est une corrosion »*.",
-      "summarySources": ["transcript", "program"],
+      "feedbackFrom": ["Corinne Krych (blog)"],
+      "summary": "- Keynote d'ouverture du 9 juillet (contenu tiré de la vidéo, en français). Galerie des inactions : DEC, Kodak, Xerox, Blockbuster, BlackBerry.\n- **Raison d'être contre activité** : Kodak devait permettre de faire des photos, pas fabriquer du film ; quand les deux divergent, l'entreprise meurt.\n- **Le coût de l'inaction croît avec le temps** : migrer du Struts aujourd'hui coûte bien plus qu'il y a 10 ans. Quentin Adam affirme que *« la dette technique est un mythe »* : ce sont des investissements rentables ou non, vocabulaire qui parle à un board.\n- Constats macroéconomiques sur la France (balance des paiements dégradée par le numérique, rapport Villani non suivi) et appel aux développeurs : *« release early, release often »*, utiliser l'IA dès maintenant, prendre du leadership.\n- Chute : *« l'inaction, ce n'est pas un confort, c'est une corrosion »*.\n- **Côté participants** : *« a deeply energizing talk »*, dont Corinne Krych (blog) sort avec une idée claire, *« Let's innovate! »*. Elle retient aussi la comparaison entre prudence européenne et itération américaine, et que ne pas choisir reste un choix, souvent le plus coûteux. Elle range la dette technique parmi les coûts cachés de l'inaction, sans reprendre la formule du « mythe ».",
+      "summarySources": ["transcript", "blog", "program"],
       "video": {
         "youtubeId": "YIAxNPp57kU",
         "title": "Riviera DEV 2025 - Nicolas Leroux/Quentin Adam - The Cost of Inaction",
         "publishedAt": "2025-07-30",
         "transcript": true
       }
+    },
+    {
+      "id": "building-efficient-mcp-servers-efficiently-with-quarkus",
+      "day": "2025-07-09",
+      "type": "talk",
+      "title": "Building efficient MCP servers efficiently, with Quarkus",
+      "speakers": ["Martin Kouba — Red Hat"],
+      "feedbackFrom": ["Corinne Krych (blog)"],
+      "summary": "- Track Red Hat (pas de vidéo trouvée ; résumé d'après les slides publiées et les notes de Corinne Krych).\n- **MCP est prometteur mais très jeune** : pas de fondation, pas de processus de revue clair, pas d'API partagée, pas de TCK.\n- L'extension quarkus-mcp-server (1.0.0 en avril 2025) vise une API unifiée, déclarative (`@Tool`) ou programmatique (`ToolManager`), indépendante du transport (stdio, HTTP).\n- Outillage : Dev UI, journalisation du trafic, tests avec `McpAssured`, Progress API pour les tâches longues, sampling. À venir : tests, WebSocket, sécurité.\n- **Côté participants** (Corinne Krych) : démo d'un serveur MCP utilisé via Goose et Gemini ; elle juge le protocole prometteur malgré un manque de gouvernance formelle (*« lacks formal governance »*).",
+      "summarySources": ["blog", "slides", "program"]
+    },
+    {
+      "id": "quarkus-unleashed",
+      "day": "2025-07-09",
+      "type": "talk",
+      "title": "Quarkus Unleashed",
+      "speakers": ["Roberto Cortez — Red Hat"],
+      "feedbackFrom": [],
+      "summary": "- Track Red Hat, en anglais (pas de vidéo trouvée ni de retour de participant ; résumé d'après les slides publiées et le programme).\n- Principe de Quarkus : **déplacer le démarrage vers le build** (parsing de configuration, scan du classpath, métamodèle) pour faire le travail *« once, not at each start »*.\n- Le natif GraalVM repose sur une hypothèse de monde fermé, d'où ses limites (chargement dynamique de classes, réflexion à déclarer).\n- Les **extensions** portent cette logique pour n'importe quelle bibliothèque : partie deployment (build steps, build items) et partie runtime. Quarkiverse héberge celles de la communauté.",
+      "summarySources": ["slides", "program"]
     },
     {
       "id": "spotify-an-insider-view",
@@ -572,25 +653,17 @@
     "Devenez un expert en Anti-Ban et Web Scraping en 3h (Fabien Vauchelles), deep dive",
     "Toi aussi donnes du style à tes données avec Grafana (Matthieu Vincent, Thomas Jouve), deep dive",
     "Quand Java rencontre l'AI (Clement Escoffier, Emmanuel Bernard), deep dive",
-    "Java SE en 2025 (Clément de Tastes, Jean-Michel Doudoux), deep dive (vidéo YVmirHl59gs sans transcript)",
+    "Java SE en 2025 (Clément de Tastes, Jean-Michel Doudoux), deep dive (vidéo YVmirHl59gs listée sur la chaîne, indisponible au téléchargement le 2026-10-31, sans transcript)",
     "Quoi ? Vous n'utilisez pas Figma ?!? (Simon Mercier, Antoine Candy), deep dive",
-    "Améliorer les compétences et les infrastructures avec les katas d'architecture (Alexandre Touret), deep dive",
     "Gateway API, 10 ans de maturation pour une nouvelle API Kubernetes (Kevin Davin)",
-    "MCP en action : Connecter les IA aux systèmes d'entreprise (Zineb Bendhiba)",
-    "A Qute story: rethinking templating in Quarkus (Martin Kouba)",
-    "Ce que les IDE ne veulent pas que vous sachiez ! (Benjamin Buléon)",
-    "AI Tools en pratique avec Nushell (Laurent Doguin)",
     "Rust on Rails avec le framework Loco (Sylvain Wallez)",
     "Developing Kubernetes Applications Beyond Go (Sun Tan)",
     "0x5f3759df ? What the fuck ?! (Clément de Tastes)",
     "What agent to trust with your k8s: Falco, Tetragon or KubeArmor? (Henrik Rexed)",
-    "Parlons de votre dépendance aux dépendances (Fabrice Pipart, Vincent Leon)",
     "Comprendre MCP en 25 minutes (Sébastien Blanc)",
     "Tests E2E sans stress : Robot Framework à la rescousse (Khadija Abdelouali)",
     "Dark Patterns (Clément Oliva)",
     "Graphs and games: can Go take a Ticket to Ride? (Michele Caci)",
-    "Building efficient MCP servers efficiently, with Quarkus (Martin Kouba)",
-    "Quarkus Unleashed (Roberto Cortez)",
     "L'art et la manière de rater ses benchmarks (Michaël Strauss)",
     "Découvrons ensemble la relève de l'observabilité avec les logs et traces : Quickwit (Idriss Neumann)",
     "Roq : créez votre site statique avec des super-pouvoirs (Andy Damevin)",
@@ -605,6 +678,11 @@
     { "label": "Chaîne YouTube Riviera DEV (vidéos 2025 publiées fin juillet 2025)", "url": "https://www.youtube.com/@RivieraDEV" },
     { "label": "Criteo R&D, « From Socca to Software: RivieraDev 2025 in Review » (Criteo Tech Blog, août 2025)", "url": "https://medium.com/criteo-engineering/from-socca-to-software-rivieradev-2025-in-review-676aa0f74f52" },
     { "label": "Sophianet, « Riviera DEV, la conférence des développeurs » (annonce, mai 2025)", "url": "https://www.sophianet.com/article/sophia-riviera-dev-conference-developpeurs-developpeurs" },
-    { "label": "Posts LinkedIn : aucun post de participant retrouvé (7 recherches web)" }
+    { "label": "Corinne Krych, « RivieraDev 2025 – Let's Go! » (9 juillet 2025)", "url": "https://corinnekrych.blogspot.com/2025/07/rivieradev-2025.html" },
+    { "label": "Corinne Krych, « RivieraDev 2025 – Day 2 Highlights » (9 juillet 2025)", "url": "https://corinnekrych.blogspot.com/2025/07/rivieradev-2025-day-2-highlights.html" },
+    { "label": "Alexandre Touret (speaker), retour sur le kata d'architecture (15 juillet 2025)", "url": "https://blog.touret.info/2025/07/15/architecture-kata-feedback/" },
+    { "label": "Posts Mastodon d'Olivier Audard (#RivieraDev, 8 juillet 2025)", "url": "https://mastodon.social/@oad" },
+    { "label": "Slides lues : Roberto Cortez (2 decks), Fabrice Pipart et Vincent Léon, Benjamin Buléon, Martin Kouba (dépôt mkouba/rivieradev2025), Alexandre Touret (les liens figurent sur les pages de session)", "url": "https://github.com/mkouba/rivieradev2025" },
+    { "label": "Posts LinkedIn : aucun lu (14 recherches web au total, pages LinkedIn inaccessibles)" }
   ]
 }

@@ -6,8 +6,347 @@
   "start": "2023-06-28",
   "end": "2023-06-30",
   "city": "Rennes",
+  "venue": "Université de Rennes 1, campus de Beaulieu, bâtiment 2A",
   "url": "https://2023.breizhcamp.org/",
+  "programUrl": "https://2023.breizhcamp.org/conference/programme/",
+  "theme": "Jurassic Park (annoncé en keynote, repris dans de nombreux titres de sessions)",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "11e édition, du 28 au 30 juin 2023 : mercredi consacré aux universités et à quelques conférences, jeudi et vendredi aux conférences, tools in action et quickies. Programme officiel : 79 sessions (42 conférences, 12 tools in action, 12 quickies, 9 universités, 4 keynotes) et une track Green de 7 sessions. Selon les keynotes d'équipe : 327 propositions de 270 personnes, 75 sessions retenues, environ 900 inscrits sur la liste d'attente du tirage au sort. Captation vidéo assurée par le sponsor CYIM, facilitation graphique des keynotes par Sophie Sorel-Giffo.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-10-31",
+  "revisit": "Réception très mince : un seul fil de retours participants lu (commentaires tronqués du post LinkedIn de Tristan Nitot), aucun compte-rendu de blog ni sketchnote retrouvé malgré 6 recherches web, et LinkedIn est mal indexé. Les 63 autres vidéos du programme restent à lire, et les posts LinkedIn des autres speakers restent à chercher par nom.",
+  "corpus": "Programme officiel (JSON du site, 79 sessions avec descriptif et lien vidéo, sans slides), site et FAQ, playlist YouTube « BreizhCamp 2023 », dont 16 transcripts automatiques (les quatre keynotes et 12 sessions). Côté réception, à plus de trois ans de distance : le post LinkedIn de Tristan Nitot (2 050 réactions, 177 commentaires, dont 9 extraits tronqués lus, deux citant explicitement le BreizhCamp) et son billet de blog du 13 juillet 2023 (speaker).",
+  "limits": "Corpus essentiellement « scène » : les résumés reposent sur des sous-titres automatiques, où les noms propres et certains chiffres sont déformés (les chiffres douteux ont été écartés, et les noms recoupés avec le programme). Le choix des 16 sessions suit la diversité des thèmes et non leur audience, faute de données ; la réception se limite à la keynote de Tristan Nitot, et la fresque de Sophie Sorel-Giffo n'a pas été retrouvée. Les 12 sessions hors keynotes ont été lues via des notes intermédiaires, les citations reprises étant vérifiées mot à mot dans les transcripts.",
+  "tldr": "Sous un habillage Jurassic Park, BreizhCamp 2023 retourne la métaphore du dinosaure : **il faut apprendre à vivre avec l'existant**, qu'il s'agisse du matériel à garder plus longtemps (la proposition erooM de Tristan Nitot), du legacy à reprendre par petites touches ou des inégalités que le numérique reproduit et aggrave (Mathilde Saliou), le tout porté par une track Green très présente et une IA générative encore à la marge.",
+  "keyTakeaways": [
+    "Traiter l'optimisation logicielle comme le levier principal : ne plus compter sur la loi de Moore, car l'essentiel de l'empreinte vient de la fabrication des terminaux et les applications trop lourdes poussent à les remplacer (Tristan Nitot).",
+    "Se fixer un téléphone étalon ancien et regarder CPU et mémoire après le chargement, y compris en acceptant les cookies, plutôt que de se rassurer avec un seul score (Olivier Philippot).",
+    "Couper d'abord les fonctionnalités : une recherche utilisateurs et un double critère (combien d'utilisateurs, à quelle fréquence) pèsent plus que l'optimisation technique (Sylvain Révéreault, refonte (T-)REX).",
+    "Décider tôt de la fraîcheur des données, de la fin de vie et de l'accessibilité : à ce stade, les changements coûtent encore peu (Cécilia Bossard et Aurélie Lopes).",
+    "Devant du legacy, refactorer uniquement ce que la prochaine story va toucher, juste avant de la coder, derrière des tests de protection même « crades » (Johan Martinsson).",
+    "Préparer l'incident avant qu'il arrive et ne pas chercher de coupable : rôles définis à l'avance, revert d'abord, post-mortem ensuite (Sofia Lescano).",
+    "Isoler le métier des frameworks et différer les choix techniques, un stub pouvant même servir à livrer plus tôt (Julien Topçu).",
+    "Ne jamais comparer des index sur des tables vides, et vérifier toutes les instances avant de supprimer un index en apparence inutile (Doctolib).",
+    "Passer à un monorepo comme à un investissement continu sur les outils et les pratiques : la montée en charge des équipes est le vrai test (SNCF Connect).",
+    "Se demander à chaque conception qui est oublié et quel mécanisme de signalement existe dès le premier jour : la technique n'est pas neutre (Mathilde Saliou)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-ouverture-bienvenue-dans-ma-zone-d-inconfort",
+      "day": "2023-06-29",
+      "type": "keynote",
+      "title": "Keynote d'ouverture : Bienvenue dans ma zone d'inconfort",
+      "speakers": ["Équipe BreizhCamp", "Noémie Delrue"],
+      "summary": "- L'équipe donne le ton en tenue Jurassic Park : 327 propositions de 270 personnes, 75 sessions retenues, code de conduite mis en place *« cette année »*, inversion de deux talks entre jeudi et vendredi, gobelets et porte-badges à rendre.\n- Noémie Delrue raconte un **trouble de la parole** apparu il y a un peu plus de deux ans : phrases inachevées, mots manquants, bégaiement, puis honte de parler, au travail comme avec ses proches.\n- Ce qu'elle a appris en orthophonie : l'orthophoniste accompagne les conséquences plutôt qu'elle ne guérit, et *« la parole parfaite n'existe pas »*.\n- Elle retourne l'injonction managériale : on a le droit de rester dans sa zone de confort au travail, pour garder de l'énergie pour une autre épreuve de la vie. Vie pro et vie perso ne se séparent pas si facilement, surtout en télétravail.\n- Sortir de sa zone de confort se fait comme on entre dans l'eau en Bretagne, doucement, avec le droit de ressortir ; cette zone n'est pas figée et s'étend avec les expériences.\n- Fin participative : toute la salle debout pour des exercices d'orthophonie (joues, sourire, bâillement sur commande).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "Z-yhr-gycsM",
+        "title": "BreizhCamp 2023 - Keynote jeudi matin",
+        "publishedAt": "2023-06-29",
+        "transcript": true
+      }
+    },
+    {
+      "id": "keynote-pour-en-finir-avec-la-loi-de-moore",
+      "day": "2023-06-29",
+      "type": "keynote",
+      "title": "Keynote du jeudi soir : Pour en finir avec la loi de Moore",
+      "speakers": ["Tristan Nitot — Octo Technology"],
+      "feedbackFrom": ["Olivier Bierlaire (LinkedIn)", "Philippe Desmaison (LinkedIn)", "Daniel Glazman (LinkedIn)", "Simon Uyttendaele (LinkedIn)", "Didier Gaultier (LinkedIn)", "Tristan Nitot (speaker, LinkedIn et blog)"],
+      "summary": "- Sur scène : la loi de Moore a nourri un **cercle** entre matériel et logiciel. Chaque version ajoute des fonctionnalités, ralentit, et justifie du matériel neuf ; le temps des ingénieurs va aux fonctionnalités, jamais à l'optimisation.\n- L'industrie est *« payée pour pas le comprendre »* (d'après Upton Sinclair), alors que la trajectoire climatique actuelle est bien au-dessus des objectifs de l'accord de Paris.\n- Les machines ne ralentissent pas, ce sont les logiciels qui grossissent. En France, 76 % de l'impact du numérique vient de la fabrication des terminaux, et dans 80 % des cas les smartphones jetés fonctionnent encore.\n- Proposition **erooM**, Moore à l'envers : optimiser le logiciel d'un facteur 2 tous les deux ans, sans changer de matériel. Exemple d'écart : un même problème résolu en 32 jours en Python, puis en 6,7 ms après réécritures par d'autres. Il admet ignorer si ce rythme est tenable.\n- Mise en perspective honnête : le numérique pèse 160 kg sur les 10 tonnes du Français moyen, et il reconnaît sa *« vision tunnel »* sur les gaz à effet de serre (biodiversité non traitée) ainsi que la dimension collective, au-delà des gestes individuels.\n- En Q&R, à la fin d'un talk qui a dépassé son temps : choisir aussi son employeur selon ses convictions, un levier réel mais moins vrai depuis les licenciements.\n- Réception : sur LinkedIn, Olivier Bierlaire écrit *« Le keynote du Breizhcamp était fantastique »* et Philippe Desmaison *« Très bonne session à BreizhCamp »* (extraits tronqués). Les commentaires sur le post discutent aussi la thèse : Daniel Glazman doute d'un chiffre sur l'affichage, Simon Uyttendaele rappelle la loi de Wirth, Didier Gaultier estime que la loi va s'arrêter d'elle-même. Tristan Nitot (speaker) recommande cette version plutôt que celle de Pas Sage en Seine.",
+      "summarySources": ["transcript", "feedback", "blog"],
+      "video": {
+        "youtubeId": "fHIWs5EsOkM",
+        "title": "Keynote jeudi soir - Pour en finir avec la loi de Moore (Tristan Nitot)",
+        "publishedAt": "2023-07-25",
+        "transcript": true
+      }
+    },
+    {
+      "id": "keynote-comment-le-numerique-aggrave-les-inegalites",
+      "day": "2023-06-30",
+      "type": "keynote",
+      "title": "Keynote du vendredi matin : Comment le numérique aggrave les inégalités",
+      "speakers": ["Mathilde Saliou — Next INpact"],
+      "summary": "- Journaliste spécialisée, elle résume son enquête en trois niveaux : l'industrie, les outils, les usages. La tech n'a pas inventé les inégalités, mais elle les reproduit, parfois les aggrave.\n- **Industrie** : environ une personne sur quatre est une femme, souvent dans des fonctions support, et une sur deux quitte la tech après 35 ans, contre une sur cinq ailleurs (Gender Scan). Rappel historique : Ada Lovelace, les programmeuses de l'ENIAC, Grace Hopper, et l'image de Lena devenue norme de test.\n- **Outils** : plainte de la Fondation des femmes contre Facebook (offre de pilote de ligne montrée à 85 % d'hommes, d'auxiliaire de puériculture à 94 % de femmes), réponses absentes de Siri en 2011, tri de CV d'Amazon, étude Gender Shades, arrestations à tort par reconnaissance faciale, algorithmes de fraude sociale aux Pays-Bas, dont le scandale a fait démissionner le gouvernement en 2021.\n- Le vernis d'objectivité algorithmique rend les résultats plus difficiles à contester ; il faut aussi demander pourquoi l'on traque les fraudeurs plutôt que les personnes qui ne touchent pas leurs droits.\n- **Usages** : le cyberharcèlement frappe plus fort les femmes et les minorités, et Twitter a mis sept ans à livrer son premier outil de modération. L'engagement est un modèle économique : emoji colère compté 5 points chez Facebook, 64 % des entrées en groupes extrémistes venues des recommandations.\n- Pistes, sans solution toute faite : vulgariser, faire entrer d'autres expertises, concevoir dès le départ des mécanismes de signalement, repenser la concentration du pouvoir (58 % des voix de Meta chez Mark Zuckerberg). La technologie *« est éminemment politique »*, et ce n'est pas un problème tant qu'on en a conscience.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "DdY62OTdSME",
+        "title": "BreizhCamp 2023 - Keynote vendredi matin",
+        "publishedAt": "2023-06-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "keynote-de-cloture-equipe-breizhcamp",
+      "day": "2023-06-30",
+      "type": "keynote",
+      "title": "Keynote de clôture",
+      "speakers": ["Équipe BreizhCamp"],
+      "summary": "- Coulisses du programme : votes de l'équipe sur la plateforme de CFP, consigne de ne pas voter pour sa propre société, sessions imprimées et découpées pour construire le planning à la main.\n- Le nombre de **sessions de Zenika** s'explique, selon l'équipe, par le nombre de propositions et non par les votes.\n- Billetterie sous tension : 900 personnes en liste d'attente du tirage au sort, environ 400 tirées, environ 300 achats. Sur place : 36 staff, 83 orateurs, 91 billets exposants, 350 billets sponsors, 158 places trois jours et 124 places deux jours.\n- L'équipe veut négocier avec la fac plus de salles, pour que le public, et pas seulement les sponsors, ait davantage de places.\n- Logistique racontée avec humour : un bâtiment reçu presque vide, un hall mesuré à 84 m, un camion qui s'ouvrait sans clé, tout le matériel sorti du box.\n- Écosystème : meetups toute l'année en manque d'orateurs, kit de captation vidéo allégé, arrivée d'un meetup éco-conception. BreizhCamp 2024 annoncé du 26 au 28 juin, et appel à l'aide pour charger le camion.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "vZWxAAqZLDQ",
+        "title": "Keynote de clôture (Equipe BreizhCamp)",
+        "publishedAt": "2023-07-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "sobriete-numerique-partout-sobriete-numerique-nulle-part",
+      "day": "2023-06-28",
+      "type": "talk",
+      "title": "Sobriété numérique partout, sobriété numérique nulle part ?",
+      "speakers": ["Olivier Philippot"],
+      "summary": "- Éditeur d'une solution de sobriété numérique, il prévient lui-même de ce parti pris avant de démonter **cinq biais** : référentiels rassurants, mesure, relativisation, solution technologique, business as usual.\n- Exemple d'un site d'information dit optimisé : 36 requêtes pour 1 Mo annoncés, mais 105 requêtes et de nombreux services tiers une fois les cookies acceptés. On n'évalue souvent qu'une partie du site.\n- Critique d'EcoIndex : utile pour sensibiliser, mais il mesure le DOM, pas le JavaScript lourd en CPU. *« Il vaut mieux être d'abord exact et après précis. »*\n- *« L'impact global il est côté utilisateur donc effectivement on le paye pas »* : les services tiers et les applications poussent au renouvellement sans que l'éditeur en supporte le coût.\n- En Q&R : la performance seule ne suffit pas, il faut regarder CPU et mémoire après le chargement, avec un étalon comme un S7 de 2016.\n- Il n'attend rien de la réglementation et refuse de parler de chiffrage en sprint : *« l'environnement n'est pas chiffrable »*, l'écoconception se fait dès la conception. La salle demande s'il faut cesser de dire « Green IT » ; il reconnaît ne pas avoir de réponse.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "CWmsuOS0Qio",
+        "title": "Sobriété numérique partout, sobriété numérique nulle part ? (Olivier Philippot)",
+        "publishedAt": "2023-07-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "feminisation-de-la-tech-cassons-les-codes",
+      "day": "2023-06-28",
+      "type": "workshop",
+      "title": "Féminisation de la tech : cassons les codes !",
+      "speakers": ["Mélissa Cottin — Estim'Numérique", "Stéphanie Vachon — Estim'Numérique", "Philippe Lima — Estim'Numérique"],
+      "summary": "- Université en deux temps, conférence puis atelier, par une association rennaise de mixité dans le numérique.\n- Constat : environ 15 % de femmes sur les fonctions techniques, et *« 50 % de femmes qui quittent leur emploi dans le numérique avant l'âge de 35 ans »*, pour sexisme ordinaire, freins de carrière ou isolement.\n- **Chiffre maison** : *« 10 % de femmes qui ont postulé au CFP et seulement 13 % au programme cette année »*, chiffres obtenus de l'équipe du BreizhCamp.\n- Lecture historique : l'informatique, d'abord vue comme un travail de secrétariat, se masculinise à mesure qu'elle gagne en prestige, avec le micro-ordinateur offert aux garçons puis la figure du geek.\n- Appel à *« chausser ses lunettes de l'égalité »* : données genrées, culture commune, attention aux after-works et aux blagues qui s'accumulent.\n- Atelier : audit ou recréation d'un faux site de santé cardiaque, truffé de stéréotypes (symptômes masculins seuls, « Mademoiselle », « nom de jeune fille », expert homme et assistante femme).\n- Vrai débat de fin : faut-il un site non genré ? Un participant répond *« l'inclusion c'est pas forcément l'effacement »*, un autre propose *« au lieu d'essayer d'inclure on peut peut-être essayer d'éviter d'exclure »*. Mélissa Cottin reconnaît qu'il n'y a pas de bonne réponse.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "rVNpPsQ8KKQ",
+        "title": "Féminisation de la tech : cassons les codes ! (Mélissa Cottin, Stéphanie Vachon, Philippe Lima)",
+        "publishedAt": "2023-07-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "developpement-durable-logiciels-bons-pour-les-gens-et-la-planete",
+      "day": "2023-06-29",
+      "type": "talk",
+      "title": "« Développement durable » : et si on développait enfin des logiciels bons pour les gens et la planète",
+      "speakers": ["Cécilia Bossard — Shodo", "Aurélie Lopes"],
+      "summary": "- Le talk transpose people, planet, profit au logiciel, en filant la métaphore d'un gâteau raté : un projet lancé sans interroger les utilisateurs ni penser au reste.\n- En amont : personas, parcours, **hiérarchisation des fonctionnalités**, pendant que les changements coûtent encore peu.\n- Choisir *« juste un fouet »* plutôt que le dernier robot pâtissier : un site statique suffit souvent, et un temps réel rarement utile coûte cher au budget comme à la planète.\n- L'accessibilité commence au graphisme (contrastes, balises utilisées pour leur usage, tests en CI). Elle sert aussi celles et ceux qui ont une mauvaise connexion.\n- Exploitation : prévoir le décommissionnement dès le début, couper les serveurs de recette, et rendre la mise en production *« une opération anodine et qui est non douloureuse »*.\n- En Q&R, un participant signale le coût des environnements de préproduction (300 heures de serveur à chaque branche poussée dans sa société). Sur les grilles RSE des clients, un aveu lucide : *« ça fait un peu greenwashing mais du coup si on peut le détourner pour quelque chose de bien »*. Pas de formule magique, une ou deux astuces à la fois.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "kn8CRi7VfZI",
+        "title": "\"Développement durable\" : et si on développait enfin des logiciels… (Cécilia Bossard, Aurélie Lopes)",
+        "publishedAt": "2023-07-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "3p-pour-sortir-du-legacy",
+      "day": "2023-06-29",
+      "type": "talk",
+      "title": "3P pour sortir du Legacy",
+      "speakers": ["Johan Martinsson"],
+      "summary": "- **Protéger, Préparer, Produire** : le refactoring est un investissement, et son retour est bien meilleur juste avant une story qu'en fin de story ou en projet dédié.\n- Tous les refactorings possibles ne valent pas la peine d'être faits : on les note, et on s'y engage *« uniquement sur preuve d'utilité »*.\n- Rendre le code extensible se fait juste avant d'en avoir besoin. En fin de story, simplifier et transcrire la connaissance métier reste sûr.\n- Phase Protéger : *« on n'essaye pas d'écrire des bons tests mais on essaie d'écrire des tests qui nous protègent »*. Couverture sans compromis, tests lents ou « crades » acceptés quelques heures ou quelques jours.\n- Le TDD redevient possible localement, même sur du legacy, et le feedback arrive en jours ou semaines. Quelques fichiers concentrant les modifications, le projet paraît vite en bon état.\n- Exemple réel : des requêtes Mongo dispersées remplacées par des domain events, avec un dump de production pour caractériser le comportement.\n- En Q&R, un participant doute que retarder le refactoring suffise en pratique. Johan Martinsson répond qu'il retarde sans renoncer, et reconnaît avoir lui-même fait des dégâts avec des refactorings anticipés.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "jOK4qtbIdTY",
+        "title": "3P pour sortir du Legacy (Johan Martinsson)",
+        "publishedAt": "2023-07-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ca-y-est-j-ai-casse-la-prod",
+      "day": "2023-06-29",
+      "type": "talk",
+      "title": "Ca y est, j'ai cassé la prod !",
+      "speakers": ["Sofia Lescano"],
+      "summary": "- Un jour de février, deux incidents en une heure, après neuf mois sans incident dans son équipe : un A/B test oublié masque des commandes, puis une mise à jour de librairie casse l'envoi de factures (97 à refaire à la main).\n- Le collègue propose déjà le revert au moment de la prévenir, et personne ne cherche de coupable : *« il y a que les gens qui font rien qui cassent rien »*.\n- Livrer ne se limite pas au code : spec technique et critères d'acceptance en amont, CI à choisir selon le besoin, revue vue comme un partage de connaissances. Dix minutes de **review fonctionnelle** en sandbox auraient évité une régression pourtant couverte à 100 %.\n- Gestion d'incident outillée : trois rôles définis, escalade PagerDuty, déclenchement depuis Slack y compris par des non-techniques, deux canaux, priorité au revert, post-mortem avec actions.\n- Limites qu'elle pose elle-même : une astreinte absente des contrats au début, trop de faux positifs la nuit, des actions de post-mortem parfois utopiques, des tests end-to-end instables qui ont demandé six mois à un an de travail.\n- En Q&R sur le pilotage par KPI, elle tempère les métriques DORA : *« du moment où tu mesures c'est très facile aussi de fausser les mesures »*. Elle reconnaît qu'un tel dispositif tient à un contexte de startup produit dotée d'une équipe plateforme.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "2jUJWhzk4hg",
+        "title": "Ca y est, j'ai cassé la prod ! (Sofia Lescano)",
+        "publishedAt": "2023-07-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "t-rex-refonte-en-ecoconception-scop-la-maison-ecologique",
+      "day": "2023-06-29",
+      "type": "talk",
+      "title": "(T-)REX : refonte en écoconception des services numériques de la Scop La Maison Écologique",
+      "speakers": ["Sylvain Révéreault — Zenika", "Pascal Greboval — Kaizen (absent le jour du talk)"],
+      "summary": "- Refonte cofinancée par l'ADEME pour les magazines La Maison Écologique et Kaizen. Pascal Greboval n'a pas pu venir, et Sylvain Révéreault présente seul.\n- Diagnostic : une ACV sur trois parcours, qui confirme le poids de la fabrication des terminaux, et un outillage combinant GreenIT-Analysis, sitespeed.io et PowerAPI, agrégé dans Pagiel (Zenika).\n- *« La fonctionnalité qui pollue le moins c'est celle qui servait à rien et qu'on n'a pas mise dans le logiciel »* : **sobriété fonctionnelle** par recherche utilisateurs, parfois jusqu'à remplacer un parcours par un PDF et un numéro de téléphone.\n- Résultats en préproduction sur la page d'accueil : EcoIndex de 29 à 71, de près de 4 Mo à 300 ko, de 108 à 19 requêtes.\n- Lecture critique du speaker : données en partie mockées, ACV faite en cours de projet et reposant sur des approximations, indicateur unique trompeur (EcoIndex pénalise un découpage JavaScript parfois pertinent), gain d'hébergement en partie artificiel.\n- Enjeux commerciaux et sobriété entrent en collision, et le projet n'a *« pas été à mon goût assez itératif »*. Aucun gain business mesuré, le site n'étant pas encore en production.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "Ntl3ZHIt2r8",
+        "title": "(T-)REX : refonte en écoconception des services numériques de… (Sylvain Révéreault, Pascal Greboval)",
+        "publishedAt": "2023-07-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "l-architecture-hexagonale-par-la-pratique",
+      "day": "2023-06-29",
+      "type": "talk",
+      "title": "L'Architecture Hexagonale par la pratique, le live coding qui rendra vos applications plus pérennes",
+      "speakers": ["Julien Topçu"],
+      "summary": "- Live coding sur fond de Star Wars : une flotte de sauvetage construite à partir de l'API swapi, précédée d'une critique de l'architecture en couches illustrée par du vrai code.\n- *« La mise à jour d'un framework si ça casse votre logique métier est-ce que c'est normal »* : mélanger métier et technique crée de la complexité accidentelle.\n- **Domaine sans dépendance**, API et SPI uniquement faits d'objets du domaine, annotations maison pour que Spring n'y entre pas. Les interfaces se placent entre les couches, pas entre chaque classe.\n- Ordre de travail : test fonctionnel avec stub, contrôleur, client externe, puis test de composant centré sur l'intégration.\n- Retour d'expérience Expedia : livrer la logique métier avec un stub à la place des transporteurs a permis aux équipes mobiles de démarrer et de donner du feedback tôt. *« C'est aussi ça l'architecture hexagonale c'est remettre à plus tard les choix. »*\n- Réserves du speaker : le pattern ne traite que certaines formes de dette, et il concède qu'un stub en production peut surprendre. Pas de Q&R dans la captation.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "xUlUEQL7i2E",
+        "title": "L'Architecture Hexagonale par la pratique, le live coding qui rendra vos application… (Julien Topçu)",
+        "publishedAt": "2023-07-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "loom-la-meteorite-sur-la-jvm",
+      "day": "2023-06-29",
+      "type": "talk",
+      "title": "LOOM, la météorite sur la JVM ?",
+      "speakers": ["Thomas Piscitelli — Liksi", "Alexandre Thomazo — Liksi"],
+      "summary": "- Scénario Jurassic Park et démonstrations sous charge : une API qui attend une autre API répondant en 3 secondes.\n- Constat : le thread attend 99,99 % du temps, mais un thread plateforme coûte cher, et un million d'entre eux prendrait plus de 15 minutes à démarrer.\n- WebFlux tient la charge, mais *« l'expérience développeur avec web flux est quand même très mauvaise »* : le réactif contamine tout le code, jusqu'au domaine, et complique debug et tests.\n- Les coroutines Kotlin gardent un code d'apparence synchrone, mais la démo a mal tourné sur un moteur expérimental.\n- **Thread virtuel** (preview Java 19 et 20, prévu en Java 21) : code inchangé, une simple classe de configuration, et une latence constante de 3 secondes dans la démo.\n- Réserves, dont une venue de la salle : limites avec ThreadLocal et synchronized (termes déformés dans le transcript), aucun gain sur le calcul pur, et lever la limite sur le frontal peut faire écrouler le reste du système.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "pnURZqSwGms",
+        "title": "LOOM, la météorite sur la JVM ? (Thomas Piscitelli, Alexandre Thomazo)",
+        "publishedAt": "2023-07-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "dans-le-monorepo-vous-n-etes-jamais-seul",
+      "day": "2023-06-30",
+      "type": "talk",
+      "title": "Dans le Monorepo vous n'êtes jamais seul, le Park est ouvert...",
+      "speakers": ["François Nollen — SNCF Connect", "Julien Buret — SNCF Connect"],
+      "summary": "- Récit de voyage du héros (Joseph Campbell) sur la construction de SNCF Connect, lancé début 2022 et unifiant applis mobiles et web.\n- Point de départ : un dépôt par applicatif, des pratiques divergentes et des équipes en contention. Attendu : une seule version de chaque chose et un seul commit pour une story transverse. Monorepo n'égale pas monolithe.\n- Choix fort : un environnement complet par branche, faute de plateformes partagées stables, avec merge requests validées par des référents et ADR.\n- **Épreuve** : six mois avant le lancement, tous les développeurs arrivent d'un coup, avec plus de 300 environnements en parallèle. Réponses : optimisation Gradle, diff maison de ce qu'il faut redéployer, Marge-bot en mode batch, CODEOWNERS, extinction automatique des environnements.\n- Après le lancement, environ 400 évolutions poussées en quelques mois selon les speakers.\n- Conclusion : *« c'est un investissement continu sur les outils et sur les pratiques des équipes aussi »*. En Q&R, ils reconnaissent des pipelines d'environ une heure (objectif de 30 minutes non atteint), des tests instables pénalisants et un succès valable *« dans notre contexte »*.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "GkxHLcIFujw",
+        "title": "Dans le Monorepo vous n'êtes jamais seul, le Park est ouvert... (Francois Nollen, Julien Buret)",
+        "publishedAt": "2023-07-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "de-l-ia-dans-le-quotidien-donnees-multimodales-contenus-editoriaux",
+      "day": "2023-06-30",
+      "type": "talk",
+      "title": "De l'IA dans le quotidien : traitements de données multimodales appliqués aux contenus éditoriaux",
+      "speakers": ["Julien Perron — Ouest-France", "Ibrahima Ba — Ouest-France"],
+      "summary": "- Le groupe gère des dizaines de millions d'articles, de pages et de photos : il faut labelliser, relier et classer des textes, images, vidéos et podcasts.\n- Mise au point : l'IA date des années 50, et en 2023 le mot désigne presque toujours le deep learning.\n- Credo interne *« finger print is all you need »* : tout repose sur des **empreintes sémantiques**, c'est-à-dire la proximité entre vecteurs.\n- Un découpage des documents longs en graphe a fait *« passer nos moteurs de recherche de 63 % en termes de précision jusqu'à 83 % »*. Recherche en langage naturel sur images non annotées, en production.\n- Usages : extension Chrome qui suggère des contenus liés au fil de la frappe, classification sur mesure, entités nommées, topics pour étiqueter un sujet chaud imprévu, OCR de vieux PDF.\n- Garde-fou : des outils d'aide, *« soumis à la validation d'un être humain qui porte l'expertise et la compétence sur son domaine »*, sans publication automatique. Des LLM sont en cours d'ajustement pour les résumés et les titres.\n- En Q&R : la recherche sémantique ne fait pas tout, car la date compte aussi dans plus d'un siècle d'archives.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "ReI9UbiHOGs",
+        "title": "De l'IA dans le quotidien : traitements de données multimodales appliq… (Julien Perron, Ibrahima Ba)",
+        "publishedAt": "2023-07-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-recette-ultime-pour-foirer-votre-time-to-market",
+      "day": "2023-06-30",
+      "type": "talk",
+      "title": "La recette ultiiiime pour foirer votre time-to-market",
+      "speakers": ["François-Guillaume Ribreau"],
+      "summary": "- Satire en forme de recette, sur une thèse Lean et XP : à qualité égale, seul compte le délai pour atteindre le réel. *« Tant que c'est pas en production ça n'existe pas. »*\n- Chaque équipe intermédiaire entre le besoin et la mise en marché ajoute **allers-retours et déchet** : CI, secrets, DNS et tickets gérés par d'autres.\n- Sur l'estimation : *« estimer c'est croire qu'on va avoir du contrôle sur le réel »*. À la place, il propose de demander leur top 3 des douleurs aux dirigeants, puis de traiter la première.\n- Tout mettre dans le même dépôt et le même cycle de vie (Terraform, CI, migrations, front, back), et ne garder que l'automatisable : *« ne faites pas de procédure ou de convention si elles sont pas automatisés »*.\n- L'expert reste légitime s'il transmet : *« il est là pour transmettre et être inutile à la fin »*. Il accepte les équipes plateforme offrant un contrat clair en self-service.\n- Lecture critique : pas de Q&R, faute de temps. Le discours s'appuie sur des anecdotes de mission et des exemples très sélectifs (GAFAM, WhatsApp), et le speaker présente lui-même des activités d'accompagnement, tout en se défendant d'avoir quelque chose à vendre.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "AokL4OTxlnc",
+        "title": "La recette ultiiiime pour foirer votre time-to-market (Francois-Guillaume Ribreau)",
+        "publishedAt": "2023-07-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "30-index-sur-une-table-pg-de-6to-defis-et-solutions",
+      "day": "2023-06-30",
+      "type": "talk",
+      "title": "30 index sur une table PG de 6To : défis et solutions",
+      "speakers": ["Emmanuel Quincerot — Doctolib", "Flora Briand — Doctolib"],
+      "summary": "- Contexte Doctolib : 70 millions de patients, environ 60 millions de rendez-vous par mois, 250 000 requêtes par seconde en pointe. Sur la table des rendez-vous, l'essentiel du volume est dans les index.\n- Nettoyage : doublons exacts, index redondants avec un unique, `idx_scan` à zéro.\n- **Pièges** : un feature switch pas encore activé, des statistiques propres à chaque instance, `is true` et `= true` qui ne se valent pas, des casts qui empêchent l'usage de l'index.\n- Réduction : index composites, index sur expression, index partiels. Le bloat se traite avec `REINDEX CONCURRENTLY`, automatisé la nuit.\n- Incident assumé : suppression d'un index utilisé par une seule instance d'export de nuit, avec impact limité à l'équipe data.\n- Outil open source présenté : tous les index candidats créés d'avance, `DROP INDEX` en transaction, `EXPLAIN`, rollback. *« On est passé de à peu près deux jours pour comparer les index à environ 5 minutes. »*\n- Règle : *« ne testez jamais des index sans données ça sert à rien »*. Résultat annoncé : écritures environ 15 % plus rapides. Ils qualifient eux-mêmes de *« discutable »* leur calcul de gain CPU, et l'outil compare des plans sans remplacer une mesure de charge réelle.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "oK5UQrsDmaE",
+        "title": "30 index sur une table PG de 6To : défis et solutions (Emmanuel Quincerot, Flora Briand)",
+        "publishedAt": "2023-07-22",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Et s'il suffisait de documenter pour tester ? (Sébastien Fauvel)",
+    "Débloquez le potentiel des architectures composables ! (Loïc Carbonne)",
+    "SvelteKit à l'attaque des dinosaures (Maxime Dupont)",
+    "Playwright : l'outil qui va révolutionner les tests end-to-end (Jean-François Greffier)",
+    "Code Lab Collaboratif (Léna Ndiaye)",
+    "Docker Compose, zero to hero (Nicolas De Loof, Guillaume Lours)",
+    "Gitlab de A à Z ! (Matthieu Vincent, Anthony Dassé)",
+    "Adoptez la clean archigonale (Christophe Breheret-Girardin)",
+    "Les fondamentaux de Kubernetes Operator (Adrien Wattez, Nicolas Bouron, Laurent Perrin)",
+    "Les machines à états, une documentation exécutable ? (Antoine Cailly)",
+    "Poser une fusée sur la Lune : Artemis 2.0-RC (Audren Burlot)",
+    "Développez votre première extension de navigateur (Florent Vuillemin, Aurélien Partiot)",
+    "Comment aborder le design dans une démarche d'éco-conception ? (Damien Legendre)",
+    "Machine Learning sur Android avec ML Kit (Julien Salvi)",
+    "API Versioning : sauvegarder les versions en voie de disparition (Thomas Martin)",
+    "S'attaquer à un legacy grâce au DDD (Tanguy Bernard)",
+    "Spring 6, Spring Boot 3 : comment il fonctionne Spring le dinosaure ? (Maxime Odye, Clement Traon)",
+    "Sous le capot des navigateurs web (Anthony Le Goas)",
+    "Arc, un navigateur qui vous veut du bien (Pascal Le Merrer)",
+    "Doc-tracing : fouiller une base de code fossile (Luc Sorel-Giffo)",
+    "Interopérabilité Java / Code natif avec le projet Panama (Laurent Huet)",
+    "Suscitons des vocations dès le collège ! (Mélissa Cottin)",
+    "Zod/ArkType, comment typer vos applications JS au runtime ? (Gregory Houllier)",
+    "Spring et Virtual Threads (Daria Hervieux)",
+    "Rust sans (trop) roter du sang (Édouard Siha, Alexis Chotard)",
+    "N'abandonnez pas votre collègue d'astreinte ! (Vincent Lainé)",
+    "Infrastructure as Code ou Infrastructure as Software ? (Alexandre Nédélec)",
+    "Au delà du test AB avec les Bandits Manchots (Elys Allesiardo, Fabrice Depaulis)",
+    "La Merge Queue, la pièce manquante du CI/CD (Charly Laurent)",
+    "Après l'ordi 8 bit voici la carte VGA sur breadboard (Olivier Huber)",
+    "Pourquoi tester ce n'est pas douter (Édouard Siha, Gérôme Egron)",
+    "Event Driven, qu'est-ce donc ?! (Céline Louvet)",
+    "La CI/CD dans le monde du développement mobile (Erwan Tilly, Mathieu Viel)",
+    "Mob.sh : la présentation dont vous êtes le héros (Benoît Masson, Gwendal Leclerc)",
+    "API Green Score (Yannick Tremblais)",
+    "Construire un registre de choix d'architecture avec les ADR (Sébastien Lecacheur)",
+    "Discutons avec nos cartes bancaires depuis nos smartphones (Antoine Robiez, Loïc Fallon)",
+    "Eco-index : le nutriscore du développement (Cécilia Bossard)",
+    "L'open source rendu beaucoup plus accessible avec Gitpod (Jean-Philippe Baconnais)",
+    "Pair-programming : et si on gagnait du temps ? (Pascal Le Merrer)",
+    "Fini JUnit park, on embarque pour KoTest Island ! (Brieuc Le Faucheur)",
+    "Retourner le cerveau de sa Gameboy et les attraper (vraiment) tous (Audren Burlot)",
+    "HTTP/3 on va manger du quick ! (Julien Namdar, Prieur Baptiste)",
+    "Vers l'infini et au delà avec Postman (Alan Duchene)",
+    "Améliorez vos tests grâce à l'architecture hexagonale (Antoine Barroux, Tristan Denmat)",
+    "Git, sous le capot (David Blanchet)",
+    "The Golang Error Picture Show (Benoît Masson)",
+    "Welcome to Jurassic Stack (Malo Toanen)",
+    "sécurité + open source = ❤️ (Adrien Pessu)",
+    "À la découverte du développement mobile (Robin Caroff, Cyril Hue)",
+    "Rendu 3D, la grande illusion expliquée (Thomas Guibert)",
+    "REX IndieHacker : Image-Charts (Francois-Guillaume Ribreau)",
+    "Les mystères des permissions (Céline Louvet)",
+    "Comment automatiser ses tests d'accessibilité ? (Anthony Le Goas)",
+    "Comprendre eBPF, ses applications et ses limites (Paul Chaignon)",
+    "Always-Green Refactoring (Thomas Carpaye, Mohammed Lamzira)",
+    "STOP à l'espionnage ! Comment disparaître d'internet ? (Mickael Alves, Etienne Idoux)",
+    "Le guide du Koroutard (Mathieu Durand)",
+    "ecoCode : réduire l'empreinte carbone avec des outils open source (David De Carvalho, Johanna Duigou)",
+    "Une autre manière de tester vos microservices (Gwendal Leclerc)",
+    "Et si vous redécouvriez Apache Maven ? (Alioune Sy)",
+    "Live-coding d'un serveur web avec Ktor (Renaud Mathieu)",
+    "Hook'il est beau, notre code ! (Luc Sorel-Giffo)"
+  ],
+  "sources": [
+    { "label": "Site officiel BreizhCamp 2023", "url": "https://2023.breizhcamp.org/" },
+    { "label": "Programme officiel BreizhCamp 2023", "url": "https://2023.breizhcamp.org/conference/programme/" },
+    { "label": "Données du programme (JSON du site, 79 sessions)", "url": "https://2023.breizhcamp.org/json/talks.json" },
+    { "label": "FAQ du site (lieu)", "url": "https://2023.breizhcamp.org/faq/" },
+    { "label": "Playlist YouTube « BreizhCamp 2023 »", "url": "https://www.youtube.com/playlist?list=PLv7xGPH0RMUQC6eKGeEXO4PzvKdsU7z2j" },
+    { "label": "Tristan Nitot (speaker), « En vrac du jeudi », Standblog, 13 juillet 2023", "url": "http://standblog.org/blog/post/2023/07/13/En-vrac-du-jeudi" },
+    { "label": "Post LinkedIn de Tristan Nitot sur la loi de Moore et erooM (commentaires d'Olivier Bierlaire, Philippe Desmaison, Daniel Glazman, Simon Uyttendaele, Didier Gaultier)", "url": "https://fr.linkedin.com/posts/nitot_moore-innover-num%C3%A9rique-activity-7082002421077397504-W2Gr" },
+    { "label": "Tristan Nitot, « Pour en finir avec la loi de Moore », blog d'Octo (cité par le speaker, non lu)", "url": "https://blog.octo.com/pour-en-finir-avec-la-loi-de-moore/" },
+    { "label": "Keynote de Tristan Nitot, autre publication du 30 juin 2023 sur la chaîne BreizhCamp (lien donné par le speaker)", "url": "https://www.youtube.com/watch?v=QMk4zCkrrjs" }
+  ]
 }
