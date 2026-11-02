@@ -7,8 +7,413 @@
   "city": "Aix-en-Provence",
   "venue": "thecamp, 550 rue Denis Papin",
   "url": "https://web.archive.org/web/20231129052852/https://2023.waxconf.fr/",
+  "programUrl": "https://web.archive.org/web/20231129052852/https://2023.waxconf.fr/",
   "theme": "Cybersécurité, cloud native, numérique responsable (100 % REX)",
+  "dateConfidence": "ok",
   "note": "Environ 300 visiteurs. La même année se tenait aussi la 8e édition du DevOps D-Day (23 novembre 2023, Orange Vélodrome, organisée par Hopscotch Congrès, https://www.devopsdday.com/), non créée séparément.",
-  "status": "pending",
-  "sessions": []
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-02",
+  "revisit": "Aucun retour participant public trouvé (6 recherches web, LinkedIn et blogs) ; transcripts YouTube non récupérés (429 signalés sur les sous-titres) ; 8 supports Google Drive non lus. Reprendre les transcripts des 17 vidéos, les slides et les posts LinkedIn de juin 2023 des speakers et de FGTECH.",
+  "corpus": "Programme archivé du site 2023.waxconf.fr (18 sessions, 3 parcours), descriptifs des 17 vidéos de la playlist officielle publiées entre juin et novembre 2023, article d'annonce de Solutions Numériques (24/05/2023) et 2 supports de talks lus (François Berthault, Nicolas Comet). Six recherches web menées le 02/11/2026.",
+  "limits": "Aucun retour de participant trouvé, trois ans après l'événement : les résumés reposent sur les descriptifs officiels, rédigés avant la conférence par les speakers, et ne disent pas ce qui a été dit sur scène ni comment cela a été reçu. Pas de transcript (sous-titres YouTube en 429, non retentés) ; 8 supports sur Google Drive sont restés illisibles (WebFetch ne renvoie que le titre, téléchargement refusé dans l'environnement). Le planning du site est dit prévisionnel, et une session n'a pas de vidéo.",
+  "tldr": "**Une journée 100 % REX en trois parcours où de grandes organisations racontent leur passage à l'échelle**, avec une ligne commune à lire dans le programme : l'outil standard ne suffit plus, la sécurité ne s'arrête pas à la CI, et le numérique responsable doit durer au-delà du label.",
+  "keyTakeaways": [
+    "Commencer le chaos engineering avec un format simple : une équipe Dev et Ops d'environ 7 personnes, en présentiel, une soirée, 3 fois par an (slides de François Berthault).",
+    "Comparer les impacts mesurés aux impacts attendus, puis alimenter un backlog d'actions correctives ; minimiser le périmètre d'impact des expériences (slides de François Berthault).",
+    "Ne pas confondre chaîne CI/CD sûre et production sûre : une application saine le lundi peut être exposée à une CVE critique le vendredi (descriptif de Rachid Zarouali).",
+    "Outiller, recertifier et automatiser les habilitations avant le passage à l'échelle, en impliquant les collaborateurs dans le modèle (descriptif de Benjamin Gakic).",
+    "Ne jamais réutiliser de mot de passe, éviter de les stocker dans le navigateur, préférer le MFA par application ou clé physique au SMS (slides de Nicolas Comet).",
+    "Traiter le numérique responsable comme une amélioration continue plutôt que comme une opération one shot pour obtenir un label (descriptif de Christophe Rochefolle).",
+    "Faire le ménage dans l'existant pour réduire l'impact : simplifier et rationaliser avant d'ajouter (descriptif de Pascal Merchez).",
+    "Quantifier et rendre transparente la consommation d'énergie et les émissions des modèles d'IA (descriptif de Luiz Carlos De Jesus Junior)."
+  ],
+  "sessions": [
+    {
+      "id": "reglementation-cybersecurite-strategie-de-la-donnee",
+      "day": "2023-06-01",
+      "type": "talk",
+      "title": "Comment la réglementation peut-elle contribuer à améliorer le niveau de cybersécurité et à encourager la mise en place d'une stratégie de la donnée dans les entreprises ?",
+      "speakers": [
+        "Aurélie Klein — FIDAL"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : présentation pratique de la **nouvelle réglementation européenne** sur la cybersécurité et la donnée.\n- Questions posées : comment valoriser ses données, quel cadre juridique pour les données issues d'objets connectés.\n- Nouvelles obligations décrites comme un **travail de documentation et de gestion des risques**.\n- Exemples d'entreprises industrielles ayant adopté une approche *« R&D legal by design »*.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "p7VUMDp14mA",
+        "title": "Comment la réglementation peut-elle contribuer à améliorer le niveau de cybersécurité ...",
+        "publishedAt": "2023-06-09",
+        "transcript": false
+      }
+    },
+    {
+      "id": "on-a-mis-du-chaos-en-production-a-carrefour",
+      "day": "2023-06-01",
+      "type": "talk",
+      "title": "On a mis du Chaos en production à Carrefour",
+      "speakers": [
+        "François Berthault — FGTECH"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Les **Chaos Night** réunissent toute l'équipe, Dev et Ops (environ 7 personnes), en présentiel, de 18h à minuit, avec un objectif de 3 sessions par an (slides).\n- But affiché : casser volontairement, **comparer impacts mesurés et impacts attendus**, corriger, partager.\n- Bilan de la première soirée : manques de connaissances et de documentation, scénarios trop orientés Ops, **trop d'alertes et pas assez précises**, mais chacun a manipulé toutes les technologies de la plateforme.\n- Deuxième soirée : scénarios plus poussés, partis d'un template du Paris Chaos Engineering User Group, et **backlog d'actions correctives**.\n- Expériences citées : certificats HTTPS corrompus, saturations disque, CPU et mémoire, pannes DNS, perte de nœuds, saturation d'Elasticsearch, destruction d'un cluster Kubernetes de non-production.\n- Suite annoncée : scénarios de reconstruction et de PRA, davantage d'expériences en production en journée, automatisation. Outils présentés : ChaosKube et LitmusChaos.",
+      "summarySources": [
+        "program",
+        "slides"
+      ],
+      "video": {
+        "youtubeId": "6hOpEnzlF3U",
+        "title": "On a mis du Chaos 🧨 en production à Carrefour",
+        "publishedAt": "2023-06-08",
+        "transcript": false
+      }
+    },
+    {
+      "id": "quand-ansible-ne-suffit-plus-236-firewalls-enedis",
+      "day": "2023-06-01",
+      "type": "talk",
+      "title": "Quand Ansible ne suffit plus : orchestrer 236 firewalls d'une infrastructure critique chez Enedis",
+      "speakers": [
+        "Lucas Galton — KLANIK",
+        "Henri Sourdet — Enedis"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : **22 000 minutes**, c'est le temps qu'il aurait fallu à l'implémentation Ansible de l'époque pour piloter tous les firewalls ; la question posée est de passer à une heure.\n- Contexte : construction d'un **cloud privé OpenStack** chez Enedis, avec des firewalls de plusieurs constructeurs (Fortinet, Palo Alto, Checkpoint).\n- Enjeux annoncés : interface unifiée, intégration à la plateforme, et concilier sécurité, validation d'entreprise et déploiement as-code.\n- Réponse présentée : un **orchestrateur sur mesure en Go**, créé pour les besoins d'Enedis et non commercialisé.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "oBUG6lmvZ08",
+        "title": "Quand Ansible ne suffit plus : orchestrer 236 firewalls d'une infrastructure critique chez Enedis",
+        "publishedAt": "2023-06-08",
+        "transcript": false
+      }
+    },
+    {
+      "id": "habilite-moi-si-tu-peux",
+      "day": "2023-06-01",
+      "type": "talk",
+      "title": "Habilite-moi si tu peux !",
+      "speakers": [
+        "Benjamin Gakic — BPI"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : les habilitations sont **le parent pauvre des DSI**, faites à la main, jamais ou mal recertifiées.\n- Elles doivent suivre le scale up de l'entreprise et être rapidement outillées et automatisées.\n- L'implication des collaborateurs dans le modèle et leur **responsabilisation sur le cycle de vie des droits** évitent de créer des failles exploitables.\n- Le speaker promet un REX sans fard : *« Nous ne nous y sommes pas forcément bien pris »*, avec les voies à éviter et celles qui ont permis de rattraper le coup.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "F2lmM9tW0WQ",
+        "title": "Habilite-moi si tu peux !",
+        "publishedAt": "2023-06-09",
+        "transcript": false
+      }
+    },
+    {
+      "id": "ma-vie-en-vente-flash-sur-le-dark-web",
+      "day": "2023-06-01",
+      "type": "talk",
+      "title": "Ma vie en vente flash sur le Dark Web ?!",
+      "speakers": [
+        "Nicolas Comet — Ubisoft"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Récit vécu d'un professionnel de l'IT prévenu par la sécurité de son entreprise que **tous ses mots de passe sont en vente** (descriptif).\n- Chronologie des slides : exécutable suspect lancé le 31/10/2022, compromission visible le 10/11/2022, soit **11 jours de délai de détection**.\n- Environ 450 noms de domaine concernés, avec des mots de passe en clair, dont deux professionnels (slides). Le vecteur exact n'est pas détaillé ; les slides évoquent un vol d'identifiants depuis le navigateur.\n- Réaction : rotation des mots de passe AD et des comptes de service, gestion de crise avec l'équipe CTI.\n- Recommandations : mots de passe uniques ou phrases de passe, **MFA par application ou clé physique plutôt que SMS**, gestionnaire avec chiffrement local, pas de mots de passe dans le navigateur.\n- Côté entreprise : limiter les rotations forcées trop fréquentes, SSO, formation, et à terme FIDO/WebAuthn.",
+      "summarySources": [
+        "program",
+        "slides"
+      ],
+      "video": {
+        "youtubeId": "OZRmu8VMIdA",
+        "title": "Ma vie en vente flash sur le Dark Web ?!",
+        "publishedAt": "2023-06-09",
+        "transcript": false
+      }
+    },
+    {
+      "id": "analyse-comportementale-securite-production",
+      "day": "2023-06-01",
+      "type": "talk",
+      "title": "L'analyse comportementale au service de la sécurité de votre production",
+      "speakers": [
+        "Rachid Zarouali — Sevensphere"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : usine logicielle sécurisée, scanner et WAF ne sont que **la partie émergée de l'iceberg**.\n- Question de départ : que se passe-t-il si une application déployée sans problème le lundi devient **sensible à une CVE critique le vendredi** ?\n- L'analyse comportementale est présentée comme un moyen de protéger la production sans nouveau déploiement d'urgence, quel que soit l'environnement d'exécution.\n- Exemples annoncés : log4j et dirtypipe.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "4QVBQikfcDQ",
+        "title": "L'analyse comportementale au service de la sécurité de votre production",
+        "publishedAt": "2023-06-09",
+        "transcript": false
+      }
+    },
+    {
+      "id": "deployer-des-microservices-on-premise-c-est-grave-docteur",
+      "day": "2023-06-01",
+      "type": "talk",
+      "title": "J'essaie de déployer des microservices on-premise, c'est grave docteur ? Ou comment industrialiser le déploiement d'applications microservice on-premise",
+      "speakers": [
+        "Ludovic Blass — Ikki League",
+        "Gérald Roncajolo — Softway Medical"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : REX sur les **microservices en installation on-premise**, sur les plans technique et organisationnel.\n- Sujets annoncés : collaboration entre développement et exploitation, gestion des versions de microservices.\n- Automatisation du déploiement sur OpenShift avec **Helm, Git et ArgoCD**, pour un processus plus efficace et moins sujet aux erreurs.\n- Le REX promet les défis rencontrés et les résultats obtenus.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "O5zsFsukjv8",
+        "title": "J'essaie de déployer des microservices on-premise, c'est grave docteur ?",
+        "publishedAt": "2023-06-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "de-l-ombre-a-la-lumiere-observabilite-gojob",
+      "day": "2023-06-01",
+      "type": "talk",
+      "title": "De l'ombre à la lumière : comment l'observabilité a éclairé Gojob et les différents impacts sur les tech",
+      "speakers": [
+        "François Tritz — Gojob",
+        "Bruno Devaux — Gojob"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : intérêt d'une plateforme et d'applications observables, avec **Grafana et ELK**.\n- Pour les développeurs : meilleure visibilité sur les performances du code, détection et correction plus rapides des erreurs.\n- Pour la plateforme : meilleure stabilité et **temps de résolution des incidents réduit**.\n- Actions qui ont suivi : optimisation des performances, réduction des coûts d'infrastructure, amélioration de l'expérience utilisateur.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "5u4YHj-sxE4",
+        "title": "De l'ombre à la lumière",
+        "publishedAt": "2023-06-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "airbus-helicopters-digital-platform-openshift-4-tekton",
+      "day": "2023-06-01",
+      "type": "talk",
+      "title": "Airbus Helicopters - Digital Platform - OpenShift 4 - vers Tekton et l'au delà",
+      "speakers": [
+        "Alexandre Barbier — Airbus",
+        "Damien Gérard — Airbus"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : REX de la **migration d'OpenShift 3 et Jenkins vers OpenShift 4 et Tekton**.\n- Refonte partielle des pipelines existants.\n- Présentation des fondamentaux de cette plateforme digitale de WebApps Factory.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "1P2AweKJsDw",
+        "title": "Airbus Helicopters - Digital Platform - OpenShift 4 - vers Tekton et l'au delà.",
+        "publishedAt": "2023-06-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "gestion-d-infrastructures-kubernetes-commanage-as-code",
+      "day": "2023-06-01",
+      "type": "talk",
+      "title": "Gestion d'infrastructures kubernetes commanagé as code",
+      "speakers": [
+        "Mathieu Artus — FGTECH"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : la Product Factory d'**Orange Business** propose des clouds comanagés sous forme de clusters Kubernetes.\n- Périmètre : mise en place des clusters (en partie via Rancher), monitoring (Grafana, Prometheus, Thanos, Loki), accès via Keycloak, et parfois CI/CD (Gitea, Concourse).\n- Clusters clients, clusters qui les gèrent et clusters internes forment une **architecture complexe**.\n- Le talk explique comment gérer cette complexité pour limiter les erreurs et **surveiller les drifts**.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Me011gCmLE8",
+        "title": "Gestion d'infrastructures kubernetes commanagé as code",
+        "publishedAt": "2023-06-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "michelin-e-120-ans-est-passee-a-l-iac",
+      "day": "2023-06-01",
+      "type": "talk",
+      "title": "Michelin(e), 120 ans, est passée à l'IaC",
+      "speakers": [
+        "Raphaël Goncalves — Michelin",
+        "Guillaume Hospital — Michelin"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : il y a 6 ans, tout était **manuel et délégué aux partenaires d'infrastructure**.\n- Symptômes : délais pour obtenir une VM ou étendre un disque, manque de standardisation, reproductibilité complexe voire impossible.\n- Le cloud semblait la réponse évidente, mais il fallait **garder l'historique on-prem, y compris en usine**.\n- Objectif du REX : montrer comment les principes d'infra as code ont été appliqués sur le cloud comme on-prem, et le chemin qui reste à faire.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Ab5Em8_ZzSY",
+        "title": "Michelin(e), 120 ans, est passée à l'IaC",
+        "publishedAt": "2023-06-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "kubernetes-multi-providers-gitops-crossplane",
+      "day": "2023-06-01",
+      "type": "talk",
+      "title": "Faire du Kubernetes multi-providers en mode GitOps avec CrossPlane",
+      "speakers": [
+        "Laurent Grangeau — Google",
+        "Ludovic Piot — Freelance"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : suite d'un workshop GitOps avec Flux donné l'année précédente, qui étend la démarche **jusqu'à l'infrastructure**.\n- CrossPlane, comme Flux ou Argo, s'appuie sur les **capacités de convergence natives de Kubernetes**.\n- Déroulé annoncé : depuis un premier cluster, créer une flotte chez plusieurs cloud providers, en GitOps depuis une seule codebase.\n- Puis déployer une application multi-composants, la câbler sur des services managés (DBaaS) et la faire évoluer.\n- Code publié sur GitLab (projet crossplane-anthos).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "aG7q42QtaB8",
+        "title": "Faire du Kubernetes multi-providers en mode GitOps avec CrossPlane",
+        "publishedAt": "2023-06-12",
+        "transcript": false
+      }
+    },
+    {
+      "id": "le-numerique-impacts-environnementaux-et-societaux-leviers",
+      "day": "2023-06-01",
+      "type": "talk",
+      "title": "Le numérique : quels impacts environnementaux et sociétaux ? Quels leviers pour les atténuer ?",
+      "speakers": [
+        "Emmanuel Laroche — INR (Institut du Numérique Responsable)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : les services numériques ont une image dématérialisée, mais leurs **impacts sont réels et diversifiés**, loin des utilisateurs finaux.\n- Trois questions : quels sont ces impacts, comment les quantifier, quels leviers d'action pour les organisations.\n- Finalité annoncée : les réduire pour assurer **un plus haut degré de résilience**.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "KQ-fs3uu-iI",
+        "title": "Le numérique : quels impacts environnementaux et sociétaux ? Quels leviers pour les atténuer ?",
+        "publishedAt": "2023-06-09",
+        "transcript": false
+      }
+    },
+    {
+      "id": "numerique-responsable-mythe-ou-realite-organismes-financiers",
+      "day": "2023-06-01",
+      "type": "talk",
+      "title": "Le Numérique Responsable : mythe ou réalité pour les organismes financiers ?",
+      "speakers": [
+        "Pascal Merchez — Groupe BPCE"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : définition du numérique responsable, panorama des courants et initiatives, et pourquoi c'est difficile.\n- Mesure de l'impact dans une entreprise **IT centric** comme une banque.\n- Levier mis en avant : **faire le ménage dans l'existant** pour simplifier, rationaliser et optimiser l'impact.\n- Enjeu élargi à la confiance des clients, à la marque, à la réputation auprès des investisseurs et à l'attractivité auprès des jeunes.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "fyiNyzxIENE",
+        "title": "Le Numérique Responsable : mythe ou réalité pour les organismes financiers ?",
+        "publishedAt": "2023-06-09",
+        "transcript": false
+      }
+    },
+    {
+      "id": "un-app-responsable-pour-de-la-mobilite-durable",
+      "day": "2023-06-01",
+      "type": "talk",
+      "title": "Un app responsable pour de la mobilité durable",
+      "speakers": [
+        "Christophe Rochefolle — SNCF Connect & Tech"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : le projet SNCF Connect a intégré le numérique responsable **dès la conception**, par amélioration continue.\n- Trois axes : empreinte carbone, accessibilité, dimension sociétale (partenariat Un Rien C'est Tout, diversité et inclusion).\n- Sujet central : **tenir ces objectifs dans la durée**, sans en faire une opération *« one shot »* pour obtenir un label Argent Greenspector ou réussir un audit d'accessibilité.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "4-wyqoOwE10",
+        "title": "Un app responsable pour de la mobilité durable",
+        "publishedAt": "2023-06-08",
+        "transcript": false
+      }
+    },
+    {
+      "id": "empreinte-carbone-grand-modele-d-ia-dans-le-cloud",
+      "day": "2023-06-01",
+      "type": "talk",
+      "title": "Quelle est (et comment la calculer) l'empreinte carbone de la formation et l'exécution d'un grand modèle d'IA dans le cloud ?",
+      "speakers": [
+        "Luiz Carlos De Jesus Junior — Devoteam Revolve"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : GPT-4, ChatGPT, Bard, Stable Diffusion ou Midjourney demandent beaucoup de données et de ressources de calcul pour être formés.\n- Question posée : **quelle est l'empreinte de ces modèles ?**\n- Appui sur Dhar (2020) : quantifier énergie et émissions, et rendre ces informations transparentes, est un problème majeur pour réduire l'impact climatique de l'IA.\n- Démonstration annoncée, à échelle réduite : l'empreinte carbone de la formation d'un **modèle génératif simple** dans le cloud.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "91OL8jfNplA",
+        "title": "Quelle est l'empreinte carbone de la formation et l'exécution d'un grand modèle d'IA dans le Cloud ?",
+        "publishedAt": "2023-11-07",
+        "transcript": false
+      }
+    },
+    {
+      "id": "sustainable-it-vers-un-numerique-enfin-responsable",
+      "day": "2023-06-01",
+      "type": "talk",
+      "title": "Sustainable IT - Vers un Numérique (enfin) Responsable",
+      "speakers": [
+        "Kevin Polizzi — Unitel Group"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : sur le papier, les datacenters sont des **gouffres énergétiques** ; en réalité, l'industrie multiplie les optimisations pour réduire l'empreinte carbone.\n- REX annoncé sur des infrastructures cloud à très hautes performances, à trois niveaux.\n- Datacenter : infrastructures énergétiques, climatisation.\n- Serveurs : blades, **liquid cooling**.\n- Logiciel : optimisations, consolidations, optimisation du code via IA.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "gXyPyADCV4U",
+        "title": "Sustainable IT - Vers un Numérique (enfin) Responsable",
+        "publishedAt": "2023-06-08",
+        "transcript": false
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "L'éco conception c'est bien mais si on parlait un peu du backend (Jérémie Drouet, Datadog) : au planning prévisionnel, sans vidéo dans la playlist ni descriptif trouvé"
+  ],
+  "sources": [
+    {
+      "label": "Site et programme WAX Conf 2023 archivés (Wayback Machine, 29/11/2023), planning dit prévisionnel",
+      "url": "https://web.archive.org/web/20231129052852/https://2023.waxconf.fr/"
+    },
+    {
+      "label": "Page de l'événement archivée : date, lieu, tarif early bird",
+      "url": "https://web.archive.org/web/20231129053812/https://2023.waxconf.fr/events/wax-conference"
+    },
+    {
+      "label": "Playlist YouTube « WAX CONF 2023 » (chaîne Les Filles et Les Garçons de la Tech, 17 vidéos), descriptifs lus, sans transcript",
+      "url": "https://www.youtube.com/playlist?list=PLRPw82JR0FUistyLyXuE0tt86nCIFb7ow"
+    },
+    {
+      "label": "Solutions Numériques, « La conférence WAX approche » (24/05/2023)",
+      "url": "https://www.solutions-numeriques.com/?p=107775"
+    },
+    {
+      "label": "Slides de François Berthault, « On a mis du Chaos en production » (Speaker Deck, 05/06/2023)",
+      "url": "https://speakerdeck.com/fanfansama/on-a-mis-du-chaos-en-production"
+    },
+    {
+      "label": "Slides de Nicolas Comet, « Ma vie en vente flash sur le Dark Web »",
+      "url": "https://ncomet.github.io/mavie-darkweb/"
+    },
+    {
+      "label": "Dépôt GitLab du talk CrossPlane (métadonnées seules, README non lu)",
+      "url": "https://gitlab.com/musk8teers/crossplane-anthos"
+    },
+    {
+      "label": "Supports Google Drive liés dans les descriptions de 8 vidéos (Rochefolle, Berthault, Gakic, Klein, Blass et Roncajolo, Barbier et Gérard, Goncalves et Hospital, Grangeau et Piot), non lus"
+    },
+    {
+      "label": "Posts LinkedIn de participants : aucun trouvé"
+    }
+  ]
 }

@@ -2,6 +2,7 @@
   "event": "pyconfr",
   "year": 2026,
   "title": "PyConFR 2026",
+  "edition": "17e édition",
   "start": "2026-10-29",
   "end": "2026-11-01",
   "city": "Biarritz",
@@ -9,6 +10,1037 @@
   "url": "https://www.pycon.fr/2026/",
   "programUrl": "https://www.pycon.fr/2026/fr/schedule.html",
   "dateConfidence": "ok",
-  "status": "scheduled",
-  "sessions": []
+  "note": "Conférence gratuite de l'AFPy, gérée par des bénévoles : sprints les 29 et 30 octobre, conférences et ateliers les 31 octobre et 1er novembre (3 plénières, 18 conférences longues, 31 conférences courtes, 7 ateliers, une session de conférences éclair). Plafonds d'inscription : 200 personnes aux sprints, 1 000 aux conférences. Aucun chiffre de fréquentation réelle annoncé à la clôture.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-02",
+  "revisit": "J+1 : retours participants très minces (une poignée de pouets, aucun billet de blog, aucun post LinkedIn). Reprendre quand les vidéos découpées sortiront (samedi matin et PATUEK dimanche après-midi absents au 02/11), avec le sondage de satisfaction, le rapport de transparence et les billets de participants.",
+  "corpus": "Programme officiel complet (planning, descriptifs, sprints, actualités), 12 transcripts automatiques des captations brutes Indymotion publiées au 02/11 (samedi après-midi, dimanche, assemblée générale), une trentaine de pouets Mastodon du 21 octobre au 1er novembre dont une dizaine portent sur le contenu (Julien Palard, jmny, m_m, Wagtail), le fil Discourse des supports de présentation (10 messages), dont 3 supports et un README lus.",
+  "limits": "Synthèse à J+1 : elle dit ce qui a été présenté sur scène bien plus que ce que le public en a pensé. Les transcripts ont été lus via un outil d'extraction qui les résume, pas ligne à ligne, à partir de sous-titres automatiques bruités : citations et chiffres sont à reconfirmer sur la vidéo, et les horodatages sont approximatifs. Le samedi matin (toutes salles) et l'après-midi du dimanche en PATUEK n'ont aucune vidéo publiée, les ateliers et les conférences éclair ne sont pas documentés, et la fin du samedi en LANG5 est inexploitable (sous-titres en boucle). Aucun post LinkedIn, aucun blog, Bluesky non consultable.",
+  "tldr": "Une PyConFR **plus modeste et sobre**, à Bidart, dominée par une question : **que fait l'IA générative au logiciel libre et à ceux qui l'entretiennent ?** Autour de ce fil, un socle solide de retours d'expérience Python (tests, migrations, asyncio, typage, packaging) et une plénière textile qui détonne.",
+  "keyTakeaways": [
+    "Avant d'ouvrir une PR sur un projet libre : **lire le guide de contribution**, ouvrir d'abord un ticket, fournir un exemple reproductible et écrire avec ses propres mots (Anglade).",
+    "Pour limiter les interruptions pendant un déploiement PostgreSQL, poser un `lock_timeout` et limiter la durée des transactions : mieux vaut **faire échouer le déploiement que bloquer la production** (Ordoquy).",
+    "Séparer migrations de schéma et de données, en expand/contract, et comparer en CI le schéma théorique au schéma réel après migration (Simon).",
+    "En asyncio, ne jamais attraper `BaseException` et surveiller des **indicateurs métier**, car les pannes y sont silencieuses (Abaakouk).",
+    "Dans un flux avec tâches asynchrones, garder une tâche de réconciliation et une clé d'idempotence avant d'adopter un moteur d'exécution durable (Direr).",
+    "Traiter la flakiness dès la montée en volume : xdist, pytest-split, relance ciblée, quarantaine des tests instables (Duthu).",
+    "Juger un outil maison avec des indicateurs explicites (parité avec l'écosystème, concentration du savoir, retard de dépendances, coût de sortie) et plaider la migration en **risque, vitesse et coût** (Mitiaieva et Monmouton).",
+    "Désigner à l'avance un remplaçant pour chaque rôle clé et faire tourner les rôles : le départ d'un tech lead teste votre documentation (Vital).",
+    "Revenir aux fondamentaux déjà documentés : refactoring par petites étapes, tests, inversion de dépendance (Poulailleau, dont le support liste livres, vidéos et podcasts).",
+    "Figer les dépendances Git par des tags sur des forks pour se protéger des force-push et du nettoyage de commits (Verkest)."
+  ],
+  "sessions": [
+    {
+      "id": "sprints",
+      "day": "2026-10-29",
+      "type": "other",
+      "title": "Sprints (29 et 30 octobre)",
+      "speakers": [
+        "Julien Palard",
+        "Thibaud Colas",
+        "Maxime Bouroumeau-Fuseau",
+        "Loïc Tosser",
+        "Pascal Chambon",
+        "Tarun Jain",
+        "Dorian Turba"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sept sprints annoncés** au programme, de 10 h à 17 h les deux jours : traduction de docs.python.org (Palard), Wagtail CMS (Colas), framework Hyperflask (Bouroumeau-Fuseau), restauration d'un poste avec pyinfra (Tosser), cryptographie WitnessAngel sous MicroPython (Chambon), framework d'évaluation de retrievers Evret (Jain), CI/CD GitLab (Turba).\n- Le sprint Wagtail couvre aussi des sujets non techniques : multilinguisme, accessibilité, empreinte carbone du web et de l'IA.\n- Résumé tiré du seul programme : aucun bilan de sprint trouvé à J+1.",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "c-est-une-bonne-situation-ca-auto-hebergeur",
+      "day": "2026-10-31",
+      "type": "talk",
+      "title": "C'est une bonne situation ça, auto-hébergeur ?",
+      "speakers": [
+        "Matthieu Sauboua-Beneluz"
+      ],
+      "feedbackFrom": [
+        "matthieusb (speaker, dépôt publié sur Discourse)"
+      ],
+      "summary": "- Retour d'expérience d'un développeur formé sur le tas à l'administration système, avec une approche **« bare-metal first »** plutôt que des solutions clés en main (programme).\n- Thèmes annoncés : matériel, NAS maison, alternatives aux GAFAM, monitoring, certificats, accès externe, provisioning de VM (programme).\n- Le dépôt compagnon contient des exemples Ansible et Terraform et les slides Slidev (speaker).\n- Pas de vidéo publiée au 02/11 : résumé sans transcript.",
+      "summarySources": [
+        "program",
+        "slides"
+      ]
+    },
+    {
+      "id": "au-secours-on-s-est-fait-hacker-pendant-un-downtime-de-claude",
+      "day": "2026-10-31",
+      "type": "talk",
+      "title": "Au secours on s'est fait hacker pendant un downtime de Claude",
+      "speakers": [
+        "Nicolas Ledez"
+      ],
+      "feedbackFrom": [
+        "jmny (pouet avec photo, sans commentaire de fond)"
+      ],
+      "summary": "- Des failles signalées dans une application open source, traitées **sans assistant IA** : lecture de code, grep, documentation (programme).\n- Résultat annoncé : un patch, un déploiement et 4 CVE publiées (programme).\n- Le talk interroge ce qui a été trouvé sans l'IA (programme).\n- Pas de vidéo publiée au 02/11 : résumé tiré du descriptif officiel.",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "tests-end-to-end-en-python-du-gestionnaire-de-mail-agenda-kde",
+      "day": "2026-10-31",
+      "type": "talk",
+      "title": "Tests end-to-end en Python du gestionnaire de mail/agenda KDE : bindings, vrais serveurs et vrais bugs",
+      "speakers": [
+        "Benjamin Port"
+      ],
+      "feedbackFrom": [
+        "Benjamin Port (speaker, annonce sur Mastodon)"
+      ],
+      "summary": "- Des tests de bout en bout en Python pour Akonadi, le service de stockage de KDE, grâce à des **bindings Python** autour des bibliothèques KDE (programme).\n- Les tests tournent contre de vrais serveurs (Nextcloud, Radicale, Cyrus, Dovecot) plutôt que des mocks, avec du trafic IMAP et CalDAV et des flux iTIP anonymisés (programme, speaker).\n- Travail mené chez enioka selon le speaker ; il évoque les difficultés de test d'un moteur asynchrone et les bugs découverts.\n- Pas de vidéo publiée au 02/11 : résumé tiré du descriptif officiel.",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "faire-de-la-collaboration-temps-reel-avec-django-channels",
+      "day": "2026-10-31",
+      "type": "talk",
+      "title": "Faire de la collaboration temps réel avec Django-channels",
+      "speakers": [
+        "Julie Rymer"
+      ],
+      "feedbackFrom": [
+        "jmny (Mastodon)",
+        "Julien Palard (Mastodon)",
+        "Chadys (speaker, Discourse)"
+      ],
+      "summary": "- Édition collaborative à base de **CRDT** dans une application Django avec une SPA Angular (programme).\n- Points notés en salle : Yjs, pycrdt-websocket, gestion des permissions et persistance (jmny).\n- La speaker publie son support sous le titre *« L'aventure des CRDT au royaume de Django-channels »*, avec un export PDF (Discourse).\n- Pas de vidéo publiée au 02/11 : résumé sans transcript.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ]
+    },
+    {
+      "id": "du-prompt-a-la-chaleur",
+      "day": "2026-10-31",
+      "type": "talk",
+      "title": "Du prompt à la chaleur : rendre visible l'impact de l'IA générative",
+      "speakers": [
+        "Pierre-Loic Bayart"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Maquette pédagogique sur scène : **trois Raspberry Pi 5** (8 Go) exécutent de petits modèles à poids ouverts via Ollama et FastAPI, avec trois refroidissements.\n- Écarts de température annoncés : environ 23 °C à l'eau, 30 °C au ventilateur, 40 °C en passif.\n- La consommation est estimée au wattmètre, environ 16 W à pleine charge, multipliés par le temps de chaque requête.\n- Le plus gros modèle de la démo génère environ un token par seconde. L'équivalent cloud, estimé en ordre de grandeur, ressort environ dix fois plus haut que le chiffre local.\n- Un défi à vélo avec Data for Good est annoncé pour le 12 novembre (transcript).",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/vPh3d5ufsRQJ1g8gh2Qbki",
+        "title": "PyConFr 2026 - MARI/SUGGAR - 31/10/2026 Apres midi",
+        "publishedAt": "2026-10-31",
+        "transcript": true,
+        "startSeconds": 0
+      }
+    },
+    {
+      "id": "l-impact-de-l-ia-generative-sur-les-projets-libres",
+      "day": "2026-10-31",
+      "type": "talk",
+      "title": "L'impact de l'IA générative sur les projets libres du point de vue d'une mainteneuse",
+      "speakers": [
+        "Lucie Anglade"
+      ],
+      "feedbackFrom": [
+        "Julien Palard (trois pouets en direct)",
+        "CourtBouillon (annonce)"
+      ],
+      "summary": "- Cas d'étude : WeasyPrint, environ 31 millions de téléchargements mensuels annoncés. Lucie Anglade dit ne pas utiliser ces outils elle-même, contrairement à de nombreux contributeurs.\n- **Rapports de sécurité** : 3 de 2011 à 2025 (1 validé), 29 en 2026 (4 validés). Julien Palard relaie *« 16959 % d'augmentation »*.\n- **Pull requests** : de 95 en 2025 à 163 en 2026, part externe de 42 % à 61 %, PR externes refusées de 14 à 61. En juillet seul, 45 PR traitées, plus que les 40 externes de tout 2025.\n- Environ un quart des tickets de l'année montre des signes forts de génération, selon une heuristique qu'elle présente comme non probante.\n- Réponses graduées : une PR par compte, guide de contribution, puis fermeture des pull requests sur WeasyPrint et ses dépendances la semaine précédente ; rapports de sécurité et tickets restent ouverts. La durée de cette fermeture n'est pas précisée.\n- Thèse : *« la responsabilité, elle n'est pas du côté des projets libres »*. Le levier est chez les contributeurs : *« contribuer respectueusement, c'est mieux »*.\n- Ce qu'en retient Palard : *« Démotivation, le fun disparaît, le projet meurt »*, et l'absence de choix pour les mainteneurs.\n- Point de débat en questions : GitHub *« n'aide pas »* en poussant Copilot, mais sa CI reste utile sous Windows et macOS.",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/vPh3d5ufsRQJ1g8gh2Qbki",
+        "title": "PyConFr 2026 - MARI/SUGGAR - 31/10/2026 Apres midi",
+        "publishedAt": "2026-10-31",
+        "transcript": true,
+        "startSeconds": 1847
+      }
+    },
+    {
+      "id": "typage-en-python-etat-de-l-art-et-nouveautes",
+      "day": "2026-10-31",
+      "type": "talk",
+      "title": "Typage en python : état de l'art et nouveautés",
+      "speakers": [
+        "Christophe Papazian"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le typage reste **graduel** : on peut ne typer qu'une partie du code.\n- Quatre vérificateurs cités : mypy, Pyright, ty et Pyrefly. Une suite de conformité communautaire les fait converger sur le code annoté.\n- Jalons : protocoles (3.8), union avec `|` (3.10), syntaxe générique native (3.12), `TypeIs` (3.13), évaluation différée des annotations (3.14).\n- Intérêts mis en avant : refactoring, documentation, et meilleure structuration du code, y compris chez les étudiants (intervention du public).",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/vPh3d5ufsRQJ1g8gh2Qbki",
+        "title": "PyConFr 2026 - MARI/SUGGAR - 31/10/2026 Apres midi",
+        "publishedAt": "2026-10-31",
+        "transcript": true,
+        "startSeconds": 5498
+      }
+    },
+    {
+      "id": "parce-que-ton-infrastructure-merite-du-vrai-code-en-python",
+      "day": "2026-10-31",
+      "type": "talk",
+      "title": "Parce que ton infrastructure mérite du vrai code en Python, pas une soupe de YAML",
+      "speakers": [
+        "Loïc Tosser"
+      ],
+      "feedbackFrom": [
+        "m_m (msleaveamix, Mastodon)",
+        "wowi42 (speaker, Discourse)"
+      ],
+      "summary": "- Charge contre le YAML (Kubernetes, Helm, Ansible) : pièges d'interprétation, comme `no` lu `false`, relecture, tests et débogage difficiles.\n- **PyInfra** décrit l'infrastructure en Python, traduit en shell POSIX et exécuté en SSH. Les cibles n'ont besoin ni d'agent ni de Python.\n- Chiffres du speaker, sans source indépendante : déploiement jusqu'à 10 fois plus rapide qu'Ansible (benchmark maison), 70 % de code en moins (slides).\n- Retour participant : m_m, qui trouve Ansible lourd, dit avoir vu une *« super conférence »* et prévoit d'essayer PyInfra sur son homelab.\n- Lien d'intérêt : le speaker présente le projet comme porté par sa propre entreprise (transcript) et signe ses slides comme CTO de Kalvad.",
+      "summarySources": [
+        "transcript",
+        "slides",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/vPh3d5ufsRQJ1g8gh2Qbki",
+        "title": "PyConFr 2026 - MARI/SUGGAR - 31/10/2026 Apres midi",
+        "publishedAt": "2026-10-31",
+        "transcript": true,
+        "startSeconds": 9030
+      }
+    },
+    {
+      "id": "typographie-et-code-experimentations-pour-la-broderie-et-le-tricot",
+      "day": "2026-10-31",
+      "type": "keynote",
+      "title": "Typographie et code : expérimentations pour la broderie et le tricot",
+      "speakers": [
+        "Amélie Dumont"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Designer graphique, typographe et développeuse, Amélie Dumont mène ces recherches depuis une résidence en 2023 dans un FabLab textile à Bruxelles, avec **uniquement des outils libres**.\n- Broderie : adaptation de polices à tracé central avec Inkscape et Inkstitch, police dessinée en MetaPost puis convertie en SVG par un script Python, essais avec Processing et Turtle Stitch.\n- Tricot : une machine semi-industrielle des années 80 hackée, limitée à 200 aiguilles, soit **200 pixels de large**. Les motifs passent par un tableur, Python et AYAB, puis par une interface web maison.\n- Une grande pièce demande environ 4 heures sur la machine.\n- Elle situe ce travail entre artisanat et numérique, avec une réflexion sur l'écologie de l'outil. Elle ne vend pas ses créations et s'interroge sur la rentabilité.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/vPh3d5ufsRQJ1g8gh2Qbki",
+        "title": "PyConFr 2026 - MARI/SUGGAR - 31/10/2026 Apres midi",
+        "publishedAt": "2026-10-31",
+        "transcript": true,
+        "startSeconds": 11102
+      }
+    },
+    {
+      "id": "python-outside-rust-inside",
+      "day": "2026-10-31",
+      "type": "talk",
+      "title": "Python outside, Rust inside",
+      "speakers": [
+        "Joseph Barbier"
+      ],
+      "feedbackFrom": [
+        "jmny (pouet avec photo, sans commentaire de fond)"
+      ],
+      "summary": "- Pourquoi tant d'outils Python sont écrits en Rust (uv, ruff, polars, pydantic, ty, pyrefly) : le programme pose la question de l'écosystème.\n- Quatre raisons avancées : performance, sûreté mémoire, sûreté des types, **expérience développeur**.\n- L'outillage Rust (rustfmt, Clippy, Cargo, rustdoc) vient des mêmes équipes que le langage.\n- Démo : un module Python appelle une fonction Rust via Maturin et PyO3.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/cBFm58aVMsVoexT8JUYV4x",
+        "title": "PyConFr 2026 - BASANDERE - 31/10/2026 apres midi",
+        "publishedAt": "2026-10-31",
+        "transcript": true,
+        "startSeconds": 47
+      }
+    },
+    {
+      "id": "python-et-luttes-des-classes",
+      "day": "2026-10-31",
+      "type": "talk",
+      "title": "Python et luttes des classes",
+      "speakers": [
+        "Haikel Guemar"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Conférence satirique d'un développeur syndicaliste : la POO de Python lue avec une **grille marxiste**, citations de Marx, Kropotkine, Bakounine ou Rosa Luxemburg à l'appui.\n- Le fond est bien technique : `__new__` et `__init__`, descripteurs, héritage multiple, MRO et `super()`, classes abstraites, protocoles, mixins, métaclasses et `__init_subclass__`.\n- Conclusions : préférer la composition à l'héritage quand rien n'est à partager, et le code n'est pas neutre dans ses usages.\n- Formule : *« Le code, comme la lutte, ne demande aucune permission. »*",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/cBFm58aVMsVoexT8JUYV4x",
+        "title": "PyConFr 2026 - BASANDERE - 31/10/2026 apres midi",
+        "publishedAt": "2026-10-31",
+        "transcript": true,
+        "startSeconds": 2359
+      }
+    },
+    {
+      "id": "comment-une-chute-en-ski-a-permis-de-tester-nos-pratiques",
+      "day": "2026-10-31",
+      "type": "talk",
+      "title": "Comment une chute en ski a permis de tester nos pratiques de développement",
+      "speakers": [
+        "Yuri Vital"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le départ brutal d'un tech lead, après une chute à ski, a révélé une **forte centralisation du savoir** sur une personne.\n- CodeMaat sert à mesurer cette concentration, y compris sur des projets comme Django.\n- Le cadre Diátaxis structure la documentation : tutoriels, guides pratiques, références, explications.\n- Recommandations : onboarding dès le début, backlog à jour, CI avec tests et couverture, rotation des rôles et remplaçant désigné à l'avance.\n- Formule : *« Si on n'a jamais écrit la doc, on ne sait pas si la doc est à jour ou pas. »*",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/cBFm58aVMsVoexT8JUYV4x",
+        "title": "PyConFr 2026 - BASANDERE - 31/10/2026 apres midi",
+        "publishedAt": "2026-10-31",
+        "transcript": true,
+        "startSeconds": 9459
+      }
+    },
+    {
+      "id": "ce-moment-ou-dry-devient-creons-un-framework",
+      "day": "2026-10-31",
+      "type": "talk",
+      "title": "Ce moment où DRY devient créons un framework",
+      "speakers": [
+        "Hana Burtin"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Attribution par recoupement : le transcript nomme une certaine « Anna », à l'heure et dans la salle du talk, sur le même sujet. Le nom est sans doute mal reconnu, à vérifier sur la vidéo.\n- Point de départ : plus de **90 secrets par nouvel environnement**, répartis dans environ 70 scripts écrits par 15 ingénieurs, qui divergent et cassent les pipelines.\n- Calcul de rentabilité : un demi-jour par semaine représente 156 heures par an, ce qui justifie l'automatisation.\n- Choix de conception : une approche déclarative en YAML, pour que les équipes n'aient pas à apprendre la bibliothèque.\n- En questions : se fier au niveau de frustration de l'équipe plutôt qu'à une règle fixe.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/eBhezpyKf49CDdSWjRhGzp",
+        "title": "PyConFr 2026 - LANG5 - 31/10/2026 apres midi",
+        "publishedAt": "2026-10-31",
+        "transcript": true,
+        "startSeconds": 905
+      }
+    },
+    {
+      "id": "partager-et-livrer-une-application-python-avec-fierte-et-serenite",
+      "day": "2026-10-31",
+      "type": "talk",
+      "title": "Partager et livrer une application Python avec fierté et sérénité",
+      "speakers": [
+        "Eric Maussion"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Fil conducteur : l'IA générative et Python facilitent tous deux l'écriture, mais **l'humain garde la décision finale**. Démo d'un prompt vague contre un prompt précis.\n- Chaîne d'outils citée : cookiecutter, uv, bump-my-version, ruff, mypy, pytest.\n- Dockerfile multi-étapes et cache de uv pour réduire les images ; `pyproject.toml` avec hatchling ou `uv build` pour le packaging.\n- Composants CI GitLab : un pipeline de 200 à 250 lignes réduit à quelques lignes, et des dépôts cohérents entre eux.\n- Sécurité : scans avant merge plutôt qu'à chaque push, versions épinglées, car un tag Docker peut être écrasé.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/eBhezpyKf49CDdSWjRhGzp",
+        "title": "PyConFr 2026 - LANG5 - 31/10/2026 apres midi",
+        "publishedAt": "2026-10-31",
+        "transcript": true,
+        "startSeconds": 2859
+      }
+    },
+    {
+      "id": "le-ddd-6-mois-apres-retour-d-experience",
+      "day": "2026-10-31",
+      "type": "talk",
+      "title": "Le DDD, 6 mois après : retour d'expérience",
+      "speakers": [
+        "Melcore"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le DDD part du domaine métier plutôt que du code, avec une **langue commune** comme priorité.\n- Exemple de la pizzeria : « commande » signifie trois choses pour le cuisinier, le livreur et le vendeur, d'où un contexte délimité pour chacun.\n- Noyau partagé et couche anticorruption permettent de relier les contextes, par exemple pour ajouter un prestataire de livraison.\n- Sur un projet d'assurance, un glossaire commun aligne les termes du code sur ceux du métier.\n- Le transcript couvre mal la fin : les difficultés et limites annoncées au programme n'ont pas pu être résumées.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/eBhezpyKf49CDdSWjRhGzp",
+        "title": "PyConFr 2026 - LANG5 - 31/10/2026 apres midi",
+        "publishedAt": "2026-10-31",
+        "transcript": true,
+        "startSeconds": 6456
+      }
+    },
+    {
+      "id": "developpement-agentique-l-annee-qui-a-bouleverse-notre-base-de-code",
+      "day": "2026-10-31",
+      "type": "talk",
+      "title": "Développement agentique : l'année qui a bouleversé notre base de code",
+      "speakers": [
+        "Julian Maurin"
+      ],
+      "feedbackFrom": [
+        "jmny (pouet avec deux photos, sans commentaire de fond)"
+      ],
+      "summary": "- Retour d'expérience sur le passage au développement agentique, ses défis et son impact sur le code (programme).\n- Sous-titres inexploitables sur ce créneau : le contenu réel reste à lire quand une vidéo propre sera publiée.\n- Résumé tiré du seul descriptif officiel.",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "debugging-with-peek",
+      "day": "2026-10-31",
+      "type": "talk",
+      "title": "Debugging with peek",
+      "speakers": [
+        "Ruud van der Ham"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Démo du paquet peek, un remplaçant de `print()` pour déboguer : *« it's like print but easy »*.\n- Options de sortie (numéros de ligne, couleur, préfixe) configurables dans un fichier TOML.\n- `peek.timer` mesure le temps d'une fonction ou d'un bloc.\n- Limite signalée par le speaker : peek ne fonctionne ni dans Jupyter ni dans le REPL.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/f7xxco3aDdT9KxoqrAjFvK",
+        "title": "PyConFr 2026 - PATUEK - 31/10/2026 apres midi",
+        "publishedAt": "2026-10-31",
+        "transcript": true,
+        "startSeconds": 600
+      }
+    },
+    {
+      "id": "fusing-python-with-java-using-graalpy-and-micronaut",
+      "day": "2026-10-31",
+      "type": "talk",
+      "title": "Fusing Python with Java using GraalPy and Micronaut",
+      "speakers": [
+        "Graeme Rocher"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le créateur de Grails et de Micronaut, chez Oracle, présente des services Python sur GraalPy, **Python et Java partageant la même machine virtuelle**.\n- Micronaut fait son traitement au build et s'appuie sur Netty pour le serveur HTTP. Les tests restent en pytest.\n- Benchmarks du speaker : débit environ 2,5 fois supérieur à FastAPI et 13 fois à Flask sous la même charge.\n- Feuille de route : nommage en snake_case, vérificateur de types, compilation statique expérimentale, rechargement à chaud.\n- Formule : *« The code will look like Python. But it will run like Java. »*",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/f7xxco3aDdT9KxoqrAjFvK",
+        "title": "PyConFr 2026 - PATUEK - 31/10/2026 apres midi",
+        "publishedAt": "2026-10-31",
+        "transcript": true,
+        "startSeconds": 2514
+      }
+    },
+    {
+      "id": "linux-with-python-super-powers",
+      "day": "2026-10-31",
+      "type": "talk",
+      "title": "Linux with Python Super Powers",
+      "speakers": [
+        "Alvaro Leiva"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Un production engineer de Meta montre que les conteneurs reposent sur deux briques : les **cgroups** limitent les ressources, les namespaces limitent ce qu'un processus voit.\n- Démo en direct : limite de 50 Mo et 20 % de CPU ; le noyau tue le processus qui dépasse.\n- La bibliothèque Python `systemd` lance des commandes dans des cgroups séparés.\n- Option DynamicUser de systemd : un utilisateur temporaire créé pour un service, puis supprimé.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/f7xxco3aDdT9KxoqrAjFvK",
+        "title": "PyConFr 2026 - PATUEK - 31/10/2026 apres midi",
+        "publishedAt": "2026-10-31",
+        "transcript": true
+      }
+    },
+    {
+      "id": "graphs-are-everywhere",
+      "day": "2026-10-31",
+      "type": "talk",
+      "title": "Graphs are Everywhere: so put them in your python",
+      "speakers": [
+        "Dom Weldon"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Plaidoyer pour le graphe comme **structure de données du quotidien**, pas seulement pour l'analyse de réseaux.\n- NetworkX est présenté comme le Pandas des graphes ; ses backends ne servent qu'à l'échelle de millions de nœuds.\n- rustworkx identifie les nœuds par un entier et fonctionne en multigraphe par défaut.\n- `graphlib`, en bibliothèque standard, ne fait que du tri topologique : le speaker lui préfère les deux autres.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/f7xxco3aDdT9KxoqrAjFvK",
+        "title": "PyConFr 2026 - PATUEK - 31/10/2026 apres midi",
+        "publishedAt": "2026-10-31",
+        "transcript": true,
+        "startSeconds": 9630
+      }
+    },
+    {
+      "id": "assemblee-generale-de-l-afpy",
+      "day": "2026-11-01",
+      "type": "other",
+      "title": "Assemblée générale de l'AFPy",
+      "speakers": [
+        "AFPy"
+      ],
+      "feedbackFrom": [
+        "Julien Palard (« Assemblée générale fatiguée », Mastodon)"
+      ],
+      "summary": "- Chiffres tirés d'un transcript bruité, à reconfirmer avec le compte rendu officiel.\n- **Sponsoring en net recul** : environ 18 000 € en 2026, dont 6 000 € de l'EuroPython Society, contre environ 30 000 € l'année précédente. Pas de financement de la PSF cette année.\n- Exercice 2025 : excédent de 731 €. L'exercice 2026 est annoncé déficitaire, avec une PyConFR à environ 8 000 € et 10 bourses de voyage.\n- Lieu : une piste parisienne (EPSI) a échoué faute de montant de contribution précisé, d'autres refus ont suivi avant Biarritz. **Rien n'est arrêté pour 2027.**\n- Vie associative : comité de neuf membres dont trois à cinq vraiment investis, nouveau comité de huit hommes et une femme, pas d'activité PyLadies ni Django à cette édition, spam sur Discord et IRC.\n- Achat du domaine python.fr aux enchères (1 665,60 €), usage à définir.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/9JK3M5MR5kfYFABY163otQ",
+        "title": "AG AFPY - 01/11/2026",
+        "publishedAt": "2026-11-01",
+        "transcript": true
+      }
+    },
+    {
+      "id": "sustaining-open-source-for-the-future",
+      "day": "2026-11-01",
+      "type": "keynote",
+      "title": "Sustaining Open Source for the Future",
+      "speakers": [
+        "Georgi Ker"
+      ],
+      "feedbackFrom": [
+        "jmny (pouet avec photo, sans commentaire de fond)"
+      ],
+      "summary": "- La vice-présidente de la PSF défend une durabilité fondée sur la **régénération des leaders** plutôt que sur l'endurance de quelques héros.\n- Fil rouge : un bénévole de la plage de Versova, à Mumbai, la nettoie pendant 109 semaines, puis arrête faute de relais par la ville.\n- Ordres de grandeur cités : PyPI aurait servi 2 500 milliards de requêtes en 2025, soit environ 81 000 par seconde, pour deux ingénieurs sécurité à temps plein à la PSF, trois depuis la semaine précédente.\n- Elle présente le cadre **POPCOM** (participation, appropriation, finalité, connexion, opportunité, mentorat), travaillé aussi dans son atelier du samedi.\n- L'IA consomme le travail des communautés sans y contribuer, d'où un appel à la responsabilité partagée.\n- Questions sur les pays en développement, l'éducation et les groupes en pays autoritaires, en partie inaudibles.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/i6pdYdrBrnxuXVgnP9uE95",
+        "title": "PyConFr 2026 - MARI/SUGGAR - 01/11/2026 matin",
+        "publishedAt": "2026-11-01",
+        "transcript": true,
+        "startSeconds": 957
+      }
+    },
+    {
+      "id": "execution-durable-a-quoi-ca-sert-et-comment-ca-marche",
+      "day": "2026-11-01",
+      "type": "talk",
+      "title": "Exécution Durable : à quoi ça sert et comment ça marche ?",
+      "speakers": [
+        "Laurent Direr"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Cas d'étude : envoyer un email de confirmation après une commande. L'appel direct lie la réponse HTTP au fournisseur ; la file de tâches perd la tâche si un crash survient entre commit et publication.\n- Réponse simple : une **tâche de réconciliation** périodique et une clé d'idempotence côté API d'email.\n- Les moteurs d'exécution durable enregistrent chaque étape et rejouent le workflow : le flot de contrôle doit donc être déterministe, et les étapes rester idempotentes.\n- Temporal, Restate et DBOS sont cités ; DBOS utilise la base Postgres de l'utilisateur et partage la transaction métier.\n- Le speaker, qui se dit non expert, les voit comme un complément des tâches périodiques.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/i6pdYdrBrnxuXVgnP9uE95",
+        "title": "PyConFr 2026 - MARI/SUGGAR - 01/11/2026 matin",
+        "publishedAt": "2026-11-01",
+        "transcript": true,
+        "startSeconds": 4388
+      }
+    },
+    {
+      "id": "qu-est-ce-qui-se-passe-quand-j-appuie-sur-entree",
+      "day": "2026-11-01",
+      "type": "talk",
+      "title": "Qu'est-ce qui se passe quand j'appuie sur Entrée ?",
+      "speakers": [
+        "Denis Viviès"
+      ],
+      "feedbackFrom": [
+        "legnonpi (speaker, Discourse)"
+      ],
+      "summary": "- Parcours de CPython : tokens, parsing, AST, table des symboles, graphe de flot de contrôle, bytecode, code objects, exécution.\n- Le parser est passé de LL(1) à PEG avec Python 3.9 (PEP 617).\n- Les modules `ast` et `tokenize` permettent d'explorer ces étapes soi-même.\n- Usage pratique cité : décomposer l'AST en graphes pour aider au **refactoring de grosses classes legacy**.\n- Le speaker dit ne pas utiliser le bytecode au quotidien, et ne pas avoir toutes les réponses : il renvoie alors à la documentation interne de CPython.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/i6pdYdrBrnxuXVgnP9uE95",
+        "title": "PyConFr 2026 - MARI/SUGGAR - 01/11/2026 matin",
+        "publishedAt": "2026-11-01",
+        "transcript": true,
+        "startSeconds": 6132
+      }
+    },
+    {
+      "id": "comment-modifier-sa-base-de-donnees-sans-interruption-de-service",
+      "day": "2026-11-01",
+      "type": "talk",
+      "title": "Comment modifier sa base de données sans interruption de service",
+      "speakers": [
+        "Xavier Ordoquy"
+      ],
+      "feedbackFrom": [
+        "xordoquy (speaker, Discourse)"
+      ],
+      "summary": "- Le talk porte sur **le pourquoi** des interruptions : un `ALTER TABLE` réclame un verrou `ACCESS EXCLUSIVE`, attend la fin d'un long export, et toutes les requêtes suivantes s'empilent derrière lui.\n- Les verrous ne tombent qu'en fin de transaction : un simple `SELECT` dans une longue transaction peut bloquer une table.\n- Parades : `lock_timeout` avec relance du déploiement, transactions courtes, `statement_timeout`, `transaction_timeout` (PostgreSQL 17), diagnostic avec `pg_locks`.\n- Compromis assumé : *« on privilégie le fait de faire échouer le déploiement plutôt que de mettre la production en carafe »*. Ces réglages ne conviennent pas à tous les projets (slides).",
+      "summarySources": [
+        "transcript",
+        "slides",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/i6pdYdrBrnxuXVgnP9uE95",
+        "title": "PyConFr 2026 - MARI/SUGGAR - 01/11/2026 matin",
+        "publishedAt": "2026-11-01",
+        "transcript": true,
+        "startSeconds": 9723
+      }
+    },
+    {
+      "id": "wtforms-htmx",
+      "day": "2026-11-01",
+      "type": "talk",
+      "title": "wtforms-htmx : des formulaires dynamiques avec htmx mais sans écrire de htmx",
+      "speakers": [
+        "Éloi Rivard"
+      ],
+      "feedbackFrom": [
+        "Yaal Coop (annonce sur Mastodon)"
+      ],
+      "summary": "- Motivation : les combo box ne sont pas natives, `select` et `datalist` restent limités.\n- Formulaires dynamiques écrits en Python : *« on n'écrit pas de js »*. Les champs déclenchent le rafraîchissement d'autres champs, et la validation en ligne vient par défaut.\n- **Amélioration progressive** : le site marche sans JavaScript, ce qui permet de tester les parcours avec pytest.\n- Exemples : slug, selects liés, aperçu Markdown, combo box via une bibliothèque satellite.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/jBGhs7rW2JSRqSHYPwZZXw",
+        "title": "PyConFr 2026 - LANG5 - 01/11/2026 Matin",
+        "publishedAt": "2026-11-01",
+        "transcript": true,
+        "startSeconds": 4931
+      }
+    },
+    {
+      "id": "full-stack-pour-de-vrai-flask-htmx",
+      "day": "2026-11-01",
+      "type": "talk",
+      "title": "Full-stack pour de vrai : Flask, HTMX et technologies frontend intégrées pour des sites backend-driven",
+      "speakers": [
+        "Maxime Bouroumeau-Fuseau"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Hyperflask**, framework bâti sur Flask et htmx, part de trois constats : trop de boilerplate, un écosystème Flask qui évolue peu, des SPA trop lourdes pour des applications modestes.\n- Le composant regroupe routes, template et logique, et peut être appelé et mis à jour dynamiquement.\n- Routage par fichiers, code Python en front matter puis template, Alpine.js pour les petits comportements.\n- Cible : petites équipes et petites VM. Objectif affiché : *« zéro boilerplate »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/jBGhs7rW2JSRqSHYPwZZXw",
+        "title": "PyConFr 2026 - LANG5 - 01/11/2026 Matin",
+        "publishedAt": "2026-11-01",
+        "transcript": true,
+        "startSeconds": 6792
+      }
+    },
+    {
+      "id": "django-template-transpiler",
+      "day": "2026-11-01",
+      "type": "talk",
+      "title": "Django Template Transpiler : Django templates dans le navigateur",
+      "speakers": [
+        "Christophe Henry"
+      ],
+      "feedbackFrom": [
+        "Christophe Henry (speaker, annonce sur Mastodon)"
+      ],
+      "summary": "- Outil Rust qui transpile des templates Django en JavaScript pour les **rendre dans le navigateur**, sans requête HTTP à chaque rendu.\n- Point de départ : les formsets Django dans une modale, et les connexions instables.\n- Implémentés : `if`, `for`, `empty` et une partie des filtres. Manquent : `include`, `extend`, `url`, la traduction.\n- Le speaker prévient que le projet n'est pas garanti en production et que la sécurité XSS reste à vérifier.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/9kepeHJ1CcuT4V9ibt49u9",
+        "title": "PyConFr 2026 - BASANDERE - 01/11/2026 matin",
+        "publishedAt": "2026-11-01",
+        "transcript": true,
+        "startSeconds": 4795
+      }
+    },
+    {
+      "id": "construire-une-logique-metier-avec-des-operateurs-mathematiques",
+      "day": "2026-11-01",
+      "type": "talk",
+      "title": "Construire une logique métier avec des opérateurs mathématiques : méthodes spéciales & métaclasses",
+      "speakers": [
+        "Luc Sorel-Giffo"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Livecoding dans un notebook marimo autour de **DataWalk**, une bibliothèque publiée sur PyPI pour parcourir de grosses structures issues de simulations, avec les opérateurs `/`, `|` et `@`.\n- Les opérateurs s'appuient sur les méthodes spéciales (`__truediv__`, `__or__`, `__matmul__`).\n- Une métaclasse permet d'utiliser les opérateurs directement sur la classe.\n- Mise en garde du speaker : *« les métaclasses c'est de la magie »* dont la plupart n'ont pas à s'occuper.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/9kepeHJ1CcuT4V9ibt49u9",
+        "title": "PyConFr 2026 - BASANDERE - 01/11/2026 matin",
+        "publishedAt": "2026-11-01",
+        "transcript": true,
+        "startSeconds": 6501
+      }
+    },
+    {
+      "id": "python-polars-for-practitioners",
+      "day": "2026-11-01",
+      "type": "talk",
+      "title": "Python Polars for Practitioners: When to Drop Pandas",
+      "speakers": [
+        "Tarun Jain"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Comparaison sur la vitesse et sur la **qualité de l'API**, avec une démo Streamlit où un agent interroge un CSV de ventes.\n- L'exécution lazy (`scan_csv` puis `collect`) ne charge que le nécessaire.\n- Sur un CSV d'environ 300 000 lignes : environ 185 Mo avec Pandas contre 118 Mo avec Polars ; une jointure à 391 ms contre 130 ms.\n- Nuance : Pandas 3.0 progresse avec son moteur PyArrow et reste préférable pour les séries temporelles, selon le speaker.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/ov5D8RBPdpcz3vN5AX2ddM",
+        "title": "PyConFr 2026 - PATUEK - 01/11/2026 matin",
+        "publishedAt": "2026-11-01",
+        "transcript": true,
+        "startSeconds": 3704
+      }
+    },
+    {
+      "id": "migrer-les-donnees-d-une-application-web-sans-que-tout-explose",
+      "day": "2026-11-01",
+      "type": "talk",
+      "title": "Migrer les données d'une application Web... sans que tout explose",
+      "speakers": [
+        "Loïc Simon"
+      ],
+      "feedbackFrom": [
+        "jmny (pouet avec photo, sans commentaire de fond)",
+        "loic-simon (speaker, Discourse)"
+      ],
+      "summary": "- Retour d'expérience de Napta (SaaS sur Flask, PostgreSQL et AWS, avec SQLAlchemy et Alembic).\n- Un déploiement n'est **jamais atomique** : des workers en versions N et N+1 coexistent.\n- Séquence de migrations avant et après le déploiement, pattern expand/contract, triggers PostgreSQL pour synchroniser deux tables pendant la transition.\n- Migrations forward-only : pas de downgrade, une nouvelle migration si besoin.\n- Tests d'intégrité en CI qui comparent le schéma SQLAlchemy au schéma réel, avec un outil écrit par le speaker.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/ma5e3HGLFGXhLFydKN75GP",
+        "title": "PyConFr 2026 - live 1 : MARI/SUGGAR - 01/11/2026 13:57:01",
+        "publishedAt": "2026-11-01",
+        "transcript": true,
+        "startSeconds": 254
+      }
+    },
+    {
+      "id": "pytest-a-l-echelle",
+      "day": "2026-11-01",
+      "type": "talk",
+      "title": "pytest à l'échelle : de 100 à 10 000 à 1 000 000 de tests",
+      "speakers": [
+        "Rémy Duthu"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le speaker (Mergify) annonce ne parler que d'outils open source autour de pytest.\n- Dans son monorepo, la suite a été multipliée par environ 6 en 10 mois, à partir de 2 000 tests.\n- À 0,2 s par test : environ 3 minutes de CI à 1 000 tests, 5 h 30 en séquentiel à 100 000, 23 jours à 10 millions.\n- Outils : pytest-xdist, pytest-split, relance ciblée des échecs.\n- Au sommet, la **flakiness devient le problème principal** : un taux très bas suffit à faire chuter la part de runs verts, d'où quarantaine et batchs de tests.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/ma5e3HGLFGXhLFydKN75GP",
+        "title": "PyConFr 2026 - live 1 : MARI/SUGGAR - 01/11/2026 13:57:01",
+        "publishedAt": "2026-11-01",
+        "transcript": true,
+        "startSeconds": 3835
+      }
+    },
+    {
+      "id": "ecrire-un-analyseur-de-types-en-python",
+      "day": "2026-11-01",
+      "type": "talk",
+      "title": "Écrire un analyseur de types en Python",
+      "speakers": [
+        "Antoine Rozo"
+      ],
+      "feedbackFrom": [
+        "entwanne (speaker, Discourse)"
+      ],
+      "summary": "- Python est fortement mais dynamiquement typé : le type est attaché à la valeur, pas à la variable.\n- Un contrôle dynamique par décorateur ne vérifie que les branches exécutées ; **l'analyse statique couvre tout le code**, via le module `ast` et le pattern visiteur.\n- L'analyseur construit reste volontairement bien moins puissant que mypy : types de base, unions, espaces de noms, appels, opérateurs, classes.\n- Non traités : génériques, protocoles, types composés, arguments variadiques.\n- Slides, notebook et sources sont publiés.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/ma5e3HGLFGXhLFydKN75GP",
+        "title": "PyConFr 2026 - live 1 : MARI/SUGGAR - 01/11/2026 13:57:01",
+        "publishedAt": "2026-11-01",
+        "transcript": true,
+        "startSeconds": 5768
+      }
+    },
+    {
+      "id": "nous-l-avons-construit-avant-fastapi",
+      "day": "2026-11-01",
+      "type": "talk",
+      "title": "Nous l'avons construit avant FastAPI : quand une bonne décision devient de la dette technique",
+      "speakers": [
+        "Irina Mitiaieva",
+        "Monmouton"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Un framework maison né en 2017 sur aiohttp, utile pour une vingtaine de microservices tant que l'équipe d'origine était là.\n- L'écosystème a avancé (FastAPI, Starlette, Pydantic, OpenTelemetry), et les mainteneurs ont changé d'équipe : plomberie dominante au backlog, mises à jour de sécurité en semaines.\n- **Six indicateurs** pour juger un outil maison : parité avec l'écosystème, concentration du savoir, retard de dépendances, profondeur de plomberie, coût de sortie, popularité.\n- Pour convaincre : parler risque, vitesse et coût plutôt que nouveauté, en chiffrant l'effort lié aux CVE et à l'onboarding.\n- Migration : pilote sur un petit service en Starlette, contrats publiés stables, framework réduit à une couche remplaçable, un responsable nommé par paquet partagé.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/gFo5zGRjHZ6Yv89emX1NjY",
+        "title": "PyConFr 2026 - live 4 : LANG5 - 01/11/2026 14:02:21",
+        "publishedAt": "2026-11-01",
+        "transcript": true,
+        "startSeconds": 19
+      }
+    },
+    {
+      "id": "asyncio-en-prod-pendant-5-ans",
+      "day": "2026-11-01",
+      "type": "talk",
+      "title": "asyncio en prod pendant 5 ans : les pièges qu'on aurait aimé connaître",
+      "speakers": [
+        "Mehdi Abaakouk"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Incidents chez Mergify après le passage de Celery et des threads à asyncio : *« c'est silencieux »* quand ça ne marche pas, souvent sans traceback.\n- Un appel synchrone caché sous un endpoint FastAPI bloque toute la boucle.\n- Un `await` oublié échappe aux tests et à mypy.\n- Une bibliothèque de timeouts levait une exception jusqu'à la racine : **ne jamais attraper `BaseException`**.\n- Un timeout sur `process.communicate()` ne se déclenche pas sur une commande git longue et silencieuse : les subprocess passent en threads.\n- Asyncio convient mal au CPU : une évaluation de regex a été déplacée dans un module Rust, hors GIL.\n- Détection par l'observabilité métier plutôt que par les logs.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/gFo5zGRjHZ6Yv89emX1NjY",
+        "title": "PyConFr 2026 - live 4 : LANG5 - 01/11/2026 14:02:21",
+        "publishedAt": "2026-11-01",
+        "transcript": true,
+        "startSeconds": 3540
+      }
+    },
+    {
+      "id": "gerer-ses-dependances-python-au-dela-de-pypi",
+      "day": "2026-11-01",
+      "type": "talk",
+      "title": "Gérer ses dépendances Python au-delà de PyPI : environnement de dev Odoo tel un projet Python",
+      "speakers": [
+        "Pierre Verkest"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Un écosystème Odoo/OCA où l'on dépend souvent de pull requests non fusionnées.\n- Approche : uv, hatchling et des namespace packages pour placer les addons au bon endroit.\n- **uvault** fige les dépendances Git par des tags sur des forks, contre les force-push et le nettoyage de commits.\n- Évolutions envisagées : plusieurs vaults, commande de diff, intégration avec git-aggregator. Support GitLab non testé.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/gFo5zGRjHZ6Yv89emX1NjY",
+        "title": "PyConFr 2026 - live 4 : LANG5 - 01/11/2026 14:02:21",
+        "publishedAt": "2026-11-01",
+        "transcript": true,
+        "startSeconds": 5661
+      }
+    },
+    {
+      "id": "integrer-du-cpp-dans-notre-module-python",
+      "day": "2026-11-01",
+      "type": "talk",
+      "title": "Intégrer du C++ dans notre module Python : facile ou compliqué ?",
+      "speakers": [
+        "Amine Bendahmane"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Pari de livecoding : créer en 45 minutes une bibliothèque Python dont le calcul est fait en C++, sur la détection d'un objet bleu dans une image.\n- Outils : pybind11 (ou Nanobind), CMake, uv, scikit-build-core pour la wheel.\n- Piège signalé : les tableaux à mémoire non contiguë peuvent provoquer une erreur de segmentation.\n- *« il faut compiler pour chaque machine »*.\n- La démo n'a pas pu être terminée ; le speaker a proposé de partager ses ressources sur Discord.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/uGMND6gfL6o5TcEtWHKufZ",
+        "title": "PyConFr 2026 - live 2 : BASANDERE - 01/11/2026 13:52:23",
+        "publishedAt": "2026-11-01",
+        "transcript": true,
+        "startSeconds": 505
+      }
+    },
+    {
+      "id": "un-modele-ne-voit-jamais-personne",
+      "day": "2026-11-01",
+      "type": "talk",
+      "title": "Un modèle ne voit jamais personne. Lem, les universaux, et ce qu'un système apprend de nous",
+      "speakers": [
+        "Ewa Kadziolka"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Conférence sans code, partie d'une nouvelle de Stanisław Lem : un vaisseau s'écrase à cause d'un pilote automatique entraîné par un pilote perfectionniste.\n- La **querelle médiévale des universaux** (réalisme, nominalisme, conceptualisme) sert à penser les LLM et les classes abstraites.\n- Risque soulevé : qu'une idée universelle absorbe l'existence des individus.\n- Une étude du MIT est citée sur le transfert de concepts abstraits, comme l'honnêteté, entre modèles ; le même mécanisme pourrait transférer des idées malveillantes.\n- Fin ouverte : un concept comme la justice est-il représenté de la même façon d'une langue à l'autre ?",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/uGMND6gfL6o5TcEtWHKufZ",
+        "title": "PyConFr 2026 - live 2 : BASANDERE - 01/11/2026 13:52:23",
+        "publishedAt": "2026-11-01",
+        "transcript": true,
+        "startSeconds": 4153
+      }
+    },
+    {
+      "id": "histoire-secrete-des-bonnes-pratiques",
+      "day": "2026-11-01",
+      "type": "talk",
+      "title": "Histoire secrète des bonnes pratiques : 70 ans de leçons pour coder mieux aujourd'hui",
+      "speakers": [
+        "Vincent Poulailleau"
+      ],
+      "feedbackFrom": [
+        "vpoulailleau (speaker, Discourse)"
+      ],
+      "summary": "- Constat : selon une hypothèse de l'auteur, le nombre de développeurs double environ tous les 5 ans, donc **la moitié a moins de 5 ans d'expérience**.\n- Refactoring par petites étapes, avec git et des tests, jusqu'au TCR (*test && commit || revert*). Les noms sont présentés comme une source majeure de bugs.\n- Architecture : inversion de dépendance avec un `Protocol`, base en mémoire pour les tests, principes SOLID, YAGNI, KISS, DRY.\n- Le support liste livres, vidéos et podcasts, dont plusieurs ressources gratuites ou en français.\n- Conclusion : il n'y a pas de secret, garder le code propre reste la meilleure façon d'aller vite sur la durée.",
+      "summarySources": [
+        "transcript",
+        "slides",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/uGMND6gfL6o5TcEtWHKufZ",
+        "title": "PyConFr 2026 - live 2 : BASANDERE - 01/11/2026 13:52:23",
+        "publishedAt": "2026-11-01",
+        "transcript": true,
+        "startSeconds": 5992
+      }
+    },
+    {
+      "id": "while-not-done-from-prompt-engineering-to-loop-engineering",
+      "day": "2026-11-01",
+      "type": "talk",
+      "title": "while not done: From Prompt Engineering to Loop Engineering",
+      "speakers": [
+        "Fasal Shah",
+        "Soham Dutta"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Débat à deux voix sur le **loop engineering** appliqué aux agents, avec des démonstrations en Python standard (programme).\n- Sujets annoncés : coût en tokens, dette de compréhension, risques des rubriques d'évaluation, et quand une boucle est vraiment utile (programme).\n- Pas de vidéo PATUEK publiée pour cet après-midi au 02/11 : résumé tiré du seul descriptif officiel.",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "cloture",
+      "day": "2026-11-01",
+      "type": "other",
+      "title": "Clôture",
+      "speakers": [
+        "Antoine Rozo"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Aucun chiffre de fréquentation** annoncé, seulement *« on n'est pas forcément beaucoup »* (transcript à vérifier).\n- Prochaine édition : *« on ne sait pas encore où »*.\n- Problèmes de son signalés sur les directs ; vidéos publiées après traitement.\n- Un sondage de satisfaction sera diffusé, et les retours sur le code de conduite et la diversité partiront par email.\n- Remerciements aux bénévoles, orateurs, sponsors, à l'ESTIA et aux prestataires locaux.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/ma5e3HGLFGXhLFydKN75GP",
+        "title": "PyConFr 2026 - live 1 : MARI/SUGGAR - 01/11/2026 13:57:01",
+        "publishedAt": "2026-11-01",
+        "transcript": true,
+        "startSeconds": 9290
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Accueil (A. Rozo)",
+    "Plénière surprise (AFPy : descriptif réduit à « Venez et profitez », pas de vidéo)",
+    "Ma relation toxique avec Python (J. Lenormand)",
+    "Staying Up When a Region Goes Down (Vladyslav)",
+    "Python et Emacs en 2026 (J. Palard, support publié non lu)",
+    "Easy to avoid mistakes in Open Source code contributions (R. Magliocchetti)",
+    "Data Platform : 250 microservices, 7 To par semaine (E.-L. Toulemonde)",
+    "Python and Excel, xlwings Lite (R. van der Ham)",
+    "Breaking down the Model Before It Breaks Decisions (D. Emakporuena)",
+    "Du SQL au Graphe : migration Neo4j sur GCP (D. Rigaudie)",
+    "Made by community (S. Yonkeu, absent du transcript de la salle)",
+    "Python In Special Educational Needs and Disabilities Settings (K. A. Oladapo, O. Jacobs)",
+    "Guide pour sécuriser la CI/CD Gitlab (D. Turba, absent du transcript de la salle)",
+    "Python Learning that fits Teen Life (J. Oladapo)",
+    "Atelier sur les impacts de l'IA générative pour la génération de code Python (P.-L. Bayart)",
+    "Ready, Set, Publish! (L. Kolb)",
+    "Lavinmq et Beszel (B. Oloude)",
+    "Quitter l'Enfer des tests automatisés (J. Lenormand)",
+    "The Experience Is the Community (G. Ker)",
+    "Automatisez la qualité avec Ruff (M. Ba)",
+    "Se questionner sur les datas (J. Laymajoux, S. Philippot)",
+    "Conférences éclair : C'est vous qui choisissez"
+  ],
+  "sources": [
+    {
+      "label": "Site officiel PyConFR 2026",
+      "url": "https://www.pycon.fr/2026/"
+    },
+    {
+      "label": "Programme et informations pratiques",
+      "url": "https://www.pycon.fr/2026/fr/schedule.html"
+    },
+    {
+      "label": "Planning complet",
+      "url": "https://www.pycon.fr/2026/fr/full-schedule.html"
+    },
+    {
+      "label": "Descriptifs des conférences longues",
+      "url": "https://www.pycon.fr/2026/fr/talks/long-talk.html"
+    },
+    {
+      "label": "Descriptifs des conférences courtes",
+      "url": "https://www.pycon.fr/2026/fr/talks/short-talk.html"
+    },
+    {
+      "label": "Descriptifs des plénières",
+      "url": "https://www.pycon.fr/2026/fr/talks/plenary.html"
+    },
+    {
+      "label": "Descriptifs des ateliers",
+      "url": "https://www.pycon.fr/2026/fr/talks/workshop.html"
+    },
+    {
+      "label": "Sprints",
+      "url": "https://www.pycon.fr/2026/fr/sprints.html"
+    },
+    {
+      "label": "Actualités PyConFR 2026",
+      "url": "https://www.pycon.fr/2026/fr/news.html"
+    },
+    {
+      "label": "Vidéos : chaîne Indymotion PyConFR 2026 (12 captations brutes au 02/11/2026, samedi matin absent)",
+      "url": "https://indymotion.fr/c/pyconfr2026/videos"
+    },
+    {
+      "label": "Discourse AFPy : les supports de présentation de la PyConFR 2026 (10 messages)",
+      "url": "https://discuss.afpy.org/t/les-supports-de-presentation-de-cette-superbe-pyconfr-2026/3344"
+    },
+    {
+      "label": "Support Histoire secrète des bonnes pratiques (Vincent Poulailleau)",
+      "url": "https://histoiresecrete.lecalamar.fr/"
+    },
+    {
+      "label": "Slides PyInfra (Loïc Tosser)",
+      "url": "https://marp.kalvad.com/pyconfr_2026"
+    },
+    {
+      "label": "Slides Comprendre les interruptions de service lors des mises en production (Xavier Ordoquy)",
+      "url": "https://speakerdeck.com/xordoquy/comprendre-les-interruptions-de-service-lors-des-mises-en-production"
+    },
+    {
+      "label": "Dépôt compagnon de la conférence sur l'auto-hébergement (Matthieu Sauboua-Beneluz)",
+      "url": "https://codeberg.org/matthieusb/conference-self-hosting"
+    },
+    {
+      "label": "Pouets Mastodon #pyconfr / #pyconfr2026 lus (21 oct. au 1er nov. 2026) : Julien Palard (mdk), jmny, m_m (msleaveamix), Wagtail, Christophe Henry, Benjamin Port, tut_tuuut, Yaal Coop, CourtBouillon, Python Rennes, marcink, brunobord, frague59, AFPy, Python Lyon, Agenda du Libre"
+    },
+    {
+      "label": "Annonce LinuxFr : PyConFR 2026, planning et inscriptions",
+      "url": "https://linuxfr.org/news/pyconfr-2026-planning-et-inscriptions"
+    }
+  ]
 }

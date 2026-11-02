@@ -6,7 +6,215 @@
   "city": "Lille, Lyon",
   "venue": "Université Catholique de Lille (Lille), CPE Lyon (Lyon)",
   "url": "https://event.afup.org/afup-day-2023/",
+  "programUrl": "https://event.afup.org/afup-day-2023/",
   "note": "Deux villes le même jour (vendredi 12 mai 2023) : 5e édition consécutive à Lille, retour à Lyon (absent depuis 2020).",
-  "status": "pending",
-  "sessions": []
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-02",
+  "revisit": "Aucun retour de participant trouvé : pas de post LinkedIn, d'article de blog ni de sketchnote remonté par 9 recherches web. Synthèse fondée sur le programme, les interviews de speakers publiées avant l'événement et deux jeux de slides. À reprendre avec les captations (fiches afup.org/talks, chaînes @afuplyon et @afuphautsdefrance8344) et les posts LinkedIn des speakers de mai 2023.",
+  "corpus": "Programmes et plannings officiels de Lille et Lyon, fiches afup.org/talks de 5 sessions, 16 interviews de speakers publiées par l'AFUP avant l'événement et 2 jeux de slides sur Speaker Deck (Romain Canon, Kévin Dunglas). Aucun retour de participant : la synthèse décrit ce qui était annoncé, pas ce qui a été reçu.",
+  "limits": "Les résumés reflètent les descriptifs et les intentions des speakers, pas le contenu réellement présenté ni l'accueil du public. Vidéos et transcripts non consultés : les fiches afup.org lues n'affichent aucun lien vidéo dans le texte récupéré, ce qui ne prouve pas leur absence, et Bash indisponible a empêché yt-dlp. Le lien entre les slides en anglais de Kévin Dunglas et la session de Lille est déduit (même date, même sujet), la page Speaker Deck ne citant pas l'événement.",
+  "tldr": "**Deux journées PHP très orientées robustesse (typage, tests, legacy, supply chain) à Lille, avec à Lyon une part plus forte de retours d'expérience et de sujets humains** : un programme documenté, mais sans retour public de participants à ce jour.",
+  "keyTakeaways": [
+    "Poser des tests d'approbation avant de toucher au legacy, puis les remplacer par des tests plus lisibles une fois le code mieux structuré (Charles Desneuf, interview).",
+    "Mener une refonte progressivement, en parallèle de l'existant, plutôt que tout refondre d'un coup (Kévin Balicot, interview).",
+    "Limiter ses dépendances, choisir des mainteneurs de confiance et financer la maintenance (Kévin Dunglas, interview) ; surveiller et appliquer vite les correctifs (slides).",
+    "Remplacer les tableaux fourre-tout par des structures typées, y compris pour les données externes validées au runtime (Romain Canon).",
+    "Décider du Zero Downtime Deployment selon la durée et la fréquence des mises en production, pas selon la taille du projet (Smaïne Milianni, interview).",
+    "Choisir les pratiques craft comme les outils d'une boîte à outils, pour les bonnes raisons et en pensant aux équipes qui maintiendront le projet (Thomas Boileau, interview).",
+    "Identifier qui assume le glue work dans l'équipe, puis le répartir et le valoriser (Camille Castillo, descriptif)."
+  ],
+  "sessions": [
+    {
+      "id": "doctrine-objet-type-et-colonne-json",
+      "day": "2023-05-12",
+      "type": "talk",
+      "title": "Doctrine, objet typé, et colonne JSON (Lille)",
+      "speakers": ["Grégoire Pineau — JoliCode"],
+      "feedbackFrom": ["Interview AFUP avant l'événement (speaker)"],
+      "summary": "- **Constat** : les colonnes JSON simplifient développement, migrations et maintenance, mais les tableaux PHP perdent l'analyse statique, le contrôle de type et la lisibilité.\n- **Proposition** : étendre Doctrine pour combiner colonnes JSON et objets PHP fortement typés.\n- Garde-fou du speaker : réserver le JSON aux données sans contrainte d'intégrité (configuration d'un produit, préférences utilisateur) ; les formes normales restent préférables dans beaucoup de cas.\n- Limite signalée : avec un ORM, le JSON est lu et écrit en bloc, ce qui peut poser des soucis de concurrence et de requêtes SQL.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "tester-du-legacy-grace-a-l-approval-testing",
+      "day": "2023-05-12",
+      "type": "talk",
+      "title": "Tester du legacy grâce à l'Approval testing (Lille)",
+      "speakers": ["Charles Desneuf — Burrito Consulting"],
+      "feedbackFrom": ["Interview AFUP avant l'événement (speaker)"],
+      "summary": "- Poser un **filet de sécurité** sur du code peu couvert, guidé par la couverture de code et quelques refactorings simples.\n- Difficultés traitées : gestion du temps, données aléatoires, ordre des appels.\n- Ces tests rassurent sur la conservation du comportement, puis laissent la place à des tests plus lisibles : *« Ce sont plutôt ces tests que je garderais à la fin. »*\n- Le speaker cite le Gilded Rose Approval Kata et le refactoring « lift conditional » d'Emily Bache comme influences.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "du-vrai-serverless-php-dans-le-navigateur-api-platform",
+      "day": "2023-05-12",
+      "type": "talk",
+      "title": "Du vrai serverless ou comment faire tourner PHP dans le navigateur pour documenter API Platform (Lille)",
+      "speakers": ["Antoine Bluchet — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Interview AFUP avant l'événement (speaker)"],
+      "summary": "- Compiler PHP vers **WebAssembly** pour exécuter Symfony ou API Platform dans le navigateur, sans serveur PHP.\n- Objectif : une documentation interactive où l'on teste le code directement, sur le modèle du playground de go.dev.\n- Argument économique : faire tourner PHP côté serveur pour ces seuls tests peut *« vite revenir cher en hébergement »*.\n- Déclic rapporté : la découverte du projet pib, premier compilateur de PHP en WASM à sa connaissance.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "symfony-messenger-et-ses-messages-a-la-queleuleu",
+      "day": "2023-05-12",
+      "type": "talk",
+      "title": "Symfony Messenger et ses Messages : à la queleuleu…. Et s'il était temps de grouper ? (Lille)",
+      "speakers": ["Allison Guilhem — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Interview AFUP avant l'événement (speaker)"],
+      "summary": "- Par défaut, Messenger traite les messages un par un, ce qui n'est pas toujours idéal : la session présente une méthode pour **les regrouper**, avec son utilité, ses problèmes et leurs parades, sur un cas concret.\n- Questions à se poser avant de passer en asynchrone : l'opération doit-elle précéder la réponse à l'utilisateur ? La hausse de trafic est-elle exceptionnelle ou appelée à se reproduire ?\n- Rappel de la speaker : ce choix a un coût, pour l'infrastructure comme pour les développeurs.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "protegez-vous-des-attaques-de-la-chaine-logistique-grace-a-composer",
+      "day": "2023-05-12",
+      "type": "talk",
+      "title": "Protégez-vous des attaques de la chaîne logistique grâce à Composer (Lille)",
+      "speakers": ["Kévin Dunglas — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Interview AFUP avant l'événement (speaker)", "Slides « Mitigate Attacks on your PHP Supply Chain », rattachement à la session déduit (speaker)"],
+      "summary": "- PHP est *« relativement moins sensible »* que JavaScript à ce type d'attaques, mais pas protégé : chiffres de mai 2023 dans les slides, 125 paquets et 17 éditeurs pour Symfony complet, 107 et 35 pour Laravel, contre 1279 paquets pour Nuxt.js et 940 pour Angular.\n- Vecteurs cités : paquets malveillants, typosquatting, prise de contrôle d'un paquet, protestware ; exemple de l'incident npm event-stream.\n- **La menace principale reste le logiciel non patché** : selon les slides, 85 % des vulnérabilités FOSS sont divulguées alors qu'un correctif existe (`composer audit`, Dependabot, Trivy).\n- Annonce d'un outil pour reprendre le contrôle du dossier `vendor/` : plugin Composer dans l'interview et le programme, « patch » dans la description des slides. Il fait échouer en CI l'installation de paquets non validés par l'équipe.\n- Recommandations : limiter les dépendances, choisir des mainteneurs de confiance, financer la maintenance (Tidelift).",
+      "summarySources": ["program", "blog", "slides"]
+    },
+    {
+      "id": "apitester-automatisez-vos-tests-d-api",
+      "day": "2023-05-12",
+      "type": "talk",
+      "title": "ApiTester : Automatisez vos tests d'API en vous appuyant sur votre documentation (Lille)",
+      "speakers": ["Olivier Mairet — Openclassrooms"],
+      "feedbackFrom": ["Interview AFUP avant l'événement (speaker)"],
+      "summary": "- **ApiTester**, package développé chez Openclassrooms, génère et exécute les tests de chaque route décrite dans une spécification OpenAPI (réponses 2xx, 400, 403, 404).\n- Motivation : ces cas sont répétitifs d'une route à l'autre, l'outil les automatise.\n- Angle mentor du speaker : les débutants voient souvent *« l'écriture des tests comme une perte de temps »*.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "la-gestion-d-erreur-dans-toutes-ses-couleurs",
+      "day": "2023-05-12",
+      "type": "talk",
+      "title": "La gestion d'erreur dans toutes ses couleurs (Lille)",
+      "speakers": ["George Banyard"],
+      "feedbackFrom": [],
+      "summary": "- Panorama des approches de gestion d'erreur et de leur histoire, puis usage du **système de types** pour vérifier que toutes les erreurs sont gérées.\n- Résumé limité au descriptif : l'interview du speaker ne traite pas directement du sujet, elle évoque plus largement son objectif de rendre PHP plus fiable.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "ou-sont-passees-les-femmes-de-l-histoire-de-la-tech",
+      "day": "2023-05-12",
+      "type": "talk",
+      "title": "Où sont passées les femmes de l'histoire de la tech ? (Lille)",
+      "speakers": ["Laura Durieux — Business Inside Software"],
+      "feedbackFrom": ["Interview AFUP avant l'événement (speaker)"],
+      "summary": "- Portraits de femmes qui ont marqué l'informatique (Ada Lovelace, Hedy Lamarr, les « ENIAC Girls », Grace Hopper, Joan Clarke) et évolution des métiers de la programmation.\n- Thèse : la programmation a d'abord été *« considérés comme étant un métier de femmes »* (verbatim de l'interview), et rendre ces figures populaires *« peut aider à casser les stéréotypes »*.\n- Précision de la speaker : *« Le but n'est pas de dire qu'un sexe est supérieur à un autre »*.\n- Note : la fiche du programme affiche George Banyard, mais le planning et afup.org/talks créditent Laura Durieux.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "tirer-parti-du-composant-expressionlanguage-de-symfony",
+      "day": "2023-05-12",
+      "type": "talk",
+      "title": "Tirer parti du composant ExpressionLanguage de Symfony, laissez les utilisateurs finaux être créatifs ! (Lyon)",
+      "speakers": ["Florian Merle — Akawaka", "Mathias Arlaud — Les Tilleuls"],
+      "feedbackFrom": ["Interview AFUP avant l'événement (speakers)"],
+      "summary": "- Utiliser ExpressionLanguage comme **moteur de règles métier** : exemple e-commerce où des administrateurs écrivent des règles de promotion dynamiques.\n- Les speakers partent d'un usage classique du composant, puis montrent comment déléguer les règles aux utilisateurs finaux.\n- Pérennité des règles : Symfony a *« une politique de très forte compatibilité »*, il suffit de respecter les dépréciations.\n- Anecdote : anciens étudiants de CPE, ils reviennent dans l'amphithéâtre en intervenants.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "mentors-super-heros-ou-super-vilains",
+      "day": "2023-05-12",
+      "type": "talk",
+      "title": "Mentors : super-héros ou super-vilains ? (Lyon)",
+      "speakers": ["Pauline Rambaud — Bedrock"],
+      "feedbackFrom": ["Interview AFUP avant l'événement (speaker)"],
+      "summary": "- Témoignage d'une développeuse junior sur des rencontres *« cauchemardesques comme merveilleuses »* et sur les comportements de mentors qui l'ont aidée.\n- Interview : un stage sans accompagnement a renforcé sa détermination (*« Je voulais être développeuse quoi qu'il en coûte. »*).\n- Message annoncé : *« Vous aussi, vous avez le pouvoir de changer une vie ! »*",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "monades-paradigme-unique-pour-la-programmation-a-synchrone",
+      "day": "2023-05-12",
+      "type": "talk",
+      "title": "Monades : paradigme unique pour la programmation (a)synchrone (Lyon)",
+      "speakers": ["Baptiste Langlade — Efalia"],
+      "feedbackFrom": ["Interview AFUP avant l'événement (speaker)"],
+      "summary": "- Avec les Fibers, l'asynchrone gagne du terrain, mais y passer impose de changer profondément sa façon de coder.\n- Thèse : *« cela devrait être de la responsabilité des abstractions de gérer ça correctement »* ; le **pattern Monad** permettrait de passer de l'un à l'autre de manière transparente.\n- Prolonge sa conférence du Forum PHP 2021 sur le typage des erreurs avec les monades.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "le-zero-downtime-deployment-en-pratique",
+      "day": "2023-05-12",
+      "type": "lightning",
+      "title": "Le Zéro Downtime Deployment en pratique (Lyon)",
+      "speakers": ["Smaïne Milianni — Yousign"],
+      "feedbackFrom": ["Interview AFUP avant l'événement (speaker)"],
+      "summary": "- Format 20 minutes. Retour d'expérience sur les changements de schéma de base de données, les consumers asynchrones et les contrats d'API, avec les pièges à éviter.\n- **Le critère n'est pas la taille du projet** mais la durée et la fréquence des mises en production.\n- Point de vigilance : la pratique impose des états transitoires, qui peuvent durer si les mises en production sont espacées.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "demystifions-les-pratiques-du-software-craftsmanship",
+      "day": "2023-05-12",
+      "type": "talk",
+      "title": "Démystifions les pratiques du Software craftsmanship ! (Lyon)",
+      "speakers": ["Thomas Boileau"],
+      "feedbackFrom": ["Interview AFUP avant l'événement (speaker)"],
+      "summary": "- Remise en cause du **dogme** autour de l'architecture hexagonale ou du TDD, et du gatekeeping qui l'accompagne (formule visée : *« Si vous ne faites pas de TDD, vous êtes un·e mauvais·e développeur·euse ! »*).\n- Le Craft est présenté comme *« une boîte à outils »* ; le speaker critique le cargo-cult qui applique la même méthode à tous les problèmes.\n- Critère pratique : imposer CQRS ou autre doit tenir compte des équipes qui maintiendront le projet.\n- Première intervention en public du speaker, selon l'interview.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "comment-refondre-un-legacy-sans-cris-et-sans-larmes",
+      "day": "2023-05-12",
+      "type": "lightning",
+      "title": "Comment refondre un legacy sans cris et sans larmes : retour d'expérience et bonnes pratiques (Lyon)",
+      "speakers": ["Kévin Balicot — Akawaka"],
+      "feedbackFrom": ["Interview AFUP avant l'événement (speaker)"],
+      "summary": "- Format 20 minutes. REX sur la refonte d'un intranet BtoB : outillage, architecture, monitoring, documentation, formation.\n- Cas de départ : une application maintenue par une seule personne, ce qui bloque le projet si elle part.\n- **Refonte progressive**, en parallèle de l'existant, avec un pont entre l'ancien code et Symfony : *« Tout refondre sans stratégie serait aller droit dans le mur. »*",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "le-travail-invisible-en-entreprise-le-cas-du-glue-work",
+      "day": "2023-05-12",
+      "type": "talk",
+      "title": "Le travail invisible en entreprise : le cas du glue work (Lyon)",
+      "speakers": ["Camille Castillo — Elao"],
+      "feedbackFrom": [],
+      "summary": "- Le **glue work** désigne des tâches peu valorisées mais essentielles pour « lier » une équipe : documentation et process, accueil des arrivants, moments informels, comptes-rendus.\n- La session se veut aussi un plaidoyer : les femmes assument souvent davantage ces tâches que leurs collègues masculins.\n- Objectif annoncé : identifier qui fait ce travail, le répartir plus équitablement et le valoriser.\n- Résumé limité au descriptif officiel (fiche afup.org).",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "transformer-efficacement-du-json-en-structure-php-fortement-typee",
+      "day": "2023-05-12",
+      "type": "talk",
+      "title": "Transformer efficacement du JSON en structure PHP fortement typée (Lyon)",
+      "speakers": ["Romain Canon"],
+      "feedbackFrom": ["Interview AFUP avant l'événement (speaker)", "Slides publiées le 12/05/2023 (speaker)"],
+      "summary": "- PHPStan et Psalm ne vérifient pas les données externes reçues au runtime (JSON d'API, YAML), et la validation manuelle est fastidieuse.\n- Solution présentée : **Valinor**, un mapper qui valide les données et les transforme en structures typées, en réutilisant au runtime les types avancés (`int<1, 5>`, `non-empty-string`, generics).\n- Les slides insistent sur la gestion granulaire des erreurs (regroupées par chemin) et sur la garantie qu'aucun objet n'est construit à moitié.\n- Alternatives citées : symfony/serializer, eventsauce/object-hydrator, spatie/laravel-data, crell/serde, entre autres.\n- Perspectives : bundle Symfony, package Laravel, mapper compilé.\n- Credo de l'interview : *« Typer son code, c'est le rendre plus robuste. »*",
+      "summarySources": ["program", "blog", "slides"]
+    },
+    {
+      "id": "les-instruments-des-devs-augmente-e-s",
+      "day": "2023-05-12",
+      "type": "talk",
+      "title": "Les instruments des devs augmenté·e·s (Lyon)",
+      "speakers": ["Gabriel Pillet — tentacode.dev"],
+      "feedbackFrom": ["Interview AFUP avant l'événement (speaker)"],
+      "summary": "- Tour des outils qui améliorent la Developer Experience, des plus médiatisés comme GitHub Copilot aux plus discrets.\n- Utilisateur de Copilot depuis la bêta, le speaker dit qu'il aurait *« beaucoup de mal à revenir en arrière »*.\n- Nuance : il recommande ChatGPT aux étudiants et juniors, à condition de ne pas *« bêtement absorber la réponse »*.",
+      "summarySources": ["program", "blog"]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Keynotes d'ouverture et de clôture (AFUP Hauts-de-France, Lille)",
+    "Introduction sponsor (Ponéra, Lille)",
+    "Keynotes d'ouverture et de clôture (AFUP Lyon)"
+  ],
+  "sources": [
+    { "label": "Page officielle AFUP Day 2023", "url": "https://event.afup.org/afup-day-2023/" },
+    { "label": "Programme de Lille", "url": "https://event.afup.org/afup-day-2023/afup-day-2023-lille/programme/" },
+    { "label": "Planning de Lille", "url": "https://event.afup.org/afup-day-2023/afup-day-2023-lille/planning/" },
+    { "label": "Programme de Lyon", "url": "https://event.afup.org/afup-day-2023/afup-day-2023-lyon/programme/" },
+    { "label": "Planning de Lyon", "url": "https://event.afup.org/afup-day-2023/afup-day-2023-lyon/planning/" },
+    { "label": "Interviews de speakers publiées par l'AFUP avant l'événement (catégorie AFUP Day 2023)", "url": "https://event.afup.org/category/afup-day-2023/" },
+    { "label": "Annonce des plannings (AFUP, 06/03/2023)", "url": "https://afup.org/news/1179-plannings-afupday2023-publies" },
+    { "label": "Slides de Romain Canon (Speaker Deck)", "url": "https://speakerdeck.com/romm/afup-day-2023-lyon-transformer-efficacement-du-json-en-structure-php-fortement-typee" },
+    { "label": "Slides de Kévin Dunglas, Mitigate Attacks on your PHP Supply Chain (Speaker Deck, rattachement déduit)", "url": "https://speakerdeck.com/dunglas/mitigate-attacks-on-your-php-supply-chain" },
+    { "label": "Fiche afup.org : Le Zéro Downtime Deployment en pratique", "url": "https://afup.org/talks/4231-le-zero-downtime-deployment-en-pratique" },
+    { "label": "Fiche afup.org : Le travail invisible en entreprise", "url": "https://afup.org/talks/4244-le-travail-invisible-en-entreprise-le-cas-du-glue-work" },
+    { "label": "Fiche afup.org : Démystifions les pratiques du Software craftsmanship", "url": "https://afup.org/talks/4128-demystifions-les-pratiques-du-software-craftsmanship" },
+    { "label": "Fiche afup.org : ExpressionLanguage", "url": "https://afup.org/talks/4158-tirer-parti-du-composant-expressionlanguage-de-symfony-laissez-les-utilisateurs-finaux-etre-creatifs" },
+    { "label": "Fiche afup.org : Où sont passées les femmes de l'histoire de la tech", "url": "https://afup.org/talks/4182-ou-sont-passees-les-femmes-de-l-histoire-de-la-tech" },
+    { "label": "Meetups AFUP Hauts-de-France 2023 (mentions de l'AFUP Day complet)", "url": "https://hdf.afup.org/meetups/2023" }
+  ]
 }

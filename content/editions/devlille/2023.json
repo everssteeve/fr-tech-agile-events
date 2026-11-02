@@ -6,8 +6,518 @@
   "city": "Lille",
   "venue": "Lille Grand Palais",
   "url": "https://conference-hall.io/devfest-lille-2023",
-  "dateConfidence": "sec",
-  "note": "Ancien nom : DevFest Lille.",
-  "status": "pending",
-  "sessions": []
+  "programUrl": "https://web.archive.org/web/20230520040102/https://devfest.gdglille.org/agenda/",
+  "theme": "Web, mobile, cloud, DevOps, big data et IA",
+  "dateConfidence": "ok",
+  "note": "Ancien nom : DevFest Lille. Une journée, 3 salles (Grand Théâtre, Louis Pasteur, Marie Curie). Le site annonçait 1200 participants, 40 speakers, 26 conférences ; l'agenda de mai 2023 liste 23 sessions. Le type `lightning` des 6 sessions de 14:00 et 15:40 est déduit des créneaux de 20 minutes (quickies du CFP).",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-02",
+  "revisit": "Aucun retour participant public trouvé (7 recherches web, LinkedIn et blogs) ; transcripts YouTube non récupérés (429 signalés sur les sous-titres) ; OpenFeedback 2023 non localisé. Reprendre les transcripts des 23 vidéos, retrouver l'identifiant OpenFeedback de l'édition et chercher posts LinkedIn et blogs d'ESN lilloises de mai 2023.",
+  "corpus": "Agenda archivé du 20/05/2023 (23 sessions), page d'accueil archivée d'avril 2023, descriptifs des 23 vidéos de la playlist Devfest Lille 2023 sur la chaîne GDG France (publiées les 29 et 30/05/2023) et un support lu (Jérôme Tama). Sept recherches web menées le 02/11/2026.",
+  "limits": "Aucun retour de participant trouvé, trois ans après l'événement : les résumés reposent sur les descriptifs du CFP, rédigés avant la conférence, et ne disent ni ce qui a été dit sur scène ni comment cela a été reçu. Pas de transcript (sous-titres YouTube en 429, non retentés) ; les pages de session archivées et l'OpenFeedback 2023 n'ont pas pu être lus. Les chiffres de fréquentation sont ceux annoncés par le site en avril 2023, pas un bilan.",
+  "tldr": "**Une journée généraliste où les fondamentaux techniques (cache HTTP, asynchrone JS, API, Kafka) côtoient un fil fort sur l'inclusion et l'empreinte du numérique**, ouverte et refermée par deux keynotes sur ce que le numérique fait à ses concepteurs et à ses utilisateurs.",
+  "keyTakeaways": [
+    "Choisir une stratégie de cache HTTP dès la conception : le sujet concerne le développement, le build, le déploiement et le run, pas seulement la fin du projet (descriptif d'Hubert Sablonnière).",
+    "Revoir l'usage des promesses : mélange d'async/await et de .then(), return await inutiles, map() sur de l'async, parallélisation oubliée (descriptif de Christophe Porteneuve).",
+    "Définir les ressources (service, namespace, pod) dès le départ d'un projet OpenTelemetry et surveiller la cardinalité des labels dans Loki (slides de Jérôme Tama).",
+    "Se rappeler qu'OpenTelemetry n'est pas un backend de persistance : il en faut un par signal (slides de Jérôme Tama).",
+    "Traiter le focus comme un sujet à part entière de l'accessibilité, au-delà des critères généraux du RGAA et des WCAG (descriptif d'Angela Ricci).",
+    "Travailler les réglages par défaut, le vocabulaire et l'intelligibilité des paramètres pour réduire l'empreinte écologique des applications (descriptif de Thomas Thibault).",
+    "Distinguer le preprocessing batch du data scientist et le preprocessing au fil de l'eau exigé en production (descriptif de Marie-Alice Blete).",
+    "Mieux intégrer les profils reconvertis dans les équipes en comprenant ce qui diffère des parcours classiques (descriptif d'Helvira Goma)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-d-ouverture-conception-numerique-big-tech",
+      "day": "2023-05-26",
+      "type": "keynote",
+      "title": "Keynote d'ouverture : conception numérique et influence des Big Tech sur les concepteurs",
+      "speakers": [
+        "Alizée Colin"
+      ],
+      "feedbackFrom": [],
+      "summary": "- La seule description publique tient en une ligne : *« Conception numérique et influence des Big Tech sur les concepteurs. »*\n- L'agenda ne nomme pas la speakeuse ; le nom vient de la description de la vidéo (24 minutes).\n- Le contenu réel reste à établir à partir du transcript.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "MxQD5UQ3JwM",
+        "title": "[DEVFEST Lille 2023] - Keynote d'ouverture",
+        "publishedAt": "2023-05-29",
+        "transcript": false
+      }
+    },
+    {
+      "id": "vite-une-nouvelle-ere-de-tooling-front",
+      "day": "2023-05-26",
+      "type": "talk",
+      "title": "Vite, une nouvelle ère de tooling front ?",
+      "speakers": [
+        "Christophe Jollivet",
+        "Yann-Thomas Le Moigne"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : après Grunt, Gulp ou des outils Java comme Ant et Maven, **Webpack semblait avoir unifié le build JavaScript**.\n- Question posée : est-il sur le point d'être détrôné ?\n- Le talk fait découvrir Vite, outil de 3 ans à l'époque, et cherche à savoir s'il va révolutionner le tooling des développeurs front.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "GJuEQ35POO8",
+        "title": "[DEVFEST Lille 2023] - Vite, une nouvelle ère de tooling front ?",
+        "publishedAt": "2023-05-29",
+        "transcript": false
+      }
+    },
+    {
+      "id": "l-accessibilite-dans-l-ecosysteme-apple-outils-solutions",
+      "day": "2023-05-26",
+      "type": "talk",
+      "title": "L'accessibilité dans l'écosystème Apple : outils & solutions",
+      "speakers": [
+        "Jihène Mejri"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : l'accessibilité numérique est présentée comme un principe d'égalité et un **devoir civique**.\n- VoiceOver : interagir avec une application les yeux fermés, personnaliser la navigation.\n- Assistants vocaux comme Siri pour améliorer l'expérience.\n- Bonnes pratiques d'audit et de test d'accessibilité.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "1zlvzZj3_PA",
+        "title": "[DEVFEST Lille 2023] - L'accessibilité dans l'écosystème Apple : outils & solutions",
+        "publishedAt": "2023-05-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "le-versionning-des-apis-rest-dans-la-vraie-vie",
+      "day": "2023-05-26",
+      "type": "talk",
+      "title": "Le versionning des APIs REST : dans la vraie vie, on fait comment ?",
+      "speakers": [
+        "Alexandre Touret"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : le versionning répond à des contraintes projet, mais **apporte son lot de complexité**.\n- Situation de départ : un produit exposant des API à plusieurs clients, à faire évoluer en maîtrisant l'existant.\n- Le talk compare, sur un cas concret, stratégie, possibilités d'implémentation et contraintes.\n- Promesse : une vue complète et objective des façons d'aborder le sujet.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "m8DbVbMDe2w",
+        "title": "[DEVFEST Lille 2023] - Le versionning des APIs REST: dans la vraie vie, on fait comment?",
+        "publishedAt": "2023-05-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "serverless-eviter-le-vendor-locking-openfaas-kubernetes",
+      "day": "2023-05-26",
+      "type": "talk",
+      "title": "Serverless : éviter le vendor locking en construisant sa propre plateforme FaaS avec OpenFaaS et Kubernetes",
+      "speakers": [
+        "Katia Himeur"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : les offres FaaS managées diffèrent d'un fournisseur à l'autre, ce qui **augmente le risque de vendor locking**.\n- Réponse explorée : une plateforme propre avec OpenFaaS sur Kubernetes, même sur le poste de développement.\n- Bénéfice annoncé : plus d'autonomie pour les équipes, avec des environnements ISO et les mêmes fonctionnalités qu'en production.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "7FZvKjiiwhk",
+        "title": "[DEVFEST Lille 2023] - Serverless : Éviter le vendor locking en construisant sa propre plateforme",
+        "publishedAt": "2023-05-29",
+        "transcript": false
+      }
+    },
+    {
+      "id": "perdez-la-tete-mais-pas-le-focus",
+      "day": "2023-05-26",
+      "type": "talk",
+      "title": "Perdez la tête, mais pas le focus",
+      "speakers": [
+        "Angela Ricci"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : un aspect souvent oublié de l'accessibilité web, **la gestion du focus**.\n- RGAA et WCAG en restent à des principes généraux, car la bonne gestion varie selon la fonctionnalité.\n- Le talk explique pourquoi contrôler le focus compte et comment améliorer nettement l'expérience utilisateur.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "YCSvfY5OPgI",
+        "title": "[DEVFEST Lille 2023] - Perdez la tête, mais pas le focus",
+        "publishedAt": "2023-05-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "d-un-modele-d-ia-dans-un-notebook-a-un-service-temps-reel",
+      "day": "2023-05-26",
+      "type": "talk",
+      "title": "D'un modèle d'IA dans un notebook à un service temps réel : architecturons !",
+      "speakers": [
+        "Marie-Alice Blete"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : conception pas à pas d'une application qui **déploie un modèle d'IA derrière une API HTTP à très faible latence**.\n- Le modèle est traité comme une boîte noire, et l'architecture se construit autour.\n- Points annoncés : preprocessing batch contre preprocessing au fil de l'eau, astuces de latence, architectures d'ingestion.\n- Ambition affichée : passer du POC à la production et réconcilier data science et data engineering.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Hud-zvfjfK8",
+        "title": "[DEVFEST Lille 2023] - D'un modèle d'IA dans un notebook à un service temps réel : architecturons !",
+        "publishedAt": "2023-05-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "quarkus-3-nouveautes-et-migration",
+      "day": "2023-05-26",
+      "type": "talk",
+      "title": "Quarkus 3 : nouveautés et migration",
+      "speakers": [
+        "Loïc Mathieu"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : Quarkus 3 apporte de nombreuses nouveautés, dont certaines peuvent **impacter fortement les applications existantes**.\n- Le talk les présente et montre comment migrer grâce aux **recettes OpenRewrite** fournies par le projet.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "9gIqKAeHDbs",
+        "title": "[DEVFEST Lille 2023] - Quarkus 3 : nouveautés et migration",
+        "publishedAt": "2023-05-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "event-driven-qu-est-ce-donc-un-nouveau-buzzword",
+      "day": "2023-05-26",
+      "type": "talk",
+      "title": "Event Driven, qu'est-ce donc ?! Un nouveau buzzword ?",
+      "speakers": [
+        "Céline Louvet"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : retour aux fondamentaux du **modèle événementiel publisher/subscriber**, avec ses avantages et ses inconvénients.\n- Fil rouge inspiré d'un vrai SI : chaque service ajouté a cumulé de la complexité, jusqu'à rendre les évolutions impossibles ou dangereuses.\n- Objectif : des services moins interdépendants, plus performants et plus stables.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "RovPh9agiFc",
+        "title": "[DEVFEST Lille 2023] - Event Driven, qu'est-ce donc ?! Un nouveau buzzword ?",
+        "publishedAt": "2023-05-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "de-startup-a-entreprise-rentable-quel-chemin-pour-la-tech",
+      "day": "2023-05-26",
+      "type": "talk",
+      "title": "De startup à entreprise rentable : quel chemin pour la tech ?",
+      "speakers": [
+        "Ludovic Borie"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : immersion de **cinq ans dans une startup du monde agricole**.\n- Questions posées : comment recruter, développer, gérer le support et l'infrastructure avec des moyens limités, quel impact pour l'équipe.\n- Sujets annoncés : organisation, compromis, *« mais surtout d'humain »*.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "SYl8GRSokdQ",
+        "title": "[DEVFEST Lille 2023] - De startup à entreprise rentable : quel chemin pour la tech ?",
+        "publishedAt": "2023-05-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "motional-intelligence-how-animation-brings-product-to-life",
+      "day": "2023-05-26",
+      "type": "lightning",
+      "title": "Motional Intelligence: How Animation Brings Product to Life",
+      "speakers": [
+        "Cyril Mottier"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : l'animation n'est plus un simple ornement, elle **apporte de l'information** et de la personnalité à la marque.\n- Le mouvement guide l'utilisateur, garde son attention sur l'essentiel et lui enseigne la hiérarchie de l'information.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "aZ7LD4lo8Vg",
+        "title": "[DEVFEST Lille 2023] - Motional Intelligence: How Animation Brings Product to Life",
+        "publishedAt": "2023-05-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "la-clean-architecture-augmenter-la-maintenabilite",
+      "day": "2023-05-26",
+      "type": "lightning",
+      "title": "La clean architecture : une solution pour augmenter la maintenabilité de ses systèmes",
+      "speakers": [
+        "Mehdi Boissat-Bron — leboncoin"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : chez leboncoin, **plus de 500 développeurs et une soixantaine de feature teams**, d'où un enjeu d'organisation du code et de partage de pratiques.\n- REX de l'équipe Import (API et systèmes pour les annonces des clients professionnels), qui a mis en place une clean architecture.\n- Le talk raconte réussites et difficultés de cette expérience collective.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "M2jlFGJuBIs",
+        "title": "[DEVFEST Lille 2023] - La clean architecture : solution pour augmenter la maintenabilité de systèmes",
+        "publishedAt": "2023-05-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "les-reconvertis-cette-nouvelle-vague-de-profils-dans-le-dev",
+      "day": "2023-05-26",
+      "type": "lightning",
+      "title": "Les reconvertis : cette nouvelle vague de profils dans le dev",
+      "speakers": [
+        "Helvira Goma"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : récit d'une **reconversion vers le développement**, entamée 4 ans plus tôt sans savoir ce qu'était le code.\n- Obstacles cités : syndrome de l'imposteur, regard de l'entourage, codes d'un monde inconnu, pression financière.\n- Question pour les équipes : en quoi ces profils diffèrent-ils des parcours classiques, et comment les valoriser ?",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "fbiam_bOKPY",
+        "title": "[DEVFEST Lille 2023] - Les reconvertis: cette nouvelle vague de profils dans le dev",
+        "publishedAt": "2023-05-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "retour-aux-sources-le-cache-http",
+      "day": "2023-05-26",
+      "type": "talk",
+      "title": "#RetourAuxSources : le cache HTTP",
+      "speakers": [
+        "Hubert Sablonnière"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : au départ il suffit *« juste »* de l'activer, à la fin on finit par *« Essaye en vidant ton cache ! »*.\n- Une stratégie de cache **ne se fait pas à la fin du projet** : conception, développement, build, déploiement et run sont concernés.\n- Au menu, par l'exemple : en-têtes HTTP gérés par navigateurs, CDN et proxys, et caches internes aux navigateurs (HTTP, Service Worker, back/forward).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Tfag9MPb6YM",
+        "title": "[DEVFEST Lille 2023] - #RetourAuxSources : Le cache HTTP",
+        "publishedAt": "2023-05-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "d-observateur-a-responsable-biais-racistes-dans-l-ux",
+      "day": "2023-05-26",
+      "type": "talk",
+      "title": "D'observateur à responsable : enrayer l'impact des biais racistes dans l'UX",
+      "speakers": [
+        "Marcy Ericka Charollois"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : le racisme dans l'expérience utilisateur peut être spectaculaire (reconnaissance faciale défaillante, véhicules confondant ombres et peaux foncées).\n- Il s'invite aussi **de façon insidieuse** dans ce que chacun produit, de la conception à l'usage, et au sein des entreprises.\n- Approche proposée, à multiples facettes : sémantique, personae, histoires personnelles, Histoire.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "oeNdjgEjwmM",
+        "title": "[DEVFEST Lille 2023] - D'observateur à responsable : enrayer l'impact des biais racistes dans l'UX.",
+        "publishedAt": "2023-05-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "comment-venir-a-bout-d-un-projet-de-migration-kafka",
+      "day": "2023-05-26",
+      "type": "talk",
+      "title": "Comment venir à bout d'un projet de migration ? Et si on utilisait Kafka ? « Notes pour trop tard »",
+      "speakers": [
+        "Arnaud Esteve — Confluent"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : voyage rétrospectif dans des mois de discussions et de décisions **bonnes ou mauvaises** sur des projets de migration.\n- Kafka y sert de moyen de locomotion, avec une évaluation de ses capacités à répondre à ces problèmes.\n- Piliers cités : Data Gravity, KiSS, Dogfooding.\n- Le talk mêle l'expérience du speaker et des histoires entendues chez Confluent, et vise le carnet de notes qu'il aurait aimé avoir au démarrage.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "IOJLFWXj4pA",
+        "title": "[DEVFEST Lille 2023] - Comment venir à bout d'un projet de migration ? Et si on utilisait Kafka ?",
+        "publishedAt": "2023-05-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "concevoir-des-parametres-ecologiques-dans-les-applications",
+      "day": "2023-05-26",
+      "type": "lightning",
+      "title": "Concevoir des paramètres écologiques dans les applications",
+      "speakers": [
+        "Thomas Thibault"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : les terminaux pèsent lourd dans l'empreinte du numérique, alors que les concepteurs tendent à **réduire les marges de réglage** des usages.\n- Travail issu du projet de recherche en design *Limites Numériques* (studio Praticable, laboratoire du CNRS, chercheurs en design et en informatique).\n- Critique : vocabulaire, choix par défaut et intelligibilité des paramètres éloignent d'une pratique plus écologique.\n- Pistes promises : prolonger la vie des appareils, réduire données et énergie, ralentir l'accroissement des performances.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "mGMarbPKnug",
+        "title": "[DEVFEST Lille 2023] - Concevoir des paramètres écologiques dans les applications",
+        "publishedAt": "2023-05-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "handicap-et-tech-une-combinaison-qui-match",
+      "day": "2023-05-26",
+      "type": "lightning",
+      "title": "Handicap et tech : une combinaison qui match ?",
+      "speakers": [
+        "Thanh Lan Doublier — AXA (alternance)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : témoignage d'une *machine engineer* en alternance chez AXA, qui veut **casser les clichés liés au handicap et à l'IT**.\n- Point de départ, une phrase entendue en recherche d'alternance en 2022 : *« vous êtes une fille racisée et en situation de handicap ! »*\n- Le talk porte aussi la voix des utilisateurs en situation de handicap, notamment en **intelligence artificielle**, où la diversité est présentée comme un enjeu majeur.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "b__7SsfGSyE",
+        "title": "[DEVFEST Lille 2023] - Handicap et tech : une combinaison qui match ?",
+        "publishedAt": "2023-05-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "reflechir-avant-de-cliquer-risques-donnees-personnelles",
+      "day": "2023-05-26",
+      "type": "lightning",
+      "title": "Réfléchir avant de cliquer : comprendre les risques liés à vos données personnelles en ligne",
+      "speakers": [
+        "Mélanie Jarrar"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : pourquoi se soucier des données personnelles partagées en ligne, face à l'argument du *« rien à cacher »*.\n- Sujets annoncés : scandale Cambridge Analytica, risques liés aux réseaux sociaux.\n- Conseils à appliquer individuellement pour protéger sa vie privée.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "2TdbaTVEEPE",
+        "title": "[DEVFEST Lille 2023] - Réfléchir avant de cliquer : comprendre les risques liés aux données en ligne",
+        "publishedAt": "2023-05-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "l-asynchrone-en-js-sans-le-cringe",
+      "day": "2023-05-26",
+      "type": "talk",
+      "title": "L'asynchrone en JS sans le cringe",
+      "speakers": [
+        "Christophe Porteneuve"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : tout le monde utilise promesses et async/await *« sans l'avoir vraiment appris sérieusement »*.\n- Erreurs ciblées : mélange d'async/await et de .then(), return await inutiles, async sans await, map() sur de l'async, parallélisation oubliée, méconnaissance de for await.\n- Promesse : **le bon modèle mental** pour écrire du code concis, propre et performant.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Pz2cL01bmwQ",
+        "title": "[DEVFEST Lille 2023] - L'asynchrone en JS sans le cringe",
+        "publishedAt": "2023-05-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "casser-la-barriere-du-langage-pour-souder-vos-equipes",
+      "day": "2023-05-26",
+      "type": "talk",
+      "title": "Casser la barrière du langage pour souder vos équipes",
+      "speakers": [
+        "Louis CAD"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : plus il y a de langages entre backend, scripts, web, mobile et desktop, **plus la collaboration se complique**.\n- Thèse : les langages multiplateformes, notamment **Kotlin**, permettent d'éviter cette fatalité sans renoncer à la qualité.\n- Le talk en interroge les limites et les conditions.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Q0NDp8Y0tvk",
+        "title": "[DEVFEST Lille 2023] - Casser la barrière du langage pour souder vos équipes",
+        "publishedAt": "2023-05-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "alice-au-pays-d-opentelemetry",
+      "day": "2023-05-26",
+      "type": "talk",
+      "title": "Alice au pays d'Opentelemetry",
+      "speakers": [
+        "Jérôme Tama — onepoint"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : cas réel de mise en place d'OpenTelemetry sur une application Quarkus en service, déployée sur Kubernetes, après une conférence enthousiasmante : *« ce ne fût pas si simple »*.\n- Les éléments suivants viennent de la version en ligne du support, non datée de cette édition : règle de départ, **ne pas toucher au code existant**, et chaîne Prometheus, Grafana, Tempo et Loki.\n- Pièges cités : **OTEL n'est pas un backend de persistance**, k8sattributes vide en sidecar, DaemonSet aux droits élevés pour les logs, forte cardinalité interdite en labels Loki.\n- Conclusion du support : OTEL évite le verrouillage vendor, mais demande un investissement, car la documentation est dispersée.",
+      "summarySources": [
+        "program",
+        "slides"
+      ],
+      "video": {
+        "youtubeId": "Y-13iEwlqV0",
+        "title": "[DEVFEST Lille 2023] - Alice au pays d'Opentelemetry",
+        "publishedAt": "2023-05-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "keynote-de-fermeture-connaissez-vous-votre-empreinte-numerique",
+      "day": "2023-05-26",
+      "type": "keynote",
+      "title": "Keynote de fermeture : connaissez-vous votre empreinte numérique ?",
+      "speakers": [
+        "Baptiste Robert"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Selon le descriptif officiel : chacun laisse chaque jour des traces sur Internet **à son insu**.\n- Baptiste Robert montre comment une personne malveillante peut, à partir de très peu d'informations (nom, prénom, pseudonyme), connaître *« toute votre vie ou presque »*.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "rIYYG4AiOxw",
+        "title": "[DEVFEST Lille 2023] - Keynote de fermeture",
+        "publishedAt": "2023-05-30",
+        "transcript": false
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [],
+  "sources": [
+    {
+      "label": "Agenda DevFest Lille 2023 archivé (Wayback Machine, 20/05/2023)",
+      "url": "https://web.archive.org/web/20230520040102/https://devfest.gdglille.org/agenda/"
+    },
+    {
+      "label": "Page d'accueil archivée (avril 2023) : chiffres annoncés, lieu, sous-titrage",
+      "url": "https://web.archive.org/web/20230419101842/https://devfest.gdglille.org/"
+    },
+    {
+      "label": "Playlist YouTube « Devfest Lille 2023 » (chaîne GDG France, 23 vidéos et l'aftermovie), descriptifs lus, sans transcript",
+      "url": "https://www.youtube.com/playlist?list=PLuZ_sYdawLiVSFpR2lXIRvAzlBe0Z5xBS"
+    },
+    {
+      "label": "Conference Hall : formats et thématiques du CFP",
+      "url": "https://conference-hall.io/devfest-lille-2023"
+    },
+    {
+      "label": "Slides de Jérôme Tama, « Alice au pays d'OpenTelemetry » (version en ligne, non datée de cette édition)",
+      "url": "https://jtama.github.io/alice-au-pays-d-opentelemetry"
+    },
+    {
+      "label": "Slides de Christophe Porteneuve, « L'asynchrone en JS sans le cringe », non lues",
+      "url": "https://deliciousinsights.github.io/async-js-without-cringe/"
+    },
+    {
+      "label": "Posts LinkedIn de participants et billets de blog : aucun trouvé"
+    }
+  ]
 }

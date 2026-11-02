@@ -7,8 +7,198 @@
   "city": "Paris",
   "venue": "Beffroi de Montrouge",
   "url": "https://sessionize.com/androidmakers-by-droidcon-2023/",
+  "programUrl": "https://sessionize.com/androidmakers-by-droidcon-2023/",
   "dateConfidence": "ok",
   "note": "Première édition sous le nom « AndroidMakers by droidcon » (site androidmakers.droidcon.com). Dates (27 et 28 avril 2023) relevées sur le site officiel (Wayback Machine, mars 2023) et Sessionize ; lieu : avenue de la République, Montrouge (Sessionize). Playlist « Android Makers by droidcon 2023 » sur la chaîne YouTube Android Makers.",
-  "status": "pending",
-  "sessions": []
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-02",
+  "revisit": "Quatre billets de retour existent sur Medium (Eugen Martynov, Kamal Faraj, Bforbank jours 1 et 2) ainsi que la liste de Carlos Mota, mais Medium a répondu 403 : ils n'ont été lus qu'à travers des extraits de recherche, sans citation directe. Programme complet non lu (Sessionize 404, Wayback Machine inaccessible) et vidéos non vues. À reprendre en lisant ces billets et la playlist 2023 (transcripts).",
+  "corpus": "16 sessions documentées à partir d'extraits de 4 billets Medium de participants, de la liste de présentations de Carlos Mota, du billet RevenueCat (sponsor), de la page Sessionize et de 2 pages speakers (Ash Davies, Maia Grotepass). Les textes complets des billets Medium n'ont pas pu être lus.",
+  "limits": "Sur plus de 80 talks, seule une petite partie est couverte, et les résumés sont indirects : ils reposent sur des extraits rapportés par l'outil de recherche, d'où l'absence de citation. Certains titres et jours manquent, indiqués comme tels. Vidéos et transcripts non lus (YouTube inaccessible, Bash refusé pour yt-dlp). Aucun post LinkedIn recherché spécifiquement, le budget de 10 recherches ayant servi à reconstituer les sessions. Fréquentation rapportée : plus de 800 développeurs (RevenueCat, Faraj) ou plus de 750 (Mota).",
+  "tldr": "**Pour sa première édition avec droidcon, Android Makers réunit plus de 80 talks où reviennent, dans les retours lus, le profilage, la modularisation, la migration vers Compose et l'outillage de qualité** ; le corpus reste trop indirect pour dire ce qui a le plus marqué.",
+  "keyTakeaways": [
+    "Commencer l'analyse de performance par une trace système Perfetto, puis passer au sampling de callstack d'Android Studio (Pierre-Yves Ricau, rapporté par Kamal Faraj).",
+    "En modularisation, garder un module app léger et extraire le code legacy progressivement (rapporté par Kamal Faraj).",
+    "Migrer un design system écran par écran, en maintenant Compose et Views en parallèle : un composant recréé en Compose est déprécié côté Views (rapporté par Faraj et Bforbank).",
+    "Prévoir une application catalogue pour tester les composants du design system (Bforbank).",
+    "Adapter la pyramide de tests à ses cas d'usage plutôt que l'appliquer telle quelle (Bforbank), et se poser les bonnes questions avant le premier test (Eugen Martynov).",
+    "Automatiser la livraison (fastlane, Bitrise) et monitorer crashs et comportement (Crashlytics, Sentry) (Bforbank).",
+    "Outiller la qualité du code avec Android Lint et des règles personnalisées (Bforbank)."
+  ],
+  "sessions": [
+    {
+      "id": "android-graphics-the-path-to-ui-riches",
+      "day": "2023-04-27",
+      "type": "talk",
+      "title": "Android Graphics: the Path to [UI] Riches",
+      "speakers": ["Chet Haase", "Romain Guy"],
+      "feedbackFrom": ["Eugen Martynov (extrait)", "Carlos Mota (liste)"],
+      "summary": "- Cité parmi les **temps forts** de l'édition par Eugen Martynov.\n- Le contenu du talk n'a pas pu être lu. Un extrait de recherche le présente comme une keynote, un autre non : type `talk` retenu par prudence.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "demystifying-the-test-pyramid",
+      "day": "2023-04-27",
+      "type": "talk",
+      "title": "Demystifying the test pyramid",
+      "speakers": ["Xavier F. Gouchet"],
+      "feedbackFrom": ["Eugen Martynov (extrait)", "Bforbank (extrait)", "Carlos Mota (liste)"],
+      "summary": "- Part du concept d'origine, en pèse les avantages et inconvénients, et invite à **l'adapter à ses propres cas d'usage** (Bforbank).\n- Temps fort pour Martynov : une vue d'ensemble des approches de test et des questions à se poser avant d'écrire un premier test.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "profilage-des-performances-android-perfetto",
+      "day": "2023-04-27",
+      "type": "talk",
+      "title": "Profilage des performances Android avec Perfetto (titre exact non retrouvé)",
+      "speakers": ["Pierre-Yves Ricau"],
+      "feedbackFrom": ["Kamal Faraj (extrait)", "Bforbank (extrait)"],
+      "summary": "- Trouver les ralentissements d'une app avec **Perfetto** et le profiler d'Android Studio, sur l'exemple de l'app Signal (Bforbank).\n- Conseil retenu : commencer par une trace système Perfetto avant le sampling de callstack d'Android Studio (Faraj).\n- Rapprochement déduit : Faraj nomme le speaker, Bforbank non ; les deux décrivent la même démarche.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "the-joys-and-challenges-of-building-a-paywall-with-pbl5",
+      "day": "2023-04-27",
+      "type": "talk",
+      "title": "The joys and challenges of building a paywall with PBL5",
+      "speakers": ["Deema AlShamaa — RevenueCat", "Mark Villacampa — RevenueCat"],
+      "feedbackFrom": ["Annonce RevenueCat (speakers)"],
+      "summary": "- Rendre la bibliothèque RevenueCat compatible avec **Google Play Billing Library 5**, et les nouvelles configurations de paywall que cette version permet.\n- Résumé tiré de l'annonce du sponsor, avant l'événement (jeudi 27 avril, 11 h 25, Hall 2.02).",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "clean-code-base-android-lint-and-custom-rules",
+      "day": "2023-04-27",
+      "type": "talk",
+      "title": "Clean Code Base: Android Lint and Custom Rules",
+      "speakers": ["Sinan Kozak"],
+      "feedbackFrom": ["Bforbank (extrait)", "Carlos Mota (liste)"],
+      "summary": "- Android Lint présenté comme un outil puissant pour **maintenir une base de code**, y compris par des règles personnalisées (Bforbank).",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "frameworks-rust-pour-le-mobile-tauri-dioxus",
+      "day": "2023-04-27",
+      "type": "talk",
+      "title": "Frameworks Rust pour le mobile : Tauri et Dioxus (titre exact non retrouvé)",
+      "speakers": [],
+      "feedbackFrom": ["Bforbank (extrait)"],
+      "summary": "- Présentation de **Tauri et Dioxus**, deux frameworks pour construire des applications multiplateformes desktop et mobile en Rust (Bforbank).\n- Speaker non identifié dans les extraits lus.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "forging-the-path-to-multi-module",
+      "day": "2023-04-27",
+      "type": "talk",
+      "title": "Forging the path to multi-module",
+      "speakers": [],
+      "feedbackFrom": ["Kamal Faraj (extrait)", "Bforbank (extrait)", "Carlos Mota (liste)"],
+      "summary": "- Passage d'un monolithe au **multi-module** : garder le module app léger, extraire progressivement le code des modules legacy (Faraj).\n- Le talk évoque aussi un SDK de navigation pour Compose (Bforbank).\n- Speaker non identifié dans les extraits lus. Rapprochement entre ce titre et les deux billets déduit du sujet.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "sweet-architecture",
+      "day": "2023-04-28",
+      "type": "talk",
+      "title": "Sweet Architecture",
+      "speakers": ["Benoît Quenaudon — Cash App"],
+      "feedbackFrom": ["Eugen Martynov (extrait)", "Carlos Mota (liste)"],
+      "summary": "- Décisions d'architecture chez **Cash App**, retenues par Martynov dans son billet. Le détail n'a pas pu être lu.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "how-to-ship-apps-better-faster-stronger",
+      "day": "2023-04-28",
+      "type": "talk",
+      "title": "How to ship apps better, faster, stronger",
+      "speakers": ["Fabien Devos"],
+      "feedbackFrom": ["Bforbank (extrait)", "Carlos Mota (liste)"],
+      "summary": "- Comment livrer vite et bien quand le time-to-market est court (Bforbank).\n- Deux leviers : **automatisation** (fastlane, Bitrise) et **monitoring** des crashs et du comportement de l'app (Crashlytics, Sentry).",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "un-design-system-ca-se-compose",
+      "day": "2023-04-28",
+      "type": "talk",
+      "title": "Un design System, ça se Compose !",
+      "speakers": ["Jean-Baptiste Vincey", "Julie Gléonnec"],
+      "feedbackFrom": ["Bforbank (extrait)", "Kamal Faraj (extrait)"],
+      "summary": "- Mise en place d'un design system et nécessité de passer à Compose, avec une **migration écran par écran** et une app catalogue pour tester les composants (Bforbank).\n- Faraj décrit une équipe Deezer qui scinde son design system entre Compose et Views : un composant créé en Compose est déprécié côté Views et le reste jusqu'à la fin de la migration.\n- Lien entre ce talk et Deezer déduit du sujet : l'extrait de Faraj ne nomme pas les speakers.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "demo-kotlin-multiplatform-compose-caron-legare",
+      "type": "talk",
+      "title": "Démonstration Kotlin Multiplatform avec Compose (titre exact non retrouvé)",
+      "speakers": ["Etienne Caron", "François Légaré"],
+      "feedbackFrom": ["Eugen Martynov (extrait)"],
+      "summary": "- Démonstration de Kotlin Multiplatform fondée sur Compose, citée par Martynov. Détail, jour et titre non lus.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "talk-flows-akshay-chordiya",
+      "type": "talk",
+      "title": "Talk sur les Flows (titre exact non retrouvé)",
+      "speakers": ["Akshay Chordiya"],
+      "feedbackFrom": ["Eugen Martynov (extrait)"],
+      "summary": "- Talk sur les Flows Kotlin, cité par Martynov. Détail, jour et titre non lus.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "the-rise-and-fall-of-feature-teams",
+      "type": "talk",
+      "title": "The Rise and Fall of Feature Teams",
+      "speakers": ["Danny Preussler"],
+      "feedbackFrom": ["Eugen Martynov (extrait)"],
+      "summary": "- Temps fort de Martynov, qui dit vouloir organiser les équipes de son entreprise en suivant la **loi de Conway** et consulter les articles cités par le speaker.\n- Effet concret rapporté, seul retour de ce type dans le corpus.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "defensive-programming-haase-guy",
+      "type": "talk",
+      "title": "Defensive Programming",
+      "speakers": ["Chet Haase", "Romain Guy"],
+      "feedbackFrom": ["Kamal Faraj (extrait)"],
+      "summary": "- Session citée dans le compte-rendu de Faraj. Le contenu n'a pas pu être lu, le titre vient de l'extrait de recherche.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "what-a-long-strange-trip-it-s-been",
+      "type": "talk",
+      "title": "What a Long Strange Trip it's Been",
+      "speakers": ["Ash Davies"],
+      "feedbackFrom": ["Slides publiées le 28/04/2023 (speaker)"],
+      "summary": "- Un an d'actualité Android, documenté chaque semaine depuis la fin de droidcon Berlin 2022 jusqu'à avril 2023.\n- Sorties dominées par **Compose, Kotlin (K2, KMM) et AndroidX**, avec Android 14, Health Connect et GitHub Copilot X parmi les nouveautés du printemps.\n- Ton en partie humoristique : actualités techniques, références culturelles et statistiques fantaisistes.",
+      "summarySources": ["slides"]
+    },
+    {
+      "id": "90s-website-in-2023-on-mobile-in-compose-for-science",
+      "type": "talk",
+      "title": "90s Website … in 2023 on mobile in Compose … for science",
+      "speakers": ["Maia Grotepass"],
+      "feedbackFrom": [],
+      "summary": "- Reproduire avec **Jetpack Compose** les effets emblématiques des sites des années 90, pour explorer le système d'animation à travers des extraits de code décalés.\n- Public débutant à intermédiaire. Résumé tiré du seul descriptif Sessionize.",
+      "summarySources": ["program"]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "State of Bluetooth LE on Android in 2023 (Erik Hellman)",
+    "Going on a road trip with Android Auto (Carlos Mota)",
+    "Take a look at Jetpack Glance (Piotr Prus)",
+    "Confetti: building a Kotlin conference app in 40 min (John O'Reilly, Martin Bonnin)",
+    "Developing system apps without AOSP (Erik Hellman)",
+    "Migrate to Gradle version catalog and convention plugins (Merab Tato Kutalia)"
+  ],
+  "sources": [
+    { "label": "Page Sessionize de l'édition (appel à speakers, chiffres, thèmes)", "url": "https://sessionize.com/androidmakers-by-droidcon-2023/" },
+    { "label": "Playlist YouTube Android Makers by droidcon 2023 (non lue)", "url": "https://www.youtube.com/playlist?list=PLn7H9CUCuXAuvugRvohWSSGKXpwB0GPxf" },
+    { "label": "Android Makers & Droidcon Paris 2023, Eugen Martynov (Medium, extraits de recherche seulement)", "url": "https://emartynov.medium.com/android-makers-droidcon-paris-2023-da57e2930f05" },
+    { "label": "What's new at AndroidMakers by droidcon 2023, Kamal Faraj, frog (Medium, extraits de recherche seulement)", "url": "https://medium.com/@KamalFaraj/androidmakers-by-droidcon-2023-e9aa1380393a" },
+    { "label": "Bforbank : Android makers 2023, jour 1 (Medium, extraits de recherche seulement)", "url": "https://medium.com/bforbank-tech/bforbank-android-makers-2023-1st-day-b8230c585aaf" },
+    { "label": "Bforbank : Android makers 2023, jour 2 (Medium, extraits de recherche seulement)", "url": "https://medium.com/bforbank-tech/bforbank-android-makers-2023-2nd-day-1697c367af70" },
+    { "label": "Android Makers by droidcon 2023: Presentations, Carlos Mota (Medium, extraits de recherche seulement)", "url": "https://cafonsomota.medium.com/android-makers-by-droidcon-2023-presentations-f0c2160861ff" },
+    { "label": "RevenueCat in Paris 2023 (annonce du sponsor)", "url": "https://www.revenuecat.com/blog/company/revenuecat-paris-2023/" },
+    { "label": "Slides d'Ash Davies (Speaker Deck)", "url": "https://speakerdeck.com/ashdavies/what-a-long-strange-trip-its-been-a-year-in-android" },
+    { "label": "Fiche Sessionize de Maia Grotepass", "url": "https://sessionize.com/s/maia-grotepass/90s-website-.-in-2023-on-mobile-in-compose-.-for-s/63378" }
+  ]
 }
