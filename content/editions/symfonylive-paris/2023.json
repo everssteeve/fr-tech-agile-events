@@ -5,9 +5,247 @@
   "start": "2023-03-23",
   "end": "2023-03-24",
   "city": "Paris",
+  "venue": "Cité Internationale Universitaire de Paris",
   "url": "https://live.symfony.com/2023-paris/",
+  "programUrl": "https://live.symfony.com/2023-paris/schedule",
   "dateConfidence": "ok",
-  "note": "Dates officielles (live.symfony.com/all) ; talks en français. Lieu non retrouvé.",
-  "status": "pending",
-  "sessions": []
+  "note": "Dates officielles (live.symfony.com/all) ; talks en français. Conférence de deux jours (14 talks en une seule salle, keynotes de Fabien Potencier et Nicolas Grekas, une session de lightning talks), précédée de workshops les 21 et 22 mars chez SensioLabs à Asnières. Plus de 500 participants selon le blog Symfony et SensioLabs. Vidéos en replay payant sur live.symfony.com (keynote gratuite).",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-03",
+  "revisit": "Corpus participant mince : un seul compte rendu complet (blog JoliCode, sponsor), le récap SensioLabs (sponsor Diamond, centré sur son stand et son speaker) et le récap officiel ; aucun post LinkedIn trouvé ; replays derrière paywall, pas de transcript.",
+  "corpus": "Programme officiel (planning archivé sur la Wayback Machine), dépôt GitHub SymfonyLive/paris-2023-talks (liens slides), récap officiel du blog Symfony (30 mars 2023), compte rendu talk par talk de JoliCode (Loïck Piera, 27 mars 2023), récap SensioLabs (Elise Hamimi, 4 avril 2023) et transcript du lightning talk de Bastien Jaillot (JoliCode). Six recherches web, publications de J+3 à J+11.",
+  "limits": "Le contenu des talks repose presque entièrement sur un seul compte rendu (JoliCode, sponsor Bronze), complété par SensioLabs pour la keynote et le talk SQLite de son propre développeur. Aucun retour LinkedIn, Mastodon ou X lu ; les vidéos sont réservées aux détenteurs d'un billet replay, donc aucun transcript. Les slides sont listées mais n'ont pas été relues.",
+  "tldr": "Une édition très **« composants Symfony »** (Scheduler, Console, Workflow, HttpClient, ImportMaps) et **retour au HTML côté serveur** (Hotwire, Symfony UX sans Node), avec quelques ouvertures pragmatiques (SQLite en production, systèmes distribués, API stables) et deux talks sur l'humain (reconversion, certification).",
+  "keyTakeaways": [
+    "Le **composant Scheduler** (Symfony 6.3) planifie des messages via Messenger : un simple worker suffit, sans cron, avec une granularité à la seconde (keynote Potencier, d'après JoliCode).",
+    "Penser une **commande Console comme un contrôleur** : un callable avec attributs et autowiring, sans casser la promesse de rétrocompatibilité (Robin Chalas, d'après JoliCode).",
+    "Préférer une **state machine** à un workflow multi-états quand le cycle de vie le permet : plus simple à manipuler (REX Sézane, Florence Cauchy).",
+    "Hotwire/Turbo peut **réduire le code** : -30 % de lignes annoncé en migrant depuis React + GraphQL + API (Florent Destremau, Windoo), au prix d'une syntaxe parfois verbeuse.",
+    "Une API est un **contrat** : versionner, découpler le schéma exposé du schéma interne par des transformers plutôt que la sérialisation automatique, et ne pas générer la doc à partir du code (Titouan Galopin).",
+    "En système distribué, **tout finit par casser** : concevoir le mode dégradé (circuit breaker, réplication, partitionnement) dès le départ (Pascal Martin).",
+    "Mettre à jour souvent : **`composer update` chaque mois, mineures tous les 6 mois** (Nicolas Grekas, d'après JoliCode).",
+    "Les **génériques en PHP** passent par les annotations `@template` comprises par PHPStan et les IDE, à maintenir comme une source de vérité (Karim Pinchon).",
+    "**Monitorer aussi l'environnement de développement** : versions récentes, Docker plus rapide, cache des appels externes, mesures Blackfire ; un correctif a fait gagner 41 % par requête en dev chez un client (Bastien Jaillot, lightning talk, speaker)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-the-scheduler-component",
+      "day": "2023-03-23",
+      "type": "keynote",
+      "title": "Keynote : The Scheduler Component",
+      "speakers": ["Fabien Potencier — Symfony"],
+      "feedbackFrom": ["Blog JoliCode (Loïck Piera)", "Blog SensioLabs (Elise Hamimi)"],
+      "summary": "- Annonce du **nouveau composant Scheduler** pour Symfony 6.3, initialement proposé par Sergey Rabochiy (JoliCode).\n- *« Pas une ré-implémentation de Cron en PHP »* : le Scheduler s'appuie sur **Messenger**, un simple worker suffit, plus besoin de crontab (JoliCode).\n- Récurrences exprimées avec les formats `DateInterval` de PHP, **jusqu'à la seconde** là où Cron s'arrête à la minute ; Lock et Cache servent à répartir le travail entre workers (JoliCode).\n- Keynote mise en accès libre dans l'espace replay ; une version anglaise mise à jour a été ajoutée en juin 2023 (blog Symfony).",
+      "summarySources": ["blog", "program"],
+      "video": {
+        "url": "https://live.symfony.com/account/replay/video/807",
+        "title": "Keynote - Fabien Potencier (replay SymfonyLive)",
+        "transcript": false
+      }
+    },
+    {
+      "id": "reinventer-le-composant-console-de-symfony",
+      "day": "2023-03-23",
+      "type": "talk",
+      "title": "Réinventer le composant Console de Symfony",
+      "speakers": ["Robin Chalas — Les-Tilleuls.coop, Symfony Core Team"],
+      "feedbackFrom": ["Blog JoliCode"],
+      "summary": "- Console est le **composant Symfony le plus utilisé** (Composer, Drupal, Laravel, PHPStan…) : chaque changement, même un bug fix, peut casser des milliers d'usages.\n- Travail de refonte mené avec Théo Fidry et Kevin Bond (programme) : les commandes peuvent devenir de **simples classes PHP** grâce aux attributs PHP 8.\n- Proposition : une commande est un **callable**, avec attributs pour les options et autowiring des arguments. *« Une commande est au CLI ce qu'un Controller est à HTTP »* (JoliCode).\n- Le tout dans le respect de la **Backward Compatibility Promise**.",
+      "summarySources": ["blog", "program"],
+      "video": {
+        "url": "https://live.symfony.com/account/replay/video/815",
+        "transcript": false
+      }
+    },
+    {
+      "id": "bienvenue-dans-le-monde-merveilleux-des-systemes-distribues",
+      "day": "2023-03-23",
+      "type": "talk",
+      "title": "Bienvenue dans le monde merveilleux des systèmes distribués !",
+      "speakers": ["Pascal Martin — Bedrock"],
+      "feedbackFrom": ["Blog JoliCode"],
+      "summary": "- Avantages des systèmes distribués (**latence réduite, équipes autonomes**) et leur prix en complexité.\n- Tour des notions clés : circuit breaker, load balancer, **clock drift et clock skew**, réplication, partitionnement.\n- Message retenu : *« dans un environnement distribué, tout casse à un moment ou à un autre »* ; les applications doivent savoir **fonctionner en mode dégradé** (JoliCode).\n- Pas de slides publiées dans le dépôt officiel.",
+      "summarySources": ["blog", "program"],
+      "video": {
+        "url": "https://live.symfony.com/account/replay/video/817",
+        "transcript": false
+      }
+    },
+    {
+      "id": "il-etait-une-fois-le-composant-workflow",
+      "day": "2023-03-23",
+      "type": "talk",
+      "title": "Il était une fois le composant Workflow",
+      "speakers": ["Florence Cauchy — Sézane"],
+      "feedbackFrom": ["Blog JoliCode"],
+      "summary": "- REX Sézane sur le **cycle de vie du panier de commandes**.\n- Distinction **workflow** (plusieurs états simultanés) et **state machine** (un seul état à la fois).\n- L'équipe a commencé par un workflow complexe puis a **tout revu en state machine**, plus simple à manipuler.\n- Concepts couverts : MarkingStore, Guard, astuces de performance autour de l'événement `AnnounceEvent` (JoliCode).",
+      "summarySources": ["blog", "program"],
+      "video": {
+        "url": "https://live.symfony.com/account/replay/video/812",
+        "transcript": false
+      }
+    },
+    {
+      "id": "jongler-en-asynchrone-avec-symfony-httpclient",
+      "day": "2023-03-23",
+      "type": "talk",
+      "title": "Jongler en asynchrone avec Symfony HttpClient",
+      "speakers": ["Allison Guilhem — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Blog JoliCode"],
+      "summary": "- Rappel des bases de HttpClient, puis manipulation des **chunks** de réponse HTTP.\n- Usage de l'**`AsyncDecoratorTrait`**, outil méconnu du composant, pour combiner plusieurs appels simultanés et enrichir une réponse d'API **sans casser l'asynchronisme**.\n- Avantages, limites et différence avec une décoration au niveau de la requête ou de la réponse (programme).\n- Conclusion revisitant le monologue d'Otis (*Astérix et Obélix : Mission Cléopâtre*), saluée par JoliCode.",
+      "summarySources": ["blog", "program"],
+      "video": {
+        "url": "https://live.symfony.com/account/replay/video/809",
+        "transcript": false
+      }
+    },
+    {
+      "id": "sqlite-en-production-et-si-vous-reevaluiez-vos-options",
+      "day": "2023-03-23",
+      "type": "talk",
+      "title": "SQLite en production ? Et si vous réévaluiez vos options ?",
+      "speakers": ["Guillaume Loulier — SensioLabs"],
+      "feedbackFrom": ["Blog JoliCode", "Blog SensioLabs (employeur du speaker)"],
+      "summary": "- Point de départ assumé : mettre SQLite en production à la place de PostgreSQL *« nous semble être une hérésie »* ; le talk invite à **reconsidérer ce préjugé** (JoliCode).\n- Argument central : **pas de modèle client-serveur, donc pas d'appel réseau** ; solution serverless, résiliente et rapide, intégrée nativement à PHP (SensioLabs).\n- Chiffres cités : environ **150k lignes de code** contre plus de 600k pour Postgres et 2M pour MySQL ; plus de **10 milliards de lectures par jour** (JoliCode).\n- Limites : 5 types de données seulement, extension difficile (API en C), **pas de réplication native** ; pistes litestream et LiteFS (JoliCode).\n- Lecture critique (JoliCode) : SQLite ne remplacera jamais PostgreSQL, mais a sa place dans certains cas. Premier talk en présentiel du speaker (SensioLabs).",
+      "summarySources": ["blog", "program"],
+      "video": {
+        "url": "https://live.symfony.com/account/replay/video/811",
+        "transcript": false
+      }
+    },
+    {
+      "id": "symfony-et-hotwire-faire-un-front-interactif-sans-trop-d-efforts",
+      "day": "2023-03-23",
+      "type": "talk",
+      "title": "Symfony et Hotwire : faire un front interactif sans trop d'efforts",
+      "speakers": ["Florent Destremau — Windoo"],
+      "feedbackFrom": ["Blog JoliCode"],
+      "summary": "- Windoo utilise `symfony/ux-turbo` depuis début 2021 pour **remplacer progressivement son code React** (programme).\n- Présentation de Hotwire, socle de Symfony UX : **Turbo Frames, Turbo Streams** et Stimulus pour rendre une application interactive avec peu ou pas de JavaScript.\n- Chiffre avancé : **« -30 % de lignes de code »** en migrant depuis React + GraphQL + API (JoliCode).\n- Limites : syntaxe parfois verbeuse, écosystème centré sur Ruby on Rails, intégration difficile des bibliothèques dépendant de React.\n- Lecture critique (JoliCode) : les **Live Components** auraient pu simplifier certains exemples.",
+      "summarySources": ["blog", "program"],
+      "video": {
+        "url": "https://live.symfony.com/account/replay/video/816",
+        "transcript": false
+      }
+    },
+    {
+      "id": "lightning-talks",
+      "day": "2023-03-23",
+      "type": "lightning",
+      "title": "Lightning talks",
+      "speakers": ["Bastien Jaillot — JoliCode", "Antoine Bluchet (soyuka)", "Pascal Borreli", "Grégoire Pineau — JoliCode", "Mathieu (nom non précisé)"],
+      "feedbackFrom": ["Blog JoliCode", "Bastien Jaillot (speaker, transcript publié)"],
+      "summary": "- Cinq formats de 7 minutes (JoliCode) : créer un `DateTime` en réinitialisant l'heure (Mathieu) ; **dissocier le format des modèles de celui des entités** avec API Platform (Antoine Bluchet) ; **télétravail et frontière vie pro/perso** (Pascal Borreli) ; personnaliser le rendu des objets dans **VarDumper** (Grégoire Pineau).\n- **« Rendez-vous service et optimisez votre environnement de développement »** (Bastien Jaillot, speaker) : *« On monitore toujours la production. Mais qui monitore l'environnement de développement ? »*\n  - La performance du poste est un sujet de **Developer eXperience** qui vaut l'investissement : versions récentes de PHP/Symfony, Docker plus rapide sous macOS/Windows (Mutagen, VirtioFS, `symfony serve`), cache des appels HTTP externes, tests ciblés en ligne de commande, analyse statique.\n  - Une régression Symfony repérée en audit (PR #49679) a fait gagner **41 % par requête en dev** chez un client ; mesurer avec Blackfire pour repérer les régressions.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "du-social-a-la-tech-plaidoyer-en-faveur-des-profils-atypiques",
+      "day": "2023-03-24",
+      "type": "talk",
+      "title": "Du social à la tech : plaidoyer en faveur des profils atypiques",
+      "speakers": ["Magali Milbergue — freelance"],
+      "feedbackFrom": ["Blog JoliCode"],
+      "summary": "- Plaidoyer appuyé sur **trois ans de reconversion** du travail social vers le développement (programme).\n- Anecdotes concrètes sur des outils inadaptés (des chaises avec accoudoirs) et le manque de femmes dans certains milieux.\n- Les équipes homogènes ont des **« angles morts »** liés à leurs biais.\n- Argument central : les outils tech touchent des utilisateurs de plus en plus variés, **la tech doit s'ouvrir pour perdurer** (JoliCode).",
+      "summarySources": ["blog", "program"],
+      "video": {
+        "url": "https://live.symfony.com/account/replay/video/818",
+        "transcript": false
+      }
+    },
+    {
+      "id": "les-generiques-en-php",
+      "day": "2023-03-24",
+      "type": "talk",
+      "title": "Les génériques (en PHP)",
+      "speakers": ["Karim Pinchon"],
+      "feedbackFrom": ["Blog JoliCode"],
+      "summary": "- Les génériques n'existent pas en PHP et **n'y arriveront probablement jamais** (JoliCode).\n- Solution pratique : annotations **`@template`, `@extends`, `@implements`, `class-string`**, comprises par les IDE et PHPStan, **sans coût au runtime**, illustrées sur des composants Symfony.\n- Limite : ces annotations deviennent une **source de vérité à maintenir** en phase avec le code.\n- Exemples publiés sur GitHub (kpn13/generics-php).",
+      "summarySources": ["blog", "program"],
+      "video": {
+        "url": "https://live.symfony.com/account/replay/video/814",
+        "transcript": false
+      }
+    },
+    {
+      "id": "concevoir-son-api-pour-le-futur",
+      "day": "2023-03-24",
+      "type": "talk",
+      "title": "Concevoir son API pour le futur",
+      "speakers": ["Titouan Galopin — Citipo, Symfony Core Team"],
+      "feedbackFrom": ["Blog JoliCode"],
+      "summary": "- Une API est un **contrat entre utilisateurs aux calendriers différents** : la versionner, pas de BC break sans version majeure.\n- **Découpler le schéma interne du schéma exposé** avec des Input/Output Transformers plutôt que la sérialisation automatique ; bénéfice annexe : éviter les entités anémiques.\n- Open source de **selency/openapi**, générateur de documentation OpenAPI, car *« la documentation non plus ne doit pas se baser automatiquement sur le code »* (JoliCode).",
+      "summarySources": ["blog", "program"],
+      "video": {
+        "url": "https://live.symfony.com/account/replay/video/813",
+        "transcript": false
+      }
+    },
+    {
+      "id": "symfony-ux-sans-npm-ni-webpack-usetheplatform",
+      "day": "2023-03-24",
+      "type": "talk",
+      "title": "Symfony UX sans NPM ni WebPack ! #UseThePlatform",
+      "speakers": ["Kévin Dunglas — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Blog JoliCode"],
+      "summary": "- Constat (programme) : Symfony UX a ramené le HTML côté serveur, mais impose encore une **chaîne d'outils JS complète et complexe**.\n- Présentation d'un composant **ImportMaps** inspiré de Rails (PR symfony/symfony #48371) pour **se passer de Node, NPM et Webpack** : les modules JS sont exposés directement au navigateur et profitent du cache HTTP natif.\n- Limites relevées (JoliCode) : pas encore de support CSS, **ni TypeScript ni JSX**.\n- Verdict JoliCode : bonne alternative pour les applications simples, **pas pour les PWA**.",
+      "summarySources": ["blog", "program"],
+      "video": {
+        "url": "https://live.symfony.com/account/replay/video/810",
+        "transcript": false
+      }
+    },
+    {
+      "id": "les-tests-dans-une-application-symfony",
+      "day": "2023-03-24",
+      "type": "talk",
+      "title": "Les tests dans une application Symfony",
+      "speakers": ["Alexandre Salomé — Blackfire.io"],
+      "feedbackFrom": ["Blog JoliCode"],
+      "summary": "- Synthèse de **plus de 10 ans de tests automatisés** avec Symfony (programme) : suite maintenable, unitaire ou fonctionnel, services tiers, données de test.\n- Outils présentés : assertions riches, `MailerAssertionsTrait`, **mock du temps** via `@group time-sensitive`, `CommandTester`, bridge stimulus-testing.\n- Complément de la rédaction JoliCode : les outils **Zenstruck** de Kevin Bond.",
+      "summarySources": ["blog", "program"],
+      "video": {
+        "url": "https://live.symfony.com/account/replay/video/820",
+        "transcript": false
+      }
+    },
+    {
+      "id": "se-preparer-a-la-certification-symfony-et-au-dela",
+      "day": "2023-03-24",
+      "type": "talk",
+      "title": "Se préparer à la certification Symfony, et au-delà",
+      "speakers": ["Camille Jouan — Platform.sh"],
+      "feedbackFrom": ["Blog JoliCode"],
+      "summary": "- Retour personnel : **une feuille de route** plutôt que des recettes magiques (programme).\n- **Planifier son avancement** (Excel ou Trello) tout en restant flexible face aux imprévus.\n- Lire *The Fast Track* de Fabien Potencier et **pratiquer en codant** (JoliCode).\n- Méthode présentée comme transposable à **tout besoin d'auto-formation**.",
+      "summarySources": ["blog", "program"],
+      "video": {
+        "url": "https://live.symfony.com/account/replay/video/819",
+        "transcript": false
+      }
+    },
+    {
+      "id": "retour-sur-12-mois-d-innovations",
+      "day": "2023-03-24",
+      "type": "keynote",
+      "title": "Retour sur 12 mois d'innovations",
+      "speakers": ["Nicolas Grekas — Symfony Core Team"],
+      "feedbackFrom": ["Blog JoliCode"],
+      "summary": "- Keynote de clôture : 52 billets de blog, deux nouvelles versions en un an (programme).\n- Nouveautés listées : composants **Clock, Remote, Webhook, Scheduler, ImportMaps** ; nouveaux attributs pour les contrôleurs ; `WithHttpStatus` et `WithLogLevel` pour les exceptions ; travail sur la **laziness du conteneur** (JoliCode).\n- Rappel de la **rétrocompatibilité** et d'une hygiène de mise à jour : `composer update` tous les mois, versions mineures tous les 6 mois.",
+      "summarySources": ["blog", "program"],
+      "video": {
+        "url": "https://live.symfony.com/account/replay/video/808",
+        "transcript": false
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [],
+  "sources": [
+    { "label": "Programme officiel SymfonyLive Paris 2023", "url": "https://live.symfony.com/2023-paris/schedule" },
+    { "label": "Planning archivé (Wayback Machine)", "url": "https://web.archive.org/web/2023/https://live.symfony.com/2023-paris/schedule" },
+    { "label": "Dépôt des talks (slides, liens replay)", "url": "https://github.com/SymfonyLive/paris-2023-talks" },
+    { "label": "Blog Symfony : « SymfonyLive Paris 2023: the French Symfony conference was a blast last week! » (30 mars 2023)", "url": "https://symfony.com/blog/symfonylive-paris-2023-the-french-symfony-conference-was-a-blast-last-week" },
+    { "label": "JoliCode : « Notre retour sur le SymfonyLive Paris 2023 » (Loïck Piera, 27 mars 2023)", "url": "https://jolicode.com/blog/notre-retour-sur-le-symfonylive-paris-2023" },
+    { "label": "JoliCode : transcript du lightning talk de Bastien Jaillot", "url": "https://jolicode.com/blog/rendez-vous-service-et-optimisez-votre-environnement-de-developpement" },
+    { "label": "SensioLabs : « SymfonyLive Paris 2023: our summary of the conference » (Elise Hamimi, 4 avril 2023)", "url": "https://sensiolabs.com/blog/2023/symfonylive-paris-2023-our-summary-of-the-conference" },
+    { "label": "Vidéo « SymfonyLive Paris 2023 - best of » (YouTube Symfony, 29 mars 2023)", "url": "https://www.youtube.com/watch?v=k5I6q0OJIds" },
+    { "label": "Posts LinkedIn : aucun trouvé (recherches site:linkedin.com/posts sans résultat)" }
+  ]
 }

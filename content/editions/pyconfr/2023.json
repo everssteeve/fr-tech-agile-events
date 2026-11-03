@@ -7,7 +7,571 @@
   "city": "Talence",
   "venue": "Université de Bordeaux, bâtiment A22",
   "url": "https://www.pycon.fr/2023/",
+  "programUrl": "https://www.pycon.fr/2023/fr/schedule.html",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "Première PyConFR depuis 2019, gratuite et organisée par des bénévoles de l'AFPy : sprints les 16 et 17 février, conférences et ateliers les 18 et 19 février (4 salles de conférences, 2 salles d'atelier, une session de conférences éclair). Plafonds d'inscription : 200 personnes aux sprints, 1 000 aux conférences. Environ 400 participants selon l'AFPy et le rapport de transparence.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-03",
+  "revisit": "Passe du 03/11/2026 : aucun post LinkedIn trouvé, aucune vidéo transcrite (pas de sous-titres sur IndyMotion ni sur dl.afpy.org, pas de chaîne YouTube). Les retours sur le contenu viennent surtout des notes d'un seul participant, lui-même speaker. Reprendre avec des transcripts générés localement (Whisper) des vidéos clés et une recherche des comptes Twitter/X de l'époque.",
+  "corpus": "Programme officiel complet (calendrier ICS, descriptifs), 13 billets de notes en direct de Frédéric Zind (blog.freezed.me), une quinzaine de pouets Mastodon du 16 au 28 février 2023 (AFPy, Zeste de Savoir, jmny, TitiMoby, AmauryPi, Deuchnord, graham_knapp, myoan, asterkin), l'interview de Mia Bajić par Ataccama, le rapport de transparence du code de conduite et 4 fils Discourse de l'AFPy (vidéos, statistiques de parité).",
+  "limits": "Synthèse rédigée plus de trois ans après l'événement, sans transcript : les 67 vidéos d'IndyMotion n'ont pas de sous-titres. Les notes de Frédéric Zind, speaker de deux sessions, forment l'essentiel du corpus et ne couvrent que les salles où il était. Aucun post LinkedIn trouvé, Twitter/X non consultable, et la plupart des sessions ne sont connues que par leur descriptif.",
+  "tldr": "**Le retour de la PyConFR après trois ans sans édition** : environ 400 personnes à Bordeaux autour de **l'artisanat du code Python** (tests, documentation, qualité, sécurité de la chaîne d'approvisionnement) et d'une communauté qui soigne son accueil, mais dont le public reste à 9 % féminin.",
+  "keyTakeaways": [
+    "Documenter chaque test en **trois paragraphes** (prérequis, exécution, résultat attendu) dans la docstring, et le vérifier automatiquement avec flake8-test-docs (Andersson, notes de Frédéric Zind).",
+    "Contre le typosquatting : ne pas taper les noms de paquets à la main, passer par des fichiers de configuration, réserver les fautes de frappe probables de son propre paquet et utiliser des outils de scan (Kahan, notes de Frédéric Zind).",
+    "Face à un problème de performance web, **acheter du temps** en ajoutant des ressources, puis mesurer (cProfile et snakeviz, py-spy, yappi pour asyncio, tracemalloc, memray, OpenTelemetry), en sachant que la mesure modifie le comportement du système (Ptakhin, notes de Frédéric Zind).",
+    "Une documentation utile n'a pas besoin d'être complète : dire ce que l'on fait, pourquoi, et ce qui n'est pas dans le code ; écrire ce qu'on aurait aimé lire en commençant (Viau, notes de Frédéric Zind).",
+    "Avant de bâtir un outil interne sur mesure, regarder Django Admin : fieldsets, vues SQL non managées (`managed = False`), accès restreints par groupe (Clément, notes de Frédéric Zind).",
+    "Pour un code Python professionnel : PEP 8, noms tirés du métier sans abréviations, black, flake8 et mypy ; mypy en mode strict devient presque un autre langage, à évaluer avant de s'y engager (Dasse et Merejkowsky, notes de Frédéric Zind).",
+    "Ne pas attendre de miracle du Python sans GIL en calcul scientifique : les extensions C sont souvent déjà multithreadées (Ho, notes de Frédéric Zind).",
+    "Un site statique peut rejoindre le Fediverse : WebFinger pour la découverte et une outbox ActivityPub alimentée par le flux RSS (Tanghe, notes de Frédéric Zind)."
+  ],
+  "sessions": [
+    {
+      "id": "sprints",
+      "day": "2023-02-16",
+      "type": "other",
+      "title": "Sprints (16 et 17 février)",
+      "speakers": [
+        "Julien Palard",
+        "Pascal Chambon",
+        "Antoine Nguyen",
+        "Aurélien Péré",
+        "Nathan Trouvain",
+        "David Berenstein",
+        "Nicolas Ledez",
+        "Raphaël Forment",
+        "Michaël Scherer",
+        "Jean-Sébastien Suzanne",
+        "Florian Jacta"
+      ],
+      "feedbackFrom": [
+        "AFPy (pouet « Les esprits bouillonnent à la PyConFR ! »)"
+      ],
+      "summary": "- **Onze sprints** annoncés, de 10 h à 18 h les deux jours : traduction de docs.python.org (Palard), Witness Angel (Chambon), Modoboa v2, potentiel géothermique et SIG, ReservoirPy, Argilla, tests de l'API Kitsu de CGWire (Ledez), Sardine pour le live-coding musical, modules Ansible, AnyBlok 2.0.0, Taipy (programme).\n- Le programme insiste sur l'accueil des débutants et fournit espace, matériel et café.\n- Résumé tiré du programme : aucun bilan de sprint trouvé.",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "accueil-session-d-ouverture",
+      "day": "2023-02-18",
+      "type": "other",
+      "title": "Accueil, session d'ouverture",
+      "speakers": [
+        "Marc Debureaux — AFPy"
+      ],
+      "feedbackFrom": [
+        "Frédéric Zind (notes en direct)",
+        "Rapport de transparence du code de conduite"
+      ],
+      "summary": "- Le président de l'AFPy présente le **code de conduite et l'équipe de gestion des incidents** (trois personnes), d'après le rapport de transparence.\n- Notes de Frédéric Zind : diffusion en direct par Raffut sur PeerTube, tour des sponsors.\n- Pas de transcript : contenu détaillé non résumé.",
+      "summarySources": [
+        "feedback",
+        "blog"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/oNELa1J19gaics86hxTonK",
+        "title": "Ouverture PyConFR 2023 - Marc Debureaux",
+        "publishedAt": "2023-04-24",
+        "transcript": false
+      }
+    },
+    {
+      "id": "django-admin-comme-framework-pour-developper-des-outils-internes",
+      "day": "2023-02-18",
+      "type": "talk",
+      "title": "Django Admin comme framework pour développer des outils internes",
+      "speakers": [
+        "Romain Clément"
+      ],
+      "feedbackFrom": [
+        "Frédéric Zind (notes en direct)"
+      ],
+      "summary": "- Angle retenu par Frédéric Zind : **remplacer Excel par Django Admin** face à la prolifération de tableaux dans les services.\n- Objectifs : centraliser et uniformiser les données, calculer, contrôler les accès. Alternatives écartées : sur-mesure, low-code/no-code.\n- Astuces notées : fieldsets, vues agrégées en SQL pur non gérées par Django (`managed = False`), accès par groupe, route d'admin configurable.\n- Question laissée ouverte par le participant, parti avant la fin : quand préférer un client Django à Django Admin ?",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/3HP9UdwPybvC8CLaJXLE2i",
+        "title": "Romain Clément - Django Admin comme framework pour développer des outils internes",
+        "publishedAt": "2023-04-25",
+        "transcript": false
+      }
+    },
+    {
+      "id": "je-suis-nul-le",
+      "day": "2023-02-18",
+      "type": "talk",
+      "title": "Je suis nul·le !",
+      "speakers": [
+        "Guillaume Ayoub — CourtBouillon"
+      ],
+      "feedbackFrom": [
+        "Frédéric Zind (notes en direct)"
+      ],
+      "summary": "- Conférence sur le **syndrome de l'imposteur**, déroulée comme une litanie : chercher des financements pour un logiciel libre, *« ce que je fais ne sert à rien »*, aucune légitimité, diplômes insuffisants, code banal, une vie faite de lectures de tutos et de docs (notes de Frédéric Zind).\n- Le descriptif invite les personnes qui se reconnaissent à « venir l'aider » (programme).\n- Bémol du participant : *« présentation trop rapide »*. La « conclusion alternative » n'est pas détaillée dans ses notes.",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/kKFA25V4bNSUirH6SmKkY7",
+        "title": "Guillaume Ayoub - Je suis nul·le !",
+        "publishedAt": "2023-04-25",
+        "transcript": false
+      }
+    },
+    {
+      "id": "uncovering-python-s-surprises-a-deep-dive-into-gotchas",
+      "day": "2023-02-18",
+      "type": "talk",
+      "title": "Uncovering Python's surprises: a deep dive into gotchas",
+      "speakers": [
+        "Mia Bajić — Ataccama"
+      ],
+      "feedbackFrom": [
+        "Mia Bajić (speaker, interview Ataccama)",
+        "jmny (pouet de présence)"
+      ],
+      "summary": "- Les comportements contre-intuitifs de Python, expliqués sous le capot, pour tous niveaux (programme).\n- La speaker dit avoir choisi des pièges qui l'avaient surprise en apprenant le langage, pour *« highlight these Python gotchas and provide insights on how to avoid them »* (speaker).\n- Son regard sur l'événement : un public très varié, des débutants aux scientifiques, et la **barrière de la langue** ; certaines conférences annoncées en anglais ont été données en français, et son groupe a quitté la salle (speaker).\n- Ce qu'elle retient d'abord : les rencontres, *« the best part in the end »* (speaker).",
+      "summarySources": [
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/dy8du4pKjXE6umxcmAdLmT",
+        "title": "Mia Bajić - Uncovering Python's surprises: a deep dive into gotchas",
+        "publishedAt": "2023-03-24",
+        "transcript": false
+      }
+    },
+    {
+      "id": "faire-du-python-professionnel",
+      "day": "2023-02-18",
+      "type": "talk",
+      "title": "Faire du Python professionnel",
+      "speakers": [
+        "Éric Dasse — Arolla",
+        "Dimitri Merejkowsky — Arolla"
+      ],
+      "feedbackFrom": [
+        "Frédéric Zind (notes en direct)"
+      ],
+      "summary": "- Point de départ : la syntaxe simple de Python laisse beaucoup de liberté, pour le meilleur comme pour le pire. La bidouille *« juste marche »* mais complique la maintenance, empoisonne la collaboration et nourrit la dette (théorie de la vitre cassée).\n- Le **clean code** sert à clarifier l'intention, ajouter du code sans crainte et déboguer.\n- Conventions et recommandations : Zen of Python, PEP 8, f-strings, noms issus du métier sans abréviations, `if valeur` plutôt que `== True`, `startswith` plutôt que le slicing, compréhensions de liste sans excès.\n- Outils : black, flake8 (et ses plugins), mypy. Mise en garde : Python plus mypy en mode strict *« devient un autre langage »*, avec covariance et contravariance, mais il fait trouver des bugs.\n- Pas de vidéo publiée pour cette session (absente d'IndyMotion et de pyvideo).",
+      "summarySources": [
+        "blog",
+        "program"
+      ]
+    },
+    {
+      "id": "rejoignez-le-fediverse-ajoutez-activitypub-a-votre-site",
+      "day": "2023-02-18",
+      "type": "talk",
+      "title": "Rejoignez le Fediverse, ajoutez ActivityPub à votre site !",
+      "speakers": [
+        "Jérôme Tanghe (Deuchnord)"
+      ],
+      "feedbackFrom": [
+        "Frédéric Zind (notes en direct)",
+        "Zeste de Savoir (annonce Mastodon)",
+        "Deuchnord (speaker, Mastodon)"
+      ],
+      "summary": "- Contexte : le rachat de Twitter et l'arrivée massive sur Mastodon (programme). ActivityPub, basé sur REST et JSON-LD, n'est pas réservé aux réseaux sociaux (notes de Frédéric Zind).\n- Cas pratique : brancher le blog de l'AFPy au Fediverse, avec un compte `@actualites@afpy.org`, **WebFinger** pour la découverte et une outbox publique mise à jour depuis le flux RSS, ce qui marche aussi pour un site statique.\n- Ressources citées : spécification W3C (*« très lisible »*), doc Mastodon sur la signature des messages, fediverse.observer, le projet f2ap du speaker.\n- Avant le talk, le speaker décrivait un protocole qui *« encore aujourd'hui, me fait exploser le cerveau »* (speaker).",
+      "summarySources": [
+        "blog",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/uQyaajrE2TU8eGbNjED2o9",
+        "title": "Jérôme Tanghe - Rejoignez le Fediverse, ajoutez ActivityPub à votre site !",
+        "publishedAt": "2023-03-29",
+        "transcript": false
+      }
+    },
+    {
+      "id": "writing-great-test-documentation",
+      "day": "2023-02-18",
+      "type": "talk",
+      "title": "Writing Great Test Documentation",
+      "speakers": [
+        "David Andersson — Canonical"
+      ],
+      "feedbackFrom": [
+        "Frédéric Zind (notes en direct)"
+      ],
+      "summary": "- Pourquoi documenter ses tests : une démarche proche du TDD, qui **exprime l'intention avant le code** et aide les lecteurs futurs.\n- Structure proposée : une docstring en trois paragraphes nommés, prérequis, exécution, résultat attendu, avec indentation quand un paragraphe continue.\n- Automatisation avec flake8-test-docs, utilisé depuis plusieurs mois : il signale les docstrings et paragraphes manquants.\n- Le même speaker a aussi donné « Giving and receiving great feedback through PRs » le même jour (programme).",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/wpaDkJzENJ1vdQmn4pzTgQ",
+        "title": "David Andersson - Writing Great Test Documentation",
+        "publishedAt": "2023-04-04",
+        "transcript": false
+      }
+    },
+    {
+      "id": "devenir-incollable-sur-les-callables",
+      "day": "2023-02-18",
+      "type": "talk",
+      "title": "Devenir incollable sur les callables !",
+      "speakers": [
+        "Antoine Rozo (entwanne)"
+      ],
+      "feedbackFrom": [
+        "Zeste de Savoir (Mastodon)"
+      ],
+      "summary": "- Conférence d'une heure sur tout ce qui s'appelle en Python : fonctions, types, méthodes et objets particuliers, et ce qui se passe lors d'un appel (programme).\n- Abordés aussi : arguments et paramètres, positionnels ou nommés, signatures et décorateurs (programme).\n- Zeste de Savoir résume : il *« nous a expliqué tout ce qu'il y a à savoir sur les callables »*. Aucun retour plus détaillé trouvé.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/7ZN6k7KKG1wab3g9Fh8h1E",
+        "title": "Antoine Rozo - Devenir incollable sur les callables !",
+        "publishedAt": "2023-04-20",
+        "transcript": false
+      }
+    },
+    {
+      "id": "zfs-un-stockage-fiable-puissant-et-accessible",
+      "day": "2023-02-18",
+      "type": "talk",
+      "title": "ZFS : un stockage fiable, puissant et accessible",
+      "speakers": [
+        "Frédéric Zind (Fred)"
+      ],
+      "feedbackFrom": [
+        "TitiMoby (Mastodon)",
+        "Frédéric Zind (speaker, billet et dépôt des supports)"
+      ],
+      "summary": "- ZFS, né chez Sun Microsystems au début des années 2000 et développé aujourd'hui par OpenZFS pour Linux et FreeBSD, présenté comme **plus qu'un système de fichiers** (programme).\n- But affiché : donner envie de l'essayer (programme). TitiMoby y voit une introduction aux concepts et aux cas d'usage.\n- Le speaker publie ses supports dans un dépôt GitLab, sous un titre de billet qui se présente comme les histoires *« d'un admin stockage perfectionniste sous pression »* (speaker).",
+      "summarySources": [
+        "program",
+        "feedback",
+        "slides"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/j3C47dzkfT9bBhY11CzHzG",
+        "title": "Frédéric Zind - ZFS: un stockage fiable, puissant et accessible",
+        "publishedAt": "2023-04-04",
+        "transcript": false
+      }
+    },
+    {
+      "id": "cloture-du-samedi",
+      "day": "2023-02-18",
+      "type": "other",
+      "title": "Clôture du samedi",
+      "speakers": [
+        "Marc Debureaux — AFPy"
+      ],
+      "feedbackFrom": [
+        "Frédéric Zind (notes en direct)"
+      ],
+      "summary": "- Les tours de cou sont récupérés en fin d'événement pour être lavés et réutilisés.\n- Appels aux volontaires pour rejoindre l'association, aux **futurs lieux d'accueil** des prochaines éditions et aux rassemblements locaux.\n- L'AFPy revendique 400 membres. Annonce d'EuroPython à Prague du 17 au 21 juillet, payante mais avec bourses, appel à propositions jusqu'au 6 mars.\n- Source : notes de Frédéric Zind, sans transcript.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/hRC4xvR8uZCo9gCrN5x4Ch",
+        "title": "Clôture du samedi PyConFR 2023 - Marc Debureaux",
+        "publishedAt": "2023-04-24",
+        "transcript": false
+      }
+    },
+    {
+      "id": "assemblee-generale-de-l-afpy",
+      "day": "2023-02-19",
+      "type": "other",
+      "title": "Assemblée générale de l'AFPy",
+      "speakers": [
+        "Marc Debureaux — AFPy"
+      ],
+      "feedbackFrom": [
+        "Frédéric Zind (notes en direct)"
+      ],
+      "summary": "- Bilan moral : **reprise de la PyConFR après deux ans d'arrêt**, sans problème majeur. La piste de Strasbourg n'a pas pu se concrétiser, à cause de travaux menés pendant le Covid.\n- Partenariat informel à développer avec l'EuroPython Society.\n- Bilan financier : 2022 année blanche, fonds de roulement de 1 210 €, plus de serveur à payer grâce au sponsoring de Gandi. Les notes donnent un bilan provisoire de la PyConFR **excédentaire d'environ 30 k€**, à confirmer dans les comptes publics.\n- Comparaison avec 2019 (environ 40 k€) : hausse générale des tarifs. Prestations non retenues en 2023, dont la transcription des vidéos.\n- Modification des statuts après une invalidation par la préfecture. Lucie Anglade devient présidente. Chaque vote compte 2 abstentions selon les notes.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/1rynCuJvmRswbP2KLgtuop",
+        "title": "Assemblée Générale de l'AFPy 2023",
+        "publishedAt": "2023-04-24",
+        "transcript": false
+      }
+    },
+    {
+      "id": "accessibilite-numerique-faire-sa-part-quand-on-est-developpeur-euse-backend",
+      "day": "2023-02-19",
+      "type": "talk",
+      "title": "Accessibilité numérique : faire sa part quand on est développeur·euse backend",
+      "speakers": [
+        "Amaury Carrade"
+      ],
+      "feedbackFrom": [
+        "Deuchnord (Mastodon)",
+        "Zeste de Savoir (annonce Mastodon)"
+      ],
+      "summary": "- Thèse : l'accessibilité n'est pas qu'une affaire de front-end ou de designers, elle concerne **tous les niveaux, serveurs compris** (programme).\n- Zeste de Savoir la présente comme une considération à garder tout au long de la chaîne.\n- Deuchnord retient surtout la mise en scène : un fond d'écran de David Revoy sur fond de musique de Minecraft en interlude.\n- Aucun retour sur le fond trouvé : contenu détaillé à lire sur la vidéo.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/7AeZiB194BKqowSdyqrBo4",
+        "title": "Amaury Carrade - Accessibilité numérique : faire sa part quand on est développeur·euse backend",
+        "publishedAt": "2023-03-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "trying-no-gil-on-scientific-programming",
+      "day": "2023-02-19",
+      "type": "talk",
+      "title": "Trying no GIL on scientific programming",
+      "speakers": [
+        "Cheuk Ting Ho"
+      ],
+      "feedbackFrom": [
+        "Frédéric Zind (notes en direct)"
+      ],
+      "summary": "- Le GIL ne laisse qu'un thread exécuter du Python à la fois ; quatre tentatives de suppression ont précédé celle de Sam Gross, un fork de CPython 3.9 (programme, notes).\n- Défis techniques notés : comptage de références biaisé, objets immortels, comptage différé, petits verrous pour `dict` et `list`, remplacement de pymalloc par mimalloc.\n- Résultat des essais de la speaker (scikit-learn, pandas) : **pas vraiment plus rapide** dans la plupart des expériences.\n- Explications avancées : les extensions C font déjà du multithread, certaines supposent la présence du GIL, et les tests n'ont tourné que sur deux cœurs. Le code est publié (Cheukting/test-nogil).",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/cy7DSqqAVNhemSZ4vhzWzR",
+        "title": "Cheuk Ting Ho - Trying no GIL on scientific programming",
+        "publishedAt": "2023-03-24",
+        "transcript": false
+      }
+    },
+    {
+      "id": "reinventer-le-tour-du-monde-en-beaucoup-moins-de-80-jours",
+      "day": "2023-02-19",
+      "type": "talk",
+      "title": "Réinventer le tour du monde en (beaucoup) moins de 80 jours",
+      "speakers": [
+        "Bérengère Mathieu"
+      ],
+      "feedbackFrom": [
+        "jmny (Mastodon)"
+      ],
+      "summary": "- Homem, une application web open source pour **redécouvrir Jules Verne avec l'IA** : ouvrir une page au hasard, la comprendre, retrouver le parcours des personnages, retranscrire l'ambiance (programme).\n- Le projet croise analyse d'images, recherche, compréhension du langage et génération de contenu (programme).\n- Retour participant : un *« super cas pratique mixant réseau de neurones, OCR, algo old school, ChatGPT »* (jmny).\n- La même speaker animait aussi l'atelier « Le réseau de neurones qui écrivait des romans » et une conférence sur l'OCR la veille (programme).",
+      "summarySources": [
+        "program",
+        "feedback"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/bZRkZx8DFnTRXZLctHv24z",
+        "title": "Bérengère Mathieu - Réinventer le tour du monde en (beaucoup) moins de 80 jours",
+        "publishedAt": "2023-04-04",
+        "transcript": false
+      }
+    },
+    {
+      "id": "fixed-bugs-n-est-peut-etre-pas-le-meilleur-message-de-commit",
+      "day": "2023-02-19",
+      "type": "talk",
+      "title": "« Fixed bugs » n'est peut-être pas le meilleur message de commit",
+      "speakers": [
+        "Raphaël Gomès"
+      ],
+      "feedbackFrom": [
+        "myoan (Mastodon, attribution probable)"
+      ],
+      "summary": "- Plaidoyer pour un **historique de versions propre** : petits commits, messages explicites, possibilité de répondre à « qui a introduit cette ligne et pourquoi ? », quel que soit l'outil (programme).\n- Une semaine après, myoan se souvient d'un speaker de la PyConFR qui parlait de *« commit-oriented development »* ; le pouet ne nomme pas le talk, l'attribution reste une déduction.\n- Pas de transcript : contenu détaillé à lire sur la vidéo.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/iFJthhnVyNfjNZ2cLfAQSK",
+        "title": "Raphaël Gomès - Fixed bugs n'est peut-être pas le meilleur message de commit",
+        "publishedAt": "2023-03-24",
+        "transcript": false
+      }
+    },
+    {
+      "id": "documentation-logiciel-libre-et-perennite-en-arts-numeriques",
+      "day": "2023-02-19",
+      "type": "talk",
+      "title": "Documentation, logiciel libre et pérennité en arts numériques",
+      "speakers": [
+        "Édith Viau — Metalab, Société des arts technologiques (Montréal)"
+      ],
+      "feedbackFrom": [
+        "Frédéric Zind (notes en direct)"
+      ],
+      "summary": "- Responsable de la documentation au Metalab de la SAT et contributrice à la traduction de Python, la speaker part de la **conservation des œuvres numériques** (programme, notes).\n- Principe : une doc **utile sans être complète**, qui dit ce que l'on fait, pourquoi, et ce qui n'est pas dans le code (la carte et le territoire). Écrire d'abord ce qu'on aurait aimé lire en commençant.\n- Exemple Splash : minimiser les prérequis en calibrant sur un coin de mur, que tout le monde a, plutôt qu'un cube, avec un modèle 3D fourni dans la doc. Exemple LivePose : documenter les liens avec d'autres outils.\n- Références citées : Diátaxis, Write the Docs, la doc de Blender, Rafael Lozano-Hemmer sur la conservation des arts médiatiques.\n- En questions : pas de test qui bloque une mise à jour sans doc, mais le sujet est discuté dans la communauté Read the Docs.",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/o2drPQH2YueZJkGExtEymW",
+        "title": "Edith Viau - Documentation, logiciel libre et pérennité en arts numériques",
+        "publishedAt": "2023-04-04",
+        "transcript": false
+      }
+    },
+    {
+      "id": "python-web-performance-101-uncovering-the-root-causes",
+      "day": "2023-02-19",
+      "type": "talk",
+      "title": "Python web performance 101: uncovering the root causes",
+      "speakers": [
+        "Alex Ptakhin"
+      ],
+      "feedbackFrom": [
+        "Frédéric Zind (notes en direct)"
+      ],
+      "summary": "- Problèmes de RAM, CPU et IO sur des systèmes monolithiques ou distribués, et méthodes pour remonter aux causes (programme).\n- Première parade notée : **ajouter du matériel pour gagner du temps** de débogage.\n- Outils : `time.perf_counter`, cProfile et snakeviz, py-spy, yappi pour asyncio, `sys.getsizeof`, tracemalloc, memory-profiler (qui demande de modifier le code), memray (*« prometteur »*), traçage avec OpenTelemetry.\n- À retenir selon les notes : surveiller les erreurs applicatives, se méfier de la mesure qui change le comportement, et *« pure Python is not about the performance »*. Supports publiés sur GitHub.",
+      "summarySources": [
+        "blog",
+        "program",
+        "slides"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/bJytAHj2sab5ENhj771Wq7",
+        "title": "Alex Ptakhin - Python web performance 101 uncovering the root causes",
+        "publishedAt": "2023-03-30",
+        "transcript": false
+      }
+    },
+    {
+      "id": "pip-install-malware",
+      "day": "2023-02-19",
+      "type": "talk",
+      "title": "pip install malware",
+      "speakers": [
+        "Max Kahan"
+      ],
+      "feedbackFrom": [
+        "Frédéric Zind (notes en direct)",
+        "AmauryPi (Mastodon)"
+      ],
+      "summary": "- Démo en direct : le speaker fabrique un malware et infecte sa propre machine pendant le talk (programme). Il précise que ce n'est *« not a security talk »* (notes de Frédéric Zind).\n- **Les développeurs sont désormais une cible** : typosquatting (variantes de `requests` comme `rrequests`), dépôts repris par un mainteneur malveillant, starjacking qui simule la popularité sur GitHub.\n- Ordre de grandeur cité : environ 3 % des paquets de PyPI seraient du typosquatting (programme, notes). Le paquet de démo, `not-the-vonage-python-sdk`, est à ne pas installer.\n- Parades : anticiper les fautes de frappe sur son propre paquet, ne pas taper les noms à la main mais passer par des fichiers de configuration, utiliser des outils de scan.\n- AmauryPi, en direct : *« rien que le style vaut le détour »*.",
+      "summarySources": [
+        "blog",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "url": "https://indymotion.fr/w/emm8R7vgGaVnqsrpPqqHe9",
+        "title": "Max Kahan - Pip install malware",
+        "publishedAt": "2023-03-29",
+        "transcript": false
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "NucliaDB, une base de données pour le machine learning et les données non-structurées (Éric Bréhault)",
+    "Driving down the Memray lane - Profiling your data science work (Cheuk Ting Ho)",
+    "Un membre très discret de la famille Jupyter mais pourtant si utile ! (Pierre-Loic Bayart)",
+    "Lutter contre le dérèglement climatique avec Django (Sébastien Corbin)",
+    "OCR : apprenez à extraire la substantifique moelle de vos documents scannés (Bérengère Mathieu)",
+    "CoWorks, a compositional microservices framework (Guillaume Doumenc)",
+    "Développement VRAIMENT cross-platform avec Python (Pascal Chambon)",
+    "Portage Python sur WebAssembly (Paul Peny, François Gutherz)",
+    "sphinx-lint : un linter pour ta doc (Julien Palard)",
+    "Continuous performance analysis for Python (Arthur Pastel)",
+    "Contribuer à l'open source sur des projets Python… sans coder (Anne-Laure Gaillard)",
+    "Fear the mutants. Love the mutants. (Max Kahan)",
+    "À la découverte de Polars (Olivier Hervieu)",
+    "PyScript for data science (Sophia Yang)",
+    "Python moderne et fonctionnel pour des logiciels robustes (Guillaume Desforges)",
+    "Déployer du backend en 2023 (Nicolas Ledez)",
+    "Domain-driven design: what can Python do for you? (David Kremer)",
+    "Supercharging Jupyter notebooks for effective storytelling (Jo-Fai Chow)",
+    "Monorepo Python avec environnements de développement reproductibles et CI scalable (Clément Hurlin)",
+    "Une bonne quantité de Python peut-elle rendre Firefox moins vulnérable aux supply chain attacks ? (Johan Lorenzo)",
+    "Giving and receiving great feedback through PRs (David Andersson)",
+    "Apprendre Python, c'est pour tout le monde en 2023 ! (Thierry Chantier)",
+    "Apprentissage statistique adapté aux données sales avec dirty-cat (Jovan Stojanovic)",
+    "On a testé pour vous... méthodologie, outils (Nicolas Ledez)",
+    "Introduction to Sigstore: cryptographic signatures made easier (Maya Costantini)",
+    "Traitement de données géographiques avec Rasterio, NumPy, Fiona et Shapely (Arnaud Morvan)",
+    "REX analyse antivirus des fichiers de la plateforme emplois de l'inclusion (François Freitag)",
+    "Cerveau, Biomarqueurs et Deep Learning (Facundo Calcagno)",
+    "Apport du langage Python dans un service de recherche hospitalière (Clément Benoist)",
+    "Où il est question de gaufre et d'internet (Mindiell)",
+    "From a Python script to an open-source project (non publiée en vidéo)",
+    "J'ai hacké ma chaudière pour avoir un thermostat ! (Pierre Verkest)",
+    "Psycopg, troisième du nom (Denis Laxalde)",
+    "Interactive HoloViz Visualization and Dashboards (Sophia Yang)",
+    "Geographic visualization using Streamlit (Mickaël Carlos)",
+    "Transformez vos algorithmes de données/IA en applications web avec Taipy (Florian Jacta, Vincent Gosselin)",
+    "Cloud infrastructure from Python code: how far could we go? (Asher Sterkin, slides annoncées sur Mastodon)",
+    "Monitorez vos applications Python (Lionel Porcheron)",
+    "Nua, un PaaS open source en Python pour l'auto-hébergement (Jérôme Dumonteil)",
+    "Introduction à DevOps (le vrai) (Nicolas Ledez)",
+    "The power of AWS Chalice for quick serverless API development (Namrata Kankaria)",
+    "Interactive web pages with Django or Flask, without writing JavaScript (Coen de Groot)",
+    "GEMSEO : une bibliothèque pour l'optimisation multi-disciplinaire (Jean-Christophe Giret)",
+    "Garder le contrôle de ses données géolocalisées avant de les partager (Frédéric Zind)",
+    "Conférences éclair (Emmanuel Leblond, Romain Clément, Nicolas Ledez, Julien Palard, Pascal Chambon, Raphaël Vinot, Frédéric Placin, Erik Welch)",
+    "Ateliers : Taipy (Florian Jacta), PDF avec HTML et CSS (Lucie Anglade), module Tryton (Jean-Sébastien Suzanne), initiation à Django (Mauranne Lagneau, Pierre Charlet), Zen de Python et jeux vidéo (Thomas Iwaszko), réseau de neurones romancier (Bérengère Mathieu, Cécile Hannotte)",
+    "Clôture du dimanche (Marc Debureaux)"
+  ],
+  "sources": [
+    {
+      "label": "Site officiel PyConFR 2023",
+      "url": "https://www.pycon.fr/2023/"
+    },
+    {
+      "label": "Programme et calendrier",
+      "url": "https://www.pycon.fr/2023/fr/schedule.html"
+    },
+    {
+      "label": "Vidéos sur PeerTube (chaîne pyconfr2023 sur IndyMotion, captation Raffut)",
+      "url": "https://indymotion.fr/c/pyconfr2023/videos"
+    },
+    {
+      "label": "Vidéos indexées sur pyvideo.org",
+      "url": "https://pyvideo.org/events/pycon-fr-2023.html"
+    },
+    {
+      "label": "Fichiers vidéo bruts de l'AFPy",
+      "url": "https://dl.afpy.org/pycon-fr-23/"
+    },
+    {
+      "label": "Blog de Frédéric Zind : notes en direct de 13 sessions (tag pyconfr)",
+      "url": "https://blog.freezed.me/tags/pyconfr/"
+    },
+    {
+      "label": "Interview de Mia Bajić (Ataccama)",
+      "url": "https://jobs.ataccama.com/blog/mia-bajic-at-pycon-bordeaux"
+    },
+    {
+      "label": "Rapport de transparence du code de conduite (Discourse AFPy)",
+      "url": "https://discuss.afpy.org/t/rapport-de-transparence-de-la-pyconfr-2023/1529"
+    },
+    {
+      "label": "Discourse AFPy : mise à disposition des vidéos",
+      "url": "https://discuss.afpy.org/t/mise-a-disposition-des-videos-pyconfr-2023/1386"
+    },
+    {
+      "label": "Discourse AFPy : statistiques de parité des PyConFR (Mindiell)",
+      "url": "https://discuss.afpy.org/t/statistiques-sur-les-pyconfr/1523"
+    },
+    {
+      "label": "Bilan AFPy sur Mastodon (400 participants)",
+      "url": "https://mamot.fr/@AFPy/109902933902190870"
+    },
+    {
+      "label": "Pouets Mastodon lus : AFPy, Zeste de Savoir, jmny, TitiMoby, AmauryPi, Deuchnord, graham_knapp, myoan, asterkin (16 au 28 février 2023)"
+    },
+    {
+      "label": "LinuxFr : programme de la PyConFR 23",
+      "url": "https://linuxfr.org/news/programme-de-la-pyconfr-23"
+    }
+  ]
 }

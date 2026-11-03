@@ -6,8 +6,343 @@
   "start": "2023-01-25",
   "end": "2023-01-27",
   "city": "Grenoble",
+  "venue": "World Trade Center Grenoble",
   "url": "https://snowcamp2023.sched.com/",
+  "programUrl": "https://snowcamp2023.sched.com/list/descriptions/",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "7ᵉ édition, du 25 au 27 janvier 2023 au WTC Grenoble (programme sched : universités de 3 h le mercredi 25, conférences les jeudi 26 et vendredi 27). Grenoble Alpes Tourisme annonce l'événement jusqu'au 28 janvier, ce qui correspond à la journée « unconference » à la montagne du samedi, hors programme. Programme : 10 universités, 2 keynotes et 40 talks de 45 min sur 4 salles, répartis en tracks Backend, Frontend, Cloud & DevOps, Language / Architecture & Paradigms et Off-road. Environ 600 participants et billetterie épuisée « en une minute » selon Criteo. Aucune captation officielle trouvée.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-03",
+  "revisit": "aucun post LinkedIn de participant lu (aucun résultat indexé en recherche) ; corpus participant limité à l'article du sponsor Criteo (8 salariés cités, en quelques lignes chacun)",
+  "corpus": "Un seul compte-rendu de participants : « Highlights from SnowCamp 2023 » de Criteo Tech (Medium, 03/02/2023, sponsor), qui cite huit salariés sur cinq talks. S'y ajoutent le programme sched, la page des supports de sessions (GitHub snowcamp), les slides du talk Platform Engineering, et deux transcripts de captations des mêmes talks faites à DevFest Nantes 2022 et au Forum PHP 2022.",
+  "limits": "Les sessions n'ont pas été filmées à Grenoble ; les transcripts viennent de versions données deux à trois mois plus tôt ailleurs, dont une en solo alors que le talk Snowcamp était en duo. Tous les retours lus viennent de salariés d'un même sponsor, sans critique ; aucun post LinkedIn, aucun billet de speaker ni aucun autre blog n'a été trouvé. 37 des 52 sessions, dont 9 des 10 universités, restent sans aucun contenu exploité, et 9 des 15 sessions retenues ne sont décrites que par le programme ou des slides.",
+  "tldr": "**Une 7ᵉ édition complète en une minute, où les retours lus (tous Criteo) retiennent surtout des outils à essayer tout de suite (Playwright, Remotion) et des pratiques de conception (DDD stratégique, railway programming)**, tandis que l'IA reste un sujet parmi d'autres, abordé par la vision par ordinateur, l'accessibilité et la génération d'images.",
+  "keyTakeaways": [
+    "Évaluer Playwright pour les tests end-to-end : parallélisation native, API lisible, génération de code par sélection dans l'interface, snapshots du DOM à chaque étape et traces exportables depuis la CI pour déboguer en local (Xavier Dupessey, Line Pouvaret, Valerian Gonnot).",
+    "Pour générer des vidéos à partir de données ou de templates, Remotion permet de les écrire en composants React, sans être expert React (Luiza Cicone, Olivier Chirouze).",
+    "Rendre explicites erreurs et absences de valeur avec des types `Option<>` / `Result<>` et les composer en railway programming, même dans une stack C# existante (Alexis Klam).",
+    "Entrer dans le DDD par le design stratégique (langage, sous-domaines, bounded contexts, event storming) avant les patterns tactiques, et concentrer l'effort de conception sur le cœur de métier (Chevalier, transcript ; Vincent Michau).",
+    "Se préparer dès maintenant à la cryptographie post-quantique : le NIST a retenu Kyber, Dilithium, Falcon et Sphincs+ pour remplacer RSA / DSA à terme (Malvault, via Brice Laurencin).",
+    "En revue de code, préfixer les commentaires (suggestion, nitpick, question, issue, praise) et indiquer s'ils sont bloquants, pour lever les ambiguïtés de ton (De Boissieu, transcript).",
+    "Construire une plateforme interne en self-service sur Kubernetes, avec des pipelines en pull (GitOps) et des contrôleurs pour gérer infrastructure et applications dans un même flux (Jacques et Gil, slides)."
+  ],
+  "sessions": [
+    {
+      "id": "le-numerique-c-est-pour-tout-le-monde-ou-pas",
+      "day": "2023-01-26",
+      "type": "keynote",
+      "title": "Le numérique c'est pour tout le monde… ou pas !",
+      "speakers": [
+        "Cécile Freyd-Foucault — OCTO Technology",
+        "Iris Naudin — OCTO Technology"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Keynote d'ouverture du jeudi, décrite d'après le seul programme ; aucun retour, support ni captation trouvés.\n- Point de départ annoncé : *« saviez-vous que 66% des utilisateurs sont exclus de vos dispositifs ? »* (chiffre du programme, source non précisée).\n- Tour d'horizon **anti-exclusion** en quatre angles : accessibilité, technique (zones sans réseau, sites qui mettent plus de 25 secondes à charger sur une mauvaise connexion), complexité et contenu, illustré par des démarches administratives en ligne que des proches ne peuvent pas faire seuls.",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "ressuscitons-les-ordinosaures",
+      "day": "2023-01-27",
+      "type": "keynote",
+      "title": "Ressuscitons les ordinosaures !",
+      "speakers": [
+        "Olivier Poncet — Hawkswell"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Keynote du vendredi, décrite d'après le seul programme ; aucun retour ni captation trouvés.\n- Thèse : la virtualisation et les conteneurs d'aujourd'hui descendent de l'**émulation de matériel**, popularisée à la fin des années 1990 par le rétro-computing pour faire revivre les machines des années 1970 et 1980 et **sauvegarder ce patrimoine**.\n- Contenu annoncé : comment on écrit un émulateur, du reverse-engineering à la simulation de matériel, à partir de son projet d'émulateur d'Amstrad CPC, « XCPC ».",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "playwright-l-outil-qui-va-revolutionner-les-tests-end-to-end",
+      "day": "2023-01-26",
+      "type": "talk",
+      "title": "Playwright : l'outil qui va révolutionner les tests end-to-end",
+      "speakers": [
+        "Jean-François Greffier — Conserto"
+      ],
+      "feedbackFrom": [
+        "Xavier Dupessey (blog Criteo)",
+        "Line Pouvaret (blog Criteo)",
+        "Valerian Gonnot (blog Criteo)"
+      ],
+      "summary": "- Le programme part des freins habituels aux tests end-to-end (*« Trop dur à mettre en place »*, *« Tests difficiles à maintenir »*) et propose live coding et démos sur Playwright, outil de Microsoft : robustesse, performances, limites, outillage et débogage après coup.\n- **Talk le plus commenté du corpus** (trois salariés de Criteo). Xavier Dupessey retient l'**exécution parallèle native**, l'API lisible et la possibilité d'**exporter l'exécution d'un test** pour rejouer en local un échec de la CI.\n- Line Pouvaret compte étudier son usage chez Criteo. Elle rapporte un temps d'exécution **23 % plus rapide que Cypress** (chiffre présenté dans le talk) et cite le **CodeGen**, qui génère le code du test en sélectionnant les éléments dans l'interface, et l'outil de débogage qui prend un snapshot du DOM à chaque étape.\n- Pour Valerian Gonnot, Playwright *« is overtaking the great Cypress »* et mérite d'être essayé.\n- Le même duel figurait déjà la veille en université (« Mission: Playwright, le Cypress killer by Microsoft », Mathieu Mure, Zenika), sans retour publié.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ]
+    },
+    {
+      "id": "remotion-le-7eme-art-a-portee-de-composants-web-et-d-api",
+      "day": "2023-01-27",
+      "type": "talk",
+      "title": "Remotion : le 7ème art à portée de composants web et d'API",
+      "speakers": [
+        "Antoine Caron — Bedrock Streaming",
+        "Mickaël Alves — Zenika"
+      ],
+      "feedbackFrom": [
+        "Luiza Cicone (blog Criteo)",
+        "Olivier Chirouze (blog Criteo)"
+      ],
+      "summary": "- Remotion, bibliothèque open source de 2019, génère gifs, animations et vidéos **à partir de composants React**. Les speakers racontent la création de bandes-annonces pour les plateformes de streaming de Bedrock, en recréant des génériques télé du début des années 2000 (programme).\n- Luiza Cicone (Criteo, équipe Video & CTV) venait chercher des pistes pour son équipe : elle découvre un outil qui **ne demande pas beaucoup d'expérience React** et salue une présentation *« excellent »*, bien dosée entre information et démo, portée par un duo qui se renvoyait la parole.\n- Olivier Chirouze y voit une ouverture pour les développeurs web : animations alimentées par des **données en direct**, vidéos à partir de templates ou d'API.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ]
+    },
+    {
+      "id": "cryptographie-post-quantique",
+      "day": "2023-01-27",
+      "type": "talk",
+      "title": "Cryptographie post-quantique : pourquoi et comment va-t-on remplacer nos algos d'aujourd'hui ?",
+      "speakers": [
+        "Willy Malvault — Sogilis"
+      ],
+      "feedbackFrom": [
+        "Brice Laurencin (blog Criteo)",
+        "Eduardo Grajeda (blog Criteo)"
+      ],
+      "summary": "- Vulgarisation du track Off-road : RSA, né en 1977 et omniprésent via HTTPS, est menacé par l'**algorithme de Shor** sur ordinateur quantique ; le NIST a lancé en 2016 un concours pour le remplacer, dont les lauréats ont été annoncés le 5 juillet 2022 (programme).\n- Brice Laurencin résume : **Kyber, Dilithium, Falcon et Sphincs+** sont retenus, le speaker a vulgarisé le chiffrement à base de **réseaux euclidiens** (lattices), et RSA / DSA *« are not at risk today »* mais deviendront inutiles le jour où un ordinateur quantique saura les casser : *« it's time to look into the future of crypto »*.\n- Eduardo Grajeda, plus franc : *« I didn't understand most of it »*, mais le talk donnait beaucoup de références pour approfondir un sujet appelé à compter.\n- Le blog Criteo en fait l'exemple type de sujet découvert en conférence, hors du quotidien.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ]
+    },
+    {
+      "id": "railway-programming-la-voie-vers-un-code-plus-honnete",
+      "day": "2023-01-27",
+      "type": "talk",
+      "title": "Railway Programming : la voie vers un code plus honnête",
+      "speakers": [
+        "Romain Berthon — freelance",
+        "Sylvain Coudert — freelance"
+      ],
+      "feedbackFrom": [
+        "Alexis Klam (blog Criteo)"
+      ],
+      "summary": "- Constat du programme : le code contient beaucoup d'**informations implicites** (erreurs, exceptions, nullables) qui demandent une connaissance poussée de la base de code et augmentent la charge cognitive.\n- Démarche annoncée : les rendre explicites par le système de types (`Option<>`, `Result<>`), faire le parallèle avec la composition des listes (`map`, `flatMap`), puis transposer au **railway programming**, exemples en C# et F#. Les speakers précisent que ce n'est *« pas une silver bullet »*.\n- Alexis Klam (Criteo) y voit un moyen d'éviter beaucoup d'erreurs et de garder un code explicite, et pour Criteo une façon d'obtenir **certains avantages de Rust en restant sur la stack C#**.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ]
+    },
+    {
+      "id": "bien-se-lancer-dans-le-domain-driven-design",
+      "day": "2023-01-26",
+      "type": "talk",
+      "title": "Bien se lancer dans le Domain Driven Design sans se tromper de combat",
+      "speakers": [
+        "Josian Chevalier — Shodo"
+      ],
+      "feedbackFrom": [
+        "Vincent Michau (blog Criteo)"
+      ],
+      "summary": "- Contenu décrit d'après la captation du même talk à DevFest Nantes (vidéo jAl3c_zo71w, novembre 2022), référencée sur la page des supports Snowcamp ; la version grenobloise a pu évoluer.\n- Fil rouge : le simulateur d'un canon pour atteindre la Lune (d'après Jules Verne). Thèse : **entrer dans le DDD par le design stratégique** (le « quoi ») plutôt que par les patterns tactiques (le « comment »), où beaucoup se *« cassent les dents »*.\n- **Le langage est le modèle** : traquer les doublons de concept et les mots à double sens (la « cible » n'est pas la même pour l'artilleur et l'astronome) ; un modèle *« utile »* vaut mieux qu'un modèle *« juste »*.\n- Event storming en format réduit pour réunir une connaissance **fragmentée entre les équipes**, puis découpage en sous-domaines et bounded contexts, effort de conception concentré sur le **cœur de métier**, relations entre contextes (shared kernel, partenariat, conformiste, couche anticorruption) et rappel de la loi de Conway.\n- Vincent Michau (Criteo) retient que *« the model also influences the language »*, au point que le produit finit parfois par parler de base de données, et que la fragmentation de la connaissance métier est **organique, liée à la taille des projets** plutôt qu'à une mauvaise organisation. Il aimerait creuser l'animation d'un event storming.",
+      "summarySources": [
+        "program",
+        "transcript",
+        "feedback"
+      ]
+    },
+    {
+      "id": "revue-de-code-on-n-est-pas-venu-pour-souffrir",
+      "day": "2023-01-26",
+      "type": "talk",
+      "title": "Revue de code : on n'est pas venu pour souffrir !",
+      "speakers": [
+        "Pauline Rambaud — Bedrock",
+        "Anne-Laure De Boissieu — Bedrock"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Contenu décrit d'après la version donnée en solo par Anne-Laure De Boissieu au Forum PHP 2022 (vidéo LVh6iQtJW2I, format court), référencée sur la page des supports ; à Snowcamp, le talk était en duo avec Pauline Rambaud. Aucun retour de participant trouvé.\n- Point de départ : l'appréhension d'arriver dans une équipe de neuf développeurs où tout le monde relit le code, en anglais, avec des risques de malentendus.\n- Prérequis de posture : l'**egoless programming** (Weinberg, 1971) : accepter ses erreurs, *« vous n'êtes pas votre code »*, critiquer le code et non la personne.\n- Outil : les **Conventional Comments**, un label (suggestion, nitpick, question, issue, praise, thought) et des décorations (bloquant ou non) qui changent la portée d'un même commentaire, bien plus sûrement que des émojis *« interprétables »*.\n- Effets décrits sur son onboarding : savoir tout de suite ce qui bloque, ne plus s'interroger sur le ton. Limite assumée : le standard ne règle pas les problèmes humains d'une équipe.",
+      "summarySources": [
+        "program",
+        "transcript"
+      ]
+    },
+    {
+      "id": "platform-engineering-lorsque-kubernetes-devient-la-cle-du-royaume",
+      "day": "2023-01-27",
+      "type": "talk",
+      "title": "Platform Engineering : lorsque Kubernetes devient la clé du royaume",
+      "speakers": [
+        "Olivier Jacques — AWS",
+        "Laurent Gil — Atos"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Décrit d'après les slides publiées (version Snowcamp) ; aucun retour de participant trouvé.\n- Contexte : le platform engineering entre dans les tendances Gartner 2023 ; les speakers construisent des plateformes internes depuis 2017, dont une chez Atos servant jusqu'à 30 000 « builders ».\n- *« You build it, you run it »* fonctionne mieux sur une plateforme qui **centralise l'expertise et décentralise l'innovation** : réduire la charge cognitive, standardiser sans retirer l'autonomie. Une base de données clé en main est un service, pas une plateforme.\n- Arguments pour Kubernetes : API en self-service, approche déclarative, extensibilité par CRD et contrôleurs ; pipelines en **pull (GitOps)** jugés plus sûrs et plus scalables que le push ; un même flux pour infrastructure et applications (Crossplane, ArgoCD, Flux, Kyverno, OPA Gatekeeper…).\n- Conclusion des slides : *« DevOps is not dead »*.",
+      "summarySources": [
+        "program",
+        "slides"
+      ]
+    },
+    {
+      "id": "rust-forces-et-faiblesses-apres-2-ans-en-production",
+      "day": "2023-01-27",
+      "type": "talk",
+      "title": "Rust : forces et faiblesses après 2 ans en production pour un SaaS web",
+      "speakers": [
+        "Kilian Devouassoux — Netwo",
+        "Dimitri Teboul — Netwo"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Décrit d'après le seul programme (un support pptx est attaché sur sched mais n'a pas été lu) ; aucun retour trouvé.\n- REX de la start-up grenobloise Netwo, qui a choisi Rust il y a deux ans pour un SaaS web : montée en compétence des développeurs, usage quotidien du langage, comportement en production.\n- Le programme interroge l'engouement (langage préféré des développeurs sept ans de suite selon Stack Overflow, intégration au noyau Linux, faible consommation) et promet d'insister sur ce qui fait la force du langage, sans prérequis Rust.",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "d-un-orchestre-fige-a-un-joli-ballet",
+      "day": "2023-01-26",
+      "type": "talk",
+      "title": "D'un orchestre figé à un joli ballet, ou comment on a propulsé notre monolithe dans un pas de danse endiablé",
+      "speakers": [
+        "Marie-Laure Momplot — Michelin",
+        "Sébastien Viale — CGI"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Décrit d'après le seul programme ; aucun retour ni support trouvés.\n- REX chez un manufacturier de pneus : remplacer l'orchestrateur supply chain et logistique par une **chorégraphie de microservices** sur Kafka et Kafka Streams, en passant de batchs quotidiens ou hebdomadaires à des flux continus.\n- Ordres de grandeur annoncés : **plus de 200 microservices Kafka Streams** sur Kubernetes Tanzu, 250 connecteurs Kafka Connect vers les applications legacy, environ 1 000 topics. Les speakers promettent aussi leurs « fausses notes ».",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "l-intelligence-artificielle-au-secours-de-l-accessibilite",
+      "day": "2023-01-27",
+      "type": "talk",
+      "title": "L'intelligence artificielle au secours de l'accessibilité",
+      "speakers": [
+        "Aurélie Vache — OVHcloud",
+        "Guillaume Laforge — Google Cloud"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Décrit d'après le seul programme ; aucun retour ni captation trouvés.\n- Thèse : le machine learning, souvent *« carte joker pour gagner au buzzword bingo »*, prend tout son sens pour l'**accessibilité** : compréhension de la parole, du texte, des images et des vidéos pour les personnes exclues par un défaut de vision, d'audition, de diction ou de langage.\n- Démos et exemples annoncés, avec la question de **comment ça marche et quelles en sont les limites**.",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "rendre-visible-l-invisible-impact-carbone-applications-cloud",
+      "day": "2023-01-27",
+      "type": "talk",
+      "title": "Rendre visible l'invisible : comment mesurer l'impact carbone d'applications cloud ?",
+      "speakers": [
+        "Christophe Laprun — Red Hat"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Décrit d'après le seul programme (un PDF « Cloud Carbon Accounting » est attaché sur sched mais n'a pas été lu) ; aucun retour trouvé.\n- Constat : passer au cloud permet de **déporter ses émissions du scope 2 vers le scope 3**, encore peu encadré, une option commode de « greenwashing » que les législateurs commencent à fermer.\n- Difficile d'agir sur ce qu'on ne mesure pas : contexte de l'impact carbone du numérique, difficultés d'un système de mesure, puis exemple d'une solution en cours de développement.",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "une-application-frontend-pour-les-gouverner-toutes",
+      "day": "2023-01-27",
+      "type": "talk",
+      "title": "Une application frontend pour les gouverner toutes",
+      "speakers": [
+        "Sylvain Dedieu — Criteo"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Décrit d'après le programme ; slides et code (branche monorepo-microfrontends) sont publiés mais n'ont pas été lus. Le blog Criteo, employeur du speaker, n'en parle pas.\n- Sujet : organiser une grosse application frontend, en particulier un **portail d'applications**, pour éviter sa dépréciation précoce.\n- Trois approches comparées en démo, avec avantages, inconvénients et cas d'usage : **bibliothèques npm**, **monorepo avec Nx** et **micro-frontends**, après un passage sur ce qu'il faut éviter.",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "du-log-verbeux-a-l-observabilite",
+      "day": "2023-01-25",
+      "type": "workshop",
+      "title": "Du log verbeux à l'observabilité",
+      "speakers": [
+        "Olivier Coupelon — Zenika",
+        "Benjamin Einaudi — Zenika Grenoble"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Université de 3 h, décrite d'après le seul programme (un PDF est attaché sur sched) ; aucun retour trouvé.\n- Partir d'une application Java Spring Boot peu observable et y ajouter progressivement **logs, traces et métriques** avec Prometheus, Grafana, Tempo, Loki, Promtail, Sleuth et OpenTelemetry, en configurant les pipelines un à un pour voir les pièges.\n- Message annoncé : *« avoir un système observable c'est possible et simple aujourd'hui »*, du métier jusqu'à l'application.\n- Le sujet des logs revenait le lendemain avec « Quelques pistes pour soigner ses traces d'exécution » (Virginie Casavecchia, Actoll), dont seules les slides sont publiées.",
+      "summarySources": [
+        "program"
+      ]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Université : Coder votre infrastructure avec votre langage préféré, Pulumi et AWS CDK (O. Leplus, A. Wacheux)",
+    "Université : Enter Serverless Functions Journey with Quarkus (D. Oh)",
+    "Université : GitLab de A à Z (M. Vincent, P. Charrière)",
+    "Université : Mission Playwright, le Cypress killer by Microsoft (M. Mure)",
+    "Université : Le versionning des APIs REST par la pratique (A. Touret ; PDF sur sched)",
+    "Université : Avancez avec HC Vault (W. Malvault, S. Szejwach)",
+    "Université : Les microservices en pratique avec Node.js, Docker et Azure (Y. Lasorsa, C. Maneu)",
+    "Université : Développer un opérateur Kubernetes en Java avec Quarkus et Gitpod (S. Philippart, H. Gonzalez)",
+    "Université : Introduction à l'architecture as code (N. Delsaux)",
+    "Indexer ses documents bureautique avec Elastic et FSCrawler (D. Pilato)",
+    "Façonner les architectures du futur avec Dapr (C. Gigax)",
+    "Développeurs Angular : la dernière conférence RxJS dont vous aurez besoin (S. Dieny)",
+    "From Zero to Hero in Kubernetes Native Java (D. Oh ; captation JCON référencée, non exploitée)",
+    "Appwrite est-il prêt à éteindre Firebase ? (M. Alves, L. Audart ; slides publiées)",
+    "Une librairie de tests JS pour les gouverner toutes, Testing Library (J. Hablot, H. Meley)",
+    "Quelques pistes pour soigner ses traces d'exécution (V. Casavecchia ; slides publiées)",
+    "À la découverte de TanStack Query, le tueur de Redux (J. Hablot ; code publié)",
+    "Typesafe all the things avec tRPC et Prisma (B. Legrand)",
+    "Il était une fois… la cartographie (M.-A. Blanchard, N. Broyelle ; slides et démos publiées)",
+    "Alan Poe appliqué au data streaming (J. Cognet, J.-M. Durand)",
+    "Plongeons dans la création d'un provider Terraform (A. Vache, H. Gonzalez)",
+    "Drogué à l'hexagone : NestJS pourrait-il me sauver ? (N. Giraud)",
+    "Edge AI : allez viens, on embarque notre intelligence artificielle ! (E. Petton)",
+    "Keep Calm & Do GitOps ! REX avec FluxCD (A. Martinier)",
+    "Elixir : une potion pour construire des microservices dans un monolithe (M. Janvier ; slides et démo publiées)",
+    "Principes de conception [d'URL] d'API REST (S. Chassande ; PDF sur sched)",
+    "Comment automatiser ses tests d'accessibilité ? (A. Le Goas)",
+    "D'un modèle d'IA dans un notebook à un service temps réel (M.-A. Blete)",
+    "Analytique temps réel avec Apache Pinot (F. Teychene)",
+    "Développer des applications de bureau sans code natif, PWA (P. Brosset)",
+    "Une plateforme à concevoir, deux architectes : trois possibilités ? (R. Semeteys, A. Touret ; PDF sur sched)",
+    "Mutation Testing : Did my test break my code ? (O. Leplus, M. Alsayasneh)",
+    "La fin des artistes ? La génération d'image assistée par IA expliquée (Q. Dunand)",
+    "SQL réactif : pourquoi c'est important ? (T. Segismont ; slides et code publiés)",
+    "Ctrl + C, Ctrl + V ! dupliquer ou ne pas dupliquer ? (E. et P. De Saint Steban ; slides publiées)",
+    "Si on aidait le capitaine Némo à classifier les monstres marins ? (S. Philippart, E. Petton)",
+    "Pourquoi le CSS Ça Saoule Souvent (A. Trancart ; slides publiées)"
+  ],
+  "sources": [
+    {
+      "label": "Programme 2023 (sched)",
+      "url": "https://snowcamp2023.sched.com/list/descriptions/"
+    },
+    {
+      "label": "Snowcamp 2023 : supports des sessions (GitHub snowcamp)",
+      "url": "https://github.com/snowcamp/snowcamp-supports-sessions/blob/main/2023.md"
+    },
+    {
+      "label": "Criteo Tech : Highlights from SnowCamp 2023 (Medium, 03/02/2023 ; Xavier Dupessey, Line Pouvaret, Valerian Gonnot, Luiza Cicone, Olivier Chirouze, Eduardo Grajeda, Brice Laurencin, Alexis Klam, Vincent Michau)",
+      "url": "https://medium.com/criteo-engineering/highlights-from-snowcamp-2023-c5e0b8ce0a82"
+    },
+    {
+      "label": "Slides d'Olivier Jacques et Laurent Gil : Platform Engineering (version Snowcamp)",
+      "url": "https://ojacques.github.io/presentations/snowcamp_2023/"
+    },
+    {
+      "label": "Grenoble Alpes Tourisme : agenda des congrès de janvier 2023 (Snowcamp du 25 au 28/01 au WTC)",
+      "url": "https://www.grenoble-congres.com/en/events/2023/1"
+    },
+    {
+      "label": "Captation externe utilisée pour le transcript : Bien se lancer dans le DDD (DevFest Nantes 2022, GDG France)",
+      "url": "https://www.youtube.com/watch?v=jAl3c_zo71w"
+    },
+    {
+      "label": "Captation externe utilisée pour le transcript : Revue de code, on n'est pas venu pour souffrir (Forum PHP 2022, AFUP)",
+      "url": "https://www.youtube.com/watch?v=LVh6iQtJW2I"
+    },
+    {
+      "label": "Captation externe référencée, non exploitée : From Zero to Hero in Kubernetes Native Java (JCON, en anglais)",
+      "url": "https://www.youtube.com/watch?v=JCZM53TgMhk"
+    },
+    {
+      "label": "Posts LinkedIn : aucun lu (aucun post sur Snowcamp 2023 remonté en recherche)"
+    }
+  ]
 }

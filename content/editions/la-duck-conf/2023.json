@@ -3,13 +3,210 @@
   "year": 2023,
   "title": "La Duck Conf 2023",
   "edition": "6e édition",
-  "start": "2023-03-28",
+  "start": "2023-03-29",
+  "end": "2023-03-29",
   "city": "Paris",
-  "venue": "Parc floral de Paris",
-  "url": "https://web.archive.org/web/20230107100318/https://www.laduckconf.com/",
-  "theme": "Back to Basics",
-  "dateConfidence": "agg",
-  "note": "Thème « Back to Basics ! » d'après le site officiel archivé ; date et lieu vus seulement dans des résultats de recherche web, à confirmer. Replays : playlist YouTube « La Duck Conf 2023 : replay » (https://www.youtube.com/playlist?list=PLXlbmbYadKH5H6F1Ml3pOqe0hiyknsPkF).",
-  "status": "pending",
-  "sessions": []
+  "venue": "Pavillon Chesnaie du Roy, Parc floral de Paris",
+  "url": "https://web.archive.org/web/20230308173300/https://www.laduckconf.com/",
+  "programUrl": "https://web.archive.org/web/20230308173305/https://www.laduckconf.com/la-duck-conf/speakers/",
+  "theme": "Back to Basics !",
+  "dateConfidence": "ok",
+  "note": "Annoncée pour le 31 janvier 2023 (blog OCTO, octobre 2022), l'édition a été reportée de deux mois à cause des grèves et s'est tenue le mercredi 29 mars 2023 (comptes rendus du blog OCTO ; Maddyness indiquait le 28 mars). Quatre axes au programme : architecture évolutive, architecture événementielle, architecture éco-responsable, plateformes. Une keynote, huit talks et six ateliers réservés au présentiel ; replays dans la playlist YouTube « La Duck Conf 2023 : replay ».",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-03",
+  "revisit": "Aucun post LinkedIn ni retour de participant extérieur à OCTO trouvé (3 recherches LinkedIn/web sans résultat) ; corpus fait des comptes rendus du blog OCTO, l'organisateur, et des transcripts. Transcript de la keynote de Gregor Hohpe non récupéré (HTTP 429).",
+  "corpus": "Programme officiel 2023 (site archivé), 9 articles du blog OCTO publiés entre le 4 avril et le 5 juin 2023 (un récit de la journée par Ornella Guyet, sept comptes rendus de talks, un article d'Alexis Nicolas reprenant son atelier) et la playlist de replays (9 talks filmés, plus le talk d'attente « L'architecture de la donnée comme un produit », hors programme 2023), dont 3 transcripts automatiques lus en entier (analytics, green, plateformes).",
+  "limits": "Tous les retours écrits viennent de collaborateurs d'OCTO, organisateur de l'événement et employeur de presque tous les speakers : aucun regard critique extérieur. Les six ateliers (non filmés) ne sont documentés que par une phrase du récit de la journée, sauf celui d'Alexis Nicolas ; la keynote de Gregor Hohpe ne repose que sur un compte rendu, sans transcript.",
+  "tldr": "Une édition **« Back to Basics »** où l'architecture de SI se raconte en **retours d'expérience de modernisation** (mainframe, CDC, Ops, plateformes) et en **compromis assumés**, avec un fil rouge **sobriété numérique** qui pousse à mesurer moins et renoncer plus.",
+  "keyTakeaways": [
+    "Penser le couplage comme une **variabilité indépendante** à doser, pas comme un ennemi : il a trois dimensions (force, distance, volatilité) et tout découplage a un coût (Gregor Hohpe, selon le compte rendu de Mathieu Cailly).",
+    "Choisir explicitement la sémantique des messages (commande, document, événement) et se méfier des **événements utilisés comme des commandes passives-agressives** (Gregor Hohpe).",
+    "Parler de **« cloud sous contraintes »** plutôt que de cloud souverain, et dimensionner ses exigences sur sa criticité réelle : ne pas « se prendre pour Netflix » (Benjamin Bayart).",
+    "En Change Data Capture, **surveiller le lag**, faire des tirs de performance avant toute reprise d'historique et imposer soi-même les types des tables cibles (Mariane Champalier et Baptiste Courbe).",
+    "Moderniser un SI de 30 ans en le traitant **comme un produit**, avec un product manager SI, des mises en production au plus tôt et un double run qui réduit le risque mais « n'est pas gratuit » (Thomas Brien et Maxence Modelin).",
+    "Adopter les pratiques SRE (on-call, **post-mortem blameless**, mesure du toil) de façon pragmatique, et accepter qu'une équipe se réorganise plusieurs fois (Hông Viêt Lê et Roberto Duarte).",
+    "Construire une plateforme en commençant par un MVP et en offrant du **self-service aux équipes internes** aussi, car le sujet est sociotechnique avant d'être technique (Hana Amiri et Aliou Konteye).",
+    "Pour l'architecte comme pour le manager, distinguer pouvoir et autorité, légitimité et crédibilité, et **adapter sa posture** entre faire, faire faire et guider (Olivier Tuffier et Borémi Toch).",
+    "Se méfier de la mesure carbone : les chiffres sont des modèles, les effets indirects échappent aux calculs et l'urgence appelle parfois un **gros coup de barre plutôt qu'une optimisation** (Wojciech Wojcik)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-gregor-hohpe-systemes-distribues",
+      "day": "2023-03-29",
+      "type": "keynote",
+      "title": "I made my app loosely coupled, will it fall apart? (Les enjeux des systèmes distribués)",
+      "speakers": ["Gregor Hohpe — AWS"],
+      "feedbackFrom": ["Blog OCTO (Mathieu Cailly)", "Blog OCTO (Ornella Guyet)"],
+      "summary": "- Keynote donnée **à distance, avec questions-réponses en duplex** (programme). Titre au programme : « Les enjeux des systèmes distribués » ; titre du compte rendu : « I made my app loosely coupled, will it fall apart? » ; la vidéo publiée s'intitule « The Transformation Architect ».\n- **Ce sont les connexions qui comptent, pas les boîtes** : une flèche cache format de données, flux de contrôle et temporalité. *« Considérez-vous comme des chefs »* : les bons ingrédients ne suffisent pas, c'est leur association qui fait le plat.\n- **Le couplage mesure la « variabilité indépendante »** de deux systèmes ; il a trois dimensions (force, distance, volatilité), on ne le supprime jamais et le découplage coûte (une file de messages ajoute complexité et états à gérer). Citation de David Orchard reprise : *« How do you make two systems loosely coupled? Don't connect them! »*\n- **Sémantique des messages** : commande, document ou événement. L'événement inverse la dépendance ; le nom du canal doit le refléter (« ProcessPayment » contre « OrderPlaced »). Gare aux **événements « commandes passives-agressives »** (Martin Fowler).\n- Event notification contre event-carried state transfer, PubSub contre broker : ce qui rend une application event-driven, c'est l'usage des messages, pas l'outil de messagerie. Ouverture sur le **topology-as-code** (AWS CDK).\n- Ornella Guyet retient une vision des systèmes distribués centrée sur l'**architecture orientée événements**, prolongée l'après-midi par l'atelier EDA de Can Liu et Kévin Julien.",
+      "summarySources": ["blog", "program"],
+      "video": {
+        "youtubeId": "fwwcixB6fQE",
+        "title": "Gregor Hohpe - The Transformation Architect (sous-titres FR)",
+        "publishedAt": "2023-09-05",
+        "transcript": false
+      }
+    },
+    {
+      "id": "parce-que-nos-plateformes-le-valent-bien",
+      "day": "2023-03-29",
+      "type": "talk",
+      "title": "Parce que nos plateformes le valent bien",
+      "speakers": ["Hana Amiri — OCTO Technology", "Aliou Konteye — L'Oréal Beauty Tech"],
+      "feedbackFrom": ["Blog OCTO (Thomas Saison)"],
+      "summary": "- REX de la **plateforme « consumer services » de la Beauty Tech de L'Oréal** (diagnostic de peau, essayage virtuel, choix de fond de teint), construite en interne après l'acquisition de ModiFace (2018).\n- **Quatre couches** : IT & data platform (multicloud, construite par étapes), services exposés par API, business platform (un « core model » par produit, décliné par marque et pays), produits vus par les consommateurs. Plus de **800 instances en production** pour 35 marques, selon Aliou Konteye (transcript).\n- **Composabilité par configuration** : les marques activent ou désactivent des features communes (CRM, NPS…) comme sur un SaaS ; un Skin Doctor Garnier et un La Roche-Posay diffèrent d'univers, pas d'architecture.\n- **RGPD by design** : photos et données personnelles supprimées après traitement, seules les données CRM consenties sont poussées au groupe.\n- Organisation en verticales (front et back) avec la même structure d'équipe partout, une équipe reliability (SRE) ; une cinquantaine de personnes entre Europe, Toronto et Chine. Clé du succès selon Konteye : **que le business s'intéresse à la tech et inversement**.\n- Conclusion des speakers : commencer par un MVP, voir la plateforme comme un **écosystème vivant**, offrir du self-service aussi aux équipes internes ; une approche sociotechnique. Le compte rendu note l'absence de pièges concrets et de chiffres de performance.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "GT5j_hJpUmU",
+        "title": "Hana Amiri & Aliou Konteye - Parce que nos plateformes le valent bien",
+        "publishedAt": "2023-09-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "guider-faire-faire-faire-solitude-partagee-manager-architecte",
+      "day": "2023-03-29",
+      "type": "talk",
+      "title": "Guider, faire, faire faire ? Une solitude partagée entre manager et architecte",
+      "speakers": ["Olivier Tuffier — OCTO Technology", "Borémi Toch — OCTO Technology"],
+      "feedbackFrom": ["Blog OCTO (Estelle Hube Laurent)"],
+      "summary": "- Fil rouge : « Acmé », une **migration cloud en mode agile** où architecte et manager se heurtent aux mêmes questions de pouvoir, d'autorité et de légitimité.\n- **Pouvoir contre autorité** : le pouvoir vient de la place, l'autorité est reconnue par les pairs et se travaille. Dans Acmé, l'architecte a le pouvoir mais pas l'autorité.\n- **Légitimité contre crédibilité** : *« On peut tout à fait être légitime tout en n'être pas crédible »* (exemple de l'hôtesse de l'air). Cinq leviers de crédibilité : exemplarité, valorisation, respect des règles, accompagnement, information.\n- **Trois postures** : faire (résultat garanti, autonomie réduite), faire faire (compétences de l'équipe, risque de directivité), guider (engagement, résultat différent, risque d'isolement). La fable du manager au « Colt d'or » montre la dépendance créée par celui qui règle tout.\n- *« La motivation ne se décrète pas »* : l'éléphant (émotion) gagne sur son conducteur (raison) ; leviers d'autonomie, de maîtrise et de finalité (Dan Pink).\n- Manager et architecte doivent **parler d'une seule voix**, aligner découpages techniques et humains, et rendre explicite l'implicite ; *« la carte n'est pas le territoire »*.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "ihT3B4xQz70",
+        "title": "Olivier Tuffier & Borémi Toch - Guider, faire, faire faire ? Une solitude partagée",
+        "publishedAt": "2023-09-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "architecture-analytics-deja-vu",
+      "day": "2023-03-29",
+      "type": "talk",
+      "title": "Architecture analytics : déjà-vu ?",
+      "speakers": ["Benjamin Joyen-Conseil — OCTO Technology"],
+      "feedbackFrom": [],
+      "summary": "- Voyage de 20 ans dans l'architecture data, guidé par un « petit Néo » de Matrix : la **modern data stack de 2023 ressemble au schéma des années 2000**, avec le data warehouse au centre. Révolution ou cycle ?\n- **2000-2010** : pour passer à l'échelle on découpe le data warehouse (stockage distribué, formats colonnaires comme Parquet, moteurs comme Spark, nouvelles structures) ; SQL devient un langage de programmation, avec tests, versioning et CI.\n- **2010-2020** : l'ETL devient ELT pour profiter du cloud ; orchestration programmable (DAG avec Airflow) ; qualité des données mesurée **relativement à l'usage** (contrats de données).\n- Nouveaux standards selon le speaker : warehouse dans le cloud accessible à toutes les entreprises, **tout « as code »** (pipelines, modélisation, contrats), données ouvertes à de nouvelles populations (ingénieurs, produit, data scientists).\n- Trois prévisions : le **reporting as code** (Lightdash, Cube, Evidence), une remise en question de SQL (PRQL), et une **« modern data stack en boîte »** (Parquet, Arrow, DuckDB, dbt) qui tourne sur un laptop, une Lambda ou un Raspberry, comparée à l'effet Docker.\n- Chute : le « citoyen data » sera la prochaine population à forcer un nouveau passage à l'échelle. Aucun retour participant trouvé ; résumé tiré du transcript.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "g05HUoELWc0",
+        "title": "Benjamin Joyen-Conseil - Architecture analytics : déjà-vu ?",
+        "publishedAt": "2023-09-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "sous-le-capot-du-cloud-souverain",
+      "day": "2023-03-29",
+      "type": "talk",
+      "title": "Sous le capot du cloud souverain",
+      "speakers": ["Benjamin Bayart — OCTO Technology"],
+      "feedbackFrom": ["Blog OCTO (Emmanuel Lin Toulemonde)", "Blog OCTO (Ornella Guyet)"],
+      "summary": "- Généalogie du terme, de 2012 à son retour après **l'arrêt Schrems II** (2020) : Safe Harbor puis Privacy Shield invalidés, d'où le constat que *« le droit américain et le droit européen sont incompatibles sur les sujets de protection des données personnelles »*.\n- Définition proposée : un cloud où s'applique le régime juridique européen, avec des enjeux régaliens et économiques. Reformulation clé : parler de **« cloud sous contraintes »** (juridiques, réglementaires, stratégiques).\n- Quatre options : pas de cloud, cloud privé on-premise, cloud français (OVHcloud, Scaleway, Clever Cloud…), cloud US sous licence (S3ns, Bleu), ce dernier relevant selon lui davantage de la promesse que de la réalité technique.\n- **« Ne pas se prendre pour Netflix »** : adapter les exigences à la criticité réelle ; chercher un **optimum sous contraintes** plutôt qu'un idéal (analogie avec *La Disparition* de Perec), ce qu'Ornella Guyet résume comme un moyen d'éviter la « spirale de l'échec ».\n- Contre le syndrome de l'imposteur européen (Linux, scikit-learn, réseaux moins chers qu'aux États-Unis) : le point faible est le marketing. En Q&A, Gaia-X jugé parti sur de bonnes bases puis infléchi par les hyperscalers.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "a5s_I00kuQU",
+        "title": "Benjamin Bayart - Sous le capot du cloud souverain",
+        "publishedAt": "2023-04-17",
+        "transcript": true
+      }
+    },
+    {
+      "id": "re-urbanisation-d-un-si-a-travers-une-archi-evolutive",
+      "day": "2023-03-29",
+      "type": "talk",
+      "title": "Ré-urbanisation d'un SI à travers une archi évolutive",
+      "speakers": ["Thomas Brien — OCTO Technology", "Maxence Modelin — OCTO Technology"],
+      "feedbackFrom": ["Blog OCTO (Cédric Martin, présent dans la salle)", "Blog OCTO (Ornella Guyet)"],
+      "summary": "- REX de 4 ans sur **deux SI à moderniser** (mainframe de 30 ans et monolithe Java de 10 ans) : une trentaine d'applications, environ 5 millions de lignes de code, 60 millions de dossiers ; un précédent programme avait échoué faute de reprendre les données et les résultats à l'identique.\n- **Le SI comme produit**, piloté par un product manager SI qui arbitre technique et métier ; vision propagée par architectes et tech leads transverses, ADR, communautés de pratiques, cadre technologique restreint.\n- **Mettre en production au plus tôt** ; nouvelle application qui reprend progressivement les fonctions pour le booking, **double run** avec comparaison des écarts pour le suivi de dossier, POC qui produit du code de production. *« La stratégie de double-run permet de diminuer le risque, mais elle n'est pas gratuite »* (Brien).\n- Paradoxes assumés : agile sur 4 ans, **loi de Conway** qui fait réapparaître la frontière entre les deux anciens SI, initiative locale contre cohérence globale, complexifier avant de simplifier.\n- Fiertés (stack de provisionnement généralisée, snippets d'observabilité partagés) et loupés (composant anti-surspécialisation d'API jamais généralisé). *« Faire des compromis et savoir vivre avec les paradoxes, c'est la réalité de notre métier. »*",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "Za-Xr6HTF8g",
+        "title": "Thomas Brien & Maxence Modelin - Ré-urbanisation d'un SI à travers une archi évolutive",
+        "publishedAt": "2023-09-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "guide-de-survie-du-change-data-capture",
+      "day": "2023-03-29",
+      "type": "talk",
+      "title": "Guide de survie du Change Data Capture",
+      "speakers": ["Mariane Champalier — OCTO Technology", "Baptiste Courbe — OCTO Technology"],
+      "feedbackFrom": ["Blog OCTO (Thomas Pesneau)"],
+      "summary": "- Contexte : alimenter en 6 mois un usage analytique et ML dans le cloud à partir d'une **base mainframe DB2 de 30 ans**, sans perturber le legacy. Le CDC est préféré à l'écriture en Y et à une refonte événementielle.\n- Stack : agent CDC sur les logs DB2, **Kafka on-premise** (pour anonymiser avant le cloud), Kafka Connect, PostgreSQL sur Cloud SQL puis BigQuery. Jusqu'à **2 milliards d'événements** lors d'une reprise d'historique, plusieurs centaines de tables répliquées en temps réel.\n- **Monitoring dès le développement** : *« L'avantage de faire le monitoring en même temps que les devs c'est qu'au moment où on en a besoin il est déjà en place »* (Champalier). Métrique reine : le **lag**.\n- Reprise d'historique : tirs de performance proches de la prod, cible optimisée pour l'écriture, deux configurations (nominale et reprise), car la reprise se refait souvent.\n- **Cohérence à terme** suffisante dans la plupart des cas : un topic par table, une partition pour garantir l'ordre. Imposer les types (Avro transforme des timestamps en string) et suivre une procédure d'évolution de schéma.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "gDZ7iiSIVUQ",
+        "title": "Baptiste Courbe & Mariane Champalier - Guide de survie du Change Data Capture",
+        "publishedAt": "2023-09-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-vie-d-ops-au-coeur-d-un-si-en-evolution",
+      "day": "2023-03-29",
+      "type": "talk",
+      "title": "La vie d'Ops au cœur d'un SI en évolution",
+      "speakers": ["Hông Viêt Lê — OCTO Technology", "Roberto Duarte — OCTO Technology"],
+      "feedbackFrom": ["Blog OCTO (Elisabeth Czostkiewicz)", "Blog OCTO (Ornella Guyet)"],
+      "summary": "- Refonte d'un SI de plus de 25 ans, racontée en trois âges. Cloud **OpenStack on-premise imposé**, accessible seulement sur site ; avec le confinement, bascule sur AWS en se limitant aux VMs et au réseau, puis retour sur OpenStack, où les tests de charge faits sur AWS ne valent plus.\n- Firewall partagé du groupe aux coupures aléatoires, Ops seuls sur site pendant que les devs déploient à distance : beaucoup d'énergie perdue.\n- **Deux réorganisations** : trois équipes pluridisciplinaires (où les tickets Ops disparaissent des boards et les Ops perdent le sentiment d'apporter de la valeur), puis une **équipe Ops dédiée** testée 3 mois, en veillant à ne pas créer de silo.\n- *« DevOps se focalise sur la vélocité par la collaboration, alors que SRE se focalise sur la fiabilité en production. »* Trois pratiques SRE retenues avec 4 Ops : **on-call tournant**, **post-mortem blameless**, **mesure du toil** pour peser sur la roadmap.\n- Take-aways des speakers : appliquer le SRE selon son contexte, *« se réorganiser c'est normal et c'est nécessaire »*, *« méfiez-vous des promesses des Cloud, toutes ne se valent pas »*.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "uWTUw2vNrG8",
+        "title": "Hông Viêt Lê & Roberto Duarte - La vie d'Ops au cœur d'un SI en évolution",
+        "publishedAt": "2023-09-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "journal-de-bord-d-un-archi-dans-l-ocean-du-green",
+      "day": "2023-03-29",
+      "type": "talk",
+      "title": "Journal de bord d'un archi dans l'océan du green",
+      "speakers": ["Wojciech Wojcik — OCTO Technology"],
+      "feedbackFrom": ["Blog OCTO (Ornella Guyet)"],
+      "summary": "- Récit de cinq ans d'exploration du numérique responsable, en métaphore maritime, ouvert sur une **chute dans le Dunning-Kruger** : un article de blog relu sans rien voir, puis taxé de quasi-greenwashing par un expert.\n- **Biais de l'ingénieur** : croire que l'expertise existante (cloud, optimisation, craft) suffira et que « le numérique sera sauvé par le numérique ». Les sensibilisations moralisantes ou anxiogènes (fresques) **embarquent mal** les équipes.\n- **La gueule de bois de la mesure** : on ne mesure pas, on modélise (le poids carbone d'un email varie de 0 à 50 g selon les sources) ; les **effets indirects** échappent aux modèles (exemple du covoiturage) ; mesurer peut retarder le « gros coup de barre » ; piloter le vivant par indicateurs mène à l'« enchaînement fatal ».\n- Nouveau cap : l'**« étoile du Sud » de la sobriété** et de la low-tech (utile, accessible, durable), rapprochée du Manifeste agile ; illustration par une appli de reconnaissance de plantes qui peut émanciper ou rendre captif.\n- Ornella Guyet retient surtout la difficulté à **mesurer fiablement l'empreinte carbone** du numérique.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "ONvRgD-64Rs",
+        "title": "Wojciech Wojcik - Journal de bord d'un archi dans l'océan du green",
+        "publishedAt": "2023-09-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "atelier-le-numerique-n-est-plus-ce-qu-il-etait",
+      "day": "2023-03-29",
+      "type": "workshop",
+      "title": "Le numérique n'est plus ce qu'il était",
+      "speakers": ["Alexis Nicolas — OCTO Technology"],
+      "feedbackFrom": ["Alexis Nicolas (speaker, blog OCTO)", "Blog OCTO (Ornella Guyet)"],
+      "summary": "- Atelier joué deux fois, réservé au présentiel : les **limites planétaires imposeront de renoncer** à certains produits, fonctionnalités et usages numériques (programme).\n- Support : des **cartons rouges** (9 renoncements tirés des 24 « red flags » du Shift Project) et des **cartons verts** (bifurcations) pour faire discuter les participants (speaker).\n- Cadre posé par le speaker : viser environ 2 tCO2e par personne et par an, soit diviser par 5 ; le scénario tendanciel ADEME-Arcep prévoit +45 % d'émissions du numérique d'ici 2030, donc **l'écoconception ne suffira pas**, seule la sobriété réduit les émissions.\n- Trois questions ordonnées pour un service : est-il socialement utile ? sobre ? viable économiquement ?\n- Ni l'article du speaker ni le récit d'Ornella Guyet ne rapportent de retours de participants ; le speaker note que les cartons restent à améliorer.",
+      "summarySources": ["blog", "program"]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Atelier : Éco-conception de médias (Nicolas Bordier), seulement cité dans le récit d'Ornella Guyet",
+    "Atelier : La Juste Archi (Sara Boucherot, Stéphanie Marchal, Hana Amiri)",
+    "Atelier : Améliorer la fiabilité de son système, les SLI / SLO en action (Adrien Saunier)",
+    "Atelier : Une seule base de code pour tous vos fronts, chimère ou réalité ? (Nicolas Laurent, Gabriel Adgeg)",
+    "Atelier : Les challenges de l'adoption d'EDA dans vos micro-services (Can Liu, Kévin Julien), seulement cité dans le récit d'Ornella Guyet"
+  ],
+  "sources": [
+    { "label": "Programme 2023 (site officiel archivé, mars 2023)", "url": "https://web.archive.org/web/20230308173305/https://www.laduckconf.com/la-duck-conf/speakers/" },
+    { "label": "Page d'accueil 2023 « Back to Basics ! » (site officiel archivé)", "url": "https://web.archive.org/web/20230308173300/https://www.laduckconf.com/" },
+    { "label": "Playlist YouTube « La Duck Conf 2023 : replay »", "url": "https://www.youtube.com/playlist?list=PLXlbmbYadKH5H6F1Ml3pOqe0hiyknsPkF" },
+    { "label": "Blog OCTO : Dans la mare aux canards de La Duck Conf 2023 (Ornella Guyet)", "url": "https://blog.octo.com/dans-la-mare-aux-canards-de-la-duck-conf-2023" },
+    { "label": "Blog OCTO : compte rendu de la keynote de Gregor Hohpe (Mathieu Cailly)", "url": "https://blog.octo.com/compte-rendu-de-la-keynote-de-gregor-hohpe-duck-conf-2023" },
+    { "label": "Blog OCTO : Sous le capot du cloud souverain (Emmanuel Lin Toulemonde)", "url": "https://blog.octo.com/duck-conf-2023-compte-rendu-du-talk-de-benjamin-bayart-sous-le-capot-du-cloud-souverain" },
+    { "label": "Blog OCTO : Guide de survie du CDC (Thomas Pesneau)", "url": "https://blog.octo.com/la-duck-conf-2023-guide-de-survie-du-cdc-compte-rendu-du-talk-de-mariane-champalier-et-baptiste-courbe" },
+    { "label": "Blog OCTO : REX sur la ré-urbanisation d'un SI (Cédric Martin)", "url": "https://blog.octo.com/cr-duck-conf-2023-rex-sur-la-re-urbanisation-dun-si-a-travers-une-architecture-evolutive" },
+    { "label": "Blog OCTO : La vie d'Ops au cœur d'un SI en évolution (Elisabeth Czostkiewicz)", "url": "https://blog.octo.com/compte-rendu-de-la-duck-conf-2023-la-vie-dops-au-coeur-dun-si-en-evolution" },
+    { "label": "Blog OCTO : Guider, faire, faire faire ? (Estelle Hube Laurent)", "url": "https://blog.octo.com/la-duck-conf-2023-guider-faire-faire-faire-une-solitude-partagee-entre-manager-et-architecte" },
+    { "label": "Blog OCTO : Parce que nos plateformes le valent bien ! (Thomas Saison)", "url": "https://blog.octo.com/parce-que-nos-plateformes-le-valent-bien" },
+    { "label": "Blog OCTO : Le numérique n'est plus ce qu'il était (Alexis Nicolas, speaker)", "url": "https://blog.octo.com/le-numerique-n'est-plus-ce-qu'il-etait" },
+    { "label": "Blog OCTO : annonce initiale pour le 31 janvier 2023", "url": "https://blog.octo.com/la-duck-conf-revient-le-31-janvier-2023-les-inscriptions-sont-ouvertes" },
+    { "label": "Maddyness : fiche événement (thème et lieu ; date indiquée au 28 mars)", "url": "https://www.maddyness.com/evenement/duck-conf-3/" },
+    { "label": "Posts LinkedIn : aucun trouvé" }
+  ]
 }
