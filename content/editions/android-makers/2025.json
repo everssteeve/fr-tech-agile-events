@@ -11,10 +11,10 @@
   "dateConfidence": "ok",
   "note": "Dates (10 et 11 avril 2025) et lieu (Beffroi de Montrouge, avenue de la République, Montrouge) relevés sur Sessionize, page liée depuis androidmakers.droidcon.com. Le CFP annonçait « 80+ technical Android talks », des workshops et codelabs. Programme (données de l'app officielle, API Confetti) : 68 créneaux hors pauses sur six salles (Moebius, Grand Salon, Blin, 2.02, 2.04 pour les « Unconference Roundtables » et office hours, 2.01 pour l'atelier « Mobiles en Perspective » et l'App-Clinic), keynote de Cyril Mottier le jeudi, de Xavier F. Gouchet le vendredi. Jeu de piste « Pin-Droid » pendant les deux jours, soirée au Café Oz Denfert. Hashtag officiel #AMxDC25. Playlist YouTube « Android Makers by droidcon 2025 » (54 vidéos publiées entre le 13 juin et le 18 juillet 2025).",
   "status": "synthesized",
-  "synthesisUpdatedAt": "2026-10-04",
-  "revisit": "Aucun post LinkedIn de participant trouvé (budget de 8 recherches web) ; corpus participant limité à deux comptes-rendus de blog (Ippon, Atecna) et une quinzaine de posts Bluesky, dont une partie de speakers. Synthèse fondée surtout sur 20 transcripts YouTube.",
-  "corpus": "Programme complet (68 sessions avec descriptifs, via l'API de l'app officielle et Sessionize) ; 20 transcripts automatiques de la playlist officielle (54 vidéos publiées entre le 13 juin et le 18 juillet 2025), dont les deux keynotes ; le compte-rendu en deux parties de l'équipe mobile d'Ippon (22 et 25 avril 2025), celui de Guillaume Decorte chez Atecna (22 mai 2025) ; une soixantaine de posts Bluesky #AMxDC25 d'avril à juin 2025, dont ceux de participants (David Blanc, Maxime Dupierreux, pboulch, Diana, Alex Bruneau, InTech Luxembourg) et de speakers présents dans la salle (John O'Reilly, Danny Preussler, Martin Bonnin, Ed Holloway-George, Romain Piel) ; billet de Cyril Mottier sur sa keynote.",
-  "limits": "Aucun post LinkedIn lu : le corpus participant repose sur Bluesky et deux blogs d'ESN, avec un biais francophone et « communauté Kotlin ». Les posts Bluesky sont souvent de simples mentions de talk, sans contenu ; plusieurs viennent de speakers. Roundtables, office hours, App-Clinic et atelier ne sont pas filmés et n'ont laissé aucune trace ; 34 vidéos n'ont pas été transcrites ici. Transcripts automatiques : noms propres parfois déformés (entreprise de deux speakers non identifiable).",
+  "synthesisUpdatedAt": "2026-11-04",
+  "revisit": "2026-11-04 : toujours aucun post LinkedIn de participant trouvé (8 recherches web, le moteur n'indexe pas les posts LinkedIn de l'événement ; API Bluesky en 403). Corpus participant porté à trois comptes-rendus de blog (Ippon, Atecna, Bforbank jour 1) et une quinzaine de posts Bluesky ; le vendredi reste peu couvert par les participants.",
+  "corpus": "Programme complet (68 sessions avec descriptifs, via l'API de l'app officielle et Sessionize) ; 22 transcripts automatiques de la playlist officielle (54 vidéos publiées entre le 13 juin et le 18 juillet 2025), dont les deux keynotes ; le compte-rendu en deux parties de l'équipe mobile d'Ippon (22 et 25 avril 2025), celui de Guillaume Decorte chez Atecna (22 mai 2025), celui de Florian Monbeig sur la première journée (blog Bforbank Tech sur Medium, 25 avril 2025) ; une soixantaine de posts Bluesky #AMxDC25 d'avril à juin 2025, dont ceux de participants (David Blanc, Maxime Dupierreux, pboulch, Diana, Alex Bruneau, InTech Luxembourg) et de speakers présents dans la salle (John O'Reilly, Danny Preussler, Martin Bonnin, Ed Holloway-George, Romain Piel) ; billet de Cyril Mottier sur sa keynote.",
+  "limits": "Aucun post LinkedIn lu : le corpus participant repose sur Bluesky et trois blogs d'entreprise (Ippon, Atecna, Bforbank), avec un biais francophone et « communauté Kotlin » ; le billet Bforbank ne couvre que le jeudi (aucun « jour 2 » trouvé). Les posts Bluesky sont souvent de simples mentions de talk, sans contenu ; plusieurs viennent de speakers. Roundtables, office hours, App-Clinic et atelier ne sont pas filmés et n'ont laissé aucune trace ; 32 vidéos n'ont pas été transcrites ici. Transcripts automatiques : noms propres parfois déformés (entreprise de deux speakers non identifiable).",
   "tldr": "Une édition **très technique et assez peu « IA »** : passage à l'échelle des grosses apps (modularisation, build, dette, ownership), qualité et performance mesurées, accessibilité et éthique portées par la communauté française, l'IA restant cantonnée à des outils (Gemini dans Android Studio) et à des expérimentations assumées comme bricolées.",
   "keyTakeaways": [
     "Modulariser avec des modules API/implémentation séparés : dépendre seulement des API, qui changent rarement, préserve le cache de build et permet d'ajouter une feature à une app en une ligne (Mottier).",
@@ -34,13 +34,45 @@
       "type": "keynote",
       "title": "Building Scalable Mobile Projects: Fast Builds, High Reusability and Clear Ownership",
       "speakers": ["Cyril Mottier — Amo"],
-      "feedbackFrom": ["David Blanc (Bluesky)", "Cyril Mottier (speaker, billet de blog)"],
-      "summary": "- **Choisir ce qu'on optimise** : on ne peut pas tout optimiser, certains objectifs sont orthogonaux. Chez Amo (apps sociales simples plutôt que super app), trois priorités : **builds rapides** (cibles affichées : moins de 10 s en local, 100 s pour un build interne, 1 000 s pour la prod), **réutilisabilité** (16 variantes d'apps à composer) et **ownership** ; la testabilité et les coûts sont volontairement laissés de côté au démarrage.\n- La modularisation date de 1968 (Larry Constantine) : **forte cohésion, faible couplage**. Rappel pédagogique du build system comme tri topologique d'un graphe acyclique, du **chemin critique** (ajouter des workers ne sert à rien au-delà) et de l'évitement de compilation par le cache.\n- Organisation du monorepo : foundation, platform, components, apps ; chaque composant découpé en **api / lib / bindings**. Les implémentations ne dépendent que des API, qui changent rarement, d'où un cache préservé ; ajouter une feature à une app tient en une ligne de Gradle.\n- Ownership : le fichier CODEOWNERS de GitHub est jugé *« cassé par conception »* (si tout le monde peut le modifier, personne ne le possède). Amo a écrit en Kotlin un outil de fichiers OWNERS hiérarchiques inspiré de Chromium et Kubernetes, qui génère le CODEOWNERS.\n- Conclusion : pas de solution parfaite, *« c'est une question de concessions »* à adapter au contexte. Seul retour participant : l'annonce du début de keynote (David Blanc).",
+      "feedbackFrom": ["David Blanc (Bluesky)", "Florian Monbeig (Blog Bforbank)", "Cyril Mottier (speaker, billet de blog)"],
+      "summary": "- **Choisir ce qu'on optimise** : on ne peut pas tout optimiser, certains objectifs sont orthogonaux. Chez Amo (apps sociales simples plutôt que super app), trois priorités : **builds rapides** (cibles affichées : moins de 10 s en local, 100 s pour un build interne, 1 000 s pour la prod), **réutilisabilité** (16 variantes d'apps à composer) et **ownership** ; la testabilité et les coûts sont volontairement laissés de côté au démarrage.\n- La modularisation date de 1968 (Larry Constantine) : **forte cohésion, faible couplage**. Rappel pédagogique du build system comme tri topologique d'un graphe acyclique, du **chemin critique** (ajouter des workers ne sert à rien au-delà) et de l'évitement de compilation par le cache.\n- Organisation du monorepo : foundation, platform, components, apps ; chaque composant découpé en **api / lib / bindings**. Les implémentations ne dépendent que des API, qui changent rarement, d'où un cache préservé ; ajouter une feature à une app tient en une ligne de Gradle.\n- Ownership : le fichier CODEOWNERS de GitHub est jugé *« cassé par conception »* (si tout le monde peut le modifier, personne ne le possède). Amo a écrit en Kotlin un outil de fichiers OWNERS hiérarchiques inspiré de Chromium et Kubernetes, qui génère le CODEOWNERS.\n- Conclusion : pas de solution parfaite, *« c'est une question de concessions »* à adapter au contexte.\n- Côté salle : David Blanc annonce le début de la keynote ; Florian Monbeig (Bforbank) retient surtout la **compréhension fine de l'algorithme de compilation** et juge la modularisation *« payante sur le long terme »*, malgré un investissement initial *« parfois conséquent comme c'est le cas ici »*.",
       "summarySources": ["transcript", "program", "feedback", "blog"],
       "video": {
         "youtubeId": "SmGisVJ549w",
         "title": "Building Scalable Mobile Projects: Fast Builds, High Reusability and Clear Ownership",
         "publishedAt": "2025-06-16",
+        "transcript": true
+      }
+    },
+    {
+      "id": "reussir-une-refonte-ui-modulaire",
+      "day": "2025-04-10",
+      "type": "talk",
+      "title": "Réussir une refonte UI modulaire : architecture, design system et screenshots tests",
+      "speakers": ["Damien Baronnet — Coyote", "Julien Emery — Coyote"],
+      "feedbackFrom": ["Florian Monbeig (Blog Bforbank)"],
+      "summary": "- Contexte : une codebase d'une dizaine d'années, cinq refontes déjà passées, des modules « à plat » sans logique, du Java, du XML et du Rx. Entre refonte incrémentale, remplacement de la seule couche UI et nouvelle base, l'équipe choisit de **repartir sur une base modulaire en Compose**, en gardant volontairement du legacy sous la couche des use cases.\n- **Design system** partagé avec les équipes iOS et design : tokens rangés en palettes, design tokens nommés par les designers (couleurs sémantiques, thème clair et sombre), thème encapsulé par produit via la composition locale, composants en atomic design. Difficulté principale : mettre trois équipes sur le même langage, et décider ce qui relève ou non du design system.\n- Architecture **par feature, puis par type d'appareil** (mobile, boîtier, Android Auto, plus un module commun), plutôt que par flavors ; des **variants** (Small, Large) évitent de dupliquer un composant presque identique entre mobile et boîtier. Chaque écran assemble des composants nourris par leur ViewModel et leur UiState.\n- **Screenshot tests** avec la bibliothèque alpha de Google, à chaque push en CI (3 à 4 minutes) : une montée de version de Compose a révélé des loaders, toggles et sliders modifiés en silence. Chiffres cités : 3 apps, 70 composants, 230 modules, plus de 1 850 screenshots ; près de deux ans de refonte pour une quinzaine de développeurs Android.\n- Florian Monbeig (Bforbank) retient la gestion des variations Small et Large, le couple UiState et ViewModel par composable majeur, et *« une belle démonstration de la synergie entre dev et design »*.",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "F8Fwg5Goyqk",
+        "title": "Réussir une refonte UI modulaire : architecture, design system et screenshots tests",
+        "publishedAt": "2025-06-16",
+        "transcript": true
+      }
+    },
+    {
+      "id": "securing-android-advanced-threats",
+      "day": "2025-04-10",
+      "type": "talk",
+      "title": "Securing Android: Tackling Advanced Threats and Enhancing App Security",
+      "speakers": ["Anique Sayed"],
+      "feedbackFrom": ["Florian Monbeig (Blog Bforbank)"],
+      "summary": "- Sur scène, un ingénieur avant-vente remplace au pied levé le collègue prévu au programme (son nom est inaudible dans la transcription automatique) ; Bforbank attribue le talk à l'éditeur de sécurité mobile **Zimperium**. Il avoue d'emblée ne pas être développeur mobile.\n- Constat : beaucoup d'apps sensibles (banque, assurance, portefeuilles crypto) sont mal protégées : clés d'API et certificats lisibles après décompilation, chiffrement faible, apps reconditionnées sur des stores alternatifs, achats in-app supprimés avec des outils gratuits.\n- Outils d'attaque : **Magisk**, qui roote l'appareil puis se cache des détections, **Frida** pour injecter du code à l'exécution. Évolution des menaces : **overlay attacks** qui imitent l'interface des apps bancaires européennes pour faire valider la transaction du fraudeur, et cas récents de transactions validées pendant que le téléphone était verrouillé.\n- Pistes : protéger l'app au repos et à l'exécution, chiffrement white-box quand l'enclave sécurisée manque, surveillance du parc installé, politique de réaction pilotée à distance (démo d'une app bancaire qui bloque le paiement sans contact après détection d'un malware ou d'un keylogger). Le discours promeut nettement les solutions commerciales face aux outils gratuits.\n- Florian Monbeig parle d'un *« véritable électrochoc »* et cite l'exemple de l'app malveillante qui imite toutes les apps bancaires européennes : la sécurité doit être intégrée *« dès les premières étapes du développement »*.",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "XJjgwCVyaDQ",
+        "title": "Securing Android: Tackling Advanced Threats and Enhancing App Security",
+        "publishedAt": "2025-06-18",
         "transcript": true
       }
     },
@@ -162,9 +194,9 @@
       "type": "talk",
       "title": "Debug Better in Android Studio",
       "speakers": ["Adarsh Fernando — Google", "Fabien Sanglard — Google"],
-      "feedbackFrom": [],
-      "summary": "- Historique du débogueur depuis 2014 (dual debugger natif et Java, D8, Kotlin, ADB Wi-Fi), puis nouveauté : l'**état de recomposition** des paramètres d'un composable affiché au point d'arrêt (inchangé, modifié, instable), ce que ni Logcat ni le Layout Inspector ne disent.\n- Fabien Sanglard (tech lead du débogueur et d'ADB) plaide pour **une chaîne d'outils à jour, câble compris** : beaucoup de câbles USB-C ne sont qu'en USB 2 ; ADB avertit désormais d'un mauvais câble. Le dialogue « Waiting for debugger » perdait environ 3 secondes (une attente d'une seconde et une boucle héritée de Dalvik), corrigées sur les versions récentes.\n- Démo sur un petit jeu bogué : format Logcat compact, force return, breakpoints conditionnels, de log, groupés ou dépendants, modification de variables à chaud, suspension d'un seul thread, attachement à une app lancée sans débogueur.\n- Morale : *« soyez curieux »*, beaucoup de développeurs n'utilisent que breakpoint, step et print. Pas de retour participant trouvé.",
-      "summarySources": ["transcript", "program"],
+      "feedbackFrom": ["Florian Monbeig (Blog Bforbank)"],
+      "summary": "- Historique du débogueur depuis 2014 (dual debugger natif et Java, D8, Kotlin, ADB Wi-Fi), puis nouveauté : l'**état de recomposition** des paramètres d'un composable affiché au point d'arrêt (inchangé, modifié, instable), ce que ni Logcat ni le Layout Inspector ne disent.\n- Fabien Sanglard (tech lead du débogueur et d'ADB) plaide pour **une chaîne d'outils à jour, câble compris** : beaucoup de câbles USB-C ne sont qu'en USB 2 ; ADB avertit désormais d'un mauvais câble. Le dialogue « Waiting for debugger » perdait environ 3 secondes (une attente d'une seconde et une boucle héritée de Dalvik), corrigées sur les versions récentes.\n- Démo sur un petit jeu bogué : format Logcat compact, force return, breakpoints conditionnels, de log, groupés ou dépendants, modification de variables à chaud, suspension d'un seul thread, attachement à une app lancée sans débogueur.\n- Morale : *« soyez curieux »*, beaucoup de développeurs n'utilisent que breakpoint, step et print.\n- Ce qu'en retient Florian Monbeig (Bforbank) : la stabilité des paramètres visible au point d'arrêt, le breakpoint qui affiche un message (*« fini les logs en dur dans le code »*), l'injection de valeur pour simuler un correctif, et le conseil du câble USB 3 (*« USB-3 != USB-C »*).",
+      "summarySources": ["transcript", "program", "blog"],
       "video": {
         "youtubeId": "AO1F8z8FMhc",
         "title": "Debug Better in Android Studio",
@@ -322,9 +354,9 @@
       "type": "talk",
       "title": "Escape from Planet Regex - Kotlin to the Rescue",
       "speakers": ["Ben Kadel"],
-      "feedbackFrom": ["Alex Bruneau (Bluesky)", "Ed Holloway-George (Bluesky)"],
-      "summary": "- Les expressions régulières et leur usage en Kotlin, sur la grande scène. Retours centrés sur la forme : *« la première fois que je vois quelqu'un aussi enthousiaste en parlant de regex »* (Alex Bruneau), un talk « à haute énergie » (Ed Holloway-George). Ben Kadel animait aussi le jeu Pin-Droid pendant les deux jours.",
-      "summarySources": ["program", "feedback"],
+      "feedbackFrom": ["Alex Bruneau (Bluesky)", "Ed Holloway-George (Bluesky)", "Florian Monbeig (Blog Bforbank)"],
+      "summary": "- Les expressions régulières et leur usage en Kotlin, sur la grande scène. Retours centrés sur la forme : *« la première fois que je vois quelqu'un aussi enthousiaste en parlant de regex »* (Alex Bruneau), un talk « à haute énergie » (Ed Holloway-George). Ben Kadel animait aussi le jeu Pin-Droid pendant les deux jours.\n- Florian Monbeig (Bforbank) décrit le talk le plus **théâtral** du jeudi : un vaisseau qui s'écrase sur la planète Regex, un alter ego maléfique, « Ken Badel », et une manière *« atypique et divertissante »* d'enseigner un sujet complexe, idéale pour clore la journée.",
+      "summarySources": ["program", "feedback", "blog"],
       "video": {
         "youtubeId": "F7navDuZFdo",
         "title": "Escape from Planet Regex - Kotlin to the Rescue",
@@ -670,9 +702,7 @@
     }
   ],
   "sessionsWithoutFeedback": [
-    "Réussir une refonte UI modulaire : architecture, design system et screenshots tests (Damien Baronnet, Julien Emery, Coyote), vidéo disponible",
     "Mastering Release Management (Alexandre Bruneau), roundtable",
-    "Securing Android: Tackling Advanced Threats and Enhancing App Security (Anique Sayed), vidéo disponible",
     "Kotlin and Compose Multiplatform patterns for iOS interop (John O'Reilly), vidéo disponible",
     "Software Engineering with GenAI (Maia Grotepass), roundtable",
     "From Source Code to APK: A Manual Deep Dive into the Android Build Process (Rafa Moreno, Airbnb), vidéo disponible",
@@ -702,6 +732,7 @@
     { "label": "Blog Ippon : Android Makers by Droidcon 2025, partie 1", "url": "https://blog.ippon.fr/2025/04/22/android-makers-by-droidcon-2025-partie-1-jamais-trois-sans-quatre/" },
     { "label": "Blog Ippon : Android Makers by Droidcon 2025, partie 2", "url": "https://blog.ippon.fr/2025/04/25/android-makers-by-droidcon-2025-partie-2-jamais-trois-sans-quatre-2/" },
     { "label": "Atecna (Guillaume Decorte) : AndroidMakers 2025, comment booster vos applications Android", "url": "https://www.atecna.fr/articles/androidmakers-2025-comment-booster-vos-applications-android/" },
+    { "label": "Bforbank Tech (Florian Monbeig) : Android Makers Paris 2025, Jour 1", "url": "https://medium.com/bforbank-tech/android-makers-paris-2025-jour-1-0cf27c177759" },
     { "label": "Cyril Mottier : Building Scalable Mobile Projects at Android Makers 2025 (speaker)", "url": "https://cyrilmottier.com/posts/2025/building-scalable-mobile-projects/" },
     { "label": "David Blanc sur Bluesky (keynote de Xavier F. Gouchet)", "url": "https://bsky.app/profile/speekha.bsky.social/post/3lmjk7cqdpc2c" },
     { "label": "pboulch sur Bluesky (trois talks retenus)", "url": "https://bsky.app/profile/pboulch.bsky.social/post/3lmnls4o2g223" },

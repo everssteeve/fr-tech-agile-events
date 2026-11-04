@@ -2,13 +2,579 @@
   "event": "apidays-paris",
   "year": 2022,
   "title": "apidays Paris 2022",
+  "edition": "Édition des 10 ans de la série apidays",
   "start": "2022-12-14",
   "end": "2022-12-16",
   "city": "Paris",
-  "url": "https://web.archive.org/web/20230129/https://www.apidays.global/paris",
-  "theme": "APIs and the Future of Software",
+  "venue": "Cité des sciences et de l'industrie (30 avenue Corentin-Cariou, Paris 19e)",
+  "url": "https://web.archive.org/web/20221213000000/https://www.apidays.global/paris/",
+  "theme": "APIs the next 10 years: Software, Society, Sovereignty, Sustainability",
   "dateConfidence": "ok",
-  "note": "Annoncé d'abord pour les 6-8 déc. 2022 ; dates 14-16 déc. d'après la page archivée en janvier 2023.",
-  "status": "pending",
-  "sessions": []
+  "note": "Annoncé d'abord pour les 6-8 déc. 2022 ; dates 14-16 déc. et lieu (Cité des sciences et de l'industrie, et non le CNIT) d'après la page officielle archivée le 13 décembre 2022, confirmés par Vonage, Bump.sh et Gravitee. Page officielle : 3 000+ participants annoncés, 650+ entreprises, 100+ sessions, 200+ speakers ; Bump.sh parle de 8 scènes, Vonage d'environ 1 700 participants après coup. Playlist YouTube « Apidays Paris 2022 » (une centaine de vidéos).",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-04",
+  "revisit": "Aucun post LinkedIn ni compte-rendu de participant indépendant trouvé (5 recherches sur un budget de 6) ; seules voix extérieures : billets de sponsors (Vonage, Bump.sh, Gravitee). Programme horaire non lu (page archivée sans agenda détaillé) : jours inconnus pour la plupart des sessions. Transcript du talk de Kévin Dunglas inutilisable.",
+  "corpus": "24 transcripts automatiques YouTube de la playlist officielle « Apidays Paris 2022 » (keynotes du main stage, piste sobriété numérique, gouvernance, sécurité, DX), lus en novembre 2026 ; page officielle archivée le 13 décembre 2022 (chiffres, lineup et affiliations des speakers) ; billets de Vonage (avant et après l'événement), de Bump.sh et de Gravitee.",
+  "limits": "Aucun retour de participant indépendant : les résumés reposent sur ce qui a été dit sur scène, via des transcripts automatiques parfois très dégradés (accents, talks de francophones en anglais, noms propres déformés). Le choix des 25 sessions privilégie les keynotes et les sujets transverses ; environ 75 vidéos de la playlist n'ont pas été transcrites. Les jours ne sont connus que pour trois sessions.",
+  "tldr": "Pour ses 10 ans, apidays Paris regarde **les dix prochaines années** : l'API comme **produit et contrat** à gouverner avec les équipes (et non contre elles), une **piste sobriété numérique** très dense (API Green Score, ADEME, Green Software Foundation, redirection écologique) et l'API comme **outil de souveraineté et de politique publique**.",
+  "keyTakeaways": [
+    "Adosser la gouvernance des API à la gouvernance des données : mêmes domaines, même propriétaire (data product owner = API product owner) (Liliana Jena et Marina Passoubady, L'Oréal).",
+    "Passer d'un API board qui juge à un modèle de **stewardship** qui accompagne, et automatiser (un pipeline unique produit OpenAPI, doc et premier jet de SDK) ; tout breaking change exige une approbation séparée (Patrick Brosse, Amadeus ; Mark Weitzel, Microsoft).",
+    "Traiter la plateforme API comme un produit : portail commun, self-service par API et CLI, écoute des équipes les plus matures ; satisfaction passée de 5,1 à 8,5 (Dervis Avdic, IKEA).",
+    "Commencer une API par le value proposition canvas, puis le business model canvas, avant toute règle de rate limit ou guideline (Marjukka Niinioja, Osaango).",
+    "Noter ses API de A à E avec l'API Green Score (payload, cache aligné sur la fraîcheur des données, rétention des logs, localisation réseau) et afficher la note dans le catalogue (Yannick Tremblais, Groupe Rocher ; Julien Brun, L'Oréal).",
+    "Le premier levier de sobriété reste d'éviter de fabriquer des terminaux : un logiciel qui ne ralentit pas les vieux appareils, et questionner le besoin avant de coder (Florimond Manca, Fairness ; Julia Meyer, ADEME).",
+    "En GraphQL : pas de mutation en GET, limiter batching, alias, profondeur et complexité, couper stack traces et suggestions de champs en production (Tristan Kalos, Escape).",
+    "Inventorier les environnements et anciennes versions d'API exposés : *« you can't protect what you don't see »* (Zach Bistra, Wib).",
+    "Right-sizer les clusters Kubernetes : chez BlaBlaCar, les pods n'utilisaient que 40 % du CPU demandé, et l'empreinte du projet a été à peu près divisée par deux (Antoine Lefebvre).",
+    "Lire les conditions d'utilisation des API comme des contrats : près de 40 % des quelque 3 000 ToS analysées permettent de couper le service à tout moment (Monica Posada, JRC)."
+  ],
+  "sessions": [
+    {
+      "id": "welcome-and-opening-remarks-the-api-mindset",
+      "day": "2022-12-15",
+      "type": "keynote",
+      "title": "Welcome and Opening Remarks (jour 2) : The API Mindset",
+      "speakers": [
+        "Mehdi Medjaoui — apidays"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Ouverture du deuxième jour par le fondateur d'apidays : **10 ans de la série**, avec pour thème les dix prochaines années ; 80 000 participants cumulés et une communauté de 300 000 membres annoncés sur scène.\n- Initiatives présentées : **Women in APIs** (environ 500 membres, aide aux réponses aux appels à orateurs), **API Landscape** (1 200 outils recensés), **Sustainable Digital Challenge** (20 à 25 équipes pendant environ trois mois), média APIscene.\n- Pistes du jour : API-driven business, cycle de vie, sécurité et identité, gouvernance, no-code, workshops, plus deux pistes invitées (API The Docs et une piste francophone techno-critique).\n- Raison d'être affichée : *« the goal of apidays is to connect the humans behind APIs »*.\n- Lecture critique : discours d'accueil et de logistique ; le contenu de fond annoncé par le titre (« The API Mindset ») n'apparaît pas dans la vidéo.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "YomPwSfUQPk",
+        "title": "Apidays Paris 2022 - Welcome and Opening Remarks [day2]: The API Mindset By Mehdi Medjaoui.",
+        "transcript": true
+      }
+    },
+    {
+      "id": "60-years-of-apis",
+      "type": "keynote",
+      "title": "60 years of APIs",
+      "speakers": [
+        "Mike Amundsen — auteur et conseiller"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Speaker de la première édition (2012), Mike Amundsen revient sur les **« géants »** qui ont façonné les API : Vannevar Bush, Ted Nelson, Engelbart, Christopher Alexander, Fielding, Ada Lovelace, Licklider, Paul Otlet, Donella Meadows.\n- Mise en garde contre la centralisation : **« be a node, not a hub »** ; ceux qui ignorent les erreurs du futur sont condamnés à les commettre.\n- Responsabilité des concepteurs : effets sur l'emploi, systèmes circulaires plutôt que linéaires, horizon de la « septième génération ».\n- Tendances pour dix ans : DSL et langage ubiquitaire, pensée systémique, **team API** (Team Topologies) ; méfiance marquée envers les chatbots, avec la phrase d'IBM *« a computer can never be held responsible therefore it should never make a decision »*.\n- Fediverse (ActivityPub, Mastodon, Solid) présenté comme alternative, avec un avertissement : *« if we focus on profits instead of people we'll make the same mistakes as the past »*.\n- Lecture critique : talk d'opinion, chiffres sur Mastodon donnés de mémoire.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "ZkGn7VtYVYE",
+        "title": "Apidays Paris 2022 - 60 years of APIs By Mike Amundsen.",
+        "transcript": true,
+        "startSeconds": 90
+      }
+    },
+    {
+      "id": "the-state-of-the-api-industry",
+      "type": "keynote",
+      "title": "The State of the API Industry",
+      "speakers": [
+        "Mark O'Neill — Gartner"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Enquête Gartner 2022 comparée à 2019 : API internes quasi universelles, **forte hausse de la consommation d'API tierces**, API publiques plus fréquentes en Europe qu'en Amérique du Nord (effet DSP2).\n- Trou du marché : les **outils côté consommateur**, pour cartographier les API qu'on consomme et leurs risques.\n- API management : 70 % des organisations en ont une, 13 % en prévoient une ; la responsabilité glisse vers des CoE et équipes plateforme, mais 8 % disent qu'aucune équipe n'en est responsable.\n- Premier défi cité : le **manque d'API product managers**, devant les standards, la découverte, la sécurité et le risque de reproduire l'état d'esprit ESB.\n- Hype cycle : graph APIs au sommet, marketplaces publiques d'API au creux, portails internes type Backstage en hausse ; gateways légères et API management indépendant de la gateway : *« gateways are commoditized for the most part now but you still need API management on top of those »*.\n- Lecture critique : taille des échantillons non précisée sur scène.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "HWFH3SoPn80",
+        "title": "Apidays Paris 2022 - The State of the API Industry By Mark O'Neill @Gartner.",
+        "transcript": true,
+        "startSeconds": 90
+      }
+    },
+    {
+      "id": "api-governance-at-loreal",
+      "type": "talk",
+      "title": "API Governance at L'Oréal",
+      "speakers": [
+        "Liliana Jena — L'Oréal",
+        "Marina Passoubady — L'Oréal"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Point de départ vers 2019 : une **« data anarchy »** (pas de propriétaire des données, taxonomies divergentes, trois ou quatre API pour la même chose).\n- Choix structurant : **gouvernance des API adossée à la gouvernance des données** ; 18 domaines de données en 2020, le data product owner étant aussi l'API product owner.\n- Trois couches d'API (system, business ou canonique, consumer) calquées sur les couches de la plateforme data.\n- Trois leviers : formation (RACI, conventions de nommage, marketplace et portail), processus de publication et d'abonnement, **co-implémentation de la première API** avec chaque équipe ; 70 personnes formées dont 30 DPO.\n- *« we cannot have a strategy only on the governance of the API if it's not linked with the data strategy »*.\n- Lecture critique : REX descriptif, sans métrique d'impact (réutilisation, délais).",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "5M_sUXsPHhA",
+        "title": "Apidays Paris 2022 - API Governance at L'Oréal By Liliana Jena @L'oreal.",
+        "transcript": true
+      }
+    },
+    {
+      "id": "future-of-banking-apis",
+      "type": "talk",
+      "title": "Future of Banking APIs",
+      "speakers": [
+        "John Phenix — HSBC",
+        "Ronnie Mitra — Publicis Sapient"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Trois ères des API bancaires selon Ronnie Mitra : **expérimentation** (« if we build it they will come »), **conformité** (DSP2), puis **opportunité** (embedded finance, banking as a service).\n- Le nouveau défi est l'**échelle** : risque de marque sur des milliers d'écrans partenaires, intégration d'un millier de partenaires, identité ; *« conquering scaling comes down to changing the cost equation »*.\n- Côté HSBC : partenariat avec Oracle NetSuite où le client paie ses factures et ouvre son compte sans passer par la banque ; 65 marchés et « 800 distinct payment screens » pour les paiements internationaux.\n- Prédictions : *« embedded finance will lead to more hypermedia style APIs »* (la banque fournit données et indications d'UI, le partenaire rend l'écran) et des **« API sets »** orientés résultat, façon boîte Lego (exemple : paiement de factures).",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "ElgUcLffPhM",
+        "title": "Apidays Paris 2022 - Future of Banking APIs by John Phenix & Ronnie Mitra.",
+        "transcript": true
+      }
+    },
+    {
+      "id": "apis-the-great-negotiation",
+      "type": "talk",
+      "title": "APIs: The Great Negotiation",
+      "speakers": [
+        "Cyril Vart — EY-Fabernovel"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Constat : l'écosystème API sait se décrire mais **peine à vendre** ; les clients n'achètent pas des API mais des expériences, et la communauté API reste dans le rôle du « plombier ».\n- En se promenant dans le hall, le speaker trouve qu'on se parle encore beaucoup **entre gens de l'API**.\n- Exemple d'une mission récente chez Nike (mesure de pointure en magasin, box d'abonnement enfants qui complique le reporting financier, écosystème de partenaires en graphe).\n- Le vrai défi est **la vente et la négociation** : écoute empathique, concessions, confiance par la répétition ; *« people want to buy benefits »*, *« you need to give your customers what they need not what you think they need »*.\n- Lecture critique : statistiques sur l'échec des startups non sourcées et confuses dans le transcript.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "UU_57oBokl4",
+        "title": "Apidays Paris 2022 - APIs : The Great Negociation By Cyril Vart.",
+        "transcript": true
+      }
+    },
+    {
+      "id": "creating-a-developer-first-experience-at-ikea",
+      "type": "talk",
+      "title": "Creating a Developer-First Experience at IKEA",
+      "speakers": [
+        "Dervis Avdic — Ingka Group | IKEA"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Contexte : 389 magasins dans 32 pays, plus de 4 000 personnes chez Group Digital ; tout le parcours ikea.com repose sur des produits qui échangent par API et événements.\n- « Notice de montage » d'une **équipe plateforme** : portail développeur commun, plateforme traitée comme un produit, écoute des équipes les plus matures plutôt que des vendeurs, MVP, **self-service par API et CLI uniquement**, observabilité, status pages, release notes.\n- Avant : monolithe surtout on-prem, satisfaction de 5,1 ; après : API d'infrastructure en self-service, gateway au choix (voire aucune), catalogue sur Backstage, **satisfaction de 8,5** pour environ 300 équipes.\n- *« if you want to reduce your cognitive load on your engineering teams building products you need to invest in platform teams and your developer experience »*.\n- Lecture critique : méthode du score de satisfaction non détaillée.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "QEIqwTA3cvI",
+        "title": "Apidays Paris 2022 - Creating a Developer-First Experience at IKEA By Dervis Avdic.",
+        "transcript": true
+      }
+    },
+    {
+      "id": "apis-and-european-digital-sovereignty",
+      "type": "talk",
+      "title": "APIs & European Digital Sovereignty",
+      "speakers": [
+        "Monica Posada — Commission européenne, Joint Research Centre"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Souveraineté numérique : capacité de l'Europe à agir de façon autonome, face au faible contrôle des citoyens, entreprises et États sur leurs données.\n- Trois piliers (contrôler les données, libérer l'innovation, gouverner les interactions) reliés aux textes européens : RGPD, DSA, DMA, directive open data, data spaces.\n- Les API ont trois dimensions : technique, coordination (qui accède à quoi et à quelles conditions) et **juridique : les API sont des contrats** qui doivent porter les valeurs européennes.\n- Étude NLP du JRC sur près de 3 000 conditions d'utilisation : près de 40 % ne mentionnent pas le mot « API », environ 40 % prévoient une **résiliation unilatérale à tout moment**, vue comme un risque systémique.\n- Lecture critique : talk institutionnel ; méthode de l'étude seulement esquissée.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "Rj2DV48c_oU",
+        "title": "Apidays Paris 2022 - APIs & European Digital Sovereignty By Monica Posada.",
+        "transcript": true
+      }
+    },
+    {
+      "id": "how-apis-transform-nations",
+      "type": "talk",
+      "title": "How APIs transform nations",
+      "speakers": [
+        "Shelby Switzer — Beeck Center for Social Impact + Innovation"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Hypothèse : **collaborer par défaut entre juridictions** fait gagner temps et argent ; les villes remplissent les mêmes fonctions avec des stacks totalement différentes et des prix SaaS opaques.\n- *« the public doesn't understand the city's complexity and they also they don't care about it »* : l'usager navigue seul dans la bureaucratie.\n- Pistes : logiciels coopératifs, open source, **standards de données** (« there's no shared definition of toddler » entre États), API de services partagés.\n- Trois catégories d'API publiques : ouvertes (transports de Denver, adresses de l'US Postal Service), partenaires de confiance (X-Road, Medicare), et **internes, jugées les plus puissantes** (covidtests.gov lancé en quelques semaines grâce aux API de la Poste).\n- Lecture critique : propos très centré sur les États-Unis, ce que la speaker reconnaît.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "P-tj-z7eUxI",
+        "title": "Apidays Paris 2022 - How APIs transform nations By Shelby Switzer.",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-next-five-years-of-the-api-economy",
+      "type": "keynote",
+      "title": "Closing note main track : The next five years of the API Economy",
+      "speakers": [
+        "Paolo Malinverno — MuleSoft"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Tendances jugées évidentes : toujours plus d'API, devenues invisibles ; on en consomme plus qu'on n'en conçoit ; pas de vrai standard (*« if I have eight or nine standards for doing banking apis there is no standard »*), FHIR faisant exception.\n- Cinq mégatendances : **business technologists** qui assemblent des API en boîtes noires (et le « governance paradox » : tout le monde veut de la gouvernance, personne ne veut être gouverné) ; **durabilité** et API d'émissions et de crédits carbone ; **IA** embarquée dans les API, avec la question de la confiance et de l'« AI washing » ; métavers et web3, *« either API hell or API heaven »* ; **digital humans**.\n- Conclusion : *« the real value is ethics… computers are not ethical »*.\n- Lecture critique : prospective d'opinion sans chiffres de marché ; fin écourtée faute de temps, début coupé dans la vidéo.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "vpxxWHpNhY8",
+        "title": "Apidays Paris 2022 - Closenote main track : The next five years of the API Economy Paolo Malinverno.",
+        "transcript": true
+      }
+    },
+    {
+      "id": "sustainable-api-green-score",
+      "type": "talk",
+      "title": "Sustainable API Green Score",
+      "speakers": [
+        "Yannick Tremblais — Groupe Rocher",
+        "Julien Brun — L'Oréal"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Travail du collectif français **API Thinking** (plus de 80 entreprises) : constat qu'il existe des outils de sobriété pour le front et le back, rien pour les API.\n- **API Green Score** : note de A à E, présentée comme *« not a judgment »* mais comme un outil de progrès ; règles pondérables par entreprise, réparties en architecture, design, usage et logs, publiées la semaine précédant l'événement.\n- Exemples : JSON plutôt que XML (15 % d'écart sur un petit payload, à multiplier par des milliards d'appels), **TTL de cache aligné sur la fraîcheur de la source** et suivi du taux de hit, rétention des logs détaillés limitée à une semaine.\n- Un tableau de bord carbone par projet a révélé un composant réseau « global » qui faisait **transiter le trafic par les États-Unis** alors que le runtime était en Belgique.\n- Note affichée dans le catalogue : *« it's really an incentive for people to don't have the E letter on their API »*.\n- Lecture critique : grille qualitative (« it's a first step »), pas encore reliée à des mesures d'impact.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "5xbmAnoZhLI",
+        "title": "Apidays Paris 2022 - Sustainable API Green Score by Yannick Tremblais & Julien Brun",
+        "transcript": true
+      }
+    },
+    {
+      "id": "towards-a-non-reactionary-tech-criticism",
+      "type": "talk",
+      "title": "Towards a non-reactionary tech criticism",
+      "speakers": [
+        "Alexandre Monnin — Origens Media Lab, MSc Strategy & Design for the Anthropocene"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Philosophe (thèse sur l'architecture du Web et REST), Alexandre Monnin présente la **redirection écologique** : ramener organisations et infrastructures dans les limites planétaires.\n- **Communs négatifs** : héritages dont personne ne veut s'occuper ; le smartphone y est décrit comme « zombie technology ».\n- Question centrale : *« we cannot let go of everything at once but we cannot maintain everything all the same »* ; il faut organiser des **fermetures** démocratiques, anticipées et non brutales (cartographie des attachements, « fresque du renoncement »).\n- Exemples de commandes : acteur du BTP passant de la construction à la maintenance, stations de ski.\n- Aux ingénieurs : rester en poste et réorienter leurs privilèges plutôt que « déserter » vers une technocritique réactionnaire ; *« frugality without fighting inequalities that's a recipe for civil war »*.\n- Lecture critique : talk conceptuel, peu outillé pour l'IT, exemples anonymisés.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "2py5x7J2B9E",
+        "title": "Apidays Paris 2022 - Towards a non-reactionary tech criticism by Alexandre Monnin",
+        "transcript": true
+      }
+    },
+    {
+      "id": "lessons-learned-from-blablacar",
+      "type": "talk",
+      "title": "Lessons learned from BlaBlaCar",
+      "speakers": [
+        "Antoine Lefebvre — BlaBlaCar"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Participation au Sustainable Digital Challenge présentée comme un **échec assumé** : beaucoup de volontaires au départ, 4 actifs à la fin, aucune amélioration livrée sur la recherche faute d'équipe disponible ; un guide d'écoconception « seen by 16 people ».\n- Leçons : constituer des **green IT champions**, dédier une équipe complète, ne pas s'arrêter (*« you can't stop otherwise you lose the momentum »*).\n- Hors challenge : export de l'outil Carbon Footprint de GCP dans BigQuery ; Compute Engine (Kubernetes) est le premier poste.\n- **Right-sizing GKE** dès mars 2022 : le CPU réellement utilisé ne dépassait pas 40 % du demandé ; empreinte du projet à peu près divisée par deux. La baisse des coûts reste l'argument qui convainc le management.\n- Lecture critique : REX honnête mais peu lié aux API ; méthode de calcul carbone de GCP non discutée.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "2Wsoj2CM71o",
+        "title": "Apidays Paris 2022 - Lessons learned from BlaBlaCar by Antoine Lefebvre",
+        "transcript": true
+      }
+    },
+    {
+      "id": "hacking-apis-for-fun-and-profit",
+      "type": "talk",
+      "title": "Hacking APIs for Fun and Profit",
+      "speakers": [
+        "Zach Bistra — Wib"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Thèse : **la complexité est l'ennemie de la sécurité** ; trois axes d'attaque : ressources complexes, transitions, collisions.\n- Ressources complexes : un upload XLS ouvre au zip bomb, à l'exécution de code (XLM) ou à la détection d'antivirus.\n- Transitions : une ancienne API restée active a permis une fuite de données personnelles et une XSS sur l'admin ; selon le speaker, 30 à 40 % de leurs clients exposent leur environnement de dev.\n- Collisions : un nouveau champ non testé ailleurs crée une XSS ; injection SQL via les filtres d'un export CSV, *« I know 2022 we think we are safe from that no we are not »*.\n- Recommandations : tests négatifs, pentests externes répétés, chaos engineering pour les plus matures, et visibilité : *« you can't protect what you don't see »*. Il ajouterait les **attaques de logique métier** au Top 10 OWASP.\n- Lecture critique : talk de vendeur, cas anonymisés et invérifiables.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "0OPpjpV_tbw",
+        "title": "Apidays Paris 2022 - Hacking APIs for Fun and Profit by Zach Bistra",
+        "transcript": true
+      }
+    },
+    {
+      "id": "api-governance-3-0",
+      "type": "talk",
+      "title": "API Governance 3.0 : a collaborative foundation for the next 10 years of APIs",
+      "speakers": [
+        "Patrick Brosse — Amadeus",
+        "Mark Weitzel — Microsoft"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Talk à deux voix comparant les gouvernances d'Amadeus (25 ans d'API, un millier d'API, plus de 10 000 transactions par seconde, passage au design first) et d'Azure.\n- Bénéfices à « vendre » : cohérence d'une famille d'API, interopérabilité, **API durables** (les clients d'Amadeus gardent une API dix ans) et self-service.\n- Passage d'un API board de revue à un **modèle de stewardship** inclusif : les équipes décident, les stewards accompagnent ; communauté transverse de volontaires, board agile.\n- **Automatisation** : CADL chez Microsoft, linters, un pipeline unique qui produit OpenAPI, doc et premier jet de SDK ; accent sur le vocabulaire métier plus que sur le protocole.\n- Vision 3.0 : gouvernance fédérée, traçable, convergente avec la gouvernance des données (data mesh), « governance as a service ». En Q&R : *« you've got to get approval to do a breaking change »*.\n- Lecture critique : partie Amadeus très mal transcrite ; identification des speakers d'après le lineup officiel.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "LkrNT6jKJQE",
+        "title": "Apidays Paris 2022 - API Governance 3.0 - A collaborative foundation for the next 10 years of APIs",
+        "transcript": true
+      }
+    },
+    {
+      "id": "apiops-cycles",
+      "type": "talk",
+      "title": "APIOps Cycles",
+      "speakers": [
+        "Marjukka Niinioja — Osaango"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Méthode ouverte lancée fin 2017, refondue en 2022 à partir des retours clients ; la co-autrice d'*API Economy 101* rappelle que les API prospèrent là où marketeurs et développeurs co-créent.\n- Problèmes toujours courants : doc écrite à la main, données sensibles exposées, codes de statut faux ; guidelines « aimées par ceux qui les ont écrites », design reviews qui tournent au bâton plutôt qu'à la carotte ; *« we're drowning in support questions »*.\n- Outils : value proposition et business model canvas adaptés aux API, canvases d'exigences non fonctionnelles (pas de rate limit sans cas business), checklist d'API.\n- *« please please pretty please use the value prop canvas first and then the business model canvas »* ; la méthode ne demande pas de gouvernance préalable, *« this is like a gateway drug »*.\n- Lecture critique : fin promotionnelle (site gratuit, cours payants).",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "iECIcVdkl88",
+        "title": "Apidays Paris 2022 - APIOPS Cycles by Marjukka Niinioja",
+        "transcript": true
+      }
+    },
+    {
+      "id": "graphql-security-best-practices",
+      "type": "talk",
+      "title": "GraphQL Security Best Practices",
+      "speakers": [
+        "Tristan Kalos — Escape"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Données de l'outil gratuit graphql.security sur 1 000 endpoints : plus de 95 % mal configurés côté HTTP (CSRF surtout), plus de 80 % vulnérables au déni de service, environ 20 % qui divulguent des informations sans authentification.\n- Couche HTTP : HSTS, imposer `application/json`, **jamais de mutation en GET**.\n- Requêtes abusives : limiter **batching et alias** (100 tentatives de login dans une seule requête contournent le rate limiting), profondeur et complexité.\n- Fuites : couper stack traces et mode debug ; même sans introspection, la **suggestion de champs** permet de reconstruire le schéma ; *« don't do security by obscurity »*.\n- Lecture critique : talk orienté produit (GraphQL Armor, tests d'Escape), mais pratiques génériques et réutilisables.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "2F4nrgQbAfQ",
+        "title": "Apidays Paris 2022 - GraphQL Security Best Practices by Tristan Kalos",
+        "transcript": true
+      }
+    },
+    {
+      "id": "what-makes-software-green",
+      "type": "talk",
+      "title": "What makes software green?",
+      "speakers": [
+        "Sarah Hsu — Goldman Sachs"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Trois leviers du green software selon la Green Software Foundation : **efficacité énergétique, efficacité matérielle, carbon awareness**.\n- Carbone incorporé : allonger la durée de vie et mieux utiliser les machines (5 serveurs à 20 % pèsent plus qu'un serveur à 100 %) ; passer au cloud ne suffit pas sans repenser l'architecture.\n- PUE et proportionnalité énergétique : une machine inactive consomme quand même.\n- Carbon aware computing : **demand shifting** (déplacer un batch dans le temps ou l'espace) et **demand shaping** (dégrader la vidéo en audio quand l'électricité est carbonée).\n- *« the most significant bottleneck to adopting green software practices is the lack of knowledge »* ; cours gratuit avec la Linux Foundation, fondation passée de 8 à 38 membres.\n- Lecture critique : exemples chiffrés illustratifs, pas mesurés.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "yGSCQakP0lc",
+        "title": "Apidays Paris 2022 - What makes software green? by Sarah Hsu",
+        "transcript": true
+      }
+    },
+    {
+      "id": "environmental-impacts-of-digital-technologies-in-france",
+      "type": "talk",
+      "title": "Environmental impacts of digital technologies in France",
+      "speakers": [
+        "Julia Meyer — ADEME"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le numérique pèse en France **2,5 % des émissions de GES** et environ 10 % de la consommation électrique ; la **fabrication des équipements** domine.\n- Scénario tendanciel 2030 : parc de terminaux en hausse de 66 % (1,3 milliard) à durée de vie constante, datacenters +15 % d'électricité.\n- Trois scénarios alternatifs (écoconception modérée, généralisée, sobriété) jouant sur le nombre d'équipements, leur durée de vie et le trafic ; résultats 2050 annoncés pour janvier 2023.\n- Cadre réglementaire : lois AGEC et REEN, référentiel d'écoconception des services numériques, feuille de route de décarbonation du secteur.\n- *« we shouldn't look only at the carbon neutrality »* : approche multicritère et en cycle de vie.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "LYRBsQNIPVo",
+        "title": "Apidays Paris 2022 - Environmental impacts of digital technologies in France by Julia Meyer",
+        "transcript": true
+      }
+    },
+    {
+      "id": "five-guiding-principles-to-practical-digital-ecodesign",
+      "type": "talk",
+      "title": "5 Guiding Principles To Practical Digital Ecodesign",
+      "speakers": [
+        "Florimond Manca — Fairness"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Apprendre les bases** : limites planétaires, trois tiers (terminaux, réseau, datacenters), indicateurs multiples ; le levier principal est d'**éviter de fabriquer de nouveaux terminaux**, donc de ne pas ralentir les vieux appareils.\n- **Partir de l'existant** (Lighthouse, Yellow Lab Tools, EcoIndex) en gardant en tête l'effet rebond.\n- **Questionner le besoin** : un client voulait un ticketing pour une poignée de demandes par an ; une ligne téléphonique a évité environ trois mois de développement.\n- **Mesurer modestement** : hors carbone, on n'a que des estimations ; *« Eco design is actually a lot of common sense doesn't mean it's easy »*.\n- **Viser le changement radical** : gradient allant de l'optimisation aux coupes de fonctionnalités et au mix high-tech, low-tech et innovation sociale.\n- En Q&R : l'usage pèse 5 à 10 % de l'impact d'un smartphone.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "HXxW9duQgbo",
+        "title": "Apidays Paris 2022 - 5 Guiding Principles To Practical Digital Ecodesign by Florimond Manca",
+        "transcript": true
+      }
+    },
+    {
+      "id": "green-it-the-discovery-journey-of-insee",
+      "type": "talk",
+      "title": "Green IT?! The discovery journey of INSEE",
+      "speakers": [
+        "Ophélie Bibonne — INSEE"
+      ],
+      "feedbackFrom": [],
+      "summary": "- L'équipe du référentiel de métadonnées statistiques part de zéro (*« no tools no principle »*) via le Sustainable Digital Challenge d'apidays, dont elle remporte le prix du jury.\n- Bilan GES de l'INSEE (données 2019) : plus de 15 000 t, dont environ 1 200 t pour l'IT ; **les API pèsent moins de 1 %**, mais *« it is very difficult to measure »*.\n- Audit front : EcoIndex F (pas de cache, ressources non compressées, requêtes dupliquées, cookies lourds).\n- API Métadonnées : un endpoint renvoyant les quelque 36 000 communes, très appelé, interrogeait une base RDF à chaque fois ; un **cache serveur** réduit fortement les requêtes, sans baisse visible de CPU ni de RAM. Prochaine étape : remettre en cause l'endpoint lui-même.\n- Lecture critique : REX honnête mais embryonnaire, gain non démontré ; transcript de mauvaise qualité.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "Rwh3BVqVYsE",
+        "title": "Apidays Paris 2022 - Green IT?! The discovery journey of INSEE by Ophélie Bibonne",
+        "transcript": true
+      }
+    },
+    {
+      "id": "france-televisions-api-platform-content-apis",
+      "type": "talk",
+      "title": "France Televisions: How we leverage API Platform for our content APIs",
+      "speakers": [
+        "Équipe PIC (Plateforme d'Information Commune) — France Télévisions"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Contexte 2017-2018 : refonte de Franceinfo, front et back office partageant le même code (accès concurrents à la base les soirs d'élection), stack AngularJS et Zend Framework 1.\n- Après des POC (Node/Koa contre Symfony), choix de **Symfony + MariaDB** parce que l'équipe le maîtrisait ; déclic à un talk de Kévin Dunglas sur API Platform.\n- Mutualisation avec France 3 Régions et Outre-mer : un seul code base, des plateformes distinctes par configuration.\n- Architecture : API back, API front et API mobile en backend for frontend, deux bases (édito et publication), **bus RabbitMQ** pour indexation, cache et notifications, Varnish avec invalidation par tags.\n- *« whatever the context, the situation, you can use your project and migrate it to API Platform »*.\n- Lecture critique : nom du speaker non identifiable dans le transcript.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "3bsVkVAB03A",
+        "title": "Apidays Paris 2022 - France Televisions: How we leverage API Platform for our content APIs",
+        "transcript": true
+      }
+    },
+    {
+      "id": "anatomy-of-a-great-developer-portal",
+      "type": "talk",
+      "title": "Anatomy of a great developer portal",
+      "speakers": [
+        "Kristof Van Tomme — Pronovix"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Un portail sert le **self-service**, gère le flux d'information avec la communauté et envoie des **signaux de confiance** (s'intégrer à une API coûte cher).\n- Tendance : *« the rise of the technologist »*, la fusion des profils développeurs et business ; le but n'est pas d'écrire du code mais de rendre une intégration « cheaper and faster ».\n- Segmenter par jobs-to-be-done : *« for God's sake don't use your department structure to structure your portal »* ; plusieurs niveaux d'abstraction (API, SDK, widget).\n- Trois types de portails : production, plateforme interne (qui demande une gouvernance, car une « API soup » ne fait pas une plateforme) et externe.\n- Métriques : relier les API à des indicateurs business ; un forum sans community manager peut nuire, mieux vaut une vraie recherche UX.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "na-plApalVU",
+        "title": "Apidays Paris 2022 - Anatomy of a great developer portal by Kristof Van Tomme",
+        "transcript": true
+      }
+    },
+    {
+      "id": "embedding-carbon-data-in-financial-transactions",
+      "type": "talk",
+      "title": "Embedding Carbon Data in Financial Transactions",
+      "speakers": [
+        "Simon Redfern — TESOBE"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le fondateur de l'Open Bank Project consacre l'essentiel du talk à une **vulgarisation climatique** : rayonnement, dilatation des océans, boucles de rétroaction (permafrost, albédo).\n- Scopes 1, 2 et 3 expliqués avec franchise : *« I still can't quite get my head around it »*.\n- Écosystème cité : futur mécanisme carbone aux frontières de l'UE, Net Zero Banking Alliance, EcoVadis, Icebreaker One.\n- Proposition : un objet JSON « CO2e » signé, avec plusieurs méthodes d'estimation, pour un « web of carbon data » (prototype carbonapis.com) ; prédiction : *« carbon APIs are gonna be much bigger than say open banking in the next five to ten years »*.\n- Lecture critique : le sujet annoncé n'occupe que les dernières minutes, sans détail technique.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "ws2x1bu1Cj0",
+        "title": "Apidays Paris 2022 - Embedding Carbon Data in Financial Transactions by Simon Redfern",
+        "transcript": true
+      }
+    },
+    {
+      "id": "api-schemas-the-backbone-of-future-proof-api-ecosystems",
+      "day": "2022-12-15",
+      "type": "talk",
+      "title": "API schemas: the backbone of future-proof API ecosystems",
+      "speakers": [
+        "Sébastien Charrier — Bump.sh"
+      ],
+      "feedbackFrom": [
+        "Blog Bump.sh (annonce, entreprise du speaker)"
+      ],
+      "summary": "- Talk du CEO de Bump.sh annoncé le jeudi 15 décembre à 13 h 40 sur le Stage 5 (billet de Bump.sh).\n- Sujet : les **schémas d'API** comme colonne vertébrale d'écosystèmes d'API durables.\n- Contenu réel non résumé : vidéo disponible mais transcript non récupéré ; seule l'annonce a été lue.",
+      "summarySources": [
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "A5AE0wpxtFc",
+        "title": "Apidays Paris 2022 - API schemas: the backbone of future-proof API ecosystems by Sebastien Charrier",
+        "transcript": false
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "How can JSON-LD help you sell more? (Kévin Dunglas, Les-Tilleuls.coop ; transcript automatique inutilisable)",
+    "Power your digital business with a comprehensive API strategy (Eileen Lowry, IBM)",
+    "Digital transformation and scaling with B2B wholesale and network APIs in telco",
+    "APIs at L'Occitane (Sandrine Bovis)",
+    "From API First to data and sustainability at scale (Thomas Spiegel)",
+    "The Evolution of the API Economy, why every company is an API company",
+    "The new horizon of digital transformation (Nouamane Cherkaoui)",
+    "Are the providers' sustainability strategies... sustainable? (Arnaud Gueguen, The Shift Project)",
+    "How Fruggr is helping L'Oréal API team to be more sustainable (Julien Brun)",
+    "Why the Corporate and Sustainable Responsibility strategy should be THE strategy",
+    "Full-Lifecycle APIM Platforms are Outdated",
+    "How to leverage your Design System with APIs? (Jerome Benoit)",
+    "Why adopting Observability needs revisiting your SDLC? (Rajalakshmi Srinivasan)",
+    "Durable Execution for Synchronous month-long API calls (Maxim Fateev) et Temporal 101 (Tom Wheeler)",
+    "How we will build APIs in 10 years (Miguel Branco)",
+    "HitchHackers Guide to Application Connectivity (Mark Cheshire)",
+    "Preventing breaking changes and governing APIs that already shipped",
+    "Essential components of a modern API platform (Aleksei Akimov)",
+    "Network APIs are coming et What's new in Telco APIs? (Mario Bodemann)",
+    "How we can keep alive a craft community (Fabien Brunet)",
+    "The Magic of Service Mesh (Charly Molter)",
+    "Rethinking API governance to accelerate product led growth (Zoe Laycock)",
+    "Where is API Management Going?",
+    "Evented API Gateways (David Brassely)",
+    "API design best practices, a framework for building APIs as products",
+    "Lessons from the evolution of API product management over the last 10 years (Claire Barrett, APIsFirst)",
+    "APIs as Products (David Darmon, Vonage)",
+    "APIs Business Models (Alexandre Airvault)",
+    "DevEx, the new challenge of software companies (Mathieu Poissard)",
+    "OpenAPI: An Early Design Feedback Engine (Lukas Rosenstock)",
+    "Combining user feedback with API metrics to improve DX (Rainer Loopere, Katana)",
+    "Panels : The role of feedback in developer experience ; Driving Developer success through metrics",
+    "Metrics Strategy for your APIs developer's community (Daniel Izquierdo)",
+    "Building Modern Applications with GraphQL (Michael Staib) ; Leveraging GraphQL for building public APIs (Laurin Quast)",
+    "Of GraphQL, DX friction, and surgical monolithectomy (Francois Lascelles)",
+    "API scoring (Rafael Granados)",
+    "Serverless Sustainability (Omid Eidivandi)",
+    "AsyncAPI and schema format complexity (Jonas Lagoni)",
+    "Event-Driven API Management, why REST isn't enough (Benjamin Gottstein)",
+    "A day in the life of BPCE Sustainable IT referent/evangelist (Lucile Vannier)",
+    "ecoCode mobile in a nutshell (Olivier Le Goaër, ecocode.io)",
+    "A suitable serialization with API Platform and Symfony (Mathias Arlaud) ; A deeper look into API Platform 3 (Antoine Bluchet)",
+    "How to deal with sequential operations with REST? (Grégoire Hébert)",
+    "What if privacy had an API? (Sean Falconer)",
+    "The state & future of Open Finance (Anne-Sophie Morvan)",
+    "Workshops sponsors : Federated API Management, Kong Ingress Controller, Gloo Gateway, Axway, edge (Mark Dembo)",
+    "Workshop NoCode, LowCode, Boss Mode avec AI Studio (Benjamin Aronov, Vonage, 14 décembre)",
+    "Become a Conversational Commerce Trailblazer (David Darmon, Vonage ; annoncé le 16 décembre)",
+    "Piste NoCode : The future of NoCode automation (Fabian Q. Veit, Make), Let's not make the diversity mistake in NoCode (Manon Mercier), panel Airtable"
+  ],
+  "sources": [
+    {
+      "label": "Page apidays Paris 2022 archivée (Wayback Machine, 13 décembre 2022)",
+      "url": "https://web.archive.org/web/20221213000000/https://www.apidays.global/paris/"
+    },
+    {
+      "label": "Playlist YouTube « Apidays Paris 2022 »",
+      "url": "https://www.youtube.com/playlist?list=PLmEaqnTJ40OoXYJnZ68q1USmb98r1gRc3"
+    },
+    {
+      "label": "Slides « apidays Paris 2022 » sur Speaker Deck (compte apidays)",
+      "url": "https://speakerdeck.com/apidays"
+    },
+    {
+      "label": "Vonage : Looking Ahead to DevCity Paris at apidays (Lucinda Abberley, 9 décembre 2022)",
+      "url": "https://developer.vonage.com/fr/blog/looking-ahead-to-devcity-paris-at-apidays"
+    },
+    {
+      "label": "Vonage : Closing 2022 With Apidays and Devcity Paris (Clarisse Ng, 19 janvier 2023)",
+      "url": "https://developer.vonage.com/en/blog/closing-2022-with-apidays-and-devcity-paris"
+    },
+    {
+      "label": "Bump.sh : Meet us at the apidays Paris 2022! (Jay Cormier, 6 décembre 2022)",
+      "url": "https://bump.sh/blog/meet-us-at-the-apidays-paris-2022/"
+    },
+    {
+      "label": "Gravitee Community : We are attending apidays Paris (22 novembre 2022)",
+      "url": "https://community.gravitee.io/t/we-are-attending-apidays-paris-14-16-december-2022-do-you-want-to-come-too/1332"
+    },
+    {
+      "label": "Posts LinkedIn : aucun lu (aucun résultat exploitable dans les recherches)"
+    }
+  ]
 }

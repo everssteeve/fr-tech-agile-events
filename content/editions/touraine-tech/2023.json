@@ -8,7 +8,393 @@
   "city": "Tours",
   "venue": "Polytech Tours",
   "url": "https://2023.touraine.tech",
+  "programUrl": "https://2023.touraine.tech/#schedule",
+  "theme": "#BackToSchool",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "5ᵉ édition, 19 et 20 janvier 2023 à Polytech Tours, mot-clé « #BackToSchool » affiché sur le site. Billet à 25 € (early bird) ou 37 €, conférences, pauses et repas des deux midis inclus. Environ 74 speakers listés et une soixantaine de sessions sur quatre salles (Turing, Pascal, Lovelace, TD1) ; formats conférence (50 min), quickie (15 min) et hands-on (120 min). Keynotes : Ploum (« Pourquoi ? ») et Cécile Freyd-Foucault et Iris Naudin le jeudi ; Stéphane Bortzmeyer (« Le code est-il neutre ? ») et Olivier Beautier le vendredi. 52 vidéos dans la playlist officielle.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-04",
+  "revisit": "Un seul retour participant lu : le billet de blog de Stéphane Bortzmeyer, lui-même keynoteur. 4 recherches web (blogs, site:linkedin.com, Ploum, #TNT23) sans autre résultat. Chercher les posts LinkedIn de janvier 2023 (#TNT23, #tourainetech, noms des speakers), les comptes Mastodon des speakers et de Touraine Tech, et les slides des sessions sans transcript lu (Speaker Deck, liens du site 2023).",
+  "corpus": "Un retour participant public : le billet de blog de Stéphane Bortzmeyer (23 janvier 2023), qui commente neuf sessions en plus de la sienne. S'y ajoutent le texte de la keynote publié par Ploum (30 mars 2023), le site officiel archivé (programme des deux jours, résumés, liens de slides) et 20 transcripts automatiques YouTube (3 keynotes et 17 talks) lus en novembre 2026.",
+  "limits": "Corpus très mince côté public : un seul blog, écrit par un keynoteur, et aucun post LinkedIn, sketchnote ou thread trouvé. Les autres résumés disent ce qui a été présenté sur scène, pas ce que le public en a retenu. Les transcripts sont des sous-titres automatiques (noms propres et chiffres parfois déformés, signalés quand c'est le cas). Les 20 sessions résumées ont été choisies pour la variété des thèmes et les mentions de Bortzmeyer, pas pour leur popularité.",
+  "tldr": "**Une 5ᵉ édition très « éthique du métier »** : deux keynotes militantes (Ploum qui demande aux développeurs de **redemander « pourquoi ? »**, Bortzmeyer pour qui **le code n'est jamais neutre**), un bloc fort sur **l'inclusion** (accessibilité, sexisme, reconversion) et, côté technique, un goût marqué pour **les fondamentaux** (représentation des nombres, systèmes distribués, lois de la performance, preuves scientifiques sur le craft).",
+  "keyTakeaways": [
+    "Avant d'ajouter un framework, une mise à jour ou un tracker, demander « pourquoi ? », puis savoir répondre « non » : un système facile est un système qu'on peut apprendre parce qu'il ne change pas sans raison (Ploum).",
+    "Assumer les choix politiques de son code : les réglages par défaut décident pour la plupart des utilisateurs, et ne pas décider reste un choix (Bortzmeyer).",
+    "Se demander à chaque conception « qui est-ce qu'on oublie ? » : situations de handicap temporaires ou situationnelles, zones blanches, formulaires qui refusent les noms courts (Freyd-Foucault et Naudin).",
+    "Ne pas prendre les préceptes du craft pour des lois : les études citées ne montrent pas d'avantage net du TDD sur le test après itératif ; ce qui compte, ce sont les petits incréments et le feedback rapide (Lambret).",
+    "Animer un post-mortem environ deux semaines après l'incident, avec un animateur extérieur, une frise de faits datés, et des actions qui ont chacune un responsable du suivi et une date (Quesnel).",
+    "Recruter sur les compétences plutôt que les connaissances : le filtre CV est biaisé, le pair programming sur un vrai bug est le meilleur indicateur, et les tests doivent rester sous 45 minutes (Hammel).",
+    "Penser en files d'attente : au-delà d'environ 80 % d'utilisation le temps de réponse explose, et un système ouvert sans limitation finit en panne catastrophique (Luta).",
+    "Dans un système distribué, tout est compromis : connaître ce que sacrifient ses outils et ne jamais inventer ses propres algorithmes de consensus (Delègue).",
+    "Organiser l'écoute utilisateur : lire les avis à tour de rôle, joindre le contexte technique au feedback, réserver du temps dans chaque sprint pour les micro-frustrations (Maneu).",
+    "Un projet public attire les bots : ne jamais exposer ses clés dans le front, puis monter les protections par paliers jusqu'à la validation manuelle (Lozano)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-pourquoi-ploum",
+      "day": "2023-01-19",
+      "type": "keynote",
+      "title": "Keynote d'ouverture : Pourquoi ?",
+      "speakers": ["Lionel Dricot (Ploum)"],
+      "feedbackFrom": ["Stéphane Bortzmeyer (blog)"],
+      "summary": "- **Texte publié par l'orateur** (base de travail, sans les improvisations) : l'ingénieur contourne les lois de la nature, mais l'informatique a fini par ériger en lois des inventions humaines ; *« L'informatique n'est plus de l'ingénierie, c'est devenu de la théologie. »*\n- **Récit du web** : de l'hypertexte de Tim Berners-Lee à la balise image de Netscape, puis Java, JavaScript, AJAX et les frameworks de frameworks ; *« En prétendant simplifier, nous ne faisons que complexifier »*, la complexité servant d'argument marketing.\n- **Mises à jour imposées** : redesigns d'icônes illisibles sur liseuse, mise à jour qui ajoute de la publicité ; *« On ne rend pas un système plus facile en le simplifiant. On le rend plus facile en le rendant apprenable. »*\n- **Son propre blog** réécrit en pages statiques : page d'accueil passée d'environ 1 Mo à 5 ko, 40 lignes de CSS, une seule liste de près de 900 billets, recherche par Ctrl+F.\n- **Appel final** : *« Apprenez à demander « pourquoi ? ». Puis à répondre « non ». »* L'informatique doit redevenir *« une science. Un art. Une liberté »*.\n- **Retour participant** : Bortzmeyer décrit une introduction *« très drôle et très vivante »*.",
+      "summarySources": ["blog", "feedback", "program"],
+      "video": {
+        "youtubeId": "mXuPJtV07vE",
+        "title": "Pourquoi ? - Lionel Dricot - Ploum",
+        "transcript": false
+      }
+    },
+    {
+      "id": "keynote-le-numerique-c-est-pour-tout-le-monde-ou-pas",
+      "day": "2023-01-19",
+      "type": "keynote",
+      "title": "Keynote de clôture : Le numérique c'est pour tout le monde… ou pas !",
+      "speakers": ["Cécile Freyd-Foucault — OCTO Technology", "Iris Naudin — OCTO Technology"],
+      "feedbackFrom": ["Stéphane Bortzmeyer (blog)"],
+      "summary": "- **Sur scène (transcript)** : selon l'Insee, un tiers des Français est à l'aise avec le numérique, un tiers se débrouille, un tiers en est éloigné. Les oratrices supposent des concepteurs de bonne foi et laissent de côté les dark patterns.\n- **C'est la situation qui handicape** : handicap permanent, temporaire (tendinite) ou situationnel (train sans réseau) ; exemple des textes alternatifs présents sur Netflix et absents sur Prime Video.\n- **Formulaires qui excluent** : nom trop court refusé (cas de Cédric O pour un billet de train), caractères spéciaux, genre demandé, personnes sans nom de famille.\n- **Fracture numérique** : zones blanches autour de Tours, chiffres des confinements (15 % sans internet à domicile), un jeune de 16 à 24 ans sur cinq sans l'une des compétences de base ; *« la fracture numérique crée une vraie fracture sociale »*.\n- **Côté métier** : 62 % des développeurs ignoreraient le RGAA (étude 2020 citée), biais de projection et de faux consensus, tri de CV d'Amazon défavorable aux femmes. Outils : Inclusive Design Toolkit, personas d'Orange, FALC, RGAA, Opquast.\n- Question à garder : *« qui est-ce qu'on oublie dans notre conception ? »* Plusieurs chiffres du transcript sont déformés et n'ont pas été repris.\n- **Retour participant** : Bortzmeyer juge ces thèmes classiques *« mais très bien traités »*, à faire suivre *« par les gens qui ignorent encore le problème »*.",
+      "summarySources": ["transcript", "feedback", "program"],
+      "video": {
+        "youtubeId": "ZvX82F-r_-E",
+        "title": "Keynote de clôture -  Cécile Freyd Foucault & Iris Naudin",
+        "transcript": true
+      }
+    },
+    {
+      "id": "keynote-le-code-est-il-neutre",
+      "day": "2023-01-20",
+      "type": "keynote",
+      "title": "Keynote d'ouverture : Le code est-il neutre ?",
+      "speakers": ["Stéphane Bortzmeyer"],
+      "feedbackFrom": ["Stéphane Bortzmeyer (blog, speaker)"],
+      "summary": "- **Sur scène (transcript)** : réponse à une tribune du New York Times reprochant à Signal d'être « idéologique ». Un logiciel rend certains choix faciles et d'autres difficiles, et la plupart des gens gardent les réglages par défaut : *« dire que c'est possible ne suffit pas »*.\n- **Chiffrement** : par défaut chez Signal, en option chez Telegram, absent des SMS ; trois choix politiques.\n- **Exemples** : Unicode et noms de domaine internationalisés (ne pas les gérer exclut des utilisateurs), tri forcément orienté (pas de Parcoursup « neutre »), tests uniquement sous Chrome qui renforcent Google, web trop complexe pour qu'on écrive un nouveau navigateur.\n- **Centralisation** : rachat de Twitter, magasins d'applications, résolveur DNS européen qui remplace une centralisation par une autre ; formulaires qui refusent les noms d'une lettre ou le changement de prénom d'une personne trans, traqueurs cachés dans les bibliothèques (Exodus Privacy).\n- **Conclusion** : un logiciel qui ne ferait que le bien est quasi impossible (le réseau de Trump tourne sur Mastodon) ; *« ne pas prendre de décision c'est politique aussi »* et *« les choix ont des conséquences, faut les assumer »*.\n- Supports (LaTeX/Beamer) publiés sur son blog (speaker).",
+      "summarySources": ["transcript", "blog", "program"],
+      "video": {
+        "youtubeId": "7tHwOl-8lYM",
+        "title": "Le code est-il neutre ? - Stéphane Bortzmeyer",
+        "transcript": true
+      }
+    },
+    {
+      "id": "keynote-le-voyage-du-heros-de-l-it",
+      "day": "2023-01-20",
+      "type": "keynote",
+      "title": "Keynote de clôture : Le voyage du héros de l'IT",
+      "speakers": ["Olivier Beautier — OVHcloud"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : donner aux gens de la tech des outils de **storytelling** pour raconter un sujet technique sans ennuyer ; le public connaît déjà les structures narratives sans le savoir.\n- **Émotion et empathie** déclenchent l'identification ; il parle aussi de la peur de prendre la parole.\n- **Références** : Joseph Campbell (*Le Héros aux mille et un visages*) et Christopher Vogler, avec un modèle en 12 étapes et 3 actes ; Star Wars et Dirty Dancing racontent selon lui la même histoire.\n- **Archétypes transposés à l'IT** : le mentor, le gardien du seuil (un budget refusé, distinct des comportements toxiques), le « point d'eau » de la machine à café.\n- **Conseils** : *« racontez-vous avec un produit plutôt que de raconter un produit »*, partir de son monde ordinaire, ménager un creux (une mise en production ratée), et *« ne mettez que les défauts et les problèmes qui seront résolus à la fin »*.\n- Le « retour avec l'élixir », c'est donner une conférence : *« c'est à vous de raconter vos histoires »*. Aucun retour participant public trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "RxvTE16J8PI",
+        "title": "Le voyage du héros de l'IT - Olivier Beautier",
+        "transcript": true
+      }
+    },
+    {
+      "id": "feminisation-dans-la-tech-la-communication-ou-l-echec-de-tout-un-secteur",
+      "day": "2023-01-19",
+      "type": "talk",
+      "title": "Féminisation dans la tech : la communication, ou l'échec de tout un secteur",
+      "speakers": ["Amélie Abdallah"],
+      "feedbackFrom": ["Stéphane Bortzmeyer (blog)"],
+      "summary": "- **Sur scène (transcript)** : point de départ, une offre d'emploi de pentesteurs publiée sur LinkedIn avec un jeu de mots sexuel, validée par la direction. L'oratrice, développeuse en reconversion et alternance, ouvre volontairement par *« bonjour à toutes »*.\n- **Ce que fait la communication** : façonner les mœurs, entretenir les préjugés (*« il faut être bon en maths »*), effacer la représentation, voire valider les violences sexistes ; une étude de 2018 sur l'allemand montre que le masculin générique ne représente pas les genres à égalité.\n- **Chiffres cités (étude Epitech/Ipsos 2021 et autres)** : 33 % des filles encouragées par leur entourage contre 61 % des garçons, part des femmes dans la tech divisée par deux en 20 ans, environ 13 % de femmes dans le numérique, la moitié qui quitte le secteur vers 35 ans.\n- **Contre-exemple du Hellfest** : communication inclusive, tolérance zéro et équipe dédiée, avec une part de femmes dans le public passée de 17 % (2011) à 24 % (2015).\n- **Conclusion** : *« c'est l'environnement qui est toxique »* et *« l'échec est collectif »* ; réagir (en tête-à-tête, RH, CSE, inspection du travail), commencer par l'écrit et être tenace.\n- **Retour participant** : Bortzmeyer la retient parmi les conférences intéressantes, sur *« le sexisme dans l'informatique et comment le combattre »*, supports en ligne.",
+      "summarySources": ["transcript", "feedback", "program"],
+      "video": {
+        "youtubeId": "898Vsm1frEg",
+        "title": "Féminisation dans la tech : la communication, ou l'échec de tout un secteur - Amélie ABDALLAH",
+        "transcript": true
+      }
+    },
+    {
+      "id": "developper-et-enseigner-une-bonne-idee",
+      "day": "2023-01-19",
+      "type": "lightning",
+      "title": "Développer et enseigner, une bonne idée ?",
+      "speakers": ["Jimmy Kasprzak — Zenika"],
+      "feedbackFrom": ["Stéphane Bortzmeyer (blog)"],
+      "summary": "- **Sur scène (transcript)** : entré chez Zenika en sortie d'école, il anime quelques mois plus tard une formation Angular 2, terrifié et pas convaincu d'être légitime, puis donne des cours en école.\n- **Syndrome de l'imposteur** : amplifié quand on enseigne mais rarement justifié, car on prépare son sujet plus qu'au quotidien ; *« on n'a pas besoin d'être un expert mondialement reconnu sur un sujet pour aller l'enseigner »*.\n- L'élève qui en sait plus est un faux problème : *« tu viens donner ton cours pour toutes les autres qui connaissent rien »*.\n- **Bénéfices** : mieux connaître ses sujets et leurs limites, mieux gérer le stress en incident, se sentir utile (formations de reconversion), gagner en empathie et en patience jusque dans la lisibilité du code.\n- *« La vraie question à se poser c'est quand est-ce que je serai prêt »*, et la réponse est jamais ; vaut aussi pour parler en conférence. Enseigner *« ne paie pas le plus »*.\n- **Retour participant** : Bortzmeyer cite ce talk *« sur l'importance et la difficulté de l'enseignement »*.",
+      "summarySources": ["transcript", "feedback", "program"],
+      "video": {
+        "youtubeId": "w3IliefJ4h0",
+        "title": "Développer et enseigner, une bonne idée ? - Jimmy Kasprzak",
+        "transcript": true
+      }
+    },
+    {
+      "id": "regard-scientifique-sur-l-artisanat-logiciel",
+      "day": "2023-01-19",
+      "type": "talk",
+      "title": "Conférence dessinée : Regard scientifique sur l'artisanat logiciel",
+      "speakers": ["Victor Lambret"],
+      "feedbackFrom": ["Stéphane Bortzmeyer (blog)"],
+      "summary": "- **Sur scène (transcript)** : confronter les préceptes du craft (Clean Code, TDD) aux publications relues par les pairs, en dessins.\n- **Taille des fonctions** : Robert C. Martin prône 2 à 4 lignes sans pouvoir le prouver ; une étude de 1983 sur environ 90 000 lignes trouve que *« plus les modules sont gros moins ils ont de bug pour 1000 lignes »*.\n- **Clean Code** : sur un code Java et sa version refactorée, pas de bénéfice immédiat pour comprendre ; le code d'origine gagne même pour ajouter une fonctionnalité ou trouver un bug, la version refactorée pour faire évoluer l'existant.\n- **TDD** : chez IBM et Microsoft, environ 20 % de temps en plus pour beaucoup moins de bugs, sans conclusion ferme faute de groupe témoin. En pratique, peu de développeurs le suivent (environ 1,7 % des sessions observées par un plugin d'IDE).\n- **TDD contre test après itératif** : pas de différence significative sur des katas, le sujet de l'exercice pèse plus que la méthode.\n- **Conclusion** : ce qui marche, ce sont les petits incréments, le feedback rapide, les tests et le refactoring ; le craft devient *« une boîte à outils à la carte »*.\n- **Retour participant** : Bortzmeyer salue de *« très bons dessins »* et retient que les études montrent que les conseils de bon sens des consultants, *« même appuyés sur un sigle à la mode (comme TDD) »*, ne produisent pas de meilleur code.",
+      "summarySources": ["transcript", "feedback", "slides", "program"],
+      "video": {
+        "youtubeId": "BfMrXUl5rJ4",
+        "title": "[Conférence dessinée] Regard scientifique sur l'artisanat logiciel - Victor Lambret",
+        "transcript": true
+      }
+    },
+    {
+      "id": "developper-publiquement-un-site-en-milieu-hostile",
+      "day": "2023-01-20",
+      "type": "lightning",
+      "title": "Développer publiquement un site en milieu hostile : retour d'expérience",
+      "speakers": ["Alexis Lozano — 360Learning"],
+      "feedbackFrom": ["Stéphane Bortzmeyer (blog)"],
+      "summary": "- **Sur scène (transcript)** : un site de partage de salaires de développeurs en France, front fait en un week-end avec Supabase et annoncé sur Twitter.\n- **Première attaque** deux jours plus tard : de fausses données, car les clés étaient lisibles dans le front. Il ajoute un backend, une limite par IP, un code envoyé par mail.\n- **Escalade** : un bot envoie environ 4 000 faux salaires ; le captcha est contourné, une victime reçoit 2 000 mails en 10 minutes, fail2ban est déjoué par rotation d'IP.\n- **Solution finale** : mail professionnel, lien de confirmation et validation manuelle ; les bots partent, car *« ils pouvaient pas directement mettre plein de données pourries dans mon site et surtout les voir »*.\n- Leçon annexe : écouter la critique d'un statisticien sur le biais des données (hauts salaires surreprésentés), *« mettez votre ego de côté »*.\n- **Retour participant** : Bortzmeyer le trouve *« amusant »*, *« très bien fait, très intéressant et concret »*.",
+      "summarySources": ["transcript", "feedback", "program"],
+      "video": {
+        "youtubeId": "iI_yufs4yYA",
+        "title": "Développer publiquement un site en milieu hostile : retour d'expérience - Alexis Lozano",
+        "transcript": true
+      }
+    },
+    {
+      "id": "si-on-aidait-le-capitaine-nemo-a-classifier-les-monstres-marins",
+      "day": "2023-01-20",
+      "type": "talk",
+      "title": "Si on aidait le capitaine Némo à classifier les monstres marins ?",
+      "speakers": ["Eléa Petton — OVHcloud", "Stéphane Philippart — OVHcloud"],
+      "feedbackFrom": ["Stéphane Bortzmeyer (blog)"],
+      "summary": "- **Sur scène (transcript)** : toute la chaîne d'un projet d'IA sonore, de la donnée brute à l'application déployée, en binôme data scientist et développeur.\n- **La donnée d'abord** : qualité, équilibre, valeurs manquantes, normalisation ; les fichiers audio sont transformés en caractéristiques avec librosa. *« Le prétraitement des données on le répète et on le répétera jamais assez. »*\n- **Démo Jupyter** sur une base libre de sons de mammifères marins (environ 45 espèces), réseau Keras/TensorFlow, précision d'environ 94 % en test.\n- **Mise en production** : backend Flask, front Streamlit, modèle partagé via un stockage objet, déploiement sur l'offre d'OVHcloud ; pas de GPU pour un simple front.\n- Message : *« il y a pas de magie »*, et 94 % reste peu pour une voiture autonome. Partie promotionnelle en fin de talk (crédits offerts).\n- **Retour participant** : Bortzmeyer la recommande, *« un tutoriel nous guidant pas à pas »*, *« très pédagogique »*.",
+      "summarySources": ["transcript", "feedback", "slides", "program"],
+      "video": {
+        "youtubeId": "l3DTnRJlhdE",
+        "title": "Si on aidait le capitaine Némo à classifier les monstres marins ?- Eléa Petton - Stéphane Philippart",
+        "transcript": true
+      }
+    },
+    {
+      "id": "entiers-virgules-flottantes-ou-representations-exotiques",
+      "day": "2023-01-20",
+      "type": "talk",
+      "title": "Entiers, virgules flottantes ou représentations exotiques : parlons d'élégance",
+      "speakers": ["Olivier Poncet", "Fabien Trégan"],
+      "feedbackFrom": ["Stéphane Bortzmeyer (blog)"],
+      "summary": "- **Sur scène (transcript)** : pourquoi le binaire ? La base de coût optimal serait e, donc 3 en entier ; le binaire l'a emporté grâce aux deux états du transistor et à l'algèbre de Boole. Clins d'œil aux Shadoks et au bibi-binaire de Boby Lapointe.\n- **Entiers** : un octet n'a pas toujours fait 8 bits ; le complément à 2 l'emporte sur le complément à 1 (un seul zéro, une seule passe de calcul).\n- **Flottants** : *« on devrait pas parler de précision on devrait parler d'approximation »*, d'où la règle *« ne comparez jamais deux flottants entre eux »*.\n- **Astuces historiques** : l'inverse rapide de la racine carrée de Quake, le rotozoom de la démoscène passé d'une image par seconde à 60 grâce à la virgule fixe, l'algorithme de Bresenham.\n- **Représentations exotiques** : BCD pour la finance, prix en centimes dans le trading, compteurs LFSR de l'Atari 2600. *« En creusant des sujets aussi basiques que le binaire on peut encore trouver la beauté dans ce qu'on fait. »*\n- **Retour participant** : Bortzmeyer décrit une conférence *« très détaillée »* où l'on apprend des choses même en sachant que (1/3)*3 ne fait pas 1, avec des supports manuscrits sur fond de cahier d'écolier.",
+      "summarySources": ["transcript", "feedback", "program"],
+      "video": {
+        "youtubeId": "lIxcRf9lp3s",
+        "title": "Entiers, virgules flottantes ou représentations exotiques : parlons d'élégance - O. PONCET-F. Trégan",
+        "transcript": true
+      }
+    },
+    {
+      "id": "dall-e-v2-un-robot-et-un-peintre-font-de-la-generation-d-image-par-ia",
+      "day": "2023-01-19",
+      "type": "talk",
+      "title": "DALL-E V2 : un robot et un peintre font de la génération d'image par IA",
+      "speakers": ["Olivier Mertens — Microsoft"],
+      "feedbackFrom": ["Stéphane Bortzmeyer (blog)"],
+      "summary": "- **Sur scène (transcript)** : présentation de DALL-E 2 (OpenAI, partenaire de Microsoft) : génération par prompt, inpainting, outpainting, variations ; l'anglais donne de meilleurs résultats.\n- **Écrire un prompt** : un sujet plus des modificateurs (style, émotion, cadrage, lumière) ; *« parler à Dali c'est parler un alien »*.\n- **Fonctionnement** : entraînement sur environ 650 millions de paires image/texte via CLIP, prior puis décodeur de diffusion qui produit une petite image agrandie ensuite.\n- **Limites** : filtres (gore, célébrités), biais de représentativité, difficultés avec le texte, les doigts et la physique (*« il ne comprend pas la physique »*).\n- **Créativité et droits** : un concours d'art gagné avec une image générée, comparaison avec l'arrivée de la photo numérique, licence d'usage plutôt que propriété, copyright flou. Sur la peur des artistes : *« la crainte est légitime elle n'est pas justifiée »*.\n- **Retour participant** : Bortzmeyer mentionne le talk et raconte avoir demandé à DALL-E une conférence Touraine Tech « dans le style de François Boucher », avec un résultat *« pas terrible »*.",
+      "summarySources": ["transcript", "feedback", "program"],
+      "video": {
+        "youtubeId": "LItpJztixFY",
+        "title": "DALL-E V2 - un robot et un peintre font de la génération d'image par IA - Olivier Mertens",
+        "transcript": true
+      }
+    },
+    {
+      "id": "loi-de-conway-lorsque-votre-conception-produit-se-fache-avec-votre-organisation",
+      "day": "2023-01-19",
+      "type": "talk",
+      "title": "Loi de Conway : Lorsque votre conception produit se fâche avec votre organisation",
+      "speakers": ["Julien Topçu"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : la structure de communication d'une organisation se retrouve dans ce qu'elle produit (UX, code, architecture), racontée sous forme de fiction.\n- **Trois exemples** : le site d'un cabinet de conseil qui expose son organigramme plutôt que son offre ; Windows Vista, où une étude de 2008 trouve que la structure de l'organisation prédit mieux les pannes que la complexité ou la couverture de tests ; une agence de voyage dont les équipes par pays ont dupliqué le code par pays.\n- **Conway (1968)** : *« le fait même d'avoir choisi une organisation va limiter le champ des solutions possibles »* ; avec Brooks, le nombre de canaux de communication explose avec la taille de l'équipe.\n- **Leviers** : manœuvre de Conway inversée, modèle BAPO, DDD stratégique (Event Storming, bounded contexts, context map), Team Topologies et charge cognitive.\n- **Nuance finale** : la manœuvre inverse n'est pas une baguette magique ; si le système est rigide, réorganiser ne change rien. *« La loi de Conway c'est une contrainte. »* Aucun retour participant public trouvé.",
+      "summarySources": ["transcript", "slides", "program"],
+      "video": {
+        "youtubeId": "dcGPq7La5JY",
+        "title": "Loi de Conway : Lorsque votre conception produit se fâche avec votre organisation - Julien Topçu",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-guide-2023-du-recrutement-technique",
+      "day": "2023-01-20",
+      "type": "talk",
+      "title": "Le guide 2023 du recrutement technique",
+      "speakers": ["Mathis Hammel — CodinGame"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : en pleine vague de licenciements tech, la priorité numéro un des recruteurs devient, selon l'enquête CodinGame citée, de retenir les talents plutôt que d'en trouver.\n- **Cinq critères** d'un bon processus : compétences plutôt que connaissances (*« les connaissances on s'en fout on veut des compétences »*), culture fit, expérience candidat, fiabilité, coût raisonnable.\n- **Briques** : préfiltre, évaluation autonome, system design, live coding (meilleur indicateur), culture fit ; la période d'essai n'est pas une brique, un recrutement raté coûtant de 3 000 à 10 000 €.\n- **Le filtre CV est biaisé** : étude du ministère du Travail (2021) montrant moins de rappels pour les noms à consonance maghrébine, 43 % des développeurs sans diplôme du supérieur ; sa position assumée « controversée » : remplacer le CV par un bon test automatisé.\n- **Tests** : rapport détaillé plutôt qu'un score, pas de QCM ni d'algorithmique pure, moins de 45 minutes, pair programming sur un vrai bug.\n- Sur l'IA : *« un chat GPT bien utilisé c'est un outil avant d'être un danger pour votre process »*. Aucun retour participant public trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "3s6ua93Fa7o",
+        "title": "Le guide 2023 du recrutement technique - Mathis Hammel",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-post-mortems-ou-comment-sortir-heureux-d-un-carnage",
+      "day": "2023-01-19",
+      "type": "talk",
+      "title": "Les post-mortems ou comment sortir heureux d'un carnage",
+      "speakers": ["Lise Quesnel — Zenika"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : taire un incident mène à la recherche de coupables et à la répétition. Le post-mortem est ponctuel et peut réunir toute l'entreprise, à la différence de la rétrospective d'équipe.\n- **Organisation** : environ deux semaines après l'incident, 8 personnes au maximum, 2 à 4 heures avec pauses, trois rôles distincts (animateur extérieur à l'incident, timekeeper, scribe).\n- **Cadre** : *« soyez doux avec les gens durs avec les process »* ; écoute active, sans Slack ni téléphone.\n- **Les faits d'abord** : une frise datée et chiffrée (exemple fictif d'une attaque DDoS), en reformulant tout ce qui est subjectif.\n- **Analyse** : vote pour cibler, 5 pourquoi, diagramme d'Ishikawa, puis brainstorming de solutions.\n- **Actions** : chacune a un responsable du suivi et une date ; une grosse décision devient « étudier la question ». *« N'oubliez pas vos actions d'amélioration et un suivi de celle-ci. »* Aucun retour participant public trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "zBjBq6uxp3M",
+        "title": "Les post-mortems ou comment sortir heureux d'un carnage - Lise Quesnel",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-lois-universelles-de-la-performance",
+      "day": "2023-01-20",
+      "type": "talk",
+      "title": "Les lois universelles de la performance",
+      "speakers": ["Raphaël Luta"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : quelques lois simples permettent de modéliser et prédire la performance ; elles ne remplacent pas les tirs de perf, *« c'est une approche complémentaire »*.\n- **Loi d'Amdahl** : la part sérielle mesurée sur un benchmark borne le gain maximal de la parallélisation (le chiffre exact est déformé dans le transcript).\n- **Files d'attente et loi de Little** : exemple d'un backlog où un ticket passe d'environ 4 jours à 1,25 jour quand on partage la file ; au-delà d'environ 80 % d'utilisation, le temps de réponse explose. *« Une fois que vous pensez en file d'attente vous en voyez vraiment partout. »*\n- **Systèmes ouverts** : sans limitation des appels, *« vous aurez une panne catastrophique »*.\n- **Loi d'extensibilité universelle (Neil Gunther)** : ajoute contention et cohérence ; ajustée sur une API Spring et PostgreSQL, elle prédit les latences mesurées à la milliseconde près.\n- Autres cas : Spark, ZooKeeper, et les équipes elles-mêmes. Conseil : 7 à 8 mesures, sans extrapoler trop loin. Aucun retour participant public trouvé.",
+      "summarySources": ["transcript", "slides", "program"],
+      "video": {
+        "youtubeId": "nEyepThCZRE",
+        "title": "Les lois universelles de la performance - Raphaël Luta",
+        "transcript": true
+      }
+    },
+    {
+      "id": "sensibilisation-aux-problematiques-des-systemes-distribues",
+      "day": "2023-01-19",
+      "type": "talk",
+      "title": "Sensibilisation aux problématiques des systèmes distribués",
+      "speakers": ["Alexandre Delègue — MAIF"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : d'un leader et d'un follower à la coupure réseau qui produit deux leaders et des données corrompues ; un troisième nœud permet le quorum.\n- **Trois familles de pannes** : réseau (messages perdus ou dupliqués), nœuds (crash, crash-recovery, byzantin), latence ; problèmes des deux généraux et des généraux byzantins.\n- **Distribuer seulement si besoin** (charge, résilience, volume) ; une application stateless déplace le problème vers la base.\n- **Notions et outils** : élection de leader, gossip, horloges de Lamport et vectorielles, split brain, théorème CAP, tests Jepsen qui montrent que *« même les bases de données les plus populaires en fait font des trucs pourris »*.\n- **Solutions** : idempotence, singleton confié à ZooKeeper ou etcd, consistent hashing, tombstones, CRDT, CQRS.\n- **Conclusion** : *« tout est une histoire de compromis »* et *« faut surtout pas essayer d'inventer ses propres algorithmes »*. Aucun retour participant public trouvé.",
+      "summarySources": ["transcript", "slides", "program"],
+      "video": {
+        "youtubeId": "7LJnga2kXd8",
+        "title": "Sensibilisation aux problématiques des systèmes distribués - Alexandre Delègue",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-devops-explique-a-mon-pere-agriculteur-a-la-retraite",
+      "day": "2023-01-20",
+      "type": "talk",
+      "title": "Le DevOps expliqué à mon père, agriculteur à la retraite",
+      "speakers": ["Philippe Morisseau"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : son père lui demande ce qu'il fait vraiment. Rappel historique : Patrick Debois, l'« agile infrastructure » en 2008, les premiers devopsdays à Gand en 2009.\n- **Deux murs** : la confusion entre Build et Run quand l'agile multiplie les livraisons, puis la réduction de DevOps aux pipelines CI/CD.\n- **Atelier sur scène** : cinq volontaires préparent des boîtes d'œufs ; masqués et en silos, la commande échoue, sans masques et en se parlant, elle passe. Un pipeline sans collaboration ne suffit pas.\n- Le verdict du père : *« c'est du bon sens »*, évident en petite équipe, beaucoup moins dans les grandes structures cloisonnées.\n- **Piliers** : culture, automatisation, lean, mesure, partage ; quiz sur les « *Ops » (DevSecOps et MLOps oui, FinOps non selon lui).\n- *« Le DevOps ce n'est pas un métier de l'ingénierie c'est une démarche, une philosophie. »* Aucun retour participant public trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "ycjcqcuWc_U",
+        "title": "Le DevOps expliqué à mon père, agriculteur à la retraite - Philippe Morisseau",
+        "transcript": true
+      }
+    },
+    {
+      "id": "on-peut-ecouter-1-fois-un-utilisateur-ou-ecouter-1-milliard-d-utilisateurs",
+      "day": "2023-01-20",
+      "type": "talk",
+      "title": "On peut écouter 1 fois un utilisateur, ou écouter 1 milliard d'utilisateurs",
+      "speakers": ["Christopher Maneu — Microsoft"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : les développeurs ont un rôle clé dans l'expérience utilisateur, avec ou sans designers ; beaucoup d'échecs (une notice d'appairage mal rédigée) restent invisibles dans le monitoring.\n- **Micro-frustrations** : souvent une pull request de quelques lignes suffit à en supprimer une.\n- **Écoute empathique** : chez Deezer, les avis de l'App Store étaient lus chaque semaine, à tour de rôle et jamais le vendredi ; *« écouter c'est pas forcément répondre, c'est être avec la personne »*.\n- **Outils et process** : feedback dans l'app avec contexte technique, forums (UserVoice, Discourse), réunions avec le support, budget réservé dans chaque sprint, ticket relié au feedback d'origine et à une métrique. Une boîte à idées sans suite *« a un pire effet que de pas mettre la boîte à idées »*.\n- **Vie privée** : séparer les données personnelles, laisser le choix, collecter progressivement, être transparent ; *« si on est sérieux à propos de l'expérience utilisateur on doit être sérieux à propos de la vie privée »*.\n- Persévérer : une idée proposée en 2017, livrée en 2021. Aucun retour participant public trouvé.",
+      "summarySources": ["transcript", "slides", "program"],
+      "video": {
+        "youtubeId": "AjOwpI41HaI",
+        "title": "On peut écouter 1 fois un utilisateur, ou écouter 1 milliard d'utilisateurs - Christopher Maneu",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ne-jette-pas-ton-ordi-repare-le-futur",
+      "day": "2023-01-19",
+      "type": "lightning",
+      "title": "Ne jette pas ton ordi, ... répare le futur !",
+      "speakers": ["Olivier Deiber"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : premier talk de l'orateur, responsable SI dans un institut de recherche et bénévole associatif. Fabriquer un portable de 2 kg demanderait 22 kg de produits chimiques, 240 kg de combustibles et 1,5 tonne d'eau.\n- **Déclic** : au collège de son fils à Montlouis-sur-Loire, les PC fournis ne suffisent pas ; il sollicite une vingtaine d'entreprises d'Indre-et-Loire pour récupérer leurs portables réformés.\n- **Obstacles** : refus de plusieurs fondations et budgets publics pour un porteur seul ; il passe par le centre social de Montlouis.\n- **Méthode** : une vingtaine de portables donnés par une entreprise locale, batterie et SSD neufs, Ubuntu et logiciels libres, puis accompagnement du bénéficiaire ; *« le plus gros c'est l'accompagnement qu'il y a derrière »*.\n- Où il en est : *« j'ai des machines mais j'ai pas de bénéficiaires »* ; il demande des pistes au public. Aucun retour participant public trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "XvpOt2x3bxo",
+        "title": "Ne jette pas ton ordi, ... répare le futur ! 🌍 - Olivier Deiber",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-contribution-aux-communs-numeriques",
+      "day": "2023-01-19",
+      "type": "lightning",
+      "title": "La contribution aux communs numériques",
+      "speakers": ["Jean Couteau — Code Lutin"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : les mainteneurs de logiciels libres peinent à vivre de leur travail pendant que les entreprises en dépendent ; *« on se sent un peu seul et impuissant »*.\n- **Code Lutin** finance le libre depuis 2011, jusqu'à environ 25 000 € par an pour une vingtaine de personnes.\n- **Pourquoi les entreprises donnent peu** : elles ne savent pas combien donner et rien ne déclenche le don, contrairement à l'achat d'une licence ; les fonds existants sont jugés opaques ou calibrés pour de plus gros projets.\n- **Proposition « Copie Publique »** : répartition décidée par les salariés, montant annuel calculé par formule (environ 1 % du chiffre d'affaires chez Code Lutin), dons aux projets libres et pas aux géants.\n- Bilan annoncé : plus de 100 projets aidés depuis 2011 ; *« le point le plus important c'est la reconnaissance »*, même 100 € comptent. Aucun retour participant public trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "Z8_ivqGwPzA",
+        "title": "La contribution aux communs numériques - Jean Couteau",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-reconvertis-cette-nouvelle-vague-de-profils-dans-le-dev",
+      "day": "2023-01-19",
+      "type": "lightning",
+      "title": "Les reconvertis : cette nouvelle vague de profils dans le dev",
+      "speakers": ["Helvira Goma"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène (transcript)** : récit de sa reconversion, de la microbiologie au développement, à travers l'histoire d'« Alice » qui suit le lapin blanc vers « Tech Land ».\n- **Obstacles** : l'âge, plus de salaire, un bootcamp de trois mois financé sur ses économies, la peur de l'échec et des proches partagés.\n- **Premier choc** : une RH de son école lui dit qu'elle ne pourra pas être développeuse *« tout simplement parce que tu es une femme »* ; une semaine plus tard, elle décroche son premier contrat.\n- **Engagement** : une communauté d'entraide pour les femmes en reconversion, et un appel à répondre aux questions des reconvertis sans les dénigrer : *« il y a pas de question débile »*.\n- *« Maintenant quand j'entends hello world je vois un monde de possibilités. »* Aucun retour participant public trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "y9oCT0Zx3Vc",
+        "title": "Les reconvertis: cette nouvelle vague de profils dans le dev - Helvira Goma",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Edge AI : allez viens, on embarque notre intelligence artificielle ! (Eléa Petton)",
+    "Rust sans (trop) roter du sang (Alexis Chotard, Édouard Siha)",
+    "Apprenez Rust pas à pas en construisant une application en ligne de commande, hands-on (Julien Rollin, Guillaume Azam)",
+    "Comment gérer des journées de 35h ? (Sylvain Gougouzian)",
+    "J'écris mes CLI en Java, pas vous ? (Kevin Toublanc, Mathieu Laude)",
+    "Live-coding : Space Invaders en vanilla JS en partant de zéro (Fabien Lamarque)",
+    "Streetriders : on vous raconte comment on l'a développé (Nicolas Giraud, Sylvain Bestion)",
+    "Venez faire un petit Tours de la programmation IoT, hands-on (Guillaume Membré, Guillaume Renaudin)",
+    "Lost in abstraction (Pierre Robillard)",
+    "User vs Human Experience (Antoine Robiez)",
+    "As a UI designer, how to mess up your project? (Dorian Delorme, Rudy Baer)",
+    "(Et si on apprenait à) Apprendre et partager autrement (Aurélie Vache)",
+    "Storybook, une vraie bonne idée ? (Sara Attallah)",
+    "Web dans le cloud, piloter ses décisions par les coûts (Matthieu Werner)",
+    "Apprenons ensemble grâce aux bookclubs (Marion Valentin, Yvonnick Frin)",
+    "H@ck your house! (Nicolas Carlier, Loïc Rodier)",
+    "Décommissionnement progressif de code legacy à l'aide d'AST (Adrien Joly)",
+    "Facilitez-vous les releases, utilisez semantic release (Antoine Meausoone, Gaëtan Bogaert)",
+    "Lego Flow Game : le Waterfall, le Scrum et le Kanban tu différencieras, hands-on (Fanny Klauk)",
+    "Améliorer les performances de son backend (Antoine Dessaigne)",
+    "Oh crab ! My watch speaks Rust (Pierre-Yves Aillet)",
+    "J'ai expliqué notre métier à un pote âgé (Nicolas Dauphin-Moulin)",
+    "Vous allez finir par les aimer les Optionals (Jérôme Tama)",
+    "Corn Hole 2 Turbo : mes premiers pas dans l'embarqué (Paul Roye)",
+    "10+ ans de développement Android : la rétrospective (Julien Salvi)",
+    "Wolfy, de 2000 à 20 000 joueurs connectés (Kevin Jean)",
+    "Tester pour ne plus douter : à la recherche du test idéal (Benjamin Cavy)",
+    "Tester vos microservices sans peine avec Micronaut Test Resources (Cédric Champeau)",
+    "Démystifions le CSS (Audrey Dubois)",
+    "Votre équipe de développement à l'ère post-covid (Marc Dugué, Eric Aboudaram)",
+    "Remotion : le 7ème art à portée de composants web et d'API (Antoine Caron, Mickaël Alves)",
+    "sécurité + open source = ❤️ (Adrien Pessu)",
+    "Comment hacker vos applications mobiles ? (Amélie Avignon, Julien Jimenez)",
+    "La sécurité, par où commencer ? Install party, hands-on (David Aparicio)",
+    "Mais au fait, que se passe-t-il quand je mets en ligne une vidéo ? (Antoine Wacheux)",
+    "Rendu 3D, la grande illusion expliquée (Thomas Guibert)",
+    "Du code SOLID comme un rock, c'est vraiment utile ? (Quentin Klein)",
+    "NoSQL et SQL, les grands esprits se rencontrent... enfin ! (Loïc Lefèvre)",
+    "Product owners et développeurs/développeuses, apprenons à dire « Non ! » (Christelle Murté)"
+  ],
+  "sources": [
+    { "label": "Site officiel Touraine Tech 2023 (programme des deux jours, résumés, liens de slides et de vidéos)", "url": "https://2023.touraine.tech" },
+    { "label": "Playlist YouTube Touraine Tech 2023 (52 vidéos)", "url": "https://www.youtube.com/playlist?list=PLl0xIhYGSdm_2YeOP-_T3NJ0XcCMrU7jO" },
+    { "label": "Stéphane Bortzmeyer, « Mon exposé sur la neutralité du code à Touraine Tech » (blog, 23 janvier 2023)", "url": "https://www.bortzmeyer.org/touraine-tech-2023.html" },
+    { "label": "Ploum, « Keynote Touraine Tech 2023 : Pourquoi ? » (texte de la keynote, 30 mars 2023)", "url": "https://ploum.net/2023-03-30-tnt23-pourquoi.html" },
+    { "label": "Slides de Christopher Maneu (Speaker Deck)", "url": "https://speakerdeck.com/cmaneu/touraine-tech-on-peut-ecouter-1-fois-un-utilisateur-ou-ecouter-1-milliard-dutilisateurs" },
+    { "label": "Transcripts automatiques YouTube : 3 keynotes et 17 talks" },
+    { "label": "Posts LinkedIn et autres blogs participants : aucun trouvé pour l'édition 2023 (4 recherches web)" }
+  ]
 }
