@@ -2,12 +2,553 @@
   "event": "devfest-nantes",
   "year": 2022,
   "title": "DevFest Nantes 2022",
+  "edition": "10e édition",
+  "theme": "Jules Verne",
   "start": "2022-10-20",
   "end": "2022-10-21",
   "city": "Nantes",
   "venue": "Cité des Congrès",
   "url": "https://devfest2022.gdgnantes.com",
+  "programUrl": "https://devfest2022.gdgnantes.com/schedule",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "10e édition (« les 10 ans ») sur le thème Jules Verne, stands à l'ambiance steampunk. Le site annonce environ 3 500 participants, 71 talks, 4 tracks et plus de 90 speakers ; le blog OVHcloud parle de 3 700+ participants, 2 keynotes, 70+ conférences et 42 sponsors.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-05",
+  "revisit": "Corpus participants très mince : un seul retour publié (blog OVHcloud, auteurs sponsors et speakers), aucun post LinkedIn ni article de participant retrouvé. Synthèse appuyée surtout sur 21 transcripts. Chercher des posts LinkedIn/Twitter d'octobre 2022 (#DevFestNantes) et des blogs d'ESN (Zenika, Sfeir, Onepoint, Sopra Steria…).",
+  "corpus": "Programme officiel (site devfest2022.gdgnantes.com et données du dépôt GitHub GDG-Nantes/Devfest2022), playlist YouTube « DevFest Nantes 2022 » (64 vidéos publiées les 5 à 7 novembre 2022) dont 21 transcripts lus (2 keynotes, 19 sessions), et un seul retour écrit : le billet du blog OVHcloud (10 novembre 2022).",
+  "limits": "Retours participants quasi absents : le seul billet trouvé vient d'un sponsor dont deux salariés étaient speakers. Les résumés décrivent donc ce qui a été dit sur scène plus que ce que la salle en a retenu ; le nombre de vues YouTube (relevé en novembre 2026) sert seulement d'indice d'intérêt. Les codelabs et les sessions non filmées ne sont pas couverts.",
+  "tldr": "Une 10e édition festive sur le thème **Jules Verne**, où dominent les **fondamentaux du web** (HTML, cache HTTP, PWA, auth), l'**accessibilité** et la **sécurité de la supply chain**, avec une place notable pour le **facteur humain** (santé mentale, veille, storytelling) et des premiers regards sur l'**IA générative** (Codex, DALL-E 2).",
+  "keyTakeaways": [
+    "Commencer par le HTML natif avant le JS et l'ARIA : `datalist`, `autocomplete`, `dialog`, `details` couvrent beaucoup de besoins (Gaël Poupard).",
+    "Pour le cache HTTP : fichiers statiques avec empreinte + long `max-age` + `immutable`, `no-cache` pour le dynamique, et toujours mesurer plutôt que croire les specs (Hubert Sablonnière).",
+    "Documenter l'accessibilité dès les maquettes (annotations, ordre de tabulation, états, contrastes) et l'inscrire dans la definition of done et les appels d'offres (Stéphanie Walter).",
+    "Commencer le DDD par le stratégique (langage omniprésent, sous-domaines, bounded contexts) plutôt que par les patterns tactiques (Josian Chevalier).",
+    "Prioriser l'analyse des dépendances (70 à 80 % du code en prod n'est pas écrit par l'équipe) et intégrer SAST et secret scanning à la pull request (Adrien Pessu, Tugdual Grall).",
+    "Ne jamais manipuler les dates à la main : ISO 8601 avec fuseau, bibliothèques dédiées, base IANA à jour (Arnaud Pichery).",
+    "Préférer le cookie entre navigateur et serveur, des jetons courts, et prévoir la révocation dès la conception (Clément Delafargue, Geoffroy Couprie).",
+    "Faire de la veille un processus (sourcer, traiter en paraphrasant, valoriser en partageant) pris sur le temps pro (David Franck, Fabien Hiegel).",
+    "Face à un proche en dépression : prendre des nouvelles sans attendre de réponse, proposer des options précises plutôt qu'une question ouverte (Manon Gruaz)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-d-ouverture-device-orchestra",
+      "day": "2022-10-20",
+      "type": "keynote",
+      "title": "Keynote d'ouverture",
+      "speakers": [
+        "Créateur de la chaîne YouTube Device Orchestra (nom non retrouvé)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Ouverture par les organisateurs (passages musicaux et en français non transcrits), puis un **concert de brosses à dents électriques** présenté comme la première performance live de ces appareils devant un public.\n- L'orateur, développeur formé à l'université Aalto (Finlande), raconte sa chaîne Device Orchestra (depuis 2019, environ 650 000 abonnés et 54 millions de vues selon lui) : TPE, grille-pain, machines à écrire deviennent des instruments.\n- **Principe** : un moteur fait toujours du bruit ; en réglant sa vitesse, on règle la note. Moteurs pilotés par Arduino.\n- **Une chaîne d'outils de développeur** : partition MuseScore, export MusicXML, programme Java (une classe par appareil) qui génère environ 4 000 lignes de C++.\n- **La boucle de feedback** comme leçon : un aperçu audio généré en Java la fait passer de 2 minutes à environ 2 secondes ; des circuits imprimés remplacent un câblage indébogable, avec un parallèle sur le code propre.\n- *« Pour certains c'est du bruit, mais pour moi c'est de la musique »* (traduit de l'anglais). L'audio de la démo a lâché, il a chanté l'exemple lui-même.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "mO9qbVavCuQ",
+        "title": "[DevFest Nantes 2022] Keynote",
+        "publishedAt": "2022-11-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "keynote-de-fermeture",
+      "day": "2022-10-21",
+      "type": "keynote",
+      "title": "Keynote de fermeture",
+      "speakers": [
+        "Comédiens d'improvisation présents les deux jours",
+        "Équipe d'organisation GDG Nantes"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Spectacle en partie improvisé** qui rejoue le festival : une aristocrate en montgolfière cherche le « dodo rose », sur fond de références aux talks des deux jours.\n- Clins d'œil au programme : parodie de talk « en salle Jules Verne », montgolfière pilotée par gestes avec un Arduino, *« 3158 lignes de code pour faire danser des brosses à dents »* (écho à la keynote d'ouverture), recrutement par goodies, pointes contre l'architecture hexagonale, le SSR et les PWA.\n- Les organisateurs soulignent **les 10 ans** (*« c'était quand même les 10 ans hein et c'est exceptionnel »*), remercient public, sponsors, speakers et bénévoles invités sur scène pour une photo collective.\n- Annonce de l'édition suivante les **19 et 20 octobre 2023** à la Cité des Congrès.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "ZehrVDBW3SQ",
+        "title": "[DevFest Nantes 2022] Keynote de fermeture",
+        "publishedAt": "2022-11-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "bien-se-lancer-dans-le-domain-driven-design-sans-se-tromper-de-combat",
+      "day": "2022-10-21",
+      "type": "talk",
+      "title": "Bien se lancer dans le Domain Driven Design sans se tromper de combat",
+      "speakers": [
+        "Josian Chevalier"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Fil rouge julesvernien : un simulateur pour le **Baltimore Gun Club**, qui veut envoyer un projectile sur la Lune.\n- **Thèse** : le DDD n'est ni un framework ni une technique de code mais une philosophie outillée ; on y entre trop souvent par la tactique (agrégats, hexagonal) alors qu'il faut commencer par le **design stratégique**, le « quoi » avant le « comment ».\n- **Langage omniprésent** : traquer synonymes et mots à double sens (la « cible » est la Lune pour l'artilleur, le point de Lagrange pour l'astronome) ; *« le langage c'est le modèle »*. Event storming pour lever les malentendus avant de coder.\n- Découpage en sous-domaines (cœur, support, générique) et trois bounded contexts, puis relations entre contextes (shared kernel, conformiste assumé, anti-corruption layer) et rappel de la loi de Conway.\n- *« Le découpage en bornes dépend des besoins de métier, c'est pas un découpage gravé dans la roche. »*\n- Vidéo la plus vue de l'édition sur YouTube (environ 6 500 vues), signe d'un intérêt durable pour une introduction pragmatique au DDD.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "jAl3c_zo71w",
+        "title": "[DevFest Nantes 2022] Bien se lancer dans le Domain Driven Design sans se tromper de combat",
+        "publishedAt": "2022-11-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ctrl-alt-depression",
+      "day": "2022-10-20",
+      "type": "talk",
+      "title": "Ctrl+Alt+Depression",
+      "speakers": [
+        "Manon Gruaz"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Témoignage d'une lead designer (startup d'IA à Montréal) sur **11 mois d'arrêt** : perte de sommeil et de concentration, comparaison permanente, diagnostic de burn-out puis de dépression d'abord refusé.\n- Le programme pose la question : perfectionnisme, performance et comparaison sont **intrinsèques au métier de designer** et à la culture tech.\n- Pédagogie : le burn-out est un syndrome, la dépression une maladie ; démontage des clichés, métaphore du cerveau comme une ville qui s'éteint.\n- Outils partagés : se prendre dans ses bras (geste fait par toute la salle), « je suis assez » sur les miroirs, **matrice ACT** (valeurs, actions engagées, souffrances).\n- *« Sortir de la dépression c'est un travail d'équipe »* : psy, ergothérapeute, médecin, amis, retour progressif sur 8 semaines puis nouveau poste aligné sur ses valeurs.\n- Conseil aux proches : prendre des nouvelles sans attendre de réponse, proposer trois options précises. Applaudissements en cours de talk ; deuxième vidéo la plus vue de l'édition (environ 5 100 vues).",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "MN3D0uLEERU",
+        "title": "[DevFest Nantes 2022] Ctrl+Alt+Depression",
+        "publishedAt": "2022-11-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "retourauxsources-le-cache-http",
+      "day": "2022-10-21",
+      "type": "talk",
+      "title": "#RetourAuxSources : Le cache HTTP",
+      "speakers": [
+        "Hubert Sablonnière — Clever Cloud"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Retour aux fondamentaux depuis la RFC 1945 (1996) : le cache réduit latence et charge, mais *« vider son cache »* ne doit pas devenir une solution.\n- **`max-age` est une autorisation, pas une obligation** ; revalidation par ETag/If-None-Match et Last-Modified (réponse 304) ; sans `max-age`, le cache heuristique s'applique.\n- **Noms trompeurs** : `no-cache` autorise le stockage mais impose de revalider, `no-store` l'interdit ; `immutable` évite la revalidation au F5 (pas dans Chrome).\n- Tour des couches : memory cache, module map des ES modules, fin du push HTTP/2 au profit des Early Hints, partitionnement du cache contre le tracking, back/forward cache cassé par un script tiers.\n- **Recettes** : empreinte dans le nom des fichiers statiques + long `max-age` + `immutable`, `max-age` court + ETag pour un blog, `private` pour l'authentifié, `Vary` seulement pour la compression.\n- Conclusion : *« tester, mesurer et ne croyez pas tout le temps les specs »*. Démos en direct dans Firefox, salle très participative.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "xtpaQ8_mmKM",
+        "title": "[DevFest Nantes 2022] #RetourAuxSources : Le cache HTTP",
+        "publishedAt": "2022-11-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-pwa-cheat-sheet-for-2023",
+      "day": "2022-10-20",
+      "type": "talk",
+      "title": "The PWA Cheat Sheet for 2023",
+      "speakers": [
+        "Maximiliano Firtman"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Panorama par l'auteur du cours « Learn PWA » de web.dev : les PWA sont installables sur tous les OS ; côté Chromium, le service worker ne sera bientôt plus requis pour l'installation.\n- **Installation** : interface maison via `beforeinstallprompt`, boîte d'installation enrichie (description, captures d'écran dans le manifest), nouveau champ `id` à aligner sur l'ID déjà calculé par Chrome.\n- **Icônes** : une maskable (que *« 99 % des PWA »* oublient, selon lui), une `apple-touch-icon` 180 px, une SVG ; splash screens iOS via pwa-asset-generator. `theme-color` en meta, modifiable en JS et compatible mode sombre.\n- Desktop (Window Controls Overlay, multi-écrans) et intégration plateforme : passkeys, background sync, Web Push (Safari macOS Ventura, iOS annoncé), gestion des fichiers, Web Share Target.\n- *« La PWA, c'est l'ADN actuel du web »* (traduit de l'anglais). Environ vingt mains levées pour « qui fait des PWA ».",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "hgxfjm04OLE",
+        "title": "[DevFest Nantes 2022] The PWA Cheat Sheet for 2023",
+        "publishedAt": "2022-11-07",
+        "transcript": true
+      }
+    },
+    {
+      "id": "voyage-au-centre-de-la-veille-apprendre-en-continu-avec-sa-veille-technologique",
+      "day": "2022-10-20",
+      "type": "talk",
+      "title": "Voyage au centre de la Veille : apprendre en continu avec sa veille technologique",
+      "speakers": [
+        "David Franck — Shodo",
+        "Fabien Hiegel — Shodo"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Distinction entre **veille stratégique** (imposée par le poste) et **veille personnelle** (« ce qui vous intéresse, à votre rythme ») ; parabole du bûcheron qui prend le temps d'aiguiser sa hache.\n- Processus en trois temps : **sourcer** (liste blanche sélective, projets d'apprentissage inspirés d'*Ultralearning*), **traiter** (notes paraphrasées, Zettelkasten avec Obsidian), **valoriser** (café, communautés de pratique, lightning talks, extreme reading, mob programming).\n- *« Ne pas prendre des notes c'est presque perdre son temps. »*\n- Ancrer l'habitude (*Atomic Habits*) et viser **le temps pro**, en s'appuyant sur le Manifeste agile, DORA/*Accelerate* et Senge ; mise en garde contre la culture du métier passion et le burn-out.\n- *« La connaissance c'est la seule chose qui grandit quand on la partage. »* Beaucoup de mains levées pour « qui fait de la veille », beaucoup moins pour la prise de notes.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "WLuR4OVudqs",
+        "title": "[DevFest Nantes 2022] Apprendre en continue avec sa veille technologique.",
+        "publishedAt": "2022-11-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "testing-web-applications-with-playwright",
+      "day": "2022-10-20",
+      "type": "talk",
+      "title": "Testing Web Applications with Playwright",
+      "speakers": [
+        "Debbie O'Brien — Microsoft"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Point de départ : les tests sont jugés ennuyeux, instables et chronophages (réponses criées par la salle : « boring », « flaky ») ; il manque une **culture du test**, que de meilleurs outils peuvent créer.\n- Playwright : tous navigateurs, **contexte isolé par test**, exécution parallèle, plusieurs langages.\n- Démos dans l'extension VS Code : **locators orientés utilisateur** (`getByRole`, `getByLabel`), assertions web-first et auto-waiting, Codegen sur Netflix (iframe d'un autre domaine), qui révèle au passage un bug de validation d'e-mail.\n- Rapport HTML, **Trace Viewer** (DOM, réseau, console), fixture `isMobile`, component testing expérimental.\n- *« Les tests devraient être faciles et amusants »* (traduit de l'anglais). Une dizaine de personnes l'utilisent en production ; questions sur la migration depuis Cypress.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "meiA4TPltoI",
+        "title": "[DevFest Nantes 2022] Testing Web Applications with Playwright",
+        "publishedAt": "2022-11-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "decouvrez-le-bon-html-et-economisez-du-js-et-du-css",
+      "day": "2022-10-21",
+      "type": "talk",
+      "title": "Découvrez « le bon HTML » et économisez du JS et du CSS",
+      "speakers": [
+        "Gaël Poupard"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Principe de **moindre pouvoir** (Tim Berners-Lee) : HTML, puis CSS, puis JS, puis ARIA sobre, puis polyfills et frameworks. *« Votre javascript n'est pas tolérant à l'erreur. »*\n- Formulaires : `datalist`, `autocomplete` (dont `new-password`, `one-time-code`), `pattern` avec `:valid`/`:invalid`, `spellcheck=false` (qui évite aussi d'envoyer les saisies à des serveurs tiers), `inputmode`, `enterkeyhint`, `type` explicite sur les boutons.\n- `details`/`summary` réservés au contenu dépliable (pas aux menus ni onglets) ; `dialog` avec `showModal()`, supporté par Safari depuis début 2022.\n- Aussi : `output` avec `role=\"status\"`, `:target`, `contenteditable`, `template`/`slot`, `fetchpriority`.\n- Rappel : *« la première règle d'ARIA stipule que si vous pouvez le faire en HTML faites-le en HTML »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "VhMqwbsyXPo",
+        "title": "[DevFest Nantes 2022] Découvrez « le bon HTML » et économisez du JS et du CSS",
+        "publishedAt": "2022-11-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "authentification-autorisation-le-cookie-et-ses-rejetons",
+      "day": "2022-10-21",
+      "type": "talk",
+      "title": "Authentification/autorisation : le cookie et ses rejetons",
+      "speakers": [
+        "Clément Delafargue",
+        "Geoffroy Couprie — Apollo"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Authentification et autorisation sont distinctes ; ACL, RBAC et ABAC finissent souvent en blocs `if` partout (Zanzibar et OPA évoqués).\n- Sessions serveur (révocation simple, scalabilité difficile) contre cookies signés (sans état, mais taille et révocation délicates).\n- **JWT** : failles historiques (algorithme « none », confusion de clés) ; *« la flexibilité des JWT est vraiment le point faible »*. PASETO comme alternative plus contrainte.\n- **Le cookie reste le bon mécanisme** navigateur ↔ serveur ; prévoir la révocation à l'avance, préférer des jetons courts.\n- Macaroons (atténuation hors ligne, mais secret partagé) puis **Biscuit** (clé publique, autorisation en Datalog, implémentations Rust, JS, Go, Python, Java) ; conclusion : *« faites du Datalog »*. Les deux speakers sont impliqués dans Biscuit (speaker).",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "8_-QGBMT7-k",
+        "title": "[DevFest Nantes 2022] Authentification/autorisation: le cookie et ses rejetons",
+        "publishedAt": "2022-11-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "temporal-io-mes-workflows-sont-cloud-ready",
+      "day": "2022-10-20",
+      "type": "lightning",
+      "title": "Temporal.io - mes workflows sont cloud ready",
+      "speakers": [
+        "Alexandre Vilain — OVHcloud"
+      ],
+      "feedbackFrom": [
+        "Blog OVHcloud (Stéphane Philippart, Thierry Chantier ; collègues du speaker)"
+      ],
+      "summary": "- Cas réel OVHcloud : ajouter un serveur à un cluster client traverse plusieurs microservices ; chaque équipe recodait retries et état avec ses propres choix techniques, d'où un **« plat de spaghetti »**.\n- Besoins : workflows durables (plusieurs heures), retries configurables, scalabilité, et du **code plutôt qu'un YAML de 200 lignes**.\n- Temporal : quatre services sur un datastore (Cassandra, MySQL, PostgreSQL), SDK Go, Java, TypeScript, Python, PHP ; worker, workflow, activités, child workflows, démontrés en Go.\n- REX honnête : *« on est parti un peu tête baissée »* et le spaghetti est revenu ; règle adoptée depuis : chaque microservice déclare ses workflows, les appels inter-services passent par des child workflows ; générateur maison pour typer à la compilation.\n- Côté retours : le blog OVHcloud retient la question *« Can we stop reinventing the wheel? »* et parle d'un talk réussi après un accompagnement de la conception aux répétitions (retour de collègues).",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "jIncBsYiZ3E",
+        "title": "[DevFest Nantes 2022] Temporal.io - my workflows are cloud ready",
+        "publishedAt": "2022-11-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "dates-et-heures-a-l-horizon-fuyez-ou-venez-decouvrir-tous-les-pieges",
+      "day": "2022-10-21",
+      "type": "talk",
+      "title": "Dates et Heures à l'horizon ? Fuyez… ou venez découvrir tous les pièges qu'elles vous tendent",
+      "speakers": [
+        "Arnaud Pichery — Dataiku"
+      ],
+      "feedbackFrom": [],
+      "summary": "- *« Les dates et les heures c'est juste en fait compliqué intrinsèquement »* : physique, histoire et imagination des développeurs se combinent ; une journée ne fait pas toujours 24 h.\n- Tour historique : heures romaines variables, heure décimale révolutionnaire, heure de Paris et gares décalées de 5 minutes, passage de la France à GMT en 1911.\n- Stockage selon les systèmes (COBOL, MS-DOS à 2 s près, Unix, Excel et son calendrier 1904 qui décale les dates de 4 ans entre Mac et Windows).\n- Bugs célèbres : an 2000, Exchange bloqué le 1er janvier 2022, overflow Unix de 2038, seconde intercalaire chez Cloudflare.\n- **Conseils** : ISO 8601 avec fuseau, bibliothèques (java.time), base IANA à jour, horloge monotone pour les durées, politique explicite pour les cron face aux changements d'heure. *« Ne faites pas ça à la main s'il vous plaît. »* Rires et questions nourries en fin de talk.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "PdweuZKD8Sg",
+        "title": "[DevFest Nantes 2022] Dates et Heures à l'horizon ? Fuyez… ou venez découvrir les pièges tendus",
+        "publishedAt": "2022-11-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-programmer-des-portes-logiques-dans-l-adn",
+      "day": "2022-10-20",
+      "type": "lightning",
+      "title": "Comment programmer des portes logiques dans l'ADN",
+      "speakers": [
+        "Tiffany Souterre — AWS"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Analogie informatique : nucléotides ATCG comme **base 4**, gènes comme fonctions, promoteurs comme conditions, protéines comme sorties.\n- Construction de portes AND, NOT, OR puis **NOR**, qui suffit à toute la logique booléenne ; l'ordinateur d'Apollo 11 ne comptait que 5 600 portes NOR.\n- Verilog sert aussi à décrire des circuits génétiques ; l'outil **Cello** génère table de vérité et séquence d'ADN à faire synthétiser.\n- Question du public sur les usages : capteurs de molécules, production de médicaments par des bactéries.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "j0dCH55-6Ck",
+        "title": "[DevFest Nantes 2022] Comment programmer des portes logiques dans l'ADN",
+        "publishedAt": "2022-11-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "documentons-l-accessibilite-en-phase-de-design",
+      "day": "2022-10-20",
+      "type": "talk",
+      "title": "Documentons l'accessibilité en phase de design",
+      "speakers": [
+        "Stéphanie Walter — Maltem"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Corriger après la mise en ligne coûte cher** : les designers peuvent documenter l'accessibilité dès les maquettes.\n- Format : annotations pas à pas (bibliothèque de symboles, couleur hors charte pour ne pas être implémentée), reliées aux tickets Jira et revues chaque semaine.\n- Contenu : matrice de contrastes, états (focus), erreurs sans recours à la seule couleur, parcours clavier, zoom 200 %, `prefers-reduced-motion`, landmarks, niveaux de titres, ordre de tabulation, textes alternatifs prévus jusque dans le CMS.\n- *« C'est un outil de communication, pas une substitution à la communication »* ; l'accessibilité doit entrer dans le cahier des charges et la definition of done, et si le temps manque, *« choisissez vos batailles »*.\n- Question d'une cheffe de projet du secteur public : l'exiger dans les appels d'offres (références, processus de test), avec la directive européenne de 2025 en ligne de mire.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "yJwweyOlhaE",
+        "title": "[DevFest Nantes 2022] Documentons l’accessibilité en phase de design",
+        "publishedAt": "2022-11-06",
+        "transcript": true
+      }
+    },
+    {
+      "id": "l-accessibilite-c-est-pas-sorcier",
+      "day": "2022-10-21",
+      "type": "talk",
+      "title": "L'accessibilité, c'est pas sorcier !",
+      "speakers": [
+        "Fanny Demey Pluvinage",
+        "Gérard Paligot"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Format clin d'œil à l'émission « C'est pas sorcier » (Fred et Jamy, camion laboratoire) ; vidéo d'ouverture d'un membre de l'association Valentin Haüy.\n- Chiffres posés : 12 millions de personnes concernées en France, moins de 10 % des sites accessibles ; focus sur le **handicap visuel** (daltonisme, rétinite pigmentaire, glaucome, DMLA), lunettes de simulation pour le public.\n- **Démo TalkBack** : un volontaire masqué doit commander dans une appli e-commerce volontairement inaccessible.\n- Corrections en Jetpack Compose : `contentDescription` concises (nulles pour le décoratif), regroupement sémantique (de 7 à 3 swipes par produit), `stateDescription` pour annoncer les changements, contournement d'un FAB inatteignable.\n- *« C'est pas parce que c'est du texte que c'est accessible. »* La salle applaudit quand l'appli devient utilisable.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "l0ouMbpOWn0",
+        "title": "[DevFest Nantes 2022] L'accessibilité, c'est pas sorcier !",
+        "publishedAt": "2022-11-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "devsecops-de-la-securite-dans-mon-devops",
+      "day": "2022-10-20",
+      "type": "talk",
+      "title": "DevSecOps : de la sécurité dans mon DevOps",
+      "speakers": [
+        "Adrien Pessu",
+        "Tugdual Grall — GitHub"
+      ],
+      "feedbackFrom": [],
+      "summary": "- La sécurité comme **un jardin qu'on entretient chaque jour**, pas comme une forteresse.\n- Priorité n°1 : **l'analyse des dépendances**, car 70 à 80 % du code en production n'est pas écrit par l'équipe (Log4j, lecture d'une CVE, Dependabot) ; ne pas signaler une faille dans une issue publique.\n- Images Docker scannées, images distroless, stratégie de choix des images de base.\n- SAST dans l'IDE et **dans la pull request** plutôt qu'en rapport tardif (démo CodeQL sur une injection SQL), secret scanning (token invalidé automatiquement), contrôle de l'IaC.\n- *« L'objectif c'est d'analyser les failles et de faire la remédiation »*, pas du reporting.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "XZDjqAPkpQ0",
+        "title": "[DevFest Nantes 2022] DevSecOps : de la sécurité dans mon DevOps",
+        "publishedAt": "2022-11-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "et-si-les-meilleurs-dockerfile-etaient-ceux-que-l-on-n-ecrit-pas",
+      "day": "2022-10-21",
+      "type": "lightning",
+      "title": "Et si les meilleurs Dockerfile étaient ceux que l'on n'écrit pas",
+      "speakers": [
+        "Fabien Martin — VMware Tanzu"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Écrire un bon Dockerfile oblige à maîtriser layers, image de base, sécurité, non-root ; le vrai coût est le **maintien en condition opérationnelle** : une faille dans l'OS de base impose de tout reconstruire.\n- Le Dockerfile a opéré un **« énorme shift left »** vers des devs qui n'en ont souvent ni les compétences ni l'envie.\n- Alternative : **Cloud Native Buildpacks** (CNCF), démo Paketo + kpack : après mise à jour de la stack, les CVE de l'OS disparaissent sans intervention des devs ; les CVE applicatives restent à leur charge.\n- *« Le meilleur code c'est celui qu'on écrit pas. »*",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Q7BkxZEaigY",
+        "title": "[DevFest Nantes 2022] Et si les meilleurs Dockerfile étaient ceux que l'on n'écrit pas",
+        "publishedAt": "2022-11-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-voyage-du-heros-de-l-it",
+      "day": "2022-10-21",
+      "type": "talk",
+      "title": "Le voyage du héros de l'IT",
+      "speakers": [
+        "Olivier Beautier — OVHcloud"
+      ],
+      "feedbackFrom": [
+        "Blog OVHcloud (Stéphane Philippart, Thierry Chantier ; collègues du speaker)"
+      ],
+      "summary": "- Talk interactif sur le storytelling : le **voyage du héros** (Vogler, d'après Campbell) en trois actes et douze étapes, illustré par Star Wars et Dirty Dancing.\n- L'orateur découpe son propre parcours de speaker selon ce modèle, jusqu'à un talk raté huit jours plus tôt.\n- Archétypes : mentor (*on l'est dès qu'on partage ce qu'on sait*), alliés, ombre, gardien du seuil.\n- Conseils pour un talk : être soi-même le héros, montrer ses failles, ne pas livrer la solution d'emblée, assumer le moment où « tout brûle ». *« Ne racontez pas un produit, ne racontez pas un framework, racontez-vous. »*\n- Le blog OVHcloud le résume comme un moyen de montrer au public comment construire ses propres histoires.",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "AZKjdhViwYI",
+        "title": "[DevFest Nantes 2022] Le voyage du héros de l'IT",
+        "publishedAt": "2022-11-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "how-openai-codex-learned-to-write-and-refactor-javascript",
+      "day": "2022-10-21",
+      "type": "talk",
+      "title": "How OpenAI Codex learned to write and refactor JavaScript !?!",
+      "speakers": [
+        "Gerard Sans"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Un regard d'avant ChatGPT (sorti six semaines plus tard) : repères IA, machine learning, deep learning, puis **GitHub Copilot** (complétion depuis une signature, un motif ou un commentaire).\n- Historique OpenAI : GPT-1, GPT-3 (175 milliards de paramètres), **Codex** présenté comme GPT-3 entraîné sur du code (54 millions de dépôts GitHub).\n- Fonctionnement par prédiction du mot suivant ; limites nommées : biais, **« hallucinations »**, imprécision.\n- Démos : modes insert et edit (Fibonacci puis mémoïsation), traduction JavaScript vers Python, page de login Tailwind générée.\n- *« Il ne va pas faire votre travail, mais… »* (traduit de l'anglais).",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "FwRtzlYINrA",
+        "title": "[DevFest Nantes 2022] How OpenAI Codex learned to write and refactor JavaScript !?!",
+        "publishedAt": "2022-11-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-futur-de-la-medecine-sera-open-source",
+      "day": "2022-10-21",
+      "type": "lightning",
+      "title": "Le futur de la médecine sera open source",
+      "speakers": [
+        "David Sferruzza"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Récit du respirateur **MakAir** (mars 2020) : premier prototype bricolé, essai clinique dès avril avec le CEA, environ 200 machines produites, design stabilisé en environ 3 mois.\n- Clé du succès selon l'orateur : **l'open source**, décrit en niveaux cumulatifs (publier, documenter, communiquer, construire puis gouverner avec la communauté) ; environ 350 contributeurs.\n- Thèse : la médecine doit être un **bien commun** (interopérabilité des données, matériel « software first ») ; freins : régulation en cycle en V, culture du secret, environ 7 ans avant de vendre.\n- Projet de fondation type Apache pour le matériel médical libre ; invitation à *« vous questionner sur la moralité de ce que vous faites »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "k3Zmg-LoCkg",
+        "title": "[DevFest Nantes 2022] The future of medicine will be open source",
+        "publishedAt": "2022-11-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "tdd-et-tdd-sont-dans-un-bateau",
+      "day": "2022-10-21",
+      "type": "talk",
+      "title": "TDD et TDD sont dans un bateau",
+      "speakers": [
+        "Arnaud Bailly"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Fil rouge : le **NIR** (numéro de sécurité sociale), son histoire et sa clé de contrôle.\n- Le Test-Driven classique par triangulation donne une barre verte, mais avec *primitive obsession* et validations dupliquées.\n- **Type-Driven** : modéliser le domaine par les types et appliquer *« parse, don't validate »* ; propriété testée : `parse(print(x)) == x`.\n- Le property-based testing (QuickCheck) révèle un bug dans le modèle lui-même : *« il faut tester vos tests »* ; mutations pour vérifier le rejet des chaînes invalides.\n- Usage réel côté blockchain Cardano (ledger, Hydra) ; équivalents cités : Hypothesis (Python), quickcheck (Rust), Java.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "6zQs4B2NIKA",
+        "title": "[DevFest Nantes 2022] TDD et TDD sont dans un bateau",
+        "publishedAt": "2022-11-05",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Simple JStures can go a long way (Charlie Gerard)",
+    "Au secours, mon SI est ouvert sur le Cloud !! (Laurent Grangeau, Tony Jarriault)",
+    "Entiers, virgules flottantes ou représentations exotiques : parlons d'élégance (Fabien Trégan, Olivier Poncet)",
+    "Kanye West, Maths and Signals ! How to clone Shazam (Moustapha Agack)",
+    "My Life as blind web user (Ronan Robe)",
+    "Sea to Sky: Building resilient applications on Google Cloud's fiber optic network (Stephanie Wong)",
+    "Comment j'ai largué Apollo Server pour GraphQL Yoga (Nicolas Lepage)",
+    "DALL-E V2 : un robot et un peintre font de la génération d'image par IA (Olivier Mertens)",
+    "Fuzz Testing Made Easy (Katie Hockman)",
+    "Trouver sa voix, et l'accepter pour mieux l'utiliser (Sylvain Coudert)",
+    "Choreography vs Orchestration in serverless microservices (Guillaume Laforge)",
+    "Le GitOps dont vous êtes le héros (Louis Tournayre)",
+    "CloudRun à l'échelle d'une entreprise (Antony Lallement, Christophe Furmaniak)",
+    "Oh crab ! My watch speaks Rust (Pierre-Yves Aillet)",
+    "La programmation dynamique pour sauver Jules Verne (Gaëtan Eleouet)",
+    "What About Logs? (Daniel Maher)",
+    "Plongez dans le monde fantastique de Jules Verne grâce à l'AR (Julian Clemot, Yannick Jacqueline)",
+    "Crowdsec, la sécurité web par la foule (Arthur Lutz)",
+    "Le côté obscur du Shadow DOM (Adrien Bordone)",
+    "Motional Intelligence: How Animation Brings Product to Life (Cyril Mottier)",
+    "Drame dans les R (Charline Charrier, Nicolas Greffard)",
+    "Technical SEO 101 for JS developers (Martin Splitt)",
+    "Managing data and resources in your Progressive Web App like a pro (Laura Morinigo)",
+    "The hitchhiker's guide to web privacy (Maud Nalpas)",
+    "Améliorer l'expérience utilisateur de nos formulaires web",
+    "Designers x Developers : ça match ou ça match ?",
+    "Build your 8-bit computer from scratch",
+    "Conception de langage : communiquer avec la machine (William Badiabantou)",
+    "Qwik, rapidement",
+    "Libérez, délivrez WebAssembly du navigateur avec WASI",
+    "Dagger.io, le nouveau couteau-suisse portable basé sur Docker pour votre CI/CD",
+    "FranceConnect pour authentifier vos utilisateurs ?",
+    "Cloud Seed : le voyage promis par GitLab pour déployer votre application sur GCP",
+    "Des Cloud Events partout ! (Loïc Mathieu)",
+    "BigQuery best practices and recommendations to reduce costs (Marton Kodok)",
+    "Devenir streamer sérieux !? T'es sérieux ?",
+    "Le tour du monde du Cosplay en 20 minutes",
+    "SuisTesAbeilles",
+    "Codelabs (Rust pas à pas, NestJS, IoT « Panique à bord du Nautilus », Entreprise agile et sans chef, Fresque du numérique…)"
+  ],
+  "sources": [
+    {
+      "label": "Site officiel DevFest Nantes 2022",
+      "url": "https://devfest2022.gdgnantes.com"
+    },
+    {
+      "label": "Programme officiel",
+      "url": "https://devfest2022.gdgnantes.com/schedule"
+    },
+    {
+      "label": "Données du programme (dépôt GitHub GDG-Nantes/Devfest2022)",
+      "url": "https://github.com/GDG-Nantes/Devfest2022"
+    },
+    {
+      "label": "Playlist YouTube DevFest Nantes 2022 (GDG France)",
+      "url": "https://www.youtube.com/playlist?list=PLuZ_sYdawLiWIRK-QW6zpEJMSeCtspXP8"
+    },
+    {
+      "label": "Blog OVHcloud : OVHcloud at DevFest Nantes 2022 (Stéphane Philippart, Thierry Chantier)",
+      "url": "https://blog.ovhcloud.com/en/posts/ovhcloud-at-devfest-nantes-2022/"
+    },
+    {
+      "label": "Page événement GDG Nantes",
+      "url": "https://gdg.community.dev/events/details/google-gdg-nantes-presents-devfest-nantes-2022/"
+    },
+    {
+      "label": "Posts LinkedIn : aucun retrouvé par recherche web (novembre 2026)"
+    }
+  ]
 }

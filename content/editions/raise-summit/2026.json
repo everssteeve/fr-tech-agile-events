@@ -137,8 +137,9 @@
         "Connected Mate (vidéo débrief)",
         "Alex Razvant (The AI Merge)"
       ],
-      "summary": "- Retenu par Connected Mate : **le vrai changement commence au moment où le logiciel est écrit**. Si des agents écrivent le code, le risque vient de *ce qu'ils utilisent, comment ils se comportent et ce qu'ils livrent*.\n- Exemple montré sur scène : pour générer un QR code, un agent choisit un paquet **non mis à jour depuis 10 ans**. Un agent n'a pas de « jugement » spontané : sans contexte de sécurité, *« il choisit comme il peut »*.\n- Retenu par Alex Razvant : *« too fast to write code, too slow to review it »* ; selon les données internes citées par Nair, les vulnérabilités ont augmenté de **plus de 108 % en un an** chez 4 800 clients Snyk.\n- Principe : *« ne pas corriger trop tard ce qu'on aurait pu empêcher plus tôt »*, comme en qualité.\n- Sur l'**AI Act** (échéance 2027 évoquée) : la réglementation ne fait pas la stratégie mais débloque l'action, et oblige à prouver qu'on sait tracer, tester, auditer et documenter.\n- Lecture du débriefeur : *« on a passé la phase de l'émerveillement et on est entré dans une phase de responsabilité »*.",
+      "summary": "- Sur scène, Nair (CTO de Snyk) ne conteste pas l'« âge d'or » du logiciel promis par l'IA, mais veut en chiffrer la facture : selon les données Snyk (4 800 clients), **+108 % de vulnérabilités en un an**. *« AI is not removing risk. It's compounding risk. »*\n- Trois couches de risque empilées comme une **tour de Jenga** : la dette de vulnérabilités héritée (« 100x plus de code, donc 100x plus de vulnérabilités à corriger ? », demande le RSSI d'une grande banque) ; la nouvelle chaîne d'approvisionnement des agents (MCP, skills : *« three lines of English in a skill can become a malware »*, un tiers des bibliothèques de skills présenteraient des problèmes, et les meilleurs modèles ne produiraient seuls qu'environ 60 % de code sûr) ; le comportement imprévisible des agents (la base de données supprimée par erreur).\n- Menace : des attaques autonomes à vitesse machine. Il estime que les modèles ouverts égaleront un modèle « classe Mythos » d'ici 3 à 6 mois, ce qui rend caduque l'habitude de ne corriger que les failles critiques et hautes.\n- Choix structurant : **un validateur indépendant**, plutôt que de compter sur les labs pour s'auto-contrôler : *« When was the last time you had your accountant also be their auditor? »*\n- Réponse en trois temps : effacer la dette (deux ans de backlog en deux semaines, 16 000 failles critiques remédiées chez un des sept géants de la tech) ; **donner le contexte de sécurité à l'agent pendant le build** (l'exemple du paquet QR code non mis à jour depuis 10 ans, rejoué de l'AI Engineer World's Fair) ; observer et réorienter le comportement des agents. Benchmarks maison : les deux modèles frontier ne fuient aucune donnée personnelle mais s'écartent des consignes 30 à 40 % du temps ; un modèle ouvert fait l'inverse.\n- AI Act : l'échéance glisse à 2027, mais *« regulation is not the reason to do something… maybe an excuse to unlock budget »*. Appel final à soutenir l'open source et les modèles ouverts.\n- Côté participants, Connected Mate retient l'exemple du QR code et le passage *« de l'émerveillement à la responsabilité »* ; Alex Razvant retient le +108 % et la formule *« too fast to write code, too slow to review it »* (absente du transcript). Lecture critique : c'est la keynote d'un éditeur qui vend la réponse, même si Nair dit ne pas vouloir « pitcher » Snyk.",
       "summarySources": [
+        "transcript",
         "feedback",
         "blog"
       ],
@@ -146,7 +147,7 @@
         "youtubeId": "3DemDUyD0iw",
         "title": "Agentic Development Security | Manoj Nair, Snyk | RAISE Summit 2026",
         "publishedAt": "2026-07-16",
-        "transcript": false
+        "transcript": true
       }
     },
     {
@@ -230,16 +231,16 @@
       "feedbackFrom": [
         "Nicolas Martignole (vidéo)"
       ],
-      "summary": "- Conversation sur ce qui est réel et ce qui relève du battage dans la vague IA, vue depuis la plateforme d'observabilité de Datadog (descriptif officiel).\n- Martignole retient surtout le format (des interviews, pas de slides ni de pupitre) et l'évocation du **rachat parisien** d'une société de machine learning par Datadog le 30 juin. Contenu détaillé non lu (pas de transcript).",
+      "summary": "- Sur scène (entretien de 18 min) : Datadog pèse entre 4 et 5 Md$ de chiffre d'affaires, en croissance d'environ 30 %, avec une **réaccélération sur six trimestres portée par l'IA** dans tous les segments de clients.\n- Les clients voient leurs coûts IA exploser sans savoir mesurer ce qu'ils obtiennent, et Pomel pense que cela restera difficile *« for maybe a year or two »*. Son image : *« we just invented air travel and we're sending postcards »* en classe affaires ; il reste énormément à optimiser.\n- Modèle à l'usage et non au siège, contrairement aux SaaS menacés par les agents ; mais *« there's only two reasons people buy software »* : gagner ou économiser de l'argent.\n- Rachat d'**Adaptive ML** (Paris) : le produit n'est plus vendu, la technologie sert en interne à entraîner des modèles spécialisés *« 100 times faster and 10 times cheaper »* que les modèles frontier, puis à viser des **world models** qui prennent la télémétrie en entrée et prédisent l'incident, comme les modèles de bout en bout des voitures autonomes.\n- Juge et acteur à la fois ? La séparation entre celui qui agit et celui qui observe est *précisément* la raison d'acheter Datadog, d'autant que les clients utiliseront plusieurs modèles. Le **self-healing** est plus dur que la voiture autonome (la « route » change sans cesse) et exige une confiance *« way more than 90% »* : *« you send a customer two false positives in a row and they turn you off forever »*.\n- Bulle ? Les entreprises traditionnelles accélèrent depuis quatre trimestres, *« not driven by crazy build-outs »*. Leçons de fondateur : rester inquiet d'avoir tort, apprendre des clients, recevoir les mauvaises nouvelles le matin pour pouvoir dormir.\n- Côté participants, Martignole retient surtout le format (des interviews, pas de slides ni de pupitre) et l'évocation du rachat parisien.",
       "summarySources": [
-        "feedback",
-        "program"
+        "transcript",
+        "feedback"
       ],
       "video": {
         "youtubeId": "5n7dLRejkgU",
         "title": "Keeping AI Honest: The AI Wave Seen From the Inside | Olivier Pomel, Datadog | RAISE Summit 2026",
         "publishedAt": "2026-07-16",
-        "transcript": false
+        "transcript": true
       }
     },
     {
@@ -253,15 +254,16 @@
       "feedbackFrom": [
         "Nicolas Martignole (deux vidéos, dont une analyse de 13 000 mots)"
       ],
-      "summary": "- Talk qui a le plus marqué Martignole (*« super boîte »*, une soixantaine de personnes) et qui lui a inspiré une vidéo entière sur le coût réel de l'IA.\n- Ce qu'il en rapporte : une consommation de tokens en hausse quasi exponentielle, tirée autant par les **agents** (OpenClaw, Hermes…) que par les humains ; en six mois, **les modèles chinois ont dépassé les modèles américains en volume** sur OpenRouter. Arrivée remarquée de GLM 5.2 le 10 juin (~7 % du trafic), tandis que DeepSeek recule. Et une conclusion : *« Les Européens ne sont pas dans cette équation »*.\n- Leçon qu'il en tire : le **prix affiché au token ne veut pas dire grand-chose**. Le coût réel par requête inclut les *retries* et la disponibilité des providers (mesure attribuée à Artificial Analysis, vue dans une autre conférence du sommet).",
+      "summary": "- Sur scène, Clark ouvre sur une question : presque personne dans la salle ne connaît à 5 % près son budget d'inférence du mois suivant, alors que c'est déjà l'un des deux premiers postes de dépense. Depuis six mois, les tokens ne sont plus seulement un coût de revient des *AI natives* : ils apparaissent **en dépense d'exploitation, à côté de la masse salariale**.\n- Thèse d'OpenRouter : l'usage réel est *« the ultimate ungamable benchmark »*. Ses graphiques séparent les modèles chinois (de fait, open weight) des modèles frontier américains : les premiers restent **4 à 6 mois derrière**, un écart stable. L'Europe a la courbe d'adoption de l'open weight la plus étroite, et le retrait de Fable a *« really shaken confidence »* dans les modèles américains.\n- On ne change plus de modèle en un jour : DeepSeek 4, sorti en avril, n'a décollé qu'en mai, le temps d'adapter les prompts (*« DeepSeek responds really well if you yell at it »*). Kimi K2.6, plus « intelligent » sur les benchmarks, a été moins adopté : **la frontière est irrégulière**. C'est l'effet « glass slipper » : quand un agent finit par marcher avec un modèle, sa cohorte d'utilisateurs y reste.\n- Deux familles d'agents : ceux qui marchent déjà (on optimise le coût) et ceux qui s'améliorent à chaque nouveau modèle frontier, pour lesquels **optimiser trop tôt fait rater la prochaine avancée**.\n- **Prix affiché contre prix réel** : sur le papier, GLM-5.2 coûte 27 % du prix de GPT-5.5 ; avec le cache réel et un modèle plus bavard en tokens de sortie, c'est 42 %, un ordre de grandeur confirmé par Artificial Analysis. La qualité varie aussi d'un fournisseur à l'autre pour les mêmes poids (noms d'outils hallucinés, JSON invalide, bugs de parsing des templates), sans tricherie observée.\n- Côté participants, c'est le talk qui a le plus marqué Martignole ; il en a tiré une vidéo sur le coût réel de l'IA. Il rapporte que les modèles chinois ont dépassé les américains en volume en six mois et que GLM 5.2 pèserait ~7 % du trafic : ces chiffres ne sont pas dits oralement dans la vidéo (ils viennent sans doute des slides). Sa conclusion *« Les Européens ne sont pas dans cette équation »* est sa lecture, pas une phrase du talk.",
       "summarySources": [
+        "transcript",
         "feedback"
       ],
       "video": {
         "youtubeId": "UjH6Onf0SLY",
         "title": "Benchmarks vs. Reality: Lessons from 750 Trillion Tokens | Chris Clark, OpenRouter | RAISE 2026",
         "publishedAt": "2026-07-23",
-        "transcript": false
+        "transcript": true
       }
     },
     {
@@ -297,20 +299,21 @@
         "Ariel Shulman — Bright Data",
         "Ivan Burazin — Daytona",
         "Barak Kaufman — Wonderful",
-        "Venkat Pullela — Keysight"
+        "Venkat Pullela — Keysight (modérateur)"
       ],
       "feedbackFrom": [
         "Futuriom (R. Scott Raynovich)"
       ],
-      "summary": "- Retenu par Futuriom : les entreprises commencent à **calculer le ROI**, qui *« has to come from revenue as well as cost savings »* (Barak Kaufman).\n- *« Tokenmaxxing is definitely the wrong approach »* : Kaufman plaide pour des **architectures agnostiques du modèle** afin d'éviter l'enfermement, et pour des modèles open source sur certains cas d'usage.\n- Raynovich fait de « tokenmaxxing is dead » le fil rouge de son compte-rendu ; Andrew Feldman (Cerebras) va plus loin en interview : *« We should measure work. Tokens are a very rough measure. »*",
+      "summary": "- Sur scène, le cas le plus concret vient de Prosus (Euro Beinat) : un outil maison de création d'agents donné aux 40 000 salariés, un objectif de 30 000 agents d'ici mars **dépassé avec 60 000**. Environ 5 000 servent chaque jour (juristes, comptables…), et **500 à 600 « paient pour tout le reste »** : l'investissement est déjà rentable, pour l'équivalent d'environ 1 000 ETP.\n- Sa conclusion : *« AI is not a technology problem anymore, it's an organizational problem »*. Après avoir amélioré la façon de travailler, Prosus teste maintenant la refonte des processus et des équipes. Il juge « étroit » de voir les agents comme un levier de réduction de coûts : il en attend 20 à 30 % de croissance par an.\n- Barak Kaufman (Wonderful) : le bottom-up ne suffit pas à **repenser les processus de bout en bout**. Le vrai écart d'exécution est la conduite du changement, d'où des équipes *forward deployed*. Le ROI des agents *« often has to come from revenue gains, not just cost savings »* ; le tokenmaxxing est *« definitely the wrong approach »*. Il n'a rencontré aucune entreprise qui ne cherche pas à éviter l'enfermement dans un modèle.\n- Maven AGI (Corbin) : chez TripAdvisor, la comparaison IA/humains a montré que **les humains se trompaient 40 % du temps** ; il observe aussi un retour vers l'on-premise pour protéger les données propriétaires.\n- Bright Data (Shulman) : le web bloque les agents ou leur ment. Des agents qui sont comme des jeunes diplômés brillants *sans intuition* peuvent envoyer 5 000 e-mails erronés. Daytona (Burazin) : même si les modèles s'arrêtaient de progresser, il y aurait **5 à 10 ans de valeur** à extraire en donnant aux agents un vrai ordinateur (sandbox Windows pour les applications héritées type Siebel).\n- Mot de la fin de Prosus : les données sont le seul *moat*, et ses « large commerce models » entraînés en interne coûteraient **environ 200 fois moins** que les grands modèles commerciaux.\n- Côté participants, Futuriom retient l'appel de Kaufman à calculer le ROI sur les revenus et à préférer des architectures agnostiques du modèle. Raynovich fait de « tokenmaxxing is dead » le fil rouge de son compte-rendu, et Andrew Feldman (Cerebras) va plus loin en interview : *« We should measure work. Tokens are a very rough measure. »*",
       "summarySources": [
+        "transcript",
         "blog"
       ],
       "video": {
         "youtubeId": "cA-GzVZEFpQ",
         "title": "Pilot to Production: The Valley of Death and How to Cross It | RAISE Summit 2026",
         "publishedAt": "2026-07-22",
-        "transcript": false
+        "transcript": true
       }
     },
     {
@@ -323,20 +326,21 @@
         "Hoshik Kim — SK hynix",
         "Andrew Homan — Maverick Silicon",
         "Vijay Shilpiekandula — Dilation Capital",
-        "Louis Delahaye — Katko Capital"
+        "Louis Delahaye — Katko Capital (modérateur)"
       ],
       "feedbackFrom": [
         "Alex Razvant (The AI Merge)"
       ],
-      "summary": "- Retenu par Alex Razvant : Gelsinger qualifie la HBM de *« lousy memory »*, un **« thermal sandwich »** peu efficace énergétiquement et difficile à refroidir.\n- Sa fabrication est lourde : une usine produit **3 à 4 fois moins** de HBM que de DRAM standard.\n- Pistes évoquées : interconnexions optiques et *hybrid bonding* plutôt que l'empilement de mémoire. Contenu connu par un seul compte-rendu.",
+      "summary": "- Sur scène, Gelsinger pose un triple problème : une demande d'IA insatiable, des contextes et des modèles toujours plus grands, et une latence qui doit baisser. D'où un âge d'or des fabricants de mémoire (*« a memory should never have 90% margin »*).\n- La HBM est une *« lousy memory »* : on empile de la DRAM qui n'aime pas l'être (un **« thermal sandwich »**), la bande passante est limitée par le périmètre de la puce et chaque bit de HBM coûte environ quatre bits de DRAM. *« It is just the best one we have right now. »* La vraie réponse : **intégrer la mémoire sur le calcul** (hybrid bonding, micro-bumps), comme Cerebras, Groq, d-Matrix ou NextSilicon, avec 10 à 50 fois plus de bande passante, mais pas avant la fin de la décennie.\n- SK hynix (Hoshik Kim) en convient : la HBM *« is not the final answer »* au *memory wall*. Il explique le « HBM squeeze » : des dies environ trois fois plus gros et des rendements qui se dégradent à chaque couche (12 à 16 couches), d'où 3 à 4 fois moins de production par plaquette. Pour lui, **la mémoire n'est plus une commodité** mais un investissement d'infrastructure, vendu sur contrats de cinq ans.\n- Géopolitique : production concentrée en Corée et à Taïwan. Selon Gelsinger, un blocus du détroit de Taïwan de trois semaines mettrait l'industrie à l'arrêt. Une usine demande quatre ans, et il appelle à des **chaînes d'approvisionnement résilientes** portées par les politiques industrielles plus que par le capital-risque.\n- Les investisseurs anticipent une pénurie pour plusieurs années (Apple a déjà relevé ses prix). Scénarios baissiers : une intensité mémoire par token qui chuterait plus vite que la demande ne monte, un surinvestissement classique, un choc externe (énergie, Taïwan), ou la destruction de demande sur les PC et smartphones, 75 % des volumes et sensibles au prix.\n- Côté participants, Alex Razvant retient le « lousy memory », le « thermal sandwich » et le rendement 3 à 4 fois inférieur. Il évoque aussi des interconnexions optiques, qui n'apparaissent pas dans le transcript : la piste discutée sur scène est l'empilement hybride sur le calcul.",
       "summarySources": [
+        "transcript",
         "blog"
       ],
       "video": {
         "youtubeId": "NsdT-0bmltg",
         "title": "AI Has a Memory Problem | Gelsinger, SK hynix & More | RAISE Summit 2026",
         "publishedAt": "2026-07-22",
-        "transcript": false
+        "transcript": true
       }
     },
     {
@@ -349,17 +353,19 @@
         "Tom Mackenzie — Bloomberg (modérateur)"
       ],
       "feedbackFrom": [
-        "Leonardo Boquillón (Leo in AI)"
+        "Leonardo Boquillón (Leo in AI)",
+        "French Tech Journal (Chris O'Brien)"
       ],
-      "summary": "- Chiffres rapportés par Boquillón : **20 à 30 % de gains d'efficacité** en M&A et en recherche actions en deux trimestres ; le prototypage passe de plusieurs mois à quelques heures.\n- Plus de 40 000 salariés utilisent la plateforme IA interne, avec des millions de prompts par semaine.\n- Message clé : *« you have to lay the groundwork first »*. Sans transformation préalable de l'entreprise en « AI first », pas de gains (lecture de Boquillón).",
+      "summary": "- Sur scène (entretien de 19 min), Argenti refuse d'opposer régulation et performance (*« think about Formula One »*). Chez Goldman Sachs, un salarié sur trois est ingénieur (environ 12 000), et la fondation de tout reste **la donnée**.\n- Mesurer la productivité des développeurs a toujours été *« more of an art than a science »* (lignes de code et merge requests ne prouvent rien). Pour la première fois, il voit des effets visibles : projets autofinancés, livrés en avance, et **environ 20 % de productivité nette**. Or la génération de code ne pèse que 30 à 40 % du travail d'un développeur.\n- Le vrai changement : **du « spec-driven » au « prototype-driven »**. Des métiers (trading, gestion de fortune), aidés de quelques ingénieurs, *vibe-codent* en quelques jours un produit qui fait exactement ce qu'ils veulent, avec Devin, Claude Code ou Codex. Les ingénieurs le durcissent ensuite pour la production, comme on reconstruit en dur une « maison en papier ».\n- Adoption : un top-down où les dirigeants passent physiquement du temps avec les équipes, et un bottom-up encadré. Une **plateforme d'expérimentation sûre** (garde-fous, droits d'accès aux données, pas de franchissement des murailles de Chine) et un réseau d'« AI champions » et de « bar raisers » qui joue sur la pression des pairs.\n- Sécurité : *« you can't go from model to production »*. La sortie d'un modèle est traitée comme le travail d'un junior, avec revues et portes dans la chaîne CI/CD. Son image : on ne donne pas un manuel de sécurité aux enfants d'un jardin d'enfants, on arrondit les angles.\n- Les banquiers juniors, libérés des tâches mécaniques par un « banker copilot », retrouvent du temps client : **une renaissance de l'apprentissage**. L'assistant interne GS AI compte environ 40 000 utilisateurs et plus de deux millions de prompts par mois. Ce qu'il ne délègue pas : **les décisions** (*« I haven't seen evidence where AI judgment is superior »*).\n- Côté participants, Boquillón et le French Tech Journal rapportent 20 à 30 % de gains d'efficacité en M&A et en recherche actions sur deux trimestres. Ce chiffre n'apparaît pas dans la vidéo publiée, qui parle de 20 % pour les ingénieurs. Boquillón écrit aussi « des millions de prompts par semaine », là où Argenti dit deux millions par mois. Le French Tech Journal reprend bien la phrase sur les décisions.",
       "summarySources": [
+        "transcript",
         "blog"
       ],
       "video": {
         "youtubeId": "grOykIdJPgs",
         "title": "The Mindset Shift Needed to Thrive Alongside AI | Marco Argenti, Goldman Sachs | RAISE Summit 2026",
         "publishedAt": "2026-07-16",
-        "transcript": false
+        "transcript": true
       }
     },
     {
@@ -376,17 +382,19 @@
         "Karen Kwok — Reuters Breakingviews (modératrice)"
       ],
       "feedbackFrom": [
-        "Leonardo Boquillón (Leo in AI)"
+        "Leonardo Boquillón (Leo in AI)",
+        "French Tech Journal (Chris O'Brien)"
       ],
-      "summary": "- Chiffres de ROI annoncés sur scène, rapportés par Boquillón : environ **500 M$ de gains de productivité** estimés chez ServiceNow, **+300 % de productivité** par employé revendiqués par Writer, +25 % de productivité commerciale chez Vanta.\n- FedEx décrit l'IA comme un moyen d'ouvrir de **nouvelles lignes de revenus** dans la supply chain, pas seulement de réduire les coûts.\n- Lecture critique : ce sont des chiffres déclarés par les éditeurs eux-mêmes, sans méthode détaillée dans le compte-rendu. Le contraste est fort avec le chiffre cité par Navan (88 % des organisations expérimentent, 5 % montrent un impact financier direct).",
+      "summary": "- Sur scène, Karen Kwok part d'un paradoxe : on parle beaucoup de tokenmaxxing, très peu de marges. Chiffres déclarés : environ **500 M$ d'amélioration du P&L** l'an dernier chez ServiceNow (Zavery) ; un **retour moyen de 350 %** pour les clients de Writer (Habib) ; plus de 25 % d'efficacité commerciale chez Vanta (Case). Kwok insiste sur ce qu'on oublie : le ratio entre gains et dépenses.\n- Vishal Talwar (FedEx) pose le critère le plus net : ne pas chercher de ligne « IA » au bilan, mais regarder rendement, revenus et parts de marché. Un ROI légitime améliore **un KPI déjà suivi ou montre un travail visiblement transformé** ; sinon, *« it's a gimmick »*. FedEx s'est fixé 50 % des workflows refondus d'ici 2028, 100 % des données prêtes fin 2027 et la formation de 500 000 salariés. FedEx Dataworks vise de nouveaux revenus.\n- Le tokenmaxxing est jugé *« silly »* (Zavery : personne n'est félicité pour avoir dépensé plus). Stevie Case (Vanta) cite le *shadow AI* : plus de 70 % des entreprises sont touchées, et 140 outils IA inconnus sont découverts en moyenne chez un nouveau client.\n- May Habib nuance : le P&L reste l'arbitre, mais l'horizon est long, et il faudra s'appuyer sur des **indicateurs avancés et de l'« anecdata »**. Les vrais leviers sont des humains dédiés (seuls 4 à 7 % des formés deviennent des *change makers*, qu'il faut retenir) et une mémoire d'entreprise proactive.\n- Pas d'enfermement : couches d'abstraction et routage automatique entre modèles frontier, open source et petits modèles. FedEx utilise l'AI Control Tower de ServiceNow avec un *kill switch*. Rick McConnell (Dynatrace) ajoute des **métriques d'observabilité métier** (le bagage arrive-t-il au tapis à temps ?).\n- Conclusion de la modératrice : l'an dernier on parlait adoption, cette année ROI, mais le vrai retour *« still seems to be many years away »*.\n- Côté participants, Boquillón et le French Tech Journal reprennent les chiffres de ServiceNow, Vanta et Writer (« +300 % de productivité par employé » chez Writer, là où Habib dit 350 % de retour client). Le French Tech Journal retient aussi l'idée de FedEx de transformer ses données logistiques en produits. Lecture critique : ce sont des chiffres d'éditeurs sans méthode publiée, à mettre en regard de l'étude citée par Navan (5 % des organisations montrent un impact financier direct).",
       "summarySources": [
+        "transcript",
         "blog"
       ],
       "video": {
         "youtubeId": "e1N3dOPGHqs",
         "title": "Cracking the ROI Code: Is Intelligence Meeting the Income Statement? | RAISE Summit 2026",
         "publishedAt": "2026-07-16",
-        "transcript": false
+        "transcript": true
       }
     },
     {
@@ -398,17 +406,19 @@
         "Sachin Katti — OpenAI"
       ],
       "feedbackFrom": [
-        "Alex Razvant (The AI Merge)"
+        "Alex Razvant (The AI Merge)",
+        "French Tech Journal (Chris O'Brien)"
       ],
-      "summary": "- Retenu par Alex Razvant : chez OpenAI, la consommation de tokens des chercheurs a été **multipliée par ~50 en quelques mois**, et Codex est devenu l'outil par défaut.\n- Le calcul agentique ne se juge pas comme l'interactif : **le temps de complétion d'une tâche et le taux de succès** comptent davantage que le *time to first token*.\n- Contenu connu par un seul compte-rendu ; vidéo non transcrite.",
+      "summary": "- Sur scène (12 min), Katti rappelle la feuille de route d'OpenAI, inchangée depuis des années : chatbots, raisonnement, agents, puis des **« AI interns »**, avant une recherche en IA menée par l'IA elle-même.\n- Données internes : **presque toute l'entreprise produit désormais ses tokens via Codex et non via le chat**. Ce n'est pas du tokenmaxxing d'ingénieurs : les tokens côté recherche ont été multipliés par près de 50, mais une grosse part de la croissance vient du support, du juridique et des ventes.\n- Effet visible : on est passé de 6 à 9 mois entre deux modèles à **environ un nouveau modèle par mois**, parce que les agents accélèrent la recherche elle-même.\n- Deux voies de calcul sous tension. En recherche, les lois d'échelle tiennent (pré-entraînement compris) et chaque chercheur lance bien plus d'expériences en parallèle. En produit, un agent n'est pas un chatbot : il planifie, appelle des outils, accumule du contexte et explore plusieurs chemins.\n- Les utilisateurs veulent rester « dans le flow », d'où une métrique clé : **le temps de complétion de la tâche**. Conséquence : une flotte **hétérogène** (GPU, beaucoup de CPU, stockage pour le contexte, réseau) au lieu de grands clusters GPU uniformes.\n- Côté participants, Alex Razvant retient le ×50 et Codex devenu l'outil par défaut, ce qui concorde avec le transcript. Le French Tech Journal rapporte aussi un modèle servi à 750 tokens/s sur Cerebras, un agent RH et la phrase *« Latency is a very critical product ingredient »*. Ces éléments ne figurent pas dans cette keynote : ils viennent probablement de sa conversation avec Andrew Feldman (Cerebras).",
       "summarySources": [
+        "transcript",
         "blog"
       ],
       "video": {
         "youtubeId": "EGDPUtJ18XY",
         "title": "Agents are Here. Compute has to Change | Sachin Katti, OpenAI | RAISE Summit 2026",
         "publishedAt": "2026-07-17",
-        "transcript": false
+        "transcript": true
       }
     },
     {
@@ -443,18 +453,18 @@
   "programUrl": "https://tickets.raisesummit.com/2026/agenda",
   "theme": "IA d'entreprise, infrastructure et souveraineté (piliers Foundation, Frontier, Friction, Future)",
   "note": "3ᵉ édition, 8 & 9 juillet 2026, Carrousel du Louvre : 9 000+ participants, 350 intervenants sur trois scènes (Master Stage, Grace Hopper, Ada Lovelace), hackathon, compétition de startups RAISE the STAKES, CxO Summit sur invitation, gala à Versailles ; précédé du MACHINA Summit (robotique). Rachat annoncé par Hyve le 20/07 ; édition 2027 du 6 au 8 juillet au Palais des Congrès.",
-  "synthesisUpdatedAt": "2026-10-04",
-  "corpus": "Chaîne YouTube officielle (plus de 140 vidéos de sessions 2026) dont **7 transcripts** de sessions lus (ouverture ministérielle, Macron, Cuban × Osika, Mensch × Surman, Gelsinger × Raz, LeCun, Vahdat) ; trois vidéos de participants (Nicolas Martignole ×2, Connected Mate) ; quatre comptes-rendus de participants anglophones (Leonardo Boquillón/Leo in AI, R. Scott Raynovich/Futuriom, Alex Razvant/The AI Merge, blog de Navan) ; articles de presse (JDN, Alliancy, Maddyness, Journal du Web, Elektor). Lus entre le 8/07 et le 4/10/2026.",
-  "limits": "Aucun post LinkedIn individuel retrouvé par la recherche web (LinkedIn n'est pas indexé finement) ; les retours viennent de créateurs de contenu, d'analystes et de blogs, dont un ambassadeur invité (Razvant) et un sponsor-intervenant (Navan). Les nouvelles sessions documentées ne le sont que par un seul compte-rendu chacune, les transcripts n'ayant pas pu être téléchargés (YouTube 429). Une vingtaine de sessions sur plus de 140 vidéos est couverte, et beaucoup sont des interventions de sponsors.",
+  "synthesisUpdatedAt": "2026-11-05",
+  "corpus": "Chaîne YouTube officielle (plus de 140 vidéos de sessions 2026) dont **15 transcripts** de sessions lus (ouverture ministérielle, Macron, Cuban × Osika, Mensch × Surman, Gelsinger × Raz, LeCun, Vahdat, puis le 05/11 Snyk, Argenti, Katti, OpenRouter, Datadog et les panels ROI, Pilot to Production et mémoire) ; trois vidéos de participants (Nicolas Martignole ×2, Connected Mate) ; quatre comptes-rendus de participants anglophones (Leonardo Boquillón/Leo in AI, R. Scott Raynovich/Futuriom, Alex Razvant/The AI Merge, blog de Navan) ; articles de presse (JDN, Alliancy, Maddyness, Journal du Web, Elektor, French Tech Journal) et une recherche Bluesky. Lus entre le 8/07 et le 5/11/2026.",
+  "limits": "Aucun post LinkedIn individuel retrouvé par la recherche web (LinkedIn n'est pas indexé finement) ; les retours viennent de créateurs de contenu, d'analystes et de blogs, dont un ambassadeur invité (Razvant) et un sponsor-intervenant (Navan). La confrontation avec les transcripts montre plusieurs écarts dans ces comptes-rendus (chiffres de Goldman Sachs et de Writer, propos attribués à la mauvaise session OpenAI). Une vingtaine de sessions sur plus de 140 vidéos est couverte, beaucoup sont des interventions de sponsors, et Vertiv, NVIDIA et le panel infrastructure ne sont connus que par un article chacun.",
   "tldr": "**Un sommet de décideurs où l'IA se discute en mégawatts, en tokens et en dépendances** : infrastructure et énergie, open source comme levier de souveraineté après l'affaire Fable/Mythos, et passage de l'expérimentation à la **rationalisation des coûts et à la sécurité des agents**. Paris s'y vend comme capitale européenne de l'IA.",
   "keyTakeaways": [
     "Raisonner l'IA comme l'énergie : **sécurité d'approvisionnement, coût abordable, soutenabilité** ; importer une partie des modèles, mais pas au point d'en dépendre (Arthur Mensch).",
     "Utiliser l'open source comme levier de souveraineté **sans tout refaire seul** : on peut forker, adapter et posséder un modèle venu d'un partenaire de confiance (« sovereignty is not solitude », Mark Surman).",
-    "Arrêter de raisonner au **prix affiché du token** : mesurer le coût réel par requête (retries, disponibilité des providers) et rationaliser l'usage (retours de Nicolas Martignole sur les talks OpenRouter et WEKA).",
-    "Calculer le ROI de l'IA sur **le revenu autant que sur les économies**, avec une architecture agnostique du modèle pour éviter l'enfermement : le « tokenmaxxing » est une impasse (Barak Kaufman, rapporté par Futuriom).",
-    "Préparer le terrain avant d'attendre des gains : sans transformation préalable de l'organisation, **pas de productivité** (Marco Argenti, Goldman Sachs, rapporté par Leonardo Boquillón).",
-    "Donner aux agents qui codent le **contexte de sécurité avant qu'ils choisissent leurs dépendances** : ne pas corriger trop tard ce qu'on aurait pu empêcher (keynote Snyk, lue par Connected Mate).",
-    "Anticiper l'AI Act : les obligations à venir imposent de savoir **tracer, tester, auditer, documenter** ; l'IA devient un sujet de direction générale (Connected Mate).",
+    "Arrêter de raisonner au **prix affiché du token** : mesurer le coût réalisé (cache, verbosité du modèle, échecs d'appels d'outils selon le fournisseur) sur ses propres workloads, et ne pas optimiser trop tôt un agent qui progresse à chaque nouveau modèle (Chris Clark, OpenRouter ; vidéo de Nicolas Martignole).",
+    "N'accepter un ROI que s'il améliore **un KPI déjà suivi ou un travail visiblement transformé**, sinon « it's a gimmick » (Vishal Talwar, FedEx) ; le chercher dans le revenu autant que dans les économies, car le tokenmaxxing est une impasse (Barak Kaufman, Wonderful).",
+    "Passer du « spec-driven » au **« prototype-driven »** : laisser les métiers prototyper, puis faire durcir par les ingénieurs, en traitant la sortie des modèles comme le travail d'un junior soumis aux revues (Marco Argenti, Goldman Sachs).",
+    "Ne pas laisser le même acteur produire et auditer : un **validateur indépendant**, et le contexte de sécurité donné aux agents avant qu'ils choisissent leurs dépendances (Manoj Nair, Snyk ; lu par Connected Mate).",
+    "Traiter l'IA comme **un problème d'organisation plus que de technologie** : outiller tout le monde pour construire des agents, puis repenser les processus de bout en bout (Euro Beinat, Prosus ; Barak Kaufman).",
     "Piloter l'infrastructure par la **performance par watt** et envisager des compromis de disponibilité ou de l'effacement de consommation pour doubler la capacité (Amin Vahdat).",
     "Rapprocher les outils de **celui qui est le plus proche du problème**, avec des connecteurs de données gouvernés (Anton Osika, Lovable).",
     "Partir de ses ambitions et de ses valeurs, puis mobiliser l'IA, jamais l'inverse ; ne pas appliquer l'IA à des processus non structurés (synthèse d'Olivier Laborde, JDN)."
@@ -464,7 +474,7 @@
     "AI and Open Source: Shaping Each Other's Future (Grafana, Mozilla, Aiven, Comet, Together AI, commit)",
     "From Research to Reality: Why Open Source Is the Engine of AI (I. Stoica, T. Wolf, E. Kant, R. Rombach…)",
     "Opening Fireside : Ramin Hasani (Liquid AI) & Ion Stoica (Arena)",
-    "OpenAI × Cerebras: Sachin Katti & Andrew Feldman in Conversation",
+    "OpenAI × Cerebras: Sachin Katti & Andrew Feldman in Conversation — quelques propos rapportés par le French Tech Journal, vidéo non transcrite",
     "Sovereign AI: Piece by Piece ; Sovereign Stacks: Building Trusted AI on National Terms",
     "The Pilot Trap: Why Enterprise AI Stalls and How to Break Through",
     "AI Compute: Rebuilt for the Agentic Era (Mark Papermaster, AMD)",
@@ -511,6 +521,10 @@
       "url": "https://www.elektormagazine.fr/news/construire-une-usine-d-ia-le-defi-que-vertiv-a-mis-en-lumiere-au-raise-summit-2026"
     },
     {
+      "label": "French Tech Journal — RAISE Summit 2026: Goodbye AI Demos and Vibes, Hello Buildouts and Megawatts (Chris O'Brien, 15/07/2026)",
+      "url": "https://www.frenchtechjournal.com/raise-summit-2026-ai-infrastructure-reckoning/"
+    },
+    {
       "label": "Nicolas Martignole — RAISE Summit 2026 - Paris - Visite rapide et impressions (vidéo, 09/07/2026)",
       "url": "https://www.youtube.com/watch?v=hXdi15JzXhs"
     },
@@ -539,8 +553,11 @@
       "url": "https://navan.com/blog/navan-raise-summit-2026-takeaways"
     },
     {
-      "label": "Posts LinkedIn : aucun post individuel retrouvé par la recherche web (04/10/2026)"
+      "label": "Recherche Bluesky « RAISE Summit » (juillet-août 2026) : surtout des relais de presse et d'exposants ; post critique de Laura Bokobza (21/07)",
+      "url": "https://bsky.app/search?q=%22RAISE%20Summit%22"
+    },
+    {
+      "label": "Posts LinkedIn : aucun post individuel retrouvé par la recherche web (04/10 et 05/11/2026)"
     }
-  ],
-  "revisit": "transcripts à récupérer (YouTube 429 le 04/10/2026) pour les sessions documentées par un seul compte-rendu : Snyk, Argenti, Cracking the ROI Code, Pilot to Production, AI Has a Memory Problem, Katti, OpenRouter, Datadog"
+  ]
 }

@@ -7,8 +7,189 @@
   "end": "2022-11-16",
   "city": "En ligne",
   "url": "https://paristestconf.com/edition-2022/",
+  "programUrl": "https://sessionize.com/api/v2/ewjpk7ly/view/GridSmart",
   "dateConfidence": "ok",
-  "note": "Site officiel (archive févr. 2023) : « La 4ème édition de la ParisTestConf se tenait les 15 et 16 novembre 2022 », 100 % en ligne ; vidéos sur la chaîne YouTube.",
-  "status": "pending",
-  "sessions": []
+  "theme": "Une organisation qualité adaptée à vos enjeux ; des pratiques au service de la qualité",
+  "note": "Site officiel (archive févr. 2023) : « La 4ème édition de la ParisTestConf se tenait les 15 et 16 novembre 2022 », 100 % en ligne ; vidéos sur la chaîne YouTube. Sessionize : deux après-midis (14h-18h), talks de 30 minutes suivis de 15 minutes de questions, en français, diffusés en live sur YouTube. Page bilan : nouveau format l'après-midi plutôt qu'en soirée, « affluence record » selon l'organisation, sans sponsor (billet de Benjamin Butel, de l'organisation, La Taverne du Testeur, 10 novembre 2022).",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-05",
+  "revisit": "Aucun retour de participant trouvé : ni post LinkedIn, ni billet de blog, ni post Bluesky sur l'édition 2022 (6 recherches web, page « On parle de nous » du site et archives de La Taverne du Testeur de novembre 2022). Synthèse fondée sur les transcripts automatiques des 8 vidéos ; slides annoncées sur la page de l'édition mais sans lien exploitable.",
+  "corpus": "Programme Sessionize (descriptifs et biographies), fichier ICS et page bilan du site officiel (archives Wayback 2022 et page actuelle), billet de présentation de Benjamin Butel (organisation) sur La Taverne du Testeur, et transcripts automatiques (sous-titres YouTube) des 8 vidéos de talks publiées les 20 et 21 novembre 2022, lus en intégralité, questions-réponses comprises.",
+  "limits": "Aucun retour de participant retrouvé : les résumés décrivent ce qui a été dit en live et les questions du chat relayées par l'animation, pas ce que le public en a retenu. Les sous-titres automatiques déforment beaucoup de noms propres et de chiffres ; seuls ceux sans ambiguïté sont repris. Les heures diffèrent entre le fichier ICS et Sessionize pour l'ordre des talks ; on suit Sessionize, cohérent avec les ouvertures et clôtures visibles dans les vidéos.",
+  "tldr": "Une édition en ligne qui pousse la qualité **hors de l'équipe de test** : culture qualité sans testeurs dédiés en start-up, quality assistance chez ManoMano, nouveaux rôles du Quality Engineering, et des pratiques (TDD, QRQC, flaky tests, accessibilité) qui traitent **chaque signal d'échec comme une occasion d'améliorer le système**.",
+  "keyTakeaways": [
+    "Mesurer la qualité par la valeur perçue (notes des stores, appels au support, rétention) plutôt que par le nombre de testeurs (Heitz, Gaillard et Dennemont).",
+    "Ne pas confondre nombre de QA et qualité : ManoMano est passé à une dizaine de quality advisors pour plus de 50 équipes, les développeurs écrivant tous les tests automatisés (Dennemont, Gaillard).",
+    "Jeter les tests automatisés instables plutôt que de les rejouer à la main, et viser un feedback rapide (le « 10 minutes build » de l'Extreme Programming) (Gaillard, Moustier).",
+    "Remplacer le replay des scripts flaky par des indicateurs de santé des scripts (historique d'échecs, ancienneté) et des détrompeurs (poka-yoke) qui suppriment la cause (Moustier).",
+    "Analyser chaque bug avec un QRQC court : ligne exacte et PR en cause, cause racine, mur de qualité manquant, recherche du même défaut ailleurs, puis règle de lint en CI (Jaber).",
+    "En TDD, faire échouer chaque test avant de le faire passer et ne réfléchir au design que lorsque tout est vert (Moura).",
+    "Tester l'accessibilité à tous les niveaux : lint (jsx-a11y) bloquant en CI, Testing Library par rôle et nom accessible, golden tests Flutter à 200 % de police, puis audits RGAA et tests avec des utilisateurs handicapés (équipe SNCF Connect).",
+    "Choisir ses tests end-to-end de régression à partir des parcours réellement observés en production, avec des traces anonymisées (Legeard et Ahmad).",
+    "Construire des profils en T plutôt que des « super profils », par la pratique, le mentoring et les communautés (Craske et Fresi)."
+  ],
+  "sessions": [
+    {
+      "id": "culture-qualite-en-start-up-pourquoi-faire",
+      "day": "2022-11-15",
+      "type": "talk",
+      "title": "Culture qualité en start-up, pourquoi faire ?",
+      "speakers": ["Grégory Heitz — Monta"],
+      "feedbackFrom": [],
+      "summary": "- Sur scène, Grégory Heitz (Head of QA chez Monta, recharge de véhicules électriques, Copenhague) définit la qualité comme **la valeur perçue par les utilisateurs** : *« c'est pas quelque chose qu'on construit qu'on invente ou même qu'on découvre »*.\n- Contraintes de la start-up : mises en production très fréquentes, cible mouvante, moyens limités ; le passage des early adopters tolérants aux bugs au grand public (« crossing the chasm ») est présenté comme un défi d'abord qualité.\n- La qualité sert le business : livrer vite (correctifs le jour même), améliorer l'expérience utilisateur, contenir la dette technique et le coût du support.\n- Une **culture qualité plutôt qu'une équipe qualité** : boucles de feedback courtes (échouer dès la revue de design), petits incréments, feature toggles, design system, tests de localisation, tests exploratoires plutôt que plans de test, et automatisation des tâches (déploiement, alertes, traductions) et pas seulement des tests.\n- Un rôle dédié ? *« Oui et non »* : oui pour la communication, l'UX et la dette, non pour quelqu'un qui « passe des tests » ; il préfère l'idée de coach qualité. Autre conseil : arrêter les rétrospectives qui ne servent à rien.\n- En questions-réponses : la qualité se mesure par les notes des stores, le nombre d'appels au support et la rétention ; un bug cœur de métier (*« si on ne peut pas charger une voiture »*) passe avant la roadmap même s'il ne touche qu'un utilisateur.\n- Limites reconnues : la qualité perçue reste difficile à mesurer, et réintroduire de la qualité tard, une fois la dette accumulée, coûtera cher.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "NGieNCXB8cU",
+        "title": "PTC2022 - Grégory Heitz - Culture qualité en start-up, pourquoi faire ?",
+        "publishedAt": "2022-11-20",
+        "transcript": true
+      }
+    },
+    {
+      "id": "bref-amelioration-continue-strategie-organisationnelle-equipe-qualite",
+      "day": "2022-11-15",
+      "type": "talk",
+      "title": "Bref. L'amélioration continue de la stratégie organisationnelle de l'équipe qualité c'est primordial",
+      "speakers": ["Anne-Laure Gaillard — ManoMano", "Olivier Dennemont — ManoMano"],
+      "feedbackFrom": [],
+      "summary": "- Retour d'expérience de ManoMano (environ 500 personnes dans la tech, une cinquantaine de feature teams, mises en production quotidiennes), raconté sur le mode de la série « Bref » : chaque échec a conduit à adapter l'organisation.\n- Leçon d'Olivier Dennemont : *« le nombre de QA dans l'équipe n'est pas un gage de qualité »*. Passage à la **quality assistance** (popularisée par Atlassian) avec l'appui de la hiérarchie : fin des testeurs dans les équipes, fin des tests automatisés centralisés et du contrôle qualité des mises en production ; un passage à vide de 6 mois.\n- Leçon d'Anne-Laure Gaillard sur les tests : feedback rapide, exploratoire pour le manuel, automatisation pour la régression, pas de doublons entre niveaux ; les tests instables ont été jetés (*« on a tout jeté »*) et **tous les tests automatisés sont écrits par les développeurs**.\n- Anecdote de la migration cloud nocturne : les QA n'y ont apporté que des chips ; il aurait fallu intervenir en amont (questions, monitoring) plutôt que chercher des bugs en direct. Les outils ne remplacent pas l'analyse du problème (démarche de résolution de problèmes du Lean).\n- Organisation actuelle : une dizaine de quality advisors pour plus de 50 équipes, rattachés à un département d'excellence technique avec le coaching craft ; indicateurs tournés vers la qualité perçue (notes des 4 applications sur les stores).\n- En questions-réponses : pas de gel de release, les QA n'automatisent rien (0 %) et ne garantissent pas la valeur de l'automatisation des équipes (*« on gère pas »*, parfois frustrant), rôle de coaching (three amigos, revues de design, post-mortems).\n- Mises en garde des speakers : ne pas copier aveuglément, et réfléchir à deux fois dans les contextes à risques humains (médical, aérospatial).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "p2_ftxc4-Wc",
+        "title": "PTC2022 - Anne-Laure Gaillard & Olivier Dennemont - Bref. L'amélioration continue de la stratégie...",
+        "publishedAt": "2022-11-20",
+        "transcript": true
+      }
+    },
+    {
+      "id": "reinventer-nos-metiers-de-la-qualite-pour-le-quality-engineering",
+      "day": "2022-11-15",
+      "type": "talk",
+      "title": "Comment réinventer nos métiers de la qualité pour le Quality Engineering ?",
+      "speakers": ["Antoine Craske — La Redoute", "Jean-François Fresi — AUSY"],
+      "feedbackFrom": [],
+      "summary": "- Thèse d'Antoine Craske : *« c'est la qualité qui permet d'aller vite »* ; un système est limité par son maillon le plus faible, donc le **Quality Engineering** doit couvrir toute la chaîne de production logicielle.\n- Jean-François Fresi part de son propre parcours : le testeur longtemps vu comme « dernier rempart » et chasseur de bugs doit maîtriser toujours plus de technologies et de soft skills.\n- Un modèle de maturité issu de la communauté (méthodes, leadership, organisation alignée sur l'architecture, compétences, technologie), où QA, quality assistance et QE s'emboîtent ; le niveau le plus élevé n'est pas un objectif en soi.\n- Évolutions des compétences : shift left, shift right, shift down (non fonctionnel) ; les entreprises cherchent des **profils en T** plutôt que des « super profils ».\n- Six rôles émergents présentés par Fresi : quality engineer, QE manager, QE craft, QE advisor (coach test), product quality engineer (example mapping, BDD), platform quality engineer (TestOps), avec des exemples comme ManoMano ou SNCF Connect.\n- Conseils : mentoring, conférences et meetups, veille, communautés de pratique ; l'essentiel s'apprend par la pratique.\n- En questions-réponses : l'animation soulève les inégalités face à la reconversion (temps, enfants, moyens) ; Fresi reconnaît *« un marché à deux vitesses »* et renvoie la formation aux entreprises. Pour l'automatisation, Craske conseille de *« comprendre tout ce qui n'est pas l'automatisation »* ; l'IA augmentera les testeurs sans les remplacer selon lui. Les rôles cités sont des tendances qui peuvent fusionner ou disparaître.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "GlIGo4R7eHQ",
+        "title": "PTC2022 - Antoine Craske & Jean-François Fresi - Comment réinventer nos métiers de la qualité...",
+        "publishedAt": "2022-11-21",
+        "transcript": true
+      }
+    },
+    {
+      "id": "testons-en-continu-ce-que-nos-utilisateurs-font-vraiment",
+      "day": "2022-11-15",
+      "type": "talk",
+      "title": "Testons en continu ce que nos utilisateurs font vraiment à partir de l'analyse de l'usage",
+      "speakers": ["Bruno Legeard — Université de Franche-Comté, Smartesting", "Abbas Ahmad — UFR Sciences et Techniques, Femto-ST"],
+      "feedbackFrom": [],
+      "summary": "- Bilan de 4 ans du projet de recherche collaborative **PHILAE** et de l'outil qui en est issu (Gravity, Smartesting) : générer des tests de régression à partir de l'usage réel en production (Bruno Legeard).\n- Constat : *« les utilisateurs ils font ce qu'ils veulent »*, les comportements évoluent et les tests de régression vieillissent ; *« on n'a pas besoin d'avoir beaucoup de tests on a besoin d'avoir les bons tests »*.\n- Pivot assumé : le projet est parti des logs backend pour les tests d'API, jugés trop pauvres et difficiles d'accès, puis s'est recentré sur un collecteur front open source et les **tests end-to-end**, peu nombreux mais coûteux et à forte valeur.\n- Démarche en quatre étapes : collecter des traces anonymisées (patterns d'usage, pas de données personnelles), analyser (parcours inattendus), mesurer la couverture des usages par les tests existants, générer du code de test, ici Cypress, en démo sur la Real World App.\n- Apprentissage non supervisé (clustering, modèles de type Transformers) pour regrouper les sessions et produire des parcours représentatifs.\n- Limites dites sur scène : le code généré reste à compléter (données de test, assertions), le multi-utilisateur n'est pas géré, la mise à jour des patterns est manuelle et l'outil était encore en qualification, sans prix ; le talk sert aussi à recruter des équipes pilotes.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "1wxJsHKtfJg",
+        "title": "PTC2022 - Abbas Ahmad & Bruno Legeard - Testons en continu ce que nos utilisateurs font vraiment...",
+        "publishedAt": "2022-11-21",
+        "transcript": true
+      }
+    },
+    {
+      "id": "mes-flaky-tests-sont-agiles",
+      "day": "2022-11-16",
+      "type": "talk",
+      "title": "Mes flaky tests sont agiles",
+      "speakers": ["Christophe Moustier — Inetum, Agilitest"],
+      "feedbackFrom": [],
+      "summary": "- Christophe Moustier relit les flaky tests avec le vocabulaire du Lean : l'**andon** (l'alerte : daily, pipeline rouge, alerting) et le **jidoka** (rendre l'automate capable de gérer seul les situations non optimales).\n- Calcul d'ordre de grandeur : une fiabilité de 99,7 % par script donne environ 30 % de fiabilité pour un pipeline de 400 scripts ; gagner quelques dixièmes par script change tout. Il précise que ces chiffres dépendent du contexte.\n- Le replay est jugé *« peut-être l'approche la plus stupide du test qui puisse exister »* : il coûte du temps et signale surtout une faible testabilité.\n- Trois autres leviers : améliorer la testabilité (IHM, logs, API, et savoir qu'un moyen de test existe), suivre des **indicateurs de santé des scripts** (historique d'échecs, ancienneté), et des **poka-yoke** (versionnage des API, détection de valeurs absurdes en production).\n- Double boucle d'apprentissage (Argyris) : des rétrospectives sur les scripts pour traiter les causes racines ; *« si ça fait mal en fait c'est qu'il faut le faire souvent »*, et sa formule *« dis-moi comment tu testes je te dirai combien tu agis »*.\n- En questions-réponses : marquer comme suspects les tests de fonctionnalités immatures sans bloquer la quality gate, garder le pipeline de dev sous 10 minutes et sortir les end-to-end lents dans un pipeline asynchrone ; scepticisme sur l'auto-healing, l'esprit critique humain reste nécessaire.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "45aTojjlCPk",
+        "title": "PTC2022 - Christophe Moustier - Mes flaky tests sont agiles",
+        "publishedAt": "2022-11-21",
+        "transcript": true
+      }
+    },
+    {
+      "id": "tdd-au-dela-de-l-intro",
+      "day": "2022-11-16",
+      "type": "talk",
+      "title": "TDD : au-delà de l'intro",
+      "speakers": ["Romeu Moura"],
+      "feedbackFrom": [],
+      "summary": "- Session en **live coding** sur le kata FizzBuzz plutôt qu'en slides : Romeu Moura montre comment il enseigne le TDD aux débutants, en ralentissant à chaque étape.\n- Discipline du rouge : faire la plus petite modification possible (même une valeur en dur), et ne réfléchir au design que quand tout est vert ; faire échouer chaque test d'abord, car *« un test qui n'a jamais été KO ne teste rien »*.\n- Une définition du test qui évolue pendant la session : une question, puis une compréhension du problème, puis *« le brouillon de ma compréhension actuelle »*, enfin « tester c'est raisonner ».\n- Techniques : externaliser la connaissance (table de vérité en commentaire), code écrit « de mauvaise foi » face à des tests « de bonne foi » (à jouer à deux), règle personnelle de refactor obligatoire après trois répétitions, nommage des tests le plus tard possible.\n- Rester toujours à quelques pas d'un état vert : un rouge incompris signale des pas trop grands, on revient en arrière.\n- Conclusion : faire marcher, puis améliorer le design, puis la performance, dans cet ordre ; le TDD ne donne pas l'algorithme optimal mais aligne la compréhension, *« le dialogue socratique avec votre code »*.\n- Points de débat avec l'animation : quand renommer, comment éviter le code mort ; il assume que son style de nommage n'est qu'une école parmi d'autres.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "fPF-6ZUncj8",
+        "title": "PTC2022 - Romeu Moura - TDD : au-delà de l'intro",
+        "publishedAt": "2022-11-21",
+        "transcript": true
+      }
+    },
+    {
+      "id": "transformer-ses-bugs-en-opportunites-qrqc",
+      "day": "2022-11-16",
+      "type": "talk",
+      "title": "Transformer ses bugs en opportunités grâce à la technique du QRQC",
+      "speakers": ["Oussamah Jaber — Theodo"],
+      "feedbackFrom": [],
+      "summary": "- Oussamah Jaber (Theodo de 2018 à 2022, missions chez ManoMano ou BPI France) présente le **QRQC** (Quick Response Quality Control), issu du Lean et de l'industrie automobile, appliqué aux bugs logiciels.\n- Enjeu illustré par des cas graves (Knight Capital en 2012, un bug de relance de dépistage du cancer du sein au Royaume-Uni) ; chez Theodo, l'indicateur suivi est le nombre de bugs par développeur et par semaine.\n- Différence avec le post-mortem sans reproche : plus léger, fait seul ou à deux juste après la détection, orienté système et équipe plutôt qu'incident.\n- Les étapes : comprendre exactement ce qui s'est passé (ligne, PR, ticket, logs, schéma du flux), cause racine (5 pourquoi, *« qui doit apprendre quoi »*), **mur de qualité** qui aurait arrêté le bug, puis éradication du même défaut ailleurs. Principe : *« personne n'introduit volontairement un défaut »*.\n- Exemple réel : 24 heures d'écran blanc en production causées par un `reduce` JavaScript sans valeur initiale, présent à une dizaine d'endroits ; une règle ESLint en CI a bloqué six mois plus tard un nouvel arrivant qui réintroduisait le bug.\n- Le suivi des actions est indispensable, sinon la démarche démotive ; ouverture sur le Dantotsu (classer les défauts selon le moment de leur détection).\n- En questions-réponses : la méthode est jugée chronophage par l'animation ; réponse, une version allégée de 5 à 10 minutes vise *« un seul learning par bug »*, et le niveau d'exigence dépend des enjeux.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "aA2skGjksSU",
+        "title": "PTC2022 - Oussamah Jaber - Transformer ses bugs en opportunités grâce à la technique du QRQC",
+        "publishedAt": "2022-11-21",
+        "transcript": true
+      }
+    },
+    {
+      "id": "tester-l-accessibilite-sncf-connect",
+      "day": "2022-11-16",
+      "type": "talk",
+      "title": "Tester l'accessibilité : enjeux et pratiques sur SNCF Connect",
+      "speakers": ["Matthieu Lacrampe — SNCF Connect & Tech", "Nicolas Chardon — e.SNCF Solutions", "Adrien Body — SNCF Connect & Tech"],
+      "feedbackFrom": [],
+      "summary": "- Contexte posé par Nicolas Chardon : obligation légale renforcée par la mission de service public, quatre familles de handicap (moteur, visuel, auditif, cognitif) ; SNCF Connect, en production depuis janvier 2022, compte environ 300 contributeurs (web React, mobile Flutter).\n- Le talk passe en revue chaque critère avec trois niveaux de vérification : **automatisé web** (Matthieu Lacrampe), **automatisé mobile** (Adrien Body), **manuel** (Nicolas Chardon).\n- Web : ESLint avec `jsx-a11y` dans l'IDE et **bloquant en CI**, Testing Library avec sélection par rôle et nom accessible (*« plus vos tests ressemblent à la façon dont vous utilisez votre application plus il vous donne confiance »*), Storybook et Chromatic pour la régression visuelle, encore en cours de mise en place.\n- Mobile : golden tests Flutter avec police à 200 % et en mode paysage, tests de guidelines (contraste, taille des cibles, étiquettes), tests sur les `Semantics`.\n- Manuel : zoom à 200 %, lecteurs d'écran (VoiceOver, TalkBack), inspecteurs d'accessibilité, focus visible et ordre de tabulation, retours vocaux des formulaires.\n- Organisation : référent à temps plein depuis 2018, formation de tous les profils, consultant malvoyant dans l'équipe, audits RGAA (web) et RAAM (mobile) ; conformité web passée de 54 % au lancement à 70 % en juillet 2022.\n- Lecture critique des speakers : la pertinence d'une étiquette reste un jugement humain, et *« être 100% conforme […] c'est quelque part un minimum »* ; *« on fait de l'accessibilité pour des utilisateurs […] pas juste pour cocher les cases »*.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "0QZOgrpAfIE",
+        "title": "PTC2022 - Matthieu Lacrampe, Adrien Body & Nicolas Chardon - Tester l'accessibilité : enjeux et...",
+        "publishedAt": "2022-11-21",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [],
+  "sources": [
+    {
+      "label": "Page officielle de l'édition 2022 (bilan, liste des slides, playlist)",
+      "url": "https://paristestconf.com/edition-2022/"
+    },
+    {
+      "label": "Programme Sessionize ParisTestConf 2022 (descriptifs, biographies, horaires)",
+      "url": "https://sessionize.com/api/v2/ewjpk7ly/view/GridSmart"
+    },
+    {
+      "label": "Appel à orateurs Sessionize ParisTestConf 2022 (format et thèmes)",
+      "url": "https://sessionize.com/paris-test-conf-2022"
+    },
+    {
+      "label": "Fichier ICS du programme (archive Wayback, septembre 2022)",
+      "url": "https://web.archive.org/web/20220919080407/https://www.paristestconf.com/files/ptc2022.ics"
+    },
+    {
+      "label": "Playlist YouTube ParisTestConf 2022 (8 talks)",
+      "url": "https://www.youtube.com/playlist?list=PLMXjuFj7QC6bFq-7Aao4n-33JXJsA2ZG2"
+    },
+    {
+      "label": "Playlist YouTube des deux lives de l'édition (première et deuxième journée)",
+      "url": "https://www.youtube.com/playlist?list=PLMXjuFj7QC6b3pHucv0dOBZo8NvjSNo5O"
+    },
+    {
+      "label": "La ParisTestConf, la conférence des artisans testeurs (Benjamin Butel, organisation, La Taverne du Testeur, 10 novembre 2022)",
+      "url": "https://latavernedutesteur.fr/2022/11/10/la-paristestconf-la-conference-des-artisans-testeurs/"
+    },
+    {
+      "label": "Posts LinkedIn : aucun retrouvé"
+    }
+  ]
 }

@@ -6,8 +6,352 @@
   "end": "2022-10-19",
   "city": "Paris",
   "url": "https://flowcon.io/archives/2022/",
+  "programUrl": "https://flowcon.io/archives/2022/",
   "dateConfidence": "ok",
-  "note": "18 et 19 octobre 2022, « close to Paris » (lieu précis non retrouvé).",
-  "status": "pending",
-  "sessions": []
+  "note": "18 et 19 octobre 2022, « close to Paris » (lieu précis non retrouvé). Le site de l'édition (2022.flowcon.io) annonçait 2 jours, 3 tracks et plus de 30 talks et ateliers ; seuls 15 talks ont été filmés et archivés.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-05",
+  "revisit": "Aucun retour de participant trouvé (ni post LinkedIn, ni blog, ni sketchnote) : la synthèse repose sur les transcripts officiels et trois live-tweets de l'organisation. Programme complet (30+ sessions) non retrouvé.",
+  "corpus": "Les 15 talks archivés sur flowcon.io/archives/2022 (vidéos YouTube et transcripts automatiques publiés par l'organisation, tous lus), plus 3 threads de live-tweet du compte @FlowConFR (18 et 19/10/2022, lus via Thread Reader) sur les talks de Kenny Baas-Schwegler, Julien Topcu et Thierry De Pauw. Recherche web (7 requêtes) en novembre 2026.",
+  "limits": "Aucun retour de participant public n'a été trouvé, quatre ans après l'événement : les résumés décrivent ce qui a été dit sur scène, pas la réception. Les transcripts sont automatiques (noms propres parfois déformés, entreprises non vérifiées pour certains speakers) ; le jour n'est connu que pour trois talks et le type de session (keynote ou talk) n'est pas indiqué par l'archive. La moitié environ du programme (talks non filmés, ateliers) reste inconnue ; les dates de publication vidéo sont celles affichées sur flowcon.io.",
+  "tldr": "**Le flux est un problème de système, pas de vitesse** : qualité « à la Toyota », lecture statistique des données, organisation alignée sur l'architecture et confiance dans les équipes sont présentées comme les vrais leviers pour livrer plus souvent et mieux.",
+  "keyTakeaways": [
+    "Avant de réagir à un chiffre, séparer le **signal du bruit** avec une carte de comportement de processus ; un point isolé comparé à une moyenne ne dit presque rien (Vacanti).",
+    "Pour accélérer les releases, cartographier la chaîne de valeur et chercher **la vraie contrainte** (ici l'exécution des tests automatisés, pas le test manuel) (De Pauw).",
+    "Traiter chaque défaut tout de suite (Andon, 8 étapes en 24 h) plutôt que d'attendre la rétrospective ; **qualité et vitesse vont ensemble** (Rousseau et Hautbois, Ignace).",
+    "Concevoir d'abord l'architecture cible puis les équipes (**manœuvre de Conway inverse**, ordre Business, Architecture, Process, Organisation), sans en attendre de miracle (Topcu).",
+    "Gérer autonomie et alignement comme **une polarité à rééquilibrer en continu**, avec des signaux explicites de réalignement (Baas-Schwegler).",
+    "Faire de « you build it, you run it » un choix piloté par le risque (exposition financière, disponibilité visée) et **payer l'astreinte**, qui est un sacrifice social (Smith).",
+    "Pour les managers tech : coacher au point de difficulté et faire apprendre par la résolution de vrais problèmes, pas par des slides (Medina).",
+    "En équipe distribuée : au plus deux fuseaux horaires par squad, communication asynchrone documentée, et **ne jamais rien supposer compris** (Chahine).",
+    "Construire la confiance par de petites réussites répétées, en osant la vulnérabilité et en nommant les tabous (Urvoas, Kuester)."
+  ],
+  "sessions": [
+    {
+      "id": "lies-damned-lies-and-teens-who-smoke",
+      "type": "talk",
+      "title": "Lies, Damned Lies, and Teens Who Smoke (EN)",
+      "speakers": [
+        "Dan Vacanti"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Point de départ : l'histoire de Malcolm Gladwell sur les lancers francs « à la cuillère » de Wilt Chamberlain lors de son match à 100 points. Le 87,5 % de ce soir-là **reste dans le bruit** de sa moyenne de carrière (51 %).\n- Thèse : toutes les données contiennent du bruit, et *« the primary purpose of data analysis is to be able to separate signal from noise »*.\n- Outil proposé : les **cartes de comportement de processus** (Shewhart, nommées ainsi par Donald Wheeler) et leurs limites naturelles, pour distinguer variation de routine et causes assignables. Un point hors limites signale un processus imprévisible, à investiguer avant toute autre amélioration ; ne pas supprimer les valeurs extrêmes à l'aveugle.\n- Les « tendances » apparentes sont le plus souvent du bruit : *« there really is no such thing as a trend in noise »*. Comparer un point unique à une moyenne (exemples USA Today sur le tabac chez les ados, prévisions d'ouragans) n'apprend presque rien.\n- Pour le temps de cycle : regarder les données **dans le temps** plutôt qu'en histogramme, qui masque les changements de processus ; inutile d'ajuster une loi de probabilité.\n- Conclusion : *« Data have no meaning apart from their context »* ; améliorer un processus prévisible mais insatisfaisant exige un changement de système.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "rxTTlMorMsA",
+        "title": "Lies, Damned Lies, and Teens Who Smoke (EN)",
+        "publishedAt": "2023-11-04",
+        "transcript": true
+      }
+    },
+    {
+      "id": "from-bi-annual-to-fortnightly-release-for-15-teams-and-a-single-monolith",
+      "day": "2022-10-19",
+      "type": "talk",
+      "title": "From bi-annual to fortnightly release for 15 teams and a single monolith (EN)",
+      "speakers": [
+        "Thierry De Pauw"
+      ],
+      "feedbackFrom": [
+        "Live-tweet @FlowConFR (organisation)"
+      ],
+      "summary": "- Contexte (sur scène) : une agence fédérale belge au service de 11 millions de citoyens, **15 équipes sur un monolithe Java/EJB** d'environ 15 ans, deux à trois releases majeures par an. Demande de la direction en septembre 2018 : passer à **une release toutes les deux semaines** en moins de quatre mois.\n- Business case : chaque release majeure coûtait **28 jours de lead time de déploiement et 334 jours-homme**, ce qui a convaincu de financer le chantier.\n- Méthode : **improvement kata** (direction, conditions cibles, expériences PDCA) portée par une équipe cœur de volontaires, sans modèle de maturité. La **value stream mapping** collective a révélé un flux de patchs caché, déjà plus rapide que le flux de release majeure.\n- La théorie des contraintes a désigné **l'exécution des tests automatisés** comme goulot (environ 70 % d'échecs, 8 h de lead time : tests instables, données de test partagées, dépendances tierces), pas le test manuel.\n- Les peurs (complexité du branching, échéances, bugs) ont été rendues discutables et traitées : override manuel du pipeline, séparation tests stables / en quarantaine.\n- Résultat : releases bimensuelles dès janvier, pipeline passé de 8 h à 2 h, tableaux de bord qui ont débloqué du budget de coaching ; environ 12 jours d'intervention. Message : *« it's possible to reach continuous delivery without ever reaching continuous integration »*, mais c'est difficile à tenir. *« Speed will follow. Always. »*\n- Le live-tweet de l'organisation (19/10) retient les mêmes points : pas de modèle de maturité, expériences guidées par les données, adoption inégale entre équipes.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "RNlA3lpNV8E",
+        "title": "From bi-annual to fortnightly release for 15 teams and a single monolith (EN)",
+        "publishedAt": "2022-11-30",
+        "transcript": true
+      }
+    },
+    {
+      "id": "qualite-radicale-de-toyota-a-la-tech",
+      "type": "talk",
+      "title": "Qualité radicale : de Toyota à la tech (FR)",
+      "speakers": [
+        "Woody Rousseau — Sipios (groupe Theodo)",
+        "Flavian Hautbois"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Constat : les bugs sont vus comme normaux en logiciel malgré des conséquences parfois graves (Therac-25). L'idée que la qualité coûte plus cher que la non-qualité est fausse ; avec *Accelerate* et les métriques DORA, *« quality and speed really go hand in hand »*.\n- Source d'inspiration : la démarche **Dantotsu** (« mieux que le meilleur ») de Sadao Nomura, présentée comme *« extreme programming for industry »* : défauts classés de A à D selon la distance parcourue avant détection, **réponse en 8 étapes visée en 24 h**.\n- Traduction tech : management visuel, standardisation, **dojos**, gestion des points faibles, accès rapide à l'information, rituel qualité quotidien ; métriques du type bugs par jour facturé ou par déploiement.\n- Deux expérimentations terrain : chez Ocus, backlog de bugs ramené d'environ 50-60 à 12 (bugs assignés directement aux tech leads et équipes, sessions qualité hebdomadaires) ; chez Sipios, **environ -80 % de bugs introduits en trois mois** sur une équipe pilote, avec des analyses de cause racine tenant sur une slide et 8 à 10 gestes clés du développeur à entraîner.\n- Conditions de réussite avancées : engagement visible du top management, formation à la résolution de problèmes avec coaching, un seul apprentissage technique par analyse, mesure des bugs pour fixer des objectifs.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "X6r6WtKuF2k",
+        "title": "Qualité radicale - de Toyota à la tech (FR)",
+        "publishedAt": "2022-11-23",
+        "transcript": true
+      }
+    },
+    {
+      "id": "andon-et-flux-juste-a-temps-et-confiance-mutuelle",
+      "type": "talk",
+      "title": "Andon et flux, juste-à-temps et confiance mutuelle (FR)",
+      "speakers": [
+        "Marie-Pia Ignace"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Entrée en matière : la **frustration numérique** (outils de mauvaise qualité) pèse sur le turnover et l'épuisement des salariés.\n- Le Lean repose sur deux piliers indissociables, **juste-à-temps et qualité totale** ; flux et Andon s'inscrivent dans ce cadre.\n- *« Un Andon est un système qui dit stop »* : on s'arrête dès qu'on voit un écart à l'état attendu, alerte machine ou simple observation.\n- Les problèmes se traitent **maintenant, pas en rétrospective** : protéger d'abord le client, puis chercher la cause racine sur le terrain (PDCA) plutôt que par supposition.\n- L'aide peut être ponctuelle (le chef d'équipe qui intervient sur la ligne) ou structurée (dojo de 10 à 20 minutes avec un expert).\n- Lever la main suppose la **sécurité psychologique** (projet Aristotle de Google) : tirer l'Andon ne doit pas être vécu comme un échec personnel. Penser en **flux de problèmes**, détectés et résolus en continu.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "fVJ40gAoNYU",
+        "title": "Andon et flux, juste-à-temps et confiance mutuelle (fr)",
+        "publishedAt": "2022-11-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "what-agile-can-learn-from-lean-manufacturing",
+      "type": "talk",
+      "title": "What Agile can learn from Lean Manufacturing (EN)",
+      "speakers": [
+        "Andrea Provaglio"
+      ],
+      "feedbackFrom": [],
+      "summary": "- L'agilité est née dans le logiciel parce que c'était la première industrie presque entièrement **cognitive**, libérée de nombreuses contraintes physiques. Exemple filé : une entreprise d'équipements de distribution de gaz.\n- Deux modèles complémentaires, tous deux centrés sur l'humain : le Lean pour la production stable et physique, l'agilité pour le travail complexe et adaptatif. *« There is no lean versus agile, there is lean and agile. »*\n- Apprentissages croisés : le Lean peut emprunter au logiciel l'**agilité technique** (concevoir des systèmes qui absorbent le changement à coût maîtrisé) ; l'agilité peut emprunter au Lean la **sécurité et l'ergonomie du poste**, appliquées à la surcharge des travailleurs du savoir.\n- Mesure : *« KPI by definition is the indication of work done, not value generated »* ; les OKR conviennent souvent mieux au travail intellectuel.\n- Leadership : figer les décisions tôt et le commandement par l'expert réduisent l'agilité. Rendre le travail intangible **visible avec des outils physiques** plutôt que des tableaux de bord numériques qui cachent l'information.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "y11Dm3Z4EdI",
+        "title": "What Agile can learn from Lean Manufacturing (EN)",
+        "publishedAt": "2022-12-13",
+        "transcript": true
+      }
+    },
+    {
+      "id": "entrainer-les-avengers-oubliez-tout-ce-que-vous-savez-sur-le-management-tech",
+      "type": "talk",
+      "title": "Entraîner les Avengers : oubliez tout ce que vous savez sur le management tech (FR)",
+      "speakers": [
+        "Régis Medina"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le problème de fond n'a pas changé en 27 ans de projets : sous la pression des délais, on prend des raccourcis, on perd les développeurs expérimentés et on finit par réécrire.\n- Le Lean est présenté comme **une pratique personnelle du dirigeant** (*« a personal practice for the leader »*), un modèle d'affaires alternatif plutôt qu'une méthode d'amélioration continue.\n- Le compromis qualité / délai / périmètre est reformulé en **valeur divisée par coût total** (maintenance, formation, support compris) : *« we can have all three »*.\n- Critique : utiliser Kanban seulement pour pousser des tickets passe à côté de son intention. Proposition : un **système tiré organisé autour des personnes**, avec du coaching au point de difficulté.\n- Pratique délibérée : produire, comparer à des standards (repères, pas scripts de contrôle), construire des modèles mentaux, recevoir le feedback d'un coach.\n- Rôle du manager : éveiller l'envie d'apprendre, montrer l'exemple, gagner la confiance pour être accepté comme coach. *« Adults don't learn in a room looking at slides »* : on apprend en résolvant de vrais problèmes.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "U3D39kspGaA",
+        "title": "Entraîner les Avengers - Oubliez tout ce que vous savez sur le management tech (FR)",
+        "publishedAt": "2022-12-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "you-build-it-you-run-it-sounds-great-but-it-wont-work-here",
+      "type": "talk",
+      "title": "You Build It You Run It sounds great but it won't work here (EN)",
+      "speakers": [
+        "Steve Smith — Equal Experts"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Définition : un modèle opérationnel *« in which product teams build, deploy, operate and support their own services »* (formule tracée jusqu'à une interview Amazon de 2006). But : débit, fiabilité et culture d'apprentissage à la fois.\n- Distinction clé : une équipe d'exploitation peut gérer des systèmes **fondamentaux** stables (progiciels auto-hébergés), pas des services numériques qui changent vite.\n- Les objections (« les devs ne voudront pas d'astreinte ») sont traitées comme des **symptômes de problèmes non résolus**, pas des raisons d'y renoncer. *« On call is a social sacrifice and that's something that you have to respect »* : partager les données d'incident, former, **rémunérer l'astreinte**.\n- Un **sélecteur de modèle opérationnel** met en balance exposition financière, disponibilité visée et fréquence de déploiement : un service peu exposé n'a pas besoin de couverture nocturne ; rotations organisables par domaine produit.\n- Automatiser ou rendre self-service la gestion d'incident, le travail non planifié et les tâches spécialisées (*« Nobody asked you to hire a DBA for every team »*). Démarrer par une équipe pilote « Goldilocks ».",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "Bndw3I0bIUE",
+        "title": "You Build It You Run It sounds great but it won't work here (EN)",
+        "publishedAt": "2022-12-05",
+        "transcript": true
+      }
+    },
+    {
+      "id": "loi-de-conway-lorsque-votre-conception-produit-se-fache-avec-votre-organisation",
+      "day": "2022-10-18",
+      "type": "talk",
+      "title": "Loi de Conway : lorsque votre conception produit se fâche avec votre organisation (FR)",
+      "speakers": [
+        "Julien Topcu — Shodo"
+      ],
+      "feedbackFrom": [
+        "Live-tweet @FlowConFR (organisation)"
+      ],
+      "summary": "- Rappel de la loi : les organisations produisent des systèmes qui copient leur structure de communication. Elle dépasse le code (exemple d'un site web qui expose l'organigramme avant le produit, déjà dénoncé par Jakob Nielsen à la fin des années 1990).\n- L'organisation prédit la qualité : une étude Microsoft sur Windows Vista trouvait les **métriques organisationnelles plus prédictives des défaillances** que la couverture de code. La charge de communication croît bien plus vite que l'effectif (Brooks).\n- **Manœuvre de Conway inverse** : concevoir l'architecture cible, puis former les équipes autour. Ordre recommandé **BAPO** (Business, Architecture, Process, Organisation) plutôt que l'OPAB courant.\n- Outils : Domain-Driven Design (Event Storming, bounded contexts, context maps) et Team Topologies (types d'équipes, modes d'interaction, charge cognitive).\n- Mise en garde : *« the Conway reverse maneuver is not a silver bullet »* ; si l'organisation ne peut pas changer, c'est l'architecture qui doit s'adapter.\n- Le live-tweet de l'organisation (18/10) retient *« Structure eats strategy »* (Jan Bosch) et une étude de Harvard Business School (2012) jugeant les outils open source plus modulaires.",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "GyWUN27Ercg",
+        "title": "Loi de Conway: Lorsque votre conception produit se fache avec votre organisation (FR)",
+        "publishedAt": "2022-11-10",
+        "transcript": true
+      }
+    },
+    {
+      "id": "autonomy-is-that-what-we-really-want",
+      "day": "2022-10-18",
+      "type": "talk",
+      "title": "Autonomy, is that what we really want? (EN)",
+      "speakers": [
+        "Kenny Baas-Schwegler"
+      ],
+      "feedbackFrom": [
+        "Live-tweet @FlowConFR (organisation, 11 tweets)"
+      ],
+      "summary": "- L'autonomie est **un moyen, pas une fin** ; son bon dosage dépend du contexte de chaque équipe. *« I don't hate the concept, I hate the word. »*\n- Autonomie et alignement forment **une polarité** : *« polarities are not things you can solve. They're ongoing problems »*. Le même schéma se répète à chaque niveau.\n- Dans le code : choisir entre tests sociables et solitaires selon la finalité du bounded context. Dans l'équipe : déléguer à un leader technique ne marche que si les limites sont revues, sinon **l'autonomie tourne à la dictature** ; les branches longues dérivent de la compréhension partagée, d'où des signaux explicites de réalignement.\n- Entre équipes : des équipes d'enabling avec **date de fin**, des phases de partenariat pour les nouveaux produits, une charge cognitive maîtrisée. Dans l'organisation : centralisation et décentralisation se renégocient en continu, les leaders donnent l'exemple.\n- Le live-tweet de l'organisation (18/10) résume : l'autonomie motive mais peut isoler ; elle ne veut pas dire faire ce qu'on veut. Talk construit avec Evelyn van Kelle (crédité sur le support).",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "QG5sVAeaFxs",
+        "title": "Autonomy, is that what we really want? (EN)",
+        "publishedAt": "2022-11-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "assuring-data-quality-at-scale",
+      "type": "talk",
+      "title": "Assuring Data Quality At Scale (EN)",
+      "speakers": [
+        "Gayathri Thiyagarajan — Expedia Group"
+      ],
+      "feedbackFrom": [],
+      "summary": "- La qualité de données est **multidimensionnelle et dépend de l'usage** (complétude, exactitude, cohérence, fraîcheur) : *« accuracy is not always accurate »*.\n- Coûts de la non-qualité : pipelines cassés, retraitements, données en retard, fonctionnalités client dégradées, et difficulté à la distinguer d'une dérive légitime des données.\n- Avec le **data mesh**, la responsabilité se déplace vers les équipes de domaine, propriétaires de leurs data products et de leur qualité.\n- À l'échelle, il faut pourtant une **capacité centrale standardisée** : définitions communes, nombreuses sources, alertes quasi temps réel, mesure transparente entre domaines. Plateforme Expedia en quatre étapes découplées et asynchrones : ingestion, profilage, contrôles, notification.\n- Le **profilage** est la fondation (métriques sur les données brutes réutilisées par les contrôles et l'exploration). La détection d'anomalies par ML s'est révélée difficile à régler et réservée aux tendances saisonnières ; de simples seuils couvrent le reste.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "X_62sSS3F14",
+        "title": "Assuring Data Quality At Scale (EN)",
+        "publishedAt": "2022-11-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-construire-une-equipe-produit-efficace",
+      "type": "talk",
+      "title": "Comment construire une équipe produit efficace (FR)",
+      "speakers": [
+        "Christopher Parola — Yousign"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Partir **de l'enjeu, pas de la taille** de l'entreprise : chez Yousign, marché concurrentiel et réglementé où l'expérience utilisateur fait la différence.\n- Trois types de squads dans des domaines : **plateforme** (fondations techniques), **feature** (périmètres fonctionnels), **impact** (objectifs mesurables, par exemple passer 15 % des ventes en self-serve).\n- Écrire les **compétences attendues** de chaque rôle produit, métiers récents et mouvants. Préférer des **généralistes** en phase de forte évolution : un spécialiste peut figer une équipe sur un sujet pendant des années.\n- Carrières à deux voies (manager et expert, mêmes grilles de salaire), cinq niveaux, un socle commun (communication, organisation, recherche, exécution).\n- Leadership : *« you must create the framework of freedom for your team to be autonomous »* (rituels hebdomadaires, présentations tournantes, principes produit). Le travail produit vu comme **réduction de risque** (utilisateur, produit, canal, rentabilité), dans la lignée de Melissa Perri.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "fUHB2MMySdY",
+        "title": "Comment construire une équipe produit efficace (FR)",
+        "publishedAt": "2022-11-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "design-content-systems-au-service-de-l-hypercroissance-produit-mirakl",
+      "type": "talk",
+      "title": "Design & Content Systems au service de l'hypercroissance Produit @ Mirakl",
+      "speakers": [
+        "Trio design, produit et contenu — Mirakl"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Contexte : Mirakl (plateforme SaaS de marketplaces) passe d'environ 70 à plus de 800 salariés en six ans, l'équipe produit triple en trois ans. Talk à trois voix : product design, product management, product content.\n- Problèmes révélés par la croissance : lignes directrices de design floues, **équipe contenu sollicitée en bout de chaîne** pour nommer les concepts, décisions changées au dernier moment. Risques : incohérence produit, coûts de support, faible adoption.\n- Réponses : squads par domaine fonctionnel associant PM, tech, designer et content writer ; RACI sur le cycle de vie produit ; un **« Ready for Dev » commun** (maquettes complètes avec tous les états, microcopy validée) car *le développeur ne doit avoir qu'une seule référence*.\n- Content writers impliqués dès la discovery (branches Figma partagées), **design system 2.0 et content system** sur Zeroheight.\n- Enjeu chiffré : une formulation incohérente se multiplie dans **24 langues** de traduction, d'où un projet de référentiel interne de microcopy.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "HuwGLGR-LH8",
+        "title": "Design & Content Systems au service de l'hypercroissance Produit @ Mirakl",
+        "publishedAt": "2023-02-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "working-in-and-with-overly-distributed-teams",
+      "type": "talk",
+      "title": "Working in and with overly distributed teams (EN)",
+      "speakers": [
+        "Clark Chahine"
+      ],
+      "feedbackFrom": [],
+      "summary": "- REX d'un VP Product dont l'entreprise est passée d'environ 80 à 260 personnes en deux ans et demi, en full remote et via trois acquisitions.\n- **Les fuseaux horaires sont la contrainte n°1** : une équipe sur trois fuseaux a échoué en deux mois ; règle adoptée, au plus deux fuseaux par squad avec au moins six heures de recouvrement.\n- Communication **asynchrone et documentée** (vidéos enregistrées, documents partagés) ; mandat clair par équipe. *« Never assume anything. »*\n- Rituels simplifiés : une sprint review d'une journée remplacée par un document Confluence périodique (livrables, dépendances, problèmes), chaque équipe gardant son process.\n- Barrières de langue, accents et différences culturelles peuvent passer pour du désengagement : caméras allumées, appels, rencontres physiques (*« We don't care about your dirty dishes, but we care about seeing your face »*). Bénéfices : couverture quasi continue, vivier de recrutement élargi, diversité, rétention.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "LSpWMlO5AXA",
+        "title": "Working in and with overly distributed teams (EN)",
+        "publishedAt": "2023-02-27",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-confiance-la-cle-d-une-equipe-agile-performante",
+      "type": "talk",
+      "title": "La confiance, la clé d'une équipe agile performante (FR)",
+      "speakers": [
+        "Jérôme Urvoas"
+      ],
+      "feedbackFrom": [],
+      "summary": "- La confiance est présentée comme **un prérequis** de la performance d'équipe ; il faut d'abord reconnaître et dépasser la peur, qui bloque la sécurité psychologique.\n- Deux formes : **interpersonnelle** (intentions et compétence de l'autre) et **organisationnelle** (climat serein qui rend le changement possible). Trois bénéfices : expérimenter (individu), progresser (équipe), s'adapter (organisation).\n- La confiance n'exclut pas le contrôle mais demande d'accepter une part d'incertitude ; elle se construit par **petites réussites répétées**, comme des itérations courtes, et se perd vite.\n- Cinq leviers interpersonnels (partager ses intentions, agir avec congruence, développer la compétence, créer une dynamique de succès, oser la vulnérabilité) et six leviers organisationnels, dont co-construire le cadre, reconnaître, ouvrir des espaces de délibération et **nommer puis lever les tabous**. *« La vision ne se donne pas, elle se construit. »* (traduit du transcript)",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "-5tK15kzvzg",
+        "title": "La confiance, la clé d'une équipe agile performante (FR)",
+        "publishedAt": "2022-12-15",
+        "transcript": true
+      }
+    },
+    {
+      "id": "you-dont-talk-about-that-at-work",
+      "type": "talk",
+      "title": "You don't talk about that at work! (EN)",
+      "speakers": [
+        "Sophie Kuester"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Témoignage personnel d'une testeuse (ancienne mathématicienne) sur la **santé mentale au travail**, sujet qu'on « n'aborde pas au bureau ».\n- **On n'est jamais seul** : ces difficultés sont fréquentes et souvent invisibles ; en parler aide les autres. L'ouverture appelle l'ouverture : *« Sharing your secrets, even the bad ones, turns them into a gift. »*\n- L'ouverture est **une habitude qui se muscle**, pas un trait de caractère ; admettre sa vulnérabilité dans un conflit lui a valu du respect.\n- Tout le monde ne comprend pas la maladie mentale (conseils maladroits qui peuvent éloigner du soin) ; laisser les autres aider, prendre soin de soi (le masque à oxygène d'abord) et rester bienveillant, en crise comme au quotidien.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "CxIuyb7jknc",
+        "title": "You don't talk about that at work! (EN)",
+        "publishedAt": "2022-12-19",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Environ la moitié du programme (talks non filmés et ateliers, plus de 30 sessions annoncées sur 3 tracks) : titres et speakers non retrouvés"
+  ],
+  "sources": [
+    {
+      "label": "Archive officielle FlowCon 2022 (15 talks, vidéos et transcripts)",
+      "url": "https://flowcon.io/archives/2022/"
+    },
+    {
+      "label": "Playlist YouTube FlowCon France 2022",
+      "url": "https://www.youtube.com/playlist?list=PLAqbkwjzg7INFM-bkI0kr1_U_PJAbY_rg"
+    },
+    {
+      "label": "Live-tweet @FlowConFR, talk de Kenny Baas-Schwegler (18/10/2022)",
+      "url": "https://threadreaderapp.com/thread/1582379518953934848.html"
+    },
+    {
+      "label": "Live-tweet @FlowConFR, talk de Julien Topcu (18/10/2022)",
+      "url": "https://threadreaderapp.com/thread/1582395062612553728.html"
+    },
+    {
+      "label": "Live-tweet @FlowConFR, talk de Thierry De Pauw (19/10/2022)",
+      "url": "https://threadreaderapp.com/thread/1582654759039008768.html"
+    },
+    {
+      "label": "Posts LinkedIn de participants : aucun trouvé (recherches de novembre 2026)"
+    }
+  ]
 }
