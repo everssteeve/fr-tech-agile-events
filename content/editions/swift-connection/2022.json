@@ -8,8 +8,239 @@
   "city": "Paris",
   "venue": "Pan Piper",
   "url": "https://web.archive.org/web/20220925143225/https://frenchkit.fr/",
+  "programUrl": "https://async.techconnection.io/frenchkit/",
   "dateConfidence": "ok",
-  "note": "Dernière édition sous le nom FrenchKit, « at our historic venue: the Pan Piper » (2-4 impasse Lamier, Paris 11e) : talks et classrooms du jeudi 29 septembre (13h) au vendredi 30 septembre. Source : site frenchkit.fr archivé (Wayback Machine, septembre 2022). Pas d'édition en 2021.",
-  "status": "pending",
-  "sessions": []
+  "note": "Dernière édition sous le nom FrenchKit, « at our historic venue: the Pan Piper » (2-4 impasse Lamier, Paris 11e), organisée par l'association ConfKit : talks du jeudi 29 septembre (13h) au vendredi 30 septembre (19h), classrooms et masterclasses le vendredi matin. Premier retour en présentiel complet après la pause de 2021 ; environ 250 participants selon le blog Ippon. Sources : site frenchkit.fr archivé (Wayback Machine, septembre 2022), Billetweb, archive async.techconnection.io. Pas d'édition en 2021.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-06",
+  "revisit": "Corpus participant mince : deux comptes-rendus de blog (Ippon, Mick F) et un post Mastodon de speaker ; aucun post LinkedIn ni tweet trouvé en 8 recherches web. Le programme archivé (Wayback Machine) n'a pas pu être lu, faute d'accès à curl : la liste complète des classrooms et masterclasses reste inconnue. Les transcripts ont été lus via un outil de récupération qui les résume, sans relecture du texte brut.",
+  "corpus": "16 vidéos de la chaîne YouTube FrenchKit (@frenchkit3088) et **15 transcripts** consultés via l'archive async.techconnection.io (dépôt GitHub techconnection-io/async-techconnection-data), deux comptes-rendus de participants (blog Ippon, sept auteurs, 11/10/2022 ; blog de Mick F, 07/10/2022), un post Mastodon de Yono Mittlefehldt (speaker, 21/12/2022) et la page Billetweb. Lecture à J+4 ans, 8 recherches web.",
+  "limits": "Deux blogs seulement décrivent la réception des talks, et l'équipe Ippon résume plus qu'elle ne juge. Les jours des sessions viennent de l'archive async (celui du talk DocC a été corrigé d'après le transcript) ; le programme officiel n'a pas été relu. Les transcripts automatiques, parfois amputés de la première minute, ont été lus sous forme résumée : les citations sont rares et à prendre avec prudence. Aucune donnée de satisfaction ni de vues.",
+  "tldr": "FrenchKit 2022, retour au Pan Piper après deux ans compliqués, installe **SwiftUI et les Swift packages comme nouvelle normalité** (Medium en vitrine), tout en assumant les aspérités : Swift 5.7 qui se complexifie, navigation SwiftUI regrettée, échecs de machine learning racontés sur scène.",
+  "keyTakeaways": [
+    "Avec Swift 5.7, commencer par `some` quand un générique ne sert qu'à un endroit, passer à `any` quand le compilateur l'exige (collection hétérogène, coût à l'exécution), revenir aux génériques pour plusieurs contraintes ; dupliquer du code reste une option valable (Van der Lee).",
+    "Confier aux machines les contrôles d'accessibilité simples (contraste, taille des cibles, Dynamic Type) via des UI tests en CI, l'Accessibility Inspector en développement et l'analyseur d'Evinced en QA ; garder l'humain pour les libellés et les regroupements, et commencer par les libellés (Kanatzar).",
+    "Migrer du code legacy vers des packages SPM locaux par petites itérations, en commençant par un morceau isolé comme les couleurs ; les ponts vers Objective-C sont un coût temporaire et un cycle de dépendances signale un mauvais découpage (Mahieddine).",
+    "Pour un property wrapper SwiftUI personnalisé, se conformer à `DynamicProperty` dans une struct, rendre `update()` idempotent car il tourne à chaque évaluation du body, et loger l'état dans un `ObservableObject` (Wals).",
+    "Utiliser `@MainActor` plutôt que `DispatchQueue.main`, transformer un cache partagé en `actor`, et migrer les API à closures progressivement avec des continuations (Adegoroye).",
+    "Garder la navigation UIKit si l'app est en UIKit ou si l'architecture ne peut pas encore changer, et ne pas utiliser MVP avec SwiftUI ; la navigation SwiftUI est à réserver aux cibles iOS récentes ou à TCA (Ascorbe).",
+    "En machine learning, comparer l'exactitude à une baseline triviale (toujours prédire la classe majoritaire), diversifier les voix du dataset et collecter les données dans les conditions réelles d'usage (Mittlefehldt).",
+    "Séparer la logique d'un jeu de son affichage (état en struct, événements en enum, actions d'affichage) : c'est ce qui rend accessibles l'IA de GameplayKit et le multijoueur en ligne (Chirita).",
+    "Ne jamais stocker de secret dans le plist ou les ressources, éviter `@objc` et le dynamic dispatch, bloquer le debugger et détecter le jailbreak : on décourage les attaquants, on ne rend pas l'app inviolable (Schrock, d'après Ippon).",
+    "Documenter avec DocC en privilégiant le résumé et les extraits de code, et couvrir ces extraits par des tests unitaires pour qu'ils compilent toujours (Støvring)."
+  ],
+  "sessions": [
+    {
+      "id": "opening-keynote",
+      "day": "2022-09-29",
+      "type": "keynote",
+      "title": "Opening Keynote",
+      "speakers": ["Équipe FrenchKit"],
+      "feedbackFrom": ["Blog Ippon"],
+      "summary": "- Une **parodie de la WWDC**, avec Tim Cook et l'équipe FrenchKit, dans la tradition des keynotes d'ouverture de la conférence.\n- L'équipe Ippon la décrit pleine d'humour et d'originalité, avec des clins d'œil (lecture de lettres, stéréotypes parisiens) et un montage soigné.\n- Selon elle, la keynote *« donna le ton »* de deux jours d'expertise tech « sans prise de tête ».\n- Vidéo publiée, sans transcript disponible : résumé fondé sur le seul compte-rendu Ippon.",
+      "summarySources": ["feedback"],
+      "video": { "youtubeId": "sdARLCQmr1w", "title": "Opening Keynote", "transcript": false }
+    },
+    {
+      "id": "any-idea-how-to-use-some-generics",
+      "day": "2022-09-29",
+      "type": "talk",
+      "title": "any Idea How to Use some Generics?",
+      "speakers": ["Antoine van der Lee"],
+      "feedbackFrom": ["Mick F (blog)"],
+      "summary": "- Premier talk du speaker à FrenchKit, après un CFP refusé une année précédente. Cadre : les sessions WWDC 2022 sur génériques, types opaques et existentiels, et **Swift 5.7** qui lève des restrictions plutôt qu'il n'ajoute des concepts.\n- Rappel tiré d'un ancien talk FrenchKit de Rob Napier : les génériques sont un outil, pas une obligation.\n- `some View` en SwiftUI : le compilateur connaît le type concret. `@ViewBuilder` résout le cas d'une vue qui renvoie tantôt un `Text`, tantôt un `VStack`.\n- Exemple WeTransfer (images et vidéos) : un protocole `Content`, puis `some Content` en paramètre au lieu d'un `<T: Content>`. Pour un tableau mélangé, il faut **`any Content`**, avec allocation dynamique et indirection à l'exécution.\n- Méthode proposée : `some` d'abord, `any` quand le compilateur l'exige, génériques pour plusieurs contraintes, duplication toujours acceptable. Xcode 14 suggère parfois `any` là où `some` suffit.\n- Q&A : Swift devient plus complexe, admet-il, mais chaque mot-clé répond à un besoin et rien n'oblige à tout apprendre ; la feuille de route Swift 6 porte surtout sur la mémoire (types move-only).\n- Retour : Mick F le classe parmi ses talks recommandés et s'amuse de la casse du titre.",
+      "summarySources": ["transcript", "feedback"],
+      "video": { "youtubeId": "xT5aaMyyR9c", "title": "any Idea How to Use some Generics? by Antoine Van der Lee", "transcript": true }
+    },
+    {
+      "id": "beyond-code-skills-for-impactful-development-that-makes-a-difference",
+      "day": "2022-09-29",
+      "type": "talk",
+      "title": "Beyond Code: Skills for Impactful Development That Makes a Difference",
+      "speakers": ["Maxim Cramer"],
+      "feedbackFrom": ["Mick F (blog)"],
+      "summary": "- Trois exercices d'imagination (une girafe, une erreur iOS, l'achat d'une maison) : on ne se représente bien que ce qu'on connaît déjà. D'où la thèse : **rendre son savoir facile d'accès** est le moyen le plus simple d'élargir son impact.\n- Contexte chiffré : en 2021, les fondatrices américaines n'ont obtenu qu'environ **2 %** du capital-risque. Ses clients construisent des outils pour victimes de violences conjugales, détenus ou demandeurs d'aide financière.\n- Les choix techniques précoces pèsent longtemps : une app en ReactiveCocoa difficile à reprendre, un projet PHP dur à staffer, une app communautaire chiffrée 70 000 dollars qu'une solution en marque blanche aurait couverte.\n- Méthode : poser des questions pour découvrir le modèle mental de l'autre, comprendre le but derrière une échéance, parler avec des histoires et des métaphores plutôt qu'en jargon, dessiner pour vérifier qu'on parle de la même chose.\n- Q&A : se montrer en public (talks, blogs) n'est pas une obligation ; les fondateurs n'ont pas besoin de coder mais de juger la faisabilité ; une conférence inclusive passe par un code de conduite et des formats variés.\n- Retour : Mick F retient la communication comme clé de l'impact et le chiffre des 2 %.",
+      "summarySources": ["transcript", "feedback"],
+      "video": { "youtubeId": "epYcQluY954", "title": "Beyond Code: Skills for Impactful Development That Makes a Difference by Maxim Cramer", "transcript": true }
+    },
+    {
+      "id": "building-custom-property-wrappers-for-swiftui-and-how-to-test-them",
+      "day": "2022-09-29",
+      "type": "talk",
+      "title": "Building Custom Property Wrappers for SwiftUI (And How to Test Them)",
+      "speakers": ["Donny Wals"],
+      "feedbackFrom": ["Mick F (blog)"],
+      "summary": "- Lecture du design d'Apple : `@State` et `@FetchRequest` laissent la vue posséder son état et obtenir ses données, sans couche supplémentaire obligatoire. Objectif : une API du type `@RemoteData(endpoint: .feed)`.\n- Rappel des trois accès d'un property wrapper : sans préfixe (valeur), `_` (le wrapper), `$` (valeur projetée).\n- Construction pas à pas : session réseau tirée de l'environnement SwiftUI, conformité à **`DynamicProperty`**, qui ne fonctionne que sur une struct.\n- Piège : charger à chaque `update()` crée une boucle, et muter un `@State` pendant l'update déclenche un avertissement. Solution : un `ObservableObject` chargeur tenu en `@StateObject`, le wrapper devenant une simple interface.\n- Tests : héberger la vue dans un `UIHostingController` de taille non nulle et faire remonter les valeurs par un `PassthroughSubject` attendu avec une `XCTestExpectation`.\n- Q&A : erreurs via `Result`, annulation via `_` ou la valeur projetée ; Combine n'est pas mort, `async`/`await` convient mieux aux tâches ponctuelles mais moins à l'observation d'état.\n- Retour : Mick F apprécie qu'il cherche à anticiper la direction d'Apple plutôt qu'à s'appuyer sur des bibliothèques tierces.",
+      "summarySources": ["transcript", "feedback"],
+      "video": { "youtubeId": "x3-GZzjeH9g", "title": "Building Custom Property Wrappers for SwiftUI (And How to Test Them) by Donny Wals", "transcript": true }
+    },
+    {
+      "id": "how-not-to-build-an-umm-detector-using-create-ml",
+      "day": "2022-09-29",
+      "type": "talk",
+      "title": "How (Not) to build an Ummm Detector using Create ML",
+      "speakers": ["Yono Mittlefehldt — Indépendant"],
+      "feedbackFrom": ["Blog Ippon", "Mick F (blog)", "Yono Mittlefehldt (Mastodon, speaker)"],
+      "summary": "- Format *failcon* : un ami podcasteur veut couper automatiquement les « umm ». Le framework Speech d'Apple les filtre, puisqu'il vise la transcription.\n- Préparation : audio découpé en segments d'une seconde (minimum de Create ML), classés à la main (clean, umm, uh, silence, unknown).\n- Premier modèle : 100 % à l'entraînement, 89 % en test, mais **toujours prédire « clean » donnait environ 92,5 %**. Trois problèmes : voix masculines graves uniquement, classes déséquilibrées, étiquetage coûteux.\n- Corrections : augmentation (hauteur de voix, bruit blanc) avec SoX, passage à VGGish, puis 96 % en test et un modèle qui marche pour sa femme et ses enfants. Apprentissage actif sur le dataset People's Speech.\n- La **démo en direct échoue** : modèle entraîné sur un son de studio, salle réverbérante. Leçon : collecter les données dans les conditions réelles d'usage.\n- Retours : Ippon retient la morale *« MORE DATA ! »* et un modèle encore très limité ; Mick F note un talk centré sur la démarche plus que sur le code. Le speaker a relayé la vidéo sur Mastodon en décembre 2022 en demandant des retours.",
+      "summarySources": ["transcript", "feedback", "blog"],
+      "video": { "youtubeId": "45hxH7-p5IM", "title": "How Not to Develop an \"Umm\" Detector Using Create ML by Yono Mittlefehldt", "transcript": true }
+    },
+    {
+      "id": "i-love-swift-concurrency",
+      "day": "2022-09-29",
+      "type": "talk",
+      "title": "I 💕 Swift Concurrency",
+      "speakers": ["Tunde Adegoroye — Bally's Interactive"],
+      "feedbackFrom": ["Blog Ippon", "Mick F (blog)"],
+      "summary": "- Tour d'horizon de Swift Concurrency (2021) par l'auteur de la chaîne YouTube tundsdev, avec l'analogie du restaurant contre Uber Eats pour le synchrone et l'asynchrone.\n- Une requête `URLSession` à closures, avec un chemin d'erreur oublié qui bloque l'UI, devient en `async`/`await` deux fois plus courte et gère tous les cas par `throw`.\n- `@MainActor` plutôt que `DispatchQueue.main.async` ; `async let` pour deux appels indépendants (exemple Spotify) ; **task groups** pour un nombre variable d'appels (exemple Duolingo), à éviter sur de grandes collections.\n- Un cache `NSCache` en singleton n'est pas thread safe : remplacer `class` par **`actor`** suffit.\n- `.task` annule automatiquement en SwiftUI, ailleurs il faut stocker et annuler la tâche. Adoptable dès Xcode 13.2 avec iOS 14, continuations pour migrer l'existant ; garder Combine si on le préfère.\n- Pas de Q&A, faute de temps.\n- Retours : Ippon rapproche la structured concurrency des coroutines Kotlin et renvoie vers swift-async-algorithms ; Mick F en liste les notions sans commentaire.",
+      "summarySources": ["transcript", "feedback", "blog"],
+      "video": { "youtubeId": "HptV7UUTToQ", "title": "I 💕 Swift Concurrency by Tunde Adegoroye", "transcript": true }
+    },
+    {
+      "id": "swiftui-navigation",
+      "day": "2022-09-29",
+      "type": "talk",
+      "title": "SwiftUI Navigation",
+      "speakers": ["Luis Ascorbe — Ultimate Money"],
+      "feedbackFrom": ["Mick F (blog)"],
+      "summary": "- L'organisateur de NSSpain confronte la promesse d'Apple à des projets réels : le bon choix de navigation dépend du contexte.\n- Cas Beams FM (réseau social de micro-podcasts) : un lecteur vertical façon TikTok, presque tout en SwiftUI dans des `UIHostingController`, mais la pagination verticale reste en UIKit, faute d'équivalent SwiftUI performant. Un bug de taille intrinsèque de `UIHostingController`, corrigé dans iOS 16, imposait un contournement.\n- `NavigationView` et `NavigationLink` : garder des `init` de vue très légers ; le pattern coordinator a cessé de fonctionner vers iOS 14. *« Please don't use MVP with SwiftUI »*.\n- Les nouvelles API (`NavigationStack`, `navigationDestination`) découplent la navigation de la présentation par des valeurs.\n- Chez Ultimate Money (wallet crypto), SwiftUI et TCA, sans encore les nouvelles API. Règle : rester en UIKit si l'app l'est déjà ; SwiftUI à partir d'iOS 14, pour expérimenter ou avec TCA.\n- Q&A partagé avec Thomas Ricouard : SwiftUI pour tout nouveau projet ; plus gros regret d'Ascorbe, *« use SwiftUI navigation »*.\n- Retour : Mick F note ses recommandations (NavigationStack, talk de Brandon Williams, TCA).",
+      "summarySources": ["transcript", "feedback"],
+      "video": { "youtubeId": "jhO9gfVg6_U", "title": "SwiftUI Navigation by Luis Ascorbe", "transcript": true }
+    },
+    {
+      "id": "swiftui-at-scale",
+      "day": "2022-09-29",
+      "type": "lightning",
+      "title": "SwiftUI at Scale",
+      "speakers": ["Thomas Ricouard — Medium"],
+      "feedbackFrom": ["Mick F (blog)"],
+      "summary": "- Talk court (huit minutes environ), plaidoyer assumé : SwiftUI, c'est *« less code »* et plus de plaisir. Une liste tient en cinq lignes là où UIKit impose des `UICollectionView` ; une carte à swiper façon Tinder se décrit en `VStack` et `HStack`.\n- Chez Medium, une grande partie des fonctionnalités récentes est en SwiftUI : listes (issues du rachat de Glose), recommandations, profils, highlights, notifications, réponses.\n- Les fonctionnalités vivent dans des **Swift packages** : compilation plus rapide, previews isolées sans construire toute l'app.\n- Limites : tests plus difficiles, comportements qui varient entre iOS 14, 14.1, 15 et 16 (tester sur appareil), composants haut niveau comme `List` difficiles à personnaliser avant iOS 16.\n- Bilan : choisir SwiftUI n'a presque jamais été une erreur (*« 99% of the time, no »*).\n- Retour : Mick F en retient qu'il ne faut pas utiliser SwiftUI avant iOS 14 et en déduit qu'iOS 13 est inutilisable.",
+      "summarySources": ["transcript", "feedback"],
+      "video": { "youtubeId": "tsZBLvdcoTw", "title": "SwiftUI at Scale by Thomas Ricouard", "transcript": true }
+    },
+    {
+      "id": "documenting-your-project-with-docc",
+      "day": "2022-09-29",
+      "type": "lightning",
+      "title": "Documenting Your Project With DocC",
+      "speakers": ["Simon B. Støvring"],
+      "feedbackFrom": ["Mick F (blog)"],
+      "summary": "- Lightning talk de dix minutes de l'auteur de Runestone, un package open source d'éditeur de texte. Modèle visé : la page WidgetKit d'Apple (résumé, description, extraits copiables), pas celle de `SCNAnimation`, simple liste de symboles.\n- **DocC** (2021, successeur de HeaderDoc) : Swift, Markdown et ressources en entrée, un site statique en sortie.\n- Démo sur une fonction `search` : résumé, paramètres, valeur de retour, extrait de code, discussion, liens entre symboles en doubles backticks, encadré `Note`.\n- Page d'accueil organisée par *topics* (sur le modèle de `FileManager`), articles en Markdown, tutoriels interactifs. Diffusion dans Xcode, sur Netlify (docs.runestone.app) ou via le Swift Package Index.\n- Q&A : documenter toute l'interface publique ; DocC ne vérifie pas les extraits, d'où l'idée de les couvrir par des tests unitaires. Un sondage de la salle montre que peu de participants ont essayé DocC ou écrivent de la documentation.\n- Le talk annonçait un classroom DocC le lendemain à 9h30 (une trentaine de places), d'où le jour retenu ici, l'archive async le datant du 30.\n- Retour : Mick F, qui utilisait DocC sur un projet, découvre les tutoriels.",
+      "summarySources": ["transcript", "feedback"],
+      "video": { "youtubeId": "paR2INQMc3s", "title": "Documenting Your Project With DocC by Simon B. Støvring", "transcript": true }
+    },
+    {
+      "id": "hacking-ios-apps-and-trying-to-prevent-it",
+      "day": "2022-09-30",
+      "type": "workshop",
+      "title": "Hacking iOS Apps - and trying to prevent it",
+      "speakers": ["Elliot Schrock"],
+      "feedbackFrom": ["Blog Ippon", "Mick F (blog)"],
+      "summary": "- Masterclass du vendredi matin, sans vidéo trouvée : résumé fondé sur les deux comptes-rendus.\n- Démo d'attaque d'abord, sur un iPhone jailbreaké : injection de commandes Objective-C avec cycript depuis un Mac en SSH, IPA renommée en ZIP pour lire les storyboards, contournement d'un écran de code PIN, code PIN lisible en clair dans Hopper (Ippon). Mick F cite aussi Clutch et ipainstaller.\n- Parades : rien de sensible dans le plist ou les ressources, Swift pur plutôt qu'Objective-C (static dispatch), éviter `@objc`, `@IBOutlet` et `@IBAction`, bloquer le debugger depuis `main.swift`, détecter le jailbreak, chiffrer les données.\n- Nuance retenue : ces protections **découragent sans rendre l'app inviolable**. Mick F cite l'analogie : face à un ours, il suffit de courir plus vite que le plus lent du groupe.\n- Retours : Ippon salue un orateur plein d'humour qui gère bien les effets démo et renvoie vers le guide OWASP MSTG ; Mick F le juge très instructif et veut revoir le jailbreak pour comprendre l'attaque.",
+      "summarySources": ["feedback", "blog"]
+    },
+    {
+      "id": "cutting-edge-swiftui-apps",
+      "day": "2022-09-30",
+      "type": "workshop",
+      "title": "Cutting-Edge SwiftUI apps",
+      "speakers": ["Betty Godier"],
+      "feedbackFrom": ["Blog Ippon"],
+      "summary": "- Classroom d'environ 1h30, sans vidéo : résumé fondé sur le seul compte-rendu Ippon.\n- **Swift Charts** : la vue `Chart` avec des `BarMark`, pour un ou plusieurs jeux de données.\n- Fenêtres : une même app SwiftUI pour iOS, iPadOS, macOS et watchOS ; scènes `Window` (raccourci clavier, taille par défaut) et `MenuBarExtra` pour la barre de menus du Mac.\n- Layouts : `Grid`, `GridRow` et le modificateur `gridCellColumns`.\n- Retour : l'équipe Ippon recommande le cours écrit par la speakeuse sur ces notions.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "cloud-functions-to-the-rescue",
+      "day": "2022-09-30",
+      "type": "lightning",
+      "title": "Cloud Functions to the Rescue!",
+      "speakers": ["Zamzam Farzamipooya — Veo Technologies"],
+      "feedbackFrom": ["Blog Ippon", "Mick F (blog)"],
+      "summary": "- Tech lead iOS à Copenhague, elle part de douleurs mobiles connues : plusieurs API pour une page, logique métier côté client. Beaucoup veulent la main sur le back-end sans oser s'y lancer.\n- **Cloud Functions for Firebase** : serverless déclenché par événements, logique modifiable sans mise à jour de l'app (exemple : un âge légal qui varie selon le pays), déploiement en une commande. La v2 porte le timeout de 9 minutes à une heure.\n- Démo : `firebase init functions`, une fonction *callable* en TypeScript, émulateur local (`npm run serve`) testé avec Postman, appel depuis Swift en `async`/`await` avec des objets `Codable`.\n- Q&A : TypeScript plus simple que prévu ; facturation à l'usage (offre Blaze) ; son cas réel est un service de notifications déclenché par Firestore.\n- Elle a dédié le talk aux femmes iraniennes qui se battent pour leur liberté, geste applaudi selon Ippon.\n- Retours divergents : Ippon, qui utilise déjà la solution, souligne disponibilité et scalabilité ; Mick F juge Firebase rédhibitoire, ayant trouvé coûteuses à maintenir les règles d'accès aux données.",
+      "summarySources": ["transcript", "feedback", "blog"],
+      "video": { "youtubeId": "DdGfFkOz9gQ", "title": "Cloud Functions to the Rescue! by Zamzam Farzamipooya", "transcript": true }
+    },
+    {
+      "id": "from-app-to-game-development",
+      "day": "2022-09-30",
+      "type": "talk",
+      "title": "From App to Game Development",
+      "speakers": ["Michel-André Chirita"],
+      "feedbackFrom": ["Mick F (blog)"],
+      "summary": "- Pari d'un développeur iOS en solo : un jeu iPhone et iPad avec IA et multijoueur temps réel, **sans back-end maison et avec les seuls frameworks Apple**. Réponse : c'est faisable.\n- Ce qui semble simple et ne l'est pas : pas d'autolayout dans SpriteKit, drag and drop à coder (une machine à états `GKStateMachine`), physique non déterministe quand la mise à l'échelle change la masse.\n- Architecture : état en struct, événements en enum, une couche logique qui produit des actions d'affichage séparées. C'est ce découpage qui rend testables l'IA et le multijoueur.\n- IA : `GKMinMaxStrategist` pour les petits arbres de décision, Monte Carlo pour les grands, plus rapide mais moins précis.\n- Multijoueur via `GKMatch` : n'envoyer que des mises à jour, interpoler et prédire, traiter la robustesse avant la fluidité.\n- Q&A : environ un an de travail à temps plein au total ; pas de tests ni de documentation ; le jeu (Versus Arena) est sur l'App Store.\n- Retour : Mick F dit que le talk lui a donné envie de refaire un jeu de backgammon.",
+      "summarySources": ["transcript", "feedback"],
+      "video": { "youtubeId": "HLz0Cfkaiew", "title": "From App to Game Development by Michel-André Chirita", "transcript": true }
+    },
+    {
+      "id": "from-source-code-to-executable-a-day-in-the-life-of-a-build-system",
+      "day": "2022-09-30",
+      "type": "talk",
+      "title": "From Source Code to Executable: A Day in the Life of a Build System",
+      "speakers": ["Samuel Giddins"],
+      "feedbackFrom": ["Mick F (blog)"],
+      "summary": "- Par un ancien contributeur de Bundler et CocoaPods, mainteneur des règles Bazel pour Apple et Swift. Définition : une fonction qui prend du code et produit un exécutable ; Clang lui-même en est un.\n- Formats de description comparés sur SwiftLint : Makefile (cibles, dépendances, actions), `Package.swift` qui décrit *quoi* plutôt que *comment*, Podspec qui télécharge un binaire. Le format `.pbxproj` d'Xcode est jugé pire que son éditeur.\n- Exécution : lire la description, la traduire en graphe d'entrées, sorties et actions, puis lancer les tâches débloquées. La traduction est la partie difficile.\n- Accélérer : parallélisme, builds distribués, cache, entrelacement de la génération et de l'exécution.\n- **Bazel** (*« fast and correct, choose two »*) : utilisé chez Square, Airbnb, Lyft ou Uber, adapté aux monorepos mais exigeant un investissement continu, quelqu'un dont c'est le rôle. SPM s'ouvre aux ressources, aux binaires et aux plugins.\n- Retour : Mick F retient la complexité des build systems et le coût d'entrée de Bazel.",
+      "summarySources": ["transcript", "feedback"],
+      "video": { "youtubeId": "dpxqSjSKJYA", "title": "From Source Code to Executable: A Day in the Life of a Build System by Samuel Giddins", "transcript": true }
+    },
+    {
+      "id": "migrating-your-legacy-code-to-local-spm-packages-an-iterative-approach",
+      "day": "2022-09-30",
+      "type": "talk",
+      "title": "Migrating Your Legacy Code to Local SPM Packages - An Iterative Approach",
+      "speakers": ["Zouhair Mahieddine — Medium"],
+      "feedbackFrom": ["Mick F (blog)"],
+      "summary": "- Pas de réécriture de plusieurs mois : moderniser **par petites itérations, à chaque occasion**, puisque l'équipe livre en continu. Les packages locaux imposent la séparation (seul le `public` est visible) pour une empreinte minime.\n- Règles de Medium : ne pas baisser la couverture de tests, écrire tout nouveau code en Swift, isoler les interactions avec Objective-C.\n- Démo en direct sur une app de blagues mêlant Objective-C, Swift, UIKit et SwiftUI : package local créé depuis Xcode, module design system pour les couleurs, pont `NSObject` pour Objective-C, module API passé en `async`/`await` (exposé automatiquement à Objective-C avec un completion handler).\n- Un cycle de dépendances entre tests Swift et code Objective-C a été contourné par une solution jugée peu élégante mais acceptée.\n- Q&A : une dizaine de packages de modèles chez Medium, un package de fonctionnalités en compte une vingtaine, sans impact notable au démarrage ; commencer par un morceau simple comme les couleurs ; le principal risque reste les cycles.\n- Retour : Mick F plaisante que le titre décrit exactement le contenu.",
+      "summarySources": ["transcript", "feedback"],
+      "video": { "youtubeId": "bXCuVzsdyDo", "title": "Migrating Your Legacy Code to Local SPM Packages - An Iterative Approach by Zouhair Mahieddine", "transcript": true }
+    },
+    {
+      "id": "testing-for-accessibility",
+      "day": "2022-09-30",
+      "type": "talk",
+      "title": "Testing for Accessibility",
+      "speakers": ["Robin Kanatzar"],
+      "feedbackFrom": ["Mick F (blog)"],
+      "summary": "- Principe : l'accessibilité est une affaire d'expérience utilisateur, donc les tests avec de vrais utilisateurs priment ; **automatiser le simple** libère du temps humain pour le complexe.\n- Ce que la machine vérifie seule : contraste, taille des cibles tactiles, cadres qui se chevauchent, traits incompatibles.\n- Ce qu'elle vérifie avec une relecture humaine : Dynamic Type au plus grand corps sur le plus petit appareil, orientation, éléments décoratifs, libellés (présence et forme, mais pas leur clarté). Le regroupement sémantique reste purement humain.\n- Outils gratuits : UI tests (qui s'appuient sur l'arbre d'accessibilité), l'extension A11yUITests de Rob Whitaker, l'Accessibility Inspector d'Xcode, une règle SwiftLint pour les images, le Mobile Flow Analyzer d'Evinced utilisable par la QA sans le code.\n- Conseil final : écrire des UI tests stratégiques. Q&A : commencer par les libellés, car un bouton annoncé sans fonction par VoiceOver est le plus frustrant.\n- Retour : Mick F y voit un rappel utile et retient l'analyseur d'Evinced.",
+      "summarySources": ["transcript", "feedback"],
+      "video": { "youtubeId": "59uLAKVB-d4", "title": "Testing for Accessibility by Robin Kanatzar", "transcript": true }
+    },
+    {
+      "id": "the-journey-of-widgets-begins-with-one-step",
+      "day": "2022-09-30",
+      "type": "lightning",
+      "title": "The Journey of Widgets Begins With One Step…",
+      "speakers": ["Audrey Sobgou Zebaze — Proton"],
+      "feedbackFrom": ["Blog Ippon", "Mick F (blog)"],
+      "summary": "- Développeuse de l'app Proton Drive, elle se fixe aussi un but : encourager les femmes à donner des talks.\n- Un widget n'est **pas une mini-app** : il affiche du contenu. Trois principes : *glanceable* (`TimelineProvider`), personnalisé (`IntentConfiguration`), pertinent selon l'heure et le contexte.\n- Modificateur *privacy sensitive* pour masquer des données sensibles écran verrouillé, sans en abuser.\n- iOS 16 : **Live Activities** (exemple d'une commande de thiéboudienne suivie sur l'écran verrouillé, mise à jour par notification distante, huit heures maximum) et Dynamic Island, ajoutée aux slides après une discussion au dîner des speakers.\n- Q&A : widgets prévus pour Mail, Calendar, Drive et VPN chez Proton ; les widgets, uniquement en SwiftUI, sont une porte d'entrée sans risque pour les équipes UIKit.\n- Retours : Ippon détaille configurations et Dynamic Island, qu'il attend avec impatience ; Mick F y voit une introduction à WidgetKit.",
+      "summarySources": ["transcript", "feedback", "blog"],
+      "video": { "youtubeId": "XRMcdUUA0HU", "title": "The Journey of Widgets Begins With One Step… by Audrey Sobgou-Zebaze", "transcript": true }
+    },
+    {
+      "id": "swift-quiz",
+      "day": "2022-09-30",
+      "type": "lightning",
+      "title": "Swift Quiz",
+      "speakers": ["Vincent Pradeilles"],
+      "feedbackFrom": ["Mick F (blog)"],
+      "summary": "- Talk de clôture en trois questions, votées à main levée.\n- **Closures** : un `sink` qui capture directement un formatter et un label, sans `self`, ne crée pas de cycle de rétention. Mais il capture les valeurs du moment, ce qui devient un bug silencieux si un `let` passe en `var`.\n- **Mutating et `let`** : dans une méthode `mutating`, on peut réassigner `self` entier et donc « incrémenter » une propriété constante. Technique créditée à objc.io, à manier avec prudence.\n- **Enum vide** : une fonction générique prenant un enum sans cas compile avec un corps vide, par vérité vide. C'est le principe de `Never`, qui explique `fatalError()` et les `Result` sans échec possible.\n- Pas de Q&A.\n- Retour : Mick F a trouvé la première réponse et raté les deux autres ; il comprend enfin pourquoi `fatalError` renvoie `Never`.",
+      "summarySources": ["transcript", "feedback"],
+      "video": { "youtubeId": "mUBBY6JCC0c", "title": "Swift Quiz by Vincent Pradeilles", "transcript": true }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Classroom DocC (Simon B. Støvring, vendredi 9h30, annoncé dans son talk, aucun compte-rendu)",
+    "Autres classrooms et masterclass du vendredi matin (six classrooms et deux masterclasses annoncés dans le CFP, intitulés non retrouvés)"
+  ],
+  "sources": [
+    { "label": "Site FrenchKit archivé (Wayback Machine, 25/09/2022), non relu pour cette synthèse", "url": "https://web.archive.org/web/20220925143225/https://frenchkit.fr/" },
+    { "label": "Archive des talks FrenchKit 2022 avec transcripts et slides (async.techconnection.io)", "url": "https://async.techconnection.io/frenchkit/" },
+    { "label": "Données sources de l'archive (GitHub techconnection-io/async-techconnection-data)", "url": "https://github.com/techconnection-io/async-techconnection-data/tree/main/talks/frenchkit-22" },
+    { "label": "Chaîne YouTube FrenchKit", "url": "https://www.youtube.com/@frenchkit3088" },
+    { "label": "Billetterie FrenchKit 2022 (Billetweb, association ConfKit)", "url": "https://www.billetweb.fr/frenchkit-2022" },
+    { "label": "Blog Ippon, « 2 jours à FrenchKit 2022 » (V. Blanchet, W. Rouvre, T. Boutin, J. Clémot, T. Umapathipillai, A. Beaudoin, Y. Jacqueline), 11/10/2022", "url": "https://blog.ippon.fr/2022/10/11/2-jours-a-frenchkit/" },
+    { "label": "Mick F, « Notes from FrenchKit 2022 », 07/10/2022", "url": "https://www.mickf.net/tech/frenchkit-2022/" },
+    { "label": "Post Mastodon de Yono Mittlefehldt (speaker), 21/12/2022", "url": "https://mastodon.cloud/@yonomitt/109552095938633091" },
+    { "label": "Page du talk de Yono Mittlefehldt", "url": "https://yono.ai/talks/frenchkit-2022" },
+    { "label": "Aucun post LinkedIn ni tweet trouvé sur cette édition" }
+  ]
 }

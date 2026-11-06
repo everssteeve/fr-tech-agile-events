@@ -8,7 +8,207 @@
   "venue": "EuraTechnologies",
   "url": "https://conference-hall.io/cloud-nord-2022",
   "dateConfidence": "sec",
-  "note": "Environ 300 participants.",
-  "status": "pending",
-  "sessions": []
+  "note": "Environ 300 participants. Journée unique le jeudi 29 septembre 2022 à EuraTechnologies (date donnée par le blog d'OVHcloud, sponsor, et confirmée par les posts du jour ; la page Conference Hall ne la mentionne pas). Conference Hall annonçait « La 3e édition de Cloud Nord est lancée ! », environ 300 participants et une vingtaine de talks sur une journée, avec un événement social. Formats du CFP : conférence de 45 min plus questions, quickie de 20 min, hands-on / deep dive de 2 h ou plus, keynote d'ouverture. Catégories : Cloud & DevOps, Architecture, Méthodes et pratiques de développement. Bilan selon OVHcloud : plus de 300 participants, une keynote, 25 conférences, une table ronde et 17 sponsors. 16 vidéos dans la playlist « Talks Cloud Nord 2022 » (keynote, 14 talks et la table ronde diffusée en direct par WeLoveDevs), plus un aftermovie.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-06",
+  "revisit": "Retours de participants très minces : seulement quatre posts du 29/09/2022 relayés sur Noti.st (talk Krew) et le billet du sponsor OVHcloud ; aucun post LinkedIn ni article de blog de participant lu (8 recherches web, LinkedIn et Wayback Machine inaccessibles). Grille horaire et titres des sessions non filmées introuvables (page cloudnord.fr de 2022 non lue). Transcripts du talk Krew, du talk microservices de Jean-Rémy Revy et du talk Décathlon très lacunaires. Chercher les posts LinkedIn de fin septembre 2022 (hashtag cloudnord, speakers Adam, Roger, Drouet, Touret, Dussart) et la page cloudnord.fr archivée en 2022.",
+  "corpus": "Transcripts automatiques des 16 vidéos de la playlist officielle « Talks Cloud Nord 2022 » (keynote, 14 talks, table ronde en direct de WeLoveDevs), dont trois très partiels ; page Conference Hall 2022 (appel à talks) ; billet du blog OVHcloud du 10 octobre 2022 (bilan chiffré, sessions de ses DevRel) ; page Noti.st d'Aurélie Vache avec quatre posts du 29 septembre 2022 (compte Cloud Nord, William Dubreuil, Thierry, Maxime Deroullers).",
+  "limits": "Les résumés décrivent ce qui a été dit sur scène (sous-titres automatiques bruités, noms propres souvent déformés : certains noms et entreprises restent à confirmer), pas la réception par la salle, connue seulement par les questions du public et quelques posts. Le seul retour écrit détaillé vient d'un sponsor qui parle de ses propres speakers. Une dizaine de sessions du programme (25 conférences annoncées) ne sont ni filmées ni documentées ; recherche web limitée à 8 requêtes.",
+  "tldr": "Une journée cloud **ancrée dans les retours d'expérience d'entreprises du Nord** (La Redoute, ADEO, Décathlon, AXA, Doctolib) et dans l'outillage du quotidien (Testcontainers, semantic-release, plugins kubectl), ouverte par un plaidoyer de Quentin Adam pour un Internet ouvert et close par l'architecture du **cloud de confiance** S3NS, avec la souveraineté et le coût du cloud en fil rouge.",
+  "keyTakeaways": [
+    "Éteindre les environnements hors production quand personne ne s'en sert : une application utile 12 h par jour en semaine est inutile 67 % du temps ; DailyClean et un travail d'optimisation ont divisé par 10 le coût de deux cas d'usage chez AXA France (Guillaume Thomas).",
+    "Tester ses adaptateurs contre de vraies dépendances jetables (Testcontainers) plutôt que contre une base en mémoire comme H2, qui masque migrations de schéma et écarts SQL (Nicolas Comet).",
+    "Négocier avec le cloud provider et tagger les ressources dès le début d'une migration, et ne pas compter aveuglément sur l'autoscaling quand une notification push peut amener 2 millions de personnes d'un coup (Maxime Drouet, La Redoute).",
+    "Fixer une date butoir à une migration : *« quand faut y aller faut y aller »*, et sortir d'une « guerre des experts » en décidant d'abord à trois puis en élargissant (La Redoute).",
+    "Durcir un conteneur Docker avec le guide de l'ANSSI : limites mémoire et CPU, pas de `--privileged` ni de `network host`, un réseau par connexion, `cap-drop all` puis ajout des capabilities une par une, en lisant les logs (speaker de onepoint).",
+    "Automatiser numéros de version, changelog et release notes avec Conventional Commits et semantic-release, et ne jamais réécrire un tag publié (Antoine Meausoone, Gaetan Bogaert).",
+    "Avant de choisir Quarkus natif, tester l'application en mode natif : démarrage en 0,3 s et environ 95 Mo de RSS contre environ 10 s et 600 Mo pour Spring impératif sur leur POC, mais une réflexion à déclarer et une courbe d'apprentissage du réactif jugée brutale (Worldline).",
+    "Changer l'organisation avant de migrer : le cloud ne supprime pas le *« système à guichet »* (Emmanuel, table ronde), et une plateforme interne se propose comme un produit plutôt que de s'imposer (Décathlon, ADEO).",
+    "Étendre kubectl par des plugins distribués avec Krew : un script dans le PATH suffit, en Bash ou dans n'importe quel langage (Vache, Acas)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-open-internet-project",
+      "day": "2022-09-29",
+      "type": "keynote",
+      "title": "Keynote : Open Internet Project",
+      "speakers": ["Quentin Adam — Clever Cloud"],
+      "summary": "Sur scène (transcript) :\n- Quentin Adam se présente comme dirigeant d'une plateforme européenne et président de l'association **Open Internet Project**, qui fait du lobbying auprès des décideurs ; il annonce qu'OVH vient de la rejoindre.\n- Thèse : l'opposition entre virtuel et réel, ancrée chez les décideurs depuis les années 80, est catastrophique, car le numérique a été mis à côté de la chaîne de valeur. *« Il faut expliquer que le monde virtuel n'existe pas. »*\n- Argument économique : le rendement du capital physique décroît, celui du numérique est croissant ; il cite la part des services numériques dans les exportations américaines.\n- Le droit européen ne fait pas de la donnée privée un bien commercial, contrairement au modèle américain ; l'identité dépend du contexte.\n- Contentieux contre Google (Shopping, Android, boutons Meet et Teams pendant la pandémie) : *« nous avons toujours gagné »*, mais avec des procès très longs, d'où le combat pour des mesures conservatoires dans le DMA, amendement écarté lors du trilogue selon lui.\n- Appel aux ingénieurs à s'intéresser à la politique et au droit, et pique contre ceux qui animent les événements communautaires de Google, *« idiots utiles »* à ses yeux.\n- Pas de questions (il partait pour Bruxelles). La keynote est citée plusieurs fois dans la journée, notamment par Mickael Roger et Edouard Cattez.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "a3YnJfiwFy4", "title": "[Keynote] Open Internet Project | Quentin Adam", "transcript": true }
+    },
+    {
+      "id": "table-ronde-l-avenir-du-cloud",
+      "day": "2022-09-29",
+      "type": "roundtable",
+      "title": "Table ronde : l'avenir du cloud",
+      "speakers": ["Horacio Gonzalez — OVHcloud", "Mathias — ADEO", "Romain — Ippon (à confirmer)", "Emmanuel — Ineat (à confirmer)", "Gaëlle — Datadog", "Représentant d'Oracle (nom inaudible)", "Représentant de MongoDB (nom incertain)"],
+      "summary": "Sur scène (transcript de la diffusion en direct de WeLoveDevs, animateur non nommé ; les dix premières minutes sont inexploitables) :\n- L'animateur part d'une enquête menée auprès de plus de 60 profils DevOps de DSI françaises : la migration vers le cloud **n'a pas réglé les problèmes d'organisation**.\n- Emmanuel décrit le *« système à guichet »* comme le dark pattern qu'il voit chez beaucoup de clients : il faut changer l'organisation avant de migrer, le cloud n'est pas une solution miracle.\n- Gaëlle (Datadog) mesure l'efficacité opérationnelle au time-to-market mais aussi au nombre d'outils et de personnes mobilisés par un incident ; *« la mise en prod c'est que le début »*.\n- Mathias (ADEO) décrit une organisation en plateformes, avec une PaaS maison au-dessus de Google et Azure et des SLO obligatoires et publics.\n- Les fournisseurs présents défendent leurs offres : OVHcloud (caractère européen, tarification prévisible sans facturation du trafic), MongoDB Atlas (clusters multicloud), Oracle (bases multimodèles, partenariat avec Azure).\n- Désaccord : quand un intervenant juge que la culture compte plus que la compétence technique, Romain répond *« je suis pas trop d'accord »* : Terraform et les autres outils sont souvent mal maîtrisés. Une question du chat ouvre le débat sur le lock-in contre les avantages du SaaS.\n- Bilan côté OVHcloud (blog) : une discussion sur ce à quoi ressemblera le cloud dans les années à venir.",
+      "summarySources": ["transcript", "blog"],
+      "video": { "youtubeId": "So7N4SSn1BY", "title": "Table Ronde Cloud Nord 2022 - En direct d'Euratechnologies", "transcript": true }
+    },
+    {
+      "id": "test-me-up-before-you-go-go",
+      "day": "2022-09-29",
+      "type": "talk",
+      "title": "Test me up, before you Go-Go",
+      "speakers": ["Nicolas Comet — Ubisoft"],
+      "summary": "Sur scène (transcript) :\n- Speaker de l'équipe streaming d'Ubisoft Bordeaux. Cadre : l'article de Martin Fowler sur le test des microservices et l'architecture hexagonale ; le talk se concentre sur les tests unitaires et de composants.\n- Critique des **bases en mémoire** (H2) : migrations de schéma, données existantes, dates et écarts de SQL avec PostgreSQL leur échappent. *« Qui ne s'est jamais cassé la tronche sur un déploiement prod avec une migration de schéma ? »*\n- **Testcontainers** en Go (depuis 2019) : conteneurs jetables scopés au test ou à la suite, `TestMain` pour l'avant et l'après, pas de volume monté.\n- Démo sur un repository de jeux avec MongoDB : sans démon Docker, les tests basculent sur l'implémentation en mémoire ; avec Docker, ils tournent sur un vrai MongoDB. En CI, socket Docker ou Docker-in-Docker.\n- En questions : chaque test gère ses propres données (injecter des données préalables est un *smell* pour lui) ; il déconseille Testcontainers pour l'end-to-end, qui doit tourner sur un environnement déployé ; pour les brokers, l'intérêt est de tester aussi sérialisation et réseau.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "N_m_727_8qU", "title": "Test me up, before you Go-Go | Nicolas Comet", "transcript": true }
+    },
+    {
+      "id": "creer-un-plugin-pour-kubernetes-en-quelques-minutes-easy",
+      "day": "2022-09-29",
+      "type": "talk",
+      "title": "Créer & distribuer un plugin pour Kubernetes en quelques minutes ? Easy !",
+      "speakers": ["Aurélie Vache — OVHcloud", "Gaëlle Acas — Doctolib"],
+      "feedbackFrom": ["William Dubreuil", "Thierry", "Maxime Deroullers", "Blog OVHcloud (sponsor, employeur d'une speakeuse)"],
+      "summary": "Sur scène (descriptif officiel et transcript très lacunaire) :\n- Problème posé : de nouvelles fonctionnalités arrivent lentement dans kubectl et on se perd parmi les outils ; Kubernetes est extensible, et les **plugins kubectl** améliorent la productivité (exemple de la lecture d'un secret).\n- Un plugin est un exécutable placé dans le PATH, écrit dans n'importe quel langage ; il ne peut pas porter le nom d'une commande native.\n- Distribution avec **Krew** : recherche, installation, manifeste (description, plateformes, URL de l'archive, sha256), index personnalisé. Leur plugin soumis à l'index officiel *« n'a pas été accepté »*.\n- Recommandations de plugins existants (secrets, certificats, nettoyage des champs inutiles d'une ressource) et salut au travail des mainteneurs bénévoles.\n\nCe qu'en ont retenu des participants (posts du 29/09/2022) :\n- Un plugin écrit **en live coding, en Bash**, avec les gophers dessinés de la speakeuse dans les slides (Thierry, qui y a trouvé beaucoup d'astuces pour écrire le sien).\n- *« Keep it simple! »* (William Dubreuil).",
+      "summarySources": ["program", "transcript", "feedback", "blog"],
+      "video": { "youtubeId": "6-O-KPhj_Tg", "title": "Créer & distribuer un plugin pour Kubernetes en quelques minutes ? | Gaëlle Acas & Aurélie Vache", "transcript": true }
+    },
+    {
+      "id": "dailyclean-sauver-la-planete-avec-quarkus",
+      "day": "2022-09-29",
+      "type": "talk",
+      "title": "Vous voulez sauver la planète ? Utilisez DailyClean, une app réalisée avec Quarkus",
+      "speakers": ["Guillaume Thomas — AXA France"],
+      "summary": "Sur scène (transcript) :\n- Contexte : machine learning temps réel pour le traitement de documents chez AXA France, en microservices Python sur un OpenShift du groupe hébergé sur Azure et facturé à la RAM ; des experts FinOps lui ont signalé les coûts.\n- Calcul attribué à un expert FinOps du groupe : une application utile 12 h par jour en semaine est inutile **67 % du temps**, *« vous cramez du gaz pour rien »*.\n- **DailyClean** : une instance par namespace, un bouton qui ramène les réplicas à 0 puis les restaure, des CronJobs pour planifier, un label pour exclure un déploiement et une estimation des économies. Conseil pour la préprod : programmer seulement l'extinction.\n- Résultat annoncé : avec un travail d'optimisation, coût de deux cas d'usage **divisé par 10** sur tous les environnements.\n- Choix de Quarkus compilé en natif avec GraalVM : empreinte mémoire environ 10 fois plus faible selon des benchmarks qu'il qualifie de très modestes. Démo en direct sur une sandbox OpenShift ; projet open source.\n- En questions : gains écologiques non chiffrés (un participant recommande le livre blanc de l'ADEME) ; la réflexion en compilation native est le point bloquant de Quarkus ; avec du GitOps, il faut éteindre Flux en même temps.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "CGFJpKap1xw", "title": "Vous voulez sauver la planète? Utilisez DailyClean une app réalisée avec Quarkus | Guillaume Thomas", "transcript": true }
+    },
+    {
+      "id": "et-si-on-parlait-un-peu-cloud-de-confiance",
+      "day": "2022-09-29",
+      "type": "talk",
+      "title": "Et si on parlait un peu cloud de confiance",
+      "speakers": ["Mickael Roger — Thales"],
+      "summary": "Sur scène (transcript, dernier talk de la journée) :\n- Le speaker, tech lead cloud chez Thales, se dit l'un des architectes de **S3NS**, la coentreprise de Thales et Google, et précise *« j'ai rien à vendre »*.\n- Cadre : la doctrine « cloud au centre » de mai 2021 ; des lois extraterritoriales existent partout, et le Cloud Act ne fait selon lui que clarifier une loi de 1986, le FISA étant *« plus dur »*.\n- Le cloud de confiance, c'est **SecNumCloud 3.2** (276 exigences), avec trois protections cumulées : juridique (société française, Google simple fournisseur de logiciel), opérationnelle (datacenters et exploitation en France) et technique.\n- Mécanismes décrits : trois datacenters dédiés en région parisienne, matériel analysé, une région de « quarantaine » sans client dans le cycle de release de Google avec 7 jours pour analyser avec accès au code source, clés régénérées sur matériel Thales, pas d'accès root et support Google par partage d'écran flouté.\n- Règle de base vis-à-vis de Google : *« jamais jamais jamais sur quoi que ce soit [on] leur fait confiance »*. Démarrage en production annoncé pour le second semestre 2024.\n- Nombreuses questions (floutage, traçabilité du code, résilience, prix) ; il répond aussi à plusieurs reprises aux critiques géopolitiques de la keynote de Quentin Adam.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "OBwBeqd-YFs", "title": "Et si on parlait un peu cloud de confiance | Mickael Roger", "transcript": true }
+    },
+    {
+      "id": "candy-doc-documentation-metier-automatisee",
+      "day": "2022-09-29",
+      "type": "lightning",
+      "title": "Candy-Doc ou comment j'ai automatisé la documentation métier de mes projets",
+      "speakers": ["Edouard Cattez — Ippon Technologies"],
+      "summary": "Sur scène (transcript, environ 25 min) :\n- Annoncé comme *« pas un talk cloud »*, par un lead dev d'Ippon Lille lassé de Kubernetes et d'AWS. Contexte : la refonte de configurateurs sur mesure pour Leroy Merlin, dont la connaissance métier dormait dans des fichiers Excel.\n- Position tranchée : *« le PO n'est pas légitime à écrire des US »* seul ; il défend la scénarisation BDD avec toute l'équipe, car une même phrase Gherkin est comprise différemment par chaque profil.\n- **Candy-Doc** : un plugin Maven qui scanne les annotations DDD (bounded context, agrégats, value objects, commandes, événements) et génère une documentation navigable en HTML, JSON ou YAML, *« la documentation devient vivante »*.\n- Première démo de sa vie devant un public ; l'outil est né comme fil rouge des stagiaires d'Ippon Lille.\n- Feuille de route : détection des modélisations interdites, schémas d'architecture, support d'autres langages, service en ligne à la manière de Sonar.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "NC63LaZub64", "title": "Candy-Doc ou comment j'ai automatisé la documentation métier de mes projets | Edouard Cattez", "transcript": true }
+    },
+    {
+      "id": "cloud-agnosticism-made-simple-adeo",
+      "day": "2022-09-29",
+      "type": "talk",
+      "title": "Cloud Agnosticism made simple, thanks to our ADEO tools",
+      "speakers": ["Matthias Dupont — ADEO"],
+      "summary": "Sur scène (transcript) :\n- ADEO (Leroy Merlin, Weldom, Bricoman…) : 150 000 personnes dont 4 500 dans le digital, environ 2 000 produits digitaux.\n- Bénéfices attendus du cloud : time to market, élasticité, self-service, mais *« on paye pas moins cher, je pense que c'est un secret pour personne »*.\n- Pourquoi l'agnosticisme : GCP est le partenaire principal mais absent de certains pays, d'où Azure et d'autres fournisseurs ; des équipes centrales opèrent clusters et bases chez chacun.\n- Outillage maison : **Turbine** (UI, API, provider Terraform, GitHub Actions), une API de bases de données et Cloud Kraft, un orchestrateur Terraform créé faute de convenir à Terraform Cloud.\n- Démo en direct d'une application Java avec PostgreSQL managé et GKE, perturbée par le wifi (partage de connexion puis VPN).\n- En questions : Cloud Kraft pas encore open source ; plateforme « Tech and Data » d'environ 400 personnes. Il remercie le public d'être venu *« si proche de l'apéro »*.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "BsiMQXPtVVQ", "title": "Cloud Agnosticism made simple, thanks to our ADEO tools | Matthias Dupont", "transcript": true }
+    },
+    {
+      "id": "taille-des-microservices",
+      "day": "2022-09-29",
+      "type": "talk",
+      "title": "Parce qu'il est souvent question de taille… pour les microservices",
+      "speakers": ["Jean-Rémy Revy"],
+      "summary": "Sur scène (transcript très lacunaire) :\n- Ouverture par un quiz Kahoot d'une dizaine de questions mêlant architecture et culture générale, dont l'origine du terme « microservices » et le « nombre magique » de Miller, pour lequel il retient 5 ± 2 plutôt que 7 ± 2.\n- Idée centrale reconstituable : la taille d'un microservice est bornée par nos **capacités cognitives** ; un microservice correspond à un contexte borné fonctionnel avec sa propre persistance.\n- Bien découper suppose de connaître le domaine métier.\n- En questions : le risque le plus évident d'un démarrage en microservices est la compétence, à traiter par la formation et l'appel à des experts ; il recommande un cadrage avec fonctionnels et experts techniques et une méthode qui permet de revenir en arrière.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "4aQfOPlyPWs", "title": "Parce qu'il est souvent question de taille ... pour les microservices | Jean-Rémi Revy", "transcript": true }
+    },
+    {
+      "id": "votre-base-de-donnees-comme-vous-ne-l-avez-jamais-vue",
+      "day": "2022-09-29",
+      "type": "lightning",
+      "title": "Votre base de données comme vous ne l'avez jamais vue",
+      "speakers": ["Loïc Knuchel — Doctolib"],
+      "summary": "Sur scène (transcript, environ 25 min) :\n- Point de départ : le monolithe Ruby on Rails de Doctolib et sa base PostgreSQL de 624 tables ; il était devenu *« le chef du copier-coller »* de tables dans des fichiers SQL réduits.\n- Comparatif d'une dizaine d'outils de diagrammes entité-relation : ils affichent tout, placent mal les tables, n'ont pas de recherche et facturent au nombre de tables.\n- **Azimutt**, son outil open source écrit en Elm : *« zéro serveur »*, recherche globale, affichage sélectif des tables et colonnes, recherche de chemin entre deux tables, relations sans clé étrangère.\n- Démo sur le schéma de GitLab (environ 780 tables) et module d'analyse demandé en interne : tables sans clé primaire, relations manquantes, types incohérents, tables de plus de 30 colonnes.\n- Talk débordé, sans questions : *« je suis out of time »*.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "6waVbHvnI6Q", "title": "Votre base de données comme vous ne l'avez jamais vue | Loïc Knuchel", "transcript": true }
+    },
+    {
+      "id": "transformation-e-commerce-cloud-devops-la-redoute",
+      "day": "2022-09-29",
+      "type": "talk",
+      "title": "Une transformation e-commerce accélérée par le Cloud & DevOps",
+      "speakers": ["Maxime Drouet — La Redoute", "Quentin Tshaimanga — La Redoute"],
+      "summary": "Sur scène (transcript) :\n- Contexte (Maxime Drouet) : un site qui fait 95 % du chiffre d'affaires, environ 950 000 commandes par mois sur une plateforme servant 11 pays ; en 2018, l'hébergeur Kering arrête, et La Redoute a moins de deux ans pour migrer. Choix de GCP sans appel d'offres, la data utilisant déjà BigQuery.\n- Parti en lift and shift, le projet bascule en **replatform** : infrastructure as code, serveurs immuables, passage des *pets* au *cattle*, GitLab CI et Cloud Armor.\n- Résultats annoncés : de 1 à 48 serveurs en 8 minutes, déploiement en 18 min au lieu de 2 h, un seul incident de 40 min en 3 ans, Black Friday 2020 sans interruption à 8 000 requêtes par seconde.\n- Leçons : fixer une date butoir (*« quand faut y aller faut y aller »*), étoffer l'équipe, tagger et négocier avec le fournisseur avant de migrer ; l'autoscaling n'a pas marché pour eux, ils scalent selon un calendrier.\n- Quentin Tshaimanga raconte ensuite le refactoring du checkout en .NET Core sur Kubernetes (+3 points de conversion annoncés, environnement par branche en quelques minutes).\n- Annonce : un appel d'offres récent a décidé de **tout migrer sur Azure**, seule la data restant sur GCP.\n- En questions : sortie d'une « guerre des experts » en décidant à trois puis en élargissant ; disponibilité non mesurée, *« mea culpa »*.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "nGYKq_MAp_4", "title": "Une transformation e-commerce accélérée par le Cloud & DevOps | Maxime Drouet & Quentin Tshaimanga", "transcript": true }
+    },
+    {
+      "id": "cloud-platform-engineering-chez-decathlon",
+      "day": "2022-09-29",
+      "type": "talk",
+      "title": "C'est quoi la Cloud Platform Engineering chez Décathlon ?",
+      "speakers": ["Christophe Furmaniak — Décathlon", "Amady Diop — Décathlon"],
+      "summary": "Sur scène (transcript très lacunaire, noms des speakers non audibles) :\n- La plateforme est traitée **comme un produit** : *« arrêter de construire des infrastructures dans votre coin, venez plutôt consommer des produits »*.\n- Elle propose des pratiques plutôt que de les imposer, intègre les composants de sécurité et s'appuie sur un tech radar mis en place *« un peu dans la douleur »*.\n- Contrôles automatiques de conformité (aucun bucket exposé publiquement), secrets synchronisés avec un secret manager.\n- Démo d'un traitement d'images déclenché par un dépôt de fichier, appuyé sur des services managés.\n- Contreparties pour les équipes : accepter une charte et des mises à jour automatiques obligatoires. Plus de 50 contributeurs revendiqués.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "09NnzCfwnIw", "title": "C'est quoi la Cloud Platform Engineering chez Décathlon? | Christophe Furmaniak (& Amady Diop)", "transcript": true }
+    },
+    {
+      "id": "anssi-securiser-un-container",
+      "day": "2022-09-29",
+      "type": "talk",
+      "title": "Et l'ANSSI dit « Voici comment sécuriser un container »",
+      "speakers": ["Yann Schepens — onepoint"],
+      "summary": "Sur scène (transcript ; le speaker se présente comme tech lead chez onepoint ; nom complet d'après le titre de la vidéo du même talk à Volcamp 2022) :\n- Base : le guide de l'ANSSI sur le déploiement sécurisé de conteneurs Docker, appliqué en 2 mois environ à une forge logicielle (GitLab, Artifactory, Sonar, Vault…) en docker-compose sur VM, chez un client réticent à Kubernetes.\n- Constat : *« la configuration de base de Docker était quand même pas ouf »*. Règles regroupées par difficulté, jusqu'à un « boss mode ».\n- Ressources et fichiers : limites mémoire et CPU, pas de `--privileged` (Kaniko pour construire les images), rootfs en lecture seule abandonné pour GitLab et Artifactory, tmpfs pour les caches.\n- Logs et réseau : un log driver, avec le piège vécu de conteneurs qui ne démarrent plus quand Logstash tombe ; pas de `network host`, **un réseau par connexion**, très long à faire.\n- Boss mode : `cap-drop all` puis ajout des capabilities une par une ; seul SonarQube documente les siennes, et GitLab démarre même s'il lui en manque, d'où la lecture des logs.\n- Conclusion lucide : on a seulement limité l'influence des conteneurs entre eux et sur l'hôte, le reste reste à sécuriser. Questions nombreuses (open source de sa liste de capabilities, SELinux, Docker rootless).",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "4BXS4_JkObU", "title": "Et l'ANSSI dit « Voici comment sécuriser un container »", "transcript": true }
+    },
+    {
+      "id": "java-dans-le-cloud-spring-ou-quarkus",
+      "day": "2022-09-29",
+      "type": "talk",
+      "title": "Java dans le cloud : avec Spring ou Quarkus ?",
+      "speakers": ["Alexandre Touret — Worldline", "Jean-François James — Worldline"],
+      "summary": "Sur scène (transcript) :\n- Deux architectes de Worldline qui ne veulent pas *« réengager une guerre de tranchées »* ; un sondage montre plus d'utilisateurs de Spring que de Quarkus dans la salle.\n- POC : la même application en Spring impératif, Spring WebFlux et Quarkus, avec PostgreSQL, Prometheus et Jaeger. Mesures sur poste de travail : environ 10 s et 600 Mo pour Spring impératif, environ 2 s pour Quarkus en JVM, **0,3 s et environ 95 Mo en natif**.\n- Le natif impose une hypothèse de monde fermé (classes à déclarer pour la réflexion) : tester aussi en mode natif.\n- Comparaison des écosystèmes : Spring Data jugé plus mûr que Panache, convergence vers Micrometer et OpenTelemetry pour l'observabilité.\n- Le réactif a *« une courbe d'apprentissage quand même brutale »* : pari sur les threads virtuels de Loom.\n- Conclusion : Java, malgré ses défauts, reste envisageable dans le cloud. En questions : le natif pour l'éphémère, la JVM et son JIT pour les services de longue durée.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "bfWnMi0Ni4o", "title": "Java dans le cloud : Avec Spring ou Quarkus ? | Alexandre Touret & Jean-François James", "transcript": true }
+    },
+    {
+      "id": "hello-wallet-goodbye-passwords",
+      "day": "2022-09-29",
+      "type": "talk",
+      "title": "Hello Wallet, Goodbye passwords",
+      "speakers": ["Ludovic Dussart — Ineat", "Alexandre Vanryssel — Ineat"],
+      "summary": "Sur scène (transcript ; questions du public inaudibles, seules les réponses sont transcrites) :\n- Projet **Keyblock** : Keycloak couplé à une identité blockchain, après un rappel sur le social login, FranceConnect et l'identité auto-souveraine.\n- Démo de connexion à Decentraland avec MetaMask, ratée faute d'Internet : *« comme par hasard ça marche pas ce matin »*.\n- Extensions Keycloak : thème d'inscription qui récupère l'adresse du wallet, authenticator qui vérifie la signature.\n- SSO décentralisé : un smart contract de gestion de session sur un réseau de test Polygon (10 à 15 s par transaction), sans cookies. La lecture est gratuite, l'écriture payante, coût à intégrer au business model.\n- Promesse : *« il y a pas de j'ai perdu mon mot de passe »* faute d'autorité centrale ; limites reconnues en questions (vol de clés, interopérabilité et coût des blockchains loin d'être résolus).\n- Passage en open source prévu ; jeu concours avec des Ledger sur le stand.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "s3l0dD5UZQw", "title": "Hello Wallet, Goodbye passwords | Ludovic Dussart & Alexandre Vanryssel", "transcript": true }
+    },
+    {
+      "id": "facilitez-vous-les-releases-semantic-release",
+      "day": "2022-09-29",
+      "type": "talk",
+      "title": "Facilitez-vous les releases, utilisez semantic release",
+      "speakers": ["Antoine Meausoone", "Gaetan Bogaert"],
+      "summary": "Sur scène (transcript, créneau de fin de journée) :\n- Fil rouge : un développeur doit monter une dépendance de version majeure sans changelog, face à des commits illisibles.\n- Panorama des conventions (CalVer d'Ubuntu, la version de TeX qui tend vers pi) puis **SemVer** : ne jamais modifier une version publiée, donc pas de force push de tag, *« qui a déjà fait ça, qui l'a regretté rapidement ? »*.\n- **Conventional Commits** : `fix` donne un patch, `feat` une mineure, BREAKING CHANGE une majeure.\n- **semantic-release** : agnostique du langage, il calcule la version à partir du dernier tag et des commits, crée tag, release, changelog et commentaires sur les PR ; plugin exec pour Maven. Démo en vidéo *« pour éviter l'effet démo »*, avec un hotfix sur une branche de maintenance.\n- Outillage autour : commitlint, commitizen, Dependabot, Renovate.\n- En questions : déclenchement sur commit ou en cron ; avec le squash merge, un bot peut vérifier le titre de PR mais l'humain reste nécessaire.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "um9zUJfoxQs", "title": "Facilitez-vous les releases, utilisez semantic release | Antoine Meausoone & Gaetan Bogaert", "transcript": true }
+    },
+    {
+      "id": "kubernetes-operators-for-any-developer",
+      "day": "2022-09-29",
+      "type": "workshop",
+      "title": "Kubernetes operators for any developer",
+      "speakers": ["Stéphane Philippart — OVHcloud"],
+      "feedbackFrom": ["Blog OVHcloud (rédigé par le speaker)"],
+      "summary": "- Session présentée comme un workshop dans le billet d'OVHcloud (durée non précisée), absente de la playlist. Promesse : développer un opérateur peut sembler impressionnant, mais il est **à la portée de tout développeur**.\n- Fil rouge : le même opérateur, qui gère un serveur Nginx, implémenté **de trois façons** : avec Helm, en Go et en Java avec Quarkus.\n- Seul écho disponible, celui du speaker lui-même : un *« great moment »* qui a laissé du temps pour discuter avec les participants. Aucun retour de participant trouvé.",
+      "summarySources": ["blog"]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Une dizaine d'autres conférences annoncées (25 au total selon OVHcloud), titres non retrouvés et non filmées",
+    "Talk d'un autre Guillaume sur l'OCR des permis de conduire (cité par Guillaume Thomas), non filmé ou non retrouvé"
+  ],
+  "sources": [
+    { "label": "Page Conference Hall Cloud Nord 2022 (appel à talks, formats, catégories, 3e édition)", "url": "https://conference-hall.io/cloud-nord-2022" },
+    { "label": "Playlist YouTube officielle « Talks Cloud Nord 2022 » (16 vidéos, transcripts automatiques)", "url": "https://www.youtube.com/playlist?list=PLVQhat0Bx0WC3CFgIOy_R3x0FyXs6KqOk" },
+    { "label": "Table ronde Cloud Nord 2022, diffusion en direct de WeLoveDevs", "url": "https://www.youtube.com/watch?v=So7N4SSn1BY" },
+    { "label": "Aftermovie Cloud Nord 2022", "url": "https://www.youtube.com/watch?v=cphswpSL9Lg" },
+    { "label": "Blog OVHcloud, « OVHcloud at Cloud Nord » (Stéphane Philippart, 10 octobre 2022)", "url": "https://blog.ovhcloud.com/en/posts/ovhcloud-at-cloud-nord/" },
+    { "label": "Noti.st d'Aurélie Vache, talk Cloud Nord 2022 et posts du 29 septembre 2022 (Cloud Nord, William Dubreuil, Thierry, Maxime Deroullers)", "url": "https://noti.st/aurelievache/ospDbb/creer-un-plugin-pour-kubernetes-en-quelques-minutes-easy" }
+  ]
 }

@@ -221,22 +221,144 @@
         "publishedAt": "2026-09-06",
         "transcript": true
       }
+    },
+    {
+      "id": "another-world-lecon-d-architecture-logicielle",
+      "day": "2026-07-07",
+      "type": "talk",
+      "title": "Another World, une belle leçon d'architecture logicielle",
+      "speakers": [
+        "Olivier Poncet"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : la rétro-ingénierie d'Another World (Éric Chahi, Delphine Software, 1991). Le jeu tient sur une disquette : un exécutable de 24 Ko et 1,2 Mo d'assets. **Toute la logique du jeu est dans un bytecode** exécuté par une machine virtuelle ; l'exécutable n'en contient aucune.\n- Outillage maison : un IDE écrit en GFA Basic sur Amiga 500, qui embarque la VM pour tester un niveau en direct sans recompiler. La rotoscopie par genlock n'aurait *« pas fait gagner autant de temps »* qu'espéré.\n- Les ressources passent par un index vers 13 banques. Elles sont compressées avec ByteKiller, décompressé à rebours dans le même buffer pour économiser la mémoire : 146 ressources, 33 % de compression.\n- La VM a une architecture Harvard, big-endian, avec **64 threads en multitâche coopératif** (`yield`) et 256 registres de 16 bits : 512 octets pour tout l'état du jeu. Les opcodes sont rangés par fréquence d'usage, car le décodage se faisait en cascade de if/else.\n- Rendu : polygones hiérarchiques, sommets doublés à l'encodage pour simplifier la rastérisation, algorithme du peintre, décors mis en cache, transparence simulée par les palettes. Le son passe par 4 pistes PCM façon tracker. Le moteur a été porté sur 20 à 25 architectures.\n- Démo de sa réimplémentation en C++, écrite en deux semaines de vacances et portée en WebAssembly. Message final : s'inspirer de cette sobriété face à *« la course à la ressource »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "zXKupPhywEA",
+        "title": "Riviera DEV 2026 - Olivier Poncet - Another World, une belle leçon d’architecture logicielle",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-petites-aventures-de-css-saison-2026",
+      "day": "2026-07-07",
+      "type": "talk",
+      "title": "Les petites aventures de CSS, saison 2026",
+      "speakers": [
+        "Raphaël Goetter — Alsacréations"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : une revue des nouveautés CSS en format « série », entrecoupée de quiz, par le fondateur d'Alsacréations. Elle ne couvre que ce qui fonctionne déjà dans au moins quelques navigateurs.\n- Un CSS plus « intelligent » : `@property` pour typer et animer une custom property, `attr()` typé, `sibling-index()` et `sibling-count()`. Surtout, **`@function`** permet des fonctions réutilisables (opacité d'une couleur, tailles fluides, valeur différente en light et dark mode) ; il la juge *« une vraie révolution »*, mais elle est encore peu supportée.\n- Positionnement : `align-content` s'applique désormais à tout mode d'affichage (centrage vertical partout, supporté par tous les navigateurs), le masonry natif est encore sous flag, et **l'anchor positioning** est supporté par tous, Firefox compris.\n- Animation : les scroll-state queries (header qui se cache, indicateurs de scroll) et les animations liées au scroll (exemple du design system de France Travail), pas encore disponibles sur Firefox.\n- Divers : `text-wrap: balance` et `pretty`, **`contrast-color()`** (noir ou blanc conforme WCAG, déjà supporté partout) et `@scope`, qui rend inutiles les conventions de nommage de type BEM.\n- En questions : pour qu'une IA génère du `@scope`, son équipe l'inscrit dans ses guidelines placées dans le contexte de l'IA. Il regrette aussi le retard de Firefox.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "pQdaHMIBlBk",
+        "title": "Riviera DEV 2026 - Raphael Goetter - Les petites aventures de CSS, saison 2026",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-hasard-fait-bien-les-tests",
+      "day": "2026-07-07",
+      "type": "lightning",
+      "title": "Le hasard fait bien les tests",
+      "speakers": [
+        "David Pilato — Elastic"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** (format court de 25 min) : un NullPointerException en CI sur son projet FSCrawler ne se reproduisait qu'avec la **locale azerbaïdjanaise**. L'origine était un bug d'une bibliothèque de configuration tierce.\n- **Randomized testing** (bibliothèque de Carrot Search, nouvelle version compatible JUnit 5 et 6) : on randomise le nombre de nœuds, de shards, les noms d'index, la locale, le fuseau horaire. L'aléatoire repose sur une **seed** loguée, qui permet de rejouer exactement le contexte de l'échec.\n- Autres usages : des actions « fréquentes » ou « rares » (tuer un nœud pendant l'indexation), un ordre d'exécution aléatoire des classes et des méthodes (il révèle des dépendances cachées entre tests), la détection de threads zombies.\n- Astuce : écrire un test qui *attend* le bug d'une bibliothèque tierce, pour être prévenu dès qu'une montée de version le corrige.\n- Chez Elastic, l'adoption a demandé trois mois de stabilisation, tant de vrais bugs sont apparus. *« Maintenant je suis content quand elle passe au rouge »*, dit-il de sa CI.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "aYXkP4V7ViI",
+        "title": "Riviera DEV 2026 - David Pilato - Le hasard fait bien les tests",
+        "transcript": true
+      }
+    },
+    {
+      "id": "questions-pour-un-conteneur-supply-chain",
+      "day": "2026-07-07",
+      "type": "talk",
+      "title": "Questions pour un conteneur - édition Supply Chain",
+      "speakers": [
+        "Aurélie Vache — OVHcloud",
+        "Sherine Khoury — Red Hat"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : un quiz interactif (une soixantaine de participants connectés) qui suit la sécurisation d'une API Go, de l'IDE jusqu'au cluster Kubernetes.\n- Images de base : les registres publics n'offrent **aucune garantie**. Il faut vérifier l'identité du signataire et préférer des images durcies (UBI, Docker Hardened Images, Chainguard), en surveillant leur licence.\n- **Provenance SLSA** générée au build (BuildKit, GitHub Action) et signée dans une enveloppe in-toto. Deux outils produisent des provenances différentes, comme deux générateurs de **SBOM** (Trivy contre bom) : *« la sécurité de la supply chain, c'est pas sec »*.\n- **VEX** : avec govulncheck, sur 10 CVE « high » remontées par le scanner, **une seule était réellement exploitable**. Les speakeuses attachent SBOM, VEX et signatures à l'image avec `cosign attest` ; depuis cosign v3, cela passe par l'API OCI Referrers.\n- La signature se fait avec cosign ou Notation (Docker Content Trust est abandonné). La vérification au déploiement passe par **Kyverno**, avec des politiques en YAML préférées au Rego d'OPA. Piège final : la supply chain ne figure pas dans l'OWASP Top 10 Kubernetes.\n- En questions, face à une attaque de type XZ Utils : la provenance des sources de SLSA (revue obligatoire des PR) donne des garde-fous, sans y répondre directement.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "NxRBPwcizPc",
+        "title": "Riviera DEV 2026 - Aurélie Vache/Sherine Khoury - Questions pour un conteneur - édition Supply Chain",
+        "transcript": true
+      }
+    },
+    {
+      "id": "adk-agent-development-kit-en-java",
+      "day": "2026-07-08",
+      "type": "talk",
+      "title": "À la découverte de Agent Development Kit (ADK) en Java",
+      "speakers": [
+        "Guillaume Laforge — Google"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : un developer advocate, committer sur ADK, présente le framework open source de Google. Il définit l'agent comme un LLM, plus une mémoire, un planning et des outils, en boucle vers un objectif.\n- Outils : des fonctions Java annotées (les **descriptions** sont décisives pour que le modèle appelle le bon outil au bon moment), des outils intégrés (Google Search, exécution de code en sandbox, Google Maps, computer use), un agent utilisé comme outil, et des serveurs MCP dont on filtre les outils pour ne pas noyer le modèle.\n- Multi-agents : un superviseur autonome qui délègue d'après les descriptions, ou des agents **séquentiels, parallèles ou en boucle**, plus déterministes. Il conseille de toujours fixer un nombre maximal d'itérations, *« au prix des tokens »*. Démo : un générateur de BD vintage à partir de photos de vacances (Quarkus, Nano Banana, Google Maps).\n- Intégration : runner, sessions et état partagé, sorties structurées en records Java, **skills** chargés par *progressive disclosure*, callbacks et plugins pour le tracing et les guardrails (bloquer un `rm -rf`, empêcher la fuite de clés d'API).\n- Ouvertures : un pont vers LangChain4j pour utiliser des modèles locaux, le protocole A2A avec Quarkus, et ADK Kotlin sur Android.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "D_hGgDMSW6M",
+        "title": "Riviera DEV 2026 - Guillaume Laforge - Agent Development Kit (ADK) pour des agents IA en Java",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ci-souveraine-et-portable",
+      "day": "2026-07-08",
+      "type": "talk",
+      "title": "CI souveraine et portable : reprenez le contrôle de vos pipelines",
+      "speakers": [
+        "Frédéric Léger — Overcraft",
+        "Émilien Escalle — Overcraft"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : les plateformes de CI (GitHub, GitLab) facilitent l'onboarding mais exposent à trois risques. Ce sont la **souveraineté** (Cloud Act), le **vendor lock-in** (hausses tarifaires soudaines citées en exemple) et la sécurité.\n- Il faut découper sa plateforme en couches (VCS, moteur de CI, stockage, secrets, déploiement) pour évaluer honnêtement une souveraineté souvent **partielle**.\n- L'expérience développeur est jugée *« catastrophique »* : un YAML propriétaire impossible à tester avant le push, d'où des cascades de commits de correction.\n- Démo sur une vraie CI (un projet open source de quiz). **Dagger** permet d'écrire la CI en TypeScript, de l'exécuter en local avec seulement Docker et de profiter du cache BuildKit. Vient ensuite une migration vers **Forgejo** auto-hébergé : le diff se limite à préfixer les actions par l'URL de GitHub.\n- Limites assumées : le ROI est à étudier quand 50 projets existent déjà, la conformité devient sa propre charge, et il faut décider qui maintient ce code. Selon eux, plutôt les développeurs (comme pour les Dockerfiles), avec des modules fournis par l'équipe plateforme.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "DY8HTvOJmLs",
+        "title": "Riviera DEV 2026 - Frederic Leger/Émilien Escalle - CI souveraine et portable",
+        "transcript": true
+      }
     }
   ],
-  "synthesisUpdatedAt": "2026-10-04",
+  "synthesisUpdatedAt": "2026-11-06",
   "programUrl": "https://www.rivieradev.fr/schedule",
   "note": "6, 7 & 8 juillet 2026 à Sophia Antipolis (SKEMA). Le 6 juillet est consacré aux deep dives et ateliers de 3 h, les 7 et 8 juillet aux conférences : keynotes, talks de 50 min, « Snorkeling sessions » de 25 min, une piste Quarkus, des ateliers « We're not just coders » et des séances sportives. Environ 100 sessions au total ; conférence organisée par le Riviera JUG.",
-  "corpus": "La synthèse repose sur le **programme officiel**, sur **8 transcripts** (les deux keynotes et six talks) choisis parmi les **28 vidéos de talks 2026** de la chaîne YouTube Riviera DEV (publiées en septembre 2026), et sur **2 posts LinkedIn** repérés en octobre 2026 via la page de Riviera DEV : un retour de participante (Valerie T.) et un post de speaker (Florian Marc).",
-  "limits": "**Retours participants très minces** : un seul retour de participante et un post de speaker ; la plupart des résumés décrivent ce qui a été dit sur scène (sous-titres automatiques, noms propres parfois approximatifs), pas la réception par le public. LinkedIn est mal indexé par la recherche web, et aucun article de blog ni slide n'a été trouvé. Moins d'un tiers des sessions a une vidéo publiée, les deep dives du 6 juillet n'en ont aucune, et le choix des sessions transcrites est éditorial.",
-  "tldr": "**Selon les vidéos, Riviera DEV 2026 a surtout été une édition « IA et responsabilité » : dette cognitive et « shadow knowledge » (keynote du 8 juillet), architecture où l'IA évalue mais où l'humain décide, cadre juridique de la PI face à l'IA, souveraineté du cloud. Des REX très concrets l'ont complétée (migration Kafka chez Michelin, chaos engineering secret chez Amadeus).**",
+  "corpus": "La synthèse repose sur le **programme officiel**, sur **14 transcripts** (les deux keynotes et douze talks) choisis parmi les **28 vidéos de talks 2026** de la chaîne YouTube Riviera DEV (publiées en septembre 2026), et sur **2 posts LinkedIn** repérés en octobre 2026 via la page de Riviera DEV : un retour de participante (Valerie T.) et un post de speaker (Florian Marc). Une nouvelle recherche, le 6 novembre 2026, n'a trouvé aucun autre retour.",
+  "limits": "**Retours participants très minces** : un seul retour de participante et un post de speaker ; la plupart des résumés décrivent ce qui a été dit sur scène (sous-titres automatiques, noms propres parfois approximatifs), pas la réception par le public. LinkedIn est mal indexé par la recherche web, et aucun article de blog ni slide n'a été trouvé, ni en octobre ni en novembre 2026. Moins d'un tiers des sessions a une vidéo publiée, les deep dives du 6 juillet n'en ont aucune, et le choix des sessions transcrites est éditorial.",
+  "tldr": "**Selon les vidéos, Riviera DEV 2026 a surtout été une édition « IA et responsabilité » : dette cognitive et « shadow knowledge » (keynote du 8 juillet), architecture où l'IA évalue mais où l'humain décide, cadre juridique de la PI face à l'IA, souveraineté du cloud et de la CI. Des REX très concrets et des talks de pur artisanat l'ont complétée (migration Kafka chez Michelin, chaos engineering secret chez Amadeus, supply chain des conteneurs, tests randomisés, rétro-ingénierie d'Another World).**",
   "keyTakeaways": [
-    "Mesurer de bout en bout les gains de l'IA plutôt que se fier au ressenti : productivité perçue et mesurée peuvent diverger fortement (Sabot-Durand & Dupré).",
-    "Organiser un **knowledge management** adapté à l'IA pour éviter le « shadow knowledge » dispersé dans des prompts et contextes privés (Sabot-Durand & Dupré).",
+    "Mesurer de bout en bout les gains de l'IA plutôt que se fier au ressenti, et organiser un **knowledge management** qui évite le « shadow knowledge » dispersé dans des prompts privés (Sabot-Durand & Dupré).",
     "Continuer à recruter et former des juniors, en utilisant l'IA comme sparring partner plutôt que comme substitut (Sabot-Durand & Dupré ; Touret & Semeteys).",
     "Garder la **décision d'architecture** côté humain et tracée dans des ADR ; utiliser l'IA pour évaluer, challenger et auditer en continu (Touret & Semeteys).",
     "Traiter la souveraineté comme un **curseur** à régler selon la criticité des données, pas comme un choix binaire ; vérifier la qualification SecNumCloud service par service (Mansri).",
-    "Identifier sa position dans la chaîne IA (créateur, intégrateur-fournisseur, utilisateur) : intégrer un modèle tiers transfère des obligations AI Act (Gonzalez).",
-    "Adopter une politique d'usage de l'IA : comptes entreprise, données interdites dans les prompts, revue humaine proportionnée au risque, traçabilité (Gonzalez).",
+    "Identifier sa position dans la chaîne IA (intégrer un modèle tiers transfère des obligations AI Act) et adopter une politique d'usage : comptes entreprise, données interdites dans les prompts, revue humaine proportionnée au risque (Gonzalez).",
+    "Générer un **VEX** pour trier les CVE réellement exploitables, et attacher SBOM, provenance et signatures à l'image vérifiée au déploiement (Vache & Khoury).",
+    "Randomiser ses tests (locale, topologie, ordre d'exécution) en loguant la seed pour rejouer chaque échec (Pilato).",
     "Migrer un monolithe par étranglement progressif, avec double run, DLQ automatiques et contrats de schémas versionnés (Momplot).",
     "Tester aussi la **réponse humaine** aux incidents par des exercices de chaos, et faire la rétro immédiatement après (Audier).",
     "Gérer prompts, skills et agents comme des paquets logiciels : propriétaire identifié, versioning, lock file, revue, plutôt que des copier-coller par chat (Herka & Blanc).",
@@ -244,7 +366,6 @@
   ],
   "sessionsWithoutFeedback": [
     "Deep dives du 6 juillet (sans vidéo trouvée) : Hackez votre supply chain (Marc Langlais, Sherine Khoury) ; De Java à l'IA : premier système d'agents (Antoine Sabot-Durand, Emmanuel Hugonnet, Yann Blazart) ; From 0 to Agentic AI expert(ish) (Kevin Dubois) ; Du JDK 21 au JDK 25 (Jean-Michel Doudoux, Clément de Tastes) ; Go, Linux et Kubernetes : le réseau de bout en bout (Donia Chaiehloudj, David Calvert) ; OpenFeature et feature flags (Alexandre Touret) ; Building with Open Source AI (Cedric Clyburn, Legare Kerrison) ; Conception de serveurs MCP (Horacio Gonzalez) ; State d'une application React (Théo Gianella, Yoann Frommelt) ; Site statique avec Roq (Andy Damevin, Frédéric Blanc) ; Initier votre démarche Platform Engineering (Frédéric Léger, Émilien Escalle) ; Game Master de JDR avec Strands Agents (Arnaud Jean, Adrien Lebret, Olivier Leplus, Tiffany Souterre) ; Standards et agents IA : MCP, A2A, ADK (Guillaume Laforge, Emmanuel Bernard)",
-    "Another World, une belle leçon d'architecture logicielle (Olivier Poncet) — vidéo publiée",
     "Kubernetes et la JVM (Jean-Michel Doudoux, Alain Regnier)",
     "Agentic AI Patterns for Enterprise Software (Kevin Dubois)",
     "Microfrontends Done Right (Gábor Csomák) — vidéo publiée",
@@ -257,9 +378,7 @@
     "Create an AI assistant in your terminal using Java, Picocli, and Quarkus (Stéphane Philippart) — vidéo publiée",
     "Les Value Types ne sont pas Complexes (Clément de Tastes)",
     "Introducing Data Access in Quarkus 4 (Luca Molteni)",
-    "Les petites aventures de CSS, saison 2026 (Raphaël Goetter) — vidéo publiée",
     "Makers de Père en Fils (Matthias et Sylvain Gougouzian)",
-    "Questions pour un conteneur - édition Supply Chain (Aurélie Vache, Sherine Khoury) — vidéo publiée",
     "Injectez l'IA Générative dans vos architectures : LangChain4j-CDI (Emmanuel Hugonnet, Yann Blazart)",
     "Les sites statiques, c'est très bon pour la santé (Andy Damevin, Frédéric Blanc)",
     "A practical guide to agnostic design systems (Julien Sulpis) — vidéo publiée",
@@ -268,7 +387,6 @@
     "Under the hood: Quarkus Native (Foivos Zakkak)",
     "Ask Your Telemetry: AI-Powered Incident Debugging with ClickHouse (Javier Ortiz) — vidéo publiée",
     "Compter l'incomptable : structures de données probabilistes (Sylvain Tiset) — vidéo publiée",
-    "Le hasard fait bien les tests (David Pilato) — vidéo publiée",
     "AI at the Edge (Laurent Doguin)",
     "Object Calisthenics : simplifier le code pour retrouver le métier (Jacqueline Rwanyindo) — vidéo publiée",
     "Let's play Factorio (Julien Wittouck) — vidéo publiée",
@@ -277,9 +395,7 @@
     "Dev et Ops : des clients comme les autres ? (Fanny Klauk)",
     "Quarkus and Leyden, the bumpy road ahead (Guillaume Smet)",
     "Reactive ❤️ Loom (Francesco Nigro)",
-    "CI souveraine et portable (Frédéric Léger, Émilien Escalle) — vidéo publiée",
     "AI Agents Need a Map: Knowledge Graphs (Thibault Jurado-Leduc, William Arias) — vidéo publiée",
-    "À la découverte de Agent Development Kit (ADK) en Java (Guillaume Laforge) — vidéo publiée",
     "REX : Notre IA et nous contre le legacy (Benjamin Lacroix, Jordan Nourry) — voir synthèse Sunny Tech 2026",
     "Orchestrez vos agents IA pour organiser un dîner presque parfait (Thierry Chantier)",
     "Talk to Your Data with Hibernate, Quarkus, and LangChain4j (Marco Belladelli)",
@@ -326,8 +442,8 @@
       "url": "https://fr.linkedin.com/company/riviera-dev"
     },
     {
-      "label": "Transcripts (sous-titres automatiques YouTube) : Mansri ; Sabot-Durand & Dupré ; Touret & Semeteys ; Gonzalez ; Momplot ; Audier ; Herka & Blanc ; Garcia & Marc"
+      "label": "Transcripts (sous-titres automatiques YouTube) : Mansri ; Sabot-Durand & Dupré ; Touret & Semeteys ; Gonzalez ; Momplot ; Audier ; Herka & Blanc ; Garcia & Marc ; Poncet ; Goetter ; Pilato ; Vache & Khoury ; Laforge ; Léger & Escalle"
     }
   ],
-  "revisit": "corpus participants très mince après recherche du 04/10/2026 : 2 posts LinkedIn (dont 1 de speaker), aucun blog ni slide trouvé ; à recompléter si des comptes-rendus sont publiés"
+  "revisit": "corpus participants toujours très mince après nouvelle recherche du 06/11/2026 : toujours 2 posts LinkedIn (dont 1 de speaker), aucun blog ni slide trouvé ; 14 transcripts sur 28 vidéos exploités ; à recompléter si des comptes-rendus sont publiés"
 }

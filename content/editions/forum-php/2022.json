@@ -7,7 +7,775 @@
   "city": "Marne-la-Vallée",
   "venue": "Hotel New York – The Art of Marvel, Disneyland Paris",
   "url": "https://event.afup.org/forum-php-2022/",
+  "programUrl": "https://event.afup.org/forum-php-2022/programme/",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "Programme officiel : 45 créneaux sur deux jours et deux salles (environ 31 conférences, 2 ateliers OSS, 6 « coups de projecteur » sponsors, keynotes AFUP et Burger Quiz). 770 participants annoncés en keynote de clôture, record de l'AFUP. Premier Forum dans ce lieu ; FrankenPHP rendu public sur scène le 14 octobre.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-06",
+  "revisit": "Retours participants toujours minces : 29 commentaires joind.in d'une ligne, aucun compte-rendu de blog ni post LinkedIn trouvé. 16 transcripts lus (15 talks et la keynote de clôture) ; restent non lus ceux d'Arlaud, Frémont, Pelisset, Abdallah, Piera, Jaillot, Richard, Brunet, Chalas, Hulard, Tondereau, Gandy, Macé et Tibulle et de la keynote d'ouverture ; pas de transcript disponible pour la PHP Foundation ni pour Watch the clock.",
+  "corpus": "Transcripts YouTube de 15 talks et de la keynote de clôture (chaîne AFUP), programme officiel archivé, API joind.in (29 commentaires notés sur 11 talks, écrits les 13 et 14 octobre 2022), interviews pré-événement des speakers publiées par l'AFUP, billet de lancement de FrankenPHP par Kévin Dunglas, README des slides de Benjamin Rambaud et une mention dans un article dev.to de ManoMano (décembre 2022).",
+  "limits": "Le contenu sur scène est désormais bien couvert pour une quinzaine de talks, mais la réception par le public repose sur des avis joind.in d'une ligne, concentrés sur onze talks ; aucun compte-rendu détaillé n'a été trouvé. Les transcripts sont des sous-titres automatiques bruts (noms propres et chiffres parfois déformés) et une quinzaine de talks ne sont résumés que d'après le programme.",
+  "tldr": "Un Forum PHP record (770 personnes) qui descend **sous le capot du langage** (cycle de vie, typage, FrankenPHP lancé sur scène) tout en rappelant que le code vit dans le monde réel : pannes, ressources limitées, **sobriété, accessibilité et géopolitique d'Internet**.",
+  "keyTakeaways": [
+    "Rejouer le plan de reprise **tous les jours** : détruire et reconstruire chaque nuit préprod et production stateless, car un backup n'existe que s'il a été restauré (Jean-François Lépine).",
+    "Automatiser avant de documenter, puis écrire une doc d'incident « idiote », exécutable par quelqu'un qui découvre le projet (Jean-François Lépine).",
+    "Les processus PHP-FPM sont la ressource la plus limitante : poser des **timeouts courts** sur chaque appel sortant et activer un opcache bien dimensionné, qui peut diviser la consommation CPU par deux (Pascal Martin).",
+    "Ranger sa documentation selon **Diátaxis** (tutoriels, guides pratiques, référence, explications) : les cases vides révèlent ce qui manque (Sarah Haïm-Lubczanski).",
+    "Préfixer les commentaires de revue de code avec les **Conventional Comments** (suggestion, nitpick, question, issue, bloquant ou non) pour lever les malentendus de ton (Anne-Laure de Boissieu).",
+    "Le plus gros gain d'éco-conception se fait côté produit : **supprimer les fonctionnalités inutiles** avant d'optimiser le code (Hélène Maitre-Marchois et Mathieu Marchois).",
+    "Traiter les critères d'accessibilité non respectés comme des **bugs** et faire valider les maquettes avant le développement (Anaïs Sparesotto et Hortense Mahon).",
+    "Instrumenter une fois avec **OpenTelemetry** et passer par un collecteur pour garder le choix de l'APM (Benoit Viguier).",
+    "Piocher dans DDD, programmation fonctionnelle et architecture hexagonale **sans combattre son framework** : isoler le cœur métier quand c'est utile, même dans Drupal (Benjamin Rambaud)."
+  ],
+  "sessions": [
+    {
+      "id": "the-php-foundation-the-past-the-present-and-the-future",
+      "day": "2022-10-13",
+      "type": "talk",
+      "title": "The PHP Foundation: The past, the present, and the future",
+      "speakers": [
+        "Sebastian Bergmann — The PHP Foundation",
+        "Roman Pronskiy — The PHP Foundation"
+      ],
+      "feedbackFrom": [
+        "Guillaume (joind.in)"
+      ],
+      "summary": "- Talk en anglais sur la **PHP Foundation**, association à but non lucratif créée un an plus tôt par des figures historiques de PHP et de grandes entreprises de l'écosystème (programme).\n- **Bilan de la première année**, projets à venir et questions du public (programme).\n- Un seul retour joind.in : jugé intéressant (4/5).\n- Pas de transcript disponible pour cette vidéo.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "JBPtPy9iSP0",
+        "title": "The PHP Foundation: The past, the present, and the future - S. BERGMANN R. PRONSKIY - Forum PHP 2022",
+        "transcript": false
+      }
+    },
+    {
+      "id": "de-l-humain-a-l-ordinateur-ou-decouvrir-le-sens-d-un-texte-avec-elasticsearch",
+      "day": "2022-10-13",
+      "type": "talk",
+      "title": "De l'humain à l'ordinateur, ou découvrir le sens d'un texte avec ElasticSearch",
+      "speakers": [
+        "Mathias Arlaud"
+      ],
+      "feedbackFrom": [
+        "Damien Tricard",
+        "Remi Faviez",
+        "Alexandre Bocho",
+        "Dominique Thomas (joind.in)"
+      ],
+      "summary": "- Comment un ordinateur attribue un **score de pertinence** entre un texte et d'autres textes, sans recourir à l'IA (programme).\n- Fonctionnement d'**ElasticSearch et Apache Lucene**, et étapes de nettoyage du texte (filtres, tokenizers) pour réduire le bruit (programme).\n- Retours joind.in (4 avis, 4 à 5/5) : bien expliqué, une façon simple de comprendre les bases d'Elasticsearch, détaillé et bien animé.\n- Bémols : un peu technique pour un créneau matinal (Bocho), un peu de temps perdu malgré un contenu très utile (Thomas).",
+      "summarySources": [
+        "program",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "UhONe6GSfGQ",
+        "title": "De l'humain à l'ordinateur, ou découvrir le sens d'un texte avec ElasticSearch - Mathias ARLAUD",
+        "transcript": false
+      }
+    },
+    {
+      "id": "comprenez-comment-php-fonctionne-vos-applications-marcheront-mieux",
+      "day": "2022-10-13",
+      "type": "talk",
+      "title": "Comprenez comment PHP fonctionne, vos applications marcheront mieux",
+      "speakers": [
+        "Pascal Martin — Bedrock"
+      ],
+      "feedbackFrom": [
+        "Remi Faviez",
+        "Damien Tricard (joind.in)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Ouverture sur une anecdote de crise résolue en cinq minutes de discussion entre devs et ops, et un appel à **arrêter de se dire « dev » ou « ops »**.\n- Cycle de vie du moteur (MINIT, RINIT, RSHUTDOWN, MSHUTDOWN), modes de PHP-FPM (dynamic, ondemand, static, ce dernier adapté aux pods Kubernetes) et coût des extensions chargées « au cas où ».\n- Message central : sur une appli à fort trafic, **le nombre de processus PHP-FPM est la ressource la plus limitante**. Un traitement lourd fait après la réponse à l'utilisateur continue d'occuper le processus.\n- Conseils : des timeouts courts (un timeout à 1 s sur une API qui répond en 100 ms mobilise dix fois plus de processus le jour où elle rame), un opcache bien dimensionné (CPU divisé par deux observé), des appels parallélisés comme sur l'API gateway de Bedrock.\n- Le shared nothing simplifie tout mais fait refaire à chaque requête DNS, TCP et TLS ; il ouvre la question des serveurs PHP persistants, des microservices et, en conclusion, de savoir si PHP est toujours le bon choix pour du distribué à fort trafic.\n\n**Côté public** : notes joind.in de 5/5, qui saluent un bon équilibre de profondeur et la mise en évidence des conséquences concrètes des choix de PHP (Faviez). Plusieurs talks du lendemain y renvoient (Dunglas, Napoli, Claras).",
+      "summarySources": [
+        "transcript",
+        "program",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "eWlsd9Vtszs",
+        "title": "Comprenez comment PHP fonctionne, vos applications marcheront mieux - Pascal MARTIN - Forum PHP 2022",
+        "transcript": true
+      }
+    },
+    {
+      "id": "back-to-the-sylius-future",
+      "day": "2022-10-13",
+      "type": "talk",
+      "title": "Back to the Sylius future",
+      "speakers": [
+        "Loïc Frémont — Sylius Core Team"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Évolution future de **Sylius** : le code de demain et des migrations de paquets pour **rapprocher Sylius de l'écosystème Symfony** (programme).\n- Retour sur la vision du créateur de Sylius : un **squelette plus léger** et une architecture plus adaptable (programme).\n- Résumé fondé sur le seul descriptif officiel.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "7WN6PO6oTxA",
+        "title": "Back to the Sylius future - Loïc FRÉMONT - Forum PHP 2022",
+        "transcript": false
+      }
+    },
+    {
+      "id": "ffi-de-nouveaux-horizons-pour-php",
+      "day": "2022-10-13",
+      "type": "talk",
+      "title": "FFI : De nouveaux horizons pour PHP",
+      "speakers": [
+        "Pierre Pelisset"
+      ],
+      "feedbackFrom": [
+        "Mathieu Santostefano",
+        "Jordan Aubert",
+        "Damien Tricard (joind.in)"
+      ],
+      "summary": "- Depuis PHP 7.4, **FFI** permet d'appeler des fonctions C sans écrire d'extension, ce qui ouvre la **programmation système** à PHP (programme).\n- Retour d'expérience en production sur un projet domotique : le **pilotage d'une salle de karaoké**, avec choix, difficultés et résultats (programme).\n- Retours joind.in : présentation appréciée pour ses exemples concrets et sa **pesée du pour et du contre** (Santostefano) ; claire et concrète pour un néophyte du FFI, un premier talk réussi (Aubert).\n- **Seul avis négatif de l'édition** (1/5, Tricard) : sujet intéressant mais livraison jugée peu énergique et trop technique.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "oUtJrx0ElUc",
+        "title": "FFI : De nouveaux horizons pour PHP - Pierre PELISSET - Forum PHP 2022",
+        "transcript": false
+      }
+    },
+    {
+      "id": "comment-etre-bien-onboarde-en-tant-que-developpeuse-junior-reconvertie",
+      "day": "2022-10-13",
+      "type": "talk",
+      "title": "Comment être bien onboardé en tant que développeuse junior reconvertie ?",
+      "speakers": [
+        "Amélie Abdallah"
+      ],
+      "feedbackFrom": [
+        "Guillaume (joind.in)"
+      ],
+      "summary": "- Témoignage d'une **développeuse junior en reconversion** qui a changé d'entreprise après une première expérience difficile (programme).\n- **Rôle de l'entreprise** (process, formations, présentation des équipes) et rôle de la recrue : autonomie, gestion de la pression (programme).\n- Aborde aussi les **remarques spécifiques que subissent les femmes** dans la tech (programme).\n- Un retour joind.in (5/5) qui salue le parcours de la speaker ; le talk est cité le lendemain par Anne-Laure de Boissieu et par les speakers de Toovalu.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "xNBmpt6d7o8",
+        "title": "Comment être bien onboardé en tant que développeuse junior... ? - Amélie ABDALLAH - Forum PHP 2022",
+        "transcript": false
+      }
+    },
+    {
+      "id": "une-plongee-dans-node-depuis-php",
+      "day": "2022-10-13",
+      "type": "talk",
+      "title": "Une plongée dans Node depuis PHP",
+      "speakers": [
+        "Matthieu Napoli"
+      ],
+      "feedbackFrom": [
+        "Question du public en fin de talk (transcript)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Talk de 20 minutes « à ne pas prendre trop au sérieux », recentré sur trois sujets et trois conclusions volontairement provocatrices.\n- **« L'asynchrone, c'est bof »** : Node tourne sur un seul thread avec une event loop, donc tout appel d'I/O doit être asynchrone pour ne pas bloquer tout le serveur. Selon lui, PHP ne rate pas grand-chose.\n- Le **typage local** de TypeScript (types d'objets à la volée, interfaces satisfaites sans `implements`) vaudrait mieux que le typage par héritage et les DTO en cascade de PHP.\n- **« Place aux façades »** : en JS, un service est souvent un ensemble de fonctions importées, et `import` joue le rôle de service locator ; les façades Laravel ne seraient pas si loin, sans viser 100 % des cas.\n\n**Débat** : en questions, un participant rappelle que la core team Symfony s'est battue dix ans pour sortir des contextes statiques et pointe les problèmes de testabilité et de charge cognitive des façades. Le speaker évoque un vif débat préalable sur Twitter.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "QHk6t6YBa5o",
+        "title": "Une plongée dans Node depuis PHP - Matthieu NAPOLI - Forum PHP 2022",
+        "transcript": true
+      }
+    },
+    {
+      "id": "des-workers-php-avec-systemd-et-symfony-messenger",
+      "day": "2022-10-13",
+      "type": "talk",
+      "title": "Des workers PHP avec systemd et Symfony Messenger",
+      "speakers": [
+        "Loïck Piera"
+      ],
+      "feedbackFrom": [
+        "Guillaume",
+        "Mathieu Santostefano (joind.in)"
+      ],
+      "summary": "- Configurer des **workers asynchrones Symfony Messenger** pour la production en s'appuyant sur **systemd**, présent sur la plupart des distributions Linux, pour déclarer les services et les maintenir en vie (programme).\n- Format court (20 minutes).\n- Retours joind.in (5/5) : très clair, excellent talk illustré d'exemples.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "j4h0lFswnu4",
+        "title": "Des workers PHP avec systemd et Symfony Messenger - Loïck PIERA - Forum PHP 2022",
+        "transcript": false
+      }
+    },
+    {
+      "id": "sauve-un-e-dev-ecris-une-doc",
+      "day": "2022-10-13",
+      "type": "talk",
+      "title": "Sauve un-e dév, écris une doc !",
+      "speakers": [
+        "Sarah Haïm-Lubczanski — Bedrock"
+      ],
+      "feedbackFrom": [
+        "Mathieu Santostefano",
+        "Guillaume",
+        "Dominique Thomas (joind.in)",
+        "Sarah Haïm-Lubczanski (speaker, interview AFUP)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- La speaker, documentation architect chez Bedrock, ouvre sur le **mythe du code auto-documenté** et invite à se mettre à la place de ceux qui cherchent la doc, en tenant compte de leur contexte (exploration tranquille ou astreinte avec un datacenter en feu).\n- Architecturer par type de contenu avec le framework **Diátaxis** (tutoriels, guides pratiques, référence, explications), illustré par les docs de Kubernetes et du MDN ; les catégories vides révèlent les manques, souvent les tutoriels.\n- Une bonne doc coûte : celle de Stripe mobilise une trentaine de personnes. La boucle du développeur face à un bug croise celle du rédacteur (modèle de Kelsey Hightower).\n- Écriture : partir de l'audience et du but de la page, commencer par un « tweet », utiliser des templates, des schémas, des captures simplifiées et des exemples de code à plusieurs niveaux. Outils cités : LanguageTool, Linguee, le guide de style Google, Write the Docs.\n- Ne jamais documenter le futur, supprimer la doc périmée, versionner, offrir une recherche (Meilisearch, Algolia) ; conclusion : *« la doc mérite votre temps »*.\n\n**Côté public** : notes joind.in de 4 à 5/5, qui saluent les formules et surtout les **conseils d'outillage**.",
+      "summarySources": [
+        "transcript",
+        "program",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "MbLiKVnyGSY",
+        "title": "Sauve un-e dév, écris une doc ! - Sarah HAÏM-LUBCZANSKI - Forum PHP 2022",
+        "transcript": true
+      }
+    },
+    {
+      "id": "watch-the-clock",
+      "day": "2022-10-13",
+      "type": "talk",
+      "title": "Watch the clock",
+      "speakers": [
+        "Andreas Heigl"
+      ],
+      "feedbackFrom": [
+        "Anouk Moutounet",
+        "Stéphan (joind.in)",
+        "Nicolas Grekas (mention sur scène)"
+      ],
+      "summary": "- Pas de transcript disponible et descriptif officiel non relu ; le contenu exact n'est pas résumé ici.\n- Nicolas Grekas y fait référence le lendemain : le futur composant Clock de Symfony recoupe ce sujet, avec une interface un peu différente qui anticipe la PSR à venir (transcript Grekas).\n- Retours joind.in (5/5) : très intéressant, très sympa.",
+      "summarySources": [
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "pDMn8dWQGSk",
+        "title": "Watch the clock - Andreas HEIGL - Forum PHP 2022",
+        "transcript": false
+      }
+    },
+    {
+      "id": "recit-du-passage-d-une-migration-d-un-hebergement-classique-a-une-infra-cloud-paas",
+      "day": "2022-10-13",
+      "type": "talk",
+      "title": "Récit du passage d'une migration d'un hébergement classique à une infra cloud PAAS",
+      "speakers": [
+        "Bastien Jaillot"
+      ],
+      "feedbackFrom": [
+        "Bastien Jaillot (speaker, interview AFUP)"
+      ],
+      "summary": "- Point de départ : un appel d'urgence pour un site hébergé chez un prestataire **injoignable et saturé** (programme).\n- Récit mêlant **trois migrations réelles vers Clever Cloud** : *« ce n'est pas un comparatif mais un retour d'expérience, une histoire »* (speaker).\n- **L'hébergement figé est une dette technique** : les blocages « par sécurité » deviennent une source d'insécurité à mesure que les versions se périment (speaker).\n- Atouts du PaaS selon lui : mises à jour, ajout de composants, duplication d'environnements ; et le choix d'un **acteur français « souverain »** (speaker).",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "bLa3J_xAEqI",
+        "title": "Récit du passage d’une migration d’un hébergement classique à une infra cloud PAAS - Bastien JAILLOT",
+        "transcript": false
+      }
+    },
+    {
+      "id": "un-moteur-bien-huile",
+      "day": "2022-10-13",
+      "type": "talk",
+      "title": "Un moteur bien huilé",
+      "speakers": [
+        "Thibault Richard"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le pattern **Rule Engine** pour implémenter des **centaines de règles métier** dans une application Symfony, de façon découplée et testable (programme).\n- L'**injection de dépendances** gère le chaînage des règles, les appels d'API et les requêtes en base (programme).\n- Résumé fondé sur le seul descriptif officiel.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "fyUQnjaLAYw",
+        "title": "Un moteur bien huilé - Thibault RICHARD - Forum PHP 2022",
+        "transcript": false
+      }
+    },
+    {
+      "id": "opentelemetry-vers-un-standard-pour-surveiller-vos-applications",
+      "day": "2022-10-13",
+      "type": "talk",
+      "title": "OpenTelemetry: vers un standard pour surveiller vos applications",
+      "speakers": [
+        "Benoit Viguier — Platform.sh (équipe Blackfire)"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Le monitoring répond à deux questions : **« est-ce que ça marche ? »** et « pourquoi ça ne marche pas ? ». L'investissement dépend de combien de temps l'application peut rester en panne.\n- Panorama par difficulté croissante : analytics, sondes HTTP en boîte noire, logs (bons pour le pourquoi), métriques (bonnes pour le « ça marche », avec les golden metrics charge, performance, erreurs), tracing (« le rayon X »).\n- Les APM regroupent ces trois piliers mais créent une dépendance au fournisseur. **OpenTelemetry** (fusion d'OpenTracing et OpenCensus en 2019, hébergé par la CNCF) standardise le protocole : tracing stable, métriques presque, logs pas encore prêts.\n- Architecture recommandée : un **collecteur** proche des applications (receivers, processors, exporters) qui gère batchs, retries et anonymisation, pour que le monitoring ne fasse jamais tomber l'application.\n- Côté PHP, il y a un SDK (tracing seulement), des extensions conseillées pour protobuf et gRPC et un début d'intégration Symfony ; l'écosystème a du retard et **la communauté doit suivre**.\n- Conclusion : oui, OpenTelemetry peut devenir le standard, avec un changement de paradigme qui sépare l'instrumentation de l'analyse.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "gnKm6qByGAY",
+        "title": "OpenTelemetry: vers un standard pour surveiller vos applications - Benoit VIGUIER - Forum PHP 2022",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-femmes-a-barbe-et-a-capuche-sortent-de-la-grotte-pour-sauver-le-numerique-et-son-impact",
+      "day": "2022-10-13",
+      "type": "talk",
+      "title": "Les femmes à barbe et à capuche sortent de la grotte pour sauver le numérique et son impact",
+      "speakers": [
+        "Anaïs Sparesotto — Toovalu",
+        "Hortense Mahon — Toovalu"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Deux développeuses back-end de Toovalu, éditeur nantais d'un logiciel de pilotage carbone et RSE, racontent comment l'accessibilité est entrée dans une entreprise dont la direction disait ne pas viser les personnes handicapées.\n- Arguments utilisés : environ **20 % de la population française** concernée par un handicap, un tiers seulement des gens à l'aise avec le numérique, et des clients RSE soumis à des obligations sur le handicap, donc des utilisateurs concernés.\n- Méthode : formation (référentiel Opquast), tips internes, une règle partagée tous les 15 jours, jusqu'à ce que la RH défende l'accessibilité comme valeur et que les cheffes de produit **refusent des maquettes non accessibles**.\n- Démonstration : un mini-audit RGAA (106 critères, environ 258 tests) de leur page de connexion, saisi dans leur propre outil ; quatre critères échouent (alternative textuelle, contraste de 3,36 au lieu de 4,5, focus visible, attribut `autocomplete`).\n- Messages : les défauts d'accessibilité **sont des bugs**, on valide les maquettes avant le développement, les outils automatiques (WAVE, axe) ne couvrent qu'environ 20 % des critères, et les devs back doivent « sortir de la grotte » et regarder ce qu'ils livrent.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "0P6vjihE1r8",
+        "title": "Les femmes à barbe et à capuche sortent de la grotte pour sauver... - A SPARESOTTO / H  MAHON",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rina-le-nouvel-internet",
+      "day": "2022-10-13",
+      "type": "talk",
+      "title": "RINA, le nouvel Internet",
+      "speakers": [
+        "Louis Pouzin"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Seule conférence du dernier créneau du 13 octobre. Louis Pouzin, qui précise avoir 91 ans, parle livre en main pour pallier ses trous de mémoire.\n- Essentiel du propos : un **récit historique** de l'arrivée des réseaux en France, avec une petite équipe de cinq ou six programmeurs, des moyens à arracher aux ministères et aux PTT, et une reconnaissance venue d'Europe et des États-Unis avant la France.\n- **RINA** (architecture de John Day, plus de dix ans d'existence) y est présenté comme plus sûr face aux requêtes malformées ou malveillantes et plus indépendant des machines, sans détail technique, et peut-être lui-même obsolète d'ici dix ans.\n- Conclusion adressée aux jeunes : ne pas avoir peur de l'erreur, *« tout le monde a fait des erreurs dans l'Internet »*.\n- Lecture critique : d'après le transcript, la promesse technique du titre reste peu développée ; la session vaut surtout comme témoignage d'un pionnier.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "2SraHz9-apA",
+        "title": "RINA, le nouvel Internet - Louis POUZIN - Forum PHP 2022",
+        "transcript": true
+      }
+    },
+    {
+      "id": "papa-et-maman-nettoient-l-internet",
+      "day": "2022-10-14",
+      "type": "talk",
+      "title": "Papa et Maman nettoient l'internet",
+      "speakers": [
+        "Hélène Maitre-Marchois — Fairness",
+        "Mathieu Marchois — Fairness"
+      ],
+      "feedbackFrom": [
+        "Rémy Turpault",
+        "Londiche",
+        "Joubert",
+        "Dominique Thomas (joind.in)",
+        "Hélène Maitre-Marchois et Mathieu Marchois (speakers, interview AFUP)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Les deux cofondateurs de la coopérative Fairness (elle côté produit, lui développeur back) partent du constat que **la fabrication des terminaux** pèse le plus dans l'impact du numérique. Il faut donc que les utilisateurs gardent leurs appareils plus longtemps.\n- Côté produit : jouer le « PO relou ». Exemple : une fonctionnalité demandée cinq fois par an remplacée par un numéro de téléphone. Ils citent 70 % de pages jamais ouvertes et l'idée que l'essentiel du gain vient de **ce qu'on ne développe pas**.\n- Mesurer avant d'agir, avec plusieurs outils complémentaires (Ecoindex, GreenFrame, Carbonalyser, outils d'infra et de profiling), sans s'arrêter à une note ; alléger aussi une CI de 30 minutes lancée toute la journée.\n- Côté code, d'après les 115 bonnes pratiques de GreenIT : bien typer les colonnes (pas de VARCHAR 255 par défaut), pas de requêtes SQL dans les boucles, éviter les `findBy` magiques de Doctrine, paginer et indexer, cache en RAM et cache HTTP, logs réglés au plus juste, request collapsing, TTL, dernière version de PHP.\n- En questions : les frameworks restent jugés indispensables ; éteindre les environnements de recette la nuit est un premier pas facile.\n\n**Côté public** : 4 avis joind.in, tous à 5/5 (riche en ressources, en phase avec des questions techniques et organisationnelles) ; Londiche le juge à voir par **tout développeur**.",
+      "summarySources": [
+        "transcript",
+        "program",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "Pi8VcEAgEMY",
+        "title": "Papa et Maman nettoient l'internet - Hélène MAITRE-MARCHOIS, Mathieu MARCHOIS - Forum PHP 2022",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-decide-t-on-de-creer-un-composant-symfony",
+      "day": "2022-10-14",
+      "type": "talk",
+      "title": "Comment décide-t-on de créer un composant Symfony ?",
+      "speakers": [
+        "Nicolas Grekas — Symfony Core Team"
+      ],
+      "feedbackFrom": [
+        "Damien Tricard (joind.in)",
+        "Nicolas Grekas (speaker, interview AFUP)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Ordres de grandeur donnés : environ 4 000 contributeurs uniques en dix ans, 14 milliards de téléchargements cumulés, 60 composants dans le monorepo et 200 paquets à publier. Ce qui fait **l'impact, et donc les polémiques**.\n- Historique des composants avec, chaque fois, une alternative préexistante : VarDumper (sa première contribution), Cache attendu jusqu'à la PSR-6, Dotenv parce que la librairie existante était trop lourde, Mailer pour sortir de Swiftmailer, HttpClient faute de pouvoir dépendre d'un Guzzle aux ruptures répétées, Uid plus simple que ramsey/uuid, Clock à venir.\n- Il assume une part de **« conference-driven development »** et défend que la concurrence fait avancer les autres (ramsey a depuis créé une librairie plus simple).\n- Il répond aux accusations publiques d'« impérialisme » et de syndrome du « pas inventé ici » : tout est open source et *« les détails comptent »*.\n- Ce qui justifie de garder la main sur le code : sorties tous les six mois, monorepo, promesses de rétro et de forward compatibilité, politique de dépréciation, sécurité, CI non pénible, espaces de contribution accueillants ; et les package principles (dépendances acycliques et stables).\n\n**Côté public** : un avis joind.in (5/5), sujet jugé intéressant.",
+      "summarySources": [
+        "transcript",
+        "program",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "L7juWKvUbXo",
+        "title": "Comment décide-t-on de créer un composant Symfony ? - Nicolas GREKAS - Forum PHP 2022",
+        "transcript": true
+      }
+    },
+    {
+      "id": "typage-en-php-comment-ca-fonctionne",
+      "day": "2022-10-14",
+      "type": "talk",
+      "title": "Typage en PHP comment ça fonctionne ?",
+      "speakers": [
+        "Gina P. Banyard (programme 2022 : George Banyard) — core contributor PHP"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Première conférence au Forum d'un **core developer de PHP financé à temps partiel par la PHP Foundation**, qui maintient aussi la doc française et a écrit plusieurs RFC. Talk annoncé « avec des maths et du C ».\n- Tour complet du système de types à l'heure de PHP 8.2 : `mixed`, scalaires, `never`, `void`, `self`/`parent`/`static`, types littéraux `true`/`false`, `callable`, intersections, unions et **types DNF** (forme normale disjonctive), `iterable` devenu alias.\n- Sous le capot : la zval et son champ de type, l'implémentation d'`instanceof` (interfaces puis parents), la structure `zend_type` qui représente unions et intersections par des listes imbriquées.\n- Héritage et **principe de substitution de Liskov** : paramètres contravariants, retours covariants, propriétés invariantes, vérifiés par une seule fonction de covariance appelée dans un sens ou dans l'autre.\n- Seule la première moitié du transcript a été lue pour cette synthèse.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "0rC4jzRbhvY",
+        "title": "Typage en PHP comment ça fonctionne ? - George BANYARD - Forum PHP 2022",
+        "transcript": true
+      }
+    },
+    {
+      "id": "proteger-votre-application-avec-l-en-tete-http-de-securite-content-security-policy",
+      "day": "2022-10-14",
+      "type": "talk",
+      "title": "Protéger votre application avec l'en-tête HTTP de sécurité « Content Security Policy »",
+      "speakers": [
+        "Laurent Brunet"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Les mécanismes de sécurité offerts par les navigateurs contre **XSS, CSRF et clickjacking** (programme).\n- Mise en place **progressive**, sans difficulté majeure, de l'en-tête Content Security Policy (programme).\n- Résumé fondé sur le seul descriptif officiel.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "uMsj7X3KQV0",
+        "title": "Protéger votre application avec l’en-tête HTTP de sécurité « Content Security Policy » - L. BRUNET",
+        "transcript": false
+      }
+    },
+    {
+      "id": "sortir-du-cadre",
+      "day": "2022-10-14",
+      "type": "talk",
+      "title": "Sortir du cadre",
+      "speakers": [
+        "Robin Chalas"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Examen des **valeurs par défaut de Symfony** : arborescence, configuration, packages, conventions ; leur évolution et leur positionnement face aux autres frameworks PHP (programme).\n- Quand et **à quel prix s'en écarter**, pour remettre les besoins métier au centre (programme).\n- Résumé fondé sur le seul descriptif officiel.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "cJQsahDVW58",
+        "title": "Sortir du cadre - Robin CHALAS - Forum PHP 2022",
+        "transcript": false
+      }
+    },
+    {
+      "id": "tester-a-travers-openapi-ou-comment-valider-votre-documentation",
+      "day": "2022-10-14",
+      "type": "talk",
+      "title": "Tester à travers OpenAPI, ou comment valider votre documentation !",
+      "speakers": [
+        "Stéphane Hulard"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Problème de départ : une **documentation d'API ni à jour ni fidèle** au code (programme).\n- Réponse : des **tests automatisés fondés sur la spécification OpenAPI**, intégrés à la CI, qui vérifient à la fois l'API et sa doc (programme).\n- Résumé fondé sur le seul descriptif officiel.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "cDBQHb4hrVY",
+        "title": "Tester à travers OpenAPI, ou comment valider votre documentation - Stéphane HULARD - Forum PHP 2022",
+        "transcript": false
+      }
+    },
+    {
+      "id": "revue-de-code-on-n-est-pas-venu-pour-souffrir",
+      "day": "2022-10-14",
+      "type": "talk",
+      "title": "Revue de code : on n'est pas venu pour souffrir !",
+      "speakers": [
+        "Anne-Laure de Boissieu — Bedrock"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Passée d'une agence lyonnaise (deux ou trois devs par projet) à Bedrock (plus de 80 devs, revues en anglais), la speaker redoutait les revues de code écrites ; tout s'est bien passé grâce à une convention d'équipe.\n- Prérequis de posture : l'**egoless programming** (Weinberg, 1971). On accepte de se tromper, on n'est pas son code, on critique le code et pas la personne.\n- Exemples de commentaires reçus par son réseau (« poubelle », « mal écrit ») : hors contexte ils blessent, et les emojis restent interprétables.\n- Le standard **Conventional Comments** : un label obligatoire (praise, suggestion, nitpick, issue, question, thought), des décorations (blocking, non-blocking), un sujet et une discussion avec patch ou lien ; il oblige à réfléchir à l'intention avant de publier.\n- Facilitateurs : réponses enregistrées sur GitHub, variantes à base d'emojis ; pour l'onboarding, un buddy et des premières revues à l'oral. Mais la convention ne résout pas un problème humain d'équipe.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "LVh6iQtJW2I",
+        "title": "Revue de code : on n’est pas venu pour souffrir ! - Anne-Laure DE BOISSIEU - Forum PHP 2022",
+        "transcript": true
+      }
+    },
+    {
+      "id": "une-extension-php-rouillee",
+      "day": "2022-10-14",
+      "type": "talk",
+      "title": "Une extension PHP rouillée",
+      "speakers": [
+        "Pierre Tondereau"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Écrire une extension PHP **en Rust plutôt qu'en C**, pour éviter les pièges de gestion mémoire à des développeurs venus de PHP (programme).\n- Présentation de la crate **ext-php-rs**, de l'exposition d'API Rust côté PHP et de l'**automatisation de la distribution** de l'extension (programme).\n- Format court (20 minutes) ; résumé fondé sur le seul descriptif officiel.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "p39ys9TYjdA",
+        "title": "Une extension PHP rouillée - Pierre TONDEREAU - Forum PHP 2022",
+        "transcript": false
+      }
+    },
+    {
+      "id": "drupal-je-vous-10-tout",
+      "day": "2022-10-14",
+      "type": "talk",
+      "title": "Drupal, je vous 10 tout !",
+      "speakers": [
+        "Marine Gandy"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Point sur **Drupal 10**, alors annoncé pour décembre 2022 (programme).\n- Nouveautés : socle **Symfony 6 et PHP 8.1**, éditeur CKEditor 5, thèmes modernes, découplage facilité (programme).\n- Résumé fondé sur le seul descriptif officiel.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "KOtc2QV905A",
+        "title": "Drupal, je vous 10 tout ! - Marine GANDY - Forum PHP 2022",
+        "transcript": false
+      }
+    },
+    {
+      "id": "frankenphp-dans-les-entrailles-de-l-interpreteur-php-de-machines-virtuelles-et-des-threads",
+      "day": "2022-10-14",
+      "type": "talk",
+      "title": "FrankenPHP, dans les entrailles de l'interpréteur PHP, de machines virtuelles et des threads",
+      "speakers": [
+        "Kévin Dunglas — Les-Tilleuls.coop"
+      ],
+      "feedbackFrom": [
+        "Kévin Dunglas (speaker, interview AFUP et billet de blog)",
+        "Grégoire Paris (ManoMano, dev.to, mention)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- FrankenPHP est présenté comme un **serveur d'application bâti sur Caddy**, fait pour les conteneurs : un service, une image, au lieu du couple nginx et PHP-FPM qui partage un socket, compliqué à opérer sous Kubernetes.\n- **Le dépôt est passé en public en direct**, depuis la « danger zone » de GitHub, avec une image Docker que le speaker reconnaît « grosse » et à refaire.\n- Mode worker : l'application Symfony (Runtime, bientôt Laravel Octane) reste en mémoire entre les requêtes. Sur un hello world Symfony « qui vaut ce qu'il vaut », il mesure environ 9,5 ms en FPM, 12,7 ms sans worker et 2,5 ms en worker, avec la consigne de ne pas le mettre en production.\n- **103 Early Hints**, impossibles avec FPM (une seule réponse par requête), deviennent possibles grâce au serveur HTTP de Go. L'API a été conçue avec Nikita Popov et Nicolas Grekas ; Fastly et Google annoncent jusqu'à 30 % de gain de chargement.\n- Sous le capot : cgo, puis le mode ZTS qui ne suffit pas face aux goroutines et aux conflits de signaux, d'où l'isolation de PHP dans ses propres threads. L'opcache ne s'activait pas car la liste des SAPI était codée en dur.\n- Le talk complète explicitement celui de Pascal Martin la veille.\n\n**Contexte et réception** : le billet du speaker daté du même jour annonce la sortie *« during the ForumPHP conference »*. Côté public, seule une mention a posteriori de Grégoire Paris (ManoMano).",
+      "summarySources": [
+        "transcript",
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "aAwBrz8zdbY",
+        "title": "FrankenPHP, dans les entrailles de l'interpréteur PHP, de machines virtuelles et...  - K. DUNGLAS",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ce-qu-un-crash-complet-de-notre-production-nous-a-appris",
+      "day": "2022-10-14",
+      "type": "talk",
+      "title": "Ce qu'un crash complet de notre production nous a appris",
+      "speakers": [
+        "Jean-François Lépine"
+      ],
+      "feedbackFrom": [
+        "Jean-Baptiste Lavaud",
+        "David P",
+        "Alexandre R",
+        "Stéphan",
+        "Jacques Bodin-Hullin",
+        "Xavier Lacot (joind.in)",
+        "Jean-François Lépine (speaker, interview AFUP)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Contexte : une entreprise de 25 personnes avec 15 ans de legacy PHP et deux gros serveurs chez un infogérant. En janvier 2020, l'arrêt d'un hyperviseur fait tomber tous les clusters ; le soir même, on apprend que **les snapshots ne marchent pas**.\n- Leçons sur la doc : automatiser d'abord (fini les 50 pages Word d'installation), rejouer le recouvrement **toutes les nuits** (destruction et reconstruction de la préprod et du stateless), puis seulement écrire une doc d'incident « idiote ».\n- Résilience n'est pas redondance : un Galera à trois nœuds peut tomber en cascade. Passés de 2 à environ 200 serveurs, ils isolent par grappes et silos multi-datacenters et multi-clouds, avec circuit breakers et service dégradé. **L'uptime de 100 % est une vanity metric**.\n- Communication de crise : transparence (exemple de GitLab en 2017), *« avertir avant de corriger »*, un rapporteur désigné, un emoji « KO » qui escalade jusqu'à la direction, de la bienveillance.\n- **« N'avoir confiance en rien »** : failover testé chaque nuit, un backup n'existe que s'il est restauré et redondé (trois datacenters, deux fournisseurs), aucune action en prod sans binôme. « Fini » veut dire monitoré : alertes Prometheus dans les specs, environ 2 500 sondes, un ticket de non-reproduction par anomalie.\n- En questions : du chaos engineering mensuel encore artisanal, et deux ou trois ans de plus estimés pour que cela devienne une culture.\n\n**Côté public** : talk le plus commenté de l'édition sur joind.in (6 avis, 4 à 5/5) : très instructif, bons conseils, didactique et plein de bon sens (Lacot).",
+      "summarySources": [
+        "transcript",
+        "program",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "IY3S4l81aB4",
+        "title": "Ce qu'un crash complet de notre production nous a appris - Jean-François LÉPINE - Forum PHP 2022",
+        "transcript": true
+      }
+    },
+    {
+      "id": "piochons-dans-les-pratiques-de-ddd-programmation-fonctionnelle-and-co-pour-notre-bien-a-toutes-et-tous",
+      "day": "2022-10-14",
+      "type": "talk",
+      "title": "Piochons dans les pratiques de DDD, programmation fonctionnelle and co. pour notre bien à toutes et tous !",
+      "speakers": [
+        "Benjamin Rambaud — ekino"
+      ],
+      "feedbackFrom": [
+        "Questions du public en fin de talk (transcript)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Point de départ : **le contexte décide** (même mot, sens différent ; maturité, équipe, envies). Il distingue la complexité essentielle, la complexité obligatoire et l'accidentelle, le « bulldozer pour manger un yaourt ».\n- Survol de trois sources : l'architecture hexagonale, la programmation fonctionnelle (fonctions pures, immutabilité, value objects avec des withers) et le DDD, présenté comme une philosophie pour domaines complexes. Il traduit l'*ubiquitous language* par « un langage commun dans un contexte donné ».\n- Le fil commun à ces trois approches : **isoler le domaine** du monde extérieur.\n- Cas pratique Drupal, choisi parce qu'il est peu compatible (Active Record, couplage au conteneur) : un évaluateur de naissances isolé en fonction pure, une arborescence de module par domaine, des catégories typées et un service applicatif explicite, sans combattre le framework.\n- Conclusion : apprendre ces pratiques même sans en avoir besoin, pour s'adapter. En questions : faire évoluer l'architecture petit à petit plutôt que tout arrêter trois mois, et comprendre les principes avant les guides par framework.",
+      "summarySources": [
+        "transcript",
+        "program",
+        "slides"
+      ],
+      "video": {
+        "youtubeId": "3zECd_9SP1A",
+        "title": "Piochons dans les pratiques de DDD, programmation fonctionnelle and... - B. RAMBAUD - Forum PHP 2022",
+        "transcript": true
+      }
+    },
+    {
+      "id": "il-etait-une-fois-les-navigateurs",
+      "day": "2022-10-14",
+      "type": "talk",
+      "title": "Il était une fois... les navigateurs",
+      "speakers": [
+        "Noël Macé",
+        "Pierre Tibulle"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Histoire des navigateurs web, **du CERN à aujourd'hui**, et leur avenir possible (programme).\n- Format original : un narrateur et un **illustrateur dessinant en direct** (programme).\n- Résumé fondé sur le seul descriptif officiel.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "1lgTDmBA9TA",
+        "title": "Il était une fois... les navigateurs - Noël MACÉ,Pierre TIBULLE - Forum PHP 2022",
+        "transcript": false
+      }
+    },
+    {
+      "id": "bff-notre-best-friend-forever-pour-faire-plein-d-applications-frontend",
+      "day": "2022-10-14",
+      "type": "talk",
+      "title": "BFF, notre best friend forever pour faire plein d'applications frontend ?",
+      "speakers": [
+        "Valentin Claras — Bedrock"
+      ],
+      "feedbackFrom": [
+        "Questions du public en fin de talk (transcript)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Premier talk du speaker, team leader chez Bedrock (6play, Salto, 45 millions d'utilisateurs). Plus de 100 devs front en 19 équipes maintiennent plus de 100 builds d'applications, parfois bloquées des mois en validation dans les stores.\n- Avant, chaque front appelait chaque API et dupliquait la logique. Depuis 2019, un **layout piloté par le backend** (layout, blocs, items, templates, personnalisation et segmentation) est devenu un Back For Front et une API gateway : navigation, player, règles d'accès, téléchargement.\n- Le revers : un **point unique de défaillance**. Pendant l'Euro 2020, le trafic fait x5 en deux minutes puis x20 au coup d'envoi ; le scaling des pods ne suit pas.\n- Parades : layout dépersonnalisé mis en cache CDN, pré-scaling, stale cache, comportement dégradé (*« dans le doute, il a payé »*), circuit breaker, pages de secours pré-générées sur S3.\n- Effets : co-construction avec les leads front toutes les deux semaines, fronts allégés (player plus rapide) ; mais le BFF devient goulot et se complexifie. Pistes : versioning avec LTS, formulaires, séparer BFF et gateway, peut-être en Go ou avec FrankenPHP.\n- En questions : le BFF agrège sans porter de métier, et ses 10 à 20 appels par requête sont parallélisés en asynchrone.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "pQipUAsvACA",
+        "title": "BFF, notre best friend forever pour faire plein d’applications frontend ? - Valentin CLARAS",
+        "transcript": true
+      }
+    },
+    {
+      "id": "internet-et-la-geopolitique",
+      "day": "2022-10-14",
+      "type": "talk",
+      "title": "Internet et la géopolitique",
+      "speakers": [
+        "Stéphane Bortzmeyer"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Conférence dédiée à Mahsa Amini et ouverte sur un rejet du mot **« cloud »**, *« le mensonge marketing dans toute son horreur »*, qui fait croire à un Internet sans frontières ni matérialité.\n- Exemples : dans les territoires ukrainiens occupés, les autorités russes ont forcé les opérateurs à router via la Russie, pour la surveillance et la censure. Les États-Unis, et dans une moindre mesure le Royaume-Uni, restent des points de transit privilégiés pour l'espionnage.\n- Il distingue le **cœur d'Internet** (câbles, BGP, DNS, relations entre opérateurs) des services. Le cœur reste peu fragmenté, les services sont « régionalisés » ; il se méfie des discours de « fragmentation », hypocrites côté GAFAM comme côté souverainistes.\n- La censure est nationale (en France, surtout par résolveurs DNS menteurs). Le `.com` est géré par Verisign, une entreprise américaine soumise au droit américain ; l'ICANN et le RIPE NCC ont refusé les demandes ukrainiennes de couper la Russie.\n- Interconnexion : en Colombie, le trafic entre opérateurs locaux passe par Miami, alors que la Bolivie impose l'interconnexion locale par la loi. Il pose la question *« la souveraineté de qui, l'État ou le citoyen ? »* et appelle à héberger des sondes RIPE Atlas.\n- Conclusion : on ne peut pas dire *« je produis juste mon code PHP »*, car la géopolitique s'occupera de vous.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "cM7LP_PEAEE",
+        "title": "Internet et la géopolitique - Stéphane BORTZMEYER - Forum PHP 2022",
+        "transcript": true
+      }
+    },
+    {
+      "id": "keynote-de-cloture",
+      "day": "2022-10-14",
+      "type": "keynote",
+      "title": "Keynote de clôture",
+      "speakers": [
+        "Équipe AFUP"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Remerciements aux sponsors (KaraFun en sponsor principal) et aux speakers, avec un appel à leur laisser des retours via les QR codes.\n- Chiffre annoncé : **770 participants**, *« jamais arrivé dans la vie de l'AFUP »*, pour une première édition dans ce lieu.\n- Appels : remplir la 10e édition du baromètre des salaires PHP ; l'AFUP Day 2023 aura lieu le 12 mai 2023 dans plusieurs antennes, CFP ouvert jusqu'au 14 novembre.\n- Seize bénévoles invités sur scène.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "cPW9VfuQ2vg",
+        "title": "Keynote de clôture - Forum PHP 2022",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Keynote d'ouverture (équipe AFUP ; vidéo nxs55WKRyQs, transcript non lu)",
+    "Burger Quiz Sauce AFUP (équipe AFUP)",
+    "Atelier OSS : contribuer à API Platform (Kévin Dunglas)",
+    "Atelier OSS : contribuer à Symfony (Nicolas Grekas)",
+    "Coup de projecteur : la tech chez Yousign (Pierre Klopfer)",
+    "Coup de projecteur : être dev PHP chez Klaxoon (Benjamin Letrou)",
+    "Coup de projecteur : Casse-tête challenge (Bedrock)",
+    "Coup de projecteur : challenges Sensio & Smile",
+    "Coup de projecteur : Security Quizz (YesWeHack)",
+    "Coup de projecteur : découverte d'API Platform 3 (Antoine Bluchet, Les-Tilleuls.coop)"
+  ],
+  "sources": [
+    {
+      "label": "Programme officiel Forum PHP 2022 (AFUP)",
+      "url": "https://event.afup.org/forum-php-2022/programme/"
+    },
+    {
+      "label": "Playlist YouTube Forum PHP 2022 (AFUP), transcripts automatiques de 16 vidéos lus",
+      "url": "https://www.youtube.com/playlist?list=PL9zDdgiGjkIcN0fBpm7NX3ZC5Fh7e00Mj"
+    },
+    {
+      "label": "joind.in : 29 commentaires sur les talks (API, événement 8110)",
+      "url": "https://api.joind.in/v2.1/events/8110/talk_comments"
+    },
+    {
+      "label": "Interviews speakers « La parole est aux speakers » (AFUP)",
+      "url": "https://event.afup.org/category/forum-php-2022"
+    },
+    {
+      "label": "Interview Jean-François Lépine (AFUP)",
+      "url": "https://event.afup.org/forumphp2022-interview-jean-francois-lepine/"
+    },
+    {
+      "label": "Interview Kévin Dunglas (AFUP)",
+      "url": "https://event.afup.org/forumphp2022-interview-kevin-dunglas/"
+    },
+    {
+      "label": "Interview Hélène Maitre-Marchois et Mathieu Marchois (AFUP)",
+      "url": "https://event.afup.org/forumphp2022-interview-helene-maitre-marchois-et-mathieu-marchois/"
+    },
+    {
+      "label": "Interview Sarah Haïm-Lubczanski (AFUP)",
+      "url": "https://event.afup.org/forumphp2022-interview-sarah-haim-lubczanski/"
+    },
+    {
+      "label": "Interview Nicolas Grekas (AFUP)",
+      "url": "https://event.afup.org/forumphp2022-interview-nicolas-grekas/"
+    },
+    {
+      "label": "Interview George Banyard (AFUP)",
+      "url": "https://event.afup.org/forumphp2022-interview-george-banyard/"
+    },
+    {
+      "label": "Interview Bastien Jaillot (AFUP)",
+      "url": "https://event.afup.org/forumphp2022-interview-bastien-jaillot/"
+    },
+    {
+      "label": "Kévin Dunglas, FrankenPHP: The Modern PHP App Server, written in Go (14/10/2022)",
+      "url": "https://dunglas.dev/2022/10/frankenphp-the-modern-php-app-server-written-in-go/"
+    },
+    {
+      "label": "Benjamin Rambaud, slides « Melting Pots Of Tools Theory etc » (GitLab)",
+      "url": "https://gitlab.com/beram-presentation/melting-pots-of-tools-theory-etc-forum-php-2022"
+    },
+    {
+      "label": "Grégoire Paris (ManoMano), Feedback on SFCon 2022, dev.to (mention du talk FrankenPHP)",
+      "url": "https://dev.to/manomano-tech-team/feedback-on-sfcon-2022-1pe5"
+    },
+    {
+      "label": "Auteurs des commentaires joind.in : Jean-Baptiste Lavaud, David P, Alexandre R, Stéphan, Jacques Bodin-Hullin, Xavier Lacot, Rémy Turpault, Damien Tricard, Londiche, Remi Faviez, Joubert, Dominique Thomas, Guillaume, Anouk Moutounet, Mathieu Santostefano, Jordan Aubert, Alexandre Bocho. Aucun post LinkedIn lu."
+    }
+  ]
 }

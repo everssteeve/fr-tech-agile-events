@@ -2,12 +2,341 @@
   "event": "volcamp",
   "year": 2022,
   "title": "Volcamp 2022",
+  "edition": "2e édition",
   "start": "2022-10-13",
   "end": "2022-10-14",
   "city": "Clermont-Ferrand",
   "venue": "Hall 32",
   "url": "https://2022.volcamp.io",
+  "programUrl": "https://2022.volcamp.io/talks",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "Première édition en présentiel, après une édition 2021 100 % en ligne. Le blog OVHcloud annonce plus de 450 participants, 3 keynotes, plus de 60 conférences et 30 sponsors ; Karim Pinchon parle d'environ 400 participants. Quatre salles (Auditorium, Mezzanine, Showroom, Formation pour les ateliers), formats keynote, conférence, REX, lightning talk et atelier de 2 h ; pistes Lang. & Frameworks, BigData & AI, Web & Mobile, Archi Perf et Sécu, DevOps & Cloud, UX/UI et Découverte.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-06",
+  "revisit": "Retours de participants minces : deux billets de blog de Karim Pinchon (lui-même speaker) et un billet collectif de l'équipe DevRel OVHcloud (speakers pour la plupart) ; aucun post LinkedIn trouvé, rien sur Speaker Deck ni dev.to. Les transcripts des 16 sessions documentées ont été lus, il ne reste donc à trouver que des retours publics. Pistes : posts LinkedIn des speakers et participants, replay Twitch de l'équipe OVHcloud, vidéos des talks sans aucun retour (Kafka, Kubernetes, Quarkus, PHP, Apache Pinot) et transcripts des deux sessions sans vidéo rattachée (Apéro IoT, logs).",
+  "corpus": "Programme officiel complet (2022.volcamp.io : 5 créneaux pléniers, environ 50 conférences, REX et lightning talks, 6 ateliers) ; transcripts automatiques YouTube de 16 sessions de la playlist officielle (les 3 keynotes et 13 talks) ; deux billets de blog de Karim Pinchon (16 et 22 octobre 2022) couvrant 13 sessions ; un billet de l'équipe DevRel OVHcloud (Stéphane Philippart, Aurélie Vache, Thierry Chantier, 7 novembre 2022) sur ses propres talks et sa vie de conférence.",
+  "limits": "Trois billets seulement, tous écrits par des speakers de l'édition, et le billet OVHcloud parle surtout des talks de son équipe : la synthèse repose donc d'abord sur ce que les speakers disent sur scène. Transcripts automatiques de qualité variable (noms propres, chiffres et termes techniques parfois déformés) ; celui de la keynote de Ludovic Cinquin commence en cours de talk. Deux sessions documentées n'ont pas de vidéo rattachée, et la grande majorité du programme (ateliers compris) n'a été ni lue ni commentée.",
+  "tldr": "Pour sa **première édition en présentiel**, Volcamp réunit environ 400 à 450 personnes au Hall 32 autour d'un programme **DevOps et Java** et de trois keynotes qui prennent de la hauteur : **partager à sa manière** (Aurélie Vache), **indépendance technologique européenne** (Stéphane Messika) et **trois scénarios pour la tech des 10 prochaines années**, avec l'idée d'une *« right tech »* (Ludovic Cinquin).",
+  "keyTakeaways": [
+    "S'accorder **30 minutes à 1 heure par semaine** hors du quotidien pour laisser vivre sa créativité, et partager pour aider plutôt que pour les likes (Vache).",
+    "Se former à l'**éco-conception**, cultiver son adaptabilité et oser *« lever la main »* sur les projets qui ne passent pas les critères de la right tech (Cinquin).",
+    "Dans un post-mortem, partir de **faits datés**, cibler par vote, analyser (cinq pourquoi, arête de poisson) et finir sur des actions avec un **responsable du suivi** et une date : *« doux avec les gens, dur avec les process »* (Quesnel).",
+    "Penser **cycle de vie** des composants et des certificats, limiter les paramètres, et ne mettre **aucun secret** dans le dépôt GitOps : un coffre-fort et un gestionnaire de configuration avec cache local (Morisseau).",
+    "Face à l'enfer des dépendances, **changer d'abord la relation** entre équipes (client-fournisseur, swarming, pair et mob programming) avant le design, loi de Conway oblige (Maurin, Leboncoin).",
+    "**Changer de job quand tout va bien**, et juger une entreprise sur cinq critères : salaires au marché, vraie culture DevOps, pas de culture du blâme et espaces sûrs, télétravail, craft (Cavaillès).",
+    "Intégrer la sécurité **dès la conception** et dans la definition of done : scan d'images et de dépendances, détection de secrets, signature des artefacts, SIEM, et penser la fin de vie du produit (Aparicio).",
+    "Pour un projet de jeu (ou tout projet solo) : **un premier jet complet avant de polir**, se méfier du feature creep et de l'over-engineering, tout versionner, et budgéter le marketing (Aubineau)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-apprendre-et-partager-autrement",
+      "day": "2022-10-13",
+      "type": "keynote",
+      "title": "Keynote : (et si on apprenait à) Apprendre et partager autrement",
+      "speakers": ["Aurélie Vache — OVHcloud"],
+      "feedbackFrom": ["Karim Pinchon (blog)", "Blog OVHcloud (speaker)"],
+      "summary": "- **Sur scène** : nous sommes tous différents mais l'école et les livres font apprendre de la même manière ; récit d'une enfance entre Lego et dessin, de passions abandonnées dans les études et le travail.\n- Pendant le premier confinement, elle dessine un pod Kubernetes comme un Pokémon : de là viennent des ebooks, un livre papier, des vidéos et un talk sans PC ni slides, avec Pokéballs et cartons, pour quelqu'un qui *« faisait des crises de panique »* à l'idée de parler.\n- Partager autrement sert d'abord la **neurodiversité** (dys, TDAH, HPI) et les juniors ; conseil de prendre *« 30 minutes une heure par semaine »* pour marcher, jouer, coudre, sortir du quotidien.\n- Messages finaux : rester soi-même sans entrer dans les cases, écouter activement, et créer du contenu *« non pas pour vous mettre en avant »* mais pour les autres.\n- **Côté participants** : Karim Pinchon y voit une keynote *« sympa »* et un beau parcours ; selon la speaker (blog OVHcloud), le mot le plus entendu ensuite a été *« inspiring »*, après 3 mois et demi de préparation.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "kGDWw7XdZo0",
+        "title": "(et si on apprenait à) Apprendre et partager autrement (Aurélie Vache)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "keynote-soyons-fashion-souverainete-technologique",
+      "day": "2022-10-13",
+      "type": "keynote",
+      "title": "Keynote : Soyons Fashion, parlons de souveraineté technologique",
+      "speakers": ["Stephane Messika"],
+      "feedbackFrom": [],
+      "summary": "- **Sur scène** : quatre scénarios issus d'un exercice de *design fiction* mené pendant le confinement avec une trentaine d'amis : une taxe américaine sur l'usage du cloud par les Européens en 2028, des chipsets 5G et du code suspects qui font couper des programmes militaires, une épidémie soignable seulement grâce aux données ADN d'une startup américaine, une Chine sans criminalité grâce à la surveillance.\n- Vote à main levée : la salle juge les deux premiers (menaces) plus probables que les deux derniers (opportunités manquées par choix éthique).\n- **Quatre leviers** : législation (arrêt Schrems, Privacy Shield), investissement, **choix des combats** (refaire un cloud ou bâtir sur Bleu, S3NS et les couches hautes), coopération ; la salle se répartit sans consensus.\n- Il dit préférer *« indépendance »* à *« souveraineté »*, rappelle avoir choisi Microsoft par pragmatisme pour héberger la plateforme de données de santé, et plaide pour assouplir le RGPD dans les espaces d'entraînement de l'IA.\n- Rôle de la communauté tech : une **prise de conscience** dans chaque choix ; rester travailler à Clermont-Ferrand en fait partie. En Q&R : manque de fonds européens de fin de croissance, manque de pédagogie de la CNIL.\n- Aucun retour de participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "4Jbav2b82E0",
+        "title": "Soyons Fashion - Parlons de souveraineté technologique (Stéphane Messika)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "pause-fraicheur-elixir-au-menu",
+      "day": "2022-10-13",
+      "type": "talk",
+      "title": "Pause fraîcheur : Elixir au menu !",
+      "speakers": ["Jonathan Hervault — Michelin", "Emilien Mottet — Michelin"],
+      "feedbackFrom": ["Karim Pinchon (blog)"],
+      "summary": "- **Sur scène** : deux développeurs de Michelin, en production depuis environ deux ans et demi sur Elixir, après la refonte de la plateforme européenne de prise de commande B2B avec KBRW ; ils préviennent qu'ils ne présentent pas *« le meilleur langage »*.\n- Live coding d'un bot Telegram de suggestion de films, public dans la salle : pattern matching jusqu'aux valeurs, REPL, pipe `|>`, streams paresseux, parallélisme avec `Task.async_stream`, le tout en une vingtaine de lignes.\n- Moment fort : un **patch à chaud** du nœud de production, sans redémarrage, pour corriger une saisie d'utilisateur ; la V1 du module finit ses appels pendant que la V2 prend les nouveaux.\n- Phoenix comme porte d'entrée (web dynamique sans JavaScript) ; en Q&R, KBRW évoque des millions de processus légers par machine contre quelques dizaines de milliers de threads en JVM.\n- **Côté participants** : pour Karim Pinchon, *« l'une des meilleures présentations »* des deux jours, interactive et accessible à un novice en fonctionnel.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "pc71v5dAgtk",
+        "title": "Pause fraîcheur - Elixir au menu ! (Jonathan Hervault, Emilien Mottet)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "detecteur-de-deepfakes-pour-100-euros",
+      "day": "2022-10-13",
+      "type": "talk",
+      "title": "Comment j'ai développé le détecteur de deepfakes le plus puissant du monde pour 100€",
+      "speakers": ["Mathis Hammel — CodinGame"],
+      "feedbackFrom": ["Karim Pinchon (blog)"],
+      "summary": "- **Sur scène** : un jeu en ouverture montre que la salle ne reconnaît la vraie photo que dans un quart des cas ; les faux comptes utilisent les visages de thispersondoesnotexist.com (StyleGAN2).\n- Vulgarisation des GAN (générateur contre discriminateur, surapprentissage, effondrement de mode) : battre le discriminateur de Nvidia n'est pas réaliste, il faut donc *« tricher »*.\n- **Deux failles** : les yeux toujours au même endroit (hérité du jeu de données FFHQ, qui contient même Mark Zuckerberg) et un cache global qui sert la même image à tout le monde toutes les 1,2 s, soit environ 72 000 images par jour que l'on peut toutes aspirer.\n- Stockage réduit par des embeddings FaceNet de 2 Ko et une recherche de plus proches voisins dans Elasticsearch, sur une Jetson Nano ; démo sur environ 16 millions de visages, avec l'heure de génération qui aide à situer ou regrouper des comptes.\n- Limites assumées : un StyleGAN2 lancé chez soi échappe à l'outil, open source et *« éducatif »* ; il trouve *« assez effrayant »* de faire tourner une telle reconnaissance faciale en une semaine.\n- **Côté participants** : Karim Pinchon salue une présentation *« fun et ludique »* et très bien vulgarisée.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "VOaIFC5MsfE",
+        "title": "Comment j'ai développé le détecteur de deepfakes le plus puissant du monde pour 100€ (Mathis Hammel)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "et-si-on-essayait-plutot-que-de-tout-lancer-par-la-fenetre",
+      "day": "2022-10-13",
+      "type": "lightning",
+      "title": "Et si on essayait plutôt que de tout lancer par la fenêtre ?",
+      "speakers": ["Anthony Roux — CGI"],
+      "feedbackFrom": ["Karim Pinchon (blog)"],
+      "summary": "- **Sur scène** : une erreur est une **relation de confiance** entre deux fonctions, souvent trahie (le `save` du CrudRepository de Spring peut lever une exception non déclarée).\n- Codes de retour et retours multiples à la Go polluent le code ; les exceptions séparent mieux les responsabilités mais agissent comme des *goto* et déresponsabilisent (*« il y aura bien quelqu'un pour la catcher »*).\n- Troisième voie : le `Try` de **Vavr**, conteneur monadique comparé à `Optional` ; `map` et `flatMap` chaînent la logique métier, l'erreur devient une valeur qui ne se traite qu'à la fin, y compris dans les streams et pour les erreurs fonctionnelles.\n- Limites : `Try` devient vite trop central, ne convient pas au *fail fast*, et s'intègre mal à l'API native.\n- **Côté participants** : Karim Pinchon, ami du speaker, juge la présentation claire et structurée.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "jbI-uKusKcs",
+        "title": "Et si on essayait plutôt que de tout lancer par la fenêtre ? (Anthony Roux)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "si-on-aidait-le-capitaine-nemo-a-classifier-les-monstres-marins",
+      "day": "2022-10-13",
+      "type": "talk",
+      "title": "Si on aidait le capitaine Némo à classifier les monstres marins ?",
+      "speakers": ["Eléa Petton — OVHcloud", "Stéphane Philippart — OVHcloud"],
+      "feedbackFrom": ["Blog OVHcloud (speaker)"],
+      "summary": "- **Sur scène** : une ingénieure machine learning et un DevRel posent les définitions (IA, machine learning, deep learning, apprentissages supervisé, non supervisé, par renforcement) puis les familles NLP, vision et audio.\n- **La donnée d'abord** : selon Eléa Petton, la préparation fait *« plus de 60 % du travail »* ; environ 12 000 sons de 45 espèces, réduits à 26 caractéristiques extraites avec librosa dans un CSV, le nom de fichier étant retiré pour ne pas *« tricher »*.\n- Démo JupyterLab : réseau TensorFlow avec ReLU, softmax et dropout, découpage 80/20, environ 94 % de précision, jugé suffisant pour des dauphins mais pas pour *« une voiture autonome »*.\n- Application Flask plus Streamlit qui reconnaît un dauphin en direct ; code sur GitHub, et un passage promotionnel sur les offres IA d'OVHcloud.\n- Aucun retour de participant trouvé en dehors du blog de l'équipe des speakers.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "TiDlMhzCRy8",
+        "title": "Si on aidait le capitaine Némo à classifier les monstres marins ? (Eléa Petton, Stéphane Philippart)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-voyage-du-heros-de-l-it",
+      "day": "2022-10-13",
+      "type": "talk",
+      "title": "Le voyage du héros de l'IT",
+      "speakers": ["Olivier Beautier — OVHcloud"],
+      "feedbackFrom": ["Karim Pinchon (blog)", "Blog OVHcloud (speaker)"],
+      "summary": "- **Sur scène** : un ancien de l'armée de l'air puis du Crédit Mutuel, devenu DevRel en décembre 2021, découvre le *Guide du scénariste* de Christopher Vogler (d'après Joseph Campbell) par le théâtre d'improvisation ; il raconte une première version de ce talk *« cata »*, dont il n'avait pas fait la moitié au bout d'une heure.\n- Les douze étapes (monde ordinaire, appel, refus, mentor, seuil, épreuve suprême, retour avec l'élixir) et les archétypes, dont le **gardien du seuil**, à rapprocher du *gatekeeping* : une épreuve à contourner, pas un ennemi.\n- Conseil central : **le héros, c'est vous, pas le produit** ; exposer les problèmes sans livrer la solution trop tôt, citer ses mentors, montrer les échecs, et offrir l'élixir à la communauté.\n- Longue séance de questions : Pixar pitch, rythme, recrutement vu comme un gardien du seuil, juniors et syndrome de l'imposteur.\n- **Lecture critique** : Karim Pinchon trouve le sujet *« peu convaincant »*, trop centré sur les récits, avec un lien à l'IT tardif et environ 25 minutes de talk sur 45.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "VzHuV42G_5U",
+        "title": "Le voyage du héros de l'IT (Olivier Beautier)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-securite-des-la-conception-du-projet",
+      "day": "2022-10-13",
+      "type": "talk",
+      "title": "La sécurité dès la conception du projet",
+      "speakers": ["David Aparicio — OVHcloud"],
+      "feedbackFrom": ["Blog OVHcloud (speaker)"],
+      "summary": "- **Sur scène** : la sécurité est traitée *« comme la documentation »*, plus tard ; le speaker (équipe Big Data d'OVHcloud) suit le cycle DevSecOps d'un document du ministère américain de la Défense.\n- Pièges : images Docker et dépendances de dépendances vulnérables, configurations par défaut (l'API GraphQL ouverte en écriture de l'application Elyze), données personnelles affichées inutilement, exfiltration par DNS, et un OWASP Top 10 qui bouge peu en dix ans.\n- Bonnes pratiques : moindre privilège, images minimales, bastion, SIEM, MFA, secrets en coffre-fort, sauvegardes déconnectées ; il cite une étude de 2017 selon laquelle 98 % des extraits de Stack Overflow contiendraient une faille, et le risque de Copilot.\n- Démo : CodeQL dans GitHub Actions signale un serveur Go sans timeout ; puis GitGuardian, Sonar, Snyk, signature (Notary, cosign, in-toto), Argo CD pour la dérive, Falco, OpenCVE, et la **fin de vie** à planifier (l'exemple de Windows XP).\n- En Q&R : des *security champions* transverses et la sécurité dans la definition of done, qu'il a apprise sous audit PCI DSS. Aucun retour de participant hors blog OVHcloud.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "m12Sa2fB308",
+        "title": "La sécurité dès la conception du projet (David Aparicio)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-grande-demission",
+      "day": "2022-10-13",
+      "type": "talk",
+      "title": "La grande démission : est-ce qu'on va tous changer de job en 2022 ?",
+      "speakers": ["Damien Cavaillès — WeLoveDevs"],
+      "feedbackFrom": ["Karim Pinchon (blog)"],
+      "summary": "- **Sur scène** : talk interactif avec Slido (environ 90 votants) ; aux États-Unis, la reprise provoque des vagues de démissions et de départs en retraite anticipés ; dans la salle, environ 63 % disent avoir revu leurs attentes envers leur employeur avec la pandémie.\n- Le **contrat psychologique** (ce qui n'est pas écrit) et la confiance se sont abîmés avec le management à distance ; le *quiet quitting* est une vieille réalité devenue un mot.\n- Marché français : salaire médian des développeurs inscrits sur WeLoveDevs passé de 37 à 40 k€ selon lui, puis guerre, Nasdaq en baisse, licenciements et inflation (*« des gnocchis en moins »*) : la fenêtre se referme.\n- **Cinq critères** pour juger son entreprise : salaires au marché, vraie culture DevOps, pas de culture du blâme et des espaces sûrs pour remonter les problèmes (exemples de harcèlement sans recours), télétravail complet (qui ouvre aussi la concurrence), craft partagé plutôt qu'élitiste.\n- En Q&R, il défend le turnover et raconte demander à ses salariés de ramener des offres d'ailleurs. *« On démissionne quand tout va bien. »*\n- **Côté participants** : Karim Pinchon trouve le talk utile sur les tendances, *« pas forcément représentatif de toutes les entreprises »*.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "jBaD-ZyCdgA",
+        "title": "La grande démission - est-ce qu'on va tous changer de job en 2022 ? (Damien Cavailles)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-post-mortems-ou-comment-sortir-heureux-d-un-carnage",
+      "day": "2022-10-13",
+      "type": "talk",
+      "title": "Les post-mortems ou comment sortir heureux d'un carnage",
+      "speakers": ["Lise Quesnel"],
+      "feedbackFrom": ["Karim Pinchon (blog)"],
+      "summary": "- **Sur scène** : le post-mortem diffère de la rétrospective : ponctuel, sur un événement, avec toutes les personnes impliquées ; fil rouge d'une attaque DDoS fictive (*« premier cadavre »*, 2 000 demandes au support en une heure, 3 millions d'utilisateurs touchés).\n- Préparation : bon moment, bonnes personnes, un animateur **extérieur** à l'événement, un gardien du temps, un scribe ; un cadre (critiquer les process, pas les personnes, écoute active).\n- Déroulé : frise de faits datés et objectifs, ciblage par *dotting* ou vote par émotion, analyse (cinq pourquoi, arête de poisson, experience map dérivée), brainstorming, puis actions avec un **responsable du suivi** distinct de celui qui réalise et une date.\n- En Q&R : 2 à 3 heures, 8 personnes au plus, une par équipe si besoin ; un participant de Doctolib décrit un scribe dans la *war room* qui prépare la frise.\n- *« Soyez doux avec les gens, durs avec les process. »*\n- **Côté participants** : Karim Pinchon juge le sujet clair et les slides efficaces, mais 26 minutes trop courtes pour le créneau.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "4UL_WAQOQq0",
+        "title": "Les post-mortems ou comment sortir heureux d’un carnage (Lise Quesnel)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "l-apero-iot",
+      "day": "2022-10-13",
+      "type": "talk",
+      "title": "L'Apéro IoT",
+      "speakers": ["Philippe Charrière", "Thierry Chantier — OVHcloud", "Louis Tournayre"],
+      "feedbackFrom": ["Blog OVHcloud (speaker)"],
+      "summary": "- **Selon le blog de l'équipe d'un des speakers** : un format participatif façon *cocktail* pour aider le public à lancer un premier projet IoT.\n- Tour d'horizon du matériel, des SDK et des langages, avec l'objectif que chacun reparte avec des idées de projets à tester.\n- Thierry Chantier raconte aussi une longue discussion IoT imprévue avec Paul Pinault le lendemain matin, signe des échanges de couloir. Aucun retour de participant trouvé, pas de vidéo rattachée.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "keynote-day-2-ludovic-cinquin",
+      "day": "2022-10-14",
+      "type": "keynote",
+      "title": "Keynote day#2 : la tech des 10 prochaines années",
+      "speakers": ["Ludovic Cinquin — OCTO Technology"],
+      "feedbackFrom": ["Karim Pinchon (blog)"],
+      "summary": "- **Sur scène** (transcript commencé en cours de talk) : une matrice des technologies, du quantique à l'IA jugée *« la plus disruptive »*, en passant par le low-code, *« le loser de la bande »* qui répond pourtant à la pénurie de compétences, et un web 3.0 qu'il pense surestimé.\n- **World tech companies** : des écosystèmes dont on ne sort pas ; il compare le chiffre d'affaires d'Apple au PIB du 32e pays et cite le mouvement Calexit.\n- **Digital cold war** : Chine, États-Unis et UE (qui utilise la régulation comme arme) ; avantage chinois par les données et le nombre d'ingénieurs, une hypothèse qu'il dit ne pas avoir pu valider.\n- **Digital detox** : 12 à 18 ans de réserves pour certains minerais des terminaux, électricité incertaine l'hiver, une transaction Bitcoin comparée à un aller-retour Paris-New York (chiffre qu'il ne peut *« pas garantir »*).\n- **Right tech** (concept de Roland Lehoucq et deux coauteurs) : respect de l'objet, de l'usage, de l'environnement et de l'humain ; il appelle à l'éco-conception, à l'adaptabilité, à la *« hacker way »* et à un *« devoir de résistance citoyenne »*.\n- **Côté participants** : Karim Pinchon en tire 7 pages de notes et juge que prendre de la hauteur *« fait du bien »*.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "WoF078O8wlk",
+        "title": "Keynote Day#2 (Ludovic Cinquin)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-casser-sa-prod-avec-des-logs",
+      "day": "2022-10-14",
+      "type": "talk",
+      "title": "Comment casser sa prod avec des logs ? (En toute efficacité)",
+      "speakers": ["Clément Grégoire", "Cédric Charière--Fiedler"],
+      "feedbackFrom": ["Karim Pinchon (blog)"],
+      "summary": "- REX centré sur **ce qu'il ne faut pas faire** : vérifier que les logs existent, sont accessibles et pas trop lourds ; le logging n'est pas du tracing ; trop de données non pertinentes coûte cher, d'où rotation et purge.\n- Un log utile est **structuré et contextualisé** ; le logging asynchrone est jugé intéressant et peu pratiqué.\n- Pièges : trop de fichiers dans un dossier, un fichier partagé par de nombreux processus (*race conditions*), base de logs saturée, changement de niveau mal validé (*fail fast*), injection via les valeurs loggées (Log4J), bibliothèque maison lente.\n- L'exemple des **logs qui génèrent des logs** (une requête HTTP déclenchée par un log qui plante) est jugé *« priceless »*.\n- Résumé tiré du seul billet de Karim Pinchon (pas de vidéo rattachée), qui trouve le talk dense et bien illustré.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "gitops-continuous-delivery-et-environnements",
+      "day": "2022-10-14",
+      "type": "talk",
+      "title": "GitOps, Continuous Delivery et environnements : comment éviter l'enfer ?!",
+      "speakers": ["Philippe Morisseau — onepoint"],
+      "feedbackFrom": ["Karim Pinchon (blog)"],
+      "summary": "- **Sur scène** : suite d'un talk sur le DevOps qui *« part en vrille »* ; cinq risques : configuration liée à la fois à l'environnement et à la version, rollback de configuration pour un hotfix, variables communes, certificats oubliés, changement du processus de livraison qui casse une ancienne branche.\n- Réponses : simplifier l'architecture sans dogme (un gros monolithe a aussi ses coûts), **penser cycle de vie** (déployer ensemble ce qui évolue ensemble, inscrire les certificats), supprimer les paramètres inutiles ou redondants, versionner chaque changement du processus de mise en production.\n- GitOps, inutile pour un monolithe : le push de configuration casse si un composant est tombé, le pull depuis Git en prod fâche le RSSI ; d'où un mix avec un **gestionnaire de configuration** versionné.\n- Jamais de secrets ni de certificats dans le dépôt, mais un coffre-fort ; et un cache local, car le gestionnaire devient un point de défaillance unique.\n- **Côté participants** : Karim Pinchon parle d'un *« très bon talk »*, structuré, qui reste théorique sans dépendre des outils.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "IMfX309-IyQ",
+        "title": "GitOps, Continuous Delivery et environnements - Comment éviter l'enfer ?! (Philippe Morisseau)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-verticalisation-du-bon-coin",
+      "day": "2022-10-14",
+      "type": "talk",
+      "title": "La verticalisation du Bon Coin",
+      "speakers": ["Simon Maurin — Leboncoin"],
+      "feedbackFrom": ["Karim Pinchon (blog)"],
+      "summary": "- **Sur scène** : après une organisation inspirée de Spotify en 2017 et un passage d'environ 100 à 400 personnes côté produit, la création d'équipes verticales en 2020 (immobilier, vacances, emploi) crée un réseau de dépendances : afficher un salaire sur une annonce d'emploi peut prendre deux à trois mois.\n- Symptômes : négociations de roadmap trimestrielles, rendez-vous ratés, charge cognitive, *« tourisme du code »*.\n- Plan en quatre points : relation **client-fournisseur**, **swarming** des développeurs verticaux dans les équipes parcours (pair et mob programming), developer experience, plateformes ; inspiré de *Team Topologies* et de la loi de Conway, il commence par changer la relation avant le design.\n- Bilans contrastés : réussite sur la recherche (index et scoring par marché, A/B testing), plateforme d'annonces bien conçue mais construite seule et peu adoptée, équipe paiement sans bande passante.\n- Résultats annoncés : trois fois plus de fonctionnalités verticales, +50 % d'efficacité vendeur, entrée dans le top 10 des e-commerçants français ; conditions : changer d'état d'esprit et dédier des ressources.\n- **Côté participants** : Karim Pinchon recommande la vidéo, difficile à résumer tant elle mêle business, technique et process.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "FrwPJjWnlSo",
+        "title": "La verticalisation du Bon Coin (Simon Maurin)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "creer-un-jeu-video-en-solo",
+      "day": "2022-10-14",
+      "type": "talk",
+      "title": "Créer un jeu vidéo en solo : une quête en mode difficile",
+      "speakers": ["Pierre-Marie Aubineau — CGI"],
+      "feedbackFrom": ["Thierry Chantier (blog OVHcloud)"],
+      "summary": "- **Sur scène** : un consultant de CGI a sorti seul sur Steam, le 30 juin 2021, un jeu de bille sur plateau inspiré des labyrinthes en bois ; il a tout fait sauf le moteur (Unity) et les bruitages : C#, modélisation Blender, musique, game et level design.\n- Bases du game design : la **boucle de gameplay** (action, feedback) et ses dérives addictives ; outils maison dans Unity et préfabs pour itérer.\n- Erreurs racontées : polir niveau par niveau au lieu d'un premier jet complet, un *game manager* devenu *god object*, 15 mois de travail au lieu des 3 prévus, du crunch en fin de projet.\n- **Échec marketing** : aucun budget alors que la règle serait de 25 à 50 % du coût de production pour un indé, environ 1 000 sorties par mois sur Steam, des ventes surtout à des proches et des demandes de clés gratuites revendues.\n- Conseils : démarrer petit, éviter feature creep et over-engineering (il a recodé un système de traduction qu'Unity fournissait), tout versionner, tester tôt avec des joueurs, essayer les game jams.\n- **Côté participants** : seul retour, celui de Thierry Chantier (blog OVHcloud), qui retient les compétences hors code et l'échec marketing.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "RTE0EzaBeFY",
+        "title": "Créer un jeu vidéo en solo - une quête en mode difficile (Pierre-Marie Aubineau)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-place-de-la-tech-dans-l-agriculture",
+      "day": "2022-10-14",
+      "type": "talk",
+      "title": "GPS précis, ISOBUS, coupure de sections, drones, robots, analyses : la place de la tech dans l'agriculture d'aujourd'hui",
+      "speakers": ["Mathieu Passenaud"],
+      "feedbackFrom": ["Karim Pinchon (blog)"],
+      "summary": "- **Sur scène** : un développeur issu d'une famille d'agriculteurs, qui veut répondre à l'*agribashing*, raconte ce qu'il voit chez des amis exploitants ; il insiste sur le fait que ce sont des technologies déjà répandues, pas des prototypes.\n- Exemples : traite robotisée avec identification RFID, pression des pneus calculée (application Michelin) et ajustée en roulant contre le tassement, binage guidé par caméra à moins d'un centimètre, tri des tomates et des grains par vision, moissonneuse qui reste à plat.\n- **GPS RTK** au centimètre grâce à des stations de base (dont le réseau collaboratif Centipede), conduite et boîte de vitesse automatiques ; en Australie, des lentilles semées entre les chaumes de blé espacés de 10 cm.\n- **ISOBUS**, coupure de sections et cartes de modulation : moins d'intrants et de recouvrement, pour une option GPS de 8 000 à 15 000 € ; en Q&R, l'enfermement chez un constructeur et les tracteurs bloqués s'ils sont modifiés.\n- Il conclut sur le respect des agriculteurs et rappelle *« qu'en France il y a un agriculteur qui se suicide par jour »*.\n- **Côté participants** : Karim Pinchon parle d'un talk de culture générale, pas spectaculaire techniquement mais *« impressionnant »* par l'usage.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "ERPR2oXr-Ko",
+        "title": "GPS précis, ISOBUS, drones... la place de la tech dans l'agriculture d'aujourd'hui (M. Passenaud)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "powerful-cache-system-using-go",
+      "day": "2022-10-14",
+      "type": "talk",
+      "title": "How I made a powerful cache system using Go",
+      "speakers": ["Sylvain Combraque"],
+      "feedbackFrom": ["Karim Pinchon (blog)"],
+      "summary": "- **Sur scène** : un freelance et contributeur open source, gêné par l'absence de cache dans Traefik, apprend Go et écrit **Souin**, un cache HTTP alternatif à Varnish, aujourd'hui utilisé par Caddy et disponible comme plugin Traefik, Tyk, WordPress ou Prestashop.\n- Démo : un binaire Caddy compilé avec le module, une réponse de 3 s servie ensuite depuis le cache avec l'en-tête Cache-Status.\n- Go par l'exemple : goroutines et channels pour le *request coalescing* (singleflight), interfaces pour brancher plusieurs stockages (Badger, Olric, Redis, etcd), middlewares, API de purge et clés de substitution (*surrogate keys*) relayées vers Cloudflare, Akamai ou Fastly.\n- La difficulté principale : des **RFC** de plus de 40 pages (cache HTTP, Cache-Status, CDN-Cache-Control) ; CI GitHub Actions, tests Newman, GoReleaser ; environ 3 800 requêtes par seconde annoncées, sans comparaison avec Varnish à machine égale.\n- **Côté participants** : Karim Pinchon apprécie le sujet mais trouve la fin, chargée en code, moins captivante.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "fWW8EDHkYJE",
+        "title": "How I made a powerful cache system using Go (Sylvain Combraque)",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Workshop Kafka Streams 101 (Victor Gallet), atelier",
+    "Service Level Observability, in Service Quality we Trust ! (Guillaume Serre, Guillaume Hospital)",
+    "Développeur à 50 ans (Benjamin Marron)",
+    "Cargo ou comment étendre le tooling Rust à l'infini ! (Anthony Pena)",
+    "Faites décoller vos applications Android avec Jetpack Compose (Gauthier Poulet)",
+    "Introduction à Remix (Johann Rakotoharisoa)",
+    "Micro-frontends : investigations sur les usages, les contraintes et les solutions (Sébastien Oddo)",
+    "Devenir svelte avec Svelte (Anthony Le Goas, Patrice De Saint Steban), atelier",
+    "Développer des applications Kafka et Kafka Streams avec Quarkus (Daniel Petisme)",
+    "Drogué à l'hexagone, NestJS pourrait-il me sauver ? (Nicolas Giraud)",
+    "Reactive Streams. 4 interfaces. Et après ? (Julien Ponge)",
+    "Quarkus, Angular et GraphQL sont sur un bateau (Samuel Morel)",
+    "Service Mesh et Kubernetes, la fausse bonne idée ? (Thomas Rannou, Kevin Beaugrand)",
+    "Testez vos data pipelines ! (Stephanie Baltus-Bergamo), atelier",
+    "When The little three goldies play in the captain kube's zoo (Jérôme Masson)",
+    "Alan Poe appliqué au data streaming (Julien Cognet)",
+    "Mise en place d'un Design System en web components chez Groupama (Julien Sulpis)",
+    "Vous prendrez bien un peu de sucre dans votre java ? (Sandrine Banas)",
+    "JOOQ, joy of SQL (Kevin Davin)",
+    "Déployer un cluster analytique avec Citus pour une API Data (Stephanie Baltus-Bergamo, Enguerran Chevalier)",
+    "Vaadin, quand le back vient au secours du front (Benjamin Dauvissat), atelier",
+    "Comment nous avons géré le syndrome de fatigue des alarmes (Gauthier François)",
+    "Et si les meilleurs Dockerfile étaient ceux que l'on n'écrit pas (Fabien Martin)",
+    "How To Review Someone's Code While Not Being A Jerk! (Maha Alsayasneh)",
+    "Candy-Doc ou comment j'ai automatisé la documentation métier de mes projets (Edouard Cattez)",
+    "Je ne suis pas sysadmin mais je veux faire de la CI/CD (Marc Chevaldonné, Thomas Bellembois)",
+    "Velero : sauvegardez et restaurez (proprement) vos applications Kubernetes (Rémi Verchère)",
+    "React Native pour développer des applications natives Android et iOS (Nicolas Torion)",
+    "Docker & Docker Compose par la pratique (Hamza El Yaaqoubi, Idrissa Ndiyae), atelier",
+    "PHP en 2022 (Karim Pinchon)",
+    "Et l'ANSSI dit : voici comment sécuriser un container (Yann Schepens)",
+    "Analytique temps réel pour vos utilisateurs avec Apache Pinot (François Teychene)",
+    "Mutation Testing, did my test break my code ? (Olivier Leplus, Maha Alsayasneh)",
+    "De Vanilla à Tanzu, REX sur une migration Kubernetes (Gabriel Quennesson)",
+    "Workshop Playwright, le framework end-to-end by Microsoft (Mathieu Mure), atelier",
+    "Du code SOLID comme un rock, c'est vraiment utile ? (Quentin Klein)",
+    "SwiftUI vs Jetpack Compose par un Ingénieur Android (Gerard Paligot)",
+    "L'intro Volcamp et Le mot de la fin (équipe Volcamp)"
+  ],
+  "sources": [
+    { "label": "Programme officiel Volcamp 2022", "url": "https://2022.volcamp.io/talks" },
+    { "label": "Volcamp 2022 Jour 1, blog de Karim Pinchon (16 octobre 2022)", "url": "https://blog.karimpinchon.fr/2022/10/16/volcamp-2022-jour-1/" },
+    { "label": "Volcamp 2022 Jour 2, blog de Karim Pinchon (22 octobre 2022)", "url": "https://blog.karimpinchon.fr/2022/10/22/volcamp-2022-jour-2/" },
+    { "label": "OVHcloud at Volcamp.io 2022, blog OVHcloud (Stéphane Philippart, Aurélie Vache, Thierry Chantier, 7 novembre 2022)", "url": "https://blog.ovhcloud.com/en/posts/ovhcloud-at-volcamp-io-2022/" },
+    { "label": "Vidéo L'équipe DevRel d'OVHcloud au Volcamp.io 2022", "url": "https://www.youtube.com/watch?v=CYkjvWDKDYY" },
+    { "label": "Playlist YouTube Volcamp 2022", "url": "https://www.youtube.com/playlist?list=PLL-xGFWSe4-JLAsk0pdZxFTWOHhu7zy8U" },
+    { "label": "Transcripts automatiques YouTube de 16 sessions (3 keynotes et 13 talks)" },
+    { "label": "Posts LinkedIn : aucun post de participant trouvé ; seul relais social lu, un pouet Mastodon de Karim Pinchon (#volcamp)" }
+  ]
 }
