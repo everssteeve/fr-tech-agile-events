@@ -8,7 +8,492 @@
   "city": "Lille",
   "venue": "Euratechnologies",
   "url": "https://api-platform.com/con/2022/",
+  "programUrl": "https://api-platform.com/con/2022/schedule/",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "Deux jours, deux tracks (anglais et français) diffusées en ligne, 25 créneaux au programme. Ateliers payants les 13 et 14 septembre (API Platform 3 avec Kévin Dunglas et Antoine Bluchet ; DDD avec Robin Chalas et Mathias Arlaud) et hack day le 17 septembre chez Les-Tilleuls.coop. Bilan officiel : 29 speakers, environ 700 participants (300 à Lille, 400 en ligne) ; SensioLabs parle de plus de 500 participants. API Platform 3.0 est publié pendant la keynote d'ouverture.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-07",
+  "revisit": "Retours participants très minces : un seul compte-rendu indépendant (Holger Dörner, bitExpert) et le billet d'un sponsor (SensioLabs) ; aucun post LinkedIn, dev.to ou Medium trouvé (4 recherches web sur 8 utilisées). 13 transcripts lus, souvent partiellement (première moitié ou deux tiers) ; 12 vidéos sans transcript, dont la keynote d'ouverture de Kévin Dunglas, Grekas, Vos, Mendez, Verborgh, Miller et Arlaud/Chalas.",
+  "corpus": "Transcripts automatiques de 13 vidéos de la playlist officielle (lus en grande partie, rarement en entier), programme et pages de sessions sur api-platform.com, bilan officiel de l'édition, compte-rendu de Holger Dörner (bitExpert, 26 septembre 2022), billet de SensioLabs (22 septembre 2022) et annonces pré-événement de Les-Tilleuls.coop et Sylius.",
+  "limits": "La réception par le public repose sur deux billets de blog, dont un de sponsor ; aucun post LinkedIn n'a été lu. Les talks anglophones les plus attendus (Grekas, Verborgh, Miller, Mendez, Vos) n'ont pas de transcript et ne sont décrits que par leur titre ou une phrase de bitExpert. Les transcripts sont des sous-titres bruts, avec des noms propres et chiffres parfois déformés.",
+  "tldr": "Une deuxième édition qui sert de **rampe de lancement à API Platform 3** (publié en direct pendant la keynote) et dont la track française est faite de **retours d'expérience de production** (France Télévisions, Saveur Bière, Alice's Garden, SensioLabs) qui montrent comment on sort du chemin par défaut du framework.",
+  "keyTakeaways": [
+    "Migrer vers API Platform 3 en passant par la 2.7, simple couche de rétrocompatibilité : corriger les dépréciations, mettre le flag de rétrocompatibilité des métadonnées à false, tester, puis monter en 3.0 (Antoine Bluchet).",
+    "Remplacer les data transformers par des **providers et processors** : en version 3, tout objet PHP, DTO compris, est une ressource (Antoine Bluchet).",
+    "Écrire des **ADR** (Architecture Decision Records) pour les choix d'API : la core team d'API Platform et Sylius en font un outil de consensus (Antoine Bluchet, Łukasz Chruściel).",
+    "Modéliser une action métier comme une **nouvelle ressource** (une demande d'annulation) plutôt qu'un verbe en fin d'URL (Łukasz Chruściel).",
+    "En revue de code, lire la description puis **les tests avant le code**, et laisser le coding style à la CI (Smaïne Milianni).",
+    "Tester chaque endpoint authentifié en anonyme, valider l'export OpenAPI avec swagger-cli et viser une CI **sous 10 minutes** (Olivier Doucet).",
+    "Décorer les services d'API Platform (ContextBuilder, extensions Doctrine, factory de métadonnées) pour appliquer une règle à toutes les ressources qui implémentent une interface : soft delete, cloisonnement par organisation, likes (Verschaeve et Sanchez ; Lenoir et Jarrié).",
+    "Sortir le code métier des subscribers Doctrine vers des **événements typés** dispatchés par Symfony, visibles dans le profiler et testables unitairement (Nicolas Lemahieu).",
+    "Remplacer progressivement les mots de passe par **WebAuthn et les passkeys**, d'abord sur les opérations critiques, sans brusquer les utilisateurs (Florent Morselli)."
+  ],
+  "sessions": [
+    {
+      "id": "opening-keynote-api-platform-3",
+      "day": "2022-09-15",
+      "type": "keynote",
+      "title": "Opening keynote : API Platform 3",
+      "speakers": [
+        "Kévin Dunglas — Les-Tilleuls.coop"
+      ],
+      "feedbackFrom": [
+        "Holger Dörner (bitExpert)",
+        "Blog SensioLabs"
+      ],
+      "summary": "- Descriptif officiel réduit à *« Say hello to API Platform 3! »* (programme).\n- **API Platform 3.0 est publié en direct sur scène**, avec les nouveautés, la feuille de route et le chemin de migration (Holger Dörner, bitExpert) ; SensioLabs écrit que Kévin Dunglas a déployé la version pendant la keynote.\n- Les talks suivants y font écho : Grégoire Hébert ouvre en se félicitant que *« le déploiement se soit bien passé »*, Łukasz Chruściel félicite l'équipe pour la sortie du jour et Jérôme Tanghe compte quatre branches actives *« depuis ce matin »* (transcripts).\n- Pas de transcript disponible : le contenu détaillé n'est pas résumé ici.",
+      "summarySources": [
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "cWIu3tahbbs",
+        "title": "API Platform Conference 2022 - Kévin Dunglas - API Platform 3",
+        "transcript": false
+      }
+    },
+    {
+      "id": "domain-driven-design-with-api-platform-3",
+      "day": "2022-09-15",
+      "type": "talk",
+      "title": "Domain-driven design with API Platform 3",
+      "speakers": [
+        "Mathias Arlaud — Les-Tilleuls.coop",
+        "Robin Chalas — Les-Tilleuls.coop, Symfony Core Team"
+      ],
+      "feedbackFrom": [
+        "Antoine Bluchet et Łukasz Chruściel (mentions sur scène)"
+      ],
+      "summary": "- Constat de départ : la simplicité d'API Platform *« a un coût »* dès qu'il faut sortir du cadre (programme).\n- Les-Tilleuls.coop applique, quand le contexte s'y prête, les principes du **DDD** : architecture hexagonale, orientée messages, logique métier découplée de l'infrastructure (programme).\n- Le lendemain, Antoine Bluchet rappelle que les speakers se sont beaucoup appuyés sur les **providers et processors** de la version 3 ; Łukasz Chruściel cite leur usage des read models personnalisés (transcripts).\n- Le talk prolonge l'atelier DDD du 14 septembre. Pas de transcript disponible.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "SSQal3Msi9g",
+        "title": "API Platform Conference 2022 - M. Arlaud & R. Chalas - Domain-driven design with API Platform 3",
+        "transcript": false
+      }
+    },
+    {
+      "id": "gerer-les-operations-sequentielles-avec-rest",
+      "day": "2022-09-15",
+      "type": "talk",
+      "title": "Gérer les opérations séquentielles avec REST",
+      "speakers": [
+        "Grégoire Hébert — Les-Tilleuls.coop"
+      ],
+      "feedbackFrom": [
+        "Question du public en fin de talk (transcript)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Besoins visés : formulaires en plusieurs étapes, appels à plusieurs endpoints d'un coup, exploitation d'une ressource juste après sa création, le tout en restant **stateless** (ce qui n'interdit pas une session, précise-t-il).\n- Limites des solutions protocolaires : pipelining HTTP/1.1 (head-of-line blocking, hop-by-hop, désactivé dans les navigateurs, réservé aux méthodes idempotentes), multiplexing HTTP/2 qui ne garantit pas l'ordre, domain sharding déconseillé.\n- État de l'art : le draft IETF de James Snell (multipart/http, Content-ID), l'API batch de Google et surtout **OData** (exécution ordonnée, arrêt à la première erreur sauf `Prefer: continue-on-error`, tout ou rien).\n- Son implémentation : un endpoint `/api/$batch` en multipart/mixed ou en JSON, références entre sous-requêtes (`$1`), groupes `dependsOn`, sous-requêtes imbriquées en HTTP. Chaque sous-requête passe dans le kernel Symfony et a son propre profiler ; le rollback est laissé aux processors (transactions Doctrine imbriquées).\n- État d'avancement assumé : environ 2 200 changements, pas encore de tests, cible API Platform 3.1, garde-fous de sécurité à ajouter. Il présentera *« une implémentation de batch qui suit la spécification OData »* plutôt que de l'OData complet.\n- Il rappelle que la bonne réponse reste d'abord HTTP/2, **Vulcain**, des ressources mieux structurées, voire du RPC ou des mutations GraphQL.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "3QdSR1V-7F4",
+        "title": "API Platform Conference 2022 - Grégoire Hébert - Gérer les opérations séquentielles avec REST",
+        "transcript": true
+      }
+    },
+    {
+      "id": "dilemmas-and-decisions-what-we-ve-learned-designing-the-new-sylius-api",
+      "day": "2022-09-15",
+      "type": "talk",
+      "title": "Dilemmas and decisions. What we've learned designing the new Sylius API",
+      "speakers": [
+        "Łukasz Chruściel — Sylius"
+      ],
+      "feedbackFrom": [
+        "Holger Dörner (bitExpert)"
+      ],
+      "summary": "**Sur scène (transcript, deux tiers lus)**\n- Sylius intègre API Platform depuis deux ans pour remplacer FOSRest ; l'intégration reste expérimentale, avec une stabilisation prévue pour API Platform 3.0 à la SyliusCon. Les décisions sont tracées en **ADR**.\n- **REST plutôt que GraphQL**, choix fait à contre-courant de la mode d'il y a deux ans et *« pas regretté »* : cache HTTP, OpenAPI toujours à jour, en-tête Sunset pour déprécier.\n- Transitions d'état : après des verbes en fin d'URL (archétype « controller »), il recommande désormais de **créer une ressource de demande** (demande d'annulation), plus REST et adaptée aux traitements asynchrones.\n- Données calculées (frais de port) : ni champ mort sur l'entité, ni read models (trop lourds pour un framework extensible à ce stade), mais des **champs dynamiques** ajoutés au normalizer et à la doc OpenAPI ; il reconsidérera les read models avec les providers de la v3.\n- API shop et admin séparées par **préfixes** plutôt qu'un endpoint unifié : représentations différentes, contrôle d'accès plus simple. Chiffres donnés : 72 endpoints shop (64 % en lecture) et 128 admin (52 %). Il annonce que Darrel Miller dira le lendemain pourquoi ce choix est discutable.\n- Versioning : le préfixe `/new-api` choisi d'emblée est présenté comme *« le pire »*, adopté pour se forcer à trancher plus tard.\n\n**Côté public** : Holger Dörner (bitExpert) retient l'intégration d'API Platform dans Sylius, les décisions de design difficiles et le passage annoncé à la 3.0.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "88CKcwZJXmU",
+        "title": "API Platform Conference 2022 - Łukasz Chruściel - What we’ve learned designing the new Sylius API",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-alice-s-garden-gere-t-elle-son-code-metier-via-les-evenements",
+      "day": "2022-09-15",
+      "type": "talk",
+      "title": "Comment Alice's Garden gère-t-elle son code métier via les événements ?",
+      "speakers": [
+        "Nicolas Lemahieu — Alice's Garden"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript, deux tiers lus)**\n- Contexte : un fabricant de mobilier de jardin présent sur une cinquantaine de marketplaces, avec 80 transporteurs, 16 entrepôts et 64 millions d'euros de CA en 2020. Une API Symfony de dix ans (PHP 8, Symfony 4.4, 150 files RabbitMQ, 306 crons) et environ 500 000 lignes sur trois projets, pour une petite équipe.\n- Problème : du code métier éparpillé dans des bundles et des **subscribers Doctrine** devenus spaghetti. Le changeset est recalculé à chaque passage, les boucles infinies guettent au postFlush, tout est non typé, absent du profiler, difficile à tester. Pour déboguer, l'équipe désactivait les subscribers un par un.\n- La direction refuse une refonte DDD complète (*« on ne va pas se revoir avant trois ans »*) ; la migration vers PHP 8 a déjà pris un an. D'où une démarche **pas à pas**.\n- Étape 1 : déplacer la logique métier des contrôleurs, commandes et consumers vers des services sans dépendance à Doctrine.\n- Étape 2 : un dossier `Business` avec des interfaces d'objets métier et des **événements personnalisés typés** par objet et par type (insertion, mise à jour), avec versions avant et après. Ils sont fournis par des providers et dispatchés par l'EventDispatcher de Symfony, donc visibles dans le profiler.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "TOn_3mSA9TI",
+        "title": "API Platform Conference 2022 - Nicolas Lemahieu - Comment Alice's Garden gère son code métier ?",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rex-api-platform-au-quotidien-dans-une-entreprise-e-commerce-et-logistique",
+      "day": "2022-09-15",
+      "type": "talk",
+      "title": "REX : API Platform au quotidien dans une entreprise e-commerce et logistique",
+      "speakers": [
+        "Kévin Verschaeve — Saveur Bière / PerfectDraft",
+        "Clément Sanchez — Saveur Bière / PerfectDraft"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript, deux tiers lus)**\n- Saveur Bière (groupe AB InBev, sites repris par PerfectDraft) : plus de 500 000 commandes par an, dont près de 90 000 en novembre. Une seule « e-commerce API » sous API Platform sert le site et le **WMS** des entrepôts.\n- Format : neuf fonctionnalités d'API Platform, chacune avec le problème, les solutions écartées et la solution retenue.\n- **ContextBuilder** : un en-tête `X-ADMIN-API` préfixe les groupes de sérialisation pour servir plus de champs au WMS sur le même endpoint, plutôt que de tout renvoyer ou de dupliquer les endpoints.\n- **Soft delete** générique via un DataPersister et une interface, plutôt qu'un PUT `active: false` ou la librairie Gedmo ; une **extension** Doctrine masque ensuite les éléments inactifs.\n- Cloisonnement RGPD entre organisations fusionnées par une extension qui lit un en-tête `x-organization` et vérifie l'appartenance de l'employé. Viennent ensuite un filtre personnalisé sur le téléphone (client et adresses) et un normalizer de traduction piloté par `X-LOCALE`.\n- Les speakers notent que leurs DataPersisters deviennent des StateProcessors en version 3.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "jmpAa7ghELY",
+        "title": "API Platform Conference 2022 - K. Verschaeve & C. Sanchez - REX dans une entreprise e-commerce",
+        "transcript": true
+      }
+    },
+    {
+      "id": "reutiliser-et-partager-vos-operations-personnalisees-avec-api-platform",
+      "day": "2022-09-15",
+      "type": "talk",
+      "title": "Réutiliser et partager vos opérations personnalisées avec API Platform",
+      "speakers": [
+        "Hubert Lenoir — SensioLabs",
+        "Jérémy Jarrié — SensioLabs"
+      ],
+      "feedbackFrom": [
+        "Blog SensioLabs (employeur des speakers)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Projet de départ : un outil interne de publication devenu réseau social d'entreprise (400 000 visiteurs uniques par jour), où l'on demande des **likes** sur les news, puis les pages, les commentaires, etc.\n- Étape 1 : des contrôleurs personnalisés par ressource, simples mais dupliqués. *« Si vous n'avez que ça, ne cherchez pas plus loin »*.\n- Étape 2 : une interface de comportement, des traits (méthodes et champ Doctrine) et un contrôleur unique par comportement ; reste la duplication des déclarations d'opérations.\n- Étape 3 : **décorer la `ResourceMetadataCollectionFactory`** (le système de « poupées russes » de décorateurs de la v3) pour ajouter automatiquement les opérations à toute ressource qui implémente l'interface, avec un EventSubscriber en POST_READ.\n- Lecture critique des speakers : plus complexe, peu documenté, à réserver à un vrai besoin. Le code d'exemple est *« pas un POC, mais pas loin »*.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "4hSOltkbMWE",
+        "title": "API Platform Conference 2022 - H. Lenoir & J. Jarrié - Réutiliser & partager vos opé personnalisées",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-revue-de-code-est-un-art",
+      "day": "2022-09-15",
+      "type": "talk",
+      "title": "La revue de code est un Art !",
+      "speakers": [
+        "Smaïne Milianni — Yousign"
+      ],
+      "feedbackFrom": [
+        "Questions du public (transcript)",
+        "Blog SensioLabs",
+        "Olivier Doucet et Jérôme Tanghe (mentions sur scène)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- La revue sert à valider, partager, contrôler la qualité, **apprendre**, prévenir les oublis, créer de l'ownership et garder l'historique des décisions.\n- Côté auteur : une PR petite et focalisée (résister au « syndrome du boy-scout »), décrite (quoi, pourquoi, comment, captures, lien vers le ticket), testée et annotée par l'auteur lui-même. Il faut s'auto-relire et **attendre une CI verte** avant d'appeler les relecteurs, puis appliquer *« stop starting, start finishing »*.\n- Côté relecteur : lire la description, puis **les tests avant le code**, relire lentement, se concentrer sur les risques (sécurité, cas limites, perfs) et laisser le coding style à la CI. Un approval vaut *« consentement »*.\n- Ton : doux, ludique, valoriser le travail, proposer des alternatives sourcées, passer en **revue synchrone** pour sortir du ping-pong. Outils cités : templates de PR, Commitizen, un bot Slack interne.\n- En questions : une participante de Fairness décrit leur « design review » avant le ticket, que Yousign dit avoir copiée ; pour une montée de version majeure, la réponse reste les tests.\n\n**Échos** : première conférence du speaker (félicité en questions). Olivier Doucet et Jérôme Tanghe y renvoient le lendemain ; SensioLabs le cite parmi les talks marquants.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "K0evmhvYf6w",
+        "title": "API Platform Conference 2022 - Smaïne Milianni - La revue de code est un Art !",
+        "transcript": true
+      }
+    },
+    {
+      "id": "fighting-impostor-syndrome-a-practical-handbook",
+      "day": "2022-09-15",
+      "type": "talk",
+      "title": "Fighting impostor syndrome: a practical handbook",
+      "speakers": [
+        "Marine Gandy — Platform.sh"
+      ],
+      "feedbackFrom": [
+        "Holger Dörner (bitExpert)"
+      ],
+      "summary": "- Talk sur le sentiment d'être en retard sur ses collègues malgré ses réussites ; la speaker rassure en rappelant que la plupart des gens le ressentent un jour (Holger Dörner, bitExpert).\n- Le public a participé à un **exercice chanté**, jugé amusant par le même participant.\n- Pas de transcript disponible.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "NDeiLevUteY",
+        "title": "API Platform Conference 2022 - Marine Gandy - Fighting impostor syndrome: a practical handbook",
+        "transcript": false
+      }
+    },
+    {
+      "id": "mon-combat-contre-l-arachnophobie",
+      "day": "2022-09-15",
+      "type": "talk",
+      "title": "Mon combat contre l'arachnophobie",
+      "speakers": [
+        "Jérôme Tanghe"
+      ],
+      "feedbackFrom": [
+        "Questions du public (transcript)",
+        "Blog SensioLabs"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Format de 20 minutes, première conférence du speaker. Fil rouge : sa **première PR open source**, qui permet de désactiver l'affichage de Webby, l'araignée mascotte de la démo.\n- Où contribuer : sur 18 dépôts, cinq comptent (distribution, core, admin, schema generator, doc). Les labels « easy pick », « hacktoberfest » et « help wanted » aident à choisir un ticket qui motive.\n- Quelle branche : `main` pour la 3.1, la 2.7 pour les bugs (portés ensuite par la core team vers la 3.0), la 2.6 pour la sécurité. Les failles se signalent par e-mail, jamais publiquement.\n- Les reviews ne sont pas personnelles, en écho à Smaïne Milianni ; on peut demander ce que veut dire « BC » et les reviewers peuvent avoir tort.\n- Contribuer sans coder : tester les pré-versions, signaler des bugs, compléter la doc, en parler autour de soi.\n\n**Côté public** : SensioLabs retient l'idée qu'il suffit de faire le premier pas pour contribuer.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "Ck0NXIM7QyI",
+        "title": "API Platform Conference 2022 - Jérôme Tanghe - Mon combat contre l'arachnophobie",
+        "transcript": true
+      }
+    },
+    {
+      "id": "opening-keynote-a-deeper-look-into-api-platform-3",
+      "day": "2022-09-16",
+      "type": "keynote",
+      "title": "Opening Keynote : A deeper look into API Platform 3",
+      "speakers": [
+        "Antoine Bluchet (soyuka) — Les-Tilleuls.coop, API Platform Core Team"
+      ],
+      "feedbackFrom": [
+        "Holger Dörner (bitExpert)"
+      ],
+      "summary": "**Sur scène (transcript, première moitié lue)**\n- Rappel de la promesse : API hypermédia ou GraphQL en quelques minutes, framework orienté ressources, JSON-LD et IRIs au cœur ; près de 7 000 étoiles GitHub, environ 15 millions de téléchargements du core.\n- Historique : deux ans entre la 2.5 et la 2.6, à cause d'un long chantier sur les identifiants mené avec des **ADR**, qu'il encourage à adopter. La refonte du système de métadonnées a ensuite repoussé d'un an la sortie promise à l'édition 2021.\n- Migration : la 2.7 n'est qu'une **couche de rétrocompatibilité**, et la 3.0 exige PHP 8.1 et Symfony 6.1. Les étapes : corriger les dépréciations et les namespaces, passer le flag de métadonnées à false, tester, puis monter de version, avec une commande de conversion des annotations en attributs.\n- **Fin des data transformers** : tout objet PHP est une ressource et un processor suffit. Les providers et processors sont simplifiés (une méthode, `$uriVariables`).\n- Fin de l'erreur *« unable to generate an IRI »* grâce à une opération Get non exposée ajoutée automatiquement (IRI `.well-known/genid` sans identifiant) ; nouveau flag `openapi: false`. Les sous-ressources deviennent de simples ressources avec un `uriTemplate`.\n\n**Côté public** : Holger Dörner (bitExpert) retient des providers et processors plus lisibles, une sérialisation unifiée entre item et collection et des sous-ressources traitées comme des ressources.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "YGiCEy__vrs",
+        "title": "API Platform Con 2022 - Antoine Bluchet - A deeper look into API Platform 3",
+        "transcript": true
+      }
+    },
+    {
+      "id": "what-s-new-in-caddy-the-webserver-of-api-platform",
+      "day": "2022-09-16",
+      "type": "talk",
+      "title": "What's New in Caddy, the webserver of API Platform",
+      "speakers": [
+        "Francis Lavoie — Caddy"
+      ],
+      "feedbackFrom": [
+        "Holger Dörner (bitExpert)"
+      ],
+      "summary": "- Présentation de **Caddy 2.6**, alors imminente, et de fonctionnalités existantes ou nouvelles comme l'**API de configuration à chaud** et le gestionnaire de certificats intégré qui gère leur renouvellement (Holger Dörner, bitExpert).\n- Pas de transcript disponible.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "QSerOHpMjgY",
+        "title": "API Platform Conference 2022 - Francis Lavoie - What's New in Caddy, the webserver of API Platform",
+        "transcript": false
+      }
+    },
+    {
+      "id": "pourquoi-je-n-utilise-pas-api-platform",
+      "day": "2022-09-16",
+      "type": "talk",
+      "title": "Pourquoi je n'utilise pas API Platform",
+      "speakers": [
+        "Frédéric Bouchery — CCM Benchmark"
+      ],
+      "feedbackFrom": [
+        "Échange avec le public (transcript)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Format court, construit sur la **« méthode du troll »** contre la pensée de groupe : le speaker change de lunettes pour enchaîner de mauvaise foi les griefs, puis les démonte.\n- Les griefs du troll : PHP en baisse au TIOBE et futur COBOL, salaires et offres d'emploi, Laravel plus populaire que Symfony hors de France, « magie » du framework, bases legacy (triggers, procédures stockées) difficiles à exposer.\n- Les réponses : la popularité n'est pas la pertinence ; PHP sert environ 54 % du top 1000 des sites et CCM Benchmark tient environ 300 millions de pages vues par mois en PHP, où les goulots sont la base et les API externes. Conseil : **ne pas rester mono-technologie**.\n- Son benchmark (ab, 5 000 requêtes) : moins de 92 ms au 99e centile avec API Platform contre 21 ms pour un script PDO brut, un plancher irréaliste une fois ajoutés autoloader, sécurité et GraphQL. Il se dit *« très surpris »* des performances.\n- Laravel : support d'Eloquent annoncé pour la 3.1 selon Kévin Dunglas. Legacy : exposer une partie du modèle, dénormaliser un peu ; sur un projet neuf, partir d'API Platform et adapter le modèle.\n- Chute : son équipe Open Data va passer sur API Platform 3.0.\n\n**Échange** : en questions, une personne à qui l'on tend le micro estime que Symfony et Laravel *« ne visent pas la même cible »*.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "pYrpHFzdvAE",
+        "title": "API Platform Conference 2022 - Frédéric Bouchery - Pourquoi je n'utilise pas API Platform",
+        "transcript": true
+      }
+    },
+    {
+      "id": "webauthn-se-debarrasser-des-mots-de-passe-definitivement",
+      "day": "2022-09-16",
+      "type": "talk",
+      "title": "WebAuthn : se débarrasser des mots de passe. Définitivement.",
+      "speakers": [
+        "Florent Morselli"
+      ],
+      "feedbackFrom": [
+        "Questions du public (transcript)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Première conférence du speaker, auteur de bibliothèques PHP de sécurité (OTP, JWT, OAuth2). Un mot de passe est un **secret partagé**, difficile à choisir et à protéger. Le phishing contourne même les codes à usage unique, et Have I Been Pwned recense près de 12 milliards de comptes fuités.\n- L'écosystème Symfony aide (contrainte `NotCompromisedPassword`, migration automatique des hash, NelmioSecurityBundle, scheb/2fa), mais l'authentification défaillante reste dans le top 10 OWASP (de la 2e à la 7e place).\n- **WebAuthn** (Alliance FIDO) : une paire de clés par domaine, la clé privée ne quitte jamais l'authenticator, un challenge aléatoire et un compteur anti-rejeu ; **le phishing devient inopérant**. Les passkeys synchronisent les clés via Google, Apple ou Microsoft ; plus de 93 % des navigateurs sont compatibles.\n- Intégration avec son bundle Symfony (quatre ans de travail, conforme à l'outil de test FIDO) : entités utilisateur et credential, firewall stateful ou stateless compatible LexikJWT, plusieurs authenticators par compte, front en JS ou via un contrôleur Symfony UX.\n- En questions : vérification biométrique contre le vol de clé, **migration progressive** sans brusquer les utilisateurs, compatibilité avec des équipements d'environ dix ans. Le support natif sous Linux reste une question ouverte.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "Y2_0omg1CFk",
+        "title": "API Platform Conference 2022 - Florent Morselli - WebAuthn : se débarrasser des mots de passe.",
+        "transcript": true
+      }
+    },
+    {
+      "id": "php-websockets-or-how-to-communicate-with-clients-in-real-time",
+      "day": "2022-09-16",
+      "type": "talk",
+      "title": "PHP WebSockets: or how to communicate with clients in real-time",
+      "speakers": [
+        "Pauline Vos"
+      ],
+      "feedbackFrom": [
+        "Blog SensioLabs"
+      ],
+      "summary": "- Comment envoyer et recevoir des messages en temps réel depuis PHP avec les WebSockets (blog SensioLabs, qui le cite parmi les talks marquants sans avis détaillé).\n- Pas de transcript disponible ; résumé fondé sur le titre et une seule mention.",
+      "summarySources": [
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "t6J9TbjSukc",
+        "title": "API Platform Conference 2022 - Pauline Vos - PHP WebSockets",
+        "transcript": false
+      }
+    },
+    {
+      "id": "tests-avances",
+      "day": "2022-09-16",
+      "type": "talk",
+      "title": "Tests avancés",
+      "speakers": [
+        "Olivier Doucet — Oxeva"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript, première moitié lue)**\n- Le speaker, cofondateur de l'hébergeur Oxeva, s'appuie sur Nuage, un cloud public bâti entièrement sur API Platform.\n- Tests à la main : simuler une API distante sans l'appeler grâce à un scoped client et un décorateur du HttpClient de Symfony ; **valider la spec OpenAPI exportée** avec swagger-cli après l'avoir surchargée (JWT) ; appeler chaque endpoint authentifié en anonyme pour attraper les régressions de sécurité ; des helpers `getAdminClient()` et `getUserClient()` et des comptes d'éléments retournés selon le rôle.\n- Outils, par ordre de puissance : formatage automatique (pour que la revue de code ne compte pas les espaces), détecteur de copier-coller (environ 5 % de lignes dupliquées dans API Platform 3, de quoi occuper les contributeurs du hackathon), **PHPStan** monté par niveaux sur le legacy et au maximum sur un projet neuf, Rector pour les montées de version et la transpilation, Infection pour mesurer la pertinence des tests, sans viser 100 %.\n- CI/CD : rapide (moins de 10 minutes, idéalement 5) et sans maintenance ; parallélisation des jobs GitLab avec `needs` et `dependencies`.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "VC7VE5C5drQ",
+        "title": "API Platform Conference 2022 - Olivier Doucet - Tests avancés",
+        "transcript": true
+      }
+    },
+    {
+      "id": "finding-the-path-to-scaling-api-success",
+      "day": "2022-09-16",
+      "type": "talk",
+      "title": "Finding the path to scaling API success",
+      "speakers": [
+        "Darrel Miller — Microsoft Graph, OpenAPI Initiative"
+      ],
+      "feedbackFrom": [
+        "Holger Dörner (bitExpert)",
+        "Łukasz Chruściel (annonce sur scène la veille)"
+      ],
+      "summary": "- Faut-il ajouter une nouvelle ressource à une API existante ou créer une nouvelle API ? (Holger Dörner, bitExpert).\n- Sur le versioning, Holger Dörner résume ainsi le conseil du speaker : vous ne devriez probablement pas versionner votre API.\n- La veille, Łukasz Chruściel annonçait que Darrel Miller expliquerait pourquoi la séparation des API shop et admin de Sylius est discutable (transcript Chruściel).\n- Pas de transcript disponible.",
+      "summarySources": [
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "9Fvt3QzMI34",
+        "title": "API Platform Conference 2022 - Darrel Miller - Finding the path to scaling API success",
+        "transcript": false
+      }
+    },
+    {
+      "id": "rex-france-televisions-quand-api-platform-tombe-a-pic",
+      "day": "2022-09-16",
+      "type": "talk",
+      "title": "REX : France Télévisions, quand API Platform tombe à PIC",
+      "speakers": [
+        "Georges-King Njock-Bôt — consultant indépendant",
+        "Albin Kester — Les-Tilleuls.coop"
+      ],
+      "feedbackFrom": [
+        "Questions du public (transcript)",
+        "Blog SensioLabs"
+      ],
+      "summary": "**Sur scène (transcript)**\n- La **PIC** (Plateforme d'Information Commune) est le back-office de rédaction de France Info, France 3 régions et Outre-mer la 1ère : environ 2 000 utilisateurs, 157 millions de visites par mois pour France Info, 29 millions pour France 3 et 11 millions pour l'Outre-mer.\n- Origine : en 2018, la refonte de France Info (Zend Framework 1, AngularJS 1.3, back et front couplés sur la même base). Des POC comparent Node, Symfony, MariaDB, MongoDB et Elasticsearch, et le choix se porte sur Symfony et MariaDB. API Platform est découvert lors d'un Symfony Live ; l'équipe convergera ensuite avec les projets de France 3 et de l'Outre-mer.\n- Architecture : une instance par produit, une **API-back**, une **API-front** en lecture seule sur un schéma « publish », une API-mobile à quatre endpoints qui agrège l'API-front (data provider et data transformer, encore en 2.6) et un bundle SDK de migration.\n- Groupes de sérialisation au format ressource:méthode:groupe, injectés par décoration du ContextBuilder. Invalidation du cache **Varnish par XKey** (contexte, type, id) via RabbitMQ et un cache-manager Node.\n- Bilan : une stack partie de Symfony 4.4 et bientôt en 6.1. Pistes : générer l'API-front depuis le schéma OpenAPI, brancher Elasticsearch comme provider. En questions : préchauffage du cache encore manuel lors des grands événements, IRIs insuffisantes car les deux schémas partagent les ID.\n\n**Échos** : premier talk des deux speakers ; SensioLabs le cite comme exemple d'API Platform face aux pics de trafic. France Télévisions était le sponsor platinum.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "4kTQ9wQWszo",
+        "title": "API Platform Conference 2022 - A. Kester & G. Njock-Bôt - France TV : quand API Platform tombe à PIC",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-re-mettre-la-tech-au-service-du-bien-commun",
+      "day": "2022-09-16",
+      "type": "roundtable",
+      "title": "Comment (re)mettre la tech au service du bien commun ?",
+      "speakers": [
+        "Hélène Maître-Marchois — Fairness",
+        "Kévin Dunglas — Les-Tilleuls.coop",
+        "Paul Andrieux — Troopers",
+        "Grégory Copin — Les-Tilleuls.coop (animation)"
+      ],
+      "feedbackFrom": [
+        "Interventions du public (transcript)"
+      ],
+      "summary": "**Sur scène (transcript, première moitié lue)**\n- Table ronde interactive entre trois SCOP, partie du constat que le libre et le web, nés d'espoirs d'émancipation, ont abouti à la **capitalisation des communs**, à la précarisation et à la surveillance de masse.\n- Kévin Dunglas oppose le **logiciel libre**, porteur de valeurs et de communs, à l'open source qu'il décrit comme une offensive des multinationales pour le dépolitiser (exemple de macOS). API Platform est sous licence permissive, mais Mercure impose de redistribuer ses modifications.\n- Paul Andrieux raconte le chemin de Troopers : de l'entreprise libérée, qui garde un « leader libérateur », à la gouvernance partagée puis à la SCOP, pour **partager la propriété**.\n- Débat avec un participant sur le biais du leader charismatique : Kévin Dunglas assume un rôle de leader mais rappelle qu'en SCOP les gérants sont révocables ; un coopérateur des Tilleuls explique que la croissance a fait émerger d'autres voix.\n- Hélène Maître-Marchois propose des leviers individuels : questionner le besoin (*« faire le naïf »* sur les trackers), refuser certains tickets, et partir quand c'est possible.\n- Assumé par l'animateur : *« si vous êtes venu en pensant que ça n'allait pas parler politique, vous pouvez partir »*.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "4jcDmq--3N8",
+        "title": "API Platform Conference 2022  - Comment (re)mettre la tech au service du bien commun ?",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Building schema-first event-driven architectures with AsyncAPI (Fran Méndez, AsyncAPI ; vidéo HeokavFSB2A sans transcript)",
+    "Decentralization, query APIs, and other myths (Ruben Verborgh, projet Solid ; vidéo 7MMzkJQ2N_s sans transcript)",
+    "4 years later: The Components Web App (Daniel West ; vidéo HrWl0zd0Ds8 sans transcript)",
+    "Q&A Session, API Platform Core Team (Kévin Dunglas et Antoine Bluchet ; vidéo 8cSvLVZQJks sans transcript)",
+    "Realtime and beyond with Mercure (Brian Mc Cluskey ; vidéo UCz0lZ_PJ2g sans transcript)",
+    "How do we decide to create a Symfony component? (Nicolas Grekas, Symfony Core Team ; vidéo tDjR5l4QwTY sans transcript)",
+    "Closing speech (organisateurs)",
+    "Community event du 15 septembre",
+    "Ateliers des 13 et 14 septembre et hack day du 17 septembre"
+  ],
+  "sources": [
+    {
+      "label": "Programme officiel API Platform Conference 2022",
+      "url": "https://api-platform.com/con/2022/schedule/"
+    },
+    {
+      "label": "Page de l'édition 2022 (speakers, lieu, partenaires)",
+      "url": "https://api-platform.com/con/2022/"
+    },
+    {
+      "label": "Bilan officiel de l'édition (700 participants, 29 speakers)",
+      "url": "https://api-platform.com/con/2022/review/"
+    },
+    {
+      "label": "Playlist YouTube API Platform Conference 2022 (25 vidéos, 13 transcripts automatiques lus)",
+      "url": "https://www.youtube.com/playlist?list=PL3hoUDjLa7eQfYOEmuQNG8he3AeOeWaz8"
+    },
+    {
+      "label": "Holger Dörner (bitExpert), API Platform Conference 2022, 26/09/2022",
+      "url": "https://blog.bitexpert.de/blog/api_platform_con_2022"
+    },
+    {
+      "label": "Elise Hamimi (SensioLabs), SensioLabs at API Platform Con 2022, 22/09/2022",
+      "url": "https://sensiolabs.com/blog/2022/sensiolabs-at-api-platform-con-2022"
+    },
+    {
+      "label": "Les-Tilleuls.coop, annonce de l'édition 2022 (ateliers, hack day), 24/08/2022",
+      "url": "https://les-tilleuls.coop/en/blog/api-platform-conference-2022"
+    },
+    {
+      "label": "Sylius, annonce du talk de Łukasz Chruściel, 14/09/2022",
+      "url": "https://sylius.com/blog/lukasz-chrusciel-makes-it-to-api-platform-conference-again/"
+    },
+    {
+      "label": "Page de session Domain-driven design with API Platform 3",
+      "url": "https://api-platform.com/events/conference-domain-driven-design-with-api-platform-3"
+    },
+    {
+      "label": "Retours participants lus : Holger Dörner (bitExpert) et le billet de SensioLabs (sponsor). Aucun post LinkedIn lu."
+    }
+  ]
 }

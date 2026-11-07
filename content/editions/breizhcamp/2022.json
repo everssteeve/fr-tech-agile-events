@@ -7,7 +7,855 @@
   "end": "2022-07-01",
   "city": "Rennes",
   "url": "https://2022.breizhcamp.org/",
+  "programUrl": "https://2022.breizhcamp.org/conference/programme/",
+  "theme": "Green (transition écologique et décarbonation du numérique)",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "10e édition et première depuis l'annulation de 2020 (COVID), du 29 juin au 1er juillet 2022 dans les locaux d'une université rennaise (keynotes en amphi C). Mercredi consacré aux universités et à quelques conférences, jeudi et vendredi aux conférences, quickies et tools in action. Programme officiel : 84 créneaux (79 sessions, 4 keynotes, un meet and greet). Le blog OVHcloud annonce plus de 800 participants, 4 keynotes, 80 conférences et 37 sponsors. Tristan Nitot, prévu en keynote d'ouverture du jeudi, a été remplacé au pied levé par l'association Estim'Numérique et est intervenu en visio en clôture du vendredi.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-07",
+  "revisit": "Aucun retour participant public lu : 6 recherches web n'ont trouvé ni post LinkedIn, ni compte-rendu de blog, ni sketchnote ; seul le récapitulatif du blog OVHcloud (écrit par un speaker sponsor) a été lu. 33 sessions et 3 keynotes résumées d'après les transcripts ; restent non lus les transcripts d'une quarantaine de vidéos (Ceph, Argo, Flux, Svelte, opérateurs Kubernetes, cryptographie, CORS, jOOQ, Pinot, Micronaut AOT, Service Mesh, WebAssembly, Gladys…), et la keynote d'ouverture du vendredi (Jean-Baptiste Onofré) n'a pas de transcript.",
+  "corpus": "Programme officiel (JSON du site, 84 créneaux), page d'accueil du site 2022, playlist YouTube « BreizhCamp 2022 » (78 vidéos, dont 75 avec sous-titres automatiques) : 36 transcripts lus (3 keynotes et 33 sessions), en partie via des notes de lecture intermédiaires. Côté réception, un seul texte d'époque : le billet « OVHcloud at BreizhCamp 2022 » de Stéphane Philippart (7 juillet 2022), écrit par un speaker et sponsor.",
+  "limits": "Corpus presque entièrement « scène » : la réception par les participants n'est pas documentée, quatre ans après l'événement et avec un LinkedIn mal indexé. Les sous-titres automatiques déforment noms propres et chiffres (les plus douteux ont été écartés ou signalés) ; le choix des sessions vise la diversité des thèmes, pas l'audience, et la phase de jeu de l'université Accelerate n'a pas été filmée.",
+  "tldr": "Pour son retour après deux ans d'absence, BreizhCamp 2022 assume son thème Green en **mesurant l'empreinte du numérique** (cloud, backend, maison) et place au même niveau **la mixité, la sécurité et le travail d'équipe** (mob programming, autonomie, postmortems), avec beaucoup de retours d'expérience rennais.",
+  "keyTakeaways": [
+    "Questionner le besoin avant d'optimiser : la mutualisation du cloud aide, mais l'effet rebond guette, et un multi-cluster mondial ou des « cinq neuf » se justifient rarement (Sylvain Révéreault).",
+    "Ne pas comparer les tableaux de bord carbone d'AWS, Microsoft et Google entre eux : leurs périmètres et méthodes diffèrent, ils servent surtout à suivre ses propres versions (Pierre Rust).",
+    "Côté backend, viser **moins de serveurs pour le même nombre d'utilisateurs** : dans leurs mesures, le langage et son écosystème pèsent plus que les erreurs de code (Jérémie Drouet et Youen Chéné).",
+    "En OAuth, n'utiliser que le flow authorization code **avec PKCE** et des redirect URI vérifiées à l'identique (Julien Topçu).",
+    "Scanner dépendances, code et secrets dès la pull request sans bloquer les développeurs, et révoquer immédiatement toute clé commitée (Adrien Pessu et Tugdual Grall).",
+    "Dans un postmortem, ne jamais s'arrêter à l'erreur humaine, qui est une conséquence et non une cause (Julien Orain).",
+    "Autonomie ne veut pas dire autarcie : annoncer ses intentions aux autres équipes (« j'ai l'intention de ») plutôt que demander la permission (Pauline Jamin et Thomas Pierrain).",
+    "Ritualiser le mob programming avec des rotations courtes et l'évaluer avec les métriques d'Accelerate et la satisfaction de l'équipe (Ouest-France ; Thomas Carpaye et Hadrien Mens-Pellen).",
+    "Vendre avant de construire : landing page, premier client payant, puis la « trottinette » avant la « Rolls » (François-Guillaume Ribreau et Sébastien Brousse).",
+    "Pour la mixité, produire des données genrées et revoir les automatismes : garde d'enfants sur place, moins d'afterworks, pas d'événements le mercredi après-midi (Estim'Numérique)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-d-ouverture-jeudi-feminisation-du-numerique",
+      "day": "2022-06-30",
+      "type": "keynote",
+      "title": "Keynote d'ouverture du jeudi : la féminisation de la filière numérique",
+      "speakers": [
+        "Équipe BreizhCamp",
+        "Mélissa Cottin — Estim'Numérique",
+        "Arthur Tarroux — Estim'Numérique"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Saynète d'ouverture des « anciens » de l'organisation, qui passent la main à une nouvelle génération après deux ans d'arrêt, puis remerciements aux sponsors, au traiteur et à la fac. Tristan Nitot, prévu en keynote, est absent ; l'équipe espère l'avoir en visio vendredi.\n- Mélissa Cottin (directrice) et Arthur Tarroux (chargé des missions mixité, sociologue) présentent **Estim'Numérique**, association fondée en 2017 qui agit pour la mixité et la diversité dans le numérique.\n- État des lieux : environ 30 % de femmes dans le numérique mais **environ 15 % dans les métiers techniques**, alors que la part des femmes était plus élevée dans les années 60, quand coder était perçu comme une tâche d'exécution peu prestigieuse.\n- Explication socio-historique (Bourdieu, socialisation, stéréotypes de genre) : montée en prestige de la filière dans les années 80, ordinateurs familiaux captés par les garçons via le jeu, figure du geek dans les années 90, publicités sexistes à l'appui.\n- Enjeux : liberté de choisir son métier, besoins en compétences, biais des systèmes (l'outil de recrutement d'Amazon qui écartait les CV féminins).\n- Méthode : produire des données genrées, construire une culture commune, s'appuyer sur la loi et le réseau ; individuellement, **« chausser les lunettes de l'égalité »**, libérer la parole et refuser l'humour sexiste. Engagements de l'association : garde d'enfants sur place, moins d'afterworks, pas d'événement le mercredi après-midi.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "lSQRdu5jVNk",
+        "title": "BreizhCamp 2022 - Keynote jeudi matin",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-femmes-dans-le-numerique-ce-n-est-pas-qu-un-pourcentage",
+      "day": "2022-06-30",
+      "type": "talk",
+      "title": "Les femmes dans le numérique : ce n'est PAS qu'un pourcentage",
+      "speakers": [
+        "Inès Branchu",
+        "Julie Bourhis",
+        "Margaux Imberty-Vialard",
+        "Mélody Desmons"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Quatre collègues prolongent la keynote du matin (qu'elles remercient) avec un angle précis : **comment garder les femmes dans la tech** plutôt que comment les recruter.\n- Quiz interactif de chiffres : part des femmes dans la tech, départs avant 35 ans, absence de dirigeantes dans les licornes françaises, harcèlement, écart de financement des startups (plusieurs chiffres sont peu lisibles dans les sous-titres).\n- La semaine fictive de « Juliette » : paternalisme, compétences dévalorisées, blague sexiste, « bro culture », remarques sur l'apparence, avec pour chaque situation **l'attitude alternative** à adopter, et des anecdotes vécues.\n- La carrière de « Martine » : question sur la grossesse en entretien, congé paternité, mise au placard au retour, tire-lait dans les toilettes, temps partiel, appels de la crèche ; *« une grossesse n'est pas une maladie »*.\n- Conclusion : solidarité entre femmes et engagement des hommes. Le talk est repris le lendemain dans une sketchnote montrée par les facilitateurs graphiques.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "JlJfXoq5cn0",
+        "title": "Les femmes dans le numérique… (Inès Branchu, Julie Bourhis, Margaux Imberty-Vialard, Mélody Desmons)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "impacts-environnementaux-du-cloud-the-good-the-bad-the-ugly",
+      "day": "2022-06-30",
+      "type": "talk",
+      "title": "Impacts environnementaux du Cloud : the good, the bad, the ugly",
+      "speakers": [
+        "Sylvain Révéreault — Zenika"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Plaidoyer pour une **approche systémique** (plusieurs critères, tout le cycle de vie, ACV) : la voiture électrique « zéro émission » sert d'exemple de raisonnement trompeur.\n- Ordres de grandeur d'après GreenIT.fr : le numérique pèse environ 4 % de l'énergie primaire et 3,8 % des gaz à effet de serre, en croissance ; **les terminaux pèsent bien plus que les datacenters**.\n- Indicateurs des datacenters : PUE (vers 1,1 chez les hyperscalers) et ses angles morts, CUE (mix électrique), WUE (eau) ; leviers techniques comme le free cooling ou les serveurs dépouillés.\n- Le cloud a de vrais atouts (élasticité, mutualisation, surtout en PaaS et SaaS) mais il cite les machines zombies et l'**effet rebond** (paradoxe de Jevons) ; outils cités : Scaphandre, PowerAPI, sélecteur de région de Google, GreenOps.\n- Conclusion : la sobriété avant tout ; *« le numérique n'est pas immatériel »*.\n- En questions : un serveur consomme plus à l'usage, un smartphone pèse plus à la fabrication et dure bien moins longtemps.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "nWpjBElyxbs",
+        "title": "Impacts environnementaux du Cloud : the good, the bad, the ugly (Sylvain Révéreault)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "outils-d-empreinte-carbone-des-cloud-public",
+      "day": "2022-06-30",
+      "type": "talk",
+      "title": "Outils d'empreinte carbone des cloud public : comparer des pommes et des oranges",
+      "speakers": [
+        "Pierre Rust — Orange"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript, tool in action)**\n- Le speaker, chercheur chez Orange et contributeur de PowerAPI, explique pourquoi mesurer : cibler les gros postes, convaincre les PO, répondre aux appels d'offres qui exigent déjà ces chiffres.\n- Un bon PUE ne dit rien de l'usage ; l'ACV d'un service repose sur des **règles d'allocation** en cascade, et la fabrication des serveurs pèse de quelques % à la majorité de l'empreinte selon l'âge du datacenter.\n- **AWS** : seulement l'électricité, méthode non publique, comptage market-based ; le speaker est très critique. **Microsoft** : seul à inclure la fabrication, méthode certifiée par un tiers mais granularité faible et outil payant. **Google** : méthode publique et location-based, fabrication annoncée pour plus tard.\n- En France, OVH prépare une calculette et Orange travaille sur le scope 3 et le reconditionnement des serveurs.\n- Conclusion : chiffres **non comparables** entre fournisseurs, utiles pour suivre ses propres versions, en attendant une standardisation (ADEME) ; *« le cloud c'est mieux mais au global c'est pire »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "vUbhNL-so7Q",
+        "title": "Outils d'empreinte carbone des cloud public : comparer des pommes et des oranges (Pierre Rust)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "l-eco-conception-c-est-bien-mais-si-on-parlait-un-peu-du-backend",
+      "day": "2022-07-01",
+      "type": "talk",
+      "title": "L'eco-conception, c'est bien, mais si on parlait un peu du backend ?",
+      "speakers": [
+        "Jérémie Drouet — Datadog",
+        "Youen Chéné"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Constat : en France, l'essentiel de l'impact vient de la fabrication des équipements, d'où la question centrale : **comment servir le même nombre d'utilisateurs avec moins de serveurs** ?\n- Protocole open source (collectif Boavizta) : une même API REST de todo-list sur PostgreSQL, implémentée en Rust, Go, Node, JVM (Kotlin/Spring) et PHP/Symfony, chargée avec k6 et mesurée avec Scaphandre sur du bare metal, avec des cas dégradés (sans index, N+1, sans pagination, agrégation en mémoire, MySQL).\n- Résultats : Go et Rust en tête, puis JVM et Node, PHP/Symfony loin derrière (plusieurs fois plus de serveurs pour la même charge). Le mauvais code coûte cher en Go mais peu en PHP, déjà goulot d'étranglement ; l'ORM pèse peu, les index davantage.\n- Le résultat contredit l'intuition de départ de Youen Chéné (« le code compte plus que le langage »). Suite prévue : Python, Ruby, Laravel, gRPC, serveurs web.\n- Questions nourries : versions des langages, dimensionnement (faire tourner les serveurs à 70-80 %), lien entre performance et énergie, arbitrage avec l'obsolescence des terminaux.\n- Lecture critique : une formule provocatrice sur PHP et un protocole encore jeune, que les speakers présentent eux-mêmes comme à compléter.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "gE6HUsmh554",
+        "title": "L'eco-conception, c'est bien, mais si on parlait un peu du backend ? (Jérémie Drouet, Youen Chéné)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "mesurer-l-impact-environnemental-de-son-habitation-avec-home-assistant",
+      "day": "2022-07-01",
+      "type": "lightning",
+      "title": "Comment mesurer l'impact environnemental de son habitation avec Home Assistant",
+      "speakers": [
+        "Ronan Barbot"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript, quickie)**\n- Conclusion annoncée d'emblée : remplacer la chaudière gaz par une pompe à chaleur et poser des panneaux solaires.\n- Installation : Home Assistant sur un Raspberry Pi, Zigbee2MQTT et une dizaine de capteurs de température et d'humidité, relevés de gaz GRDF via un plugin ; Linky encore inaccessible faute d'API.\n- Constats concrets : combles mal isolés (confirmés à la caméra thermique), une chambre humide, gain réel d'un écran moins gourmand en télétravail.\n- Bilan : l'essentiel des émissions du foyer vient du gaz, l'électricité française étant peu carbonée (chiffres exacts peu fiables dans les sous-titres).\n- En questions : un participant conseille un module Zigbee de téléinformation Linky.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "igwK2R5N5gc",
+        "title": "Comment mesurer l'impact environnemental de son habitation avec Home Assistant (Ronan Barbot)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-dessous-de-l-ia-responsable",
+      "day": "2022-06-30",
+      "type": "talk",
+      "title": "Les dessous de l'IA Responsable",
+      "speakers": [
+        "Yoann Benoit"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Trois piliers pour structurer le sujet : prise de conscience, responsabilité, organisation.\n- **Interprétabilité** : la boîte noire n'est plus une fatalité (LIME, SHAP, modèles interprétables par conception), mais l'explicabilité reste un état de l'art mouvant.\n- **Biais** à chaque étape (collecte, labellisation, entraînement, boucle de feedback) : supprimer la variable genre ne suffit pas, comme l'a montré l'outil de recrutement d'Amazon ; le vrai levier est en amont, dans les données et la diversité des équipes.\n- Fiabilité et sécurité : *« un projet machine learning en ligne, ça reste du logiciel »*, donc MLOps, versionnement des modèles et des données, suivi du drift, attaques adversariales, confidentialité différentielle.\n- Organisation : humain dans la boucle, kill switch, inventaire des modèles, model cards, conformité (AI Act en préparation).\n- En questions : organiser des journées de red team contre ses propres modèles.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "yn34R0RYXXo",
+        "title": "Les dessous de l'IA Responsable (Yoann Benoit)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "a11y-pour-les-nuls",
+      "day": "2022-07-01",
+      "type": "talk",
+      "title": "A11y pour les nuls",
+      "speakers": [
+        "Hélène Esnault"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Développeuse front et ancienne libraire en BD, la speaker illustre ses slides de dessins façon comics.\n- Panorama des handicaps, dont une majorité invisibles, et des situations temporaires ou situationnelles (plein soleil, pas de son, connexion lente) : *« on va tous devenir vieux un jour »*.\n- Cadre : WCAG et RGAA, niveau AA en cible courante, obligations légales et exemptions.\n- Design et code : contrastes, animations limitées (`prefers-reduced-motion`), **HTML sémantique** qui apporte gratuitement clavier, maintenance et SEO, usage prudent de `tabindex` et d'ARIA ; *« si c'est juste pour faire un bouton, fais un bouton »*.\n- Retour d'expérience : deux jours pour une liste déroulante React entièrement accessible, à arbitrer avec une solution native ; outils cités (WAVE, axe, Lighthouse, eslint-plugin-jsx-a11y), mais rien ne remplace les tests utilisateurs.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "7kMi5BW73Hs",
+        "title": "A11y pour les nuls (Hélène Esnault)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "oauth-2-1-explique-simplement",
+      "day": "2022-06-29",
+      "type": "talk",
+      "title": "OAuth 2.1 expliqué simplement (même si tu n'es pas dev) !",
+      "speakers": [
+        "Julien Topçu — Shodo"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Tout le talk file une métaphore : le speaker joue le responsable sécurité du Grand Budapest Hôtel en 1932.\n- Problèmes illustrés un à un : révocation, imposture (donner son mot de passe à un tiers, comme l'import de contacts qui demandait le mot de passe Gmail), hameçonnage par redirection, d'où la **liste blanche de redirect URI** vérifiée à l'identique.\n- Rôles posés (resource owner, client, resource server, authorization server) et échange de l'authorization code contre un access token par le back channel.\n- OAuth 2.1 n'est pas une nouvelle version mais une **compilation des bonnes pratiques** éparpillées dans de nombreuses RFC.\n- Démo de **PKCE** avec deux volontaires et un outil de hachage : c'est le seul flow à utiliser. Les scopes limitent l'application, pas l'utilisateur.\n- En questions : le challenge transite dans l'URL sans risque puisqu'il est public ; seuls S256 et plain sont prévus.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "QrGu7ITlSog",
+        "title": "OAuth 2.1 expliqué simplement (même si tu n'es pas dev) ! (Julien Topçu)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-securite-des-la-conception-du-projet",
+      "day": "2022-06-30",
+      "type": "talk",
+      "title": "La sécurité dès la conception du projet (Security by Design)",
+      "speakers": [
+        "David Aparicio — OVHcloud"
+      ],
+      "feedbackFrom": [
+        "Stéphane Philippart (blog OVHcloud, collègue du speaker)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Pourquoi dès la conception : cyberattaques contre les hôpitaux, hausse des signalements à l'ANSSI.\n- Retour d'expérience de l'équipe Data d'OVHcloud : un ticket « sauvegarder Kerberos » estimé à cinq jours en a pris trois à quatre semaines (où stocker le backup quand l'accès au data lake dépend de Kerberos, ne pas désactiver la vérification SSH comme le suggérait la première réponse trouvée en ligne).\n- Principes : moindre privilège, défense en profondeur, bastion et MFA, échec sécurisé, backups testés et déconnectés ; l'OWASP Top 10 bouge peu d'une édition à l'autre.\n- Longue liste d'outils : SAST, DAST, scanners d'images et de dépendances, détection de secrets, bug bounty, bastion open source d'OVHcloud, OpenCVE, CERT-FR.\n- En questions : commencer par l'outillage sur le poste du développeur ; les projets internes sont concernés aussi.\n\n**Récapitulatif d'époque** : le blog OVHcloud insiste sur la sensibilisation du management et sur le fait que même les réseaux internes de datacenter ne sont pas à l'abri.",
+      "summarySources": [
+        "transcript",
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "h2-fZzkfK28",
+        "title": "Security by Design (David Aparicio)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "devsecops-de-la-securite-dans-mon-devops",
+      "day": "2022-07-01",
+      "type": "talk",
+      "title": "DevSecOps : de la sécurité dans mon DevOps",
+      "speakers": [
+        "Adrien Pessu",
+        "Tugdual Grall — GitHub"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Duo éditeur et terrain : Tugdual Grall (GitHub) et Adrien Pessu (indépendant). La sécurité est un jardin à entretenir, pas une forteresse.\n- Avant de coder : une évaluation de risques rapide (méthode Mozilla, une trentaine de minutes avec le produit, consignée dans le dépôt), puis du threat modeling.\n- Analyse des dépendances (l'essentiel du code vient des librairies, Log4j en rappel), démo de Dependabot, images minimales, CodeQL en pull request, secret scanning avec push protection, DAST avec OWASP ZAP et IAST.\n- Message : **shift left**, mesurer la remédiation plutôt que les dashboards, et ne jamais imposer un outil qui bloque toute l'équipe de l'extérieur.\n- En questions : signaler une faille via le security advisory du projet plutôt que sur Twitter ; un secret commité reste dans l'historique ; coût des outils selon dépôt public ou privé.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "wzXuSLP_6r0",
+        "title": "DevSecOps : de la sécurité dans mon DevOps (Adrien Pessu, Tug Grall)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "10-lecons-sur-les-10-plus-grosses-fuites-de-donnees",
+      "day": "2022-06-30",
+      "type": "lightning",
+      "title": "10 leçons sur les 10 plus grosses fuites de données",
+      "speakers": [
+        "Adrien Pessu"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript, quickie)**\n- Objectif : tirer des leçons pour les développeurs sans clouer les victimes au pilori.\n- Yahoo (MD5 encore utilisé, cookies forgés), Target (intrusion via un sous-traitant de climatisation, d'où le **zero trust**), Sony (failles connues non corrigées).\n- Uber (clés AWS dans un dépôt privé, rançon déguisée en bug bounty) : **invalider immédiatement** une clé commitée. Equifax (compte admin/admin) : gestionnaire de mots de passe et 2FA.\n- Capital One (SSRF sur l'API de métadonnées) : le cloud ne sécurise pas à votre place. Facebook (bucket S3, API) : contrôler côté back.\n- Conclusion : s'inscrire sur Have I Been Pwned et *« traiter correctement ces mots de passe »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "bnp2tEV81Lo",
+        "title": "10 leçons sur les 10 plus grosses fuites de données (Adrien Pessu)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "identite-numerique-decentralisee-et-droit-d-etre-soi",
+      "day": "2022-07-01",
+      "type": "talk",
+      "title": "Identité numérique décentralisée et droit d'être soi",
+      "speakers": [
+        "Adrien Wattez — Zenika",
+        "Antoine Cailly — Zenika"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Une carte d'identité ou un diplôme n'est qu'une **collection de déclarations** : les Verifiable Credentials reposent sur un triangle émetteur, détenteur (wallet) et vérificateur ; exemple du pass sanitaire.\n- Divulgation sélective et preuve à divulgation nulle : prouver qu'on est majeur sans donner sa date de naissance.\n- Les **DID** donnent un identifiant maîtrisé par la personne ; nombreuses méthodes (blockchain, web, clé), recommandation W3C adoptée malgré les objections de Google et Mozilla.\n- La gestion des clés est le point dur (partage de secret de Shamir, rotation) ; écosystème européen (eIDAS, EBSI, diplômes de l'Université de Lille) et démo d'un DID stocké dans des tweets.\n- En questions : risque que les plateformes exigent tout quand même, adoption encore limitée (les VC plus que les DID), accessibilité pour les non-techniciens ; *« plus de liberté, mais plus de responsabilités »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "K8KcOjfauX4",
+        "title": "Identité numérique décentralisée et droit d'être soi : protéger son… (Adrien Wattez, Antoine Cailly)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "i-love-unicode",
+      "day": "2022-06-30",
+      "type": "talk",
+      "title": "I ♥ Unicode",
+      "speakers": [
+        "David Blanchet — Orange"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Fil rouge : le bulletin de l'école de musique de son fils, encore affiché sans accents en 2022.\n- Les systèmes d'écriture : d'ASCII aux pages de code puis à Unicode (environ 150 000 points de code), casse, diacritiques et normalisation, bidirectionnalité, collation, émojis composés, unification Han et sa dimension politique : une complexité *« pas accidentelle, structurelle »*.\n- L'implémentation : UTF-16 et UTF-32, puis UTF-8 (compatible ASCII, auto-synchronisant) ; le mojibake vient d'un encodage implicite.\n- La longueur d'un même émoji vaut 7 en JavaScript, 5 en Python, 17 en Rust : c'est la question qui est mal posée.\n- Sécurité : homoglyphes, identifiants invisibles, caractères bidi qui trompent la relecture de code ; conseils de formateur, de police et de linters.\n- Conclusion : développeurs rigoureux, utilisateurs indulgents. Le talk est cité le lendemain par Alexis Delhelle.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "UnI_AwK0kuQ",
+        "title": "I ♥ Unicode (David Blanchet)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "de-l-importance-des-postmortem",
+      "day": "2022-06-30",
+      "type": "lightning",
+      "title": "De l'importance des Postmortem !",
+      "speakers": [
+        "Julien Orain"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript, quickie)**\n- Les incidents sont inévitables : ce sont des occasions d'apprendre, à ne jamais gaspiller.\n- **Culture blameless**, héritée de la santé, de l'aviation et de l'armée : savoir pourquoi quelqu'un avait le droit de supprimer la base de prod compte plus que savoir qui l'a fait.\n- Modèle de postmortem : métadonnées, impact client chiffré, données à l'appui, timeline (détection, réponse, clôture), facteurs contributifs au pluriel (Ishikawa, cinq pourquoi), leçons et actions versées au backlog.\n- Ne jamais s'arrêter à l'erreur humaine, conséquence et non cause ; rendre les postmortems aussi publics que possible dans l'organisation.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "5tfbuNyzQLU",
+        "title": "De l'importance des Postmortem ! (Julien Orain)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-theorie-de-la-vitre-brisee-appliquee-au-developpement-logiciel",
+      "day": "2022-06-30",
+      "type": "lightning",
+      "title": "La théorie de la vitre brisée appliquée au développement logiciel",
+      "speakers": [
+        "Saad Ansari"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript, quickie)**\n- Une vitre cassée non réparée en appelle d'autres : la théorie criminologique est transposée à l'organisation.\n- Trois types de vitres brisées : **comportements toxiques ou sexistes** (un red flag prioritaire), mauvaises pratiques normalisées (la rustine « temporaire » en prod sans tests ni CI), code mal structuré qui mène à l'hyperspécialisation.\n- Remèdes : rétrospectives sincères (sinon c'est du cargo cult agile), points individuels réguliers, feedback positif aussi, pair et mob programming ou au moins revue de code.\n- Mise en garde : à crier au loup à chaque erreur, *« c'est vous qui risquez de vous transformer en une vitre brisée »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Ju5LfNnocTA",
+        "title": "The Broken Windows Theory Applied to Software Development (Saad Ansari)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-scale-up-l-autonomie-et-le-sous-marin-nucleaire",
+      "day": "2022-06-29",
+      "type": "talk",
+      "title": "La scale-up, l'autonomie et le sous-marin nucléaire",
+      "speakers": [
+        "Pauline Jamin — Agicap",
+        "Thomas Pierrain — Agicap"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Contexte : l'hyper-croissance de la tech chez Agicap, où l'autonomie des équipes devient vitale.\n- Retours d'autonomie mal maîtrisée (cache local face à une source de vérité, microservice construit à la place d'une autre équipe, équipe qui accapare l'ops) : **« autonomie ne veut pas dire autarcie »**.\n- Inspiration : *Turn the Ship Around* de David Marquet, passer de leader-follower à leader-leader, dire « j'ai l'intention de », donner des objectifs plutôt que des procédures ; *« il vaut mieux demander pardon que la permission »*.\n- Pratiques : context map et bounded contexts, un « Christmas refactoring » auto-organisé d'un mois, OKR, guildes sur du temps sanctuarisé, SRE.\n- Découverte clé : **les autres équipes ont besoin de nos intentions**. Pistes : contrats sociaux, chaos testing d'équipe.\n- En questions : ce temps de guilde n'est-il pas un pansement ? Il sert à l'outillage transverse, avec une vigilance face au produit.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "WurK0nYWcSM",
+        "title": "La scale-up, l'autonomie et le sous-marin nucléaire (Pauline Jamin, Thomas Pierrain)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "mob-programming-l-approche-veritable-du-developpement-en-equipe",
+      "day": "2022-06-30",
+      "type": "talk",
+      "title": "Mob programming, la véritable approche du développement en équipe",
+      "speakers": [
+        "Mathieu Pousse — Ouest-France",
+        "Maxime Odye"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Retour d'expérience de plusieurs années dans l'équipe du site et des applications de Ouest-France, en Kanban sans estimation, TDD et pair programming ; la sécurité psychologique est un prérequis.\n- Pratique : un clavier, un driver, des navigateurs, rotation toutes les 10 à 15 minutes ; un mob **ritualisé le mercredi après-midi**, préparé par un « leader ».\n- Échecs cités : sujets trop exploratoires ou trop simples, mob sur la doc, refactorings trop larges, mode hybride présentiel et distanciel.\n- Conseils : un grand écran, un tableau blanc, un backlog de sujets mob, la loi des deux pieds, inviter le PO ; arrêter tôt car la fatigue est forte.\n- Bénéfices : montée en compétences, onboarding, base de code homogène, moins de revues ; le gain de productivité chiffré est une blague assumée.\n- En questions : équipe de cinq, compliqué au-delà de sept ou huit ; pas forcément moins de bugs, mais tout le monde peut en traiter un.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "hktnp8mcMh0",
+        "title": "Mob programming, la véritable approche du développement en équipe (Mathieu Pousse, Maxime Odye)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "mob-programming-toolbox",
+      "day": "2022-06-30",
+      "type": "talk",
+      "title": "Mob Programming Toolbox",
+      "speakers": [
+        "Thomas Carpaye",
+        "Hadrien Mens-Pellen — Sunday"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Deux ans de mob à temps plein ensemble ; le fil conducteur est celui des **émotions** (colère, peur, fatigue, ennui, joie), à partir d'un sondage et de retours de collègues. Ils préfèrent le terme « ensemble programming ».\n- Convaincre le management par l'expérimentation et des indicateurs : trois métriques d'Accelerate, qualité de code perçue et satisfaction de l'équipe.\n- Outils contre la colère et la peur : annoncer son niveau d'engagement, laisser du silence et le droit à l'erreur ; *« apprendre à travailler en équipe, c'est souvent apprendre à se taire »*.\n- Contre la fatigue et l'ennui : journées plus courtes, Pomodoro, rôles de « pompiers de prod », **tours de clavier très courts** (quelques minutes) avec un timer musical, outils de partage d'IDE, ADR et jugement majoritaire pour trancher.\n- En questions : compter trois ou quatre sessions pour expérimenter ; idéal à quatre ou cinq.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "wK4PL3RsskA",
+        "title": "Mob Programming Toolbox (Thomas Carpaye, Hadrien Mens-Pellen)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "a-la-decouverte-d-accelerate",
+      "day": "2022-06-29",
+      "type": "workshop",
+      "title": "À la découverte d'Accelerate",
+      "speakers": [
+        "Antoine Cailly — Zenika",
+        "Kevin Danezis"
+      ],
+      "feedbackFrom": [
+        "Participants de l'atelier (débrief filmé)"
+      ],
+      "summary": "**Sur scène (transcript, université)**\n- Présentation du livre *Accelerate* (2018), issu des rapports State of DevOps et poursuivi par DORA : 24 capacités et **4 indicateurs clés** (fréquence de déploiement, lead time, temps de restauration, taux d'échec des changements).\n- Atelier : un jeu de cartes et de dés par tables d'une dizaine de personnes, pour relier capacités et objectifs ; la phase de jeu n'a pas été filmée.\n- Débrief : un participant exprime sa frustration (« on en est loin ») ; sur le leadership, réponse des animateurs : on ne le force pas, on parle argent et turnover, on agit petit puis on montre les résultats.\n- Pistes concrètes : commencer à l'échelle d'une équipe, feature flags, trunk-based development, se comparer aux concurrents ; *« tout le monde est pour le changement, mais personne n'est pour changer soi-même »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "MLX-BcYUBnw",
+        "title": "À la découverte d'Accelerate (Antoine Cailly, kevin danezis)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rex-lean-creer-un-saas-et-etre-rentable-apres-6-mois",
+      "day": "2022-07-01",
+      "type": "talk",
+      "title": "REX LEAN : Créer un SaaS et être rentable après 6 mois",
+      "speakers": [
+        "François-Guillaume Ribreau — Cloud-IAM",
+        "Sébastien Brousse — Cloud-IAM"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Les cofondateurs de Cloud-IAM (Keycloak managé) racontent leur démarche « Extreme Lean », mélange de Lean et d'XP, née d'une mission chez Ouest-France.\n- **Vendre avant de construire** : une landing page faite en un après-midi, des prix « au doigt mouillé », un premier client qui paie alors qu'aucun produit n'existe.\n- La « trottinette » avant la « Rolls » : boutons factices menant vers une bêta, logs temps réel bricolés en quelques heures qui ont tenu des mois, réponse courte à un appel d'offres public, priorisation laissée aux clients ; *« les roadmaps sont une illusion, le réel c'est du chaos »*.\n- Résultat annoncé : une entreprise autofinancée et rentable depuis le début, avec plus d'un millier de clients en 2022.\n- Limites reconnues en questions : la réglementation (RGPD, ISO 27001, contrats) ne se fait pas en trottinette, et un client étranger a imposé des mois de démarches.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "5gZYU56q4No",
+        "title": "REX LEAN: Créer un SaaS et être rentable après 6 mo… (François-Guillaume Ribreau, Sébastien Brousse)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "architecture-microservice-et-coherence-des-donnees",
+      "day": "2022-06-30",
+      "type": "talk",
+      "title": "Architecture microservice et cohérence des données : mais on fait comment ?",
+      "speakers": [
+        "Jean-François James — Worldline"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Le commit à deux phases distribué couple trop et n'est pas supporté par NoSQL, Kafka ou RabbitMQ : place aux **LRA et sagas**, transactions locales avec compensations explicites et idempotentes, au prix de l'isolation globale.\n- Deux solutions démontrées sur une réservation de vacances : MicroProfile LRA (REST synchrone, annotations, coordinateur Narayana) et Eventuate Tram Sagas (orchestration, Kafka, outbox et CDC).\n- Bilan : LRA gagne sur la courbe d'apprentissage, la saga sur le découplage technique et l'observabilité ; chez Worldline, le sujet en est au stade de l'évaluation, rien en production.\n- En questions : compensations concurrentes non testées en charge, ordre des messages par partition.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Q-s5Uefg9hI",
+        "title": "Architecture microservice et cohérence des données : mais on fait comment pou… (Jean-François James)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "urbaniser-un-si-pour-10-ans",
+      "day": "2022-06-30",
+      "type": "talk",
+      "title": "Urbaniser un SI pour 10 ans",
+      "speakers": [
+        "Christophe Quintard — Ouest-France"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- L'objectif oublié de l'architecture est l'**évolutivité** : ne plus avoir besoin d'études d'impact.\n- Anti-modèles : point à point, monolithe, base centrale, ESB devenu intelligent, « tempête d'événements » Kafka jugée ingérable.\n- Principes : sources de vérité copiables, notifications, chorégraphie plutôt qu'orchestrateur, DDD, et ne découper en microservices que si les parties se livrent indépendamment.\n- Standardiser quatre types de briques (référentiels, vues matérialisées, services métier, agents) pour qu'un nouveau service coûte quelques jours, quitte à accepter un léger surcoût.\n- Conseils de détail sur les API : créer par PUT avec un UUID (POST est « une machine à doublons »), identifiants non significatifs, pas de booléens.\n- Chez Ouest-France : environ 200 microservices dans le backend du SI, déploiement et supervision pilotés par un référentiel de services.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "i9eECmJTVEY",
+        "title": "Future-Proofing an Information System for 10 Years (Christophe Quintard)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "migrer-150k-loc-en-typescript-challenge-accepted",
+      "day": "2022-07-01",
+      "type": "talk",
+      "title": "Migrer 150K LoC en TypeScript: Challenge Accepted",
+      "speakers": [
+        "Gregory Houllier — Swile"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Contexte : un backend Node entièrement en JavaScript chez Swile, migré par étapes après une phase de lobbying soutenue par le manager.\n- Méthode progressive : `checkJs` et JSDoc d'abord, mode strict ensuite, conversion finale ; pas de build mais une transpilation à la volée avec esbuild, mesurée plus rapide que ts-node.\n- Sur la plus grosse base (environ 90 000 lignes, style fonctionnel), des milliers d'erreurs apparaissent ; un outil interne, une GitHub Action qui commente l'évolution des erreurs dans chaque PR, en fait disparaître un tiers en trois mois : *« quand on ne veut pas dépendre des humains, on utilise des robots »*.\n- Écueils : ORM mal typé, compositions Ramda, types communautaires désynchronisés ; avec le recul, la migration de framework de test n'aurait pas dû être embarquée.\n- En questions : peu de vrais bugs trouvés, surtout du code mort ; JSDoc a servi d'outil de conduite du changement. TypeScript est désormais le langage par défaut pour Node chez Swile.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "eDghyLeTJcg",
+        "title": "Migrer 150K LoC en TypeScript: Challenge Accepted (Gregory Houllier)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "infra-as-code-heaven-or-hell",
+      "day": "2022-06-30",
+      "type": "talk",
+      "title": "Infra as code: heaven or hell?",
+      "speakers": [
+        "Guillaume Tinon",
+        "Victor Clogenson"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Point de départ : six ans d'infrastructure AWS créée à la main dans la console (une cinquantaine de services, beaucoup de lambdas) ; un client à Singapour impose une seconde région.\n- Choix d'AWS CDK en TypeScript, en commençant par un petit service batch ; tout ce qui avait été oublié (IAM, réseau, secrets) se révèle en « die and retry », dans un effet tunnel démoralisant.\n- Écueils : dépendances circulaires entre stacks (résolues en séparant stacks techniques et métier), refactorings qui redéploient tout, import de l'existant très pénible, ressources laissées en manuel.\n- Bilan : environ 200 jours de travail à quatre développeurs, un nouvel environnement monté en une semaine au lieu de deux jours prévus, puis des déploiements plusieurs fois par jour.\n- Conseils : bien choisir l'outil, commencer petit, penser tôt à la migration de l'existant ; *« au bout du tunnel, il y a de la lumière »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "z0bPjewmBfA",
+        "title": "Infra as code: heaven or hell? (Guillaume Tinon, Victor Clogenson)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "java-dans-le-cloud-avec-spring-ou-quarkus",
+      "day": "2022-07-01",
+      "type": "talk",
+      "title": "Java dans le cloud : Avec Spring ou Quarkus ?",
+      "speakers": [
+        "Alexandre Touret — Worldline",
+        "Jean-François James — Worldline"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Une même application de librairie en trois versions (Spring impératif, Spring réactif, Quarkus impératif) pour comparer persistance, observabilité, résilience, réactif, threads virtuels et tests.\n- Mode natif avec GraalVM : démarrage quasi instantané et mémoire réduite, mais build long et dynamisme perdu ; approche hybride possible (JVM pour le flux permanent, natif pour les pics ou le serverless).\n- Mesures « presque empiriques » sur poste local : Quarkus démarre bien plus vite que Spring impératif, le réactif divise démarrage et mémoire.\n- Point de vigilance : le support Red Hat de Quarkus suppose une stack Red Hat ; le patrimoine Java de Worldline est aux deux tiers Spring.\n- Conclusion : Quarkus est la transition naturelle des développeurs Java EE, Spring la continuité pour les autres, et **la concurrence profite aux développeurs**.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "9gvykLmck3o",
+        "title": "Java dans le cloud : Avec Spring ou Quarkus ? (Alexandre Touret, Jean-François James)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "gitops-continuous-delivery-et-environnements",
+      "day": "2022-07-01",
+      "type": "talk",
+      "title": "GitOps, Continuous Delivery et environnements : Comment éviter l'enfer ?!",
+      "speakers": [
+        "Philippe Morisseau"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Constat : *« la configuration doit correspondre à la fois à l'environnement et à la version »* ; cinq risques en découlent (paramètres oubliés, éléments qui expirent comme les certificats, processus de déploiement modifiés qui cassent les anciennes branches, pipelines multipliés, dépendances de déploiement).\n- La « boring architecture » (retour au monolithe) est jugée limitée : analyser et tester un million de lignes coûte du temps, du carbone et de l'argent.\n- Conseils : regrouper dans un même pipeline ce qui se déploie toujours ensemble, recenser ce qui expire, réduire le nombre de paramètres.\n- GitOps : la config dans Git puis dans un gestionnaire de configuration, alimenté par un pipeline car le pull direct est souvent refusé par la sécurité ; secrets dans un coffre, copie locale pour éviter un point unique de défaillance.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "dVFyacA1-iI",
+        "title": "GitOps, Continuous Delivery et environnements : Comment éviter l'enfer ?! (Philippe Morisseau)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "api-hypermedia-en-vrai",
+      "day": "2022-06-30",
+      "type": "talk",
+      "title": "API Hypermedia en vrai",
+      "speakers": [
+        "Rémi Dewitte"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Retour d'expérience de plusieurs projets depuis 2017, abordés « en sceptique » : le niveau 3 du modèle de maturité REST reste rare.\n- Choix du format HAL, avec une règle d'équipe : faire comme si on ne faisait pas d'hypermédia et ajouter les liens en bonus ; design first en OpenAPI et génération de types TypeScript.\n- Côté front, **ne jamais construire d'URL** : on suit des liens (bibliothèque Ketting, cache indexé par URL) ; côté back, Fastify et validation de la sortie par le JSON Schema.\n- Performance : avec HTTP/2, un écran qui demande des dizaines de requêtes n'est plus vraiment un problème, alors que l'usage précoce de `_embedded` a créé plus de soucis qu'il n'en a résolu.\n- En questions : le surcoût est faible et le gain principal vient du typage ; le front adhère vite, le back plus lentement.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "LZZMrdHNlus",
+        "title": "API Hypermedia en vrai (Rémi Dewitte)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "pourquoi-envisager-rust",
+      "day": "2022-07-01",
+      "type": "talk",
+      "title": "Pourquoi envisager Rust",
+      "speakers": [
+        "Alexis Delhelle"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Un développeur back venu de Java présente Rust : compilé, sans garbage collector, avec sécurité mémoire et absence de data races garanties par le compilateur, sans null.\n- Comparaisons : face à Java (empreinte mémoire, Cargo intégré), à C/C++ (les failles liées à la mémoire), à Go (Discord et les pics de son GC), à Python (écosystème ML).\n- Démo live de l'ownership et de l'emprunt, avec un conseil rassurant : il est permis de cloner au début ; *« d'abord on fait des trucs qui marchent, après des trucs qui courent vite »*.\n- Défauts assumés : courbe d'apprentissage, compilation longue, écosystème jeune, usage en production encore minoritaire malgré la popularité.\n- Ressources citées : Rustlings, This Week in Rust ; il renvoie aussi au talk Unicode de la veille.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "I2iYNZm_pqg",
+        "title": "Why Choose Rust (Alexis Delhelle)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "disaster-radio-communiquer-en-cas-de-coupure-4g",
+      "day": "2022-06-30",
+      "type": "talk",
+      "title": "Disaster Radio : comment communiquer en cas de coupure 4G ?",
+      "speakers": [
+        "Glenn Feunteun — Zenika"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Inventaire des menaces sur les réseaux : erreurs de configuration (souvent BGP), animaux, ouragans, cyberattaques, fibres coupées à Paris quelques mois plus tôt.\n- Cahier des charges d'un réseau de secours : portée d'une métropole, bon marché, basse consommation, accessible depuis un téléphone en Wi-Fi, **open source et open hardware**.\n- Solution : des nœuds ESP32 en LoRa maillés, pour une dizaine d'euros par kit ; projets comparés (Disaster Radio, plus maintenu ; Project OWL, né après l'ouragan Maria ; Lantern ; Meshtastic).\n- Démo live de Meshtastic, avec un « effet démo » sur le script Python puis une interface de chat et de carte.\n- En questions : langages sur microcontrôleur, chiffrement par clé statique et risque de brouillage ; *« je ne prétends pas avoir une solution universelle »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "PVw-i6sQxDw",
+        "title": "Disaster Radio: How to communicate during a 4G outage? (Glenn Feunteun)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "doom",
+      "day": "2022-07-01",
+      "type": "talk",
+      "title": "DooM",
+      "speakers": [
+        "Xavier-Frédéric Moulet — Orange"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Talk passion, sans lien avec le travail du speaker, largement appuyé sur le livre de Fabien Sanglard.\n- Généalogie des jeux d'id Software jusqu'à Doom (1993), raycasting, calcul en virgule fixe et contraintes des PC de l'époque (386, 486, VGA à 256 couleurs).\n- Développement sur stations NeXT, sprites tirés de sculptures et de jouets scannés, pas de gestion de versions.\n- Architecture : fichiers WAD pensés pour le **modding dès le départ**, portabilité par l'éditeur de liens, BSP issu d'un article de recherche, IA en machine à états.\n- Conclusion : surtout des optimisations de haut niveau et un code propre et portable dès l'origine, d'où le mème « it runs Doom » ; bonus sur le portage Super NES.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "sNapL2anR3E",
+        "title": "DooM (xavier-frédéric moulet)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-j-ai-trouve-mon-appart-avec-du-code",
+      "day": "2022-07-01",
+      "type": "talk",
+      "title": "Comment j'ai trouvé mon appart avec du code",
+      "speakers": [
+        "Thibaut Rousseau — OVHcloud"
+      ],
+      "feedbackFrom": [
+        "Stéphane Philippart (blog OVHcloud, collègue du speaker)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Besoin : le marché rennais est tendu et les sites n'offrent pas ses critères (dernier étage, parking, quartier) ; budget visé, zéro euro.\n- Architecture : 17 scrapers Node lancés par cron, MongoDB avec expiration automatique des annonces disparues, enrichissement par expressions régulières, front React.\n- Le site le plus protégé a demandé deux à trois jours de contournement (navigateur headless, service de résolution de captchas pour quelques centimes) ; règle d'or : ne pas faire tomber les sites.\n- Hébergement gratuit en cascade, entre quotas de CI réduits et Raspberry Pi trop lent ; pas d'open source à cause de la zone grise légale du scraping.\n- Résultat : environ deux semaines de temps libre de développement, et l'appartement trouvé peu après, visité dans l'heure suivant l'annonce.",
+      "summarySources": [
+        "transcript",
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "sTzTfhRGiuE",
+        "title": "Comment j'ai trouvé mon appart avec du code (Thibaut Rousseau)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "elections-2022-jours-j-comment-ca-marche",
+      "day": "2022-07-01",
+      "type": "lightning",
+      "title": "Elections 2022 - Jour(s) J : « Comment ça marche »",
+      "speakers": [
+        "Florian Girard — Ouest-France"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript, quickie)**\n- Pour la rédaction de Ouest-France, une soirée électorale, c'est *« la Coupe du monde de foot »* : un énorme pic de trafic à 20 h, très majoritairement sur mobile.\n- Flux des résultats : des bureaux de vote aux préfectures puis au ministère de l'Intérieur, qui diffuse des fichiers XML corrigés toute la nuit ; le vote rural arrive en premier et fausse les tendances du début de soirée.\n- Contraintes : bouclage du journal papier vers 23 h 30, performance, intégrité des données.\n- Réponses : plateforme maison sur Kubernetes, chaîne de caches, plans B et C, équipe QA ; une petite fonctionnalité JavaScript ajoutée au dernier moment a déjà fait des dégâts.\n- Ils enregistrent désormais le trafic réel pour le rejouer en test ; objectif : que l'élection devienne un non-événement.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "iPeRGzqlXLs",
+        "title": "Elections 2022 - Jour(s) J :  \"Comment ça marche\" (Florian Girard)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "toute-la-tech-en-deux-coups-de-crayon",
+      "day": "2022-07-01",
+      "type": "talk",
+      "title": "Toute la tech en deux coups de crayon !",
+      "speakers": [
+        "Annelore Bidaux-Nsounga",
+        "Hermann Nsounga",
+        "Marc Dugué"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Trois facilitateurs graphiques expliquent pourquoi dessiner : ancrage mémoriel, synthèse, concentration en réunion ; ils montrent notamment une sketchnote du talk sur les femmes dans le numérique de la veille.\n- Démonstration en direct : lettrage, personnage « rectangle », pictos simples (une quinzaine suffit), connecteurs, conteneurs (nuage, base de données, bulle, post-it), ombres et couleurs de la charte.\n- Exemple adapté à la tech : une bombe à mèche plus ou moins courte pour représenter un risque projet.\n- Questions nombreuses : gestion de l'espace, retrouver ses notes, matériel, dessin en visio, tarifs d'un facilitateur graphique ; le conseil final reste de pratiquer encore et encore.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "kcV5Zgl8pDI",
+        "title": "Toute la tech en deux coups de crayon ! (Annelore Bidaux-Nsounga, Hermann Nsounga, Marc Dugué)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "keynote-de-cloture-jeudi-intrusion-physique",
+      "day": "2022-06-30",
+      "type": "keynote",
+      "title": "Keynote de clôture du jeudi (« ...surprise ! ») : l'intrusion physique en entreprise",
+      "speakers": [
+        "Équipe BreizhCamp",
+        "Intervenant surprise (red team, nom non vérifié)"
+      ],
+      "feedbackFrom": [
+        "Questions du public en fin de keynote (transcript)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- La « surprise » annoncée au programme est un talk d'**intrusion physique** par un professionnel mandaté pour tester les vecteurs humain, physique et logique (son nom et celui de sa société sont trop déformés dans les sous-titres pour être repris).\n- Repérage : OSINT, faux profils, repérage sur place, code vestimentaire et badges, construction d'une « légende ».\n- Techniques d'entrée : digicodes devinés aux touches usées, tailgating, pauses cigarette, prétextes à l'accueil, fenêtres oscillo-battantes ouvertes avec un tube.\n- Gadgets en démonstration : capture de vidéosurveillance protégée par un mot de passe par défaut, clé USB d'injection, cloneur de badges, keylogger Wi-Fi, multiprise piégée.\n- Message : la sécurité doit être **homogène** (une porte blindée dans une cloison en placo ne sert à rien) ; *« dès qu'il y a un doute, faites confiance à vos doutes »*.\n- En questions : une fausse lettre de mission a toujours suffi quand il a été démasqué ; les vidéos d'intrusion servent à la sensibilisation.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "_RujpNVz6xQ",
+        "title": "Closing keynote (Team BreizhCamp, ...surprise!)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "keynote-de-cloture-vendredi-tristan-nitot",
+      "day": "2022-07-01",
+      "type": "keynote",
+      "title": "Keynote de clôture du vendredi, avec Tristan Nitot en visio",
+      "speakers": [
+        "Équipe BreizhCamp",
+        "Tristan Nitot (en visio)"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Tristan Nitot, qui devait ouvrir la journée du jeudi, intervient en visio dans une version raccourcie de sa keynote, qu'on lui a demandé de finir sur une note positive.\n- Thèse : *« toute activité humaine émet des gaz à effet de serre »* ; l'empreinte d'un Français doit être divisée par cinq d'ici 2050, soit une baisse d'environ 5 % par an.\n- Le gaspillage du numérique : pages web et logiciels de plus en plus lourds pour des usages comparables ; en France, la **fabrication des terminaux** domine l'empreinte, l'électricité étant décarbonée.\n- Leviers : se former (Fresque du numérique, podcast), optimiser et éco-concevoir, rester compatible avec les vieux terminaux et OS pour **refuser l'obsolescence**, calculer son empreinte (Nos Gestes Climat).\n- Bilan d'équipe : une 10e édition fêtée au gâteau, qui n'est pas la dixième année à cause de l'année blanche ; remerciements à la fac, à la captation vidéo, au traiteur, aux bénévoles et à celui qui a relancé l'idée de cette édition, et appel à rejoindre l'organisation.\n- Aucun chiffre de fréquentation annoncé ; la fin du transcript est tronquée.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "KYW89UMo_jw",
+        "title": "Keynote de clôture (Équipe BreizhCamp)",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Keynote d'ouverture du vendredi (Équipe BreizhCamp, Jean-Baptiste Onofré ; vidéo 62CoEVH7M4s sans transcript)",
+    "Conteneurs et stockage persistant avec Ceph (Etienne Menguy ; vidéo, transcript non lu)",
+    "Université Fresque du numérique (Héloïse Dano, Luc Sorel-Giffo, Serge Hardy, Sylvain Révéreault)",
+    "Université GitOps en 2022 avec Argo (Pablo Lopez ; vidéo, transcript non lu)",
+    "Université Gérer ses environnements de travail avec Nix (Romain Davaze, Stéphane Teyssier)",
+    "Université Frago, outil pour suivre l'accessibilité (Bertrand Keller ; vidéo, transcript non lu)",
+    "Université GitOps, mise en situation sur Kubernetes avec Flux (Laurent Grangeau, Ludovic Piot ; vidéo, transcript non lu)",
+    "Some misconceptions about authentication (Loïc Poullain ; vidéo, transcript non lu)",
+    "Build your 8-bit computer from scratch (Olivier Huber ; vidéo, transcript non lu)",
+    "Université Devenir svelte avec Svelte (Anthony Le Goas, Patrice De Saint Steban ; vidéo, transcript non lu)",
+    "Université Les opérateurs Kubernetes à la portée de tout développeur (Stéphane Philippart ; vidéo, transcript non lu, décrite dans le blog OVHcloud)",
+    "Université Cryptographie, et si on en parlait ? (Mathieu Rolland, Pierre Chesneau ; vidéo, transcript non lu)",
+    "Appwrite est-il prêt à éteindre Firebase ? (Lucas Audart, Mickael Alves ; vidéo, transcript non lu)",
+    "Kubernetes pour les développeurs (Erwann Thebault ; vidéo, transcript non lu)",
+    "Et si on construisait un cloud open source pour la datascience ? (Frédéric Comte, Olivier Levitt)",
+    "Et si on faisait le tour de CORS ? (Cédric Gatay ; vidéo, transcript non lu)",
+    "Quickie Avoir une idée des perfs de votre serveur Linux en 60 s (Laurent Huet ; vidéo, transcript non lu)",
+    "Quickie Boostez votre monorepo en quelques minutes (Nicolas Morel ; vidéo, transcript non lu)",
+    "Quickie Découvrez Batect, un docker-compose sous stéroïdes (Thomas François ; vidéo, transcript non lu)",
+    "Advanced multi-platform dependency injection with Kotlin (Romain Boisselle)",
+    "À la découverte d'Apache Pinot et de ses index (Loïc Mathieu ; vidéo, transcript non lu)",
+    "jOOQ, joy of SQL (Kevin Davin ; vidéo, transcript non lu)",
+    "Cloud et protection des données (Mathieu Bonnet, Matthieu Bouthors)",
+    "De Spring à NestJS : carnets de voyage de développeurs back (Mathieu Durand, Mathis Ouarnier ; vidéo, transcript non lu)",
+    "Tool in action 10 ans après : le remplaçant de RabbitMQ (Raphaël Delaporte ; vidéo, transcript non lu)",
+    "Tool in action Kustomizons nos déploiements K8S avec style (Kevin Davin ; vidéo, transcript non lu)",
+    "Tool in action Advanced TypeScript Patterns (Gregory Houllier ; vidéo, transcript non lu)",
+    "Tool in action Spécifier ses API asynchrones avec AsyncAPI (Sébastien Lecacheur ; vidéo, transcript non lu)",
+    "Tool in action Mettez du binaire dans vos APIs avec gRPC (Jérôme Barotin ; vidéo, transcript non lu)",
+    "Tool in action Déployez vos applications FaaS avec Serverless Framework (Mathieu Laude, Vincent Poilvert ; vidéo, transcript non lu)",
+    "Tool in action ArchUnit à la rescousse de mon projet (Anthony Dasse ; vidéo, transcript non lu)",
+    "WebPerf : navigateur, metrics et outils (Romuald Priol)",
+    "Micronaut AOT : optimiser vos applications pour le JIT et GraalVM (Cédric Champeau ; vidéo, transcript non lu)",
+    "Service Mesh : reprenons les bases (Sylvain Decout, Vincent Arrocéna ; vidéo, transcript non lu)",
+    "Quickie Record du monde : tour d'horizon des records (Benoit Prioux ; vidéo, transcript non lu)",
+    "Quickie Des conteneurs dans mon navigateur (Benoît Masson ; vidéo, transcript non lu, décrite dans le blog OVHcloud)",
+    "Quickie A long trip in open source development (Loïc Poullain ; vidéo, transcript non lu)",
+    "Quickie Développer une app Java sans JDK avec Gitpod (Jean-Philippe Baconnais ; vidéo, transcript non lu)",
+    "Spark dans le cloud : Kubernetes + object storage (Franck Cussac, Romain Sagean ; vidéo, transcript non lu)",
+    "Elasticsearch datastreams (Maxime Odye ; vidéo, transcript non lu)",
+    "Gladys Assistant : automatiser sa maison en self-hosted et open source (Pierre-Gilles Leymarie ; vidéo, transcript non lu)",
+    "Web assembly, et maintenant ? (Erwann Thebault, Mahdi Aici ; vidéo, transcript non lu)",
+    "Cryptographie, hachage, chiffrement, sans les maths ! (Cédric Gatay ; vidéo, transcript non lu)",
+    "Tool in action Go Generics (Benoît Masson ; vidéo, transcript non lu, décrite dans le blog OVHcloud)",
+    "Tool in action FFP2 : FastAPI For Python Programmers (Fabrice Depaulis)",
+    "Tool in action L'expérience développeur avec Quarkus (Ronan Barbot, Théo Le Visage ; vidéo, transcript non lu)",
+    "Tool in action Optimiser vos conteneurs Spring avec le Jar layering et la modularité (Benjamin Vouillaume, Édouard Siha ; vidéo, transcript non lu)"
+  ],
+  "sources": [
+    {
+      "label": "Site officiel BreizhCamp 2022",
+      "url": "https://2022.breizhcamp.org/"
+    },
+    {
+      "label": "Programme officiel BreizhCamp 2022",
+      "url": "https://2022.breizhcamp.org/conference/programme/"
+    },
+    {
+      "label": "Programme au format JSON (84 créneaux)",
+      "url": "https://2022.breizhcamp.org/json/schedule.json"
+    },
+    {
+      "label": "Playlist YouTube « BreizhCamp 2022 » (78 vidéos), 36 transcripts automatiques lus",
+      "url": "https://www.youtube.com/playlist?list=PLv7xGPH0RMUS0sDzj_45G9F-iVWWck5kz"
+    },
+    {
+      "label": "Stéphane Philippart, « OVHcloud at BreizhCamp 2022 », blog OVHcloud (7 juillet 2022, speaker et sponsor)",
+      "url": "https://blog.ovhcloud.com/en/posts/ovhcloud-at-breizhcamp-2022/"
+    },
+    {
+      "label": "Sessionize BreizhCamp 2022 (appel à orateurs)",
+      "url": "https://sessionize.com/breizhcamp-2022/"
+    },
+    {
+      "label": "Aucun post LinkedIn, compte-rendu de participant ni sketchnote publiée trouvés (6 recherches web)."
+    }
+  ]
 }

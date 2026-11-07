@@ -4,10 +4,384 @@
   "title": "JUG Summer Camp 2022",
   "edition": "13e édition",
   "start": "2022-09-09",
+  "end": "2022-09-09",
   "city": "La Rochelle",
   "venue": "Espace Encan",
   "url": "https://www.jugsummercamp.org/edition/13",
-  "dateConfidence": "sec",
-  "status": "pending",
-  "sessions": []
+  "programUrl": "https://www.jugsummercamp.org/edition/13",
+  "dateConfidence": "ok",
+  "note": "Journée unique (vendredi 9 septembre 2022), annoncée complète avec liste d'attente. Programme officiel : 23 sessions (1 keynote, des conférences, 6 quickies et 6 tools-in-action), toutes filmées. Le blog OVHcloud annonce plus de 250 participants, 22 conférences et 8 sponsors. Le programme crédite le talk sur le livre Scala à « Agnès Cardin » ; la vidéo et la speakeuse elle-même disent Agnès Maury.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-07",
+  "revisit": "Retours participants quasi absents : un seul billet public (blog OVHcloud, écrit par un speaker), aucun post LinkedIn ni compte-rendu de participant trouvé en 6 recherches. Les 23 transcripts sont lus, mais la réception par le public reste inconnue ; à reprendre avec des recherches LinkedIn/X par nom de speaker.",
+  "corpus": "Transcripts automatiques des 23 vidéos de la playlist officielle (une par session du programme), programme officiel de l'édition 13 sur jugsummercamp.org, billet du blog OVHcloud du 16 septembre 2022 (Stéphane Philippart, speaker et sponsor) et deck Speaker Deck d'Alexandre Touret publié le jour même.",
+  "limits": "Le contenu sur scène est couvert pour toutes les sessions, mais la réception par le public n'est documentée que par un billet d'un speaker-sponsor : aucun retour de participant indépendant n'a été trouvé. Les sous-titres automatiques déforment noms propres et chiffres (entreprises de plusieurs speakers inaudibles, valorisations approximatives) ; le programme ne donne ni horaires ni salles.",
+  "tldr": "Une journée complète à La Rochelle qui mêle **retours d'expérience très concrets** (Kubernetes chez Talend, facturation SESAM-Vitale chez Doctolib, tests d'intégration, typage en Java) et une forte part de **sujets humains** : accessibilité, inclusion des femmes, prise de parole, contribution open source.",
+  "keyTakeaways": [
+    "Privilégier les **tests d'intégration sur le contrat public** (Testcontainers, WireMock, Testing Library) qui résistent au refactoring, et les garder lisibles avec des builders de situation (Benjamin Cavy).",
+    "Tester ses repositories contre la **vraie image PostgreSQL/PostGIS** via Testcontainers et `@DynamicPropertySource`, plutôt qu'avec H2 ou des mocks (Sébastien Prunier).",
+    "Encoder les invariants métier dans les types (records validés, interfaces scellées) et **parser aux frontières** pour que le compilateur refuse les états incohérents (Alexandre Delègue).",
+    "Modéliser un composant front complexe comme une **machine à états** (XState) plutôt qu'empiler du code défensif autour de `useState` (Benjamin Cavy).",
+    "Monter en maturité Kubernetes par étapes et **éviter le zoo d'outils** : chaque brique ajoutée répond à un besoin et s'accompagne de workshops ; le GitOps (Flux) rend les équipes autonomes pour déployer (Mathieu Herbert).",
+    "Terminer chaque post-mortem par des **actions précises, avec un responsable et une date de suivi**, en critiquant les process et jamais les personnes (Lise Quesnel).",
+    "Tester l'accessibilité **au clavier puis au lecteur d'écran** : les outils automatiques (Lighthouse, WAVE) ne couvrent qu'environ 30 % des critères (Jérémy Renard).",
+    "Face à une blague sexiste en réunion, **le dire sur le moment**, et intervenir comme témoin avec la méthode des 5D (Coralie Broteille et Anne-Laure Gaillard).",
+    "Activer Dependabot, le secret scanning et le code scanning, et **préférer OIDC aux secrets cloud stockés** dans la CI (Tugdual Grall).",
+    "Pour une première contribution open source, viser un projet de taille raisonnable que l'on comprend fonctionnellement et commencer par **une petite PR de documentation** (Stéphane Philippart)."
+  ],
+  "sessions": [
+    {
+      "id": "sonar-la-licorne-open-source",
+      "day": "2022-09-09",
+      "type": "keynote",
+      "title": "SONAR, la licorne open source",
+      "speakers": ["Olivier Gaudin — SonarSource"],
+      "feedbackFrom": [],
+      "summary": "- Keynote d'ouverture du CEO et cofondateur de SonarSource, invité après la levée de fonds de l'entreprise (environ 400 millions selon le transcript ; la valorisation est mal restituée par les sous-titres).\n- Thèse fondatrice : si le code est mauvais, ce n'est pas faute de règles mais parce que **les développeurs n'ont pas les outils pour le voir**, alors que ce sont eux qui en sont responsables.\n- Refus du modèle de service, décrit comme une tentation de start-up : les features payées par un client sont devenues un *« sparadrap »*.\n- **L'open source est un moyen, pas une fin** : environ 20 000 clients commerciaux pour 350 000 sociétés utilisant l'édition communautaire.\n- Culture *« value obsessed »* et petits pas : une analyse plus poussée a d'abord généré des plaintes de faux positifs, le vrai besoin était l'explication des problèmes dans l'UX.\n- Recrutement par un entretien « people & culture » qui cherche six facteurs de succès (dont la résilience) et des comportements toxiques, comme l'arrogance (réponse à une question du public).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "QkWLZ7NaPFY",
+        "title": "Sonar, la licorne open source (Olivier Gaudin)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "cloud-open-source-et-communautes",
+      "day": "2022-09-09",
+      "type": "talk",
+      "title": "Cloud, Open Source et Communautés",
+      "speakers": ["Julien Landuré — Zenika"],
+      "feedbackFrom": [],
+      "summary": "- Historique de l'open source d'Apache et Eclipse au cloud ; Docker puis Kubernetes ont **standardisé les offres et réduit le vendor lock-in**.\n- La CNCF et ses niveaux de maturité (sandbox, incubating, graduated), avec un critère de santé communautaire : code de conduite et contributeurs issus de plusieurs organisations.\n- Contributions à Kubernetes (devstats.cncf.io) : Google reste premier, devant Microsoft ; Amazon progresse.\n- Comparaison des programmes communautaires des trois clouds (meetups, MVP, GDE) et constat d'un réseau de meetups CNCF à l'arrêt depuis le Covid.\n- Guerre des licences : SSPL (MongoDB, Elastic) face à AWS, puis passage d'Akka en BSL annoncé le 7 septembre, deux jours avant le talk ; l'arrêt de Google Cloud IoT Core illustre le risque.\n- Conclusion : pas de cloud sans Linux ; le **serverless à base de conteneurs** est présenté comme le compromis entre vitesse et absence de lock-in.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "dIql5fbreSM",
+        "title": "Cloud, open source et communautés (Julien Landuré)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "liberez-delivrez-webassembly-du-navigateur-avec-wasi",
+      "day": "2022-09-09",
+      "type": "talk",
+      "title": "Libérez, délivrez WebAssembly du navigateur... avec WASI",
+      "speakers": ["Philippe Charrière — GitLab"],
+      "feedbackFrom": [],
+      "summary": "- Wasm est un format binaire portable et sûr par défaut, conçu pour **accélérer JavaScript, pas le remplacer** : sa propre version JS d'un algorithme de boids est plus rapide que la version Wasm.\n- Panorama des langages (C/C++ et Rust en tête, TinyGo pour des modules légers, AssemblyScript, Grain) et des runtimes WASI (Wasmtime, Wasmer, WasmEdge, wazero, Node.js).\n- **Limite principale** : seuls entiers et flottants traversent la frontière module/hôte ; passer une chaîne impose pointeur, longueur et gestion de la mémoire côté module.\n- Des frameworks masquent cette plomberie : WAGI, Spin (Fermyon), Sat (Suborbital) ; démo d'un mini-orchestrateur perso sur Raspberry Pi.\n- L'intérêt se déplace vers le serverless, les plugins (filtres Envoy) et les UDF de bases de données ; la spec n'est *« pas cuite »*.\n- Question du public sur la sécurité mémoire : un runtime partagé cassait sous charge, il instancie désormais un runtime par appel.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "lMePUr3-5RE",
+        "title": "Libérez, délivrez WebAssembly du navigateur... avec WASI (Philippe Charrière)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "si-on-aidait-le-capitaine-nemo-a-classifier-les-monstres-marins",
+      "day": "2022-09-09",
+      "type": "talk",
+      "title": "Si on aidait le capitaine Némo à classifier les monstres marins ?",
+      "speakers": ["Eléa Petton — OVHcloud", "Stéphane Philippart — OVHcloud"],
+      "feedbackFrom": ["Stéphane Philippart, blog OVHcloud (speaker)"],
+      "summary": "- Introduction au machine learning pour développeurs : familles d'apprentissage (supervisé, non supervisé, par renforcement) et de cas d'usage (NLP, vision, audio).\n- **La donnée prend plus de la moitié du temps** : bruit, équilibre des classes, valeurs manquantes, normalisation, encodage.\n- Cas d'usage : 45 classes de la Watkins Marine Mammal Sound Database ; les spectrogrammes sont écartés car les sons sont trop proches, au profit de **26 caractéristiques extraites avec librosa**.\n- Modèle TensorFlow dans JupyterLab (4 couches cachées, dropout contre le surapprentissage), environ 94 % de précision après 100 epochs, puis API Flask, front Streamlit et image Docker avec inférence sur CPU.\n- Conseil d'usage des GPU avec parcimonie, car coûteux.\n- Côté coulisses (speaker) : premier talk en duo, un petit souci technique de dernière minute bien rattrapé et, selon le billet, de nombreuses questions après la session (hors vidéo).",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "4bUdZYa8eKQ",
+        "title": "Si on aidait le captain Némo à classifier les monstres marins ? (Eléa Petton & Stéphane Philippart)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "testcontainers-avec-spring-boot-postgresql-et-postgis-live-coding",
+      "day": "2022-09-09",
+      "type": "talk",
+      "title": "Testcontainers avec Spring Boot, PostgreSQL et PostGIS : Live Coding !",
+      "speakers": ["Sébastien Prunier"],
+      "feedbackFrom": [],
+      "summary": "- Projet support : une API Spring Boot en lecture seule sur les risques naturels et technologiques autour d'une adresse (open data Géorisques), environ 50 Go dans PostgreSQL/PostGIS, SQL écrit à la main sans ORM.\n- Point de départ : 90 tests unitaires rapides en CI et 450 tests end-to-end lancés à la main, donc trop tard ; d'où l'ajout de **tests d'intégration contre la vraie base**, H2 ou HSQLDB ne testant pas grand-chose.\n- Live coding : `PostgreSQLContainer`, conteneur statique partagé, puis `@DynamicPropertySource` pour injecter le port aléatoire dans la configuration Spring.\n- Deux pièges montrés : `withInitScript` n'accepte qu'un script, et l'image PostGIS exige `asCompatibleSubstituteFor(\"postgres\")`.\n- Astuce : un test qui rejoue tous les ups et downs des migrations de schéma.\n- Le public aide à corriger le code en direct.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "QIHRxOxJDXI",
+        "title": "Testcontainers avec Spring Boot, PostgreSQL et PostGIS : Live Coding ! (Sébastien Prunier)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ameliorer-les-competences-et-les-infrastructures-avec-les-katas-d-architecture",
+      "day": "2022-09-09",
+      "type": "lightning",
+      "title": "Améliorer les compétences et les infrastructures avec les katas d'architecture",
+      "speakers": ["Alexandre Touret"],
+      "feedbackFrom": [],
+      "summary": "- Quickie construit autour de « Georges », développeur devenu architecte dont la première expérience échoue faute d'expérience, de feedback et de mentoring.\n- Constat : **on ne fait de l'architecture qu'une demi-douzaine de fois dans une carrière**, d'où l'intérêt de s'entraîner (définition de Grady Booch : les décisions significatives, mesurées au coût du changement).\n- Format du kata (Ted Neward) : équipes mixtes de 5 à 6 personnes, papier et marqueurs, une heure de conception avec questions au modérateur, puis 5 minutes de restitution par équipe.\n- Critères d'évaluation : simplicité, évolutivité, adaptation au contexte ; lectures conseillées, dont *Fundamentals of Software Architecture* et le modèle C4.\n- Retour d'expérience : katas mensuels le midi avant le Covid, puis à distance ; pour démarrer, il suffit de 2 ou 3 personnes moteurs (réponse au public).\n- Slides publiées sur Speaker Deck le jour même.",
+      "summarySources": ["transcript", "program", "slides"],
+      "video": {
+        "youtubeId": "RjDBU0fgDlU",
+        "title": "Améliorer les compétences et les infrastructures avec les Katas d'architecture (Alexandre Touret)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rex-bit-dev-gadget-ou-indispensable",
+      "day": "2022-09-09",
+      "type": "lightning",
+      "title": "REX Bit.dev : gadget ou indispensable ?",
+      "speakers": ["Lucille Moise"],
+      "feedbackFrom": [],
+      "summary": "- Première conférence de la speakeuse. Contexte : des applications hétérogènes (plusieurs versions de React, Ant Design et MUI) qui partagent des composants modifiés de façon incohérente.\n- Déclencheur : un projet très urgent et un designer Figma qui veut réutiliser les composants existants ; comparaison entre Storybook (configuration et export lourds) et Bit.dev.\n- Démo : création d'un composant avec doc et tests, prévisualisation locale, `bit tag`, export vers le cloud Bit et installation via npm.\n- Bilan : prise en main intuitive, outil en production sans problème, **projet livré à temps** ; payant pour les entreprises mais peu cher.\n- Réserve : l'outil paraît *« magique »*, elle explique d'abord la mécanique aux nouveaux avec Storybook. Verdict : **ni gadget ni indispensable**.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "I1RCw8Y78Cs",
+        "title": "REX Bit.dev : gadget ou indispensable ? (Lucille Moise)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "5-anecdotes-sur-nos-interfaces",
+      "day": "2022-09-09",
+      "type": "lightning",
+      "title": "5 anecdotes sur nos interfaces",
+      "speakers": ["Christophe Genin"],
+      "feedbackFrom": [],
+      "summary": "- Cinq incidents vécus par un développeur full stack, chacun suivi d'une leçon.\n- Nouvelle charte graphique en big bang : afflux de tickets, les utilisateurs croient à une nouvelle application ; **prévenir le support et accompagner** les utilisateurs.\n- Menu migré vers un composant JS : un bug au scroll triple les appels à l'API ; monitorer aussi le front avec un APM et des seuils d'alerte.\n- Lenteurs dans des agences rurales à faible débit : CDN, jamais de cache sur la page HTML, cache long sur les ressources hachées.\n- Sabotage de colors.js par son mainteneur : figer les versions, `npm ci` et audit de sécurité ; dernière anecdote sur la migration d'une application Cobol grâce à un développeur Cobol, leçon de collaboration.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "HswLM05ghdc",
+        "title": "5 anecdotes sur nos interfaces (Christophe Genin)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "tester-pour-ne-plus-douter-a-la-recherche-du-test-ideal",
+      "day": "2022-09-09",
+      "type": "lightning",
+      "title": "Tester pour ne plus douter : à la recherche du test idéal",
+      "speakers": ["Benjamin Cavy — MAIF"],
+      "feedbackFrom": [],
+      "summary": "- Un bon test échoue quand il faut et seulement quand il faut, reste reproductible, rapide et compréhensible.\n- Plaidoyer pour le **diamant de test** plutôt que la pyramide : les tests unitaires sont trop couplés à la structure du code (exemple d'un passage des exceptions à un type Either).\n- Tester en boîte noire sur le seul contrat (API, messages Kafka) avec Testcontainers, WireMock, Cypress ou Testing Library.\n- Gains : résistance au refactoring, vrai SQL et vrais comportements d'erreur testés, test-first facilité.\n- Limites assumées (plus lent, plus complexe) et remèdes : truncate plutôt que redémarrage du conteneur, primitives de test, **builders de situation**, une seule chose testée par test.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "ZwJ2trFajBo",
+        "title": "Tester pour ne plus douter : à la recherche du test idéal (Benjamin Cavy)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ivre-et-au-chomage-elle-decide-d-ecrire-un-livre-sur-le-scala-en-plein-covid",
+      "day": "2022-09-09",
+      "type": "lightning",
+      "title": "Ivre et au chômage, elle décide d'écrire un livre sur le Scala en plein Covid",
+      "speakers": ["Agnès Maury"],
+      "feedbackFrom": [],
+      "summary": "- Récit de l'écriture d'un livre sur Scala pour les éditions ENI, commencé au chômage en avril 2020 et sorti en janvier 2022, soit plus d'un an de retard sur le contrat initial.\n- Le contrat impose **400 000 caractères** : deux chapitres en deux mois n'en font que 100 000, et le reste devient l'étape la plus dure.\n- Le conseiller technique l'aide avec des astuces simples : découper les blocs, expliquer avec des mots simples, multiplier les exemples et les rappels.\n- Reports successifs, **syndrome de l'imposteur** et épisode dépressif racontés sans fard ; viennent ensuite éléments d'annonce, relectures et entrées d'index oubliées.\n- Chiffres donnés sur scène : 167 exemplaires vendus (dont un seul numérique), 1 600 euros à l'écriture et 5 % de royalties ; le livre ne lui a pas apporté plus d'offres. Elle ne compte pas en écrire un autre pour l'instant.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "OjgD03lfegA",
+        "title": "Ivre et au chômage, elle décide d'écrire un livre sur le Scala en plein Covid (Agnès Maury)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "refuser-l-obsolescence-programmee-lancez-vous-dans-la-reparation",
+      "day": "2022-09-09",
+      "type": "lightning",
+      "title": "Refuser l'obsolescence programmée, lancez-vous dans la réparation",
+      "speakers": ["Emeric Martineau — Zenika"],
+      "feedbackFrom": [],
+      "summary": "- Développeur sans formation en électronique, il répare depuis une dizaine d'années et note que même un ingénieur électronicien de ses amis ne sait pas réparer.\n- Méthode : commencer par des objets très simples, redessiner le schéma, comprendre chaque composant ; *« l'appareil est déjà cassé, au pire il finit à la poubelle »*.\n- Budget et outillage détaillés : environ 300 euros pour démarrer, puis testeur de composants, thermomètre infrarouge, microscope numérique, oscilloscope d'entrée de gamme, station de dessoudage, et un atelier dédié.\n- Exemple : une pièce introuvable remplacée par un micro-switch de souris, après 8 heures de travail.\n- Limite : composants montés en surface et puces propriétaires **multiplient la difficulté de réparation**. Ressources YouTube et livres cités pour se former.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "IhHMNCUHhnU",
+        "title": "Refuser l'obsolescence programmée, lancez-vous dans la réparation ! (Emeric Martineau)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "handicap-et-accessibilite-vous-etes-tous-concernes",
+      "day": "2022-09-09",
+      "type": "talk",
+      "title": "Handicap et accessibilité : vous êtes tous concernés",
+      "speakers": ["Jérémy Renard — Communauté d'agglomération de La Rochelle"],
+      "feedbackFrom": [],
+      "summary": "- Constat : l'immense majorité du web n'est pas accessible alors que le RGAA est une obligation légale ; on a fait beaucoup d'efforts pour 3 % d'utilisateurs d'Internet Explorer, contre 15 à 20 % de personnes en situation de handicap numérique.\n- Le handicap est **situationnel** et la cause profonde est le validisme ; le seul argument valable est l'inclusion, pas le SEO.\n- Règles simples : contraste d'au moins 4,5, information jamais portée par la seule couleur, texte de 16 px minimum, zones cliquables suffisantes, HTML sémantique, un lien pour aller quelque part et un bouton pour agir, focus bien visible, zoom à 200 %.\n- Formulaires et médias : un label par champ, pas de blocage du copier-coller ni de captcha visuel, alternatives textuelles adaptées, sous-titres manuels ; *« no ARIA is better »* et les surcouches JavaScript d'accessibilité ne marchent pas.\n- Tests : Lighthouse et WAVE couvrent environ 30 % des critères, le reste se fait **au clavier, au lecteur d'écran et page sans CSS**.\n- Questions du public : convaincre sa hiérarchie, sensibiliser les contributeurs éditoriaux, frameworks comme React ou Flutter (possibles, à condition de tester le HTML produit).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "aKjhoM2SmFo",
+        "title": "Handicap et accessibilité : vous êtes tous concernés (Jérémy Renard)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rex-evolution-d-une-stack-basee-sur-kubernetes-de-2018-a-nos-jours",
+      "day": "2022-09-09",
+      "type": "talk",
+      "title": "REX : Évolution d'une stack basée sur Kubernetes de 2018 à nos jours",
+      "speakers": ["Mathieu Herbert — Talend"],
+      "feedbackFrom": [],
+      "summary": "- Contexte Talend : environ 18 000 pods, 400 à 450 développeurs, sur AWS et Azure.\n- 2018 : clusters installés à la main (Kubespray, Helm, Prometheus Operator, Traefik, ELK) sur une application pilote non critique ; opérations coûteuses.\n- 2019 : bascule vers EKS puis AKS avec les mêmes charts ; seuls les PVC, storage classes et rôles IAM diffèrent entre clouds (réponse au public).\n- 2020 : passage du push piloté par Jenkins, qui faisait des SRE un goulot, au **GitOps avec Flux** : les équipes produit déploient seules par pull request.\n- 2021-2022 : Rancher et Okta, Strimzi pour Kafka, Grafana Tempo, Kubecost/OpenCost pour le FinOps, Kyverno d'abord en audit, KEDA sur le lag Kafka.\n- Conclusion : **éviter le zoo d'outils**, chaque brique répond à un besoin et s'accompagne de workshops avec les équipes.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "nUiiBTN50Us",
+        "title": "REX : Évolution d'une stack basée sur Kubernetes de 2018 à nos jours (Mathieu Herbert)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "developer-et-deployer-sur-le-cloud-avec-github",
+      "day": "2022-09-09",
+      "type": "talk",
+      "title": "Développer et déployer sur le cloud avec GitHub",
+      "speakers": ["Tugdual Grall — GitHub"],
+      "feedbackFrom": [],
+      "summary": "- Habitué du JUG Summer Camp (premier talk en 2010), désormais Solutions Engineer chez GitHub ; démo de bout en bout de la plateforme.\n- GitHub Flow avec pull request ouverte tôt en draft, GitHub Projects pour le backlog, branche créée depuis une issue.\n- github.dev (touche « . ») contre **Codespaces**, environnement complet décrit par un devcontainer, avec partage de port privé, à l'organisation ou public pour une revue sans déployer.\n- Copilot présenté comme un assistant à accepter ou refuser, pas à suivre aveuglément (exemple d'une division entière glissée sans prévenir).\n- CI/CD avec un namespace Kubernetes par branche, workflows réutilisables, permissions minimales et **connexion OIDC au cloud plutôt que des secrets**.\n- Sécurité : Dependabot (exemple de Log4Shell), secret scanning avec push protection, code scanning qui détecte une injection SQL.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "Q_OQQp7vPgg",
+        "title": "Développer et déployer sur GitHub (Tugdual Grall)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-post-mortems-ou-comment-sortir-heureux-d-un-carnage",
+      "day": "2022-09-09",
+      "type": "talk",
+      "title": "Les post-mortems ou comment sortir heureux d'un carnage",
+      "speakers": ["Lise Quesnel"],
+      "feedbackFrom": [],
+      "summary": "- Différence avec la rétrospective : le post-mortem porte sur un événement ponctuel et peut réunir toute l'entreprise.\n- Préparation et rôles : un animateur **neutre et extérieur à l'incident**, un timekeeper, un scribe ; rappeler l'objectif et critiquer les process, pas les personnes.\n- Déroulé sur un exemple fictif d'attaque DDoS : frise de faits datés et objectifs, ciblage par dot voting, analyse (5 pourquoi, arête de poisson), brainstorm et vote, chaque phase timeboxée.\n- Les actions doivent être précises, avec **un responsable et une date** ; *« doux avec les gens, durs avec les process »*.\n- Questions du public : un rappel de consigne n'est pas une action, il faut des actions SMART et un point de suivi dans l'agenda ; les problèmes de comportement relèvent du manager.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "_Akq_nm-cA8",
+        "title": "Les post-mortems ou comment sortir heureux d'un carnage (Lise Quesnel)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "0100-actions-simples-pour-favoriser-l-inclusion-des-femmes-dans-la-tech",
+      "day": "2022-09-09",
+      "type": "talk",
+      "title": "0100(2) actions simples pour favoriser l'inclusion des femmes dans la Tech",
+      "speakers": ["Coralie Broteille — ManoMano", "Anne-Laure Gaillard — ManoMano"],
+      "feedbackFrom": [],
+      "summary": "- Tools-in-action ouvert par un jeu « devinez notre métier » : des passants leur ont prêté des métiers de comptable, professeure des écoles ou avocate.\n- Chiffres cités sur scène : 16 % de femmes dans la tech en France, 41 % la quittent au bout de 10 ans contre 17 % des hommes, parole en réunion dominée à 75 % par les hommes.\n- Biais dans les produits : données médicales sur l'infarctus, voix féminines mal reconnues par les premières IA.\n- Blagues sexistes : **le dire sur le moment**, et savoir l'entendre ; test de Florence Chabanois (MiXiT 2022) qui consiste à remplacer la femme par un homme dans la blague.\n- Harcèlement : référent obligatoire et méthode des 5D pour les témoins (distraire, déléguer, documenter, diriger, dialoguer).\n- Les quatre actions (« 0100 » en binaire) : prendre conscience de ses biais, communiquer, appliquer les 5D, et surtout l'empathie. Échanges nourris avec le public (éducation des garçons, culture gamer, managers sexistes).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "b_ELIcyHk9U",
+        "title": "0100 actions simples pour favoriser l'inclusion des femmes ds la Tech (C Broteille & A-L Gaillard)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rendez-les-etats-impossibles-inatteignables-dans-vos-frontends",
+      "day": "2022-09-09",
+      "type": "talk",
+      "title": "Rendez les états impossibles inatteignables dans vos frontends",
+      "speakers": ["Benjamin Cavy — MAIF"],
+      "feedbackFrom": [],
+      "summary": "- Tools-in-action en live coding : en React, `useState` et `useEffect` tournent vite au plat de spaghettis ; `useReducer` aide, **les machines à états vont plus loin**.\n- Application « beurre doux ou demi-sel » : dans la version naïve, oublier un `setLoading` permet de soumettre le formulaire plusieurs fois.\n- Réécriture avec XState : contexte et `assign`, services invoqués pour les appels HTTP, gardes, états parallèles, transitions `always` et retardées, états finaux, `onError`.\n- Éditeur visuel jugé pratique mais encore en bêta ; typage TypeScript des événements pour l'autocomplétion.\n- Conclusion : même avec un bouton actif, l'événement de soumission est ignoré hors de l'état valide, la protection est **structurelle et non cosmétique**.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "iET-RcaAUsU",
+        "title": "Rendez les états impossibles inatteignables dans vos frontends (Benjamin Cavy)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "corn-hole-2-turbo-mes-premiers-pas-dans-l-embarque",
+      "day": "2022-09-09",
+      "type": "talk",
+      "title": "Corn Hole 2 Turbo : mes premiers pas dans l'embarqué",
+      "speakers": ["Paul Roye"],
+      "feedbackFrom": [],
+      "summary": "- Un leader technique Java construit un tableau de score connecté pour le cornhole, jeu de lancer de sacs dont il rappelle les règles.\n- Le MVP ambitieux (comptage automatique par RFID et capteurs, sons, LED) est abandonné au profit d'un affichage piloté en Bluetooth depuis Android, réalisé au FabLab de Nantes.\n- Arduino préféré au Raspberry Pi pour le prix et la consommation (une batterie tient plus d'un mois).\n- Échec raconté : une matrice de LED avec faux contact **coulée dans la résine**, planche à refaire, cette fois avec un compartiment de maintenance ; *« tester c'est douter »*, il faut tester.\n- Contraintes de l'embarqué (courant limité, mémoire, chaînes et allocation dynamique) et plaidoyer pour la sobriété : une JVM pour trois web services est peut-être *« overkill »*. La démo Bluetooth finit par marcher.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "hfO9on8r9Po",
+        "title": "#Corn Hole 2 Turbo : mes premiers pas dans l'embarqué (Paul Roye)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "doctolib-nouveau-produit-nouvelle-stack",
+      "day": "2022-09-09",
+      "type": "talk",
+      "title": "Doctolib : nouveau produit, nouvelle stack !",
+      "speakers": ["Jérôme Benois — Doctolib"],
+      "feedbackFrom": [],
+      "summary": "- Engineering Director, il construit le module de facturation de Doctolib Médecin avec une équipe d'environ 25 personnes basée à Niort.\n- Domaine : feuille de soins électronique signée avec carte CPS et carte Vitale, cahier des charges SESAM-Vitale de 2 000 pages, **agrément obligatoire avant toute mise en main**, difficile à concilier avec une culture produit itérative.\n- Même principe de « boring architecture » que la stack historique (monolithe Rails) : un monolithe **Rust** embarqué sur poste et mobile, Couchbase Lite pour le hors ligne.\n- Hardware maison : Raspberry Pi et lecteurs Bluetooth du commerce écartés, conception d'une carte électronique et d'un firmware propres, portage du middleware de l'Assurance maladie sur iOS et Android.\n- Certification : environ 2 000 scénarios écrits dans un DSL Kotlin, exécutés via l'API puis Selenium, générant environ 10 000 pages de preuves pour l'auditeur.\n- Déploiement progressif en canary sur trois jours, justifié par un retour arrière qui peut prendre des heures (réponse au public) ; effort de 4 à 6 personnes pendant un peu plus d'un an.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "nNjny0dPv3M",
+        "title": "Doctolib : nouvelle stack, nouveau produit (Jérôme Benois)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-parole-cet-outil-formidable-au-bout-de-vos-levres",
+      "day": "2022-09-09",
+      "type": "talk",
+      "title": "La parole : cet outil formidable au bout de vos lèvres",
+      "speakers": ["Geoffrey Graveaud — Zenika"],
+      "feedbackFrom": [],
+      "summary": "- Tools-in-action d'un formateur à la prise de parole, bénévole chez Eloquentia : deux défis, **maintenir l'attention et rester congruent** entre ce qu'on pense, ce qu'on dit et la façon de le dire.\n- Le silence clarifie et crée de l'intrigue : exercice d'une seconde de pause aux virgules et deux aux points, qui remplace peu à peu les « euh ».\n- Figures de style (hyperbole, anaphore), regard pour capter les réactions, mains entre épaules et bassin.\n- Entraînement : virelangues articulés en exagérant, 5 minutes par jour pendant 21 jours.\n- Mise en garde sur la frontière avec la manipulation, démontrée en défendant deux opinions opposées sur une même statistique.\n- Remarque du public : le contact visuel forcé est difficile pour certaines personnes neuroatypiques, et ne pas regarder ne veut pas dire décrocher.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "PTvQJIKmjOE",
+        "title": "La parole, cet outil formidable au bout de nos lèvres (Geoffrey Graveaud)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "parse-don-t-validate-en-java",
+      "day": "2022-09-09",
+      "type": "talk",
+      "title": "Parse don't validate en Java",
+      "speakers": ["Alexandre Delègue — MAIF"],
+      "feedbackFrom": [],
+      "summary": "- Point de départ : un gros POJO « Colis » plein de booléens et d'annotations autorise des états incohérents, et `@Valid` s'oublie sur un autre point d'entrée comme Kafka.\n- Rappel des types algébriques : types somme et types produit.\n- En Java moderne : records validés dans leur constructeur (type `Email`), **interfaces scellées** avec un record par état, switch avec pattern matching (preview) vérifiant l'exhaustivité.\n- Architecture : domaine sûr au centre, **parsing aux frontières**, avec une lib maison qui accumule toutes les erreurs JSON au lieu de s'arrêter à la première.\n- Coût assumé : plus de code, mais moins de tests ; garder la capacité de relire les données déjà stockées quand une règle change. Code publié sur GitHub.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "pBXP1-3xcKk",
+        "title": "Parse don't validate en Java (Alexandre Delègue)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "l-open-source-a-la-portee-de-toutes-et-tous",
+      "day": "2022-09-09",
+      "type": "talk",
+      "title": "L'open source à la portée de toutes et tous !",
+      "speakers": ["Stéphane Philippart — OVHcloud"],
+      "feedbackFrom": ["Stéphane Philippart, blog OVHcloud (speaker)"],
+      "summary": "- Tools-in-action en fin de journée d'un DevRel OVHcloud, committer sur un plugin Jenkins : contribuer pour apprendre, se confronter aux autres et rendre à la communauté, pas pour la gloire ni l'argent.\n- Choisir un projet : indexeurs de « good first issue », Hacktoberfest ; éviter les projets stars qui nourrissent le syndrome de l'imposteur, préférer **un projet actif, de taille raisonnable, que l'on comprend fonctionnellement**.\n- Premiers pas : lire CONTRIBUTING et le code de conduite, lire les tests ; sa première contribution fut un lien cassé dans un README.\n- Méthode : fork à jour, PR en draft au plus tôt, demander avant de prendre une issue ; 3 à 4 heures par semaine, une feature à la fois, accepter des reviews lentes.\n- Le rôle de mainteneur est ingrat et ne doit pas être porté seul ; une remarque du public appelle à faire venir des designers. Le billet OVHcloud (speaker) insiste sur l'aide hors code dont l'open source a besoin et dit avoir trouvé deux talks dans la journée enrichissants mais fatigants.",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "l-_FXpXr9gk",
+        "title": "L'open source à portée de toutes et tous ! (Stéphane Philippart)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-server-state-facile-avec-tanstack-query-ex-react-query",
+      "day": "2022-09-09",
+      "type": "talk",
+      "title": "Le server state facile avec TanStack Query (ex React Query)",
+      "speakers": ["Olivier Thierry"],
+      "feedbackFrom": [],
+      "summary": "- Tools-in-action de fin de journée : un front consomme surtout des API et doit gérer état des requêtes, cache, rafraîchissement et invalidation ; Redux menait au plat de spaghettis.\n- TanStack Query est la v4 de React Query, même équipe, avec un noyau découplé du framework (réponse au public : ce n'est pas un fork).\n- Démo sur une liste de pandas : `useQuery` avec clé et fonction, retries automatiques, refetch au focus, `staleTime` passé de 0 à 5 minutes, clés composées, `useMutation` et `invalidateQueries`.\n- Autres fonctions : requêtes dépendantes, annulation, optimistic updates, persistance, devtools.\n- Limites : React récent avec hooks, **pas un state global**, et une même donnée issue de plusieurs API reste difficile à unifier ; alternatives citées (SWR, Apollo, Relay, RTK Query).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "kNaBVAdwbR4",
+        "title": "Le server state facile avec Tanstack Query - ex React Query (Olivier Thierry)",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [],
+  "sources": [
+    { "label": "Programme officiel, édition 13 (jugsummercamp.org)", "url": "https://www.jugsummercamp.org/edition/13" },
+    { "label": "Playlist YouTube « Jug Summer Camp 2022 » (23 vidéos)", "url": "https://www.youtube.com/playlist?list=PL4Z_Bm3ccVweiwu4voRMNCdgSDsAC3Iv8" },
+    { "label": "OVHcloud at JUG Summer Camp 2022, blog OVHcloud, Stéphane Philippart, 16 septembre 2022", "url": "https://blog.ovhcloud.com/en/posts/ovhcloud-at-jug-summer-camp-2022/" },
+    { "label": "Slides d'Alexandre Touret, katas d'architecture (Speaker Deck, 9 septembre 2022)", "url": "https://speakerdeck.com/alexandretouret/ameliorer-les-competences-et-les-infrastructures-avec-les-katas-darchitecture-217a7b2c-916e-4127-be59-69eef257200c" },
+    { "label": "Posts LinkedIn : aucun trouvé (recherche web, novembre 2026)" }
+  ]
 }

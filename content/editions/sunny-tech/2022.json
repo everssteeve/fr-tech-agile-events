@@ -8,7 +8,928 @@
   "city": "Montpellier",
   "venue": "SupAgro",
   "url": "https://2022.sunny-tech.io",
-  "dateConfidence": "sec",
-  "status": "pending",
-  "sessions": []
+  "programUrl": "https://2022.sunny-tech.io/schedule",
+  "dateConfidence": "ok",
+  "note": "Retour de Sunny Tech après deux ans d'interruption liée au Covid. D'après l'intro des organisateurs : environ 300 propositions au CFP (plus de 750 en 2019), 72 speakers et 61 sessions (dont 35 conférences et 14 quickies), sur sept thèmes (Cloud & DevOps, Méthodologies, Backend, Data, Web & Mobile & UI, Architecture, Atypique). Nouveauté : un « amphi trop chaud » en plein air pour trois talks du matin. Plus de 500 participants annoncés au mot de clôture.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-07",
+  "revisit": "Retours participants minces : deux comptes-rendus de blog d'entreprise seulement (Lunatech, JoliCode), aucun post LinkedIn ni thread X lu. 39 transcripts lus ; restent non lus ceux de Camel Quarkus, SQL réactif, Java 11 à 17, BigQuery DeepDive et Cargo, et pas de transcript pour Le GitOps dont vous êtes le héros ni pour Le job de mes rêves.",
+  "corpus": "Programme officiel (données du site 2022 : sessions, speakers, horaires), 39 transcripts automatiques de la playlist officielle (2 keynotes, intro et outro des organisateurs, 35 talks et quickies) et deux comptes-rendus publiés juste après l'événement : Vincent Brule (blog Lunatech, 2 juillet 2022) et l'équipe JoliCode (18 juillet 2022).",
+  "limits": "La réception par le public repose sur deux billets d'entreprise, très positifs, dont l'un est écrit par un collègue d'une speakeuse (Lunatech) ; aucun retour critique de participant n'a été trouvé. Les transcripts sont des sous-titres automatiques bruts (noms propres et chiffres parfois déformés, questions du public rarement captées) et cinq sessions hors programme publié ont un speaker reconstitué d'après le transcript ou les blogs.",
+  "tldr": "Un retour après deux ans de pause, ouvert par une keynote sur **l'impact éthique et matériel du numérique**, où le cloud native et la sécurité côtoient une forte présence des sujets **humains (diversité, biais, rôles, carrière)** et des formats décalés, de Mario Kart au dessin en direct.",
+  "keyTakeaways": [
+    "Garder son smartphone **5 à 7 ans** plutôt que 2 à 3 réduit d'environ 44 % ses émissions sur le cycle de vie ; le recyclage n'est que la dernière solution (Audrey Neveu et Agnès Crepet, chiffre retenu par JoliCode).",
+    "Rendre accessible un site déjà en production : commencer petit, **deux tickets d'accessibilité par sprint**, un audit externe tous les deux ans et des tests par des utilisateurs handicapés (Mélanie Boudard, retenu par JoliCode).",
+    "Découpler déploiement et release avec des **feature flags**, exposer progressivement (20 % puis 80 % du trafic) et nettoyer le code une fois la feature à 100 % (Sébastien Stormacq).",
+    "Faire scaler sur des **métriques métier** plutôt que sur le CPU : KEDA combine plusieurs déclencheurs, du cron au scale à zéro (Logan Hauspie).",
+    "Côté éco-conception backend, **le langage et son écosystème pèsent le plus**, devant le code, la base et les index : mesurer sur une vraie application plutôt que sur des micro-benchmarks (Jérémie Drouet et Youen Chéné).",
+    "En OAuth2, abandonner l'implicit flow : **authorization code avec PKCE** pour tous les clients et redirect URI en correspondance exacte (Mathieu Humbert).",
+    "La sécurité s'évalue dans le temps : **réduire la surface d'attaque** et rendre l'attaque non rentable plutôt que bâtir une forteresse (Quentin Adam, cité par JoliCode).",
+    "Lead dev : **partager les rôles** (rétros, démos, référents) pour ne pas déresponsabiliser l'équipe et garder du temps pour coder (Lise Quesnel).",
+    "Recruter plus divers : annonces neutres (outil Gender Decoder), liste de technos limitée, temps partiel accepté (Mireille Campourcy ; Clémence Bic et Mélanie Reversat).",
+    "Pour un premier talk, **le contenu prime sur les slides** : plan, répétition à voix haute devant des collègues, slides en dernier (Pascal Martin)."
+  ],
+  "sessions": [
+    {
+      "id": "numerique-et-ethique-l-impossible-equation",
+      "day": "2022-06-30",
+      "type": "keynote",
+      "title": "Numérique et éthique : l'impossible équation ?",
+      "speakers": [
+        "Audrey Neveu — VMware Tanzu",
+        "Agnès Crepet — Fairphone"
+      ],
+      "feedbackFrom": [
+        "Vincent Brule (blog Lunatech)",
+        "Équipe JoliCode (blog)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Volet matériel (Agnès Crepet) : le numérique pèserait environ 3,8 % des émissions de gaz à effet de serre et **environ 75 % de l'impact d'un smartphone vient de sa fabrication** ; 1,5 milliard vendus par an, gardés 2 à 3 ans.\n- Un téléphone contient 40 à 60 minerais ; travail des enfants dans les mines artisanales de RDC, suicides chez Foxconn ; seuls 17,4 % des téléphones sont bien recyclés et 70 millions dorment dans des tiroirs en Europe.\n- Volet éthique (Audrey Neveu) : dark patterns, design de l'attention, data brokers, reconnaissance faciale, drones, rôle de Facebook en Birmanie ; *« ce qui est vendu, c'est votre futur comportement »*.\n- Alternatives citées : Fairphone, Commown, Telecoop, /e/, Exodus Privacy, Framasoft, Signal, iFixit, la Quadrature du Net ; *« le recyclage, c'est vraiment la dernière solution »*.\n\n**Côté public** : duo jugé captivant et complémentaire ; Lunatech retient les quatre droits à respecter (transparence, design propre, vie privée, droit de partir) et l'idée que nous sommes les premiers acteurs du changement. JoliCode retient le chiffre de 44 % d'émissions en moins en gardant son téléphone sept ans.",
+      "summarySources": [
+        "transcript",
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "a1dHoZVPCX8",
+        "title": "[Sunny Tech 2022] Keynote ouverture: Numérique et éthique : l'impossible équation ?",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-reseau-dans-kubernetes-peut-on-y-voir-plus-clair",
+      "day": "2022-06-30",
+      "type": "talk",
+      "title": "Le réseau dans Kubernetes : peut-on y voir plus clair ?",
+      "speakers": [
+        "Shérine Khoury — Red Hat",
+        "Joel Takvorian — Red Hat"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Parcours d'une requête dans un cluster : Ingress, Service, NodePort, kube-proxy, netfilter, load balancer du cloud.\n- Panorama des CNI (Flannel, Calico, Cilium, OVN-Kubernetes) et des techniques d'observabilité réseau : NetFlow/IPFIX avec échantillonnage, coût des copies entre noyau et espace utilisateur, **eBPF**.\n- Service mesh (Istio) comparé aux approches sans sidecar (Cilium Service Mesh, Merbridge).\n- Démo sur une application de football en microservices : Hubble et Grafana montrent les paquets bloqués par des NetworkPolicy ; plusieurs ratés de démo obligent à revenir aux slides.\n- Présentation de **NetObserv**, projet open source lancé mi-2021 (plugin de console OpenShift), et appel à un hackathon.\n- *« Quand on se lance dans un cluster et qu'il y a une panne, on ne sait pas où regarder. »*",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "idMhOqQd2zE",
+        "title": "[Sunny Tech 2022] Le réseau dans Kubernetes : peut-on y voir plus clair ?",
+        "transcript": true
+      }
+    },
+    {
+      "id": "premiere-application-mobile-flutter-ne-faites-pas-les-memes-erreurs-que-nous",
+      "day": "2022-06-30",
+      "type": "talk",
+      "title": "Première application mobile Flutter ? Ne faites pas les mêmes erreurs que nous !",
+      "speakers": [
+        "Olivier Revial — Stack Labs",
+        "Sébastien Flochlay — Stack Labs"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Deux anciens développeurs backend racontent leur première application Flutter : une base de code pour mobile, web et desktop.\n- Premier conseil, *« le plus bête »* : **apprendre le langage Dart** (constructeurs nommés, factory, mixins, extensions, null safety), en se donnant 5 à 15 jours.\n- Outillage : `flutter doctor`, FVM pour gérer les versions, différence entre hot reload et hot restart, linters et formatage automatique.\n- Architecture : thème Material 3, dark mode, accessibilité et i18n dès le départ, organisation « folder by feature », choix d'une gestion d'état (Provider, Riverpod, Bloc), pyramide de tests et golden tests.\n- Dernier conseil : **anticiper la publication sur les stores**, qui prend du temps.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Rrrt0OLu-Ds",
+        "title": "[Sunny Tech 2022] Première application mobile Flutter ? Ne faites pas les mêmes erreurs que nous !",
+        "transcript": true
+      }
+    },
+    {
+      "id": "agilite-at-scale",
+      "day": "2022-06-30",
+      "type": "talk",
+      "title": "Agilité \"at scale\"",
+      "speakers": [
+        "François Desmier — MAIF"
+      ],
+      "feedbackFrom": [
+        "Équipe JoliCode (blog)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Retour d'expérience personnel d'un architecte solutions venu de l'infra, à la MAIF : 7 000 salariés, une DSI d'environ 800 personnes, près de 90 ans d'histoire.\n- **L'agilité est une posture, pas une méthode** ; il dit se méfier des méthodes appliquées de façon dogmatique.\n- Freins d'un SI legacy : règles métier éparpillées (triggers, ESB, batchs Cobol), entropie de l'organisation, salariés qui ont vécu de multiples réorganisations.\n- Prérequis : automatisation, culture DevOps, domaines métier découplés, « gros services interopérables » plutôt que microservices par principe, conventions communes d'API.\n- Il critique le crunch permanent et regrette que les achats et le juridique restent peu agiles : *« l'agilité, c'est super exigeant, c'est pas magique »*.\n\n**Côté public** : JoliCode retient que la démarche est venue de la direction générale et qu'après plus de cinq ans, tout n'est pas encore stabilisé.",
+      "summarySources": [
+        "transcript",
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "1pYIOAzTpCw",
+        "title": "[Sunny Tech 2022] Agilité \"at scale\"",
+        "transcript": true
+      }
+    },
+    {
+      "id": "camping-paradigme-organise-tes-vacances-en-mode-agile",
+      "day": "2022-06-30",
+      "type": "workshop",
+      "title": "Camping Paradigme : Organise tes vacances en mode Agile !",
+      "speakers": [
+        "Laurie Coquillat — Lunatech"
+      ],
+      "feedbackFrom": [
+        "Vincent Brule (blog Lunatech, collègue de la speakeuse)"
+      ],
+      "summary": "- Atelier sous forme de **jeu de plateau** : des groupes organisent des vacances sous contraintes et aléas, en miroir d'un projet informatique (programme, blog).\n- L'animatrice relie le déroulé du jeu aux cadres agiles et à leurs cas d'usage (blog).\n- Vincent Brule le recommande vivement, **même aux praticiens agiles expérimentés**, comme une façon ludique de revoir les fondamentaux ; il est collègue de la speakeuse.\n- Pas de vidéo.",
+      "summarySources": [
+        "program",
+        "blog"
+      ]
+    },
+    {
+      "id": "l-eco-conception-c-est-bien-mais-si-on-parlait-un-peu-du-backend",
+      "day": "2022-06-30",
+      "type": "talk",
+      "title": "L'eco-conception, c'est bien, mais si on parlait un peu du backend ?",
+      "speakers": [
+        "Jérémie Drouet — Datadog",
+        "Youen Chéné — Webvert"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Constat : la fabrication du matériel domine l'impact du numérique, mais on parle rarement du backend. Une étude connue sur l'énergie des langages est jugée peu actionnable.\n- Protocole maison : une vraie application de todo (API et base), quatre scénarios, dix mesures de dix minutes sur des serveurs bare metal, avec **Scaphandre** pour l'énergie et k6 pour la charge.\n- Langages comparés : Go, JVM (Kotlin, Spring), PHP (Symfony), Node, Rust ; bases Postgres et MySQL ; variations sur index, ORM (N+1), pagination, agrégation en mémoire.\n- Résultats : un écart d'environ x12 entre meilleures et pires configurations ; *« c'est le langage et son écosystème qui a le plus d'influence »*, puis le code, la base et les index ; l'ORM pèserait environ 10 %. Ils signalent des écarts types élevés.\n- Les mesures et le notebook sont publiés en open source avec un appel à contributions.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "k39JWYVx_cI",
+        "title": "[Sunny Tech 2022] L'eco-conception, c'est bien, mais si on parlait un peu du backend ?",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-j-ai-developpe-le-detecteur-de-deepfakes-le-plus-puissant-du-monde-pour-100",
+      "day": "2022-06-30",
+      "type": "talk",
+      "title": "Comment j'ai développé le détecteur de deepfakes le plus puissant du monde pour 100€",
+      "speakers": [
+        "Mathis Hammel — CodinGame"
+      ],
+      "feedbackFrom": [
+        "Vincent Brule (blog Lunatech)",
+        "Équipe JoliCode (blog)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Cible : les visages générés par thispersondoesnotexist (StyleGAN2), utilisés pour de faux profils. Quiz de neuf visages : un seul est réel et la salle se trompe largement.\n- Explication des GAN (générateur contre discriminateur) et d'un premier indice fragile : les yeux sont toujours au même endroit.\n- L'astuce : le site sert **la même image à tout le monde pendant environ une seconde**. Il télécharge donc tout ce qui est généré, encode chaque visage en vecteur avec FaceNet et cherche les plus proches voisins dans Open Distro (Elasticsearch), sur un Jetson Nano.\n- Environ 16 millions de visages indexés chez lui : *« j'ai construit une base de recherche faciale à l'échelle d'un pays dans mon salon »*. Démo en direct réussie.\n- Limite : seules les images générées pendant que le script tournait sont reconnues, et générer ses propres fakes contourne l'outil.\n\n**Côté public** : *« ce talk est vraiment bien vulgarisé »* et speaker jugé très bon orateur (Lunatech) ; JoliCode détaille la démarche et la démo publique.",
+      "summarySources": [
+        "transcript",
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "ZR_NET9mxVU",
+        "title": "[Sunny Tech 2022] Comment j'ai développé le détecteur de deepfakes le + puissant du monde pour 100€",
+        "transcript": true
+      }
+    },
+    {
+      "id": "srp-le-protocole-d-authentification-zero-knowledge-sous-la-forme-d-un-conte",
+      "day": "2022-06-30",
+      "type": "talk",
+      "title": "SRP, le protocole d'authentification Zero-Knowledge, sous la forme d'un conte",
+      "speakers": [
+        "Willy Malvault — Sogilis"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Vulgarisation sous forme de conte (Alice, des pirates à chapeau noir) d'un Internet présenté comme chaotique et non fiable.\n- Gradation des attaques et parades : mot de passe en clair, man-in-the-middle, vol de base, hash, rainbow tables, sel.\n- **SRP (Secure Remote Password, 1998)** : le client dérive un « verifier » du mot de passe et du sel ; le mot de passe ne transite jamais et la clé de session est éphémère. *« Vous allez pouvoir vous identifier avec votre mot de passe sans que votre mot de passe ne passe sur le réseau. »*\n- Usages cités : ProtonMail, 1Password, AWS Cognito. Faiblesse à l'enregistrement et successeur recommandé, **OPAQUE**.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "YbN10FOG1xY",
+        "title": "[Sunny Tech 2022] SRP, le protocole d'authentification Zero-Knowledge, sous la forme d'un conte",
+        "transcript": true
+      }
+    },
+    {
+      "id": "developper-des-applications-observables-pour-la-production",
+      "day": "2022-06-30",
+      "type": "talk",
+      "title": "Développer des applications observables pour la production",
+      "speakers": [
+        "Steven Le Roux — Clever Cloud"
+      ],
+      "feedbackFrom": [
+        "Équipe JoliCode (blog)"
+      ],
+      "summary": "- Introduction à l'observabilité et à l'instrumentation du code pour faciliter le debug en production (programme).\n- JoliCode retient la distinction entre **monitoring et observabilité**, illustrée par un endpoint qui répond 200 en 6 secondes au lieu de 50 millisecondes : le monitoring dit que tout va bien, l'observabilité montre le problème.\n- Pas de vidéo dans la playlist.",
+      "summarySources": [
+        "program",
+        "blog"
+      ]
+    },
+    {
+      "id": "les-bonnes-pratiques-oauth2-oidc-conjuguees-au-present-passe-simple-et-futur",
+      "day": "2022-06-30",
+      "type": "talk",
+      "title": "Les bonnes pratiques OAuth2/OIDC conjuguées au présent, passé simple et futur",
+      "speakers": [
+        "Mathieu Humbert — Accenture"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Passé : en 2010, des services demandaient le mot de passe Google pour importer les contacts. *« OAuth2 est un framework d'autorisation »*, pas d'authentification.\n- Présent : **implicit flow à proscrire** (environ trois mains se lèvent pour l'avoir encore en production), authorization code avec PKCE pour tous les clients comme le prévoit OAuth 2.1, refresh tokens à éviter dans les SPA.\n- Redirect URI en correspondance exacte, sans jokers, à cause du subdomain takeover (exemple d'un ancien projet Heroku) et des open redirects ; utiliser des bibliothèques standard.\n- OIDC : ID token en JWT, piège de l'algorithme « none », JWKS et rotation des clés.\n- Futur : WebAuthn et passkeys, GNAP qui repart de zéro, device flow.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "VtH7a5svYHc",
+        "title": "[Sunny Tech 2022] Les bonnes pratiques OAuth2/OIDC conjuguées au présent, passé simple et futur",
+        "transcript": true
+      }
+    },
+    {
+      "id": "petit-guide-pratique-pour-commencer-un-design-system",
+      "day": "2022-06-30",
+      "type": "talk",
+      "title": "Petit guide pratique pour commencer un design system",
+      "speakers": [
+        "Cécile Freyd-Foucault — Benext (programme)"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- La designeuse part d'un échec personnel en 2010 : un design system lancé seule et sans pédagogie. Leçon : *« ne partez jamais seul »*.\n- Étapes : convaincre en étant transparent sur la charge, faire l'état des lieux (captures, tableau d'inventaire), fixer des principes (accessibilité, transversalité).\n- Prioriser selon la valeur métier et la fréquence d'usage, puis l'utilisabilité, l'accessibilité et la complexité ; commencer par un **composant ambassadeur**, le bouton.\n- Documenter (Figma, Storybook) et nommer : anglais pour la technique, français pour le métier, tailles en T-shirt.\n- Pour durer : créer de l'engagement (un nom, un canal) et définir une gouvernance.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "ON1R0SGdDDk",
+        "title": "[Sunny Tech 2022] Petit guide pratique pour commencer un design system",
+        "transcript": true
+      }
+    },
+    {
+      "id": "eviter-les-biais-dans-la-conception-de-logiciels",
+      "day": "2022-06-30",
+      "type": "talk",
+      "title": "Éviter les biais dans la conception de logiciels",
+      "speakers": [
+        "Clémence Bic — Dataiku",
+        "Mélanie Reversat — Dataiku"
+      ],
+      "feedbackFrom": [
+        "Équipe JoliCode (blog)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Les biais cognitifs expliqués par jeux de rôle : ancrage, effet de groupe, biais de confirmation.\n- Biais en IA : tri de CV chez Amazon, logiciel de récidive **COMPAS** (enquête ProPublica), word embeddings.\n- Où ils naissent : échantillonnage, mesure et étiquetage des données ; découpage train/test, métriques trompeuses (une accuracy de 90 % peut cacher un biais), dérive en production.\n- Dans les équipes : ancrage au poker planning, biais de cadrage dans les tests. En recrutement, 92 % des offres seraient biaisées au masculin ; outil Gender Decoder et entretiens multiples.\n- *« Le seul moyen de lutter contre les biais, c'est d'avoir une équipe avec de la diversité. »*\n\n**Côté public** : JoliCode retient les conseils pratiques (RGPD, transparence des données, données d'entraînement représentatives) et le chiffre des 92 % d'offres biaisées.",
+      "summarySources": [
+        "transcript",
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "Mo71pbA1LD4",
+        "title": "[Sunny Tech 2022] Éviter les biais dans la conception de logiciels",
+        "transcript": true
+      }
+    },
+    {
+      "id": "construction-d-apis-geographiques-a-base-d-open-data-postgresql-postgis",
+      "day": "2022-06-30",
+      "type": "talk",
+      "title": "Construction d'APIs Géographiques à base d'Open Data, PostgreSQL & PostGIS",
+      "speakers": [
+        "Sébastien Prunier — SERLI",
+        "Guillaume Soldera — SERLI"
+      ],
+      "feedbackFrom": [
+        "Équipe JoliCode (blog)"
+      ],
+      "summary": "- Retour d'expérience sur une application d'**évaluation des risques naturels et technologiques** bâtie sur de l'open data avec PostgreSQL et PostGIS (programme, blog).\n- PostGIS unifie des systèmes de coordonnées hétérogènes et produit du GeoJSON et des cartes SVG ; outils cités : `mlr`, `ogr2ogr`, geojson.io (blog).\n- **Coup de cœur** de l'équipe JoliCode.\n- Pas de vidéo dans la playlist.",
+      "summarySources": [
+        "program",
+        "blog"
+      ]
+    },
+    {
+      "id": "art-et-entropie-du-chaos-dans-ton-frontend",
+      "day": "2022-06-30",
+      "type": "talk",
+      "title": "Art & Entropie: Du chaos dans ton frontend",
+      "speakers": [
+        "Thibaud Courtoison — October"
+      ],
+      "feedbackFrom": [
+        "Équipe JoliCode (blog)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Ouverture sur le kintsugi, puis le chaos engineering de Netflix ; anecdote d'un serveur legacy sans timeout qui a provoqué un auto-DDoS.\n- Les quatre étapes (état nominal, hypothèse, perturbation, comparaison) **appliquées au frontend**.\n- Perturbations : blocage d'un domaine ou d'un CDN, pseudo-localisation (textes plus longs selon les langues), timers, historique, double clic, noir et blanc, viewport.\n- Démos sur les sites de DevFest Nantes et de Devoxx avec son extension navigateur et gremlins.js. Limite : plutôt pour les environnements de test que pour la production.\n\n**Côté public** : JoliCode détaille le Chaos Frontend Toolkit et ses perturbations.",
+      "summarySources": [
+        "transcript",
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "bObtYgkBGfU",
+        "title": "[Sunny Tech 2022] Art & Entropie: Du chaos dans ton frontend",
+        "transcript": true
+      }
+    },
+    {
+      "id": "architecture-zero-knowledge-ou-sans-fuite-de-secrets-avec-hc-vault",
+      "day": "2022-06-30",
+      "type": "talk",
+      "title": "Architecture Zero-knowledge, ou sans fuite de secrets, avec HC Vault",
+      "speakers": [
+        "Willy Malvault — Sogilis",
+        "Sven Szejwach — Squarescale"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Le zero trust (*« never trust, always verify »*) opposé au modèle du château fort : ressources, rôles, identités, policies refusées par défaut, traçabilité.\n- HashiCorp Vault : tokens à durée de vie courte, scellement par partage de secret de Shamir, audit. *« Vault, ce n'est pas qu'un gestionnaire de secrets. »*\n- Secret engines : identifiants AWS de 30 minutes, comptes de base de données dynamiques, KV, **Transit** pour chiffrer (cas de dizaines de milliers de PDF par jour), PKI.\n- Limites : écriture des policies, bootstrap, haute disponibilité (Raft), coût des logs.\n- Transcript très bruité sur les noms propres et les termes techniques.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "RIXOXfZ6YjY",
+        "title": "[Sunny Tech 2022] Architecture Zero-knowledge, ou sans fuite de secrets, avec HC Vault",
+        "transcript": true
+      }
+    },
+    {
+      "id": "bourdieu-s-social-theory-applied-to-tech",
+      "day": "2022-06-30",
+      "type": "talk",
+      "title": "Bourdieu's social theory applied to tech",
+      "speakers": [
+        "Romeu Moura — BCG Platinion"
+      ],
+      "feedbackFrom": [
+        "Équipe JoliCode (blog)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Talk en français malgré le titre. Le speaker prévient qu'il est « geek », pas sociologue, et qu'il n'apporte pas de solution ; il fait éditer un Miro en direct.\n- Concepts de Bourdieu appliqués à la tech : violence symbolique, capital culturel et social, hexis.\n- **La méritocratie comme illusion** : *« il n'y a aucun mérite »* ; il cite Milanovic sur le revenu suffisant pour entrer dans le 1 % mondial.\n- Critique du Manifeste agile, écrit par dix-sept hommes blancs, qui ignorerait les rapports de pouvoir ; références à Jo Freeman et Paulo Freire, et pistes du côté du dialogue et de la pédagogie des opprimés.\n- Transcript très bruité : seules les grandes lignes sont fiables.\n\n**Côté public** : **mention spéciale** de JoliCode pour une *« ambiance de cours de philo relevé d'humour »*, avec le spoiler sur la méritocratie : « it's a lie ! ».",
+      "summarySources": [
+        "transcript",
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "2MaKnTozfdA",
+        "title": "[Sunny Tech 2022] Bourdieu's social theory applied to tech",
+        "transcript": true
+      }
+    },
+    {
+      "id": "security-today-change-your-habbits-and-make-it-safer-and-efficient",
+      "day": "2022-06-30",
+      "type": "talk",
+      "title": "Security today: change your habbits and make it safer and efficient",
+      "speakers": [
+        "Quentin Adam — Clever Cloud"
+      ],
+      "feedbackFrom": [
+        "Équipe JoliCode (blog)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- La sécurité est un processus continu, pas un état figé ; **la forteresse est morte** : réseau plat où tout est chiffré, identifié et auditable.\n- Cycle économique d'une faille, de la vente à l'usage ciblé puis aux kits et rançongiciels : l'objectif est de **rendre l'attaque non rentable**.\n- Réduire la surface d'attaque : exemple d'un KVM recompilé sans émulateur de disquette, noyau minimal ; ne pas mélanger des charges de tiers sur un même OS.\n- Hygiène : mises à jour constantes, hachage des mots de passe (bcrypt, argon2), validation des entrées par le typage, binaires reconstruits régulièrement ; Biscuit cité pour les autorisations.\n\n**Côté public** : JoliCode cite *« le caractère sécurisé d'une infrastructure ne se décrète pas à un instant T, il s'évalue dans le temps »*.",
+      "summarySources": [
+        "transcript",
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "NjCbJbzRmhI",
+        "title": "[Sunny Tech 2022] Security today: change your habbits and make it safer and efficient",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-securite-avec-les-headers-http-tour-d-horizon-des-attaques-et-defenses-possibles",
+      "day": "2022-06-30",
+      "type": "lightning",
+      "title": "La sécurité avec les headers HTTP : Tour d'horizon des attaques et défenses possibles",
+      "speakers": [
+        "Mathieu Humbert — Accenture"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Quickie construit sur un scénario : un CFP de conférence en Spring Boot, piégé par un speaker malveillant via son blog.\n- Clickjacking : X-Frame-Options et directive CSP `frame-ancestors`. CSRF : cookie SameSite, token CSRF, pas de changement d'état en GET.\n- **CORS ne protège que côté navigateur** et n'empêche pas l'envoi de la requête ; preflight expliqué, pas de `*`.\n- XSS : Content Security Policy, d'abord en mode report-only ; cookies HttpOnly et Secure, HSTS. *« Le CSP peut vraiment vous sauver la vie. »*",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "i9nugl0-2hw",
+        "title": "[Sunny Tech 2022] Sécurité avec les headers HTTP : Tour d’horizon des attaques et défenses possibles",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-se-re-approprier-du-temps",
+      "day": "2022-06-30",
+      "type": "lightning",
+      "title": "Comment se ré-approprier du temps ?",
+      "speakers": [
+        "Aurélie Le Guillou — turn-on.fr"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Format atelier de 20 minutes. Idée centrale : *« pour être efficace, il faut apprendre à gérer son énergie plutôt que son temps »*.\n- Exercice : lister les activités d'une semaine type, les classer selon qu'elles donnent ou coûtent de l'énergie, puis noter les conditions (durée, nombre de personnes, lieu).\n- Partage en binômes en écoute active ; une bonne partie de la vidéo est silencieuse pendant le travail individuel.\n- Pour aller plus loin : le modèle d'habitudes de BJ Fogg (motivation, facilité, déclencheur) et un planner par blocs de 30 minutes.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "SDyX10PO2ww",
+        "title": "[Sunny Tech 2022] Comment se ré-approprier du temps ?",
+        "transcript": true
+      }
+    },
+    {
+      "id": "votre-base-de-donnees-comme-vous-ne-l-avez-jamais-vue",
+      "day": "2022-06-30",
+      "type": "lightning",
+      "title": "Votre base de données comme vous ne l'avez jamais vue",
+      "speakers": [
+        "Loïc Knuchel — Doctolib"
+      ],
+      "feedbackFrom": [
+        "Équipe JoliCode (blog)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Problème : comprendre un gros schéma (environ 600 tables chez Doctolib, 33 000 lignes de `structure.sql` chez GitLab). Les outils ERD affichent tout et deviennent chers au-delà de quelques centaines de tables.\n- Démo d'**Azimutt**, son outil : recherche globale, layouts sauvegardés, colonnes masquées, notes, recherche de chemins entre tables, analyse de schéma.\n- Les données restent **dans le navigateur** ; outil open source et gratuit, premier MVP fait en deux mois. *« Je suis hyper preneur de feedback. »*\n\n**Côté public** : JoliCode souligne qu'aucun schéma n'est envoyé à un serveur.",
+      "summarySources": [
+        "transcript",
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "CnWOJVScpV0",
+        "title": "[Sunny Tech 2022] Votre base de données comme vous ne l'avez jamais vue",
+        "transcript": true
+      }
+    },
+    {
+      "id": "gitops-continuous-delivery-et-environnements-comment-eviter-l-enfer",
+      "day": "2022-06-30",
+      "type": "lightning",
+      "title": "GitOps, Continuous Delivery et environnements : Comment éviter l'enfer ?!",
+      "speakers": [
+        "Philippe Morisseau — Onepoint"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Point de départ : une même version applicative exige une configuration différente par environnement ; oublis de paramètres, hotfix déployé avec la config de la version suivante, rollbacks qui perturbent les recettes.\n- *« La configuration doit correspondre à la fois à l'environnement mais aussi à la version que vous déployez. »*\n- Bonnes pratiques : raisonner en **cycle de vie** plutôt qu'en un pipeline par composant, garder un monolithe quand c'est plus simple, supprimer les paramètres inutiles ou en double.\n- Paramètres rangés en quatre catégories ; ceux qui ne dépendent pas du déploiement (feature flags, certificats) vivent dans un dépôt Git et sont servis par un gestionnaire de configuration, qui ne doit pas devenir un point unique de défaillance.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "OsfJtpqw6iM",
+        "title": "[Sunny Tech 2022] GitOps, Continuous Delivery et environnements : Comment éviter l'enfer ?!",
+        "transcript": true
+      }
+    },
+    {
+      "id": "il-etait-une-fois-les-navigateurs",
+      "day": "2022-07-01",
+      "type": "talk",
+      "title": "Il était une fois... les navigateurs",
+      "speakers": [
+        "Noël Macé — Blindnet",
+        "Pierre Tibulle — IKOBOX"
+      ],
+      "feedbackFrom": [
+        "Vincent Brule (blog Lunatech)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Format original : Noël Macé raconte, Pierre Tibulle **dessine les slides en direct**.\n- Du CERN (Enquire, proposition du web en 1989, WorldWideWeb sur NeXT, Line Mode Browser) à Mosaic, qui apporte les images inline et les formulaires.\n- Netscape, JavaScript écrit en dix jours, guerre des navigateurs avec Internet Explorer, puis Mozilla et Firefox ; KHTML devenu WebKit, Chrome en 2008, Edge passé sur Chromium en 2020.\n- Conclusion : domination de Chrome, WebKit imposé sur iOS, API non standard ; choix entre plateforme ouverte et dépendance. *« Aujourd'hui la majorité du web n'est plus composée de pages mais d'applications. »*\n\n**Côté public** : format jugé original et prenant ; Vincent Brule salue des speakers qui sortent du format habituel.",
+      "summarySources": [
+        "transcript",
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "uURT1sWbWO8",
+        "title": "[Sunny Tech 2022] 👨‍🎨 Il était une fois... les navigateurs ⛵️",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-scaling-intelligent-avec-keda",
+      "day": "2022-07-01",
+      "type": "talk",
+      "title": "Le scaling intelligent avec Keda",
+      "speakers": [
+        "Logan Hauspie — Zenika"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Contexte de mission : mise à l'échelle de batchs selon des inventaires dans la grande distribution.\n- Fil rouge d'un restaurant simulé de 200 couverts : sans autoscaling, attentes jusqu'à 16 minutes ; un HPA sur le CPU à 75 % ne change rien ; des custom metrics Prometheus aident peu et ont pris trois jours à mettre en place.\n- **KEDA** (2019, plus de 50 scalers) s'installe avec Helm et déclenche sur des **métriques métier**, du cron avec scale à zéro, ou une combinaison de déclencheurs (la plus grande valeur gagne), avec fallback.\n- Résultat annoncé : attentes ramenées sous les 5 minutes. Message : choisir des métriques métier, pas techniques.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "EIWA7KOO7bc",
+        "title": "[Sunny Tech 2022] Le scaling intelligent avec Keda",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rest-graphql-grpc-webhooks-dans-quelles-situations",
+      "day": "2022-07-01",
+      "type": "talk",
+      "title": "REST, GraphQL, gRPC, Webhooks : dans quelles situations ?",
+      "speakers": [
+        "François Delbrayelle — Ippon Technologies"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Sondage de salle : REST pour presque tous, GraphQL pour environ un tiers, gRPC pour quelques mains.\n- Histoire des appels distants (CORBA, RMI, SOAP) puis REST : thèse de Fielding, modèle de maturité de Richardson (le niveau 2 est le plus courant), HATEOAS.\n- gRPC : HTTP/2, protobuf, quatre modes de streaming. GraphQL : schéma, queries, mutations, subscriptions, usage en BFF.\n- Webhooks : inversion de contrôle, *« ne nous appelez pas, on vous appellera »*, et gestion des secrets.\n- Fil rouge d'une marketplace e-commerce ; conclusion pragmatique : **ces choix ne sont pas exclusifs**. Transcript bruité.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "EajuaPWdESo",
+        "title": "[Sunny Tech 2022] REST, GraphQL, gRPC, Webhooks : dans quelles situations ?",
+        "transcript": true
+      }
+    },
+    {
+      "id": "un-deploiement-n-est-pas-une-release-controlez-vos-lancements-avec-des-features-flags",
+      "day": "2022-07-01",
+      "type": "talk",
+      "title": "Un déploiement n'est pas une release - contrôlez vos lancements avec des Features Flags",
+      "speakers": [
+        "Sébastien Stormacq — Amazon Web Services"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Contraste entre les déploiements bi-annuels d'une banque d'autrefois et le CI/CD actuel : **découpler le déploiement de l'exposition aux clients**.\n- Références : l'article de Pete Hodgson sur le site de Martin Fowler et l'outil d'expérimentation interne d'Amazon.\n- Démo de CloudWatch Evidently : feature booléenne exposée à 20 % puis 80 % du trafic, planification, overrides pour les développeurs, alarmes.\n- Points d'attention : latence d'évaluation, tests, traçabilité, nettoyage du code une fois à 100 % ; jamais de clés d'accès en dur (*« ne faites jamais ça, même pas pour rigoler »*), passer par des identités temporaires à droits minimaux.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "9h8z8zBWJS0",
+        "title": "[Sunny Tech 2022] Un déploiement n'est pas une release, lancements contrôler avec des Features Flags",
+        "transcript": true
+      }
+    },
+    {
+      "id": "revolution-de-la-diversite-dans-l-it",
+      "day": "2022-07-01",
+      "type": "talk",
+      "title": "Révolution ! De la diversité dans l'IT",
+      "speakers": [
+        "Mireille Campourcy — Zenika"
+      ],
+      "feedbackFrom": [
+        "Équipe JoliCode (blog)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- État des lieux : environ 27 % de femmes dans le numérique, 15 % dans les métiers techniques.\n- Histoire : la mécanographie était un métier féminin, Marion Créhange soutient la première thèse française d'informatique en 1961, puis la part des femmes s'effondre dans les années 1980 avec le PC et la culture du jeu vidéo.\n- Conséquences : « bro culture », sentiment d'illégitimité, écart de salaire, sexisme normalisé.\n- Pistes concrètes : annonces accordées et sans empilement de technos, une femme dans le jury, temps partiel accepté, mentorat, transparence salariale, **tolérance zéro**, pas de réunion après 17 h. *« Il faut que le lieu de travail soit une safe place. »*\n- Chiffres à recouper : le transcript automatique en déforme une partie.\n\n**Côté public** : JoliCode renvoie au replay plutôt que de résumer des idées trop nombreuses.",
+      "summarySources": [
+        "transcript",
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "4nSlOsF1Sng",
+        "title": "[Sunny Tech 2022] Révolution ! De la diversité dans l'IT",
+        "transcript": true
+      }
+    },
+    {
+      "id": "highly-available-distributed-resilient-software-team",
+      "day": "2022-07-01",
+      "type": "talk",
+      "title": "Highly available, distributed & resilient software... team",
+      "speakers": [
+        "Yohan Lasorsa — Microsoft"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Parallèle entre systèmes distribués et **équipes distribuées**, à partir de son équipe d'une centaine de personnes sur plusieurs continents, en full remote.\n- Latence et cache : le tech lead ou le program manager jouent le rôle de proxy ; éviter le point unique de défaillance, donc qu'une seule personne détienne l'information.\n- Asynchrone : du contexte dans chaque message (nohello), town halls mensuels, réunions enregistrées avec compte rendu.\n- Scalabilité et fiabilité : équipes autonomes, OKR, healthchecks humains, documentation, mail de passation avant les congés, status reports, cafés à distance. Il renvoie au talk chaos engineering de la veille et à la démo de feature flags.\n- *« On reste des humains avant tout. »*",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Pwuuh4_BR8Y",
+        "title": "[Sunny Tech 2022] Highly available, distributed & resilient software... team",
+        "transcript": true
+      }
+    },
+    {
+      "id": "suivez-vos-applications-a-la-trace-grace-a-opentelemetry",
+      "day": "2022-07-01",
+      "type": "lightning",
+      "title": "Suivez vos applications à la trace grâce à OpenTelemetry",
+      "speakers": [
+        "Julien Tanguy — Sfeir"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Retour d'expérience : des microservices en production sans visibilité.\n- Concepts : span, trace, collecteur, exporter, protocole OTLP ; instrumentation automatique en Node par un fichier chargé au démarrage et des variables `OTEL_*`.\n- Démo sur un clone de Wordle de plus en plus lent, visualisé dans Jaeger : un appel de récupération de secret prend une seconde. Démo capricieuse.\n- Chez le client, l'analyse passait par Elastic APM. Conseil : *« ne passez pas trois ans à configurer votre code »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "NXYAtkEm_hk",
+        "title": "[Sunny Tech 2022] Suivez vos applications à la trace grâce à OpenTelemetry",
+        "transcript": true
+      }
+    },
+    {
+      "id": "mon-site-deja-en-production-doit-etre-accessible-je-fais-comment",
+      "day": "2022-07-01",
+      "type": "lightning",
+      "title": "Mon site déjà en production doit être accessible, je fais comment ?",
+      "speakers": [
+        "Mélanie Boudard — Pix"
+      ],
+      "feedbackFrom": [
+        "Équipe JoliCode (blog)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Une équipe sans expert, un site d'une cinquantaine de pages en ligne depuis deux ans ; une personne « porte le chapeau accessibilité » après deux jours de formation.\n- Montée en compétence : extension WAVE, tests au clavier, page de connexion à zéro erreur, demi-journée avec une experte ; l'élan retombe au bout de six mois.\n- Un **audit externe** sert d'objectif : 30 à 35 % de conformité au premier audit, chaque erreur devient un ticket, deux par sprint, et 50 % sont atteints en environ un an.\n- *« Les audits, il faut voir ça comme un outil pour ne pas perdre le nord. »* Suites : tests automatisés, design system, un référent par équipe.\n\n**Côté public** : JoliCode retient de commencer petit, deux ou trois tickets par sprint, un audit tous les deux ans et surtout **des tests par des utilisateurs handicapés**.",
+      "summarySources": [
+        "transcript",
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "QKNDXwhJNqk",
+        "title": "[Sunny Tech 2022] Mon site déjà en production doit être accessible, je fais comment ?",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-utiliser-les-biais-cognitifs-des-gens-pour-reussir-dans-la-vie",
+      "day": "2022-07-01",
+      "type": "lightning",
+      "title": "Comment utiliser les biais cognitifs des gens pour réussir dans la vie ?",
+      "speakers": [
+        "Marie Viley — Zenika"
+      ],
+      "feedbackFrom": [
+        "Équipe JoliCode (blog)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Une commerciale présente le Codex des biais cognitifs et quelques biais utiles au quotidien.\n- Effet Hobson (illusion du choix, par exemple proposer deux créneaux), actualisation hyperbolique (préférence pour l'immédiat), effet Barnum (flatterie, horoscopes).\n- Effet de familiarité (se rendre visible, publier du contenu) et **biais d'endogroupe** (on favorise ceux qui nous ressemblent).\n\n**Côté public** : JoliCode retient le biais d'endogroupe comme celui à éviter, car il favorise l'équipe en place face aux nouveaux venus.",
+      "summarySources": [
+        "transcript",
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "dxYJ2-_PSEg",
+        "title": "[Sunny Tech 2022] Comment utiliser les biais cognitifs des gens pour réussir dans la vie ?",
+        "transcript": true
+      }
+    },
+    {
+      "id": "preparez-et-donnez-votre-premier-talk",
+      "day": "2022-07-01",
+      "type": "lightning",
+      "title": "Préparez et donnez votre premier talk",
+      "speakers": [
+        "Pascal Martin — Bedrock"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Le speaker revendique une quinzaine d'années de conférences et cite un sondage : la plupart des participants viennent pour apprendre.\n- Trouver un sujet : ce que je fais au quotidien, ce qui m'a fait souffrir ou surpris, ce que j'ai testé.\n- Méthode : cerner le public, plan macro puis détaillé, **répéter à voix haute** devant des collègues, slides en dernier ; compter 30 à 50 heures de préparation.\n- Slides : peu de texte, grosses polices, « test du métro » (lisible sur un téléphone). *« Votre contenu est infiniment plus important que vos slides. »*\n- Le jour J : le stress est normal ; tester la salle, prévoir des notes et les questions.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "LnxLnHcYHyE",
+        "title": "[Sunny Tech 2022] Préparez et donnez votre premier talk",
+        "transcript": true
+      }
+    },
+    {
+      "id": "licences-open-source-entre-guerre-de-clochers-et-radicalite",
+      "day": "2022-07-01",
+      "type": "talk",
+      "title": "Licences open source : entre guerre de clochers et radicalité",
+      "speakers": [
+        "Pierre-Yves Lapersonne — Orange"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Référent open source chez Orange, le speaker précise ne pas être juriste ; fil rouge d'un site de rencontres fictif.\n- Les dix critères de l'OSI, licences permissives (MIT, BSD, Apache 2 et sa clause brevets, MPL), puis les quatre libertés de la FSF et le copyleft faible ou fort (LGPL, GPL, AGPL).\n- Querelles historiques (GPLv2 contre GPLv3, tivoïsation), risques liés aux stores, double licence.\n- **Licences éthiques** (Hippocratic, 996, CoopCycle) : ni open source au sens de l'OSI, ni libres au sens de la FSF.\n- Conclusion : pas de meilleure licence, la vraie question est l'ambition et les usages que l'on veut pour son logiciel.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Cc66vvKf9DI",
+        "title": "[Sunny Tech 2022] Licences open source : entre guerre de clochers et radicalité",
+        "transcript": true
+      }
+    },
+    {
+      "id": "eclater-ses-collegues-a-mario-kart",
+      "day": "2022-07-01",
+      "type": "talk",
+      "title": "Éclater ses collègues à Mario Kart",
+      "speakers": [
+        "Yann Bertrand — Zenika"
+      ],
+      "feedbackFrom": [
+        "Vincent Brule (blog Lunatech)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Talk absent du programme publié : d'après le transcript, le speaker remplace au pied levé le talk sur la gamification prévu sur ce créneau.\n- Bases de Mario Kart 8 Deluxe : départ turbo, drift et mini-turbos, sauts, antigravité ; ramasser des pièces augmente la vitesse.\n- Objets : bananes en traîne, esquive de la carapace bleue (champignon au bon moment) et de la rouge (contre un mur) ; le tirage des objets dépend de la position et de la distance au premier.\n- Niveau avancé : soft drift, raccourcis, simulateur de builds ; *le vrai secret serait de jouer, rejouer et regarder des gens jouer* (formulation approximative).\n\n**Côté public** : Vincent Brule liste les astuces qu'il ignorait (garder une pièce en main, mur contre la carapace rouge), dit avoir progressé le week-end suivant et recommande de revoir le talk.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "rgSLwM48_w8",
+        "title": "[Sunny Tech 2022] Éclater ses collègues à Mario Kart 🏎⚡️",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-fonctionne-un-moteur-javascript-apprendre-a-ecrire-du-javascript-optimisable-en-2022",
+      "day": "2022-07-01",
+      "type": "talk",
+      "title": "Comment fonctionne un moteur Javascript : apprendre à écrire du Javascript optimisable en 2022",
+      "speakers": [
+        "Adrien Maret — Kuzzle"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Compilation anticipée, interprétation et JIT ; pipeline de V8 : parser, AST, bytecode, interpréteur Ignition, compilateur TurboFan.\n- **Hidden classes** : déclarer les propriétés d'un coup et dans le même ordre, éviter `delete`, préférer les classes.\n- Inline caches et optimisation spéculative fondée sur le feedback de types : une fonction monomorphe reste optimisée, un changement de type déclenche une désoptimisation.\n- Les gains chiffrés viennent de micro-benchmarks et sont à prendre avec prudence ; le speaker rappelle que *« ce qui coûte très cher, c'est les humains »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "fvJDX4da5Vs",
+        "title": "[Sunny Tech 2022] Comment fonctionne un moteur JavaScript : apprendre à écrire du JS optimisable",
+        "transcript": true
+      }
+    },
+    {
+      "id": "etre-operationnel-en-wasm-en-rust-ou-en-go-au-choix-du-navigateur-au-serveur-en-moins-d-une-heure",
+      "day": "2022-07-01",
+      "type": "talk",
+      "title": "Etre opérationnel en wasm (en Rust ou en Go AU CHOIX) du navigateur au serveur en moins d'une heure",
+      "speakers": [
+        "Philippe Charrière — GitLab"
+      ],
+      "feedbackFrom": [
+        "Équipe JoliCode (blog)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- WebAssembly : un format binaire petit, sûr et agnostique du langage, fait pour **compléter JavaScript, pas le remplacer** ; WASI étend la spécification hors du navigateur.\n- Limites : pas d'accès au système ni à la mémoire sans que l'hôte l'autorise, seulement quatre types numériques, donc des contorsions pour passer une chaîne.\n- Démos en direct dans un workspace en ligne : Go dans le navigateur, puis services côté serveur avec des runtimes WASI, un module .NET et des services AssemblyScript, JavaScript et Grain qui s'appellent entre eux.\n- Écosystème jeune : débogage encore pauvre, spécifications lentes, mais acteurs réunis dans la Bytecode Alliance.\n\n**Côté public** : JoliCode retient les démos Rust, Go et Grain, TinyGo pour des binaires plus légers et des portages comme AutoCAD ou Google Earth.",
+      "summarySources": [
+        "transcript",
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "tS_jVHgqPFA",
+        "title": "[Sunny Tech 2022] Etre opérationnel en WASM (Rust/Go) du navigateur au serveur en moins d'une heure",
+        "transcript": true
+      }
+    },
+    {
+      "id": "keynote-de-fin-la-technologie-creatrice-et-destructrice-de-magie",
+      "day": "2022-07-01",
+      "type": "keynote",
+      "title": "La technologie : créatrice et destructrice de magie !",
+      "speakers": [
+        "Magicien mentaliste (nom mal restitué par le transcript)"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Keynote de clôture annoncée comme une surprise au programme, donnée par un magicien mentaliste, également formateur en communication.\n- Point de départ : sa grand-mère trouve « magique » de recevoir un SMS.\n- Il distingue le prestidigitateur (dextérité), l'illusionniste (perception) et le magicien (émotion inexplicable), avec un tour de cartes sur scène.\n- Thèse : la technologie crée de la magie puis la détruit, car ce qui devient explicable cesse d'être magique. *« La magie ne se trouve pas dans les mains du magicien, mais dans l'œil de celui qui regarde. »*\n- Lecture critique : propos inspirant mais sans lien direct avec la pratique technique.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Q-HJUFsZkOI",
+        "title": "[Sunny Tech 2022] Keynote fermeture - La technologie: Créatrice et destructrice de magie !",
+        "transcript": true
+      }
+    },
+    {
+      "id": "mais-a-quoi-ca-sert-un-devrel",
+      "type": "talk",
+      "title": "Mais, à quoi ça sert un DevRel ?",
+      "speakers": [
+        "Aurélie Vache — OVHcloud",
+        "Horacio Gonzalez — OVHcloud"
+      ],
+      "feedbackFrom": [
+        "Vincent Brule (blog Lunatech)",
+        "Équipe JoliCode (blog)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Session absente du programme publié ; les speakers sont identifiés par le transcript et par JoliCode. Ils arrivent de Madrid après un voyage mouvementé.\n- Le DevRel, famille des advocates et évangélistes : du marketing fait par des techs pour des techs, **sans vente**.\n- Piliers : expérience développeur, lien avec les communautés, visibilité des produits, remontée des retours aux équipes, sincérité.\n- Activités : conférences, vidéos, tutoriels, documentation, rôle de « client zéro » qui teste le produit avant sa sortie ; risques de charge, de voyages et de burn-out.\n- Construction de l'équipe DevRel d'OVHcloud depuis 2018, d'un réseau interne à une petite équipe dédiée. Transcript très bruité.\n\n**Côté public** : Vincent Brule découvre l'étendue du métier (retours utilisateurs, coaching interne, tests précoces, documentation), retient le principe de DevRel techniques et sincères et recommande le replay pour son humour. JoliCode retient qu'il faut *« expliquer les choses de façon à ce que toutes les personnes dans la salle puissent comprendre »*.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "RrYwNCWKPeU",
+        "title": "[Sunny Tech 2022] Mais, à quoi ça sert un DevRel ?",
+        "transcript": true
+      }
+    },
+    {
+      "id": "lead-dev-3-ans-d-xp-et-alors",
+      "type": "lightning",
+      "title": "Lead Dev, 3 ans d'xp, et alors ?",
+      "speakers": [
+        "Lise Quesnel — Zenika"
+      ],
+      "feedbackFrom": [
+        "Équipe JoliCode (blog)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Session absente du programme publié ; speakeuse identifiée par JoliCode. Devenue lead dev en 2019 avec trois ans d'expérience, sur un projet passé d'une à quatre équipes, avec un fort syndrome de l'imposteur.\n- Distinction entre **tech lead** (expertise technique) et **lead dev** (accompagnement de l'équipe).\n- Cinq facettes : référent technique, facilitation, coaching, formation, binôme avec le PO ; les soft skills y pèsent lourd.\n- Partager les rôles (rétros, démos, référents), car un lead qui fait tout déresponsabilise l'équipe ; difficultés : trop de réunions, désaccords techniques à trancher.\n- *« Je conseille au minimum de trouver du temps pour coder, à 40 %. »*\n\n**Côté public** : JoliCode retient l'importance de bien définir le rôle et des soft skills.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "SuKrMIZWKcc",
+        "title": "[Sunny Tech 2022] Lead Dev, 3 ans d'xp, et alors ?",
+        "transcript": true
+      }
+    },
+    {
+      "id": "architecture-licorne-pour-le-rendu-arc-en-ciel-avec-next-js",
+      "type": "talk",
+      "title": "Architecture licorne pour le rendu arc-en-ciel avec Next.js",
+      "speakers": [
+        "Eric Burel — LBKE (identifié d'après le transcript)"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Session absente du programme publié. Le speaker, montpelliérain, se présente comme fondateur de LBKE et formateur Next.js.\n- Rappel des modes de rendu (CSR, SSR, SSG, ISR) et conseil de partir du **statique jusqu'à preuve du contraire**.\n- Thèse : *« le rendu statique, c'est le précalcul d'un rendu et sa mise en cache pour un ensemble de requêtes, pas juste pour une URL »*.\n- Architecture « licorne » : un micro-serveur placé devant Next (middlewares, edge functions) réécrit l'URL selon la langue, le paiement, un test A/B ou le thème, en encodant plusieurs paramètres dans un seul.\n- Démo en direct avec thème sombre ou clair ; le transcript s'arrête aux questions.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "jOwHH672r7k",
+        "title": "[Sunny Tech 2022] Architecture licorne pour le rendu arc-en-ciel avec Next.js",
+        "transcript": true
+      }
+    },
+    {
+      "id": "tester-pour-ne-plus-douter-a-la-recherche-du-test-ideal",
+      "type": "lightning",
+      "title": "Tester pour ne plus douter : à la recherche du test idéal",
+      "speakers": [
+        "Benjamin (nom de famille non confirmé) — MAIF"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Session absente du programme publié ; un développeur de la MAIF partage ce qui marche pour lui, sans méthode miracle (« pour presque ne plus douter »).\n- *« Un test idéal, c'est un test qui échoue quand il faut, et de préférence uniquement quand il faut »* ; il doit aussi être reproductible, rapide et lisible.\n- Il préfère au modèle de la pyramide un **« test diamond »** : beaucoup de tests d'intégration en boîte noire, avec Testcontainers, des bouchons HTTP, Cypress et Testing Library.\n- Avantages : résistance au refactoring, vraies erreurs testées ; limites : bouchons à maintenir, lenteur. Conseils : primitives de test, builders, un test par comportement.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "HcqhWeCoB3I",
+        "title": "[Sunny Tech 2022] Tester pour ne plus douter : à la recherche du test idéal",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Faut-il perdre tout espoir en l'avenir... du web ? (Noël Macé)",
+    "Les lois universelles de la performance (Raphaël Luta)",
+    "Arrêtez les régimes agiles : ça marche pas ! (Emilie Esposito)",
+    "Fear the ponies III, l'histoire alternative du chiffrement (Mickael Metesreau, Raphaël Wach)",
+    "Intégration à l'ère du cloud avec Camel Quarkus (Zineb Bendhiba ; vidéo PN8L5TVtbDQ, transcript non lu)",
+    "Entiers, virgules flottantes ou représentations exotiques (Fabien Trégan, Olivier Poncet)",
+    "Le langage FµN : de la définition à l'exécution (Didier Plaindoux)",
+    "Property-based Testing ou l'insuffisance des tests unitaires (Sébastien Jaupart)",
+    "Implementing a functional event sourced aggregate with event modeling (Emilien Pecoul)",
+    "Trucs et astuces pour réussir son burn-out (Cynthia Staebler, Julia Lehoux)",
+    "Comment je suis devenue Data Scientiste en revenant d'un tour du monde ? (Alice Peltier)",
+    "Equity for software engineers (Damien Pacaud)",
+    "Révolutionnez vos data visualization avec les technologies du jeu vidéo (Marckruzik)",
+    "SQL réactif : pourquoi c'est important ? (Thomas Segismont ; vidéo Bp96ufJEaTw, transcript non lu)",
+    "Pourquoi je m'ennuie lors de mes points en ligne ? (Aurélie Le Guillou)",
+    "Workshop Kafka Streams 101 (Victor Gallet)",
+    "Build Your Design System from Scratch, atelier (m4dz)",
+    "Scrum, quand les devs reprennent le contrôle (Sylvain Coudert, Kévin Navarro)",
+    "Le GitOps dont vous êtes le héros (Louis Tournayre ; vidéo EgH7M4U-kBk, sans transcript)",
+    "Spark on Kubernetes (Romain Sagean, Franck Cussac)",
+    "Le job de mes rêves (Ane Diaz De Tuesta ; vidéo l1zl0ift9q0, sans transcript)",
+    "L'architecture hexagonale : une architecture simple et puissante (Dan Magier)",
+    "Compiler Driven Development avec Elm (Jordane Grenat, Diane)",
+    "Cargo ou comment étendre le tooling Rust à l'infini ! (Anthony Pena ; vidéo pPY6Ikw4mJQ, transcript non lu)",
+    "De Java 11 à Java 17, par le code et rien que le code (Lilian Benoit ; vidéo fOYz2P-VNuI, transcript non lu)",
+    "Comment j'ai aidé ma fille à lire avec le machine learning (Vincent Ogloblinsky)",
+    "La gamification : pas vraiment un jeu d'enfant (Arthur Retrou ; remplacé par le talk Mario Kart d'après le transcript)",
+    "BigQuery DeepDive : décortiquons le Data Warehouse made in Google (speaker non identifié ; vidéo lV7KmWmJy4o, transcript non lu)"
+  ],
+  "sources": [
+    {
+      "label": "Site officiel Sunny Tech 2022 (programme et horaires)",
+      "url": "https://2022.sunny-tech.io/schedule"
+    },
+    {
+      "label": "Données du programme 2022 (sessions et speakers, base Firestore du site officiel)",
+      "url": "https://firestore.googleapis.com/v1/projects/sunnytech-2022/databases/(default)/documents/sessions"
+    },
+    {
+      "label": "Playlist YouTube « Sunny Tech 2022 » (46 vidéos), transcripts automatiques de 39 vidéos lus",
+      "url": "https://www.youtube.com/playlist?list=PLz7aCyCbFOu9UL1fg16muasyjnbKh0tHd"
+    },
+    {
+      "label": "Vincent Brule, « Sunny Tech 2022 (FR) », blog Lunatech (2 juillet 2022)",
+      "url": "https://blog.lunatech.com/posts/2022-07-02-sunny-tech-fr"
+    },
+    {
+      "label": "Vincent Brule, « Sunny Tech 2022 (EN) », blog Lunatech (2 juillet 2022)",
+      "url": "https://blog.lunatech.com/posts/2022-07-02-sunny-tech-en"
+    },
+    {
+      "label": "Cécile Delmon, Claire Coloma, Marion Hurteau et Mathieu Santostefano, « De la tech et du soleil, nous étions à Sunny Tech ! », blog JoliCode (18 juillet 2022)",
+      "url": "https://jolicode.com/blog/de-la-tech-et-du-soleil-nous-etions-a-sunny-tech"
+    },
+    {
+      "label": "Auteurs des retours lus : Vincent Brule (Lunatech) ; Cécile Delmon, Claire Coloma, Marion Hurteau, Mathieu Santostefano (JoliCode). Aucun post LinkedIn lu."
+    }
+  ]
 }

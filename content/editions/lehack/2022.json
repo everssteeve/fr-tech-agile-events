@@ -8,6 +8,356 @@
   "city": "Paris",
   "venue": "Cité des Sciences et de l'Industrie",
   "url": "https://2022.lehack.org/",
-  "status": "pending",
-  "sessions": []
+  "programUrl": "https://2022.lehack.org/fr/planning/category_talk.html",
+  "dateConfidence": "ok",
+  "note": "Programme officiel : 21 talks sur deux jours dans l'amphithéâtre (900 places), une OSINT Village (5 talks le vendredi, ateliers de nuit), 13 workshops dans la nuit du 25 au 26 juin, un wargame public de 19 h à 6 h, un bug bounty live YesWeHack, le jeu « Qui veut gagner des Bitcoins ? » et un atelier car hacking. Retour de l'événement en présentiel après deux ans d'absence (mentionné sur scène par Charlie Bromberg). Organisé par l'association HZV.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-07",
+  "revisit": "Aucun retour participant trouvé : pas de post LinkedIn, de billet de blog ni de write-up du wargame après 7 recherches web. 11 transcripts lus (en partie pour les plus longs) ; 8 vidéos de la playlist sans transcript (Pires, Kumar et Natarajan, Street x2, Baig, Sachdev, Aoyama, Sonya) résumées d'après le seul programme.",
+  "corpus": "Programme archivé sur 2022.lehack.org (talks, workshops, OSINT Village, challenges, lieu), transcripts automatiques de 11 vidéos de la playlist « Talks - leHACK 2022 » (9 talks principaux, un talk de l'OSINT Village et un workshop) et avis ZDI du bug Netgear présenté par Synacktiv. Questions du public relevées dans les transcripts.",
+  "limits": "Aucun retour écrit de participant : la réception n'est connue que par les questions posées en fin de talk. Les transcripts sont des sous-titres automatiques bruts (noms propres et termes techniques déformés) et les talks en anglais sans transcript ne sont résumés que d'après leur descriptif ; les ateliers de nuit, le wargame et le bug bounty ne sont pas documentés.",
+  "tldr": "Un retour en salle après deux ans d'absence, centré sur **la recherche offensive appliquée** (Active Directory, routeurs, SAP, Android, web), avec un fil rouge : **comprendre les mécanismes internes** d'un système révèle les défenses mal implémentées, et chaque talk se termine par des recommandations de durcissement.",
+  "keyTakeaways": [
+    "Réserver les comptes administrateurs du domaine aux contrôleurs de domaine : c'est la recommandation qui coupe la plupart des chemins d'attaque décrits (Aurélien Chalot).",
+    "Inclure les **systèmes techniques** SAP (Focused Run, Solution Manager, GRC) dans les audits : sans données métier, ils ont des droits sur tout le paysage (Yvan Genuer).",
+    "Protéger un service configuré pour la délégation Kerberos **comme un contrôleur de domaine**, et inventorier les délégations existantes (Charlie Bromberg).",
+    "Un secure boot n'est solide que si la ROM de démarrage vérifie elle-même le bootloader (Damien Cauquil).",
+    "Vérifier les certificats TLS et borner la taille des lectures dans le code embarqué ; activer les protections de compilation de base (Kevin Denis et Antide Petit).",
+    "Contre la prototype pollution : geler les prototypes, préférer `Map` ou des objets sans prototype, valider le JSON entrant et auditer les dépendances (Zakaria Brahimi).",
+    "En sécurité physique, cumuler des serrures de technologies différentes et s'appuyer sur les labels d'organismes indépendants (Alexandre Triffault et Jean-Christophe Cuniasse).",
+    "Pour un IDS à apprentissage automatique, collecter et étiqueter ses propres données et prévoir plusieurs mois d'itérations (Ali Abdollahi)."
+  ],
+  "sessions": [
+    {
+      "id": "forging-golden-hammer-against-android-software-protection-tools",
+      "day": "2022-06-24",
+      "type": "talk",
+      "title": "Forging golden hammer against Android software protection tools",
+      "speakers": ["Georges-Bastien Michel"],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Sujet : les **outils commerciaux de protection d'applications Android** (packers, RASP), très utilisés dans la banque, qui combinent obfuscation, chiffrement du code et contrôles d'environnement.\n- Panorama des techniques récentes de ces outils pour ralentir l'analyse : hachage des chaînes comparées, appels système directs, contrôles répétés dans plusieurs threads et processus.\n- Thèse : pour l'analyste, il faut une approche **générique**, cohérente d'un contrôle à l'autre, plutôt qu'un contournement par produit.\n- Le speaker publie ses outils d'instrumentation sur GitHub.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "rKyPSnX_6mk",
+        "title": "🇫🇷 Forging golden hammer against Android software protection tools - Georges Bastien Michel",
+        "transcript": true
+      }
+    },
+    {
+      "id": "dissecting-and-comparing-different-binaries-to-malware-analysis",
+      "day": "2022-06-24",
+      "type": "talk",
+      "title": "Dissecting and Comparing different Binaries to Malware Analysis",
+      "speakers": ["Filipi Pires"],
+      "feedbackFrom": [],
+      "summary": "- Talk en anglais sur la **structure interne des formats PE, ELF et PDF** et le rôle de chaque section, comme base de l'analyse de malwares (programme).\n- Résumé fondé sur le seul descriptif officiel ; pas de transcript disponible.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "m7XXGcBI_io",
+        "title": "🇬🇧 Dissecting and Comparing different Binaries to Malware Analysis   Filipi Pires",
+        "transcript": false
+      }
+    },
+    {
+      "id": "whats-next-after-domain-admin",
+      "day": "2022-06-24",
+      "type": "talk",
+      "title": "What's Next after Domain Admin?",
+      "speakers": ["Venkatraman Kumar", "Sriraam Natarajan"],
+      "feedbackFrom": [],
+      "summary": "- Talk en anglais sur ce qui reste exposé **au-delà du domaine Active Directory**, y compris les services cloud Azure (programme).\n- Résumé fondé sur le seul descriptif officiel ; pas de transcript disponible.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "MQ_AcZ5X-Lc",
+        "title": "🇬🇧 What’s Next after Domain Admin?",
+        "transcript": false
+      }
+    },
+    {
+      "id": "just-hackers-things-with-jayson-e-street",
+      "day": "2022-06-24",
+      "type": "talk",
+      "title": "JUST Hackers things with Jayson E Street",
+      "speakers": ["Jayson E Street"],
+      "feedbackFrom": [],
+      "summary": "- Talk en anglais sans descriptif publié (le programme indique seulement « More to come »).\n- Pas de transcript disponible : contenu non résumé.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "mCp1guI4B0U",
+        "title": "🇬🇧 JUST Hackers things with Jayson E Street",
+        "transcript": false
+      }
+    },
+    {
+      "id": "abuser-des-tokens-windows-dans-le-but-de-compromettre-un-active-directory",
+      "day": "2022-06-24",
+      "type": "talk",
+      "title": "Abuser des tokens Windows dans le but de compromettre un Active Directory",
+      "speakers": ["Aurélien Chalot"],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Introduction pédagogique à Active Directory et aux mécanismes internes de Windows (NTDS, SAM, LSASS), puis aux **tokens d'accès** qui portent l'identité, les groupes et les privilèges d'un processus.\n- Constat : les antivirus et EDR surveillent de près les techniques classiques ; s'appuyer sur des **comportements légitimes de Windows** reste beaucoup plus discret.\n- Retour d'expérience d'un pentest en hôpital, équipé de plusieurs solutions de sécurité, où cette approche a abouti en deux jours.\n- Défense : la recommandation principale est de **ne jamais connecter un administrateur du domaine hors des contrôleurs de domaine** ; la détection reste difficile car ces tokens sont omniprésents.\n- Lecture conseillée : les ouvrages *Windows Internals*.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "gtg_rmLW60I",
+        "title": "🇫🇷 ABUSER DES TOKENS WINDOWS DANS LE BUT DE COMPROMETTRE UN ACTIVE DIRECTORY",
+        "transcript": true
+      }
+    },
+    {
+      "id": "there-is-no-place-to-run-assessing-sap-focused-run-security",
+      "day": "2022-06-24",
+      "type": "talk",
+      "title": "There Is No Place To Run: Assessing SAP Focused Run Security",
+      "speakers": ["Yvan Genuer — Onapsis"],
+      "feedbackFrom": ["Questions du public en fin de talk (transcript)"],
+      "summary": "**Sur scène (transcript)**\n- SAP Focused Run, sorti en 2020, succède à Solution Manager pour administrer à distance tout un paysage SAP, d'où des **droits élevés sur tous les systèmes**.\n- Le produit lui-même s'est révélé plutôt robuste (surface réduite, presque tout authentifié) ; les faiblesses trouvées concernent surtout les **agents de diagnostic** installés sur chaque système géré, corrigées par SAP en un peu plus d'un mois.\n- Rappel de vulnérabilités SAP NetWeaver des années précédentes, avec les correctifs et contournements disponibles.\n- Message : ne pas auditer seulement la grosse production, mais aussi les **systèmes techniques** utilisés par les admins, car un seul système compromis permet de rebondir sur tout le paysage.\n- En questions : environ un mois de recherche, un lab fourni grâce au partenariat avec SAP, et l'exemple d'une entreprise sud-américaine compromise pendant deux ans via une vulnérabilité vieille de 12 ans.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "SZ50IsTTGcI",
+        "title": "🇫🇷 THERE IS NO PLACE TO RUN : ASSESSING SAP FOCUSED RUN SECURITY",
+        "transcript": true
+      }
+    },
+    {
+      "id": "what-are-we-missing-in-web-applications",
+      "day": "2022-06-24",
+      "type": "talk",
+      "title": "What are we missing in Web Applications?",
+      "speakers": ["Mirza Burhan Baig"],
+      "feedbackFrom": [],
+      "summary": "- Talk en anglais : les frameworks web modernes couvrent-ils vraiment la sécurité, et **quels trous restent** (programme) ?\n- Résumé fondé sur le seul descriptif officiel ; pas de transcript disponible.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "4IJ_85tG43I",
+        "title": "🇬🇧 WHAT ARE WE MISSING IN WEB APPLICATIONS?",
+        "transcript": false
+      }
+    },
+    {
+      "id": "utiliser-les-techniques-d-osint-dans-le-cadre-d-enquetes-privees",
+      "day": "2022-06-24",
+      "type": "talk",
+      "title": "Utiliser l'OSINT dans les enquêtes privées : le cas du trafic d'œuvres d'art",
+      "speakers": ["Camille Dolé"],
+      "feedbackFrom": ["Questions du public en fin de talk (transcript)"],
+      "summary": "**Sur scène (transcript, OSINT Village)**\n- Cadre du métier de détective privé : profession réglementée par le Code de la sécurité intérieure, qui peut enquêter sans révéler sa qualité, mais dans le respect strict de la vie privée et sans usurpation d'identité.\n- Le trafic d'œuvres d'art, souvent cité comme **troisième trafic mondial**, est difficile à mesurer car il se mêle au marché légal ; le pillage en zones de conflit l'alimente fortement.\n- Veille : bases d'œuvres volées (application Interpol), listes rouges de l'ICOM, catalogues de vente, recherche d'image inversée ; l'étude ATHAR sur Facebook illustre l'ampleur des groupes de trafic.\n- Exemples : certificats d'authenticité réutilisés d'une vente à l'autre, sarcophage pillé acheté par le Metropolitan Museum et repéré grâce à une photo virale, statue volée en 1973 restituée à son musée.\n- Message : l'OSINT prépare l'enquête de terrain, qui reste nécessaire (archives, maisons de vente). En questions : conventions UNESCO et Conseil de l'Europe peu ratifiées, travail aux honoraires.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "XGUtfn73tjs",
+        "title": "🇫🇷 Utiliser les techniques d’OSINT dans le cadre d’enquêtes privées - Camille Dolé",
+        "transcript": true
+      }
+    },
+    {
+      "id": "swapping-aspirin-formulas-with-mdma-while-red-teaming-a-billion-dollar-pharmaceutical",
+      "day": "2022-06-25",
+      "type": "talk",
+      "title": "Swapping Aspirin formulas with MDMA while Red Teaming a Billion Dollar Pharmaceutical",
+      "speakers": ["Aman Sachdev"],
+      "feedbackFrom": [],
+      "summary": "- Talk en anglais : récit d'un **exercice de red team** contre un grand groupe pharmaceutique, dont le but était de démontrer la maîtrise de ses actifs les plus critiques (programme).\n- Résumé fondé sur le seul descriptif officiel ; pas de transcript disponible.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "iCe6_OwGN6g",
+        "title": "🇬🇧 SWAPPING ASPIRIN FORMULAS WITH MDMA WHILE RED TEAMING A BILLION DOLLAR PHARMACEUTICAL",
+        "transcript": false
+      }
+    },
+    {
+      "id": "deleguer-kerberos-pour-contourner-des-limitations-de-la-delegation-kerberos",
+      "day": "2022-06-25",
+      "type": "talk",
+      "title": "Déléguer Kerberos pour contourner des limitations de la Délégation Kerberos",
+      "speakers": ["Charlie Bromberg — Capgemini"],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Ouverture sur le plaisir de se retrouver après deux ans sans édition, avec « 72 slides en 45 minutes ».\n- Rappels : NTLM et Kerberos, puis les trois types de délégation (sans contrainte, contrainte avec ou sans transition de protocole, basée sur la ressource) et les extensions S4U2self et S4U2proxy sur lesquelles elles reposent.\n- Cœur du talk : comment certaines limites de la délégation contrainte peuvent être levées en combinant les mécanismes entre eux, une **erreur de logique** que Microsoft ne considère pas comme une faille.\n- Défense : selon Microsoft, un service configuré pour la délégation doit être **protégé autant qu'un contrôleur de domaine** ; listes de mesures de correction et de détection dans les slides.\n- Ressources : The Hacker Recipes, l'outil d'inventaire des délégations, Exegol ; remerciements aux auteurs des recherches d'origine et rappel que l'essentiel des outils offensifs est open source et maintenu bénévolement.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "7_iv_eaAFyQ",
+        "title": "🇫🇷 DÉLÉGUER KERBEROS POUR CONTOURNER DES LIMITATIONS DE LA DÉLÉGATION KERBEROS",
+        "transcript": true
+      }
+    },
+    {
+      "id": "so-you-hacked-a-wifi-router-and-now-what",
+      "day": "2022-06-25",
+      "type": "talk",
+      "title": "So you hacked a WiFi router, and now what?",
+      "speakers": ["Damien Cauquil — Quarkslab"],
+      "feedbackFrom": ["Questions du public en fin de talk (transcript)"],
+      "summary": "**Sur scène (transcript)**\n- Point de départ : les vulnérabilités de routeurs donnent souvent un shell root, mais **root ne veut pas dire contrôle total** du système (systèmes de fichiers en lecture seule, signatures, mises à jour).\n- Rappels sur l'embarqué Linux : chaîne de démarrage, secure boot, mémoire flash NAND et systèmes de fichiers spécialisés.\n- Étude de cas : le secure boot de l'équipement n'était qu'**à moitié** implémenté (la ROM ne vérifiait pas le bootloader), ce qui a permis d'y installer OpenWrt.\n- Conclusion : un secure boot ancré dans la ROM, des secure elements et la virtualisation rendent ce travail bien plus coûteux ; tout reste une question de temps.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "bbZvIXU4laI",
+        "title": "🇫🇷 SO YOU HACKED A WIFI ROUTER, AND NOW WHAT ?",
+        "transcript": true
+      }
+    },
+    {
+      "id": "steal-many-passwords-from-1password",
+      "day": "2022-06-25",
+      "type": "talk",
+      "title": "Steal Many Passwords From 1Password",
+      "speakers": ["Soya Aoyama"],
+      "feedbackFrom": [],
+      "summary": "- Talk en anglais sur les **risques liés au stockage centralisé** d'un gestionnaire de mots de passe (programme).\n- Résumé fondé sur le seul descriptif officiel ; pas de transcript disponible.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "PfCRgM9g_u0",
+        "title": "🇬🇧 STEAL MANY PASSWORDS FROM 1PASSWORD",
+        "transcript": false
+      }
+    },
+    {
+      "id": "pwning-a-netgear-router-from-wan-mitm-style",
+      "day": "2022-06-25",
+      "type": "talk",
+      "title": "Pwning a Netgear router from WAN - MitM style",
+      "speakers": ["Kevin Denis — Synacktiv", "Antide Petit — Synacktiv"],
+      "feedbackFrom": ["Questions du public en fin de talk (transcript)"],
+      "summary": "**Sur scène (transcript)**\n- Récit de leur participation au concours **Pwn2Own** de la ZDI en novembre 2021 : règles (cibles annoncées 30 jours avant, trois tentatives de cinq minutes, ordre de passage tiré au sort), et choix d'attaquer un routeur Netgear côté WAN, où les autres équipes étaient moins nombreuses.\n- La faille se trouvait dans le service de contrôle parental qui télécharge ses mises à jour ; le scénario « homme du milieu » a été validé par les organisateurs.\n- Causes racines : **certificat TLS non vérifié**, lecture de chaîne non bornée, absence des protections de compilation habituelles et service exécuté en root, un niveau de sécurité qu'ils comparent aux années 90.\n- Correctifs de Netgear : vérification des certificats et lecture bornée, mais toujours pas de durcissement global. Deux CVE attribuées ; Synacktiv a fini équipe la plus titrée de l'édition.\n- Message : Pwn2Own vise des équipements du quotidien, accessibles à qui veut s'y essayer.",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "NQrKFeS5YUk",
+        "title": "🇫🇷 PWNING A NETGEAR ROUTER FROM WAN   MITM STYLE",
+        "transcript": true
+      }
+    },
+    {
+      "id": "cyber-security-risk-reduction-via-machine-learning-based-ids",
+      "day": "2022-06-25",
+      "type": "talk",
+      "title": "Cyber security risk reduction via machine-learning based IDS",
+      "speakers": ["Ali Abdollahi — Picnic Technologies"],
+      "feedbackFrom": ["Questions du public en fin de talk (transcript)"],
+      "summary": "**Sur scène (transcript)**\n- Les IDS à signatures demandent des mises à jour constantes et se contournent ; l'apprentissage automatique promet une meilleure détection des attaques inconnues, sans être une solution à 100 %.\n- Méthode : collecter et étiqueter ses données (trafic bénin et malveillant), séparer entraînement et test, commencer par l'apprentissage supervisé (random forest), puis affiner.\n- Cas d'étude académique sur des capteurs **NB-IoT** émulés avec des outils radio open source.\n- En questions : surapprentissage, coût de constitution d'un jeu de données, dérive du trafic normal ; le speaker reconnaît que les résultats n'ont été satisfaisants qu'après environ quatre mois d'itérations.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "GMtdBAcnYIs",
+        "title": "🇬🇧 CYBER SECURITY RISK REDUCTION VIA MACHINE LEARNING BASED IDS",
+        "transcript": true
+      }
+    },
+    {
+      "id": "prototype-pollution",
+      "day": "2022-06-25",
+      "type": "talk",
+      "title": "Prototype Pollution",
+      "speakers": ["Zakaria Brahimi"],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Présentation de la **prototype pollution**, classe de vulnérabilités propre à JavaScript : modifier le prototype de base modifie tous les objets, existants comme nouveaux.\n- Fonctions en cause : fusion récursive, clonage, affectation par chemin ; exemples de CVE dans des bibliothèques npm répandues (lodash, ini).\n- Impacts : déni de service, exécution de code, contournement de contrôle d'accès (exemple tiré d'un CTF).\n- Défense : ignorer les clés spéciales lors des fusions, geler les prototypes, créer des objets sans prototype, préférer `Map`, valider strictement le JSON, auditer les dépendances.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "vZlP4I7yhI4",
+        "title": "🇫🇷 PROTOTYPE POLLUTION",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ouvrir-une-serrure-au-doigt-et-a-l-oeil",
+      "day": "2022-06-25",
+      "type": "talk",
+      "title": "Ouvrir une Serrure, au doigt et à l'oeil !",
+      "speakers": ["Alexandre Triffault (MrJack)", "Jean-Christophe Cuniasse (VidoQ)"],
+      "feedbackFrom": ["Questions du public en fin de talk (transcript)"],
+      "summary": "**Sur scène (transcript)**\n- Rendez-vous ancien de l'événement (plus de 12 ans selon MrJack, « depuis la péniche »), cette fois sur la **sécurité physique** : contrairement aux films, l'ouïe compte moins que la vue et le toucher.\n- Démonstrations sur des serrures de porte blindée et une armoire forte de bureau, avec un avertissement clair : ne s'entraîner que sur ses propres serrures.\n- Point clé : une faille de conception ne se corrige pas par mise à jour ; les serrures déjà installées restent vulnérables jusqu'à leur remplacement.\n- En questions : pas d'équivalent des CVE pour les serrures ; conseils de viser le haut de gamme d'un fabricant, de **cumuler des technologies différentes** et de s'appuyer sur les labels d'organismes indépendants.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "4-ubnjJr9vs",
+        "title": "🇫🇷 HOW TO PICK A LOCK, EASY PEASY!",
+        "transcript": true
+      }
+    },
+    {
+      "id": "deception-via-perception",
+      "day": "2022-06-25",
+      "type": "talk",
+      "title": "Deception Via Perception (From Blue Tractors to A Blue & Black Dress)",
+      "speakers": ["Jayson E Street"],
+      "feedbackFrom": [],
+      "summary": "- Talk en anglais sur la façon dont la **perception humaine** nous fait voir ce que l'on attend plutôt que ce qui se passe réellement (programme).\n- Résumé fondé sur le seul descriptif officiel ; pas de transcript disponible.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "z5POMcpLkI8",
+        "title": "🇬🇧 DECEPTION VIA PERCEPTION FROM BLUE TRACTORS TO A BLUE & BLACK DRESS",
+        "transcript": false
+      }
+    },
+    {
+      "id": "exploiting-advanced-volatile-memory-analysis-challenges-for-fun-and-profit",
+      "day": "2022-06-25",
+      "type": "talk",
+      "title": "Exploiting Advanced Volatile Memory Analysis Challenges for Fun and Profit",
+      "speakers": ["Solomon Sonya"],
+      "feedbackFrom": [],
+      "summary": "- Talk en anglais : l'**analyse de la mémoire vive** pour débusquer des malwares sophistiqués qui échappent à l'utilisateur, au réseau et aux outils de sécurité de l'hôte (programme). Prolongé par une master class la nuit suivante.\n- Résumé fondé sur le seul descriptif officiel ; pas de transcript disponible.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "o1eyDYdbOs8",
+        "title": "🇬🇧 EXPLOITING ADVANCED VOLATILE MEMORY ANALYSIS CHALLENGES FOR FUN AND PROFIT",
+        "transcript": false
+      }
+    },
+    {
+      "id": "osint-par-mot-de-passe-avec-h8mail",
+      "day": "2022-06-25",
+      "type": "workshop",
+      "title": "OSINT par mot de passe avec h8mail",
+      "speakers": ["khast3x"],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript, OSINT Village)**\n- Atelier de nuit autour de **h8mail**, outil open source de l'auteur qui corrèle des adresses e-mail avec des fuites de données publiées ; parti d'un petit script en 2018, il est intégré à plusieurs distributions spécialisées.\n- Usages cités : des enquêtes dont les résultats ont été transmis aux autorités (pages de phishing, site de revenge porn).\n- Points de méthode : vérifier la fiabilité de la source de chaque donnée avant de conclure, et noter que les pentests incluent désormais la recherche de fuites dans leur périmètre.\n- Encouragement aux participants à publier leurs propres outils, même modestes.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "u1frAWJE5_Q",
+        "title": "🇫🇷[Workshop] OSINT par mot de passe avec h8mail - Khast3x",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Ceci n'est pas une Keynote (équipe HZV)",
+    "The Ransomware Protection Full Of Holes (Soya Aoyama)",
+    "HoneyPot in ICS environnement (CyberSec ICS)",
+    "How to become the sock puppets Master? (Palenath Megadose)",
+    "OSINT Village : OSINT et enquêtes judiciaires (Lt Yann Derweduwen)",
+    "OSINT Village : enquête OSINT sur KILLNET (Marion Lachiver)",
+    "OSINT Village : la Russie en Afrique francophone (Kevin Limonier)",
+    "OSINT Village : anatomie de la désinformation (Hervé et Hervé, OpenFacto)",
+    "Workshops de nuit : 5G (Ali Abdollahi), CrackMapExec (Martial Puygrenier), RFID (Juan Pablo Barriga), hardware avec Hydrabus (Nicolas Oberli, Karim Sudki), template injection (Lucas Philippe), autorité de certification AD (Thomas Seigneuret, Hocine Mahtout), attaques USB (François Mehault, Hugo Saboural), vulnérabilités web peu communes (Zakaria Brahimi), RF hacking (Electrolab), Le Confessionnal (ZATAZ), ACF",
+    "Ateliers OSINT de nuit : haine en ligne (OpenFacto), terrain et OSINT (Camille Dolé), Discord (Darcosion), Interpol (Erys / Aurélie Dumont)",
+    "Wargame, bug bounty YesWeHack, Qui veut gagner des Bitcoins ?, car hacking"
+  ],
+  "sources": [
+    {
+      "label": "Programme des talks leHACK 2022 (site archivé)",
+      "url": "https://2022.lehack.org/fr/planning/category_talk.html"
+    },
+    {
+      "label": "Programme des workshops leHACK 2022",
+      "url": "https://2022.lehack.org/fr/planning/category_workshop.html"
+    },
+    {
+      "label": "Programme de l'OSINT Village leHACK 2022",
+      "url": "https://2022.lehack.org/fr/planning/category_osint%20village.html"
+    },
+    {
+      "label": "Challenges leHACK 2022 (wargame, bug bounty, jeux)",
+      "url": "https://2022.lehack.org/fr/2022-edition/challenges.html"
+    },
+    {
+      "label": "Lieu et informations pratiques (Cité des Sciences)",
+      "url": "https://2022.lehack.org/fr/2022-edition/venue.html"
+    },
+    {
+      "label": "Playlist YouTube « Talks - leHACK 2022 » (19 vidéos, 11 transcripts automatiques lus)",
+      "url": "https://www.youtube.com/playlist?list=PLzGIjwtabBqiBwtv3qxaUqo4IPHENBeeG"
+    },
+    {
+      "label": "ZDI-22-523 : avis du bug Netgear R6700v3 (Kevin Denis et Antide Petit, Synacktiv)",
+      "url": "https://zerodayinitiative.com/advisories/ZDI-22-523"
+    },
+    {
+      "label": "Aucun post LinkedIn, billet de blog ni write-up de participant trouvé."
+    }
+  ]
 }
