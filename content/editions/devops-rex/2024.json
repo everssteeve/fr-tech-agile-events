@@ -13,10 +13,10 @@
   "dateConfidence": "ok",
   "note": "Retour après quatre ans d'absence. 4 & 5 décembre 2024 au Palais des Congrès de Paris, colocalisé avec Open Source Experience : une salle unique, 17 REX filmés (15 à 30 minutes) entrecoupés de pitchs sponsors ; plus de 600 participants et 30 exposants attendus selon les annonces.",
   "status": "synthesized",
-  "synthesisUpdatedAt": "2026-10-05",
-  "revisit": "Aucun retour de participant trouvé (ni post LinkedIn, ni article de blog, ni sketchnote) après 7 recherches web : la synthèse repose sur les 17 transcripts et le programme. Pistes : chercher des posts LinkedIn des speakers et participants (#devopsrex, #devopsrex24, tag Slido de l'édition), des threads Bluesky (plusieurs speakers y ont publié leurs slides : Christophe Rochefolle, Alexis Chotard), et les slides sur Speaker Deck (Julien Briault).",
-  "corpus": "Programme 2024 (pages speakers archivées sur devopsrex.fr et 2024-devopsrex.eventmaker.io, page replays qui donne le jour de chaque talk), annonces de presse et de sponsors (Kaliop, developpez.com) et billet de l'organisateur d'août 2025 ; 17 replays YouTube publiés le 19/02/2025, tous transcrits (sous-titres automatiques) et lus en entier.",
-  "limits": "Aucun retour de participant lu : tout ce qui suit décrit ce qui a été dit sur scène, pas ce qu'en a retenu le public. Les transcripts automatiques déforment les noms propres et certains chiffres (signalés quand ils sont douteux), et les horaires de plusieurs talks restent inconnus. Les sept pitchs sponsors filmés n'ont pas été synthétisés.",
+  "synthesisUpdatedAt": "2026-11-08",
+  "revisit": "Toujours aucun retour de participant lu. Le 2026-11-08 : 8 recherches web (LinkedIn #devopsrex et noms d'entreprises, blogs, Bluesky, Speaker Deck) n'ont remonté aucun post LinkedIn de participant ; les slides d'Alexis Chotard (Speaker Deck) ont été lues, celles de Julien Briault ne s'affichent pas, le billet de retour d'Edouard Viot (Symbiotic Security, speaker) renvoie une erreur 404 et l'API de recherche Bluesky est inaccessible (403). Pistes restantes : billet Symbiotic via la Wayback Machine (hors ligne ce soir), profils Bluesky des speakers (horgix.bsky.social) lus via un client sans JavaScript, deck SlideShare de Christophe Rochefolle, posts LinkedIn des speakers recherchés nom par nom.",
+  "corpus": "Programme 2024 (pages speakers archivées sur devopsrex.fr et 2024-devopsrex.eventmaker.io, page replays qui donne le jour de chaque talk), annonces de presse et de sponsors (Kaliop, developpez.com, GoodTech.info) et billet de l'organisateur d'août 2025 ; 17 replays YouTube publiés le 19/02/2025, tous transcrits (sous-titres automatiques) et lus en entier. S'y ajoutent les slides d'Alexis Chotard (Speaker Deck), le compte-rendu LinuxFr d'Open Source Experience 2024 (juin 2025) et l'extrait de recherche du billet de retour d'Edouard Viot (mars 2025, page inaccessible).",
+  "limits": "Aucun retour de participant lu : tout ce qui suit décrit ce qui a été dit sur scène, pas ce qu'en a retenu le public. Le seul billet de retour repéré est celui d'un speaker-exposant (Symbiotic Security), connu par un extrait de moteur de recherche seulement. Les transcripts automatiques déforment les noms propres et certains chiffres (signalés quand ils sont douteux), et les horaires de plusieurs talks restent inconnus. Les sept pitchs sponsors filmés n'ont pas été synthétisés.",
   "tldr": "Un **retour réussi après quatre ans d'absence**, 100 % REX : on y a surtout parlé de **plateformes internes et de flux de livraison** (Bpifrance à 40 déploiements par jour, TheFork à 180 par semaine), de **migrations de cloud** (AWS vers GCP chez Back Market et Believe) et d'une **sécurité qui se gagne par l'organisation** plus que par l'outillage (EDF, Cloud Temple, Symbiotic), sur fond de pragmatisme budgétaire (« 1 € dépensé, c'est un repas pas distribué » aux Restos du Cœur).",
   "keyTakeaways": [
     "**Rendre la file d'attente visible avant d'outiller** : chez Bpifrance, un kanban lean a montré que le goulot était la conception technique ; modularité, tests end-to-end, trunk et feature toggles ont fait passer de 7 à 40 déploiements par jour (Nicolas Silberman, Fabrice Bernhard).",
@@ -191,9 +191,10 @@
         "Alexis « Horgix » Chotard — PayFit"
       ],
       "feedbackFrom": [],
-      "summary": "Sur scène (transcript) :\n- Chez PayFit, le mot « incident » n'existait pas en 2021. Thèse : *« les incidents, c'est définitivement pas un truc d'ops »*, ils concernent aussi les devs et le support client.\n- **N'importe qui peut déclarer un incident**, la sévérité (SEV1 à SEV4) se revoit à la hausse plutôt qu'à la baisse ; une revue mensuelle mesure environ 3 % d'erreurs de sévérité. *« Si quelqu'un pense qu'il y a un incident, c'est qu'il y en a probablement un. »*\n- L'incident commander est un **facilitateur**, souvent l'engineering manager concerné ; un channel Slack par incident et une war room ouverte à tous.\n- **Astreinte chiffrée** : 80 € la nuit de semaine, 150 € le samedi, 200 € le dimanche, soit environ 40 000 € par an pour une personne en continu ; d'où une astreinte centrale d'environ 6 SRE plutôt qu'une par équipe produit.\n- Outils : Datadog, PagerDuty, incident.io (retours *« que super positifs »*), Notion pour les postmortems ; leviers côté dev : retries, circuit breakers, modes dégradés.\n- Le speaker revenait à DEVOPS REX, où il avait déjà parlé en 2017.",
+      "summary": "Sur scène (transcript) :\n- Chez PayFit, le mot « incident » n'existait pas en 2021. Thèse : *« les incidents, c'est définitivement pas un truc d'ops »*, ils concernent aussi les devs et le support client.\n- **N'importe qui peut déclarer un incident**, la sévérité (SEV1 à SEV4) se revoit à la hausse plutôt qu'à la baisse ; une revue mensuelle mesure environ 3 % d'erreurs de sévérité. *« Si quelqu'un pense qu'il y a un incident, c'est qu'il y en a probablement un. »*\n- L'incident commander est un **facilitateur**, souvent l'engineering manager concerné ; un channel Slack par incident et une war room ouverte à tous.\n- **Astreinte chiffrée** : 80 € la nuit de semaine, 150 € le samedi, 200 € le dimanche, soit environ 40 000 € par an pour une personne en continu ; d'où une astreinte centrale d'environ 6 SRE plutôt qu'une par équipe produit.\n- Outils : Datadog, PagerDuty, incident.io (retours *« que super positifs »*), Notion pour les postmortems ; leviers côté dev : retries, circuit breakers, modes dégradés.\n- Le speaker revenait à DEVOPS REX, où il avait déjà parlé en 2017.\n\nDans les slides (Speaker Deck) :\n- Le descriptif chiffre la fréquence : **environ un incident par jour** en moyenne sur les six mois précédents, de sévérités variées, et rappelle que les problèmes étaient auparavant cachés dans des tableaux Jira.\n- Les slides recommandent d'**abandonner les matrices de sévérité élaborées** (citation d'incident.io sur le temps perdu à débattre de la sévérité) et listent la prévention (tests de charge, chaos engineering, canary releases, backpressure).\n- Alerting : Datadog Synthetics, Slack le jour et PagerDuty la nuit ; les métriques business restent rares. Amélioration mesurée par le MTTR, les modes de détection, la fréquence et le temps passé.\n- Conclusion : traiter l'incident aussi **sous l'angle produit**, en impliquant les PO et PM, et faire preuve d'empathie envers le support.",
       "summarySources": [
         "transcript",
+        "slides",
         "program"
       ],
       "video": {
@@ -253,10 +254,13 @@
       "speakers": [
         "Edouard Viot — Symbiotic Security"
       ],
-      "feedbackFrom": [],
-      "summary": "Sur scène (transcript) :\n- Le shift-left actuel empile SCA, SAST, scan d'IaC et contrôle de supply chain dans la CI ; selon le speaker, **empiler des outils ne suffit pas**.\n- REX d'une attaque DDoS chez un ancien employeur : la cause venait de l'opérateur du cloud provider (*« la supply chain de notre supply chain »*). Aucun client perdu grâce à la transparence.\n- Sur l'IA générative : des études montrent plus de vulnérabilités dans le code de Copilot ; leurs tests de remédiation Terraform par LLM sont justes dans 85 à 90 % des cas, ce qu'il juge insuffisant sans humain dans la boucle.\n- Culture : apprentissage au moment du besoin (dans l'IDE plutôt que la CI), *« la posture de coach au lieu de policier »*, règles d'exception à durée limitée.\n- Talk d'un sponsor : le corps reste générique, l'autopromotion se limite aux questions-réponses.",
+      "feedbackFrom": [
+        "Edouard Viot (speaker), billet Symbiotic Security (extrait de recherche)"
+      ],
+      "summary": "Sur scène (transcript) :\n- Le shift-left actuel empile SCA, SAST, scan d'IaC et contrôle de supply chain dans la CI ; selon le speaker, **empiler des outils ne suffit pas**.\n- REX d'une attaque DDoS chez un ancien employeur : la cause venait de l'opérateur du cloud provider (*« la supply chain de notre supply chain »*). Aucun client perdu grâce à la transparence.\n- Sur l'IA générative : des études montrent plus de vulnérabilités dans le code de Copilot ; leurs tests de remédiation Terraform par LLM sont justes dans 85 à 90 % des cas, ce qu'il juge insuffisant sans humain dans la boucle.\n- Culture : apprentissage au moment du besoin (dans l'IDE plutôt que la CI), *« la posture de coach au lieu de policier »*, règles d'exception à durée limitée.\n- Talk d'un sponsor : le corps reste générique, l'autopromotion se limite aux questions-réponses.\n\nAprès coup (speaker) :\n- Dans un billet de mars 2025, « Thoughts from DevOps Rex 2024 », Edouard Viot revient sur son double rôle de speaker et d'exposant, remercie Infopro Digital d'avoir relancé la conférence après la pause liée au Covid, et tire des enseignements des questions posées sur le stand, en s'appuyant sur le shift-left et le *Lean Tech Manifesto*. La page renvoyait une erreur 404 le 2026-11-08 : ce résumé repose sur un extrait de moteur de recherche, le détail des enseignements n'a pas été lu.",
       "summarySources": [
         "transcript",
+        "blog",
         "program"
       ],
       "video": {
@@ -432,7 +436,31 @@
       "url": "https://www.kaliop.com/fr/devops-rex-2024/"
     },
     {
-      "label": "Posts LinkedIn : aucun post de participant ni de speaker trouvé"
+      "label": "Speaker Deck : slides d'Alexis Chotard, Alerte, tout brûle ! (4 décembre 2024)",
+      "url": "https://speakerdeck.com/horgix/alerte-tout-brule-comment-collaborer-lors-dincidents-techniques-devops-rex-2024-2024-12-04"
+    },
+    {
+      "label": "Speaker Deck : slides de Julien Briault, Restos du Cœur (contenu non affiché par Speaker Deck)",
+      "url": "https://speakerdeck.com/ju_hnny5/devopsrex-2024-comment-nous-avons-transforme-les-restos-du-coeur-en-cloud-provider"
+    },
+    {
+      "label": "Symbiotic Security : Thoughts from DevOps Rex 2024, Edouard Viot (mars 2025, page en 404 le 2026-11-08)",
+      "url": "https://www.symbioticsec.ai/blog/thoughts-from-devops-rex-2024"
+    },
+    {
+      "label": "Cloud Temple : page événement du talk SecNumCloud (4 décembre 2024)",
+      "url": "https://cloud-temple.com/en/events-2/devops-rex-how-to-create-secnumcloud-ready-cloud-products"
+    },
+    {
+      "label": "GoodTech.info : Open Source Experience, retour en force pour DevOps REX 2024 (annonce du 3 décembre 2024)",
+      "url": "https://goodtech.info/open-source-experience-retour-en-force-pour-devops-rex-2024/"
+    },
+    {
+      "label": "LinuxFr : Open Source Experience, REX de l'édition 2024 (juin 2025)",
+      "url": "https://linuxfr.org/news/open-source-experience-rex-de-l-edition-2024-et-appels-en-cours-pour-osxp2025"
+    },
+    {
+      "label": "Posts LinkedIn : aucun post de participant ni de speaker trouvé (recherches du 2026-10-05 et du 2026-11-08)"
     }
   ]
 }

@@ -7,8 +7,260 @@
   "city": "Montrouge",
   "venue": "Beffroi de Montrouge",
   "url": "https://cftl.fr/jftl-2022/",
+  "programUrl": "https://cftl.fr/wp-content/uploads/2023/12/Programme-final-2022.pdf",
   "dateConfidence": "ok",
   "note": "cftl.fr : 14e édition les 13 et 14 juin 2022 (tournoi de l'assurance qualité le 13, conférences le 14), thème « L'humain au cœur de l'intelligence dans le test ».",
-  "status": "pending",
-  "sessions": []
+  "theme": "L'humain au cœur de l'intelligence dans le test",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-08",
+  "revisit": "Aucun post LinkedIn ni billet de participant retrouvé en 5 recherches web ; synthèse bâtie sur le programme officiel, les slides publiées par le CFTL (9 supports lus sur 22), un article du Monde Informatique et le recap d'un sponsor. À reprendre si des retours LinkedIn de juin 2022 ou des vidéos apparaissent, et pour lire les supports restants (Docaposte, Sogeti, CGI, Generali, La Redoute, Expleo, Orange, Bouygues Télécom).",
+  "corpus": "Programme final officiel (PDF, deux pages), page des présentations 2022 sur cftl.fr et slides PDF de neuf sessions (les trois keynotes, Ausy et La Redoute, Air France, Mr Suricate, Alten, Athenco, Adone Conseil), article du Monde Informatique du 16 juin 2022 (Aurélie Chandeze), recap du sponsor Inflectra du 17 juin 2022 et article d'annonce de Solutions Numériques. Recherche menée le 2026-11-08, plus de quatre ans après l'événement.",
+  "limits": "Aucun retour de participant au sens strict : les seuls signaux de la salle sont les résultats de sondages Mentimeter reproduits dans les slides d'Adone Conseil, un compte rendu de presse centré sur la matinée et le recap d'un sponsor. Les résumés reflètent ce que les orateurs ont mis sur leurs slides, pas ce qui a été dit à l'oral. Aucune vidéo retrouvée. Treize sessions (parcours automatisation et techniques de test surtout) ne sont pas résumées, ce qui surpondère les sessions métiers, tendances et méthodologie.",
+  "tldr": "Une JFTL qui, conformément à son thème, **remet l'humain au centre du test** : stress et confiance (keynote d'un psychologue), métiers de la qualité qui se recomposent vers le Quality Engineering, communautés de testeurs à entretenir, et une **entrée du numérique responsable** (écoconception, green testing, accessibilité) dans le périmètre de la qualité logicielle.",
+  "keyTakeaways": [
+    "Traiter l'agilité comme une affaire de confiance : un environnement relationnel sain et des valeurs claires permettent au cerveau préfrontal de prendre le pas sur les réflexes de peur face au changement (Bernard Rulmont).",
+    "Intégrer l'écoconception dans la démarche qualité : le RGESN de la DINUM propose 79 critères vérifiables, chacun assorti de « moyens de tests » pour un auditeur (Richard Hanna).",
+    "Ne pas se contenter de cocher des bonnes pratiques de sobriété : mesurer sur appareils réels un score performance, données et énergie par étape de parcours, pour obtenir un fait objectif sans débat d'expert (Alten).",
+    "En DevOps, considérer le test comme une activité continue et non une phase : identifier les risques au plan, ATDD et BDD au code, tests de l'infrastructure et du pipeline, test en production et monitoring de l'usage (Klaudia Dussa-Zieger).",
+    "Élargir le profil du testeur en « T », « Pi » ou « peigne » plutôt que chercher un profil unique qui saurait tout faire, et organiser le mentoring (Ausy et La Redoute).",
+    "Dans l'agile à l'échelle, protéger les QA embarqués de l'isolement : rituels de communauté, canaux animés, catalogue d'outils, leader QA visible, et au moins 5 % du temps consacré à la communauté (Matthieu Nivard).",
+    "Prioriser les tests sur ce qui fait fuir le client e-commerce : mails non reçus, boutons inopérants et erreurs 400 ou 500 arrivent en tête des anomalies recensées par Mr Suricate.",
+    "Automatiser l'accessibilité sans viser 100 % : les règles automatiques détectent une partie des problèmes WCAG, le reste demande un test guidé et des tests clavier puis lecteur d'écran (Athenco)."
+  ],
+  "sessions": [
+    {
+      "id": "ouverture-olivier-denoo",
+      "day": "2022-06-14",
+      "type": "other",
+      "title": "Ouverture de la JFTL",
+      "speakers": [
+        "Olivier Denoo (président du CFTL)"
+      ],
+      "feedbackFrom": [
+        "Le Monde Informatique (Aurélie Chandeze)"
+      ],
+      "summary": "D'après le compte rendu du Monde Informatique (source de presse, pas un participant) :\n- Olivier Denoo présente la JFTL comme **le plus grand événement consacré au test en Europe**, avec plus de 1 300 participants annoncés.\n- **Point sur l'ISTQB** : plus de 1,1 million d'examens passés dans le monde, dont 36 000 en France ; révision des syllabus Test Manager et Foundation, syllabus Game Testing annoncé pour fin 2023, traductions AI Testing et Agile Test Leadership at Scale attendues en 2022.\n- **Regret exprimé** : les certifications ISTQB ne sont plus éligibles au CPF depuis fin 2021.\n- Activité internationale du CFTL : coorganisation de la première assemblée générale des membres de l'ISTQB au Maroc et participation à la journée tunisienne du test (JTTL).",
+      "summarySources": [
+        "blog",
+        "program"
+      ]
+    },
+    {
+      "id": "le-bug-du-stress",
+      "day": "2022-06-14",
+      "type": "keynote",
+      "title": "Le bug du stress",
+      "speakers": [
+        "Bernard Rulmont (How Consultancy)"
+      ],
+      "feedbackFrom": [
+        "Le Monde Informatique (Aurélie Chandeze)"
+      ],
+      "summary": "D'après les slides publiées et le compte rendu du Monde Informatique :\n- Un psychologue en ouverture d'une journée de testeurs : **comment ne pas se faire piéger par son propre cerveau** face au changement.\n- **Le cerveau limbique**, système d'alarme qui prend la main dans l'urgence, pense par **focalisation** (il cherche ce qui ne va pas, d'où insatisfaction et victimisation), **mémorisation** (il plaque les expériences négatives passées) et **rapidité** (pensée en tout ou rien).\n- *« La bêtise est un réflexe »* : la pensée préfrontale est plus lente mais volontaire, nuancée et capable d'aller au-delà de la perception première.\n- **L'agilité par la confiance** : en mode limbique, le changement est un danger et l'on se ferme ; en bascule préfrontale, il devient une opportunité, on donne le bénéfice du doute et on pense collectif.\n- Message de clôture : *« L'environnement agile exige une activation dominante du préfrontal »*, qui a besoin d'un environnement relationnel sain, de valeurs claires et d'un haut niveau de confiance.\n- Le Monde Informatique retient la tension entre une agilité généralisée en entreprise et un cerveau humain câblé pour la sécurité et la stabilité.",
+      "summarySources": [
+        "slides",
+        "blog",
+        "program"
+      ]
+    },
+    {
+      "id": "comment-reinventer-nos-metiers-de-la-qualite-pour-le-quality-engineering",
+      "day": "2022-06-14",
+      "type": "talk",
+      "title": "Comment réinventer nos métiers de la qualité pour le Quality Engineering ?",
+      "speakers": [
+        "Jean-François Fresi (Ausy)",
+        "Antoine Craske (La Redoute)"
+      ],
+      "feedbackFrom": [],
+      "summary": "D'après les slides publiées (parcours Métiers) :\n- **« Se transformer ou disparaître »** : la qualité doit passer du dilemme « qualité ou vitesse » à la **« Quality at Speed »**.\n- Le Quality Engineering agit **en transverse sur toute la chaîne** (plan, design, dev, deploy, operate, measure) et repose sur le choix et la combinaison de pratiques (craft, SRE, observabilité, DevOps, BDD…), cadrées par le framework MAMOS (méthodes, architecture, management, organisation, compétences, avec la culture au centre).\n- **« C'est trop pour une seule personne »** : plutôt qu'un profil universel, une **composition des compétences en « lego »**, du profil en I au profil en T, en Pi puis en peigne.\n- **Rôles émergents** : Product Quality Engineer, Quality Engineer Craft, Platform Quality Engineer, Quality Engineering Advisor et Manager, illustrés par des offres d'emploi réelles (Cdiscount, ManoMano, Decathlon, Dashlane).\n- Parcours de carrière proposés depuis le testeur fonctionnel ou automaticien, avec **mentoring** et formation continue, et renvoi vers la communauté QE Unit.",
+      "summarySources": [
+        "slides",
+        "program"
+      ]
+    },
+    {
+      "id": "il-etait-une-fois-le-test-manager",
+      "day": "2022-06-14",
+      "type": "talk",
+      "title": "Il était une fois… le Test Manager",
+      "speakers": [
+        "Florence Guerlais (Air France)"
+      ],
+      "feedbackFrom": [],
+      "summary": "D'après les slides publiées (parcours Métiers) :\n- Retour d'expérience du **Centre de Service Test Air France KLM** (créé en 2014, avec Sogeti) et de ses Test Managers « en quête de partage ».\n- Évolution racontée en personnages : le Test Manager **classique** (stratégie exhaustive en début de projet, document Word validé puis figé), le Test Manager **agile** (stratégie vivante, inscrite dans la DoR et la DoD, testeur intégré à l'équipe), celui qui **prend de la hauteur** au niveau du train SAFe, l'**accompagnateur qualité** (conseil, arbitrage, contrôle des livraisons de développements externalisés) et le **traducteur** pour les mondes infra et ops où le test est un langage inconnu.\n- **Ce qui diminue** : la documentation qui n'était ni lue ni maintenue, la formalisation, la création de bugs. **Ce qui augmente** : les échanges, la compréhension, les tests pertinents.\n- Améliorations constatées : on teste plus tôt donc on réagit plus vite, *« la scrum team est le 1er bêta testeur »*, la plupart des bugs de production sont traités dans le sprint.\n- Conclusion des slides : la clé est **l'adaptation**.",
+      "summarySources": [
+        "slides",
+        "program"
+      ]
+    },
+    {
+      "id": "un-referentiel-general-pour-l-ecoconception-de-service-numerique",
+      "day": "2022-06-14",
+      "type": "keynote",
+      "title": "Un référentiel général pour l'écoconception de service numérique",
+      "speakers": [
+        "Richard Hanna (DINUM)"
+      ],
+      "feedbackFrom": [],
+      "summary": "D'après les slides publiées (keynote de début d'après-midi, format quiz) :\n- **Les impacts du numérique viennent d'abord de la fabrication des équipements utilisateurs** (76 % des ressources et 74 % de l'eau pour la fabrication, d'après une infographie de Gauthier Roussilhe), plus que des mails ou du streaming.\n- **« Obésiciel »** : on change de terminal non parce qu'il ne fonctionne plus mais parce qu'il rame, sous le poids de logiciels toujours plus gourmands.\n- Présentation du **RGESN** (issu de la loi REEN de novembre 2021) : 8 thématiques, 79 critères vérifiables et intemporels, chacun formulé comme une question avec objectif, mise en œuvre et **moyens de tests** pour un auditeur.\n- *« On ne peut pas éco-concevoir du code »* mais un service entier : un acte métier impliquant designers, marketing et **testeurs**.\n- Les **5 R** : refuser les fonctionnalités non essentielles, réduire les dépendances, réemployer, recycler, rendre à la terre (communs numériques). Outils libres de mesure cités (EcoIndex, Scaphandre, PowerAPI, Lighthouse…).",
+      "summarySources": [
+        "slides",
+        "program"
+      ]
+    },
+    {
+      "id": "les-10-anomalies-les-plus-recurrentes-des-sites-e-commerce",
+      "day": "2022-06-14",
+      "type": "talk",
+      "title": "Les 10 anomalies les plus récurrentes des sites e-commerce et comment les prévenir !",
+      "speakers": [
+        "Michael Granier (Mr Suricate)"
+      ],
+      "feedbackFrom": [],
+      "summary": "D'après les slides publiées (parcours Tendances) :\n- Classement tiré des milliers de scénarios automatisés exécutés par Mr Suricate chez ses clients et d'un sondage de 2020 auprès de 14 824 internautes (déclaratif).\n- **Top 3** : le **mail non reçu** (commande, création de compte, mot de passe oublié), le **bouton qui ne réagit pas**, l'**erreur 400 ou 500**. Suivent le CSS cassé, le panier qui se vide, la connexion impossible, le produit indisponible, les prix incohérents, la déconnexion intempestive et l'échec de paiement.\n- Chiffres du sondage : 86 % des répondants disent renoncer à un achat à cause d'un bug, plus de 70 % vont chercher le produit sur un autre site, 25 % n'ont plus confiance dans le site.\n- Pour chaque anomalie, un mix de parades : tests de bout en bout, tests de charge, **monitoring avec alerting en production**, tests sur les partenaires (paiement, livraison).\n- Conclusion : écouter les retours clients (réseaux sociaux, outils de feedback) et rappeler **pour qui** on teste.",
+      "summarySources": [
+        "slides",
+        "program"
+      ]
+    },
+    {
+      "id": "green-testing-pour-garantir-le-numerique-responsable",
+      "day": "2022-06-14",
+      "type": "talk",
+      "title": "Green Testing pour garantir le Numérique Responsable",
+      "speakers": [
+        "Pascal Deshayes (Alten)",
+        "Thierry Leboucq (Alten)"
+      ],
+      "feedbackFrom": [],
+      "summary": "D'après les slides publiées (parcours Tendances) :\n- Constat : le numérique représenterait environ **4 % des gaz à effet de serre mondiaux, en hausse de 6 % par an** (projection du Shift Project citée).\n- **Deux stratégies complémentaires** : la prévention, par des référentiels de bonnes pratiques (GR491 de l'INR, RGESN de la DINUM, référentiel AFNOR), et la **vérification par la mesure**.\n- Limite des référentiels : des bonnes pratiques appliquées *« ne suffisent pas à garantir un bon résultat »*, et une bonne pratique peut se révéler contreproductive.\n- **Mesurer** sur appareils réels, de façon répétable, trois indicateurs par étape de parcours : performance, données échangées, énergie consommée, pour obtenir un fait objectif *« sans débat d'expert »*. Aucun label ni norme n'existe pour fixer les seuils.\n- RETEX sur une application mobile de services aux collaborateurs : abandon de la géolocalisation jugée non nécessaire, design simple et fond sombre, 128 étapes mesurées et un **éco-score sur 100** pour se comparer.",
+      "summarySources": [
+        "slides",
+        "program"
+      ]
+    },
+    {
+      "id": "l-importance-croissante-des-tests-automatises-pour-l-accessibilite-numerique",
+      "day": "2022-06-14",
+      "type": "talk",
+      "title": "L'importance croissante des tests automatisés pour l'accessibilité numérique",
+      "speakers": [
+        "Nicolas Laigle (Athenco)",
+        "Antonio Ferreira (Athenco)"
+      ],
+      "feedbackFrom": [],
+      "summary": "D'après les slides publiées (parcours Automatisation, support d'orientation éditeur) :\n- **Pourquoi** : plus de 15 % de la population vit avec un handicap ; obligations réglementaires pour le secteur public européen depuis 2021 et pour la plupart des entreprises à partir de 2025 ; hausse de l'attention pendant la pandémie.\n- **Tests automatiques** fondés sur les WCAG et le RGAA, illustrés par la librairie open source axe-core (96 règles, 57 % des problèmes WCAG détectés selon les slides) intégrée à la chaîne DevOps.\n- Argument du **shift left** : un bug découvert en production coûterait jusqu'à 30 fois plus qu'en conception (chiffre attribué à IBM).\n- **Pas de 100 % automatique** : un mode hybride guidé (humain et IA) viserait 80 % de couverture.\n- **Changement de mentalité** : former, auditer l'existant, cultiver l'empathie, et faire systématiquement un test clavier puis, avec l'expérience, au lecteur d'écran.",
+      "summarySources": [
+        "slides",
+        "program"
+      ]
+    },
+    {
+      "id": "faire-vivre-et-prosperer-une-communaute-de-pratiques-qa-en-contexte-agile",
+      "day": "2022-06-14",
+      "type": "talk",
+      "title": "Faire vivre et prospérer une Communauté de Pratiques QA en contexte Agile",
+      "speakers": [
+        "Matthieu Nivard (Adone Conseil)"
+      ],
+      "feedbackFrom": [
+        "Salle (sondages Mentimeter reproduits dans les slides)"
+      ],
+      "summary": "D'après les slides publiées, qui reproduisent les votes de la salle :\n- **Trois modèles d'organisation du test** : centre de service (cohérence mais distance avec les devs), équipe agile (efficace mais petite échelle), agile à l'échelle (répond au besoin de production mais **isole et minorise les QA**).\n- **Côté salle** : 48 % des votants travaillent en agile à l'échelle, 17 % en centre de service, 15 % en équipe agile unique. Risques perçus en tête : **isolement des QA** (49 votes), perte de cohérence méthodologique (43) et perte de la dynamique de groupe (29).\n- Exemple d'organisation chez Richemont : QA embarqués dans les équipes Scrum, pool de Test Managers, test factory nearshore et cellule transverse d'expertise.\n- **Leviers** : rituels (stand-up hebdomadaire, forum mensuel de REX), canaux animés et identité de communauté, catalogue d'outils, relation éditeurs, un leader QA visible, des plans de carrière, et la mutualisation de ce qui sort des équipes (performance, sécurité, données et environnements de test).\n- Temps à consacrer à la communauté : la salle vote surtout pour 30 minutes à 4 heures par semaine ; l'orateur pose **5 % minimum**.",
+      "summarySources": [
+        "slides",
+        "feedback",
+        "program"
+      ]
+    },
+    {
+      "id": "testing-in-devops-what-is-new-and-different",
+      "day": "2022-06-14",
+      "type": "keynote",
+      "title": "Testing in DevOps: What is new and different?",
+      "speakers": [
+        "Klaudia Dussa-Zieger (German Testing Board, imbus AG)"
+      ],
+      "feedbackFrom": [],
+      "summary": "D'après les slides publiées (keynote de clôture, en anglais) :\n- DevOps n'est pas qu'un empilement d'outils : collaboration dev et ops, petits incréments, **qualité dès le début** et apprentissage continu par le monitoring de la production.\n- *« Testing is not a phase but an activity »* : du cycle en V au test en sprint agile, puis au **Continuous Testing sur tout le cycle de vie**.\n- **Activités de test à chaque étape** : identifier les risques et écrire des user stories testables (plan), ATDD, BDD et example mapping (code), tests de l'infrastructure et du pipeline (build et test), feature toggles et blue/green (release), test en production et A/B tests (deploy), monitoring de l'usage réel (operate).\n- Le **test « traditionnel » reste le cœur** : les techniques du cycle en V et du test agile s'appliquent toujours ; le périmètre s'étend aux opérations.\n- **Compétences à élargir** : analyse de risques, modélisation des exigences, CI/CD, monitoring en production, outillage, et davantage de travail d'équipe.",
+      "summarySources": [
+        "slides",
+        "program"
+      ]
+    },
+    {
+      "id": "tournoi-d-assurance-qualite",
+      "day": "2022-06-14",
+      "type": "other",
+      "title": "Résultats du Tournoi d'Assurance Qualité (T.A.Q.)",
+      "speakers": [
+        "Frédéric Assante Di Capillo (Amadeus, organisateur du tournoi)"
+      ],
+      "feedbackFrom": [
+        "Le Monde Informatique (Aurélie Chandeze)"
+      ],
+      "summary": "D'après le Monde Informatique et les communiqués du CFTL :\n- **Nouveauté 2022** : un premier tournoi de test par équipes (jusqu'à 5 personnes), disputé toute la journée du 13 juin, en parallèle des tutoriels.\n- **Principe** : trouver le plus possible de défauts dans une application.\n- Dix équipes engagées ; podium annoncé le 14 juin : **Breiz Test Punishers**, puis les Gardiens de la Qalaxie et les Qamarades.\n- Objectif affiché par les organisateurs : favoriser les échanges de façon ludique autour du métier de testeur.",
+      "summarySources": [
+        "blog",
+        "program"
+      ]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "20 minutes pour convaincre : Tricentis",
+    "20 minutes pour convaincre : Sogeti",
+    "20 minutes pour convaincre : Alten",
+    "Des traces d'usage aux automates ciblés (François Vlerick, Sephora), remplacée dans la liste des supports publiés par un retour d'expérience Docaposte sur une plateforme mutualisée de gestion de référentiel de tests",
+    "Une matrice pour les gouverner tous (ses tests) (Jean-Paul Gallant et Stanislas Bobiec, Sogeti)",
+    "Abondance de JDD à l'échelle de l'IT : révolution douce (André Caillaud, Bouygues Télécom)",
+    "Problématique sur l'utilisation d'objets connectés dans les tests automatisés (Marion Bréan, Cooperl, et Tanguy Michel, Niji)",
+    "Shift-up ! Une démarche devenue essentielle à la qualité (Iman Benlekehal, CGI)",
+    "Livecoding Cypress (Yann Helleboid, Orange)",
+    "Apisation du SI : innover pour automatiser l'automatisation (Mahdi Gharsallah et Mathieu Meyere, Generali France)",
+    "La qualité à l'échelle, retour d'expérience sur la synchronisation de 22 équipes produits pour une Marketplace (Guillaume Cousin, SSID)",
+    "Comment le continuous performance testing nous a aidé à améliorer l'expérience utilisateur (Aurélien Ioossen et Nathalie Seynave, La Redoute)",
+    "Arborescence des objets de test et rétroPERspective dans le testing (Régis Barbier et Julien Laurent, Expleo)"
+  ],
+  "sources": [
+    {
+      "label": "CFTL : programme final JFTL 2022 (PDF)",
+      "url": "https://cftl.fr/wp-content/uploads/2023/12/Programme-final-2022.pdf"
+    },
+    {
+      "label": "CFTL : présentations de l'édition 2022 (slides PDF de toutes les sessions)",
+      "url": "https://cftl.fr/?page_id=47070"
+    },
+    {
+      "label": "Slides keynote Bernard Rulmont, « Le bug du stress »",
+      "url": "https://cftl.fr/wp-content/uploads/2023/12/Keynote-1-Bernard-Rulmont-Le-bug-du-stress.pdf"
+    },
+    {
+      "label": "Slides keynote Richard Hanna, RGESN",
+      "url": "https://cftl.fr/wp-content/uploads/2023/12/Keynote-2-Richard-Hanna-Un-referentiel-general-pour-lecoconception-de-service-numerique.pdf"
+    },
+    {
+      "label": "Slides keynote Klaudia Dussa-Zieger, Testing in DevOps",
+      "url": "https://cftl.fr/wp-content/uploads/2023/12/Keynote-3-Klaudia-Dussa-Zieger-GTB-Testing-in-DevOps-–-22What-is-new-and-different22.pdf"
+    },
+    {
+      "label": "Slides Matthieu Nivard, communauté de pratiques QA (avec résultats Mentimeter de la salle)",
+      "url": "https://cftl.fr/wp-content/uploads/2023/12/Faire-vivre-et-prosperer-une-Communaute-de-Pratiques-QA-en-contexte-Agile.pdf"
+    },
+    {
+      "label": "Le Monde Informatique : « L'agilité au cœur des tests logiciels » (16 juin 2022)",
+      "url": "https://www.lemondeinformatique.fr/actualites/lire-l-agilite-au-coeur-des-tests-logiciels-87105.html"
+    },
+    {
+      "label": "Inflectra : Recap JFTL in Paris, France (sponsor, 17 juin 2022)",
+      "url": "https://inflectra.com/Ideas/Entry/recap-jftl-in-paris-france-1345.aspx"
+    },
+    {
+      "label": "Solutions Numériques : annonce de la 14e JFTL",
+      "url": "https://www.solutions-numeriques.com/?p=89857"
+    },
+    {
+      "label": "Posts LinkedIn : aucun post de participant retrouvé (recherches du 2026-11-08)"
+    }
+  ]
 }

@@ -11,10 +11,10 @@
   "dateConfidence": "ok",
   "note": "Ancien nom : PyData Paris (QuantStack et NumFOCUS), dernière édition sous ce nom avant Compute! Paris 2026. Lieu : Cité des Sciences, 30 avenue Corentin Cariou, Paris 19e. Source : pydata.org/paris2025.",
   "status": "synthesized",
-  "synthesisUpdatedAt": "2026-10-05",
-  "revisit": "Corpus de retours participants très mince : un seul billet de participant (Markus Löning) et deux posts Mastodon ; aucun post LinkedIn lu (recherche web sans résultat exploitable, HTTP 999 probable). À chercher : posts LinkedIn de participants et de speakers (hashtag #PyDataParis, pages QuantStack, :probabl., Inria P16, Tweag), billets des blogs QuantStack et Quansight Labs, comptes-rendus Medium, et transcrire d'autres talks de la playlist (Parquet, Sparrow, JupyterLite, causal inference, Streamlit).",
-  "corpus": "Programme officiel pretalx (48 sessions) et pages pydata.org/paris2025 ; 14 transcripts YouTube intégrés (3 keynotes, le panel open source business et 10 talks) sur les 48 vidéos de la playlist officielle publiées entre novembre et décembre 2025 ; un billet de participant (Markus Löning, 2 octobre 2025), les slides de Romain Clement, deux posts Mastodon (Anita Graser, Tweag) et les résumés des interviews backstage publiés par PyData Paris (février et mars 2026).",
-  "limits": "Synthèse surtout fondée sur ce qui a été dit sur scène (transcripts automatiques, noms parfois déformés) plutôt que sur des retours d'audience : un seul compte-rendu de participant a été trouvé et aucun post LinkedIn. Les 30 autres talks ont une vidéo mais n'ont pas été transcrits ; les lightning talks et les sprints du 2 octobre ne sont pas couverts.",
+  "synthesisUpdatedAt": "2026-11-08",
+  "revisit": "Corpus participants encore modeste (trois billets de blog, deux posts Mastodon) et toujours aucun post LinkedIn : le 2026-11-08, six recherches web (site:linkedin.com/posts, #PyDataParis, blogs QuantStack, Quansight et :probabl., Medium, dev.to, Substack) n'ont remonté aucun post LinkedIn ni billet d'entreprise. Pistes restantes : recherche LinkedIn par nom de speaker (Corlay, Lechelle, Grisel, Cappuzzo, Tiran-Cappello, Marić, Abraham), transcrire les talks commentés mais sans transcript (Parquet, Spark, Web Data Extraction, SKADA, causal inference, benchmark tabulaire, Quarto, transport optimal) et les deux sessions de lightning talks (VP4IqFpdPec, yVD6ux9mXcE).",
+  "corpus": "Programme officiel pretalx (48 sessions) et pages pydata.org/paris2025 ; 14 transcripts YouTube intégrés (3 keynotes, le panel open source business et 10 talks) sur les 48 vidéos de la playlist officielle publiées entre novembre et décembre 2025 ; trois billets de participants (Markus Löning et Lee Morris, 2 octobre 2025 ; Clément Chastagnol, 12 mars 2026, 19 talks suivis), la page de Pierre Augier (lightning talk), les slides de Romain Clement (deux talks), deux posts Mastodon (Anita Graser, Tweag) et les résumés des interviews backstage publiés par PyData Paris (février et mars 2026).",
+  "limits": "Synthèse encore surtout fondée sur ce qui a été dit sur scène (transcripts automatiques, noms parfois déformés) ; les retours d'audience viennent de trois blogueurs praticiens (dont un étudiant en master), et aucun post LinkedIn n'a été lu. Six talks ne sont résumés que par les retours de blog et les slides, sans transcript ; une vingtaine d'autres talks, les lightning talks et les sprints du 2 octobre ne sont pas couverts.",
   "tldr": "PyData Paris 2025 a montré un écosystème scientifique Python qui **mise sur la performance et l'interopérabilité (array API, free-threading, Arrow, Polars) et sur la santé de ses communautés open source**, avec une IA générative abordée surtout sous l'angle de la fiabilité en production et de ses effets de bord.",
   "keyTakeaways": [
     "Tester son code scientifique avec l'array API standard : un flag expérimental suffit dans SciPy et scikit-learn pour passer sur PyTorch, CuPy ou JAX, avec des gains jusqu'à 1 000x sur GPU (Gommers, Colley).",
@@ -25,7 +25,8 @@
     "Pour l'extraction par LLM : sortie structurée validée (Pydantic, Instructor), champ is_claim et raisonnement explicites, retries ciblés (Tenacity) et validation manuelle par des experts (El Mawass et Erdelyi).",
     "Produire des intervalles de prédiction (pinball loss, régression quantile) et les évaluer avec la couverture et la largeur moyenne, pas seulement le score moyen (Grisel).",
     "Curer et garder des données réelles dans le jeu d'entraînement des modèles génératifs : l'accumulation borne l'erreur, la substitution par du synthétique mène à l'effondrement (Zuccoli).",
-    "Côté contributeurs : traiter la documentation comme un vrai travail qualifié et rendre les projets sûrs pour apprendre (Frim)."
+    "Côté contributeurs : traiter la documentation comme un vrai travail qualifié et rendre les projets sûrs pour apprendre (Frim).",
+    "Pour des volumes petits à moyens, monter un lakehouse en pur Python (deltalake, pyiceberg, DuckDB) sans cluster Spark : *« Start simple, scale when needed »* (Clement)."
   ],
   "sessions": [
     {
@@ -45,9 +46,9 @@
       "type": "roundtable",
       "title": "Open-source Business",
       "speakers": ["Sylvain Corlay — QuantStack", "Yann Lechelle — :probabl.", "Alexander CS Hendorf (modérateur)"],
-      "feedbackFrom": ["résumé de l'interview backstage de Yann Lechelle (PyData Paris, Mastodon)"],
-      "summary": "- Panel ouvert sur la série A de Polars annoncée la même semaine : l'open source est devenu un modèle d'affaires de fait.\n- Yann Lechelle (:probabl.) ne vient pas de l'open source : il y voit un outil de **rééquilibrage face aux big tech**, pas de l'altruisme. scikit-learn est un actif *« patrimonial »* : la marque appartient à Inria, le code à tout le monde.\n- Deux modèles opposés : :probabl. est une entreprise financée (dont par l'État français) avec deux équipes à deux vitesses, une dizaine de personnes sur le code open source et une dizaine sur un produit commercial inspiré de Red Hat ; QuantStack (plus de 30 personnes) a grandi sans levée, **par contrats clients** sur Jupyter et Apache Arrow.\n- Tensions décrites par Sylvain Corlay : les clients financent leurs besoins, pas ceux de la communauté (l'accessibilité de Jupyter est presque impossible à faire financer) ; pressions sur les cycles de release ; harcèlement en ligne des salariés qui travaillent en public, dont l'employeur reste responsable.\n- Évocation des contributions générées par des agents IA qui alourdissent la charge des mainteneurs (post LinkedIn d'Adrin Jalali cité par le modérateur).\n- Vision à cinq ans : *« plus de science, moins de dogme »*, une notion d'ouverture élargie (open science, data, source, weights, standards, hardware) comme politique industrielle européenne et la **souveraineté numérique** au cœur du sujet (Lechelle) ; financer les briques utiles mais ingrates, et une conférence sans « superstars » (Corlay).",
-      "summarySources": ["transcript"],
+      "feedbackFrom": ["résumé de l'interview backstage de Yann Lechelle (PyData Paris, Mastodon)", "Clément Chastagnol (blog)"],
+      "summary": "- Panel ouvert sur la série A de Polars annoncée la même semaine : l'open source est devenu un modèle d'affaires de fait.\n- Yann Lechelle (:probabl.) ne vient pas de l'open source : il y voit un outil de **rééquilibrage face aux big tech**, pas de l'altruisme. scikit-learn est un actif *« patrimonial »* : la marque appartient à Inria, le code à tout le monde.\n- Deux modèles opposés : :probabl. est une entreprise financée (dont par l'État français) avec deux équipes à deux vitesses, une dizaine de personnes sur le code open source et une dizaine sur un produit commercial inspiré de Red Hat ; QuantStack (plus de 30 personnes) a grandi sans levée, **par contrats clients** sur Jupyter et Apache Arrow.\n- Tensions décrites par Sylvain Corlay : les clients financent leurs besoins, pas ceux de la communauté (l'accessibilité de Jupyter est presque impossible à faire financer) ; pressions sur les cycles de release ; harcèlement en ligne des salariés qui travaillent en public, dont l'employeur reste responsable.\n- Évocation des contributions générées par des agents IA qui alourdissent la charge des mainteneurs (post LinkedIn d'Adrin Jalali cité par le modérateur).\n- Vision à cinq ans : *« plus de science, moins de dogme »*, une notion d'ouverture élargie (open science, data, source, weights, standards, hardware) comme politique industrielle européenne et la **souveraineté numérique** au cœur du sujet (Lechelle) ; financer les briques utiles mais ingrates, et une conférence sans « superstars » (Corlay).\n- Ce qu'en retient Clément Chastagnol : l'open source peut **réduire les coûts marketing** (*« a good project already has users, visibility, and trust »*), mais le travail produit et de gouvernance reste nécessaire ; il signale le livre de Yann Lechelle, *Ouvertarisme*.",
+      "summarySources": ["transcript", "blog"],
       "video": { "youtubeId": "d2xQQItnMys", "title": "Sylvain Corlay, Yann Lechelle & Alexander CS Hendorf - Open-source Business", "publishedAt": "2025-11-21", "transcript": true }
     },
     {
@@ -56,8 +57,8 @@
       "type": "talk",
       "title": "From Jupyter Notebook to Publish-Ready Report: Effortless Sharing with Quarto",
       "speakers": ["Christophe Dervieux"],
-      "feedbackFrom": ["Markus Löning (blog)"],
-      "summary": "- D'après le programme : transformer des notebooks Jupyter en pages web ou PDF prêts pour les parties prenantes avec `quarto publish`, styles d'organisation via `brand.yml`, fonctions de recherche reproductible.\n- Markus Löning le retient dans son billet comme un outil pour des **rapports et présentations prêts à publier**.\n- Contenu détaillé non vérifié : vidéo disponible mais non transcrite.",
+      "feedbackFrom": ["Markus Löning (blog)", "Clément Chastagnol (blog)"],
+      "summary": "- D'après le programme : transformer des notebooks Jupyter en pages web ou PDF prêts pour les parties prenantes avec `quarto publish`, styles d'organisation via `brand.yml`, fonctions de recherche reproductible.\n- Markus Löning le retient dans son billet comme un outil pour des **rapports et présentations prêts à publier**.\n- Clément Chastagnol le range dans ses sujets à creuser (rapports, slides et sites à partir de notebooks) et met « tester Quarto sérieusement » sur sa liste d'actions.\n- Contenu détaillé non vérifié : vidéo disponible mais non transcrite.",
       "summarySources": ["program", "blog"],
       "video": { "youtubeId": "0QIxdDJ8cKE", "title": "Christophe Dervieux - From Jupyter Notebook to Publish-Ready Report: Effortless Sharing with Quarto", "publishedAt": "2025-11-21", "transcript": false }
     },
@@ -111,8 +112,8 @@
       "type": "talk",
       "title": "Optimal Transport in Python: A Practical Introduction with POT",
       "speakers": ["Rémi Flamary"],
-      "feedbackFrom": ["Markus Löning (blog)"],
-      "summary": "- D'après le programme : introduction au transport optimal et à ses usages en machine learning, exemples avec la bibliothèque POT (distances de Wasserstein, variantes du problème, cas réels) et fonctions avancées.\n- Markus Löning le note comme une découverte : la **théorie du transport optimal et sa bibliothèque Python**.\n- Contenu détaillé non vérifié : vidéo disponible mais non transcrite.",
+      "feedbackFrom": ["Markus Löning (blog)", "Lee Morris (blog)"],
+      "summary": "- D'après le programme : introduction au transport optimal et à ses usages en machine learning, exemples avec la bibliothèque POT (distances de Wasserstein, variantes du problème, cas réels) et fonctions avancées.\n- Markus Löning le note comme une découverte : la **théorie du transport optimal et sa bibliothèque Python**.\n- Lee Morris, venu *« on a whim »*, en ressort avec une idée directement utile pour son projet de master : mesurer avec la **distance de Wasserstein** l'écart de ses échantillons à la distribution optimale ; *« For that nugget alone this talk was worth it »*.\n- Contenu détaillé non vérifié : vidéo disponible mais non transcrite.",
       "summarySources": ["program", "blog"],
       "video": { "youtubeId": "dA0aJvZk7jg", "title": "Rémi Flamary - Optimal Transport in Python: A Practical Introduction with POT", "publishedAt": "2025-11-21", "transcript": false }
     },
@@ -155,8 +156,8 @@
       "type": "talk",
       "title": "Probabilistic regression models: let's compare different modeling strategies and discuss how to evaluate them",
       "speakers": ["Olivier Grisel — :probabl."],
-      "feedbackFrom": ["Markus Löning (blog)"],
-      "summary": "- Point de départ : avec un bruit hétéroscédastique, même le meilleur modèle ne peut pas être parfait partout ; prédire seulement la moyenne cache l'incertitude.\n- **Intervalles de prédiction** : utiles quand la prédiction alimente une machine (traiter automatiquement les cas sûrs, renvoyer les autres à un expert) comme quand elle informe un humain (exemple des fourchettes de temps de trajet de Google Maps).\n- Fonctions de perte : erreur quadratique pour la moyenne, absolue pour la médiane, pinball loss pour n'importe quel quantile ; démonstration avec splines et régression linéaire, puis gradient boosting.\n- Alternative : discrétiser la cible et utiliser un classifieur, puis reconvertir en quantiles ; un seul modèle à déployer, mais moins de liberté de réglage par borne.\n- Évaluation : pinball loss sur le test, couverture moyenne, largeur moyenne des intervalles, diagrammes de fiabilité. Bayesian ridge mal spécifié et conformal prediction simple échouent sur ce cas ; CQR (MAPIE) ne corrige que la couverture moyenne.\n- Lecture critique d'un participant : talk d'introduction utile, mais *« interface seems incomplete »* côté scikit-learn, d'autres outils étant plus complets (Löning).",
+      "feedbackFrom": ["Markus Löning (blog)", "Lee Morris (blog)", "Clément Chastagnol (blog)"],
+      "summary": "- Point de départ : avec un bruit hétéroscédastique, même le meilleur modèle ne peut pas être parfait partout ; prédire seulement la moyenne cache l'incertitude.\n- **Intervalles de prédiction** : utiles quand la prédiction alimente une machine (traiter automatiquement les cas sûrs, renvoyer les autres à un expert) comme quand elle informe un humain (exemple des fourchettes de temps de trajet de Google Maps).\n- Fonctions de perte : erreur quadratique pour la moyenne, absolue pour la médiane, pinball loss pour n'importe quel quantile ; démonstration avec splines et régression linéaire, puis gradient boosting.\n- Alternative : discrétiser la cible et utiliser un classifieur, puis reconvertir en quantiles ; un seul modèle à déployer, mais moins de liberté de réglage par borne.\n- Évaluation : pinball loss sur le test, couverture moyenne, largeur moyenne des intervalles, diagrammes de fiabilité. Bayesian ridge mal spécifié et conformal prediction simple échouent sur ce cas ; CQR (MAPIE) ne corrige que la couverture moyenne.\n- Lecture critique d'un participant : talk d'introduction utile, mais *« interface seems incomplete »* côté scikit-learn, d'autres outils étant plus complets (Löning).\n- Lecture positive des deux autres blogueurs : le talk rappelle à Lee Morris son module de machine learning classique en master (*« the things I learned there turned out to be incredibly useful »*) ; Clément Chastagnol inscrit **intervalles de prédiction et diagrammes de fiabilité** sur sa liste de choses à approfondir.",
       "summarySources": ["transcript", "blog"],
       "video": { "youtubeId": "j0tcIwv6RBE", "title": "Olivier Grisel - Prediction intervals", "publishedAt": "2025-11-21", "transcript": true }
     },
@@ -166,9 +167,9 @@
       "type": "talk",
       "title": "How to do real TDD in data science? A journey from pandas to polars with pelage!",
       "speakers": ["Alix Tiran-Cappello"],
-      "feedbackFrom": [],
-      "summary": "- Live coding par un MLOps engineer qui débogue souvent du code pandas lent en production. Sondage en salle : environ trois quarts ont déjà écrit un test automatisé, moins d'un cinquième avec pandas.\n- Étape 1 : un test d'équivalence (`assert_frame_equal`), puis **refactoring en method chaining** pour supprimer les boucles for, les variables intermédiaires et `inplace=True`.\n- Étape 2 : une fois le code chaîné, la traduction vers Polars devient presque mécanique (les lambdas deviennent des `pl.col`).\n- Étape 3 : TDD avec pelage, qui passe un dataframe dans une fonction de test et le rend s'il est valide : plages de valeurs, types, absence de nulls, proportion de nulls par groupe, unicité de clés primaires, règles personnalisées. Les tests révèlent des anomalies du jeu de données (véhicules essence et diesel dans des données sur les voitures électriques).\n- Inspiration revendiquée : Kent Beck et les tests de dbt ; Great Expectations jugé trop verbeux pour ce flux de travail.\n- Chiffre montré en fin de talk : un facteur 4 entre le mauvais et le bon code pandas.",
-      "summarySources": ["transcript"],
+      "feedbackFrom": ["Clément Chastagnol (blog)"],
+      "summary": "- Live coding par un MLOps engineer qui débogue souvent du code pandas lent en production. Sondage en salle : environ trois quarts ont déjà écrit un test automatisé, moins d'un cinquième avec pandas.\n- Étape 1 : un test d'équivalence (`assert_frame_equal`), puis **refactoring en method chaining** pour supprimer les boucles for, les variables intermédiaires et `inplace=True`.\n- Étape 2 : une fois le code chaîné, la traduction vers Polars devient presque mécanique (les lambdas deviennent des `pl.col`).\n- Étape 3 : TDD avec pelage, qui passe un dataframe dans une fonction de test et le rend s'il est valide : plages de valeurs, types, absence de nulls, proportion de nulls par groupe, unicité de clés primaires, règles personnalisées. Les tests révèlent des anomalies du jeu de données (véhicules essence et diesel dans des données sur les voitures électriques).\n- Inspiration revendiquée : Kent Beck et les tests de dbt ; Great Expectations jugé trop verbeux pour ce flux de travail.\n- Chiffre montré en fin de talk : un facteur 4 entre le mauvais et le bon code pandas.\n- Clément Chastagnol en retient surtout **le test d'équivalence** et des motifs transposables à son travail en notebook.",
+      "summarySources": ["transcript", "blog"],
       "video": { "youtubeId": "RZ523SR_7pw", "title": "A. Tiran-Cappello - How to do real TDD in data science? A journey from pandas to polars with pelage!", "publishedAt": "2025-11-21", "transcript": true }
     },
     {
@@ -177,9 +178,9 @@
       "type": "talk",
       "title": "Documents Meet LLMs: Tales from the Trenches",
       "speakers": ["Nour El Mawass — Tweag by Modus Create", "Miklos Erdelyi — Tweag by Modus Create"],
-      "feedbackFrom": ["résumé de l'interview backstage de Nour El Mawass et Maria Knorps (PyData Paris, Mastodon)"],
-      "summary": "- Annoncé comme un talk *« no hype, just practical tips »* ; cas d'usage inspiré d'un client : extraire et qualifier les allégations d'une brochure marketing synthétique.\n- Extraction du texte : les PDF n'ont pas toujours de texte embarqué, d'où l'OCR (Amazon Textract, Azure Document Intelligence, MarkItDown en open source moins fiable).\n- Prompting : partir des générateurs et améliorateurs de prompts des plateformes, demander un raisonnement, des catégories et des exemples ; penser l'UX pendant l'inférence.\n- Sortie structurée : valider le schéma (Pydantic, Instructor), décodage contraint par grammaire, échappement des caractères spéciaux en post-traitement ; ajouter **un champ is_claim et un raisonnement** pour diagnostiquer les oublis et réduire les hallucinations ; distance de Levenshtein pour retrouver les citations reformulées.\n- Retries réfléchis : inutiles à température zéro ou en cas de quota, fallback vers un autre modèle, logs et métriques d'échecs, Tenacity plutôt que du fait maison.\n- Évaluation : un benchmark automatique peut afficher 0 % là où l'expert métier accepte 100 % ; **la validation manuelle reste l'étalon**. Pour les agents conversationnels, des évaluations par tâche centrées sur le résultat.",
-      "summarySources": ["transcript"],
+      "feedbackFrom": ["résumé de l'interview backstage de Nour El Mawass et Maria Knorps (PyData Paris, Mastodon)", "Clément Chastagnol (blog)"],
+      "summary": "- Annoncé comme un talk *« no hype, just practical tips »* ; cas d'usage inspiré d'un client : extraire et qualifier les allégations d'une brochure marketing synthétique.\n- Extraction du texte : les PDF n'ont pas toujours de texte embarqué, d'où l'OCR (Amazon Textract, Azure Document Intelligence, MarkItDown en open source moins fiable).\n- Prompting : partir des générateurs et améliorateurs de prompts des plateformes, demander un raisonnement, des catégories et des exemples ; penser l'UX pendant l'inférence.\n- Sortie structurée : valider le schéma (Pydantic, Instructor), décodage contraint par grammaire, échappement des caractères spéciaux en post-traitement ; ajouter **un champ is_claim et un raisonnement** pour diagnostiquer les oublis et réduire les hallucinations ; distance de Levenshtein pour retrouver les citations reformulées.\n- Retries réfléchis : inutiles à température zéro ou en cas de quota, fallback vers un autre modèle, logs et métriques d'échecs, Tenacity plutôt que du fait maison.\n- Évaluation : un benchmark automatique peut afficher 0 % là où l'expert métier accepte 100 % ; **la validation manuelle reste l'étalon**. Pour les agents conversationnels, des évaluations par tâche centrées sur le résultat.\n- Ce qu'en retient un participant : *« Checking whether a field is an integer is easy. Checking whether the extracted information is correct is the hard part. »* (Chastagnol).",
+      "summarySources": ["transcript", "blog"],
       "video": { "youtubeId": "82g667Cw_Pw", "title": "Nour El Mawass & Miklos Erdelyi - Documents Meet LLMs: Tales from the Trenches", "publishedAt": "2025-11-21", "transcript": true }
     },
     {
@@ -199,9 +200,9 @@
       "type": "talk",
       "title": "Repetita Non Iuvant: Why Generative AI Models Cannot Feed Themselves",
       "speakers": ["Valeria Zuccoli"],
-      "feedbackFrom": [],
-      "summary": "- Point de départ : la part de code écrit par IA annoncée par les grands groupes (jusqu'à 30 % chez Microsoft selon Satya Nadella), qui finira dans les jeux d'entraînement des prochains assistants.\n- **Model collapse** : un modèle réentraîné sur ses propres sorties perd les queues de distribution (échantillonnage fini) et ajoute des artefacts (approximation), image d'un générateur d'oiseaux qui finit par produire des poissons ; exemples publiés sur Stable Diffusion, VAE et OPT.\n- Mauvaises nouvelles : réinjecter des données réelles dans un modèle déjà effondré ne le répare pas ; le watermarking (SynthID, Video Seal) dépend de la bonne volonté de chacun.\n- Bonnes nouvelles : **accumuler plutôt que remplacer** les données borne l'erreur de test (prouvé pour les modèles linéaires et logistiques, observé pour VAE et diffusion) ; une procédure publiée par Google (Escaping Collapse) avec sélection des meilleures réponses et une petite part d'étiquetage humain converge vers un LLM optimal.\n- En Q&R : la curation et la diversité des données restent à la charge des équipes ; changer d'architecture ne fait que retarder l'effondrement.",
-      "summarySources": ["transcript"],
+      "feedbackFrom": ["Clément Chastagnol (blog, mention)"],
+      "summary": "- Point de départ : la part de code écrit par IA annoncée par les grands groupes (jusqu'à 30 % chez Microsoft selon Satya Nadella), qui finira dans les jeux d'entraînement des prochains assistants.\n- **Model collapse** : un modèle réentraîné sur ses propres sorties perd les queues de distribution (échantillonnage fini) et ajoute des artefacts (approximation), image d'un générateur d'oiseaux qui finit par produire des poissons ; exemples publiés sur Stable Diffusion, VAE et OPT.\n- Mauvaises nouvelles : réinjecter des données réelles dans un modèle déjà effondré ne le répare pas ; le watermarking (SynthID, Video Seal) dépend de la bonne volonté de chacun.\n- Bonnes nouvelles : **accumuler plutôt que remplacer** les données borne l'erreur de test (prouvé pour les modèles linéaires et logistiques, observé pour VAE et diffusion) ; une procédure publiée par Google (Escaping Collapse) avec sélection des meilleures réponses et une petite part d'étiquetage humain converge vers un LLM optimal.\n- En Q&R : la curation et la diversité des données restent à la charge des équipes ; changer d'architecture ne fait que retarder l'effondrement.\n- Clément Chastagnol le cite parmi les sujets à suivre, sans commentaire détaillé.",
+      "summarySources": ["transcript", "blog"],
       "video": { "youtubeId": "jsdoamnlgpI", "title": "Valeria Zuccoli - Repetita Non Iuvant: Why Generative AI Models Cannot Feed Themselves", "publishedAt": "2025-11-21", "transcript": true }
     },
     {
@@ -210,9 +211,9 @@
       "type": "talk",
       "title": "torchFastText: Modernizing Text Classification at Insee with PyTorch-based models",
       "speakers": ["Meilame Tayebjee — Insee", "Cédric Couralet — Insee"],
-      "feedbackFrom": [],
-      "summary": "- Cas d'usage : coder les descriptions d'activité du répertoire Sirene dans la nomenclature APE (plus de 700 classes) à partir de textes de deux ou trois mots plus des variables annexes ; entraînement sur GPU mais **inférence sur CPU uniquement**, à l'unité via une API.\n- Pipeline MLOps sur le datalab Onyxia SSP Cloud : nettoyage par règles d'experts, MLflow au centre (suivi, registre, wrapper pyfunc qui prend du texte brut et rend des libellés lisibles), FastAPI, Argo CD, tableau de bord de suivi à partir des logs.\n- Limite reconnue : les échanges entre l'équipe innovation à Paris et les équipes de production à Nantes restent manuels (image Docker transmise, extractions périodiques pour réentraîner).\n- Pourquoi un nouveau paquet : la bibliothèque fastText de Meta a été archivée ; torchFastText reproduit son architecture et son API en PyTorch Lightning, ajoute variables catégorielles et explicabilité (Captum) utilisée par les gestionnaires Sirene.\n- Le nouveau modèle fait mieux que le fastText en production sur leurs données ; contrainte d'environ 200 ms par phrase sur CPU, hors de portée des gros modèles BERT.\n- Feuille de route 2026 : torchTextClassifiers, une boîte à outils d'architectures légères et paramétrables, en lien avec d'autres instituts statistiques européens ; publication envisagée du modèle NACE, pas de celui des professions (données personnelles).",
-      "summarySources": ["transcript"],
+      "feedbackFrom": ["Clément Chastagnol (blog)"],
+      "summary": "- Cas d'usage : coder les descriptions d'activité du répertoire Sirene dans la nomenclature APE (plus de 700 classes) à partir de textes de deux ou trois mots plus des variables annexes ; entraînement sur GPU mais **inférence sur CPU uniquement**, à l'unité via une API.\n- Pipeline MLOps sur le datalab Onyxia SSP Cloud : nettoyage par règles d'experts, MLflow au centre (suivi, registre, wrapper pyfunc qui prend du texte brut et rend des libellés lisibles), FastAPI, Argo CD, tableau de bord de suivi à partir des logs.\n- Limite reconnue : les échanges entre l'équipe innovation à Paris et les équipes de production à Nantes restent manuels (image Docker transmise, extractions périodiques pour réentraîner).\n- Pourquoi un nouveau paquet : la bibliothèque fastText de Meta a été archivée ; torchFastText reproduit son architecture et son API en PyTorch Lightning, ajoute variables catégorielles et explicabilité (Captum) utilisée par les gestionnaires Sirene.\n- Le nouveau modèle fait mieux que le fastText en production sur leurs données ; contrainte d'environ 200 ms par phrase sur CPU, hors de portée des gros modèles BERT.\n- Feuille de route 2026 : torchTextClassifiers, une boîte à outils d'architectures légères et paramétrables, en lien avec d'autres instituts statistiques européens ; publication envisagée du modèle NACE, pas de celui des professions (données personnelles).\n- Clément Chastagnol retient la contrainte *« training can happen on GPU, but inference has to run on CPU »* et note dans la pile DVC, MLflow, Quarto, Captum et DuckDB.",
+      "summarySources": ["transcript", "blog"],
       "video": { "youtubeId": "BVwWKYgSQJc", "title": "Tayebjee,Couralet- torchFastText: Modernizing Text Classification at Insee with PyTorch-based models", "publishedAt": "2025-12-16", "transcript": true }
     },
     {
@@ -225,40 +226,100 @@
       "summary": "- D'après le programme : partager des données entre workers sans verrous, en comparant threads (GIL, futur free-threading) et sous-processus, puis utiliser des CRDT avec la bibliothèque pycrdt et les sous-interpréteurs Python.\n- Ce qu'en retient Markus Löning : les CRDT permettent des lectures et écritures concurrentes **sans verrou** parce qu'ils acceptent les conflits et définissent des règles de fusion, comme dans les éditeurs collaboratifs.\n- Contenu détaillé non vérifié : vidéo disponible mais non transcrite.",
       "summarySources": ["program", "blog"],
       "video": { "youtubeId": "C4vbZrUH0_g", "title": "David Brochart - Parallel processing using CRDTs", "publishedAt": "2025-11-21", "transcript": false }
+    },
+    {
+      "id": "state-of-parquet-2025-structure-optimizations-and-recent-innovations",
+      "day": "2025-09-30",
+      "type": "talk",
+      "title": "State of Parquet 2025: Structure, Optimizations, and Recent Innovations",
+      "speakers": ["Rok Mihevc", "Raúl Cumplido"],
+      "feedbackFrom": ["Clément Chastagnol (blog)"],
+      "summary": "- Plongée dans la structure interne du format, telle que la résume un participant : row groups, pages, métadonnées, encodages et filtres de Bloom.\n- Ce qu'en retient Clément Chastagnol : Parquet est *« a seriously engineered piece of infrastructure »*, et il se dit **heureux que d'autres se chargent de l'implémenter**.\n- Contenu détaillé non vérifié : vidéo disponible mais non transcrite.",
+      "summarySources": ["blog"],
+      "video": { "youtubeId": "k5eU9u5iKkk", "title": "Rok Mihevc, Raúl Cumplido - State of Parquet 2025: Structure, Optimizations, and Recent Innovations", "publishedAt": "2025-11-21", "transcript": false }
+    },
+    {
+      "id": "you-don-t-need-spark-for-that-pythonic-data-lakehouse-workflows",
+      "day": "2025-09-30",
+      "type": "talk",
+      "title": "You Don't Need Spark for That: Pythonic Data Lakehouse Workflows",
+      "speakers": ["Romain Clement"],
+      "feedbackFrom": ["Clément Chastagnol (blog)"],
+      "summary": "- D'après les slides : le lakehouse combine la souplesse du data lake et la gouvernance de l'entrepôt (transactions ACID, évolution de schéma, time-travel) ; une table Delta, ce sont des fichiers Parquet plus un journal de transactions.\n- Spark vise le big data (à partir d'environ 1 To) et apporte clusters, surcoût JVM et développement local pénible : **que prendre pour des données petites ou moyennes ?**\n- État de l'écosystème Python en septembre 2025 : `deltalake` pour Delta, `pyiceberg` pour Iceberg, `hudi` (sans support Polars ni DuckDB), DuckLake via DuckDB ; démonstration en pur Python (écriture, merge, historique, time-travel) et lecture directe par DuckDB.\n- laketower, outil open source du speaker (CLI et interface web, `uvx laketower`) pour parcourir des tables lakehouse en local.\n- Messages finaux : *« Start simple, scale when needed »* et *« Pick a format, pick a library, build something! »*\n- Ce qu'en retient Clément Chastagnol : la démo laketower, et le fait que *« Spark was not treated as the unavoidable starting point »*.",
+      "summarySources": ["slides", "blog"],
+      "video": { "youtubeId": "Ev1q1U5GXt4", "title": "Romain Clement - You Don’t Need Spark for That: Pythonic Data Lakehouse Workflows", "publishedAt": "2025-12-16", "transcript": false }
+    },
+    {
+      "id": "tackling-domain-shift-with-skada",
+      "day": "2025-09-30",
+      "type": "talk",
+      "title": "Tackling Domain Shift with SKADA: A Hands-On Guide to Domain Adaptation",
+      "speakers": ["Théo Gnassounou", "Antoine Collas"],
+      "feedbackFrom": ["Lee Morris (blog)", "Clément Chastagnol (blog, mention)"],
+      "summary": "- Guide pratique de l'adaptation de domaine avec la bibliothèque SKADA, face au décalage de distribution entre données d'entraînement et données réelles.\n- Lee Morris le qualifie de *« great talk »* : il donne envie d'essayer SKADA et l'amène à envisager **une partie sur le domain shift** dans son projet de master sur la planification de la recharge de véhicules électriques.\n- Clément Chastagnol le range parmi les sujets à suivre.\n- Contenu détaillé non vérifié : vidéo disponible mais non transcrite.",
+      "summarySources": ["blog"],
+      "video": { "youtubeId": "VmP2C8anxE0", "title": "Théo Gnassounou - Tackling Domain Shift with SKADA: A Hands-On Guide to Domain Adaptation", "publishedAt": "2025-11-21", "transcript": false }
+    },
+    {
+      "id": "modern-web-data-extraction-techniques-tools-legal-and-ethical-considerations",
+      "day": "2025-10-01",
+      "type": "talk",
+      "title": "Modern Web Data Extraction: Techniques, Tools, Legal and Ethical Considerations",
+      "speakers": ["Domagoj Marić"],
+      "feedbackFrom": ["Clément Chastagnol (blog)"],
+      "summary": "- Panorama du crawling selon un participant : robots.txt, délais entre requêtes, sitemaps, et outils comme Scrapy, Selenium, Puppeteer et Playwright, avec les aspects juridiques et éthiques annoncés au titre.\n- Ce qu'en retient Clément Chastagnol : *« Nothing revolutionary, but a clear and useful overview of a domain that is often approached too casually »*, et **l'humour du speaker**.\n- Contenu détaillé non vérifié : vidéo disponible mais non transcrite.",
+      "summarySources": ["blog"],
+      "video": { "youtubeId": "YDBbwwrByk4", "title": "Domagoj Marić - Modern Web Data Extraction: Techniques, Tools, Legal and Ethical Considerations", "publishedAt": "2025-11-21", "transcript": false }
+    },
+    {
+      "id": "move-beyond-academia-an-industry-first-tabular-benchmark",
+      "day": "2025-10-01",
+      "type": "talk",
+      "title": "Move beyond academia: Introducing an industry-first tabular benchmark",
+      "speakers": ["Alexandre Abraham", "Louis Le Dain"],
+      "feedbackFrom": ["Clément Chastagnol (blog)"],
+      "summary": "- Un nouveau benchmark de machine learning tabulaire construit sur des **problèmes industriels réalistes** plutôt que sur les jeux de données académiques habituels (d'après le compte-rendu d'un participant).\n- Clément Chastagnol apprécie la comparaison des jeux de données à travers le comportement des modèles, qui lui rappelle sa thèse, et résume : *« If we want methods that transfer to practice, we need benchmarks that look more like practice. »*\n- Contenu détaillé non vérifié : vidéo disponible mais non transcrite.",
+      "summarySources": ["blog"],
+      "video": { "youtubeId": "OaAqYTTaVF8", "title": "Alexandre Abraham - Move beyond academia: Introducing an industry-first tabular benchmark", "publishedAt": "2025-11-21", "transcript": false }
+    },
+    {
+      "id": "applying-causal-inference-in-industry-4-0-glasswool-production",
+      "day": "2025-10-01",
+      "type": "talk",
+      "title": "Applying Causal Inference in Industry 4.0: A Case Study from Glasswool Production",
+      "speakers": ["Simona Bottani", "Patrick Lee"],
+      "feedbackFrom": ["Lee Morris (blog)"],
+      "summary": "- Cas industriel : mesurer par inférence causale **l'effet de l'âge d'une fileuse** (spinner) sur les propriétés thermiques de la laine de verre.\n- Lee Morris le juge pratique et instructif : *« It was incredibly interesting to go beyond finding correlations »* ; il ajoute à sa propre liste de lecture celle proposée par les speakers.\n- Contenu détaillé non vérifié : vidéo disponible mais non transcrite.",
+      "summarySources": ["blog"],
+      "video": { "youtubeId": "WEcFmjcT4GM", "title": "S Bottani & P Lee- Applying Causal Inference in Industry 4.0: A Case Study from Glasswool Production", "publishedAt": "2025-11-21", "transcript": false }
     }
   ],
   "sessionsWithoutFeedback": [
-    "State of Parquet 2025: Structure, Optimizations, and Recent Innovations (Rok Mihevc, Raúl Cumplido)",
     "Collaborative GIS editing in JupyterLab (Martin Renou, Arjun Verma)",
     "Browser-based AI workflows in Jupyter (Jeremy Tuloup, Nicolas Brichet)",
     "Unlock the full predictive power of your multi-table data (Luc-Aurélien Gauthier, Alexis Bondu)",
     "Expanding Programming Language Support in JupyterLite (Thorsten Beier, Ian Thomas, Isabel Paredes, Antoine Prouvost)",
     "Sparrow, Pirates of the Apache Arrow (Johan Mabille, Alexis Placet)",
     "Fighting against the instability: Debian Science at the synchrotron SOLEIL (Emmanuel Farhi)",
-    "Tackling Domain Shift with SKADA (Théo Gnassounou, Antoine Collas)",
     "How to make public data more accessible with baked data and DuckDB (Chris Kucharczyk)",
     "Reproducible software provisioning for HPC and RSE using Spack (Martin Lang, Hans Fangohr)",
-    "Modern Web Data Extraction: Techniques, Tools, Legal and Ethical Considerations (Domagoj Marić)",
     "ActiveTigger: a collaborative text annotation research tool (Paul Girard, Emilien Schultz, Julien Boelaert)",
     "Code as Data: a practical introduction to Python's Abstract Syntax Tree (Laurent Direr)",
-    "You Don't Need Spark for That: Pythonic Data Lakehouse Workflows (Romain Clement)",
     "Balancing Privacy and Utility: Efficient PII Detection and Replacement in Textual Data (Justine Bel-Letoile, Elizaveta Clouet)",
     "Sharing computational course material at larger scale: a French multi-tenant attempt (Nicolas M. Thiéry)",
-    "Move beyond academia: an industry-first tabular benchmark (Alexandre Abraham, Louis Le Dain)",
     "PyPI in the face: running jokes that PyPI download stats can play on you (Loïc Estève)",
     "Meta-Dashboards: geospatial web apps with Voilà (Davide De Marchi)",
     "Enhancing Machine Learning Workflows with skore (Marie Sacksick)",
     "CodeCommons: transparent, richer and sustainable datasets for code generation model training (Simeon Carstens, Rania Talbi)",
     "Beyond Prototyping: Building Production-Level Apps with Streamlit (Johannes Rieke, Arnaud Miribel)",
     "A Journey Through a Geospatial Data Pipeline (Florent Gravin)",
-    "Applying Causal Inference in Industry 4.0: glasswool production (Simona Bottani, Patrick Lee)",
     "Build a data studio in your notebook with jupyter-fs (Tim Paine)",
     "Advancements in optimizing ML Inference at CERN (Sanjiban Sengupta)",
     "xeus-cpp, the new C++ kernel for Jupyter (Johan Mabille, Anutosh Bhat)",
     "Building Resilient (ML) Pipelines for MLOps (Lex Avstreikh)",
     "Architecting Scalable Multi-Modal Video Search (Pietro Piccini, Sebastiano Milardo)",
     "CoSApp: an open-source library to design complex systems (Étienne Lac)",
-    "Lightning talks, sessions 1 et 2"
+    "Lightning talks, sessions 1 et 2 (seuls titres connus : Python Native Interface par Pierre Augier, Hey Claude, generate me a lightning talk, right now! par Romain Clement)"
   ],
   "sources": [
     { "label": "Site officiel PyData Paris 2025", "url": "https://pydata.org/paris2025/" },
@@ -267,9 +328,14 @@
     { "label": "Playlist YouTube PyData Paris 2025 (chaîne PyData)", "url": "https://www.youtube.com/playlist?list=PLGVZCDnMOq0rXq5aghELxbd-QgL8uyg0p" },
     { "label": "Markus Löning, Pydata Paris 2025 (billet de blog, 2 octobre 2025)", "url": "https://www.mloning.com/posts/pydata-paris-2025/" },
     { "label": "Slides de Romain Clement, ML models in the browser", "url": "https://romain-clement.net/static/talks/pydata-paris-2025-ml-models/" },
+    { "label": "Clément Chastagnol, Notes on the PyData Paris 2025 conference (billet de blog, 12 mars 2026)", "url": "https://clementc.github.io/blog/2026/03/12/notes_on_PyData_Paris_2025/" },
+    { "label": "Lee Morris, PyData Paris (billet de blog, 2 octobre 2025)", "url": "https://sv-blog.pages.dev/posts/pydata-conf" },
+    { "label": "Pierre Augier, Presentations and abstracts for PyData Paris 2025 (lightning talk Python Native Interface, talk py-edu-fr)", "url": "https://augierpi.gricad-pages.univ-grenoble-alpes.fr/presentations-and-abstracts-for-pydata-paris-2025.html" },
+    { "label": "Slides de Romain Clement, You Don't Need Spark for That", "url": "https://romain-clement.net/static/talks/pydata-paris-2025-lakehouse/" },
+    { "label": "Slides de la keynote de Ralf Gommers (SlideShare)", "url": "https://www.slideshare.net/slideshow/pydata-paris-keynote-big-ideas-shaping-scientific-python-the-quest-for-performance-and-usability/284037652" },
     { "label": "Anita Graser sur Mastodon, jour 1", "url": "https://fosstodon.org/@underdarkGIS/115293370285093225" },
     { "label": "Tweag sur Mastodon, remerciements après le stand", "url": "https://social.tweag.io/@tweag/115309652151998550" },
     { "label": "Compte Mastodon PyData Paris (annonces de talks et résumés des interviews backstage)", "url": "https://mastodon.social/@PyDataParis" },
-    { "label": "Posts LinkedIn : aucun lu (recherche web sans résultat exploitable)" }
+    { "label": "Posts LinkedIn : aucun lu (recherches web des 2026-10-05 et 2026-11-08 sans résultat exploitable)" }
   ]
 }

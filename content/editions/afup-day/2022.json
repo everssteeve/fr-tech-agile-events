@@ -6,7 +6,155 @@
   "city": "Lille",
   "venue": "Le Gymnase",
   "url": "https://event.afup.org/afup-day-2022/",
+  "programUrl": "https://event.afup.org/afup-day-2022/programme/",
+  "dateConfidence": "ok",
   "note": "Retour en présentiel, une seule ville (Lille), ~150 places, une dizaine de talks.",
-  "status": "pending",
-  "sessions": []
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-08",
+  "corpus": "Programme et planning officiels (event.afup.org), annonce AFUP de l'édition, et quatre comptes-rendus de participants publiés entre le 23 mai et le 10 juin 2022 (JoliCode, Monsieur Biz, Agence Dn'D, CH Studio), qui couvrent à eux quatre tous les talks. S'y ajoutent la page talk d'Arnaud Ligny et les slides publiées de quatre sessions (Arlaud, Buros, Ligny, Bluchet).",
+  "limits": "Corpus issu de blogs d'entreprises PHP, dont l'une (Monsieur Biz) emploie un speaker et une autre (CH Studio) sponsorise l'événement : ton très positif, peu de critiques. Aucun post LinkedIn ni aucune vidéo trouvés (6 recherches web, chaîne YouTube Hauts-de-France inaccessible derrière la page de consentement), donc aucun transcript. Les trois « coups de projecteur » sponsors du déjeuner ne sont décrits que par le programme ; la jauge diffère selon les sources (plus de 150 personnes sur la page officielle, salle de 250 places dans l'annonce AFUP).",
+  "tldr": "**Un AFUP Day de reprise, en présentiel et à Lille seulement, dont les participants ont surtout retenu PHP 8.1, le prototype FrankenPHP de Kévin Dunglas et les retours d'expérience concrets (fiscalité e-commerce, RabbitMQ, SQL natif avec Doctrine)**, plus un talk sur l'inclusion des femmes salué pour ses conseils pratiques.",
+  "keyTakeaways": [
+    "Migrer de version PHP en « sandwich » : corriger les incompatibilités, mettre à jour les dépendances, puis seulement adopter les nouveautés (Damien Seguy, rapporté par CH Studio et Monsieur Biz).",
+    "S'appuyer sur l'analyse statique pour faciliter les migrations PHP (Damien Seguy, rapporté par JoliCode).",
+    "Améliorer la pertinence d'une recherche Elasticsearch en nettoyant le texte (char filters, tokenizers, token filters, stemming) avant de jouer sur le scoring (Mathias Arlaud, rapporté par Monsieur Biz et CH Studio).",
+    "Réunir dès le départ PO, développeur, designer et expert métier, et classer chaque parcours en essentiel, secondaire, « bof » ou non pour définir le MVP (Jessica Martel, rapporté par JoliCode et CH Studio).",
+    "Remplacer un cron d'envoi massif par une file RabbitMQ avec priorités, réessais limités et journalisation des échecs (Cédric Driaux, rapporté par CH Studio et Dn'D).",
+    "Sortir du DQL pour les CTE récursives et les window functions, tout en gardant les métadonnées de l'ORM pour mapper les résultats en objets (Antoine Bluchet, bibliothèque esql, rapporté par JoliCode et CH Studio).",
+    "Pour attirer et garder des femmes : recruter hors parcours classiques, féminiser les intitulés, annoncer concrètement le management, rendre les salaires transparents, et laisser les personnes concernées dire si l'on est un allié (Marcy Charollois, rapporté par CH Studio et Monsieur Biz).",
+    "Utiliser soi-même l'outil qu'on développe pour le faire évoluer, et soigner la documentation d'un side project (Arnaud Ligny, rapporté par JoliCode et CH Studio)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-d-ouverture",
+      "day": "2022-05-20",
+      "type": "other",
+      "title": "Keynote d'ouverture",
+      "speakers": ["Grégoire Hébert — AFUP Hauts-de-France"],
+      "feedbackFrom": ["Blog Monsieur Biz", "Blog CH Studio (Patrick Brouillé)"],
+      "summary": "- Accueil d'une journée présentée par le programme comme **la première en présentiel depuis 2019**.\n- Rappels sur l'association : créée en 2001, plus de 10 antennes en France et plus de 600 membres, avec un appel à adhérer (Monsieur Biz).\n- CH Studio la mentionne comme une introduction et des remerciements, sans contenu technique.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "php-8-1-en-detail",
+      "day": "2022-05-20",
+      "type": "talk",
+      "title": "PHP 8.1 en détail",
+      "speakers": ["Damien Seguy — Exakat"],
+      "feedbackFrom": ["Blog JoliCode (Baptiste Leduc, Marion Hurteau)", "Blog Monsieur Biz (Maxime Huran, Maxime Leclercq)", "Blog Agence Dn'D (Aleksander)", "Blog CH Studio (Patrick Brouillé)"],
+      "summary": "- Tour des nouveautés de PHP 8.1 : **enums**, **fibers** (base de l'asynchrone pour Amphp et ReactPHP), type de retour `never`, constantes `final`, propriétés `readonly`, types d'intersection, `new` dans les expressions statiques, `array_is_list()`, `fsync`.\n- Méthode de migration en trois couches, le « sandwich de migration » : incompatibilités, dépendances, puis nouveautés (CH Studio, Monsieur Biz).\n- Conseils rapportés par JoliCode : s'appuyer sur l'analyse statique, se tenir informé, proposer soi-même des évolutions du langage. Un aperçu de PHP 8.2 était annoncé au programme.\n- Accueil : *« c'est le moment de migrer ! »* (Monsieur Biz) ; des *« pistes et des idées pour nos projets »* (Dn'D).",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "de-l-humain-a-l-ordinateur-elasticsearch",
+      "day": "2022-05-20",
+      "type": "talk",
+      "title": "De l'humain à l'ordinateur, ou découvrir le sens d'un texte avec ElasticSearch",
+      "speakers": ["Mathias Arlaud — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Blog JoliCode (Baptiste Leduc, Marion Hurteau)", "Blog Monsieur Biz (Maxime Huran, Maxime Leclercq)", "Blog Agence Dn'D (Aleksander)", "Blog CH Studio (Patrick Brouillé)"],
+      "summary": "- Point de départ : deux phrases de même sens formulées différemment, pour montrer l'écart entre compréhension humaine et machine (Monsieur Biz).\n- **Scoring de Lucene simplifié en trois notions** : fréquence du terme, fréquence inverse dans les documents (la rareté rapporte des points), facteur de coordination.\n- **Nettoyage du texte** : char filters, tokenizers et token filters pour retirer le « bruit » ; le stemmer ramène « developpera » à « developp » (CH Studio) ; JoliCode relève aussi le traitement des emojis.\n- Accueil : talk jugé pédagogique (JoliCode). Dn'D le relie à son usage quotidien de la recherche sous Magento.\n- Lecture critique (JoliCode) : Elasticsearch utilise **Okapi BM25 depuis la version 5**, et non la formule TF-IDF présentée.",
+      "summarySources": ["program", "blog", "slides"]
+    },
+    {
+      "id": "guide-pratique-methodologie-ux-conception-de-features",
+      "day": "2022-05-20",
+      "type": "talk",
+      "title": "Guide pratique d'une méthodologie UX pour la conception de features",
+      "speakers": ["Jessica Martel — Unow"],
+      "feedbackFrom": ["Blog JoliCode (Baptiste Leduc, Marion Hurteau)", "Blog Monsieur Biz (Maxime Huran, Maxime Leclercq)", "Blog CH Studio (Patrick Brouillé)"],
+      "summary": "- Constat : les conflits entre profils métier (client, PO, UX, testeurs) et développeurs sont fréquents (CH Studio).\n- Étapes : concept produit, recherche UX (benchmark, entretiens, audit), parcours utilisateurs, specs fonctionnelles et techniques, puis wireframes, maquettes et prototypes.\n- **Tri des parcours en quatre catégories** : essentiel (dans le MVP), secondaire, « bof », non.\n- Profils indispensables selon JoliCode : PO ou PM, développeur, designer, expert métier. Bénéfice retenu : *« on ne fait plus le yoyo »* avec les tickets réassignés.\n- Lecture critique : méthode jugée lourde à mettre en place et peu adaptée aux refontes de parcours aux contextes variés (CH Studio) ; Monsieur Biz signale pratiquer plutôt Shape Up.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "le-promethee-moderne-embarquer-php-dans-go",
+      "day": "2022-05-20",
+      "type": "talk",
+      "title": "Le Prométhée moderne : embarquer PHP dans Go",
+      "speakers": ["Kévin Dunglas — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Blog JoliCode (Baptiste Leduc, Marion Hurteau)", "Blog Monsieur Biz (Maxime Huran, Maxime Leclercq)", "Blog Agence Dn'D (Aleksander)", "Blog CH Studio (Patrick Brouillé)"],
+      "summary": "- Constat : les SAPI PHP sont vieillissantes ; le module Apache est simple mais moins performant, **PHP-FPM est performant mais pénible à conteneuriser** (deux conteneurs).\n- Idée : une SAPI écrite en Go, via la SAPI « embed » de PHP et Cgo, compatible avec tout serveur basé sur `net/http` (Caddy, Symfony CLI, Traefik, selon JoliCode).\n- Coulisses rapportées par Monsieur Biz : des segfaults en série liés à la mémoire entre goroutines et threads, résolus avec `LockOSThread`.\n- Résultat : **FrankenPHP**, avec un **mode worker** qui garde l'application Symfony en mémoire entre les requêtes, et un déploiement en binaire unique.\n- Accueil : performances *« bluffantes »* (Dn'D), *« très prometteur »* (Monsieur Biz) ; mais prototype expérimental, au code encore privé (CH Studio), donc pas utilisable en production.\n- Suite : FrankenPHP est publié en octobre 2022 au Forum PHP (blog de Kévin Dunglas).",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "les-subtilites-du-e-commerce-a-la-francaise",
+      "day": "2022-05-20",
+      "type": "talk",
+      "title": "Les subtilités du e-commerce à la française",
+      "speakers": ["David Buros — Monsieur Biz"],
+      "feedbackFrom": ["Blog JoliCode (Baptiste Leduc, Marion Hurteau)", "Blog Monsieur Biz, employeur du speaker", "Blog Agence Dn'D (Aleksander)", "Blog CH Studio (Patrick Brouillé)"],
+      "summary": "- Spécificités françaises : **double affichage HT/TTC** (le total diffère selon l'ordre de calcul), taux de TVA multiples (2,1 % pour les médicaments remboursables, 13 % pour les produits pétroliers vers la Corse), octroi de mer, obligations légales (rétractation, délais).\n- Comparaisons européennes : retours fréquents en Allemagne, click & collect au Royaume-Uni, contre-remboursement en Italie (CH Studio, Monsieur Biz).\n- Côté Sylius : une table d'**ajustements** (positifs ou négatifs, à la commande, à la ligne ou à l'unité) plutôt qu'une colonne par type de prix ; extensions Monsieur Biz pour le double affichage, l'éco-taxe et le **paiement par mandat administratif** (SIRET vérifié, facture vers Chorus Pro).\n- Moment le plus repris par trois blogs : l'éco-participation elle-même soumise à TVA, *« Le clou du spectacle »* (Dn'D).\n- Dn'D y retrouve des difficultés déjà vécues sur Magento.",
+      "summarySources": ["program", "blog", "slides"]
+    },
+    {
+      "id": "de-1800-a-70000-emails-par-jour-chez-trustt-avec-rabbitmq",
+      "day": "2022-05-20",
+      "type": "talk",
+      "title": "Comment on est passé de 1800 emails à 70 000 par jour chez Trustt en 1 mois avec RabbitMQ",
+      "speakers": ["Cédric Driaux — Trustt"],
+      "feedbackFrom": ["Blog Monsieur Biz (Maxime Huran, Maxime Leclercq)", "Blog Agence Dn'D (Aleksander)", "Blog CH Studio (Patrick Brouillé)"],
+      "summary": "- Problème : un **cron toutes les 15 minutes** calculait les emails à envoyer (plus de 21 types), d'où des pics de charge, des appels lents à un outil externe et des reliquats non envoyés.\n- Règles métier à respecter : envoi entre 9 h et 18 h, 5 emails maximum par jour et par personne, 2 types maximum, priorités, fraîcheur (un email de non-sélection part sous 3 h) (CH Studio).\n- Solution : **RabbitMQ** (hébergé chez CloudAMQP), Supervisor, AMQProxy contre les reconnexions des consumers, NetData pour l'analyse. Le programme annonce un reliquat de 200 000 emails résorbé en quatre jours, avec un seul consumer.\n- Résultats rapportés : charge lissée, 100 % des emails traités dans la journée, erreurs rejouées (Monsieur Biz).\n- Conseils : gérer les NACK avec une file dédiée et 5 réessais maximum, journaliser les échecs (CH Studio). Dn'D étend la leçon aux imports de flux.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "cecil-mon-generateur-de-site-statique",
+      "day": "2022-05-20",
+      "type": "talk",
+      "title": "Cecil, mon générateur de site statique",
+      "speakers": ["Arnaud Ligny"],
+      "feedbackFrom": ["Blog JoliCode (Baptiste Leduc, Marion Hurteau)", "Blog Monsieur Biz (Maxime Huran, Maxime Leclercq)", "Blog CH Studio (Patrick Brouillé)", "Page talk d'Arnaud Ligny (speaker)"],
+      "summary": "- Origine : mettre à jour de vieux sites Drupal ou WordPress juste pour écrire quelques articles prenait trop de temps.\n- Comparatif des alternatives : Jekyll (Ruby), Hugo (Go, templates jugés complexes), Hexo (JavaScript, jugé trop limité) (CH Studio).\n- Choix : Markdown pour le contenu, **Twig** pour les templates, séparation stricte des deux, distribution en PHAR.\n- Parcours : idée, prototype *« bien dégueu »*, industrialisation (PSR, tests PHPUnit, déploiement automatique), documentation ; une gestation de 9 ans (Monsieur Biz).\n- Accueil : JoliCode salue l'architecture, le respect des standards et une documentation pragmatique, et retient qu'utiliser son propre outil le fait évoluer.",
+      "summarySources": ["program", "blog", "slides"]
+    },
+    {
+      "id": "et-si-on-etendait-sql-avec-du-php",
+      "day": "2022-05-20",
+      "type": "talk",
+      "title": "Et si on étendait SQL avec du PHP ?",
+      "speakers": ["Antoine Bluchet — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Blog JoliCode (Baptiste Leduc, Marion Hurteau)", "Blog Monsieur Biz (Maxime Huran, Maxime Leclercq)", "Blog CH Studio (Patrick Brouillé)"],
+      "summary": "- Cas de départ : une table de catégories auto-référencée qui génère trop de requêtes avec Doctrine (CH Studio).\n- **Limites du DQL** : pas de CTE récursives ni de window functions ; une requête écrite à la main soulage la base mais pose la question du mapping vers les objets.\n- Solution : la bibliothèque **esql** (PHP Extended SQL), qui s'appuie sur les métadonnées de l'ORM et mappe les résultats via l'AutoMapper de Jane ou le Serializer de Symfony.\n- Accueil : *« Nous adorons ! »* (JoliCode).",
+      "summarySources": ["program", "blog", "slides"]
+    },
+    {
+      "id": "pourquoi-vous-n-attirerez-et-ne-retiendrez-pas-les-femmes-dans-vos-equipes-tech",
+      "day": "2022-05-20",
+      "type": "talk",
+      "title": "Pourquoi vous n'attirerez et ne retiendrez pas les femmes dans vos équipes tech",
+      "speakers": ["Marcy Charollois — Merci Marcy & The Safe Place"],
+      "feedbackFrom": ["Blog JoliCode (Baptiste Leduc, Marion Hurteau)", "Blog Monsieur Biz (Maxime Huran, Maxime Leclercq)", "Blog Agence Dn'D (Aleksander)", "Blog CH Studio (Patrick Brouillé)"],
+      "summary": "- Constat : des femmes quittent le salariat ou se réorientent faute d'écoute ou de légitimité ; une sur cinq songe à quitter son poste (Monsieur Biz) ; 52 % pensent que leur genre peut freiner leur carrière (CH Studio).\n- Mécanismes cités : habitus, biais de confirmation, effet de halo, biais de sympathie du groupe majoritaire ; face au changement, 15 % de partisans, 70 % de neutres, 15 % de réfractaires.\n- **Conseils concrets** : recruter hors parcours classiques, féminiser les intitulés, annoncer concrètement le management, transparence salariale, ressources (parentalité, soutien psychologique), mentorat, éviter la « bro culture ».\n- Principe retenu par CH Studio : *« Ne pas se proclamer alliée ou bienveillante »*, laisser les personnes concernées le dire.\n- Accueil : conférence interactive (JoliCode) ; Dn'D retient que des remarques anodines peuvent anéantir la motivation d'une personne compétente.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "keynote-de-cloture",
+      "day": "2022-05-20",
+      "type": "other",
+      "title": "Keynote de clôture",
+      "speakers": ["Grégoire Hébert — AFUP Hauts-de-France"],
+      "feedbackFrom": ["Blog Monsieur Biz", "Blog CH Studio (Patrick Brouillé)"],
+      "summary": "- Remerciements et **annonce du Forum PHP 2022**, les 13 et 14 octobre à Disneyland Paris (hôtel Marvel, selon les blogs).\n- Remise des lots du concours KaraFun : 25 petits et 5 gros éléPHPants (CH Studio).",
+      "summarySources": ["program", "blog"]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Coup de projecteur : KaraFun, l'anti-startup (Jean-Baptiste Defossez, KaraFun)",
+    "Coup de projecteur : Les-Tilleuls.coop vous parle des scoop (Marion Agé, Grégory Copin)",
+    "Coup de projecteur : Découvre ta dragon force avec Webnet ! (Charlotte Dufailly, Sophie Bloquiau)"
+  ],
+  "sources": [
+    { "label": "Page officielle AFUP Day 2022", "url": "https://event.afup.org/afup-day-2022/" },
+    { "label": "Programme officiel", "url": "https://event.afup.org/afup-day-2022/programme/" },
+    { "label": "Planning officiel", "url": "https://event.afup.org/afup-day-2022/planning/" },
+    { "label": "AFUP : AFUP Day 2022, une ville unique d'accueil", "url": "https://afup.org/news/1139-afupday-2022-ville-unique-edition-exceptionnelle" },
+    { "label": "JoliCode : Des frites, du PHP et de la bière (23 mai 2022)", "url": "https://jolicode.com/blog/des-frites-du-php-et-de-la-biere" },
+    { "label": "Monsieur Biz : L'AFUP Day Lille 2022 en résumé (24 mai 2022)", "url": "https://monsieurbiz.com/fr/blog/afup-day-2022" },
+    { "label": "Agence Dn'D : Retour sur l'AFUP Day Lille 2022 (31 mai 2022)", "url": "https://www.dnd.fr/retour-sur-lafup-day-lille-2022/" },
+    { "label": "CH Studio : PHP AFUP-DAY Lille 2022 (10 juin 2022)", "url": "https://chstudio.fr/2022/06/php-afup-day-lille-2022/" },
+    { "label": "Arnaud Ligny : page du talk Cecil", "url": "https://arnaudligny.fr/talks/afupday-lille-2022/" },
+    { "label": "Slides de Mathias Arlaud (Elasticsearch)", "url": "https://slides.com/mathiasarlaud/elasticsearch" },
+    { "label": "Slides de David Buros (e-commerce à la française)", "url": "https://fr.slideshare.net/DavidBuros1/les-subtilits-du-ecommerce-la-franaise" },
+    { "label": "Slides d'Arnaud Ligny (Cecil)", "url": "https://docs.google.com/presentation/d/1rgO62g-kM8BCl1WcwXmul_OkjLQKVkkK4sxFpHqeaeU/pub" },
+    { "label": "Slides d'Antoine Bluchet (esql)", "url": "https://docs.google.com/presentation/d/18lCR3UxGuJgRTaBo6MutxKiZgbxdMZ9YXog8Q_fyoKQ/" },
+    { "label": "Kévin Dunglas : FrankenPHP, publication au Forum PHP (octobre 2022)", "url": "https://dunglas.dev/2022/10/frankenphp-the-modern-php-app-server-written-in-go/" }
+  ]
 }

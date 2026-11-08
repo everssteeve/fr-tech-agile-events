@@ -7,7 +7,474 @@
   "venue": "Kinepolis Lomme",
   "url": "https://conference-hall.io/devfest-lille-2022",
   "dateConfidence": "sec",
-  "note": "Ancien nom : DevFest Lille.",
-  "status": "pending",
-  "sessions": []
+  "edition": "5e édition",
+  "theme": "Web, mobile, cloud, DevOps, big data et IA",
+  "note": "Ancien nom : DevFest Lille. Une journée au Kinepolis de Lomme, trois salles (17, 18 et 22). Les organisateurs parlent sur scène de « la cinquième année » ; le keynote d'ouverture situe la journée « à deux jours des législatives » (premier tour le 12 juin 2022), ce qui concorde avec le 10 juin. Formats du CFP : conférence de 50 minutes et quickie de 20 minutes. Le billet ADEO Tech annonce plus de 800 participants et 40 speakers.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-08",
+  "revisit": "Aucun retour participant lu : billet ADEO Tech « DevFest Lille 2022: our insights » inaccessible (403, seul l'extrait de recherche est connu), aucun post LinkedIn trouvé (4 recherches web). Programme officiel non consulté (Wayback Machine inaccessible depuis l'outil, devfest.gdglille.org hors ligne). Reprendre : agenda archivé de juin 2022 (noms complets, formats, sessions sans vidéo), billets ADEO Tech et Decathlon Tech sur Medium, posts LinkedIn de juin 2022, transcripts des deux vidéos manquantes.",
+  "corpus": "21 transcripts automatiques sur les 23 vidéos de la playlist « Devfest Lille 2022 » (chaîne GDG France, publiées le 02/07/2022), lus en partie (ouverture et passages centraux de chaque talk). S'y ajoutent la page Conference Hall de l'édition et l'extrait de recherche du billet ADEO Tech ; quatre recherches web le 08/11/2026.",
+  "limits": "Aucun retour de participant : les résumés disent ce qui a été dit sur scène, pas comment la salle l'a reçu. Les sous-titres automatiques déforment souvent les noms propres : plusieurs speakers ne sont identifiés que par leur prénom, et les noms de famille cités n'ont pas été recoupés avec le programme, non consulté. Les formats, horaires et sessions sans vidéo restent inconnus (40 speakers annoncés pour 23 vidéos).",
+  "tldr": "**Une édition où l'inclusion et la responsabilité du développeur (accessibilité, RGPD, climat, souveraineté, mixité) font jeu égal avec la technique**, portée par les REX d'enseignes nordistes (Decathlon, Norauto, Kiabi) et par des talks Java signés par les équipes Spring et Oracle.",
+  "keyTakeaways": [
+    "Penser les personnes handicapées comme des clients à part entière, pas comme des clients à part, et co-construire avec elles dès l'amont (keynote d'ouverture).",
+    "Ne pas vendre l'accessibilité par ses « bénéfices induits » (SEO, image, confort des valides) : c'est un droit fondamental, et les outils automatiques ne couvrent que 20 à 30 % des critères (Lauriane, accessibilité web).",
+    "Collecter le strict nécessaire, bannir les champs libres et les données personnelles des logs, pseudonymiser et purger à l'échéance (François, RGPD pour les développeurs).",
+    "Demander si le 99,99 % de disponibilité et les 100 ms de latence sont vraiment nécessaires avant de dimensionner une infra (talk climat).",
+    "Définir des identifiants dans le schéma GraphQL et les demander dans chaque requête pour pouvoir normaliser le cache client (Martin et Benoît, Apollo).",
+    "Si un découpage en microservices produit trop de transactions distribuées, revoir le découpage avant d'adopter une saga ; garder les compensations simples, rapides et idempotentes (Jean-François James, Worldline).",
+    "Prototyper aussi les cas d'erreur à partir des cas de test, pas seulement le happy flow, et faire du design system un produit co-construit par designers et développeurs (Sabrina et Simon, Decathlon).",
+    "Encadrer un junior avec un curriculum explicite plutôt qu'avec un « petit projet » du vendredi 17 h : savoir ce qu'on enseigne, et comment on vérifie que c'est acquis (Daniel Garnier).",
+    "Se demander honnêtement si l'on veut vraiment plus de femmes dans l'équipe, car sans actions explicites le système majoritaire se reproduit (Florence, Scaleway)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-d-ouverture-et-si-on-osait-des-experiences-a-vivre-ensemble",
+      "day": "2022-06-10",
+      "type": "keynote",
+      "title": "Keynote d'ouverture : et si on osait des expériences à vivre ensemble",
+      "speakers": [
+        "Nicolas, « éveilleur de conscience » (nom de famille non vérifié)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Avant le keynote, les organisateurs présentent la journée : trois salles, boissons en **bouteilles de verre consignées**, pas de goodies sauf une bière locale, application mobile, code de conduite affiché, et **sous-titrage en direct** des trois salles par Le Messageur.\n- Nicolas, déficient visuel, se présente comme *« éveilleur de conscience »* auprès des entreprises et des collectivités. Il rappelle les chiffres : **12 millions de personnes en situation de handicap en France**, 80 millions en Europe.\n- Il fait vivre deux expériences à la salle : les yeux fermés, la main du voisin, puis trois questions (lunettes, plâtre, pays étranger sans en parler la langue) pour montrer que **l'accessibilité concerne tout le monde**.\n- Deux leviers : le **design thinking**, qui part du besoin réel, et l'**innovation inversée** (télécommande et SMS conçus d'abord pour des personnes handicapées). *« Le 100 % accessible n'existe pas »* : il y a autant de situations que de personnes.\n- Exemples : site et appli de la Macif co-construits avec des personnes sourdes, régression d'accessibilité de BlaBlaCar dénoncée par la communauté, Molotov corrigé en 48 heures. Il regrette que les écoles abordent le sujet de façon seulement technique.\n- Il préfère l'**approche universelle** au mot inclusion, qui *« implique forcément une notion d'exclusion »*. Phrase de conclusion : voir les personnes handicapées *« comme des clients à part entière et pas comme des clients à part »*.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "-yAQBGYbNeU",
+        "title": "DEVFEST Lille 2022 - Keynote d'ouverture",
+        "publishedAt": "2022-07-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "designers-x-developers-ca-match-ou-ca-match",
+      "day": "2022-06-10",
+      "type": "talk",
+      "title": "Designers x Developers : ça match ou ça match ?",
+      "speakers": [
+        "Sabrina — Decathlon",
+        "Simon — Decathlon"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Deux staff designers du design system de Decathlon, qui annoncent l'**open source de Vitamin**, le design system maison, la veille du talk.\n- Point de départ : un questionnaire envoyé à leur entourage sur le *« pire développeur »* et le *« pire designer »*. Les verbatims : *« oublie les limites techniques »*, *« je l'ai vu sur Uber »*, *« encore un atelier post-it »*, *« pas de ticket, pas de dev »*.\n- Communication : **la bienveillance n'est pas la complaisance**, il faut l'associer à l'exigence. *« Quand tu sais pas, tu demandes »*. Ils recommandent le pairing entre designer et développeur, et une **nomenclature de composants co-construite**.\n- Ils conseillent de communiquer sur des canaux publics plutôt qu'en tête-à-tête, pour que la connaissance survive à une absence.\n- Outillage : un proto vaut mieux qu'une maquette, mais **centré sur la feature en cours** et calé sur les cas de test de la QA, pas seulement sur le happy flow. Les développeurs ont le droit d'exiger un proto.\n- Le **design system est un contrat bipartite** entre les deux métiers, à construire ensemble. Ils prônent aussi une seule source de documentation et le versioning des fichiers de design.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "I4IXrACvrkk",
+        "title": "[DEVFEST Lille 2022] - Designers x Developers : Ça match 💙 ou ça match 🥊 ?",
+        "publishedAt": "2022-07-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "l-architecture-hexagonale-a-la-rescousse",
+      "day": "2022-06-10",
+      "type": "talk",
+      "title": "L'architecture hexagonale à la rescousse",
+      "speakers": [
+        "Nassim — Norauto (Mobivia)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- REX du tech lead de la refonte du back commerce chez Norauto (groupe Mobivia). Le nouveau commerce omnicanal, déjà en production au Portugal et en Espagne, doit parler en même temps aux ateliers legacy de Norauto, à ceux d'ATU (Allemagne, Autriche) et au nouveau système.\n- Diagnostic sur l'architecture n-tiers : entités de persistance qui fuient dans le métier, contrôleurs qui court-circuitent les services *« par effet deadline »*, tests coûteux. Le projet est taxé de **legacy au bout d'un ou deux ans**.\n- L'architecture hexagonale (ports et adaptateurs, Alistair Cockburn) impose l'inversion de dépendance et isole le métier.\n- Démo en Java et Spring Boot : un même port « atelier », une implémentation par pays, puis **un nouvel adaptateur Grande-Bretagne ajouté sans toucher au code métier** ni au contrat REST.\n- Bénéfices pour Norauto : gérer la transition, maîtriser une dette à obsolescence programmée (les connecteurs temporaires), réduire le risque.\n- Difficultés reconnues : courbe d'apprentissage, **plus de fichiers et d'entités** (persistance, métier, REST), perte du lazy loading de l'ORM, et couplage possible si le découpage métier est bâclé.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "HJvk7xFaodw",
+        "title": "[DEVFEST Lille 2022] - L’architecture Hexagonale à la rescousse",
+        "publishedAt": "2022-07-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rgpd-pour-les-developpeurs",
+      "day": "2022-06-10",
+      "type": "talk",
+      "title": "RGPD pour les développeurs",
+      "speakers": [
+        "François — Ippon"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le talk part d'une saynète : un développeur livre le vendredi un formulaire qui collecte des données personnelles, et le DPO s'inquiète le lundi. Un sondage montre que **peu de mains se lèvent** quand on demande qui respecte le RGPD.\n- Rappels : du projet SAFARI à la loi Informatique et Libertés de 1978, puis RGPD en 2018 ; DPO, registre des traitements, analyse d'impact ; amendes jusqu'à **4 % du chiffre d'affaires mondial ou 20 millions d'euros**. Une simple consultation (un select en base) est déjà un traitement.\n- Il recommande le guide RGPD de la CNIL pour les équipes de développement et distingue **anonymisation**, irréversible et hors RGPD, et **pseudonymisation**, réversible et toujours couverte. Démo de chiffrement AES-256 du nom en base.\n- Pratiques : privacy by design et by default, secrets hors des dépôts (Vault), branches protégées sur l'infra as code, TLS partout, authentification forte, moindre privilège.\n- Minimisation : **pas de champs libres**, pas de données personnelles dans les logs, des durées de conservation suivies d'une purge automatique. GraphQL est cité comme un moyen de limiter les champs exposés.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "wkbQ6Ec4qXY",
+        "title": "[DEVFEST Lille 2022] - RGPD pour les développeurs",
+        "publishedAt": "2022-07-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "et-si-le-sql-etait-a-la-mode",
+      "day": "2022-06-10",
+      "type": "talk",
+      "title": "Et si le SQL était à la mode ?",
+      "speakers": [
+        "Aurélien — Sfeir Lille (entreprise déduite du transcript, à vérifier)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le head of data de l'agence lilloise compte **135 produits data en 2012 contre environ 975 aujourd'hui**, une explosion portée par le cloud, l'ingestion managée (Fivetran, Stitch) et le SQL dans les outils de BI.\n- La **modern data platform** passe de l'ETL à l'ELT : on stocke tout dans le data warehouse et on transforme en SQL à la demande.\n- Il pointe un décalage : on demande au data analyst de maîtriser Git et la CI, et au data engineer d'être le point d'entrée du métier. D'où le rôle d'**analytics engineer**, défini en 2018, à la croisée des deux.\n- Démo de dbt Cloud sur BigQuery (jeu de données Stack Overflow) : découpage d'une grosse requête en modèles, sources déclarées en YAML, macros Jinja, compilation, lineage et **tests sur les requêtes SQL**.\n- Objectif affiché : regagner la confiance du métier dans la qualité des données, avec des pratiques d'ingénierie logicielle appliquées au SQL.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "op3fPvsZ6ac",
+        "title": "[DEVFEST Lille 2022] - Et si le SQL était à la mode ?",
+        "publishedAt": "2022-07-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "architecture-microservices-et-coherence-des-donnees",
+      "day": "2022-06-10",
+      "type": "talk",
+      "title": "Architecture microservices et cohérence des données",
+      "speakers": [
+        "Jean-François James — Worldline"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le software architect de Worldline part d'un projet SOA d'il y a quinze ans, où les sagas *« restaient très vagues »*.\n- Les transactions ACID distribuées gardent la simplicité mais créent un **fort couplage technique** et de la fragilité. Elles ne sont pas supportées par NoSQL, Kafka ou les protocoles REST et gRPC.\n- Les **sagas** (long running actions) coordonnent des transactions locales et déclenchent des compensations en cas d'échec. Les compensations métier sont de toute façon à écrire.\n- Deux démos comparées : **MicroProfile LRA**, plus simple à prendre en main avec un seul identifiant de couplage, mais avec un coordinateur à surveiller ; et **Eventuate Tram**, asynchrone via Kafka et CDC, plus robuste mais plus long à configurer.\n- Conclusion : trop de transactions distribuées est **le signe qu'il faut revoir le découpage**. Pour peu de cas, tracer et compenser en batch suffit. Toujours des compensations simples, rapides et idempotentes.\n- En questions : ces solutions datent de 2021 et ne sont pas encore en production chez Worldline. Il mesure un surcoût d'environ 20 ms par transaction LRA en local.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "_ACbj7DuCDM",
+        "title": "[DEVFEST Lille 2022] - Architecture microservices et cohérence des données",
+        "publishedAt": "2022-07-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ahead-of-time-et-native-avec-spring-boot-3",
+      "day": "2022-06-10",
+      "type": "talk",
+      "title": "Ahead Of Time et Native avec Spring Boot 3.0",
+      "speakers": [
+        "Stéphane — équipe Spring (VMware)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Un membre de l'équipe Spring Boot et Spring Framework présente le **nouveau moteur AOT** de Spring Framework 6 et Spring Boot 3. Environ la moitié de la salle connaît Spring Native, et un cinquième est passé à Java 17.\n- GraalVM native image produit un exécutable propre à une architecture, qui démarre en **quelques dizaines de millisecondes** avec une mémoire de l'ordre du mégaoctet. Cela permet le scale-to-zero, les CLI, les fonctions et une meilleure densité de conteneurs.\n- Contreparties : des performances brutes inférieures à la JVM sous forte charge, un débogage *« plus sportif »*, **pas d'agents Java**, et un support encore inégal selon les éditeurs.\n- Native image analyse le code en *« monde fermé »* : ce qu'elle ne peut pas détecter (réflexion, ressources) doit être décrit par des **métadonnées d'accessibilité** (reachability metadata).\n- Le speaker veut montrer *« les choses auxquelles vous devez faire attention »* sur une application volontairement basique, la milestone du mois précédent étant en retard sur les fonctionnalités prévues.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "-PuhIdo09FA",
+        "title": "[DEVFEST Lille 2022] - Ahead Of Time et Native avec Spring Boot 3.0",
+        "publishedAt": "2022-07-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "david-vs-goliath-quel-impact-pour-le-dev-contre-le-changement-climatique",
+      "day": "2022-06-10",
+      "type": "talk",
+      "title": "David VS Goliath : quel impact pour le dév contre le changement climatique ?",
+      "speakers": [
+        "Developer advocate — Adyen (nom non relevé, entreprise déduite du transcript)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- La speakeuse, qui précise qu'elle n'est *« pas experte climat »*, veut éviter la culpabilisation et partager sa démarche personnelle.\n- Elle préfère parler de **« chaos météorologique »** que de réchauffement. Elle explique notre difficulté à agir : nous percevons notre moi futur comme un étranger et comprenons mal les exponentielles.\n- Objectif rappelé : **réduire les émissions de 7,6 % par an**. Elle met en avant la règle des 5 R, en commençant par *refuser*.\n- Questions aux développeurs : le **99,99 % de disponibilité** ou les 100 ms de latence sont-ils nécessaires ? Les environnements de test sont-ils éteints le week-end ? Elle compare aussi le poids des langages et des frameworks (React face à une alternative légère), et une application de 230 Mo face à un site de 3 Mo.\n- **80 % de l'empreinte d'un téléphone est émise avant l'achat** : le levier principal est de garder son matériel plus longtemps, ce que favorisent des sites plus légers.\n- Côté personnel, elle est passée de 17,4 tonnes de CO2 par an à bien moins en arrêtant l'avion, qui pesait environ 35 % de son empreinte, en réduisant la viande et en jardinant.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "lXCduD-ihvw",
+        "title": "[DEVFEST Lille 2022) - David VS Goliath : Quel impact pour le dév contre le changement climatique?",
+        "publishedAt": "2022-07-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "au-secours-l-accessibilite-s-invite-dans-mes-projets-web",
+      "day": "2022-06-10",
+      "type": "talk",
+      "title": "Au secours l'accessibilité s'invite dans mes projets web",
+      "speakers": [
+        "Lauriane — consultante en accessibilité (structure cofondée en 2021)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Constat de départ : selon l'enquête WebAIM 2022, **96,8 % des pages d'accueil** d'un million de sites présentent des erreurs détectées automatiquement. Cadre légal : article 47 de la loi de 2005 et décret de 2019, RGAA fondé sur les WCAG.\n- Face au sujet, deux réactions : croire que c'est facile (articles « 5 façons de... ») ou se décourager devant la documentation. Son message : *« ça va bien se passer »*, les erreurs du débutant autodidacte sont normales.\n- Première erreur : **promouvoir l'accessibilité par ses « bénéfices induits »** (confort des valides, SEO, innovation, image de marque). C'est un droit fondamental (convention de l'ONU de 2006), et cet argumentaire invisibilise les besoins réels. Elle fait l'autocritique de son propre ancien article, qui ne contenait pas une fois les mots « personnes handicapées ».\n- Deuxième erreur : mal comprendre les règles. Le texte alternatif *dépend* de l'image (arbre de décision du W3C, alt vide pour les images décoratives). Les **outils automatiques ne testent que 20 à 30 % des critères**.\n- Troisième erreur : faire **pire que mieux**, par exemple le mot « icône » sur toutes les icônes, tabindex=0 partout, ou aria-hidden sur le body.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "UBylwNBZEfk",
+        "title": "[DEVFEST Lille 2022] - Au secours l’accessibilité s’invite dans mes projets web",
+        "publishedAt": "2022-07-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "des-apps-offline-et-reactives-avec-graphql",
+      "day": "2022-06-10",
+      "type": "talk",
+      "title": "Des apps offline et réactives avec GraphQL",
+      "speakers": [
+        "Martin — Apollo GraphQL",
+        "Benoît — Apollo GraphQL"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Deux développeurs Android qui travaillent sur le client Apollo Kotlin. Le message se veut valable aussi pour iOS et le web.\n- Rappels GraphQL : schéma typé avec gestion de la nullabilité, introspection, **dépréciation au niveau du champ** plutôt que des versions d'API, et un seul graphe exposé au lieu d'une multitude d'endpoints.\n- Comme on ne reçoit que les champs demandés, le **mapping vers une base SQL** et le cache des réponses HTTP fonctionnent mal : les données sont dupliquées et le cache sert peu.\n- La solution est un **cache normalisé** : la réponse est mise à plat en records indexés et fusionnés. Leçon principale : **définir des identifiants dans le schéma et les demander dans chaque requête**.\n- Apollo Kotlin génère des modèles typés et propose un cache mémoire et un cache SQLite chaînables. Des *watchers* rendent l'interface réactive aux mutations et permettent le mode hors ligne.\n- Clin d'œil au talk RGPD du matin : demander moins de champs, c'est aussi exposer moins de données personnelles.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "5CgNlSuqPOU",
+        "title": "[DEVFEST Lille 2022] - Des apps offline et reactives avec GraphQL",
+        "publishedAt": "2022-07-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "senior-dev-mentor-prof-memes-combats-memes-techniques",
+      "day": "2022-06-10",
+      "type": "talk",
+      "title": "Senior dev, mentor, prof : mêmes combats, mêmes techniques",
+      "speakers": [
+        "Daniel Garnier — VMware"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Ingénieur dans les équipes Spring commerciales de VMware et enseignant en première année d'école d'ingénieurs. Il raconte avoir appris *« par l'échec »* faute de mentor, puis avoir reproduit le schéma du stagiaire à qui l'on trouve un projet annexe le vendredi à 17 h 30.\n- Il présente le **triangle pédagogique** de Jean Houssaye (enseigner, apprendre, former) : il y a toujours un sommet « à la place du mort », et tout l'enjeu est l'équilibre entre les trois relations.\n- Il distingue trois curricula : **prescrit, réel et caché**. Ce qu'on transmet sans le vouloir compte aussi, comme la ponctualité qu'il enseigne par un quiz en début de séance. Exemple de l'« âge du capitaine » : les élèves utilisent les nombres de l'énoncé, même absurdes, parce que c'est le contrat implicite.\n- En pratique : un cours ancré dans l'expérience des apprenants, des supports vers lesquels ils peuvent revenir, puis des exercices progressifs (liste chaînée, puis pile, puis arbre).\n- Conclusion : **être intentionnel et explicite** sur ce qu'on enseigne et sur ce qu'on attend à chaque étape.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "rsJovUjXK-Q",
+        "title": "[DEVFEST Lille 2022] - Senior dev, mentor, prof même combats même techniques",
+        "publishedAt": "2022-07-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "from-poc-to-viable-product-industrializing-a-big-data-project",
+      "day": "2022-06-10",
+      "type": "talk",
+      "title": "From PoC to Viable Product: Industrializing a Big Data Project",
+      "speakers": [
+        "Yannick Liber — Decathlon",
+        "Abdallah Terrab — Decathlon"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Contexte posé par les speakers : Decathlon est présent dans plus de 65 pays, avec plus de 180 millions de membres identifiés et plus de 4 Po de données. Constat repris sur scène : **80 % des projets de machine learning ne passent jamais en production**, d'où une approche centrée sur la donnée.\n- Le produit **« ADN client »** est une table de 180 millions de lignes et plus de 160 KPI, issue d'une vingtaine de sources, limitée aux clients qui ont consenti au profilage. Elle alimente recommandation, churn, CLV, segmentation et reporting.\n- Stack : jobs Scala et Spark, orchestration Airflow, Jenkins pour la CI/CD, Nexus, S3, clusters EMR éphémères dimensionnés par pays, Redshift pour l'exposition et Elasticsearch pour les logs.\n- Leçons : modularité et design patterns (traits Scala), tests et CI/CD qui permettent de livrer une feature en une à deux semaines, et **checks à l'exécution** pour détecter une table présente mais vide.\n- Decathlon industrialise via des templates : *« le matin une idée »*, le soir une pipeline CI/CD complète. Prochaines étapes : calcul en delta, streaming, GitHub Actions, CodeArtifact et Databricks.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "rrtWzSptlkE",
+        "title": "[DEVFEST Lille 2022] - From PoC to Viable Product: Industrializing a Big Data Project",
+        "publishedAt": "2022-07-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "kubernetes-deployment-strategies-in-a-gitops-context",
+      "day": "2022-06-10",
+      "type": "talk",
+      "title": "Kubernetes deployment strategies in a GitOps context",
+      "speakers": [
+        "Christophe — Decathlon"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le speaker construit des outils de platform engineering chez Decathlon, qui compte **environ 300 clusters Kubernetes et plus de 2 000 nœuds** ; chaque équipe choisit entre plateforme semi-mutualisée et clusters propres.\n- Principes GitOps rappelés : état désiré déclaratif, versionné et immuable dans Git comme source de vérité, appliqué par des opérateurs, avec **réconciliation permanente**. Le même modèle permet de provisionner une infrastructure complète en 15 à 20 minutes à partir d'un descripteur YAML.\n- ArgoCD ou Flux : l'interface web d'Argo est bien plus aboutie, mais **Flux est le seul à gérer vraiment les releases Helm**.\n- Observabilité des déploiements : lignes de commande des opérateurs et surtout notifications (Slack, Google Chat) pour savoir si la configuration poussée a été appliquée.\n- Secrets : chiffrés dans Git (SOPS, Sealed Secrets) ou référencés dans un coffre (Vault, GCP Secret Manager) via External Secrets. Le choix dépend de l'existant et du nombre de secrets.\n- Le déploiement progressif (Flagger, Argo Rollouts), prévu au programme, n'a pas pu être traité faute de temps.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "fHF-aWuDBL8",
+        "title": "[DevFest Lille 2022] - Kubernetes deployment strategies in a GitOps context",
+        "publishedAt": "2022-07-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "au-secours-ma-data-est-a-la-bourre",
+      "day": "2022-06-10",
+      "type": "talk",
+      "title": "Au secours ! Ma data est à la bourre !",
+      "speakers": [
+        "Johnatan — Sfeir (entreprise déduite du transcript, à vérifier)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Data engineer certifié Google et Airflow, il raconte l'histoire d'Albert et de son robot de chargement de données *« tout le temps en retard »*.\n- Le pipeline initial enchaîne des scripts Python, un datalake, un référentiel externe, un job Spark et des tables PostgreSQL, le tout lancé par cron. Il est **sujet aux retards des sources**, aux pics de volume (Noël, campagnes), en **tout ou rien**, et sans monitoring, au point de traiter des données périmées.\n- La réponse est un **orchestrateur** : planificateur, exécuteur et base de métadonnées qui suit l'état de chaque tâche. Prefect, Dagster et d'autres sont cités.\n- Choix d'**Apache Airflow** : créé par Airbnb en 2014, passé à la fondation Apache en 2016 et projet de premier niveau en 2019. Il est écrit en Python, pipelines as code, avec une interface de suivi jugée claire, et reste agnostique du cloud.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "xDiK-sacwOo",
+        "title": "[DEVFEST Lille 2022] - Au secours ! Ma data est à la bourre !",
+        "publishedAt": "2022-07-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "self-service-infrastructure-for-gcp-with-terraform-and-gitlab",
+      "day": "2022-06-10",
+      "type": "talk",
+      "title": "Self-service infrastructure for GCP with Terraform and GitLab",
+      "speakers": [
+        "Julien Wittouck — freelance, en mission chez Kiabi (nom déduit, à vérifier)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- REX du programme « move to cloud » de Kiabi, lancé en juin 2021 en partant de zéro : **70 applications à migrer vers GCP et une centaine de développeurs à accompagner**.\n- Deux personnages issus de Star Wars : R2-D2, le développeur, qui veut créer ses environnements sans passer par des tickets ; C-3PO, l'opérateur, qui veut garantir sécurité, sauvegardes et bonnes pratiques.\n- Pour le développeur, chaque application dispose d'un dépôt GitLab où il écrit son Terraform. Une **pipeline de CI** produit le plan puis l'applique sur le projet GCP (namespace Kubernetes, base de données, buckets, services de la marketplace).\n- Pour l'opérateur, une **« project factory »** écrite en Terraform (module de projet Google et ressource de projet GitLab) crée en série des couples projet GCP et projet GitLab par environnement, avec nommage et droits normés.\n- Résultat visé : *« il est autonome, il dépend plus de personne »*, sans perdre le contrôle côté opérations.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "DxC8gRvqvpA",
+        "title": "[DEVFEST Lille 2022] - Self-service infrastructure for GCP with Terraform and GitLab",
+        "publishedAt": "2022-07-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "souverainete-numerique-definition-et-enjeux-pour-les-entreprises-et-les-devs",
+      "day": "2022-06-10",
+      "type": "talk",
+      "title": "Souveraineté numérique : définition et enjeux pour les entreprises et les devs",
+      "speakers": [
+        "Rose — data engineering manager"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Premier talk de la speakeuse, sur un sujet *« nouveau pour moi »*. Elle part de la définition du rapport Longuet au Sénat (2019) et d'un **cyberespace en quatre couches** : socle matériel, applicatifs, données, usages.\n- Les Big Tech américaines occupent les quatre couches, jusqu'aux câbles sous-marins (Dunant, financé par Google en 2021). C'est une stratégie conjointe avec l'État américain : Small Business Act, Buy American Act, financements de la recherche, accords de transfert de données.\n- Impacts : **libre arbitre** (90 % des recherches passent par Google, recommandations qui radicalisent), économie (crédits cloud puis verrouillage par les coûts de sortie), fiscalité, géopolitique.\n- Elle précise que **souveraineté n'est ni souverainisme ni isolationnisme**. Réponses européennes : RGPD, DMA, DSA ; échecs de Cloudwatt et Numergy, Gaia-X qui peine, et une question ouverte sur un cloud de confiance (Bleu) qui inclut Microsoft.\n- Actions proposées aux entreprises : reconstruire les imaginaires, intégrer l'autonomie technologique à la stratégie, viser le **multi-cloud avec OVHcloud ou Scaleway**, des suites collaboratives françaises, et standardiser les modèles de données pour la portabilité.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "yOjCb4CloTw",
+        "title": "[DEVFEST Lille 2022] - Souverainete numerique definition et enjeux pour les entreprises et les devs",
+        "publishedAt": "2022-07-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "net-maui-mais-c-est-quoi-ce-truc",
+      "day": "2022-06-10",
+      "type": "talk",
+      "title": ".NET MAUI : mais c'est quoi ce truc ?",
+      "speakers": [
+        "Edouard Marquez"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Développeur Android et Flutter, auteur de deux newsletters sur ces sujets, il découvre pour la salle le **multiplateforme de Microsoft**.\n- Xamarin recouvre deux choses : Xamarin Native (code C# partagé, interface par plateforme) et Xamarin.Forms (interface partagée elle aussi). .NET MAUI est la **page blanche** que Microsoft a préférée à de nouvelles versions de Xamarin.\n- La version stable date de la fin mai 2022 (Microsoft Build). Cibles : Android, iOS, iPadOS, Windows, et macOS via Catalyst, *« ils trichent un tout petit peu »* ; Linux et Tizen via la communauté.\n- Outillage : Visual Studio en préversion (pas VS Code), Rider en cours de support. Depuis Windows, on peut **compiler et lancer le simulateur iOS via un Mac du réseau**.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "VOT6bMA4rx4",
+        "title": "[DEVFEST Lille 2022] - .NET MAUI : Mais c'est quoi ce truc ?",
+        "publishedAt": "2022-07-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-futur-de-java-programmation-asynchrone-avec-loom",
+      "day": "2022-06-10",
+      "type": "talk",
+      "title": "Le futur de Java : programmation asynchrone avec Loom",
+      "speakers": [
+        "José — Oracle (Java Platform Group)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le speaker regrette son titre : il aurait dû appeler le talk *« la fin de la programmation asynchrone »*. C'est une version allégée d'un format de trois heures donné à Devoxx France.\n- Loom arrive en **preview dans le JDK 19** en septembre 2022 : JEP 425 (threads virtuels), une pull request d'environ 100 000 lignes modifiées, et JEP 428 (concurrence structurée, en incubation). Prudence : une preview peut encore changer.\n- Le problème : une requête passe quelques nanosecondes en CPU et des millisecondes à attendre le réseau. Pour occuper un CPU avec le modèle « un thread par requête », il faudrait **un million de threads**. Or un thread système met environ 1 ms à démarrer et réserve 2 Mo.\n- L'asynchrone a été la réponse, mais il est *« dur à écrire, dur à lire »*, quasi impossible à tester, déboguer ou profiler.\n- Loom propose des threads qui démarrent en microsecondes et consomment des kilo-octets, pour **revenir à un code synchrone** et à un débit élevé. Au passage, il interpelle ceux qui restent en Java 8.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "jGJG6eUGQoo",
+        "title": "[DEVFEST Lille 2022] - Le Futur de Java : Programmation Asynchrone avec Loom",
+        "publishedAt": "2022-07-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-recruter-des-femmes-dans-un-milieu-d-hommes",
+      "day": "2022-06-10",
+      "type": "talk",
+      "title": "Comment recruter des femmes dans un milieu d'hommes. Et la compétence alors ?",
+      "speakers": [
+        "Florence — Scaleway"
+      ],
+      "feedbackFrom": [],
+      "summary": "- La speakeuse compte une dizaine d'années de développement et une dizaine de management. Elle a cofondé La Place des Grenouilles avec Sarah Dufour et est membre de Duchess et de Tech Rocks. Elle reconnaît un **misogynisme intériorisé**, révélé par des remarques de sa fille.\n- Chiffres présentés : 27 % de femmes en écoles d'ingénieurs, 15 % dans le numérique, alors que 37 % des lycéennes envisagent l'ingénierie (moins encouragées que les garçons). La part de femmes dans les écoles d'ingénieurs avait atteint des pics proches de 50 % dans les années 1970-1980, et le numérique est plus mixte dans d'autres pays.\n- Au bout de dix ans, **la moitié des femmes quittent le secteur**. L'école 42 est passée de moins de 10 % de femmes en 2017 à près de la moitié en 2021 : c'est possible.\n- Question centrale, posée à elle-même : *« est-ce qu'on en a vraiment envie ? »* Sans actions explicites, on encourage le système majoritaire.\n- Arguments : rentabilité, résilience, vivier de recrutement (avec une mise en garde contre l'argument purement utilitaire), produits pensés pour tous (masques, reconnaissance vocale, crash tests).\n- L'anecdote du club de foot illustre qu'un milieu théoriquement ouvert ne l'est pas en pratique. Sa règle : **une équipe diversifiée compte autant qu'une équipe qui mélange juniors et seniors**.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "212xdm2ZhRo",
+        "title": "[DEVFEST Lille 2022] - Comment recruter des femmes dans un milieu d’hommes. Et la compétence alors ?",
+        "publishedAt": "2022-07-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "react-dans-tous-ses-etats",
+      "day": "2022-06-10",
+      "type": "talk",
+      "title": "React dans tous ses états",
+      "speakers": [
+        "Amélie — startup canadienne de billetterie de bus"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Dernier talk avant le keynote de clôture, par l'organisatrice du meetup React Bordeaux.\n- Elle distingue deux familles d'état : l'**état d'interface** (chargement, erreurs, modales) et les **données serveur**.\n- Le *prop drilling* a fait naître Redux, toujours la bibliothèque la plus connue. Elle est puissante (fonctions pures, time travel) mais **verbeuse**.\n- Redux Toolkit (2019) apporte configureStore, les *slices* et createAsyncThunk, qui génère les actions pending, fulfilled et rejected. La migration peut être progressive, et le composant redevient un simple composant d'interface. Démo avec une liste de départs de bus et un tiroir flottant.\n- Elle revient ensuite à React seul : la **composition de composants** (passer un composant plutôt que des données) et le **Context** pour partager un état à un niveau donné de l'arbre.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "vRjtAhLz4Fs",
+        "title": "[DEVFEST Lille 2022] - React dans tous ses états",
+        "publishedAt": "2022-07-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "keynote-de-fermeture-questions-pour-des-chicons",
+      "day": "2022-06-10",
+      "type": "keynote",
+      "title": "Keynote de fermeture : Questions pour des chicons",
+      "speakers": [
+        "Damien (animation)",
+        "Marion",
+        "Fantine",
+        "Cyril"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Avant le jeu, les organisateurs remercient les partenaires, Epitech et ses étudiants bénévoles, ainsi que l'école Sciences-U. Ils rappellent que **c'est la cinquième année** et qu'ils veulent *« accélérer »* sans savoir encore comment : plus nombreux, ou sur plus de jours.\n- Le keynote est un jeu parodique, *« Questions pour des chicons »*, avec une caisse d'endives à gagner : trois candidats défendent leur point de vue en 30 secondes et la salle vote en ligne.\n- Première question, sur le **recrutement technique** : la junior Fantine préfère un échange technique en face à face au tableau blanc ou au coding game chronométré. Marion décrit un projet existant semé de petits bugs, travaillé une heure avec le candidat. Cyril propose un **exercice à trois en pair programming**, avec les premiers tests, pour juger la collaboration plutôt que la connaissance des frameworks.\n- Le ton est volontairement léger et local (Marcq-en-Barœul, chicons).",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "2Hpfx6vqVfg",
+        "title": "[DEVFEST Lille 2022] - Keynote de fermeture",
+        "publishedAt": "2022-07-02",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Technically speaking: improve your code documentation (vidéo YouTube b0p2U7IyCKs, sans transcript)",
+    "Getting started with mobile accessibility: iOS, Android, and Flutter (vidéo YouTube VyoLXimEdUU, sans transcript)",
+    "Sessions du programme sans vidéo : inconnues, l'agenda 2022 n'a pas pu être consulté"
+  ],
+  "sources": [
+    {
+      "label": "Playlist YouTube « Devfest Lille 2022 » (chaîne GDG France, 23 vidéos publiées le 02/07/2022), 21 transcripts automatiques lus en partie",
+      "url": "https://www.youtube.com/playlist?list=PLuZ_sYdawLiUbKK6sY1fh_cYtoT6IZg0B"
+    },
+    {
+      "label": "Conference Hall : lieu (Kinepolis), formats et thématiques du CFP",
+      "url": "https://conference-hall.io/devfest-lille-2022"
+    },
+    {
+      "label": "ADEO Tech, « DevFest Lille 2022: our insights » (Medium) : seul l'extrait de recherche a été lu (800+ participants, 40 speakers), texte intégral inaccessible (403)",
+      "url": "https://medium.com/adeo-tech/devfest-lille-2022-8a9104ef020a"
+    },
+    {
+      "label": "Posts LinkedIn de participants : aucun trouvé (recherche site:linkedin.com sans résultat exploitable)"
+    }
+  ]
 }
