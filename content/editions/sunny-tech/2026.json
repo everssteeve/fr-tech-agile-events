@@ -211,6 +211,387 @@
       }
     },
     {
+      "id": "l-animation-web-responsable-faire-bouger-sans-alourdir",
+      "day": "2026-07-02",
+      "type": "talk",
+      "title": "L'animation web responsable : faire bouger sans alourdir",
+      "speakers": [
+        "Josiane Makelele — Ekino"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Thèse : les animations alourdissent le poids des pages, la consommation d'énergie et la charge cognitive. Il ne s'agit pas de brider la créativité mais d'animer **avec intention**. Contre-exemple d'ouverture : le site Flash de *Charlie et la chocolaterie*, animé partout.\n- Bonnes pratiques : préférer le CSS au JavaScript, animer `transform` et `opacity` plutôt que le layout, arrêter les animations qui tournent sans raison, mesurer avec Lighthouse.\n- Un **tableau CSS ou JS** : CSS pour les transitions simples, hover et focus ; librairies JS pour les timelines complexes (pause, inversion, chaînage). Les animations au scroll sont possibles en CSS, avec un support encore incomplet côté Firefox.\n- **Accessibilité** : respecter `prefers-reduced-motion` pour couper les animations quand l'utilisateur l'a demandé.\n- Conclusion : une checklist (utile, légère, respectueuse) et des « briques de mouvement responsables », car *« c'est pas moins, c'est beaucoup mieux avec intention »*. En questions : Tailwind ou Bootstrap conviennent s'ils respectent ces règles.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "fBZTUkrvCgs",
+        "title": "L’animation web responsable : faire bouger sans alourdir",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "grandir-avec-le-numerique-apprendre-aux-enfants-a-s-en-proteger",
+      "day": "2026-07-02",
+      "type": "talk",
+      "title": "Grandir avec le numérique : et si on apprenait aux enfants à s'en protéger ?",
+      "speakers": [
+        "Estelle Landry — Pix"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Ouverture sur le témoignage enregistré d'une enfant victime de cyberharcèlement, puis un quiz : 99 % des enfants de 11 ans se connectent chaque jour (baromètre 2024 cité), 6 h d'écran quotidien en moyenne, premier téléphone vers 9 ans et 9 mois. Elle démonte le mythe du *« digital native »*.\n- **Pix Junior** : en 2022, l'État sollicite Pix pour un outil destiné aux CM1-CM2. Démarche produit : business model canvas, rencontre de 250 élèves et d'une vingtaine d'enseignants, contraintes de terrain (demi-groupes, une dizaine d'appareils par école), matrice risque et valeur, story mapping.\n- **Pédagogie intégrée au produit** : préacquis, zone proximale de développement, sentiment d'auto-efficacité (Bandura), personnages que l'élève aide, robot compagnon, connexion sans mot de passe avec un code d'établissement valable 4 h.\n- Parcours validation, entraînement, didacticiel puis retour à la validation. Un « défi ultime » a été ajouté après un test où les trois quarts des élèves avaient fini en moins de 2 minutes. Résultats annoncés : 1 200 écoles et 33 000 élèves par bouche-à-oreille ; l'entraînement ramène 82 % des élèves au niveau de validation.\n- Leçons produit : formuler des **hypothèses chiffrées** avant chaque panel (cadre DIBB de Spotify), préférer une roadmap d'expérimentation à une roadmap de livraison, car *« il ne faut pas confondre vélocité et impact »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "BUl0jueClpw",
+        "title": "Grandir avec le numérique : et si on apprenait aux enfants à s’en protéger ?",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "another-world-une-belle-lecon-d-architecture-logicielle",
+      "day": "2026-07-02",
+      "type": "talk",
+      "title": "Another World, une belle leçon d'architecture logicielle",
+      "speakers": [
+        "Olivier Poncet"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le jeu : *Another World*, conçu presque seul par Éric Chahi pendant environ deux ans et sorti en 1991. L'exécutable pèse 24 Ko et les assets 1,2 Mo, le tout sur une disquette.\n- **L'exécutable ne contient aucune logique de jeu** : c'est une machine virtuelle qui exécute un bytecode dédié et charge les assets. Éric Chahi a d'abord construit ses outils sur Amiga 500.\n- Anatomie de la VM : 64 threads coopératifs, 256 registres dont des variables réservées (version, protection anti-copie, plateforme, état du joystick), un jeu d'instructions en 5 groupes, un moteur polygonal 2D, des palettes de 16 couleurs et un son 4 pistes hérité de l'Amiga.\n- La leçon : porter le jeu revenait à porter la VM, d'où des portages sur de très nombreuses plateformes. Pour le speaker, on peut *« apprendre du passé »*.\n- Démo de sa réimplémentation de la VM en C++, sous Linux et en WebAssembly via Emscripten, jouable dans le navigateur et instrumentée pour le débogage. Références : le premier reverse engineering de Grégory Montoir et les analyses de Fabien Sanglard.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "srZnzEa5Hws",
+        "title": "Another World, une belle leçon d’architecture logicielle",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "et-si-on-faisait-du-simulation-driven-development",
+      "day": "2026-07-02",
+      "type": "talk",
+      "title": "Et si on faisait du simulation-driven development ?",
+      "speakers": [
+        "Pierre Zemb — Clever Cloud"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Contexte : une dizaine d'années d'astreinte sur des systèmes distribués (Hadoop, Kafka, Kubernetes, bases de données) ; exemple d'une fonctionnalité de 200 lignes qui a coûté deux mois et demi de travail.\n- Thèse : *« les tests ne scalent pas »* et *« vous ne pouvez pas tester ce que vous ne savez pas »*. Les tests protègent de la régression mais ne prouvent pas l'absence de bug ; les pires incidents naissent de combinaisons jamais imaginées.\n- **Simulation déterministe** : randomiser les workloads, injecter des pannes via des fakes (réseau, disque, cloud) et tout piloter par une même seed, pour rejouer un bug à l'identique. Il pousse le taux de panne très au-delà de la prod (50 % au lieu de 0,1 %) et bannit les sleeps et la dépendance à l'heure.\n- **Boucle avec les LLM** : la simulation devient la meilleure boucle de feedback pour un agent de code. Il fait tourner quatre instances de Claude en parallèle qui déboguent la simulation en autonomie, *« ma révolution »*.\n- Conclusion : preuve formelle, property-based testing et fuzzing ne sont plus de la niche ; avec l'IA, la qualité logicielle doit redevenir la priorité. Il cite FoundationDB comme référence du genre.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "U3m7yFvc598",
+        "title": "Et si on faisait du simulation-driven development ?",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "un-donjon-deux-donjons-trois-donjons",
+      "day": "2026-07-02",
+      "type": "talk",
+      "title": "Un donjon, deux donjons, trois donjons... Et si on automatisait la génération ?",
+      "speakers": [
+        "Sylvain Gougouzian — Zenika",
+        "Florian Forestier — Zenika"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Talk mis en scène : l'un des speakers est « embarqué » et il faut traverser un monde **généré procéduralement** pour le retrouver.\n- Historique : Beneath Apple Manor (1978), Rogue et le genre roguelike, FTL, puis Minecraft et sa seed.\n- Techniques montrées : déplacement du point médian puis **bruit de Perlin** pour les terrains, L-systems à règles probabilistes pour la végétation, automate cellulaire pour les grottes (un bloc devient mur s'il a plus de 5 murs voisins).\n- Limite de l'automate : les salles ne sont pas forcément reliées, bien pour une grotte mais *« absolument terrible pour faire un donjon »*. Pour les donjons : binary space partitioning, A* et wave function collapse.\n- Démo d'un petit jeu où un boss poursuit le joueur, avec une version mobile accessible par QR code. En questions : générateurs pseudo-aléatoires et seeds, usages hors jeu vidéo comme la simulation d'éboulements.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "eUXUoBM5vNo",
+        "title": "Un donjon, deux donjons, trois donjons... Et si on automatisait la génération ?",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "et-si-vos-outils-faisaient-un-peu-plus-pour-vous",
+      "day": "2026-07-02",
+      "type": "talk",
+      "title": "Et si vos outils faisaient un peu plus pour vous ?",
+      "speakers": [
+        "Jules Poissonnet — Bedrock Streaming"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Format « Docteur House » : le speaker, qui travaille sur la DX chez Bedrock Streaming, diagnostique des frictions d'open space comme *« j'ai perdu mon copier-coller »*, le lien manquant dans un message ou les notes prises dans un brouillon de mail.\n- Il chiffre les gains (environ 2 h 47 par an sur un geste, 4 h 10 sur les commandes de terminal) et avoue que la « semaine » gagnée fait plutôt une journée en vrai.\n- Sa **recette en trois axes** : radar (savoir où est l'information avant de la chercher), silence et parcimonie, pour réduire la charge cognitive.\n- Outils montrés : Raycast (historique du presse-papiers, raccourcis, extensions), listes « awesome » sur GitHub, chezmoi pour versionner sa configuration.\n- Diffusion : partager ses trouvailles et sa veille, à la machine à café ; face à *« ça fait dix ans que je fais comme ça »*, proposer du clé en main. Limite reconnue : tout est sur macOS.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Xli6G5ZZmNg",
+        "title": "Et si vos outils faisaient un peu plus pour vous ?",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "bienvenue-dans-la-jungle-cloudnative-les-container-runtimes",
+      "day": "2026-07-02",
+      "type": "talk",
+      "title": "Bienvenue dans la jungle CloudNative : les container runtime kubernetes",
+      "speakers": [
+        "Rachid Zarouali — sevensphere"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Constat : containerd et CRI-O dominent, mais tous les conteneurs d'un nœud **partagent le même noyau**, ce que des failles noyau récentes rendent risqué. Il précise ne pas dire que les runtimes par défaut ne sont pas sûrs.\n- **RuntimeClass** : handler, overhead CPU et mémoire à réserver, cohérence des labels de sélection des nœuds ; sans handler correct, pas de déploiement.\n- Panorama : runc et crun, Sysbox (systemd et Docker-in-Docker sans mode privilégié), gVisor, Kata Containers (micro-VM, ouverture vers le confidential computing), WebAssembly. Plus on monte en isolation, plus on paie une « taxe » en ressources ou en complexité.\n- Démo sur un cluster kind : des nginx sous runc, gVisor et Kata sur les mêmes nœuds, chacun avec son noyau, installés par le DaemonSet kata-deploy. Au démarrage, gVisor est le plus rapide et Kata le plus lent. La démo Wasm est sautée faute de temps.\n- En questions : préférer les capabilities Linux à `--privileged`.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "LgOVYZs_0w0",
+        "title": "Bienvenue dans la jungle CloudNative : les container runtime kubernetes",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "la-revolution-webgpu",
+      "day": "2026-07-02",
+      "type": "talk",
+      "title": "La révolution WebGPU : toute la puissance du GPU, sur le web et en dehors",
+      "speakers": [
+        "Julien Sulpis — Scaleway"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Pipeline de rendu expliqué avec « Bob », un poisson 3D modélisé dans Blender : sommets, arêtes, faces, format OBJ, puis changements de repère jusqu'à l'écran.\n- **Limites de WebGL** : un état global à réécrire pour chaque objet dessiné, et une validation coûteuse côté navigateur à chaque appel, souvent sur le main thread.\n- **WebGPU** : une façade unique au-dessus de Metal, Direct3D 12 et Vulkan, avec des API plus explicites. Mais *« faut pas se dire que WebGPU va être plus simple, c'est un peu l'inverse »*.\n- Maturité : certaines combinaisons navigateur et OS passent encore par un flag, ce n'est donc pas *« utilisable pleinement en production »* ; la cible reste le matériel récent.\n- Écosystème : librairies 3D en migration, inférence de modèles dans le navigateur (Hugging Face), usage dans des Cloudflare Workers ou sur des instances GPU. Slides et démos partagées par QR code.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "PcEkGczcbb0",
+        "title": "La révolution WebGPU : toute la puissance du GPU, sur le web et en dehors 🚀",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "local-first-et-sync-engines",
+      "day": "2026-07-02",
+      "type": "talk",
+      "title": "Local-first et sync-engines, l'architecture du futur ?",
+      "speakers": [
+        "Benjamin Legrand — Onepoint"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Constat : le client-serveur classique impose latence, erreurs réseau, race conditions, loaders et squelettes d'interface, et un serveur toujours disponible. Le propos vise les applications interactives, pas les sites statiques.\n- Les **principes du local-first** : collaboration sans conflit bloquant, applications qui durent (*« the long now »*), confidentialité par défaut, données possédées et contrôlées localement. Des idéaux difficiles à tous tenir, reconnaît-il.\n- **CRDT** : types de données répliqués sans conflit, en échangeant l'état complet avec un merge ou des diffs d'opérations. Les moteurs de synchronisation (Jazz cité, Figma comme exemple d'adoption invisible) absorbent cette complexité.\n- Cas d'usage : documents personnels, graphes, dessin, musique ; le local-first n'est pas adapté à tout.\n- Limites : premier chargement lent, conflits toujours délicats, certaines solutions non auto-hébergeables. Son conseil : *« faites des POC »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "X9hJRI2dKg4",
+        "title": "Local-first et sync-engines, l'architecture du futur ?",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "c-est-qui-ce-zig",
+      "day": "2026-07-02",
+      "type": "talk",
+      "title": "C'est qui ce Zig ?",
+      "speakers": [
+        "Didier Plaindoux — Fungus"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Retour de découverte d'un langage système né en 2018, centré sur la métaprogrammation par exécution à la compilation (**comptime**) : pas de flux de contrôle caché (pas d'exceptions), pas d'allocation cachée, ni préprocesseur ni macros.\n- Tour du système de types : entiers de taille arbitraire, compatibilité ABI avec C, `void`, `anyopaque`, `noreturn`, `type`, tableaux à taille dans le type, slices et vecteurs SIMD.\n- Erreurs : des ensembles énumérés combinables, manipulés avec `!`, `catch` et `try`. Unions taguées pour un pattern matching d'un niveau, pointeurs jamais nuls sauf s'ils sont optionnels.\n- Côté conception, il essaie existentiels en comptime, vtables écrites à la main et génération de structures : pas de modules à la OCaml ni de closures, mais des fonctions d'ordre supérieur.\n- **Outillage** : une seule CLI sans dépendance qui embarque un compilateur C/C++, la cross-compilation (y compris vers Wasm) et un build system écrit en Zig. Il le positionne comme une alternative à C. Talk très dense en code, mal rendu par les sous-titres automatiques.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "A9XxkOVtI1E",
+        "title": "C'est qui ce Zig ?",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "conception-de-logiciels-le-match-humains-vs-ai",
+      "day": "2026-07-02",
+      "type": "talk",
+      "title": "Conception de logiciels : le match humains vs AI",
+      "speakers": [
+        "Olivier Azeau"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Définition posée : une bonne conception fait **croître la valeur métier** dans le temps ; il s'agit de minimiser le coût pour une valeur donnée.\n- **Jeu de conception** en direct : la salle programme deux robots en « payant » chaque bout de code (moins cher pour du code simple que pour du générique), et des IA jouent au même jeu.\n- Premier tour : *« vous êtes 75 % à avoir choisi la version générique »*, jamais réutilisée (*« vous avez payé cinq pour rien »*), quand les IA choisissent le code simple à 92 %.\n- Sur la partie avancée (découplage), les IA, des petits modèles locaux jusqu'à Sonnet et Opus, échouent : *« la catastrophe totale »*. Au match retour, les humains l'emportent largement.\n- Conclusion : *« les LLM ne savent pas concevoir des logiciels »*. Il génère du code chaque jour avec des outils agentiques mais garde la conception pour lui. Le code du jeu (agent Python avec LangChain, rôles architecte et développeur) est publié sur GitHub.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Xfl1XheO-lE",
+        "title": "Conception de logiciels : le match humains vs AI",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "buildkit-powers",
+      "day": "2026-07-02",
+      "type": "talk",
+      "title": "BuildKit Powers : tout ce que vous ne savez pas encore faire avec Docker",
+      "speakers": [
+        "Emilien Escalle — ESCEMI / Hoverkraft",
+        "Frédéric Léger — webofmars"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Format quiz** : sept questions de difficulté croissante posées au public, chacune suivie d'une démo technique.\n- Constat : tout le monde sait faire `docker build` et `docker push`, mais *« Docker Build seul n'y répond pas forcément »* dès qu'il s'agit de cache, de sécurité, de supply chain ou de builds hors de sa machine.\n- **Cache** : cache par layer, montage d'un volume de cache, cache externe en CI pour ne jamais repartir de zéro entre deux runs.\n- Multi-architecture : un seul manifeste qui référence les images AMD64 et ARM64 construites en parallèle. **Bake** déclare en HCL les cibles de build et de test.\n- Sécurité : secrets montés au build sans trace dans les layers (vérifié en démo), SBOM et attestations de provenance. Final avec un builder distant dans un cluster Kubernetes, identifiable grâce à la provenance.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "hkgowAKAEN0",
+        "title": "BuildKit Powers : tout ce que vous ne savez pas encore faire avec Docker",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ai-apocalypse-survival-kit",
+      "day": "2026-07-02",
+      "type": "talk",
+      "title": "AI Apocalypse Survival Kit : coding agents & Tiny Language Models",
+      "speakers": [
+        "Philippe Charrière — Docker"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Préambule personnel : il dit vivre un *« déclin cognitif »*, avec le réflexe de passer à l'IA au bout de quelques minutes, et s'inquiète pour les plus jeunes.\n- **Modèles locaux** avec Docker Model Runner, compatible avec les API d'OpenAI, d'Anthropic et d'Ollama. Contrainte mémoire : sur son Mac à 32 Go, il se limite à des modèles de 4 à 9 milliards de paramètres.\n- Claude Code branché sur un modèle local de 4B : un Hello World prend plus de 5 minutes, d'où l'intérêt d'agents taillés pour les petits modèles.\n- **Recettes pour petits modèles** : peu d'outils, skills déclenchées à la main, LSP pour s'autocorriger, RAG, contexte réduit (historique de 3 messages), un agent par problème et par langage. Les agents tournent dans une sandbox en VM plutôt qu'en conteneur, par crainte d'une évasion.\n- Démos de son agent en Go : apprendre Rust, et coder dans un langage qu'aucun LLM ne connaît grâce à la documentation fournie. Message final : on peut déjà faire beaucoup avec de petits modèles.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "yZVt3ujx070",
+        "title": "AI Apocalypse Survival Kit: coding agents & Tiny Language Models",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "tech-et-bien-etre",
+      "day": "2026-07-02",
+      "type": "lightning",
+      "title": "Tech & Bien-être : rester en bonne santé dans un monde numérique sous pression",
+      "speakers": [
+        "Luis Rubiera — Cloud-IAM"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Format court et personnel : le speaker, CTO, parle *« en tant qu'humain »*, raconte avoir perdu 40 à 50 kg après l'adolescence et précise ne pas être médecin.\n- Constat : la tech et les startups ne sont pas conçues pour la santé. Au-delà de 55 h de travail par semaine, le risque d'AVC augmente, un point qu'il relie à son histoire familiale.\n- **Les bases** : boire (une légère déshydratation suffit à faire baisser la concentration), dormir au moins 7 h, marcher (7 500 pas suffiraient plutôt que 10 000).\n- Former des habitudes : rendre la bonne habitude facile et gratifiante, l'accoler à une mauvaise ; une habitude prendrait 66 jours et non 21. La discipline s'épuise dans la journée, l'identité (« je suis marathonien ») tient mieux.\n- Conclusion : *« rien ne marche si vous ne vous aimez pas »* ; chercher de l'aide (psy, coach) et commencer une habitude dès la conférence. Les sous-titres de cette vidéo sont très lacunaires.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "6DMes8Sdf1U",
+        "title": "Tech & Bien-être : Rester en bonne santé dans un monde numérique sous pression",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "merge-smarter-not-harder-l-ia-co-tech-lead",
+      "day": "2026-07-02",
+      "type": "lightning",
+      "title": "Merge Smarter, Not Harder : l'IA co-tech lead",
+      "speakers": [
+        "Carmen Piciorus — La Poste",
+        "Michael Enjolras — La Poste"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Mise en scène : une merge request de 185 changements, sans description, à mettre en prod *« avant l'apéro à 17h »*. La charte IA de La Poste impose de garder une **revue humaine** et des pipelines sécurisés.\n- **PR-Agent** (partie open source de Qodo) : `/describe`, `/review` et `/improve`, des correctifs proposés que le développeur choisit d'appliquer. Compatible GitLab, GitHub et Bitbucket.\n- Industrialisation : un composant GitLab CI partagé, un modèle GPT hébergé sur Azure en France, et des « extra instructions » par techno et par projet (exceptions, logs, injections SQL, style Angular, accessibilité).\n- Volume visé : 2 000 utilisateurs GitLab, 12 000 projets, environ 2 000 MR par mois. Claude Code s'est révélé trop cher en simulation ; le projet reste un POC sur 4 à 5 projets, avec des modèles auto-hébergés sur GPU internes en perspective.\n- En questions : la responsabilité reste au développeur, et les tech leads restent indispensables : *« c'est les seuls qui peuvent rajouter les règles »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "84baCD5q_bo",
+        "title": "Merge Smarter, Not Harder : l’IA co-tech lead",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "survivre-a-la-bulle-de-l-ia",
+      "day": "2026-07-02",
+      "type": "lightning",
+      "title": "Survivre à la bulle de l'IA : le guide open source venu du futur",
+      "speakers": [
+        "Eric Burel — LBKE"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Fiction de **voyageur temporel** : la bulle de l'IA a éclaté et les grands services ont disparu. Comment continuer sans ChatGPT grâce à l'open source ?\n- Auto-hébergement : compter 2 500 à 3 000 € pour du matériel personnel sérieux (Mac Studio, station Nvidia). Côté logiciel : Ollama, LM Studio, llama.cpp, SGLang, Hugging Face ; démo d'un petit modèle Gemma sur un portable de 2023.\n- Interfaces et agents : Open WebUI, Mastra, RAG, agents de code open source (OpenCode, Mistral Vibe). Conseil contre la perte cognitive : faire coder à l'IA des outils plutôt que le système final.\n- **Arrêter de faire parler les IA** : s'en servir pour extraire du JSON, classifier et décider. Démos d'un workflow n8n qui extrait un prospect d'un mail et d'une classification de textes : *« ça peut pas halluciner »*.\n- Conclusion : ces outils ont un coût de formation et d'installation, mais représentent un enjeu stratégique en cas de crise.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "K2UN42jZwUE",
+        "title": "Survivre à la bulle de l'IA : le guide open source venu du futur",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-dev-containers-la-boite-a-outils-ultime",
+      "day": "2026-07-02",
+      "type": "lightning",
+      "title": "Les dev containers, la boîte à outils ultime pour les devs ?",
+      "speakers": [
+        "Stéphane Philippart — OVHcloud"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Trois cas d'usage : le cycle de vie de la machine de dev, l'**onboarding** sur un projet ou un dépôt open source, et l'expérimentation risquée (un `rm -rf` lancé par une IA).\n- Démo des dev containers dans VS Code : templates, features, `postCreateCommand`, `remoteEnv`, puis création de features locales.\n- La CLI devcontainer construit et pousse une image prête à l'emploi : la configuration du projet se réduit alors à *« deux lignes »*.\n- Limites : beaucoup de RAM (la démo a ramé), mode hors ligne difficile, rebuild à chaque modification ; côté IntelliJ, version Ultimate exigée et bug sur les plugins.\n- Côté perso, il n'a *« rien installé sur ma machine depuis deux ans »*. En questions : Testcontainers fonctionne via Docker in Docker, avec un transfert de ports délicat.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "iw7EkOISmrc",
+        "title": "🧰 Les dev containers, la boîte à outils ultime pour les devs ?",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "cyber-resilience-act-qu-es-aquo",
+      "day": "2026-07-02",
+      "type": "lightning",
+      "title": "Cyber Resilience Act : qu'es aquò ?",
+      "speakers": [
+        "Cyril Lopez — Red Hat"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Cadre : le CRA est un **règlement**, pas une directive, il s'applique donc directement dans toute l'Union. Entré en vigueur en décembre 2024, il vise à harmoniser la cybersécurité des produits numériques et à limiter l'obsolescence (exemple d'une tablette sous un Android déjà hors maintenance).\n- Niveaux d'exigence : catégorie par défaut, produits importants de classes 1 et 2 (systèmes d'exploitation, navigateurs), produits critiques (cartes à puce). Red Hat se positionne comme « steward » open source, par exemple sur Fedora.\n- Obligations : analyse de risque, **SBOM**, sécurité par défaut, documentation technique, suivi des vulnérabilités et signalement aux autorités.\n- Open source et SaaS : selon lui, dès qu'on commercialise un logiciel on est concerné, et la correction d'une brique open source non maintenue peut retomber sur l'éditeur. Il invite à y voir de l'*« hygiène de développement »* plutôt qu'un fardeau administratif.\n- En questions : la responsabilité suit le flux d'argent ; le fork de Docker en Podman illustre la résilience de l'open source.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Uawf1-Q81ws",
+        "title": "Cyber Resilience Act : qu’es aquò ?",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
       "id": "fini-les-nuits-difficiles-comment-l-ia-a-transforme-nos-astreintes",
       "day": "2026-07-03",
       "type": "talk",
@@ -372,6 +753,411 @@
       }
     },
     {
+      "id": "pairing-is-caring",
+      "day": "2026-07-03",
+      "type": "talk",
+      "title": "Pairing is caring!",
+      "speakers": [
+        "Olivier Breda — Freelance"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Origine du talk : dans une entreprise en hypercroissance, le pair et le mob programming étaient **un standard** ; dans la suivante, une équipe de 8 développeurs avec 13 tickets actifs lui répond : *« c'est un luxe qu'on peut pas vraiment s'offrir »*.\n- Bénéfices décrits : transmission aux juniors (intégrée aux objectifs des seniors), normalisation des questions, **confiance** née des difficultés surmontées ensemble, lien humain en remote.\n- Avec l'IA : garder le contrôle, réduire le **bus factor** et relire à plusieurs le code généré plutôt que seul ; même les outils de spécification *« c'est pas magique »*.\n- En questions : au-delà de 3 ou 4 personnes, un mob se scinde en sous-paires sur le même ticket. Son équipe faisait 90 à 95 % des tickets en pair ou en mob, un chiffre qui n'est *« pas une cible »* ; il conseille de mesurer temps de cycle et délais de revue.\n- La partie centrale du talk (pratiques détaillées) n'a été que survolée dans l'échantillon lu.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "gtw4ahbhaCs",
+        "title": "Pairing is caring!",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "accessibilite-cochez-les-cases-et-ratez-la-cible",
+      "day": "2026-07-03",
+      "type": "talk",
+      "title": "Accessibilité : cochez les cases… et ratez la cible",
+      "speakers": [
+        "Gabriel Pillet — Ohdit",
+        "Vanessa Strub — Atalan"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Changer de regard sur le handicap : 17,5 % de personnes concernées en France, 85 % des handicaps surviennent en cours de vie, moins de 5 % des personnes en situation de handicap moteur utilisent un fauteuil. Ils distinguent limitation et **situation de handicap**.\n- Cadre : technologies d'assistance (contacteurs, plage braille), RGAA et WCAG. Selon une étude de la Fédération des aveugles sur plus de 6 000 sites, seuls 0,47 % seraient totalement conformes.\n- Exemple d'un menu burger corrigé pas à pas (`nav`, `button`, `aria-expanded`, vraie liste, touche Échap), puis comparaison de trois méthodes : audit après coup, formation de toutes les équipes, overlay (*« universellement décriée »*).\n- Thèse : **le taux de conformité n'est pas l'accessibilité ressentie**. Un site conforme à 80 % peut être inutilisable si le menu ne marche pas au clavier ; un audit coûte au moins 5 000 € et vaut à un instant T.\n- Proposition : le **test driven accessibility**, tester d'abord au clavier et au lecteur d'écran (VoiceOver, TalkBack, NVDA) puis corriger, avec des tests automatisés en CI qui ne remplacent pas l'audit. En questions : l'app Mistral était inutilisable au lecteur d'écran à sa sortie.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "NACOlI8mCZQ",
+        "title": "Accessibilité : cochez les cases ✅… et ratez la cible 🎯",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "savez-vous-vraiment-ce-qu-est-la-couleur",
+      "day": "2026-07-03",
+      "type": "talk",
+      "title": "Savez-vous vraiment ce qu'est la couleur ? Découvrez la science derrière les pixels",
+      "speakers": [
+        "Julien Sulpis — Scaleway"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Bizarreries de départ, tirées de son travail sur le design system de Scaleway : sur la roue chromatique le bleu paraît plus foncé que le jaune, et un vert pur copié du logiciel de design vers le CSS ne donne pas le même vert.\n- Physique et perception : longueurs d'onde, cônes et bâtonnets, espace XYZ de 1931, puis les gamuts sRGB, P3, Rec. 2020 ; avec 8 bits par canal, **plus le gamut est grand, moins on a de précision**.\n- Notations : RGB difficile à manipuler, HSL trompeur car la saturation perçue varie avec la luminosité (exemple de l'état hover d'un bouton), HSB plus intuitif.\n- Lab puis **LCH** (luminance, chroma, teinte) et les espaces plus récents de la famille Oklab, utiles pour les calculs et les dégradés, sans remplacer les autres : tous les espaces dilatent ou contractent certaines couleurs.\n- En questions : un design P3 affiché sur un écran sRGB voit ses valeurs hors gamut simplement écrêtées ; il faut détecter le support de l'écran.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "lzfsCU0QOEA",
+        "title": "Savez-vous vraiment ce qu’est la couleur ? Découvrez la science derrière les pixels 🎨",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "sous-le-capot-d-une-base-de-donnees-analytique",
+      "day": "2026-07-03",
+      "type": "talk",
+      "title": "Sous le capot d'une base de données analytique",
+      "speakers": [
+        "Sylvain Wallez — Elastic"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Présentation par un Principal Engineer de l'équipe moteur analytique d'Elastic, avec un détour par l'open source comme modèle de distribution.\n- **ES|QL** : un langage à pipes, dans la lignée de Splunk, Kusto ou BigQuery, comparé au Query DSL en JSON sur un fil rouge (salaire moyen par département au-dessus d'un seuil). Sorties en texte, CSV ou Arrow.\n- Exécution **orientée colonne** : localité mémoire et instructions SIMD sur 8 à 16 valeurs ; architecture distribuée avec un coordinateur et un traitement poussé vers les nœuds de données.\n- Le **query planner** vu comme un compilateur : parsing ANTLR, résolution et typage, vérification qui renvoie toutes les erreurs d'un coup, environ 80 règles d'optimisation, pushdown des projections et des filtres, planification physique selon les données.\n- En questions : les langages à pipes devraient s'imposer en analytique, SQL restant au transactionnel ; sources externes à venir (S3 avec Parquet, JSON, CSV, puis Iceberg et JDBC). Il recommande le livre en ligne d'Andy Grove sur les moteurs de requête.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "JZ3aZHOnxy0",
+        "title": "Sous le capot d’une base de données analytique",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "re-devenez-des-fullstack-humans",
+      "day": "2026-07-03",
+      "type": "talk",
+      "title": "(Re)devenez des fullstack humans",
+      "speakers": [
+        "Raphaël Semeteys — Worldline",
+        "Hajer Mabrouk — Somatics Global"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Duo d'une coach somatique, ancienne de l'IT, et d'un architecte de Worldline, tous deux enseignants de yoga ; première présentation publique de ce talk. Ils précisent ne pas être médecins.\n- **La métaphore de la stack** : infra = corps, runtime = respiration, orchestration = système nerveux. Un *« full stack human »* connaît ses ressources et les utilise de manière écologique ; point de départ, le témoignage de crises de panique de plusieurs heures.\n- Observabilité de soi : proprioception et interoception, avec un scan corporel guidé dans la salle, puis des « patchs » d'urgence et du « refactoring » au long cours.\n- Corps et respiration : mouvements lents et spiralés pratiqués assis (références à Thomas Hanna et Feldenkrais), respiration par le nez (le *« firewall »*) et par le diaphragme, techniques de stimulation du nerf vague (humming, expiration longue).\n- Message final : *« CI CD, mais CD, c'est continuous détente »*, s'entraîner hors crise 10 à 15 minutes par jour, et *« prenons soin de nos systèmes au moins autant que nous prenons soin des systèmes que nous créons »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "MVACB879RKo",
+        "title": "(Re)devenez des fullstack humans",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "lorsqu-un-simple-bug-reseau-vous-emmene-dans-les-entrailles-de-linux",
+      "day": "2026-07-03",
+      "type": "talk",
+      "title": "Lorsqu'un simple bug réseau vous emmène dans les entrailles de Linux...",
+      "speakers": [
+        "Florian Forestier — Zenika"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Point de départ : chez un petit cloud provider, des serveurs reconditionnés dont les cartes réseau 100 Gb ne fonctionnent pas sous Debian 12 ; passer les données par le réseau d'admin est exclu à cause de SecNumCloud.\n- Diagnostic : la carte est visible dans le BIOS et `lspci` mais absente de `ip link`, `dmesg` pointe les drivers noyau. Une estimation de *« 20 minutes »* devient *« à peu près 4 semaines et demi »*.\n- **Bisection du noyau** : de LTS en LTS puis par dichotomie (45 minutes de compilation par essai), jusqu'à un seul commit qui échoue en erreur critique au lieu de dégrader proprement sur cette révision de carte. Le bug existait depuis environ quatre ans et demi.\n- **Contribution upstream** : patch proposé sur la mailing list du noyau, très exigeante sur la forme, repris par un mainteneur Red Hat et intégré à Linux 6.13 avec backport jusqu'à la 5.4. Appel à contribuer à *« un commun numérique »*.\n- Test a posteriori avec l'IA : ChatGPT avait été *« un carnage absolu »* à l'époque ; plus tard, Junie et Claude retrouvent le bug en un quart d'heure, Claude avec un patch minimal. Il reste prudent, le correctif étant public depuis longtemps.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "-Aaz2v9k6qk",
+        "title": "Lorsqu'un simple bug réseau vous emmène dans les entrailles de Linux...",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "detectives-de-la-prod",
+      "day": "2026-07-03",
+      "type": "talk",
+      "title": "Détectives de la prod : résoudre l'enquête avant le crash",
+      "speakers": [
+        "Sébastien Ferrer — OVHcloud"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Récit d'un ancien « pur dev » qui rejoint une équipe gérant 50 à 60 microservices, avec un run une semaine sur cinq puis l'astreinte de nuit. Question directrice : comment se forger une intuition sur des projets qu'on ne connaît pas ?\n- **Morning check** : un dashboard lisible d'un coup d'œil, des métriques TTA (Time to Acknowledge) et TRS (Time to Restore Service), des priorités de P5 à P1 ; la valeur ajoutée humaine est de requalifier la priorité.\n- Cas réels : erreurs 500 dues au rate limiter et aux connexions base de données, création d'utilisateurs en échec partiel où le champ pod ID révèle un pod tombé, une leçon de **prise de recul**. Les five whys servent aux post-mortems.\n- Développement résilient : error wrapping plutôt qu'un « record not found » générique, archétype de microservice, packages communs maintenus à jour par Renovate ou Dependabot, linters, temps dédié à l'amélioration continue.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Fno77c9U7R8",
+        "title": "Détectives de la prod : résoudre l’enquête avant le crash",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ratatui-developper-des-terminal-user-interfaces-en-rust",
+      "day": "2026-07-03",
+      "type": "lightning",
+      "title": "Ratatui : Développer des Terminal User Interfaces en Rust",
+      "speakers": [
+        "Yann Prono — MAIF"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Accroche par Doom qui tourne partout : pour une interface, *« des points blancs et des points noirs, ça fait largement le café »*. Tour des alternatives (CLI, web, desktop, Electron) avant les TUI (htop, btop, Claude Code).\n- **Ratatui** : des widgets composables (table, liste, paragraphe, canvas, sparkline) et un layout dynamique qui rend la TUI responsive sans media queries.\n- Démo en direct : le public envoie des messages à une API, affichés dans un composant de chat construit sur scène, avec un bus de messages interne à base de channels Tokio.\n- Outils open source de la MAIF : une TUI pour explorer Kafka en temps réel, avec langage de requête et extensions Wasm.\n- Bilan : navigation clavier efficace, performances (*« largement faire du 60 FPS »*), usage via SSH ; limites : interface intimidante pour certains, latence sous Windows, un peu de boilerplate car c'est une librairie et non un framework.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "BJy29EPy4sg",
+        "title": "Ratatui : Développer des Terminal User Interfaces en Rust",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "une-identite-pour-les-federer-toutes",
+      "day": "2026-07-03",
+      "type": "lightning",
+      "title": "Une identité pour les fédérer toutes !",
+      "speakers": [
+        "Sébastien Ferrer — OVHcloud"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Cadre : l'IAM couvre authentification et autorisation ; le talk se concentre sur l'authentification et la **fédération d'identité**, domaine de l'ancienne équipe IAM du speaker.\n- Deux usages : le SSO en entreprise (une connexion pour tout un écosystème via un fournisseur d'identité) et les connexions sociales (Google pour Slack ou Spotify) ; FranceConnect repose sur le même principe.\n- Protocoles : SAML, historiquement le premier, puis OIDC. OAuth 2.0 relève de l'autorisation : il a remplacé les formulaires qui demandaient le mot de passe d'un autre service par un **écran de consentement**.\n- En questions : la tenue en charge dépend de l'implémentation plus que du protocole ; menaces SAML comme le signature wrapping ; la MFA reste un plus car *« rien n'est sécurisé à 100 % »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "QzIslJ0wick",
+        "title": "Une identité pour les fédérer toutes !",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "booster-votre-productivite-de-developpeur-avec-le-platform-engineering",
+      "day": "2026-07-03",
+      "type": "lightning",
+      "title": "Booster votre productivité de développeur avec le Platform Engineering",
+      "speakers": [
+        "Sébastien Lallemand — Red Hat",
+        "Guillaume Estrem — Red Hat"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Analogie d'ouverture : un commis qui arrive en cuisine sans ustensiles ni recettes, comme un développeur freiné par les tickets d'accès et une documentation obsolète.\n- **Portail de développement interne (IDP)** : une plateforme commune aux ops, aux devs et à la sécurité, gérée **comme un produit** dont les clients sont les développeurs.\n- Démo sur Red Hat Developer Hub (basé sur Backstage) : un template Quarkus crée le dépôt GitLab, la registry et un IDE cloud ; au commit, un pipeline OpenShift affiche les vulnérabilités, puis l'application apparaît dans la topologie, *« en 10 minutes max »*.\n- Les plugins dynamiques, ajoutables à chaud sans reconstruire Backstage, ont été reversés à la communauté. Conclusion : onboarding simplifié, GitOps et sécurité intégrée aux pipelines.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "EatkNb1Etg4",
+        "title": "Booster votre productivité de développeur avec le Platform Engineering",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "de-2-a-50-modules-terraform-avec-terragrunt-stacks",
+      "day": "2026-07-03",
+      "type": "lightning",
+      "title": "De 2 à 50 modules Terraform : orchestrer proprement avec Terragrunt Stacks",
+      "speakers": [
+        "Stéphane Trognon — Filigran"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Problème : enchaîner des modules Terraform crée des dépendances implicites, difficiles à visualiser, et limite la parallélisation.\n- Trois piliers de **Terragrunt Stacks** : l'unit (environ un module), la stack (un ensemble d'units) et des dépendances explicites aux outputs typés, réunies dans un DAG. *« C'est pas de la magie noire, c'est juste une déclaration pure »*.\n- Démo locale sur trois units (app, storage, network) déclinées par environnement via des values, sans duplication, en ne ciblant que les units utiles.\n- Gain mesuré sur une stack de 35 modules en production : la CI/CD passe **de 40 à 18 minutes** grâce à la parallélisation et à l'ordre d'exécution automatique.\n- Limites : *« c'est pas si magique que ça »*. Courbe d'apprentissage, débogage du DAG parfois obscur, outil jeune ; il conseille de ne pas sur-ingénierer et de commencer avec 2 ou 3 modules.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "kgvfJ_8vpBs",
+        "title": "De 2 à 50 modules Terraform : orchestrer proprement avec Terragrunt Stacks",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "todo-faut-il-arreter-les-todo-dans-le-code",
+      "day": "2026-07-03",
+      "type": "lightning",
+      "title": "TODO : faut-il arrêter les TODO dans le code ?",
+      "speakers": [
+        "Ando Nary"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Récit d'un consultant qui découvre chez un client du code plein de `if` imbriqués et de TODO jamais traités (exemple d'un TODO de 2017 dans un projet open source). La salle est partagée sur l'idée de tout supprimer.\n- Compromis : la règle du boy scout et une démarche itérative (corriger salement, commiter en local, refactorer, squasher), où les TODO servent de fil conducteur, à la manière de la **méthode Mikado**.\n- Typologie : TODO qui disparaîtront d'eux-mêmes, TODO de « ticketing » transformables en issues par une action GitHub, commentaires de contexte déguisés qui ne seront jamais résolus, TODO adressés à un autre mainteneur.\n- Les TODO locaux (liste de départ du Canon TDD, « trouver un meilleur nom ») relèvent du travail en cours et ne doivent pas être poussés.\n- Conclusion : seuls les TODO poussés et **liés à un ticket** sont acceptables ; en questions, il propose de remplacer le nom de la personne par le numéro du ticket.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "8LFfZiz4OtI",
+        "title": "TODO: faut-il arrêter les TODO dans le code? 🤔",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "quand-tcp-meurt-a-20-minutes-de-latence",
+      "day": "2026-07-03",
+      "type": "lightning",
+      "title": "Quand TCP meurt à 20 minutes de latence : construire un réseau interplanétaire",
+      "speakers": [
+        "Sarah Theoulle",
+        "Hugo Ponthieu",
+        "Mathias Durat"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Contexte : le centre spatial universitaire de Montpellier opère des nanosatellites qui font le tour de la Terre en 1 h 30 et ne restent joignables qu'une dizaine de minutes ; des opérateurs humains ratent des passages. Projet de recherche avec le LIRMM, financé par l'ANR.\n- **Pourquoi TCP casse** : retransmission de bout en bout, handshakes impraticables quand le délai vers Mars atteint une vingtaine de minutes, et tous les nœuds devraient être disponibles en même temps.\n- Réponse : les réseaux tolérants aux délais (DTN) et le **Bundle Protocol**, en store and forward : chaque nœud garde les données jusqu'à ce que le suivant soit joignable.\n- Contribution des trois étudiants et alternants : une couche de convergence CSP pour le Bundle Protocol, adaptée aux bus CAN des satellites, sous forme de librairie commune à trois implémentations, pour automatiser les sessions de nuit.\n- Démo multi-protocole satellite, station sol et salle de contrôle (avec quelques soucis), puis questions sur le custody transfer et la sécurité (BPSec ou TLS).",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "q6upxWefOKQ",
+        "title": "Quand TCP meurt à 20 minutes de latence : construire un réseau interplanétaire*",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-magicien-zod",
+      "day": "2026-07-03",
+      "type": "talk",
+      "title": "Le Magicien Zod : Emmenez TypeScript au-delà du build",
+      "speakers": [
+        "Lucas Audart — Kolecto",
+        "Mickael Alves — Zenika"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Récit en actes : la magie de TypeScript disparaît *« à la frontière du build »* ; après transpilation, il ne reste que du JavaScript et les types ont disparu.\n- Le vrai danger : les **données externes au runtime** (réponses d'API, formulaires, variables d'environnement), que Zod valide dynamiquement.\n- Démos : formulaires avec `refine` et erreurs bien placées, API dont le schéma change (champ optionnel puis valeur par défaut), patch construit avec `pick`, `partial` et `extend`, `coerce` et transformations.\n- Écosystème : Zod Mini plus léger, Typia qui génère les vérifications, et le standard commun Standard Schema.\n- **Grille de décision** : Zod pour une API externe non maîtrisée, TypeScript seul pour des données internes contrôlées, éviter Zod dans les boucles critiques en performance. En questions, retour d'expérience de Kolecto : tout typer via Zod a fini par rendre l'inférence très lente dans l'IDE, un *« enfer »*.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "kUZboGU0DQY",
+        "title": "Le Magicien Zod : Emmenez TypeScript au-delà du build 🧙",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rina-repenser-l-internet-du-futur",
+      "day": "2026-07-03",
+      "type": "talk",
+      "title": "RINA : Repenser l'Internet du futur",
+      "speakers": [
+        "Théo Tchilinguirian — LIRMM / Polytech Montpellier"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Point de départ : la pile Internet est devenue incompréhensible, on a *« dépassé le cap des dix mille RFC »*, avec des protocoles qui se recoupent (TCP, UDP, QUIC, TLS, DNSSEC).\n- **RINA** (Recursive InterNetwork Architecture), découverte via un livre de 2008 et un stage dans les réseaux tolérants aux délais : un réseau est une application d'**IPC distribuée**, configurable, sécurisée et récursive (un sous-réseau se comporte comme un câble).\n- Principes : maximiser les invariances, séparer mécanismes et options, une API générique, et suivre le problème plutôt que l'existant.\n- Critique d'Internet : IP ne nomme que les interfaces et DNS n'est qu'une surcouche, un nommage *« incomplet »* qui oblige à des load balancers dédiés, là où RINA laisse le routage répartir.\n- Lucidité en questions : personne ne pousse RINA dans l'industrie (*« la réponse c'est non »*), il reste des projets de recherche européens et des simulations.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "jkQaOex3ymI",
+        "title": "RINA : Repenser l’Internet du futur",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "tdd-x-vibe-coding-duel-ou-duo-gagnant",
+      "day": "2026-07-03",
+      "type": "talk",
+      "title": "TDD × Vibe Coding : duel ou duo gagnant ?",
+      "speakers": [
+        "Amine El Gaouzi — Gojob"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Question : peut-on faire du TDD avec des agents de code, et est-ce une bonne idée ? Défauts constatés du vibe coding : code superflu, abstractions prématurées, fonctionnalités et cas limites non demandés, donc de la dette.\n- **TDD forcé par sous-agents isolés** : un auteur de tests, un implémenteur qui ne voit que le code et les tests, un agent de refactoring. Sur un kata, le design émerge au sixième cycle, comme chez un humain.\n- Piège observé : l'implémenteur peut « tricher » en lisant un plan laissé dans la base de code, d'où l'idée de restreindre les fichiers accessibles.\n- Coût : *« un véritable aspirateur à token »*, environ 500 000 tokens pour la version TDD contre beaucoup moins sans tests.\n- Conclusion : *« ni un duel ni un duo »*. Un bon skill de génération de tests approche la qualité du TDD à moindre coût ; le TDD reste préférable quand l'exigence de qualité est stricte. Limites avouées : un seul modèle, un kata possiblement présent dans les données d'entraînement, pas d'application de bout en bout.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "b50J3jCi4-c",
+        "title": "TDD × Vibe Coding : duel ou duo gagnant ?",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rust-pour-le-developpement-d-applications-metier",
+      "day": "2026-07-03",
+      "type": "talk",
+      "title": "Rust pour le développement d'applications métier haut-niveau !",
+      "speakers": [
+        "Stéphane Trebel — Le Permacodeur"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Thèse d'un développeur web habitué aux CRUD, d'abord malmené par le borrow checker : Rust convient très bien aux **applications métier** grâce à son système de types.\n- Pattern **new type** : un type email qui encapsule une chaîne validée à la construction ; le compilateur refuse ensuite tout autre type (*« on fait pas rentrer un rond dans un carré »*), dans l'esprit de « Parse, don't validate ».\n- Traits et implémentations génériques, reliés aux ports de l'architecture hexagonale et au DDD.\n- Écosystème : tests d'intégration avec un serveur de mock HTTP pour vérifier l'idempotence, et SQLx qui vérifie les requêtes contre une vraie base dès l'IDE, au point de faire *« fortement douter de l'utilité des ORM »*.\n- En questions : mocks via les traits, compilation vers Wasm ou ESP32, abstractions à coût nul et comparaison avec Java.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "0TPqT5wCShE",
+        "title": "Rust pour le développement d'applications métier haut-niveau ! 🦀",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "lovable-at-first-sight",
+      "day": "2026-07-03",
+      "type": "talk",
+      "title": "Lovable at first sight : affirmer la personnalité de son produit pour créer le coup de cœur",
+      "speakers": [
+        "Chantal Khin — Theodo Apps"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Thèse d'une directrice de création et product designer : un produit n'est pas qu'*« une histoire de fonctionnel, de logique, de performance, c'est aussi une histoire d'émotion »*, surtout sur un marché d'applications saturé.\n- Ressorts du coup de cœur : facteurs biologiques, psychologiques et sociaux ; dans une application, de petites récompenses et un produit qui arrive au bon moment.\n- **Product ID** : son framework, inspiré de *Designing for Emotion* d'Aaron Walter, fait le portrait du produit comme d'une personne (voix, caractère, énergie) pour aligner toutes les parties prenantes.\n- Contre l'objection du MVP « on verra plus tard » : la première impression n'arrive qu'une fois ; elle cite les trois quarts des utilisateurs qui abandonnent une application après le premier jour.\n- En questions : l'IA élève le niveau d'exigence, mais il faut toujours un designer pour trancher et guider l'outil. Une coupure Wi-Fi a gêné les animations au début.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "PEzwLieJLL8",
+        "title": "Lovable at first sight : affirmer la personnalité de son produit pour créer le coup de cœur",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "catch-me-if-you-can-comment-j-ai-vole-ma-moto-aux-voleurs",
+      "day": "2026-07-03",
+      "type": "talk",
+      "title": "Catch me if you can : Comment j'ai volé ma moto aux voleurs (3 fois)",
+      "speakers": [
+        "Julien Haumont — Zenika"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Fil rouge : les vols répétés de la moto du speaker à Nantes et le rôle des **traceurs GPS** ; il cite, sans source retrouvée, 15 % de deux-roues retrouvés sans traceur contre 85 % avec.\n- Démontage d'un traceur en direct : batterie, antenne, carte SIM, microcontrôleur et puce GNSS ; critique de l'argument de l'installation rapide, et un autre traceur qui lui a vidé la batterie de la moto.\n- Récit d'une récupération de nuit, en coordination avec trois équipages de la BAC et un téléphone à 5 % de batterie.\n- Méthodes des voleurs : arracher le câble du traceur, stocker la moto en attendant que la batterie interne meure, camion faisant cage de Faraday.\n- Épilogue : un nouveau vol survenu la semaine même de la conférence. Un talk « atypique » qui mêle électronique embarquée et récit personnel.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "RXDOYHy3b_A",
+        "title": "Catch me if you can : Comment j'ai volé ma moto aux voleurs (3 fois)",
+        "publishedAt": "2026-07-09",
+        "transcript": true
+      }
+    },
+    {
       "id": "art-generatif-de-la-decouverte-a-la-publication",
       "day": "2026-07-03",
       "type": "keynote",
@@ -389,12 +1175,12 @@
       ]
     }
   ],
-  "synthesisUpdatedAt": "2026-10-05",
+  "synthesisUpdatedAt": "2026-11-09",
   "edition": "7e édition",
   "programUrl": "https://sunny-tech.io/schedule/day-1",
   "note": "7ᵉ édition, 2 & 3 juillet 2026 à la Faculté des Sciences de Montpellier. Environ 60 sessions sur 5 salles (Lavande, Coquelicot, Olivier, Thym, Romarin) : talks de 50 min, formats courts de 20 min et ateliers de 110 min, répartis en pistes IA & Data, Cloud & DevOps, Architecture & Sécurité, Interfaces utilisateurs, Ingénierie logicielle, Conception et « Atypique ». Conférence organisée par une association de bénévoles.",
-  "corpus": "**2 comptes-rendus de blog** : Antoine Mayer (09/07/2026, sa journée du 2 juillet, 6 sessions commentées ; il était aussi speaker le 3) et David Drugeon-Hamon (août 2026, 9 talks recommandés). S'y ajoutent les posts Bluesky de Sunny Tech et de deux speakers (Camille Roux, Florian Forestier), le **programme officiel** et **15 transcripts** de vidéos parmi les **52** publiées le 09/07/2026 sur la chaîne YouTube Sunny Tech.",
-  "limits": "Retours participants **très minces** : deux blogueurs, dont un speaker, qui listent leurs sessions préférées plus qu'ils ne les critiquent ; **aucun post LinkedIn** n'a été trouvé (7 recherches web le 05/10/2026, résultats limités aux pages de l'organisation et aux annonces de sponsors). Les 6 premiers transcripts relèvent d'un choix éditorial (keynote, IA, organisation), les 9 suivants des sessions citées par les blogueurs, d'où un biais Cloud et DevOps. Environ 45 sessions restent sans contenu analysé.",
+  "corpus": "**2 comptes-rendus de blog** : Antoine Mayer (09/07/2026, sa journée du 2 juillet, 6 sessions commentées ; il était aussi speaker le 3) et David Drugeon-Hamon (août 2026, 9 talks recommandés). S'y ajoutent les posts Bluesky de Sunny Tech et de deux speakers (Camille Roux, Florian Forestier), le **programme officiel** (relu le 09/11/2026 pour les jours et formats) et les **transcripts des 52 vidéos** publiées le 09/07/2026 sur la chaîne YouTube Sunny Tech (15 analysés en détail en octobre et début novembre, 37 lus par échantillonnage le 09/11/2026).",
+  "limits": "Retours participants **très minces** : deux blogueurs, dont un speaker, qui listent leurs sessions préférées plus qu'ils ne les critiquent ; **aucun post LinkedIn** n'a été trouvé (7 recherches web le 05/10/2026, puis une seconde passe le 09/11/2026 sur LinkedIn, blogs d'ESN, Medium, dev.to, Speaker Deck et Mastodon). La quasi-totalité des résumés décrit donc ce qui a été dit sur scène, pas sa réception ; les 37 derniers transcripts ont été lus par échantillonnage (début, milieu, fin) et les sous-titres automatiques déforment souvent noms et termes techniques. Neuf sessions restent sans contenu (cinq ateliers non filmés et quatre talks absents de la playlist), et la keynote de clôture, sans vidéo, ne repose que sur le programme et le post de la speakeuse.",
   "tldr": "**D'après les vidéos et deux blogs, Sunny Tech 2026 a mêlé une keynote très critique sur les mythologies de la tech et l'AGI, des retours d'expérience concrets sur l'IA en production (astreintes, legacy, vibe coding) et une solide piste sécurité et Cloud (failles des LLM, supply chain, chaos engineering), avec un même message : l'IA amplifie l'expertise existante, à condition de préserver les compétences humaines et de prouver plutôt que supposer.**",
   "keyTakeaways": [
     "Ne pas confier un chantier legacy à un prompt : monter d'abord en compétence fonctionnelle et technique (discovery DDD assistée par agents), puis co-construire la stratégie de migration (Shodo Studio).",
@@ -409,52 +1195,15 @@
     "Ne pas céder à la peur du remplacement : le métier est de résoudre des problèmes, pas d'écrire du code ; réinvestir l'architecture et la sécurité (Neveu)."
   ],
   "sessionsWithoutFeedback": [
-    "L'animation web responsable (Josiane Makelele)",
-    "Grandir avec le numérique : apprendre aux enfants à s'en protéger (Estelle Landry)",
     "CJS, ESM, WTF ?? (Théo Gianella)",
-    "Initier votre démarche Platform Engineering (Emilien Escalle, Frédéric Léger) — atelier",
-    "Another World, une belle leçon d'architecture logicielle (Olivier Poncet)",
-    "Et si on faisait du simulation-driven development ? (Pierre Zemb)",
-    "Serious game Event Storming chez le Père Noël (Dorian Lamandé, Jérémie Bohbot) — atelier",
-    "Un donjon, deux donjons, trois donjons… (Sylvain Gougouzian, Florian Forestier)",
-    "Et si vos outils faisaient un peu plus pour vous ? (Jules Poissonnet)",
+    "Initier votre démarche Platform Engineering (Emilien Escalle, Frédéric Léger), atelier",
+    "Serious game Event Storming chez le Père Noël (Dorian Lamandé, Jérémie Bohbot), atelier",
     "Toujours en UUIDv4/v5 ? (Brice Jaglin, Axel Czarniak)",
-    "Bienvenue dans la jungle CloudNative : les container runtimes (Rachid Zarouali)",
-    "La révolution WebGPU (Julien Sulpis)",
-    "Local-first et sync-engines (Benjamin Legrand)",
-    "1h50 pour créer une app front avec la Clean Archigonale (Guillaume Chauvet, Dorian Lamandé) — atelier",
-    "C'est qui ce Zig ? (Didier Plaindoux)",
-    "Conception de logiciels : le match humains vs AI (Olivier Azeau)",
-    "BuildKit Powers (Emilien Escalle, Frédéric Léger)",
-    "AI Apocalypse Survival Kit : coding agents & Tiny Language Models (Philippe Charrière)",
-    "Tech & Bien-être (Luis Rubiera)",
-    "Merge Smarter, Not Harder : l'IA co-tech lead (Carmen Piciorus, Michael Enjolras)",
-    "Survivre à la bulle de l'IA (Eric Burel)",
-    "Les dev containers (Stéphane Philippart)",
-    "Cyber Resilience Act : qu'es aquò ? (Cyril Lopez)",
-    "Pairing is caring! (Olivier Breda)",
-    "Déploiement de clusters Kubernetes à grande échelle (Rachid Zarouali) — atelier",
-    "Accessibilité : cochez les cases… et ratez la cible (Gabriel Pillet, Vanessa Strub)",
-    "Savez-vous vraiment ce qu'est la couleur ? (Julien Sulpis)",
-    "Sous le capot d'une base de données analytique (Sylvain Wallez)",
-    "(Re)devenez des fullstack humans (Raphaël Semeteys, Hajer Mabrouk)",
+    "1h50 pour créer une app front avec la Clean Archigonale (Guillaume Chauvet, Dorian Lamandé), atelier",
+    "Déploiement de clusters Kubernetes à grande échelle (Rachid Zarouali), atelier",
     "Passkeys (Sébastien Buchoux)",
-    "Lorsqu'un simple bug réseau vous emmène dans les entrailles de Linux (Florian Forestier)",
-    "Détectives de la prod (Sébastien Ferrer)",
-    "Ratatui (Yann Prono)",
     "Silence… Ça tourne ! (Nicolas Guillot)",
-    "Une identité pour les fédérer toutes ! (Sébastien Ferrer)",
-    "Codez votre Game Master de JDR avec Strands Agents (Olivier Leplus, Adrien Lebret, Tiffany Souterre, Arnaud Jean) — atelier",
-    "Booster votre productivité avec le Platform Engineering (Sébastien Lallemand, Guillaume Estrem)",
-    "De 2 à 50 modules Terraform avec Terragrunt Stacks (Stéphane Trognon)",
-    "TODO : faut-il arrêter les TODO dans le code ? (Ando Nary)",
-    "Quand TCP meurt à 20 minutes de latence (Sarah Theoulle, Hugo Ponthieu, Mathias Durat)",
-    "Le Magicien Zod (Lucas Audart, Mickael Alves)",
-    "RINA : repenser l'Internet du futur (Théo Tchilinguirian)",
-    "TDD × Vibe Coding : duel ou duo gagnant ? (Amine El Gaouzi)",
-    "Rust pour le développement d'applications métier (Stéphane Trebel)",
-    "Lovable at first sight (Chantal Khin)",
-    "Catch me if you can : comment j'ai volé ma moto aux voleurs (Julien Haumont)"
+    "Codez votre Game Master de JDR avec Strands Agents (Olivier Leplus, Adrien Lebret, Tiffany Souterre, Arnaud Jean), atelier"
   ],
   "sources": [
     {
@@ -494,11 +1243,11 @@
       "url": "https://bsky.app/profile/sunnytech.bsky.social"
     },
     {
-      "label": "Posts LinkedIn : aucun retour de participant identifié (recherches du 05/10/2026)"
+      "label": "Posts LinkedIn : aucun retour de participant identifié (recherches du 05/10/2026 et du 09/11/2026)"
     },
     {
-      "label": "Transcripts (sous-titres YouTube) : Neveu, Nourry & Lacroix, Foures, Bierlaire, Graveaud, Pannier & Combette, Eleouet, Simonnet, Roset & Orain, Trebel, Vache (×2), Vouillaume, Mayer & Lenormand, Galais"
+      "label": "Transcripts (sous-titres YouTube) des 52 vidéos de la playlist « Sunny Tech 2026 » : 15 analysés en détail, 37 lus par échantillonnage le 09/11/2026"
     }
   ],
-  "revisit": "aucun post LinkedIn trouvé au 05/10/2026 (7 recherches web) ; seulement 2 blogs (dont un speaker) et 2 posts Bluesky de speakers : à revoir pour chercher des retours LinkedIn, Mastodon ou des comptes-rendus d'ESN montpelliéraines"
+  "revisit": "toujours aucun post LinkedIn ni nouveau compte-rendu au 09/11/2026 (6 recherches web : LinkedIn, hashtags, blogs d'ESN, Medium/dev.to/Speaker Deck ; API Mastodon #sunnytech/#sunnytech2026 sur 5 instances, seule une rediffusion PeerTube d'Audrey Neveu ; recap OVHcloud DevRel de juillet introuvable en 404) ; corpus participants limité à 2 blogs (dont un speaker) et 2 posts Bluesky de speakers, toutes les vidéos étant désormais transcrites : à revoir avec une recherche nominative des speakers sur LinkedIn"
 }

@@ -5,9 +5,225 @@
   "start": "2022-04-07",
   "end": "2022-04-08",
   "city": "Paris",
+  "venue": "Cité Internationale Universitaire de Paris",
   "url": "https://live.symfony.com/2022-paris/",
+  "programUrl": "https://live.symfony.com/2022-paris/schedule",
   "dateConfidence": "ok",
-  "note": "Dates officielles (live.symfony.com/all) ; talks en français. Lieu non retrouvé.",
-  "status": "pending",
-  "sessions": []
+  "note": "Dates officielles (live.symfony.com/all) ; talks en français. Deux jours, une seule salle (blog Symfony), 14 sessions dont deux keynotes (Fabien Potencier le jeudi 7 à 9h15, Nicolas Grekas le vendredi 8 à 9h15). Retour au présentiel après l'édition en ligne de 2021, à la Cité Internationale Universitaire (SensioLabs). Workshops préalables les 5 et 6 avril chez SensioLabs à Asnières. Replays payants sur live.symfony.com.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-09",
+  "revisit": "Corpus participant très mince : un seul compte rendu (SensioLabs, sponsor Diamond, centré sur ses propres speakers), aucun post LinkedIn ni blog de participant trouvé, AFSY inaccessible (HTTP 403) ; replays derrière paywall, pas de transcript. L'essentiel des résumés vient des slides.",
+  "corpus": "Programme officiel (live.symfony.com, page archivée localement) et annonce du blog Symfony ; dépôt GitHub SymfonyLive/paris-2022-talks ; récap SensioLabs (Elise Hamimi, 28 avril 2022) et interviews de ses trois speakers (1er juin 2022) ; billet de Kévin Dunglas (speaker, 12 avril 2022) ; mention dans le récap SymfonyCon de JoliCode (novembre 2022) ; slides de 8 talks relues (Speaker Deck, slides.com, PDF). Huit recherches web.",
+  "limits": "Aucun retour de participant indépendant : le seul récap vient d'un sponsor qui détaille surtout ses propres speakers, et aucun post LinkedIn, X ou Mastodon n'a été trouvé. Les vidéos des talks sont réservées aux détenteurs d'un billet replay (live.symfony.com, aussi diffusées sur SymfonyCasts, payant) ; seul un « Best of » est public sur YouTube, sans transcript. La plupart des résumés reposent donc sur les slides, c'est-à-dire sur ce que les speakers ont préparé, pas sur ce que la salle a retenu.",
+  "tldr": "Une édition de **retrouvailles en présentiel** après le COVID, au programme très **architecture et sécurité** (DDD et hexagonal avec API Platform, permissions, JWT, SSO Keycloak), avec deux ouvertures remarquées : **le web décentralisé avec Solid** (Dunglas) et l'open source au service de la société (Galopin).",
+  "keyTakeaways": [
+    "Garder le **modèle métier indépendant d'API Platform** : ressources API dans l'infrastructure, opérations métier routées en commandes et requêtes via des providers et processors dédiés (Chalas et Arlaud, slides).",
+    "Centraliser l'autorisation dans des **voters**, puis rendre les permissions administrables (règles en base évaluées par ExpressionLanguage) pour éviter un voter par règle (Marion Agé, slides).",
+    "JWT n'est qu'un format : **imposer l'algorithme attendu**, valider les claims, préférer les signatures asymétriques, des durées de vie courtes plutôt que la révocation, et ne rien mettre de sensible dans un JWS lisible par tous (Karim Pinchon, slides).",
+    "Pour des données configurables, une **colonne JSON mappée sur des objets PHP typés** via un type Doctrine et un listener de diff évite l'héritage Doctrine et le `serialize()` PHP, jugé *« NO GO »* (Grégoire Pineau, slides).",
+    "Externaliser les règles de validation en **couples Constraint et Validator déclarés comme services** plutôt qu'en callbacks inline : plus testable et réutilisable (Marion Hurteau, slides).",
+    "L'asynchrone s'utilise **dans une application Symfony synchrone** : I/O non bloquants, processus parallèles et, depuis PHP 8.1, coroutines via les fibers ; chez Télé-Loisirs, une page aux 15 requêtes Elasticsearch parallélisées voit son `kernel.view` passer d'environ 1,5 s à 0,6 s dans le profiler (Jérôme Tamarelle, slides).",
+    "Avant d'écrire du code, **chercher le composant Symfony qui existe déjà** : HtmlSanitizer, String, OptionsResolver, Intl (Alexandre Daubois, slides et SensioLabs).",
+    "Conseils de speakers débutants : *expliquer est la meilleure façon d'apprendre*, combattre le syndrome de l'imposteur et brancher son portable pendant le talk (Daubois, Voullemier, Lebarillier, interviews SensioLabs, speakers)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-scaling-symfony-as-an-open-source-project",
+      "day": "2022-04-07",
+      "type": "keynote",
+      "title": "Keynote : Scaling Symfony as an Open-Source project",
+      "speakers": ["Fabien Potencier — Symfony"],
+      "feedbackFrom": ["Blog SensioLabs (Elise Hamimi)", "Blog JoliCode (récap SymfonyCon 2022)"],
+      "summary": "- Keynote d'ouverture le jeudi à 9h15 (blog Symfony), délivrée en français ; le programme officiel n'en donne pas de descriptif.\n- SensioLabs la présente sous un autre titre : *« How did a bug in Symfony ExpressionLanguage lead to starting the work on Twig 4 »*. Un **bug dans ExpressionLanguage** aurait conduit Fabien Potencier à lancer **Twig 4** et à en faire un composant Symfony.\n- JoliCode rappelle sept mois plus tard que Fabien *« announced the integration of Twig in Symfony during SymfonyLive Paris 2022 »*.\n- L'écart entre le titre officiel et le contenu rapporté n'a pas pu être vérifié (replay payant, pas de slides publiées).",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "comment-valider-dynamiquement-de-la-donnee",
+      "day": "2022-04-07",
+      "type": "talk",
+      "title": "Comment valider dynamiquement de la donnée",
+      "speakers": ["Marion Hurteau"],
+      "feedbackFrom": [],
+      "summary": "- Problème posé : sur certains endpoints, la forme attendue de `data` **dépend d'un champ `type`** envoyé par le client (programme).\n- Les slides déroulent un exemple Pokémon (niveaux, types, évolutions, `POST /evolution/create`) et passent en revue le composant Validator : contraintes natives, contraintes composées (`AtLeastOneOf`, `Sequentially`, `Compound`), `Callback` et `Expression`, groupes de validation.\n- Clé de la validation dynamique : des **validateurs déclarés comme services** (tags, `_instanceof`, `!tagged_locator`) et `$context->getValidator()->inContext($context)` pour valider la donnée imbriquée dans le contexte courant.\n- Conclusion des slides : les callbacks inline sont rapides à écrire mais nuisent à la **réutilisabilité et à la testabilité** ; mieux vaut des couples Constraint/Validator externalisés.\n- Résumé fondé sur les slides seules, aucun retour de participant trouvé.",
+      "summarySources": ["slides", "program"]
+    },
+    {
+      "id": "du-ddd-avec-api-platform",
+      "type": "talk",
+      "title": "Du DDD avec API Platform",
+      "speakers": ["Robin Chalas — Les-Tilleuls.coop", "Mathias Arlaud — Les-Tilleuls.coop"],
+      "feedbackFrom": [],
+      "summary": "- Question du programme : un framework orienté RAD comme API Platform est-il compatible avec le DDD ? Réponse annoncée : **oui**.\n- Les slides rappellent que le DDD *« is not a fast way to build software »* (citation de William Durand) et posent une **architecture hexagonale** en trois couches : Domain, Application, Infrastructure.\n- Le modèle métier (`Book`) reste **libre de toute préoccupation API** ; la ressource API vit dans l'infrastructure et se construit depuis le modèle.\n- Les opérations métier passent par des **commandes et requêtes** dispatchées sur des bus, branchées sur les providers et processors d'**API Platform 3** (ex. `GET /books/cheapest`, `POST /books/{id}/discount`).\n- Résumé fondé sur les slides seules.",
+      "summarySources": ["slides", "program"]
+    },
+    {
+      "id": "doctrine-objet-type-et-colonne-json",
+      "type": "talk",
+      "title": "Doctrine, objet typé, et colonne JSON",
+      "speakers": ["Grégoire Pineau — JoliCode"],
+      "feedbackFrom": [],
+      "summary": "- Cas d'école : un CMS à **plus de 20 types de blocs** configurables, qu'on veut stocker en base sous forme d'objets PHP (une classe par bloc) sans SQL superflu.\n- Les pistes écartées : héritage Doctrine (MappedSuperclass, Single Table, Class Table), `serialize()` PHP (*« NO GO »* : non interopérable, casse au renommage de classe), `json_encode` brut qui ramène un simple array.\n- Solution retenue : un **type DBAL personnalisé** qui mappe la colonne JSON sur un objet typé, plus un **listener Doctrine** (environ 140 lignes) qui mémorise l'état initial et calcule un diff au `preFlush`, car l'Unit of Work ne voit pas les modifications d'un objet passé par référence.\n- Limites assumées : classes supprimées, migrations de données, performance de la sérialisation ; `dunglas/doctrine-json-odm` cité comme alternative existante.\n- Résumé fondé sur les slides seules.",
+      "summarySources": ["slides", "program"]
+    },
+    {
+      "id": "connaissez-vous-vraiment-jwt",
+      "type": "talk",
+      "title": "Connaissez-vous vraiment JWT ?",
+      "speakers": ["Karim Pinchon"],
+      "feedbackFrom": [],
+      "summary": "- Tour de la famille **JOSE** au-delà du JWS signé habituel : JWE (chiffré), JWK et key sets, JWA (programme et slides).\n- Rappel central : un **JWS est lisible par tous**, il garantit l'intégrité, pas la confidentialité.\n- Failles classiques listées : `alg: none` accepté, clé publique RSA réutilisée comme secret HMAC, brute force de secrets faibles, substitution de jeton.\n- Bonnes pratiques : **imposer l'algorithme**, valider `exp`/`aud`/`iss`, préférer l'asymétrique, durées de vie courtes plutôt que révocation, ne pas logger les jetons, HTTPS partout ; LexikJWTAuthenticationBundle côté Symfony, PASETO, Biscuit ou Macaroons comme alternatives.\n- Conclusion des slides : JWT n'est qu'un format, sa sécurité dépend de l'implémentation. Résumé fondé sur les slides seules.",
+      "summarySources": ["slides", "program"]
+    },
+    {
+      "id": "des-composants-symfony-meconnus-qui-valent-le-detour",
+      "day": "2022-04-08",
+      "type": "talk",
+      "title": "Des composants Symfony méconnus qui valent le détour",
+      "speakers": ["Alexandre Daubois — SensioLabs"],
+      "feedbackFrom": ["Blog SensioLabs (Elise Hamimi)", "Alexandre Daubois (speaker, interview SensioLabs)"],
+      "summary": "- Symfony est *« plus qu'un framework »* : ses composants sont des bibliothèques autonomes **utilisables dans n'importe quel projet PHP** (programme).\n- Composants présentés (slides) : **HtmlSanitizer**, alors à paraître dans Symfony 6.1, qui reconstruit le HTML à partir du contenu sûr au lieu de supprimer les nœuds dangereux ; **String** et la gestion Unicode (graphèmes, slugger) ; **OptionsResolver** ; **Intl**, car l'internationalisation dépasse la traduction.\n- SensioLabs retient des composants qui peuvent *« save many development hours »*.\n- Le talk est né d'un article de l'auteur recensant 50 composants Symfony ; il y a constaté que beaucoup de développeurs utilisent certains composants sans le savoir (speaker).\n- Son conseil aux futurs speakers : **expliquer est la meilleure façon d'apprendre**, et un sujet déjà traité ailleurs peut résonner autrement avec un autre public (speaker).",
+      "summarySources": ["slides", "blog", "program"]
+    },
+    {
+      "id": "l-architecture-hexagonale-fini-la-theorie-on-passe-a-la-pratique",
+      "type": "talk",
+      "title": "L'architecture hexagonale, fini la théorie, on passe à la pratique !",
+      "speakers": ["Etienne Lebarillier — SensioLabs"],
+      "feedbackFrom": ["Blog SensioLabs (Elise Hamimi)", "Etienne Lebarillier (speaker, interview SensioLabs)"],
+      "summary": "- Intégrer une **architecture hexagonale dans Symfony** sans détour théorique : accès à l'hexagone par UseCase ou CQRS, persistance par ORM ou pattern Memento, stratégie de test **Diamond testing** (programme, SensioLabs).\n- Le talk s'appuie sur près d'un an de pratique en mission chez **Akeneo**, client à forte culture software craftsmanship (speaker).\n- Le speaker décrit l'expérience comme « fantastic » et retient le retour direct des participants ; conseil pratique : *garder son portable branché pendant le talk* (speaker).\n- Pas de slides publiées ni de retour de participant : contenu connu par le programme et SensioLabs uniquement.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "code-asynchrone-dans-une-application-symfony-synchrone",
+      "day": "2022-04-08",
+      "type": "talk",
+      "title": "Code asynchrone dans une application Symfony synchrone",
+      "speakers": ["Jérôme Tamarelle — Prisma Media"],
+      "feedbackFrom": [],
+      "summary": "- L'asynchrone en PHP recouvre **trois concepts** distincts : I/O non bloquants, délégation à des processus parallèles, branches concurrentes dans un même thread (slides).\n- Démonstrations : HttpClient de Symfony non bloquant à l'envoi mais **bloquant à la lecture** sauf via `stream()`, promesses ReactPHP, coroutines AMPHP puis **AMP v5 sur les fibers de PHP 8.1**, Process et Messenger.\n- Cas Télé-Loisirs (Prisma Media) : chaque page est composée de composants PHP résolus simultanément ; le profiler montre `kernel.view` passer d'environ **1 474 ms à 602 ms** quand les requêtes Elasticsearch sont parallélisées.\n- Conclusion des slides : chaque concept est **utilisable indépendamment dans un contexte synchrone**, et les fibers démocratisent les coroutines pour structurer le code par domaine. Un prototype de HttpClient à base de fibers est présenté comme *« très incomplet »*.\n- Résumé fondé sur les slides seules.",
+      "summarySources": ["slides", "program"]
+    },
+    {
+      "id": "gestion-des-permissions-dans-symfony",
+      "type": "talk",
+      "title": "Gestion des permissions dans Symfony",
+      "speakers": ["Marion Agé"],
+      "feedbackFrom": ["Blog SensioLabs (Elise Hamimi)"],
+      "summary": "- État de la sécurité Symfony en 2022 : authenticators et Passport, firewalls, `access_control`, hiérarchie de rôles, `#[IsGranted]` (slides).\n- Les **voters** comme point unique de la logique d'autorisation, avec les stratégies de l'AccessDecisionManager (affirmative, consensus, unanimous, priority).\n- Extension proposée : des **permissions administrables** (Rule, Permission, Group) évaluées par ExpressionLanguage via un voter générique, sans écrire un voter par règle ; application aux opérations et propriétés API Platform.\n- Cas d'usage final : n'envoyer une **alerte interne qu'aux personnes autorisées** sur l'objet concerné.\n- SensioLabs se contente de mentionner le sujet ; résumé fondé surtout sur les slides.",
+      "summarySources": ["slides", "blog", "program"]
+    },
+    {
+      "id": "developper-une-application-web-decentralisee-avec-symfony-et-api-platform",
+      "type": "talk",
+      "title": "Développer une application web décentralisée avec Symfony et API Platform",
+      "speakers": ["Kévin Dunglas — Les-Tilleuls.coop"],
+      "feedbackFrom": ["Kévin Dunglas (speaker, blog dunglas.dev)"],
+      "summary": "- *« Non, cette présentation ne parle pas du web3 »* (programme) : la décentralisation proposée repose sur les **standards du web** (RDF, JSON-LD, OpenID Connect), pas sur la blockchain, critiquée dans les slides pour sa centralisation, ses problèmes de vie privée et son coût environnemental.\n- **Solid**, porté par Tim Berners-Lee : les données de l'utilisateur vivent dans des *pods* qu'il contrôle, et il choisit quelle application accède à quoi.\n- Annonce d'une nouvelle bibliothèque **solid-client-php** et de son bundle Symfony (authenticator Passport, client de pod), présentée comme expérimentale et ouverte aux contributions (speaker).\n- Slides en anglais, talk en français ; replay sur live.symfony.com (speaker).",
+      "summarySources": ["slides", "blog", "program"],
+      "video": {
+        "url": "https://live.symfony.com/account/replay/video/632",
+        "title": "Replay SymfonyLive Paris 2022 (accès payant)",
+        "transcript": false
+      }
+    },
+    {
+      "id": "un-sso-avec-keycloak-et-symfony",
+      "type": "talk",
+      "title": "Un SSO avec Keycloak et Symfony",
+      "speakers": ["Laurent Voullemier — SensioLabs"],
+      "feedbackFrom": ["Blog SensioLabs (Elise Hamimi)", "Laurent Voullemier (speaker, interview SensioLabs)"],
+      "summary": "- Brancher **Keycloak**, IAM compatible OpenID Connect, sur le **nouveau système de sécurité** de Symfony pour obtenir un SSO (programme, speaker).\n- Le talk est né d'une expérimentation personnelle devenue article : appliquer enfin le nouveau système d'authentification et découvrir Keycloak en même temps (speaker).\n- Premier talk du speaker en conférence physique ; il retient l'échange avec les autres speakers et les participants après la session.\n- Conseils relayés, attribués à Pascal Martin : **combattre le syndrome de l'imposteur** et ne pas craindre le trac (speaker).\n- Slides publiées sur Google Slides mais illisibles hors navigateur : non relues.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "en-premiere-ligne-symfony-et-l-open-source-au-service-de-la-societe",
+      "type": "talk",
+      "title": "En Première Ligne : Symfony et l'open source au service de la société",
+      "speakers": ["Titouan Galopin"],
+      "feedbackFrom": ["Blog SensioLabs (Elise Hamimi)"],
+      "summary": "- Retour sur **enpremiereligne.fr**, plateforme d'entraide gratuite et open source construite sur Symfony en trois jours après l'annonce de la fermeture des écoles le 12 mars 2020 (programme).\n- But : permettre aux personnels de première ligne (santé, supermarchés, collecte des déchets, énergie) de continuer à travailler avec leurs enfants à la maison.\n- Message porté : **les développeurs peuvent agir sur la société** en mettant leurs compétences au service de projets d'intérêt général ; SensioLabs en fait le point marquant du talk.\n- Pas de slides publiées ni d'autre retour.",
+      "summarySources": ["blog", "program"]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Keynote : Vous avez dit Symfony 6.1 ? (Nicolas Grekas)",
+    "À la Recherche du Temps Perdu (Jérôme Vieilledent)"
+  ],
+  "sources": [
+    {
+      "label": "Programme officiel SymfonyLive Paris 2022",
+      "url": "https://live.symfony.com/2022-paris/schedule"
+    },
+    {
+      "label": "Blog Symfony : « SymfonyLive Paris 2022 conference is on this Thursday and Friday »",
+      "url": "https://symfony.com/blog/symfonylive-paris-2022-conference-is-on-this-thursday-and-friday"
+    },
+    {
+      "label": "Blog Symfony : « A Week of Symfony #797 (4-10 April 2022) »",
+      "url": "https://symfony.com/blog/a-week-of-symfony-797-4-10-april-2022"
+    },
+    {
+      "label": "Dépôt des talks (liens slides et replays)",
+      "url": "https://github.com/SymfonyLive/paris-2022-talks"
+    },
+    {
+      "label": "SensioLabs : « SymfonyLive Paris 2022: our feedback » (Elise Hamimi, 28 avril 2022)",
+      "url": "https://sensiolabs.com/blog/2022/the-symfonylive-paris-2022-our-feedback"
+    },
+    {
+      "label": "SensioLabs : « Interviewing the 3 SensioLabs speakers at SymfonyLive Paris 2022 » (Elise Hamimi, 1er juin 2022)",
+      "url": "https://sensiolabs.com/blog/2022/interviewing-the-3-sensiolabs-speakers-at-symfonylive-paris-2022"
+    },
+    {
+      "label": "Kévin Dunglas : « Building Decentralized Web Apps with Solid and PHP » (12 avril 2022)",
+      "url": "https://dunglas.dev/2022/04/building-decentralized-web-apps-with-solid-and-php/"
+    },
+    {
+      "label": "JoliCode : « SymfonyCon at Disneyland Paris for the 15+2th birthday of Symfony » (29 novembre 2022, mention de la keynote de Paris)",
+      "url": "https://jolicode.com/blog/symfonycon-at-disneyland-paris-for-the-15-2th-birthday-of-symfony"
+    },
+    {
+      "label": "Slides : Marion Hurteau, valider dynamiquement de la donnée",
+      "url": "https://speakerdeck.com/marionleherisson/valider-dynamiquement-de-la-donnee-avec-symfony"
+    },
+    {
+      "label": "Slides : Robin Chalas et Mathias Arlaud, DDD et API Platform",
+      "url": "https://slides.com/mathiasarlaud/sflive-apip-ddd"
+    },
+    {
+      "label": "Slides : Grégoire Pineau, Doctrine, objet typé et colonne JSON",
+      "url": "https://speakerdeck.com/lyrixx/doctrine-objet-type-et-colonne-json"
+    },
+    {
+      "label": "Slides : Karim Pinchon, Connaissez-vous vraiment JWT ?",
+      "url": "https://slides.com/kpn13/connaissez-vous-vraiment-jwt-sf-live-2022"
+    },
+    {
+      "label": "Slides : Alexandre Daubois, composants Symfony méconnus",
+      "url": "https://speakerdeck.com/alexdaubois/symfonylive-paris-2022-des-composants-symfony-meconnus-qui-valent-le-detour"
+    },
+    {
+      "label": "Slides : Jérôme Tamarelle, code asynchrone (PDF)",
+      "url": "https://jerome.tamarelle.net/slides/2022-04-08-PHP-Async-SymfonyLiveParis2022.pdf"
+    },
+    {
+      "label": "Slides : Marion Agé, gestion des permissions",
+      "url": "https://slides.com/k-mos/symfonylive-paris-2022/"
+    },
+    {
+      "label": "Slides : Kévin Dunglas, Solid et Symfony",
+      "url": "https://speakerdeck.com/dunglas/building-decentralized-web-apps-with-solid-and-symfony"
+    },
+    {
+      "label": "Vidéo « SymfonyLive Paris 2022 - Best of » (YouTube Symfony)",
+      "url": "https://www.youtube.com/watch?v=DLMlXKriwwM"
+    },
+    {
+      "label": "Replays des talks (accès payant)",
+      "url": "https://live.symfony.com/account/replay/videos/2022-paris"
+    },
+    {
+      "label": "Posts LinkedIn : aucun trouvé (recherche site:linkedin.com sans résultat) ; afsy.fr inaccessible (HTTP 403)"
+    }
+  ]
 }

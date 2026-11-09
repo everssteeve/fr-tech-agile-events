@@ -7,7 +7,297 @@
   "city": "Tours",
   "venue": "Polytech Tours",
   "url": "https://2022.touraine.tech",
+  "programUrl": "https://2022.touraine.tech/#schedule",
+  "theme": "#BackToSchool",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "4e édition, vendredi 21 janvier 2022 de 8 h 30 à 18 h 30 à Polytech Tours, mot-clé « #BackToSchool » sur le site. Quatre salles (Turing, Pascal, Lovelace, TD1). Formats conférence (50 min), quickie (15 min) et hands-on (120 min). Selon le blog OVHcloud : plus de 300 participants, 121 propositions au CFP, 2 keynotes, 18 conférences, 9 quickies, 2 workshops, 37 speakers et 10 sponsors ; seules les deux plus grandes salles étaient filmées. Le billet OVHcloud date l'événement du « vendredi 22 janvier », une erreur : le 21 janvier 2022 était un vendredi, et le site officiel l'indique. 16 talks filmés et un aftermovie dans la playlist officielle.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-09",
+  "revisit": "Aucun retour de participant indépendant lu : seul le billet du stand OVHcloud, écrit par Aurélie Vache et Horacio Gonzalez (speaker). 6 recherches web (blogs, site:linkedin.com, Speaker Deck, sketchnotes, hashtags, titres de sessions non filmées) sans autre résultat. Chercher les posts LinkedIn et les tweets de janvier 2022 (#TouraineTech, #TNT22, noms des speakers), le visuel « Feedback » publié par Denis Germain (blog.zwindler.fr), et les slides des sessions non filmées (design system, éco-conception backend, accessibilité, GitOps, navigateurs).",
+  "corpus": "Le site officiel archivé (programme et liens vers les slides), le billet de blog de l'équipe DevRel OVHcloud (28 janvier 2022), les slides Speaker Deck de Gérard Paligot et le dépôt GitHub de Sébastien Jaupart. S'y ajoutent les 16 transcripts automatiques YouTube de la playlist officielle et l'aftermovie, lus en novembre 2026.",
+  "limits": "Corpus participant quasi nul : aucun post LinkedIn, aucun thread, aucune sketchnote trouvé, et le seul billet vient d'un sponsor dont deux membres étaient speakers. Les résumés disent donc ce qui a été présenté sur scène, pas ce que le public en a retenu. Seules les deux plus grandes salles étaient filmées : environ la moitié du programme (dont les deux keynotes, aux orateurs non identifiés) n'est pas documentée. Les sous-titres automatiques déforment noms propres et termes techniques ; ceux du quickie HTTPS ne commencent qu'à la 2e minute.",
+  "tldr": "**Une édition d'une journée et plus de 300 participants**, au programme très **« fondamentaux du métier »** : protocoles et API (HTTPS, OAuth 2.1, REST/gRPC/GraphQL, OpenAPI), **qualité du code par les types et les tests** (types algébriques, Parse don't validate, mutation testing), et un bloc ops solide (**SRE et error budgets, post-mortems, observabilité avec OpenTelemetry**, DevSecOps).",
+  "keyTakeaways": [
+    "Fixer des SLO et un error budget : tant qu'il reste du budget on livre et on prend des risques, une fois épuisé devs et ops stabilisent ensemble ; la règle ne tient que si le management la respecte (Germain).",
+    "Viser 100 % de disponibilité est une erreur : un cluster trop fiable fait oublier les retries côté applicatif, et la première panne se propage en cascade (Germain).",
+    "Lire les post-mortems publics des autres, tester ses sauvegardes, séparer les identifiants de prod de la documentation et ne jamais blâmer la personne (Aparicio).",
+    "Pour OAuth, n'utiliser que l'Authorization Code Flow avec PKCE et oublier l'implicit flow ; les scopes limitent ce que fait une application, pas les droits d'un humain (Topçu).",
+    "Rendre les états impossibles irreprésentables : types somme et produit (sealed interfaces de Java 17), constructeurs privés et fabriques qui renvoient un Result, parsing aux frontières du système (Grenat, Delegue).",
+    "Compléter la couverture de code par du mutation testing (PIT en Java), mais dans une CI séparée quotidienne ou hebdomadaire, car l'analyse est très lente (Cavy).",
+    "Commencer le DevSecOps par l'analyse des dépendances, puisqu'on n'écrit qu'une petite part du code qu'on met en production, et analyser d'abord le nouveau code des PR (Pessu).",
+    "Instrumenter avec OpenTelemetry et faire passer la télémétrie par un Collector pour éviter l'enfermement chez un éditeur ; échantillonner les traces pour limiter le surcoût (Ambrosetti et Pequegnot).",
+    "Traiter la spécification OpenAPI ou AsyncAPI comme un contrat unique qui alimente doc, linter (Spectral), mocks et tests, plutôt que comme une simple documentation (Charrier).",
+    "Choisir REST, gRPC, GraphQL ou les webhooks à partir du besoin métier et non de la mode : « choisir, c'est renoncer » (Delbrayelle)."
+  ],
+  "sessions": [
+    {
+      "id": "dis-papa-c-est-quoi-un-sre",
+      "day": "2022-01-21",
+      "type": "talk",
+      "title": "Dis papa ? C'est quoi un SRE ?",
+      "speakers": ["Denis Germain — Deezer"],
+      "summary": "- **Sur scène (transcript)** : le point de départ est le **mur de la confusion** entre des ops qui veulent la stabilité et des devs qui doivent livrer vite. DevOps naît vers 2008-2009 pour casser ces silos.\n- Les métriques DORA (lead time, MTTR, taux d'échec des changements, fréquence de déploiement) sont citées, mais pour lui la culture compte plus que l'outillage : partage d'information, communauté de pratique SRE créée chez Deezer, post-mortems sans blâme.\n- Le SRE vient de Google (Ben Treynor Sloss, 2003), et il n'est pas besoin d'être chez Google pour en faire. Ennemi n°1 : le **toil**, ce travail manuel, répétitif et automatisable qui croît avec la charge.\n- Le 100 % de disponibilité n'existe pas et chaque « 9 » coûte beaucoup plus cher. Exemple vécu : un cluster RabbitMQ si fiable que les devs n'avaient pas prévu de retry, d'où une panne en cascade.\n- Le cœur du métier : **SLI, SLO et error budget**. Tant qu'il reste du budget on livre, une fois épuisé on stabilise ensemble, à condition que le top management suive la règle.\n- Profil attendu : Linux, réseau, un langage (Python, Go), un cloud, Docker, mais aussi empathie et pédagogie. Pour l'astreinte : runbooks, ownership clair, wheel of misfortune, chaos engineering.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "l8W8XGK3gSo",
+        "title": "Denis Germain - Dis papa ? C'est quoi un SRE ?",
+        "transcript": true
+      }
+    },
+    {
+      "id": "pere-castor-raconte-nous-une-histoire-d-ops",
+      "day": "2022-01-21",
+      "type": "talk",
+      "title": "Père Castor, raconte nous une histoire (d'OPS)",
+      "speakers": ["David Aparicio — OVHcloud"],
+      "feedbackFrom": ["Blog OVHcloud (Aurélie Vache, Horacio Gonzalez)"],
+      "summary": "- **Sur scène (transcript)** : le talk enchaîne des **post-mortems** publics, lus avec une grille ITIL : chronologie, correctif rapide, solution permanente, communication.\n- Un junior suit une doc qui contient des identifiants de prod et supprime la base en lançant ses tests. Cas cités : AWS (veille de Noël 2012), GitLab, DigitalOcean. Remèdes : validation manuelle avant une action lourde, RBAC, coffre-fort pour les secrets, sauvegardes testées.\n- Un legacy chez OVH sature son pool de connexions, sans doc ni changelog : un script bash « à la MacGyver » le redémarre, une centaine de fois en un an.\n- Panne mondiale de Fastly du 8 juin 2021 (Reddit, The Guardian, PayPal en 503) : personnaliser ses pages d'erreur et s'entraîner à rétablir le service. Autres cas : outillage d'incident chez Elastic, saturation HDFS chez Criteo en 2018, MongoDB exposé sans mot de passe et rançonné, Facebook bloqué hors de ses propres badges.\n- Contre le *hype driven development*, un test simple en CI qui vérifie qu'on ne peut pas se connecter en admin/admin.\n- Conclusion : **ne pas blâmer la personne**, pratiquer le chaos engineering et des jeux de rôle d'incident, tester ses sauvegardes, traquer les SPOF.\n- Le billet OVHcloud (employeur du speaker) reprend le résumé du programme : *« L'échec comme une source de connaissance »*.",
+      "summarySources": ["transcript", "blog", "program"],
+      "video": {
+        "youtubeId": "pjv1Jic7VLM",
+        "title": "David Aparicio - Père Castor 🐻, raconte nous une histoire (d'OPS)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "l-observabilite-de-zero-a-opentelemetry",
+      "day": "2022-01-21",
+      "type": "talk",
+      "title": "L'Observabilité : de Zéro à OpenTelemetry",
+      "speakers": ["Charles-Marie Ambrosetti — Worldline", "David Pequegnot — Worldline"],
+      "summary": "- **Sur scène (transcript)** : ouverture par un sketch de crise en prod (500 000 € de pénalités par heure). Le but est de trouver la cause racine plutôt que redémarrer, sans installer en urgence un outil propriétaire.\n- Trois télémétries : logs, métriques (système, métier, applicatives comme les pools JVM) et traces découpées en spans parents et enfants.\n- **OpenTelemetry** fournit API et SDK, exporte vers Zipkin, Jaeger, Prometheus ou OTLP, et propage le contexte par headers HTTP (standard W3C).\n- L'instrumentation manuelle est verbeuse ; l'auto-instrumentation existe pour Java (agent au démarrage), Python, .NET.\n- Démo sur Spring PetClinic en microservices avec Grafana et Jaeger : requêtes SQL lentes, problème N+1, carte des flux entre services.\n- Le **Collector** (receivers, processors, exporters) unifie des sources hétérogènes, évite le vendor lock-in et peut être chaîné pour n'ouvrir qu'un port dans le firewall ; Worldline y a contribué un receiver et un exporter OpenTSDB.\n- Maturité en janvier 2022 : traces stables, métriques presque, logs pas encore. En questions, ils conseillent l'échantillonnage (par exemple 1 % des requêtes).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "XCJRLd09dA8",
+        "title": "Charles Marie Ambrosetti, David Pequegnot - L’Observabilité : de Zéro à OpenTelemetry",
+        "transcript": true
+      }
+    },
+    {
+      "id": "devsecops-de-la-securite-dans-mon-devops",
+      "day": "2022-01-21",
+      "type": "talk",
+      "title": "DevSecOps : de la sécurité dans mon DevOps",
+      "speakers": ["Adrien Pessu"],
+      "summary": "- **Sur scène (transcript)** : la sécurité n'est pas une forteresse mais **un jardin qu'on entretient**, avec un arbitrage permanent entre bénéfice et risque selon les données.\n- Placée en fin de cycle (revue sécurité, test d'intrusion), elle renvoie à la case départ et casse l'agilité. Il cite le biais du *third person effect* et une image du directeur de l'ANSSI.\n- Shift left : SAST (SonarQube) sur le poste du dev et en CI, avec l'exemple d'un `innerHTML` dans Angular.\n- Revue d'outils : scan des images Docker, DAST en boîte noire, IAST en boîte grise, tfsec pour Terraform, WAF couplé à un RASP, nmap et Nuclei.\n- Organisation : risk assessment rapide façon Mozilla (une demi-heure), threat modeling (STRIDE, PASTA), KPI pour justifier le budget.\n- Premier chantier conseillé : **l'analyse des dépendances**, car on n'écrit qu'une petite part (environ 10 %) du code qu'on met en prod. Analyser d'abord le nouveau code des PR, et démarrer un bug bounty en privé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "3FL2CNy8EsU",
+        "title": "Adrien Pessu - DevSecOps : de la sécurité dans mon DevOps",
+        "transcript": true
+      }
+    },
+    {
+      "id": "oauth-2-1-explique-simplement",
+      "day": "2022-01-21",
+      "type": "talk",
+      "title": "OAuth 2.1 expliqué simplement (même si tu n'es pas dev) !",
+      "speakers": ["Julien Topçu — Shodo"],
+      "summary": "- **Sur scène (transcript)** : le talk suit le film *Grand Budapest Hotel* (1932), le speaker jouant le chef de la sécurité de l'hôtel.\n- Un code unique partagé par tous les clients pose un **problème de révocation**, comme Facebook qui demandait le mot de passe Gmail pour importer les contacts.\n- La solution est un tiers de confiance, le serveur d'autorisation : le client ne voit jamais le mot de passe. Vocabulaire posé pas à pas : resource owner, resource server, client, authorization server.\n- Un code d'autorisation de courte durée s'échange contre un access token, comme un numéro de réservation contre une carte d'accès. Front channel (redirection navigateur, interceptable) et back channel (appel HTTPS direct).\n- Sur l'implicit flow : *« il faut pas du tout l'utiliser »*. La recommandation est l'**Authorization Code Flow avec PKCE** (code verifier, code challenge, S256), que OAuth 2.1 réunit avec les autres bonnes pratiques dans une seule RFC.\n- Les scopes limitent l'accès d'une application, pas les droits d'un humain (exemples de Twitter et de Miro). Le refresh token est à utiliser avec parcimonie.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "bR48_dbOM38",
+        "title": "Julien Topçu - OAuth 2.1 expliqué simplement (même si tu n'es pas dev) !",
+        "transcript": true
+      }
+    },
+    {
+      "id": "types-top",
+      "day": "2022-01-21",
+      "type": "talk",
+      "title": "Types top !",
+      "speakers": ["Jordane Grenat — Comet Meetings"],
+      "summary": "- **Sur scène (transcript)** : un type est **un ensemble de valeurs possibles**, et des pièces bien découpées s'emboîtent comme un puzzle.\n- La cardinalité : une carte codée `number` plus `string` accepte une infinité de valeurs pour 52 cartes réelles ; avec les jokers, le produit naïf donne 84 valeurs au lieu de 54. Les types algébriques (produit et somme) collent au métier, en Elm comme en Java avec les sealed.\n- Les exceptions court-circuitent le flux ; mieux vaut un `Result` (Rust, Vavr en Java) pour des fonctions totales. Il recommande aussi un enum plutôt qu'un booléen.\n- **Parse, don't validate** : une classe Email à constructeur privé et une fabrique qui renvoie un `Result`.\n- Plus loin : type unit, entiers naturels comme liste de unit, phantom types (« validé / non validé », interdire d'additionner euros et dollars), types dépendants en Idris qui détectent un accès hors limites à la compilation.\n- Pour lui, les types sont des garanties plus que des contraintes : moins d'états impossibles, de charge cognitive et de tests. Il conseille de bannir string, number et boolean bruts et recommande le talk *Making Impossible States Impossible* (Richard Feldman).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "QDmTM5UWnBQ",
+        "title": "Jordane Grenat - Types top !",
+        "transcript": true
+      }
+    },
+    {
+      "id": "parse-don-t-validate-mais-en-java-en-15-min",
+      "day": "2022-01-21",
+      "type": "lightning",
+      "title": "Parse don't validate mais en java en 15 min",
+      "speakers": ["Alexandre Delegue — MAIF"],
+      "summary": "- **Sur scène (transcript)** : porter des patterns de Scala vers Java pour faire évoluer une application **sans tout casser**, avec une application de suivi de colis en fil rouge.\n- L'approche naïve (POJO avec booléens, `@Valid` dans un contrôleur Spring) est fragile : un nouveau point d'entrée comme Kafka contourne la validation.\n- Types somme (enum) et produit (record), combinés par les sealed interfaces de Java 17. Un record `Email` qui valide dans son constructeur : s'il existe, il est valide.\n- **Rendre les états incohérents impossibles** avec une classe par état du colis : un `switch` qui oublie un cas ne compile plus.\n- Parser aux frontières, entrées comme base de données. L'équipe a écrit une lib JSON sur Jackson, inspirée de Play JSON, qui accumule les erreurs et renvoie un 400 avec leur liste. Le code est sur GitHub.\n- Le talk fait écho à *Types top !* de Jordane Grenat, programmé le même jour.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "QIn-w_nnca0",
+        "title": "Alexandre Delegue - Parse don't validate mais en java en 15 min",
+        "transcript": true
+      }
+    },
+    {
+      "id": "mutation-testing-y-a-t-il-des-trous-dans-votre-couverture-de-test",
+      "day": "2022-01-21",
+      "type": "lightning",
+      "title": "Mutation testing : y a-t-il des trous dans votre couverture de test ?",
+      "speakers": ["Benjamin Cavy — MAIF"],
+      "summary": "- **Sur scène (transcript)** : un bon test est un test qui **détecte les régressions**. Le code coverage dit seulement quelles lignes s'exécutent : 100 % de couverture est possible sans aucune assertion.\n- Le mutation testing génère des variantes du code (`>` devient `<`, appel void supprimé, retour à 0) et rejoue les tests ; un mutant « tué » signifie que les tests ont vu le changement.\n- Démo Java d'un service bancaire avec **PIT (pitest)** en plugin Maven ou Gradle : 9 mutations, 5 tuées. Les survivants révèlent un oubli classique, ne pas vérifier l'état final du système.\n- Les deux mesures se complètent : 100 % de mutants tués sur 10 % de code couvert ne vaut rien.\n- Le défaut : *« c'est très lent »*. Sur un projet Spring Boot de 400 tests, 4 h 08 d'analyse. D'où une CI séparée, quotidienne ou hebdomadaire, puis une revue des faux positifs. Des outils existent en Python, PHP et JavaScript.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "uHGfNhWI8CI",
+        "title": "Benjamin Cavy - Mutation testing : y a-t-il des trous dans votre couverture de test ?",
+        "transcript": true
+      }
+    },
+    {
+      "id": "openapi-asyncapi-specifications-et-contrats",
+      "day": "2022-01-21",
+      "type": "lightning",
+      "title": "OpenAPI & AsyncAPI : spécifications et contrats",
+      "speakers": ["Sébastien Charrier — Bump.sh"],
+      "summary": "- **Sur scène (transcript)** : la doc d'API publique est un outil marketing, la doc privée un outil de productivité, souvent périmée ou absente, et les microservices multiplient le problème.\n- *« ce n'est pas une problématique de doc »* : il s'agit de design, de partage de connaissance, de communication des changements et de tests continus.\n- **OpenAPI** (ex-Swagger) a gagné face à API Blueprint et RAML. Structure : info, servers, paths, webhooks, security, components, avec `$ref` pour réutiliser les schémas. Code first ou design first (Stoplight Studio, extensions d'IDE).\n- Outillage autour de la spec : génération de doc, linter Spectral avec règles maison, mocks, Microcks, Postman, tests qui valident les réponses. La génération de clients donne selon lui un code de mauvaise qualité. Annuaire : openapi.tools.\n- AsyncAPI (2016) reprend la structure d'OpenAPI pour l'event-driven (WebSocket, MQTT, Kafka), avec des `channels` à la place des paths.\n- La spec doit devenir un **contrat**, source de vérité unique entre humains et outils. Le speaker fonde un outil de documentation d'API, ce qui oriente le propos.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "www611v-5DM",
+        "title": "Sebastien Charrier - OpenAPI & AsyncAPI : spécifications et contrats",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rest-grpc-graphql-webhooks-dans-quelles-situations",
+      "day": "2022-01-21",
+      "type": "talk",
+      "title": "REST, gRPC, GraphQL, Webhooks : dans quelles situations ?",
+      "speakers": ["François Delbrayelle"],
+      "summary": "- **Sur scène (transcript)** : sondage de salle, environ 80 % utilisent REST en production, beaucoup moins gRPC ou GraphQL, en ligne avec un sondage Postman 2021 qu'il cite.\n- Historique : CORBA et RMI, SOAP et son XML lourd, REST décrit par Roy Fielding en 2000, GraphQL en 2015, puis gRPC.\n- Message central : **choisir, c'est renoncer**. Se méfier du biais de confirmation et de la mode, partir du besoin métier.\n- REST est un style d'architecture, pas une spécification : contraintes (stateless, cache, interface uniforme), modèle de maturité de Richardson (la plupart des API restent au niveau 2), HATEOAS.\n- gRPC : HTTP/2, streaming, Protobuf et génération de code multi-langage, format binaire léger ; mais un proxy est nécessaire côté web et le format n'est pas lisible.\n- GraphQL : schéma fortement typé, le client ne récupère que ce dont il a besoin, le serveur agrège plusieurs sources via des resolvers. Webhooks : inversion du contrôle, un POST à chaque événement plutôt que du polling, avec gestion des erreurs et des relances.\n- Transcript très bruité : l'employeur du speaker n'est pas identifiable.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "s5qRho_FIyc",
+        "title": "François Delbrayelle - REST, gRPC, GraphQL, Webhooks : dans quelles situations ?",
+        "transcript": true
+      }
+    },
+    {
+      "id": "https-comment-ca-marche",
+      "day": "2022-01-21",
+      "type": "lightning",
+      "title": "HTTPS comment ça marche ?",
+      "speakers": ["Quentin Aubert"],
+      "summary": "- **Sur scène (transcript, à partir de la 2e minute)** : HTTPS, c'est HTTP plus **TLS**, qui apporte confidentialité, échange d'une clé de session, certification et contrôle d'intégrité.\n- Le chiffrement symétrique, déjà utilisé par César, est rapide et robuste, mais la distribution de la clé partagée est son point faible.\n- L'asymétrique (Diffie-Hellman, 1976) sépare clé publique et clé privée et permet la signature, mais il est lent. TLS combine les deux : l'asymétrique ne sert qu'à échanger une clé symétrique.\n- La **chaîne de certification** part des CA racines qui signent des intermédiaires puis le certificat serveur (exemple de Let's Encrypt) ; le client recalcule le hash signé et compare. Un certificat contient CN, SAN, validité, émetteur et clé publique.\n- Déroulé du handshake : Client Hello, Server Hello avec certificat, clé chiffrée envoyée par le client, Finished. Le mTLS est évoqué en option.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "mG6eENKXLxA",
+        "title": "Quentin Aubert  - HTTPS comment ça marche ?",
+        "transcript": true
+      }
+    },
+    {
+      "id": "re-decouvrir-les-outils-unix",
+      "day": "2022-01-21",
+      "type": "lightning",
+      "title": "(Re) Découvrir les outils UNIX",
+      "speakers": ["Grégoire Pineau"],
+      "summary": "- **Sur scène (transcript)** : quickie de niveau débutant. Le but n'est pas de retenir les commandes mais de **savoir qu'elles existent et les combiner**.\n- Bases : builtins et binaires, options et arguments, variables d'environnement, stdin/stdout/stderr, redirections et pipes « comme en plomberie ». Aide avec `--help`, `man` et tldr.sh.\n- Exemples : `namei` pour les permissions, `cut` sur un CSV, `git log --format | sort | uniq -c | sort -n` pour classer les contributeurs, `docker ps | grep | awk | xargs docker stop`.\n- Autres outils : `dd`, `watch`, `timeout`, Ctrl+Z puis `bg`/`fg`, tunnel `ssh -L` vers un Elasticsearch de prod, `lsof -i` pour trouver qui occupe un port.\n- Débogage avec `strace` (y compris `-e trace=file`) sur un script PHP bloqué, et `tcpdump`. Hors standard : ripgrep, fzf, tmux, ngrok, HTTPie, jq, explainshell.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "attMtVXk3n0",
+        "title": "Grégoire Pineau - (Re) Découvrir les outils UNIX",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-fonctions-recursives-decortiquees",
+      "day": "2022-01-21",
+      "type": "talk",
+      "title": "Les fonctions (récursives) décortiquées",
+      "speakers": ["Frédéric Cabestre — indépendant (collectif Move Next)"],
+      "summary": "- **Sur scène (transcript)** : la fonction est un **moyen d'abstraction et de réutilisation**. L'article de Dijkstra contre le goto est présenté comme l'ancêtre du clean code.\n- Le lambda-calcul sert de modèle (alpha-conversion, bêta-réduction, codage de Church, curryfication), avec des exemples en C#. Trois sémantiques : axiomatique (Hoare), dénotationnelle, opérationnelle.\n- Stratégies d'évaluation : appel par nom (Algol 60), par nécessité en Haskell (structures infinies), par valeur pour la plupart des langages.\n- Fortran allouait ses enregistrements d'activation statiquement, donc sans récursivité au départ ; le mot-clé `recursive` arrive en 1992. La pile d'appels est déroulée pas à pas sur une factorielle ; contre-exemple de SML/NJ qui alloue tout sur le tas.\n- Optimisations : fonctions feuilles, registres, **appel terminal**. F# transforme la récursion terminale en boucle, le compilateur C# non, d'où le trampoline. Références : Appel, Patterson et Hennessy, rapport ZINC de Xavier Leroy.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "I_tPNydAcCk",
+        "title": "Frédéric Cabestre - Les fonctions (récursives) décortiquées",
+        "transcript": true
+      }
+    },
+    {
+      "id": "gitpod-ide-as-a-service",
+      "day": "2022-01-21",
+      "type": "talk",
+      "title": "GitPod : IDE as a service, ou comment ne pas acheter un MacBook Pro à 6000 € et être heureux avec une petite machine",
+      "speakers": ["Horacio Gonzalez — OVHcloud", "Philippe Charrière — GitLab"],
+      "feedbackFrom": ["Blog OVHcloud (Aurélie Vache, Horacio Gonzalez, speaker)"],
+      "summary": "- **Sur scène (transcript)** : les deux speakers se présentent comme Gitpod Heroes, non payés par Gitpod. Philippe vient du Web IDE de GitLab ; Horacio a animé pendant le confinement des labs de plus de 100 participants lancés depuis un simple lien Gitpod, sans problème d'installation.\n- Le constat : faut-il un MacBook à 6 000 € et des heures d'installation pour modifier une page ? Gitpod est un **ordinateur dans un onglet**, avec des workspaces Docker liés à un dépôt GitHub, GitLab ou Bitbucket.\n- Fonctions montrées : `.gitpod.yml`, images préparées, prebuilds, workspaces conservés environ une semaine, Docker-in-Docker, bande passante bien supérieure à celle de la maison.\n- Cas d'usage : workshops (poste d'entreprise verrouillé), accueil de prestataires, démo Prometheus et Grafana, runners GitLab CI temporaires.\n- En open source, le bouton « Open in Gitpod » **baisse la barrière de contribution** (langage Golo, GitLab Development Kit qui démarre en environ 5 minutes).\n- Self-hosted possible (k3s) mais déconseillé hors contrainte réglementaire ; alternative légère : OpenVSCode Server.\n- Le billet OVHcloud décrit deux scénarios : un contributeur open source bloqué par l'installation et un chef de projet qui doit embarquer 20 développeurs en un week-end.",
+      "summarySources": ["transcript", "blog", "program"],
+      "video": {
+        "youtubeId": "nIzbS0kKANg",
+        "title": "Philippe Charrière, Horacio Gonzalez - GitPod : IDE as a service, ou comment ne pas acheter...",
+        "transcript": true
+      }
+    },
+    {
+      "id": "mon-email-devient-dynamique",
+      "day": "2022-01-21",
+      "type": "lightning",
+      "title": "Mon email devient dynamique !",
+      "speakers": ["Patrice de Saint Steban"],
+      "summary": "- **Sur scène (transcript)** : bref historique de l'email, du premier message de Ray Tomlinson en 1971 et du choix de l'@ jusqu'à Gmail en 2004.\n- Démo d'un mail « humeur du mois » : on vote, on voit les statistiques et on navigue sans quitter sa messagerie ; rouvert, le mail affiche directement le résultat.\n- La technologie est **AMP for Email** de Google, déclinaison d'AMP (CSS inline, JavaScript asynchrone, tailles fixées dans le HTML, cache Google).\n- Côté format, AMP ajoute une partie MIME dédiée en plus du texte et du HTML, qu'il faut garder en repli. Composants cités : amp-list et amp-form.\n- Limites : pas de JavaScript libre, seulement les composants fournis, et l'expéditeur doit être autorisé. Son bilan : de l'interactivité réelle, mais une techno **encore récente**.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "TqHBzaBVE6g",
+        "title": "Patrice de Saint Steban - Mon email devient dynamique !",
+        "transcript": true
+      }
+    },
+    {
+      "id": "java-dans-le-cloud-avec-spring-ou-quarkus",
+      "day": "2022-01-21",
+      "type": "talk",
+      "title": "Java dans le cloud : Avec Spring ou Quarkus ?",
+      "speakers": ["Alexandre Touret — Worldline", "Jean-François James — Worldline"],
+      "summary": "- **Sur scène (transcript)** : pas d'affrontement mais une **saine concurrence** entre les deux frameworks. Démo : une librairie en microservices (API livres et ISBN) avec Prometheus et Jaeger, en deux versions sur GitHub.\n- Quarkus vise le temps de démarrage et l'empreinte mémoire, s'appuie sur MicroProfile, Jakarta EE et Vert.x, en impératif ou en réactif.\n- Mode natif (GraalVM ou Mandrel) : démarrage quasi instantané et mémoire réduite, mais build de 5 à 10 minutes, moindre débit qu'une JVM et plus de chargement dynamique de classes. Conseil reçu de Clément Escoffier : un **mode hybride**, JVM pour le flux normal et instances natives éphémères pour les pics.\n- Comparaison pas à pas : Spring MVC face à JAX-RS et au MicroProfile REST Client, Panache face à Spring Data, Actuator et Micrometer face à MicroProfile Health et Metrics, Resilience4j face à MicroProfile Fault Tolerance.\n- Verdict : avantage Spring pour la persistance, la maturité et l'écosystème ; avantage Quarkus pour la tolérance aux pannes, la cohérence avec les spécifications et le natif. Pas de raison technique de quitter Spring si on y est à l'aise.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "0KlET6ES-IU",
+        "title": "Alexandre Touret Jean Francois James - Java dans le cloud : Avec Spring ou Quarkus ?",
+        "transcript": true
+      }
+    },
+    {
+      "id": "manage-your-passwords-like-your-code",
+      "day": "2022-01-21",
+      "type": "lightning",
+      "title": "Would like to learn how manage your passwords like your code?",
+      "speakers": ["Sébastien Jardin — OVHcloud"],
+      "feedbackFrom": ["Blog OVHcloud (Aurélie Vache, Horacio Gonzalez)"],
+      "summary": "- **D'après le billet OVHcloud** (employeur du speaker, session non filmée) : gérer ses mots de passe comme du code, avec password-store (chiffrement GPG), Git et la CI/CD.\n- Environ 200 mots de passe seraient gérés de façon presque entièrement automatisée, pour **réduire l'erreur humaine**.\n- Aucun retour du public ni slides lus : résumé limité à la présentation faite par l'employeur.",
+      "summarySources": ["blog", "program"]
+    },
+    {
+      "id": "a-la-decouverte-de-jetpack-compose",
+      "day": "2022-01-21",
+      "type": "talk",
+      "title": "A la découverte de Jetpack Compose",
+      "speakers": ["Gérard Paligot"],
+      "summary": "- **D'après les slides liées depuis le programme** (deck Speaker Deck en anglais, mis en ligne en 2020 et sans doute réutilisé ; session non filmée) : Compose est le toolkit d'UI **déclaratif** d'Android, 100 % Kotlin et open source.\n- Le fil rouge est une application de films : des fonctions `@Composable` (Text, Column, Row) remplacent les layouts XML, puis `LazyColumn` et `Scaffold` remplacent le trio RecyclerView, ViewHolder et adapter.\n- Thème Material clair et sombre, typographie et formes personnalisées ; état avec `remember` et `mutableStateOf`, ViewModel exposant des flows observés par `collectAsState()`.\n- Ouverture vers Compose Multiplatform (Android et desktop avec `expect`/`actual`) et Compose Web.\n- Pourquoi changer : un framework d'UI Android figé depuis 2008, des correctifs liés aux versions de l'OS, moins de code à écrire.",
+      "summarySources": ["slides", "program"]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Keynote d'ouverture (orateur non identifié)",
+    "Keynote de clôture (orateur non identifié)",
+    "Property-based Testing ou l'insuffisance des tests unitaires (Sébastien Jaupart)",
+    "Petit guide pratique pour commencer un design system (Cécile Freyd-Foucault)",
+    "L'échange et la communication à 40 devs : c'est possible avec les bons rituels (Mélanie Boudard)",
+    "Vis ma vie de bénévole ! (Annabelle Koster)",
+    "Game of Nodes ou comment fonctionnent les systèmes distribués ? (Alexandre Fruchaud, Delphin Aubin)",
+    "GitOps, une mise en situation un peu réaliste sur Kubernetes avec FluxCD, hands-on (Laurent Grangeau, Ludovic Piot)",
+    "Poser une boîte à lettres, envoyer un humain sur Mars : même combat ? (Édouard Siha)",
+    "The blind test : l'accessibilité d'un site internet pour une personne non voyante (Florent Lévêque, Hervé Boisgontier)",
+    "L'éco-conception, c'est bien, mais si on parlait un peu du backend ? (Jérémie Drouet)",
+    "Comment mes hobbies m'ont aidé à sauver mon frigo (Olivier Cloirec)",
+    "Il était une fois... les navigateurs (Noël Macé, Pierre Tibulle)"
+  ],
+  "sources": [
+    { "label": "Site officiel Touraine Tech 2022 (programme, liens slides et vidéos)", "url": "https://2022.touraine.tech" },
+    { "label": "Playlist YouTube « Touraine Tech 2022 » (16 talks et un aftermovie, transcripts automatiques lus)", "url": "https://www.youtube.com/playlist?list=PLl0xIhYGSdm-ZOB5cFjUrMBk7im2rc7ZE" },
+    { "label": "Blog OVHcloud : OVHcloud at Touraine Tech (Aurélie Vache et Horacio Gonzalez, 28 janvier 2022)", "url": "https://blog.ovhcloud.com/ovhcloud-at-touraine-tech/" },
+    { "label": "Slides Jetpack Compose (Gérard Paligot, Speaker Deck)", "url": "https://speakerdeck.com/gerardpaligot/discovering-jetpack-compose" },
+    { "label": "Dépôt du talk Property-based Testing (Sébastien Jaupart, GitHub)", "url": "https://github.com/sjaupart/talk-property-based-testing" },
+    { "label": "Page conférences de Denis Germain (blog.zwindler.fr)", "url": "https://blog.zwindler.fr/en/conferences/" },
+    { "label": "Posts LinkedIn : aucun trouvé (recherche site:linkedin.com sans résultat)" }
+  ]
 }

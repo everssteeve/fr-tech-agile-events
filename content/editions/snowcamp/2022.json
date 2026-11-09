@@ -6,8 +6,505 @@
   "start": "2022-02-02",
   "end": "2022-02-05",
   "city": "Grenoble",
+  "venue": "World Trade Center Grenoble",
   "url": "https://snowcamp2022.sched.com/",
+  "programUrl": "https://snowcamp2022.sched.com/list/descriptions/",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "6ᵉ édition, du 2 au 5 février 2022 au WTC Grenoble, en pleine vague Omicron : workshops de 3 h le mercredi 2, deux jours de talks de 45 min sur quatre salles (jeudi 3 et vendredi 4), puis journée « unconference » à la montagne le samedi 5 (raquettes, ski). Programme sched : 2 keynotes, 40 talks et 9 workshops (10 créneaux) dans les tracks Architecture, DevOps / Cloud, Discover, I.A. & Deep / Machine Learning, Languages & Paradigms, Performance & Security, Web / Mobile / IoT. Selon OVHcloud : 190 propositions au CFP, 16 sponsors, plus de 650 participants (Criteo écrit « 800+ ») ; organisation maintenue sans dîner des speakers ni petit-déjeuner, avec restrictions sanitaires. Les talks n'ont pas été filmés cette année-là.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-09",
+  "revisit": "corpus participant limité à trois textes (billet collectif Criteo à sept voix de quelques lignes chacune, billet de Nicolas Delsaux, lui-même speaker, et billet des DevRel OVHcloud, eux aussi speakers) ; aucun post LinkedIn ni Mastodon lu, Wayback Machine indisponible pour retrouver d'autres blogs",
+  "corpus": "Trois comptes-rendus publiés entre le 06/02 et le 05/05/2022 : le billet de Nicolas Delsaux sur son blog (riduidel.wordpress.com, J+1, une dizaine de talks commentés), « OVHcloud at SnowCamp 2022 » (blog OVHcloud, 11/02, écrit par trois speakers) et « Highlights of Snowcamp 2022 » (Criteo Tech sur Medium, 05/05, sept ingénieurs, un talk favori chacun). S'y ajoutent le programme sched complet, la page des supports de sessions (GitHub snowcamp) et dix jeux de slides lus (Speaker Deck, SlideShare, Notist, Google Slides, GitHub).",
+  "limits": "Aucune captation : les talks n'ont pas été filmés en 2022, donc aucun transcript. Les retours viennent d'un sponsor (Criteo) et de speakers (Delsaux, équipe OVHcloud), presque sans critique ; aucun post LinkedIn ou Mastodon n'a été trouvé. 29 des 51 sessions du programme, dont tous les workshops du mercredi, restent sans aucun contenu exploité, et 4 des 22 sessions retenues ne sont décrites que par leurs slides.",
+  "tldr": "**Une 6ᵉ édition maintenue en pleine vague Omicron, dont les participants retiennent d'abord la communauté retrouvée** (*« faire communauté »*, Nicolas Delsaux) et une keynote dessinée en direct, avec un programme très orienté sécurité (OAuth2, SRP, DevSecOps), architecture documentée et pérennité des frontends, et un premier regard curieux mais prudent sur GitHub Copilot.",
+  "keyTakeaways": [
+    "Revoir ses flows OAuth2/OIDC à la lumière des recommandations actuelles de l'IETF et de l'OWASP : l'Implicit Flow, recommandé hier pour les SPA, est aujourd'hui proscrit au profit de PKCE (programme ; talk jugé enfin compréhensible par Nicolas Delsaux).",
+    "Pour ajouter une recherche à une application legacy sans la toucher, préférer le Change Data Capture sur le journal binaire de la base (Debezium) aux écritures doubles et aux batchs (slides de Nicolas Fränkel ; Delsaux : *« vraiment bien fait »*).",
+    "Documenter l'architecture à partir d'un modèle (C4, Structurizr) plutôt que de diagrammes isolés, pour garder des vues cohérentes par environnement et à jour (slides de Nicolas Delsaux).",
+    "Introduire du chaos dans le frontend : requêtes lentes ou en échec, pseudo-localisation, timers ralentis, double-clics, retours d'historique aléatoires, pour vérifier que l'application reste fonctionnelle même cassée (slides de Thibaud Courtoison ; talk favori d'Arnaud Becquet).",
+    "Lire les post-mortems des grandes pannes publiques pour apprendre des erreurs des autres : elles relèvent plus souvent de faiblesses organisationnelles que d'individus (Delsaux, sur le talk de David Aparicio).",
+    "Faire durer une application frontend : une règle d'équipe égale une automatisation, traiter chaque nouvelle dépendance comme un engagement durable, monitorer et prévoir la suppression des fonctionnalités (slides Bedrock Streaming).",
+    "Avant de concevoir une application pour Kubernetes, se demander si on en a *« VRAIMENT besoin »*, puis viser le stateless, un démarrage rapide et l'observabilité dès le début (slides d'Alexandre Touret).",
+    "Mesurer la qualité réelle des tests avec le mutation testing (Pitest), en limitant le coût par le mode incrémental ou l'analyse du seul diff en pull request (slides de Christophe Tardella)."
+  ],
+  "sessions": [
+    {
+      "id": "il-etait-une-fois-les-navigateurs",
+      "day": "2022-02-03",
+      "type": "keynote",
+      "title": "Il était une fois... les navigateurs",
+      "speakers": [
+        "Noël Macé",
+        "Pierre Tibulle — IKOBOX"
+      ],
+      "feedbackFrom": [
+        "Aurélie Vache, Stéphane Philippart et Horacio Gonzalez (blog OVHcloud)"
+      ],
+      "summary": "- Keynote d'ouverture : l'**histoire des navigateurs**, du CERN à aujourd'hui et jusqu'à leur avenir possible, racontée par Noël Macé et **dessinée en direct** par Pierre Tibulle, sketchnoter (programme).\n- Les auteurs du blog OVHcloud la jugent *« simply brilliant »*, pour le sketchnoting live et l'humour.\n- Aucun support publié ni autre retour trouvé.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ]
+    },
+    {
+      "id": "la-permaentreprise",
+      "day": "2022-02-04",
+      "type": "keynote",
+      "title": "La PermaEntreprise",
+      "speakers": [
+        "Sétaré Cousin — Norsys",
+        "Thomas Breuzard — Norsys"
+      ],
+      "feedbackFrom": [
+        "Nicolas Delsaux (blog)"
+      ],
+      "summary": "- Keynote du vendredi, décrite d'après le programme. Norsys, ESN de 600 personnes déjà certifiée ISO 26000, B Corp et société à mission, présente la **permaentreprise**, nouveau modèle de développement des entreprises qu'elle a créé et déploie.\n- Objectif annoncé : une production efficace et utile aux humains, **sans nuire à la planète**, par un usage sobre voire régénératif des ressources, tout en renforçant la viabilité économique.\n- Nicolas Delsaux l'a suivie et annonce y revenir dans un article dédié, que nous n'avons pas trouvé.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ]
+    },
+    {
+      "id": "the-eternal-sunshine-of-the-zero-build-pipeline",
+      "day": "2022-02-03",
+      "type": "talk",
+      "title": "The Eternal Sunshine of the Zero Build Pipeline",
+      "speakers": [
+        "m4dz — ‹div›RIOTS"
+      ],
+      "feedbackFrom": [
+        "Nicolas Delsaux (blog)"
+      ],
+      "summary": "- Constat du programme : à force de tout migrer vers Node.js et d'empiler les dépendances, le frontend est devenu *« the new Java-like ecosystem »*. Proposition : repenser l'expérience développeur autour d'un **environnement sans bundle** (Snowpack, Vite, Astro, bare modules).\n- Nicolas Delsaux, backend Java, reconnaît ne pas être le public visé et être *« loin d'avoir tout compris »*, mais juge le speaker très bon.\n- Slides publiées (m4dz.net), non lisibles hors navigateur.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ]
+    },
+    {
+      "id": "notre-cerveau-est-nul",
+      "day": "2022-02-03",
+      "type": "talk",
+      "title": "Notre cerveau est nul ! Quelques biais cognitifs sous le spectre des métiers du dev",
+      "speakers": [
+        "Sylvain Coudert — freelance"
+      ],
+      "feedbackFrom": [
+        "Belkacem Lahouel (blog Criteo)"
+      ],
+      "summary": "- Questions de départ (programme) : pourquoi nos chiffrages sont-ils si souvent faux, pourquoi le besoin métier est-il mal cerné, faut-il écrire les tests avant le code ? Réponse cherchée dans la **psychologie sociale et cognitive**, avec des outils concrets pour contrer ces travers.\n- Talk favori de Belkacem Lahouel (Criteo), qui retient trois biais appliqués au travail de développement : **sous-estimer la durée des tâches**, surestimer ses capacités, résister au changement, et les parades proposées.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ]
+    },
+    {
+      "id": "identite-numerique-decentralisee-et-droit-d-etre-soi",
+      "day": "2022-02-03",
+      "type": "talk",
+      "title": "Identité numérique décentralisée et droit d'être soi : protéger son intégrité sur Internet",
+      "speakers": [
+        "Antoine Cailly",
+        "Adrien Wattez — Zenika"
+      ],
+      "feedbackFrom": [
+        "Georgi Ajaeiya (blog Criteo)"
+      ],
+      "summary": "- Point de départ (programme) : chaque inscription en ligne disperse des données personnelles exposées aux fuites. L'**identité décentralisée** (DID, Self-Sovereign Identity) redonne le contrôle à l'utilisateur, avec un rôle possible pour la blockchain et les linked data.\n- Georgi Ajaeiya (Criteo) en retient une identité numérique que l'utilisateur **contrôle lui-même sans dépendre des grandes entreprises tech**, grâce à la cryptographie moderne. Il annonçait un article de suite, non trouvé.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ]
+    },
+    {
+      "id": "l-open-source-au-secours-du-developpeur",
+      "day": "2022-02-03",
+      "type": "talk",
+      "title": "L'Open Source au secours du développeur (et de l'architecte) ?",
+      "speakers": [
+        "Stéphane Philippart — OVHcloud"
+      ],
+      "feedbackFrom": [
+        "Nicolas Delsaux (blog)",
+        "Blog OVHcloud (speaker)"
+      ],
+      "summary": "- REX d'un architecte devenu contributeur open source **pour continuer à coder**, dans un pays où les développeurs de plus de 40 ans sont rares et où les carrières mènent vers l'encadrement (programme).\n- Les slides listent les bonnes raisons (progresser, rendre à la communauté, *« Vaincre (un peu) le syndrôme de l'imposteur »*) et les mauvaises (gloire, reconnaissance, argent).\n- Conseils pour débuter : *« Il n'y a pas de petites contributions »*, commencer par la documentation, demander avant de prendre une issue, lire le CONTRIBUTING et les tests, choisir un petit projet actif, ouvrir tôt une PR en brouillon.\n- Pièges : vérifier sa disponibilité avant de s'engager, ne pas recréer le stress du travail (les mainteneurs sont bénévoles, une revue peut prendre 3 à 5 jours).\n- Nicolas Delsaux le décrit comme un REX d'immersion dans l'open source, prolongeant un article antérieur du speaker.",
+      "summarySources": [
+        "program",
+        "slides",
+        "feedback"
+      ]
+    },
+    {
+      "id": "mais-a-quoi-ca-sert-un-devrel",
+      "day": "2022-02-03",
+      "type": "talk",
+      "title": "Mais, à quoi ça sert un DevRel ?",
+      "speakers": [
+        "Horacio Gonzalez — OVHcloud",
+        "Aurélie Vache — OVHcloud"
+      ],
+      "feedbackFrom": [
+        "Nicolas Delsaux (blog)",
+        "tweets de participants relayés sur Notist",
+        "Blog OVHcloud (speakers)"
+      ],
+      "summary": "- Talk humoristique sur le quotidien des **Developer Relations** (Developer Advocate, Evangelist, Technical Advocate) : *« juste un lanceur de paillettes ? »*, vie dans les gares et les aéroports, déguisement de licorne (programme).\n- Un participant résume sur Twitter : *« Get the developer XP, manage community, and finally help developers! »*, et note que le métier *« isn't only marketing, communication, and travel »* (relayé sur Notist).\n- Nicolas Delsaux le classe parmi les conférences *« à licornes »* de l'équipe OVHcloud. Le billet OVHcloud raconte, côté coulisses, un costume de licorne oublié.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ]
+    },
+    {
+      "id": "web-types-des-types-pour-vos-templates-html",
+      "day": "2022-02-03",
+      "type": "talk",
+      "title": "Web-Types : des types pour vos templates HTML !",
+      "speakers": [
+        "Gaëtan Maisse"
+      ],
+      "feedbackFrom": [
+        "Luiza Cicone (blog Criteo)"
+      ],
+      "summary": "- Constat (programme) : l'IDE renseigne bien sur le code Java, C# ou TypeScript, mais perd presque tout dans un template HTML dès qu'on sort des balises standard ou d'un framework très populaire.\n- Les **web-types**, format JSON ouvert proposé par JetBrains, permettent aux bibliothèques UI (Angular, Vue, React, Web Components, voire htmx ou les classes Font Awesome) d'embarquer leur documentation pour l'autocomplétion et la validation.\n- Talk favori de Luiza Cicone (Criteo), qui retient la **démo live dans WebStorm**. Le speaker n'apparaît pas sur sched ; son nom vient du blog Criteo.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ]
+    },
+    {
+      "id": "la-clean-architecture-dans-le-web",
+      "day": "2022-02-03",
+      "type": "talk",
+      "title": "La Clean Architecture dans le web",
+      "speakers": [
+        "Martin Choraine — Zenika"
+      ],
+      "feedbackFrom": [
+        "Vincent Michau (blog Criteo)",
+        "Nicolas Delsaux (blog)"
+      ],
+      "summary": "- Défi annoncé (programme) : se passer au mieux des frameworks front grâce à une **architecture hexagonale en TDD**, au point de pouvoir changer d'Angular, Vue ou React avec un impact minime.\n- Vincent Michau (Criteo) retient la Clean Architecture comme combinaison de l'hexagonal, de l'architecture en oignon et des principes SOLID, au service de la **maintenabilité et de la testabilité** ; son équipe venait d'adopter l'architecture en oignon pour une nouvelle application.\n- Nicolas Delsaux l'a suivi en soutien à son collègue de Zenika. Slides publiées (Google Slides), non lisibles hors navigateur.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ]
+    },
+    {
+      "id": "c4-et-au-dela-documenter-une-architecture-agilement",
+      "day": "2022-02-03",
+      "type": "talk",
+      "title": "C4 et au-delà : documenter une architecture agilement",
+      "speakers": [
+        "Nicolas Delsaux — Zenika"
+      ],
+      "feedbackFrom": [
+        "Nicolas Delsaux (speaker, blog)"
+      ],
+      "summary": "- Point de départ des slides : le code est la vérité, *« but not the whole truth »* (Grady Booch). Outils dédiés complets mais lourds, tableaux blancs simples mais incohérents et éphémères.\n- Le **modèle C4** (Context, Containers, Components, Code) de Simon Brown, illustré sur Spring PetClinic ; un « container » est une unité déployable séparément, pas forcément un conteneur Docker.\n- Limite des diagrammes seuls : incohérents, ils ne répondent pas aux questions de déploiement par environnement et vieillissent. Réponse : *« En les basant sur un modèle ! »*, avec le DSL **Structurizr**, puis du code Java qui scanne les classes Spring et génère des vues PlantUML.\n- Le speaker dit travailler sur le sujet depuis plusieurs années ; aucun retour de participant lu.",
+      "summarySources": [
+        "program",
+        "slides",
+        "blog"
+      ]
+    },
+    {
+      "id": "notre-recette-de-l-equipe-parfaite",
+      "day": "2022-02-03",
+      "type": "talk",
+      "title": "Notre recette de l'équipe parfaite",
+      "speakers": [
+        "Estelle Landry — Pix",
+        "Yvonnick Frin — Pix"
+      ],
+      "feedbackFrom": [
+        "Pierre-Emmanuel Boiteau (blog Criteo)"
+      ],
+      "summary": "- Talk en forme de recette de cuisine (programme) : pourquoi les « bonnes recettes » importées (Shape Up de Basecamp, modèle Spotify) retombent souvent comme un soufflé, et ce qui marche chez Pix en **composition d'équipe, organisation du quotidien et gestion du besoin utilisateur**, porté par une PO et un développeur.\n- Talk favori de Pierre-Emmanuel Boiteau (Criteo), qui salue un ton humoristique et une organisation qui fonctionne en **équilibrant compétences techniques et soft skills**.\n- Slides publiées (lien raccourci), non lues.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ]
+    },
+    {
+      "id": "ajoutez-une-vraie-recherche-a-votre-application-legacy",
+      "day": "2022-02-04",
+      "type": "talk",
+      "title": "Ajoutez une vraie recherche à votre application legacy sans vous prendre la tête",
+      "speakers": [
+        "Nicolas Fränkel",
+        "David Pilato — Elastic"
+      ],
+      "feedbackFrom": [
+        "Nicolas Delsaux (blog)"
+      ],
+      "summary": "- Session 100 % live coding (programme) : garder une copie des données (cache, index, BI) synchronisée avec la source de vérité **sans toucher à l'application métier**.\n- Les slides écartent les écritures doubles (pas de transaction commune entre la base et Elasticsearch) et les batchs (trop fréquents, ils gaspillent ; trop rares, la donnée n'est pas cherchable à temps).\n- Solution : le **Change Data Capture** sur le journal binaire de la base, avec Debezium (Red Hat, Apache v2), en streaming ; la cohérence reste éventuelle mais l'écart est réduit au minimum.\n- Nicolas Delsaux l'a trouvé *« vraiment bien fait, et bien présenté »*, et cite Debezium, Hazelcast et Elasticsearch dans la démo (code de démo publié sous hazelcast-demos).",
+      "summarySources": [
+        "program",
+        "slides",
+        "feedback"
+      ]
+    },
+    {
+      "id": "les-bonnes-pratiques-oauth2-oidc",
+      "day": "2022-02-04",
+      "type": "talk",
+      "title": "Les bonnes pratiques OAuth2/OIDC conjuguées au présent, passé simple et futur",
+      "speakers": [
+        "Mathieu Humbert — Accenture"
+      ],
+      "feedbackFrom": [
+        "Nicolas Delsaux (blog)"
+      ],
+      "summary": "- Programme : repartir des origines d'OAuth2 et d'OpenID Connect pour comprendre pourquoi *« ce qui était la norme hier est absolument interdit aujourd'hui »* : l'**Implicit Flow** devenu persona non grata pour les SPA, le rôle de **PKCE**, le choix du flow par type de client, le stockage des tokens.\n- Tour des dernières recommandations IETF et OWASP, et ouverture sur **GNAP**, avec la promesse de repartir avec des choses à corriger.\n- Nicolas Delsaux l'a apprécié parce que c'était, pour une fois, une explication compréhensible de ces mécanismes. Aucun support publié.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ]
+    },
+    {
+      "id": "l-histoire-de-srp",
+      "day": "2022-02-04",
+      "type": "talk",
+      "title": "L'histoire de SRP, le protocole d'authentification Zero-Knowledge, contre les pirates à chapeau noir, leurs tables arc-en-ciel et les grufalos",
+      "speakers": [
+        "Willy Malvault — Sogilis"
+      ],
+      "feedbackFrom": [
+        "Nicolas Delsaux (blog)"
+      ],
+      "summary": "- Vulgarisation en forme de conte (programme) : **Secure Remote Password**, publié en 1998 par Tom Wu (Stanford) et standardisé en 2000 (RFC 2945), permet de s'authentifier par mot de passe **sans jamais l'exposer sur le réseau**, grâce à une preuve à divulgation nulle de connaissance ; ProtonMail l'utilise au quotidien.\n- Thèse : simple à développer et à utiliser malgré des bases cryptographiques méconnues, sa démocratisation améliorerait nettement la sécurité et la vie privée des internautes.\n- Pour Nicolas Delsaux, un vrai révélateur de la **faiblesse de l'authentification par mot de passe** telle qu'on la pratique, alors qu'on aurait pu l'améliorer depuis une vingtaine d'années.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ]
+    },
+    {
+      "id": "y-a-t-il-un-copilote-dans-mon-ide",
+      "day": "2022-02-04",
+      "type": "talk",
+      "title": "Y a-t-il un copilote dans mon IDE ?",
+      "speakers": [
+        "Tiffany Souterre"
+      ],
+      "feedbackFrom": [
+        "Antoine Le Marie (blog Criteo)"
+      ],
+      "summary": "- Démo de **GitHub Copilot** dans VSCode : une IA de pair programming censée *« souffler tes lignes de codes avant même que tu y ais pensé »*, vers une *« retraite anticipée (ou pas ;p) »* (programme).\n- Talk favori d'Antoine Le Marie (Criteo) : Copilot suggère du code à partir de commentaires et de phrases incomplètes. La démo a d'abord échoué, mais la speakeuse a bien rattrapé la situation.\n- Questions de la salle relevées : la **propriété intellectuelle du code suggéré** et le code de projet que Copilot lit. Seule session du programme consacrée à un assistant de code par IA.",
+      "summarySources": [
+        "program",
+        "feedback"
+      ]
+    },
+    {
+      "id": "checklist-pour-concevoir-une-application-dans-le-cloud",
+      "day": "2022-02-04",
+      "type": "talk",
+      "title": "Checklist pour concevoir une application dans le cloud : 10 conseils à l'attention des concepteurs et architectes",
+      "speakers": [
+        "Alexandre Touret — Worldline"
+      ],
+      "feedbackFrom": [
+        "Nicolas Delsaux (blog)"
+      ],
+      "summary": "- Kubernetes est devenu le standard de déploiement, au prix d'une grande complexité ; dix conseils tirés des derniers projets du speaker (programme).\n- Les slides commencent par *« En avez vous VRAIMENT besoin ? »*, puis : identifier les contraintes dures (disponibilité), aligner l'organisation sur l'architecture (loi de Conway, RACI), viser le **stateless** façon 12-factor, accélérer le démarrage Spring Boot, choisir ses frameworks sur des critères d'exploitation.\n- **Observabilité dès le départ** (probes, Micrometer, Prometheus, Grafana), deux pipelines CI/CD (plateforme Terraform, application Helm), configuration externalisée ; conclusion : *« Evitez le hype driven development »*, *« Automatisez tout (ou presque) »*.\n- Nicolas Delsaux, qui y voit un REX de migration d'applications Spring vers le cloud, l'a trouvé intéressant tout en connaissant déjà l'essentiel.",
+      "summarySources": [
+        "program",
+        "slides",
+        "feedback"
+      ]
+    },
+    {
+      "id": "art-et-entropie-du-chaos-dans-ton-frontend",
+      "day": "2022-02-04",
+      "type": "talk",
+      "title": "Art & Entropie : du chaos dans ton frontend",
+      "speakers": [
+        "Thibaud Courtoison — October"
+      ],
+      "feedbackFrom": [
+        "Arnaud Becquet (blog Criteo)",
+        "Nicolas Delsaux (blog, indirect)"
+      ],
+      "summary": "- Thèse : le chaos engineering oublie le frontend, alors que c'est le périmètre le plus imprévisible ; une application web n'a pas besoin d'être parfaite, elle doit être *« resilient »*, quitte à être *« broken and functional »* (slides). Métaphore du **kintsugi**, l'art japonais de réparer en sublimant la cassure.\n- Démarche : définir l'état stable, formuler une hypothèse, perturber, comparer, avec *« Enough chaos, but not too much »*.\n- Perturbations montrées : requêtes ralenties ou en échec, **pseudo-localisation** et langues de droite à gauche, timers ralentis, historique aléatoire, double-clic systématique, passage en noir et blanc, viewports forcés.\n- Talk favori d'Arnaud Becquet (Criteo), qui signale la sortie par le speaker d'un paquet npm et d'une extension Chrome pour lancer ces tests. Nicolas Delsaux regrette d'avoir manqué le talk de « Thibaut », dont il a lu en ligne qu'il avait l'air génial (vraisemblablement celui-ci).",
+      "summarySources": [
+        "slides",
+        "feedback"
+      ]
+    },
+    {
+      "id": "pere-castor-raconte-nous-une-histoire-d-ops",
+      "day": "2022-02-04",
+      "type": "talk",
+      "title": "Père Castor, raconte nous une histoire (d'OPS)",
+      "speakers": [
+        "David Aparicio — OVHcloud"
+      ],
+      "feedbackFrom": [
+        "Nicolas Delsaux (blog)"
+      ],
+      "summary": "- *« L'échec comme une source de connaissance »* : revue des grandes pannes de la décennie (GitHub, Amazon, Google, OVHcloud, Apple, Fastly, Microsoft, GitLab, Facebook) à partir de leurs **post-mortems** : cause racine, remédiation, bonnes pratiques, sous la bannière #HugOps (programme).\n- Nicolas Delsaux l'a trouvé intéressant de bout en bout et retient que les erreurs étaient *« plus liées à des faiblesses organisationnelles qu'à des individus »*.\n- Slides PDF référencées sur la page des supports, devenues inaccessibles (redirection vers une authentification GitLab).",
+      "summarySources": [
+        "program",
+        "feedback"
+      ]
+    },
+    {
+      "id": "comment-ne-pas-jeter-son-application-frontend-tous-les-deux-ans",
+      "day": "2022-02-04",
+      "type": "talk",
+      "title": "Comment ne pas jeter son application Frontend tous les deux ans ?",
+      "speakers": [
+        "Antoine Caron — Bedrock Streaming",
+        "Florent Dubost — Bedrock Streaming"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Décrit d'après le programme et les slides ; aucun retour de participant trouvé.\n- Contexte : Bedrock (6play, Salto) garde **la même codebase frontend depuis plus de 7 ans**, de React 0.12 à 17, avec une équipe passée d'environ 70 à 400 personnes, plus de 100 développeurs front et 30 types d'appareils.\n- Côté humain : *« Partager la connaissance, c'est éviter les silos »* et *« 1 règle = 1 automatisation »*, plutôt qu'une culture orale.\n- Côté code : *« Tester, c'est documenter »*, *« code lisible > code performant »*, feature flipping, et *« La prochaine version d'une fonctionnalité c'est souvent sa suppression »*.\n- Dépendances : *« Ajouter une dépendance c'est comme se marier »*, audit quotidien automatisé, pas de bibliothèque de composants UI ; et *« Un projet qui n'est pas monitoré n'est pas un projet en production »*.",
+      "summarySources": [
+        "program",
+        "slides"
+      ]
+    },
+    {
+      "id": "infraascode-et-multicloud-avec-crossplane",
+      "day": "2022-02-04",
+      "type": "talk",
+      "title": "InfraAsCode et multicloud à la sauce Kubernetes avec Crossplane",
+      "speakers": [
+        "Stéphane Teyssier — WeScale"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Décrit d'après le programme et les slides ; aucun retour de participant trouvé.\n- Problème : déployer une application conteneurisée qui dépend d'un service cloud oblige à mélanger outils d'IaC et outils Kubernetes. **Crossplane** propose de gérer l'infrastructure depuis Kubernetes, comme les applications.\n- Concepts : providers (CRD et contrôleur), managed resources, XRD comme interface, compositions comme implémentations, claims côté équipes : *« Une interface mais plusieurs implémentations »*, la même claim `Network` ou `SQLInstance` ciblant AWS ou GCP selon un label.\n- Atouts présentés : un standard unique infra et applicatif, la gestion de la dérive, le multicloud. Limites : patterns à construire soi-même, monitoring, passage à l'échelle au-delà d'environ 1 000 ressources, RBAC.",
+      "summarySources": [
+        "program",
+        "slides"
+      ]
+    },
+    {
+      "id": "redis-ce-n-est-pas-que-pour-le-cache",
+      "day": "2022-02-04",
+      "type": "talk",
+      "title": "Redis, ce n'est pas que pour le cache",
+      "speakers": [
+        "Grégoire Pineau — JoliCode"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Décrit d'après le programme et les slides ; aucun retour de participant trouvé.\n- Tour des **structures de données** de Redis et de leurs usages : hashes plutôt que JSON sérialisé, sets pour la segmentation, sorted sets pour les classements et les schedulers, géolocalisation, HyperLogLog, streams avec groupes de consommateurs à la Kafka.\n- Mises en garde : Pub/Sub sans acquittement (préférer les streams, ou RabbitMQ pour de la file), viser les opérations en O(1) ou O(log n), combiner persistance RDB et AOF.\n- Conclusion des slides : si Redis paraît lent, la cause est plus probablement l'application.",
+      "summarySources": [
+        "program",
+        "slides"
+      ]
+    },
+    {
+      "id": "rex-mutation-testing",
+      "day": "2022-02-03",
+      "type": "talk",
+      "title": "REX Mutation Testing, après un an de mise en place chez un client",
+      "speakers": [
+        "Christophe Tardella"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Décrit d'après le programme et les slides ; aucun retour de participant trouvé.\n- Public visé : les équipes qui subissent des régressions malgré une bonne couverture, ou qui n'ont pas assez confiance dans leurs tests pour refactorer (programme).\n- Principe : muter le code et vérifier qu'un test échoue, pour que *« Chaque ligne de code doit être justifiée par un test »*. Outil : **Pitest** pour Java.\n- Bilan après un an : *« Installation hyper simple »*, *« Aucun faux positif »*, *« Énorme confiance en notre CI »*, très peu de bugs.\n- *« Le revers de la médaille »* : la lenteur, atténuée en limitant mutateurs et périmètre, en mode incrémental, ou en n'analysant que le diff d'une pull request avec un seuil de 100 %.",
+      "summarySources": [
+        "program",
+        "slides"
+      ]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Workshop : Découpe mon monolithe (J. Martinsson, C. Bouillier, F. Pellet ; slides sur SlideShare)",
+    "Workshop : Azure Static Web Apps et GitHub Actions (O. Leplus, Y. Lasorsa)",
+    "Workshop : WASM en douceur avec Go, Rust et Grain (P. Charrière)",
+    "Workshop : Intégration à l'ère du cloud avec Camel Quarkus (A. Gallice, Z. Bendhiba)",
+    "Workshop : Storybook from Zero to Hero (T. Avenier ; support publié)",
+    "Workshop : Kafka Streams 101 (A. le Bec, V. Gallet)",
+    "Workshop : GitOps sur Kubernetes avec FluxCD (L. Piot, L. Grangeau)",
+    "Workshop : Design First pour une application de librairie, Gravitee (L. Lazarevic ; dépôt GitHub)",
+    "Workshop : Devenir svelte avec Svelte (P. De Saint Steban, A. Le Goas)",
+    "Orchestration de pipeline de données en serverless avec Google Workflows (G. Blaquiere ; slides publiées)",
+    "Vous prendrez bien un peu de sucre dans votre java ? (S. Banas ; site et démo publiés)",
+    "Automation as a service avec Ansible, Tower et Squest (N. Marcq)",
+    "Les fonctions (récursives) décortiquées (F. Cabestre)",
+    "The Mushin Way to Frontend Performance (m4dz ; slides publiées)",
+    "Soyez réactif avec RSocket (A. Wattez)",
+    "Les tests unitaires JavaScript, vers l'infini et au-delà (R. Verdier, M. Rigabert Lemée)",
+    "Migrer une vraie application du monde réel vers Quarkus (C. Escoffier)",
+    "Why write operators in Go when you can write them in Java? (C. Laprun)",
+    "REST next level : écrire des APIs web orientées métier (J. Topçu)",
+    "Qu'est-ce que l'InnerSource ? (P. Charrière, M. Vincent)",
+    "Construisons une application Micro-Frontend multi-frameworks avec Module Federation (S. Dedieu ; slides et code publiés)",
+    "WebAssembly n'est pas qu'une affaire de frontend (B. Coenen)",
+    "La 3D sur le web : trucs et astuces (J. Sulpis ; slides et code publiés)",
+    "Un datahub dans Azure : REX sur les services managés (P. Morisseau)",
+    "Common tips & mistakes en Go (A. Vache ; slides sur Notist, seulement mentionné par le blog OVHcloud de la speakeuse)",
+    "Hack me if you can (H. Belhadj Ahmed, M. Jeanroy)",
+    "Intégration à l'ère du cloud avec Camel Quarkus, version talk (A. Gallice, Z. Bendhiba)",
+    "DevSecOps : de la sécurité dans mon DevOps (A. Pessu ; slides PDF publiées)",
+    "Entraîner des modèles Deep Learning en production avec AWS SageMaker (J. Boivin, Kelkoo)"
+  ],
+  "sources": [
+    {
+      "label": "Programme 2022 (sched, descriptions complètes)",
+      "url": "https://snowcamp2022.sched.com/list/descriptions/"
+    },
+    {
+      "label": "Snowcamp 2022 : supports des sessions (GitHub snowcamp)",
+      "url": "https://github.com/snowcamp/snowcamp-supports-sessions/blob/main/2022.md"
+    },
+    {
+      "label": "Nicolas Delsaux : Snowcamp 2022 (blog riduidel, 06/02/2022)",
+      "url": "https://riduidel.wordpress.com/2022/02/06/snowcamp-2022/"
+    },
+    {
+      "label": "OVHcloud at SnowCamp 2022 (blog OVHcloud, 11/02/2022 ; Aurélie Vache, Stéphane Philippart, Horacio Gonzalez)",
+      "url": "https://blog.ovhcloud.com/ovhcloud-at-snowcamp-2022/"
+    },
+    {
+      "label": "Criteo Tech : Highlights of Snowcamp 2022 (Medium, 05/05/2022 ; Antoine Le Marie, Arnaud Becquet, Belkacem Lahouel, Georgi Ajaeiya, Luiza Cicone, Pierre-Emmanuel Boiteau, Vincent Michau)",
+      "url": "https://medium.com/criteo-engineering/highlights-of-snowcamp-2022-3a6c9437918f"
+    },
+    {
+      "label": "Slides : C4 et au-delà (Nicolas Delsaux, GitHub)",
+      "url": "https://github.com/Riduidel/conferences/blob/master/c4_et_au_dela/src/slides/asciidoc/index.adoc"
+    },
+    {
+      "label": "Slides : Checklist pour concevoir une application dans le cloud (Alexandre Touret, Speaker Deck)",
+      "url": "https://speakerdeck.com/alexandretouret/checklist-pour-concevoir-une-application-dans-le-cloud-10-conseils-a-lattention-des-concepteurs-et-architectes"
+    },
+    {
+      "label": "Slides : Comment ne pas jeter son app JS tous les 2 ans (Antoine Caron, Speaker Deck)",
+      "url": "https://speakerdeck.com/slashgear/snowcamp-2022-comment-ne-pas-jeter-a-la-poubelle-son-app-js-tous-les-2-ans"
+    },
+    {
+      "label": "Slides : InfraAsCode et multicloud avec Crossplane (WeScale, Speaker Deck)",
+      "url": "https://speakerdeck.com/wescale/snowcamp-2022-infraascode-et-multicloud-a-la-sauce-kubernetes-avec-crossplane"
+    },
+    {
+      "label": "Slides : Redis, ce n'est pas que pour le cache (Grégoire Pineau, Speaker Deck)",
+      "url": "https://speakerdeck.com/lyrixx/redis-ce-nest-pas-que-pour-le-cache-v2-41bf480e-c296-4540-8b02-462431acc595"
+    },
+    {
+      "label": "Slides : Adding search to a legacy application (Nicolas Fränkel, SlideShare)",
+      "url": "https://www.slideshare.net/nfrankel/snowcamp-adding-search-to-a-legacy-application"
+    },
+    {
+      "label": "Slides : Art & Entropy, chaos in your frontend (Thibaud Courtoison, Google Slides)",
+      "url": "https://docs.google.com/presentation/d/1uL8zv6aOAv5h_8c01ouBbIJdKr2twAHqKOheeIit9sk"
+    },
+    {
+      "label": "Slides : REX Mutation Testing (Christophe Tardella, Google Slides)",
+      "url": "https://docs.google.com/presentation/d/16kc35Ej_9fVtWeeL_uwseYOaVJsXM4wzNiAu52PJ6xE/edit"
+    },
+    {
+      "label": "Slides et réactions : L'Open Source au secours du développeur (Stéphane Philippart, Notist)",
+      "url": "https://noti.st/philippart-s/8XjcQg/opensource-au-secours-du-developpeur-et-de-larchitecte"
+    },
+    {
+      "label": "Slides et réactions : Mais, à quoi ça sert un DevRel ? (Aurélie Vache, Notist)",
+      "url": "https://noti.st/aurelievache/PJZgaj/mais-a-quoi-ca-sert-un-devrel"
+    },
+    {
+      "label": "Posts LinkedIn et Mastodon : aucun lu (aucun résultat indexé en recherche) ; pas de captation vidéo en 2022"
+    }
+  ]
 }

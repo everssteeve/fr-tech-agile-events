@@ -12,10 +12,9 @@
   "dateConfidence": "ok",
   "note": "9ᵉ édition, 22 au 25 janvier 2025 (dates corrigées d'après le programme Voxxrin : universités le mercredi 22, conférences les jeudi 23 et vendredi 24, journée à la montagne le samedi 25 ; le fichier snowcamp.io/editions/2025.json indique à tort 28–31 janvier). Selon Bpifrance : 600 participants, 77 orateurs, 42 sessions et 10 universités. Programme : 10 universités de 3 h, une keynote par jour, des conférences de 45 min et des « Schuss » de 20 min sur 4 tracks (Architecture/Data/IA, Cloud/DevOps, Langage/Backend/Sécurité, UX/Frontend) + un track « Hors-piste ». Les sessions n'ont pas été filmées.",
   "status": "synthesized",
-  "synthesisUpdatedAt": "2026-10-05",
-  "revisit": "aucun post LinkedIn de participant lu (HTTP 999 ; un post « Retour sur le Snowcamp 2025 » de Jean-Pascal Martinet repéré en recherche mais non lu) ; corpus limité à deux sponsors (Bpifrance, Criteo) et aux notes de Nicolas Delsaux",
-  "corpus": "Trois sources écrites publiées entre le 23 janvier et le 18 février 2025 : sept billets de prise de notes de Nicolas Delsaux (Zenika, lui-même speaker) sur autant de talks, l'article de Bpifrance.IO signé Victor Gallet (sponsor, 7 sessions commentées) et l'article Medium de Criteo (sponsor, retours de Sylvain Dedieu, Ioan Bucur, Rémi Di Savino et Valerian Gonnot). S'y ajoutent le programme Voxxrin, la page des supports de sessions (GitHub snowcamp) et 7 transcripts de captations des mêmes talks faites dans d'autres conférences.",
-  "limits": "Aucune captation officielle : les transcripts viennent de versions données ailleurs (Touraine Tech, MiXiT, BDX I/O, La Duck Conf, GDG Strasbourg, Viseo), parfois plusieurs mois avant ou après. Les deux articles détaillés viennent de sponsors dont des salariés étaient speakers, et aucun post LinkedIn de participant n'a pu être lu. Environ 50 des 65 sessions (dont les 10 universités) restent sans retour public.",
+  "synthesisUpdatedAt": "2026-11-09",
+  "corpus": "Quatre sources écrites publiées entre le 23 janvier et le 18 février 2025 : sept billets de prise de notes de Nicolas Delsaux (Zenika, lui-même speaker) sur autant de talks, l'article de Bpifrance.IO signé Victor Gallet (sponsor, 7 sessions commentées), l'article Medium de Criteo (sponsor, retours de Sylvain Dedieu, Ioan Bucur, Rémi Di Savino et Valerian Gonnot) et le compte-rendu en quatre billets de Laurent Kloetzer (SECUTIX, simple participant, 2 universités et 12 talks commentés), relayé sur Mastodon. S'y ajoutent quelques posts Mastodon de speakers (Kevin Davin, Clémence Piteau), le programme Voxxrin, la page des supports de sessions (GitHub snowcamp) et 7 transcripts de captations des mêmes talks faites dans d'autres conférences.",
+  "limits": "Aucune captation officielle : les transcripts viennent de versions données ailleurs (Touraine Tech, MiXiT, BDX I/O, La Duck Conf, GDG Strasbourg, Viseo), parfois plusieurs mois avant ou après. Deux des articles détaillés viennent de sponsors dont des salariés étaient speakers et Nicolas Delsaux était lui-même speaker ; seul Laurent Kloetzer écrit en simple participant. Aucun post LinkedIn n'a pu être lu (HTTP 999 ; le post « Retour sur le Snowcamp 2025 » de Jean-Pascal Martinet reste introuvable hors LinkedIn), et environ 45 des 65 sessions (dont 8 des 10 universités) restent sans retour public.",
   "tldr": "**Une 9ᵉ édition affichée complète (600 places parties en trois heures) dont les sessions les plus commentées parlent de fondamentaux plutôt que d'IA** : sécurité de la chaîne open source (keynote XZ Utils), architecture modulaire (pattern Hive), reprise en main du legacy et stratégie de test, avec une keynote de clôture sur la négociation salariale.",
   "keyTakeaways": [
     "Traiter la sécurité de l'open source comme un sujet d'entreprise : revue de code rigoureuse des nouvelles contributions, gestion des dépendances, modélisation des menaces et plan de réponse aux incidents (keynote XZ Utils, Delsaux).",
@@ -40,9 +39,10 @@
       "feedbackFrom": [
         "Nicolas Delsaux (blog)",
         "Victor Gallet (Bpifrance.IO)",
-        "Ioan Bucur (blog Criteo)"
+        "Ioan Bucur (blog Criteo)",
+        "Laurent Kloetzer (blog)"
       ],
-      "summary": "- Contenu sur scène décrit d'après une version antérieure du talk enregistrée chez Viseo (octobre 2024, vidéo Uw5qDg4cS0g) et d'après les notes détaillées de Nicolas Delsaux, prises en direct à Grenoble.\n- Point de départ : l'open source est la **colonne vertébrale** d'innombrables systèmes (exemple de FFmpeg). La backdoor, découverte fin mars 2024 par Andres Freund via des lenteurs de sshd, visait l'**exécution de commandes à distance** sur les serveurs SSH en passant par liblzma.\n- Volet technique : build autotools modifié (fichier `build-to-host.m4`), scripts très obfusqués, fichier objet injecté au moment de la compilation pour détourner la vérification RSA de sshd. Démo : exécution de commandes en root sur une VM, sans droits SSH.\n- Volet humain, jugé essentiel : **ingénierie sociale** sur plusieurs années. Le compte Jia Tan, créé en 2021, se forge une réputation par des contributions fiables, des comptes complices font pression sur un mainteneur épuisé, puis il devient co-mainteneur et contact OSS-Fuzz. Les speakers évoquent une piste étatique (Russie, APT29) d'après l'heure des commits.\n- Leçons proposées : audits et revue de code rigoureux, surtout pour les nouveaux contributeurs, MFA et zero trust, gestion des dépendances, modélisation des menaces, plan de réponse aux incidents.\n- Accueil : *« Avec un très bon storytelling, une dose d’humour et des slides léchées »* (Victor Gallet) ; une *« Interesting discussion »* sur la façon dont un acteur apparemment étatique a exploité les faiblesses de l'open source (Ioan Bucur).\n- Lecture critique de Nicolas Delsaux : la conclusion lui semble *« un peu erronée »* ; selon lui *« ça n’est pas le problème de la communauté open-source. C’est le problème des entreprises »*, qui choisissent de ne pas contribuer à l'écosystème dont elles dépendent.",
+      "summary": "- Contenu sur scène décrit d'après une version antérieure du talk enregistrée chez Viseo (octobre 2024, vidéo Uw5qDg4cS0g) et d'après les notes détaillées de Nicolas Delsaux, prises en direct à Grenoble.\n- Point de départ : l'open source est la **colonne vertébrale** d'innombrables systèmes (exemple de FFmpeg). La backdoor, découverte fin mars 2024 par Andres Freund via des lenteurs de sshd, visait l'**exécution de commandes à distance** sur les serveurs SSH en passant par liblzma.\n- Volet technique : build autotools modifié (fichier `build-to-host.m4`), scripts très obfusqués, fichier objet injecté au moment de la compilation pour détourner la vérification RSA de sshd. Démo : exécution de commandes en root sur une VM, sans droits SSH.\n- Volet humain, jugé essentiel : **ingénierie sociale** sur plusieurs années. Le compte Jia Tan, créé en 2021, se forge une réputation par des contributions fiables, des comptes complices font pression sur un mainteneur épuisé, puis il devient co-mainteneur et contact OSS-Fuzz. Les speakers évoquent une piste étatique (Russie, APT29) d'après l'heure des commits.\n- Leçons proposées : audits et revue de code rigoureux, surtout pour les nouveaux contributeurs, MFA et zero trust, gestion des dépendances, modélisation des menaces, plan de réponse aux incidents.\n- Accueil : *« Avec un très bon storytelling, une dose d’humour et des slides léchées »* (Victor Gallet) ; une *« Interesting discussion »* sur la façon dont un acteur apparemment étatique a exploité les faiblesses de l'open source (Ioan Bucur) ; *« Pure thriller entertainment »*, très instructif, avec pour seul mot d'ordre un *« Sense of wonder »* (Laurent Kloetzer).\n- Lecture critique de Nicolas Delsaux : la conclusion lui semble *« un peu erronée »* ; selon lui *« ça n’est pas le problème de la communauté open-source. C’est le problème des entreprises »*, qui choisissent de ne pas contribuer à l'écosystème dont elles dépendent.",
       "summarySources": [
         "program",
         "transcript",
@@ -61,12 +61,14 @@
       ],
       "feedbackFrom": [
         "Ioan Bucur (blog Criteo)",
-        "Rémi Di Savino (blog Criteo)"
+        "Rémi Di Savino (blog Criteo)",
+        "Laurent Kloetzer (blog)"
       ],
-      "summary": "- Contenu décrit d'après la captation du même talk à BDX I/O (vidéo BKayyLc6YH8, publiée en janvier 2025), donc pas forcément identique à la version grenobloise. La speaker se présente comme recruteuse IT depuis plus de 10 ans et agent de carrière.\n- Cinq **« bugs »** qui justifient un salaire trop bas, chacun associé à un profil d'employeur caricatural : la **grille salariale**, l'**équité** avec les collègues déjà en poste, les **finances** difficiles, le **niveau technique** jugé insuffisant en fin de process, et le simple **plaisir de négocier**.\n- Corrections proposées : regarder le **package complet** (variable, intéressement, congés, RTT), adopter le langage de l'interlocuteur (« miroir empathique ») plutôt que le rapport de force, demander une **revalorisation en fin de période d'essai écrite dans le contrat**, indexer le risque (BSPCE, primes) dans une startup.\n- Anticipation : donner un salaire souhaité plutôt que son salaire actuel, rencontrer l'équipe, prendre 48 h à une semaine de réflexion, en parler à quelques personnes de confiance seulement, puis faire une **contre-offre argumentée**.\n- Conclusion : rester connecté au marché et regarder aussi la culture d'entreprise, car un bon salaire peut finir en burn-out.\n- Côté participants, aucun commentaire détaillé n'a été trouvé ; les auteurs de Criteo citent seulement la négociation salariale comme exemple de l'étendue des sujets : *« from general topics like negotiating a salary to specific programming language features »* (Ioan Bucur).",
+      "summary": "- Contenu décrit d'après la captation du même talk à BDX I/O (vidéo BKayyLc6YH8, publiée en janvier 2025), donc pas forcément identique à la version grenobloise. La speaker se présente comme recruteuse IT depuis plus de 10 ans et agent de carrière.\n- Cinq **« bugs »** qui justifient un salaire trop bas, chacun associé à un profil d'employeur caricatural : la **grille salariale**, l'**équité** avec les collègues déjà en poste, les **finances** difficiles, le **niveau technique** jugé insuffisant en fin de process, et le simple **plaisir de négocier**.\n- Corrections proposées : regarder le **package complet** (variable, intéressement, congés, RTT), adopter le langage de l'interlocuteur (« miroir empathique ») plutôt que le rapport de force, demander une **revalorisation en fin de période d'essai écrite dans le contrat**, indexer le risque (BSPCE, primes) dans une startup.\n- Anticipation : donner un salaire souhaité plutôt que son salaire actuel, rencontrer l'équipe, prendre 48 h à une semaine de réflexion, en parler à quelques personnes de confiance seulement, puis faire une **contre-offre argumentée**.\n- Conclusion : rester connecté au marché et regarder aussi la culture d'entreprise, car un bon salaire peut finir en burn-out.\n- Côté participants, Laurent Kloetzer retient à Grenoble les mêmes points (connaître sa cible et sa marge de manœuvre, ne pas se sentir obligé de justifier sa demande, contre-arguments à la grille, à l'équité, au budget ou au niveau) et salue *« A very good conference, funny, energetic, full of jokes of all kinds »*. Les auteurs de Criteo citent surtout la négociation salariale comme exemple de l'étendue des sujets : *« from general topics like negotiating a salary to specific programming language features »* (Ioan Bucur).",
       "summarySources": [
         "program",
         "transcript",
+        "blog",
         "feedback"
       ]
     },
@@ -117,9 +119,10 @@
       "feedbackFrom": [
         "Nicolas Delsaux (blog)",
         "Victor Gallet (Bpifrance.IO)",
-        "Ioan Bucur (blog Criteo)"
+        "Ioan Bucur (blog Criteo)",
+        "Laurent Kloetzer (blog)"
       ],
-      "summary": "- Contenu sur scène décrit d'après la captation de La Duck Conf (2024, vidéo DMH0oV73B_I) et les notes de Delsaux. Réponse annoncée d'emblée : on remet sous contrôle, car *« refaire c'est souvent voué à l'échec »*.\n- Trois sources d'**entropie** : les humains (organisation, compétences, turnover), la technologie (obsolescence, failles) et l'environnement (marché, budgets, priorités). Elle se traduit en **complexité accidentelle**, à distinguer de la complexité essentielle et de la complexité technique et de collaboration (Fred Brooks, *No Silver Bullet*).\n- Une réécriture fait cohabiter deux systèmes à maintenir en parallèle ; exemple vécu d'une application PowerBuilder toujours en production plus de 10 ans après le début de sa réécriture en Java.\n- Remèdes : autonomie et responsabilisation des équipes (principe du Manifeste agile), du temps pour progresser, un turnover qui devient un « non-événement », du code métier découplé de la technique, du refactoring et du design en continu.\n- Pour reprendre le contrôle : garder l'application en production, boucles de feedback courtes, livraisons fréquentes et **mesure** (métriques DORA), avec l'idée d'un « indice de réparabilité » du logiciel.\n- Accueil : *« Une très bonne conférence qu’il m’est difficile de résumer ici mais que je recommande »* (Victor Gallet) ; Ioan Bucur retient que réécrire tout un système est généralement une mauvaise idée.",
+      "summary": "- Contenu sur scène décrit d'après la captation de La Duck Conf (2024, vidéo DMH0oV73B_I) et les notes de Delsaux. Réponse annoncée d'emblée : on remet sous contrôle, car *« refaire c'est souvent voué à l'échec »*.\n- Trois sources d'**entropie** : les humains (organisation, compétences, turnover), la technologie (obsolescence, failles) et l'environnement (marché, budgets, priorités). Elle se traduit en **complexité accidentelle**, à distinguer de la complexité essentielle et de la complexité technique et de collaboration (Fred Brooks, *No Silver Bullet*).\n- Une réécriture fait cohabiter deux systèmes à maintenir en parallèle ; exemple vécu d'une application PowerBuilder toujours en production plus de 10 ans après le début de sa réécriture en Java.\n- Remèdes : autonomie et responsabilisation des équipes (principe du Manifeste agile), du temps pour progresser, un turnover qui devient un « non-événement », du code métier découplé de la technique, du refactoring et du design en continu.\n- Pour reprendre le contrôle : garder l'application en production, boucles de feedback courtes, livraisons fréquentes et **mesure** (métriques DORA), avec l'idée d'un « indice de réparabilité » du logiciel.\n- Accueil : *« Une très bonne conférence qu’il m’est difficile de résumer ici mais que je recommande »* (Victor Gallet) ; Ioan Bucur retient que réécrire tout un système est généralement une mauvaise idée ; *« A very good talk on the classic theme of our field »* pour Laurent Kloetzer, qui en tire la même conclusion et se promet de lire *No Silver Bullet*.",
       "summarySources": [
         "program",
         "transcript",
@@ -158,9 +161,10 @@
       "feedbackFrom": [
         "Victor Gallet (Bpifrance.IO)",
         "Ioan Bucur (blog Criteo)",
-        "Rémi Di Savino (blog Criteo)"
+        "Rémi Di Savino (blog Criteo)",
+        "Laurent Kloetzer (blog)"
       ],
-      "summary": "- Contenu complété par la captation du même talk à Touraine Tech (février 2025, vidéo wSLRBF_RNHQ).\n- Introduction sur la fabrique des standards : le **TC39**, ses étapes (stage 0 à 4) et ses notes de réunion publiques sur GitHub, puis **Baseline** (initiative lancée en 2023 pour savoir quelles fonctionnalités sont disponibles dans tous les navigateurs) et webstatus.dev.\n- Fonctionnalités retenues par les participants : **Temporal** pour les dates, Compression Streams API, `@property` et `align-content` en CSS, l'opérateur `??=`, l'attribut `cause` des erreurs (Bpifrance) ; Temporal, le **test runner intégré à Node** (`node --test`) et Picsum (Rémi Di Savino, qui note que les « dix » fonctionnalités étaient en fait quatorze).\n- Accueil : *« Une collaboration AWS et Microsoft, on ne voit ça qu’au Snowcamp »* (Victor Gallet) ; Rémi Di Savino cite ce talk comme son préféré ; *« This was an engaging discussion »* (Ioan Bucur).",
+      "summary": "- Contenu complété par la captation du même talk à Touraine Tech (février 2025, vidéo wSLRBF_RNHQ).\n- Introduction sur la fabrique des standards : le **TC39**, ses étapes (stage 0 à 4) et ses notes de réunion publiques sur GitHub, puis **Baseline** (initiative lancée en 2023 pour savoir quelles fonctionnalités sont disponibles dans tous les navigateurs) et webstatus.dev.\n- Fonctionnalités retenues par les participants : **Temporal** pour les dates, Compression Streams API, `@property` et `align-content` en CSS, l'opérateur `??=`, l'attribut `cause` des erreurs (Bpifrance) ; Temporal, le **test runner intégré à Node** (`node --test`) et Picsum (Rémi Di Savino, qui note que les « dix » fonctionnalités étaient en fait quatorze).\n- Accueil : *« Une collaboration AWS et Microsoft, on ne voit ça qu’au Snowcamp »* (Victor Gallet) ; Rémi Di Savino cite ce talk comme son préféré ; *« This was an engaging discussion »* (Ioan Bucur).\n- Avis plus mitigé de Laurent Kloetzer, qui attendait autre chose : une présentation intéressante sur le processus d'évolution de JavaScript, mais *« the talk wasn't for me »* ; sa leçon, lire le descriptif avant de choisir une salle.",
       "summarySources": [
         "program",
         "transcript",
@@ -249,9 +253,10 @@
       "feedbackFrom": [
         "Victor Gallet (Bpifrance.IO)",
         "Ioan Bucur (blog Criteo)",
-        "Valerian Gonnot (blog Criteo)"
+        "Valerian Gonnot (blog Criteo)",
+        "Laurent Kloetzer (blog)"
       ],
-      "summary": "- Contenu sur scène décrit d'après la captation à MiXiT (juin 2025, vidéo TL_nVaOs47g).\n- Rétrospective du combat contre le **Big Ball of Mud** : l'architecture hexagonale isole la technique mais le domaine redevient spaghetti ; les microservices mènent souvent au monolithe distribué ; « un bounded context = un microservice » ne suffit pas, car le découpage peut être faux et les frontières floues.\n- Thèse centrale : les **microservices sont une stratégie de déploiement, pas de design**. La ruche part d'un **monolithe modulaire** où les erreurs restent réversibles (refactoring dans l'IDE, une seule release).\n- Chaque module est une mini architecture hexagonale avec ses tests et **son propre datastore** ; les modules ne se parlent que par des ports et des adaptateurs « in-process », qu'on remplace par un client HTTP pour extraire un module. Le pattern est fractal.\n- Mises en garde : éviter les échanges trop bavards entre modules, ne pas laisser la suite de tests devenir un monolithe caché, ne pas faire travailler plusieurs équipes sur le même monolithe, ne pas attendre trop longtemps pour découper. Formule finale : *« modéliser d'abord et déployez comme vous le souhaitez »*.\n- Accueil : *« Une conférence très bien faite, claire et qui mérite d’être vue »* (Victor Gallet) ; *« Fascinating and common sense talk »* (Ioan Bucur) ; Valerian Gonnot salue une présentation *« in a retro style »* devant un auditorium plein et apprécie de voir modélisation et stratégie de déploiement traitées ensemble.",
+      "summary": "- Contenu sur scène décrit d'après la captation à MiXiT (juin 2025, vidéo TL_nVaOs47g).\n- Rétrospective du combat contre le **Big Ball of Mud** : l'architecture hexagonale isole la technique mais le domaine redevient spaghetti ; les microservices mènent souvent au monolithe distribué ; « un bounded context = un microservice » ne suffit pas, car le découpage peut être faux et les frontières floues.\n- Thèse centrale : les **microservices sont une stratégie de déploiement, pas de design**. La ruche part d'un **monolithe modulaire** où les erreurs restent réversibles (refactoring dans l'IDE, une seule release).\n- Chaque module est une mini architecture hexagonale avec ses tests et **son propre datastore** ; les modules ne se parlent que par des ports et des adaptateurs « in-process », qu'on remplace par un client HTTP pour extraire un module. Le pattern est fractal.\n- Mises en garde : éviter les échanges trop bavards entre modules, ne pas laisser la suite de tests devenir un monolithe caché, ne pas faire travailler plusieurs équipes sur le même monolithe, ne pas attendre trop longtemps pour découper. Formule finale : *« modéliser d'abord et déployez comme vous le souhaitez »*.\n- Accueil : *« Une conférence très bien faite, claire et qui mérite d’être vue »* (Victor Gallet) ; *« Fascinating and common sense talk »* (Ioan Bucur) ; Valerian Gonnot salue une présentation *« in a retro style »* devant un auditorium plein et apprécie de voir modélisation et stratégie de déploiement traitées ensemble.\n- Bémol de Laurent Kloetzer : *« A solid and entertaining presentation, very well delivered »*, mais peu de nouveau pour lui hormis le vocabulaire (API, SPI, adaptateurs), son équipe plateforme chez SECUTIX pratiquant déjà une approche proche ; il juge le talk surtout taillé pour des consultants qui doivent convaincre leurs clients de restructurer.",
       "summarySources": [
         "program",
         "transcript",
@@ -312,24 +317,124 @@
         "program",
         "feedback"
       ]
+    },
+    {
+      "id": "python-royal",
+      "day": "2025-01-22",
+      "type": "workshop",
+      "title": "Python royal",
+      "speakers": [
+        "Julien Lenormand — Kaizen Solutions",
+        "Jonathan Gaffiot — Kaizen Solutions"
+      ],
+      "feedbackFrom": [
+        "Laurent Kloetzer (blog)"
+      ],
+      "summary": "- Université de 3 h (mercredi matin) sur l'outillage d'un développement Python « industriel », d'après le seul compte-rendu de Laurent Kloetzer ; les sources de l'atelier sont publiées.\n- Déroulé : une première heure d'installation et de mini-application, puis analyse de code, vérification de style et de typage, exécution des tests et packaging.\n- Lecture d'un développeur Java : PyCharm en équivalent d'IntelliJ, **uv** en Maven plus moderne, les analyseurs en équivalents de SonarQube et Checkstyle ; PyCharm et uv sont pour lui *« the keys to this python world »*.\n- Accueil : *« This was an excellent hands-on workshop »*, *« very well put together »*, avec des animateurs accessibles et une vraie expérience de Python en production. Il compte s'en servir pour écrire une surcouche d'API interne avec PyCharm, uv et FastAPI.",
+      "summarySources": [
+        "program",
+        "blog"
+      ]
+    },
+    {
+      "id": "donnes-du-style-a-tes-donnees-avec-grafana",
+      "day": "2025-01-22",
+      "type": "workshop",
+      "title": "Toi aussi donnes du style à tes données avec Grafana",
+      "speakers": [
+        "Thomas Jouve — Sopra"
+      ],
+      "feedbackFrom": [
+        "Laurent Kloetzer (blog)"
+      ],
+      "summary": "- Université de 3 h (mercredi après-midi), décrite d'après le seul compte-rendu de Laurent Kloetzer : fonctionnement interne de Grafana, sa logique, puis construction de tableaux de bord en pratique.\n- Retour sobre : l'atelier lui a donné l'occasion de configurer Grafana pour la première fois ; il en repart avec des bases et des idées pour améliorer les tableaux de bord de monitoring de son équipe.",
+      "summarySources": [
+        "program",
+        "blog"
+      ]
+    },
+    {
+      "id": "il-etait-une-faille-5-histoires-appsec",
+      "day": "2025-01-23",
+      "type": "talk",
+      "title": "Il était une faille : 5 histoires sur l'AppSec",
+      "speakers": [
+        "Paul Molin — Theodo"
+      ],
+      "feedbackFrom": [
+        "Laurent Kloetzer (blog)"
+      ],
+      "summary": "- Le CISO de Theodo raconte plusieurs failles de sécurité réelles, dont un cas cocasse d'envoi de courrier gratuit en détournant le système postal français (compte-rendu de Laurent Kloetzer). Le speaker a coécrit avec Marine du Mesnil un livre du même titre.\n- Message de fond : **partager les failles et les difficultés** pour construire une culture de sécurité.\n- Laurent Kloetzer en retient une idée plus large : communiquer en interne sur la vie de l'entreprise et ses défis construit une culture et une compréhension communes du métier.",
+      "summarySources": [
+        "program",
+        "blog"
+      ]
+    },
+    {
+      "id": "des-tests-performants-jeu-de-donnees-realiste",
+      "day": "2025-01-23",
+      "type": "talk",
+      "title": "Des tests performants grâce à un jeu de données réaliste",
+      "speakers": [
+        "Martin Choraine — Hyperweb"
+      ],
+      "feedbackFrom": [
+        "Laurent Kloetzer (blog)"
+      ],
+      "summary": "- D'après le seul compte-rendu de Laurent Kloetzer : des **données de test réalistes** pour les cas limites, la non-régression et les tests de charge, avec un rappel sur l'**anonymisation** des données de production.\n- Outils : la bibliothèque **Faker**, et des données générées par LLM aux résultats jugés satisfaisants, mais le speaker reste réservé sur leur usage à grande échelle et voit l'avenir du côté de LLM spécialisés par domaine.\n- Action retenue par Laurent Kloetzer : générer un gros jeu de données inspiré de la production pour valider les performances d'un de ses produits.",
+      "summarySources": [
+        "program",
+        "blog"
+      ]
+    },
+    {
+      "id": "integrons-faisons-grandir-progresser-jeunes-devs",
+      "day": "2025-01-23",
+      "type": "lightning",
+      "title": "Intégrons, faisons grandir et progresser les jeunes devs",
+      "speakers": [
+        "Alexandre Touret — Worldline"
+      ],
+      "feedbackFrom": [
+        "Laurent Kloetzer (blog)"
+      ],
+      "summary": "- Schuss de 20 min (slides publiées), décrit d'après le compte-rendu de Laurent Kloetzer, pour qui c'est *« A very important subject for me »*.\n- Constat : faire d'un développeur expérimenté un mentor ne va pas de soi ; il faut soigner les premières semaines, et le mentor doit surveiller son attitude et ses compétences relationnelles.\n- Recommandations : environ **30 minutes de coaching par jour**, pair programming, apprentissage ancré sur des problèmes réels et immédiats, tâches simples pour commencer, PR et tickets JIRA utilisés comme outils de communication, lecture et conférences considérées comme faisant partie du travail.\n- Conseil final repris par Laurent Kloetzer : faire lire *Clean Code* de Robert Martin à l'équipe.",
+      "summarySources": [
+        "program",
+        "blog",
+        "slides"
+      ]
+    },
+    {
+      "id": "on-a-34-pourcent-de-femmes-venez-chez-nous",
+      "day": "2025-01-23",
+      "type": "talk",
+      "title": "« On a 34 % de femmes, venez chez nous, on fait des trucs pour vous ! »",
+      "speakers": [
+        "Anaïs Moulin — Onepoint"
+      ],
+      "feedbackFrom": [
+        "Laurent Kloetzer (blog)"
+      ],
+      "summary": "- D'après le seul compte-rendu de Laurent Kloetzer : une jeune product owner examine les politiques de **discrimination positive** au recrutement, les replace dans leur contexte historique et en mesure les effets, positifs comme négatifs, sur les personnes visées (sentiment d'injustice, syndrome de l'imposteur).\n- Appel final : exprimer ses doutes et questionner ces dispositifs ouvertement, par exemple auprès des RH, avec l'espoir qu'ils deviennent un jour inutiles. Laurent Kloetzer rapporte le propos sans verdict explicite.",
+      "summarySources": [
+        "program",
+        "blog"
+      ]
     }
   ],
   "sessionsWithoutFeedback": [
     "Université — Développer avec l'IA : et si c'était aussi simple qu'ajouter une librairie ? (S. Philippart, T. Chantier)",
-    "Université — Toi aussi donnes du style à tes données avec Grafana (T. Jouve)",
     "Université — La sécurité en double aveugle : kata d'architecture et cybersécurité communautaire (N. Delsaux, W. Malvault)",
     "Université — Atelier Bevy : mockup de jeu multiplateforme en Rust (R. Ribaud, B. Sevajol ; slides publiées)",
     "Université — Devenez un Astronaute : découvrez le framework Astro (F. Albert, J. Chauvin)",
     "Université — L'observabilité dès le développement avec OpenTelemetry (A. Touret, D. Pequegnot)",
-    "Université — Python royal (J. Lenormand, J. Gaffiot ; sources publiées)",
     "Université — Aventures en IA : Chronicles of Aethelgard avec Ollama sans GPU (P. Charrière)",
     "Université — RAGTime : discuter avec ses propres données (P. Mele, B. Dauvissat)",
     "Université — Mission Jetpack Compose (O. Perez, A. Gentili ; site de l'atelier publié)",
-    "Il était une faille : 5 histoires sur l'AppSec (P. Molin)",
     "Bâtissez des applications invincibles avec Temporal (V. Primault ; slides publiées)",
     "Kueue : Kubernetes-native Job Queueing (L. Grangeau)",
     "Question pour un conteneur : quiz OCI & Docker (A. Vache, S. Khoury)",
-    "« On a 34 % de femmes, venez chez nous, on fait des trucs pour vous ! » (A. Moulin)",
     "Banalisation du DDD ou pas ? (B. Boucard)",
     "Vous ne devez pas faire aveuglément confiance à vos scanners de sécurité (R. Zarouali)",
     "3 ans de Kubernetes on-premises : le bilan sans filtre (L. Gatellier, T. Ghibaudo ; slides publiées)",
@@ -337,13 +442,11 @@
     "Devcontainers : mettons notre environnement de dev en boîte (M. Oualiken, O. Jacques)",
     "Développe sur un toaster grâce à Coder (P. Vulliemin, M. Pinon ; code publié)",
     "Après la hype, mesurer l'impact réel des projets d'IA générative (L. Gudet)",
-    "Des tests performants grâce à un jeu de données réaliste (M. Choraine)",
-    "Schuss — Intégrons, faisons grandir et progresser les jeunes devs (A. Touret ; slides publiées)",
     "Schuss — Le défi de la croissance : bâtir un Design System avec des ressources limitées (Y. L. Cheng)",
     "Schuss — SOPS, passez un savon à vos secrets en clair ! (S. Metayer ; slides publiées)",
     "Schuss — Vanilla JS et le Web standard : c'est sous-coté en fait ! (P. Arquier, I. Zachcial)",
     "Schuss — Donjons et Pythons : la chevaleresse à la rescousse (J. Grillere)",
-    "Schuss — Le futur du design : un monde où le système prime sur l'utilisateur (C. Piteau)",
+    "Schuss — Le futur du design : un monde où le système prime sur l'utilisateur (C. Piteau ; seul retour, celui de la speaker sur Mastodon : salle pleine)",
     "Schuss — Simplifiez la conteneurisation de vos idées ! (T. Da Rocha)",
     "Schuss — Sablier : démarrez et arrêtez automatiquement vos applications peu utilisées (L. Gatellier ; slides publiées)",
     "TinyGo, petit mais costaud ! (A. Vache, T. Chantier)",
@@ -358,7 +461,7 @@
     "Les différents modes de synchronisation des data platforms chez Carrefour (G. Blaquière)",
     "S'endetter pour se développer : stratégies d'investissement en dette technique (L. Lefebvre)",
     "CQRS / ES : nos heuristiques après plusieurs années de production (R. Berthon, A. Boudoux ; slides publiées)",
-    "Gateway API, 10 ans de maturation pour une nouvelle API Kubernetes (K. Davin ; slides publiées)",
+    "Gateway API, 10 ans de maturation pour une nouvelle API Kubernetes (K. Davin ; slides et code de démo publiés)",
     "Mettons de l'IA dans le pipeline CI/CD, live coding (O. Jacques, S. Akkad)"
   ],
   "sources": [
@@ -447,7 +550,31 @@
       "url": "https://www.youtube.com/watch?v=rqkEioqs1Ys"
     },
     {
-      "label": "Posts LinkedIn : aucun lu (HTTP 999) ; post de Jean-Pascal Martinet « Retour sur le Snowcamp 2025 » repéré en recherche, non consulté"
+      "label": "Laurent Kloetzer — Snowcamp 2025 #1 : présentation et universités (blog, 28/01/2025)",
+      "url": "https://blog.megiste.ch/en/2025/01/28/snowcamp-2025-1-presentation-and-workshops/"
+    },
+    {
+      "label": "Laurent Kloetzer — Snowcamp 2025 #2 : jeudi matin (blog, 04/02/2025)",
+      "url": "https://blog.megiste.ch/en/2025/02/04/snowcamp-2025-2-thursday-morning/"
+    },
+    {
+      "label": "Laurent Kloetzer — Snowcamp 2025 #3 : jeudi après-midi (blog, 04/02/2025)",
+      "url": "https://blog.megiste.ch/en/2025/02/04/snowcamp-2025-3-thursday-afternoon/"
+    },
+    {
+      "label": "Laurent Kloetzer — Snowcamp 2025 #4 : vendredi et remarques (blog, 04/02/2025)",
+      "url": "https://blog.megiste.ch/en/2025/02/04/snowcamp-2025-4-friday-remarks/"
+    },
+    {
+      "label": "Kevin Davin (Mastodon, 25/01/2025) — bilan et supports du talk Gateway API",
+      "url": "https://mastodon.davinkevin.fr/@davinkevin/113890023085604030"
+    },
+    {
+      "label": "Clémence Piteau (Mastodon, 25/01/2025) — retour de speaker sur son Schuss design",
+      "url": "https://mastodon.design/@clem_topi/113887898103494384"
+    },
+    {
+      "label": "Posts LinkedIn : aucun lu (HTTP 999) ; post de Jean-Pascal Martinet « Retour sur le Snowcamp 2025 » repéré lors d'une recherche antérieure, introuvable hors LinkedIn le 2026-11-09"
     }
   ]
 }

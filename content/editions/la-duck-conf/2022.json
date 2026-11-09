@@ -9,6 +9,197 @@
   "url": "https://web.archive.org/web/20220307083624/https://www.laduckconf.com/",
   "dateConfidence": "sec",
   "note": "Retour en présentiel après l'édition 100 % digitale (« Pour sa 5ème édition, la Duck Conf est de retour sur les planches », site officiel archivé). Date et lieu d'après Maddyness (https://www.maddyness.com/evenement/la-duck-conf/), le site officiel ne les donnant qu'en image. Replays : playlist YouTube « La Duck Conf 2022 : replay » (https://www.youtube.com/playlist?list=PLXlbmbYadKH57xZOxNUMOW_Kj5rUTJu-f).",
-  "status": "pending",
-  "sessions": []
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-09",
+  "revisit": "Aucun retour de participant lu : 7 recherches web (blog OCTO, LinkedIn, titres de talks) sans compte rendu de l'édition 2022, et programme archivé illisible (Wayback Machine inaccessible depuis l'outil de lecture). Synthèse fondée sur les 11 transcripts automatiques des replays et les fiches Maddyness ; à compléter par le programme officiel (ateliers) et d'éventuels comptes rendus OCTO.",
+  "corpus": "Les 11 transcripts automatiques (français) de la playlist « La Duck Conf 2022 : replay », lus en entier, et deux fiches événement Maddyness (date, lieu, tarif de 350 €, pass sanitaire, thèmes annoncés). Aucun article de blog, post LinkedIn ni retour de participant n'a été trouvé.",
+  "limits": "Corpus sans aucun regard de participant : tout ce qui est résumé ici a été dit sur scène, d'après des transcriptions automatiques qui déforment noms et chiffres (les chiffres douteux sont signalés). Le programme complet n'a pas été lu : les ateliers live annoncés par Maddyness et d'éventuels talks non filmés manquent, et l'entreprise de plusieurs speakers n'est pas confirmée.",
+  "tldr": "Une édition de retour sur scène placée sous le signe du **pragmatisme** : **commencer simple** (monolithe, règles métier avant le ML, technologies déjà maîtrisées), **ne pas réinventer les commodités** et ne découper qu'à la douleur, avec Doctolib et Decathlon en REX vitrines.",
+  "keyTakeaways": [
+    "Avant d'opérer soi-même une base SQL, un cluster Kubernetes, des certificats, des fichiers statiques ou un load balancer, se demander si c'est **ce qu'on vend ou ce qui nous distingue** ; sinon prendre l'offre « as a service » (Florent Jaby).",
+    "Commencer par un **monolithe découplé en interne**, puis découper l'organisation quand une partie demande une attention propre, et la technique seulement quand ses besoins de performance divergent (Pierre Baonla Bassom).",
+    "Valider l'hypothèse métier par une **règle simple et un script manuel** avant tout machine learning, et consigner chaque choix dans un ADR (Sofia Calcagno et Emmanuel-Lin Toulemonde).",
+    "Réutiliser d'abord les technologies déjà présentes dans le SI : un broker transactionnel et un **PostgreSQL partitionné par année** suffisent à 300 millions d'événements par an (Faustine Massin).",
+    "En chantier de performance : un scénario représentatif avec critères de succès, des jeux de données qui se périment et se réinitialisent, un environnement isolé sur l'infra cible, et **un changement à la fois** (Jennifer Pelisson).",
+    "Tester la charge chaque mois à deux fois le pic réel pour **« voir le mur » et décider le plus tard possible** (Nicolas Martignole et David Gageot, Doctolib).",
+    "Piloter le run par les SLO et un **budget d'erreur** qui gèle les changements quand il est épuisé, et automatiser toute action répétée trois fois (Adrien Boulay).",
+    "Pour débloquer une transformation freinée par les experts, **modéliser vite et de façon légère** (Markdown, JSON, Mermaid) puis organiser des séances courtes dont le seul but est de casser le modèle (Romain Taillade, Decathlon).",
+    "Ne jamais publier un chiffre sans sa méthode : selon la façon de compter, l'immigration ou le climat arrive en tête du débat présidentiel sur Twitter (Nicolas Cavallo)."
+  ],
+  "sessions": [
+    {
+      "id": "doctolib-jusqu-ici-tout-va-bien",
+      "day": "2022-03-29",
+      "type": "talk",
+      "title": "DOCTOLIB : Jusqu'ici tout va bien",
+      "speakers": ["Nicolas Martignole — Doctolib", "David Gageot — Doctolib"],
+      "feedbackFrom": [],
+      "summary": "- Suite d'un talk Doctolib de la Duck Conf 2019. Croissance : près de 500 personnes en produit et tech sur 2 300 salariés, 3 pays, 63 millions de rendez-vous en décembre 2021 seulement ; à peu près **x2 par an** sur l'infra et le stockage. La vaccination a surtout ajouté des pics, avec une salle d'attente mise en place le soir d'une annonce présidentielle.\n- **Architecture inchangée depuis 2019** : un monolithe Rails dans un seul repo, des feature switches, une seule unité déployée pour 3 pays et 3 langues, une app mobile qui enveloppe le web. Hébergement passé de Heroku à Kubernetes sur AWS (jusqu'à 1 000 pods) ; PostgreSQL Aurora avec 1 writer et jusqu'à 13 réplicas, 23 To.\n- **Un test de charge mensuel à deux fois le lundi le plus chargé** pour voir le mur venir. La base atteint le maximum d'Aurora : découpage de la base (scénario le plus probable) ou base élastique, Spanner étant à l'essai. *« Prévoir le mur, mais surtout décider le plus tard possible. »*\n- Organisation inspirée de **Team Topologies**, tech radar et RFC pour toute nouvelle technologie, au moins 3 mises en production par jour, gestion de crise outillée et sans culpabilisation (une à trois crises par jour).\n- Difficultés assumées : le code a doublé et la **charge cognitive** pèse ; réponse en cours, un **monolithe modulaire** en Rails engines, sans microservices. La CI maison (40 000 tests par commit, 12 clusters Kubernetes) arrive au bout du sur-mesure : *« on galère un petit peu »*.\n- Mot d'ordre : *« Simplifier, simplifier, simplifier. »* Plusieurs chiffres (pics de trafic, effectifs) sont mal restitués par la transcription automatique.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "hzMKBqbmG1w",
+        "title": "Nicolas Martignole & David Gageot - DOCTOLIB : Jusqu'ici tout va bien",
+        "transcript": true
+      }
+    },
+    {
+      "id": "marvel-architecture-universe-the-expert-war",
+      "day": "2022-03-29",
+      "type": "talk",
+      "title": "Bienvenue dans le Marvel Architecture Universe : THE EXPERT WAR",
+      "speakers": ["Romain Taillade — Decathlon"],
+      "feedbackFrom": [],
+      "summary": "- Talk de clôture de la journée (le speaker dit qu'on lui a confié la « conf de fermeture »). REX de Decathlon, engagé dans un virage vers l'**entreprise plateforme** et des business capabilities horizontales, sur le domaine transactionnel (stock, commandes, fulfillment) aux API peu documentées.\n- Le « méchant » n'est pas l'expert mais **la gestion de l'expertise** : quand la valeur d'un expert se réduit à son savoir exclusif, *« la vitesse de l'entreprise, c'est la vitesse de l'expert, et ça c'est super dangereux »*.\n- Deux échecs racontés : discussions à froid qui s'arrêtent sur *« c'est beaucoup plus compliqué que ça, ça marchera jamais »*, puis un séminaire de plusieurs jours. Leçons : attention limitée à 30 à 40 minutes, sujets parasites, cas limites lancés comme des missiles.\n- La méthode : **itérative, gamifiée, obsédée par le tangible**. Deux à trois jours de design by contract, quatre outils seulement (Markdown, JSON, Git, Mermaid), puis des séances de 30 à 40 minutes ouvertes aux experts comme aux non-experts, avec pour seul but de casser le modèle ; on ne parle pas de faisabilité à ce stade.\n- Résultats annoncés : environ 4 semaines pour rétro-documenter le domaine, une application en production 3 mois plus tard, **un milliard d'appels d'API en 18 mois**, et de nouveaux business chiffrés par le speaker (environ 65 M€, 150 M€ attendus, « je crois »).\n- Le speaker qualifie lui-même sa première approche de « naïve » ; les chiffres d'impact restent les siens, sans source externe.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "goYxrLbnCyE",
+        "title": "Romain Taillade - Bienvenue dans le Marvel Architecture Universe : THE EXPERT WAR",
+        "transcript": true
+      }
+    },
+    {
+      "id": "5-trucs-a-arreter-de-faire-vous-meme",
+      "day": "2022-03-29",
+      "type": "talk",
+      "title": "5 trucs que vous devriez vraiment arrêter de faire vous-même",
+      "speakers": ["Florent Jaby"],
+      "feedbackFrom": [],
+      "summary": "- Point de départ : *« Ma meilleure qualité en tant qu'informaticien, c'est la flemme »* ; pour faire plus, ne faire que ce qui compte.\n- Outils de décision : pyramide **build vs buy** (différenciant, standards de secteur, commodités), **cost of delay** et ses formes de courbes, **Wardley maps**. Deux questions : est-ce ce que vous vendez ? Est-ce que ça vous distingue ?\n- Le top 5 : arrêter d'héberger sa base SQL (DB as a service), d'**opérer son propre cluster Kubernetes** (KaaS ou CaaS : ce qui distingue, c'est de l'utiliser), d'acheter des certificats (Let's Encrypt), de servir ses statiques avec Apache ou Nginx (CDN alimenté par un bucket S3) et de déployer ses load balancers.\n- Bonus : le **PaaS** (Heroku, Scalingo, Clever Cloud, offres des clouds publics), qui fait passer un Hello World à une mise à disposition mondiale en quelques minutes selon lui.\n- Conclusion : les ingénieurs ont du mal à résoudre un problème en enlevant des choses ; les biais (coûts perdus, coûts cachés, biais de l'ingénieur) font perdre la valeur de vue. *« Aucune des décisions que vous prendrez n'a vocation à être éternelle : si le contexte change, vous devez changer d'avis. »*\n- Florent Jaby semble aussi animer la journée (Jennifer Pelisson le remercie de l'avoir présentée) ; son entreprise n'est pas citée dans la vidéo.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "QoIlJsoFnN8",
+        "title": "Florent Jaby - 5 trucs que vous devriez vraiment arrêter de faire vous même",
+        "transcript": true
+      }
+    },
+    {
+      "id": "pourquoi-et-quand-decouper-ses-architectures-de-machine-learning",
+      "day": "2022-03-29",
+      "type": "talk",
+      "title": "Pourquoi et quand découper ses architectures de Machine Learning ?",
+      "speakers": ["Pierre Baonla Bassom — OCTO Technology"],
+      "feedbackFrom": [],
+      "summary": "- Cas fictif fil rouge : un blog qui veut recommander des articles, raconté comme un dialogue avec un tech lead qui réclame des microservices. Anti-pattern de départ : une équipe data qui cherche **le modèle parfait** pendant des mois, loin de l'équipe dev, et une intégration qui échoue.\n- **Découpage n'est pas découplage** : on peut séparer deux composants qui restent couplés. *« Le souci, c'est pas le monolithe, tu es en train de me parler de couplage. »*\n- Étape 1 : **Monolith First** (Martin Fowler), une équipe, un repo, une unité de déploiement, découplé en interne façon Clean Architecture, car les interfaces sont rarement claires au départ.\n- Étape 2 : quand les recommandations doivent changer dans la journée et que l'équipe ne suit plus, **découpage organisationnel** (une équipe dédiée à la recommandation), en s'appuyant sur Accelerate plutôt que sur la loi de Brooks : ajouter des gens n'accélère que si le système est découplé.\n- Étape 3 : quand la recommandation consomme trop et ralentit le site, **découpage technique** en service séparé, devenu possible parce que les interfaces ont émergé entre-temps.\n- Le cas est théorique : aucun client ni chiffre réel à l'appui.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "__R8a9TPJwU",
+        "title": "Pierre Baonla Bassom - Pourquoi et quand découper ses architectures de Machine Learning ?",
+        "transcript": true
+      }
+    },
+    {
+      "id": "dessine-moi-une-archi-data-science",
+      "day": "2022-03-29",
+      "type": "talk",
+      "title": "Dessine-moi une archi data science !",
+      "speakers": ["Sofia Calcagno", "Emmanuel-Lin Toulemonde"],
+      "feedbackFrom": [],
+      "summary": "- Talk à deux voix qui dessine en direct, sur une feuille, l'architecture d'un moteur de recommandation pour une marketplace d'offres culturelles (cas fictif). Démarche d'**architecture émergente** : à chaque étape, un problème, des options, un choix consigné dans un **ADR**.\n- Une métrique co-construite avec le métier : la part d'utilisateurs ayant acheté au moins deux offres de types différents dans le mois.\n- **Pas de ML au départ** : un « top 5 des ventes » envoyé par emailing, calculé par un script lancé à la main, puis un cron et du monitoring. Une recommandation de musée à Marseille pour un Breton se corrige par une règle de distance via un service externe, pas par un modèle.\n- Intégration par une **API de recommandation dédiée**, puis montée en charge en canary release (5 % à 20 %) avec des caches sur la base et sur le service de distance.\n- Le ML n'arrive que quand les règles plafonnent ; il apporte ses problèmes : réentraînement déclenché par un seuil de monitoring, model registry, et un mode dégradé qui rebascule sur le top 5.\n- Message : *« Commencez par des règles métier, puis mettez du machine learning lorsque vous n'arrivez plus à identifier des règles métier pertinentes. »*",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "7jyyBaV8jjI",
+        "title": "Sofia Calcagno & Emmanuel-Lin Toulemonde - Dessine-moi une archi data Science !",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-gerer-des-grosses-donnees-en-toute-simplicite",
+      "day": "2022-03-29",
+      "type": "talk",
+      "title": "Comment gérer des grosses données en toute simplicité ?",
+      "speakers": ["Faustine Massin — OCTO Technology"],
+      "feedbackFrom": [],
+      "summary": "- REX d'une mission au ministère de l'Intérieur (SI de l'éducation routière et du permis de conduire) : une **plateforme de traces d'audit** immuables pour les réquisitions judiciaires et la détection de fraude. Perte de traces interdite, hébergement on-premise.\n- Volumes : environ **300 millions d'événements par an** (30 par seconde), et 437 millions repris d'une ancienne plateforme dès le démarrage.\n- Collecte : Kafka est le premier réflexe, écarté. Avec un seul consommateur et sans transformation au fil de l'eau, un **broker transactionnel** garantit sans effort l'absence de perte et reste plus simple à exploiter : ActiveMQ Artemis, déjà maîtrisé en interne.\n- Stockage : **PostgreSQL plutôt que NoSQL**, partitionné par année, avec des index locaux sur l'identifiant utilisateur conçus à partir des requêtes réelles ; réplication et bascule automatique avec Patroni.\n- Maintenabilité et RGPD : éviter que la base devienne un « dépotoir » en définissant avec le métier quelles traces garder et combien de temps ; exposition en lecture seule dans un format pivot.\n- *« Faire simple mais pas simpliste. »* Limites reconnues : la volumétrie n'est validée que par des tests de performance (*« on verra ensuite à l'usage »*), sans chiffres avant/après.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "h3LUE6FhYNw",
+        "title": "Faustine Massin - Comment gérer des grosses données en tout simplicité ?",
+        "transcript": true
+      }
+    },
+    {
+      "id": "5-angles-morts-chantier-de-perf",
+      "day": "2022-03-29",
+      "type": "talk",
+      "title": "5 angles morts à dérisquer pour bien mener son chantier de perf",
+      "speakers": ["Jennifer Pelisson"],
+      "feedbackFrom": [],
+      "summary": "- REX d'un projet pour la Sécurité routière (réservation des places d'examen du permis par les auto-écoles, mises en ligne par vagues). Déclencheur : une **chute de la base de données** de 10 à 15 minutes le 10 décembre 2020, avec seulement 500 utilisateurs sur 30 000 attendus.\n- Angle mort 1, quoi tester : un **scénario représentatif** de l'usage réel, une cible et des critères de succès (temps de réponse, zéro erreur 500), à réajuster quand les comportements changent.\n- Angle mort 2, l'organisation : une équipe perf dédiée monte vite en compétence mais déresponsabilise les autres ; la diluer rend la perf l'affaire de tous mais l'expose à être déprioritisée. Piste : des **critères d'acceptance de performance** dès la conception, et une capacité réservée à chaque itération.\n- Angle mort 3, les données : il a fallu environ trois semaines pour un jeu correct ; **la donnée prend du temps, se périme et doit se réinitialiser** (décalage automatique des dates chaque lundi, mécanismes de reset).\n- Angles morts 4 et 5, outillage et méthode : un environnement dédié, isolé et sur l'infra cible ; Grafana, Kibana et pg_stat pour voir ce qui s'exécute vraiment ; puis **un changement à la fois**, pour savoir ce qui a réellement amélioré les résultats.\n- Tips de résolution : index ciblés, vérifier ce que fait l'ORM (250 000 requêtes attendues, chacune suivie de chargements unitaires), debounce côté front (appels divisés par trois), et challenger le métier quand une règle coûte trop cher.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "WdhIyyYpnVY",
+        "title": "Jennifer Pelisson - 5 angles morts à dérisquer pour bien mener son chantier de perf",
+        "transcript": true
+      }
+    },
+    {
+      "id": "sre-pratiques-de-run-de-demain",
+      "day": "2022-03-29",
+      "type": "talk",
+      "title": "SRE : Découvrez les pratiques de run de demain !",
+      "speakers": ["Adrien Boulay"],
+      "feedbackFrom": [],
+      "summary": "- Constat : dix ans après son apparition, DevOps est souvent réduit à l'outillage et le **mur de la production** tient toujours. Deux anti-patterns vécus, tirés de DevOps Topologies : l'Ops isolé dans l'équipe de dev, et le « DevOps outillage » qui installe des outils pendant que l'Ops historique garde la mise en production.\n- Remède : des équipes autonomes et pluridisciplinaires, et une **plateforme en self-service** fiable, adaptée aux besoins des équipes et soignée côté developer experience.\n- Le SRE selon Google : une équipe facultative, réservée aux produits critiques, au plus **50 % d'opérationnel** et le reste en ingénierie pour le réduire. *« Le SRE n'est pas DevOps : ce sont deux philosophies qui s'accordent extrêmement bien. »*\n- Observabilité (métriques, logs, traces) et **SLO avec budget d'erreur** : budget épuisé, on gèle les changements et on stabilise.\n- Tests en production et **chaos engineering** : hypothèse de panne, rollback préparé, post-mortem, puis test de résilience rejouable.\n- Automatiser ce qui a été fait trois fois, jusqu'au self-healing par opérateurs (Kubernetes, Patroni pour PostgreSQL), pour une charge opérationnelle qui plafonne ; le speaker reconnaît que le self-healing « paraît difficilement atteignable ».",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "Un2l3b_YTPI",
+        "title": "Adrien Boulay - SRE : Découvrez les pratiques de run de demain !",
+        "transcript": true
+      }
+    },
+    {
+      "id": "super-apps-asiatiques-enfin-dechiffre",
+      "day": "2022-03-29",
+      "type": "talk",
+      "title": "Le modèle des Super Apps asiatiques enfin déchiffré !",
+      "speakers": ["Hana Amiri"],
+      "feedbackFrom": [],
+      "summary": "- État de l'art, pas un REX : une super app regroupe des services de plusieurs domaines, voire de plusieurs entreprises, autour d'un **service de paiement commun** (WeChat, Alipay, Gojek, Grab), face à des utilisateurs qui n'utilisent que 3 à 8 apps par jour.\n- Trois axes de défis : **business** (services cœur, partenaires, accès au code et aux données), **organisation** (une équipe par service, faibles dépendances) et **technique** (taille de l'app, contraintes du mobile), avec l'analogie des microservices et des micro-frontends.\n- Modèle WeChat : une coque native qui charge des **mini-apps web** via un SDK et un JavaScript Bridge ; mises à jour sans passer par les stores et partenaires en self-service, mais compétences rares, performance et sécurité plus difficiles, et un bridge à maintenir comme un produit.\n- Modèle Revolut : **100 % natif**, services financiers seulement, peu de partenaires, découplage par modules natifs ; technologies éprouvées, mais rebuild complet et validation des stores à chaque mise à jour.\n- Autres options : Android Dynamic Feature Modules et Ionic Portals. *« Il n'y a pas une solution miracle »* : tout dépend des priorités business, organisationnelles et techniques, et le backend reste central.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "ASdPFiLnxZc",
+        "title": "Hana Amiri - Le modèle des Super Apps asiatiques enfin déchiffré !",
+        "transcript": true
+      }
+    },
+    {
+      "id": "apprendre-la-normalite-ou-detecter-l-anormalite-avec-l-ia",
+      "day": "2022-03-29",
+      "type": "talk",
+      "title": "Apprendre la normalité ou détecter l'anormalité avec l'IA ?",
+      "speakers": ["Reynald Riviere"],
+      "feedbackFrom": [],
+      "summary": "- Contexte cyber : Lapsus$, l'arrêt de production chez Pierre Fabre, les attaques contre les hôpitaux ; d'après un rapport d'IBM cité, **212 jours en moyenne pour identifier une intrusion**, et environ trois alertes sur quatre qui sont des faux positifs (« effet sapin de Noël »).\n- Parti pris : l'intrusion arrivera et les attaques polymorphes échappent aux signatures, donc **apprendre la normalité** d'un serveur plutôt que chercher l'anomalie, trop rare.\n- Technique : un **auto-encodeur** (expliqué avec un Faucon Millenium en Lego) entraîné sur des logs sans attaque ; une forte erreur de reconstruction signale un usage anormal. Features construites avec des experts cyber : *« faire un sujet métier sans un expert métier, c'est très houleux »*.\n- Résultats sur un jeu de données universitaire labellisé : brute force, DDoS, infiltrations et scans de ports détectés sans avoir été vus, sans fausse alarme ; attaques web et botnets ratées, faute de données représentatives. Trois jours de données et une à deux heures d'entraînement : une démarche revendiquée **frugale**.\n- Déploiement imaginé : de petits agents pré-entraînés par type de serveur, sur les seules briques critiques, et une restitution visuelle de la propagation de l'attaque pour les analystes.\n- La transcription semble s'arrêter avant la fin ; l'équipe (des data scientists, pas des spécialistes cyber) se rattache vraisemblablement à OCTO, sans que ce soit dit clairement.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "T46WIn7OIH0",
+        "title": "Reynald Riviere - Apprendre la normalité ou detecter l'anormalité avec l'IA ?",
+        "transcript": true
+      }
+    },
+    {
+      "id": "faire-parler-la-donnee-debat-politique",
+      "day": "2022-03-29",
+      "type": "talk",
+      "title": "Faire parler la donnée pour mieux comprendre le débat politique",
+      "speakers": ["Nicolas Cavallo — OCTO Technology"],
+      "feedbackFrom": [],
+      "summary": "- Projet personnel d'un data scientist d'OCTO : **« La Voix des Élections »**, un tableau de bord du débat présidentiel 2022 sur Twitter, présenté deux semaines avant le premier tour.\n- Chaîne : API Twitter en streaming sur mots-clés, hashtags et comptes des 8 candidats suivis (200 000 à 300 000 tweets par jour, près de 30 millions en un an), puis NLP classique (lemmatisation, stop words, regex) et modèles Transformers français pour étiqueter thèmes et candidats.\n- Cœur du talk : **la méthode d'extrapolation** fait le résultat. Quatre façons de compter : simple, avec retweets, par utilisateur (pour neutraliser bots et comptes hyperactifs), pondérée par les intentions de vote.\n- En comptage simple, climat (5 %), éducation, puis immigration ; avec les retweets, **l'immigration passe en tête** ; par utilisateur ou par intention, le climat redevient premier. Ce qui compte est la variation, pas le niveau absolu.\n- Leçon : décrire sa méthode et *« ne plus faire confiance à un chiffre qui sort de nulle part »*. Limites dites par le speaker : Twitter ne représente pas les Français et la collecte n'est qu'un sous-échantillon.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "xIt6Ua_IsVU",
+        "title": "Nicolas Cavallo - Faire parler la donnée pour mieux comprendre le débat politique",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Ateliers live sur des scénarios clients (annoncés par Maddyness, programme non lu)"
+  ],
+  "sources": [
+    { "label": "Site officiel archivé (Wayback Machine, mars 2022)", "url": "https://web.archive.org/web/20220307083624/https://www.laduckconf.com/" },
+    { "label": "Maddyness, fiche événement La Duck Conf 2022", "url": "https://www.maddyness.com/evenement/la-duck-conf/" },
+    { "label": "Maddyness, fiche détaillée (tarif, pass sanitaire, thèmes)", "url": "https://www.maddyness.com/?p=1319654" },
+    { "label": "Playlist YouTube « La Duck Conf 2022 : replay » (11 vidéos, transcripts automatiques lus)", "url": "https://www.youtube.com/playlist?list=PLXlbmbYadKH57xZOxNUMOW_Kj5rUTJu-f" }
+  ]
 }

@@ -8,8 +8,619 @@
   "city": "Paris",
   "venue": "Palais des Congrès",
   "url": "https://web.archive.org/web/20220207204155/https://www.devoxx.fr/",
+  "theme": "10 ans de Devoxx France",
   "dateConfidence": "ok",
-  "note": "10 ans de Devoxx France.",
-  "status": "pending",
-  "sessions": []
+  "note": "10 ans de Devoxx France. Première édition en jauge pleine après deux ans de Covid (Deezer, Mirantis). Chiffres : « vous êtes 3249 » annoncé en keynote d'ouverture, environ 3 200 participants selon le site officiel, plus de 200 à 240 sessions, 8 à 12 salles en parallèle (Deezer, Fluid Topics).",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-09",
+  "revisit": "Aucun post LinkedIn lu ; billets Decathlon Digital (Medium, HTTP 403), Criteo (404) et Fluid Topics en français (404) non lus ; programme cfp.devoxx.fr injoignable (DNS) et Wayback Machine hors ligne le 2026-11-09, d'où des jours de session incomplets. À reprendre.",
+  "corpus": "Cinq comptes rendus écrits publiés entre fin avril et août 2022 : Deezer (Denis Germain, 5 mai), Fluid Topics (Anne-Sophie Muffat avec Michaël Lefèvre et Romain Tellier, 3 mai), Onepoint sur dev.to (Kosmik et cinq collègues, 12 mai), QIMA (Christophe M et Lucas R, notes étoilées par talk, 2 août) et Mirantis (sponsor, 29 avril), plus un journal LinuxFr critique (18 mai) et les notes de l'épisode 141 de Big Data Hebdo. S'y ajoutent **21 transcripts** échantillonnés : les 6 keynotes (plus les deux vidéos intégrales des matinées pour situer les jours) et 15 talks parmi les plus commentés.",
+  "limits": "Corpus d'entreprises (ESN, éditeurs, sponsors) qui couvrent surtout des talks techniques ; un seul retour (LinuxFr) est franchement critique. Aucun post LinkedIn lu. Le programme officiel n'a pas pu être consulté : les jours ne sont indiqués que lorsqu'une source les établit (keynotes, carnet de QIMA). Les transcripts automatiques sont parfois très bruités (talk sur les index illisible).",
+  "tldr": "Une édition anniversaire **de retrouvailles après deux ans de Covid**, où les keynotes ont parlé de **sobriété numérique, d'inclusion et de gouvernance des algorithmes**, tandis que les participants ont surtout retenu des **retours d'expérience concrets** (Doctolib, Kafka, opérateurs Kubernetes, OpenTelemetry) et des sujets de carrière et d'équipe.",
+  "keyTakeaways": [
+    "**Pousser une architecture « boring » très loin** avant de la découper : Doctolib tient encore sur un monolithe et une seule base PostgreSQL (Aurora) d'environ 25 To, et le dit sans cacher ses échecs (Deezer, Fluid Topics, Onepoint).",
+    "Sur Kafka, l'essentiel des pièges se cache derrière le « hello world » (auto-commit, rebalancing, montée de version) ; côté ops, le conseil retenu tient en un mot : *« UTILISEZ STRIMZI ! »* (Onepoint, Fluid Topics).",
+    "Pour un opérateur Kubernetes, **utiliser un framework** (kubebuilder, operator framework), soigner la CRD et passer du temps sur **la boucle de réconciliation**, le cœur du contrôleur (Etienne Coutaud, retenu par Onepoint et Deezer).",
+    "Le levier environnemental du développeur est surtout **logiciel contre obsolescence matérielle** : la croissance des besoins des logiciels déclenche le renouvellement des terminaux, qui concentrent l'impact (Frédéric Bordage, keynote).",
+    "Après six ans d'expérience, **une carrière de contributeur individuel** (staff, principal, distinguished) se construit sur un impact qui déborde de l'équipe, pas sur le management (Hugo Lassiège et Dimitri Baeli).",
+    "DevOps ne tient pas ses promesses tant que subsiste le **« mur de la confusion »** entre Dev et Ops : post-mortems systématiques, ne pas préjuger de la compétence de l'autre, donner aux équipes le temps de collaborer (Gérôme Egron et Guillaume Mathieu, salué par Deezer).",
+    "En agilité, ne pas **forcer l'autonomie** des équipes : prendre le temps d'accueillir, d'essayer, de désapprendre et de donner du feedback, chacun ayant un rôle à jouer hors de l'équipe de dev (Fanny Klauk).",
+    "Côté participants, **varier les sessions lourdes et légères** et prévoir des pauses : les labs et les talks « getting started » déçoivent davantage que les retours d'expérience (QIMA, Onepoint)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-devoxx-france-2012-2022-10-ans-deja",
+      "day": "2022-04-21",
+      "type": "keynote",
+      "title": "La Keynote de Devoxx France 2012-2022 : 10 ans déjà !",
+      "speakers": ["Antonio Goncalves", "Z. Cadi", "Nicolas Martignole"],
+      "feedbackFrom": [],
+      "summary": "- Récit des origines : création du **Paris JUG en février 2008** (une quarantaine de personnes au premier meetup), voyages annuels de la communauté française à Javapolis/Devoxx en Belgique, annonce de Devoxx France là-bas en 2011.\n- **2012 à 2014 à l'hôtel Marriott** (vite à l'étroit, environ 1 500 personnes), arrivée au **Palais des Congrès en 2015** : *« on passe en ligue 1 »*, l'organisation sort de l'association et se professionnalise.\n- Anecdotes de coulisses : tractage sur le parvis de la Défense, autocollants recollés en famille, 2 000 sacs de goodies remplis à la main ; *« vous êtes 3249 »* cette année.\n- Mise en avant de l'équipe : un comité de sélection de **23 personnes**, les « polos rouges » bénévoles, puis montée sur scène de toute l'équipe et remerciements aux sponsors fidèles depuis dix ans.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "kOXJEzD8GKw",
+        "title": "La Keynote de Devoxx France 2012-2022 : 10 ans déjà ! (A.Goncalves, Z.Cadi et N.Martignole)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "10-ans-de-tech-a-travers-le-podcast-niptech",
+      "day": "2022-04-21",
+      "type": "keynote",
+      "title": "10 ans de Tech à travers le podcast Niptech",
+      "speakers": ["B. Curdy", "M. Monney", "B. Freydt"],
+      "feedbackFrom": ["Blog Fluid Topics (rencontre avec l'équipe Niptech)"],
+      "summary": "- Rétrospective par l'équipe du podcast suisse, née d'une radio étudiante sur le campus de l'EPFL : dix ans plus tard, **WordPress et les flux RSS n'ont pas bougé**, parce que *« ça marche »* et que personne ne pousse au changement.\n- Cinq tendances vécues de l'intérieur : le **social** (Klout : l'influence comptait bien, le score social non), la **géolocalisation** (Foursquare), le *quantified self* passé vers la santé, les **drones** et la régulation, les **cryptomonnaies**.\n- Trois leçons : mettre la donnée au service de quelque chose d'utile, expérimenter le **groupage et dégroupage** des services, et ne plus ignorer **la régulation** quand on conçoit un produit.\n- L'équipe Fluid Topics dit avoir apprécié de rencontrer l'équipe Niptech sur place.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "5-pe7CajTik",
+        "title": "10 ans de Tech à travers le podcast Niptech (B.Curdy, M.Monney et B.Freydt)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "slow-tech-it-s-urgent-to-hack-the-system",
+      "day": "2022-04-21",
+      "type": "keynote",
+      "title": "Slow.tech : il est urgent de hacker le système !",
+      "speakers": ["Frédéric Bordage"],
+      "feedbackFrom": [],
+      "summary": "- Fil rouge d'**Apollo 13** : CO2, low tech et hackers ; *« l'équipage d'Apollo 13, c'est nous »*. Échéances rappelées : pic des émissions d'ici trois ans, division par deux en huit ans.\n- Le numérique pèserait **un tiers du budget annuel soutenable** de l'humanité, selon lui, et l'impact se concentre sur **les terminaux** (extraction des minerais, fabrication).\n- Levier du développeur : **l'obésiciel**, croissance disproportionnée des besoins logiciels, est le premier facteur d'obsolescence du matériel.\n- Deux démarches : l'**écoconception** (quatre niveaux, du code jusqu'à supprimer le numérique du service) et la **slow.tech**, alliance de low tech et de high tech : prévisions météo de Weather Force transmises en SMS puis à la craie par les instituteurs en Côte d'Ivoire ; chiens renifleurs de cancer (projet KDog de l'Institut Curie) plutôt qu'une IA quand un chien suffit.\n- Prédiction choc : au rythme actuel, *« dans 30 ans il n'y a plus d'ordinateurs »* ; Ludovic Cinquin la reprend le lendemain dans sa propre keynote.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "1uQPVOK45ow",
+        "title": "Slow.tech: It's urgent to hack the system! (Frédéric Bordage)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "futurospective-digitale-le-futur-est-il-encore-ce-qu-il-etait",
+      "day": "2022-04-22",
+      "type": "keynote",
+      "title": "Futurospective digitale : le futur est-il encore ce qu'il était ?",
+      "speakers": ["Ludovic Cinquin — OCTO Technology"],
+      "feedbackFrom": [],
+      "summary": "- Matrice des mégatendances (potentiel de disruption contre probabilité) : **IA en haut à droite**, cloud devenu acquis, quantique jugé lointain, blockchain *« hyper ambivalente »*, low code poussé par la pénurie de développeurs.\n- Trois scénarios volontairement dystopiques : **« World Tech Company »** (écosystèmes fermés des GAFAM, entreprises à la puissance d'États), **guerre froide numérique**, **digital detox** par épuisement des ressources, en écho explicite à la keynote de Frédéric Bordage la veille.\n- Notion de **« real tech »** : une technologie qui respecte l'objet, l'usage, l'environnement et l'humain (pas d'addiction ni de travail des enfants).\n- Conseils : apprendre à coder avec l'IA, développer son adaptabilité, adopter l'esprit hacker, et **agir en conscience** car *« le monde va fonctionner selon le code que l'on écrit aujourd'hui »*.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "KMzwEbyriZA",
+        "title": "Futurospective digitale : le futur est-il encore ce qu'il était ? (Ludovic Cinquin)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "lesbonsclics-plateforme-pedagogique-aidants-numeriques",
+      "day": "2022-04-22",
+      "type": "keynote",
+      "title": "LesBonsclics, une plateforme pédagogique au service du 1er réseau européen d'aidants numériques",
+      "speakers": ["Thomas Vandriessche — WeTechCare"],
+      "feedbackFrom": ["Denis Germain (blog Deezer)"],
+      "summary": "- Sur scène : la **fracture numérique** en chiffres (une personne sur six n'utilise pas internet, 38 % manquent d'une compétence numérique essentielle, 68 % déclarent des difficultés), y compris chez les **16-25 ans**, à l'aise sur smartphone mais bloqués pour un CV ou une recherche d'emploi.\n- Trois freins : équipement (plus de 20 % sans ordinateur ni tablette), compétences et **freins psychologiques** (manque de confiance) ; principe de la **« double peine »** (virement gratuit en ligne, payant au guichet).\n- Le report de la charge sur les **aidants de proximité** (bénévoles, travailleurs sociaux, secrétaires de mairie), accéléré par le Covid ; LesBonsclics vise à les outiller.\n- Keynote qui a **ému** Denis Germain (Deezer), pour qui l'inclusion numérique devient de plus en plus importante.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "fJwDbP3CB-0",
+        "title": "LesBonsclics, an educational platform serving digital caregivers (T. Vandriessche)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-quest-for-collaborative-web-governance",
+      "day": "2022-04-22",
+      "type": "keynote",
+      "title": "La quête d'une gouvernance collaborative du web",
+      "speakers": ["Lê Nguyên Hoang — association Tournesol"],
+      "feedbackFrom": [],
+      "summary": "- Les algorithmes de recommandation font face à **des millions de dilemmes éthiques par jour** (vaccins, climat, géopolitique) et ne peuvent pas *« ne pas choisir »* ; exemples d'amplification de la haine (Myanmar, Tigré, Capitole).\n- Présentation de **Tournesol** : des contributeurs comparent deux vidéos YouTube, les jugements sont agrégés en scores et alimentent une **base de données publique sous licence libre**, pour orienter la recherche en machine learning vers les jugements éthiques.\n- Thèse technique : **un modèle de machine learning est un scrutin non sécurisé**, où ceux qui parlent le plus votent le plus ; d'où le danger des faux comptes (*« 7 milliards »* retirés chaque année par Facebook, selon lui) et les mécanismes de certification et de vote robuste de Tournesol.\n- Appel final à contribuer au projet.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "hdAEGAwlK0M",
+        "title": "The quest for collaborative web governance (Lê Nguyên Hoang)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "doctolib-needs-a-more-powerful-database",
+      "type": "talk",
+      "title": "Doctolib a besoin d'une base de données plus puissante. Ok, mais laquelle ?",
+      "speakers": ["Bertrand Paquet — Doctolib", "David Gageot — Doctolib"],
+      "feedbackFrom": ["Denis Germain (blog Deezer)", "Blog Fluid Topics", "Blog Onepoint (dev.to)"],
+      "summary": "- Sur scène : une **« boring architecture »** assumée, un monolithe Rails et **une seule base PostgreSQL sur Aurora** d'environ **25 To**, sur les plus grosses machines AWS avec 13 réplicas en lecture, jusqu'à 250 000 commits par seconde et une table de 7 milliards de lignes.\n- Historique : Heroku, puis bare metal chez un hébergeur de données de santé, puis EC2 et Aurora ; des bases distribuées comme CockroachDB évaluées sans être retenues.\n- Retenu par les participants : Doctolib **approche des limites physiques d'Aurora** (Fluid Topics), n'a pas trouvé de PostgreSQL distribué qui tienne ses volumes avec son existant et devra peut-être **découper son application** (Onepoint).\n- Ce qui a plu : **la franchise sur les échecs** rencontrés pendant la crise sanitaire (Deezer).\n- En questions : pas de réécriture en microservices prévue ; *« 90 % des problèmes »* sont dans la base, et le découpage commence par des composants internes au monolithe.",
+      "summarySources": ["feedback", "blog", "transcript"],
+      "video": {
+        "youtubeId": "1PtPVpFWtKQ",
+        "title": "Doctolib needs a more powerful database. Okay, ...? (Bertrand Paquet and David Gageot)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "kafka-carte-des-pieges-developpeurs-et-ops",
+      "day": "2022-04-20",
+      "type": "talk",
+      "title": "Kafka : carte des pièges à l'usage des développeurs et des ops",
+      "speakers": ["Emmanuel Bernard — Red Hat", "Clement Escoffier — Red Hat"],
+      "feedbackFrom": ["Blog Fluid Topics", "Blog Onepoint (dev.to)", "Christophe M (QIMA)"],
+      "summary": "- Université de trois heures découpée en **recettes de 10 à 20 minutes**, côté développeur (Clement Escoffier) puis côté ops (Emmanuel Bernard) : *« la simplicité du hello world »*, puis la complexité derrière chaque boîte.\n- Exemples sur scène : records à clé ou valeur nulle (*tombstones*), **auto-commit** à désactiver pour maîtriser ses positions, **rebalancing** et son mode incrémental coopératif, montée de version d'un cluster distribué, canaris pour la supervision.\n- Retenu : de bonnes bases et un REX de production, avec le conseil appuyé *« UTILISEZ STRIMZI ! »* (Onepoint) ; une session **pratique**, utile pour optimiser son usage (Fluid Topics).\n- Bémol : **trop avancé** et scindé entre dev et ops pour un participant (QIMA, une étoile sur trois).",
+      "summarySources": ["feedback", "blog", "transcript"],
+      "video": {
+        "youtubeId": "4Bf0Kght_BI",
+        "title": "Kafka: carte des pièges à l'usage des développeurs et des ops (Emmanuel Bernard, Clement Escoffier)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "un-an-a-developper-des-operateurs-kubernetes",
+      "type": "talk",
+      "title": "Qu'avons-nous appris après un an passé à développer des opérateurs Kubernetes ?",
+      "speakers": ["Etienne Coutaud"],
+      "feedbackFrom": ["Denis Germain (blog Deezer)", "Blog Onepoint (dev.to)"],
+      "summary": "- Contexte (speaker) : une offre de **PaaS** où le développeur ne gère que son code ; aller au-delà des « hello world » des articles de blog, jusqu'à la production.\n- Retenu : boucle de réconciliation, contrôleurs et *mutating webhooks* expliqués ; l'équipe a d'abord évité les frameworks pour limiter les dépendances, **puis a fait marche arrière**, car ils facilitent la génération des CRD et la gestion des contrôleurs (Onepoint).\n- Conseils de fin : bien penser **la CRD comme une interface** qui évolue ; consacrer du temps à la réconciliation (*« une semaine, deux semaines sans poser une ligne de code »*), puisqu'au redémarrage le contrôleur repasse sur tous les objets ; tester, et lire le code d'opérateurs existants (speaker).\n- Un retour d'expérience jugé **fort** par Onepoint et instructif par Deezer.",
+      "summarySources": ["feedback", "blog", "transcript"],
+      "video": {
+        "youtubeId": "iq-b1Z0415g",
+        "title": "Qu'avons nous appris après un an passé à développer des opérateurs Kubernetes ? (Etienne Coutaud)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "opentelemetry-unifier-logs-metrics-traces",
+      "type": "talk",
+      "title": "Comment OpenTelemetry peut transformer votre monitoring en unifiant vos logs/metrics/traces",
+      "speakers": ["Vincent Behar — Ubisoft"],
+      "feedbackFrom": ["Blog Fluid Topics", "Blog Onepoint (dev.to)"],
+      "summary": "- Sur scène : retour d'une équipe de plateforme interne d'Ubisoft (services managés sur cloud privé OpenStack et clouds publics), dans la continuité du talk de Pierre Zemb sur les applications observables.\n- Contenu : logs, métriques et traces, **génération automatique** de métriques et de logs à partir des traces via l'**OpenTelemetry Collector**, corrélation avec le profiling (flame graphs).\n- Conclusion du speaker : mesurer le temps pour trouver une cause racine, ne pas tout remplacer d'un coup, soigner **les conventions de nommage** et **la corrélation**, viser une plateforme unifiée sans enfermement.\n- Retenu : une bonne introduction pour devs et ops (Onepoint) ; l'usage du Collector chez Ubisoft, dont l'auteur dit avoir beaucoup appris (Fluid Topics).",
+      "summarySources": ["feedback", "blog", "transcript"],
+      "video": {
+        "youtubeId": "dGMN3keJuXA",
+        "title": "How OpenTelemetry can transform your monitoring by unifying your logs ... (Vincent Behar)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "developpeur-senior-avec-6-ans-d-experience-et-apres",
+      "type": "talk",
+      "title": "Développ(eur|euse) Senior avec 6 ans d'expérience, et après ?",
+      "speakers": ["Hugo Lassiège — Malt", "Dimitri Baeli"],
+      "feedbackFrom": ["Blog Fluid Topics"],
+      "summary": "- Sondage à main levée en ouverture : environ **deux tiers de seniors** dans la salle, qui se demandent comment rester dans la technique sans passer par le management.\n- Deux échelles parallèles : management (jusqu'au VP Engineering) et **contributeur individuel** (staff, principal, distinguished engineer), qu'il faut parfois construire soi-même dans son entreprise.\n- Grille de lecture : **l'impact**, de l'équipe produit à l'entreprise puis à l'industrie ; à partir de staff, il devient nécessaire de parler business, clients et utilisateurs, et d'identifier proactivement les sujets.\n- Le management redéfini : pas *« du fichier Excel »*, mais se sentir responsable d'un résultat, d'où des compétences de management même sans équipe.\n- Retenu : la question de devoir ou non passer manager, avec des conseils jugés précieux (Fluid Topics).",
+      "summarySources": ["blog", "transcript"],
+      "video": {
+        "youtubeId": "X5MYKj1C2qM",
+        "title": "Développ(eur|euse) Senior avec 6 ans d'expérience, et après ? (Hugo Lassiege et Dimitri Baeli)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comprendre-les-enjeux-de-consommation-de-ressource-et-d-energie",
+      "type": "talk",
+      "title": "Comprendre les enjeux de consommation de ressource et d'énergie dans le secteur numérique",
+      "speakers": ["Quentin Adam — Clever Cloud", "Pierre Beyssac"],
+      "feedbackFrom": ["Denis Germain (blog Deezer)", "meklb (journal LinuxFr)"],
+      "summary": "- Sur scène : séparer les problèmes (chimie de l'atmosphère, ressources limitées, pollution locale) ; recommandations d'**exploiter vraiment le matériel** (binaires compilés pour le CPU utilisé), d'héberger là où l'électricité est bas carbone, et d'**encourager la migration des usages vers le numérique** (télétravail) : *« le numérique, c'est une chance pour l'environnement »*.\n- Conclusion : aligner son travail sur ses valeurs et quitter un employeur qui pollue, puisque le marché de l'emploi le permet.\n- Apprécié par Deezer pour **l'énergie des speakers** et le choix des faits et preuves scientifiques plutôt que l'émotion.\n- **Vivement contesté** sur LinuxFr : speakers jugés sans légitimité sur l'environnement et en conflit d'intérêts, oubli de la fabrication des terminaux, ton jugé *« insultant »* et *« hautain »*, au service du *« business as usual »*. Le fil de discussion compte 143 commentaires.\n- Point de débat : ce talk contredit en partie la keynote de Frédéric Bordage, qui place les terminaux au cœur du problème.",
+      "summarySources": ["feedback", "blog", "transcript"],
+      "video": {
+        "youtubeId": "gxWwxqIrCa8",
+        "title": "Understanding the challenges of resource and energy consumption ... (Quentin Adam and Pierre Beys...",
+        "transcript": true
+      }
+    },
+    {
+      "id": "pourquoi-devops-ne-tient-pas-ses-promesses",
+      "type": "talk",
+      "title": "Pourquoi DevOps ne tient pas ses promesses ?",
+      "speakers": ["Gérôme Egron", "Guillaume Mathieu"],
+      "feedbackFrom": ["Denis Germain (blog Deezer)"],
+      "summary": "- Sur scène : métaphore des confinés avec ou sans enfants, deux populations aux besoins différents entre lesquelles se dresse **« le mur de la confusion »** ; on parlait déjà de DevOps au premier Devoxx France, et une promesse manque encore.\n- Recommandations de fin : mesurer pour décider rationnellement, **déclencher un post-mortem** au prochain incident, ne pas préjuger de la compétence de l'autre, commencer à creuser avant d'appeler à l'aide, et laisser aux équipes le temps de collaborer.\n- Retenu par Deezer (responsable d'une communauté de pratique SRE) : d'accord avec la plupart des conseils, mais il ne les avait vus que du côté Ops ; **le point de vue Dev** lui a été précieux.",
+      "summarySources": ["feedback", "blog", "transcript"],
+      "video": {
+        "youtubeId": "Nyga5cdvgbo",
+        "title": "Why isn't DevOps living up to its promises? (Gérôme Egron and Guillaume Mathieu)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rendez-l-agilite-aux-developpeur-se-s",
+      "type": "talk",
+      "title": "Rendez l'agilité aux développeur(se)s !",
+      "speakers": ["Fanny Klauk — Apside"],
+      "feedbackFrom": ["Denis Germain (blog Deezer)"],
+      "summary": "- Tools-in-Action au format **livre dont vous êtes le héros**, illustré par une dessinatrice : le public choisit les embranchements de la vie d'une équipe agile.\n- Constat de départ (speaker, coach agile) : on **force un peu trop l'autonomie et l'auto-organisation** des équipes.\n- Morale : *« prenez le temps »* d'accueillir et d'intégrer, de tester façons de faire et outils, de s'autoriser à désapprendre, de réfléchir et de donner du feedback bienveillant ; **l'agilité n'appartient pas qu'à l'équipe de développement**, chaque rôle autour d'elle compte.\n- Jugé **parlant et drôle** par Deezer, qui dit y avoir réfléchi à ses propres équipes agiles.",
+      "summarySources": ["feedback", "blog", "transcript"],
+      "video": {
+        "youtubeId": "Vo_YWAE3Pxo",
+        "title": "Rendez l'agilité aux développeur(se)s ! (Fanny KLAUK)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "behind-the-scenes-at-the-cloud",
+      "type": "talk",
+      "title": "Qu'y a-t-il derrière « le cloud » ?",
+      "speakers": ["Cécile Morange"],
+      "feedbackFrom": ["Denis Germain (blog Deezer)"],
+      "summary": "- Premier vrai talk en présentiel de la speakeuse, **21 ans**, autodidacte depuis ses 14 ans (serveurs Minecraft), qui travaille dans une PME de 18 personnes possédant **son propre datacenter et son réseau fibre** (speaker).\n- Explication de ce qui se cache derrière le cloud : datacenter, alimentation, refroidissement, réseau ; en questions, pistes de récupération de chaleur (microalgues) pour un futur datacenter.\n- Salué par Deezer : expliquer **pourquoi il est difficile de faire tourner une infrastructure**, de façon très pédagogique, devant une salle de développeurs seniors ; Deezer mentionne aussi qu'elle opère son propre numéro d'AS.",
+      "summarySources": ["feedback", "blog", "transcript"],
+      "video": {
+        "youtubeId": "CskRoGyUr7w",
+        "title": "Behind the scenes at \"The Cloud\" (Cécile Morange)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "cybersecurite-et-generateurs-de-nombres-aleatoires",
+      "type": "talk",
+      "title": "Cybersécurité et générateurs de nombres aléatoires",
+      "speakers": ["Mathis Hammel — CodinGame"],
+      "feedbackFrom": ["Denis Germain (blog Deezer)"],
+      "summary": "- Sur scène : comment générer des mots de passe, et surtout comment ne pas le faire, à travers **l'histoire d'une grosse vulnérabilité (CVE de 2020)** dans le générateur de mots de passe d'un grand éditeur d'antivirus.\n- En questions : `/dev/urandom` sous Linux considéré comme sûr ; pour le mot de passe maître d'un gestionnaire, viser **une quinzaine de caractères** variés.\n- Retenu par Deezer, qui n'avait pas prévu d'y aller : un **post-mortem fun et instructif**.",
+      "summarySources": ["feedback", "blog", "transcript"],
+      "video": {
+        "youtubeId": "oXHhOHa_5HE",
+        "title": "Cybersécurité et générateurs de nombres aléatoires (Mathis Hammel)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "mob-programming-la-veritable-approche-du-developpement-en-equipe",
+      "day": "2022-04-22",
+      "type": "talk",
+      "title": "Mob programming, la véritable approche du développement en équipe",
+      "speakers": ["Maxime Odye — Ouest-France", "Mathieu Pousse — Ouest-France"],
+      "feedbackFrom": ["Christophe M et Lucas R (QIMA)"],
+      "summary": "- Sur scène : retour d'expérience de plusieurs années à Ouest-France ; toute l'équipe sur le même sujet, au même moment, au même endroit, face au chef de projet qui craint pour la productivité.\n- Pratiques citées en questions : rétrospective à la fin de chaque séance pour ajuster la semaine suivante ; quand quelqu'un décroche, *« la séquence est perdue »*, mieux vaut préparer des sujets qui conviennent à tous ; le mob peut aider à inclure des personnes à l'aise différemment avec la vue ou l'audition.\n- Retenu : *« Really worth it! »* (Christophe M) ; Lucas R dit avoir corrigé des idées reçues et note le piège de **dériver vers des refactorings** (QIMA, trois et deux étoiles).",
+      "summarySources": ["feedback", "blog", "transcript"],
+      "video": {
+        "youtubeId": "nTR7AxqI9WQ",
+        "title": "Mob programming, la véritable approche du développement en équipe (Maxime Odye et Mathieu Pousse)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ce-que-les-developpeurs-doivent-savoir-sur-les-index",
+      "day": "2022-04-22",
+      "type": "talk",
+      "title": "Ce que les développeurs doivent savoir sur les index",
+      "speakers": ["Nelson Dionisi"],
+      "feedbackFrom": ["Christophe M et Lucas R (QIMA)"],
+      "summary": "- Fonctionnement interne des index (B-tree, index composites, plans d'exécution, jointures), d'après les fragments lisibles du transcript automatique, très bruité.\n- **Un des talks les mieux notés** du carnet QIMA : il clarifie le fonctionnement interne des index (Christophe M), avec de nombreux exemples, clair et gratifiant (Lucas R), trois étoiles chacun.",
+      "summarySources": ["feedback", "blog"],
+      "video": {
+        "youtubeId": "bo5j9xgiF48",
+        "title": "Ce que les développeurs doivent savoir sur les index (Nelson Dionisi)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ci-cd-le-divorce-serait-il-prononce",
+      "type": "talk",
+      "title": "CI/CD : le divorce serait-il prononcé ?",
+      "speakers": ["Nicolas Giraud", "Yann Schepens"],
+      "feedbackFrom": ["Blog Onepoint (dev.to)"],
+      "summary": "- Sur scène : l'histoire d'un « petit couple » CI et CD, du build à chaque commit à l'intégration continue puis au déploiement ; conclusion : *« ce n'est qu'une histoire d'empathie et de com, la technique ça vient après »*, un thérapeute externe pouvant aider.\n- Retenu (Onepoint) : une **culture DevOps partagée** par tous les rôles plutôt qu'une personne « DevOps » ; distinguer CI et CD, la production n'étant pas un environnement comme les autres, d'où des cas qui ne tiennent pas dans un seul workflow.",
+      "summarySources": ["blog", "transcript"],
+      "video": {
+        "youtubeId": "rZKAPyKdbXM",
+        "title": "CI/CD: Is it time for a divorce? (Nicolas GIRAUD and Yann Schepens)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "et-si-les-micro-services-n-avaient-rien-a-voir-avec-la-technique",
+      "day": "2022-04-21",
+      "type": "talk",
+      "title": "Et si les micro-services n'avaient rien à voir avec la technique ?",
+      "speakers": ["Yves Brissaud — Docker"],
+      "feedbackFrom": ["Lucas R (QIMA)"],
+      "summary": "- Sur scène : un talk volontairement peu technique d'un ingénieur de Docker (entreprise full remote) ; le découpage en microservices découle de l'organisation, en s'appuyant sur **Team Topologies**.\n- Pas de taille idéale de microservice : une fois les types d'équipes et leurs interactions posés, *« les choses vont devenir beaucoup plus limpides »* ; c'est un processus continu.\n- Retenu : les architectures de microservices **reflètent l'organisation et la communication humaines** (QIMA, deux étoiles). Slides publiées sur Speaker Deck.",
+      "summarySources": ["blog", "transcript", "slides"],
+      "video": {
+        "youtubeId": "_yTNqp3wMuU",
+        "title": "Et si les micro-services n'avaient rien à voir avec la technique ? (Yves Brissaud)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "securiser-son-cluster-kubernetes-on-premise-from-scratch",
+      "type": "talk",
+      "title": "Sécuriser son cluster Kubernetes on-premise from scratch",
+      "speakers": ["L. Toison", "E. Lancelot", "M. Nicolé"],
+      "feedbackFrom": ["Blog Onepoint (dev.to)"],
+      "summary": "- Université : tour d'horizon du durcissement d'un cluster Kubernetes **on-premise**, en partant d'un audit et en combinant pratiques et outils (Onepoint).\n- **2 h 40 à un rythme soutenu** qui a tenu la salle éveillée (Onepoint).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "3In6HmhbeDI",
+        "title": "Sécuriser son cluster Kubernetes on-premise from scratch (L.Toison, E.Lancelot et M.Nicolé)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "application-micro-frontend-multi-frameworks-webpack5",
+      "type": "talk",
+      "title": "Construisons ensemble une application Micro-Frontend multi-frameworks avec Webpack 5",
+      "speakers": ["Sylvain Dedieu"],
+      "feedbackFrom": ["Blog Onepoint (dev.to)"],
+      "summary": "- Tools-in-Action surtout en **démo live** : intégrer du Vue et du React dans une application Angular grâce à la **Module Federation** de Webpack 5 (Onepoint).\n- Côté Angular, cela ressemble à du *lazy loading* classique, aidé par une CLI dédiée ; démo de navigation imbriquée et de partage de services (Onepoint).\n- Lecture d'Onepoint : **une alternative solide aux Web Components** quand l'application parente utilise déjà Webpack.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "zOU8wTCx8io",
+        "title": "Construisons ensemble une application Micro-Frontend multi-frameworks avec Webpack5 (Sylvain Dedieu)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "art-and-entropy-chaos-in-your-frontend",
+      "type": "talk",
+      "title": "Art & Entropy : du chaos dans votre front-end",
+      "speakers": ["Thibaud Courtoison — October"],
+      "feedbackFrom": ["Blog Fluid Topics"],
+      "summary": "- Appliquer le **chaos engineering au front-end** plutôt qu'au back-end (Fluid Topics).\n- Bonnes pratiques et outils pour **casser volontairement une application web** afin de trouver comment l'améliorer (Fluid Topics).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "rxb1bhvnx5M",
+        "title": "Art & Entropy: Chaos in your Frontend (Thibaud Courtoison)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-des-amour-des-tests-web",
+      "type": "talk",
+      "title": "Le (dés)amour des tests web",
+      "speakers": ["Florent Le Gall", "Paola Ducolin — Datadog"],
+      "feedbackFrom": ["Blog Fluid Topics"],
+      "summary": "- Remise en question de **la pyramide des tests** appliquée au front-end (Fluid Topics).\n- Mise en avant de l'approche **Testing Library**, qui lie tests web et accessibilité, et d'ARIA pour que tests et accessibilité se renforcent (Fluid Topics).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "stUvCpRk7vo",
+        "title": "Le (dés)amour des tests web (Florent Le Gall et Paola Ducolin)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "zero-trust-the-new-normal",
+      "type": "talk",
+      "title": "Zero Trust : the new normal !",
+      "speakers": ["Laurent Grangeau — Google", "Tony Jarriault — Capgemini"],
+      "feedbackFrom": ["Blog Fluid Topics"],
+      "summary": "- Université sur le **Zero Trust** : la pandémie a poussé les organisations à renforcer la sécurité du travail à distance (Fluid Topics).\n- Retenue par l'autrice pour sa pertinence face à ses propres sujets de sécurité (Fluid Topics).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "VNmf1Wz16uk",
+        "title": "Zero Trust : the new normal ! (Laurent Grangeau et Tony Jarriault)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "remedes-aux-oomkill-warm-ups-et-lenteurs-conteneurs-jvm",
+      "day": "2022-04-20",
+      "type": "talk",
+      "title": "Remèdes aux oomkill, warm-ups, et lenteurs pour des conteneurs JVM",
+      "speakers": ["Brice Dutheil", "Jean-Philippe Bempel"],
+      "feedbackFrom": ["Christophe M (QIMA)"],
+      "summary": "- Université sur le **réglage de la JVM en conteneur** (QIMA).\n- Idée retenue : *« most important is RSS »* (Resident Set Size), plus que l'occupation du heap (QIMA, trois étoiles).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "Cepqgkwll_0",
+        "title": "Remèdes aux oomkill, warm-ups, et lenteurs pour des conteneurs JVM (B. Dutheil et J.P. Bempel)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "architecturoplastie-hexagonale-d-un-backend-nodejs",
+      "day": "2022-04-20",
+      "type": "talk",
+      "title": "Architecturoplastie hexagonale d'un backend Node.js",
+      "speakers": ["Jordan Nourry", "Adrien Joly", "Julien Topçu"],
+      "feedbackFrom": ["Lucas R (QIMA)"],
+      "summary": "- Université : **refactoring piloté par les tests** vers une architecture hexagonale, mis en scène sur un thème médical (QIMA, trois étoiles).\n- L'hexagonal revient plusieurs fois dans le carnet QIMA (lab Spring, Model-Driven Design), avec des avis partagés selon le format.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "r2XMwAUqZBA",
+        "title": "Architecturoplastie hexagonale d'un backend Node.js (Jordan Nourry, Adrien Joly, Julien Topçu)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "model-driven-design",
+      "day": "2022-04-21",
+      "type": "talk",
+      "title": "Model-Driven Design",
+      "speakers": ["Bruno Boucard"],
+      "feedbackFrom": ["Lucas R (QIMA)"],
+      "summary": "- Concepts du **DDD** : bounded contexts, langage omniprésent (QIMA).\n- Jugé **dense mais à étudier** (QIMA, trois étoiles).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "Mnt1N8T7xEA",
+        "title": "Model-Driven Design (Bruno Boucard)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "jooq-joy-of-sql",
+      "day": "2022-04-21",
+      "type": "talk",
+      "title": "JOOQ, joy of SQL",
+      "speakers": ["Kevin Davin"],
+      "feedbackFrom": ["Christophe M (QIMA)"],
+      "summary": "- Le talk le plus enthousiaste du carnet QIMA : *« I cannot imagine that you attend this meeting without adopting JOOq right away »* (trois étoiles).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "5m_oE0iPJJE",
+        "title": "JOOQ, joy of SQL (Kevin Davin)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ajouter-de-a-a-z-une-barre-de-recherche-dans-son-application",
+      "day": "2022-04-20",
+      "type": "talk",
+      "title": "Ajouter de A à Z une barre de recherche dans son application",
+      "speakers": ["David Pilato", "Guillaume Laforge"],
+      "feedbackFrom": ["Christophe M et Lucas R (QIMA)"],
+      "summary": "- Tools-in-Action aux **cas d'usage concrets et peu conventionnels** (Christophe M) : filtrage d'images par vision par ordinateur avec Elasticsearch et Google Cloud (Lucas R).\n- Trois étoiles pour les deux auteurs de QIMA.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "uyuNg0Vg5uE",
+        "title": "Ajouter de A à Z une barre de recherche dans son application (David Pilato et Guillaume Laforge)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "genese-et-utilisation-du-nouveau-client-java-pour-elasticsearch",
+      "day": "2022-04-22",
+      "type": "talk",
+      "title": "Genèse et utilisation du nouveau client Java pour Elasticsearch",
+      "speakers": ["Sylvain Wallez"],
+      "feedbackFrom": ["Christophe M et Lucas R (QIMA)"],
+      "summary": "- Les **raisons d'un nouveau client**, utiles pour une équipe qui utilise encore l'ancien (Christophe M, trois étoiles).\n- Vu comme **une grosse amélioration** par Lucas R, parti avant la fin (deux étoiles).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "Vl_kUXtL2n8",
+        "title": "Genèse et utilisation du nouveau client Java pour Elasticsearch (Sylvain Wallez)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "cucumber-tests-myths-and-reality",
+      "day": "2022-04-22",
+      "type": "lightning",
+      "title": "Tests Cucumber : légendes et réalité",
+      "speakers": ["Michaël Strauss"],
+      "feedbackFrom": ["Christophe M et Lucas R (QIMA)"],
+      "summary": "- Quickie : Cucumber convient aux **tests fonctionnels**, pas aux tests unitaires ou d'intégration (Christophe M, une étoile).\n- *« Cucumber is best suited when having a well defined and isolated domain »* (Lucas R, trois étoiles) : un même talk, deux lectures opposées.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "-bnWa68JBcE",
+        "title": "Cucumber Tests: Myths and Reality (Michaël Strauss)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rex-tdd-avec-testcontainers",
+      "day": "2022-04-21",
+      "type": "talk",
+      "title": "REX : TDD avec TestContainers",
+      "speakers": ["Julien Durillon"],
+      "feedbackFrom": ["Christophe M et Lucas R (QIMA)"],
+      "summary": "- Tools-in-Action jugé **décevant** : pas mieux que le guide de démarrage (Christophe M), basique (Lucas R), une étoile chacun (QIMA).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "-q7hLU2e2h4",
+        "title": "REX: TDD avec TestContainers (Julien Durillon)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "whats-cooking-in-maven",
+      "day": "2022-04-21",
+      "type": "talk",
+      "title": "What's cooking in Maven?",
+      "speakers": ["Maarten Mulders"],
+      "feedbackFrom": ["Christophe M et Lucas R (QIMA)"],
+      "summary": "- Impression d'un **Maven qui rattrape Gradle** (Christophe M, deux étoiles) ; surtout des annonces de fonctionnalités que Gradle a déjà (Lucas R, une étoile).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "lT6FFbTfvXo",
+        "title": "What's cooking in Maven? (Maarten Mulders)",
+        "transcript": false
+      }
+    },
+    {
+      "id": "major-migrations-made-easy",
+      "day": "2022-04-21",
+      "type": "lightning",
+      "title": "Major migrations made easy",
+      "speakers": ["Tim te Beek"],
+      "feedbackFrom": ["Christophe M (QIMA)"],
+      "summary": "- Quickie sur **OpenRewrite**, qui fait des migrations sémantiques sur l'AST plutôt que des remplacements par expressions régulières (QIMA, deux étoiles).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "r_jFBDTPKSc",
+        "title": "Major migrations made easy (Tim te Beek)",
+        "transcript": false
+      }
+    },
+    {
+      "id": "r2dbc-r2d2-jdbc",
+      "day": "2022-04-20",
+      "type": "talk",
+      "title": "R2DBC = R2D2 + JDBC (enfin presque...)",
+      "speakers": ["Bruno Bonnin"],
+      "feedbackFrom": ["Lucas R (QIMA)"],
+      "summary": "- Tools-in-Action : R2DBC jugé **pas encore mûr pour la production** (associations JPA faibles, pas encore pris en charge par des outils comme Liquibase) (QIMA, deux étoiles).",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "0nrTtSzLdyw",
+        "title": "R2DBC = R2D2 + JDBC (enfin presque...) (Bruno Bonnin)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "github-copilot-addictif-ou-efficace",
+      "type": "talk",
+      "title": "GitHub Copilot : addictif ou efficace ?",
+      "speakers": ["Johan Jublanc", "Simon Provost"],
+      "feedbackFrom": [],
+      "summary": "- Tools-in-Action de fin de journée (18 h 30) : retour sur **six mois d'usage** de Copilot, présenté comme *« bien plus qu'une autocomplétion »*, un pair programmeur.\n- Constat des speakers : peu à l'aise dans un fichier existant de 500 lignes, mais dans une fonction nouvelle, après une dizaine de lignes, la suivante sort *« à 80 % de chances »* (estimation subjective) ; question ouverte : va-t-on changer sa façon de coder, en écrivant plus de commentaires ?\n- Aucun retour participant lu : intérêt surtout rétrospectif, un an avant la vague ChatGPT de l'édition 2023.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "SQf9ZQsqW30",
+        "title": "Github Co-Pilot : Addictif ou Efficace ? (Johan Jublanc et Simon Provost)",
+        "transcript": true
+      }
+    },
+    {
+      "id": "eliminez-la-complexite-de-kubernetes-avec-lens",
+      "type": "talk",
+      "title": "Éliminez la complexité de Kubernetes avec LENS !",
+      "speakers": ["Daniel Virassamy", "Lee Namba", "Stéphane Montri"],
+      "feedbackFrom": ["Stéphane Beaumont (blog Mirantis, sponsor)"],
+      "summary": "- Talk du sponsor Mirantis sur **Lens**, son outil open source de gestion de Kubernetes ; salle pleine de **plus de 150 personnes** selon Mirantis.\n- Le sponsor estime qu'environ 70 % des démos sur les stands utilisaient Lens et note **une forte demande autour de la donnée** (sécurité, conformité, souveraineté) ; regard intéressé, à lire comme tel.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "DgibXv6h884",
+        "title": "Eliminez la complexité de Kubernetes avec LENS ! (Daniel Virassamy, Lee Namba, Stéphane Montri)",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Log4shell, c'est la faute à la fondation Apache ? (E. Lécharny, J.B. Onofré, H. Boutemy)",
+    "10 ans de Devoxx FR et de Java (Jean-Michel Doudoux)",
+    "Java Next : from Amber to Loom, from Panama to Valhalla (Nicolai Parlog)",
+    "Valhalla: To the Hell and Back (Rémi Forax)",
+    "Loom nous protègera-t-il du braquage temporel ? (José Paumard, Rémi Forax), Université",
+    "La révolution (wasm) est incroyable parce que vraie (Philippe Charrière, Laurent Doguin), Université",
+    "Spring Security : décodage et démystification (Daniel Garnier-Moiroux), Université",
+    "OAuth 2.1 expliqué simplement (Julien Topçu)",
+    "Ciel ! Mon Kubernetes mine des bitcoins ! (Denis Germain), cité par l'auteur sans description",
+    "Licences open source : entre guerre de clochers et radicalité (Pierre-Yves Lapersonne)",
+    "Des Z'Individus et des Z'Interactions, ou l'inclusion des (neuro)atypiques (Alice Barralon)",
+    "Pourquoi vous n'attirerez et ne retiendrez pas les femmes dans vos équipes (Marcy Ericka Charollois)",
+    "Mon site déjà en ligne doit être accessible, je fais comment ? (Mélanie Boudard), Quickie",
+    "Jouer à Minecraft avec une IA générée par GPT-3 (Wassim Chegham, Tiffany Souterre)",
+    "Oubliez Docker, appelez-moi Compose (Nicolas de Loof)",
+    "Vite, the Webpack killer (Mathieu Mure, Antoine Caron)",
+    "Cryptanalyse de la machine Enigma (Jean-Christophe Sirot)",
+    "Développer des applications observables pour la production (Pierre Zemb)"
+  ],
+  "sources": [
+    { "label": "Devoxx France : page d'accueil 2022 (archive, février 2022)", "url": "https://web.archive.org/web/20220207204155/https://www.devoxx.fr/" },
+    { "label": "YouTube : playlist Devoxx France 2022 - Keynotes", "url": "https://www.youtube.com/playlist?list=PLTbQvx84FrATm7dWH-BqaK_hiXKg4yrps" },
+    { "label": "YouTube : playlist Devoxx France 2022 - Conférences", "url": "https://www.youtube.com/playlist?list=PLTbQvx84FrAQwUMLVvcZu4DZwS1qGxKyM" },
+    { "label": "YouTube : playlist Devoxx France 2022 - Université", "url": "https://www.youtube.com/playlist?list=PLTbQvx84FrAQ9ElRxElJOEO8QsIZz-soE" },
+    { "label": "YouTube : playlist Devoxx France 2022 - Tools-in-Action", "url": "https://www.youtube.com/playlist?list=PLTbQvx84FrASVK-B1S2z2fn16dRbLiNdr" },
+    { "label": "YouTube : playlist Devoxx France 2022 - Quickies", "url": "https://www.youtube.com/playlist?list=PLTbQvx84FrASyr3mmmoZdo2sh9KMs452n" },
+    { "label": "YouTube : playlist Devoxx France 2022 - English talks", "url": "https://www.youtube.com/playlist?list=PLTbQvx84FrATWm_AFxsOM7RENSpzfapaI" },
+    { "label": "Deezer Newsroom : « Back from Devoxx France 2022: what I loved, what I learned, what I loathed », Denis Germain (5 mai 2022)", "url": "https://newsroom-deezer.com/?p=9496" },
+    { "label": "Fluid Topics : « Highlights from Devoxx 2022 », Anne-Sophie Muffat, avec Michaël Lefèvre et Romain Tellier (3 mai 2022)", "url": "https://www.fluidtopics.com/blog/events/highlights-from-devoxx-2022/" },
+    { "label": "dev.to (Onepoint) : « DevoxxFR 2022 : TL;DR; », Kosmik et collègues (12 mai 2022)", "url": "https://dev.to/onepoint/devoxxfr-2022-tldr-53i9" },
+    { "label": "QIMA Tech Talks : « Our Journey @ Devoxx France », Christophe M et Lucas R (2 août 2022)", "url": "https://techtalks.qima.com/devoxx-france-2022/" },
+    { "label": "Mirantis : « It's a wrap: Devoxx France 10th anniversary developer conference », Stéphane Beaumont (29 avril 2022)", "url": "https://www.mirantis.com/blog/its-a-wrap-devoxx-france-10th-anniversary-developer-conference/" },
+    { "label": "LinuxFr : journal « Les vidéos de Devoxx fr sont disponibles », meklb (18 mai 2022)", "url": "https://linuxfr.org/users/meklb/journaux/les-videos-de-devoxx-fr-sont-disponibles" },
+    { "label": "Big Data Hebdo, épisode 141 : « DevoxxFr 2022, Doctolib, Cloud Native et Machine Learning » (15 mai 2022, notes d'épisode seulement)", "url": "https://www.spreaker.com/user/vhe74/episode-141-devoxxfr-2022-doctolib-cloud" },
+    { "label": "Speaker Deck : slides d'Yves Brissaud, « Et si les micro-services n'avaient rien à voir avec la technique ? » (repérées, non lues)", "url": "https://speakerdeck.com/eunomie/devoxxfr-2022-et-si-les-micro-services-navaient-rien-a-voir-avec-la-technique" },
+    { "label": "Speaker Deck : slides d'Etienne Coutaud sur les opérateurs Kubernetes (repérées, non lues)", "url": "https://speakerdeck.com/etiennecoutaud/devoxx2022-quavons-nous-appris-apres-un-an-a-developper-des-operateurs-kubernetes" },
+    { "label": "Medium Decathlon Digital : « My 5 highlights of Devoxx France 2022 » (HTTP 403 le 2026-11-09, non lu)", "url": "https://medium.com/decathlondigital/my-5-highlights-of-devoxx-france-2022-477d948a2dc0" },
+    { "label": "Criteo Tech Blog : « Highlights of Devoxx 2022 » (repéré en recherche, page en 404 le 2026-11-09, non lu)" },
+    { "label": "Posts LinkedIn : aucun lu (recherche sans résultat exploitable)" }
+  ]
 }
