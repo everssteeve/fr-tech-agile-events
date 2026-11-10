@@ -2,13 +2,651 @@
   "event": "apidays-paris",
   "year": 2021,
   "title": "apidays Paris 2021",
+  "edition": "9e édition (« Apidays LIVE Paris 2021 »)",
   "start": "2021-12-07",
   "end": "2021-12-09",
   "city": "Paris",
   "url": "https://web.archive.org/web/20211022/https://www.apidays.io/paris/",
+  "programUrl": "https://www.apidays.global/paris2021/",
   "theme": "APIs and the Future of Software",
   "dateConfidence": "ok",
-  "note": "Format (présentiel/en ligne) à confirmer : la page archivée en octobre 2021 évoque encore des événements 2021 « in a digital way ».",
-  "status": "pending",
-  "sessions": []
+  "note": "Édition entièrement en ligne (« because of the current covid situation this event will be virtual », Mehdi Medjaoui à l'ouverture), sur une plateforme d'événement virtuel (page RingCentral Events, ex-Hopin). 7 décembre : après-midi de workshops (dont un workshop avec le Joint Research Centre de la Commission européenne sur le cadre juridique des API) ; 8 et 9 décembre : conférence, cinq pistes par jour. Chiffres annoncés à l'ouverture : plus de 150 speakers et plus de 3 000 inscrits. Dates confirmées par le titre de la page officielle (« December 7, 8 & 9, 2021 ») et par API Tracker (« Virtual »). Playlist YouTube « Apidays Paris 2021 » (une centaine de vidéos).",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-10",
+  "revisit": "10/11/2026 : aucun retour de participant lu (aucun post LinkedIn, billet Medium/dev.to ou sketchnote trouvé en 4 recherches) ; page officielle et Wayback Machine non lisibles (404 et accès refusé), programme horaire non consulté. Synthèse reposant uniquement sur des transcripts automatiques échantillonnés.",
+  "corpus": "Transcripts automatiques YouTube (anglais) de 28 vidéos de la playlist officielle « Apidays Paris 2021 », échantillonnés (début et milieu de chaque talk) en novembre 2026 ; page d'événement RingCentral (liste partielle de speakers et d'exposants) ; résultats de recherche citant la page officielle, API Tracker et les decks SlideShare d'apidays.",
+  "limits": "Aucun retour de participant : les résumés rapportent ce qui a été dit sur scène, d'après des transcripts automatiques partiels et parfois dégradés (noms propres déformés, talk de Kévin Dunglas transcrit en pseudo-français et inutilisable). Les jours ne sont connus que pour les sessions du workshop du 7 décembre et pour l'ouverture et la piste Continuous API Management du 8 décembre (déduits des transcripts) ; les dates de publication des vidéos sont inconnues et fixées à la date de fin de l'édition. Environ 70 vidéos de la playlist ne sont pas résumées.",
+  "tldr": "Dernière édition **100 % virtuelle** avant le retour en présentiel : apidays Paris 2021 célèbre la 2e édition de **Continuous API Management** avec ses quatre co-auteurs, installe la **sécurité des API comme catégorie à part** (logique métier, configuration, design time) et pousse un sujet rare en conférence tech : **les API comme contrats juridiques**, avec la Commission européenne.",
+  "keyTakeaways": [
+    "Gérer les API comme un portefeuille de produits et non une à une : stratégie d'abord, puis design, doc, tests, sécurité, monitoring, découverte et changement (les 10 piliers de Continuous API Management, Mehdi Medjaoui).",
+    "Parler de *governing* plutôt que de *governance* : l'organisation est un système complexe adaptatif, on la change par des habitudes clés et non par un plan en 16 étapes (Ronnie Mitra, Publicis Sapient).",
+    "Choisir le style d'API (REST, GraphQL, événementiel, gRPC) selon le contexte : *« there is no best car »* (Erik Wilde).",
+    "Passer de la revue d'API en fin de parcours à une **stewardship** en amont du design, avec une équipe dédiée, des guidelines et des outils ; ne pas générer la surface d'API depuis le code (Ryan Sweet, Microsoft Azure).",
+    "Viser la cohérence avant tout : *« more than doing it the right way we need to do it one way »* ; guidelines, design authority, communauté de pratique et lint automatisé sur un dépôt central (Frank Tagné, AXA Partners).",
+    "Traiter la sécurité dès le design (contrat OpenAPI, validation d'entrée, données renvoyées), car il y a environ un spécialiste AppSec pour 100 développeurs (Isabelle Mauny, 42Crunch).",
+    "Surveiller les attaques de logique métier, *« low and slow »*, que ni WAF ni gateway ne voient, et la mauvaise configuration, cause de deux tiers des incidents selon un rapport IBM cité (Michael Isbitski ; Karl Mattson).",
+    "En OAuth, s'en tenir au code flow avec PKCE : OAuth 2.1 consolide les bonnes pratiques sans nouveau comportement (Aaron Parecki, Okta).",
+    "Valoriser un programme API par la monétisation indirecte, l'efficacité et la résilience, avec une attribution comptable des revenus, plutôt que par le seul paiement à l'usage (Eric Horesnyi, Axway).",
+    "Pour diffuser une culture API dans une organisation ancienne, compléter la formation par le jeu : labyrinthe d'API et journées d'exploration de 24 h (Julien Duvanel)."
+  ],
+  "sessions": [
+    {
+      "id": "apis-in-the-legal-framework-of-the-european-digital-strategy",
+      "day": "2021-12-07",
+      "type": "workshop",
+      "title": "API and the digital coordination in the European Context (ouverture du workshop sur le cadre juridique des API)",
+      "speakers": [
+        "Mehdi Medjaoui — apidays",
+        "Monica Posada — Commission européenne, Joint Research Centre",
+        "George Lobo — Commission européenne, DG DIGIT"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Ouverture de l'après-midi de workshops du 7 décembre, *« an appetizer for the main event »* : trois heures, dont ce workshop co-organisé avec le **Joint Research Centre** (JRC) de la Commission européenne, quatrième collaboration du genre.\n- Objectif : relier les perspectives **technique, juridique et de coordination** des API dans la stratégie numérique européenne, en réunissant praticiens et décideurs publics.\n- George Lobo (DG DIGIT) situe l'étude « APIs for innovative public services » dans le programme ISA² devenu **Interoperable Europe** : observatoire des services publics innovants, études ciblées (blockchain, IA, API) et pilotes, dont un sur l'API de la brique eDelivery.\n- Constat : les API existent depuis des décennies dans le privé, mais la **directive sur les données ouvertes** du secteur public en fait désormais le moyen privilégié d'exposer les données.\n- Lecture critique : session d'introduction institutionnelle ; le contenu de fond est dans les talks et le panel qui suivent.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "idn6iezyrnU",
+        "title": "Apidays LIVE Paris 2021 - API and the digital coordination in the European Context [...]",
+        "publishedAt": "2021-12-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-current-european-legal-framework-on-data-sharing",
+      "day": "2021-12-07",
+      "type": "talk",
+      "title": "The Current European legal framework on data sharing: How APIs fit in?",
+      "speakers": [
+        "Hans Graux — time.lex"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Avocat spécialisé en droit du numérique, Hans Graux travaille pour la Commission sur le **Support Centre for Data Sharing** (eudatasharing.eu), qui propose notamment un assistant de génération de licences pour les données exposées par API.\n- Tendance de fond : la société passe du support physique au téléchargement puis au **« X as a service »** (Netflix, Spotify, Steam) ; les données suivent le même chemin.\n- Le droit européen pousse le **partage dynamique** et parfois impose des API : DSP2 pour les comptes bancaires, données de consommation électrique (compteurs intelligents), accès des réparateurs indépendants aux données des véhicules.\n- Effet juridique : on ne possède ni ne licencie plus vraiment les données, on **s'y abonne** tant qu'on paie la clé d'API ; la propriété intellectuelle passe au second plan au profit des conditions de service.\n- Lecture critique : talk d'expert pédagogique, centré sur l'UE ; la suite (risques contractuels) n'a été lue que partiellement.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "xDb3fWETF1U",
+        "title": "Apidays LIVE Paris 2021 - The Current European legal framework on data sharing : How APIs fit in?",
+        "publishedAt": "2021-12-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "discussion-digital-coordination-through-apis",
+      "day": "2021-12-07",
+      "type": "roundtable",
+      "title": "Discussion: Digital coordination through APIs",
+      "speakers": [
+        "David O'Neill — APImetrics",
+        "Jonas (nom déformé dans le transcript) — VNG, association des communes néerlandaises",
+        "Kasia (nom non identifié) — Commission européenne, Joint Research Centre",
+        "Daniel Sarasa — Fondation Saragosse Ville de la connaissance"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Panel de clôture du workshop JRC : modèles de **coordination numérique** par les API, entre intégration juridique et technique, et conformité au cadre européen de partage de données.\n- Daniel Sarasa (Saragosse) : un organisme public qui publie une API **signe un contrat avec ses usagers** et répond de l'exactitude et de la qualité des données ; mais une grande partie des données urbaines est détenue par d'autres acteurs que la mairie.\n- Kasia (JRC), sur l'analyse de quelque 4 000 conditions d'utilisation d'API : les termes varient selon la taille et la localisation de l'entreprise ; le **RGPD y apparaît largement**, signe que même les petits acteurs connaissent les contraintes européennes, sans préjuger de leur application devant les tribunaux.\n- Jonas (VNG) : la stratégie API des communes néerlandaises vise à la fois l'interopérabilité technique et le respect des exigences légales.\n- Lecture critique : seule la première partie a été lue ; noms de deux panélistes mal transcrits.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "OwSkJdF_Kic",
+        "title": "Apidays LIVE Paris 2021 - Discussion: Digital coordination through APIs",
+        "publishedAt": "2021-12-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "api-terms-of-service-a-creative-commons-pattern",
+      "type": "talk",
+      "title": "API Terms of Service: A creative commons pattern",
+      "speakers": [
+        "Mehdi Medjaoui — apidays",
+        "Célia (nom non identifié dans le transcript) — Inno³",
+        "Benjamin Jean — Inno³"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Projet **APIToS-cc** (apidays et Inno³), financé dans un programme de la Ford Foundation (avec Mozilla, Open Society, Sloan…) doté de 1,3 million de dollars pour une infrastructure open source plus équitable.\n- Point de départ : *« I have read and agree »* est *« the biggest lie on the web »* ; les conditions d'utilisation des API seraient *« the biggest lie of the programmable web »*, avec la différence qu'elles doivent être lues par des humains et des machines.\n- Premiers résultats d'entretiens qualitatifs (utilisateurs, fournisseurs, régulateurs) : **relations asymétriques**, changements de ToS subis, exemples de Google Maps (changement de modèle économique) et de LinkedIn (une application cassée du jour au lendemain), Twitter cité à plusieurs reprises.\n- Piste étudiée : un modèle de type **Creative Commons** pour séparer ce qui peut être un commun de ce qui relève du business de chacun ; appel à contribution de la communauté.\n- Lecture critique : recherche en cours, sans résultats quantitatifs.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "N9vVlm0DeiE",
+        "title": "Apidays LIVE Paris 2021 - API Terms of Service : A creative commons pattern By Benjamin Jean",
+        "publishedAt": "2021-12-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "welcome-and-opening-remarks-day-2",
+      "day": "2021-12-08",
+      "type": "keynote",
+      "title": "Welcome and Opening Remarks (jour 2)",
+      "speakers": [
+        "Mehdi Medjaoui — apidays"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Ouverture de la **9e édition** d'apidays Paris, thème *APIs and the Future of Software* : plus de 150 speakers, plus de 3 000 inscrits, cinq pistes par jour pendant deux jours.\n- Format **virtuel** imposé par la situation sanitaire, avec la promesse d'un retour en **hybride** l'année suivante ; mission inchangée : *« connect the humans behind APIs »*.\n- Série apidays : 10 événements en 2021, plus de 70 depuis 2012, 50 000 participants cumulés, 2 000 speakers, communauté de 300 000 membres.\n- Pistes du 8 décembre : transformation des grandes organisations, design et cycle de vie, documentation et DX, identité et sécurité, architecture et microservices (service mesh). Pistes du 9 : OpenAPI et standards, GraphQL, produit et monétisation, **numérique responsable**, et une piste nouvelle sur le **privacy engineering**.\n- **Women in APIs** : 200 membres dans 40 pays, plus de 20 mentors, 40 personnes passées par le programme « get speaking », un programme « get writing » en pilote.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "Ye_H3Fz_92g",
+        "title": "Apidays LIVE Paris 2021 - [Day2] Welcome and Opening Remarks By Mehdi Medjaoui",
+        "publishedAt": "2021-12-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-state-of-the-api-industry-2021",
+      "day": "2021-12-08",
+      "type": "keynote",
+      "title": "The state of the API Industry 2021: a study on 1000+ API companies",
+      "speakers": [
+        "Mehdi Medjaoui — apidays"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Présentation du **API Landscape** d'apidays : 1 021 outils recensés et documentés (financement, effectifs, clients, partenariats), en accès libre, avec un rapport associé.\n- Six grandes familles : plateformes de cycle de vie, outils de back-end, business process as an API, iPaaS, abstractions verticales ; le cumul des investissements atteint **174,5 milliards de dollars**, surtout sur les plateformes de cycle de vie.\n- API management et gateways restent le *« huge godzilla »* du financement ; la sécurité des API émerge ; API management, design-documentation et gestion des identités tendent à **fusionner**.\n- Tendances : marché qui se **banalise**, d'où des solutions spécialisées par secteur régulé (open banking, open insurance, santé avec FHIR) ; **régulation** moteur (DSP2, RGPD et ses équivalents, ACCESS Act américain) ; **sécurité devenue produit autonome**, la privacy comme prochain différenciateur.\n- Lecture critique : talk de l'organisateur sur son propre outil ; chiffres non vérifiés.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "FbanGB7vEfQ",
+        "title": "Apidays LIVE Paris 2021 - The state of the API Industry 2021 : a study on 1000+ API companies",
+        "publishedAt": "2021-12-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "continuous-api-governance-management",
+      "day": "2021-12-08",
+      "type": "talk",
+      "title": "Continuous API Governance Management",
+      "speakers": [
+        "Ronnie Mitra — Publicis Sapient"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Premier volet de la piste consacrée à la 2e édition du livre *Continuous API Management* (O'Reilly), sortie deux semaines plus tôt.\n- En 2018, les auteurs avaient écarté « governance » du titre : un **mot repoussoir** à l'heure de l'autonomie des équipes microservices.\n- Désormais en cabinet de transformation, Ronnie Mitra décrit les forces qui pèsent sur les dirigeants : volatilité des usages (recul du numérique dans l'alimentaire après le Covid, données McKinsey), explosion des licornes qui **dégroupent et regroupent** les offres.\n- Le vrai frein : les grandes entreprises gagnent de l'argent et craignent de risquer leurs revenus ; *« there's no silver bullet there's only hard work »*.\n- L'organisation est un **système complexe adaptatif** (John Holland) : tout se joue aux frontières des agents et dans les signaux entre eux, ce qui ressemble à ce que font les API ; d'où l'idée d'une **habitude clé** (Charles Duhigg) qui entraîne les autres.\n- Lecture critique : talk réflexif, sans recette outillée.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "gmAsKUoUJ6Y",
+        "title": "Apidays LIVE Paris 2021 - Continuous API Governance Management By Ronnie Mitra",
+        "publishedAt": "2021-12-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "continuous-api-strategy-management",
+      "day": "2021-12-08",
+      "type": "talk",
+      "title": "Continuous API Strategy Management",
+      "speakers": [
+        "Mike Amundsen — auteur et conseiller en stratégie API"
+      ],
+      "feedbackFrom": [],
+      "summary": "- But de la stratégie : *« the goal is to keep improving, the goal isn't to be improved and then walk away »*.\n- Contexte (enquête IDC citée) : trois quarts des organisations en transformation, 90 % veulent des microservices ; l'adoption reste inégale, forte dans les médias et la finance, sous la moitié dans l'industrie manufacturière.\n- **Côté consommateur** : citant Clayton Christensen (*« people don't want to buy a quarter inch drill, they want a quarter inch hole »*), il reproche aux conférences de rester centrées sur le producteur d'API.\n- Trois niveaux à distinguer : **interface** (le problème résolu, abstraite), implémentation (le code mais aussi la description OpenAPI, AsyncAPI, protobuf…) et instances (ce qui tourne) ; les organisations maîtrisent les deux derniers, pas le design d'interface.\n- Cycle de vie d'une API : création, publication, réalisation de la valeur (OKR, KPI), maintenance longue, retrait ; retirer celles qui ne tiennent pas leur promesse.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "k6T8Sn1Bq7E",
+        "title": "Apidays LIVE Paris 2021 - Continuous API Strategy Management by Mike Amundsen",
+        "publishedAt": "2021-12-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "continuous-api-styles-management",
+      "day": "2021-12-08",
+      "type": "talk",
+      "title": "Continuous API Styles Management",
+      "speakers": [
+        "Erik Wilde — Axway"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le livre distingue volontairement les problèmes d'une API et ceux du **paysage** : *« APIs are popping up like mushrooms »*, il faut gérer le portefeuille entier.\n- Une API de valeur est un **langage** entre équipes : l'une expose une capacité, l'autre la découvre et la consomme ; plus ce langage est simple, plus l'investissement rapporte. *« If it's not used it's pointless »*.\n- Changement depuis la 1re édition : en 2018 tout le monde faisait du REST ; GraphQL et l'**événementiel** ont décollé, d'où un nouveau chapitre sur la diversité des styles d'API.\n- Pas de meilleure pratique absolue, seulement des solutions en contexte : *« there is no best car »* (voiture de collection, tout-terrain, SUV, sportive).\n- Lecture critique : seule la première moitié a été lue.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "qwhdtvxDxYo",
+        "title": "Apidays LIVE Paris 2021 - Continuous API Styles  Management By Erik Wilde",
+        "publishedAt": "2021-12-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "continuous-api-product-management",
+      "day": "2021-12-08",
+      "type": "talk",
+      "title": "Continuous API Product Management",
+      "speakers": [
+        "Mehdi Medjaoui — apidays"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Analogie de l'automobile : comme les constructeurs ont externalisé des pièces à des fournisseurs, les entreprises **assemblent des services tiers** livrés par API, devenus briques de Lego.\n- L'API n'est pas qu'une *application programming interface* mais une **« value proposition interface »** : une même API météo peut servir à la prévision ou à assurer le chiffre d'affaires d'un glacier.\n- Stripe, qui ne vend que des API, vaudrait deux fois la première banque européenne : livrer des API est un modèle économique.\n- Les **10 piliers** du livre : stratégie, design, documentation, développement, tests, déploiement, sécurité, monitoring, découverte, changement ; *« APIs are not a strategy, they're a mean to achieve the strategy »*.\n- *« IT is now the business »* : la DSI n'est plus une fonction support.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "UkjaOqLA4_Y",
+        "title": "Apidays LIVE Paris 2021 - Continuous API Product Management By Mehdi Medjaoui",
+        "publishedAt": "2021-12-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "panel-continuous-api-management-with-all-4-co-authors",
+      "day": "2021-12-08",
+      "type": "roundtable",
+      "title": "Panel: Continuous API management with all 4 co-authors",
+      "speakers": [
+        "Mehdi Medjaoui — apidays",
+        "Ronnie Mitra — Publicis Sapient",
+        "Mike Amundsen — auteur et conseiller en stratégie API",
+        "Erik Wilde — Axway"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Ronnie Mitra : les API sont devenues une **technologie fondamentale** et grand public, mais le mot recouvre tout, des microservices Spring Boot au banking as a service ; *« the problems are the same as they were three years ago, what's different is the spotlight »*, donc les budgets.\n- Mehdi Medjaoui observe une **nouvelle génération** d'inscrits fraîchement promus API product managers, venus de l'architecture ou du marketing.\n- Sur l'avenir des conférences API : apidays parle de **design de logiciel réutilisable**, pas d'une techno (*« it's not REST days or JSON days or GraphQL days »*).\n- Erik Wilde aimerait **se débarrasser du mot « API »**, qui fait décrocher les métiers ; propositions du chat : « solutions », ou API employé comme verbe.\n- Lecture critique : échange convivial entre co-auteurs, peu contradictoire.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "IlfQsvw4VE4",
+        "title": "Apidays LIVE Paris 2021 - Panel : Continuous API management with all 4 co-authors",
+        "publishedAt": "2021-12-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "api-governance-the-pursuit-of-consistency",
+      "type": "talk",
+      "title": "API Governance - The Pursuit of Consistency",
+      "speakers": [
+        "Frank Tagné — AXA Partners"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Contexte : AXA Partners, sept domaines (automobile, mobilité, habitation, voyage, santé…), présent dans 40 pays, équipes très décentralisées ; près de **1 000 API** en design first, en forte croissance.\n- Thèse : la gouvernance rend les API découvrables, conformes, réutilisables et sûres, et **la cohérence en est la clé** : *« more than doing it the right way we need to do it one way »*.\n- Quatre leviers : **guidelines** (descriptions, exemples, verbes et codes HTTP, sécurité par chemin, nommage, réutilisation des modèles de données, versionnement), organisation, pipeline, outils.\n- Organisation : une **API design authority**, un centre d'excellence qui écrit les règles et forme, une communauté de pratique animée, onboarding de chaque nouveau membre.\n- Pipeline : dépôt central de toutes les API et automatisation des règles formalisables, les autres restant en revue humaine.\n- Ancien participant (depuis 2018), c'était sa première fois comme speaker.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "fGIByMFHRrw",
+        "title": "Apidays LIVE Paris 2021 - API Governance - The Pursuit of Consistency By Frank Tagné",
+        "publishedAt": "2021-12-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "lessons-from-the-api-stewardship-journey-in-azure",
+      "type": "talk",
+      "title": "Lessons from the API Stewardship Journey in Azure",
+      "speakers": [
+        "Ryan Sweet — Microsoft"
+      ],
+      "feedbackFrom": [],
+      "summary": "- L'API est le **contrat** avec les clients : bien faite, elle fait la différence ; mal faite, elle fait fuir les développeurs.\n- Recommandation forte : **ne pas générer la surface d'API depuis le code**, qui expose des détails internes ; une fois publiée, on est coincé avec, et changer une API dont dépendent les clients est *« a terrible way to treat them »*.\n- Azure distingue control plane (passage obligé par Azure Resource Manager, gouvernance prescriptive) et data plane (processus léger de **stewardship**).\n- Leçon principale : la revue en fin de parcours ne passait plus à l'échelle, *« there were as many teams going around that process as there were ones going through it »* ; la stewardship intervient dès le début du design, avec du personnel dédié, des recrutements, formations, docs et outils.\n- Points de design mis en avant : penser les cas d'usage des développeurs clients, l'échec réseau et l'**idempotence**.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "jqC_pzoFb9w",
+        "title": "Apidays LIVE Paris 2021 - Lessons from the API Stewardship Journey in Azure By Ryan Sweet",
+        "publishedAt": "2021-12-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "beyond-api-governance-run-your-api-org-like-a-lean-startup",
+      "type": "talk",
+      "title": "Beyond API Governance: Run your API org like a lean startup",
+      "speakers": [
+        "Eric Horesnyi — Axway"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Cadre inspiré du **lean startup** pour une équipe API : valeurs, mission, vision, business plan, produit, adoption.\n- Mission proposée : faire entrer l'entreprise dans l'économie de plateforme grâce aux **quatre pouvoirs des API** (ouvrir ses actifs, composabilité et agilité, self-service, plateforme pour l'écosystème).\n- Vision en **quatre modèles d'affaires** : interactions avec ses clients, enrichissement par des API tierces (exemples bancaires américains), distribution de partenaires contre commission (marketplace), être distribué par d'autres (exemple du paiement fractionné).\n- Business plan : la **monétisation directe** n'est qu'une minorité de la valeur ; l'essentiel est indirect et exige une attribution des revenus et des économies au programme API, appuyée sur un bon reporting d'usage.\n- Trois moteurs de valeur : consommation (revenus), efficacité (coûts), résilience (risques, conformité DSP2, HL7, PCI DSS).\n- Lecture critique : talk suivi d'une démonstration produit Axway (« API Governance at Scale », avec David Luke) ; le speaker n'est identifié que dans ce second transcript.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "o0myZXJn5kQ",
+        "title": "Apidays LIVE Paris 2021 - Beyond API Governance: Run your API org like a lean startup",
+        "publishedAt": "2021-12-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-state-of-oauth",
+      "type": "talk",
+      "title": "The state of OAuth",
+      "speakers": [
+        "Aaron Parecki — Okta"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Origine d'OAuth : arrêter de donner son mot de passe Google à Yelp ; analogie de la **carte de chambre d'hôtel**, la porte n'a pas besoin de savoir qui vous êtes.\n- Même pour une appli « first party », passer par le serveur OAuth permet d'ajouter du multi-facteur sans toucher aux applis ; contre-exemple d'Apple, dont les fenêtres de mot de passe sont imitables.\n- Historique : bearer tokens, flow implicite comme **pansement** (jeton dans l'URL, le « front channel »), puis PKCE pour le mobile.\n- **OAuth 2.1** : consolidation des bonnes pratiques (code flow + PKCE pour tous, client credentials, bearer tokens, pas de jeton en query string), sans nouveau comportement : qui suit déjà les bonnes pratiques fait déjà du 2.1.\n- Extensions récentes : profil JWT pour les access tokens et **Pushed Authorization Requests**, qui passent la requête d'autorisation par le back channel.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "U-WhC1cou_k",
+        "title": "Apidays LIVE Paris 2021 - The state of OAuth By Aaron Parecki @Okta",
+        "publishedAt": "2021-12-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "addressing-owasp-api-security-top-10-starts-at-design-time",
+      "type": "talk",
+      "title": "Addressing OWASP API Security Top 10 starts at design time",
+      "speakers": [
+        "Isabelle Mauny — 42Crunch"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Les incidents ne ralentissent pas (veille apisecurity.io, tenue depuis trois ans) ; causes récurrentes : validation des entrées, rate limiting, **données renvoyées**, authentification et autorisation.\n- Le Top 10 OWASP API regroupé en trois familles : données, authentification et autorisation, gouvernance et exploitation (configuration, logs, monitoring).\n- Ce qui a changé : on branche un framework sur une base et on expose des **données brutes** en REST ou GraphQL, là où le serveur ne renvoyait autrefois que de l'UI.\n- La sécurité reste une **pensée après coup**, en fin de cycle ; les murs autour du datacenter ne protègent plus des flux qui traversent SaaS et systèmes tiers.\n- Problème d'échelle : 400 à 500 API, parfois des milliers, pour environ **un spécialiste AppSec pour 100 développeurs** ; tout ce qui est manuel échoue, d'où l'appel à passer du réactif au proactif dès le design.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "lGmEoRBRoII",
+        "title": "Apidays LIVE Paris 2021 - Addressing OWASP API Security Top 10 starts at design time",
+        "publishedAt": "2021-12-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "securing-the-modern-api-ecosystem",
+      "type": "talk",
+      "title": "Securing the Modern API Ecosystem",
+      "speakers": [
+        "Karl Mattson — Noname Security"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Ancien RSSI d'institutions financières devenu CISO de Noname Security (deux ans d'existence, plus de 200 salariés).\n- Chiffre cité d'un rapport IBM : **deux tiers des incidents** impliquent une API mal configurée ; la qualité du code ne suffit pas, la configuration (réseau, gateway) pèse autant.\n- Difficulté propre aux API : appliquer un plan de contrôle cohérent à des centaines ou milliers d'actifs **qui changent en continu**, sans freiner l'innovation.\n- Les attaques sur la **logique métier** échappent aux WAF et aux politiques de gateway : *« a little bit of a square peg round hole problem »*.\n- Le Top 10 OWASP API couvre à la fois les risques de code et de configuration (exemple du rate limiting).\n- Lecture critique : talk d'éditeur, exemples surtout bancaires.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "5fmn59f1mzw",
+        "title": "Apidays LIVE Paris 2021 - Securing the Modern API Ecosystem By Karl Mattson",
+        "publishedAt": "2021-12-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-need-for-automation-in-api-security",
+      "type": "talk",
+      "title": "The Need for Automation in API Security",
+      "speakers": [
+        "Michael Isbitski — Salt Security"
+      ],
+      "feedbackFrom": [],
+      "summary": "- *« Software is eating the world »*, et ce sont les API qui le font ; les incidents deviennent **hebdomadaires voire quotidiens** : Peloton, Experian, et côté français Ledger et un incident de données de santé chez Doctolib.\n- Gartner prévoyait que les abus d'API deviendraient en 2022 le vecteur d'attaque le plus fréquent : *« we're here »*.\n- Surface d'attaque transformée : milliers d'API (microservices), changements fréquents (agile, DevOps), plus de données sensibles exposées publiquement.\n- Les attaques ne sont plus des injections en un appel mais des **attaques de logique métier**, *« low and slow »*, en séquences d'appels étalées sur des jours, l'API faisant exactement ce pour quoi elle a été conçue (scraping).\n- D'où la nécessité de découvrir et protéger les API automatiquement ; démonstration technique annoncée en seconde partie (non lue).",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "r3oSk1TmYCE",
+        "title": "Apidays LIVE Paris 2021 - The Need for Automation in API Security by Michael Isbitski",
+        "publishedAt": "2021-12-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-state-of-asyncapi",
+      "type": "talk",
+      "title": "The State of AsyncAPI",
+      "speakers": [
+        "Fran Mendez — Postman, AsyncAPI Initiative"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le créateur d'AsyncAPI, désormais directeur de l'ingénierie chez Postman, y travaille à plein temps.\n- Début 2021 : entrée à la **Linux Foundation** pour garantir un terrain neutre, après l'arrivée de l'équipe cœur chez Postman (d'autres contributeurs venant de Solace ou MuleSoft).\n- **Gouvernance ouverte** : une charte, et un comité technique (TSC) où tout contributeur régulier obtient le droit de vote ; il n'existait pas en début d'année et compte déjà de nombreux membres.\n- Croissance : environ 1 600 membres sur Slack, lives sur Twitter, YouTube et Twitch ; *« super cool and scary at the same time »*.\n- **Transparence radicale**, finances comprises, via Open Collective.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "hU4iWuGnx7Y",
+        "title": "Apidays LIVE Paris 2021 - The State of AsyncAPI By Fran Mendez @Postman",
+        "publishedAt": "2021-12-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "metamorphosis-microservices-and-event-driven-architecture",
+      "type": "talk",
+      "title": "Metamorphosis: Microservices & Event-driven Architecture",
+      "speakers": [
+        "Alianna Inzana"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Thèse : l'événementiel n'est pas nouveau (middleware orienté messages, protocoles antérieurs à Fielding), mais il a beaucoup progressé en trois à cinq ans ; l'évolution des API REST sert de grille pour prévoir la suite.\n- Définition retenue : *« events are the facts of a system »*.\n- Trois moteurs : les **microservices** (premier moteur de croissance des API pour 61 % des répondants de l'enquête State of API de SmartBear), car traverser des bounded contexts en synchrone donne un **monolithe distribué** ; les applications **temps réel** et l'IoT ; et un **vocabulaire commun** (spécifications) pour partager la valeur créée.\n- Points d'attention : ordre des événements, intégrité des flux, livraison exactement une fois.\n- Lecture critique : seule la première partie a été lue, la courbe de maturité annoncée n'est pas résumée.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "VkTCwasNtxo",
+        "title": "Apidays LIVE Paris 2021 - Metamorphosis: Microservices & Event-driven Architecture By Alianna Inzana",
+        "publishedAt": "2021-12-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "open-finance-future-is-open",
+      "type": "roundtable",
+      "title": "Open Finance: Future is Open",
+      "speakers": [
+        "Natalia (nom non identifié dans le transcript)",
+        "Rafael (nom non identifié dans le transcript)",
+        "Alan (modérateur, nom non identifié)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- L'open finance permet aux institutions de partager offres et produits, et aux clients de partager leurs données **avec leur consentement**.\n- Le Brésil met en œuvre l'open banking en s'inspirant du Royaume-Uni et l'intègre au paiement instantané **Pix** ; il observe l'Amérique du Nord et l'Europe.\n- Débat : l'open finance est-elle la suite de l'open banking ou une tentative de sauver un open banking décevant ? En Europe, beaucoup de banques se sont contentées du minimum imposé par DSP2.\n- *« The future is open »* : open insurance, open health, open retail, open education.\n- Paradoxe de la confiance : la banque qui protégeait les données propose soudain de les partager ; réponses avancées : éducation des consommateurs, règles et amendes, biométrie pour le consentement.\n- Lecture critique : discussion générale, noms et affiliations des intervenants non identifiables.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "LLeJo0zFupg",
+        "title": "Apidays LIVE Paris 2021 - Open Finance: Future is Open",
+        "publishedAt": "2021-12-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "accelerating-progress-with-api-products-at-maif",
+      "type": "talk",
+      "title": "Accelerating progress with API products at MAIF",
+      "speakers": [
+        "Claire du Mesnildot — MAIF",
+        "Claire Barrett — APIsFirst"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Stratégie **« insurance as a service »** de la MAIF (7 000 personnes) : distribuer ses offres d'assurance et ses services à des tiers par API, pour saisir la tendance de l'**assurance embarquée** (auto, habitation, assistance, crédit).\n- Facteurs de succès vus par Claire Barrett : soutien exécutif fort, équipe montée en **business unit** et non en projet, petite équipe focalisée qui itère avec ses clients.\n- Équipe de sept personnes en mode agile, dans le même bureau : quatre profils IT, un product owner et une business owner au profil commercial et marketing ; constituée progressivement.\n- Le centre de gravité est côté métier, mais avec une compétence hybride ; l'équipe porte **toute la relation** avec ses clients partenaires, ce qui en fait des API product managers.\n- Leçon de Claire du Mesnildot, qui découvrait les API deux ans plus tôt : la priorité est de **connaître son client**, comme pour un produit traditionnel.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "8Pl5iGkHv-8",
+        "title": "Apidays LIVE Paris 2021 - Accelerating progress with API products at MAIF by Claire du Mesnildot",
+        "publishedAt": "2021-12-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "data-driven-journey-at-pernod-ricard",
+      "type": "talk",
+      "title": "Data-driven Journey at Pernod-Ricard",
+      "speakers": [
+        "David Lepicier — Pernod Ricard"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Numéro deux mondial des vins et spiritueux, Pernod Ricard est passé de presque personne capable de développer en interne il y a dix ans à **plus de 100 personnes** aujourd'hui.\n- Historique : portail data peu fréquenté en 2015, data portal recensant les ressources en 2018, plus de 2 500 utilisateurs en 2019 et un **portail développeur** exposant les API des systèmes (base consommateurs, référentiel produits).\n- Problème : la technique fonctionnait, mais **le ROI et le sponsoring restaient faibles**, et les projets ne passaient pas à l'échelle.\n- Virage : retour au comité exécutif avec une matrice valeur et difficulté, et passage de **80 projets à 3 programmes**, dont un modèle de marketing mix (allocation des campagnes entre télévision, presse, rue et réseaux sociaux).\n- Lecture critique : talk de REX d'entreprise, résultats chiffrés des programmes non lus.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "S7bD-oVIrSs",
+        "title": "Apidays LIVE Paris 2021 - Data-driven Journey at Pernod-Ricard By David Lepicier",
+        "publishedAt": "2021-12-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "designing-sustainable-apis",
+      "type": "talk",
+      "title": "Designing Sustainable APIs",
+      "speakers": [
+        "Adrien Nortain — Zenika"
+      ],
+      "feedbackFrom": [],
+      "summary": "- La durabilité ne se résume pas à l'efficacité énergétique ni à l'optimisation : selon le speaker, **75 % de l'impact** (carbone, eau, ressources) se décide au design, l'optimisation d'une API existante n'en touche qu'environ 25 %.\n- Il faut raisonner sur l'**écosystème** d'API et passer d'une approche réactive (mesurer, optimiser) à une approche proactive.\n- Constat de terrain : chez presque tous ses clients, environ la moitié des API sont inutilisées, rarement utilisées ou redondantes ; des **API zombies** à moins de 6 % d'utilisation.\n- Les API meurent lentement de la **loi de Conway** (vision incohérente, équipes désalignées, collaboration et documentation insuffisantes) et de l'**obsolescence technique**, qu'on contourne par des couches anticorruption.\n- Lecture critique : chiffres présentés sans source précise dans la partie lue.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "0Ulg5f7Ysm4",
+        "title": "Apidays LIVE Paris 2021 - Designing Sustainable APIs By Adrien Nortain, CTO @ Zenika",
+        "publishedAt": "2021-12-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "we-used-an-api-maze-to-improve-our-api-culture",
+      "type": "talk",
+      "title": "We Used An API Maze to Improve Our API Culture",
+      "speakers": [
+        "Julien Duvanel — Vaudoise Assurances (d'après le transcript)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Contexte à l'opposé des startups : un assureur suisse de 126 ans, 1 700 salariés dont 200 à l'IT, un mainframe et une **ancienneté moyenne de 11 ans**.\n- Trajectoire : FTP (1995), SOAP (2005), « REST-like » (2010), vraies API REST orientées ressources et guidelines collaboratives (2017), **API first** avec revue de design en pull request (2019), API manager (2020).\n- Les formations ne touchent qu'environ la moitié des équipes ; calendrier de l'Avent de questions sur les API, billets internes.\n- Inspiration : le **labyrinthe d'API** d'apidays Paris 2018, dont le code a été repris et adapté.\n- Format interne : l'**« exploration day »**, 24 heures, une fois par saison, sujet libre, réunions et stand-ups annulés pour apprendre, échouer et s'amuser.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "fnGzwLKLc4w",
+        "title": "Apidays LIVE Paris 2021 - We Used An API Maze to Improve Our API Culture by  Julien Duvanel",
+        "publishedAt": "2021-12-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "digital-api-ecosystems-marketplaces-and-platforms",
+      "type": "talk",
+      "title": "Digital API Ecosystems, Marketplaces and Platforms",
+      "speakers": [
+        "Alan Glickenhouse — IBM"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Habitué d'apidays, Alan Glickenhouse situe écosystèmes, marketplaces et plateformes au **stade 4** du modèle de maturité de l'économie des API conçu chez IBM.\n- Deux scénarios : l'achat d'une voiture (concessionnaire, banque, assureur), évidemment un écosystème, et l'achat du jouet de Noël, qui en est un aussi via la **chaîne d'approvisionnement**.\n- *« No business is an island »* : il y a toujours une « entreprise d'à côté » avec qui travailler.\n- Limite du partenariat classique : des semaines ou des mois de négociation puis autant d'intégration technique, à répéter pour chaque partenaire, ce qui **ne passe pas à l'échelle**.\n- Lecture critique : seule la première partie a été lue ; les réponses outillées (onboarding en self-service) ne sont pas résumées.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "oCzjT-nIwM8",
+        "title": "Apidays LIVE Paris 2021 - Digital API Ecosystems, Marketplaces and Platforms By Alan Glickenhouse",
+        "publishedAt": "2021-12-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "what-makes-developers-happy-in-2021",
+      "type": "talk",
+      "title": "What makes developers happy in 2021",
+      "speakers": [
+        "Damien Cavaillès — WeLoveDevs"
+      ],
+      "feedbackFrom": [],
+      "summary": "- WeLoveDevs, job board IT français (20 000 personnes ayant changé de poste via la plateforme l'année précédente), mène une étude par **témoignages anonymes**, débriefée chaque semaine sur Twitch.\n- Le recrutement raisonne avec un « triangle d'or » argent, localisation, poste ; l'étude ajoute **huit questions sur le poste** lui-même (intérêt, moyens de bien travailler, impact, lien avec les utilisateurs).\n- Premier résultat : si l'on ne pouvait changer qu'une chose, **l'argent ne vient en tête qu'avec 25 %** des réponses, devant les moyens de faire un travail de qualité, puis la localisation.\n- Viennent ensuite l'environnement bienveillant, la diversité et l'inclusion, et le biais de confirmation entre équipes (*« people doing Scala… people doing PHP »*).\n- Lecture critique : échantillon et méthode non précisés dans la partie lue.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "EVwzBOSOIvU",
+        "title": "Apidays LIVE Paris 2021 - What makes developers happy in 2021 By Damien Cavaillès",
+        "publishedAt": "2021-12-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-importance-of-apis-within-the-web3-ecosystem",
+      "type": "talk",
+      "title": "The importance of APIs within the Web3 ecosystem",
+      "speakers": [
+        "Ben Carvill — API3"
+      ],
+      "feedbackFrom": [],
+      "summary": "- API3, organisation décentralisée « on chain », rend les **API web 2 appelables depuis des smart contracts** grâce à un nœud léger (Airnode) déployé sur AWS ; environ 190 API intégrées à diverses blockchains.\n- Web 2 : des entités centralisées font de l'utilisateur le produit ; web 3 : réseau distribué, **participation**, composabilité héritée de l'open source, transparence et auditabilité du registre.\n- Les smart contracts sont des règles programmables qui **dépendent de données externes** pour se déclencher, d'où le rôle des API (oracles).\n- Primer DeFi : croissance de la valeur verrouillée depuis 2019 ; NFT, musique, jeu cités comme usages.\n- Lecture critique : talk très promotionnel, typique du pic d'enthousiasme web3 de fin 2021.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "nACIImlgatY",
+        "title": "Apidays LIVE Paris 2021 - The importance of APIs within the Web3 ecosystem By Ben Carvill @API3",
+        "publishedAt": "2021-12-09",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Edge Side APIs: Fast and Reliable Hypermedia APIs (Kévin Dunglas, Les-Tilleuls.coop ; transcript automatique inutilisable)",
+    "API Governance at Scale (David Luke et Eric Horesnyi, Axway ; démonstration produit, non résumée)",
+    "The APIToS-cc project (Mehdi Medjaoui, apidays)",
+    "API data sharing legal practices in the Private Sector ; API data sharing legal practices for public sector",
+    "Discovering the German Public Sector APIs: the full analysis",
+    "The Good, the Bad and the Ugly (Cyril Vart)",
+    "Platformization as a model for transforming (Nouamane Cherkaoui)",
+    "The API Revolution bring us to continuously change (Adrien Floch)",
+    "5 Steps to thrive in the Open Economy (Marcilio Oliveira) ; Open Strategy with Sensedia",
+    "The Connective Tissue of Open Finance (Radu Popa) ; architecture for event-enabling legacy core banking systems",
+    "API Business Value beyond Monetization (Matthias Biehl)",
+    "API Led engineering excellence at NBNCO (Shreshta Shyamsundar)",
+    "APIOps: automating API operations for speed and quality at scale ; Low-Code API DevOps approach to API Lifecycle Management",
+    "API design is where culture and tech meet each other (Aleksei Akimov) ; Using Design First to superpower your app development (Lorie Pisicchio)",
+    "Learning the Language of HTTP for a Better Data Experience",
+    "API Management from a Network Engineer's perspective (Priya Saxena) ; APIGEE, different ways for integrating with CI/CD pipelines",
+    "Taming the beast: How to manage multiple API platforms at once ; Don't put all of your APIs in one cloud (Adrien Vocanson)",
+    "APIs and Complexity ; The Interface manifesto (Kristof Van Tomme, Pronovix)",
+    "APIs are the new skin of your organisation (Marc Burgauer) ; Modularity in open systems (Trond Hjorteland)",
+    "What Developers Want (Paul Ardeleanu) ; Test developer experience, not code (Kathrine Osadchenko)",
+    "Docs et DevPortal : Automating API Documentation (Ajinkya Marudwar), The content devportal: Who writes the Docs? (Laura Vass), Localizing OpenAPI Specification (Olga Baybakova), Can Affordance Catalogs power up your Dev Portal? (Michael Hibay), Docs for Developers: How to start when everything is hard",
+    "Sécurité : API Security: Acting Now to Enable Security Controls ; The Real World, API Security Edition (Michael Isbitski) ; API and Application Security: The Future (Dan Gordon) ; The New API Vulnerability Frontier (Tomer Nuri, L7 Defense) ; Mobile: Your API Security Blindspot (David Stewart) ; Flying blind? The case for API Security and Observability ; Better understand your APIs through traffic (Refael Botbol Weiss) ; Detecting and Protecting PII at Runtime (Rob Dickinson) ; Hack-Proof Your API: Attack Simulator Deep Dive",
+    "Identification & Authentication for individuals with API at eIDAS substantial level (Nicolas Bigand, Groupe La Poste) ; Advanced Authentication patterns at the Edge (Denis Jannot)",
+    "Service mesh : Istio and API Management Integration with Envoy WebAssembly Extensions ; How to Achieve Zero-Trust Security With Kuma Service Mesh ; Service Mess to Service Mesh (Rob Richardson, Cyral)",
+    "Event-driven : Event driven design and serverless (Omid Eidivandi) ; Deliver real-time data to customer using Streaming APIs (Kevin Park) ; Getting started with Event-Driven APIs (Hugo Guerrero) ; Manage, secure, and socialize Kafka topics (Michel Lara) ; live flight tracking demonstration on event enabling APIs",
+    "Building an analytics API (David Wobrock) ; Stargate.io, An OSS API Layer for your Cassandra (Cedrick Lunven) ; How to simplify API integration with Meta API (Mathieu Rasse)",
+    "Tests : Automate Your API Testing in CI/CD Pipelines (Mairtin Conneely) ; Next generation of API testing: Unleashing the power of AI ; Automated Provisioning using HELM charts on Kubernetes (Sivaraj Lenin)",
+    "Standards : OpenAPI Generator, The Babel Fish of the API World ; Using OpenAPI to configure your API Gateway (Ole Lensmar) ; Building an Accessible API Spec with Traditional Engineering Teams ; Spatially enabling Web APIs through OGC Standards (Gobe Hobona)",
+    "Why Can't Us Consumers Have APIs (Salman Farmanfarmaian) ; Using AR Cloud Anchors APIs to unleash metaverse use cases ; Why social engagement APIs are essential to your KPIs (Sid Suri)",
+    "Building a hybrid integration platform to ease digital transformation ; Unlocking digital partnerships and growing your business using APIs",
+    "Hands-On ! Play Twilio Quest dev game and explore Twilio APIs the fun way",
+    "Talks dont seuls les decks SlideShare sont signalés (non lus) : Inside API delivery Pipeline, the checklist! (François Lasne, Finastra), 5 Learnings Shaping Our View on the Future of APIs (Frank Kilcommins, SmartBear), 20 minutes to build a serverless COVID-19 GraphQL API (Maxime Beugnet, MongoDB), Generating OpenAPIs from business models (Frédéric Fontanet), Measuring environmental impact reductions (Gregory Pelletier, Fairness)"
+  ],
+  "sources": [
+    {
+      "label": "Page officielle apidays Paris 2021 (« December 7, 8 & 9, 2021 », lien renvoyant une erreur 404 en novembre 2026)",
+      "url": "https://www.apidays.global/paris2021/"
+    },
+    {
+      "label": "Page apidays.io/paris archivée (Wayback Machine, octobre 2021 ; non relue cette nuit)",
+      "url": "https://web.archive.org/web/20211022/https://www.apidays.io/paris/"
+    },
+    {
+      "label": "Page d'événement « apidays LIVE Paris 2021 » sur RingCentral Events (speakers et exposants)",
+      "url": "https://events.ringcentral.com/events/apidays-live-paris-2021"
+    },
+    {
+      "label": "API Tracker : liste des événements API (apidays Paris, 7-9 déc. 2021, Virtual)",
+      "url": "https://apitracker.io/events"
+    },
+    {
+      "label": "Playlist YouTube « Apidays Paris 2021 »",
+      "url": "https://www.youtube.com/playlist?list=PLmEaqnTJ40Oprf2WlaitQvmncaM4aqP8k"
+    },
+    {
+      "label": "Slides « apidays LIVE Paris 2021 » sur SlideShare (compte APIdays_official)",
+      "url": "https://www.slideshare.net/APIdays_official"
+    },
+    {
+      "label": "Posts LinkedIn : aucun lu (aucun résultat exploitable dans les recherches)"
+    }
+  ]
 }

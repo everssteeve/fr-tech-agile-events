@@ -8,7 +8,247 @@
   "city": "En ligne",
   "url": "https://paristestconf.com/edition-2021/",
   "dateConfidence": "sec",
-  "note": "Site officiel : « troisième édition », 100 % en ligne ; vidéos sur la playlist YouTube PLMXjuFj7QC6Y0-X_B3RiE__NL3_abUk7v, slides déposées en décembre 2021. Dates déduites des titres des 12 vidéos de la playlist (« PTC2021 - … - 22/11 » à « 25/11 »), non confirmées par une page officielle.",
-  "status": "pending",
-  "sessions": []
+  "note": "Site officiel : « troisième édition », la « deuxième entièrement en ligne », « nombre record » de propositions au CFP ; vidéos sur la playlist YouTube PLMXjuFj7QC6Y0-X_B3RiE__NL3_abUk7v, slides déposées en décembre 2021. Dates déduites des titres des 12 vidéos de la playlist (« PTC2021 - … - 22/11 » à « 25/11 »), non confirmées par une page officielle ; elles concordent avec l'ouverture du live du 22/11 (« quatre soirées » jusqu'à jeudi, de 18h à 21h, trois talks par soirée, puis échanges sur Discord).",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-10",
+  "revisit": "Au 10/11/2026 : aucun retour de participant lu. Le seul compte-rendu repéré (« Retour sur la ParisTestConf 2021 », Léa Baumier, bitoo.fr, listé sur la page « On parle de nous » du site) était illisible (certificat TLS invalide) et la Wayback Machine inaccessible ; 4 recherches web sans post LinkedIn ni billet. Talk de Raphael Awoseyin sans transcript ni slides. À reprendre : lire l'article de bitoo.fr, chercher des posts LinkedIn de speakers ou de participants.",
+  "corpus": "Page officielle de l'édition (programme, liens de slides, bilan), slides de Checkout.com (Pierrot et Shtamburg) et transcripts automatiques (sous-titres YouTube) des 11 vidéos disponibles sur 12, lus en entier, questions-réponses comprises. Aucun post ni billet de participant n'a pu être lu.",
+  "limits": "Les résumés décrivent ce qui a été dit en live et les questions du chat relayées par l'animation, pas ce que le public en a retenu. Les sous-titres automatiques déforment noms propres, entreprises et chiffres (seuls ceux sans ambiguïté sont repris) ; ceux du talk en anglais de Checkout.com sont presque inexploitables, d'où l'appui sur les slides, et le transcript de David Rochelet est très lacunaire. La date de publication des vidéos est inconnue : `publishedAt` porte la date de fin de l'édition.",
+  "tldr": "Une édition en ligne, en soirée, qui donne la parole à des **retours d'expérience d'équipes produit** (Lifen, OpenClassrooms, La Redoute, Checkout.com, AXA France, Agicap) : la qualité y devient **l'affaire de toute l'équipe**, portée par des boucles de feedback courtes, l'analyse de risque et l'automatisation des environnements.",
+  "keyTakeaways": [
+    "Passer de la Quality Assurance à la Quality Assistance : l'équipe qualité accompagne et forme plutôt que de valider seule ; chez OpenClassrooms, cycle time réduit de 34 % en un an et goulot QA disparu des rétrospectives (Dauce).",
+    "Livrer tous les jours force à enlever le superflu du process : à La Redoute, environ 6000 tests de non-régression automatisés, livraison 96 % des jours ouvrés et NPS passé de 37 à 49 entre 2018 et 2021 (Tennich et Craske).",
+    "Organiser le run avec un rôle d'escalation manager et une « fire line » tournante d'une semaine par équipe, avec une carte Jira obligatoire pour tout signalement (Scharrmann et Jung, Lifen).",
+    "Ne tester que ce qu'un test peut mitiger : score probabilité × impact en 4 niveaux, intégré aux rituels existants (conception, trois amigos) plutôt qu'à de nouvelles réunions (Amami).",
+    "Faire écrire les tests d'acceptance par la QA avant le développement (acceptance TDD) et les placer au niveau du bounded context plutôt qu'en end-to-end sur des microservices (Pierrot et Shtamburg, Checkout.com).",
+    "Traiter le code des tests automatisés comme un projet de développement : arborescence, nommage métier, linters et revue de PR (Ralitera).",
+    "Isoler l'application testée et simuler toutes ses dépendances pour créer un environnement de test à la demande, détruit après usage, avec un feedback complet en moins de 10 minutes (Guerlesquin).",
+    "Conteneuriser les tests end-to-end et les paralléliser (une VM par test) : 30 tests en un peu plus de 9 minutes au lieu de plusieurs heures chez Agicap (Holleville et Marchand).",
+    "Tenir une bibliothèque de règles métier en Gherkin, enrichie par des sessions exploratoires à thème de 30 minutes à 2 heures (Martin, AXA France)."
+  ],
+  "sessions": [
+    {
+      "id": "comment-mettre-tout-le-monde-d-accord-sur-la-gestion-des-bugs",
+      "day": "2021-11-22",
+      "type": "talk",
+      "title": "Comment mettre tout le monde d'accord sur la gestion des bugs ?",
+      "speakers": ["Tea Scharrmann — Lifen", "Camille Jung — Lifen"],
+      "feedbackFrom": [],
+      "summary": "- Contexte : Lifen (e-santé, envoi de documents médicaux, environ 160 salariés, une trentaine d'applications) travaille en **Shape Up**, cycles de 8 semaines dont 2 de « cooldown » ; Camille Jung est QA, Tea Scharrmann escalation manager.\n- Avant, le run était géré équipe par équipe et personne ne savait qui contacter. En 2020 naissent le rôle d'escalation manager puis une **« fire line »** : chaque équipe y délègue un membre au moins une semaine (souvent deux en pratique).\n- Règles : canal Slack, point hebdomadaire, carte Jira obligatoire avec tags d'équipe (*« si vous n'avez pas créé de cartes [Jira] la demande sera pas pris en compte »*). Criticité graduée, war room avec « tech warriors » et « business warriors » pour les incidents majeurs, puis post-mortem avec timeline.\n- Bénéfices décrits : du temps libéré pour le build et moins de stress. Conseils : un junior peut tenir la fire line s'il est accompagné, commencer par l'équipe la plus sollicitée, ne pas y prendre de décisions produit.\n- Les outils ne suffisent pas : *« le nouvel outil ne réglera pas les problèmes tout seul »*.\n- En questions-réponses : priorisation selon le nombre d'utilisateurs impactés, SLA internes en cours, pas d'astreinte (utilisateurs en heures de bureau, monitoring en compensation), cooldown consacré au refactoring et aux logs.\n- Limites dites : qualité inégale entre équipes (pas de QA partout), modèle à adapter à chaque organisation.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "KHhWiOf--jM",
+        "title": "PTC2021 - Tea Scharrmann & Camille Jung - 22/11",
+        "publishedAt": "2021-11-25",
+        "transcript": true,
+        "startSeconds": 154
+      }
+    },
+    {
+      "id": "voitures-connectees-les-defis-des-deux-mondes",
+      "day": "2021-11-22",
+      "type": "talk",
+      "title": "Voitures connectées : les défis des deux mondes (industriel et logiciel)",
+      "speakers": ["Iman Benlekehal"],
+      "feedbackFrom": [],
+      "summary": "- Iman Benlekehal (une quinzaine d'années en QA, basée au Canada) raconte un projet de voiture connectée chez un constructeur non nommé, en opposant deux cultures : l'**industrie précise, normée, séquentielle** et l'informatique instable, où *« le zéro bug est impossible »*.\n- L'IT passe du rôle de support à celui de cœur du véhicule, ce qui bouscule les méthodes héritées de l'industrie.\n- Équipes réparties (Roumanie, Singapour, Inde, Brésil) : le statut « résolu » d'un bug n'avait pas le même sens pour tous ; d'où son conseil de *« rester humble et savoir que c'est pas parce qu'on parle la même langue [...] qu'on veut dire la même chose »*.\n- Versions de documents et dictionnaires de données désalignés (booléen oui/non contre 1/0) : sur les bancs de test, coûteux et espacés, *« sur dix tests s'il y en avait un qui passe [...] c'était presque un miracle »*.\n- Tests surtout sur simulateur, avec des anecdotes de bornes mal définies (altitude minimale à 0 alors que les Pays-Bas sont sous le niveau de la mer) ; le RGPD a obligé à revoir la stratégie de test des données.\n- Prospective : qualité des données et sécurité deviennent des critères à part entière (elle cite l'ISO 25010).\n- Limites dites : elle a quitté le projet avant les tests sur prototype et donne ses chiffres de mémoire.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "Aq40rU4pknY",
+        "title": "PTC2021 - Iman Benlekehal - 22/11",
+        "publishedAt": "2021-11-25",
+        "transcript": true,
+        "startSeconds": 82
+      }
+    },
+    {
+      "id": "de-quality-assurance-a-quality-assistance",
+      "day": "2021-11-22",
+      "type": "talk",
+      "title": "De Quality Assurance à Quality Assistance",
+      "speakers": ["Vincent Dauce — OpenClassrooms"],
+      "feedbackFrom": [],
+      "summary": "- Déclencheur : un sondage interne de juin 2020 révèle un **goulot QA**, des standards abaissés sous la pression des deadlines et des allers-retours de bugs.\n- Kick-off en juillet 2020 (avec la vidéo « Adventures in Modern Testing » d'Alan Page) : accélérer les livraisons, supprimer le goulot, faire mûrir la culture qualité. L'équipe devient « Quality Engineering », avec quatre activités : quality assistance, tests exploratoires, automatisation, observabilité.\n- Leviers : présentation qualité aux nouveaux toutes les 2 semaines, objectif de cycle time sous 2 jours, couverture de 100 % des flux utilisateurs critiques, résultats de tests remontés dans Jira.\n- Début 2021, un atelier avec 60 personnes produit une pyramide de la qualité inspirée de Maslow et des critères mesurables validés par la direction.\n- Résultats annoncés : **cycle time réduit de 34 % en un an**, goulot QA absent des rétrospectives 2021, temps de l'équipe réparti en 36 % d'assistance, 29 % d'exploratoire, 20 % d'automatisation.\n- Lecture critique du speaker : environ 60 % des sondés jugent la QA « indispensable », ce qu'il ne voit pas forcément comme un bon signe (*« si jamais on arrive à ne plus être utile c'est qu'on a gagné »*) ; les développeurs ne participent pas encore aux tests automatisés.\n- En questions-réponses : la quality assistance proche du shift left mais centrée sur l'accompagnement ; profil « couteau suisse » qui sait former et influencer ; encore *« un ou deux ans »* pour la prochaine étape de maturité.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "D3CAuo4Db6Q",
+        "title": "PTC2021 - Vincent Dauce - 22/11",
+        "publishedAt": "2021-11-25",
+        "transcript": true,
+        "startSeconds": 78
+      }
+    },
+    {
+      "id": "pourquoi-et-comment-livrer-tous-les-jours-dans-un-contexte-agile",
+      "day": "2021-11-23",
+      "type": "talk",
+      "title": "Pourquoi et comment livrer tous les jours dans un contexte Agile ?",
+      "speakers": ["Nadia Tennich — La Redoute", "Antoine Craske — La Redoute"],
+      "feedbackFrom": [],
+      "summary": "- Point de départ en 2015 : des releases toutes les 4 à 8 semaines et souvent 3 mois entre l'idée et le client ; La Redoute se situe entre « low » et « medium » au benchmark Accelerate et vise « elite ».\n- Préalables : une seule plateforme web responsive (2018) au lieu de trois, **deux semaines de tests manuels remplacées par des tests fonctionnels automatisés** partagés avec le métier, trunk-based development, feature flags et A/B testing.\n- Rituel quotidien : à 11h on embarque ce qui est prêt, puis 2 heures pour décider du go/no-go ; les tests fonctionnels tournent aussi en production comme monitoring.\n- Résultats annoncés : environ 6000 tests de non-régression, livraison 96 % des jours ouvrés, taux d'erreur de 2 % à 0,8 %, NPS de 37 à 49 entre 2018 et 2021.\n- Philosophie : *« c'est la tactique des petits pas »* ; livrer tous les jours force à enlever *« tout le gras et tout ce qui est inutile dans un process »*.\n- En questions-réponses : gagner la confiance par un petit périmètre et des résultats rapides, garder le manuel pour l'exploratoire et le go/no-go, rollback par redéploiement de la version précédente, testeurs manuels et automaticiens non interchangeables.\n- Limites : surcoût du modèle à double rythme, maturité inégale selon les plateformes ; une partie du talk est quasi inaudible dans la vidéo (coupure de connexion), les chiffres de ce passage sont donc fragiles.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "Xi8FKNNm0EI",
+        "title": "PTC2021 - Nadia Tennich & Antoine Craske - 23/11",
+        "publishedAt": "2021-11-25",
+        "transcript": true,
+        "startSeconds": 178
+      }
+    },
+    {
+      "id": "team-collaboration-with-test-first-approach",
+      "day": "2021-11-23",
+      "type": "talk",
+      "title": "Team collaboration with Test-First Approach",
+      "speakers": ["Etienne Pierrot — Checkout.com", "Zlata Shtamburg — Checkout.com"],
+      "feedbackFrom": [],
+      "summary": "- Talk en anglais de deux ingénieurs de Checkout.com (Senior Software Engineer et Senior Software Engineer in Test), avec trois objectifs affichés : boucle de feedback rapide, partage de l'état d'esprit QA avec toute l'équipe, test des microservices.\n- Les slides classent les sources de feedback par délai, de l'IDE (*« almost instant »*) à la validation QA (*« minutes - weeks »*) et aux retours clients (*« days - years »*) ; *« Feedback is the fuel of the development process »*.\n- **Acceptance TDD** : la QA écrit un test d'acceptance en échec (Given/When/Then) avant que le développeur n'entre dans sa boucle TDD, car *« TDD alone doesn't ensure a shared understanding of the feature »* ; référence à l'« Outside-in Diamond TDD » de Thomas Pierrain.\n- Cycle de vie d'une feature : trois amigos et event storming, tests unitaires et d'acceptance dans un environnement docker compose avec simulateurs (LocalStack), puis environnements AWS, end-to-end et test manuel en staging.\n- Microservices : citation de Sam Newman sur le coût et l'instabilité des tests end-to-end ; recours au **bounded context** du Domain-Driven Design, avec des contrats explicites (OpenAPI, schémas d'événements) et une frontière qui *« can be inside a monolith »*.\n- Conclusions des slides : la validation QA n'est plus le principal frein aux livraisons fréquentes, les frontières entre QA et développeurs s'estompent, et il faut se méfier de découper trop tôt en microservices.\n- Les sous-titres automatiques (en français sur un talk en anglais) sont presque inexploitables : ce résumé s'appuie sur les slides, les questions-réponses n'ont pu être suivies.",
+      "summarySources": ["slides", "transcript", "program"],
+      "video": {
+        "youtubeId": "O088PzZAqgw",
+        "title": "PTC2021 - Etienne Pierrot & Zlata Shtamburg - 23/11",
+        "publishedAt": "2021-11-25",
+        "transcript": true,
+        "startSeconds": 85
+      }
+    },
+    {
+      "id": "get-the-best-out-of-your-rbt-strategy",
+      "day": "2021-11-23",
+      "type": "talk",
+      "title": "Get the best out of your RBT strategy",
+      "speakers": ["Hamza Amami"],
+      "feedbackFrom": [],
+      "summary": "- Talk en français malgré le titre : Hamza Amami, dans une équipe QA de 6 personnes d'une application de paiement, présente sa stratégie de **test basé sur les risques** (RBT).\n- Constat de départ : un « cycle en V par itérations de deux semaines » où les bugs arrivent en fin de sprint ; *« tout ce qu'on trouve à la fin c'est du gâchis »*. Objectif : shift left à faible coût, en visant le « juste nécessaire » (Pareto).\n- Méthode : n'appeler risque que ce qu'un test peut mitiger, le reste étant un risque produit à communiquer ; score probabilité × impact sur 4 niveaux, le plus faible n'étant pas testé.\n- Impact évalué sur la perte de données, les parcours bloqués et l'usage réel ; probabilité sur l'historique des bugs, l'avis des architectes, les refactorings, la rotation des développeurs ou les partenaires sans environnement de recette.\n- **Modifier les rituels existants** (conception, trois amigos) plutôt qu'ajouter des réunions ; la matrice de risques devient le plan de test au sprint planning. Outillage cité : Jira et Xray, avec un type de ticket « risque ».\n- En questions-réponses : 30 à 40 % des risques mitigés en amont, « à la louche » ; des fonctionnalités à faible impact peuvent être sacrifiées.\n- Limites dites : cela *« reste de l'anticipation »*, à compléter par de l'exploratoire ; ne pas appliquer la méthode de façon académique, et se méfier d'un *« faux sentiment de confiance »*.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "yygb34IPWpQ",
+        "title": "PTC2021 - Hamza Amami - 23/11",
+        "publishedAt": "2021-11-25",
+        "transcript": true,
+        "startSeconds": 74
+      }
+    },
+    {
+      "id": "rex-la-place-des-tests-exploratoires-testeuse-agile",
+      "day": "2021-11-24",
+      "type": "talk",
+      "title": "REX : La place des tests exploratoires dans mes activités de testeuse agile",
+      "speakers": ["Aurélie Martin — AXA France"],
+      "feedbackFrom": [],
+      "summary": "- Aurélie Martin, testeuse et automaticienne chez AXA France, ancienne développeuse web, définit l'exploratoire comme découverte, conception et exécution simultanées, avec une charte : ce n'est pas de l'ad hoc.\n- Point de départ : peu de documentation, trop de tests scriptés, paradoxe du pesticide ; une nouvelle application web (IHM et API) sert de terrain pour changer.\n- L'effort de test glisse vers le backlog, la spécification et le développement (schéma de Janet Gregory) : trois amigos, example mapping, prototype UX.\n- Une **« bibliothèque de règles »** : une carte Xray par fonctionnalité, en Gherkin, reliée aux user stories et enrichie à chaque session ; l'automatisation naît de l'exploration manuelle de l'API.\n- Sessions à thème (rôle, mobile, résilience) de 30 minutes à 2 heures, plusieurs fois par semaine en intégration ; en recette, les experts métier parcourent les parcours clés.\n- Message : *« le test n'est pas réservé aux testeurs »* et *« tout testeur a déjà fait du test exploratoire même parfois sans savoir »*.\n- Questions ouvertes par la speaker : la bibliothèque fait-elle doublon avec la documentation vivante des développeurs ? Les testeurs restent absents de l'observation en production.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "Su0QgWGAVXQ",
+        "title": "PTC2021 - Aurélie Martin - 24/11",
+        "publishedAt": "2021-11-25",
+        "transcript": true,
+        "startSeconds": 134
+      }
+    },
+    {
+      "id": "clean-code-applique-aux-tests-automatises-de-la-qa",
+      "day": "2021-11-24",
+      "type": "talk",
+      "title": "Le Clean Code appliqué aux tests automatisés de la QA",
+      "speakers": ["Rija William Ralitera"],
+      "feedbackFrom": [],
+      "summary": "- Rija William Ralitera, ingénieur qualité depuis 2015, applique les principes du Clean Code de Robert C. Martin à une suite Cypress : pour lui, les tests automatisés sont *« un projet de développement à part entière »*.\n- Arborescence sans dossier fourre-tout (test data, config, helpers) ; **nommage** court, explicite, en termes métier, avec des personas (admin, guest) et la formule « user should / should not ».\n- Logs personnalisés, gestion des erreurs connues, commentaires limités (*« le moins de commentaires possibles mais cela ne veut pas dire que c'est interdit »*), JSDoc et TODO/FIXME liés à un ticket.\n- Factorisation en custom commands Cypress et beforeEach ; formatage commun avec ESLint, Prettier et SonarCloud, mêmes règles que les développeurs plus un linter Cypress.\n- Résultat cité : environ 1000 tests exécutés en environ une heure (chiffre de comparaison de l'année précédente inaudible).\n- Limites dites : la refactorisation a pris 3 à 4 mois sans nouveaux scénarios, les règles ont toujours des exceptions (*« il faut être intelligent »*), et il ne va pas jusqu'à tester les tests.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "m5VGrD7OmjM",
+        "title": "PTC2021 - William Rija Ralitera - 24/11",
+        "publishedAt": "2021-11-25",
+        "transcript": true,
+        "startSeconds": 47
+      }
+    },
+    {
+      "id": "hypercroissance-et-qualite-docker-gitlab-ci",
+      "day": "2021-11-25",
+      "type": "talk",
+      "title": "Hypercroissance et qualité ? C'est possible avec Docker & Gitlab CI !",
+      "speakers": ["Matthis Holleville — Agicap", "Nathanael Marchand — Agicap"],
+      "feedbackFrom": [],
+      "summary": "- Contexte d'hypercroissance (*« on a doublé les effectifs en un an »*) chez un éditeur SaaS de gestion de trésorerie (Agicap, nom déduit des sous-titres) ; stratégie de tests « en diamant », surtout des tests d'acceptance rédigés avec le produit, et des end-to-end Selenium.\n- Trois problèmes : un environnement figé pendant les tests, des navigateurs et OS différents selon les postes, des sélecteurs techniques et un seul compte de test qui imposaient des heures d'exécution en série.\n- Solution : **tout conteneuriser** (Docker Compose, bases et files de messages, Selenium Chrome en version fixée), générer au build la liste des tests sous forme de pipeline enfant GitLab CI, et lancer une VM par test sur des nœuds préemptibles via Kubernetes.\n- Résultat : 30 tests en environ 9 minutes au lieu de plusieurs heures, pour quelques dizaines de centimes par run.\n- Chaque test conserve captures, HTML, logs et vidéo ; une « météo des tests » est postée sur Slack chaque matin. Effets inattendus : vidéos réutilisées en démo, captures pour la non-régression du design system.\n- En questions-réponses : run toutes les 2 à 3 heures, jusqu'à 3 retries, passage des XPath à un attribut data-test-id (sélecteurs d'accessibilité en piste).\n- Limites dites : expérience développeur à améliorer (pas d'accès au navigateur distant, environnement « tout ou rien »), sélecteurs métier incomplets, *« un travail de longue haleine »*.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "-cCQaSzqvp0",
+        "title": "PTC2021 - Matthis Holleville & Nathanael Marchand - 25/11",
+        "publishedAt": "2021-11-25",
+        "transcript": true,
+        "startSeconds": 150
+      }
+    },
+    {
+      "id": "environnements-de-tests-dynamiques-pour-le-continuous-testing",
+      "day": "2021-11-25",
+      "type": "talk",
+      "title": "Environnements de tests dynamiques pour le Continuous Testing",
+      "speakers": ["Valentin Guerlesquin — Banque Nationale du Canada"],
+      "feedbackFrom": [],
+      "summary": "- Valentin Guerlesquin (Banque Nationale du Canada, à titre personnel, co-auteur du livre « Le chaînon manquant ») part d'un constat : le testeur passe l'essentiel de son temps à attendre des environnements prêts.\n- Principe : **isoler l'application testée** et traiter tout le reste comme une dépendance externe simulée (stubs, mocks), pour contrôler disponibilité, versions et données (*« il faut être en contrôle de ses données »*).\n- Cinq briques : un orchestrateur, le déploiement par code (Terraform, Ansible, AWS), une base de données créée à la demande depuis une golden copy, un service de stubbing, une suite de tests automatisés.\n- Démo enregistrée : environnement monté, testé puis détruit en environ 4 minutes pour un coût négligeable ; objectif *« le feedback complet en moins [de] dix minutes »*, un pipeline par commit.\n- En questions-réponses : un stub qui masque l'évolution d'une dépendance relève du contrat d'interface, *« pas un problème de test [mais] un problème organisationnel »* ; on teste jusqu'à la frontière, la pyramide garde de l'end-to-end ; si seuls les Ops peuvent déployer hors production, l'organisation n'est pas mature.\n- Limites dites : il faut des contrats d'interface respectés et une application déployable par script ; inutile pour du test manuel (*« une Ferrari pour traverser votre jardin »*) ; certains outils de virtualisation de données sont chers.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "0DqDAvWlSpQ",
+        "title": "PTC2021 - Valentin Guerlesquin - 25/11",
+        "publishedAt": "2021-11-25",
+        "transcript": true,
+        "startSeconds": 60
+      }
+    },
+    {
+      "id": "build-and-grow-a-qa-team-from-scratch",
+      "day": "2021-11-25",
+      "type": "talk",
+      "title": "Build and grow a QA team from scratch",
+      "speakers": ["David Rochelet"],
+      "feedbackFrom": [],
+      "summary": "- Talk en français, dernier de l'édition : David Rochelet, dans une société de services orientée e-commerce avec des agences en France et à l'étranger, raconte comment construire une équipe QA à partir de presque rien.\n- Il traite l'équipe comme un produit : partir du besoin, de la culture d'entreprise (une entreprise de développeurs), de clients variés et de profils aux parcours très différents.\n- Point de départ : *« il y a toujours quelque part dans un projet dans une entreprise quelqu'un qui teste »* ; étapes ensuite : donner un temps visible au test, construire une offre et convaincre, former, développer collaboration et cohésion (*« une équipe ce sont les gens qui collaborent »*).\n- Outils : préférer des outils maîtrisés, accessibles et maintenables, et *« pas aller chercher un jeune outil qui va nous demander de tout remettre à plat tous les 6 mois »*.\n- Recrutement : un ingénieur qualité qui va vers les autres, orienté client, recruté en pensant à ce qu'il sera dans 2 ou 3 ans.\n- En questions-réponses : la qualité comme avantage face à des concurrents qui cassent les prix et pour retenir les talents.\n- Limites : compromis inévitables avec les échéances (*« forcément il y aura des ratés »*) ; transcript très lacunaire, résumé partiel.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "BFBLZuEB5nc",
+        "title": "PTC2021 - David Rochelet - 25/11",
+        "publishedAt": "2021-11-25",
+        "transcript": true,
+        "startSeconds": 100
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Examining The Link Between Quality & Customer Experience (Raphael Awoseyin, 24/11, en anglais ; vidéo FmcY5f87oMg sans transcript ni slides)"
+  ],
+  "sources": [
+    {
+      "label": "Page officielle de l'édition 2021 (programme, slides, bilan)",
+      "url": "https://paristestconf.com/edition-2021/"
+    },
+    {
+      "label": "Playlist YouTube ParisTestConf 2021 (12 talks)",
+      "url": "https://www.youtube.com/playlist?list=PLMXjuFj7QC6Y0-X_B3RiE__NL3_abUk7v"
+    },
+    {
+      "label": "Slides « Team collaboration with Test-First Approach » (Etienne Pierrot et Zlata Shtamburg, Checkout.com)",
+      "url": "https://paristestconf.com/wp-content/uploads/2021/12/Zlata-_-Etienne.pdf"
+    },
+    {
+      "label": "Slides « Comment mettre tout le monde d'accord sur la gestion des bugs ? » (non lues)",
+      "url": "https://paristestconf.com/wp-content/uploads/2021/12/PTC-Comment-mettre-tout-le-monde-d_accord-sur-la-gestion-des-bugs_-.pdf"
+    },
+    {
+      "label": "Slides « Pourquoi et comment livrer tous les jours » (Nadia Tennich et Antoine Craske, non lues)",
+      "url": "https://paristestconf.com/wp-content/uploads/2021/12/paris-test-conf-lr-nadia-antoine-2021-11.pdf"
+    },
+    {
+      "label": "Slides « Le Clean Code appliqué aux tests automatisés » (non lues)",
+      "url": "https://paristestconf.com/wp-content/uploads/2021/12/Le-Clean-Code-applique-TA.pdf"
+    },
+    {
+      "label": "Retour sur la ParisTestConf 2021 (Léa Baumier, bitoo.fr ; repéré via la page « On parle de nous », non lu : certificat invalide)",
+      "url": "https://www.bitoo.fr/retour-sur-la-paris-test-conf-2021/"
+    },
+    {
+      "label": "Posts LinkedIn : aucun retrouvé"
+    }
+  ]
 }

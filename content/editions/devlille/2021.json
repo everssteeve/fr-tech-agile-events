@@ -3,11 +3,294 @@
   "year": 2021,
   "title": "DevFest Lille 2021",
   "start": "2021-11-19",
+  "end": "2021-11-19",
   "city": "Lille",
   "venue": "Kinepolis Lomme",
   "url": "https://conference-hall.io/devfest-lille-2021",
-  "dateConfidence": "sec",
-  "note": "Ancien nom : DevFest Lille.",
-  "status": "pending",
-  "sessions": []
+  "programUrl": "https://devfest-2021-908e1.web.app/agenda/index.html",
+  "dateConfidence": "ok",
+  "edition": "4e édition",
+  "theme": "Web, mobile, cloud et technologies Google",
+  "note": "Ancien nom : DevFest Lille. Une journée au Kinepolis de Lomme, deux salles (700 et 400), de 9 h à environ 18 h 30. Le pied de page du site 2021 liste les « voyages » 1 (2017), 2 (2018) et 3 (2019), d'où la 4e édition, après l'absence de 2020. Seule édition de la série tenue en novembre (les autres ont lieu en mai ou juin). Formats du CFP : conférence de 50 minutes et quickie de 20 minutes ; le programme n'étiquette pas les formats, mais les créneaux de 15 h 10 et 16 h 40 sont courts. L'accueil annonçait « +500 voyageurs, 30 guides, 20 récits de voyage » ; l'agenda final compte 16 talks et 2 keynotes, et la page speakers 22 noms (sans les speakers des keynotes de fermeture). Sponsors Gold : SFEIR, SII, Adeo et Leroy Merlin, Google, OVHcloud. Site de l'édition retrouvé via `src/content/editions/editions.json` du dépôt GitHub devlille/website.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-10",
+  "revisit": "10/11/2026 : synthèse fondée uniquement sur le programme officiel (descriptifs des talks). Aucun retour participant lu : billet ADEO Tech « Our Ambassadors experience at DevFest Lille » (Medium, 16/12/2021) inaccessible (403, seul l'extrait de recherche est connu), aucun post LinkedIn ni thread trouvé (7 recherches web), aucune vidéo. Reprendre : texte intégral du billet ADEO (miroir ou archive), posts LinkedIn de novembre 2021 des speakers (Louis Tournayre, Julien Topçu, Jean-Phi Baconnais, Aurélie Vache, Antoine Méausoone), slides sur Speaker Deck, votes et commentaires OpenFeedback (événement e1Wt4hveV3UiEd5yxZ9k, rendu en JavaScript).",
+  "corpus": "Programme officiel de l'édition (agenda avec les descriptifs des 16 talks, page speakers, page d'accueil) sur le site Firebase encore en ligne, page Conference Hall (formats et catégories du CFP) et deux captures Wayback de l'accueil (octobre et décembre 2021). Sept recherches web le 10/11/2026, sans retour participant exploitable.",
+  "limits": "Aucun retour de participant ni transcript : les résumés reformulent ce que les descriptifs promettaient, pas ce qui a été dit sur scène ni comment la salle l'a reçu. Les deux keynotes n'ont pas de descriptif, et aucune vidéo de l'édition n'a été trouvée (pas de playlist 2021 sur les chaînes DevLille et GDG France). Les formats (conférence ou quickie) sont déduits de la durée des créneaux, pas affichés.",
+  "tldr": "**Une édition de reprise, en novembre 2021 et sur deux salles, au programme très « outillage du développeur »** (GitOps, GitHub Actions, secrets Kubernetes, Quarkus, Rust, outils UNIX), avec une veine accessibilité et design et quelques talks sur la carrière, encadrés par des keynotes d'Audrey Neveu et Agnès Crepet puis de Tristan Nitot.",
+  "keyTakeaways": [
+    "Démarrer un design system petit : identifier les composants, documenter, puis construire un composant pilote (descriptif de Cécile Freyd-Foucault).",
+    "Comprendre le stockage en colonnes et la parallélisation de BigQuery pour éviter les mauvaises surprises de performance et de facture (descriptif d'Aurélien Allienne).",
+    "Ne pas se fier à l'objet Secret natif de Kubernetes, qui « porte mal son nom », et choisir une vraie méthode de gestion des données sensibles (descriptif d'Anthony Durot).",
+    "Exprimer le domaine dans l'API avec l'hypermédia plutôt que de laisser un CRUD pousser la logique métier côté front (descriptif de Julien Topçu).",
+    "Traiter le passage de développeur à manager comme une reconversion, avec de nouvelles compétences à acquérir (descriptif d'Alexandre Jomin et Kevin Deldycke).",
+    "Passer d'une traduction par fichiers JSON et échanges Excel à une localisation continue branchée sur le code (descriptif de Maxence Lefebvre).",
+    "Choisir sa technologie mobile (Jetpack Compose, SwiftUI, React Native, Flutter, KMM) en connaissant son origine et ses limites, y compris pour un projet existant (descriptif d'Elaine Dias Batista)."
+  ],
+  "sessions": [
+    {
+      "id": "petit-guide-pratique-pour-commencer-un-design-system",
+      "day": "2021-11-19",
+      "type": "talk",
+      "title": "Petit guide pratique pour commencer un design system",
+      "speakers": [
+        "Cécile Freyd-Foucault — Benext"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif du programme (10 h, salle 700), le talk part des promesses d'un design system : **cohérence, réutilisabilité** et meilleure expérience utilisateur.\n- Démarche proposée en trois temps : **identifier les composants** à couvrir, les documenter, puis implémenter un composant pilote.\n- L'objectif affiché est de se lancer simplement, sans gros chantier préalable.\n- La speakeuse est designer, tournée vers la typographie, les parcours utilisateurs et l'accessibilité (page speakers).",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "google-bigquery-101",
+      "day": "2021-11-19",
+      "type": "talk",
+      "title": "Google BigQuery 101",
+      "speakers": [
+        "Aurélien Allienne — SFEIR"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif (10 h, salle 400) : BigQuery permet d'interroger de très gros volumes en SQL **sans gérer d'infrastructure**, mais a des limites de performance et de coût à anticiper.\n- Le talk explique le fonctionnement d'une **base orientée colonnes** et la parallélisation des requêtes.\n- Il donne des bonnes pratiques d'architecture, de monitoring et de **maîtrise de la tarification** au quotidien.\n- L'extrait de recherche du billet ADEO Tech de décembre 2021 indique que ce talk y est commenté par une ambassadrice d'Adeo Services, mais le texte n'a pas pu être lu.",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "l-intelligence-artificielle-au-secours-de-l-accessibilite",
+      "day": "2021-11-19",
+      "type": "talk",
+      "title": "L'intelligence artificielle au secours de l'accessibilité",
+      "speakers": [
+        "Guillaume Laforge — Google",
+        "Aurélie Vache — OVHcloud"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif (11 h 10, salle 700), le talk prend le contre-pied du machine learning **argument à la mode** pour montrer un usage concret : l'accessibilité.\n- Point de départ : des déficiences visuelles, auditives, de diction ou de langage **excluent encore des personnes du numérique**.\n- Les progrès de la compréhension de la parole, du texte et des images servent à rendre les contenus plus accessibles, avec démos.\n- Le descriptif promet aussi d'aborder **les limites** de ces technologies.",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "rust-sur-et-concurrent-mais-comment-fait-il",
+      "day": "2021-11-19",
+      "type": "talk",
+      "title": "Rust : sûr et concurrent. Mais comment fait-il ?",
+      "speakers": [
+        "Benjamin Coenen — Cosmian"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif (11 h 10, salle 400), Rust est né chez Mozilla pour résoudre les problèmes rencontrés avec C++ dans le code de Firefox.\n- Le langage est bas niveau sans gestion manuelle de la mémoire et **sans garbage collector**.\n- Il empêche les **data races** et permet du multithread sans comportement indéfini.\n- Le talk explique ces garanties par le **système de types et le borrow checker**.",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "le-gitops-dont-vous-etes-le-heros",
+      "day": "2021-11-19",
+      "type": "talk",
+      "title": "Le GitOps dont vous êtes le héros",
+      "speakers": [
+        "Louis Tournayre — Zenika"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif (13 h, salle 700), un format interactif façon **livre dont vous êtes le héros** : les choix du public décident si l'application arrive en production à temps.\n- Scénario : une application sur Kubernetes menacée par un processus de livraison trop lent.\n- Le premier « tome » présente le GitOps, puis la salle choisit une solution et sa mise en œuvre.\n- Les démos s'adaptent aux choix, et le talk promet de **tirer des leçons des erreurs** comme des réussites.",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "rest-next-level-ecrire-des-apis-web-orientees-metier",
+      "day": "2021-11-19",
+      "type": "talk",
+      "title": "REST next level : écrire des APIs web orientées métier",
+      "speakers": [
+        "Julien Topçu — Shodo"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif (13 h, salle 400), un modèle métier construit en DDD **s'appauvrit en passant par une API CRUD** classique.\n- Le vocabulaire limité de REST pousse à réimplémenter une partie de la logique métier côté front.\n- Proposition : combiner le DDD et l'**hypermédia**, dernier niveau de maturité de REST.\n- L'API qui en résulte **guide le consommateur dans le workflow métier**.",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "comment-securiser-ses-informations-sensibles-sur-kubernetes",
+      "day": "2021-11-19",
+      "type": "talk",
+      "title": "Comment sécuriser ses informations sensibles sur Kubernetes",
+      "speakers": [
+        "Anthony Durot — Ippon Technologies"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif (14 h, salle 700), Kubernetes devient central dans le cloud, ce qui fait de la sécurité des applications une priorité.\n- Les applications ont besoin de secrets : identifiants de base de données, clés applicatives.\n- Le talk explique pourquoi l'objet natif **Secret porte mal son nom**.\n- Il compare plusieurs méthodes de gestion des données sensibles, leur mise en place et leurs implications.",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "github-actions-enfin-des-pipelines-accessibles-aux-developpeurs",
+      "day": "2021-11-19",
+      "type": "talk",
+      "title": "GitHub Actions : enfin des pipelines accessibles aux développeurs",
+      "speakers": [
+        "Antoine Méausoone — SFEIR"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif (14 h, salle 400), le constat de départ : des pipelines **illisibles, pleins de bash complexe** et difficiles à maintenir.\n- GitHub Actions est présenté comme un moyen de rendre la CI/CD modifiable par les développeurs eux-mêmes.\n- Le talk détaille la logique des workflows, leur intégration et leur écriture.\n- Il aborde aussi les **faiblesses de sécurité** de l'outil et les moyens d'y remédier.",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "re-decouvrir-les-outils-unix",
+      "day": "2021-11-19",
+      "type": "talk",
+      "title": "(Re) Découvrir les outils UNIX",
+      "speakers": [
+        "Grégoire Pineau — JoliCode"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Créneau court de 15 h 10 en salle 700 (format quickie probable, non affiché).\n- D'après le descriptif, des outils livrés avec Linux permettent de **diagnostiquer un blocage logiciel** ou un problème de configuration, mais beaucoup de développeurs les ignorent.\n- Le talk part de cas d'usage concrets avec **grep, find, xargs, strace, tcpdump et lsof**.",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "conception-de-langage-communiquer-avec-la-machine",
+      "day": "2021-11-19",
+      "type": "talk",
+      "title": "Conception de langage : communiquer avec la machine",
+      "speakers": [
+        "William Badiabantou — SFEIR"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Créneau court de 15 h 10 en salle 400 (format quickie probable, non affiché).\n- D'après le descriptif, le compilateur est présenté comme un traducteur, découpé en modules : parser, transformer, transpiler, compiler, analyser.\n- Les compilateurs reviennent dans les frameworks modernes, Svelte en tête.\n- Démarche : écrire un compilateur **en Rust sans générateur de parser** (ni Bison ni Flex), avec **WebAssembly** pour cible, en insistant sur la sémantique plus que sur le langage d'implémentation.",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "devenir-manager-dans-le-milieu-de-la-tech-un-voyage-inattendu",
+      "day": "2021-11-19",
+      "type": "talk",
+      "title": "Devenir manager dans le milieu de la tech : un voyage inattendu",
+      "speakers": [
+        "Alexandre Jomin — Azfalte",
+        "Kevin Deldycke — ex-VP Scaleway (cité dans le descriptif, absent de l'en-tête de l'agenda)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif (15 h 40, salle 700), devenir manager est **une reconversion**, pas une évolution naturelle : elle demande des compétences nouvelles.\n- Retour d'expérience sur le **recrutement**, la relation avec le N+1 et l'accompagnement de carrière.\n- Les intervenants promettent conseils, difficultés rencontrées et méthodes qui les ont inspirés.\n- Public visé : les développeurs qui envisagent le management et les managers déjà en poste.",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "les-tests-unitaires-javascript-vers-l-infini-et-au-dela",
+      "day": "2021-11-19",
+      "type": "talk",
+      "title": "Les tests unitaires JavaScript, vers l'infini et au-delà",
+      "speakers": [
+        "Mathilde Rigabert Lemée — Jolimoi",
+        "Raphaël Verdier — Jolimoi"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif (15 h 40, salle 400), l'essor de Vue.js, Angular, React et Node.js pose la question de **tests maintenables**.\n- Le talk présente des patterns de tests valables côté back comme côté front.\n- Il traite des pièges fréquents et de leurs solutions avec **Jest et Rewire**.\n- Les patterns sont annoncés comme transposables à tous les frameworks.",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "comment-atteindre-tous-vos-objectifs-avec-le-modele-de-brooke-castillo",
+      "day": "2021-11-19",
+      "type": "talk",
+      "title": "Comment atteindre tous vos objectifs avec le modèle de Brooke Castillo ?",
+      "speakers": [
+        "Amina Zamoun — Ambitieuse Heureuse"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Créneau court de 16 h 40 en salle 700 (format quickie probable, non affiché), par une statisticienne devenue coach professionnelle (page speakers).\n- D'après le descriptif, avant de chercher comment atteindre un objectif, il faut **comprendre pourquoi on ne l'a pas encore atteint**.\n- Le **modèle de Brooke Castillo** sert de grille de lecture des situations vécues, pour des objectifs allant de la promotion à l'équilibre de vie ou la création d'entreprise.\n- Un exercice collectif est annoncé pour le mettre en pratique.",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "l-experience-developpeur-par-quarkus-2-0",
+      "day": "2021-11-19",
+      "type": "talk",
+      "title": "L'expérience développeur par Quarkus 2.0",
+      "speakers": [
+        "Jean-Phi Baconnais — Zenika",
+        "Guillaume Le Floch — Zenika"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Créneau court de 16 h 40 en salle 400 (format quickie probable, non affiché).\n- D'après le descriptif, Quarkus est présenté autant comme une **expérience de développement** que comme un framework performant.\n- Démos d'un backend Quarkus mettant en avant le **dev mode**, les **dev services** et le **continuous testing**, nouveauté de la version 2.0.",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "continuous-localization-in-web",
+      "day": "2021-11-19",
+      "type": "talk",
+      "title": "Continuous Localization in Web",
+      "speakers": [
+        "Maxence Lefebvre — SFEIR"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif (17 h 20, salle 700), synchroniser à la main les fichiers de traduction JSON avec le code et échanger des fichiers Excel avec les traducteurs **coûte beaucoup de temps**.\n- Le talk retrace le passage d'une solution à base de fichiers JSON à une **localisation continue**.\n- Il détaille les étapes, les bénéfices, les limites et les alternatives étudiées.\n- Exemples en React (react-i18n), avec des enseignements annoncés comme indépendants du framework.\n- La page speakers l'affiche chez SFEIR, mais sa bio mentionne Sopra Steria.",
+      "summarySources": [
+        "program"
+      ]
+    },
+    {
+      "id": "comment-choisir-la-bonne-technologie-mobile-pour-votre-projet",
+      "day": "2021-11-19",
+      "type": "talk",
+      "title": "Comment choisir la bonne technologie mobile pour votre projet",
+      "speakers": [
+        "Elaine Dias Batista — SFEIR"
+      ],
+      "feedbackFrom": [],
+      "summary": "- D'après le descriptif (17 h 20, salle 400), l'offre s'est élargie des solutions des constructeurs à **Jetpack Compose, SwiftUI, React Native, Flutter et KMM**.\n- Le talk explique l'origine de chaque solution, son fonctionnement et ses limites techniques.\n- Il examine l'intégration dans un projet neuf ou existant, et la possibilité de **combiner plusieurs technologies**.\n- Public visé : développeurs comme décideurs.",
+      "summarySources": [
+        "program"
+      ]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Keynote d'ouverture (Audrey Neveu, VMware, et Agnès Crepet, Fairphone) : pas de descriptif au programme",
+    "Keynote de fermeture (Tristan Nitot) : pas de descriptif au programme"
+  ],
+  "sources": [
+    {
+      "label": "Agenda officiel DevFest Lille 2021 (horaires, salles, descriptifs des 16 talks, liens OpenFeedback)",
+      "url": "https://devfest-2021-908e1.web.app/agenda/index.html"
+    },
+    {
+      "label": "Page speakers officielle (22 speakers, entreprises et bios)",
+      "url": "https://devfest-2021-908e1.web.app/speakers/index.html"
+    },
+    {
+      "label": "Page d'accueil officielle (chiffres annoncés, sponsors) et captures Wayback d'octobre et décembre 2021",
+      "url": "https://devfest-2021-908e1.web.app/"
+    },
+    {
+      "label": "Conference Hall : formats (conférence 50 min, quickie 20 min) et catégories du CFP",
+      "url": "https://conference-hall.io/devfest-lille-2021"
+    },
+    {
+      "label": "Dépôt GitHub devlille/website, fichier editions.json (URL des sites des éditions passées)",
+      "url": "https://github.com/devlille/website/blob/HEAD/src/content/editions/editions.json"
+    },
+    {
+      "label": "ADEO Tech, « Our Ambassadors experience at DevFest Lille » (Medium, 16/12/2021) : seul l'extrait de recherche a été lu (une douzaine de personnes d'Adeo Services et Leroy Merlin France présentes), texte intégral inaccessible (403)",
+      "url": "https://medium.com/adeo-tech/our-ambassadors-experience-at-devfest-lille-87243584be4b"
+    },
+    {
+      "label": "Posts LinkedIn de participants : aucun trouvé (recherches site:linkedin.com sans résultat exploitable)"
+    },
+    {
+      "label": "Vidéos : aucune trouvée (pas de playlist 2021 sur les chaînes DevLille et GDG France, recherche web sans résultat)"
+    }
+  ]
 }
