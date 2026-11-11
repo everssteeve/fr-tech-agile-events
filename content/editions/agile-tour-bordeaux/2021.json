@@ -7,7 +7,177 @@
   "city": "Bordeaux",
   "venue": "IUT Bordeaux Montaigne et en visio",
   "url": "https://agiletourbordeaux.fr/archives/editions/2021/index.html",
+  "programUrl": "https://agiletourbordeaux.fr/archives/editions/2021/programme.html",
+  "dateConfidence": "ok",
   "note": "Présentée comme la « 12e édition » par le site, numérotation incohérente avec les autres années (5e en 2013, 14e en 2022).",
-  "status": "pending",
-  "sessions": []
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-11",
+  "revisit": "Contenu des talks couvert par les 15 transcripts, mais aucun retour participant lu : aucun post LinkedIn ni article de blog sur l'édition 2021 trouvé en 7 recherches, et le programme complet (sessions non filmées, horaires) reste illisible. À reprendre avec une recherche LinkedIn par nom de speaker et le hashtag de l'événement.",
+  "corpus": "Transcripts automatiques des 15 vidéos de la playlist « Agile Tour Bordeaux 2021 » (environ 300 lignes échantillonnées par vidéo, début, milieu et fin), slides de Maxime Sanglan-Charlier, résumé Sessionize du talk BDD, page d'accueil archivée de l'édition et pages Sessionize (appels à orateurs 2021 et 2022, profils de speakers).",
+  "limits": "Aucun retour de participant : les résumés disent ce qui a été présenté sur scène, pas ce que le public en a retenu. Sous-titres automatiques sans ponctuation, aux noms propres souvent déformés (entreprises et panélistes reconstitués avec prudence). Le programme complet n'a pas été lu et la playlist ne couvre que les sessions filmées ; les jours ne sont renseignés que lorsqu'un transcript les situe.",
+  "tldr": "Une édition **hybride sous pass sanitaire** (plus de 350 personnes sur place, 400 à distance) où les keynotes ramènent l'agilité à ses **conditions de départ** (le « prélude » d'équipe de Claude Aubry, les espaces de liberté pour apprendre de Mija Rabemananjara), tandis que les talks rappellent que **l'agilité ne tient pas sans socle technique** : DDD, BDD, architecture hexagonale, refactoring progressif, intégration continue et Accelerate.",
+  "keyTakeaways": [
+    "Avant le premier sprint, prendre le temps d'un **prélude** : constituer l'équipe et partager les idéaux, construire le backlog initial, puis tester une **« première boucle »** (un hello production) avant de fixer la définition de fini (Claude Aubry).",
+    "Ne pas réécrire un vieux logiciel d'un bloc : garder un produit proche de 100 % fonctionnel, isoler le nouveau code par une **couche anti-corruption**, et compter environ **trois fois la vélocité initiale** pour estimer la fin (Thibaut Andrieu).",
+    "Démarrer le DDD par la stratégie et l'exploration du domaine (Event Storming), découper en sous-domaines puis **valider le découpage sur des cas métier concrets**, et réserver les patterns tactiques au cœur de métier (Maxime Sanglan-Charlier).",
+    "Clarifier une user story par l'**Example Mapping** (règles métier, exemples, questions), formaliser en Gherkin avec un seul « When » par scénario, puis faire des scénarios des tests d'acceptation et une documentation vivante (Aurore Jeremie et Julien Topçu).",
+    "Mesurer la performance de livraison avec les **quatre indicateurs d'Accelerate** (fréquence de déploiement, lead time, MTTR, taux d'échec des changements), et tenir ses limites de WIP malgré la pression business (Geoffrey Graveaud et Marc Abou Chacra).",
+    "Construire la confiance d'équipe sur l'intention, le comportement, les compétences, les **succès partagés** et l'exposition de sa vulnérabilité ; au niveau de l'organisation, sur un cadre partagé, un objectif clair et la reconnaissance (Jérôme Urvoas).",
+    "Compenser le manque de coachs techniques par des **ateliers craft réguliers** où une équipe formalise et fait évoluer ses propres pratiques, sans les imposer d'en haut (Arthur Magne et Aurélien Rambaux).",
+    "Changer les choses sans mandat : diagnostiquer l'équipe, cartographier alliés, hésitants et opposants par sujet, puis attaquer d'abord le sujet où les **alliés constructifs** sont nombreux (Alison Jorre et Mélanie Cordero).",
+    "Avant de poser une question, s'accorder un temps pour chercher la **meilleure question** derrière la question spontanée ; en groupe, le question storming aide à cadrer le problème (Alice Marteau)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-claude-aubry",
+      "day": "2021-11-04",
+      "type": "keynote",
+      "title": "Arrêtez de commencer des sprints, commencez par finir le prélude",
+      "speakers": ["Claude Aubry"],
+      "summary": "- **Keynote d'ouverture**. « Prélude » signifie étymologiquement « avant le jeu » : comme pour un jeu de société, il faut partager les règles, constituer l'équipe et faire une partie à blanc avant de jouer pour de vrai (transcript).\n- Trois activités pour initialiser les boucles de feedback : la **naissance de l'équipe** (le sponsor y énonce sa vision et donne mandat), la constitution du **backlog initial** (alignement fonctionnel, story mapping), puis la vérification de la **capacité à produire un résultat**.\n- Côté équipe, au-delà des classiques (matrice de compétences), l'accent est mis sur l'**idéal** de chaque coéquipier et la congruence entre idéal et actions, avec des références à Alexandre Lacroix et Esther Derby.\n- Logistique opérationnelle : espace de travail à l'heure du télétravail hybride, outils, règles du jeu (dont les règles de décision) et mesures à collecter.\n- La **« première boucle »**, équivalent d'un « hello production », teste tout l'environnement jusqu'à la mise en production, avant de fixer une définition de fini à plusieurs niveaux. Illustration sur scène : son Mac ne s'affichait pas au test de 8 h, il a basculé à temps sur un PC.\n- Plutôt que « s'adapter au changement », devenu une injonction subie, l'équipe doit **« devenir le changement »**, en partant des fondamentaux (dont la rétrospective) plutôt qu'en piochant les pratiques qui l'arrangent.\n- Lectures citées : *Liftoff*, *The Art of Agile Development* (Jim Shore, 2e édition) et la future 6e édition de son livre sur Scrum, qui consacrera une partie au prélude.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "3s5Np7wXmIA", "title": "Keynote Claude Aubry", "publishedAt": "2021-11-16", "transcript": true }
+    },
+    {
+      "id": "keynote-mija-rabemananjara",
+      "type": "keynote",
+      "title": "Agilité et libertés, le regard de Montessori Extended",
+      "speakers": ["Mija Rabemananjara — Les Agilopathes"],
+      "summary": "- Keynote donnée **à distance depuis Montréal**, très interactive (sondages Mentimeter auprès de participants de trois continents) (transcript).\n- Constat après une dizaine d'années dans des équipes de transformation : deux patterns caricaturaux, le **« free for all »** (on jette les équipes à la mer) et le **modèle d'exécution** imposé (rôles et rituels standardisés), qui envoie l'injonction paradoxale *« auto-organisez-vous comme ceci »*.\n- Le Manifeste décrit une cible sans dire comment y aller ; d'où le détour par **Maria Montessori**, une pédagogie conçue pour apprendre à s'adapter et à penser par soi-même.\n- Deux lois individuelles (**motivation intrinsèque**, **contrôle de son apprentissage**) et une loi collective, la **communauté auto-organisée**, avec six axes de collaboration : interdépendance et règles consenties, temps collectifs, contribution à l'ambiance, pas de jugement ni d'évaluation, environnement sécurisant, résolution des conflits par le dialogue.\n- L'environnement à préparer couvre l'espace physique, l'organisation du travail et la **posture du manager** qui tient le cadre.\n- Exercice sur les systèmes de rémunération : selon la salle, l'évaluation annuelle classique entrave les axes de collaboration (exemples d'entreprises à rémunération atypique comme Gravity Payments).\n- Conclusion : *« l'agilité n'a de sens que si elle crée des espaces de liberté pour apprendre »*.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "V2nupLhIQYw", "title": "Keynote Mija Rabemananjara", "publishedAt": "2021-11-11", "transcript": true }
+    },
+    {
+      "id": "le-domain-driven-design-comment-bien-demarrer",
+      "day": "2021-11-04",
+      "type": "talk",
+      "title": "Le Domain Driven Design, comment bien démarrer ?",
+      "speakers": ["Maxime Sanglan-Charlier — freelance"],
+      "summary": "- Point de départ : chercher « Domain Driven Design » sur le web produit un mur de jargon (bounded context, microservices, UML) qui peut **sembler élitiste et décourager** ; les livres de référence sont épais et en anglais (transcript).\n- Réponse : les ressources ouvertes de la communauté (Virtual DDD, GitHub DDD Crew) et le **DDD Starter Modelling Process**, un guide itératif aux étapes optionnelles.\n- Étapes : s'aligner sur la stratégie (Impact Mapping), explorer le domaine (Event Storming, Domain Storytelling), **découper en sous-domaines** pour augmenter la cohésion, puis **connecter** : valider le découpage sur des cas d'usage métier concrets avec des diagrammes de flux de messages (slides et transcript).\n- Sur scène, l'exemple de deux groupes ayant produit des découpages différents à partir du même Event Storming : c'est l'écart qui fait naître les discussions utiles, menées main dans la main avec les experts métier.\n- Documenter avec le Bounded Context Canvas et les **diagrammes C4** (« des boîtes et des flèches », sans deux ans d'UML), puis concentrer les patterns tactiques et l'architecture hexagonale sur le **cœur de métier**.\n- Message de fin : une **architecture socio-technique**, appuyée sur des outils collaboratifs et visuels ; le talk fait le lien avec la keynote de Claude Aubry sur l'alignement initial.\n- Vidéo de loin la plus vue de la playlist (environ 6 500 vues lors de la consultation).",
+      "summarySources": ["transcript", "slides", "program"],
+      "video": { "youtubeId": "mq7Y4mH1Wns", "title": "Maxime Sanglan Charlier - Le Domain Driven Design, comment bien démarrer ?", "publishedAt": "2021-11-15", "transcript": true }
+    },
+    {
+      "id": "bien-repondre-aux-besoins-utilisateur-histoire-de-comportement-logiciel",
+      "type": "talk",
+      "title": "Bien répondre aux besoins utilisateur, c'est surtout une histoire de comportement (logiciel) !",
+      "speakers": ["Aurore Jeremie", "Julien Topçu — Shodo"],
+      "summary": "- Format **saynète** : une développeuse bloquée sur la première user story d'un site de streaming musical (« search tracks for music style ») ne sait ni quoi tester, ni jusqu'où aller, ni par où commencer (transcript).\n- **Example Mapping** : la story, ses règles métier (les morceaux renvoyés correspondent au style demandé ; les avant-premières sont réservées aux abonnés premium), des exemples concrets pour chaque règle, et les questions ouvertes.\n- Formalisation en **Gherkin** (Given / When / Then), avec une règle : un seul « When » par scénario, sinon plusieurs comportements sont mêlés ; les scénarios sont relus par un expert métier ou le PO.\n- Les scénarios deviennent des **tests d'acceptation** qui pilotent le développement (double boucle avec le TDD), puis une **documentation vivante** générée en HTML, utile pour intégrer de nouveaux développeurs et lire les échecs en CI.\n- Synthèse sur scène : le BDD tient en trois phases (découverte, formulation, automatisation) ; un comportement, c'est *« contexte + action = effets attendus »*, et les critères d'acceptation disent quoi tester.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "3JF2ztnvKok", "title": "Bien répondre aux besoins utilisateur, c'est surtout une histoire de comportement (logiciel) !", "publishedAt": "2021-11-15", "transcript": true }
+    },
+    {
+      "id": "a-la-decouverte-d-accelerate",
+      "day": "2021-11-04",
+      "type": "workshop",
+      "title": "A la découverte d'Accelerate",
+      "speakers": ["Geoffrey Graveaud — Zenika Bordeaux", "Marc Abou Chacra — Zenika Bordeaux"],
+      "summary": "- **Atelier hybride de deux heures** : introduction en amphi, puis travail en salle et en ligne sur des cartes de réflexion (transcript).\n- *Accelerate* (Nicole Forsgren, Jez Humble, Gene Kim, 2018) : quatre ans de recherche et des dizaines de milliers de réponses, qui identifient **24 capacités mesurables** des organisations performantes.\n- **Quatre indicateurs** que l'animateur préfère appeler « de progrès » : fréquence de déploiement et lead time (vitesse), **MTTR** et taux d'échec des changements (stabilité). Partant du principe que les erreurs sont inévitables dans un système complexe, on mesure le temps pour les détecter et les réparer.\n- Exemple de la catégorie lean management : visualiser le flux de travail et **tenir ses limites de WIP**, dont l'effet est relié au burn-out ; *« le plus dur c'est pas de le fixer, c'est de s'y tenir »* face à la pression business. Le présentiel est jugé un peu plus puissant que le distanciel pour le management visuel.\n- Accelerate est présenté comme une **« boussole »** et un réservoir d'arguments pour défendre les idées agiles auprès du business, mis en regard des valeurs et principes du Manifeste.\n- Point critique soulevé avec un participant à la fin : certaines relations causales du modèle (sur le burn-out notamment) ne sont pas toutes démontrées par les données.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "OjUB8ozjv4U", "title": "Geoffrey Graveaud et Marc Abou Chacra - A la découverte d'Accelerate", "publishedAt": "2021-11-16", "transcript": true }
+    },
+    {
+      "id": "comment-ne-pas-refactorer-un-kernel",
+      "type": "talk",
+      "title": "Comment (ne pas) refactorer un kernel",
+      "speakers": ["Thibaut Andrieu — Thermo Fisher Scientific"],
+      "summary": "- **Retour d'expérience** sur la refonte d'un code ancien et critique, raconté en conte : un vieux logiciel réécrit, des dates repoussées, un produit devenu l'ombre de lui-même, et un projet finalement abandonné (transcript).\n- Leçon centrale : éviter le **tunnel** où le niveau fonctionnel tombe à zéro ; viser un profil qui oscille près de 100 % et, dès que la courbe descend, s'arrêter et revenir en arrière.\n- Outil : une **couche anti-corruption** rigide entre ancien et nouveau code (renvoi au talk d'Arnaud Lemaire à l'édition 2020), illustrée par le portage d'un code de traitement d'image de Python vers C++.\n- Modélisation de l'avancement comme un **système du premier ordre** : il faut autant de temps pour passer de 0 à 80 % que de 80 % à la fin, et le projet converge en environ trois constantes de temps, d'où la règle d'environ **trois fois la vélocité initiale**.\n- Conseils finaux : la réécriture a beaucoup de coûts cachés, *« vous n'êtes pas forcément meilleur que le mec qui a développé le plat de nouilles »*, et un audit extérieur d'une semaine peut faire gagner des mois.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "bNp9Xv18wi8", "title": "Thibaut Andrieu - Comment (ne pas) refactorer un kernel", "publishedAt": "2021-11-15", "transcript": true }
+    },
+    {
+      "id": "la-confiance-la-cle-d-une-equipe-agile-performante",
+      "day": "2021-11-04",
+      "type": "talk",
+      "title": "La confiance, la clé d'une équipe agile performante",
+      "speakers": ["Jérôme Urvoas — Lectra"],
+      "summary": "- Talk de **clôture de la première journée**, par le responsable coaching de Lectra, qui y a vécu une quinzaine d'années d'adoption de l'agilité (transcript).\n- Constat : les 18 mois de Covid ont été une **crise de confiance** généralisée, et le télétravail un changement de paradigme pour les métiers d'accompagnement.\n- Recettes de la **confiance en équipe** : intention, comportement, compétences, **succès partagés** (des échecs répétés l'érodent) et, de façon contre-intuitive, l'exposition de sa **vulnérabilité**.\n- Leviers de la **confiance organisationnelle** : un cadre réellement partagé (sans interprétations divergentes de Scrum), un **objectif clair** (product goal, OKR, ou les quatre indicateurs d'Accelerate présentés le même jour), la reconnaissance et la culture du feedback, jusqu'au partage du « butin ».\n- En réponse à une question : le **tabou** se traite en le mettant sur la table, avec courage ; tout le monde est au courant mais personne n'ose en parler par peur, souvent liée à la hiérarchie.\n- Lectures citées, dont *Turn the Ship Around!* de David Marquet.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "ZmuS8GsioXk", "title": "Jerome Urvoas - La confiance, la clé d'une équipe agile performante", "publishedAt": "2021-11-16", "transcript": true }
+    },
+    {
+      "id": "inclusion-dans-les-equipes-agiles",
+      "day": "2021-11-05",
+      "type": "talk",
+      "title": "Inclusion dans les équipes agiles",
+      "speakers": ["Alice Barralon"],
+      "summary": "- Talk donné **à distance**, nourri du parcours personnel de la speaker, coach agile, avec deux enfants neuroatypiques (haut potentiel, suspicion de dyslexie) : que deviennent ces profils en entreprise, et comment les managers peuvent-ils les accueillir ? (transcript)\n- Description de profils à la **vision « à 720° »**, qui questionnent chaque story (coût total, obsolescence, impact environnemental et humain) et peuvent agacer une équipe qui « développe une feature, point barre ».\n- Le **faux self** (Winnicott) : une personnalité de camouflage adoptée par besoin d'être accepté ; le rôle du manager et des équipiers est d'offrir assez de **sécurité psychologique** pour que le masque tombe.\n- Pistes : un **accueil inconditionnel**, sans projeter sur le nouvel arrivant ses attentes et préjugés ; une introspection plus profonde que les rétrospectives ; choisir ses combats ; passer de la business agility à une **« human agility »**.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "69XpEvVM8gs", "title": "Alice Barralon - Inclusion dans les équipes agiles", "publishedAt": "2021-11-16", "transcript": true }
+    },
+    {
+      "id": "comment-depasser-les-incompetences-individuelles-par-le-collectif",
+      "type": "talk",
+      "title": "Comment dépasser les incompétences individuelles par le collectif ?",
+      "speakers": ["Arthur Magne — Promyze", "Aurélien Rambaux — ManoMano"],
+      "summary": "- Contexte : l'unique coach technique de ManoMano face à 20 puis 35 équipes, contre une vingtaine de coachs agiles ; c'est l'**« agile hangover »**, beaucoup d'investissement dans l'organisation et trop peu dans la technique (transcript).\n- Deux leviers : le **mob programming** (plus d'un tiers des équipes l'ont pratiqué sur au moins quatre ou cinq sessions) et des **ateliers craft** où l'équipe formalise ses bonnes pratiques dans un référentiel.\n- Trois retours d'équipes : une équipe backend Java mixte qui produit plus facilement ses guidelines grâce au regard externe ; une équipe qui abandonne l'outil pour Jira et Confluence et finit par annuler ses sessions faute de structure ; une guilde front React de huit développeurs venus de six équipes, avec 17 ateliers, une cinquantaine de pratiques et un fort **sentiment de communauté**.\n- Sponsoring : commencer par les équipes volontaires et sans frein hiérarchique, puis élargir par une présentation globale.\n- Faire évoluer une pratique ne veut pas dire tout refactorer : on travaille *« sur l'avenir plutôt que sur le passé »*, et les communautés de pratique proposent des catalogues que les **équipes restent libres d'adopter**.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "AXdbnap8tZ0", "title": "Arthur et Aurélien - Comment dépasser les incompétences individuelles par le collectif ?", "publishedAt": "2021-12-04", "transcript": true }
+    },
+    {
+      "id": "priorisation-de-roadmap",
+      "type": "talk",
+      "title": "Priorisation de Roadmap : dépassez les attentes des devs, clients, directeurs",
+      "speakers": ["Charles-Edouard Ray — BeTomorrow"],
+      "summary": "- Le product manager pris en étau entre métier, direction, développeurs, designers et utilisateurs tombe en **mode survie** : il compile les demandes en une **« roadmap validable »**, ce qui crée une équipe d'exécutants aux responsabilités diluées et un projet *« assez triste »* (transcript).\n- Alternative pratiquée par son agence bordelaise : donner un **mandat large au designer dès le premier jour**, qui produit en deux ou trois jours une vision d'artiste peu spécifiée, en parallèle d'une vision court terme issue du sprint zéro et des interviews utilisateurs.\n- Ce design ambitieux doit ensuite être confronté au budget (exemple d'une vision chiffrée bien au-delà de l'enveloppe) : le travail de priorisation se fait sur les **valeurs** partagées ; trop de débats sur un design signalent un désaccord sur les valeurs.\n- Pour convaincre un client, montrer des **vidéos d'utilisateurs** testant des prototypes.\n- Estimations : une roadmap floue estimée vite, un backlog court terme précis, et des **études techniques glissantes** (preuves de concept, sprint zéro) sur les éléments les plus risqués.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "9Z_OfJ51weo", "title": "Charles Edouard Ray - Priorisation de Roadmap : dépassez les attentes des devs, clients, directeurs", "publishedAt": "2021-11-18", "transcript": true }
+    },
+    {
+      "id": "la-question-telle-un-outil-d-apprentissage",
+      "type": "talk",
+      "title": "La question telle un outil d'apprentissage",
+      "speakers": ["Alice Marteau"],
+      "summary": "- Talk présenté comme **imprévu** (remplacement de dernière minute) par une ancienne testeuse passée à la facilitation et au coaching (transcript).\n- Objectif : prendre conscience de son usage des questions et de leurs effets sur la personne interrogée, la relation et la communication.\n- La question spontanée appelle une réponse rapide et simple ; s'accorder **un petit laps de temps** pour chercher une meilleure question appelle une réponse plus réfléchie. Exemple : *« pourquoi n'ai-je pas eu la même augmentation que Bernard ? »* reformulée en *« comment pourrais-je apporter une valeur qui corresponde à mes espérances financières ? »*.\n- Outil de groupe : le **question storming**, qui génère d'abord des questions sur un problème, puis les priorise et les retravaille, avec la citation attribuée à Einstein sur les 55 minutes consacrées à définir la question.\n- Ouvrages d'appui : *Questionnez-moi* de Frédéric Falisse et *Les techniques de questionnement*.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "wn3cN-bkBjI", "title": "Alice Marteau - La question telle un outil d'apprentissage", "publishedAt": "2021-11-19", "transcript": true }
+    },
+    {
+      "id": "le-tour-de-l-hexagone",
+      "type": "workshop",
+      "title": "Le tour de l'Hexagone",
+      "speakers": ["Frédéric Hemery — indépendant"],
+      "summary": "- Session de **live coding participatif** sur l'**architecture hexagonale** (code Kotlin et Quarkus partagé avec la salle, participants invités à coder sur le grand écran) (transcript).\n- Point de départ : une application d'ordonnancement à démarrer sans savoir quelle API externe, quel solveur ni quelle base de données elle utiliserait ; l'hexagonale permet de **commencer par le métier** en repoussant ces choix.\n- Rappel théorique : l'idée vient d'Alistair Cockburn (2005), pour séparer les règles métier des détails d'implémentation afin qu'une migration technique ne casse pas le métier.\n- Démonstration sur un gestionnaire de tournois en **double boucle** : tests d'acceptation sur le modèle, puis tests d'intégration de l'API et de la base.\n- Erreurs vécues : mettre des interfaces partout (trop d'indirection), refuser les DTO et DAO (le modèle finit par plier sous les contraintes de persistance), et adapter trop vite les ports à la technique (exemple des identifiants imposés par MongoDB).\n- Ressources recommandées : la communauté DDD FR et le talk de Thomas Pierrain et Cyrille Martraire (Devoxx 2015).",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "TVzD7xQ7hu4", "title": "Frédéric Hemery - Le tour de l'Hexagone", "publishedAt": "2021-11-19", "transcript": true }
+    },
+    {
+      "id": "deviens-un-e-veritable-pirate",
+      "type": "talk",
+      "title": "Deviens un.e véritable pirate !",
+      "speakers": ["Alison Jorre — Zenika", "Mélanie Cordero — Zenika"],
+      "summary": "- Comment amener du changement **quand ce n'est pas son rôle** : retour d'expérience d'une PO consultante arrivée chez un client où des transformations agiles avaient échoué et où le mot « agilité » était rejeté (transcript).\n- Méthode **DPA** (diagnostic, priorisation, action) : diagnostic avec un outil interne de Zenika nourri par des entretiens individuels de 30 minutes avec une quinzaine de personnes dans les trois premières semaines.\n- Priorisation par une **cartographie des alliés** sujet par sujet (constructifs, hésitants, passifs, opposants) : on démarre là où les constructifs sont nombreux, et on renonce aux sujets que personne d'autre ne porte.\n- Actions « pirates » sans légitimité formelle, par exemple profiter des absences en période de vacances pour rendre visible le risque d'une équipe trop spécialisée, au lieu de laisser le sujet à la pause café.\n- Débat avec la salle sur la **manipulation** (référence à Cialdini) : elle fait passer à l'action à court terme mais ne dure que si la personne est déjà convaincue de l'idée. Les managers sont inclus dans la carte des alliés et le diagnostic partagé avec eux.",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "1pTjMdBbKN8", "title": "Alison Jorre et Mélanie Cordero - Deviens un.e véritable pirate !", "publishedAt": "2021-11-29", "transcript": true }
+    },
+    {
+      "id": "25-ans-d-integration-continue",
+      "type": "talk",
+      "title": "25 ans d'intégration continue",
+      "speakers": ["Laurent Tardif"],
+      "summary": "- Rétrospective personnelle d'un développeur backend, passé par une start-up montée à plus de 150 développeurs, sur l'évolution des pratiques depuis la fin des années 1990 (transcript).\n- Fil conducteur par axes : langages, outils de build, gestion de sources (de CVS et Perforce aux outils centralisés d'IBM) et orchestrateurs.\n- Tournant vers 2011-2012 : les scripts d'intégration continue sont **versionnés avec le code** et deviennent la **responsabilité de l'équipe**, plus celle d'un « build master ».\n- L'arrivée du JavaScript multiplie les outils de build et impose des dépôts d'artefacts multi-langages ; la **sécurité de la chaîne d'approvisionnement** (dépendances open source compromises) s'impose depuis le confinement.\n- Questions de fin : la sécurité, comme le déploiement, se traite **en amont** et non en fin de projet ; ne pas tester automatiquement n'est acceptable que pour une preuve de concept, et tests unitaires et fonctionnels sont complémentaires (métaphore du peintre qui protège le sol).",
+      "summarySources": ["transcript"],
+      "video": { "youtubeId": "zmdTs5yjRxA", "title": "Laurent Tardif - 25 ans d'intégration continue", "publishedAt": "2021-12-04", "transcript": true }
+    },
+    {
+      "id": "table-ronde-20-ans-manifeste-agile",
+      "day": "2021-11-05",
+      "type": "roundtable",
+      "title": "Table ronde : 20 ans du Manifeste agile",
+      "speakers": ["Jérôme Bourgeon (animation, depuis Singapour)", "Alice Marteau (animation)", "Claude Aubry", "Traducteurs français du Manifeste"],
+      "summary": "- Table ronde réunissant une partie des **traducteurs français du Manifeste** (traduction collective lancée en 2009), avant le forum ouvert de la seconde journée ; les noms des autres panélistes sont trop déformés dans les sous-titres pour être cités (transcript).\n- Rappel historique : la rencontre de 17 praticiens à Snowbird en février 2001, les valeurs écrites sur place puis les principes finalisés par mail, *« en hybride »*.\n- Idée marquante d'un panéliste : on traduit le Manifeste en mots, mais les praticiens le **traduisent chaque jour en actes** ; c'est un texte qui vieillit, souvent contesté, mais auquel on donne beaucoup d'amour.\n- Relecture de « les individus et leurs interactions plutôt que les processus et les outils » : mobiliser l'énergie et la créativité des individus, les processus n'étant que **les règles du jeu** décidées collectivement.\n- Pistes pour les vingt ans à venir : ne pas réécrire le texte mais **l'interpréter autrement**, s'ouvrir à des publics plus variés (inclusion, parité, agilité hors logiciel), et relier agilité et lean à la **gestion des systèmes complexes**, jusqu'à l'enjeu d'une planète habitable.",
+      "summarySources": ["transcript", "program"],
+      "video": { "youtubeId": "aMMU2MRxtyI", "title": "Table ronde - 20 ans manifeste Agile", "publishedAt": "2021-12-23", "transcript": true }
+    }
+  ],
+  "sessionsWithoutFeedback": [],
+  "sources": [
+    { "label": "Site officiel, page de l'édition 2021 (archive)", "url": "https://agiletourbordeaux.fr/archives/editions/2021/index.html" },
+    { "label": "Sessionize, appel à orateurs Agile Tour Bordeaux 2021", "url": "https://sessionize.com/agile-tour-bordeaux-2021" },
+    { "label": "Sessionize, appel à orateurs 2022 (fréquentation 2021)", "url": "https://sessionize.com/agile-tour-bordeaux-2022" },
+    { "label": "Playlist YouTube Agile Tour Bordeaux 2021 (15 vidéos, transcripts automatiques en français)", "url": "https://www.youtube.com/playlist?list=PLrcEggfr4Kw60hb13P17NY-jzjj5B2lu5" },
+    { "label": "Slides de Maxime Sanglan-Charlier, Le Domain Driven Design, comment bien démarrer ? (SlideShare)", "url": "https://fr.slideshare.net/__MaxS__/le-domain-driven-design-comment-bien-dmarrer" },
+    { "label": "Résumé Sessionize de la session de Julien Topçu sur le BDD", "url": "https://sessionize.com/s/julientopcu/bien-repondre-aux-besoins-utilisateur-cest-surtout/130612" },
+    { "label": "Profils Sessionize de Mija Rabemananjara, Jérôme Urvoas et Thibaut Andrieu", "url": "https://sessionize.com/mijarabemananjara" }
+  ]
 }

@@ -7,8 +7,1016 @@
   "city": "Paris",
   "venue": "Novotel Paris-Est",
   "url": "https://event.afup.org/forum-php-2021/",
+  "programUrl": "https://event.afup.org/forum-php-2021/programme/",
   "dateConfidence": "ok",
-  "note": "« Vingtième édition en présentiel » ; dates d'après joind.in.",
-  "status": "pending",
-  "sessions": []
+  "note": "« Vingtième édition en présentiel » ; dates d'après joind.in et le programme officiel. Premier événement AFUP en présentiel depuis deux ans, 500 participants annoncés en keynote, 24 sponsors. Programme : deux jours, deux salles (Roissy et Orly), une trentaine de talks, des démos sponsors de 10 minutes, des mini-conférences AFUP et un Slideshow Karaoke. Le talk « Agilité at scale » de François Desmier a été annulé pour raisons de santé (keynote d'ouverture).",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-11",
+  "corpus": "Transcripts automatiques des 32 vidéos de la playlist AFUP (environ 300 lignes échantillonnées par talk, keynotes lues en entier) ; 182 commentaires notés sur joind.in (API, événement 7957), écrits par une trentaine de participants entre le 21 octobre et le 15 novembre 2021 ; compte-rendu en deux parties de Les-Tilleuls.coop (28 et 29 octobre 2021, douze talks) ; billets de François Zaninotto (Marmelab) et de Kévin Dunglas sur leurs propres talks ; programme officiel.",
+  "limits": "Les transcripts sont des sous-titres automatiques sans ponctuation, lus par échantillons (noms propres et entreprises souvent déformés) ; celui de Pauline Vos est une traduction française de son talk en anglais. Les avis joind.in sont courts, lus tronqués, et une part notable vient de speakers de l'édition ; le seul compte-rendu détaillé émane d'un sponsor dont trois coopérateurs étaient speakers, et aucun post LinkedIn n'a été lu. Date de publication des vidéos inconnue : la fin de l'édition (2021-10-22) est utilisée par défaut.",
+  "tldr": "Le Forum PHP des **retrouvailles en présentiel** (500 personnes, masques et lieu trouvé in extremis), où l'on parle autant **qualité de code outillée** (refactoring, règles de conception testées, typage automatique) et architecture (DDD, ESA, Fibers) que **sobriété numérique, accessibilité et humain** (imposture, femmes en informatique), devant un public très enthousiaste.",
+  "keyTakeaways": [
+    "Refactoriser en continu avec une boucle automatisée : analyse statique au niveau max, tests de mutation (Infection), Rector en CI ; *« si ça saute pas c'est pas testé »* (Guillaume Loulier).",
+    "Transformer les règles de conception et les ADR de l'équipe en **tests PHPUnit sur la manière dont le code est écrit**, un cas de test par règle, avec un renvoi vers l'ADR dans le message d'erreur (Frédéric Bouchery, Klaxoon).",
+    "Le premier levier d'éco-conception est de **ne pas développer ce qui ne sert pas** et d'oser challenger son PO ; ensuite rester compatible avec les vieux appareils (François Zaninotto, Hélène Maitre-Marchois).",
+    "Partir de la **perte de données et de l'interruption maximales admissibles** pour dimensionner une base, et tester ses restaurations : *« un backup non testé n'existe pas »* (Lætitia Avrot).",
+    "Réserver DDD, hexagonal et CQRS aux **métiers complexes** : avec API Platform, ne laisser que l'infrastructure dépendre du framework (Mathias Arlaud et Robin Chalas, rappel salué par Alex Rock).",
+    "Pour traquer une régression : écrire le test à partir du bug, lancer **`git bisect run`** avec un script hors du dépôt, puis livrer test et correctif dans un même commit (Pauline Vos).",
+    "Des alertes **précises et actionnables** (environnement, route, lien vers les logs, seuils) et un temps d'équipe régulier pour l'amélioration technique (Sofia Lescano, Bedrock).",
+    "En accessibilité, beaucoup de problèmes se règlent **en ajoutant du texte** ; et le dev back reste responsable de l'expérience : accepter les alias email, ne pas lister les répertoires (Anne-Laure de Boissieu et Amélie Defrance ; Martin Supiot et Elie Sloïm).",
+    "Recruteurs : à compétences égales, les femmes déclarent moins de compétences et demandent moins ; aligner les offres sur les salaires des hommes (Marion Monnet, INED)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-d-ouverture",
+      "day": "2021-10-21",
+      "type": "keynote",
+      "title": "Keynote d'ouverture",
+      "speakers": [
+        "Équipe AFUP"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- **500 participants** pour une vingtaine de conférences, dans un contexte sanitaire stressant ; le lieu habituel ayant fermé pour travaux, aucun contrat de salle n'était signé quatre à cinq mois avant l'événement.\n- Hommage aux bénévoles qui préparent le Forum sur leur temps libre, avec une seule salariée ; programme sélectionné *« en dix jours top chrono »*.\n- **24 sponsors**, *« c'est inédit »* ; les goodies sont remplacés par des dons (700 euros chacun au WWF et à une association de protection animale).\n- Annulation du talk agilité de François Desmier pour raisons de santé ; annonces du Slideshow Karaoke, de coachs open source au stand AFUP, du port du masque et du code de conduite.\n- Teasing de la clôture : nouvelles de l'AFUP Day et du prochain Forum, *« si vous aimez l'aligot »*.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "uicbuaO7fhM",
+        "title": "Keynote d'ouverture - Equipe AFUP - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "n-ayez-pas-peur-de-refactoriser",
+      "day": "2021-10-21",
+      "type": "talk",
+      "title": "N'ayez pas peur de refactoriser",
+      "speakers": [
+        "Guillaume Loulier — SensioLabs"
+      ],
+      "feedbackFrom": [
+        "Blog Les-Tilleuls.coop",
+        "Stephanie Trumtel",
+        "Marine Gandy",
+        "Guillaume",
+        "William",
+        "Romain Goncalves (joind.in)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Tout le monde a déjà eu peur de reprendre du code existant ; la **clôture de Chesterton** rappelle de comprendre pourquoi un code existe avant de le casser.\n- Le refactoring coûte et se fait surtout quand ça casse ; le speaker raconte avoir lui-même cassé un panier e-commerce en production trois semaines plus tôt.\n- *« Pas un nouvel outil, juste un process »* : une boucle automatisée qui démarre par l'analyse statique (PHPStan ou Psalm au niveau max), puis tests de mutation (Infection), règles d'architecture, profiling (Blackfire), sécurité, et **Rector en CI** sur les PR.\n- En questions : lancer l'analyse statique même sur du code voué à disparaître, comme une *« assurance santé »* ; et des tests qui cassent au refactoring sont normaux : *« si ça saute pas c'est pas testé »*.\n\n**Côté public** : le blog Les-Tilleuls.coop retient *« un marathon et pas un sprint »*. Joind.in (6 avis, moyenne 5/5) : *« très claire et synthétique »* (Trumtel), dynamique (Goncalves), des tips (William).",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "I2Vk3odmj8Y",
+        "title": "N'ayez pas peur de refactoriser - Guillaume LOULIER - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "vers-la-sobriete-numerique",
+      "day": "2021-10-21",
+      "type": "talk",
+      "title": "Vers la sobriété numérique",
+      "speakers": [
+        "François Zaninotto — Marmelab"
+      ],
+      "feedbackFrom": [
+        "Blog Les-Tilleuls.coop",
+        "Thomas Jarrand",
+        "Alex Rock",
+        "Benoit Viguier",
+        "Maxime Huran",
+        "Julien Mercier-Rojas",
+        "Jeanne Londiche",
+        "Sofia Lescano",
+        "Christophe Moncy (joind.in)",
+        "François Zaninotto (speaker, blog Marmelab)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Ouverture piège : le speaker déroule les arguments qui minimisent le sujet (« que 4 % », compensation carbone) puis les démonte par la voix de sa fille. Le numérique croît de 8 % par an et dépasserait l'automobile en 2025.\n- Mesures avec **GreenFrame** (outil de Marmelab) : 44 mg de CO2 par visite sur le site de Marmelab, *« pas brillant »*. Les émissions suivent surtout le **temps passé** ; l'écran pèse jusqu'à 70 % de l'énergie côté client, le serveur environ 5 % du total.\n- Quatre conseils par priorité : **ne pas développer** (ou le moins possible, quitte à défier son PO), rester compatible avec les vieux appareils, réduire les échanges de données, choisir un hébergeur vert (un *« far west »*).\n- Conclusion : une loi est en préparation et *« le numérique ce n'est pas qu'un problème, c'est aussi une partie de la solution »*.\n\n**Côté public** : joind.in (8 avis, moyenne 5/5) salue un talk motivant (Moncy) et une approche « scientifique » (Viguier). Critique de Thomas Jarrand (3/5) sur des piques visant les passions des jeunes ; Maxime Huran demande si le dark mode sert vraiment.",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "bBaXxMFMGbA",
+        "title": "Vers la sobriété numérique - François ZANINOTTO - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "symfony-6-le-choix-de-l-innovation-et-de-la-performance",
+      "day": "2021-10-21",
+      "type": "talk",
+      "title": "Symfony 6 : le choix de l'innovation et de la performance",
+      "speakers": [
+        "Nicolas Grekas — Symfony Core Team"
+      ],
+      "feedbackFrom": [
+        "Christophe Moncy",
+        "Jeanne Londiche",
+        "Maxime Huran",
+        "Benoit Viguier",
+        "Magali Milbergue",
+        "Damien",
+        "Guillaume (joind.in)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Le grand écart de Van Damme comme image du compromis **stabilité contre innovation** ; un monorepo découpé automatiquement en plus de 90 dépôts.\n- Cycle de release : mineure tous les six mois, majeure tous les deux ans ; **Symfony 6.0 et 5.4 LTS** sortent le même jour fin novembre.\n- Nettoyage de la 6.0 : 21 000 lignes supprimées, SwiftMailer abandonné pour Mailer, types PHP 8 partout ; conseil d'ajouter dès maintenant des types de retour dans les classes qui étendent Symfony.\n- Nouveautés : RateLimiter et Runtime stabilisés, bridges Notifier, code HTTP configurable par exception, autowiring des types union et intersection, session dépréciée comme service car *« les services doivent être sans état »*.\n- En questions : pas d'objectif de couverture, un test par PR et par bug ; préférer *« un new Request plutôt qu'un mock »*.\n\n**Côté public** : joind.in (7 avis, moyenne 4/5) : *« une mine d'information »* (Londiche), mais *« peu digeste »* (Milbergue, 3/5).",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "fLXDRQBbh3E",
+        "title": "Symfony 6 : le choix de l'innovation et de la performance - Nicolas GREKAS - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "faites-le-en-php",
+      "day": "2021-10-21",
+      "type": "talk",
+      "title": "Faites-le en PHP !",
+      "speakers": [
+        "Romain Camp"
+      ],
+      "feedbackFrom": [
+        "Julien Mercier-Rojas",
+        "Alex Rock",
+        "alexandre barbot",
+        "Romain Goncalves",
+        "Marine Gandy",
+        "Vincent Laurier (joind.in)",
+        "Romain Camp (speaker, joind.in)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Premier talk d'un freelance aixois : rester critique face aux réponses toutes faites trouvées en ligne, *« ça dépend »*.\n- Limites réelles de PHP : pas de binaire autonome, et des domaines où d'autres langages dominent (machine learning, blockchain).\n- Les **processus longue durée** en PHP (serveurs HTTP, websockets, temps réel) marchent *« très très bien »* : ReactPHP, Ratchet, Fibers de PHP 8.1, DriftPHP.\n- Performance : OPcache avec préchargement, keep-alive, mémoire partagée (Redis, APCu). Conclusion : *« donner la chance à PHP »*.\n\n**Côté public** : **talk le moins bien noté de l'édition** (7 avis, moyenne 3/5) : *« un peu léger »* (Mercier-Rojas, 2/5), plus une tentative de convaincre qu'une démonstration (barbot, 2/5), manque d'exemples concrets (Goncalves). Le speaker reconnaît avoir mal géré son temps sur la deuxième partie.",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "05oG06kZK30",
+        "title": "Faites-le en PHP ! - Romain CAMP - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "transformer-une-application-rad-vers-du-ddd-pas-a-pas",
+      "day": "2021-10-21",
+      "type": "talk",
+      "title": "Transformer une application RAD vers du DDD, pas à pas",
+      "speakers": [
+        "Charles Desneuf"
+      ],
+      "feedbackFrom": [
+        "Christophe Moncy",
+        "David Buros",
+        "Jeanne Londiche",
+        "Julien Mercier-Rojas",
+        "Damien",
+        "William",
+        "Romain Goncalves (joind.in)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Cas client réel (une entreprise de santé proposant jeux et séances de sport en ligne) : la croissance impose d'automatiser des process et de mettre le **vocabulaire métier dans le code**. Présenté comme une suite du talk de Guillaume Loulier.\n- Point de départ : un back-office CRUD généré avec **EasyAdmin**, où les concepts métier sont réintroduits progressivement.\n- Filet de sécurité par **tests d'approbation** ; les `new DateTime` rendant les tests non reproductibles sont isolés par un refactoring sûr sans tests (Extract and Override Factory Method).\n- Un value object immuable porte la règle sur les dates d'intervention ; la lecture passe par une vue SQL et une entité en lecture seule, l'écriture par des actions métier hors du CRUD.\n- Conclusion : un refactoring *« hyper crevant »* qui demande de l'imagination.\n\n**Côté public** : joind.in (7 avis, moyenne 4/5) : très dynamique, beaucoup d'exemples (Goncalves) ; intro jugée longue sur EasyAdmin (Damien) ; difficile de condenser une aventure *« jour après jour »* (Moncy, 3/5).",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "bXTasFb6PiA",
+        "title": "Transformer une application RAD vers du DDD, pas à pas - Charles DESNEUF - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "advanced-git-magic",
+      "day": "2021-10-21",
+      "type": "talk",
+      "title": "Advanced Git Magic",
+      "speakers": [
+        "Pauline Vos"
+      ],
+      "feedbackFrom": [
+        "Blog Les-Tilleuls.coop",
+        "Marine Gandy",
+        "Sofia Lescano",
+        "Magali Milbergue",
+        "Guillaume",
+        "Alex Rock",
+        "Benoit Viguier",
+        "Vincent Laurier (joind.in)"
+      ],
+      "summary": "**Sur scène (transcript, traduction française du talk en anglais)**\n- Base de tout : des **commits atomiques**, une seule correction ou fonctionnalité chacun. Première conférence en présentiel de la speaker depuis la pandémie.\n- Rebase interactif pour réécrire l'historique ; **reflog**, historique des actions et non des commits, pour réparer une branche abîmée ; reset hard ou soft.\n- Bisect expliqué par l'énigme des œufs lâchés d'un immeuble, puis `git bisect run` avec un script de test, à placer **hors du dépôt** pour qu'il existe dans le passé.\n- Workflow proposé : écrire le test de régression depuis le rapport de bug, bisect, corriger, puis fusionner test et correctif en un seul commit.\n\n**Côté public** : le blog Les-Tilleuls.coop retient *« N'ayons plus peur du reset »*. Joind.in (7 avis, moyenne 5/5) : plusieurs participants disent avoir **découvert ou enfin compris bisect** (Guillaume, Gandy) ; *« my understanding of Git doubled »* (Milbergue).",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "x5Ib33eUUvo",
+        "title": "Advanced Git Magic - Pauline VOS - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "est-ce-que-vous-faites-de-la-biologie-sans-le-savoir",
+      "day": "2021-10-21",
+      "type": "talk",
+      "title": "Est-ce que vous faites de la biologie sans le savoir ?",
+      "speakers": [
+        "Stephanie Trumtel"
+      ],
+      "feedbackFrom": [
+        "Blog Les-Tilleuls.coop",
+        "Christophe Moncy",
+        "Marine Gandy",
+        "Jeanne Londiche",
+        "Alex Rock",
+        "Maxime Huran",
+        "Benoit Viguier",
+        "Magali Milbergue",
+        "Vincent Laurier",
+        "Guillaume",
+        "Romain Goncalves",
+        "Damien",
+        "alexandre barbot (joind.in)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Ancienne biologiste devenue développeuse PHP depuis 20 ans : une cellule ressemble à des **microservices** en compétition pour des ressources, et Alan Kay se serait inspiré des cellules pour l'orienté objet (encapsulation, messages).\n- Démo d'un **algorithme évolutionnaire** comparé à Dijkstra et A* ; anecdote des renards de Skyrim.\n- Spéciation et legacy : des hotfixes faits en production sur trois serveurs, jamais reportés, ont donné **trois bases de code** impossibles à refusionner.\n- En questions : *« c'est facile de développer des fonctionnalités, ce qui est très difficile c'est de les intégrer harmonieusement »*, d'où un refactoring permanent appuyé sur des tests.\n\n**Côté public** : le blog Les-Tilleuls.coop retient *« La génétique est un très mauvais développeur, mais il a de très bons tests »*. **Deuxième talk le plus commenté** sur joind.in (12 avis, moyenne 5/5) : *« fluide, drôle, maîtrisé et original »* (Laurier).",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "vXCiZCcnoyo",
+        "title": "Est ce que vous faites de la biologie sans le savoir? - Stephanie TRUMTEL - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "kairoi-et-php-se-reconcilie-avec-les-taches-planifiees",
+      "day": "2021-10-21",
+      "type": "talk",
+      "title": "Kairoi, et PHP se réconcilie avec les tâches planifiées",
+      "speakers": [
+        "Emeric Kasbarian",
+        "Jérémy James"
+      ],
+      "feedbackFrom": [
+        "Sofia Lescano",
+        "Julien Mercier-Rojas (joind.in)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Format narratif, d'octobre 2019 à la conférence : des tâches planifiées mal servies par un cron horaire ou par le plugin delayed message de RabbitMQ, complexe à outiller.\n- Leur employeur finance un **outil open source de planification** pour *« rendre la pareille »* à l'écosystème ; le nom vient du kairos grec, le moment opportun.\n- Serveur écrit en **Rust**, *« à la fois notre plus grand allié et notre pire ennemi »*, transactions ACID, runners choisis par motifs ; client PHP capable de créer des centaines de tâches par seconde ; un an et demi de travail en parallèle des missions.\n- Démo : expiration d'un panier à 15 minutes déclenchant une commande Symfony ; version alpha.\n\n**Côté public** : joind.in (2 avis, 4/5) : dynamique, bonne répartition de la parole (Lescano).",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Sis1Q_ON_QY",
+        "title": "Kairoi, et PHP se réconcilie avec les tâches planifiées - E. KASBARIAN / J. James - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "plongee-dans-l-ecosysteme-laravel",
+      "day": "2021-10-21",
+      "type": "talk",
+      "title": "Plongée dans l'écosystème Laravel",
+      "speakers": [
+        "Gabriel Pillet"
+      ],
+      "feedbackFrom": [
+        "Blog Les-Tilleuls.coop",
+        "Benoit Viguier",
+        "Vincent Godé",
+        "Romain Goncalves",
+        "alexandre barbot (joind.in)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Directeur technique d'une agence lyonnaise dont tous les devs back sont certifiés Laravel, après une douzaine d'années de Symfony ; sondage : la salle est très majoritairement Symfony.\n- Message : **arrêter les trolls**, les deux frameworks s'inspirent l'un de l'autre et Laravel réutilise des composants Symfony.\n- Une vingtaine d'outils présentés, dont Activity Log (avec une mise en garde sur le volume en base), Cashier (Stripe, Paddle), Nova, Livewire et Laracasts.\n- En questions : les paquets payants comme Nova s'installent via un dépôt Composer avec clé de licence ; le code n'est pas libre.\n\n**Côté public** : le blog Les-Tilleuls.coop pointe aussi le caractère **propriétaire et payant** de nombreux outils. Joind.in (4 avis, moyenne 4/5) : réflexions sur le financement de l'open source (Viguier), outils découverts (Goncalves).",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "G447nMoFHjI",
+        "title": "Plongée dans l'écosystème Laravel - Gabriel Pillet - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "guide-pratique-de-lutte-contre-le-syndrome-de-l-imposteur",
+      "day": "2021-10-21",
+      "type": "talk",
+      "title": "Guide pratique de lutte contre le « syndrome de l'imposteur »",
+      "speakers": [
+        "Marine Gandy — ekino"
+      ],
+      "feedbackFrom": [
+        "Blog Les-Tilleuls.coop",
+        "Alexandre V.",
+        "David Buros",
+        "Sofia Lescano",
+        "Jeanne Londiche",
+        "Julien Mercier-Rojas",
+        "Alex Rock",
+        "Maxime Huran",
+        "Vincent Laurier",
+        "Étienne",
+        "Nicolas Loye",
+        "Cyril Tonneville",
+        "Magali Milbergue",
+        "Guillaume",
+        "Damien",
+        "William (joind.in)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Développeuse Drupal au parcours littéraire, la speaker met « syndrome » entre guillemets et part du contexte avant de proposer des leviers pratiques.\n- Interroger les causes : certaines personnes, une communication lapidaire, **l'absence de feedback positif** ; elle invite à dire à ses collègues quand leur travail a été utile.\n- Les preuves objectives de réussite ne suffisent pas à convaincre la personne concernée (étude de 1978) ; on ne voit que l'intersection de ses connaissances avec celles des autres.\n- En questions : une échelle de Clance permet de se tester ; face à la surconfiance (Dunning-Kruger), la communication non violente, *« ou la boxe »*.\n\n**Côté public** : le blog Les-Tilleuls.coop retient le chiffre de 70 % et l'expression **« expérience d'imposture »**. **Talk le plus commenté de l'édition** (16 avis, moyenne 5/5) : *« l'une des meilleures conf vues cette édition »* (Loye) ; Étienne (4/5) aurait voulu une analyse des risques.",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "O1-YHj5gUq0",
+        "title": "Guide pratique de lutte contre le \"syndrome de l'imposteur\" - Marine GANDY - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "du-domain-driven-design-avec-api-platform",
+      "day": "2021-10-21",
+      "type": "talk",
+      "title": "Du Domain-Driven-Design avec API Platform",
+      "speakers": [
+        "Mathias Arlaud — Les-Tilleuls.coop",
+        "Robin Chalas — Les-Tilleuls.coop"
+      ],
+      "feedbackFrom": [
+        "Blog Les-Tilleuls.coop (employeur des speakers)",
+        "Julien Mercier-Rojas",
+        "Alex Rock",
+        "Vincent Le Bo",
+        "Romain Goncalves (joind.in)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- *« DDD c'est pas une spec ni une religion »* : une approche pragmatique, mise en place sur un projet pour Vestiaire Collective.\n- API Platform, orienté RAD et couplé au framework, passe à une **architecture hexagonale** (Application, Domain, Infrastructure) découpée en bounded contexts.\n- **CQRS** avec command bus et query bus, et un data provider générique qui lit la query déclarée sur l'opération.\n- Conclusion : CRUD et DDD ne sont pas incompatibles ; un template de démarrage et un workshop à Lyon le 25 novembre sont annoncés.\n- En questions : API Platform reste orienté ressources alors que le DDD est orienté intentions ; réponse : accepter des endpoints plus RPC à côté du REST.\n\n**Côté public** : joind.in (4 avis, moyenne 4/5) : rythmé et clair (Le Bo), rappel de réserver l'approche aux projets complexes (Alex Rock) ; Romain Goncalves y voit le risque d'une *« usine à gaz »*.",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "coEdCX6sm_Q",
+        "title": "Du Domain-Driven-Design avec API Platform - Mathias ARLAUD Robin CHALAS - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ne-jetez-plus-mon-code",
+      "day": "2021-10-21",
+      "type": "talk",
+      "title": "Ne jetez plus mon code !",
+      "speakers": [
+        "Xavier Gorse"
+      ],
+      "feedbackFrom": [
+        "David Buros",
+        "Marine Gandy",
+        "Maxime Huran",
+        "Benoit Viguier",
+        "Magali Milbergue",
+        "Guillaume",
+        "William (joind.in)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Ancien président de l'AFUP et cofondateur d'un atelier de développement lyonnais, aujourd'hui en facilitation de projet ; ouverture sur le bénévolat, qui rapporte *« beaucoup plus »* que ce qu'on donne.\n- Pas de format type de spec : le PO ou le client formalise le besoin, l'équipe challenge les cas à la marge, et la **stratégie de test se pose dès la spec**.\n- Specs collaboratives et versionnées : certains clients éditent des fichiers Markdown revus dans la même merge request que le code.\n- Partager la conception avant de coder et remettre le client dans la boucle, avec du feedback sur l'environnement courant.\n- En questions : le mot « agilité » est évité car *« galvaudé »*, la méthode est adaptée à chaque contexte.\n\n**Côté public** : joind.in (7 avis, tous à 4/5) : met en perspective nos pratiques (Buros), de bonnes pistes de méthodes (Milbergue).",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "l9KJqHmymus",
+        "title": "Ne jetez plus mon code ! - Xavier GORSE - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "accessibilite-et-seo-et-si-on-relevait-le-niveau",
+      "day": "2021-10-21",
+      "type": "talk",
+      "title": "Accessibilité & SEO : et si on relevait le niveau ?",
+      "speakers": [
+        "Anne-Laure de Boissieu",
+        "Amélie Defrance"
+      ],
+      "feedbackFrom": [
+        "Marine Gandy",
+        "Julien Mercier-Rojas",
+        "Alex Rock",
+        "Maxime Huran",
+        "Benoit Viguier",
+        "Magali Milbergue",
+        "Vincent Laurier",
+        "Romain Goncalves",
+        "Cyril Tonneville",
+        "Guillaume (joind.in)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Une développeuse back ex-SEO et une intégratrice venue de projets publics soumis aux obligations légales : accessibilité et SEO demandent **les mêmes optimisations HTML** (hiérarchie des titres, titres de page, alternatives textuelles, navigation claire).\n- Erreurs typiques : des pastilles rouge et verte sans texte, des boutons à icône seule ; *« en accessibilité il y a beaucoup de problèmes qui peuvent se résoudre en ajoutant du texte »*.\n- Présentation d'un bundle maison (**Accesseo** au programme) qui ajoute des onglets SEO et accessibilité au profiler Symfony et signale des points d'attention.\n- Remerciements au programme d'accompagnement des speakers de l'AFUP.\n\n**Côté public** : joind.in (10 avis, moyenne 5/5) : *« un sujet chiant pour les devs, mais qui a été rendu hyper intéressant »* (Huran) ; des devs back convaincus (Alex Rock, Viguier) ; premier talk pour Amélie Defrance (Gandy).",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "vvLoYCq9uPw",
+        "title": "Accessibilité & SEO : et si on relevait le niveau ? - A-L DE BOISSIEU/A. DEFRANCE - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "mini-conferences-afup",
+      "day": "2021-10-21",
+      "type": "lightning",
+      "title": "Mini conférences AFUP",
+      "speakers": [
+        "Cécile Helary Hamerel — AFUP",
+        "Adrien Gallou — AFUP",
+        "Cédric Mourizard — AFUP",
+        "Vincent Chalamon — AFUP"
+      ],
+      "feedbackFrom": [
+        "Benoit Viguier",
+        "Marine Gandy",
+        "Alex Rock",
+        "Maxime Huran",
+        "Magali Milbergue (joind.in)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- **Baromètre des salaires** : enquête annuelle depuis 2013 avec le JDN, site de consultation en Symfony, lignes à trop peu de réponses masquées pour l'anonymat.\n- **Mentorat** : l'AFUP fait la mise en relation ; première année 23 mentors, 35 demandes, 8 réussites ; deuxième année 18 mentors, 39 demandes, 21 réussites et 10 en cours.\n- **Organiser un AFUP Day** en antenne : candidature, CFP, meetups, sponsors, avec 4 à 5 bénévoles et 1 à 3 heures par personne et par mois.\n\n**Côté public** : joind.in (5 avis, moyenne 5/5) : *« Très bonne idée ces mini-conférences ! Pas trop long »* (Viguier).",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "HdPigj6QgrA",
+        "title": "Mini conférences - Equipe AFUP - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "sous-representation-des-femmes-en-sciences-et-en-informatique-comment-y-remedier",
+      "day": "2021-10-21",
+      "type": "talk",
+      "title": "Sous-représentation des femmes en sciences et en informatique : comment y remédier ?",
+      "speakers": [
+        "Marion Monnet — INED"
+      ],
+      "feedbackFrom": [
+        "David Buros",
+        "Marine Gandy",
+        "Alex Rock",
+        "Maxime Huran",
+        "Benoit Viguier",
+        "Magali Milbergue",
+        "Vincent Laurier",
+        "Cyril Tonneville",
+        "Romain Goncalves",
+        "Damien (joind.in)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Économiste postdoctorante à l'INED ; sondage d'ouverture : environ **10 % de femmes** dans la salle.\n- Chiffres d'orientation : les filles sont majoritaires en seconde mais ne pèsent plus que 26 % en maths, physique et informatique et 26 % en écoles d'ingénieurs.\n- Leviers étudiés : l'informatique obligatoire en première année au Harvey Mudd College (de 10 % à 50 % de femmes en cinq ans), une image moins stéréotypée de la discipline, des **role models** (dans son expérimentation, +30 % de probabilité d'entrer en prépa maths), du mentorat.\n- En questions : un homme ne peut pas servir de modèle d'identification, mais un recruteur doit savoir que les femmes déclarent moins de compétences et demandent moins à niveau égal, et **aligner les offres**.\n\n**Côté public** : joind.in (10 avis, moyenne 4/5) : un exposé chiffré et rationnel (Buros, Laurier), mais une forme *« un peu aride »* (Gandy, 3/5) ou *« très formelle »* (Huran).",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "3PpoYvWAJsc",
+        "title": "Sous-représentation des femmes en sciences et en informatique - Marion MONNET - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "des-tests-unitaires-pour-nos-regles-de-conception",
+      "day": "2021-10-22",
+      "type": "talk",
+      "title": "Des tests unitaires pour nos règles de conception",
+      "speakers": [
+        "Frédéric Bouchery — Klaxoon"
+      ],
+      "feedbackFrom": [
+        "Blog Les-Tilleuls.coop",
+        "Benoit Viguier",
+        "Julien Mercier-Rojas",
+        "Alex Rock",
+        "Sofia Lescano",
+        "Anthony Ammar",
+        "Vincent Laurier",
+        "Magali Milbergue",
+        "Romain Goncalves",
+        "Damien (joind.in)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Ouverture sur la **mémoire humaine** (court terme, long terme) : on oublie les règles de conception décidées en équipe et consignées dans des ADR.\n- Des règles PHPStan, vite lourdes à écrire, laissent place à de vrais **tests PHPUnit** : un composant parcourt un namespace via l'autoload Composer et vérifie `strict_types`, suffixes, classes `final`, héritage ; un cas de test par règle.\n- Outil en alpha, pas encore publié, pour stabiliser le code et la compatibilité.\n- En questions : grand fan du test first, *« les tests sont plutôt là pour nous aider à structurer notre code »* ; documenter le pourquoi d'une règle par un renvoi vers l'ADR, voire dans le message d'erreur.\n\n**Côté public** : le blog Les-Tilleuls.coop note l'extension aux rappels automatiques (migration manquante). Joind.in (9 avis, moyenne 5/5) : *« un de mes coups de cœur »* (Viguier), PHPUnit *« sous un autre angle »* (Ammar), et l'attente de la bibliothèque (Alex Rock, Lescano).",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "PB3NWOwBCyQ",
+        "title": "Des tests unitaires pour nos règles de conception - Frederic BOUCHERY - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "synchroniser-ses-applications-plus-rapidement-avec-du-low-code",
+      "day": "2021-10-22",
+      "type": "talk",
+      "title": "Synchroniser ses applications plus rapidement avec du low-code",
+      "speakers": [
+        "Grégory Planchat"
+      ],
+      "feedbackFrom": [
+        "David Buros",
+        "Maxime Huran (joind.in)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Récit d'un *« développeur trop confiant »* : un click and collect pour 70 magasins et plus de 150 000 références, synchronisé par scripts cron, devenu *« un véritable enfer »* d'incidents.\n- Réponse : un projet open source (MIT) où l'on décrit les flux en YAML ou JSON, compilés en PHP optimisé exécuté en Docker, en natif ou en serverless.\n- Connecteurs Akeneo, CSV, Excel, SFTP, SQL, bientôt OpenAPI et RabbitMQ ; logs dans Elasticsearch.\n- En questions : *« on n'a pas créé un outil pour concurrencer Talend »* ; une extension PHPUnit pour tester les pipelines ; l'interface graphique sera un produit SaaS.\n\n**Côté public** : joind.in (2 avis, 4/5) : outil prometteur mais disponibilité floue (Buros) ; envie d'utiliser **Gyroscops** (Huran).",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "6iBOv6lQd-A",
+        "title": "Synchroniser ses applications plus rapidement avec du low-code - Grégory PLANCHAT - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "l-architecture-esa-le-futur-des-api-web",
+      "day": "2021-10-22",
+      "type": "talk",
+      "title": "L'architecture ESA : le futur des API web",
+      "speakers": [
+        "Kévin Dunglas — Les-Tilleuls.coop"
+      ],
+      "feedbackFrom": [
+        "Blog Les-Tilleuls.coop (employeur du speaker)",
+        "Alex Rock",
+        "Benoit Viguier",
+        "Vincent Laurier",
+        "Romain Goncalves (joind.in)",
+        "Kévin Dunglas (speaker, blog)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Ouverture sur le modèle coopératif des Tilleuls ; talk annoncé avec *« relativement peu de PHP »*, la vision derrière API Platform, Vulcain et Mercure.\n- Rappel de REST selon Roy Fielding : une machine à états parcourue par liens hypertextes.\n- **Servir au plus près de l'utilisateur** : CDN (Fastly, Akamai, Cloudflare), cache auto-hébergé (Souin, Varnish), edge computing.\n- Contraintes ESA : **pré-générer** les ressources, les garder simples et normalisées pour les charger en parallèle, précharger (103), pousser les mises à jour en temps réel (SSE, Mercure).\n- Côté API Platform : pré-génération et purge du CDN, SWR côté client, modules Caddy.\n\n**Côté public** : le blog Les-Tilleuls.coop y voit la direction d'API Platform 3, *« plus de cache, moins de transferts »*. Joind.in (4 avis, moyenne 5/5) : *« richesse d'informations »* (Laurier), *« speaker expert »* (Goncalves).",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "nizgrkIuuVs",
+        "title": "L’architecture ESA : le futur des API web - Kévin DUNGLAS - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "sylius-sans-e-commerce-pourquoi-et-comment",
+      "day": "2021-10-22",
+      "type": "talk",
+      "title": "Sylius sans e-commerce, pourquoi et comment ?",
+      "speakers": [
+        "Maxime Huran — Monsieur Biz"
+      ],
+      "feedbackFrom": [
+        "David Buros",
+        "Marine Gandy",
+        "Xavier Besson",
+        "Jeanne Londiche",
+        "Magali Milbergue",
+        "Cyril Tonneville",
+        "Guillaume (joind.in)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Sylius (1.10, PHP 8, Symfony 5) apporte un **back-office et un front prêts**, et des bundles réutilisables : Channel, User, Resource, Grid.\n- Deux approches : Monofony, qui assemble ces bundles sans e-commerce, ou un Sylius complet dont on désactive la boutique.\n- Démo d'une bibliothèque (auteurs et livres traduits) : menu admin, grid avec filtres et actions en masse, CRUD ; documentation jugée *« hyper complète »*.\n- En questions : pas de benchmark mais des sites *« extrêmement rapides »* ; un projet back-office seul en production, firewall shop désactivé.\n\n**Côté public** : joind.in (7 avis, moyenne 5/5) : démo côté BO et côté code appréciée (Gandy) ; *« la conférence de cette édition »* d'où Magali Milbergue sort décidée à essayer.",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "mJvrBGIbGOA",
+        "title": "Sylius sans e-commerce, pourquoi et comment ? - Maxime HURAN - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "a-la-recherche-des-licornes-les-limites-du-theoreme-cap",
+      "day": "2021-10-22",
+      "type": "talk",
+      "title": "À la recherche des licornes : les limites du théorème CAP",
+      "speakers": [
+        "Lætitia Avrot — EDB"
+      ],
+      "feedbackFrom": [
+        "Marine Gandy",
+        "Julien Mercier-Rojas",
+        "Alex Rock",
+        "Magali Milbergue (joind.in)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Contributrice PostgreSQL et consultante chez EDB : il faut vivre avec CAP et PACELC ; le **« zéro perte de données »** et les 100 % de disponibilité n'existent pas.\n- Paliers pour Postgres selon la perte admissible : backup physique et archivage des WAL (plus de 15 minutes), réplica asynchrone (1 à 15 minutes), réplica synchrone (moins de 200 ms).\n- *« Un backup non testé n'existe pas »* : tester les restaurations, automatiquement et à la main (rappel de l'incident GitLab).\n- Architecture finale : réplication bidirectionnelle sur deux datacenters et un témoin pour le quorum ; *« vous n'êtes pas Google donc vous n'avez pas besoin d'un truc énorme »*.\n- En questions : la latence dépend du réseau, pas du matériel ; il faut mesurer.\n\n**Côté public** : joind.in (4 avis, moyenne 5/5) : *« brillant et super clair »* (Gandy), des *« claques »* aux devs back (Alex Rock).",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "-Bul3BWhTw8",
+        "title": "À la recherche des licornes : les limites du théorème CAP - Lætitia AVROT - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "faites-confiance-aux-developpeurs-euses-de-votre-equipe-voyez-plus-loin-que-les-fonctionnalites",
+      "day": "2021-10-22",
+      "type": "talk",
+      "title": "Faites confiance aux développeurs.euses de votre équipe : voyez plus loin que les fonctionnalités",
+      "speakers": [
+        "Sofia Lescano — Bedrock"
+      ],
+      "feedbackFrom": [
+        "Blog Les-Tilleuls.coop",
+        "David Buros",
+        "Benoit Viguier",
+        "Guillaume",
+        "Damien (joind.in)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Développeuse back chez Bedrock (ex-M6 Web) ; elle salue un créneau 100 % féminin et l'importance des role models.\n- Un projet est une maison ou une colocation qui demande de l'entretien : un TODO vieux de deux ans, un commentaire qui attend une issue fusionnée en 2019.\n- Exemples : migration progressive vers le client HTTP de Symfony ; **alertes précises et actionnables** pour ne pas réveiller quelqu'un à 3 h pour rien.\n- Pas de priorisation formelle ; une matrice temps et impact risque de frustrer ceux dont les sujets ne passent jamais. En questions : décision au consensus ou à la majorité.\n\n**Côté public** : le blog Les-Tilleuls.coop retient la réunion toutes les deux semaines, ouverte au PO, et *« la dette technique, c'est comme vouloir faire à dîner, mais avant tu dois faire la vaisselle de la veille »*. Joind.in (4 avis, moyenne 5/5) : *« Rex super instructif »* (Buros).",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "tuGpNiy6e9s",
+        "title": "Faites confiance aux développeurs.euses de votre équipe - Sofia LESCANO - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-design-patterns-racontes-aux-enfants",
+      "day": "2021-10-22",
+      "type": "talk",
+      "title": "Les design patterns racontés aux enfants",
+      "speakers": [
+        "Vincent Laurier"
+      ],
+      "feedbackFrom": [
+        "Marine Gandy",
+        "Jeanne Londiche",
+        "Alex Rock",
+        "Magali Milbergue",
+        "Guillaume",
+        "alexandre barbot (joind.in)",
+        "Vincent Laurier (speaker, joind.in)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Ancien professeur de mathématiques, le speaker présente son livre qui explique **onze patterns du Gang of Four** par des histoires pour enfants.\n- Chaque chapitre suit le même schéma : définition, histoire, questions-réponses, analogie, code PHP, UML, point théorique.\n- Exemple de la méthode modèle (template method) avec une histoire de cirque : squelette d'algorithme, étapes imposées aux classes filles, hooks optionnels.\n- Conseils pour mener un projet personnel : une deadline, *« le mieux est l'ennemi du bien »*, se convaincre de la valeur du projet ; livre disponible en ebook et broché, traduction anglaise terminée.\n\n**Côté public** : première conférence du speaker (speaker, joind.in). Joind.in (7 avis, moyenne 4/5) : *« la conférence que j'attendais le plus »* (Milbergue), speaker à l'aise (Gandy) ; Alex Rock (3/5) salue l'originalité avec des réserves.",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "fuqSDO867ew",
+        "title": "Les design patterns racontés aux enfants - Vincent LAURIER - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "fiber-la-porte-ouverte-sur-l-asynchrone",
+      "day": "2021-10-22",
+      "type": "talk",
+      "title": "Fiber : la porte ouverte sur l'asynchrone",
+      "speakers": [
+        "Benoit Viguier — Bedrock"
+      ],
+      "feedbackFrom": [
+        "Blog Les-Tilleuls.coop",
+        "Matthieu Napoli",
+        "Romain Goncalves",
+        "Damien (joind.in)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Les **Fibers** arrivent avec PHP 8.1, alors en RC : une fiber se suspend et l'event loop passe *« le bâton de parole »* à une autre.\n- Démo d'un micro-framework d'un seul fichier : **le code appelant ne voit pas qu'il utilise des fibers**, contrairement aux approches asynchrones existantes.\n- Perspectives : Symfony asynchrone sans le savoir, un serveur HTTP avec une fiber par requête ; appel à un standard et à des bibliothèques « fiber ready », et salut à **RevoltPHP**, initiative commune d'Amp et ReactPHP sortie une semaine plus tôt.\n- Mise en garde : l'asynchrone *« c'est pas magique »*, il faut investir du temps.\n\n**Côté public** : joind.in (3 avis, moyenne 4/5) : *« J'ai adoré, le fond comme la forme »* (Napoli) ; un créneau de 20 minutes jugé trop court pour tout comprendre (Goncalves).",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "KkRo7fAC28s",
+        "title": "Fiber: la porte ouverte sur l'asynchrone - Benoit VIGUIER - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "qualite-front-pourquoi-c-est-aussi-le-travail-du-dev-back",
+      "day": "2021-10-22",
+      "type": "talk",
+      "title": "Qualité front, pourquoi c'est aussi le travail du dev back !",
+      "speakers": [
+        "Martin Supiot",
+        "Elie Sloïm — Opquast"
+      ],
+      "feedbackFrom": [
+        "Mathieu Santostefano",
+        "Damien",
+        "Maxime Huran",
+        "Benoit Viguier",
+        "Cyril Tonneville (joind.in)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Un dev back qui ne fait souvent que des API se demande s'il a un impact sur l'utilisateur, et conclut qu'il a **sa part de responsabilité** ; le fondateur d'Opquast se présente en *« médecin généraliste »* de la qualité web.\n- Règle Opquast sur les **alias email avec « + »** : acceptés à l'inscription puis refusés à la connexion ; *« arrêtez de mettre des règles sur les emails »*, envoyez un mail de confirmation.\n- La fuite de 700 000 résultats de tests Covid venait d'un simple **listing de répertoires**, couvert par une autre règle Opquast.\n- Derrière chaque règle, des contextes utilisateurs : le fond du message est l'empathie. En questions : prévoir un fallback et des pages d'erreur personnalisées, ne pas imposer le login Facebook ou Google.\n\n**Côté public** : joind.in (5 avis, moyenne 5/5) : *« une présentation d'une rare excellence »* (Santostefano), recommandation de **passer la certification Opquast** (Damien).",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "5mKPCUiVkXM",
+        "title": "Qualité front, pourquoi c'est aussi le travail du dev back - M. SUPIOT / E. SLOÏM - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-sauver-la-planete-en-ne-faisant-rien",
+      "day": "2021-10-22",
+      "type": "talk",
+      "title": "Comment sauver la planète en ne faisant rien",
+      "speakers": [
+        "Hélène Maitre-Marchois — Fairness"
+      ],
+      "feedbackFrom": [
+        "Blog Les-Tilleuls.coop",
+        "Guillaume",
+        "Magali Milbergue",
+        "Alex Rock",
+        "Jeanne Londiche",
+        "Marine Gandy",
+        "Sofia Lescano (joind.in)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Scrum Master et coopératrice chez Fairness : sondage sur le dernier rapport du GIEC, warming stripes, rapport Meadows ; résumé de la situation : *« c'est la merde »*.\n- La baisse d'émissions du Covid a été effacée ; les petits gestes ne suffisent pas, il faut des décisions politiques, mais chacun peut agir.\n- Réduire ressources et fonctionnalités en demandant **« pourquoi ? »** au PO ; un service doit être **utile, accessible, durable** (exemple de Captain Train, qui ne vendait que le billet).\n- En questions : pour convaincre designers et équipe, le manuel d'éco-conception de Designers Éthiques ; images lourdes, requêtes inutiles et poids du DOM pèsent le plus.\n\n**Côté public** : joind.in (6 avis, moyenne 5/5) : *« Ma conf' préférée cette année »* (Londiche), claire et drôle (Lescano) ; une première partie anxiogène (Alex Rock), *« dur et super en même temps »* (Gandy).",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "BNVwYAlE9XA",
+        "title": "Comment sauver la planète en ne faisant rien - Hélène MAITRE-MARCHOIS - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "typage-automatique-de-code-php",
+      "day": "2021-10-22",
+      "type": "talk",
+      "title": "Typage automatique de code PHP",
+      "speakers": [
+        "Damien Seguy"
+      ],
+      "feedbackFrom": [
+        "Alex Rock",
+        "Benoit Viguier",
+        "Maxime Huran",
+        "Magali Milbergue",
+        "Damien (joind.in)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Une *« méthode pour les feignasses »* : environ 13 000 méthodes par application et cinq paramètres chacune, trop de types à ajouter à la main ; les outils font le gros, l'humain finit.\n- Statistiques sur environ 1 700 projets open source : 5 à 6 % sans aucun type, très peu à 100 %, la plupart **en phase d'adoption**.\n- Technique : la **propagation des types**, les retours remontent depuis l'appel le plus profond, les arguments descendent depuis les fonctions natives typées.\n- En questions : réserver les tableaux aux listes homogènes et transformer le reste en objets ; les propriétés nommées sont *« de l'or en barre »* pour l'analyse statique.\n\n**Côté public** : joind.in (5 avis, moyenne 4/5) : rythme soutenu (Huran), des questions « bas niveau » sur pourquoi typer (Viguier) ; PHP devient fortement typé, *« à la fois bien et pas bien »* (Alex Rock).",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "UK3lElWPpEY",
+        "title": "Typage automatique de code PHP - Damien SEGUY - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-exception-le-trou-dans-la-raquette-du-typage",
+      "day": "2021-10-22",
+      "type": "talk",
+      "title": "Les Exception : le trou dans la raquette du typage",
+      "speakers": [
+        "Baptiste Langlade"
+      ],
+      "feedbackFrom": [
+        "Marine Gandy",
+        "Vincent Laurier (joind.in)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Une signature de fonction ne décrit que le **cas nominal** : `getUser` peut lever une erreur liée à l'état de la base, `createUser` une erreur de domaine sur l'email.\n- Alternative issue de la programmation fonctionnelle : les monades **Maybe et Either** (`map`, `flatMap`, `match`), qui rendent le cas d'erreur visible dans le type et donc vérifiable par l'analyse statique.\n- En questions : traiter chaque type d'erreur dans le callback comme dans un catch ; des tests ne suffisent pas, car on ne teste que les cas auxquels on pense ; les checked exceptions de Java n'existent pas en PHP.\n\n**Côté public** : joind.in (2 avis, moyenne 5/5) : découverte des monades qui donne envie d'essayer (Gandy) ; le talk qui donne le plus envie de se remettre au code (Laurier).",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "YfoLM0vWALM",
+        "title": "Les Exception : le trou dans la raquette du typage - Baptiste LANGLADE - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "workadventure-de-la-genese-a-aujourd-hui",
+      "day": "2021-10-22",
+      "type": "talk",
+      "title": "WorkAdventure de la genèse à aujourd'hui : retour d'expérience sur 1 an d'univers virtuels",
+      "speakers": [
+        "David Négrier — The Coding Machine"
+      ],
+      "feedbackFrom": [
+        "Blog Les-Tilleuls.coop",
+        "Marine Gandy",
+        "Jeanne Londiche",
+        "Alex Rock",
+        "Cyril Tonneville",
+        "Benoit Viguier",
+        "Maxime Huran",
+        "Magali Milbergue (joind.in)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Genèse au premier confinement, pour retrouver les moments informels : une maquette le 16 avril 2020, puis des volontaires le soir. Définition : *« un système de téléconférence déguisé en jeu vidéo »*.\n- **WebRTC, « c'est pas simple »** : conseil d'utiliser simple-peer, ou un SaaS vidéo si ce n'est pas son cœur de métier ; environ 15 % des appels passent par un serveur TURN, et les blocages viennent surtout des réseaux d'entreprise.\n- Code ouvert dès le hackathon, licence AGPL et Commons Clause, la *« clause anti-Amazon »* ; rêve d'une fédération de serveurs, difficile pour des questions de latence.\n- En questions : s'il recommençait, peut-être Erlang ; il a préféré des technos maîtrisées à Unity.\n\n**Côté public** : le blog Les-Tilleuls.coop rappelle l'usage par l'AFUP au Forum PHP 2020 en ligne. Joind.in (7 avis, moyenne 5/5) : un REX plein d'humour et de sincérité (Gandy, Viguier), l'envers du décor (Londiche).",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "YKNqngG-c-w",
+        "title": "WorkAdventure de la genèse à aujourd'hui - David NÉGRIER - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "bref-j-ai-migre-une-bank-as-a-service-en-serverless",
+      "day": "2021-10-22",
+      "type": "talk",
+      "title": "Bref, j'ai migré une Bank As A Service en serverless",
+      "speakers": [
+        "Louis Pinsard — Theodo"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Engineering manager dans une business unit 100 % serverless de Theodo, pour le client **Treezor** (Banking as a Service) ; il ne pensait plus refaire de PHP.\n- Motifs de la migration : fiabilité de l'infrastructure (un RabbitMQ central qui tombait souvent), couplage au monolithe, ambition de scale-up.\n- Stockage dans **DynamoDB en single table design**, une très grosse courbe d'apprentissage ; PHP sur AWS Lambda via **Bref** et ses handlers typés (SQS…).\n- En questions : pas de retry en synchrone (une 500 et du monitoring), trois retries puis une dead letter queue en asynchrone ; Bref est une surcouche presque transparente du Serverless Framework.\n- Lecture critique : le speaker reconnaît ne pas avoir encore la preuve du gain en performance et maintenabilité, *« je l'espère, je le crois »*.\n- Aucun avis joind.in.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "pTVj1diG4rQ",
+        "title": "Bref, j’ai migré une Bank As A Service en serverless - Louis Pinsard - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "slideshow-karaoke-et-autres-surprises",
+      "day": "2021-10-22",
+      "type": "other",
+      "title": "Slideshow Karaoke et autres surprises",
+      "speakers": [
+        "Équipe AFUP et speakers surprises"
+      ],
+      "feedbackFrom": [
+        "Sofia Lescano",
+        "Marine Gandy",
+        "Alex Rock",
+        "Maxime Huran",
+        "Magali Milbergue (joind.in)"
+      ],
+      "summary": "**Sur scène (transcript)**\n- Six volontaires, un sujet connu mais des slides inconnues, **20 secondes par slide** : premières présentations à l'AFUP, bénévoles en t-shirt, conseils de management loufoques.\n- Une intervenante annonce quitter la France après neuf ans pour une nouvelle aventure.\n- Les « surprises » : remerciements nominatifs à l'équipe AFUP (outillage en ligne, trésorerie, sponsors) ; rappel que le lieu initial a annulé quelques mois avant.\n\n**Côté public** : joind.in (5 avis, 5/5) : *« Combattre la déprime de fin de convention par le rire »* (Milbergue), un format *« juste trop génial »* (Alex Rock) ; Sofia Lescano y a participé.",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "HykJGSDiugg",
+        "title": "Slideshow Karaoke et autres surprises - Equipe AFUP - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "keynote-de-cloture",
+      "day": "2021-10-22",
+      "type": "keynote",
+      "title": "Keynote de clôture",
+      "speakers": [
+        "Équipe AFUP"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript)**\n- Bilan d'une année particulière : conférences en ligne, fatigue collective, changement de lieu, incertitude sur la venue des sponsors et du public ; **500 personnes** présentes.\n- Remerciements aux sponsors, speakers, bénévoles et participants, et rappel de noter les talks.\n- **AFUP Day 2022** : une seule ville, Lille, le 20 mai 2022, jusqu'à 250 visiteurs ; CFP ouvert jusqu'au 22 novembre.\n- **Forum PHP 2022** : 13 et 14 octobre 2022, annoncé un an à l'avance pour la première fois, retour à une jauge de 800 personnes, à Disneyland Paris (hôtel Marvel), après de fausses pistes humoristiques (Aubrac, Futuroscope).\n- Clin d'œil final aux masques : *« la moitié supérieure du visage de tous vos amis »*.",
+      "summarySources": [
+        "transcript"
+      ],
+      "video": {
+        "youtubeId": "frIQU-SohHQ",
+        "title": "Keynote de cloture - Equipe AFUP - Forum PHP 2021",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Démo Yousign : présentation de l'E&P",
+    "Démo Blackfire.io",
+    "Démo JoliCode : redirection.io",
+    "Démo Hiway : se lancer dans le freelancing",
+    "Démo Klaxoon : développeur PHP chez Klaxoon"
+  ],
+  "sources": [
+    {
+      "label": "Programme officiel Forum PHP 2021 (AFUP)",
+      "url": "https://event.afup.org/forum-php-2021/programme/"
+    },
+    {
+      "label": "Playlist YouTube Forum PHP 2021 (AFUP), transcripts automatiques des 32 vidéos lus par échantillons",
+      "url": "https://www.youtube.com/playlist?list=PL9zDdgiGjkIcrjmpXFl9kibFsVG2ZmmmG"
+    },
+    {
+      "label": "joind.in : 182 commentaires sur les talks (API, événement 7957)",
+      "url": "https://api.joind.in/v2.1/events/7957/talk_comments"
+    },
+    {
+      "label": "joind.in : liste des talks, notes moyennes et nombre de commentaires",
+      "url": "https://api.joind.in/v2.1/events/7957/talks"
+    },
+    {
+      "label": "Les-Tilleuls.coop, Retour sur le Forum PHP 2021 (partie 1), 28/10/2021",
+      "url": "https://les-tilleuls.coop/blog/retour-forum-php-2021-partie-1"
+    },
+    {
+      "label": "Les-Tilleuls.coop, Retour sur le Forum PHP 2021 (partie 2), 29/10/2021",
+      "url": "https://les-tilleuls.coop/blog/retour-forum-php-2021-partie-2"
+    },
+    {
+      "label": "Marmelab (François Zaninotto), Vers la sobriété numérique, la conférence, 18/11/2021",
+      "url": "https://marmelab.com/blog/2021/11/18/vers-la-sobriete-numerique.html"
+    },
+    {
+      "label": "Kévin Dunglas, Edge Side APIs, 28/10/2021",
+      "url": "https://dunglas.dev/2021/10/edge-side-apis/"
+    },
+    {
+      "label": "Interviews speakers et sponsors « La parole est aux speakers » (AFUP, non lues en détail)",
+      "url": "https://event.afup.org/category/forum-php-2021"
+    },
+    {
+      "label": "Auteurs des commentaires joind.in : Alexandre V., Christophe Moncy, David Buros, Anthony Ammar, Xavier Besson, Jeanne Londiche, Alex Rock, Julien Mercier-Rojas, Cyril Tonneville, Magali Milbergue, Matthieu Napoli, Mathieu Santostefano, Damien, Étienne, Nicolas Loye, Guillaume, Romain Goncalves, alexandre barbot, Vincent Le Bo, Vincent Godé, William, Thomas Jarrand, et des speakers de l'édition (Sofia Lescano, Stephanie Trumtel, Marine Gandy, Maxime Huran, Benoit Viguier, Vincent Laurier, Romain Camp). Aucun post LinkedIn lu."
+    }
+  ]
 }

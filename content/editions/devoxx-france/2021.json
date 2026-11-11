@@ -8,8 +8,450 @@
   "city": "Paris",
   "venue": "Palais des Congrès",
   "url": "https://web.archive.org/web/20210922194308/https://www.devoxx.fr/",
+  "programUrl": "https://cfp.devoxx.fr/2021/index.html",
   "dateConfidence": "ok",
-  "note": "Présentée comme la « 9ème 3/4 édition » ; initialement prévue fin juin, reportée fin septembre (COVID-19).",
-  "status": "pending",
-  "sessions": []
+  "note": "Présentée comme la « 9ème 3/4 édition » ; initialement prévue fin juin, reportée fin septembre (COVID-19). Édition 100 % présentielle sous passe sanitaire et masque obligatoire, sans Hands-on Labs ni intervenants hors d'Europe. Bilan officiel : 3 jours, 120 présentations, plus de 30 sponsors ; programme annoncé à environ 60 conférences, 30 Tools-in-Action, 10 quickies et 3 keynotes (une par matinée).",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-11",
+  "revisit": "Transcripts intégrés (22 vidéos), mais toujours deux comptes rendus participants seulement (Stéphane Philippart, Meritis) et aucun post LinkedIn, thread ou sketchnote lu. Programme cfp.devoxx.fr injoignable et Wayback Machine inaccessible le 2026-11-11 : jours de session connus seulement par recoupement de transcripts (4 sessions). À reprendre avec une recherche LinkedIn/X et le programme archivé.",
+  "corpus": "Quatre billets officiels de devoxx.fr (report du 3 mai 2021, passe sanitaire du 6 juillet, programme du 20 août, bilan « Merci ! » du 3 octobre avec les sessions les mieux notées par le public) ; deux comptes rendus participants : le blog personnel de Stéphane Philippart (« Mon Devoxx 2021 », 1er octobre 2021) et le billet Meritis de Gaëtan Eleouet, Alban Clevy et Lionel Odolant (15 février 2022) ; quatre billets d'interviews Ippon sans contenu exploitable. S'y ajoutent **22 transcripts** de la chaîne YouTube Devoxx France (les 3 keynotes lues sur 400 à 580 lignes, les autres talks échantillonnés sur leurs 100 à 220 premières lignes) et les descriptions de ces vidéos.",
+  "limits": "Corpus participant très mince : deux retours, tous deux de profils Java et back-end, sans voix critique ; aucun post LinkedIn lu. Les transcripts sont des sous-titres automatiques très bruités (noms déformés) et, hors keynotes, seuls les débuts de talks ont été lus : les résumés de talks portent surtout sur le cadrage et les premières parties. Jours de session inconnus pour la plupart (programme archivé inaccessible) ; la date d'enregistrement de la keynote OpenData indiquée sur YouTube (1er octobre) contredit le transcript de Sébastien Stormacq, qui situe la keynote Doctolib le vendredi matin, d'où l'absence de jour pour la keynote OpenData.",
+  "tldr": "Une édition de **retrouvailles sous passe sanitaire**, réduite (120 présentations, pas de labs), dont les trois keynotes ont **mis à l'honneur les acteurs tech de la lutte contre le Covid** (MakAir, Doctolib, CovidTracker), tandis que les participants ont surtout retenu **Quarkus, Java 17 et des talks de craft** (API orientées métier, code lisible, gestion des erreurs).",
+  "keyTakeaways": [
+    "Garder une architecture **« boring »** et peu de cache en temps normal, pour pouvoir ajouter en crise le cache qui sauve : chez Doctolib, un cache de dix minutes sur les centres **sans disponibilité** a fait tomber le premier mur de charge (keynote David Gageot et Nicolas de Nayer).",
+    "Prévoir une **soupape de dernier recours** : la file d'attente, d'abord vécue comme *« un aveu d'échec »*, a permis de tenir le 12 juillet 2021 et d'atteindre 20 000 rendez-vous de vaccination par minute (keynote Doctolib).",
+    "En crise, assumer le **« quick and dirty »** mais lister chaque raccourci, puis le trier entre code à jeter après la crise et code à refactorer (keynote Doctolib).",
+    "Transposer la posture logicielle à l'industrie : **itérer vite**, simuler plutôt que tester en vrai, croire qu'*« il y a toujours une autre option »* ; MakAir a conçu un respirateur en trois semaines avec 300 contributeurs (keynote Quentin Adam).",
+    "Se méfier des chiffres même ouverts : **échelles tronquées, graphiques 3D, confusion entre « et » et « sachant que »**, paradoxe de Simpson et biais de confirmation trompent vite (keynote Guillaume Rozier et Sacha Guilhaumou).",
+    "Pour une API orientée métier, viser **HATEOAS** plutôt que de projeter le domaine sur un CRUD qui en perd le sens (Julien Topçu, retenu par Meritis et premier du classement Conférence).",
+    "Quarkus devient **un choix crédible en production** face aux contraintes des conteneurs (mémoire, threads, démarrage) : le constat de Stéphane Philippart, qui a passé l'essentiel de son Devoxx sur ce sujet.",
+    "**Java Flight Recorder**, open source depuis Java 11, est une alternative gratuite aux APM commerciaux pour profiler en production (Jean-Michel Doudoux, retenu par Stéphane Philippart et Meritis).",
+    "Écrire pour **une mémoire de travail de quatre éléments environ** : la lisibilité du code se raisonne avec la psychologie cognitive (Diana Ortega, appréciée par Meritis).",
+    "Contre le syndrome de l'imposteur : lister ses victoires, s'entourer de communautés, **demander du feedback plutôt qu'une validation**, accepter de ne pas tout savoir (Aurélie Vache, Tools-in-Action le mieux noté)."
+  ],
+  "sessions": [
+    {
+      "id": "projet-makair-respirateur-open-source",
+      "type": "keynote",
+      "title": "Projet MakAir, comment et pourquoi construire un respirateur open source ?",
+      "speakers": ["Quentin Adam — Clever Cloud"],
+      "feedbackFrom": ["Stéphane Philippart (blog personnel)", "Blog Meritis", "Bilan officiel devoxx.fr"],
+      "summary": "- En introduction, les organisateurs annoncent le fil des keynotes : faute de Harry Potter, le thème est la COVID, *« Covid mais technique ! »*, pour mettre en avant les *« magiciens de l'IT »* qui ont lutté contre la pandémie (transcript).\n- Sur scène, Quentin Adam raconte un projet lancé le **17 mars 2020** : premier essai préclinique sur animal le 3 avril, dossier d'essai clinique de **800 pages** déposé le 9 avril, premiers dispositifs sortis de la chaîne du CEA le 12 avril ; 30 à 40 personnes à plein temps, **300 contributeurs** (transcript).\n- Financements de l'armée, de l'université de Nantes, de régions et du CEA, industrialisation avec le groupe SEB et des PME ; selon lui, sur une centaine de projets dans le monde, MakAir est le seul à avoir été branché sur un humain dans les règles de certification (transcript).\n- Pourquoi ça a marché : un travail de **« traduction »** entre métiers, la bienveillance face à des vocabulaires et contraintes différents, et la posture IT d'**itération rapide** (impression 3D, simulateurs codés pour éviter des essais réels) et de *« il y a toujours une autre option »* (turbines tirées de moteurs de drones) (transcript).\n- Il invite les développeurs à **assumer leur part d'ingénierie** et à apporter leurs méthodes aux autres industries (transcript).\n- Stéphane Philippart retient justement cette idée d'appliquer la logique d'un projet logiciel à la fabrication industrielle ; keynote classée parmi les mieux notées (bilan officiel), citée sans commentaire par Meritis.",
+      "summarySources": ["transcript", "feedback", "blog"],
+      "video": {
+        "youtubeId": "14ntkNCMIOA",
+        "title": "Projet MakAir, comment et pourquoi construire un respirateur open source ? (Quentin ADAM)",
+        "publishedAt": "2021-10-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-le-covid-a-revolutionne-doctolib",
+      "day": "2021-10-01",
+      "type": "keynote",
+      "title": "Comment le COVID a révolutionné Doctolib",
+      "speakers": ["David Gageot — Doctolib", "Nicolas de Nayer — Doctolib"],
+      "feedbackFrom": ["Stéphane Philippart (blog personnel)", "Blog Meritis", "Bilan officiel devoxx.fr"],
+      "summary": "- Point de départ : la **« boring architecture »**, simple par design, où l'on pèse le coût au build comme au run ; le cache y est presque absent parce qu'il *« vient casser la simplicité »* (transcript).\n- Saison 1, la téléconsultation : de 300 médecins équipés par mois à **30 000 en un week-end**, grâce à un parcours d'inscription autonome centré sur le cas le plus simple (« un bon vieux Pareto »), puis plus de 80 % des équipes réorganisées chaque jour en **top-down**, et trois mises en production par jour au lieu d'une (transcript).\n- Revers assumé : stress, fatigue, frustration des managers, standards baissés en mode « quick and dirty » ; chaque raccourci est listé puis trié entre code à jeter après la crise et code à refactorer (transcript).\n- Saison 2, la vaccination : 700 centres à ouvrir en une semaine, des créneaux disputés ; la principale parade est un **cache de dix minutes sur les centres sans disponibilité**, puis d'autres « murs » tombent un à un (transcript).\n- Saison 3, le **12 juillet 2021** : leviers non activés ce soir-là, puis la file d'attente, d'abord jugée *« un aveu d'échec »*, sauve la plateforme (jusqu'à 80 minutes d'attente) et permet **20 000 rendez-vous de vaccination par minute** pendant quinze jours (transcript).\n- Stéphane Philippart retient la gestion de très fortes charges pour connecter des millions de personnes à la vaccination ; Meritis la cite sans commentaire. Sébastien Stormacq y renvoie le même jour dans son talk sur la résilience (transcript).",
+      "summarySources": ["transcript", "feedback", "blog"],
+      "video": {
+        "youtubeId": "uo73C2ck1aU",
+        "title": "Comment le COVID a révolutionné Doctolib (D.Gageot / N.De Nayer)",
+        "publishedAt": "2021-10-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "pourquoi-l-opendata-ne-dispense-pas-de-notions-de-statistiques",
+      "type": "keynote",
+      "title": "Pourquoi l'OpenData ne dispense pas de quelques notions de statistiques",
+      "speakers": ["Guillaume Rozier — OCTO Technology / CovidTracker", "Sacha Guilhaumou — CovidTracker"],
+      "feedbackFrom": ["Stéphane Philippart (blog personnel)", "Blog Meritis", "Bilan officiel devoxx.fr"],
+      "summary": "- Guillaume Rozier (consultant chez OCTO Technology) et Sacha Guilhaumou (étudiant en pharmacie, master en IA) présentent CovidTracker : **open source, plus de 150 contributeurs, 10 millions d'utilisateurs actifs** (transcript).\n- L'open data est saluée comme une réussite française (transparence des décisions, harmonisation des travaux, puissance du collectif), mais tout le monde peut publier des interprétations fausses qui brouillent le message de santé publique (transcript).\n- Pièges visuels : **échelle tronquée** (graphique de cambriolages publié par un ministre, axe de 150 000 à 330 000) et **graphiques 3D** qui grossissent ou écrasent une part de 8 % (transcript).\n- Pièges statistiques : corrélation contre causalité (divorces et margarine), **« et » contre « sachant que »**, théorème de Bayes, biais de confirmation démontré sur la salle avec des chiffres inventés, **paradoxe de Simpson** et facteurs de confusion (transcript).\n- Stéphane Philippart retient l'alerte sur le message que portent les chiffres ; Meritis résume les keynotes par l'appel à l'esprit critique face aux chiffres publiés par l'État ou des tiers.",
+      "summarySources": ["transcript", "feedback", "blog"],
+      "video": {
+        "youtubeId": "faavVDVfduo",
+        "title": "Pourquoi l'OpenData ne dispense pas de quelques notions de statistiques (G.Rozier / S. Guilhaumou)",
+        "publishedAt": "2021-10-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "vitemadose-chainon-manquant-campagne-vaccination",
+      "day": "2021-10-01",
+      "type": "talk",
+      "title": "ViteMaDose : le chaînon manquant de la campagne de vaccination",
+      "speakers": ["Florent Jaby"],
+      "feedbackFrom": [],
+      "summary": "- Contexte posé sur scène : avril 2021, environ 300 morts par jour, peu de doses dispersées sur le territoire et des créneaux introuvables (transcript).\n- Démo de ViteMaDose, né de CovidTracker : **neuf plateformes de réservation agrégées**, site web et applications mobiles, plusieurs millions d'utilisateurs simultanés lors des plus gros pics, gratuit et open source (transcript).\n- Principe revendiqué : la **directionnalité de la donnée**, qui va des institutions et plateformes vers les citoyens et jamais l'inverse (transcript).\n- Lecture par le **théorème CAP** : ViteMaDose privilégie la disponibilité, la cohérence relevant des plateformes de réservation (transcript).\n- Session sans retour participant lu, qui prolonge le fil Covid des keynotes ; le speaker y renvoie à la keynote OpenData.",
+      "summarySources": ["transcript"],
+      "video": {
+        "youtubeId": "03cyr_Xu8WE",
+        "title": "ViteMaDose : le chaînon manquant de la campagne de vaccination par Florent JABY",
+        "publishedAt": "2021-10-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rest-next-level-apis-web-orientees-metier",
+      "type": "talk",
+      "title": "REST next level : Ecrire des APIs web orientées métier",
+      "speakers": ["Julien Topçu — Shodo"],
+      "feedbackFrom": ["Blog Meritis", "Bilan officiel devoxx.fr"],
+      "summary": "- Le constat de départ, exposé sur scène sur un domaine de réservation de train : projeter les fonctions métier (« rechercher les trains qui desservent ma destination ») sur les quatre verbes du CRUD fait **perdre le sens métier**, un problème d'impédance dû à l'interface uniforme de REST, que Roy Fielding reconnaissait déjà dans sa thèse (transcript).\n- Démo sur une fausse startup, « Columbia Express », qui vend des voyages de la Terre à la Lune : l'API guide le front à travers le workflow de réservation (transcript, descriptif).\n- La réponse, détaillée en live coding : le dernier niveau de maturité REST, **HATEOAS** (descriptif).\n- Meritis juge pertinente l'idée de **ne transmettre au front que des liens** vers les autres APIs, le front ne connaissant pas le workflow, et y voit une introduction très illustrée à HATEOAS.\n- Premier du format Conférence au classement du public ; @JulienTopcu figure parmi les tweets #DevoxxFR les plus likés (bilan officiel).",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "7qqzqse1hgc",
+        "title": "REST next level : Ecrire des APIs web orientées métier (Julien Topçu)",
+        "publishedAt": "2021-10-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "migrer-une-vraie-application-vers-quarkus",
+      "type": "talk",
+      "title": "Migrer une « vraie application du monde réel » vers Quarkus. Comment ? Mais surtout pourquoi ?",
+      "speakers": ["Clément Escoffier — Red Hat"],
+      "feedbackFrom": ["Stéphane Philippart (blog personnel)", "Bilan officiel devoxx.fr"],
+      "summary": "- Sur scène, Clément Escoffier retrace le passage du monolithe aux microservices puis aux fonctions : le coût de la JVM est multiplié et il faut démarrer vite (transcript).\n- Mettre Java dans un conteneur, c'est *« un peu comme mettre mon ami Daniel dans une brouette »* : l'écosystème repose encore sur la réflexion, les proxies et le chargement dynamique, et chaque thread coûte environ un mégaoctet, au détriment des autres applications du nœud (transcript).\n- Quarkus est présenté comme une pile pensée pour ces contraintes et, au-delà des microservices, pour **les systèmes distribués** ; le talk annonce des mesures chiffrées de ressources, de densité et de coût (transcript).\n- Stéphane Philippart y voit la suite de son fil Quarkus et retient la comparaison des performances en JVM et en natif GraalVM, utile pour la taille des images et les coûts cloud.\n- Deuxième du format Conférence au classement du public (bilan officiel).",
+      "summarySources": ["transcript", "feedback"],
+      "video": {
+        "youtubeId": "opqQSEyRub8",
+        "title": "Migrer une « vraie application du monde réel » vers Quarkus (Clément Escoffier)",
+        "publishedAt": "2021-10-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "microservices-reactifs-avec-quarkus",
+      "type": "training",
+      "title": "Microservices réactifs avec Quarkus",
+      "speakers": ["Clément Escoffier — Red Hat", "Stéphane Épardaud"],
+      "feedbackFrom": ["Stéphane Philippart (blog personnel)", "Bilan officiel devoxx.fr"],
+      "summary": "- Université de trois heures : migrer en direct une application impérative classique de **vente de fromages** vers le réactif, avec du fromage offert aux auteurs des questions intéressantes (transcript).\n- Programme annoncé sur scène : Mutiny, REST et Hibernate réactifs, client REST réactif, puis Kafka et systèmes réactifs (transcript).\n- Point de départ : Java a 25 ans et le monde a changé ; Quarkus, né il y a environ trois ans, retravaille gestion mémoire et chargement des classes pour rendre Java compétitif dans le cloud (transcript).\n- Les speakers notent l'étrangeté de retrouver *« des vrais gens en face »* après deux ans de sessions en ligne (transcript).\n- Stéphane Philippart : *« Un très bon mix entre théorie et pratique (live coding) »*, qui fait remonter Quarkus dans sa liste de choses à tester ; parmi les universités les mieux notées (bilan officiel).",
+      "summarySources": ["transcript", "feedback"],
+      "video": {
+        "youtubeId": "EKOMi0u4Q2A",
+        "title": "Microservices réactifs avec Quarkus (Clément Escoffier et Stéphane Épardaud)",
+        "publishedAt": "2021-10-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "methodes-synthetiques-switch-expressions-electriques",
+      "type": "training",
+      "title": "Les Méthodes Synthétiques Rêvent-elles à des Switch Expressions Électriques ?",
+      "speakers": ["José Paumard", "Rémi Forax — Oracle"],
+      "feedbackFrom": ["Blog Meritis", "Stéphane Philippart (blog personnel)", "Bilan officiel devoxx.fr"],
+      "summary": "- Les speakers ouvrent en remerciant les « gilets rouges » et notent que la session, soumise en novembre 2019 alors que Java 14 venait de sortir, a dû voir son abstract réécrit ; Rémi Forax annonce avoir rejoint Oracle en avril 2021 (transcript).\n- Ils présentent dev.java, le site documentaire ouvert avec Java 17 (environ 1 500 pages), et la **cadence d'une version majeure tous les six mois** depuis Java 10 (transcript).\n- Le contenu porte sur Java 17 LTS : API Collection et Stream, records, text blocks, sealed types, puis le **pattern matching** du projet Amber (nouveau `switch`, `instanceof`) et son fonctionnement interne (descriptif ; seul le début du transcript a été lu).\n- Meritis en recommande vivement le replay. Stéphane Philippart décrit une session de trois heures des mêmes speakers sur les nouveautés de Java 11 à 17, vraisemblablement celle-ci, à voir absolument, en conseillant de prévoir de l'aspirine pour la partie post-Java 17.",
+      "summarySources": ["transcript", "program", "blog", "feedback"],
+      "video": {
+        "youtubeId": "QF73kLY9l14",
+        "title": "Les Méthodes Synthétiques Rêvent-elles à des Switch Expressions Électriques ? (J.Paumard - R.Forax)",
+        "publishedAt": "2021-10-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "profiling-et-monitoring-avec-le-jdk",
+      "type": "talk",
+      "title": "Profiling et monitoring avec le JDK",
+      "speakers": ["Jean-Michel Doudoux — Oxiane"],
+      "feedbackFrom": ["Stéphane Philippart (blog personnel)", "Blog Meritis"],
+      "summary": "- Sur scène : la JVM reste une **boîte noire**, les problèmes de production sont difficiles à reproduire et les architectures distribuées accroissent le besoin de monitoring (transcript).\n- Les outils commerciaux sont **coûteux et ajoutent un overhead** ; les outils JMX historiques (JConsole, VisualVM) et Arthas complètent, mais le cœur du talk est **JFR et JDK Mission Control**, open source depuis Java 11 (transcript).\n- Sondage en salle : peu de mains levées pour JFR, encore moins en production ; l'objectif affiché est de le faire utiliser en production (transcript).\n- Stéphane Philippart, lecteur du site de tutoriels de l'auteur, trouve que JFR a reçu *« une vraie cure de jouvence »* et y voit une alternative gratuite aux APM commerciaux ; Meritis la classe parmi les conférences Java marquantes.",
+      "summarySources": ["transcript", "feedback", "blog"],
+      "video": {
+        "youtubeId": "m9lzneJaHYI",
+        "title": "Profiling et monitoring avec le JDK (Jean-Michel Doudoux)",
+        "publishedAt": "2021-10-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "top-10-des-choses-a-faire-avec-graalvm",
+      "type": "talk",
+      "title": "Top 10 des choses à faire avec GraalVM",
+      "speakers": ["Pascal Gillet"],
+      "feedbackFrom": ["Blog Meritis"],
+      "summary": "- Meritis retient surtout la **compilation native** et les **applications polyglottes**.\n- Exemple cité : combiner C, Java et Python, par exemple pour **appeler une bibliothèque Python depuis une application Java**.\n- Vidéo non identifiée dans la playlist consultée.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "lis-mon-code-code-lisible",
+      "type": "talk",
+      "title": "Lis mon code, ou pourquoi c'est important d'écrire du code lisible",
+      "speakers": ["Diana Ortega — Publicis Sapient"],
+      "feedbackFrom": ["Blog Meritis"],
+      "summary": "- Sur scène, la speaker rappelle qu'on estime à **90 % la part du travail de développeur consacrée à lire du code**, d'où l'enjeu d'une mémoire collective d'équipe (transcript).\n- Talk interactif : du code affiché dix secondes, puis des questions à la salle sur les variables retenues (transcript).\n- Appui sur la psychologie : le « nombre magique » de George Miller (années 1950), révisé à **quatre éléments plus ou moins deux** en mémoire de travail (transcript).\n- Meritis apprécie le ton amusant et la démarche pragmatique, qui pousse à se demander pourquoi une bonne pratique en est une et pointe les mauvaises habitudes courantes.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "wHQvbrZGQzw",
+        "title": "Lis mon code, ou pourquoi c'est important d'écrire du code lisible (Diana Ortega)",
+        "publishedAt": "2021-10-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "gerer-systematiquement-les-erreurs-dans-votre-code",
+      "type": "talk",
+      "title": "Gérer systématiquement les erreurs dans votre code pour le(s) rendre utile(s)",
+      "speakers": ["François Armand — Rudder"],
+      "feedbackFrom": ["Blog Meritis"],
+      "summary": "- Le CTO de Rudder pose quatre principes : c'est au développeur d'**inventorier les modes d'erreur**, de choisir la sémantique entre cas nominal et erreur, et de la préserver dans le programme (transcript).\n- Une erreur est **« une construction sociale »** : elle doit donner une capacité de réaction à ses trois destinataires, utilisateurs, opérateurs et développeurs (transcript).\n- Point de départ de l'inventaire : un **contrat clair** sur ce que fait le code ; exemples en Scala avec ZIO, comparé à ce qu'était Spring au début des années 2000 (transcript).\n- Meritis retient l'objectif que tous les utilisateurs comprennent l'erreur et sachent quoi en faire.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "ZKTlakJoXs8",
+        "title": "Gérer systématiquement les erreurs dans votre code pour le(s) rendre utile(s) (François Armand)",
+        "publishedAt": "2021-10-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "politique-zero-bug",
+      "type": "talk",
+      "title": "Politique zéro bug",
+      "speakers": ["Olivier Thélu"],
+      "feedbackFrom": ["Blog Meritis"],
+      "summary": "- Meritis résume la proposition : **ne corriger que les nouveaux bugs** signalés par les outils d'analyse de code, pour tenir l'objectif « zéro bug » sans s'attaquer d'un coup à toute la dette existante.\n- Format et vidéo non identifiés dans les sources consultées.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "j-aime-le-big-o-mais-il-me-trompe",
+      "type": "talk",
+      "title": "J'aime le Big-O mais il me trompe",
+      "speakers": ["Valentin Deleplace — Google Cloud"],
+      "feedbackFrom": ["Blog Meritis"],
+      "summary": "- Le developer advocate de Google Cloud ouvre en avertissant que son intro sera *« très pédante »*, puis décortique la définition formelle (constantes cachées, seuil à partir duquel l'inégalité vaut) avec des exemples comme le vissage de boulons (transcript).\n- Thèse du talk : l'analyse Big-O ignore **l'architecture matérielle, les coefficients cachés et les latences réelles**, et peut induire en erreur ; d'où la consigne de **mesurer** (descriptif ; seule la partie théorique du transcript a été lue).\n- Meritis la juge très accessible et retient que la notation Big-O n'est pas la solution à tous les problèmes.",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "_tILopFbTVA",
+        "title": "J'aime le Big-O mais il me trompe (Valentin Deleplace)",
+        "publishedAt": "2021-10-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "patterns-architectures-resilientes-hautement-dispos-cloud",
+      "day": "2021-10-01",
+      "type": "talk",
+      "title": "Patterns pour des architectures résilientes et hautement dispos dans le cloud",
+      "speakers": ["Sébastien Stormacq — AWS"],
+      "feedbackFrom": ["Blog Meritis"],
+      "summary": "- Le dernier jour, Sébastien Stormacq se place en complément de la keynote Doctolib du matin : après la scalabilité, **la résilience**, capacité à continuer de fonctionner en mode dégradé puis à revenir à la normale (transcript).\n- Il cite Werner Vogels : la question n'est pas de savoir si un système distribué va tomber en panne, mais quand ; plutôt qu'une stack trace, proposer par exemple **un repli sur une page statique** (transcript).\n- Catalogue de patterns observés chez des clients AWS, du plus évident au plus complexe, présentés comme transposables à tout cloud ou on-premise : dégradation partielle, timeouts, circuit breakers, **architecture par cellules** (transcript, descriptif).\n- Meritis estime que chaque idée reste simple, mais que leur combinaison permet d'envisager une plateforme qui résiste aux problèmes réels.",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "RvxBBQh_uX8",
+        "title": "Patterns pour des architectures résilientes et hautement dispos dans le cloud (Sébastien Stormacq)",
+        "publishedAt": "2021-10-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "bonnes-pratiques-oauth2-oidc",
+      "day": "2021-09-30",
+      "type": "talk",
+      "title": "Les bonnes pratiques OAuth2/OIDC conjuguées au présent, passé simple et futur",
+      "speakers": ["Mathieu Humbert — Accenture"],
+      "feedbackFrom": ["Blog Meritis"],
+      "summary": "- Le deuxième jour à 16 h 30, le speaker repart du problème d'origine : en 2006, Facebook demandait le mot de passe Gmail de l'utilisateur pour importer ses contacts (transcript).\n- OAuth2 est un **framework d'autorisation** fait de nombreuses spécifications à assembler, d'où sa complexité ; le flux **Implicit**, encore très présent dans le legacy, sert de base pour expliquer pourquoi il n'est plus recommandé (transcript).\n- Suite annoncée : PKCE, choix du flux selon le client, stockage des access tokens, recommandations IETF et OWASP, OAuth 2.1 et GNAP (descriptif).\n- Meritis salue la vulgarisation de notions complexes qui **régissent aujourd'hui tous les échanges sécurisés**.",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "PhQJKKrV5i0",
+        "publishedAt": "2021-10-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "initiation-concrete-a-la-virtualisation",
+      "type": "training",
+      "title": "Initiation concrète à la virtualisation",
+      "speakers": ["Samuel Ortiz", "Pierre-Antoine Grégoire", "Julien Durillon — Clever Cloud"],
+      "feedbackFrom": ["Blog Meritis", "Bilan officiel devoxx.fr"],
+      "summary": "- Université interactive qui part du bas niveau pour remonter : hyperviseur, mutualisation et optimisation du matériel, migration à chaud entre machines (transcript).\n- Les speakers assument les anglicismes et invitent à les interrompre ; le masque complique les questions depuis la salle (transcript).\n- Au programme : virtualisation du CPU, de la mémoire et des I/O, évolutions matérielles et usage comme **couche d'isolation pour les conteneurs** (descriptif).\n- Meritis la qualifie d'*« excellente »* ; université la mieux notée par le public (bilan officiel).",
+      "summarySources": ["transcript", "program", "blog"],
+      "video": {
+        "youtubeId": "As44YzdnqqE",
+        "title": "Initiation concrète à la virtualisation (Samuel Ortiz, Pierre-Antoine Grégoire et Julien Durillon)",
+        "publishedAt": "2021-10-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "processus-de-boot-histoire-moderne-informatique",
+      "type": "talk",
+      "title": "Le processus de boot : une histoire moderne de l'informatique",
+      "speakers": ["Samuel Ortiz"],
+      "feedbackFrom": ["Blog Meritis"],
+      "summary": "- Le speaker, qui a passé treize ans chez Intel, annonce un talk *« complètement inutile »* pour le développement : le démarrage d'un x86, de l'appui sur le bouton au noyau, mis en parallèle avec l'histoire de l'informatique (transcript).\n- Fil rouge : la **rétrocompatibilité x86**, qui permet à un Xeon de 2021 d'exécuter le même binaire DOS qu'en 1981, là où ARM ne garantit que quelques générations (transcript).\n- Meritis la recommande à qui veut comprendre pourquoi les x86 sont rétrocompatibles.",
+      "summarySources": ["transcript", "blog"],
+      "video": {
+        "youtubeId": "nXYXLuqsllY",
+        "title": "Le processus de boot : une histoire moderne de l'informatique (Samuel Ortiz)",
+        "publishedAt": "2021-10-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "i-love-unicode",
+      "type": "talk",
+      "title": "I ❤ Unicode",
+      "speakers": ["David Blanchet — Orange Labs"],
+      "feedbackFrom": ["Bilan officiel devoxx.fr"],
+      "summary": "- Point de départ raconté sur scène : un bulletin de conservatoire reçu en juin 2021 avec des **accents mal encodés**, et un premier réflexe, *« on est en 2021 »*, comment les ordinateurs peuvent-ils encore mal afficher des caractères accentués (transcript).\n- Le texte est une abstraction empilée : la langue orale, puis l'écriture (sur les concepts ou sur les sons), puis la représentation numérique ; le talk parle de « symboles » plutôt que de caractères (transcript).\n- Suite annoncée : modélisation du texte, affichage, et pourquoi **la longueur d'une chaîne** est moins simple qu'il n'y paraît (descriptif).\n- Troisième du format Conférence au classement du public ; ironie involontaire, le premier caractère du titre est cassé (« � ») dans le bilan officiel comme sur YouTube.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "C-rV3xY_F9A",
+        "publishedAt": "2021-10-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "intelligence-artificielle-au-secours-de-l-accessibilite",
+      "type": "talk",
+      "title": "L'intelligence artificielle au secours de l'accessibilité",
+      "speakers": ["Aurélie Vache — OVHcloud", "Guillaume Laforge — Google"],
+      "feedbackFrom": ["Stéphane Philippart (blog personnel)"],
+      "summary": "- Ouverture en langue des signes, puis un chiffre : **30 % des Français** sont touchés directement ou indirectement par le handicap, et l'accessibilité profite à tous (la rampe utile aussi à la poussette) (transcript).\n- Message clé : l'accessibilité ne se limite pas aux attributs `alt` et ARIA ; les API existantes peuvent servir à des développeurs sans doctorat en IA (transcript).\n- Démo de l'API Video Intelligence de Google : libellés, plans, suivi d'objets, visages, logos, transcription et texte à l'écran horodatés (transcript).\n- Stéphane Philippart retient que *« l'accessibilité ne se résume pas à mettre des balises alt sur nos images »*, juge l'API d'analyse vidéo impressionnante et note les exemples de Doctolib et du click and collect.",
+      "summarySources": ["transcript", "feedback"],
+      "video": {
+        "youtubeId": "ZGmNsTK7_k0",
+        "title": "L'intelligence artificielle au secours de l'accessibilité (Aurélie Vache et Guillaume Laforge)",
+        "publishedAt": "2021-10-15",
+        "transcript": true
+      }
+    },
+    {
+      "id": "tips-pour-combattre-le-syndrome-de-l-imposteur",
+      "type": "talk",
+      "title": "Tips pour combattre le syndrome de l'imposteur",
+      "speakers": ["Aurélie Vache — OVHcloud"],
+      "feedbackFrom": ["Stéphane Philippart (blog personnel)", "Bilan officiel devoxx.fr"],
+      "summary": "- La speaker note qu'en 2019, trois ou quatre mains se levaient quand elle demandait qui connaissait le syndrome, contre presque toute la salle cette fois ; elle se présente ensuite comme *« une impostrice »* avant de démonter cette petite voix (transcript).\n- Sept règles : lister connaissances et victoires (sur une mind map), **s'entourer de communautés** (Duchess France pour elle), partager pas à pas (articles, REX, coding goûters, open source), **demander du feedback plutôt qu'une validation**, pratiquer le pair programming, positiver, s'accepter (transcript).\n- Anecdotes personnelles : un commentaire blessant reçu à Devoxx France 2019, un oral de master raté pour bégaiement, d'où un message aux recruteurs : ne pas se focaliser sur *« le bon diplôme dans la bonne école »* (transcript).\n- Stéphane Philippart garde ce talk à revoir quand la confiance flanche ; Tools-in-Action le mieux noté (bilan officiel).",
+      "summarySources": ["transcript", "feedback"],
+      "video": {
+        "youtubeId": "MGt-DpYf30g",
+        "title": "Tips pour combattre le syndrome de l'imposteur (Aurélie Vache)",
+        "publishedAt": "2021-10-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "property-based-testing-theorie-pratique",
+      "type": "talk",
+      "title": "Property based testing : de la théorie à la pratique",
+      "speakers": ["Nicolas Dubien"],
+      "feedbackFrom": ["Bilan officiel devoxx.fr"],
+      "summary": "- Point de départ sur scène : des bugs découverts en production malgré les tests, comme les menus gratuits d'une application de fast-food ou un contournement d'écran de verrouillage (transcript).\n- Rappel des niveaux de tests, du test unitaire écrit avec Jest, où **les entrées sont choisies à la main**, aux tests de bout en bout Selenium (transcript).\n- Le property-based testing, né avec QuickCheck, génère ces entrées pour trouver des bugs sans spécifier tous les cas limites ; démonstration avec fast-check (descriptif).\n- Deuxième Tools-in-Action du classement public (bilan officiel).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "oeaXWvTHyxc",
+        "title": "Property based testing : de la théorie à la pratique (Nicolas Dubien)",
+        "publishedAt": "2021-10-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "dockerfile-les-bonnes-pratiques",
+      "type": "talk",
+      "title": "Dockerfile - Les bonnes pratiques",
+      "speakers": ["Guillaume Lours — Docker", "Jérémie Drouet — Datadog"],
+      "feedbackFrom": ["Bilan officiel devoxx.fr"],
+      "summary": "- Rappel des bases : les layers, à ordonner du moins au plus souvent modifié pour profiter du cache de build (transcript).\n- Cas d'école : une application React, Spring Boot, MongoDB et Nginx dans **une seule image d'environ 1 Go**, qui met près de huit minutes à builder (transcript).\n- Première bonne pratique : **un seul service par conteneur**, pour scaler horizontalement, réutiliser et patcher plus facilement ; viennent ensuite Compose, l'allègement des images, les builds multi-étapes et le refus du root (transcript, descriptif).\n- Troisième Tools-in-Action du classement public (bilan officiel).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "e63MOPOvEwU",
+        "title": "Dockerfile - Les bonnes pratiques (Guillaume Lours et Jérémie Drouet)",
+        "publishedAt": "2021-10-12",
+        "transcript": true
+      }
+    },
+    {
+      "id": "securiser-applications-quarkus-oidc-keycloak",
+      "type": "talk",
+      "title": "Sécuriser ses applications Quarkus avec OIDC (Keycloak)",
+      "speakers": ["Sébastien Blanc"],
+      "feedbackFrom": ["Stéphane Philippart (blog personnel)"],
+      "summary": "- Titre restitué d'après le compte rendu de Stéphane Philippart (titre officiel non vérifié).\n- Sécuriser une application Quarkus avec **OIDC et Keycloak** demande, selon lui, *« une annotation »* et quelques étapes de plus.\n- Il décerne au speaker le *« Prix de l'adaptation en toutes circonstances »* pour avoir tenu malgré une machine capricieuse.",
+      "summarySources": ["feedback"]
+    },
+    {
+      "id": "les-cast-codeurs-live-devoxx-2021",
+      "type": "other",
+      "title": "Enregistrement live des Cast Codeurs",
+      "speakers": ["Emmanuel Bernard", "Antonio Goncalves", "Arnaud Héritier", "Guillaume Laforge"],
+      "feedbackFrom": ["Stéphane Philippart (blog personnel)"],
+      "summary": "- Enregistrement en public du podcast francophone, qui *« fait souvent la clôture de Devoxx »* selon Guillaume Laforge (transcript du talk sur l'accessibilité).\n- Stéphane Philippart y assiste en fan : *« Quelle intro ! »*, et le plaisir d'entendre les voix des hosts en vrai.\n- Contenu de l'épisode non résumé dans les sources lues.",
+      "summarySources": ["feedback"]
+    },
+    {
+      "id": "full-remote-comment-reussir-a-travailler-en-equipe",
+      "type": "lightning",
+      "title": "Full-remote : comment réussir à travailler en équipe ?",
+      "speakers": ["Lise Quesnel — Zenika"],
+      "feedbackFrom": ["Bilan officiel devoxx.fr"],
+      "summary": "- Retour d'expérience d'une lead dev de Zenika en télétravail longue durée depuis Nantes pour la mission Pix, avant même le Covid (transcript).\n- Quatre risques : **la solitude**, la routine, le débordement entre vie pro et vie perso, la perception par les autres (*« si on vous voit pas »*, on vous croit ailleurs) (transcript).\n- La clé : la communication, avec une **pyramide** du message écrit à l'appel, à la visio puis au face-à-face ; monter d'un étage en cas de quiproquo (transcript).\n- Au quotidien : séparer les espaces et les outils, dire bonjour en arrivant, faire la code review à plusieurs pour créer du lien (transcript).\n- Quickie le mieux noté selon le bilan officiel, qui précise toutefois qu'**une seule évaluation** était disponible.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "3MjStBC3TU0",
+        "title": "Full-remote : comment réussir à travailler en équipe ? (Lise Quesnel)",
+        "publishedAt": "2021-10-12",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Design de persuasion : de la séduction à l'engagement (Estelle Landry)",
+    "Le futur de la data : Apache Spark 3.1, Delta Lake et Koalas (Quentin Ambard, Seifeddine Saafi)",
+    "Apache Pulsar 101 : architecture et fonctionnalités (Steven Le Roux, Alexandre Duval)",
+    "Rebelles au SaaS : le on-premises est encore là pour longtemps (Clément Stenac)",
+    "Rust : sûr et concurrent. Mais comment fait-il ? (Benjamin Coenen)",
+    "React Native : comment réussir son application mobile (Olivier Thierry)",
+    "OpenAPI Generator : 4000 étoiles sur GitHub et des spaghettis (Jérémie Bresson)",
+    "The State of NoSQL in 2021 (Denis Rosa)",
+    "Grosses bases de données, beaucoup de serveurs, data center ou cloud (Flavio Gurgel)",
+    "Le design de l'erreur (François Teychene)",
+    "Sécuriser son application avec WebAuthn (Arnaud Locquet)",
+    "Modularité en (micro) services de l'espace client Orange (S. Marcelaud, F. Demany)",
+    "Allô le monde, est-ce que l'i18n va bien ? (Pierre-Yves Lapersonne)",
+    "Ajouter Flutter à une application mobile existante (Elaine Dias Batista)",
+    "FPGA : créer du matériel en programmant (Frédéric Bisson)",
+    "Peut-on faire une application cloud native avec Spark ? (Franck Cussac)",
+    "Tekton, une nouvelle approche des pipelines (Philippe Thomas)",
+    "De l'instinct à la décision informée : lancer la data dans sa startup (Arnaud Milleker)",
+    "Quand les choses tournent mal (Benoît Lafontaine)",
+    "Simplifiez vos applications en les rendant plus Svelte (Jérôme Boukorras)",
+    "Du make it work au make it fast : des quickwins pour booster votre application (Jonathan Hervieux)",
+    "Automatisation 360° avec GitHub Actions (Alain Hélaïli)",
+    "Benchmark HTTP grandeur nature (Julien Viet)",
+    "Construire des solutions plus intelligentes sans expertise en machine learning (Laurent Picard)",
+    "Surchargés Live, épisode 03 : accéléromètre et Streams API (J-F Garreau, H. Gonzalez)",
+    "Migrer vers Java 11 dans une vraie application (Piotr Przybyl)",
+    "Kotlin Fullstack (Gaetan Zoritchak)",
+    "Cryptographie, hachage, chiffrement sans les maths (Cédric Gatay)",
+    "SonarQube, histoire d'un petit analyseur de code qui devient grand (J-B Lièvremont, C. Zürn)",
+    "La séquence de démarrage de Spring Boot (Benjamin Bargeton)",
+    "Istio, le meilleur ami de votre cluster K8S (Kevin Davin)",
+    "Une API from scratch avec NestJS (Sylvain Pontoreau, Paul Souche)",
+    "Retour à la simplicité dans la jungle de l'outillage JavaScript (Hubert Sablonnière)",
+    "Chorégraphie contre orchestration dans les microservices serverless (Guillaume Laforge)",
+    "Penser le monde en séries temporelles (Mathias Herberts)",
+    "Keep lying to yourself: everything's fine (Stéphane Épardaud)",
+    "Serverless Everywhere (Aymeric Weinbach)",
+    "Live refactoring de code legacy avec la technique du Golden Master",
+    "Il était une fois Kafka sur Pulsar (Steven Le Roux, Pierre Zemb)"
+  ],
+  "sources": [
+    { "label": "Devoxx France : « Report de l'édition 2021 à fin septembre » (3 mai 2021)", "url": "https://www.devoxx.fr/2021/05/03/report-de-ledition-2021-a-fin-septembre" },
+    { "label": "Devoxx France : « Devoxx France 2021 - Passe Sanitaires et autres informations » (6 juillet 2021)", "url": "https://www.devoxx.fr/2021/07/06/devoxx-france-2021-passe-sanitaires-et-autres-informations" },
+    { "label": "Devoxx France : « Le programme 2021 se prépare » (20 août 2021)", "url": "https://www.devoxx.fr/2021/08/20/le-programme-2021-se-prepare" },
+    { "label": "Devoxx France : « Merci ! », bilan 2021 et sessions les mieux notées (3 octobre 2021)", "url": "https://www.devoxx.fr/en/2021/10/03/2021-on-vous-dit-merci/" },
+    { "label": "Programme officiel 2021 (cfp.devoxx.fr, injoignable le 2026-11-11)", "url": "https://cfp.devoxx.fr/2021/index.html" },
+    { "label": "Playlist YouTube « Devoxx France 2021 - Conférence » (53 vidéos) ; 22 transcripts automatiques exploités", "url": "https://www.youtube.com/playlist?list=PLTbQvx84FrATKYTSVVei8ZouXFGePwSUA" },
+    { "label": "Stéphane Philippart, « Mon Devoxx 2021 » (blog personnel, 1er octobre 2021)", "url": "https://github.com/philippart-s/blog/blob/master/content/posts/2021/2021-10-01-devoxx-2021/index.md" },
+    { "label": "Meritis (Gaëtan Eleouet, Alban Clevy, Lionel Odolant), « Retour sur Devoxx France 2020-2021 : une édition 9 ¾ » (15 février 2022)", "url": "https://meritis.fr/blog/retour-sur-devoxx-france-2020-2021-une-edition-9-%C2%BE/" },
+    { "label": "Ippon, interview de David Gageot (Théophile Guittet, 12 novembre 2021)", "url": "https://blog.ippon.fr/2021/11/12/devoxx-2021-interview-david-gageot/" },
+    { "label": "Ippon, interviews Devoxx 2021 d'Antonio Goncalves, Aurélie Vache et Rémi Forax (octobre-novembre 2021)", "url": "https://blog.ippon.fr/tag/devoxx/" },
+    { "label": "Album Flickr Devoxx France 2021 (speakers)", "url": "https://www.flickr.com/photos/147442451@N05/albums/72157720047987483" },
+    { "label": "Posts LinkedIn : aucun lu" }
+  ]
 }

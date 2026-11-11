@@ -12,10 +12,10 @@
   "dateConfidence": "ok",
   "note": "Première édition, organisée par l'association DevFest Lyon avec le soutien du GDG Lyon : une journée, deux salles (La Grande Halle, Le Rez-de-Saône), 16 talks (quickies de 20 min et conférences de 50 min) choisis parmi 314 propositions, environ 250 participants, 10 sponsors, complet plus d'un mois à l'avance. Pas de captation vidéo.",
   "status": "synthesized",
-  "synthesisUpdatedAt": "2026-10-07",
-  "revisit": "Mis à jour le 2026-10-07 : corpus toujours mince après une nouvelle passe (LinkedIn non indexé par la recherche web, Bluesky et hashtag Mastodon consultés) : 3 comptes-rendus de blog, 1 article sponsor et un fil Mastodon d'un participant ; aucun post LinkedIn de participant lu ; 7 sessions sur 18 sans aucun retour ; édition non filmée, donc aucun transcript possible.",
-  "corpus": "Programme officiel (devfest.gdglyon.com/2025/schedule, Conference Hall) ; trois comptes-rendus de blog publiés entre le 29 novembre et le 2 décembre 2025 (Julien Wittouck, speaker ; Nirina Rabeson, Exotec ; Michaël Bernasinski, HoppR) et l'article du sponsor Gold SQLI ; un fil de 10 posts Mastodon publiés en direct par un participant (BoD, #DevFestLyon, 28 novembre 2025) ; deux posts LinkedIn de l'organisation (annonces).",
-  "limits": "Aucune vidéo : l'édition n'a pas été filmée, donc aucun transcript. Les retours se concentrent sur la Grande Halle ; les sessions du Rez-de-Saône (jeu de rôle agentique, Chaos Monkey, GenAIScript, Docker Bake, opérateur Kubernetes…) n'ont aucun retour, et les posts Mastodon ne donnent qu'une phrase par talk. L'article SQLI est un contenu de sponsor, plus thématique que factuel ; aucun post LinkedIn de participant n'a pu être lu (non indexés par la recherche web).",
+  "synthesisUpdatedAt": "2026-11-11",
+  "revisit": "Mis à jour le 2026-11-11 : nouvelle passe (Speaker Deck, GitHub et sites de speakers, hashtag Mastodon sur mastodon.social, piaille.fr et fosstodon.org, fil Bluesky de l'organisation, recherche LinkedIn) : seuls des supports de speakers ont été ajoutés (GenAIScript, opérateur Kubernetes, QR codes) ; toujours aucun post LinkedIn de participant lu, aucun nouveau compte-rendu de participant, 5 sessions sur 18 sans aucun contenu ; édition non filmée.",
+  "corpus": "Programme officiel (devfest.gdglyon.com/2025/schedule, Conference Hall) ; trois comptes-rendus de blog publiés entre le 29 novembre et le 2 décembre 2025 (Julien Wittouck, speaker ; Nirina Rabeson, Exotec ; Michaël Bernasinski, HoppR) et l'article du sponsor Gold SQLI ; un fil de 10 posts Mastodon publiés en direct par un participant (BoD, #DevFestLyon, 28 novembre 2025) ; deux posts LinkedIn de l'organisation (annonces). Ajouts du 2026-11-11 : supports publiés par trois speakers (dépôt de slides GenAIScript de Yohan Lasorsa, page de talk et code de démo de Stéphane Philippart, page de talks de Raphaël Semeteys).",
+  "limits": "Aucune vidéo : l'édition n'a pas été filmée, donc aucun transcript. Les retours de participants se concentrent sur la Grande Halle ; les sessions du Rez-de-Saône ne sont documentées, au mieux, que par les supports de leurs speakers (GenAIScript, opérateur Kubernetes), dont le contenu exact présenté à Lyon n'est pas confirmé (slides GenAIScript issues d'autres événements, deck de l'opérateur Kubernetes illisible hors titre). Les posts Mastodon ne donnent qu'une phrase par talk, l'article SQLI est un contenu de sponsor, et aucun post LinkedIn de participant n'a pu être lu (non indexés par la recherche web).",
   "tldr": "Une **première édition saluée à l'unanimité pour son organisation** (complète un mois avant, 314 propositions pour 16 créneaux), au programme dominé par l'**IA appliquée à des cas concrets** et par un **web qui se rapproche du natif** (View Transitions, WebGPU).",
   "keyTakeaways": [
     "Pour fiabiliser un agent conversationnel sur un gros catalogue, découper le problème : un LLM extracteur, un moteur de recherche (Algolia) pour retrouver le vrai produit, un LLM conversationnel et un LLM évaluateur contre les hallucinations (Marie Terrier, rapporté par HoppR).",
@@ -99,6 +99,16 @@
       "summarySources": ["feedback", "blog"]
     },
     {
+      "id": "et-si-votre-prochain-script-c-etait-un-prompt-genaiscript",
+      "day": "2025-11-28",
+      "type": "talk",
+      "title": "Et si votre prochain script… c'était un prompt ? Découvrez GenAIScript !",
+      "speakers": ["Yohan Lasorsa — Microsoft"],
+      "feedbackFrom": ["Yohan Lasorsa (speaker, dépôt de slides GitHub)"],
+      "summary": "- Conférence de 50 minutes (Data & AI), au Rez-de-Saône à 14h00 (programme). Aucun retour de participant trouvé : résumé tiré du dépôt public de slides du speaker (*« Prompting is the New Scripting: Meet GenAIScript »*), dont les versions publiées portent les marques de dotJS et de SnowCamp ; le contenu exact présenté à Lyon n'est pas confirmé.\n- Point de départ : comme **jQuery a masqué les disparités des navigateurs**, il faudrait aujourd'hui une couche simple face à des modèles et approches d'IA qui changent chaque semaine ; et l'IA générative *« not all about Python »* (speaker, slides).\n- **GenAIScript**, boîte à outils open source en JavaScript : un prompt s'écrit comme un template literal (`$`), le contexte se déclare avec `def` (fichiers, URL, images, diffs, schémas), les outils avec `defTool` et les agents avec `defAgent` (*« Prompt + Tools »*) ; utilisable en CLI, dans VS Code ou via GitHub Copilot, avec GitHub Models, OpenAI, Anthropic ou Ollama.\n- Cas d'usage montrés : **automatiser la maintenance open source** (relecture d'issues lancée par une GitHub Action, génération de changelog à partir de l'historique git), refactoring assisté ; intégration **MCP** dans les deux sens (consommer des serveurs MCP, exposer ses scripts comme outils MCP).\n- Limite assumée : *« only a developer tool »*, pas un framework pour construire des applications.",
+      "summarySources": ["slides", "program"]
+    },
+    {
       "id": "45-min-pour-mettre-son-application-a-genoux",
       "day": "2025-11-28",
       "type": "talk",
@@ -119,13 +129,23 @@
       "summarySources": ["feedback", "blog", "program"]
     },
     {
+      "id": "developper-un-operateur-kubernetes-en-java-challenge-accepted",
+      "day": "2025-11-28",
+      "type": "talk",
+      "title": "Développer un opérateur Kubernetes en Java, challenge accepted !",
+      "speakers": ["Stéphane Philippart"],
+      "feedbackFrom": ["Stéphane Philippart (speaker, page du talk sur son blog)"],
+      "summary": "- Conférence de 50 minutes (Cloud, Infra & DevOps), au Rez-de-Saône à 16h20 (programme). Aucun retour de participant trouvé : résumé tiré de la page du talk publiée par le speaker et du code de démo qu'elle référence ; le deck (*« JOSDK - DevFest Lyon - 2025 - 50mins »*) est publié mais seul son titre a pu être lu.\n- Propos : un **opérateur Kubernetes** peut simplement installer ou mettre à jour une application, ou aller jusqu'à jouer le rôle de l'« Ops » ; la documentation privilégiant Go, le talk montre **comment en écrire un en Java** (speaker).\n- Déroulé annoncé : un **opérateur Hello World en live coding** avec le SDK Java, puis un opérateur plus riche pour voir s'il peut vraiment prendre en charge des tâches d'exploitation ; objectif : savoir si l'on a besoin d'un opérateur et comment le construire (speaker).\n- Le code de démo associé (dépôt java-operator-samples) suit ces étapes : projet Operator SDK avec Quarkus et **Java Operator SDK (JOSDK)**, génération d'une CRD, réconciliation, webhook recevant les tags GitHub pour déployer une application Quarkus, image construite avec Jib, droits RBAC.\n- Talk rodé : donné une dizaine de fois depuis 2022 selon la liste du speaker.",
+      "summarySources": ["slides", "program"]
+    },
+    {
       "id": "embellir-des-qr-codes-a-l-ere-de-la-genai",
       "day": "2025-11-28",
       "type": "lightning",
       "title": "Embellir des QR Codes à l'ère de la GenAI",
       "speakers": ["Raphael Semeteys"],
-      "feedbackFrom": ["BoD (Mastodon)"],
-      "summary": "- Quickie de 20 minutes (Data & AI), en fin de journée dans la Grande Halle (programme).\n- Un participant le présente comme une méthode pour créer des **QR codes à l'allure spectaculaire** (BoD, Mastodon).\n- Seul retour trouvé : un post d'une phrase, sans détail sur les outils ou modèles d'IA générative utilisés.",
+      "feedbackFrom": ["BoD (Mastodon)", "Raphaël Semeteys (speaker, page de talks)"],
+      "summary": "- Quickie de 20 minutes (Data & AI), en fin de journée dans la Grande Halle (programme).\n- Un participant le présente comme une méthode pour créer des **QR codes à l'allure spectaculaire** (BoD, Mastodon).\n- Selon le descriptif publié par le speaker : bases techniques des QR codes, puis exemples pratiques de **ControlNets** pour produire des QR codes à la fois fonctionnels et esthétiques, le tout **exécuté en local sur un PC** (speaker).\n- Aucun support ni compte-rendu détaillé trouvé : seuls un post d'une phrase et ce descriptif.",
       "summarySources": ["feedback", "program"]
     },
     {
@@ -144,9 +164,7 @@
     "Déchaînez le Chaos : tester la résilience de votre application avec Chaos Monkey (Erwan Le Tutour)",
     "Les gardiens des données à l'ère de l'IA (Carmen Piciorus)",
     "Coder plus pour coder moins : outils maison, IA et carnet de notes (Edouard Penin)",
-    "Et si votre prochain script… c'était un prompt ? Découvrez GenAIScript! (Yohan Lasorsa)",
-    "Docker Bake, élégance et standardisation pour le build de vos images Docker (Mazlum Tosun)",
-    "Développer un opérateur Kubernetes en Java, challenge accepted ! (Stéphane Philippart)"
+    "Docker Bake, élégance et standardisation pour le build de vos images Docker (Mazlum Tosun)"
   ],
   "sources": [
     { "label": "Programme officiel DevFest Lyon 2025", "url": "https://devfest.gdglyon.com/2025/schedule" },
@@ -157,6 +175,10 @@
     { "label": "Blog HoppR (Michaël Bernasinski) : Alors ? C'était comment ce premier DevFest Lyon", "url": "https://blog.hoppr.tech/blogs/2025-12-02-alors-ctait-comment-ce-premier-devfest-lyon" },
     { "label": "SQLI (sponsor Gold) : DevFest Lyon 2025, l'évolution technologique", "url": "https://www.sqli.com/fr-fr/insights/devfest-lyon-2025-evolution-technologique" },
     { "label": "Mastodon : fil en direct de BoD (#DevFestLyon, 10 posts du 28 novembre 2025)", "url": "https://mastodon.social/@BoD" },
+    { "label": "Yohan Lasorsa (speaker) : dépôt de slides GenAIScript, Prompting is the New Scripting", "url": "https://github.com/sinedied/genaiscript-talk" },
+    { "label": "Stéphane Philippart (speaker) : page du talk à DevFest Lyon 2025 (descriptif, slides)", "url": "https://philippart-s.github.io/blog/talks/devfest-lyon-2025/" },
+    { "label": "Stéphane Philippart : code de démo java-operator-samples", "url": "https://github.com/philippart-s/java-operator-samples" },
+    { "label": "Raphaël Semeteys (speaker) : page de talks (descriptif du talk QR codes)", "url": "https://raphiki.github.io/talks.html" },
     { "label": "Let's play Factorio, captation antérieure publiée par GDG France (pas cette édition)", "url": "https://www.youtube.com/watch?v=I07DxOLw10E" },
     { "label": "LinkedIn : posts de la page DevFest Lyon (annonce du programme) ; aucun post de participant lu" }
   ]

@@ -4,10 +4,163 @@
   "title": "DevFest Strasbourg 2021",
   "edition": "2e édition",
   "start": "2021-11-09",
+  "end": "2021-11-09",
   "city": "Strasbourg",
   "venue": "Campus CCI Strasbourg",
   "url": "https://devfest21.gdgstrasbourg.fr",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "2e édition, une journée (9 novembre 2021, 9 h à 18 h) au Campus CCI Alsace, site de Strasbourg (avenue de Colmar), organisée par le GDG Strasbourg et Capitale Dev. L'appel à orateurs Conference Hall annonçait « plus de 350 développeurs », des formats conférence (40 min), quickie (20 min) et workshop (120 min), et huit catégories (Mobile & IoT, Web, Découverte, Cloud & DevOps, Langages, BigData & IA, UX/UI, Sécurité). En ouverture, les organisateurs annoncent « plus de vingt-cinq conférences », rappellent qu'ils n'ont pas pu organiser d'édition depuis 2019, demandent le port du masque et limitent l'espace couvert à 100 personnes.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-11",
+  "revisit": "Aucun retour participant public trouvé (7 recherches web : ni post LinkedIn, ni blog, ni sketchnote). La synthèse repose sur les 11 transcripts et les descriptifs ; seules 11 des « plus de vingt-cinq conférences » annoncées sont connues. À reprendre : programme complet (archive de devfest21.gdgstrasbourg.fr ou base Firestore), nom complet et entreprise du speaker « Damien » de « Ce qui rend les développeurs heureux en 2021 » (fondateur d'un job board, nom déformé par les sous-titres, probablement WeLoveDevs), posts de novembre 2021 des speakers et des participants.",
+  "corpus": "Les 11 vidéos de la playlist YouTube « Devfest Strasbourg 2021 » de la chaîne GDG Strasbourg (publiées les 25 et 27 décembre 2021), toutes lues via leurs sous-titres automatiques français, ainsi que leurs descriptions qui reprennent le programme. Pages Conference Hall (appel à orateurs) et GDG Community (événement), et deux decks Speaker Deck (Edouard Marquez ; Guillaume Laforge et Mete Atamel) présentés à d'autres événements de 2021.",
+  "limits": "Aucun retour de participant : la synthèse décrit ce qui a été dit sur scène et les questions audibles de la salle, pas la réception du public. Sous-titres automatiques sans ponctuation, avec noms et chiffres souvent écorchés ; le transcript de Flutter commence en cours de talk et celui de la session sur le bonheur des développeurs est très haché. Seules les sessions filmées (11 sur plus de 25) sont connues, et 8 des 13 speakers travaillent chez Google, Microsoft ou AWS (la plupart en relations développeurs), ce qui colore fortement le corpus.",
+  "tldr": "Un DevFest de **retour en présentiel sous masque**, ouvert sur la **culture d'équipe** (la réécriture du compilateur Hack chez Facebook) et dominé par les speakers des trois grands clouds : **lock-in serverless relativisé par la séparation du code métier**, orchestration contre chorégraphie, **IA en API et en copilote dont on reste le pilote**, UI déclarative mobile, avec une session à part sur **ce qui rend les développeurs heureux**.",
+  "keyTakeaways": [
+    "Choisir un environnement dont la culture vous convient, car une culture toxique détruit la productivité et les personnes, et se demander comment on contribue soi-même à « la jungle » (Hugo Venturini).",
+    "Séparer strictement le code métier de la « tuyauterie » serverless : c'est ce qui a rendu un portage Azure Functions vers Lambda presque mécanique (François Bouteruche).",
+    "Se demander quel vendor lock-in on est prêt à accepter : pour une équipe sans expérience Kubernetes, réécrire un peu de code coûtait moins qu'apprendre Kubernetes (François Bouteruche).",
+    "Ne jamais développer son propre système d'identité ni stocker de mots de passe ; utiliser le flux Authorization Code plutôt qu'Implicit Grant, jugé non sûr (Sébastien Stormacq).",
+    "Orchestrer quand le processus métier tient dans un organigramme, chorégraphier entre contextes indépendants, et ne pas mettre d'algorithmes dans le YAML d'un workflow (Guillaume Laforge).",
+    "Avec GitHub Copilot, relire chaque ligne proposée et compléter soi-même les cas limites des tests : « il faut rester le pilote de votre code » (Tiffany Souterre).",
+    "Commencer par une API de ML pré-entraînée (un prototype en un après-midi) avant AutoML (deux jours), dont la vraie difficulté est un jeu de données diversifié et équilibré (Laurent Picard).",
+    "Sur Flutter, viser le mobile sans hésiter, éviter le web pour les sites qui dépendent du SEO et considérer le desktop comme encore immature (Edouard Marquez).",
+    "Faire descendre les données et remonter les événements dans l'arbre de composants Compose, et remplacer les adapters de RecyclerView par LazyColumn (Gérard Paligot).",
+    "Ne pas chercher à forcer l'inlining en Go sans besoin mesuré ; vérifier avec -gcflags -m=2 et des benchmarks (Valentin Deleplace)."
+  ],
+  "sessions": [
+    {
+      "id": "ouverture-welcome-to-the-jungle-we-got-funny-games",
+      "day": "2021-11-09",
+      "type": "keynote",
+      "title": "Ouverture Devfest Strasbourg : Welcome to the jungle, we got funny games",
+      "speakers": ["Hugo Venturini"],
+      "feedbackFrom": [],
+      "summary": "- Mot d'accueil des organisateurs : « deuxième édition », plus de vingt-cinq conférences, port du masque, **100 personnes maximum dans l'espace couvert**, remerciements appuyés aux sponsors (*« un événement comme ça, ça coûte cher »*).\n- Hugo Venturini (passé par Facebook, puis 18 mois chez un moteur de recherche respectueux de la vie privée dont il juge « un peu tôt » de parler) raconte la **création d'un langage** : chez Facebook, un analyseur statique trouve environ 500 bugs dans le code PHP, d'où l'introduction progressive de types qui mène à Hack et à la machine virtuelle HHVM.\n- Cœur du récit : réécrire en OCaml le générateur de code jusque-là en C++. L'équipe passe de 2 personnes en janvier à 13 en juillet, sur quatre bureaux et trois fuseaux, et chaque arrivant livre du code dès son premier jour.\n- Méthode atypique : une énorme suite de tests en échec affichée sur un tableau de bord qui doit descendre à 0 %, des revues de code légères puis une revue hebdomadaire a posteriori, un **diff sémantique** pour comparer les deux compilateurs. Six mois d'écriture, six mois de validation, bascule en production en mars 2018.\n- Message : la vraie difficulté de l'informatique, ce sont les humains. *« Une culture toxique détruit la productivité, détruit les individus »* ; le recrutement est clé, et la culture qui lui a convenu (prise de risque laissée aux ingénieurs) ne convient pas à tout le monde.\n- Lecture critique : récit passionnant mais très centré sur une organisation exceptionnelle, avec des pratiques (peu de revue de code) qu'il déconseille lui-même : *« ne faites pas ça chez vous »*.",
+      "summarySources": ["program", "transcript"],
+      "video": { "youtubeId": "CGAzJM_6_X0", "title": "Ouverture Devfest Strasbourg - Welcome to the jungle, we got funny games - Hugo Venturini", "publishedAt": "2021-12-27", "transcript": true }
+    },
+    {
+      "id": "y-a-t-il-un-copilote-dans-mon-ide",
+      "day": "2021-11-09",
+      "type": "talk",
+      "title": "Y a-t-il un copilote dans mon IDE ?",
+      "speakers": ["Tiffany Souterre — Microsoft"],
+      "feedbackFrom": [],
+      "summary": "- Format court (une vingtaine de minutes), présenté comme un **retour d'expérience de développeuse Python** ; elle précise ne travailler ni chez GitHub ni chez OpenAI.\n- Question de départ : une IA peut-elle voler son job ? Test en direct sur LeetCode : Two Sum accepté du premier coup à partir du seul énoncé, puis un **solveur de sudoku** (niveau difficile) découpé par Copilot en deux fonctions, accepté lui aussi.\n- Copilot génère des **tests unitaires** à partir de l'exemple du commentaire et s'adapte au style de test de l'utilisateur ; il aide aussi à rédiger du Markdown (un cours de data science, un tableau des services Azure) et à « discuter ».\n- Limites posées : il ne pense pas aux cas limites, il faut lire le code ligne par ligne, et il ne peut pas écrire une application entière à partir d'une description. Copilot est alors en **Technical Preview sur liste d'attente**.\n- Conclusion : *« copilote c'est bien mais il faut rester le pilote »* ; il excelle sur un problème découpé en petits morceaux.\n- La vidéo est de loin la plus vue de la playlist (plus de 13 000 vues relevées), signe d'intérêt pour le sujet plutôt que retour sur la session.",
+      "summarySources": ["program", "transcript"],
+      "video": { "youtubeId": "yQSljzg5M88", "title": "Y a-t-il un copilote dans mon IDE ? - Tiffany Souterre", "publishedAt": "2021-12-27", "transcript": true }
+    },
+    {
+      "id": "construire-des-solutions-plus-intelligentes-sans-expertise-ml",
+      "day": "2021-11-09",
+      "type": "talk",
+      "title": "Construire des solutions plus intelligentes sans expertise en machine learning",
+      "speakers": ["Laurent Picard — Google"],
+      "feedbackFrom": [],
+      "summary": "- Trois façons de profiter du ML : des data scientists (*« une denrée rare »*), des **API pré-entraînées** pour tout développeur, et **AutoML** entre les deux. Le talk suit celui sur Copilot, auquel il fait référence.\n- Tour des API Google Cloud, en précisant que les principes valent ailleurs : vision (labels, géolocalisation, visages et émotions, OCR jugé « résolu », manuscrit « presque résolu » avec une erreur restante sur un texte de Tolkien), vidéo, langage naturel (entités avec un identifiant unique commun au texte et à l'image, sentiment), traduction, voix.\n- Exemples d'usage cités : un service client britannique qui traite d'abord les e-mails négatifs, la segmentation d'images de cadastre par l'administration fiscale pour repérer les piscines.\n- AutoML : 100 à 200 images par classe suffisent pour reconnaître des types de nuages (environ 90 %), la **matrice de confusion** révèle un jeu de données trop homogène ; export edge possible pour mobile, conteneur ou page web.\n- Démo avec les téléphones de la salle : selfies analysés en direct, moustaches posées sur les visages, puis un modèle maison qui détecte les gens qui tirent la langue, bâillent ou dorment.\n- Bilan chiffré : un prototype API en un après-midi, AutoML en deux jours ; *« la richesse de votre modèle dépend de votre jeu de données »*. Lecture critique : talk très vitrine Google Cloud.",
+      "summarySources": ["program", "transcript"],
+      "video": { "youtubeId": "OXg4KElCkSM", "title": "Construire des solutions plus intelligentes sans expertise en machine learning - Laurent Picard", "publishedAt": "2021-12-27", "transcript": true }
+    },
+    {
+      "id": "choregraphie-vs-orchestration-microservices-serverless",
+      "day": "2021-11-09",
+      "type": "talk",
+      "title": "Chorégraphie vs Orchestration pour les microservices serverless ?",
+      "speakers": ["Guillaume Laforge — Google Cloud"],
+      "feedbackFrom": [],
+      "summary": "- Métaphore de départ : dans un ballet, le comportement **émerge** des danseurs ; dans un orchestre, un chef ordonne. Talk habituellement donné avec Mete Atamel, sur la base d'un workshop commun.\n- Trois approches comparées : REST direct (simple mais couplé, chaque service est un point de défaillance), **chorégraphie** par événements (découplée et extensible, mais difficile à superviser, sans flux métier explicite ni versionnable), **orchestration** (flux décrit, versionné, retries et timeouts centralisés, au prix d'un outil de plus).\n- Réponse : *« ça dépend »*. Orchestrer quand le processus tient dans un organigramme, chorégraphier entre contextes indépendants, et combiner les deux (orchestration à l'intérieur d'un contexte, messages entre contextes).\n- Retour d'expérience sur l'application Pic-a-daily : trois manières différentes de recevoir le même événement Cloud Storage selon le produit (*« les poupées gigognes »*) ; la réécriture avec Workflows remplace un service entier par quelques appels déclaratifs en YAML.\n- Bilan honnête : moins de code et de configuration, erreurs plus faciles à localiser ; mais produit jeune et peu documenté, YAML qui *« n'est pas un langage de programmation »*, tests et support IDE faibles, parallélisme perdu.\n- Le deck de janvier 2021 lu par ailleurs correspond au contenu présenté.",
+      "summarySources": ["program", "transcript", "slides"],
+      "video": { "youtubeId": "z8emRCHf2qc", "title": "Chorégraphie vs Orchestration pour les microservices serverless ? - Guillaume Laforge", "publishedAt": "2021-12-27", "transcript": true }
+    },
+    {
+      "id": "migrer-une-application-serverless-azure-vers-aws",
+      "day": "2021-11-09",
+      "type": "talk",
+      "title": "Migrer une application serverless d'Azure vers AWS : REX du terrain",
+      "speakers": ["François Bouteruche — AWS"],
+      "feedbackFrom": [],
+      "summary": "- Speaker developer advocate chez AWS, ancien de Microsoft, développeur .NET depuis 15 ans. Point de départ : le **vendor lock-in** qu'on prête au serverless existe-t-il vraiment ?\n- Cas client (anonyme) : un SaaS bâti sur Azure Functions, Service Bus et Storage, qu'une exigence de conformité de clients du secteur public nord-américain oblige à déployer sur AWS.\n- Première option, Azure Functions sur Kubernetes (EKS) avec KEDA : **rejetée par le client**, sans expérience Kubernetes et peu tenté par la conteneurisation (il faut en plus Prometheus pour scaler sur HTTP).\n- Seconde option, le portage vers Lambda et API Gateway, en démo dans Visual Studio : le client avait **isolé son code métier** de la « tuyauterie » Azure Functions, le code se copie presque tel quel, la définition passe dans un template SAM. Pour garder Swagger, toute l'API ASP.NET Core est hébergée dans une seule Lambda.\n- Leçons : séparer code métier et code d'environnement ; se demander si réécrire un peu de code est plus dur qu'apprendre Kubernetes ; *« quel est le vendor lock-in qu'on est prêt à prendre »*.\n- En questions, la salle revient sur le cold start et la limite de 15 minutes ; le client découpe désormais son code métier en paquets NuGet avec deux packagings, au prix d'un gros travail de CI/CD.",
+      "summarySources": ["program", "transcript"],
+      "video": { "youtubeId": "Hxf7JGTtYxQ", "title": "Migrer une application serverless d'Azure vers AWS : REX du terrain - François Bouteruche", "publishedAt": "2021-12-27", "transcript": true }
+    },
+    {
+      "id": "oauth-demystifie",
+      "day": "2021-11-09",
+      "type": "talk",
+      "title": "OAuth démystifié !",
+      "speakers": ["Sébastien Stormacq — AWS"],
+      "feedbackFrom": [],
+      "summary": "- Session de fin de journée. Message principal : **ne développez jamais votre propre système d'identité** et ne stockez pas de mots de passe, sauf si c'est votre métier ; c'est de la « plomberie » à risque (scalabilité, conformité, sécurité).\n- Vocabulaire posé : identification, authentification, autorisation. Analogie de la **carte d'hôtel** pour le token (anonyme, limité dans le temps et à une ressource) et du passeport pour la fédération d'identités ; OpenID Connect, c'est OAuth plus des informations d'identité.\n- Deux flux expliqués : Implicit Grant, *« plus considéré comme sécurisé »* car le token transite par le client, et **Authorization Code**, où le code est échangé côté serveur contre les tokens.\n- Démo en direct avec Amazon Cognito et de simples commandes curl : user pool, client, URL de redirection autorisée, échange du code en Basic Auth, puis lecture des trois tokens (ID, access, refresh) sur jwt.io.\n- Conclusion : le faire une fois « à la dure » aide à comprendre, puis utiliser des bibliothèques de haut niveau. Fin promotionnelle (podcast AWS, crédit offert contre un avis).",
+      "summarySources": ["program", "transcript"],
+      "video": { "youtubeId": "jGEjBUvj4Qk", "title": "OAuth démystifié! - Sébastien Stormacq", "publishedAt": "2021-12-27", "transcript": true }
+    },
+    {
+      "id": "building-multi-screen-experiences-for-the-web",
+      "day": "2021-11-09",
+      "type": "talk",
+      "title": "Building multi-screen experiences for the web",
+      "speakers": ["Yohan Lasorsa — Microsoft", "Olivier Leplus — Microsoft"],
+      "feedbackFrom": [],
+      "summary": "- Talk en duo, premier créneau après l'ouverture, donné en français malgré son titre. Historique des appareils double écran (consoles Nintendo, Surface Duo, Galaxy Fold) : le **double écran est-il juste une cible de plus du responsive design** ?\n- Avertissement répété : les API présentées sont **hautement expérimentales**, réservées aux navigateurs Chromium avec un flag, et le brouillon de spécification évolue plus vite que les implémentations.\n- Outils CSS montrés : media query `screen-spanning` (remplacée dans le brouillon par des segments de viewport horizontaux et verticaux), variables d'environnement de pliure, dont la largeur de la charnière à prendre en compte même si elle vaut zéro ; côté JavaScript, la liste des segments de fenêtre.\n- **Device Posture API** : adapter l'interface à l'angle d'ouverture (laptop, livre, à plat, tente), par exemple un appel vidéo qui évite de couper un visage dans la pliure.\n- Démos sur un vrai Surface Duo : bataille navale qui exige deux écrans, galerie photo liste-détail ; outils de debug (émulation dans les DevTools, émulateur Android, polyfills partiels) ; patterns UX (liste-détail, panneau compagnon, double vue).\n- Prototype de bibliothèque Angular pour supprimer les media queries du code applicatif. Lecture critique : sujet de veille, pas encore utilisable en production.",
+      "summarySources": ["program", "transcript"],
+      "video": { "youtubeId": "_sPECLpf23M", "title": "Building multi-screen experiences for the web - Yohan Lasorsa & Olivier Leplus", "publishedAt": "2021-12-27", "transcript": true }
+    },
+    {
+      "id": "flutter-en-2021-est-ce-le-moment-de-s-y-interesser",
+      "day": "2021-11-09",
+      "type": "talk",
+      "title": "Flutter en 2021 : est-ce le moment de s'y intéresser ?",
+      "speakers": ["Edouard Marquez"],
+      "feedbackFrom": [],
+      "summary": "- Transcript commencé en cours de talk. Angle annoncé : **les forces et les faiblesses** de Flutter. Références citées : environ 150 000 apps sur le Play Store, BMW (300 personnes sur l'app), Philips Hue.\n- Fonctionnement : Flutter dessine lui-même sur un canevas, d'où un rendu identique partout ; des « embedders » permettent d'autres cibles (Fuchsia, Tizen, HarmonyOS, expérimentations Toyota).\n- Faiblesses assumées : le **choix de la gestion d'état** (aucune recommandation officielle jusqu'au template de Flutter 2.5), un Navigator 2.0 jugé trop complexe (Navigator 1.0 pour le mobile, sinon go_router), la génération de code via build_runner qu'on peut oublier de lancer.\n- Dart, langage *« en train de mourir »* sauvé par Flutter pour sa « troisième vie » ; AngularDart en maintenance.\n- Verdict par plateforme : **mobile « les yeux fermés »** ; web « bêta++ » (un seul gros fichier JavaScript à charger, SEO médiocre, à éviter pour un site de contenu) ; desktop en bêta (macOS le plus abouti, Linux soutenu par Canonical).\n- En questions : saccades au démarrage sur iOS presque corrigées, préférence pour Bloc (Provider et Riverpod cités), aucune réponse officielle sur l'avenir de Fuchsia. Contenu cohérent avec le deck donné au DevFest Nantes 2021.",
+      "summarySources": ["program", "transcript", "slides"],
+      "video": { "youtubeId": "5M1ytW5UW-0", "title": "Flutter en 2021 : est-ce le moment de s'y intéresser ? - Edouard Marquez", "publishedAt": "2021-12-27", "transcript": true }
+    },
+    {
+      "id": "a-la-decouverte-de-jetpack-compose",
+      "day": "2021-11-09",
+      "type": "talk",
+      "title": "A la découverte de Jetpack Compose",
+      "speakers": ["Gérard Paligot — Decathlon"],
+      "feedbackFrom": [],
+      "summary": "- Compose, approche **déclarative** de l'UI Android, écrite entièrement en Kotlin avec un plugin de compilateur dédié, développée par Google avec JetBrains.\n- Démo sur une application de films : partir des **plus petits composants réutilisables** (métadonnées, note, affiche, cellule), faire descendre les données et remonter les événements jusqu'au composant d'écran qui gère la navigation.\n- Concepts montrés : modifiers, sémantique pour l'accessibilité (un lecteur d'écran lit le bloc d'un coup), `LazyColumn` à la place des adapters de RecyclerView (*« un enfer »* de plusieurs centaines de lignes), thème Material avec bascule clair/sombre via `remember` et `mutableStateOf`, données d'un ViewModel en Flow.\n- **Compose Multiplatform** (JetBrains) pour Android et desktop, Compose for Web à part car il génère du DOM ; mécanisme expect/actual pour les polices et le chargement d'images.\n- Pourquoi s'y intéresser : un framework de vues Android de 2008 empilé en couches (*« un bouton, c'est un texte »*), et des correctifs liés aux versions d'Android, alors que **Compose est une bibliothèque** qu'on met à jour soi-même.",
+      "summarySources": ["program", "transcript"],
+      "video": { "youtubeId": "6r8JYIR-PtU", "title": "A la découverte de Jetpack Compose - Gerard Paligot", "publishedAt": "2021-12-27", "transcript": true }
+    },
+    {
+      "id": "function-inlining-in-go",
+      "day": "2021-11-09",
+      "type": "talk",
+      "title": "Function inlining in Go",
+      "speakers": ["Valentin Deleplace — Google Cloud"],
+      "feedbackFrom": [],
+      "summary": "- Première version française du talk, à *« cadence infernale »*. Inlining : copier le corps d'une fonction à l'endroit de l'appel, plus rapide à l'exécution mais binaire plus gros.\n- Conseil d'entrée : **« relax »**, c'est le travail du compilateur ; ne forcer l'inlining que si le projet en a vraiment besoin, la plupart des gains de performance étant ailleurs (réseau, fichiers, allocations).\n- Règles du compilateur Go : fonction courte et simple, **budget de 80 nœuds** de l'arbre syntaxique, récursivité et `defer` exclus ; vérification avec `-gcflags -m=2`.\n- Démo : une fonction de log de debug derrière une constante devient une abstraction à coût nul (suppression du code mort plus inlining), confirmée par des benchmarks sur toutes les versions de Go depuis 1.8.\n- Cas réel : depuis l'inlining en milieu de pile (Go 1.12), découper `Lock` en chemin rapide et `lockSlow` économise un appel dans le cas fréquent.\n- Idée centrale : l'inlining **débloque d'autres optimisations** (propagation de constantes, suppression des tests de bornes, registres) parce qu'il couple le code compilé, à l'inverse du code source qu'on veut découplé.",
+      "summarySources": ["program", "transcript"],
+      "video": { "youtubeId": "lAUd206k4Tg", "title": "Function inlining in Go - Valentin Deleplace", "publishedAt": "2021-12-25", "transcript": true }
+    },
+    {
+      "id": "ce-qui-rend-les-developpeurs-heureux-en-2021",
+      "day": "2021-11-09",
+      "type": "talk",
+      "title": "Ce qui rend les développeurs heureux en 2021",
+      "speakers": ["Damien — fondateur d'un job board (probablement WeLoveDevs)"],
+      "feedbackFrom": [],
+      "summary": "- Le speaker se présente comme Damien, fondateur d'un job board utilisé selon lui par la moitié des développeurs en France (nom du site déformé par les sous-titres), formé à Lille, en quête depuis 2017 de ce qui rend les développeurs heureux. Transcript très haché, après le déjeuner.\n- Matière : une **enquête anonyme** (environ 500 répondants en ligne) et une trentaine d'invités en podcast. Si l'on ne changeait qu'une chose, la rémunération arrive en tête mais ne pèse que 25 % des réponses, suivie des **moyens de faire de la qualité** ; l'impact et l'éthique du code divisent.\n- Décalage marquant : la **bienveillance** est dernière dans le sondage mais première dans les interviews. Conseils : communication non violente, *radical candor*, feedback régulier, *« durs avec le code, doux avec les gens »*.\n- Passage le plus dur : espaces de parole pour les minorités, témoignages de harcèlement et de discrimination à l'embauche, et le constat que dans 80 % des cas c'est la victime qu'on déplace.\n- Salaires : la moyenne de l'enquête (environ 50 000 € brut) est biaisée vers le haut, la médiane serait autour de 38 000 € ; le salaire suit la valeur perçue, d'où l'invitation à comprendre budget, gouvernance et modèle économique (ESN, éditeur, start-up).\n- Qualité et télétravail : apprendre à tester et à dire non ; « 50 nuances de remote », 2 à 3 jours au bureau devenant la norme, le full remote restant un marché parallèle.",
+      "summarySources": ["program", "transcript"],
+      "video": { "youtubeId": "MAIrJ4bPZEs", "title": "Ce qui rend les développeurs heureux en 2021", "publishedAt": "2021-12-27", "transcript": true }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Programme complet non lu (site et base Firestore inaccessibles) : les sessions non filmées, environ 14 sur les « plus de vingt-cinq conférences » annoncées en ouverture, dont d'éventuels workshops et quickies, ne sont pas connues"
+  ],
+  "sources": [
+    { "label": "Site officiel DevFest Strasbourg 2021 (seul le titre est lisible, programme chargé en JavaScript)", "url": "https://devfest21.gdgstrasbourg.fr" },
+    { "label": "Appel à orateurs Conference Hall (date, lieu, formats, catégories, « plus de 350 développeurs »)", "url": "https://conference-hall.io/devfest-strasbourg-2021" },
+    { "label": "Page événement GDG Strasbourg (horaires, organisateurs)", "url": "https://gdg.community.dev/events/details/google-gdg-strasbourg-presents-devfest-strasbourg-2021/" },
+    { "label": "Playlist YouTube Devfest Strasbourg 2021 (11 vidéos publiées les 25 et 27/12/2021, toutes transcrites via sous-titres automatiques)", "url": "https://www.youtube.com/playlist?list=PLMM5_63TOT9BomwWEtNz_a5zyYAsp1abd" },
+    { "label": "Deck « Flutter en 2021 » d'Edouard Marquez (version DevFest Nantes 2021)", "url": "https://speakerdeck.com/g123k/flutter-en-2021" },
+    { "label": "Deck « Choreography vs Orchestration in Serverless Microservices » de Mete Atamel et Guillaume Laforge (janvier 2021)", "url": "https://speakerdeck.com/glaforge/choreography-vs-orchestration-in-serverless-microservices" },
+    { "label": "Recherche web et LinkedIn (7 requêtes) : aucun post participant, blog ni sketchnote trouvé" }
+  ]
 }

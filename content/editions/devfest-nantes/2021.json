@@ -2,13 +2,436 @@
   "event": "devfest-nantes",
   "year": 2021,
   "title": "DevFest Nantes 2021",
+  "edition": "9e édition",
+  "theme": "Street art",
   "start": "2021-10-21",
   "end": "2021-10-22",
   "city": "Nantes",
   "venue": "Cité des Congrès",
   "url": "https://devfest2021.gdgnantes.com",
-  "theme": "Street art",
+  "programUrl": "https://devfest2021.gdgnantes.com/schedule/",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "Édition de reprise après l'annulation de 2020 (crise sanitaire), sous pass sanitaire (QR code contrôlé à l'extérieur les deux jours). Le site annonce environ 2 100 participants, 69 sessions, 4 tracks et plus de 90 speakers. À l'ouverture, les organisateurs annoncent plus de 2 000 participants (contre 150 à la première édition), plus de 340 propositions de talks, 91 speakers, 45 sponsors et 80 bénévoles.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-11",
+  "revisit": "Corpus participants toujours très mince : 12 transcripts lus, mais un seul retour écrit (blog Eleven Labs, Jean-Baptiste Berthet, 8 talks) et aucun post LinkedIn retrouvé. Chercher des posts LinkedIn/Twitter d'octobre 2021 (#DevFestNantes) et des blogs Zenika, SFEIR, Onepoint, Ippon ; récupérer la liste complète de la playlist PLuZ_sYdawLiV1F3L5Gm-v8_Uk_e5VJmeP et le transcript de y9Qz3MO3h3o (Pure CSS Games, en anglais).",
+  "corpus": "Programme officiel (site devfest2021.gdgnantes.com et fichiers de sessions du dépôt GitHub GDG-Nantes/devfest2021), guide du participant et billets sponsors du blog officiel, flux des 15 dernières vidéos de la playlist YouTube, 12 transcripts (sous-titres automatiques en français : ouverture et keynote, 11 sessions), un seul retour de participant (billet Eleven Labs de Jean-Baptiste Berthet, 22 février 2022, 8 talks couverts) et un jeu de slides (Edouard Marquez, Speaker Deck).",
+  "limits": "Les résumés décrivent surtout ce qui a été dit sur scène : un seul participant a publié un retour, celui d'un développeur à sa première conférence, quatre mois après. Les transcripts sont des sous-titres automatiques sans ponctuation : les noms propres et certains chiffres sont incertains, et ont été lus en entier ou en grande partie selon les vidéos. La liste complète de la playlist n'a pas été récupérée ; pour 6 vidéos, la date de publication est inconnue et la date de fin de l'édition est utilisée. Aucun post LinkedIn retrouvé, codelabs et 55 sessions couverts par leur seul descriptif ou pas du tout.",
+  "tldr": "Une édition de **reprise post-COVID** sous pass sanitaire, habillée en **street art**, avec un programme très **web et front** (React Query, Next.js, Vue 3, chaos engineering front, PWA hors ligne) et une place marquée pour l'**humain** (syndrome de l'imposteur, transmission aux enfants, design system comme projet d'équipe).",
+  "keyTakeaways": [
+    "Contre le syndrome de l'imposteur : lister ses victoires, rejoindre des communautés, contribuer (« il n'y a pas de petites contributions »), demander du feedback plutôt qu'une validation, pratiquer le pair programming (Aurélie Vache, sur scène et d'après Jean-Baptiste Berthet).",
+    "Ne jamais lancer un design system seul ni pour s'amuser : embarquer au moins un designer et un développeur, partir de l'existant, prioriser, choisir un composant ambassadeur, lui donner un nom pour qu'il appartienne à l'équipe (Cécile Freyd-Foucault).",
+    "Tester la résilience du front en provoquant le chaos : CDN bloqué, requêtes ralenties, pseudo-localisation, timers décalés, double clic, niveaux de gris ; en test ou staging plutôt qu'en production (Thibaud Courtoison).",
+    "Séparer server state et client state : React Query (`useQuery`, `useMutation`, `useQueryClient`) gère le cache, les retries et le rafraîchissement, mais ne remplace pas un store pour le mode déconnecté (Olivier Thierry).",
+    "Migrer un front existant vers Next.js progressivement : choisir la page la plus vue ou la plus complexe, préférer le copier-coller à une lib partagée pour une petite équipe, ne pas traduire les URL (Nordwin Hoff).",
+    "Rendre une PWA utilisable sans réseau en exportant le modèle AutoML en TensorFlow.js et en le mettant en cache par service worker (Benoît Maire, SFEIR).",
+    "Avec PostgreSQL, `row_to_json`, `json_agg` et `json_populate_record` permettent de mapper des relations en une requête et de paginer sans produit cartésien, sans JPA (Alexandre Delegue, MAIF).",
+    "Initier les enfants par paliers (Bee-Bot, Scratch, micro:bit avec MakeCode puis Python) et par la progression début, conditions, boucles, fonctions (Stéphanie Moallic)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-d-ouverture-antonin-fourneau",
+      "day": "2021-10-21",
+      "type": "keynote",
+      "title": "Keynote d'ouverture : de la complexité à la simplicité",
+      "speakers": [
+        "Antonin Fourneau"
+      ],
+      "feedbackFrom": [
+        "Jean-Baptiste Berthet (blog Eleven Labs)"
+      ],
+      "summary": "- **Ouverture des organisateurs** (transcript) : 9e édition, GDG Nantes créé en janvier 2011, passage de relais à une nouvelle présidente, *« il y a neuf ans on était 150, cette année on est plus de 2000 »*, plus de 340 propositions, 91 speakers, 45 sponsors, et la joie de *« réunir la communauté tech en présentiel »*.\n- Sur scène, l'artiste se dit *« bricoleur »* et montre que ses idées naissent d'*« une espèce de bordel »* plutôt que d'un coup de génie : table de bistrot pilotée par une manette PlayStation, contrôleur en bûche à Wiimote pour dessiner la vague d'Hokusai, Tetris joué avec des éponges.\n- Projet phare, **Waterlight Graffiti** : un mur de LED qui s'allument au contact de l'eau, inspiré des calligraphies éphémères vues en Chine, pour proposer un écran urbain que le public peut se réapproprier.\n- Aussi : un mémorial en béton fibré à Poitiers alimenté par une base de noms, des prototypes où l'on dessine à la voix, et le festival-atelier Eniarof (fête foraine bricolée).\n- **Message final** : la *« pensée latérale »* de Gunpei Yokoi (Nintendo), créer avec des technologies anciennes et bon marché plutôt que de courir après la dernière.\n- Côté participant, Jean-Baptiste Berthet retient la présentation *« designer, artiste, développeur, maker, enseignant »* et juge le travail *« curieusement génial »* (traduit de l'anglais).",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Y59gT4Q5RpA",
+        "title": "[DevFest Nantes 2021] Keynote d'ouverture",
+        "publishedAt": "2021-11-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "tips-pour-combattre-le-syndrome-de-l-imposteur",
+      "day": "2021-10-21",
+      "type": "talk",
+      "title": "Tips pour combattre le syndrome de l'imposteur",
+      "speakers": [
+        "Aurélie Vache — OVHcloud"
+      ],
+      "feedbackFrom": [
+        "Jean-Baptiste Berthet (blog Eleven Labs)"
+      ],
+      "summary": "- Sur scène : sondage à main levée, puis un écran qui lâche, transformé en démonstration en direct (*« je suis nulle »*). Le syndrome vient de la **comparaison** avec ceux qu'on met *« sur un piédestal »*.\n- **Règles** : lister ses victoires (en mind map), rejoindre des communautés, partager et contribuer (*« il n'y a pas de petites contributions »*), demander du feedback plutôt qu'une validation, pratiquer le pair programming, rester positif, accepter de ne pas tout savoir.\n- Anecdotes personnelles : un commentaire blessant après un talk dans une grande conférence, un oral de master interrompu par un jury. Appel aux recruteurs à ne pas se limiter au « bon diplôme ».\n- **Questions-réponses longues et nourries** : personnes en reconversion, manager toxique qui exploitait le manque de confiance, offres d'emploi qui exigent tout, isolement du confinement jugé aggravant, suggestion d'une VAE au CNAM venue de la salle.\n- Le participant d'Eleven Labs retient que la plupart des développeurs le vivent et qu'il a senti beaucoup de monde se reconnaître dans la salle.",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "x3WjYiFYqLo",
+        "title": "[DevFest Nantes 2021] Tips pour combattre le syndrome de l'imposteur",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "how-to-create-pure-css-games",
+      "day": "2021-10-21",
+      "type": "talk",
+      "title": "How to Create Pure CSS Games",
+      "speakers": [
+        "Elad Shechter"
+      ],
+      "feedbackFrom": [
+        "Jean-Baptiste Berthet (blog Eleven Labs)"
+      ],
+      "summary": "- Talk en anglais, niveau avancé, né des confinements : un jeu entièrement en CSS, **sans JavaScript**, *Coronavirus Invaders* (source sur CodePen).\n- Astuces retenues par le participant : `label` couplé à `input:radio`, navigation entre écrans par checkbox, **compteurs CSS** pour le compte à rebours, input de reset pour revenir au menu.\n- Le participant le trouve inspirant. Pas de transcript lu pour cette session.",
+      "summarySources": [
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "y9Qz3MO3h3o",
+        "title": "[DevFest Nantes 2021] How to Create Pure CSS Games",
+        "publishedAt": "2021-10-22",
+        "transcript": false
+      }
+    },
+    {
+      "id": "petit-guide-pratique-pour-commencer-un-design-system",
+      "day": "2021-10-21",
+      "type": "talk",
+      "title": "Petit guide pratique pour commencer un design system",
+      "speakers": [
+        "Cécile Freyd-Foucault"
+      ],
+      "feedbackFrom": [
+        "Jean-Baptiste Berthet (blog Eleven Labs)"
+      ],
+      "summary": "- REX assumé : début 2017, son premier design system échoue, *« je me suis littéralement planté »* (sous-titres automatiques) (en solo, en sous-marin, pour de mauvaises raisons) ; un wiki de documentation abandonné au bout de deux semaines en 2018.\n- Métaphore du **récif corallien** : des composants vivants, des styles et des règles qui les font cohabiter ; Material comme exemple, qui impose aussi la charte de Google.\n- Étapes : **convaincre** (avantages et inconvénients, charge), **état des lieux** (captures de tous les écrans, tableau d'identification des composants et de leurs variantes), **prioriser** (valeur métier, criticité d'usage et d'accessibilité, complexité de développement et d'implémentation), puis un **composant ambassadeur**.\n- Documentation simple et pragmatique, arborescence issue d'un tri de cartes, règles de nommage identiques dans le design, le code et Storybook ; atelier par composant (*« un bouton n'est pas un lien »*). L'accessibilité doit être au cœur.\n- Créer l'engagement : donner un nom (avec Tempo, *« ce n'était plus le design de Cécile »* mais celui de l'équipe), canal dédié, présentation en interne et en externe.\n- Le participant retient le duo designer et développeur et la transparence envers les décideurs.",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "GMzXZA9tiW4",
+        "title": "[DevFest Nantes 2021] Petit guide pratique pour commencer un design system",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "et-si-vous-appreniez-a-programmer-a-vos-enfants",
+      "day": "2021-10-21",
+      "type": "talk",
+      "title": "Et si vous appreniez à programmer à vos enfants",
+      "speakers": [
+        "Stéphanie Moallic — OVHcloud"
+      ],
+      "feedbackFrom": [
+        "Jean-Baptiste Berthet (blog Eleven Labs)"
+      ],
+      "summary": "- Sur scène, l'oratrice, mère d'une fille de bientôt 10 ans, dit sa surprise devant une salle pleine. Objectif : que les enfants soient **acteurs plutôt que consommateurs** du numérique.\n- Tour des outils : CodeCombat (trop « jeu vidéo » pour sa fille), Scratch et mBlock (enseignés à l'école dès le CM1 *« quand on a de la chance »*), Lego Boost (*« ça me fait rêver mais c'est cher »*), Makey Makey, Bee-Bot que sa fille lui a expliqué.\n- Objet préféré, la **carte micro:bit** (BBC, 2015) : MakeCode en blocs puis JavaScript ou Python, MicroPython, radio, Bluetooth, simulateur.\n- Démos : robot en crochet qui bouge au son de la voix, maison Lego Friends connectée, deux robots imprimés en 3D pilotés par radio, robot danseur Otto ; un budget divisé par deux par rapport à un robot à 100-200 euros, code publié sur GitHub.\n- Pédagogie par paliers : démarrage, conditions, répétitions, puis fonctions.\n- Le participant d'Eleven Labs se dit charmé et prêt à essayer.",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "MA0RBF3F4Yc",
+        "title": "[DevFest Nantes 2021] Et si vous appreniez à programmer à vos enfants",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "react-query-le-server-state-facile-pour-react",
+      "day": "2021-10-21",
+      "type": "lightning",
+      "title": "React Query, le server state facile pour React",
+      "speakers": [
+        "Olivier Thierry — ASI"
+      ],
+      "feedbackFrom": [
+        "Jean-Baptiste Berthet (blog Eleven Labs)"
+      ],
+      "summary": "- Quickie de 20 minutes. Le **server state** (récupération, état des requêtes, cache, rafraîchissement) est souvent géré avec Redux et des sagas, au prix de beaucoup de code peu agréable à maintenir.\n- React Query (Tanner Linsley, fin 2019, environ 23 000 étoiles selon l'orateur) : `useQuery` avec clé de cache, **3 retries automatiques** avec délai croissant, `staleTime` à zéro par défaut ; `useMutation` ; `useQueryClient` pour invalider le cache après une mutation.\n- Aussi : pagination et scroll infini, requêtes parallèles et dépendantes, annulation, refetch au retour sur la fenêtre, optimistic update (exemple du like Twitter), scroll restoration, devtools ; démo sur une appli de pandas.\n- **Limites** : React seulement, ne remplace pas un store client pour le mode déconnecté ; en réponse à une question, risque d'incohérence si l'on duplique les données dans Redux, et refresh de token à gérer plutôt par des intercepteurs axios.\n- Le participant repart avec l'envie de l'utiliser sur un projet perso.",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Zx6bjGtUZ0s",
+        "title": "[DevFest 2021 Nantes] React Query, le server state facile pour React",
+        "publishedAt": "2021-11-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "next-js-a-la-rescousse-de-mon-frontend",
+      "day": "2021-10-22",
+      "type": "talk",
+      "title": "Next.js à la rescousse de mon frontend",
+      "speakers": [
+        "Nordwin Hoff — Gens De Confiance"
+      ],
+      "feedbackFrom": [
+        "Jean-Baptiste Berthet (blog Eleven Labs)"
+      ],
+      "summary": "- Contexte : site de petites annonces par cooptation, monolithe PHP/Symfony depuis 2014, React et SSR maison ajoutés en 2018 ; environnement de dev lourd (beaucoup de RAM, premier build de 15 minutes, VPN). Objectif : **adopter Next.js progressivement**, sans big bang.\n- Choix de Next.js, alors jugé seul outil mature : TypeScript, fast refresh, règles ESLint et Core Web Vitals sans configuration, rendus hybrides, routes d'API.\n- Partage de code entre les deux stacks : lib npm jugée overkill, résolution de modules en monorepo qui casse l'outillage, d'où le **copier-coller assumé**.\n- **Pièges du SSR** : librairies qui appellent `window` ou `document`, opérations bloquantes (`JSON.parse`) qui font attendre tous les utilisateurs ; recommandation de privilégier le rendu côté client, avec attention au layout shift.\n- Par quoi commencer : la page la plus vue, la plus complexe, ou seulement les refontes. i18n : ne pas traduire les URL, utiliser les rewrites.\n- Le participant, qui ne connaissait pas Next.js, juge le cas réel efficace et l'orateur très à l'aise.",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "LEUK066nkDo",
+        "title": "[DevFest Nantes 2021] Next.js à la rescousse de mon frontend",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "vue-3-et-son-ecosysteme",
+      "day": "2021-10-22",
+      "type": "talk",
+      "title": "Vue 3 et son écosystème",
+      "speakers": [
+        "Nicolas Frizzarin — SFEIR"
+      ],
+      "feedbackFrom": [
+        "Jean-Baptiste Berthet (blog Eleven Labs)"
+      ],
+      "summary": "- Sur scène, à main levée, presque toute la salle a déjà fait du Vue. Fil rouge : un « voyage scolaire » dans Vue 3.\n- **Composition API** à côté de l'Options API, qui n'est pas dépréciée : `defineComponent`, `setup`, `ref` et `.value`, `reactive`, `toRefs` car déstructurer un objet réactif casse la réactivité ; mécanique de proxies (track et trigger).\n- Typage des props (`PropType`), déclaration des `emits` validée en dev seulement ; **Suspense** (pas encore stable) et `defineAsyncComponent` (loader, délai, timeout, gestion d'erreur).\n- État de l'écosystème à l'automne 2021 : Vuetify, Vue Material et BootstrapVue pas encore migrés ; Vue Router rétrocompatible, seule la configuration change (`createRouter`).\n- **Critique** du participant d'Eleven Labs : talk complet, mais centré sur la comparaison Vue 2 / Vue 3 sans assez de contexte pour un nouveau venu.",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "tJB-0iW8zqA",
+        "title": "[DevFest Nantes 2021] Vue 3 et son écosystème",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "art-et-entropie-du-chaos-dans-ton-frontend",
+      "day": "2021-10-22",
+      "type": "talk",
+      "title": "Art & Entropie : Du chaos dans ton frontend",
+      "speakers": [
+        "Thibaud Courtoison — October"
+      ],
+      "feedbackFrom": [
+        "Jean-Baptiste Berthet (blog Eleven Labs)"
+      ],
+      "summary": "- Fil rouge : le **kintsugi**, réparation japonaise à la laque d'or, qui fait de la casse une partie de l'histoire de l'objet. Une web app n'a pas besoin d'être parfaite mais **résiliente**.\n- Rappel du chaos engineering (Netflix, 2011) en 4 étapes : état nominal, hypothèse, perturbation, comparaison. Exemple vécu chez October : un serveur de géo-IP en panne bloquait la connexion à cause d'une dépendance synchrone.\n- **Perturbations front** : CDN bloqué (démo sur GitHub, qui reste navigable), proxy sur `fetch`/XHR pour ralentir ou faire échouer des requêtes, pseudo-localisation testée en direct sur le site du DevFest (l'allemand est environ 19 % plus long que l'anglais dans leur appli), timers décalés, navigation dans l'historique, double clic, `grayscale(100%)`, viewport forcé.\n- **Limite assumée** : contrairement aux serveurs, ces perturbations se voient ; à réserver au test ou au staging. Il dit avoir fait ce talk faute de toute ressource sur le sujet.\n- Pour le participant d'Eleven Labs, c'est la surprise de l'événement et *« le meilleur choix »* qu'il ait fait (traduit de l'anglais).",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "29Z_P02aTWM",
+        "title": "[DevFest Nantes 2021] Art & Entropie: Du chaos dans ton frontend",
+        "publishedAt": "2021-11-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "flutter-en-2021-est-ce-le-moment-de-s-y-interesser",
+      "day": "2021-10-22",
+      "type": "talk",
+      "title": "Flutter en 2021 : est-ce le moment de s'y intéresser ?",
+      "speakers": [
+        "Edouard Marquez — Freelance"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Sur scène, devant une salle pleine : peu de code, plutôt un bilan forces et faiblesses. Flutter est présenté comme du *« vrai open source »*, à la différence d'Android selon l'orateur.\n- Chiffres avancés : version stable tous les trois mois, environ 150 000 applis sur le Play Store, l'application BMW portée par une équipe de 300 personnes, l'appli Philips Hue réécrite.\n- **Fonctionnement** : pas de web embarqué, code natif, Flutter dessine lui-même sur un canevas (rendu identique partout mais tous les composants à recréer), platform channels pour parler au système.\n- Slides : Dart (null safety, mais build_runner lent), Navigator 2.0 décrit comme douloureux.\n- **Bilan par plateforme** (slides) : mobile stable et complet, web déployable mais proche de la bêta (SEO, scroll, premier rendu), desktop fonctionnel avec des widgets en chantier.",
+      "summarySources": [
+        "transcript",
+        "slides",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "VckYCFdPrZw",
+        "title": "[DevFest Nantes 2021] Flutter en 2021 : est-ce le moment de s'y intéresser ?",
+        "publishedAt": "2021-10-22",
+        "transcript": true
+      }
+    },
+    {
+      "id": "rust-un-choix-possible",
+      "day": "2021-10-21",
+      "type": "talk",
+      "title": "Rust, un choix possible ?",
+      "speakers": [
+        "Charles-Henri Guérin — Scaleway",
+        "Pierre-Yves Aillet — Zenika"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Point de départ : beaucoup de bruit autour de Rust, mais peu de Rust dans les missions des orateurs. Objectif : donner des **arguments pour le proposer**.\n- Pour qui : équipes (le compilateur comme partenaire de *« pair programming »*), communauté jugée très accueillante, entreprises qui l'utilisent, open source. Rust promet de ne pas choisir entre sûr et productif, rapide et ergonomique.\n- **Live coding** des concepts clés : ownership (une seule valeur, un seul propriétaire, libération en sortie de scope), emprunts et références, lifetimes, une seule référence mutable à la fois.\n- Système de types : enums avec données et **pattern matching exhaustif** imposé par le compilateur, `Result` et `expect` pour gérer les erreurs ; messages d'erreur détaillés vantés comme un atout pour apprendre.\n- Le descriptif officiel ajoute que Rust ne convient pas à toutes les applications. Deuxième vidéo la plus vue des 15 relevées (environ 1 700 vues en novembre 2026), seul indice d'intérêt hors salle.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "NdxmFPaXj8s",
+        "title": "[DevFest Nantes 2021] 🦀 Rust, un choix possible ?",
+        "publishedAt": "2021-11-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "shazart-le-shazam-du-street-art",
+      "day": "2021-10-21",
+      "type": "talk",
+      "title": "Shazart, on a réalisé le shazam du Street Art et on vous explique comment",
+      "speakers": [
+        "Benoît Maire — SFEIR"
+      ],
+      "feedbackFrom": [],
+      "summary": "- REX sur scène : un POC « Street Art » né en 2018 pour éprouver **Google AutoML**, réutilisé la même année pour reconnaître des vêtements sur un salon du retail, puis modernisé (migration Angular, ergonomie).\n- Déclencheur : un musée de street art installé dans un **fort Vauban**, aux murs de plusieurs mètres d'épaisseur, *« pas de réseau »*.\n- Solution : exporter le modèle AutoML en mode edge vers **TensorFlow.js** et le mettre en cache via le service worker d'Angular à l'entrée du musée, quand le réseau est encore disponible.\n- Pour les métadonnées d'artistes, qui changent sans redéploiement, un **service worker personnalisé** qui purge et reconstruit le cache à l'activation.\n- Le billet sponsor de SFEIR sur le blog officiel note que le thème de l'édition *« correspond donc totalement »* à son application.",
+      "summarySources": [
+        "transcript",
+        "program",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "Trpqksr5TZ8",
+        "title": "[DevFest Nantes 2021] Shazart, on a réalisé le shazam du Street Art et on vous explique comment",
+        "publishedAt": "2021-11-02",
+        "transcript": true
+      }
+    },
+    {
+      "id": "postgresql-json-bye-bye-jpa",
+      "day": "2021-10-22",
+      "type": "lightning",
+      "title": "Postgresql + json : bye bye JPA et passe le bonjour à mongo",
+      "speakers": [
+        "Alexandre Delegue — MAIF"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Quickie en live coding, ouvert par un quiz sur JPA et les `LazyInitializationException` ; l'orateur revient au relationnel après des bases orientées documents, sans vouloir de JPA.\n- Démo sur des drakkars et leurs vikings : `row_to_json` pour mapper une ligne, `json_agg` et `jsonb_build_object` pour **ramener une relation en une requête**, ce qui permet de paginer sans produit cartésien.\n- Insertion avec `json_populate_record(set)`, upsert avec `ON CONFLICT`, colonne `jsonb` **indexée** : *« le meilleur du monde relationnel »* avec le côté document.\n- REX en réponse à une question : stockage hybride en production depuis trois ans, environ 12 millions d'entrées, colonnes de dates ajoutées à côté du JSON (dénormalisation assumée), requêtes générées derrière une API GraphQL.\n- Troisième vidéo la plus vue des 15 relevées (environ 740 vues en novembre 2026).",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "_sT1RJOLrE4",
+        "title": "[DevFest Nantes 2021] Postgresql + json : bye bye JPA et passe le bonjour à mongo",
+        "publishedAt": "2021-11-02",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Component Driven Development (Debbie O'Brien)",
+    "Level Unlocked: GitOps to the Edge and Infrastructure Provisioning (Katie Gamanji)",
+    "Don't miss the Deno Train (m4dz)",
+    "Java au Futur : des Record au Pattern Matching (José Paumard)",
+    "Machine à lire (Stefan Cosquer)",
+    "Comment j'ai pêché des gros poissons avec 9 arduino nanos (Flavien Normand)",
+    "Simuler 160K joueurs avec Cloud Run (Valentin Deleplace)",
+    "Highly available, distributed & resilient software... team (Yohan Lasorsa)",
+    "Orchestration de pipeline de données en serverless avec Google Workflow (Guillaume Blaquière)",
+    "Dans le cloud tout est managé mais pas la sécurité (Eric Briand)",
+    "Après la censure, l'auto censure… avec de l'IA (Louis Tournayre, Pierre Morvan)",
+    "A la découverte du Material Sound Design (Colin Cleary)",
+    "Github Actions : enfin des pipelines accessibles aux développeurs (Antoine Meausoone)",
+    "Cloud Cost, Separating Myth From Reality (Chabane Refes)",
+    "Développer et enseigner, une bonne idée ? (Jimmy Kasprzak)",
+    "Programmation fonctionnelle en Kotlin avec Arrow (François Teychene)",
+    "Sensibilisation au numérique responsable (Jérôme Lucas, Ronan Robe)",
+    "Continous Localization in Web (Maxence Lefebvre)",
+    "From billions to hundreds: machine learning et fuites de données (Giulia Bianchi)",
+    "Go Generics (Benoît Masson)",
+    "OpenAPI & AsyncAPI : spécifications et contrats (Sébastien Charrier)",
+    "Prenez vos notes en mode street art ! (Marc Dugué, Pierre Tibulle, Sylvain Calmet)",
+    "Hacking game : crack the safe (Antoine Lebel, François de Guibert, Loïc Ortola)",
+    "GitOps sur Kubernetes avec FluxCD (Laurent Grangeau, Ludovic Piot)",
+    "Workshop Apache Kafka : introduction aux fondamentaux (Adrien Wattez, Mickaël Boixière)",
+    "A la découverte d'Accelerate (Geoffrey Graveaud, William Bartlett)",
+    "Développement Zéro Déchet (codelab, Cécilia Bossard, Kevin Morin, Yannick Martel)",
+    "Vite, the Webpack killer (Antoine Caron, Mathieu Mure)",
+    "Notre recette de l'équipe parfaite (Estelle Landry, Yvonnick Frin)",
+    "Resiliency and Availability Design Patterns for the Cloud (Sébastien Stormacq)",
+    "Comment l'OpenData peut aider l'agriculture de demain (Steve Houel)",
+    "J'ai presque fini ! (David Laizé)",
+    "Trucs et astuces pour réussir son burn-out (Cynthia Staebler, Julia Lehoux)",
+    "Keynote de clôture",
+    "Place des femmes dans le numérique, comment inverser la tendance ? (Arthur Tarroux, Mélissa Cottin)",
+    "The blind test (Florent Lévêque, Hervé Boisgontier)",
+    "Sécurisez votre pipeline multi-cloud avec HashiCorp Vault (Vincent Poilvert)",
+    "Développer des applis web pour les foldable devices (Olivier Leplus)",
+    "A la découverte du code source du vaccin Pfizer/BioNTech (Colin Cleary)",
+    "Google Cloud : construisez votre cloud open source avec Anthos (Philippe Antoine)",
+    "IArt ou comment apprendre à une machine à tagger et à composer (Alexandre Garel, Nicolas Greffard)",
+    "Quand Windows rencontre Linux (Emeric Martineau, Julien Haumont)",
+    "La dette UI (Loïc Vanderschooten)",
+    "Animer et organiser un plateau de (50) devs différemment (Thierry Trepied, Wolfgang Goedel)",
+    "Coupable de code legacy en JS : comment s'en sortir ? (Adrien Joly)",
+    "Hasura : le GraphQL qui Hassure (Hugo Wood, Valentin Cocaud)",
+    "La Policy As Code via Cloud Custodian (Ismaël Hommani, Tanguy Combe)",
+    "Jetpack Compose: UI toolkit for Android and Desktop apps (Julien Salvi)",
+    "Retour d'expérience sur Remix (Benoit Averty)",
+    "Industrialiser son app mobile : self hosted ou SaaS ? (Thomas Boutin)",
+    "Java à la vitesse de la lumière grâce au Graal ! (Anthony Pena)",
+    "Débogguer des services sur OpenShift/Kubernetes (Madou Coulibaly, Stévan Le Meur)",
+    "The Walking Bread : participe à la conception UX d'un produit (Jade Chabaro, Sabrina Koessler)",
+    "Deux heures pour coder un catalogue de Street Art avec Stencil (Horacio Gonzalez, Stéphanie Moallic)",
+    "Devenir svelte avec Svelte (Anthony Le Goas, Patrice De Saint Steban)"
+  ],
+  "sources": [
+    {
+      "label": "Site officiel DevFest Nantes 2021",
+      "url": "https://devfest2021.gdgnantes.com"
+    },
+    {
+      "label": "Programme officiel",
+      "url": "https://devfest2021.gdgnantes.com/schedule/"
+    },
+    {
+      "label": "Liste des sessions (speakers et entreprises)",
+      "url": "https://devfest2021.gdgnantes.com/sessions/"
+    },
+    {
+      "label": "Données des sessions (dépôt GitHub GDG-Nantes/devfest2021)",
+      "url": "https://github.com/GDG-Nantes/devfest2021"
+    },
+    {
+      "label": "Guide du participant (blog officiel)",
+      "url": "https://devfest2021.gdgnantes.com/blog/12-guide/"
+    },
+    {
+      "label": "Billets sponsors du blog officiel (Epitech, Microsoft, Niji, Onepoint, ASI, MAIF, SFEIR, U GIE Iris, Zenika, Doctolib)",
+      "url": "https://devfest2021.gdgnantes.com/blog/"
+    },
+    {
+      "label": "Playlist YouTube DevFest Nantes 2021 (GDG France), 12 transcripts lus",
+      "url": "https://www.youtube.com/playlist?list=PLuZ_sYdawLiV1F3L5Gm-v8_Uk_e5VJmeP"
+    },
+    {
+      "label": "Blog Eleven Labs : Throwback to Nantes' 2021 DevFest, my first conference (Jean-Baptiste Berthet, 22 février 2022)",
+      "url": "https://blog.eleven-labs.com/en/throwback-to-nantes-2021-devfest-my-first-conference/"
+    },
+    {
+      "label": "Slides « Flutter en 2021 » (Edouard Marquez, Speaker Deck)",
+      "url": "https://speakerdeck.com/g123k/flutter-en-2021"
+    },
+    {
+      "label": "Page événement GDG Nantes",
+      "url": "https://gdg.community.dev/events/details/google-gdg-nantes-presents-devfest-nantes-2021"
+    },
+    {
+      "label": "Posts LinkedIn : aucun retrouvé par recherche web (novembre 2026)"
+    }
+  ]
 }
