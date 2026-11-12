@@ -13,10 +13,10 @@
   "dateConfidence": "ok",
   "note": "5e édition, une journée (21 novembre 2024) au Campus CCI Strasbourg (234 av. de Colmar), thème « Las Vegas » ; 2 keynotes (Mathis Hammel en ouverture, Tristan Nitot en clôture) et 31 sessions (conférences, formats courts de 20 min, 3 ateliers en salle dédiée) ; « +600 participants » annoncés sur le site.",
   "status": "synthesized",
-  "synthesisUpdatedAt": "2026-10-07",
-  "revisit": "Aucun retour participant public trouvé (5 recherches web sans post LinkedIn, blog ni sketchnote ; LinkedIn non indexé). Synthèse fondée sur le programme et 9 transcripts. À reprendre pour chercher des posts LinkedIn/Bluesky (hashtags #DevfestSXB, speakers) et transcrire d'autres vidéos (UX+AI, SSO, feature flags, paiement sans contact).",
-  "corpus": "Programme officiel complet (site devfest24.gdgstrasbourg.fr et sa base Firestore publique : 2 keynotes, 31 sessions, fiches speakers), 29 vidéos de sessions publiées les 2 et 4 décembre 2024 sur la chaîne GDG Strasbourg (27 dans la playlist, 2 hors playlist, plus l'aftermovie), dont 9 transcrites (sous-titres automatiques FR) : les deux keynotes et 7 talks.",
-  "limits": "Aucun retour de participant n'a pu être lu : la synthèse décrit ce qui a été dit sur scène et annoncé au programme, pas la réception du public. Les 3 ateliers n'ont pas été filmés ; 20 vidéos n'ont pas été transcrites (11 sessions résumées d'après leur seul descriptif, 9 listées sans contenu). Les audiences YouTube restent faibles (36 à 1 345 vues à J+22 mois).",
+  "synthesisUpdatedAt": "2026-11-12",
+  "revisit": "2026-11-12 : toujours aucun retour participant public. 8 nouvelles recherches web (LinkedIn, blogs, hashtags #DevfestSXB et #DevFestStrasbourg, noms de speakers, ESN) et consultation de dev.to, Bluesky (recherche inaccessible sans compte), DuckDuckGo et Bing : rien sur l'édition 2024. Seul ajout : les slides de « Fun with feature flags ». Aucun transcript téléchargé cette nuit (Bash refusé, aucun fichier dans transcripts/ pour ces vidéos). Reste à faire : transcrire avec yt-dlp MzFDlk2WuN0, GkAvjaYUnag, tLzIZf0gq1I, ffee2MAkpdQ, ZIpnBtpyeUo, ANTT2msQHmI, fcrmS_qpmJE, I8yV_hJmJxY, 22Fb_wAwXz0, T-IcrCLYpiY, R6136x5Nen0, relever les identifiants des 9 vidéos de la playlist 2024 non rattachées à une session, et chercher des posts LinkedIn depuis une session connectée (LinkedIn non indexé).",
+  "corpus": "Programme officiel complet (site devfest24.gdgstrasbourg.fr et sa base Firestore publique : 2 keynotes, 31 sessions, fiches speakers), 29 vidéos de sessions publiées les 2 et 4 décembre 2024 sur la chaîne GDG Strasbourg (27 dans la playlist, 2 hors playlist, plus l'aftermovie), dont 9 transcrites (sous-titres automatiques FR) : les deux keynotes et 7 talks. S'y ajoutent les slides publiées par les speakers de « Fun with feature flags ». Deux séries de recherches (octobre et novembre 2026, 13 requêtes) n'ont remonté aucun retour de participant.",
+  "limits": "Aucun retour de participant n'a pu être lu : la synthèse décrit ce qui a été dit sur scène et annoncé au programme, pas la réception du public. Les 3 ateliers n'ont pas été filmés ; 20 vidéos n'ont pas été transcrites (10 sessions résumées d'après leur seul descriptif, 1 d'après ses slides, 9 listées sans contenu). Les audiences YouTube restent faibles (36 à 1 345 vues à J+22 mois).",
   "tldr": "Un DevFest **généraliste et très humain** : deux keynotes qui défendent **la curiosité du bidouilleur** (Hammel) et **la sobriété logicielle face à la fin de la loi de Moore** (Nitot), un fil **craft pragmatique** (over-engineering, culpabilité du TDD/DDD, documentation, daily) et une place inhabituelle pour **l'inclusion** (autisme, accessibilité).",
   "keyTakeaways": [
     "Optimiser son logiciel plutôt que changer de matériel : viser 2 fois moins de ressources en 2 ans, car 83 % des émissions d'un équipement viennent de sa fabrication (Tristan Nitot, keynote).",
@@ -157,8 +157,8 @@
       "title": "Fun with feature flags",
       "speakers": ["Matthieu Vincent — Sopra Steria", "Léonore des Plas — Sopra Steria"],
       "feedbackFrom": [],
-      "summary": "- Introduction aux **feature flags** : tester en prod, faire coexister plusieurs versions, observer le comportement des utilisateurs.\n- Démo participative sur **GitLab avec Unleash**, déployé sur AWS.\n- Intérêts mais aussi **inconvénients et contraintes** du pattern.\n- Résumé d'après le programme ; vidéo disponible.",
-      "summarySources": ["program"],
+      "summary": "- Définition (slides) : le **feature flag** ou feature toggle active ou désactive une fonctionnalité à chaud, **sans redéployer** ; ce n'est pas un canary deployment, et il permet de montrer un comportement différent selon un critère fixe ou aléatoire (A/B testing).\n- Outil retenu : **Unleash** (depuis 2015, édition communautaire Apache-2.0 et édition payante), avec SDK serveur et front qui évaluent les règles localement et les mettent en cache ; alternatives citées : LaunchDarkly, Statsig.\n- Déroulé des démos : en local, puis sur **AWS ECS** avec participation du public par QR code, puis avec une Lambda pour les flags « permanents » (un message de maintenance, par exemple) ; passage à l'échelle avec **Unleash Edge**.\n- À retenir selon les speakers : simple à mettre en place et utile au métier pour cibler les usages, mais **ça devient vite le bazar** (ménage régulier indispensable), il faut mesurer l'usage, et c'est du test en production, donc coûteux à tester dans tous les cas.\n- Ouverture sur **OpenFeature**, projet en incubation à la CNCF (2022) qui standardise l'API au-dessus des moteurs de flags.\n- Résumé d'après le programme et les slides ; la vidéo n'a pas été transcrite.",
+      "summarySources": ["program", "slides"],
       "video": { "youtubeId": "tLzIZf0gq1I", "title": "Fun with feature flags - Matthieu Vincent, Léonore des PLAS", "publishedAt": "2024-12-04", "transcript": false }
     },
     {
@@ -269,6 +269,7 @@
     { "label": "Programme officiel (keynotes, horaires)", "url": "https://devfest24.gdgstrasbourg.fr/schedule.html" },
     { "label": "Playlist YouTube DevFest Strasbourg 2024 (27 sessions + aftermovie ; feature flags et Tech'Rex publiés hors playlist)", "url": "https://www.youtube.com/playlist?list=PLMM5_63TOT9C1yzvElA5ed3RQJSYjmZDg" },
     { "label": "Aftermovie DevFest Strasbourg 2024", "url": "https://www.youtube.com/watch?v=okMv8gXdor8" },
-    { "label": "Recherche web et LinkedIn (5 requêtes) : aucun post participant, blog ni sketchnote trouvé" }
+    { "label": "Slides de « Fun with feature flags » (Matthieu Vincent et Léonore des Plas)", "url": "https://devfest-strasbourg-2024.yodamad.fr" },
+    { "label": "Recherche web et LinkedIn (5 requêtes en octobre 2026, 8 en novembre 2026) : aucun post participant, blog ni sketchnote trouvé" }
   ]
 }
