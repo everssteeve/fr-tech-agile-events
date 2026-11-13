@@ -8,8 +8,488 @@
   "city": "Clermont-Ferrand",
   "venue": "En ligne",
   "url": "https://2021.volcamp.io",
+  "programUrl": "https://2021.volcamp.io/talks/",
+  "theme": "Première conférence tech au cœur des volcans d'Auvergne",
   "dateConfidence": "ok",
   "note": "Première édition, 100 % en ligne (COVID-19).",
-  "status": "pending",
-  "sessions": []
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-13",
+  "revisit": "Aucun retour de participant trouvé (ni blog, ni post LinkedIn, ni compte-rendu) : la synthèse repose sur les transcripts des 20 vidéos, lus par échantillons, sur le programme officiel et sur deux jeux de slides. À compléter si des retours d'époque (Twitter, LinkedIn, blogs des sponsors) sont retrouvés.",
+  "corpus": "Programme officiel archivé (2021.volcamp.io), transcripts automatiques des 20 vidéos de la playlist officielle « Volcamp 2021 » (lus par échantillons, pas en intégralité) et deux jeux de slides publiés par les speakers (Alexandre Touret sur Speaker Deck, Horacio Gonzalez sur noti.st). Lecture faite en novembre 2026, plus de cinq ans après l'événement.",
+  "limits": "Aucun retour de participant n'a été trouvé : tout ce qui suit décrit ce qui a été dit par les speakers, pas ce qu'en a retenu le public. Les transcripts sont des sous-titres automatiques de qualité inégale (noms propres et chiffres parfois déformés) et n'ont été lus que par extraits : la fin de plusieurs talks et l'essentiel des trois parties de la table ronde (plus de 3 h 50) ne sont pas couverts. La date de publication des vidéos est inconnue : `publishedAt` reprend par défaut la date de fin de l'édition (2021-06-24).",
+  "tldr": "Pour sa première édition, tenue entièrement en ligne, Volcamp a posé son ADN : une ouverture sur **l'éthique et la sobriété du numérique**, puis deux jours de retours d'expérience très concrets, largement portés par l'écosystème clermontois (Michelin, Accenture, Braincube, Capgemini) autour du cloud, de la sécurité et du streaming de données.",
+  "keyTakeaways": [
+    "Préférer la réparation au recyclage et allonger la durée de vie des terminaux : le support logiciel dans la durée est le nerf de la guerre (Agnès Crepet).",
+    "Mesurer avant d'optimiser : estimer la consommation énergétique de ses logiciels avec un outil comme PowerAPI, en connaissant ses limites (Linux, pas de VM) (Benjamin Kuchcik).",
+    "Cartographier sa surface d'exposition (domaines, sous-domaines, filiales) et automatiser cette reconnaissance en continu plutôt que par scripts jetables (Maxence Schmitt, Maxime Escourbiac).",
+    "Donner de l'autonomie cloud aux équipes avec des « boîtes vides » (resource groups) cadrées par des garde-fous de sécurité, de coûts (FinOps) et surtout par la formation (David Santiago, Alexis Plantin).",
+    "Décaler la sécurité à gauche : outils automatiques dans la chaîne CI/CD, plus risk assessment et threat modeling en 30 minutes dès la conception (Adrien Pessu).",
+    "Exposer une donnée une seule fois dans une plateforme de streaming avec un catalogue, plutôt que multiplier les flux d'intégration point à point (Anne-Laure Fougeroux, Yannick Raffin ; Florent Ramière).",
+    "Traiter la gouvernance et l'évolution des schémas comme non négociables dès le début d'un projet de streaming (Florent Ramière).",
+    "Concevoir les erreurs comme une information : les contextualiser, les catégoriser et les rendre compréhensibles pour l'appelant (François Teychene).",
+    "S'entraîner à l'architecture comme à un art martial : des katas d'une heure, en équipes mélangées, avec du papier et des marqueurs (Alexandre Touret)."
+  ],
+  "sessions": [
+    {
+      "id": "numerique-et-ethique-l-impossible-equation",
+      "day": "2021-06-23",
+      "type": "keynote",
+      "title": "Numérique et éthique : l'impossible équation ?",
+      "speakers": [
+        "Agnès Crepet — Fairphone",
+        "Audrey Neveu"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Keynote d'ouverture à deux voix : Agnès Crepet (Fairphone, cofondatrice de MiXiT) sur le matériel, Audrey Neveu (développeuse sur Spring Cloud) sur le logiciel et les plateformes.\n- Constat chiffré posé d'entrée : le numérique pèserait environ **4 % des émissions de gaz à effet de serre**, plus que le trafic aérien, avec un doublement possible d'ici 2025. Les deux speakers insistent sur les impacts sociaux et sociétaux, moins connus que l'empreinte carbone.\n- Côté matériel : des téléphones gardés moins de deux ans en moyenne, moins de 20 % recyclés, plus de 50 millions de tonnes de déchets électroniques par an, et une extraction de minerais et de terres rares qui concerne aussi les solutions dites vertes (éoliennes, voitures électriques).\n- Côté logiciel : les « obésiciels » et surcouches préinstallées réduisent la durée de vie des appareils ; des applications qui tournent en fond consomment batterie et ressources.\n- L'obsolescence logicielle expliquée de l'intérieur : les fabricants de puces n'assurent le support que sur un temps court (environ deux versions d'Android), ce qui laisse le constructeur « entre deux chaises ». Fairphone porte quand même des versions récentes sans ce support (Agnès Crepet).\n- Côté plateformes : comités d'éthique rarement suivis d'effet, modérateurs exposés au stress post-traumatique, travailleurs à la demande et micro-tâches précaires, management des entrepôts.\n- La dernière partie ouvre sur des pistes d'action, à commencer par **préférer la réparation au recyclage** (campagne iFixit citée), le recyclage ayant tendance à déculpabiliser le rachat.\n- Limite : la fin de la keynote (leviers d'action détaillés) n'a pas été lue dans le transcript.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "4N17yujgdhw",
+        "title": "Digital and Ethic: the impossible equation? (Agnès Crépet, Audrey Neveu)",
+        "publishedAt": "2021-06-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "security-know-your-scope-and-automate-the-process",
+      "day": "2021-06-23",
+      "type": "talk",
+      "title": "Security - Know your scope and automate the process",
+      "speakers": [
+        "Maxence Schmitt — Michelin",
+        "Maxime Escourbiac — Michelin"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Deux pentesters de Michelin, également chasseurs de bug bounty, partent d'une question simple : **quel est le périmètre** à attaquer ou à défendre ?\n- Image de la « pelote de laine » : en tirant le fil (sites vitrines, supply chain, services B2B et B2C, shadow IT, VPN, filiales), on croit avoir un château et on découvre *« la cité de Carcassonne »*, avec beaucoup de portes et de fenêtres à surveiller.\n- Rappel des bases de la reconnaissance (« recon ») : domaines racines, énumération des sous-domaines par sources passives, force brute sur les DNS et Certificate Transparency, avec des outils comme OWASP Amass.\n- Les scripts existants (mélange de Bash et de Python) sont jugés lents, peu fiables et impossibles à maintenir ; les outillages présentés en conférence par d'autres chasseurs ne sont pas publiés. L'équipe a donc développé son propre framework, dont la première version « quick and dirty » a été jetée.\n- La réécriture part d'un manifeste technique : modularité (intégrer vite la détection d'une nouvelle menace), passage à l'échelle, vitesse (*« la sécurité, c'est une course »*), centralisation des données, monitoring et alerting.\n- Le modèle de données est hiérarchique : de la marque vers les domaines racines, puis les sous-domaines.\n- Limite : la démonstration et la fin du talk n'ont pas été lues ; le nom exact de l'outil est mal restitué par le transcript automatique.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "iQvR9Ln5fLM",
+        "title": "Security - Know your scope and automate the process (Maxence Schmitt, Maxime Escourbiac)",
+        "publishedAt": "2021-06-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-reactif-simplement",
+      "day": "2021-06-23",
+      "type": "talk",
+      "title": "Le réactif, simplement",
+      "speakers": [
+        "Julien Ponge — Red Hat"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Julien Ponge présente le continuum réactif développé chez Red Hat sur la JVM : Vert.x, la bibliothèque Mutiny, puis Quarkus qui embarque les deux.\n- Définition retenue : un système réactif est piloté par les événements, **élastique et tolérant aux pannes** ; il continue de répondre sous forte charge ou en cas de défaillance, et l'erreur y est traitée comme un événement normal.\n- L'argument pour les services modestes (*« j'ai au maximum 200 requêtes par seconde »*) : le réactif sert d'abord à **maximiser la densité de déploiement**, donc à payer trois machines virtuelles au lieu de quinze.\n- La clé technique est l'entrée/sortie non bloquante : le modèle « un thread par connexion » est naturel à écrire mais coûte en mémoire et en ordonnancement, d'autant qu'en cloud on partage les ressources avec des voisins inconnus.\n- Critique assumée des API réactives existantes comme RxJava : des centaines d'opérateurs surchargés aux noms voisins, difficiles à découvrir par autocomplétion.\n- Mutiny y répond avec deux types (Uni pour une opération asynchrone, Multi pour un flux) et une API guidée par groupes d'événements (onItem, onFailure), un peu plus verbeuse mais navigable. Démonstration de code en direct.\n- Limite : la partie Quarkus en fin de talk n'a pas été lue.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "1LauykyytTI",
+        "title": "Le réactif, simplement (Julien Ponge)",
+        "publishedAt": "2021-06-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "openid-connect",
+      "day": "2021-06-23",
+      "type": "lightning",
+      "title": "OpenID Connect",
+      "speakers": [
+        "Karim Pinchon"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Lightning talk de 15 minutes par un développeur backend d'une start-up parisienne de paiement mobile, avec une thèse : **OAuth 2 ne fait pas d'authentification**, contrairement à ce que beaucoup pensent.\n- OAuth 2 est un protocole de délégation d'autorisation : partager des données hébergées chez un prestataire avec un tiers sans lui donner ses identifiants (exemple de TweetDeck et Twitter).\n- Rappel du vocabulaire : resource owner, resource server, authorization server, client ; access token et refresh token ; les grants, dont l'authorization code (le plus courant) et le client credentials. Les grants password et implicit sont aujourd'hui découragés.\n- Pour les applications mobiles et les SPA, qui ne peuvent pas stocker de secret, PKCE ajoute un challenge dynamique (code verifier haché en code challenge) au flux authorization code.\n- Pourquoi détourner OAuth 2 pour connecter un utilisateur pose problème : un access token n'est pas une preuve d'authentification et l'API de profil n'a aucun contexte d'authentification, ce qui ouvre la voie à l'usurpation d'identité avec un jeton volé.\n- OpenID Connect est une surcouche d'OAuth 2 qui apporte l'authentification ; elle sert au SSO, à FranceConnect et aux boutons de connexion sociale. Le vocabulaire change (relying party, identity provider) et l'authorization code couvre selon le speaker l'essentiel des cas.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "y5uKj1UoBoM",
+        "title": "OpenID Connect (Karim Pinchon)",
+        "publishedAt": "2021-06-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "fantasy-console-pico8",
+      "day": "2021-06-23",
+      "type": "lightning",
+      "title": "Fantasy console - Pico8",
+      "speakers": [
+        "Damien Hostin"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Lightning talk de découverte sur PICO-8, une « fantasy console » : selon son créateur Joseph White, **l'émulateur d'une console qui n'existe pas**.\n- Des contraintes volontairement fortes : écran de 128 x 128 pixels, 16 couleurs, quatre canaux sonores, langage Lua, cartouche de 32 ko.\n- L'environnement est tout intégré et accessible d'une touche : éditeur de code, de sprites, de cartes, d'effets sonores et de musique. Les fichiers restent en clair, donc utilisables avec un éditeur externe et Git.\n- Export natif (Linux, Mac, Windows, Raspberry Pi), HTML, et la cartouche au format PNG : le code tient dans l'image, que l'on partage sur le forum officiel où tout le code est consultable.\n- L'intérêt défendu : pas de framework ni d'abstraction à choisir, une API minimale (trois fonctions d'initialisation, de mise à jour et d'affichage), une cadence fixe à 30 images par seconde. On se concentre sur l'idée, pas sur l'outillage.\n- Démonstration d'un rendu en voxels et comparaison de deux algorithmes de tri écrits à la main. Conclusion du speaker : PICO-8 est *« une boîte de crayons »* idéale pour débuter et pour prototyper.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "B2jA9se6-Kg",
+        "title": "Fantasy console - Pico8 (Damien Hostin)",
+        "publishedAt": "2021-06-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "green-is-good",
+      "day": "2021-06-23",
+      "type": "talk",
+      "title": "Green is good!",
+      "speakers": [
+        "Benjamin Kuchcik — Accenture"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Retour sur un an et demi de travaux Green IT menés par une communauté technique d'Accenture à Clermont-Ferrand, dont les experts disposent de 5 à 10 % de leur temps pour explorer des sujets transverses.\n- Philosophie affichée : *« faire plutôt que regarder »*, c'est-à-dire expérimenter concrètement plutôt que produire des slides et des études.\n- Cadrage du problème : réchauffement climatique et biodiversité ; l'IT consommerait 4,2 % des énergies primaires mondiales.\n- Le cœur du talk est **PowerAPI**, outil de mesure issu de la recherche lilloise : un modèle (une régression, pas de l'IA) estime la consommation à partir des événements remontés par le processeur, calibrés sur des mesures physiques.\n- Limites dites sans détour : matériel connu uniquement, Linux, pas de machines virtuelles, donc pas de mesure fiable dans le cloud à ce stade ; un essai sur AWS n'a pas abouti.\n- Ordres de grandeur partagés : le processeur est le premier poste (une centaine de watts sur les anciennes générations Intel, bien moins sur les récentes), loin devant la mémoire et le SSD ; les architectures ARM sont plus sobres, ce qui en fait un levier simple lors du choix d'une instance cloud.\n- Démonstration de PowerAPI, avec un dépôt GitHub associé.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Vm5rP2gdyTk",
+        "title": "Green is good! (Benjamin Kuchcik)",
+        "publishedAt": "2021-06-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "exponential-information-systems-for-digital-transformation",
+      "day": "2021-06-23",
+      "type": "keynote",
+      "title": "Exponential Information Systems for Digital Transformation",
+      "speakers": [
+        "Yves Caseau — Michelin"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le DSI du groupe Michelin transpose au système d'information les idées du livre de Salim Ismail sur les organisations exponentielles : changement permanent, tiré de l'extérieur par les clients.\n- Le SI visé est **antifragile** (terme emprunté à Nassim Taleb) : comme un muscle, il se renforce sous les chocs, à l'image des bonnes plateformes de services numériques.\n- Principe d'architecture central : un SI modulaire, faiblement couplé, découpé en zones qui évoluent à des vitesses différentes (« multimodal », au-delà du bimodal). Yves Caseau le présente comme un principe de réalisme : *« tout ne peut pas changer à la même vitesse »*, et c'est la seule façon de gérer le legacy.\n- Métaphore de l'organisme unicellulaire : les échanges avec l'extérieur passent par une membrane, et l'intérieur est fait de sous-systèmes.\n- Sur l'IA : une boîte à outils qui ne se réduit pas au deep learning, et dont les réussites spectaculaires viennent de la **combinaison de techniques** (exemples de DeepMind, de Libratus au poker, du robot de l'université de Tokyo qui passe des concours).\n- La DSI doit fournir aux équipes un environnement qui donne accès aux meilleurs outils, open source ou services ; et s'appliquer l'IA à elle-même pour ses opérations (du monitoring classique au monitoring intelligent), ce qui forme aussi les ingénieurs.\n- Limite : la conclusion sur les tendances de fond de la transformation digitale et les questions n'ont pas été lues.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "adqdCbtYwEI",
+        "title": "Exponential Information Systems for Digital Transformation (Yves Caseau)",
+        "publishedAt": "2021-06-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-fonctionnerait-notre-boite-ideale-1",
+      "day": "2021-06-23",
+      "type": "roundtable",
+      "title": "Comment fonctionnerait notre boîte idéale ? (partie 1)",
+      "speakers": [
+        "Henri Gomez",
+        "Sébastien Blanc — Red Hat",
+        "Philippe Charrière"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Conversation enregistrée à trois, sur le ton d'une discussion en terrasse : *« si on devait monter notre boîte »*, qu'est-ce qu'on garderait de nos expériences ? Le public est invité à réagir, d'accord ou pas.\n- Chacun pose son parcours : Sébastien Blanc (16 ans d'expérience, des SSII néerlandaises à l'expérience développeur chez Red Hat, où son métier est de *« rendre les développeurs heureux »*), Philippe Charrière (du COBOL chez un éditeur aux SSII puis technical account manager chez GitLab), Henri Gomez (trente ans de métier, électronicien de formation, vingt ans de dev puis dix ans côté opérations).\n- Dans l'extrait lu, la discussion porte sur les **développeurs toxiques** : celui qui aime être le point de défaillance unique pour les mises en production, celui qui s'oppose par principe ou commente une pull request sans tact.\n- Nuance apportée avec le recul : certains de ces profils auraient peut-être pu être aidés plutôt que mis à l'écart par effet de groupe.\n- Autre idée : laisser son ego à la porte, et prêter attention à ceux qui, par timidité, n'osent ni contredire ni demander.\n- Limite : seule une petite partie de cette vidéo de 71 minutes a été lue.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "4XzRWthHTgs",
+        "title": "Comment fonctionnerait notre boîte idéale? #1 (Henry Gomez, Sébastien Blanc, Philippe Charrière)",
+        "publishedAt": "2021-06-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-fonctionnerait-notre-boite-ideale-2",
+      "day": "2021-06-23",
+      "type": "roundtable",
+      "title": "Comment fonctionnerait notre boîte idéale ? (partie 2)",
+      "speakers": [
+        "Henri Gomez",
+        "Sébastien Blanc — Red Hat",
+        "Philippe Charrière"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Deuxième partie de la conversation (94 minutes). L'extrait lu porte sur l'informatique interne d'une jeune entreprise : processus, tickets et équipement des équipes.\n- Henri Gomez défend la **standardisation du matériel** : acheter les mêmes portables par lots permet de remplacer immédiatement une machine en panne, pour un coût initial plus élevé mais un coût récurrent plus faible.\n- Le « bring your own device » est décrit comme un cauchemar pour les équipes IT : mises à jour, antivirus et sécurité sur un parc hétérogène.\n- Philippe Charrière décrit le modèle intermédiaire de GitLab : une liste documentée de matériels que l'on peut acheter, avec des spécifications qui dépendent du poste.\n- Aparté sur les claviers QWERTY, déroutants au début mais jugés plus pratiques pour développer.\n- Limite : seule une petite partie de la vidéo a été lue ; les autres thèmes abordés ne sont pas couverts.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "edIeZXVfAWU",
+        "title": "Comment fonctionnerait notre boîte idéale? #2 (Henry Gomez, Sébastien Blanc, Philippe Charrière)",
+        "publishedAt": "2021-06-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-fonctionnerait-notre-boite-ideale-3",
+      "day": "2021-06-23",
+      "type": "roundtable",
+      "title": "Comment fonctionnerait notre boîte idéale ? (partie 3)",
+      "speakers": [
+        "Henri Gomez",
+        "Sébastien Blanc — Red Hat",
+        "Philippe Charrière"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Troisième partie (73 minutes). L'extrait lu traite de l'avant-vente et du rôle des **developer advocates** dans une entreprise.\n- Thèse illustrée par des anecdotes d'avant-vente en société de services : venir en soutenance avec un spécialiste reconnu de son domaine augmente fortement les chances de gagner. Dans un cas raconté, une soutenance prévue pour deux heures en a duré six, et le dossier a été remporté.\n- Le métier d'advocate commence à être reconnu ; les trois intervenants souhaitent qu'il devienne un métier à part entière dans leur entreprise idéale.\n- Mise en garde : des advocates à temps partiel posent le même problème que des avant-vendeurs à temps partiel, et il ne faut pas les sortir *« comme un joker »*.\n- Limite : seule une petite partie de la vidéo a été lue ; la conclusion de la série n'est pas couverte.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "vkde6u5-BTA",
+        "title": "Comment fonctionnerait notre boîte idéale? #3 (Henry Gomez, Sébastien Blanc, Philippe Charrière)",
+        "publishedAt": "2021-06-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "server-side-web-assembly",
+      "day": "2021-06-24",
+      "type": "talk",
+      "title": "Server-side WebAssembly",
+      "speakers": [
+        "Horacio Gonzalez — OVHcloud"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Rappel historique : d'Emscripten à asm.js, puis l'accord rare entre Mozilla, Google, Microsoft et le W3C pour créer le standard WebAssembly, présent dans tous les navigateurs depuis 2017 environ.\n- WebAssembly est un format binaire et une cible de compilation, pas un langage ; il ne vise pas à remplacer JavaScript (slides).\n- Pourquoi côté serveur : une machine virtuelle légère, rapide, sûre en mémoire et isolée par défaut ressemble à **une version allégée d'un conteneur**. Le speaker cite le tweet de Solomon Hykes : si WebAssembly et WASI avaient existé en 2008, il n'aurait pas été nécessaire de créer Docker.\n- La limite du bac à sable (pas d'accès à l'extérieur) est levée par WASI, l'interface système portée par la Bytecode Alliance.\n- Tour des runtimes : Wasmtime, Wasmer et son écosystème (dont le gestionnaire de paquets WAPM, démontré en installant un serveur web bien plus léger que son équivalent Docker), Wasm3 pour les environnements contraints, WAMR.\n- Cas d'usage cités dans les slides : edge computing chez Cloudflare et Fastly, fonctions à la demande chez Clever Cloud.\n- Limites encore ouvertes à l'époque (slides) : quatre types natifs seulement, threads, SIMD et ramasse-miettes en cours de spécification.",
+      "summarySources": [
+        "transcript",
+        "slides",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "3-ulGtsAo5A",
+        "title": "Server-side Web Assembly (Horacio Gonzalez)",
+        "publishedAt": "2021-06-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "au-secours-j-ai-laisse-mes-devops-provisionner-leurs-infrastructures",
+      "day": "2021-06-24",
+      "type": "talk",
+      "title": "Au secours, j'ai laissé mes DevOps provisionner leurs infrastructures",
+      "speakers": [
+        "David Santiago — Michelin",
+        "Alexis Plantin — Michelin"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Retour d'expérience sur l'adoption d'Azure chez Michelin, structuré en piliers, avec une question : comment donner de l'autonomie aux équipes sans perdre le contrôle ?\n- Le principe de la **« boîte vide »** : chaque instance applicative reçoit un resource group par environnement, ce qui permet d'hériter des permissions, de connaître précisément les coûts et de gérer le cycle de vie d'un bloc.\n- Les équipes sont propriétaires de leurs groupes de sécurité (contributeurs et lecteurs) et gèrent elles-mêmes arrivées et départs : l'équipe plateforme n'est plus sur le chemin critique.\n- Un compte de service par projet permet l'infrastructure as code dès le départ, dans les chaînes GitLab CI ou Jenkins.\n- Volet FinOps : détection (voire suppression) automatique des ressources orphelines, comme des IP publiques non rattachées ou des load balancers sans machine derrière ; extinction automatique des environnements de labo le week-end ; coûts rendus visibles par équipe pour les responsabiliser.\n- Le pilier présenté comme **le plus important est la formation** : plus d'une centaine de personnes formées en un an et demi, l'auto-formation en ligne étant jugée insuffisante seule et complétée par des sessions animées en interne.\n- Limite : les premiers piliers (sécurité, gouvernance) et la conclusion n'ont pas été lus.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "TOfmN4m64Dc",
+        "title": "Au secours, j'ai laissé mes DevOps provisionner leurs infrastructures(David Santiago,Alexis Plantin)",
+        "publishedAt": "2021-06-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "beyond-events-the-data-in-motion",
+      "day": "2021-06-24",
+      "type": "talk",
+      "title": "Beyond events - the data in motion",
+      "speakers": [
+        "Florent Ramière — Confluent"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Constat de départ : dans les architectures d'intégration classiques, on passe plus de temps à gérer la complexité qu'à produire de la valeur.\n- Le streaming change la politesse de l'échange : le producteur dépose la donnée dans la plateforme et chaque consommateur la lit à son rythme, sans l'emporter. La brique de référence est Apache Kafka.\n- Métaphore de l'échiquier : l'état est la position actuelle des pièces, les événements sont les coups qui y ont mené. **Un système à événements garde l'état et l'historique qui l'a forgé**, là où une base de données ne répond qu'à « maintenant ».\n- Démonstration avec ksqlDB sur des données ouvertes norvégiennes de position de bateaux : capture, transformation et jointure de flux.\n- Conseils pratiques : le change data capture rapporte beaucoup mais peut être « casse-pipe », d'où la recommandation du pattern outbox ; la rétention infinie devient abordable avec un stockage de type S3, mais il faut choisir la rétention selon l'usage et le coût.\n- Deux sujets signalés comme majeurs : le temps (temps de l'événement, temps du traitement) et l'évolution des schémas. *« La gouvernance, c'est non négociable »* ; seule son implémentation se discute.\n- Limite : transcript automatique de qualité médiocre sur ce talk, lu par extraits.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "hQMxOO1x8Sw",
+        "title": "Data in motion (Florent Ramière)",
+        "publishedAt": "2021-06-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "jhipster-net",
+      "day": "2021-06-24",
+      "type": "lightning",
+      "title": "JHipster.NET",
+      "speakers": [
+        "Nicolas Raymond"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Rappel de ce qu'est JHipster : un générateur d'applications web, à l'origine Angular et Spring Boot, qui accélère le développement d'applications de type CRUD.\n- Deux promesses mises en avant : une application **prête pour la production** dès la génération, et la mise en pratique de bonnes pratiques qui font consensus entre contributeurs.\n- Le générateur fournit aussi l'entourage : supervision, serveur d'identité (Keycloak), configuration d'analyse Sonar, pipelines d'intégration et de déploiement continus.\n- Un projet open source de grande taille (environ 18 000 étoiles et 500 contributeurs selon le speaker), dont le budget issu des sponsors finance des événements et des primes sur les tickets difficiles.\n- La génération se fait par questions successives : monolithe ou microservices, base de données, framework front, tests.\n- JHipster.NET s'appuie sur le mécanisme des **blueprints**, qui surchargent une partie du générateur : il remplace le backend Spring Boot par .NET, comme d'autres blueprints le font pour Kotlin, Quarkus ou Micronaut.\n- Limite : la démonstration de fin n'a pas été lue.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "PoKOzODOwCs",
+        "title": "JHipster.NET (Nicolas Raymond)",
+        "publishedAt": "2021-06-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ameliorer-les-competences-et-les-infrastructures-avec-les-katas-d-architecture",
+      "day": "2021-06-24",
+      "type": "lightning",
+      "title": "Améliorer les compétences et les infrastructures avec les katas d'architecture",
+      "speakers": [
+        "Alexandre Touret — Worldline"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le talk suit l'histoire de « Georges », développeur senior qui veut rester dans la technique et devient architecte sans y être préparé : les formations sont jugées trop théoriques et son raisonnement reste *« biaisé »* par son métier d'origine.\n- Définition retenue, attribuée à Grady Booch : l'architecture, ce sont les décisions de conception significatives, mesurées par le coût du changement.\n- L'idée des katas vient de Ted Neward : on n'a l'occasion de concevoir une architecture qu'une demi-douzaine de fois dans une carrière, donc **il faut s'entraîner**, comme dans les arts martiaux.\n- Déroulé : échauffement et constitution d'équipes mélangées (juniors, seniors, développeurs, DBA, opérationnels), puis une heure de conception sur un même sujet pour toutes les équipes, puis revue par les pairs de cinq minutes par équipe (slides).\n- Règles du jeu : papier et marqueurs suffisent, toutes les questions au modérateur sont permises et partagées, toutes les hypothèses et technologies sont admises si on sait les justifier et les « vendre ».\n- Exemple de sujet : aider des collectivités à identifier les routes à rénover à partir des données de voitures connectées.\n- Bénéfices observés chez Worldline (slides) : travailler en équipe sur un sujet neuf, identifier les contraintes, communiquer et convaincre, découvrir d'autres façons de penser. Depuis le Covid, l'équipe expérimente le format à distance avec visioconférence et tableau blanc virtuel.",
+      "summarySources": [
+        "transcript",
+        "slides",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "XvPrmEiXWus",
+        "title": "Améliorer les compétences et les infrastructures avec les katas d'architecture (Alexandre Touret)",
+        "publishedAt": "2021-06-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-design-de-l-erreur",
+      "day": "2021-06-24",
+      "type": "talk",
+      "title": "Le design de l'erreur",
+      "speakers": [
+        "François Teychene"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Point de départ : nous avons tous une intuition de ce qu'est une erreur, mais la définition courante (un « bug », un comportement incorrect ou inattendu) est si générique qu'elle n'aide ni à comprendre ni à mieux gérer.\n- Sous le même mot se cachent des choses sans rapport : erreur de compilation, NullPointerException à l'exécution, page 404, réponse HTTP 500 avec un message vague, ou le *« un incident technique est survenu »* d'un site de réservation de billets.\n- Le réflexe habituel est d'éviter les erreurs ou de les masquer. Le speaker propose au contraire de les **concevoir** comme un élément à part entière du système.\n- Une bonne erreur est contextualisée : elle dit ce qui s'est passé, ce qu'on était en train de faire et dans quel contexte, et donne des éléments sur la cause.\n- Une fois caractérisées (erreurs techniques, erreurs attendues, cas réellement inattendus à traiter), les erreurs deviennent un indicateur de santé du système.\n- Entre services, cacher l'information d'erreur pour de bonnes raisons techniques fait perdre une matière précieuse pour l'affichage ou pour les nouvelles tentatives ; des erreurs cohérentes améliorent l'expérience utilisateur comme l'expérience développeur.\n- Limite : la partie centrale (typologie détaillée et exemples de code) n'a pas été lue.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "b3-gTnodrlQ",
+        "title": "Design of the error (François Teychene)",
+        "publishedAt": "2021-06-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "gitops-continuous-delivery-sur-kubernetes",
+      "day": "2021-06-24",
+      "type": "talk",
+      "title": "GitOps & Continuous Delivery sur Kubernetes",
+      "speakers": [
+        "Frédéric Barrière — Braincube"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Mise en contexte par les pratiques qui ont précédé GitOps : DevOps (casser les silos, cycles courts et répétables), infrastructure as code (décrire l'état souhaité de façon déclarative et l'historiser), infrastructures immuables (on remplace, on ne modifie pas).\n- Rappel que l'infrastructure porte la production : loi de Murphy, et temps moyen entre deux pannes qui tend vers zéro quand le nombre de composants augmente.\n- GitOps est ramené à **quatre principes** : un état déclaratif, une source unique de vérité, une application automatique de l'état et un agent logiciel qui réconcilie en continu.\n- Kubernetes en fournit deux d'emblée : l'état déclaratif et la réconciliation par son plan de contrôle. Il reste à ajouter un dépôt Git comme source de vérité et un agent qui applique son contenu au cluster.\n- La mise en pratique s'appuie sur Flux ; le speaker précise qu'il existe plusieurs façons de faire du GitOps et que celle présentée n'est pas la seule valable.\n- Limite : la démonstration et la discussion sur l'organisation des dépôts n'ont pas été lues.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "btIeFnXMt1k",
+        "title": "GitOps & Continous Delivery sur Kubernetes (Frédéric Barrière)",
+        "publishedAt": "2021-06-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "devsecops-de-la-securite-dans-mon-devops",
+      "day": "2021-06-24",
+      "type": "talk",
+      "title": "DevSecOps - De la sécurité dans mon DevOps",
+      "speakers": [
+        "Adrien Pessu"
+      ],
+      "feedbackFrom": [],
+      "summary": "- La sécurité vue comme un donjon derrière des remparts est une illusion : c'est *« un jardin qu'on entretient »* chaque semaine.\n- Rappel utile : le DevOps n'est pas une personne mais une manière de produire du logiciel, née d'un problème de communication entre développement et exploitation.\n- La sécurité reproduit aujourd'hui les mêmes silos : validation à chaque étape, allers-retours, test d'intrusion juste avant la mise en production qui renvoie à la conception. Résultat fréquent : on saute les étapes de sécurité et on attend la première attaque.\n- La réponse est le **shift left** : s'occuper de sécurité le plus tôt possible dans le cycle, en outillant les équipes comme le DevOps l'a fait pour les opérations.\n- Le talk passe en revue des outils automatiques côté développement (à commencer par l'analyse statique, SAST) puis côté exploitation, avant les pratiques non automatiques.\n- Deux pratiques de conception recommandées : le risk assessment (modèle de Mozilla cité) et le threat modeling (STRIDE, PASTA), faits par l'équipe avec le product owner, en une trentaine de minutes. Le but n'est pas un document de plus mais de se poser les bonnes questions.\n- Tous ces outils ont un coût, surtout en temps : des indicateurs permettent d'évaluer le retour sur investissement.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "Jr66UvBHY88",
+        "title": "DevSecOps - De la sécurité dans mon DevOps (Adrien Pessu)",
+        "publishedAt": "2021-06-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "plateforme-iot-et-microsoft-azure",
+      "day": "2021-06-24",
+      "type": "talk",
+      "title": "Plateforme IoT et Microsoft Azure",
+      "speakers": [
+        "Kévin Beaugrand"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Présentation de ce qu'est une plateforme IoT, puis de sa déclinaison avec les services Azure pour des usages industriels.\n- Rôle d'une plateforme IoT : **combler le fossé** entre des capteurs, qui vivent dans un monde de réseaux spécifiques, et les applications métier que les développeurs maîtrisent.\n- Première brique, la gestion des appareils : appairage et provisionnement, révocation (appareil volé ou détruit), mises à jour à distance du firmware ou de la configuration, supervision (connexion, niveau de batterie), catalogue.\n- Deuxième brique, la connectivité : prise en charge de protocoles variés (MQTT, AMQP ou HTTP sur réseau IP ; Bluetooth Low Energy, LoRa ou Sigfox quand il faut économiser la batterie) et extensibilité à d'autres protocoles.\n- Exigences transverses : disponibilité permanente de la plateforme et sécurité (empêcher un appareil non autorisé de se connecter, éviter l'interception des données).\n- Limite : seule la première partie (cartographie fonctionnelle) a été lue ; la partie consacrée aux services Azure et aux cas industriels n'est pas couverte.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "RlM83QF3qbw",
+        "title": "Plateforme IoT et Microsoft Azure (Kevin Beaugrand)",
+        "publishedAt": "2021-06-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "comment-streamer-les-donnees-issues-de-ses-erps",
+      "day": "2021-06-24",
+      "type": "talk",
+      "title": "Comment « streamer » les données issues de ses ERPs !",
+      "speakers": [
+        "Anne-Laure Fougeroux",
+        "Yannick Raffin — Capgemini"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Talk joué sous forme de dialogue entre une architecte et un leader technique, à partir d'une scène connue : récupérer « les données de ventes » dans un grand groupe (Michelin) demande de savoir quel ERP, quel pays, quelle technologie, et finit par un nouveau flux.\n- Diagnostic : l'intégration est devenue *« un vrai plat de spaghettis »*. Par peur de toucher à l'existant, on construit un flux de plus ; on ne sait plus qui est maître de la donnée et la cohérence se dégrade.\n- Exemple chiffré : pour un seul ERP, 30 flux d'intégration pour exposer les stocks, avec trois technologies différentes (API, ETL, extraction de fichiers en batch).\n- L'idée proposée, baptisée « ERPflix » en clin d'œil à Netflix : **chaque ERP expose une seule fois sa donnée** dans une plateforme de streaming, avec un catalogue, et chaque consommateur prend ce qu'il veut, comme il veut.\n- Règles posées : masquer la complexité des ERP et des messages, rationaliser les flux, retirer le spécifique accumulé.\n- Architecture décrite : des producteurs (code Java ou connecteurs Kafka) alimentent des topics Kafka ; les consommateurs lisent en Java, par connecteur, ou via un service web pour ceux qui ne savent pas consommer un flux.\n- Limite : la mise en œuvre détaillée et les leçons tirées en fin de talk n'ont pas été lues.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "jHTInYX6WXc",
+        "title": "Comment streamer les données issues de ses ERPs! (Anne-Laure Fougeroux, Yannick Raffin)",
+        "publishedAt": "2021-06-24",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "L'intro Volcamp (équipe Volcamp, 23 juin)",
+    "L'intro Day#2 (équipe Volcamp, 24 juin)"
+  ],
+  "sources": [
+    {
+      "label": "Site officiel Volcamp 2021 (présentation, keynotes, sponsors)",
+      "url": "https://2021.volcamp.io"
+    },
+    {
+      "label": "Programme officiel Volcamp 2021",
+      "url": "https://2021.volcamp.io/talks/"
+    },
+    {
+      "label": "Playlist YouTube officielle « Volcamp 2021 » (20 vidéos, transcripts automatiques)",
+      "url": "https://www.youtube.com/playlist?list=PLL-xGFWSe4-I-tim8qpjTmrd0B68ZdCZ3"
+    },
+    {
+      "label": "Slides d'Alexandre Touret : Améliorer les compétences et les infrastructures avec les katas d'architecture (Speaker Deck)",
+      "url": "https://speakerdeck.com/alexandretouret/volcamp-io-2021-ameliorer-les-competences-et-les-infrastructures-avec-les-katas-darchitecture"
+    },
+    {
+      "label": "Slides d'Horacio Gonzalez : Server-side WebAssembly (noti.st)",
+      "url": "https://noti.st/lostinbrittany/zz52Tl/slides"
+    },
+    {
+      "label": "Aucun post LinkedIn ni article de participant trouvé pour cette édition"
+    }
+  ]
 }

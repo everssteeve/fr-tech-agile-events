@@ -4,11 +4,123 @@
   "title": "DevFest Perros-Guirec 2021",
   "edition": "1re édition",
   "start": "2021-09-24",
+  "end": "2021-09-24",
   "city": "Perros-Guirec",
   "venue": "Palais des Congrès",
   "url": "https://devfest.codedarmor.fr/archives/2021/",
+  "programUrl": "https://devfest.codedarmor.fr/archives/2021/",
   "theme": "Cybersécurité",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-13",
+  "revisit": "Aucun retour de participant trouvé (0 post LinkedIn, 0 article de blog ou de presse en 4 recherches web, novembre 2026) : la synthèse repose sur les transcriptions automatiques de 4 vidéos officielles et sur le programme archivé. Deux talks sur six (Machine Learning au service des développeurs, eBPF) n'ont ni vidéo ni slides repérées. À reprendre si des posts, des slides ou les deux vidéos manquantes apparaissent ; le dossier de presse PDF du site n'a pas pu être lu (texte compressé).",
+  "corpus": "Transcriptions automatiques YouTube des 4 vidéos de la playlist officielle « DevFest Perros-Guirec 2021 » (keynote d'ouverture et 3 talks, soit environ 2 h 50 de captation, questions de la salle comprises) et programme archivé sur devfest.codedarmor.fr (horaires, descriptifs, biographies des 9 intervenants). Quatre recherches web menées en novembre 2026, cinq ans après l'événement, sans aucun retour de participant.",
+  "limits": "Aucun retour de participant : les résumés disent ce qui a été dit sur scène, pas ce que la salle en a retenu. Les sous-titres automatiques déforment de nombreux noms propres et termes techniques, certains chiffres et noms d'outils restent donc incertains et sont signalés comme tels. Deux talks ne sont connus que par leur descriptif officiel, et la date de publication des vidéos, inconnue, est remplacée par la date de l'événement (24 septembre 2021).",
+  "tldr": "Pour sa première édition, une journée mono-track de six sessions entièrement consacrée à la cybersécurité, avec un fil rouge : **la sécurité ne tient que si elle est automatisée et pensée dès la conception**, du noyau Linux embarqué à la chaîne DevOps, et complétée par le regard offensif des chasseurs de bugs.",
+  "keyTakeaways": [
+    "**Ne pas faire reposer la sécurité sur l'humain**, et surtout pas sur les développeurs : générer automatiquement les règles de contrôle d'accès (Smack, SELinux) au moment de l'installation des paquets (transcript, Fulup Le Foll et Clément Bénier, iot.bzh).",
+    "Viser la capacité à **reconstruire, retester et livrer un correctif de sécurité en 48 heures** sur un système de 2 500 à 3 500 composants : c'est ce critère qui fait préférer un modèle par paquets à un modèle par image (transcript, Fulup Le Foll).",
+    "Commencer par le **threat modeling** et des scénarios « en tant qu'attaquant » dès la conception, avec STRIDE, des jeux de cartes ou simplement un tableau et un crayon (transcript, David Rogel, Orange Cyberdefense).",
+    "Mettre des contrôles **à chaque étape de la chaîne** : SAST tôt malgré les faux positifs, DAST en boîte noire, IAST pendant les tests fonctionnels, et analyse des dépendances, qui pèsent environ 80 % du code d'une application (transcript, David Rogel).",
+    "Durcir ce qui n'est pas sécurisé par défaut en suivant les guides gratuits (CIS Benchmarks, OWASP, documentation des fournisseurs cloud), et chiffrer systématiquement les données (transcript, David Rogel).",
+    "Nommer un **security champion** par équipe et embarquer le product owner pour obtenir du temps et du budget sécurité dans chaque sprint (transcript, David Rogel).",
+    "Ne pas ouvrir un bug bounty public sans maturité préalable : audit, gestion des correctifs, puis **programme privé** avec quelques chasseurs avant d'élargir (transcript, Christophe Hauquiert).",
+    "Les chaînes CI/CD et les environnements de déploiement deviennent une cible de choix ; le modèle **GitOps en mode pull** garde les secrets de déploiement dans la plateforme cible et corrige les dérives de configuration (transcript, Philippe Ensarguet, Orange Business Services)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-d-ouverture",
+      "day": "2021-09-24",
+      "type": "keynote",
+      "title": "Keynote d'ouverture",
+      "speakers": ["Philippe Ensarguet — Orange Business Services"],
+      "feedbackFrom": [],
+      "summary": "- Annoncée « Surprise ! » au programme, la keynote se déroule avec un seul transparent. Elle s'ouvre sur un parallèle : en 1865, il faut environ **six semaines** pour que la mort d'Abraham Lincoln soit connue de tous les États ; en 2009, celle de Michael Jackson fait le tour du monde en moins de six secondes. Le numérique a, selon le speaker, accéléré d'autant le *« rythme cardiaque »* de l'économie.\n- Thèse : la technologie n'a jamais autant servi à se différencier, d'où la nécessité d'une vision et d'une **stratégie technologique** pour ne pas se retrouver à contre-courant.\n- Tour d'horizon des tendances suivies par son équipe : **hybridation et multi-cloud** (les frontières entre cloud privé et public s'effacent, encore plus avec l'edge computing), flottes de clusters Kubernetes à piloter avec Kubernetes lui-même (*« orchestrer des orchestrateurs »*), WebAssembly comme étape suivante après la machine virtuelle et le conteneur.\n- **GitOps** : séparer intégration continue et déploiement continu ; en mode pull, les secrets de déploiement ne sont plus stockés dans l'outil de CI/CD et un opérateur local réapplique l'état désiré en cas de dérive.\n- Opérations : la supervision classique ne répond qu'aux questions prévues à l'avance, d'où le passage à l'**observabilité** (métriques, événements, logs, traces) et aux pratiques SRE ; suivent le progressive delivery par feature flags et le FinOps, les factures cloud ayant explosé avec l'usage.\n- Lien avec le thème du jour : quand le centre de données, le réseau et les pipelines deviennent du code, le périmètre à sécuriser s'élargit. *« Si j'étais un attaquant »*, dit-il en substance, il viserait d'abord les **chaînes de CI/CD** et les environnements de déploiement.\n- Conclusion : il ne s'agit pas d'une évolution mais d'une **révolution**, systémique (outils, pratiques, état d'esprit, culture), dont il faut accepter le coût de transformation. Appel au public : se certifier, venir aux meetups, contribuer à l'open source.\n- Lecture critique : un panorama dense et très général, donné par le CTO d'un intégrateur, avec peu d'exemples concrets en dehors de la mention d'un cluster interne de plusieurs milliers de pods. Aucun retour de la salle n'a été trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "lZ0LEhXvIN0",
+        "title": "[DevFest Perros-Guirec 2021] Keynote d'ouverture",
+        "publishedAt": "2021-09-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "automatisation-des-modules-de-securite-linux-en-integration-continue",
+      "day": "2021-09-24",
+      "type": "talk",
+      "title": "Automatisation des modules de sécurité Linux en intégration continue",
+      "speakers": ["Clément Bénier — iot.bzh", "Fulup Le Foll — iot.bzh"],
+      "feedbackFrom": [],
+      "summary": "- Contexte posé par Fulup Le Foll : pour iot.bzh (une trentaine d'ingénieurs à Lorient), un objet connecté est une voiture, un train ou une éolienne. Un tel système compte **2 500 à 3 500 composants**, plus de 100 millions de lignes de code pour une voiture récente, 300 à 500 millions prévues pour un véhicule autonome.\n- Exigence centrale : pouvoir réagir à une attaque en **48 heures**, donc reconstruire tout le système, repasser les tests et produire les mises à jour. Mantra de l'entreprise : *« il ne faut jamais faire confiance à l'humain pour la sécurité »*, et surtout pas aux développeurs ; la génération des règles doit être automatisée.\n- Clément Bénier explique le contrôle d'accès obligatoire (MAC) du noyau Linux : processus, fichiers et utilisateurs reçoivent des labels, et des règles disent quel sujet accède à quel objet. Démonstration sur un petit serveur web compromis par un shell distant : sans MAC, le fichier secret est lisible ; avec **Smack** puis **SELinux**, l'accès est refusé et tracé dans le journal d'audit.\n- Comparaison : Smack est simple et pensé pour l'embarqué, SELinux beaucoup plus riche et complexe. Coût mesuré sur Raspberry Pi : de l'ordre de **3 % avec Smack et 5 % avec SELinux** en usage normal.\n- Dans la distribution open source redpesk, le développeur ne remplit qu'un fichier de configuration déclarant ses permissions. À l'installation du paquet RPM, un composant génère les règles Smack ou le module SELinux à partir de gabarits ; un second filtre les appels d'API entre applications ; un troisième vérifie l'identité de l'utilisateur (OpenID, carte NFC).\n- redpak, conteneur ultra-léger non privilégié organisé en nœuds hiérarchiques, sert à **confiner une faille** à un sous-système ; c'est le projet primé au Grand défi cyber selon les speakers.\n- Questions de la salle : la base est un rebuild de RHEL et CentOS Stream maintenu dix ans ; le modèle par image de Yocto est jugé inadapté aux correctifs en 48 heures ; les labels plutôt que les seuls utilisateurs et groupes, car la sécurité doit être gérée hors du paquet du développeur.\n- Limite reconnue par Clément Bénier : rien n'empêche techniquement un paquet de déclarer une permission indue (l'accès au bus CAN par exemple) ; seuls la revue et le processus de release le détectent.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "JMrKD1YIzfM",
+        "title": "[DevFest Perros-Guirec 2021] Automatisation des modules de sécurité Linux en intégration continue",
+        "publishedAt": "2021-09-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "le-machine-learning-au-service-des-developpeurs",
+      "day": "2021-09-24",
+      "type": "talk",
+      "title": "Le Machine Learning au service des développeurs",
+      "speakers": ["Alexis Marcou — AWS", "Florian Chazal — AWS"],
+      "feedbackFrom": [],
+      "summary": "- Créneau de 11h15, seul talk de la journée consacré à l'apprentissage automatique.\n- Sujet annoncé : les outils fondés sur le machine learning qui aident à **écrire du code plus sûr**.\n- Deux exemples cités par le descriptif : l'assistant GitHub Copilot et les **revues de code automatisées** d'AWS CodeGuru.\n- Résumé fondé sur le seul descriptif du programme : aucune vidéo dans la playlist officielle, ni slides ni retour trouvés.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "ebpf-un-outil-de-deverminage-poids-plume",
+      "day": "2021-09-24",
+      "type": "talk",
+      "title": "eBPF, un outil de déverminage poids plume",
+      "speakers": ["Guillaume Teissier — Thales", "Magali Denelle — EPITECH Paris"],
+      "feedbackFrom": [],
+      "summary": "- Créneau de 14h00, par un chercheur en sécurité du groupe Thales (rétro-ingénierie, analyse de vulnérabilités) et une étudiante d'EPITECH Paris.\n- Sujet annoncé : la technologie **eBPF**, héritière du filtrage de paquets de tcpdump, et son arrivée sous Windows 10.\n- Angle retenu : le **traçage**, pour observer et déverminer un système avec un impact minimal.\n- Résumé fondé sur le seul descriptif du programme : aucune vidéo dans la playlist officielle, ni slides ni retour trouvés.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "integrer-la-securite-dans-l-approche-devops",
+      "day": "2021-09-24",
+      "type": "talk",
+      "title": "Intégrer la sécurité dans l'approche DevOps",
+      "speakers": ["David Rogel — Orange Cyberdefense"],
+      "feedbackFrom": [],
+      "summary": "- Un panorama volontairement générique (outillage, méthode, documentation) plutôt qu'une démonstration. Le speaker insiste sur l'amont, qu'il juge encore très en retrait.\n- **Threat modeling**, *« encore très peu fait »* en France : STRIDE, jeux de cartes de Microsoft et de l'OWASP, ou un simple tableau. Le compléter par des scénarios rédigés du point de vue de l'attaquant (modifier les prix d'une boutique, faire croire qu'une commande est payée) et par les référentiels OWASP de vérification et de maturité.\n- Chiffrer : les fuites sont hebdomadaires, des moteurs comme Shodan recensent près de 1,8 million de bases de données exposées selon sa capture, et des secrets traînent en clair sur GitHub. D'où coffres-forts à secrets, moindre privilège jusque dans les API, jetons non réutilisables, micro-segmentation entre conteneurs (trop souvent lancés en root).\n- Durcissement : à main levée, presque personne dans la salle n'a durci son Tomcat, son Docker ou son Kubernetes, alors que les **CIS Benchmarks** proposent plus de 200 guides gratuits.\n- Scans *« partout »* dans la chaîne : DAST (boîte noire, ne localise pas la faille dans le code), SAST (dès les premières lignes, mais beaucoup de faux positifs), IAST (moins de 1 % de faux positifs selon lui, mais tardif) et **analyse des dépendances**, illustrée par Equifax (plus de 148 millions de données personnelles volées faute de correctif sur une bibliothèque). Les dépendances représentent environ 80 % du code.\n- Compléter par des hooks Git contre les fuites de secrets et par un **pentest au moins annuel**, seul capable de trouver les failles de logique.\n- Organisation : un **security champion** par équipe (un référent, pas un expert), un product owner sensibilisé qui réserve du temps et du budget, un wiki commun, de la formation par le jeu. Enfin, accepter que la brèche arrivera : journaliser, surveiller, simuler une attaque.\n- Lecture critique : un inventaire très large mené au pas de course, la fin (protection à l'exécution, gestion de crise) étant expédiée faute de temps. Aucun retour de participant trouvé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "R4pKZitPR1U",
+        "title": "[DevFest Perros-Guirec 2021] Intégrer la sécurité dans l’approche DevOps",
+        "publishedAt": "2021-09-24",
+        "transcript": true
+      }
+    },
+    {
+      "id": "bug-bounty-ou-comment-pirater-legalement-les-plus-grandes-entreprises",
+      "day": "2021-09-24",
+      "type": "talk",
+      "title": "Bug bounty, ou comment pirater légalement les plus grandes entreprises",
+      "speakers": ["Christophe Hauquiert — indépendant"],
+      "feedbackFrom": [],
+      "summary": "- Le principe : une entreprise autorise la recherche de failles sur ses systèmes et paie ceux qui les lui signalent. L'idée remonte à Netscape en 1995 ; les montants versés ont doublé en 2020 selon le speaker, qui raconte la pratique **du point de vue du chasseur**.\n- Le cadre : des plateformes intermédiaires (HackerOne, YesWeHack, Bugcrowd, Intigriti, Yogosha), des programmes publics ou privés sur invitation, un périmètre autorisé, des règles (débit de requêtes limité, trafic identifiable) et une éthique : **pas de divulgation publique**, même si l'entreprise met des mois à corriger.\n- La prime dépend de la criticité, évaluée avec le score CVSS, et un doublon n'est pas payé. Le débat entre un 8,9 (élevé) et un 9,0 (critique) *« peut durer très longtemps »*, le client étant parfois de mauvaise foi.\n- Méthode : une phase de **reconnaissance** souvent sous-estimée (sous-domaines, API du site, de l'application mobile), puis beaucoup d'essais. Deux familles de failles : les simples, exploitables directement, et les **chaînes de vulnérabilités**.\n- Exemples : chez Tesla, un répertoire listable contenant une archive de mots de passe réseau et de clés VPN, payé 15 000 dollars ; une déconnexion qui renvoyait le jeton de session d'un autre utilisateur ; et sa propre trouvaille avec un collègue, une SSRF dans le provisionnement de volumes de Kubernetes, enchaînée chez un fournisseur cloud avec un scan du réseau interne et une injection de requêtes HTTP jusqu'à lire des mots de passe internes. Elle a donné lieu à une CVE Kubernetes.\n- Peut-on en vivre ? Rarement : des semaines sans rien trouver, une activité **très addictive**, des burn-out, et un chasseur qui *« ne pèse rien »* face au client, la plateforme vivant de ce dernier. Il parle d'un modèle d'ubérisation.\n- Côté entreprise : sans audit préalable ni gestion des correctifs, le bug bounty public revient à *« aller au casse-pipe »*. Commencer en privé, ou passer par un audit participatif payé au forfait. Il annonce vouloir industrialiser la phase de reconnaissance, projet d'entreprise à venir.\n- Questions de la salle : l'auditeur est contraint par un nombre de jours, le chasseur creuse sans limite ; le bug bounty reste **périmétrique** et teste peu la défense en profondeur, ce qui frustre le speaker ; la France compterait une centaine de chasseurs réguliers.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "eye_Zo1To6A",
+        "title": "[DevFest Perros-Guirec 2021] Bug bounty, ou comment pirater légalement les plus grandes entreprises",
+        "publishedAt": "2021-09-24",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [],
+  "sources": [
+    { "label": "Programme officiel archivé (Code d'Armor)", "url": "https://devfest.codedarmor.fr/archives/2021/" },
+    { "label": "Playlist YouTube « DevFest Perros-Guirec 2021 » (4 vidéos, transcriptions automatiques)", "url": "https://www.youtube.com/playlist?list=PLUVP9Ho1VmTm47Wuc8cMv1L0lE5Koq9m-" },
+    { "label": "Vidéo : Keynote d'ouverture (Philippe Ensarguet)", "url": "https://www.youtube.com/watch?v=lZ0LEhXvIN0" },
+    { "label": "Vidéo : Automatisation des modules de sécurité Linux en intégration continue (iot.bzh)", "url": "https://www.youtube.com/watch?v=JMrKD1YIzfM" },
+    { "label": "Vidéo : Intégrer la sécurité dans l'approche DevOps (David Rogel)", "url": "https://www.youtube.com/watch?v=R4pKZitPR1U" },
+    { "label": "Vidéo : Bug bounty, ou comment pirater légalement les plus grandes entreprises (Christophe Hauquiert)", "url": "https://www.youtube.com/watch?v=eye_Zo1To6A" },
+    { "label": "Posts LinkedIn, blogs, presse : aucun trouvé (4 recherches web, novembre 2026)" }
+  ]
 }

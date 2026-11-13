@@ -4,10 +4,361 @@
   "title": "JUG Summer Camp 2021",
   "edition": "12e édition",
   "start": "2021-09-10",
+  "end": "2021-09-10",
   "city": "La Rochelle",
   "venue": "Espace Encan",
   "url": "https://www.jugsummercamp.org/edition/12",
+  "programUrl": "https://www.jugsummercamp.org/edition/12",
   "dateConfidence": "sec",
-  "status": "pending",
-  "sessions": []
+  "note": "Journée unique et gratuite, en présentiel, avec masque obligatoire et bracelet de contrôle à l'entrée (mot d'accueil filmé avant la keynote). Le programme officiel liste 23 sessions (1 keynote, 12 conférences, 6 quickies, 4 tools-in-action) ; 20 ont une vidéo dans la playlist officielle. Sponsors affichés : Serli, OVHcloud, Elastic. La page officielle ne donne ni la date, ni les horaires, ni les salles.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-13",
+  "revisit": "Aucun retour de participant trouvé : 5 recherches web (comptes-rendus, blogs, slides, keynote) sans résultat sur l'édition 2021, Wayback Machine inaccessible. La synthèse repose sur les transcripts et le programme. À reprendre par nom de speaker (LinkedIn, X, blogs Zenika, SFEIR, WeScale) et pour le transcript manquant de la vidéo K6SQXeLgo3Q.",
+  "corpus": "Transcripts automatiques de 19 des 20 vidéos de la playlist officielle « Jug Summer Camp 2021 » (4 lus en entier, 15 par échantillons : début, milieu, parfois fin) et programme officiel de l'édition 12 sur jugsummercamp.org. Aucun billet de blog, post ou compte-rendu de participant n'a été trouvé.",
+  "limits": "Seul le contenu dit sur scène est couvert, souvent par extraits : la réception par le public est inconnue. Les sous-titres automatiques déforment noms propres et chiffres ; les entreprises des speakers viennent de leur présentation orale et manquent pour plusieurs d'entre eux. La date de mise en ligne des vidéos n'est pas connue : `publishedAt` reprend par défaut la date de l'édition. Une vidéo (opérateurs Kubernetes) n'a pas de transcript et trois sessions du programme n'ont pas de vidéo.",
+  "tldr": "Une édition de retrouvailles en présentiel, masquée et gratuite, dominée par **la sécurité expliquée simplement** (OAuth 2, OpenID Connect, JWT, HTTPS, DevSecOps, Falco) et par l'outillage du développeur (Quarkus 2.0, GraalVM, Vite, Gitpod), ouverte par une keynote de Benjamin Bayart sur les données personnelles comme enjeu de puissance.",
+  "keyTakeaways": [
+    "Ne jamais utiliser OAuth 2 pour authentifier : c'est une **délégation d'autorisation**. Pour l'identité, passer par OpenID Connect et son ID token (Karim Pinchon).",
+    "Valider un JWT avec une **liste blanche d'algorithmes codée en dur**, jamais avec l'algorithme annoncé dans le jeton ; préférer les clés asymétriques et une bibliothèque éprouvée (Karim Pinchon).",
+    "Pour les SPA et les applications mobiles, abandonner les grants implicit et password au profit de l'**authorization code avec PKCE** (Karim Pinchon).",
+    "Désigner dans chaque feature team un **security champion** qui reste développeur, former les nouveaux arrivants au Top 10 OWASP et donner un guide de revue de sécurité des pull requests (Adrien Pessu).",
+    "Sauvegarder son gestionnaire de secrets, **afficher clairement l'environnement sur lequel on opère** et interdire les actions destructrices en production (Mathieu Laude et Stéphane Teyssier).",
+    "Découpler une application en services avant de la porter sur Kubernetes : un pod est l'unité de scaling, y entasser dix conteneurs supprime résilience et scalabilité (Mathieu Laude et Stéphane Teyssier).",
+    "Se poser la question de la **compilation native GraalVM** dès qu'on est dans un contexte cloud ou serverless, sans y aller les yeux fermés : build plus long, réflexion limitée, binaire non portable (Anthony Pena).",
+    "Dans un outil en ligne de commande, respecter les conventions (options longues et courtes, `--help`, sous-commandes à but unique) et **désactiver interactivité et couleurs quand la sortie n'est pas un terminal** (Nicolas Lepage).",
+    "Un lead dev garde au moins 40 % de son temps pour coder et **partage ses rôles avec l'équipe** (animation, référent technique, formation) plutôt que de tout centraliser (Lise Quesnel).",
+    "Décrire d'abord les contraintes dans les types, laisser les fonctions sans implémentation et **faire valider la composition par le compilateur** avant d'écrire le code (François Teychene)."
+  ],
+  "sessions": [
+    {
+      "id": "geopolitique-de-la-donnee",
+      "day": "2021-09-10",
+      "type": "keynote",
+      "title": "Géopolitique de la donnée",
+      "speakers": ["Benjamin Bayart"],
+      "feedbackFrom": [],
+      "summary": "- Keynote sans support, précédée du mot d'accueil des organisateurs (conférence gratuite grâce aux sponsors, masques obligatoires, captation vidéo).\n- Derrière les mots « cloud souverain » ou « cyberguerre », Bayart voit une seule notion : **la puissance, c'est-à-dire un rapport de domination**. Exemple : la France menaçant de couper l'électricité de Jersey lors du conflit sur la pêche après le Brexit.\n- Un choix d'hébergement ressemble longtemps à un choix technique et tarifaire de DSI ; le jour où un État dit *« on arrête »*, le prix du kilowattheure n'est plus le sujet.\n- Le RGPD et la neutralité du net agissent comme un **protectionnisme réglementaire** : selon lui, les entreprises américaines ne peuvent pas respecter le droit européen, puisque leur loi les oblige à coopérer avec le renseignement.\n- Trois idées fondent le droit européen des données : les données sont la personne, toute mise en fichier est une maltraitance potentielle, et **l'ordinateur est « fatal »** (sa décision ne se négocie pas, contrairement à celle d'un guichetier).\n- Conséquence : en Europe le préjudice est constitué sans avoir à prouver une perte économique, là où le droit américain traite la donnée comme un bien monnayable.\n- Adresse finale aux informaticiens : dans le numérique *« vous êtes dieu »*, sans limite physique, et un ordinateur soit opprime, soit émancipe (Wikipédia face au logiciel de surveillance du télétravail).\n- Lecture critique : exposé d'opinion assumé, aux raccourcis économiques volontairement provocateurs ; la fin de la keynote n'a pas été lue.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "7VnJ_NiiHas",
+        "title": "KEYNOTE - Géopolitique de la données (Benjamin Bayart)",
+        "publishedAt": "2021-09-10",
+        "transcript": true
+      }
+    },
+    {
+      "id": "gitpod-ide-as-a-service",
+      "day": "2021-09-10",
+      "type": "talk",
+      "title": "GitPod : IDE as a service, ou comment ne pas acheter un MacBook Pro à 6000 € et être heureux avec une petite machine",
+      "speakers": ["Horacio Gonzalez", "Philippe Charrière — GitLab"],
+      "feedbackFrom": [],
+      "summary": "- Duo en mode démo, slides laissées en édition pour jongler entre les onglets.\n- Gitpod est un **IDE web dans le cloud**, parti du projet Eclipse Theia puis passé aux composants de VS Code ; l'espace de travail est lié à un dépôt Git, et l'on peut ouvrir un workspace par branche sans interférence.\n- Argument central : coder depuis une tablette, un Chromebook ou un portable à 4 Go de RAM. Philippe Charrière a ainsi travaillé pendant un périple à vélo.\n- Nuance posée par les speakers eux-mêmes : ne jetez pas votre laptop, *« remplacer son laptop par un iPad, c'est une connerie »* pour un usage productif.\n- Le fichier `.gitpod.yml` décrit les tâches de démarrage (par exemple `npm install`) ; Docker Compose fonctionne dans le workspace (démo avec Redis et un broker MQTT).\n- Cas d'usage mis en avant : **l'onboarding**. Philippe Charrière raconte un week-end passé à installer 35 postes pour une équipe arrivant le lundi ; un environnement prêt à l'ouverture évite ces jours perdus.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "pDu_rTh_s-0",
+        "title": "GitPod : IDE as a service (Horacio Gonzalez & Philippe Charrière)",
+        "publishedAt": "2021-09-10",
+        "transcript": true
+      }
+    },
+    {
+      "id": "experience-developpeur-quarkus-2",
+      "day": "2021-09-10",
+      "type": "talk",
+      "title": "L'expérience développeur par Quarkus 2.0",
+      "speakers": ["Jean-Phi Baconnais — Zenika", "Guillaume Le Floch — Zenika"],
+      "feedbackFrom": [],
+      "summary": "- Tools-in-action centré non sur le fonctionnement de Quarkus mais sur **tout ce qui entoure le développement**. Guillaume Le Floch est contributeur Quarkus (partie Gradle).\n- Rappel en une minute : Quarkus déplace des opérations du runtime vers le build pour réduire temps de démarrage et mémoire, avec ou sans compilation native GraalVM.\n- Nouvelle CLI en 2.0, installable via JBang : création de projet (Maven, Gradle, Kotlin en option), liste, recherche et ajout d'extensions.\n- Mode dev avec rechargement à chaud, comparé à ce que connaissent les développeurs front.\n- **Dev Services** : en mode dev ou test, Quarkus démarre lui-même les conteneurs dont l'application dépend et les arrête ensuite.\n- **Continuous testing** : à chaque sauvegarde, seuls les tests impactés par la modification sont relancés, avec un suivi dans la console de dev ; les speakers y voient une aide au TDD.\n- La démo en direct a connu quelques hésitations (test resté en erreur un moment).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "MLOE-qdP7mQ",
+        "title": "L'expérience développeur par Quarkus 2.0 (Jean-Phi Baconnais & Guillaume Le Floch)",
+        "publishedAt": "2021-09-10",
+        "transcript": true
+      }
+    },
+    {
+      "id": "connaissez-vous-vraiment-jwt",
+      "day": "2021-09-10",
+      "type": "talk",
+      "title": "Connaissez-vous vraiment JWT ?",
+      "speakers": ["Karim Pinchon — Lydia"],
+      "feedbackFrom": [],
+      "summary": "- Deux familles de jetons : par référence (sans signification hors du système) et **par valeur**, comme JWT, qui porte l'information de façon compacte pour transiter en HTTP.\n- La signature apporte intégrité, authentification et non-répudiation ; le chiffrement apporte la confidentialité. Au passage : on dit chiffrer, jamais « crypter ».\n- Attaques décrites : force brute sur une clé symétrique trop faible, et **confusion d'algorithme** (jeton signé en asymétrique, re-signé en symétrique avec la clé publique).\n- Ces failles ne viennent pas de mauvais développeurs, selon lui, mais d'équipes sans compétence sécurité qui suivent le premier tutoriel venu.\n- Le *« paradoxe de JWT »* : pour valider le jeton, il faut faire confiance aux données qu'il contient (son en-tête).\n- Conseils : traiter les clés comme des secrets avec rotation, coder en dur une liste blanche d'algorithmes, restreindre les domaines d'où l'on télécharge les clés, préférer l'asymétrique, utiliser une bibliothèque éprouvée.\n- Dernier conseil : ne pas se battre pour révoquer des JWT (argumentaire non lu dans l'échantillon).",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "rml0l4HgcHg",
+        "title": "Connaissez-vous vraiment JWT ? (Karim Pinchon)",
+        "publishedAt": "2021-09-10",
+        "transcript": true
+      }
+    },
+    {
+      "id": "lead-dev-3-ans-d-xp-et-alors",
+      "day": "2021-09-10",
+      "type": "lightning",
+      "title": "Lead Dev, 3 ans d'xp, et alors ?",
+      "speakers": ["Lise Quesnel — Zenika"],
+      "feedbackFrom": [],
+      "summary": "- Quickie de neuf minutes contre le préjugé du lead dev à dix ans d'expérience, toujours en réunion, qui ne code plus et valide seul le code des autres.\n- Son parcours : développeuse chez Pix en 2018, de plus en plus impliquée, puis lead d'une nouvelle équipe, avec un sentiment d'illégitimité au début.\n- Distinction proposée : le tech lead est surtout un expert technique ; le lead dev **accompagne une équipe**. Chaque entreprise a sa définition, il faut lire la fiche de poste.\n- Cinq aspects du rôle : référent technique, facilitation, coaching, formation, produit (binôme avec le ou la PO). Quatre sur cinq sont humains.\n- Elle répartit ces rôles dans l'équipe (animation tournante des rétrospectives, référents par sujet) pour obtenir une **responsabilité collective** ; un lead seul à livrer en production ou à valider le code déresponsabilise les autres.\n- Difficultés citées : être l'interlocuteur unique de l'extérieur, gérer son temps (elle garde au moins 40 % de code), trancher quand le débat technique ne converge pas.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "48cV_6OQBx0",
+        "title": "Lead Dev, 3 ans d'xp, et alors ? (Lise Quesnel)",
+        "publishedAt": "2021-09-10",
+        "transcript": true
+      }
+    },
+    {
+      "id": "conception-de-langage-communiquer-avec-la-machine",
+      "day": "2021-09-10",
+      "type": "talk",
+      "title": "Conception de langage : communiquer avec la machine",
+      "speakers": ["William Badiadantou (monsieurbadia) — SFEIR"],
+      "feedbackFrom": [],
+      "summary": "- Récit très personnel : un langage codé inventé au collège pour écrire à sa copine, puis une fascination pour le manuscrit de Voynich, la sculpture Kryptos et les écritures anciennes, jusqu'à la rédaction de son propre manuscrit.\n- Survol historique des compilateurs, de Grace Hopper et du Fortran de John Backus à C, Python, Java, Rust, TypeScript et Babel.\n- Un compilateur est une **chaîne de transformations** : un front-end qui analyse le source, un middle-end qui optimise, un back-end qui génère le code cible (pas forcément du code machine).\n- Créer un langage commence par **écrire une grammaire** en notation BNF ou EBNF (terminaux, non-terminaux, méta-symboles) ; il trouve BNF plus lisible.\n- Démo de son compilateur écrit en Rust : tokenizer, parser et interpréteur produisent l'AST d'une fonction contenant une addition, puis sa valeur.\n- La démo a souffert de soucis d'affichage, résolus avec l'aide de la salle. François Teychene avait recommandé ce talk le matin même dans le sien.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "k5Q0c7YgEMA",
+        "title": "Conception de langage : communiquer avec la machine (William Badiadantou)",
+        "publishedAt": "2021-09-10",
+        "transcript": true
+      }
+    },
+    {
+      "id": "devsecops-de-la-securite-dans-mon-devops",
+      "day": "2021-09-10",
+      "type": "talk",
+      "title": "DevSecOps : de la sécurité dans mon DevOps",
+      "speakers": ["Adrien Pessu — indépendant"],
+      "feedbackFrom": [],
+      "summary": "- Image d'ouverture : la sécurité n'est pas une forteresse derrière un pare-feu, c'est **un jardin qu'on entretient tous les jours**.\n- Le DevOps a cassé le silo entre dev et ops ; la sécurité recrée le même problème de communication quand elle valide la conception, relit le code et teste l'intrusion en fin de chaîne.\n- Résultat observé : les vérifications sautent ou n'arrivent qu'en production, faute de budget. Il cite Guillaume Poupard (ANSSI) : oublier la sécurité, c'est *« rouler à 200 km/h à moto sans casque »*.\n- Plan en trois temps : outils d'automatisation côté dev, côté ops, puis organisation, car les outils ne suffisent pas.\n- Organisation : formation des nouveaux arrivants (Top 10 OWASP, vulnérabilités déjà subies, pièges du framework), avec un rappel annuel.\n- Documentation : règles de sécurité écrites et **guide de revue des pull requests** (contrôles d'accès, validation des entrées), classification des données.\n- Security champions : une personne par feature team porte la question sécurité sans quitter son rôle de développeur.\n- Les parties sur les outils côté dev et côté ops n'ont pas été lues.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "89nHNEK30aA",
+        "title": "DevSecOps : de la sécurité dans mon DevOps (Adrien Pessu)",
+        "publishedAt": "2021-09-10",
+        "transcript": true
+      }
+    },
+    {
+      "id": "java-a-la-vitesse-de-la-lumiere-grace-au-graal",
+      "day": "2021-09-10",
+      "type": "lightning",
+      "title": "Java à la vitesse de la lumière grâce au Graal !",
+      "speakers": ["Anthony Pena — SFEIR"],
+      "feedbackFrom": [],
+      "summary": "- Quickie qui repart des bases : langages interprétés, compilés, et Java à cheval entre les deux avec son bytecode et son JIT.\n- GraalVM est un ensemble d'outils greffé sur OpenJDK qui apporte **une JVM polyglotte** (JavaScript, Ruby, Python, R, LLVM) et la compilation native.\n- La compilation native (ahead of time) supprime le temps de chauffe et le JRE embarqué, utile quand on démarre et coupe souvent des services dans le cloud.\n- Contreparties : build plus long, API de réflexion restreinte, binaire non portable d'un système à l'autre, versions de Java supportées en retard (Java 11 officiellement à l'époque).\n- Ses mesures sur une application simple, à prendre avec prudence car restituées par les sous-titres : binaire natif d'environ 46 Mo avec Quarkus contre 150 à 300 Mo de JRE plus le jar ; démarrage Spring Boot de 2 s à 0,08 s ; mémoire Quarkus de 130 Mo à 38 Mo.\n- Conclusion : **au moins se poser la question** dans un contexte cloud ou lambda. Le mode HotSpot de GraalVM n'a pas d'intérêt en production mais évite les builds lents en développement.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "XFJ4-yNdTbs",
+        "title": "Java à la vitesse de la lumière grâce au Graal ! (Anthony Pena)",
+        "publishedAt": "2021-09-10",
+        "transcript": true
+      }
+    },
+    {
+      "id": "vite-the-webpack-killer",
+      "day": "2021-09-10",
+      "type": "talk",
+      "title": "⚡️ Vite ⚡️ the Webpack killer",
+      "speakers": ["Mathieu Mure", "Antoine Caron"],
+      "feedbackFrom": [],
+      "summary": "- Talk mis en scène comme un conte : Grunt, Gulp, Browserify, Bower, puis Webpack et Rollup pour remettre de l'ordre, enfin les CLI (Create React App, Angular CLI, Vue CLI) qui cachent une configuration Webpack devenue pénible.\n- Le héros, un développeur front *« un peu grognon »*, est invité par Evan You (créateur de Vue) à quitter Webpack pour Vite.\n- Idée forte retenue par les speakers : **arrêter d'utiliser du JavaScript pour builder du JavaScript**. Vite s'appuie sur esbuild et reprend l'écosystème de plugins Rollup.\n- Limites assumées : l'outil a à peine un an et déjà une version 2, il manque des choses, et ce qu'on exécute en dev n'est pas ce qu'on livre en production (deux modes distincts), là où Webpack fait le même build.\n- Conseil : si votre application Create React App ou Vue CLI ralentit en dev, essayer Vite prend *« une heure »* ; un mode hybride (dev sur Vite, build sur Webpack) est possible.\n- Mise en perspective : esbuild (Go), SWC (Rust) et Rome redonnent de l'énergie à un domaine où Webpack dominait.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "zBz9flHFWHA",
+        "title": "⚡️ Vite ⚡️ the Webpack killer",
+        "publishedAt": "2021-09-10",
+        "transcript": true
+      }
+    },
+    {
+      "id": "creer-et-distribuer-un-plugin-kubernetes",
+      "day": "2021-09-10",
+      "type": "talk",
+      "title": "Créer & distribuer un plugin pour Kubernetes en quelques minutes ? Easy !",
+      "speakers": ["Gaëlle Acas — Doctolib", "Aurélie Vache"],
+      "feedbackFrom": [],
+      "summary": "- Talk jusque-là donné à distance, présenté pour la première fois en physique, avec un concours photo pour gagner un gopher dessiné.\n- `kubectl` est une CLI logique, mais la faire évoluer est lent car elle suit le cycle de release de Kubernetes ; les outils annexes foisonnent et sont difficiles à découvrir, surtout sans machine à café.\n- Réponse : **les plugins kubectl**, qui étendent la CLI et se partagent avec le monde entier ou un cercle restreint.\n- Les démos montrent des plugins en Bash, Rust, Quarkus et Python ; la bonne pratique reste Go, langage de l'écosystème cloud native, qui produit un binaire exécutable.\n- Soigner le nom : il doit dire ce que fait le plugin (un `kubectl open-svc` se devine, pas un `kubectl open`).\n- **GoReleaser** dans la CI (GitHub Actions) génère les releases, les archives et les empreintes SHA-256 du manifeste à chaque mise à jour.\n- Clin d'œil aux sketchnotes et courtes vidéos d'Aurélie Vache sur Docker, Kubernetes et Istio.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "e9jtseIpLeQ",
+        "title": "Créer & distribuer un plugin Kubernetes en quelques minutes ? Easy ! (Gaëlle Acas & Aurélie Vache)",
+        "publishedAt": "2021-09-10",
+        "transcript": true
+      }
+    },
+    {
+      "id": "pair-programming-avec-son-compilateur",
+      "day": "2021-09-10",
+      "type": "talk",
+      "title": "Pair programming avec son compilateur",
+      "speakers": ["François Teychene"],
+      "feedbackFrom": [],
+      "summary": "- Avertissement d'entrée : rien de directement pratique, plutôt **une autre vision du compilateur**.\n- Le pair programming impose la qualité par contrainte sociale : on évite les hacks parce qu'on se sait regardé.\n- Quatre ans de travail à distance et distribué (deux heures de recouvrement horaire par jour) lui ont fait perdre cette pratique ; les confinements ont généralisé cet isolement. Il y voit une raison de l'engouement pour GitHub Copilot, dont il n'est pas convaincu.\n- Question posée : peut-on obtenir la même discipline avec un outil **non malléable et opiniâtre** ? Le compilateur d'un langage au typage riche joue ce rôle.\n- Il utilise les erreurs de compilation comme information : poser un type volontairement faux et lire ce que le compilateur attendait.\n- Type-driven development : décrire les propriétés du domaine dans des types, écrire des fonctions sans implémentation, les composer, vérifier à chaque pas, puis seulement coder.\n- Il le reconnaît : la discussion est *« beaucoup moins enrichissante »* qu'avec un collègue, mais elle existe.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "svdIiEu0Oqs",
+        "title": "Pair Programming avec son compilateur (François Teychene)",
+        "publishedAt": "2021-09-10",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-operateurs-kubernetes",
+      "day": "2021-09-10",
+      "type": "talk",
+      "title": "Les opérateurs Kubernetes : opérer des services Cloud Native à grande échelle",
+      "speakers": ["Horacio Gonzalez"],
+      "feedbackFrom": [],
+      "summary": "- Tools-in-action d'environ 23 minutes, classé « Cloud », niveau débutant, au programme officiel.\n- La vidéo existe mais n'a pas de sous-titres disponibles : **le contenu n'a pas pu être résumé**.\n- Seuls le titre, le speaker et le format sont établis par le programme et la playlist.",
+      "summarySources": ["program"],
+      "video": {
+        "youtubeId": "K6SQXeLgo3Q",
+        "title": "Les opérateurs Kubernetes : opérer des services Cloud Native à grande échelle (Horacio Gonzalez)",
+        "publishedAt": "2021-09-10",
+        "transcript": false
+      }
+    },
+    {
+      "id": "concepts-avances-authentification-autorisation",
+      "day": "2021-09-10",
+      "type": "talk",
+      "title": "Les concepts avancés d'authentification et d'autorisation expliqués simplement (même si tu n'es pas dev) !",
+      "speakers": ["Julien Topçu"],
+      "feedbackFrom": [],
+      "summary": "- OAuth 2 raconté comme une histoire : le speaker, membre de la fondation OWASP, se dit chef de la sécurité du Grand Budapest Hotel (clin d'œil au film de Wes Anderson).\n- Point de départ : une serrure à code unique partagé par tous les clients, donc **impossible à révoquer** ; un ancien client revient squatter une chambre.\n- Parallèle réel : Facebook demandait autrefois le mot de passe Gmail pour retrouver ses contacts, ce qui donnait un accès total et durable.\n- Le vocabulaire arrive par l'hôtel : les chambres sont la ressource, l'hôtel le resource server.\n- Le numéro de réservation envoyé par courrier est l'authorization code : il voyage par un **front channel**, sans garantie d'arriver à la bonne personne ni d'échapper aux regards.\n- La carte d'accès remise en main propre à la réception est l'access token, échangé sur un canal sûr.\n- OpenID Connect et JWT, prévus dans la version longue, ont été coupés pour tenir dans le format court.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "oUz60SCrk9k",
+        "title": "Les concepts avancés d'authentification et d'autorisation expliqués simplement (Julien Topçu)",
+        "publishedAt": "2021-09-10",
+        "transcript": true
+      }
+    },
+    {
+      "id": "construire-un-outil-de-cli-userfriendly",
+      "day": "2021-09-10",
+      "type": "lightning",
+      "title": "Construire un outil de CLI userfriendly",
+      "speakers": ["Nicolas Lepage — Zenika"],
+      "feedbackFrom": [],
+      "summary": "- Fil rouge : il tape `ps aux` depuis des années sans savoir ce que signifient les trois lettres, preuve qu'un outil peut être peu devinable.\n- **Respecter les conventions** : options longues systématiques, options courtes pour les plus utilisées, `--help` et `--version` attendus partout.\n- Contre-exemple : pacman, qui mêle opérations et options sous forme de flags. Modèle : les sous-commandes de Git, les groupes de commandes de Docker ou de gcloud.\n- Une commande a un nom clair et un seul but : `git checkout` faisait deux choses, d'où `git switch` et `git restore`.\n- Aller plus loin avec son outil de démonstration (un générateur de mèmes de chats écrit en Go) : ouvrir le fichier produit avec le programme par défaut du système, stocker une configuration, proposer une saisie interactive en cas d'oubli, suggérer *« did you mean »*.\n- Garde-fou répété : interactivité, couleurs et emojis ne s'activent que si l'entrée et la sortie sont **attachées à un terminal**, et se désactivent par une option, car une CLI sert aussi dans des scripts.\n- Bibliothèques citées : Cobra et Viper en Go.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "_wPvlraT0GY",
+        "title": "Construire un outil de CLI userfriendly (Nicolas Lepage)",
+        "publishedAt": "2021-09-10",
+        "transcript": true
+      }
+    },
+    {
+      "id": "il-etait-une-fois-les-navigateurs",
+      "day": "2021-09-10",
+      "type": "talk",
+      "title": "Il était une fois... les navigateurs",
+      "speakers": ["Pierre Tibulle", "Noël Macé"],
+      "feedbackFrom": [],
+      "summary": "- Trois quarts d'heure d'histoire des navigateurs web : Noël Macé raconte, **Pierre Tibulle dessine en direct**.\n- Le récit part de 1980 : Tim Berners-Lee, en mission au CERN, écrit pour lui-même ENQUIRE, une base de notes locales reliées entre elles, inspirée de l'hypertexte de Ted Nelson.\n- Revenu en 1984, il le porte sur VMS ; HyperCard existe alors mais reste réservé au Mac. Le CERN se connecte à Internet en 1989 et devient le plus gros site d'Europe.\n- Plus loin, détour par KHTML et Konqueror (KDE, 2000), dont Apple tire WebKit pour Safari en 2003, une fois terminé l'accord qui imposait Internet Explorer sur Mac.\n- Le mobile change la donne : WebKit dans Symbian, puis l'iPhone en 2007 et Android en 2008.\n- Chrome est annoncé le 1er septembre 2008 par une bande dessinée, que le speaker recommande encore.\n- Seuls le début et un passage du dernier tiers ont été lus : la guerre des navigateurs des années 1990 et la conclusion manquent ici.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "g6erTxxy8vY",
+        "title": "👨‍🎨 Il était une fois... les navigateurs ⛵️ (Pierre Tibulle et Noël Macé)",
+        "publishedAt": "2021-09-10",
+        "transcript": true
+      }
+    },
+    {
+      "id": "https-comment-ca-marche",
+      "day": "2021-09-10",
+      "type": "lightning",
+      "title": "HTTPS comment ça marche ?",
+      "speakers": ["Quentin Aubert — MAIF"],
+      "feedbackFrom": [],
+      "summary": "- Quickie d'un développeur full stack de la MAIF (projets open source Otoroshi et Daikoku) pour qui HTTPS était *« une boîte noire un peu magique »*.\n- HTTPS, c'est HTTP sur TLS : TLS ajoute confidentialité, authentification par certificat et intégrité des messages à TCP/IP.\n- Chiffrement symétrique : rapide et robuste, mais tout le monde partage la même clé et il faut bien l'échanger.\n- Chiffrement asymétrique : une paire de clés par utilisateur, qui permet aussi de signer, mais lent et lourd.\n- TLS combine les deux : **l'asymétrique sert à échanger la clé de session, le symétrique à communiquer**.\n- Les certificats sont des cartes d'identité numériques, signées par une chaîne d'autorités de certification (racine, intermédiaires) ; l'exemple pris est Let's Encrypt, utilisé à la MAIF.\n- Déroulé du handshake : ClientHello, ServerHello, certificat, clé de session chiffrée avec la clé publique du serveur, puis échanges chiffrés. Il évoque le mTLS sans le détailler.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "GVsnQnXxV4s",
+        "title": "HTTPS comment ça marche ? (Quentin Aubert)",
+        "publishedAt": "2021-09-10",
+        "transcript": true
+      }
+    },
+    {
+      "id": "les-mesaventures-d-alice-et-bob-au-pays-du-cloud",
+      "day": "2021-09-10",
+      "type": "talk",
+      "title": "Les mésaventures d'Alice et Bob au pays du cloud",
+      "speakers": ["Mathieu Laude — WeScale", "Stéphane Teyssier — WeScale"],
+      "feedbackFrom": [],
+      "summary": "- Six actes tirés de *« la vraie vie »* : des situations vues en mission de conseil, anonymisées derrière Alice, Bob et une « Old School Company » qui migre tout vers le cloud avant la fin de l'année.\n- Acte 1, conteneuriser : toute l'application mise dans un seul pod. Or un pod tourne sur un seul nœud et se scale en bloc : **ni résilience ni scalabilité fine**.\n- Palliatifs : découpler en services avant d'aller sur Kubernetes, et poser des règles avec Open Policy Agent en admission controller (exemple : refuser un pod de plus de trois conteneurs).\n- Acte 2, images immuables : une application React dont l'URL d'API passe en variable d'environnement oblige à rebuilder par environnement.\n- Un acte ultérieur raconte la désactivation d'un backend de secrets en production par quelqu'un qui croyait être en dev. Avec des conteneurs éphémères et des jetons à durée courte, plus rien ne redémarre.\n- Ce qui a sauvé l'équipe : **tous les secrets étaient générés par l'infrastructure as code**, aucun n'était statique.\n- Leçons : sauvegarder le gestionnaire de secrets, afficher clairement l'environnement courant, restreindre les actions possibles en production.\n- Les actes intermédiaires n'ont pas été lus.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "28zonfS16tw",
+        "title": "Les mésaventures d'Alice et Bob au pays du cloud",
+        "publishedAt": "2021-09-10",
+        "transcript": true
+      }
+    },
+    {
+      "id": "ce-qui-rend-les-developpeurs-heureux-en-2021",
+      "day": "2021-09-10",
+      "type": "talk",
+      "title": "Ce qui rend les développeurs heureux en 2021",
+      "speakers": ["Damien Cavaillès — WeLoveDevs"],
+      "feedbackFrom": [],
+      "summary": "- Ouverture par des sondages à main levée dans une salle d'une centaine de personnes, presque toutes développeuses ou développeurs.\n- Statistique qu'il dit stable depuis cinq ans : **70 % des développeurs sont ouverts aux opportunités**, mais un sur trente répond aux sollicitations sur LinkedIn.\n- Le fondateur de WeLoveDevs présente une enquête anonyme d'une dizaine de questions, dont sont sortis une quarantaine de thèmes et un projet de livre.\n- Témoignages lus sur scène : l'ancien qui ne code plus et décide de tout, le manque de diversité, le rapport froid aux RH, l'envie de quitter un secteur contraire à ses valeurs.\n- Constat récurrent des réponses : **les collègues font l'essentiel du bonheur au travail**, même avec des conditions médiocres.\n- Salaire : l'enquête affiche environ 50 k€ en moyenne, les inscrits de la plateforme une médiane de 38 k€, plus représentative selon lui.\n- Sa thèse : le salaire reflète la valeur créée et perçue, pas la valeur de la personne ; en ESN le TJM la plafonne, chez un éditeur elle se mesure mieux.\n- Conseils : demander et donner du feedback, comprendre comment sa contribution est perçue, apprendre la gestion financière.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "l8VUEVdfVZ8",
+        "title": "Ce qui rend les développeurs heureux en 2021 (Damien Cavaillès)",
+        "publishedAt": "2021-09-10",
+        "transcript": true
+      }
+    },
+    {
+      "id": "access-assert-act-la-securite-a-l-echelle-avec-falco",
+      "day": "2021-09-10",
+      "type": "talk",
+      "title": "Access, Assert, Act. La sécurité à l'échelle avec Falco",
+      "speakers": ["Eric Briand — Zenika"],
+      "feedbackFrom": [],
+      "summary": "- Eric Briand, directeur technique de l'agence Zenika de Nantes, présente seul : Pierre-Yves Aillet, annoncé au programme, est absent.\n- Cadre : on gère désormais les serveurs comme du bétail et non comme des animaux de compagnie (pets versus cattle), mais la sécurité en est restée au fichier Excel d'ouverture de flux.\n- Falco est un projet de la CNCF, alors en incubation, déjà cité dans le trail map cloud native.\n- Architecture : un binaire en espace utilisateur capte ce qui se passe sur le serveur, **des règles déclenchent des événements**, et Falcosidekick les relaie vers de nombreux connecteurs.\n- Démo sur Kubernetes : dans un pod vulnérable, l'attaquant simulé écrit un fichier ; Falco le détecte et une fonction de réponse **supprime le pod automatiquement**.\n- Il précise que l'architecture de la démo est volontairement basique (pour la production, prévoir une file de messages comme NATS) et que le chart Helm de Falco a beaucoup progressé.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "MiCke6hYBRw",
+        "title": "Access, assert, act. La sécurité à l'échelle avec Falco 🦅 (Eric Briand)",
+        "publishedAt": "2021-09-10",
+        "transcript": true
+      }
+    },
+    {
+      "id": "introduction-a-openid-connect",
+      "day": "2021-09-10",
+      "type": "lightning",
+      "title": "Introduction à OpenID Connect",
+      "speakers": ["Karim Pinchon — Lydia"],
+      "feedbackFrom": [],
+      "summary": "- Quickie qui vise le sens plus que l'implémentation.\n- OAuth 2 est un protocole de **délégation d'autorisation** : laisser un tiers accéder à mes ressources sans lui donner mes identifiants. Exemples : TweetDeck et le compte personnel d'activité.\n- Quatre acteurs (resource owner, resource server, authorization server, client), deux jetons (access token, refresh token) et des grants, dont l'authorization code, détaillé pas à pas.\n- Les grants implicit et password sont découragés ; pour les SPA et applications mobiles, qui ne peuvent pas garder de secret, **PKCE** ajoute un code challenge haché puis vérifié.\n- Pourquoi OAuth 2 n'authentifie pas : l'API de profil n'a aucun contexte de connexion, le refresh token prolonge l'accès d'un utilisateur parti depuis longtemps, et un jeton volé suffit à usurper une identité.\n- OpenID Connect est une surcouche d'OAuth 2 conçue pour l'authentification, avec un **ID token** au format JWT, un endpoint UserInfo et la découverte de configuration. FranceConnect s'appuie dessus.\n- Évoqués sans détail : accès offline, gestion de session et single sign-out.",
+      "summarySources": ["transcript", "program"],
+      "video": {
+        "youtubeId": "IzZF7WdBp4o",
+        "title": "Introduction à OpenID Connect (Karim Pinchon)",
+        "publishedAt": "2021-09-10",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "REST next level : écrire des APIs web orientées métier (Julien Topçu), conférence sans vidéo dans la playlist",
+    "IaaS (Interruption as a Sageness) (David Aparicio), conférence sans vidéo dans la playlist",
+    "Mutation testing : y a-t-il des trous dans votre couverture de test ? (Benjamin Cavy), quickie sans vidéo dans la playlist"
+  ],
+  "sources": [
+    { "label": "Programme officiel, édition 12 (jugsummercamp.org)", "url": "https://www.jugsummercamp.org/edition/12" },
+    { "label": "Playlist YouTube « Jug Summer Camp 2021 » (20 vidéos, 19 transcripts automatiques lus)", "url": "https://www.youtube.com/playlist?list=PL4Z_Bm3ccVwfmPFuR-QZMg2YLdL0WnGbZ" },
+    { "label": "Posts LinkedIn, blogs et comptes-rendus de participants : aucun trouvé (5 recherches web, novembre 2026)" }
+  ]
 }
