@@ -7,8 +7,241 @@
   "city": "Marseille",
   "venue": "Fort Ganteaume, 2 boulevard Charles Livon",
   "url": "https://web.archive.org/web/20231129045011/https://2023.waxconf.fr/editions-pr%C3%A9c%C3%A9dentes",
+  "programUrl": "https://web.archive.org/web/20220323085606/https://www.waxconf.fr/",
   "theme": "Cloud et DevOps, 100 % retours d'expérience, en plein air et en streaming",
   "note": "WAX (« Watch Awesome Xperts »), organisée par Les Filles & Les Garçons de la Tech (FGTECH), environ 300 participants. La même année se tenait aussi la 6e édition du DevOps D-Day (18 novembre 2021, Orange Vélodrome, https://2021.devops-dday.com/, playlist YouTube « DEVOPS D-DAY 2021 »), non créée séparément faute de pouvoir stocker deux éditions la même année.",
-  "status": "pending",
-  "sessions": []
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-15",
+  "revisit": "Aucun retour de participant ou de speaker trouvé : 5 recherches web le 15/11/2026 (nom de l'événement et lieu, « Watch Awesome Xperts », posts LinkedIn FGTECH et entreprises intervenantes, Kaporal et Infrabuilder, presse locale et Programmez) n'ont rien donné sur l'édition 2021. La synthèse repose sur le programme archivé et sur le transcript automatique du live YouTube de la journée (I-s0WylRNPo), lu par échantillonnage (environ deux tiers de chaque talk). À reprendre : posts LinkedIn des speakers et des sponsors (non lus), photos annoncées en clôture, slides éventuelles, et relecture complète du transcript pour les fins de talks et les questions-réponses.",
+  "corpus": "Programme officiel archivé (accueil de waxconf.fr capturé en mars 2022, page « éditions précédentes » du site 2023, page de l'événement) et transcript automatique du live YouTube de la journée, publié le 14 septembre 2021 sur la chaîne de FGTECH (8 h 56 de vidéo, environ six heures de parole), lu par échantillonnage le 15/11/2026. Aucun retour de participant : 5 recherches web sans résultat sur cette édition.",
+  "limits": "Tout vient de la scène et de l'organisateur : ce que les quelque 300 participants en ont retenu n'est pas documenté. Le transcript est une transcription automatique bruitée (noms propres, sigles et chiffres souvent déformés) : les noms des speakers viennent du programme, et certains chiffres sont à prendre avec prudence. Le live commence au milieu du premier talk (l'ouverture manque) et chaque talk n'a été lu qu'aux deux tiers environ.",
+  "tldr": "Pour sa première édition, WAX aligne sept retours d'expérience d'entreprises du Sud (Kaporal, HPS, Allopneus, Richardson, AGPM, Orange, Alt GR) qui racontent tous la même chose : **la transformation cloud et DevOps est d'abord une affaire d'organisation, de vocabulaire commun et de valeur pour le client**, bien avant d'être un choix d'outils.",
+  "keyTakeaways": [
+    "**Former tout le monde, pas seulement les ops** : chez Kaporal, développeurs, chefs de projet et partenaires ont été formés à Kubernetes pour partager le vocabulaire du quotidien (Alexis Ducastel, Nicolas Ciccione).",
+    "Mettre des **métriques métier dans le monitoring** : un nombre de commandes par heure dit plus vite qu'un CPU qu'il y a un problème (Kaporal), et un tableau de bord par « promesse client » parle à toute l'entreprise (Allopneus).",
+    "Le cloud native n'impose pas le cloud public : Kaporal tourne sur du **bare metal**, Richardson reste chez lui avec Kubernetes, Orange défend une infrastructure interne de niche. L'AGPM, elle, cadre sa migration avec la sécurité et le modèle financier en tête.",
+    "En sécurité applicative, partir du principe que **la faille arrivera** : ce qui compte est le processus de détection, de correction et de livraison, outillé dans la CI/CD (HPS).",
+    "**« Vous n'êtes pas Google »** : dans un projet data, comprendre son besoin, rester simple, éviter le machine learning tant qu'on ne sait pas pourquoi on en fait, et prendre son temps (Thomas Gerbaud, Alt GR).",
+    "Refaire son SI maison plutôt qu'acheter un ERP est un choix assumé chez Richardson, à condition de **choisir systématiquement l'outil le plus simple** et de repartir du langage métier (Luca Secci, Guillaume Paris).",
+    "Gérer une équipe d'infrastructure comme un fournisseur de produits : **catalogue de services, clients nommés, priorisation par la valeur** et capacité à renoncer (Renaud Deconde, Orange)."
+  ],
+  "sessions": [
+    {
+      "id": "transition-vers-le-cloud-native-kaporal",
+      "day": "2021-09-14",
+      "type": "talk",
+      "title": "Transition vers le Cloud Native",
+      "speakers": [
+        "Nicolas Ciccione — Kaporal",
+        "Alexis Ducastel — Infrabuilder"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le live démarre au milieu du talk. Kaporal (marque de mode marseillaise) décide au premier trimestre 2020 de basculer son e-commerce vers Kubernetes, avec Infrabuilder, parce que l'ancienne plateforme ne passait plus les pics (Nicolas Ciccione).\n- Architecture décrite : **Kubernetes sur serveurs bare metal**, distribution Rancher, stockage Rook/Ceph piloté par opérateur, Datadog pour le monitoring, GitLab CI, Docker et Helm. Deux clusters : un cluster de « build » (dev, recette, qualité) et un cluster de production qui porte aussi la préproduction et la démo, pour valider les flux partenaires avant mise en production (Alexis Ducastel).\n- Points d'attention : **former tout le monde**, y compris chefs de projet et partenaires, pour partager le vocabulaire ; choisir une distribution qui se met à jour sans interruption ; mettre des métriques métier (commandes par heure) dans le monitoring ; anticiper la fin du support de Docker comme runtime dans Kubernetes.\n- Une vidéo donne la parole à deux membres de l'équipe : environnements créés à la volée, mises en production et retours arrière plus simples, mais un langage nouveau qui a demandé du temps à toute l'équipe.\n- Résultats annoncés par Kaporal : plus de rupture de service depuis la bascule, coûts d'hébergement légèrement inférieurs, environ 3 500 clients simultanés et un demi-million d'euros de ventes le 11 novembre 2020, +25 % sur le site en un an (attribués en partie aussi à la refonte applicative).\n- Nicolas Ciccione relie le projet à la démarche de responsabilité de la marque : moins d'infrastructure pour plus de performance, avec des indicateurs carbone en cours de mise en place.\n- En questions : le scaling n'est pas automatisé, les nœuds sont provisionnés à l'avance car les pics (soldes, Black Friday) sont prévisibles.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "I-s0WylRNPo",
+        "title": "Diffusion en direct de Les Filles et Les Garçons de la Tech",
+        "publishedAt": "2021-09-14",
+        "transcript": true,
+        "startSeconds": 0
+      }
+    },
+    {
+      "id": "securite-logicielle-application-de-paiement-hps",
+      "day": "2021-09-14",
+      "type": "talk",
+      "title": "La sécurité logicielle dans une application de paiement",
+      "speakers": [
+        "Gaël Migliorini — HPS",
+        "Sébastien Tauvel — HPS"
+      ],
+      "feedbackFrom": [],
+      "summary": "- HPS (Hightech Payment Systems, éditeur monétique, agence d'Aix-en-Provence) migre son back-office de paiement vers des microservices Java sur Kubernetes, après vingt ans d'évolutions depuis PL/SQL et Oracle Forms.\n- Les données à protéger : utilisateurs, transactions et surtout **données de carte**. Le cadre est la norme PCI, côté infrastructure (PCI DSS) et côté logiciel, avec quatre domaines : développement sécurisé, réduction de la surface d'attaque, protection des données, traçabilité.\n- Trois familles d'attaques sont passées en revue : attaques mémoire, attaques sur les points d'entrée, et **vulnérabilités zero day**, pour lesquelles l'important est le processus de détection, de correction et de livraison plus que la faille elle-même.\n- Outillage dans la chaîne d'intégration : analyse statique, vérification des dépendances, scan des images de conteneurs, tests d'infrastructure, tests dynamiques, puis tests d'intrusion manuels une à deux fois par an.\n- Contre-mesures : stocker le moins possible de données sensibles (vérifié par des dumps mémoire après une autorisation), chiffrer en transit et au repos, fixer des durées de rétention, durcir chaque couche, tracer toute modification (audit trail), sensibiliser les développeurs avec les référentiels CWE et OWASP.\n- **Le manque de documentation est présenté comme un risque de sécurité** ; l'infrastructure as code et les conteneurs servent de documentation lisible par les auditeurs.\n- En questions : le chiffrement a un coût de performance réel alors qu'un serveur d'autorisation doit répondre en moins de 100 ms ; face aux attaques par la chaîne de dépendances (environ 900 bibliothèques JavaScript côté Angular), l'équipe reconnaît s'en remettre aux outils d'analyse.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "I-s0WylRNPo",
+        "title": "Diffusion en direct de Les Filles et Les Garçons de la Tech",
+        "publishedAt": "2021-09-14",
+        "transcript": true,
+        "startSeconds": 3660
+      }
+    },
+    {
+      "id": "pitchs-sponsors",
+      "day": "2021-09-14",
+      "type": "other",
+      "title": "Pitchs des sponsors",
+      "speakers": [
+        "Nutanix",
+        "Elastic",
+        "Ippon Technologies",
+        "Mirantis",
+        "SCC",
+        "Infidis",
+        "HashiCorp",
+        "Monext"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Huit partenaires se succèdent pour quelques minutes chacun avant le déjeuner : Nutanix, Elastic, Ippon, Mirantis, SCC, Infidis (avec Dell Technologies), HashiCorp et Monext.\n- Plusieurs commencent par dire leur plaisir de **retrouver un public en présentiel** après les mois de webinaires.\n- Les discours éditeurs tournent autour de la plateforme de conteneurs et du cloud hybride (Nutanix, Mirantis), de la recherche et de l'observabilité (Elastic), de la sécurité du cloud par l'infrastructure as code et la gestion des secrets (HashiCorp).\n- Infidis défend le rôle de l'intégrateur à l'heure du cloud et annonce son rachat en cours par SPIE ICS ; Monext, acteur du paiement d'Aix-en-Provence, vient surtout recruter.\n- Contenu promotionnel, résumé d'après le transcript : il situe l'écosystème commercial de l'événement plus qu'il n'apporte de retour d'expérience.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "I-s0WylRNPo",
+        "title": "Diffusion en direct de Les Filles et Les Garçons de la Tech",
+        "publishedAt": "2021-09-14",
+        "transcript": true,
+        "startSeconds": 6540
+      }
+    },
+    {
+      "id": "data-science-et-ia-pour-automatiser-les-process-alt-gr",
+      "day": "2021-09-14",
+      "type": "talk",
+      "title": "Comment et dans quelles mesures la data science et l'IA peuvent aider les entreprises à automatiser leurs process et améliorer leurs services et produits",
+      "speakers": [
+        "Thomas Gerbaud — Alt GR",
+        "Sabine Nars — Alt GR"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Thomas Gerbaud, physicien de formation passé à la donnée d'entreprise, démonte d'abord la « méthode classique » (inventaire des données, data lab, recrutement de data scientists, algorithmes, pilotes) qu'il juge relever du solutionnisme technologique.\n- Il redéfinit les mots : **la data science, ce sont des mathématiques** et de la modélisation ; l'IA est un terme de 1956 qui a déjà connu deux hivers et vit sa troisième bulle ; on ne peut automatiser que ce qui est défini, objectivable et présent dans les données, avec leurs métadonnées.\n- Un projet data est un projet informatique classique auquel s'ajoute une part d'exploration : on ne sait pas d'avance ce que les données diront, donc le travail est itératif et comporte un risque assumé.\n- Une fois en production, un programme fondé sur les données doit être supervisé, et il faut garder les personnes capables de le faire évoluer. Il évoque aussi la souveraineté des données hébergées chez des fournisseurs américains.\n- Ses conseils : comprendre son besoin (visualisation, statistiques, règles ou inférence), prendre son temps, **ne pas faire de machine learning tant qu'on ne sait pas pourquoi**, se rappeler qu'on n'est pas Google (biais du survivant), et investir dans les compétences sur le long terme.\n- Point de débat : il dit ne pas supporter les méthodes agiles appliquées à ces projets. Renaud Deconde (Orange) lui répond en fin de journée qu'il décrit pourtant des itérations, et qu'il faut détester l'agilité seulement quand elle a perdu son sens.\n- Seule la voix de Thomas Gerbaud a été identifiée dans les passages lus ; Sabine Nars est annoncée au programme.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "I-s0WylRNPo",
+        "title": "Diffusion en direct de Les Filles et Les Garçons de la Tech",
+        "publishedAt": "2021-09-14",
+        "transcript": true,
+        "startSeconds": 15000
+      }
+    },
+    {
+      "id": "du-monitoring-tech-au-monitoring-client-allopneus",
+      "day": "2021-09-14",
+      "type": "talk",
+      "title": "Comment une transfo en orga produit induit un passage d'un monitoring sous prisme Tech (Infra / Appli) à un monitoring DevOps sous prisme Client",
+      "speakers": [
+        "Mehdi Baghdadli — Allopneus",
+        "Loïc Laloux — Allopneus",
+        "Jérôme Brun — Allopneus"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le DSI d'Allopneus (vente de pneus en ligne, environ 300 collaborateurs, siège à Aix-en-Provence) replace le sujet dans une démarche lancée trois ans plus tôt : approche produit, agilité à l'échelle, puis DevOps, avec une centaine de collaborateurs sensibilisés bien au-delà de la technique.\n- Point de départ : des logs dispersés sur une architecture distribuée et redondée, des tableaux de bord par brique technique, des développeurs sans accès aux logs. Un incident de paiement était signalé par un appel client, et pendant que dev et ops cherchaient à se comprendre, **le client ne pouvait toujours pas payer**.\n- Première étape : passer d'équipes par brique technique à des **équipes produit mêlant dev et ops**, maîtresses de leurs logs. Deuxième étape : centraliser logs applicatifs et système dans Datadog.\n- Constat honnête : même réorganisées, les équipes ont refait des tableaux de bord techniques pour des techniciens. Troisième itération : des ateliers avec le métier pour définir des piliers de la promesse client (par exemple trouver le site, rechercher et choisir ses produits) et un tableau de bord d'état lisible par la direction comme par le marketing.\n- Gestion d'incident revue : sondes sur les parcours client, alertes poussées vers la messagerie et par SMS à l'astreinte, ticket créé et prérempli automatiquement, communication standardisée.\n- Difficultés citées : il a fallu **deux ans et trois itérations** pour que le prisme client apparaisse, chacun tend à refaire ce qu'il sait faire, et l'appropriation par toutes les équipes reste en cours.\n- En réponse à une question, les speakers indiquent une disponibilité proche de 100 %, sans en faire l'objectif premier de la démarche.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "I-s0WylRNPo",
+        "title": "Diffusion en direct de Les Filles et Les Garçons de la Tech",
+        "publishedAt": "2021-09-14",
+        "transcript": true,
+        "startSeconds": 18780
+      }
+    },
+    {
+      "id": "simplement-tout-changer-richardson",
+      "day": "2021-09-14",
+      "type": "talk",
+      "title": "Simplement tout changer",
+      "speakers": [
+        "Guillaume Paris — Richardson",
+        "Luca Secci — Richardson"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Richardson, négoce marseillais de chauffage et sanitaire fondé en 1855 (125 points de vente, 1 900 collaborateurs), développe son informatique en interne depuis 1973 : 1 845 programmes, du COBOL au Visual Basic, et une infrastructure par agence qui remonte ses données au siège chaque nuit.\n- Après un audit en 2019, trois options : réécrire à l'identique, adopter un ERP du marché, ou **tout refaire en interne avec de nouvelles technologies**. La troisième est retenue pour garder la souplesse du sur-mesure ; le projet démarre en octobre 2020, retardé par la pandémie.\n- Parti pris à contre-courant de la journée : rester sur site avec une approche cloud native, pour maîtriser les liens réseau nécessaires à la synchronisation des 125 agences pendant la transition.\n- Méthode : Scrum en sprints de deux semaines avec démonstration aux parties prenantes, modélisation du métier (domain-driven design) et langage commun entre métier et développeurs, en s'appuyant sur les anciens qui connaissent l'existant depuis vingt ou trente ans.\n- Appel d'offres en trois lots fin 2020 : plateforme sur Nutanix (Kubernetes managé et réseaux privés virtuels pour isoler un environnement de recette autour de programmes impossibles à modifier), intégrée par Infidis ; outillage DevOps et accompagnement des développeurs confiés à FGTECH, dont un consultant est sur scène.\n- Fil directeur des choix : **prendre systématiquement ce qui simplifie la vie**. Exemples donnés : une passerelle NGINX plutôt qu'une solution d'API management complète, une seule forge intégrée installée sur site, GitFlow et revue de code.\n- À noter : le talk est aussi une vitrine pour l'organisateur et deux sponsors (Nutanix, Infidis), ce qui invite à lire les éloges d'outils avec recul.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "I-s0WylRNPo",
+        "title": "Diffusion en direct de Les Filles et Les Garçons de la Tech",
+        "publishedAt": "2021-09-14",
+        "transcript": true,
+        "startSeconds": 22440
+      }
+    },
+    {
+      "id": "transformation-de-la-dsi-du-groupe-agpm",
+      "day": "2021-09-14",
+      "type": "talk",
+      "title": "Fluidité, Sécurité et Agilité, comment la transformation de la DSI vient répondre aux enjeux du groupe AGPM",
+      "speakers": [
+        "Anaïs Scherrer — AGPM"
+      ],
+      "feedbackFrom": [],
+      "summary": "- L'AGPM, assureur toulonnais fondé en 1951 par des militaires (plus de 700 000 clients, environ 850 collaborateurs), présente deux projets liés : le cadrage d'une migration vers le cloud et un projet DevSecOps d'accélération des livraisons. Un expert technique de l'AGPM, dont le nom n'est pas lisible dans le transcript, coprésente.\n- Contexte : une direction générale exigeante sur la disponibilité et sur des livraisons sans correctifs, un SI entièrement sur site, des applications très imbriquées et des données sensibles (santé, défense) qui imposent un choix de cloud prudent.\n- Motivations avancées pour le cloud : délais d'approvisionnement de serveurs devenus bloquants avec la pénurie de matériel, élasticité pour accompagner la croissance, disponibilité, capacité d'innovation.\n- Le cadrage, mené d'avril à l'été 2021 par ateliers, traite autant de **compétences et de finances que de technique** : former et recruter, passer de l'investissement au paiement à l'usage, maîtriser les contrats, vérifier l'éligibilité de chaque application. Démarrage du projet visé en octobre 2021.\n- Côté DevSecOps, le constat de départ est sévère : lendemains de mise en production en incident majeur, opérations répétitives qui usent les ops, tests hors standards. Réponse : industrialisation de la chaîne, analyse de qualité et de sécurité du code, gestion des secrets, GitFlow, responsabilisation des développeurs sur leurs tests.\n- Indicateurs cités : de 66 projets et 41 utilisateurs sur la plateforme d'intégration continue en mars 2021 à 190 projets et 88 utilisateurs en août.\n- Suite annoncée : conteneurs, observabilité et un monitoring partagé entre ops, développeurs et chefs de projet. Une partie de l'exposé est difficile à suivre dans le transcript.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "I-s0WylRNPo",
+        "title": "Diffusion en direct de Les Filles et Les Garçons de la Tech",
+        "publishedAt": "2021-09-14",
+        "transcript": true,
+        "startSeconds": 26820
+      }
+    },
+    {
+      "id": "devops-quand-il-n-y-a-que-de-l-infrastructure-episode-2",
+      "day": "2021-09-14",
+      "type": "talk",
+      "title": "DevOps, quand il n'y a que de l'infrastructure, épisode 2",
+      "speakers": [
+        "Renaud Deconde — Orange"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Suite d'un premier épisode donné deux ans plus tôt au DevOps D-Day : Renaud Deconde raconte la reprise d'une équipe d'infrastructure d'Orange à Sophia Antipolis (de 50 à 70 personnes, trois datacenters, quelques milliers de serveurs).\n- Son constat initial : beaucoup de talent, un « pattern du héros » et peu de coordination. Ses leviers : cohésion, **coopération plutôt que collaboration**, et des valeurs qu'il formule à sa façon, la gentillesse et la bienfaisance plutôt que la bienveillance de façade.\n- Socle de l'organisation : un **modèle de services d'infrastructure en couches** (hébergement physique, réseau, serveurs, stockage, puis services) qui donne un catalogue, des périmètres d'équipes et des clients internes nommés. Il refuse la séparation build et run, qu'il juge sans valeur ni client.\n- Agilité à l'échelle maison (ni SAFe ni autre cadre complet) : incréments de trois mois, backlog priorisé par la valeur client, et **renoncer** pour financer le remboursement de la dette technique. Des conditions générales d'utilisation sont écrites pour chaque service.\n- Preuve avancée que le modèle fonctionne : un budget d'infrastructure construit en trois jours, composant par composant du catalogue.\n- Positionnement : ne pas concurrencer les grands fournisseurs de cloud sur la machine virtuelle, mais servir ce qu'ils servent mal ou cher, beaucoup de données avec peu de latence.\n- Fin plus personnelle et critique : difficulté de maintenir le sens en pleine réorganisation et consolidation des datacenters, interrogations sur les contrats avec les hyperscalers et sur l'absence d'alternative européenne. Il souligne aussi avoir recruté des femmes à des postes clés de l'infrastructure.",
+      "summarySources": [
+        "transcript",
+        "program"
+      ],
+      "video": {
+        "youtubeId": "I-s0WylRNPo",
+        "title": "Diffusion en direct de Les Filles et Les Garçons de la Tech",
+        "publishedAt": "2021-09-14",
+        "transcript": true,
+        "startSeconds": 29520
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Ouverture de la journée (absente du live, qui commence au milieu du premier talk)"
+  ],
+  "sources": [
+    {
+      "label": "Programme officiel : accueil de waxconf.fr archivé (capture du 23 mars 2022)",
+      "url": "https://web.archive.org/web/20220323085606/https://www.waxconf.fr/"
+    },
+    {
+      "label": "Page « Éditions précédentes » du site WAX 2023 (archive)",
+      "url": "https://web.archive.org/web/20231129045011/https://2023.waxconf.fr/editions-pr%C3%A9c%C3%A9dentes"
+    },
+    {
+      "label": "Page de l'événement WAX Conf 2021 sur waxconf.fr (archive)",
+      "url": "https://web.archive.org/web/20221002135134/https://www.waxconf.fr/events/wax-conf-2021"
+    },
+    {
+      "label": "Live YouTube de la journée, chaîne Les Filles et Les Garçons de la Tech (14 septembre 2021, 8 h 56, transcript automatique)",
+      "url": "https://www.youtube.com/watch?v=I-s0WylRNPo"
+    },
+    {
+      "label": "Chaîne YouTube Les Filles et Les Garçons de la Tech (teasers WAX 2021, pas de vidéos par talk)",
+      "url": "https://www.youtube.com/@lesfillesetlesgarconsdelat233"
+    },
+    {
+      "label": "Posts LinkedIn : aucun lu (5 recherches web sans résultat sur l'édition 2021)"
+    }
+  ]
 }

@@ -8,7 +8,415 @@
   "city": "Lille",
   "venue": "Euratechnologies",
   "url": "https://api-platform.com/con/2021/",
+  "programUrl": "https://api-platform.com/en/con/2021/schedule",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "Première conférence internationale consacrée à API Platform, organisée par Les-Tilleuls.coop sur une journée, en format hybride : deux tracks (9 talks en anglais, 6 en français), la track anglaise étant diffusée en direct sur Livestorm. Bilan officiel : 15 speakers, plus de 150 personnes à Lille et plus de 400 en ligne (« 500 participants » en chiffre d'affichage), 12 sponsors et partenaires. Mesures covid : pass sanitaire, masque obligatoire, un siège sur deux. Soirée communautaire au Mama Shelter pour les 10 ans de Les-Tilleuls.coop. Phil Sturgeon est intervenu à distance.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-15",
+  "revisit": "Retours de participants minces : deux billets seulement, celui de Jan Sorgalla (bitExpert, suivi en ligne, 4 talks commentés en une phrase chacun) et celui de Salah Meharga (SensioLabs, sponsor Gold, 8 talks). Cherché sans résultat (5 recherches web sur 9) : comptes-rendus sur dev.to, Medium, LinkedIn, blogs JoliCode, Elao et Akeneo, pages joind.in, slides Speaker Deck des speakers autres que Kévin Dunglas et Antoine Bluchet. Le talk d'Antoine Bluchet n'a pas de transcript exploitable (sous-titres automatiques détectés à tort comme de l'allemand) : il est résumé à partir de ses slides. À reprendre : posts LinkedIn et tweets de septembre 2021 (#APIPlatformCon), album Flickr, slides et dépôt de démonstration de Marion Agé.",
+  "corpus": "Transcripts de 14 des 15 vidéos de la playlist officielle, lus en entier (sous-titres automatiques, sauf la keynote dont les sous-titres anglais sont relus) ; slides d'Antoine Bluchet (Google Slides, 63 diapositives) ; programme, page speakers et bilan officiel sur api-platform.com ; billet de Kévin Dunglas (10 septembre 2021) ; compte-rendu de l'organisateur (Élise Duverdier, Les-Tilleuls.coop, 24 septembre 2021) ; deux billets de participants : Jan Sorgalla (bitExpert, 23 septembre 2021) et Salah Meharga (SensioLabs, 20 octobre 2021).",
+  "limits": "La réception par le public repose sur deux billets courts, dont un de sponsor et un d'une équipe qui n'a suivi que la track anglaise en ligne ; aucun post LinkedIn ni critique publique n'a été lu. Les transcripts sont des sous-titres bruts : noms propres, versions et chiffres y sont souvent déformés, et les passages douteux ont été écartés plutôt que devinés. Le programme officiel ne donne presque aucun descriptif de session.",
+  "tldr": "Une première édition hybride, en pleine sortie de covid, où Kévin Dunglas présente les **Edge Side APIs**, architecture annoncée comme le cœur d'API Platform 3, pendant que la track française aligne des **retours d'expérience très concrets** (projet raté puis relancé, sérialisation, permissions, authentification) et se clôt sur un débat politique sur le sens du travail dans la tech.",
+  "keyTakeaways": [
+    "Concevoir ses API en **ressources atomiques** liées par URL, prégénérées et servies depuis un CDN, plutôt qu'en documents embarqués pilotés par des groupes de sérialisation (Kévin Dunglas).",
+    "Préparer la migration vers API Platform 3 : attributs PHP 8, providers et processors à la place des data providers et persisters, sous-ressources remplacées par des définitions multiples de ressources, avec une 2.7 de dépréciations et des scripts Rector (slides d'Antoine Bluchet).",
+    "Ne pas choisir une technologie non maîtrisée pour un projet stratégique, et ne jamais sacrifier tests et documentation pour rattraper un retard (Olivier Doucet).",
+    "Toujours fixer un **timeout** aligné sur un SLA, identifier chaque application par son user agent et sortir les appels d'API tiers des threads web (Phil Sturgeon).",
+    "Pour une API avec un seul client dont on est propriétaire, les sessions ou un JWT signé en HS256 suffisent ; garder OAuth2 et OpenID Connect pour les clients tiers (Robin Chalas).",
+    "Choisir le bon niveau de personnalisation de la sérialisation : `Ignore`, groupes, `security` sur `ApiProperty`, context builder, normalizer, puis DTO en dernier recours (Mathias Arlaud).",
+    "Réserver le pattern commande et handler aux opérations métier à effets de bord et garder le CRUD par défaut pour le reste ; exposer des ressources qui ne sont pas des enregistrements de base de données (Łukasz Chruściel).",
+    "Contribuer à un projet open source dès le niveau junior, en commençant par une typo de documentation repérée en suivant l'installation pas à pas (Justine Zahiri).",
+    "Interroger le produit et le client avant le salaire et la stack : poser des questions, oser dire non, et en dernier recours démissionner (Hélène Maître-Marchois)."
+  ],
+  "sessions": [
+    {
+      "id": "opening-keynote-the-future-of-api-platform-architecture",
+      "day": "2021-09-10",
+      "type": "keynote",
+      "title": "Opening Keynote: The future of API (Platform) architecture",
+      "speakers": [
+        "Kévin Dunglas — Les-Tilleuls.coop"
+      ],
+      "feedbackFrom": [
+        "Salah Meharga (SensioLabs)",
+        "Jan Sorgalla (bitExpert)"
+      ],
+      "summary": "**Sur scène (transcript, lu en entier)**\n- Bilan du projet, né en 2015 comme side-project chez Les-Tilleuls.coop : plus de 8 000 commits, 17 dépôts, près de 9 millions de téléchargements du core, plus de 600 contributeurs, 15 membres dans la core team.\n- Depuis la 2.6, la distribution suit l'approche **Jamstack** côté client (Next.js, SSG et ISR, CDN) et embarque Caddy, avec le module de cache Souin.\n- Annonce centrale : les **Edge Side APIs (ESA)**, les idées Jamstack appliquées aux API. Ce sera l'architecture cœur d'API Platform 3, l'approche actuelle restant supportée.\n- Cinq contraintes : réponses JSON prégénérées et servies depuis un CDN, régénérées à l'écriture ; ressources atomiques liées par URL, sans documents embarqués ni groupes de sérialisation ; API progressive, utilisable avec un simple curl ; preloading (en-tête Link, code 103, Vulcain) contre le problème N+1 ; push temps réel avec Mercure.\n- Argument écologique : des API utilisables sur de vieux terminaux, moins de polling, une réponse calculée une seule fois. *« La technologie n'est pas neutre. Elle façonne nos sociétés. »* (traduit de l'anglais).\n- Question de la salle sur le déclenchement de la prégénération : pas de CRON, la génération se fait à l'écriture, puis le code pousse le document via l'API du CDN ou de Caddy ; le stockage est volumineux mais bon marché.\n\n**Côté public**\n- SensioLabs reste prudent : il faut encore vérifier que le gain de performance vaut la complexité d'infrastructure (Salah Meharga).\n- bitExpert retient l'histoire du projet et la vision d'architecture, sans commentaire (Jan Sorgalla).",
+      "summarySources": [
+        "transcript",
+        "blog",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "p7mHHfj7ZPQ",
+        "title": "API Platform Conference 2021 - Kévin Dunglas - The future of API (Platform) architecture",
+        "publishedAt": "2021-11-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-journey-towards-api-platform-3",
+      "day": "2021-09-10",
+      "type": "talk",
+      "title": "The journey towards API Platform 3",
+      "speakers": [
+        "Antoine Bluchet — Les-Tilleuls.coop, API Platform Core Team"
+      ],
+      "feedbackFrom": [
+        "Jan Sorgalla (bitExpert)",
+        "Salah Meharga (SensioLabs)"
+      ],
+      "summary": "**D'après les slides (pas de transcript exploitable)**\n- Rappel historique : version 0.0.1 en 2015 sur Symfony 2.7, input/output, MongoDB et OpenAPI 3 en 2018, hackathon sur les sous-ressources et Vulcain en 2019, puis ADR, attributs PHP 8, Caddy et ActivityPub en 2020.\n- Refonte du design : identifiants et définitions de ressources en attributs PHP 8, avec plus de contrôle sur les URI ; des **définitions multiples de ressources** remplacent les sous-ressources ; les métadonnées passent d'un objet unique à une collection.\n- Nouvelle couche d'état : **providers et processors** remplacent data providers et data persisters.\n- Chemin de migration : scripts Rector, guide d'upgrade et une 2.7 porteuse des dépréciations avant la 3.0.\n- Ruptures annoncées pour la 3.0 : valeurs nulles omises, PATCH activé par défaut, suppression d'`ApiSubresource` et du code hérité. Appel à tester la branche principale.\n\n**Côté public**\n- bitExpert retient les changements, leurs raisons, les problèmes rencontrés et l'objectif d'un processus de mise à jour *« clean and pleasant »* (Jan Sorgalla).\n- SensioLabs y voit surtout la refonte des sous-ressources, pour simplifier l'expérience développeur (Salah Meharga).\n- Kévin Dunglas précise en keynote que c'est surtout Antoine Bluchet qui implémente les ESA.",
+      "summarySources": [
+        "slides",
+        "blog",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "hxTJPt06jjM",
+        "title": "API Platform Conference 2021 - Antoine Bluchet - The journey towards API Platform 3",
+        "publishedAt": "2021-11-09",
+        "transcript": false
+      }
+    },
+    {
+      "id": "better-php-sites-with-the-caddy-web-server",
+      "day": "2021-09-10",
+      "type": "talk",
+      "title": "Better PHP Sites with the Caddy Web Server",
+      "speakers": [
+        "Matt Holt — Caddy"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript, lu en entier)**\n- Thèse : *« Votre code PHP n'est qu'une petite partie de votre site »* (traduit). TLS, routage, FastCGI, redirections, cache, compression et logs convergent sur le serveur web, que beaucoup de développeurs PHP connaissent mal (sondage Twitter à l'appui).\n- Caddy : premier commit fin 2014, écrit en Go (sécurité mémoire), binaire statique unique, tout est plugin. La v2 apporte une API REST de configuration, JSON comme format natif et des adaptateurs, le Caddyfile restant le plus utilisé.\n- PHP : la directive `php_fastcgi`, conçue avec Francis Lavoie, donne une configuration de production en **quatre lignes** pour WordPress, Symfony ou API Platform.\n- HTTPS automatique via ACME (Let's Encrypt, ZeroSSL) et **On-Demand TLS** pour les domaines apportés par les clients, utilisé sur des dizaines de milliers de sites.\n- Côté API Platform : le passage de nginx à Caddy en 2.6 a réduit les conteneurs de huit à quatre ; le Caddyfile fourni inclut HTTP/3, Mercure et Vulcain.\n- Plaidoyer final pour le sponsoring de l'open source, qui lui permet de travailler à plein temps sur Caddy.\n- Questions : stockage partagé des certificats en cluster (modules dédiés), ingress controller Kubernetes (projet communautaire, encore rugueux, en manque de contributeurs).\n\nAucun retour de participant trouvé ; l'organisateur retient les bonnes pratiques et la simplicité de Caddy.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "JaEH7Tfzvos",
+        "title": "API Platform Conference 2021 - Matt Holt - Better PHP Sites with the Caddy Web Server",
+        "publishedAt": "2021-11-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "the-api-mindset-tech-product-business-and-legal",
+      "day": "2021-09-10",
+      "type": "talk",
+      "title": "The API mindset: tech, product, business and legal",
+      "speakers": [
+        "Mehdi Medjaoui — APIdays"
+      ],
+      "feedbackFrom": [
+        "Salah Meharga (SensioLabs)"
+      ],
+      "summary": "**Sur scène (transcript, lu en entier)**\n- Cadre : comme l'imprimerie ou le conteneur maritime, l'API est un médium qui transforme ce qu'il transporte. Après *« le logiciel dévore le monde »*, **les API dévorent le logiciel** (traduit).\n- Histoire : sous-routines théorisées en 1947, première bibliothèque logicielle en 1951, où l'on notait déjà que rendre du code réutilisable coûte plus que l'écrire et que la documentation est la tâche la plus difficile.\n- Business : chaque brique de la chaîne numérique devient une API-produit (Stripe, Twilio, SendGrid, Avalara) ; l'API-first réduit le time-to-market.\n- Organisation : mémo de Jeff Bezos de 2002, façade API pour découper un monolithe, nouvelle pile de standards (OpenAPI, AsyncAPI, JSON Schema, JSON-LD, GraphQL, Vulcain).\n- Juridique : les API deviennent obligatoires (DSP2, portabilité RGPD). Lire les conditions d'utilisation, vu les coupures d'accès passées chez Twitter, LinkedIn ou Netflix.\n- Mise en garde : *« Quand vous consommez une API, vous consommez le monde qui est derrière »* (traduit), fermes à clics et étiquetage manuel compris.\n- Questions en ligne : la dépendance à une API tierce est un compromis (internaliser ce qui est critique) ; les États passent de l'open data à des API ouvertes.\n\n**Côté public** : SensioLabs en retient que l'API est désormais un produit et doit être pensée comme telle (Salah Meharga).",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "LHJuKAsL5cs",
+        "title": "API Platform Conference 2021 - Mehdi Medjaoui - The API mindset: tech, product, business and legal",
+        "publishedAt": "2021-11-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "sylius-and-api-platform-the-story-of-integration",
+      "day": "2021-09-10",
+      "type": "talk",
+      "title": "Sylius and API Platform. The story of integration",
+      "speakers": [
+        "Łukasz Chruściel — Sylius"
+      ],
+      "feedbackFrom": [
+        "Salah Meharga (SensioLabs)"
+      ],
+      "summary": "**Sur scène (transcript, lu en entier)**\n- Retour sur un peu plus d'un an d'intégration d'API Platform dans Sylius, pour une API e-commerce headless dont la documentation est générée, donc à jour.\n- Architecture : API Platform joue l'infrastructure, Sylius l'application, Symfony Messenger fait la couche entre les deux. Le CRUD par défaut couvrirait environ 80 % des cas ; le reste passe par le pattern **commande et handler**.\n- Règles : une commande, un handler ; validation et transaction autour de chaque handler ; aucune donnée de session ou de requête dans les handlers ; des commandes faites de données brutes, jamais d'objets Doctrine.\n- Des « command enrichments » composables injectent après coup utilisateur, locale ou canal courants, au prix assumé de l'immutabilité des commandes.\n- Design : tout référencer par IRI, et *« les enregistrements de base de données ne sont pas vos ressources »* (traduit). La réinitialisation de mot de passe est une ressource sans table.\n- Tests : les mêmes scénarios Behat portent un tag UI et un tag API, ce qui mesure la migration (plus de 80 % des fonctionnalités de la boutique couvertes côté API) ; PHPUnit complète pour les tests de contrat.\n- Limites assumées : approche plus verbeuse, déconseillée pour le CRUD simple. *« Tout est un compromis »* (traduit). L'intégration reste expérimentale et les ruptures sont documentées.\n\n**Côté public** : SensioLabs retient les commandes et handlers via Messenger, et l'usage des tests Behat comme outil de migration (Salah Meharga).",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "5f2qoBH7tl8",
+        "title": "API Platform Conference 2021 - Łukasz Chruściel - Sylius & API Platform: the story of integration",
+        "publishedAt": "2021-11-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "how-to-become-a-react-admin-grandmaster-in-237-easy-steps",
+      "day": "2021-09-10",
+      "type": "talk",
+      "title": "How To Become A React-admin Grandmaster In 237 Easy Steps",
+      "speakers": [
+        "François Zaninotto — Marmelab"
+      ],
+      "feedbackFrom": [
+        "Salah Meharga (SensioLabs)"
+      ],
+      "summary": "**Sur scène (transcript, lu en entier)**\n- Seul talk sans PHP de la journée, par l'auteur de Faker et de react-admin. Thèse : react-admin est un **DSL déclaratif** pour back-offices plus que du JavaScript, et le temps de développeur coûte cher.\n- Les guessers d'API Platform Admin génèrent un CRUD en une ligne par ressource, mais le résultat n'est, selon lui, que *« marginalement meilleur que phpMyAdmin »* (traduit) : il faut ensuite personnaliser.\n- Conseils : étudier les démos publiques, exploiter les contextes React (`useRecordContext`, `useListContext`), comprendre le store Redux.\n- Données : les champs de référence agrègent et dédupliquent les appels en un seul `getMany` (ce qui demande un filtre sur l'id côté API Platform) ; mutations optimistes et annulables ; mettre le plus de code possible dans le data provider.\n- UI : filtres en sidebar, composition plutôt que configuration, pages personnalisées avec React Router.\n- Enterprise Edition payante (RBAC, many-to-many, temps réel, audit log), présentée comme le financement de l'open source ; parenthèse sur GreenFrame, son outil de mesure du CO2 d'une visite.\n- Questions : Redux reste plus efficace que le contexte pour l'état global ; rien à annoncer sur React 18.\n\n**Côté public** : SensioLabs retient le `ReferenceField`, assez malin pour regrouper les appels d'API en un seul (Salah Meharga).",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "3m5An-s0r-k",
+        "title": "API Platform Conference 2021 - François Zaninotto - How To Become A React-admin Grandmaster",
+        "publishedAt": "2021-11-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "api-horror-stories-from-an-unnamed-coworking-company",
+      "day": "2021-09-10",
+      "type": "talk",
+      "title": "API Horror Stories from an Unnamed Coworking Company",
+      "speakers": [
+        "Phil Sturgeon — Stoplight"
+      ],
+      "feedbackFrom": [
+        "Jan Sorgalla (bitExpert)"
+      ],
+      "summary": "**Sur scène (transcript, lu en entier ; intervention à distance)**\n- Récit de 18 mois à éteindre des incendies dans une entreprise de coworking non nommée : appels synchrones en chaîne, API à plusieurs secondes, aucun cache HTTP, formats d'erreur multiples, authentification désactivée dans les tests, aucune documentation.\n- Remède de fond : le workflow **API design first**, avec OpenAPI comme source de vérité, des mocks soumis aux clients avant le code et des tests de contrat.\n- Enquête sur un « cache stampede » : seul indice, un user agent générique. Conseils : user agent avec nom d'application et version, OpenTelemetry, service mesh.\n- Monolithe distribué sans timeout, donc pannes en cascade. Conseils : toujours un **timeout aligné sur un SLA**, retries avec backoff, circuit breakers, et ne pas ajouter d'appels réseau si l'on ne sait pas faire un bon monolithe.\n- Anecdote : le 1er du mois, la passerelle de badges d'un prestataire saturait et les nouveaux clients ne pouvaient entrer ni dans l'immeuble ni aux toilettes. Correctif : service isolé puis traitement asynchrone.\n- Une ressource utilisateur de 200 Ko et deux monolithes qui s'appellent l'un l'autre pour une simple locale : un endpoint dédié et un Cache-Control d'un jour ont suffi.\n- Question : Stoplight ne supporte pas JSON-LD à ce jour.\n\n**Côté public** : *« a really funny and entertaining journey »*, le talk le plus loué par bitExpert (Jan Sorgalla). L'organisateur écrit que les bonnes pratiques d'API Platform résolvent ces problèmes ; sur scène, le remède cité est OpenAPI et le design first.",
+      "summarySources": [
+        "transcript",
+        "feedback",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "C72UE0ypr6c",
+        "title": "API Platform Conference 2021 - Phil Sturgeon - API Horror Stories from an Unnamed Coworking Company",
+        "publishedAt": "2021-11-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "why-json-ld-and-what-is-it",
+      "day": "2021-09-10",
+      "type": "talk",
+      "title": "Why JSON-LD and what is it?",
+      "speakers": [
+        "Samuel Rozé — API Platform Core Team"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript, lu en entier)**\n- Le speaker travaille dans la santé (maintien à domicile des personnes âgées), d'où son intérêt pour le partage de données structurées.\n- JSON-LD s'inscrit dans le web sémantique du W3C : RDF, SPARQL, SHACL, OWL. Trois raisons de s'y intéresser : visibilité dans les moteurs de recherche, intégrations futures en jours plutôt qu'en mois, et un argument éthique contre une **économie de la donnée en silos**.\n- RDF en deux principes : des graphes de triplets sujet, prédicat, objet, et des IRI comme identifiants. L'ontologie est *« l'équivalent de la spec OpenAPI »* du jeu de données (traduit).\n- Réutiliser les vocabulaires existants (schema.org, FOAF, DBpedia, FHIR pour la santé) plutôt que réinventer.\n- Démonstration avec deux commerces, à Londres et à Lille : suivre le graphe DBpedia suffit pour enrichir les données sans transformation.\n- Pratique : `@id`, `@context`, formes compacte et aplatie, framing ; SPARQL et ses requêtes fédérées. Avec API Platform, il suffit de déclarer l'IRI du type sur la ressource.\n- Conclusion : penser dès le départ à des identifiants globalement uniques paie en six mois à deux ans.\n- Questions : interroger une API API Platform en SPARQL reste délicat (crawler et fusionner les JSON-LD) ; rich snippets Google et applications clientes.\n\nAucun retour de participant trouvé ; l'organisateur parle de standardisation des données.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "zuPYqOsT-aw",
+        "title": "API Platform Conference 2021 - Samuel Rozé - Why JSON-LD and what is it?",
+        "publishedAt": "2021-11-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "symfony-runtime-wrapping-api-platform-in-a-lambda",
+      "day": "2021-09-10",
+      "type": "talk",
+      "title": "Symfony Runtime: wrapping API Platform in a lambda",
+      "speakers": [
+        "Nicolas Grekas — Symfony Core Team"
+      ],
+      "feedbackFrom": [
+        "Jan Sorgalla (bitExpert)",
+        "Salah Meharga (SensioLabs)"
+      ],
+      "summary": "**Sur scène (transcript, lu en entier ; dernier talk de la journée)**\n- Le composant Runtime découple l'application de l'état global : le front controller **retourne une closure** qu'un runtime externe appelle, décore et peut rappeler plusieurs fois. C'est le front controller par défaut depuis Symfony 5.3.\n- Origine : un projet de confinement, commencé un dimanche près d'un an plus tôt. Déplacer cette logique dans `vendor` permet à Symfony de la faire évoluer.\n- Bénéfice : une infrastructure interchangeable sans réécrire le bootstrap (PHP-FPM, Bref pour AWS Lambda, Swoole, RoadRunner, ReactPHP). Tobias Nyholm a déjà écrit une trentaine de runtimes.\n- Le gain de performance vient des processus longs, où kernel et conteneur ne redémarrent plus à chaque requête (les chiffres cités sont inexploitables dans le transcript).\n- Mécanique : `RuntimeInterface` à deux méthodes, `GenericRuntime`, configuration dans `composer.json`, étapes décorables.\n- Question en ligne : quel gain en passant de conteneurs à du FaaS ? *« Zéro »*, la même logique tourne à chaque requête.\n- Une question sur la réutilisation d'un kernel entre tests PHPUnit lui donne une idée qu'il n'avait pas envisagée.\n\n**Côté public**\n- bitExpert : *« not really related to API Platform »* mais très intéressant (Jan Sorgalla).\n- SensioLabs retient la nouvelle forme du front controller (Salah Meharga).",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "vXk2Z1dy_gA",
+        "title": "API Platform Conference 2021 - Nicolas Grekas - Symfony Runtime: wrapping API Platform in a lambda",
+        "publishedAt": "2021-11-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "project-reboot-why-php-and-symfony-are-still-into-the-game",
+      "day": "2021-09-10",
+      "type": "talk",
+      "title": "Project reboot: Why PHP and Symfony are still into the game for any new project",
+      "speakers": [
+        "Olivier Doucet — Oxeva"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript, lu en entier ; talk en français)**\n- Cofondateur d'un hébergeur infogéré de 20 personnes, il raconte un projet lancé en 2018 : une interface de pilotage de cloud au-dessus d'OpenStack, en React, GraphQL et Node.js. Après 18 mois, rien n'était sorti.\n- Causes : cycle en V, microservices devenus spaghettis, **technos non maîtrisées**, tests et documentation abandonnés pour rattraper le retard, GraphQL utilisé comme passerelle qui aspire le métier, polling à la place du push, puis changement de modèle économique du service tiers d'authentification.\n- Décision de juin 2020 : repartir de zéro plutôt que céder au biais des coûts irrécupérables, ce qui restait possible faute de mise en production.\n- Nouvelle base : React conservé, back en **API Platform et Mercure**. Argument massue : une bonne semaine d'apprentissage pour un développeur PHP et Symfony ; environ 10 000 lignes écrites en un mois.\n- Difficultés : UUID et filtres de recherche, mises à jour Mercure (échanges avec la core team), documentation en transition vers les attributs PHP 8.\n- Bilan : un an de réécriture menée par un seul développeur, plus de 80 % de couverture, sortie annoncée un mois plus tard.\n- Conseils : laisser le fonctionnel piloter, ne pas réduire les estimations, viser de petites échéances, débuter API Platform sans providers personnalisés ni GraphQL.\n- Questions : pas d'architecture hexagonale, raccourcis assumés et documentés ; plusieurs API Platform séparées qui dialoguent en REST.\n\nAucun retour de participant trouvé ; l'organisateur résume : un projet raté sur des technos mal maîtrisées, relancé avec Symfony, API Platform et Mercure.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "aB6lKL_SvYQ",
+        "title": "API Platform Conference 2021 - Olivier Doucet - Why PHP and Symfony are still into the game",
+        "publishedAt": "2021-11-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "a-suitable-serialization-with-api-platform-and-symfony",
+      "day": "2021-09-10",
+      "type": "talk",
+      "title": "A suitable serialization with API Platform and Symfony",
+      "speakers": [
+        "Mathias Arlaud"
+      ],
+      "feedbackFrom": [
+        "Salah Meharga (SensioLabs)"
+      ],
+      "summary": "**Sur scène (transcript, lu en entier ; talk en français, sous-titres très dégradés)**\n- Thèse : il existe de nombreuses façons d'adapter la sérialisation ; l'important est de connaître leur coût pour *« choisir la bonne solution au bon moment »*. Fil rouge : une API de robots sur Mars avec une mission à cacher.\n- Niveau binaire : attribut `Ignore` du Serializer, ou `ApiProperty` avec lecture et écriture désactivées.\n- **Groupes de sérialisation** par opération : efficaces mais verbeux, sources d'erreurs et statiques.\n- Dynamique selon la requête : décorer le context builder. Depuis la 2.6, la propriété `security` d'`ApiProperty` remplace ce code par une ligne.\n- Dynamique selon l'instance : un normalizer personnalisé, qui peut aussi chiffrer ou formater.\n- Sur plusieurs ressources : décorer la resource metadata factory pour générer des groupes par convention. Règle donnée : context builder si cela dépend de la requête (invisible dans la documentation), metadata factory si cela dépend de la ressource (visible).\n- DTO et data transformer quand la représentation diverge trop du modèle. Il dit s'en servir *« le moins possible »*, à cause d'effets de bord sur les liens et sous-ressources.\n- Anecdote : chez un ancien client, une classe `Product` avait 64 propriétés exposées conditionnellement.\n\n**Côté public** : SensioLabs détaille les mêmes niveaux (attributs, groupes, `ApiProperty::security`, DTO) et ajoute une mise en garde sur l'usage de `security` (Salah Meharga).",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "mYwL8snWvTs",
+        "title": "API Platform Conference 2021 - Mathias Arlaud - Suitable serialization with API Platform and Symfony",
+        "publishedAt": "2021-11-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "api-platform-next-js-client-generator-contributing-as-a-junior-developer",
+      "day": "2021-09-10",
+      "type": "talk",
+      "title": "API Platform Next.js client generator: contributing as a junior developer",
+      "speakers": [
+        "Justine Zahiri — Les-Tilleuls.coop"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript, lu en entier ; talk court en français)**\n- Parcours : formation littéraire, plusieurs années libraire à Montmartre, puis un bootcamp de développement grâce à une bourse. Développeuse front chez Les-Tilleuls.coop depuis presque trois ans.\n- Elle pensait qu'API Platform était *« un truc d'experts »*. Kévin Dunglas l'oriente vers le générateur de clients, qui lit la documentation Hydra et produit une application Next.js.\n- Première contribution : une **typo dans la documentation**, repérée en suivant l'installation pas à pas, corrigée pour la personne suivante.\n- Première issue de code : formulaires de création et d'édition et suppression dans le générateur Next, avec Formik. La revue lui fait fusionner deux composants et retirer un `console.log` oublié.\n- Deuxième chantier : afficher les erreurs de l'API dans le formulaire. Environ trois jours perdus à adapter l'existant avant d'oser le remettre en question.\n- Suite : `title` des pages, puis balise script JSON-LD en cours.\n- Message : *« toutes les contributions sont importantes »*, et *« on peut contribuer même si on est junior et j'en suis très modestement la preuve vivante »*.\n- Questions : le syndrome de l'imposteur, qu'elle dit avoir *« au quotidien »* (*« qu'est-ce que tu risques ? »*) ; l'accueil des juniors à la coopérative, avec une personne dédiée depuis la rentrée.\n\nAucun retour de participant trouvé ; l'organisateur retient qu'on peut contribuer à tout niveau.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "W0KGdrx8BpQ",
+        "title": "API Platform Conference 2021 - Justine Zahiri - API Platform Next.js client generator contribution",
+        "publishedAt": "2021-11-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "secure-and-practical-authentication-in-api-platform",
+      "day": "2021-09-10",
+      "type": "talk",
+      "title": "Secure and Practical Authentication in API Platform",
+      "speakers": [
+        "Robin Chalas — Les-Tilleuls.coop, Symfony Core Team"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript, lu en entier ; talk en français, sans questions faute de temps)**\n- Point de départ : API Platform ne gère pas l'authentification, il la délègue à Symfony. Trois options : sessions PHP, JWT, OAuth2 avec OpenID Connect.\n- Sessions : simples, natives, éprouvées ; un stockage partagé de type Redis suffit pour passer à l'échelle. Elles ne sont pas stateless, mais *« REST, c'est pas une religion »* : les utiliser dans une API est valide.\n- JWT : standard, sans état serveur, adapté au mobile. Le coût est dans la logistique : rotation des clés, jetons non révocables donc durée de vie courte et refresh tokens, stockage côté client (pas de localStorage).\n- LexikJWTAuthenticationBundle, qu'il maintient : il recommande **HS256** pour un nouveau projet avec un seul client maîtrisé et réserve l'asymétrique au cas où plusieurs applications vérifient les jetons. Le bundle recharge l'utilisateur à chaque requête, ce qui évite qu'un compte révoqué garde ses accès.\n- OAuth2 et OpenID Connect : à réserver aux clients tiers, avec les bibliothèques du PHP League. Annonce d'un bundle serveur OAuth2 repris et réécrit à partir d'un bundle abandonné, avec appel à testeurs.\n- Conclusion : *« il n'y a pas de vérité pure, juste y en a une qui est moins compliquée que l'autre »*, dit par le mainteneur d'un bundle JWT.\n\nAucun retour de participant trouvé ; l'organisateur cite le composant de sécurité natif, le bundle JWT et OAuth2.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "iISeDdwN5lY",
+        "title": "API Platform Conference 2021 - Robin Chalas - Secure and Practical Authentication in API Platform",
+        "publishedAt": "2021-11-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "unified-permission-management-between-api-and-client",
+      "day": "2021-09-10",
+      "type": "talk",
+      "title": "Unified permission management between API and client",
+      "speakers": [
+        "Marion Agé — Les-Tilleuls.coop"
+      ],
+      "feedbackFrom": [],
+      "summary": "**Sur scène (transcript, lu en entier ; talk en français)**\n- Retour d'expérience : l'intranet d'une PME d'environ 300 personnes, en API Platform et Vue.js, où un non-technicien doit pouvoir **administrer les permissions** selon l'agence, le service, le métier et le manager.\n- Socle natif conservé : access control de Symfony, `security` d'API Platform, voters, extensions Doctrine. Elle recommande de laisser dans le code les règles stables.\n- Modèle : une entité Permission, dont le code est le nom de la route de l'opération, et des règles à critères optionnels, filtres et groupes. Sans règle, la permission est ouverte ; la règle la plus précise l'emporte.\n- Côté API : une extension renvoie une 403 ou applique les filtres, un attribut PHP maison relie filtre et condition, un context builder fusionne les groupes de sérialisation.\n- Côté front : le login renvoie la liste des codes de permission, stockée dans Vuex ; un getter sert en `v-if` et un navigation guard de Vue Router protège les routes.\n- Temps réel avec **Mercure** : à chaque modification, les clients rafraîchissent leur jeton, reçoivent la nouvelle liste et sont redirigés s'ils perdent l'accès à la page.\n- Elle annonce un dépôt de démonstration publié avec les slides.\n- Questions : filtrage en cascade via des expressions ; appliquer les règles au niveau du data provider arrive *« un peu tard »*, Kévin Dunglas lui a suggéré la veille un plugin Caddy en amont, qu'elle n'a pas exploré.\n\nAucun retour de participant trouvé ; l'organisateur parle d'autorisations complexes mises à jour en temps réel dans Vue.js.",
+      "summarySources": [
+        "transcript",
+        "blog"
+      ],
+      "video": {
+        "youtubeId": "Qhbj-fCflMM",
+        "title": "API Platform Conference 2021 - Marion Agé - Unified permission management between API and client",
+        "publishedAt": "2021-11-09",
+        "transcript": true
+      }
+    },
+    {
+      "id": "french-tech-start-up-nation-what-else",
+      "day": "2021-09-10",
+      "type": "talk",
+      "title": "French tech & Start up Nation, what else?",
+      "speakers": [
+        "Hélène Maître-Marchois — Fairness"
+      ],
+      "feedbackFrom": [
+        "Salah Meharga (SensioLabs)"
+      ],
+      "summary": "**Sur scène (transcript, lu en entier ; talk d'opinion en français, suivi d'un long débat)**\n- Objectif annoncé : *« vous donner envie de démissionner »*. Ancienne recruteuse, membre de la coopérative Fairness, elle constate que la technique et le salaire occupaient l'essentiel des entretiens, presque jamais le produit.\n- Elle demande à la salle qui sait où va l'argent que son travail génère, et propose deux critères : est-ce que je fais gagner du temps de vie aux utilisateurs, suis-je fière de ce que je fais ?\n- Trois niveaux d'action : **poser des questions**, oser dire non, et en dernier recours démissionner.\n- Anecdote : Fairness, six personnes, a refusé un contrat important pour le site d'une fondation liée à un grand pétrolier, après un débat interne tranché par un veto.\n- Alternatives : coopératives, service public, produits à impact. *« On a besoin de vous pour faire système. »*\n\n**Débat avec la salle (plus de la moitié de la session)**\n- Objections : le projet se fera ailleurs ; baisser son salaire peut être dangereux ; une personne, une voix limite la taille. Elle répond par des coopératives de taille humaine qui s'allient.\n- Kévin Dunglas rappelle les débats historiques du mouvement coopératif et le risque que des coopérateurs confortables n'aient plus intérêt à changer la société.\n- Des membres de Les-Tilleuls.coop expliquent que le choix des clients fait débat chez eux et que chaque développeur peut refuser un projet.\n\n**Côté public** : SensioLabs retient l'éthique de travail et le choix de valeurs plutôt que d'un salaire, laissé à chacun ; les débats ont fait sauter la pause de l'après-midi (Salah Meharga).",
+      "summarySources": [
+        "transcript",
+        "feedback"
+      ],
+      "video": {
+        "youtubeId": "XpY7p062zIo",
+        "title": "API Platform Conference 2021 - Hélène Maître-Marchois - French tech & Start up Nation, what else?",
+        "publishedAt": "2021-11-09",
+        "transcript": true
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [],
+  "sources": [
+    {
+      "label": "Site officiel de l'édition 2021",
+      "url": "https://api-platform.com/con/2021/"
+    },
+    {
+      "label": "Programme officiel (deux tracks, horaires)",
+      "url": "https://api-platform.com/en/con/2021/schedule"
+    },
+    {
+      "label": "Speakers 2021",
+      "url": "https://api-platform.com/con/2021/speakers/"
+    },
+    {
+      "label": "Bilan officiel de l'édition (chiffres, photos)",
+      "url": "https://api-platform.com/con/2021/review/"
+    },
+    {
+      "label": "Playlist YouTube « API Platform Conference 2021 » (15 vidéos)",
+      "url": "https://www.youtube.com/playlist?list=PL3hoUDjLa7eSo7-CAyiirYfhJe4h_Wxs4"
+    },
+    {
+      "label": "Les-Tilleuls.coop : API Platform Conference 2021, a successful edition (Élise Duverdier, 24 septembre 2021)",
+      "url": "https://les-tilleuls.coop/en/blog/api-platform-conference-2021-a-successful-edition"
+    },
+    {
+      "label": "Les-Tilleuls.coop : API Platform Con, watch the conference replay (Cécile Hamerel, 9 novembre 2021)",
+      "url": "https://les-tilleuls.coop/en/blog/api-platform-con-watch-the-conference-replay"
+    },
+    {
+      "label": "Kévin Dunglas : Introducing Edge Side APIs, #APIPlatformCon keynote (10 septembre 2021)",
+      "url": "https://dunglas.dev/2021/09/introducing-edge-side-apis-apiplatformcon-keynote/"
+    },
+    {
+      "label": "Slides d'Antoine Bluchet : The journey towards API Platform 3 (Google Slides)",
+      "url": "https://docs.google.com/presentation/d/1G53t3Aq4PVxkL0mVPL3T_fPLN6PdOyV-5lQLMJ88Oew/htmlpresent"
+    },
+    {
+      "label": "bitExpert : API Platform Conference 2021 (Jan Sorgalla, 23 septembre 2021)",
+      "url": "https://blog.bitexpert.de/blog/api-platform-conference-2021"
+    },
+    {
+      "label": "SensioLabs : 8 talks to inspire you from the API Platform Conference 2021 (Salah Meharga, 20 octobre 2021)",
+      "url": "https://university.sensiolabs.com/news/2021-10-20/8-talks-to-inspire-you-from-the-api-platform-conference-2021"
+    },
+    {
+      "label": "Posts LinkedIn : aucun lu (aucun résultat de recherche exploitable)"
+    }
+  ]
 }
