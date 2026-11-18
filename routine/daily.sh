@@ -46,6 +46,7 @@ export CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION="${CLAUDE_CODE_MAX_WEB_SEARCHES_
 export CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS=0
 
 # An interrupted session (usage limit, crash) still leaves valid work behind: keep going and commit it.
+export ANTHROPIC_MODEL="${ANTHROPIC_MODEL:-claude-sonnet-5-5}"  # pinned: Sonnet for unattended runs
 claude -p "$(cat routine/daily-prompt.md)" \
   --permission-mode acceptEdits \
   --strict-mcp-config \
