@@ -7,8 +7,179 @@
   "city": "Montrouge",
   "venue": "Beffroi de Montrouge",
   "url": "https://web.archive.org/web/2020/http://www.cftl.fr/JFTL/accueil",
+  "programUrl": "https://www.cftl.fr/cf-tl/jftl-2021/",
   "dateConfidence": "ok",
-  "note": "cftl.fr (archive) : « Mardi 14 septembre 2021 : 13ème édition » ; tenue en présentiel confirmée par un billet d'Inflectra (sponsor).",
-  "status": "pending",
-  "sessions": []
+  "note": "cftl.fr (archive) : « Mardi 14 septembre 2021 : 13ème édition » ; tenue en présentiel confirmée par un billet d'Inflectra (sponsor) et par les slides de la keynote de Kari Kakkonen datées du 14 septembre 2021.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-19",
+  "revisit": "Un seul retour de participant retrouvé (billet de blog de Marc Hage Chahine, lui-même orateur) ; aucune vidéo ni post LinkedIn lu. Synthèse bâtie sur le programme final et une dizaine de supports PDF du CFTL (lus partiellement). À reprendre si des retours de septembre 2021 ou des vidéos apparaissent, et pour lire les supports non ouverts (Covea, Dashlane, ADIS, Sogeti, Open, Air France).",
+  "corpus": "Programme final officiel (PDF d'une page), page « Conférences » et page JFTL 2021 de cftl.fr (archives), slides PDF de douze sessions (les trois keynotes, MyCanal, Klaxoon, Altran, Ausy, Welcome to the Jungle, Axa France, Kering, Cdiscount), un billet de blog de La taverne du testeur (Marc Hage Chahine) et le recap du sponsor Inflectra. Lecture réalisée le 2026-11-19, plus de quatre ans après l'événement ; la plupart des PDF n'ont été lus que sur leurs premières pages.",
+  "limits": "Un seul retour de participant au sens strict, et son auteur est aussi orateur ; le recap d'Inflectra est celui d'un sponsor. Les résumés reflètent ce que les orateurs ont mis sur leurs slides, pas ce qui a été dit à l'oral, et plusieurs supports ont été lus seulement jusqu'à leur milieu. Aucune vidéo retrouvée. Onze sessions du programme ne sont pas résumées, ce qui laisse peu de place aux parcours Techniques de test et Management des tests.",
+  "tldr": "Une JFTL de reprise en présentiel (environ 1 100 inscrits attendus) dont le fil rouge, selon le seul bloggeur retrouvé, est la **collaboration comme condition de la qualité** : ateliers (Lego, Example Mapping, indicateurs), testeur devenu facilitateur, et retours d'expérience d'industrialisation (automatisation multi-supports, shift left, crowdtesting) encadrés par trois keynotes (lean, enseignement du test, biais des données).",
+  "keyTakeaways": [
+    "Choisir ses indicateurs de qualité en atelier collaboratif plutôt que par habitude : présélection parmi une quarantaine d'indicateurs, analyse de leurs forces, faiblesses et contournements, puis sélection finale (Marc Hage Chahine, Altran).",
+    "Après l'Example Mapping, ne pas tomber dans deux excès : trop le préparer tue l'échange et la spontanéité, ne pas le préparer du tout prive d'un cadre ; il faut une préparation collective, pas un sujet réservé au PO (Pierre Saulnier et Benjamin Butel, Klaxoon).",
+    "Tester au plus tôt et automatiser le pipeline : « test as early as possible » pour ne pas laisser grossir la dette d'intégration, avec une gestion de configuration industrielle (Yves Caseau, Michelin).",
+    "Mutualiser l'outil d'automatisation entre web, Android et iOS pour une grosse offre multi-canaux : chez Canal+, environ 650 tests web, 60 Android et 40 iOS par jour en août 2021 sous Jenkins (MyCanal et Agilitest).",
+    "Pour un testeur en contexte agile, devenir un facilitateur et un communicant « pour que la qualité soit l'affaire de tous » : hard skills (ATDD, BDD, atelier 3 amigos), soft skills et communauté de pratiques (Ausy).",
+    "Diffuser la culture qualité en dehors des équipes de test avec un format ludique plutôt que des cours, vidéos ou documents : un atelier Lego inspiré des Serious Games et des ateliers Kapla (Marc Soune-Seyne, Welcome to the Jungle).",
+    "Sur un programme à multiples mises en production, anticiper les recettes par population métier, former les métiers aux UAT et aux dry runs, et éviter d'ajouter trop de fonctionnalités avant un go live (Kering, programme Eagle).",
+    "Vérifier les jeux de données et les modèles contre les biais : la keynote sur le biais des données s'appuie sur des cas de biais de genre (recrutement, diagnostic de crise cardiaque, essais de collision) (Michaël Pilaeten)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-lean-software-factories-yves-caseau",
+      "day": "2021-09-14",
+      "type": "keynote",
+      "title": "L'approche lean et les tests dans la transformation digitale",
+      "speakers": ["Yves Caseau (DSI Michelin)"],
+      "feedbackFrom": [],
+      "summary": "- La keynote s'ouvre sur la **transformation digitale** (« markets are conversations », homéostasie digitale, découverte continue) et sur l'idée que le logiciel dévore le monde. Les méthodes itératives comme l'agile produisent de la dette technique (slides de Yves Caseau).\n- Elle articule deux cycles qui partagent les mêmes artefacts : le cycle produit du Lean Startup (MVP, Design Thinking) et la **Lean Software Factory** / DevOps (build, test, delivery).\n- Pour la partie « Software Factories » : un processus exécuté en continu doit être automatisé, d'où des « micro-usines » lean et agiles, et *« test as early as possible »* pour ne pas laisser croître la dette d'intégration.\n- La slide sur le pipeline CI/CD cite Jez Humble : *« if the pipeline is not working well, run it more frequently and highlight the difficulties »*, et insiste sur la gestion de configuration industrielle.\n- Le rôle des architectes est décrit comme celui de coach d'ingénierie système, de champion du refactoring (nettoyage de la dette dans le backlog) et de propriétaire des interfaces d'API.\n- Le support compte 17 slides ; seules les douze premières ont été lues, la partie « Software Craftmanship » (tests) n'a pas été dépouillée. Le titre des slides est « Lean Software Factories and Digital Transformation » et la date qu'elles portent (7 septembre) ne correspond pas au 14 septembre de la JFTL.",
+      "summarySources": ["program", "slides"]
+    },
+    {
+      "id": "keynote-why-children-should-learn-to-test-kari-kakkonen",
+      "day": "2021-09-14",
+      "type": "keynote",
+      "title": "Why children should learn to test, why anyone should test?",
+      "speakers": ["Kari Kakkonen (ISTQB Finland)"],
+      "feedbackFrom": [],
+      "summary": "- Le support présente le projet de livre **« Dragons Out! »**, un livre de fantasy illustré pour enseigner le test logiciel aux enfants, publié en finnois (1er décembre 2020) puis en anglais (30 juillet 2021).\n- Argument de départ : le code intéresse enfants et jeunes, mais **il manque aussi des testeurs, pas seulement des codeurs**, et le test est présenté comme « le nouveau savoir de base » (plus de la moitié du travail de développement, selon la slide).\n- La session explique le pouvoir de l'histoire pour apprendre : une scène du livre fait de la guerrière Swanlake un testeur qui trouve le « défaut » (le dragon) mais a besoin des codeurs pour le corriger.\n- L'agenda annonce aussi des retours d'enquête auprès des lecteurs, des méthodes d'apprentissage pour enfants et pour adultes, et un exercice « dessinez votre propre chevalier » (lecture partielle des 12 premières slides).",
+      "summarySources": ["program", "slides"]
+    },
+    {
+      "id": "keynote-the-data-bias-michael-pilaeten",
+      "day": "2021-09-14",
+      "type": "keynote",
+      "title": "The data bias",
+      "speakers": ["Michaël Pilaeten (ISTQB et CTG)"],
+      "feedbackFrom": [],
+      "summary": "- La keynote définit le biais (en statistique, la distorsion systématique des données) puis affirme que **le biais de données est souvent un biais de genre** (slides de Michaël Pilaeten).\n- Les exemples chiffrés des slides : dans une étude sur des psychologues académiques, 71 % de chances supplémentaires d'embaucher un homme sur des CV identiques ; à résultat de test meilleur pour les candidates, l'employeur reste 59 % plus enclin à choisir le candidat masculin.\n- Les slides évoquent aussi les crises cardiaques mal diagnostiquées chez les femmes, un programme britannique de prédiction des crises cardiaques, et des femmes ayant 17 % de risques supplémentaires de mourir et 47 % de blessures graves en accident de voiture.\n- Seules les douze premières slides ont été lues : le lien explicite avec le test logiciel et l'IA n'est pas documenté ici.",
+      "summarySources": ["program", "slides"]
+    },
+    {
+      "id": "mycanal-validation-continue-agilitest",
+      "day": "2021-09-14",
+      "type": "talk",
+      "title": "MyCanal : retour d'expérience sur la mise en place d'une démarche de validation continue",
+      "speakers": [
+        "Laurent De Chevron Villette (Canal+)",
+        "Alain Cancel (Canal+)",
+        "Didier Donnat (Agilitest)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Contexte (slides) : une offre myCANAL **multi-canaux, multi-zones, multi-offres et multi-applications**, avec navigateurs web et apps iOS et Android, d'où une forte combinatoire (authentification, consommation vidéo, éditorialisation).\n- Pourquoi Agilitest : **mêmes technologies de test sur tous les supports**, scénarios en mode basique ou avancé, variabilisation des environnements, mixage web et app, et pas de coût d'exécution, seulement un coût d'édition.\n- Démarche : un POC avec comparatif face à Witbe, puis un déploiement web, Android et iOS. La chronologie part d'une rencontre à la JFTL en avril 2019, d'une réflexion en avril 2020 et d'une infrastructure de test auto en février 2021.\n- État en août 2021 : 135 scripts web (32 campagnes), 41 Android (5 campagnes), 19 iOS (3 campagnes), 34 jobs Jenkins, soit environ **650 tests web, 60 Android et 40 iOS par jour**, avec reporting HTML et PDF et un dashboard PowerBI alimenté via MongoDB.\n- Domaines couverts : connexion, compte, favoris, recherche, plan de service, contrôle parental (niveau moral), accès aux contenus, quelques API et textes statiques.\n- Lecture critique : retour d'expérience co-présenté par l'éditeur de l'outil retenu, donc à lire comme un cas client.",
+      "summarySources": ["program", "slides"]
+    },
+    {
+      "id": "comment-jai-loupe-mon-example-mapping",
+      "day": "2021-09-14",
+      "type": "talk",
+      "title": "Comment j'ai loupé mon Example Mapping",
+      "speakers": [
+        "Pierre Saulnier (Klaxoon)",
+        "Benjamin Butel (Klaxoon)"
+      ],
+      "feedbackFrom": ["Marc Hage Chahine (billet de blog)"],
+      "summary": "- Les deux orateurs partent des promesses de l'Example Mapping (Matt Wynne) : **plus de collaboration, moins d'implicite, un meilleur découpage** des fonctionnalités.\n- Mais en pratique chez Klaxoon, *« des bugs apparaissaient toujours »*, les fonctionnalités peinaient à sortir et des incompréhensions sur l'attendu persistaient.\n- Leurs difficultés pendant la préparation débouchent sur des leçons contraires : **trop préparer** son Example Mapping nuit à l'échange et à la spontanéité ; ne pas le préparer du tout oblige à se donner un cadre.\n- Autre piège, « l'EM, c'est le problème du PO » : la réponse proposée est de favoriser la préparation collective.\n- Le billet de blog de Marc Hage Chahine cite cette session parmi celles qui montrent la collaboration comme clé de la réussite (lecture limitée aux 8 premières slides).",
+      "summarySources": ["program", "slides", "blog"]
+    },
+    {
+      "id": "tout-sur-les-indicateurs-dont-vous-etes-le-heros",
+      "day": "2021-09-14",
+      "type": "workshop",
+      "title": "Tout sur les indicateurs dont vous êtes le héros",
+      "speakers": ["Marc Hage Chahine (Altran)"],
+      "feedbackFrom": ["Marc Hage Chahine (speaker, blog La taverne du testeur)"],
+      "summary": "- Point de départ : les indicateurs sont un outil essentiel du test, mais **bien les choisir et les calculer** est la difficulté. La session restitue les résultats d'un atelier collaboratif mené à six reprises, notamment à la JFTL 2020 et en commission test client.\n- Principe de l'atelier : contexte, **présélection de 8 indicateurs parmi 40** par défaut (plus ceux ajoutés en séance), analyse collective de chacun (but, calcul, points forts, faiblesses, contournements), puis sélection finale de 4.\n- Chiffres des slides : 48 indicateurs en tout dont 8 spécifiques ; 28 présélectionnés ; 14 sélectionnés. Parmi les plus choisis figurent le nombre de bugs majeurs ou critiques en production (5 présélections, 5 sélections) et la satisfaction utilisateur (5 et 4), tandis que le nombre total de bugs en production n'a été retenu par personne (4 présélections, 0 sélection).\n- Le billet de blog précise que les résultats ont été regroupés en une taxonomie de 6 familles d'indicateurs, et que l'atelier favorise l'adoption et la synergie entre indicateurs.\n- Retour d'un orateur sur sa propre session : à lire comme tel.",
+      "summarySources": ["program", "slides", "blog"]
+    },
+    {
+      "id": "quelle-evolution-pour-le-testeur-dans-un-monde-en-mouvement",
+      "day": "2021-09-14",
+      "type": "talk",
+      "title": "Quelle évolution pour le testeur dans un monde en mouvement ?",
+      "speakers": [
+        "Jean-François Fresi (Ausy)",
+        "Yves Richard (Ausy)"
+      ],
+      "feedbackFrom": ["Marc Hage Chahine (billet de blog)"],
+      "summary": "- Les slides rappellent d'abord les **sept principes du test ISTQB** (tests exhaustifs impossibles, tester tôt, paradoxe du pesticide, illusion de l'absence d'erreur, etc.) pour dire que le testeur ne se réduit pas à la recherche exhaustive des anomalies.\n- Cinq grands défis sont listés : automatisation, agilité, DevOps, software craftsmanship, passage à l'échelle.\n- Pour l'automatisation : multi-environnements, compétences de développement, choix d'outils ; la conclusion de la slide est « être un référent sur les outils du testing ».\n- Pour l'agilité, le testeur combine hard skills (quick wins, ATDD/BDD, atelier 3 amigos), méthodologie, soft skills (écoute, collaboration) et communauté de pratiques ; objectif affiché : **devenir un facilitateur et un communicant pour que la qualité soit l'affaire de tous**.\n- Le programme officiel cite Fabienne Anceau, les slides présentent Yves Richard : le support lu porte ce second nom.",
+      "summarySources": ["program", "slides", "blog"]
+    },
+    {
+      "id": "des-legos-pour-les-rassembler-tous",
+      "day": "2021-09-14",
+      "type": "workshop",
+      "title": "Des Legos pour les rassembler tous",
+      "speakers": ["Marc Soune-Seyne (Welcome to the Jungle)"],
+      "feedbackFrom": ["Marc Hage Chahine (billet de blog)"],
+      "summary": "- Le retour d'expérience part du défi d'un QA manager : **construire une « culture qualité »** dans l'entreprise, avec la difficulté de parler de QA à des publics divers, qui peuvent trouver le sujet inintéressant ou hermétique.\n- Les solutions envisagées étaient des formations en petits groupes, des vidéos courtes et des documents ; l'orateur a retenu « une solution qui [lui] ressemble » croisant testeur, formateur et joueur : **un atelier avec des Legos**, inspiré des Serious Games et des ateliers Kapla.\n- Le billet de blog de Marc Hage Chahine le qualifie de « super atelier Légo » et le range sous la diffusion de la culture qualité.\n- Le déroulé de l'atelier et la partie « Concrètement, ça marche ? » n'ont pas été lus (8 premières slides seulement).",
+      "summarySources": ["program", "slides", "blog"]
+    },
+    {
+      "id": "shift-left-performance-testing-axa-france",
+      "day": "2021-09-14",
+      "type": "talk",
+      "title": "Shift Left Performance Testing",
+      "speakers": [
+        "Mikaël Kermarrec (Axa France)",
+        "Thomas Le Corre (Axa France)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Contexte (slides) : la DSI d'Axa France s'est engagée dans l'agile en 2011 (cycle en V avant), le modèle Feature Team en 2014, de nouvelles pratiques d'ingénierie en 2016 et le DevOps en 2018, avec l'**intégration de Test Engineers dans les tribus**.\n- La Guilde Test regroupe environ 200 à 220 experts certifiés ISTQB, basés à Lille et Nanterre ; elle a pour missions la qualité, les moyens de test, la professionnalisation et l'animation de la filière.\n- L'offre de performance testing repose sur quatre types de tirs (nominal, résilience, endurance, limites) avec LoadRunner Enterprise, et sur l'analyse des causes racines avec Dynatrace.\n- Les raisons du shift left : réduire le time to market, diminuer les coûts, tester régulièrement et au plus tôt pour détecter les régressions, livrer des produits plus fiables.\n- Le retour d'expérience chiffré et les projections (parties 5 et 6 de l'agenda) n'ont pas été lus.",
+      "summarySources": ["program", "slides"]
+    },
+    {
+      "id": "tester-dans-66-pays-crowdtesting-kering",
+      "day": "2021-09-14",
+      "type": "talk",
+      "title": "Comment tester dans 66 pays avec des vrais humains ? Quand la QA centrale fait appel au crowdtesting",
+      "speakers": [
+        "Jorge Delgado (B-Acceptance)",
+        "Céline Renaudie (Kering)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le contexte est le programme digital **Eagle** de Kering Technologies : 4 marques, 66 pays, 40 applications, une centaine de personnes et moins de deux ans, avec une refonte de la logistique e-commerce mondiale (1 centre de distribution global, 3 locaux).\n- La QA Eagle (slides) compte un QA manager, 12 QA intégrés aux streams projet, 3 automaticiens, 4 testeurs à l'international (États-Unis, Japon) et 2 UAT leads dédiées aux tests avec les marques, dont une coordonne les crowd-testeurs.\n- Les go lives s'échelonnent de juillet 2020 (Alexander McQueen) à octobre 2020 (Saint Laurent) puis février et mai 2021 pour les autres marques. Les leçons par étape : organiser les UAT par population, former les métiers aux UAT et au dry run, retravailler la performance des systèmes back-end, **éviter d'ajouter trop de fonctionnalités avant un go live**.\n- L'agenda annonce la méthode (cahier des charges du partenaire, sélection et briefing des testeurs, pièges, bonnes surprises) et les résultats en build puis en run ; ces parties n'ont pas été lues.",
+      "summarySources": ["program", "slides"]
+    },
+    {
+      "id": "framework-automatisation-montee-a-lechelle-cdiscount",
+      "day": "2021-09-14",
+      "type": "talk",
+      "title": "Framework d'automatisation de test dans un mode de montée à l'échelle",
+      "speakers": [
+        "Nicolas Marchand (Cdiscount)",
+        "Badis Messaoudi (All4Test)"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Les slides situent Cdiscount (startup lancée en 1998 à Bordeaux, leader français du e-commerce) et All4Test (société de QA fondée en 2006 par Julien Van Quackebeke, organisatrice d'une vingtaine d'événements QA par an).\n- Cdiscount se décrit comme une **learning organization** : « Excel or die », équipes stables et autonomes (blueprint), démarche « Go2Product » du projet vers le produit (hypothèse, test, déploiement, amélioration, abandon) et défis trimestriels avec podiums.\n- Le « nouveau framework end2end » est justifié par l'**autonomie des équipes** (la centralisation des décisions ralentit et fait perdre le sens) et par le test en continu, de l'exigence jusqu'à la production, en shift left et shift right.\n- Le détail du framework d'automatisation lui-même n'a pas été lu (7 premières slides).",
+      "summarySources": ["program", "slides"]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Adoption d'un « zero-bug policy » dans un contexte réel (Simone Colosimo, Dashlane)",
+    "Le chemin de l'agilité passe aussi par le test design outillé (Davy Metangmo, ADIS)",
+    "Plan de vol au travers des turbulences covid (Florence Guerlais, Air France, et Cyril Cassan, Sogeti)",
+    "API Testing, Often Overlooked, Critical to Your Success (Adam Sandman, Inflectra) : seule mention, le recap du sponsor dit qu'elle a été « très bien reçue »",
+    "« Zone de test » au Crédit Agricole Payment Services (François Grenapin, Open, et François Moreau)",
+    "Comment faire de l'automatisation une évidence ? (Bertrand Hecquet, Covea)",
+    "Test E2E et parcours utilisateurs (Xavier Blanc, Université de Bordeaux, et Nicolas Marchand, Cdiscount)",
+    "Tester au delà de votre projet (Emna Ayadi, Sogeti)",
+    "Mot d'ouverture d'Olivier Denoo (président du CFTL) et présentation de la Compétition de Test 2022 (Frédéric Assante di Capillo)",
+    "« 20 minutes pour convaincre » par Open, Tricentis et Sogeti"
+  ],
+  "sources": [
+    { "label": "CFTL : programme final JFTL 2021 (PDF, archive de cftl.fr)" },
+    { "label": "CFTL : page JFTL 2021 et page Conférences (archives)", "url": "https://www.cftl.fr/cf-tl/jftl-2021/" },
+    { "label": "CFTL : slides PDF des keynotes et des sessions MyCanal, Klaxoon, Altran, Ausy, Welcome to the Jungle, Axa France, Kering, Cdiscount" },
+    {
+      "label": "La taverne du testeur : « Ce que je retiens de la JFTL 2021 : le secret de la réussite c'est la collaboration » (Marc Hage Chahine)"
+    },
+    {
+      "label": "La taverne du testeur : « [JFTL] Tout sur les indicateurs dont vous êtes le héros »",
+      "url": "https://latavernedutesteur.fr/2021/09/22/jftl-tout-sur-les-indicateurs-dont-vous-etes-le-heros/"
+    },
+    { "label": "Inflectra : billet récapitulatif de la JFTL 2021 (sponsor)" }
+  ]
 }
