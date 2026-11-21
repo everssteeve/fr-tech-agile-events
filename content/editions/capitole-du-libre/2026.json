@@ -12,10 +12,10 @@
   "dateConfidence": "ok",
   "note": "Week-end gratuit consacré au logiciel libre et à la culture libre. Chiffres donnés en ouverture et en clôture (relayés par Stéphane Bortzmeyer et Lapineige) : 112 conférences, 10 ateliers, 125 intervenants, 33 stands, 1 600 inscrits, 1 400 participants, plus de 110 bénévoles. Programme Pretalx : devroom Guix & Nix, parcours Blender, lightning talks, village associatif, install party et LAN party.",
   "status": "synthesized",
-  "synthesisUpdatedAt": "2026-11-18",
-  "corpus": "Programme Pretalx complet (environ 125 créneaux, descriptifs lus), billet de blog de Stéphane Bortzmeyer du 17 novembre 2026, compte rendu du stand OpenStreetMap sur le forum OSM France, et environ 150 messages Mastodon et Fediverse (#cdl2026, #CapitoleDuLibre) publiés du 14 au 17 novembre 2026 par une trentaine de comptes.",
+  "synthesisUpdatedAt": "2026-11-21",
+  "corpus": "Programme Pretalx complet (environ 125 créneaux, descriptifs lus), billet de blog de Stéphane Bortzmeyer du 17 novembre 2026, compte rendu du stand OpenStreetMap sur le forum OSM France, et environ 150 messages Mastodon et Fediverse (#cdl2026, #CapitoleDuLibre) publiés du 14 au 17 novembre 2026 par une trentaine de comptes. Mise à jour du 21 novembre 2026 : les diapositives d'un intervenant (Speaker Deck) sont ajoutées ; aucun nouveau billet ni post LinkedIn n'a été trouvé.",
   "limits": "Synthèse faite à J+3 : un seul billet de blog détaillé (celui d'un intervenant), aucun retour LinkedIn lu (l'article de Julien Del Rio signalé par Bortzmeyer n'a pas été trouvé), aucune vidéo 2026 encore publiée sur YouTube ni sur PeerTube (celles de 2025 étaient sorties mi-décembre), donc aucun transcript. Les messages Mastodon ont été lus via un outil qui les résume : les citations sont de courts extraits, et la plupart des pouets signalent une session plus qu'ils n'en rendent compte. Environ 85 conférences et ateliers restent sans aucun retour ; plusieurs résumés reposent surtout sur le descriptif officiel, ce qui est indiqué.",
-  "revisit": "J+3 : corpus participant mince (un blog, un forum, Mastodon), aucun post LinkedIn lu, vidéos et transcripts 2026 pas encore publiés (attendus vers mi-décembre sur PeerTube et YouTube).",
+  "revisit": "J+7 : corpus participant mince (un blog, un forum, Mastodon), aucun post LinkedIn lu, vidéos et transcripts 2026 pas encore publiés (attendus vers mi-décembre sur PeerTube et YouTube).",
   "tldr": "Une 13e édition aussi fréquentée que la précédente (**1 400 participants**, 112 conférences) où deux fils dominent les retours : **les dépendances numériques vues comme le résultat de choix politiques** (keynote de la députée Cyrielle Chatelain) et la question de ce que veut dire **« libre » à l'heure des LLM**, entre modèles locaux et mainteneurs submergés par les contributions générées.",
   "keyTakeaways": [
     "Traiter la dépendance numérique comme un choix réversible : le rapport parlementaire présenté par Cyrielle Chatelain cite le ministère de la Justice, 666 ETP internes pour l'équivalent de 1 500 ETP achetés en prestations (rapporté par Stéphane Bortzmeyer).",
@@ -197,6 +197,16 @@
       "feedbackFrom": ["Stéphane Bortzmeyer (blog et Mastodon)", "Grégory Colpart (Mastodon)", "Kevin Ottens (Mastodon)", "lpoujol (Mastodon)", "Natouille (Mastodon)", "dmathieu (Mastodon)"],
       "summary": "- La députée, rapporteure de la commission d'enquête de 2026 sur les dépendances numériques, explique le fonctionnement d'une commission d'enquête et résume un **rapport de 453 pages** (Bortzmeyer).\n- Constat : les dépendances sont fortes, presque toujours envers les États-Unis, et *« ce n'est pas une fatalité mais le résultat de choix »* (rapporté par Bortzmeyer).\n- Exemples cités : le ministère de la Justice compte 666 ETP en informatique mais achète l'équivalent de **1 500 ETP en prestations** ; le droit des marchés publics pousse vers des intermédiaires comme l'UGAP, en pratique revendeurs des géants américains.\n- Propositions du rapport : zéro Microsoft dans les écoles, remboursement des aides en cas de vente à un acteur extra-européen, actions spécifiques de l'État dans des entreprises comme Mistral. Bortzmeyer doute que l'État en retienne une seule.\n- Le portail européen des pétitions est signalé comme recours quand une pétition est ignorée en France (Bortzmeyer).\n- **Point de débat** : la mention de ChapsVision, présenté comme alternative européenne à Palantir, fait réagir lpoujol, pour qui une technologie de surveillance reste nocive quelle que soit son origine.\n- Réception : « mention spéciale » de Grégory Colpart, conférence retenue par Kevin Ottens, qualifiée de keynote de fin de journée par Bortzmeyer.",
       "summarySources": ["blog", "feedback", "program"]
+    },
+    {
+      "id": "100-open-source-vraiment-de-la-vm-au-silicium",
+      "day": "2026-11-14",
+      "type": "talk",
+      "title": "100 % open source, vraiment ? De la VM au silicium",
+      "speakers": ["Bruno Verachten — Vates"],
+      "feedbackFrom": ["Bruno Verachten (diapositives sur Speaker Deck, speaker)"],
+      "summary": "- Le talk passe en revue chaque couche d'un serveur pour tester l'affirmation « 100 % open source » : **hyperviseur et outils de gestion ouverts ; UEFI, chargeur d'amorçage et BMC partiellement ouverts ; Intel ME et AMD PSP fermés** (diapositives du speaker).\n- Limites citées : XCP-ng ne démarre pas encore son hôte avec Secure Boot activé ; les BMC des constructeurs sont fermés, OpenBMC en est l'alternative libre, testée sous QEMU.\n- Intel ME et AMD PSP tournent sous l'hyperviseur et ne peuvent pas être retirés. RISC-V (OpenSBI, jeux d'instructions ouverts) ouvre le bas de la pile, mais un jeu d'instructions ouvert ne garantit pas des cœurs ouverts.\n- Conseils pratiques : inventorier les firmwares, mesurer le démarrage via les journaux d'événements TPM, attester selon des politiques connues, figer les versions de firmware, isoler les réseaux de gestion.\n- Source unique : les diapositives du speaker, qui indique sourcer chaque affirmation en annexe. Aucun retour de participant ni captation lus.",
+      "summarySources": ["slides", "program"]
     },
     {
       "id": "qu-est-ce-qu-une-ia-generative-libre",
@@ -384,7 +394,6 @@
     "Type-Driven Magic : dans les coulisses d'Axum (Igor Laborie)",
     "systemd : plus qu'un système d'initialisation (Rémi Subra)",
     "30 ans d'OCaml (Florian Angeletti)",
-    "100 % open source, vraiment ? De la VM au silicium (Bruno Verachten)",
     "Reconditionner avec GNU/Linux (Joyce Markoll)",
     "Packaging circulaire avec Flakoboros (Guilhem Saurel)",
     "Comprendre et utiliser les flakes Nix (Adonis Najimi)",
@@ -411,10 +420,11 @@
     { "label": "Forum OSM France, « Capitole du libre 2026, compte rendu » (groupe local de Toulouse, lhirlimann)", "url": "https://forum.openstreetmap.fr/t/capitole-du-libre-2026-compte-rendu/48527" },
     { "label": "Fil Mastodon/Fediverse #cdl2026 et #CapitoleDuLibre (environ 150 messages lus, 14 au 17 novembre 2026) : bortzmeyer, Natouille, Lapineige, ervin (Kevin Ottens), gcolpart, lpoujol, usul, aaribaud, mmu_man, nitot, zimoun, Sinkra, davinkevin, chouhartem, tibillet, jpwebdesign, TheForeignAgent, AugierLe42e, braid, joannarrativa, coq, BSdM, jeeynet, joseph_curwen, greenman, dmathieu, evolix, xwiki, gnome, capitoledulibre", "url": "https://framapiaf.org/tags/cdl2026" },
     { "label": "Diapositives de Kevin Davin, Gateway API (lien partagé par le speaker)", "url": "https://link.davinkevin.fr/GwAPI-cdl26-slides" },
+    { "label": "Diapositives de Bruno Verachten (Vates), « 100 % open source au-dessus de cette ligne » (Speaker Deck, 7 novembre 2026)", "url": "https://speakerdeck.com/gounthar/capitole-du-libre-2026" },
     { "label": "Diapositives CryptPad de Fabrice Mouhartem (ressource Pretalx, non lue)", "url": "https://cfp.capitoledulibre.org/media/cdl-2026/submissions/XRBAT3/resources/CdL2026-CryptPad_QcTNa3S.pdf" },
     { "label": "LinuxFr.org, annonce de l'édition (13e édition, non relue en détail)", "url": "https://linuxfr.org/news/capitole-du-libre-les-14-15-novembre-2026-a-toulouse" },
-    { "label": "Chaîne YouTube Capitole du Libre (aucune vidéo 2026 au 18 novembre 2026)", "url": "https://www.youtube.com/@capitoledulibre" },
-    { "label": "PeerTube Capitole du Libre (aucune vidéo 2026 au 18 novembre 2026)", "url": "https://videos.capitoledulibre.org/c/capitoledulibre/videos" },
+    { "label": "Chaîne YouTube Capitole du Libre (aucune vidéo 2026 au 21 novembre 2026)", "url": "https://www.youtube.com/@capitoledulibre" },
+    { "label": "PeerTube Capitole du Libre (aucune vidéo 2026 au 21 novembre 2026)", "url": "https://videos.capitoledulibre.org/c/capitoledulibre/videos" },
     { "label": "LinkedIn : aucun retour d'après-événement trouvé par la recherche web ; l'article de Julien Del Rio signalé par Stéphane Bortzmeyer n'a pas été lu" }
   ]
 }

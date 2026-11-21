@@ -6,7 +6,112 @@
   "city": "En ligne",
   "url": "https://live.symfony.com/2021-france/",
   "dateConfidence": "ok",
-  "note": "Pas d'édition physique à Paris en 2021 (COVID-19) : édition francophone en ligne d'une journée, qui remplace le SymfonyLive Paris (live.symfony.com/all).",
-  "status": "pending",
-  "sessions": []
+  "note": "Pas d'édition physique à Paris en 2021 (COVID-19) : édition francophone en ligne d'une journée, qui remplace le SymfonyLive Paris (live.symfony.com/all). Deux pistes en français le 9 avril (keynote de Fabien Potencier en anglais), précédées de deux jours de workshops en ligne les 7 et 8 avril (SensioLabs). Plateforme Hopin ; replays sur live.symfony.com avec un billet.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-21",
+  "revisit": "Corpus très mince : aucun retour de participant indépendant (ni LinkedIn, ni blog), pas de vidéo publique ni de transcript, pas de slides trouvées ; seuls le programme officiel et deux billets de SensioLabs (sponsor Diamond) ont été lus.",
+  "corpus": "Programme officiel (live.symfony.com/2021-france, 12 conférences) et page de la keynote ; deux billets du blog SensioLabs (récap de l'édition, présentation de ses speakers). Deux recherches web.",
+  "limits": "Aucun compte rendu de participant indépendant trouvé : le seul récit vient d'un sponsor qui détaille surtout ses propres speakers. Les replays sont réservés aux détenteurs d'un billet et aucune vidéo de l'édition n'est publique sur YouTube. La plupart des sessions ne sont donc documentées que par leur descriptif officiel.",
+  "tldr": "Première **édition SymfonyLive entièrement en ligne et en français** (500+ participants, deux pistes), ouverte par le plaidoyer de Fabien Potencier pour des **technologies « boring » plutôt que hype**, avec un programme centré sur la sérialisation API Platform, Symfony UX/Turbo et les nouveaux outils de test.",
+  "keyTakeaways": [
+    "Choisir une **technologie « ennuyeuse » que l'équipe maîtrise déjà** plutôt qu'une techno à la mode, pour éviter la dette technique d'un code écrit sans bonnes pratiques (Fabien Potencier, rapporté par SensioLabs).",
+    "Pour la maintenance d'un projet stabilisé : stratégie de mises à jour des dépendances, cron, sauvegardes et suivi des erreurs (Potencier, programme officiel).",
+    "Cypress apporte vitesse et tests multi-navigateurs, mais n'a pas de bundle Symfony ni de support Selenium comme Panther ; **écrire les tests hors de l'application** pour plus de résilience (Guillaume Loulier, speaker, via SensioLabs).",
+    "Le composant Form n'est pas une boîte noire : FormFactory, ResolvedFormType, DataTransformers, DataMapper et Guessers expliquent son fonctionnement (Laurent Voullemier, speaker, via SensioLabs).",
+    "Trois leviers pour adapter la sérialisation avec API Platform : ContextBuilder, Resource Metadata Factory, Serializer ou DTO (Mathias Arlaud, speaker, via SensioLabs)."
+  ],
+  "sessions": [
+    {
+      "id": "boring-is-the-new-hype",
+      "day": "2021-04-09",
+      "type": "keynote",
+      "title": "Boring is the new hype",
+      "speakers": ["Fabien Potencier — Symfony"],
+      "feedbackFrom": ["Blog SensioLabs"],
+      "summary": "- Constat du programme : la plupart des applications **n'ont pas les problèmes de Google**, donc les choix techniques, économiques et écologiques doivent être faits sciemment en début de projet.\n- Une fois le projet stabilisé (corrections et petites évolutions), les technologies **fiables et sans éclat** paient.\n- Fabien Potencier partage sa façon de maintenir des projets petits et grands : mises à jour de dépendances, cron, sauvegardes, suivi des erreurs.\n- Selon SensioLabs : *« use a 'boring' technology that the development team has already understood rather than a 'hype' technology »* ; apprendre un nouvel outil sous pression produit du code qui ne suit pas les bonnes pratiques, d'où une dette à payer plus tard.\n- Session donnée en anglais ; résumé fondé sur le descriptif officiel et un récap de sponsor.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "une-serialisation-adaptee-avec-api-platform-et-symfony",
+      "day": "2021-04-09",
+      "type": "talk",
+      "title": "Une sérialisation adaptée avec API Platform et Symfony",
+      "speakers": ["Mathias Arlaud"],
+      "feedbackFrom": ["Blog SensioLabs"],
+      "summary": "- Panorama des outils de sérialisation d'API Platform (Groups, DataTransformers, DTOs) pour choisir selon le besoin.\n- API Platform s'appuie fortement sur le **composant Serializer** de Symfony.\n- Trois leviers d'adaptation présentés : **ContextBuilder**, Resource Metadata Factory, approche Serializer et/ou DTO.\n- Passage en revue des nouveautés d'API Platform 2.6.\n- Résumé fondé sur le programme et le billet SensioLabs, sans slides ni vidéo.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "deep-dive-into-the-form-component",
+      "day": "2021-04-09",
+      "type": "talk",
+      "title": "Deep dive into the form component",
+      "speakers": ["Laurent Voullemier — SensioLabs"],
+      "feedbackFrom": ["Blog SensioLabs (speaker)"],
+      "summary": "- Explique ce qui se passe quand une requête de formulaire est soumise : **FormFactory** et ses six méthodes, **ResolvedFormType** (héritage), patron composite récursif.\n- DataTransformers et DataMapper convertissent le modèle de données en formulaire HTML ; extensions et Guessers ajoutent validation, CSRF et déduction des types de champs.\n- Motivation (speaker) : le composant est souvent traité en boîte noire ; sa préparation de la certification Symfony a inspiré le talk. Première intervention SymfonyLive de Laurent Voullemier, conseil donné : *« close your eyes and jump »*.\n- Résumé fondé sur le billet SensioLabs, sans slides ni vidéo.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "cypress-le-e2e-moderne-doit-encore-apprendre-du-passe",
+      "day": "2021-04-09",
+      "type": "talk",
+      "title": "Cypress, le E2E moderne doit encore apprendre du passé",
+      "speakers": ["Guillaume Loulier — SensioLabs"],
+      "feedbackFrom": ["Blog SensioLabs (speaker)"],
+      "summary": "- Compare **Cypress** à Behat (Mink/Selenium) et à Panther, et montre son intégration dans une application Symfony.\n- Limites relevées (speaker) : pas de bundle Symfony, pas de support Selenium comme Panther, pas de simplification de tous les tests, débogage parfois difficile.\n- Conseils : **écrire les tests hors de l'application** pour plus de résilience, rendre le test multi-navigateurs normal, envisager des extensions natives au framework comme Symfony le fait.\n- Adapté aux équipes à l'aise avec JavaScript qui veulent des tests rapides sur plusieurs navigateurs et réseaux, et optimiser la CI.\n- Cypress avait été choisi parce que Guillaume Loulier l'utilisait déjà sur un projet SensioLabs ; première intervention SymfonyLive.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "bref-j-ai-fait-du-serverless-en-php",
+      "day": "2021-04-09",
+      "type": "talk",
+      "title": "Bref, j'ai fait du Serverless en PHP",
+      "speakers": ["Marie Minasyan"],
+      "feedbackFrom": ["Blog SensioLabs"],
+      "summary": "- Présente le **serverless**, son intérêt et le déploiement d'applications PHP/Symfony sur GCP et AWS, avec la librairie Bref (programme).\n- SensioLabs retient une introduction au framework Serverless et à ses bénéfices pour gérer des projets de développement dans le cloud.\n- Résumé fondé sur le descriptif officiel et le récap SensioLabs.",
+      "summarySources": ["program", "blog"]
+    },
+    {
+      "id": "des-tresors-caches-dans-symfony",
+      "day": "2021-04-09",
+      "type": "talk",
+      "title": "Des trésors cachés dans Symfony",
+      "speakers": ["Nicolas Grekas"],
+      "feedbackFrom": [],
+      "summary": "- Fonctionnalités **peu documentées** du framework, avec un aperçu de Symfony 5.3 (programme).\n- Aucun retour ni contenu du talk trouvé : résumé limité au descriptif officiel.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "pied-au-plancher-avec-symfony-turbo",
+      "day": "2021-04-09",
+      "type": "talk",
+      "title": "Pied au plancher avec Symfony Turbo",
+      "speakers": ["Kévin Dunglas"],
+      "feedbackFrom": [],
+      "summary": "- Présente **Hotwire Turbo**, son intégration officielle avec Symfony, le temps réel avec **Mercure** et les tests avec **Symfony Panther** (programme).\n- Aucun retour ni contenu du talk trouvé : résumé limité au descriptif officiel.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "the-new-testing-landscape-panther-foundry-more",
+      "day": "2021-04-09",
+      "type": "talk",
+      "title": "The New Testing Landscape: Panther, Foundry & More",
+      "speakers": ["Ryan Weaver"],
+      "feedbackFrom": [],
+      "summary": "- Nouveaux outils et patterns de test : **Panther, Foundry**, Arrange-Act-Assert, gestion des bases de données et exécution en parallèle (programme).\n- SensioLabs indique que la keynote de Ryan Weaver restait en anglais dans les éditions locales.\n- Aucun retour ni contenu du talk trouvé : résumé limité au descriptif officiel.",
+      "summarySources": ["program"]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Comment nous avons tiré parti de symfony/http-client pour construire un nouveau SDK AWS (Jérémy Derussé, async-aws)",
+    "Comment éviter les écueils les plus classiques en équipe Agile ? (Marianne Joseph-Gehannin)",
+    "De meilleurs identifiants grâce au composant Symfony UID (Thomas Calvet)",
+    "Démarrer avec Symfony UX (Titouan Galopin)"
+  ],
+  "sources": [
+    { "label": "Programme officiel SymfonyLive Online French Edition 2021", "url": "https://live.symfony.com/2021-france/" },
+    { "label": "Boring is the new hype (page de session)", "url": "https://live.symfony.com/2021-france/schedule/boring-is-the-new-hype" },
+    { "label": "SensioLabs : Back from the SymfonyLive Online French Edition 2021", "url": "https://sensiolabs.com/blog/2021/back-from-the-symfonylive-online-french-edition-2021" },
+    { "label": "SensioLabs : SensioLabs speakers at the SymfonyLive Online French Edition", "url": "https://sensiolabs.com/blog/2021/sensiolabs-speakers-at-the-symfonylive-online-french-edition" }
+  ]
 }
