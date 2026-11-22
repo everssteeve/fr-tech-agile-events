@@ -9,6 +9,165 @@
   "url": "https://live.symfony.com/2020-paris/",
   "dateConfidence": "ok",
   "note": "Initialement prévue les 26 et 27 mars 2020, reportée à septembre à cause de la COVID-19 (blog Symfony « Update about SymfonyLive Paris 2020 », qui confirme le lieu). Dates reportées issues de live.symfony.com/all (édition non marquée annulée, contrairement à d'autres événements Symfony de 2020-2021).",
-  "status": "pending",
-  "sessions": []
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-22",
+  "programUrl": "https://live.symfony.com/2020-paris/schedule",
+  "corpus": "Le programme officiel (page d'accueil et page schedule de live.symfony.com/2020-paris) a été lu : 13 conférences et une keynote, avec leurs descriptifs. Aucun retour de participant, article de blog, slide ni vidéo n'a été lu pour cette édition.",
+  "limits": "La synthèse repose uniquement sur le descriptif officiel : elle reflète ce qui était annoncé, pas ce que la salle a retenu. Le programme consulté ne donne ni jour ni horaire par session (le jour 2020-09-23 est un repère par défaut), ni entreprise des speakers. Aucune vidéo de cette édition n'apparaît dans la liste de la chaîne YouTube Symfony consultée.",
+  "revisit": "Corpus mince : uniquement le programme officiel, aucun retour participant, blog, slide ni vidéo lu ; WebSearch non utilisé lors de cette passe.",
+  "tldr": "Un SymfonyLive francophone reporté à septembre 2020, dont le programme mêle **architecture (monolithe modulaire, micro-services, stream processing), performance (cache, JIT, optimisation de la stack) et sécurité (cryptographie, WebAuthn)**.",
+  "keyTakeaways": [
+    "Le programme met en balance deux voies d'architecture : migrer vers des micro-services (Salomé) ou rester sur un monolithe modulaire (Barray), selon les descriptifs officiels.",
+    "La performance est un fil rouge : cache HTTP, CDN et applicatif (Lenoir), JIT de PHP 8 (Boineau), profilage de la stack Symfony (Jaillot).",
+    "Les composants Lock, Semaphore et Messenger sont présentés pour maîtriser la concurrence et l'asynchrone (Derussé, Roze).",
+    "La sécurité couvre le chiffrement via l'extension sodium (Grekas) et l'authentification sans mot de passe WebAuthn (Richter).",
+    "HTTP/2 et le protocole Vulcain sont proposés comme alternative à GraphQL pour des API plus rapides (Dunglas)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-fabien-potencier",
+      "day": "2020-09-23",
+      "type": "keynote",
+      "title": "Keynote",
+      "speakers": ["Fabien Potencier"],
+      "feedbackFrom": [],
+      "summary": "- Keynote d'ouverture de **Fabien Potencier**, créateur de Symfony, selon le programme officiel.\n- Le descriptif consulté ne précise pas le sujet : aucun contenu de la session n'a été lu.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "le-cache-ca-paie",
+      "day": "2020-09-23",
+      "type": "talk",
+      "title": "Le cache, ça paie !",
+      "speakers": ["Hubert Lenoir"],
+      "feedbackFrom": [],
+      "summary": "- Retour d'expérience sur un projet à forte charge (descriptif officiel).\n- Combine **cache HTTP, CDN et cache applicatif** pour absorber le trafic.\n- Synthèse limitée au descriptif du programme.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "lock-et-semaphore-les-gardiens-de-vos-ressources",
+      "day": "2020-09-23",
+      "type": "talk",
+      "title": "Lock et Semaphore : les gardiens de vos ressources",
+      "speakers": ["Jérémy Derussé"],
+      "feedbackFrom": [],
+      "summary": "- Présente les composants Symfony **Lock et Semaphore** pour contrôler l'accès concurrent à des ressources partagées (descriptif officiel).\n- Illustré par des exemples métier.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "migrer-vers-une-architecture-micro-services",
+      "day": "2020-09-23",
+      "type": "talk",
+      "title": "Migrer vers une architecture micro-services : points de contrôle pour une migration réussie",
+      "speakers": ["Alexandre Salomé"],
+      "feedbackFrom": [],
+      "summary": "- Liste les **questions à se poser avant de migrer** vers des micro-services : séparation du code, tests multi-applications, appels d'API, intégration de tiers (descriptif officiel).",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "la-compilation-jit-le-fil-rouge-vers-php-8",
+      "day": "2020-09-23",
+      "type": "talk",
+      "title": "La compilation JIT, le fil rouge vers PHP 8",
+      "speakers": ["Valentine Boineau"],
+      "feedbackFrom": [],
+      "summary": "- Retrace les **gains de performance de PHP depuis PHP 5.5**, avec des exemples de code Symfony.\n- Pose la question de leur aboutissement avec le JIT de PHP 8 (descriptif officiel).",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "monolithe-modulaire-pourquoi-comment",
+      "day": "2020-09-23",
+      "type": "talk",
+      "title": "Monolithe Modulaire : Pourquoi ? Comment ?",
+      "speakers": ["Timothée Barray"],
+      "feedbackFrom": [],
+      "summary": "- Plaide pour le **monolithe modulaire** plutôt que les micro-services (descriptif officiel).\n- Aborde l'organisation d'une application Symfony et la modularisation d'un monolithe legacy.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "redis-ce-n-est-pas-que-pour-le-cache",
+      "day": "2020-09-23",
+      "type": "talk",
+      "title": "Redis, ce n'est pas que pour le cache",
+      "speakers": ["Grégoire Pineau"],
+      "feedbackFrom": [],
+      "summary": "- Montre l'usage des **structures de données riches de Redis** depuis PHP : statistiques, sessions, classements, géolocalisation (descriptif officiel).",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "mettre-la-cryptographie-au-service-de-vos-apps-symfony",
+      "day": "2020-09-23",
+      "type": "talk",
+      "title": "Mettre la cryptographie au service de vos apps Symfony",
+      "speakers": ["Nicolas Grekas"],
+      "feedbackFrom": [],
+      "summary": "- Démystifie les outils de **hachage, de chiffrement de clés et de données** de Symfony, appuyés sur l'extension sodium de PHP (descriptif officiel).",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "api-specifications-securite-et-monitoring",
+      "day": "2020-09-23",
+      "type": "talk",
+      "title": "API: Spécifications, Sécurité et Monitoring",
+      "speakers": ["Danielle Kayumbi Bonkoto"],
+      "feedbackFrom": [],
+      "summary": "- Parcourt le **cycle de vie d'une API** sous Symfony : conception, documentation, sécurité, logs et monitoring (descriptif officiel).",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "stream-processing-un-autre-type-d-architecture",
+      "day": "2020-09-23",
+      "type": "talk",
+      "title": "Stream processing: un autre type d'architecture",
+      "speakers": ["Samuel Roze"],
+      "feedbackFrom": [],
+      "summary": "- Propose un **bus de messages et le stream processing** comme alternative aux échanges de CSV ou aux simples API (descriptif officiel).\n- Traite l'idempotence des handlers Symfony Messenger.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "retour-d-experience-optimisation-de-performance-stack-symfony",
+      "day": "2020-09-23",
+      "type": "talk",
+      "title": "Retour d'expérience sur l'optimisation de performance de la stack Symfony",
+      "speakers": ["Bastien Jaillot"],
+      "feedbackFrom": [],
+      "summary": "- Retour sur le **profilage et l'amélioration des internes de Symfony** sur un projet lent, en développement comme en production (descriptif officiel).",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "le-frontend-pragmatique-pour-les-developpeurs-backend",
+      "day": "2020-09-23",
+      "type": "talk",
+      "title": "Le frontend pragmatique pour les développeurs backend",
+      "speakers": ["Titouan Galopin"],
+      "feedbackFrom": [],
+      "summary": "- Conseils pratiques pour un **frontend moderne avec Symfony**, React, Bootstrap et Twig, et pour l'échange de données entre front et back (descriptif officiel).",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "webauthn-technologie-et-integration-dans-un-projet-symfony",
+      "day": "2020-09-23",
+      "type": "talk",
+      "title": "WebAuthn – Technologie et intégration dans un projet Symfony",
+      "speakers": ["Stefan Richter"],
+      "feedbackFrom": [],
+      "summary": "- Explique le standard d'**authentification sans mot de passe FIDO2/WebAuthn** et son implémentation dans un projet Symfony (descriptif officiel).",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "hypermedia-http-2-pour-des-api-mieux-concues",
+      "day": "2020-09-23",
+      "type": "talk",
+      "title": "HYPErmedia : tirer parti d'HTTP/2 pour créer des API mieux conçues, et plus rapides",
+      "speakers": ["Kévin Dunglas"],
+      "feedbackFrom": [],
+      "summary": "- Soutient que **HTTP/2 et HTTP/3 peuvent remplacer des solutions de type GraphQL** (descriptif officiel).\n- Montre la construction de telles API avec API Platform et le protocole Vulcain.",
+      "summarySources": ["program"]
+    }
+  ],
+  "sessionsWithoutFeedback": [],
+  "sources": [
+    { "label": "Page d'accueil SymfonyLive Paris 2020", "url": "https://live.symfony.com/2020-paris/" },
+    { "label": "Programme SymfonyLive Paris 2020", "url": "https://live.symfony.com/2020-paris/schedule" }
+  ]
 }
