@@ -12,10 +12,10 @@
   "dateConfidence": "ok",
   "note": "Conférence gratuite de l'AFPy : sprints les 31 octobre et 1er novembre, conférences et ateliers les 2 et 3 novembre. Environ 300 personnes (rapport de transparence) ; 364 inscrits et 280 badges pointés selon l'AG de l'AFPy. Trois plénières, toutes données par des femmes (choix délibéré). Édition prévue à Strasbourg depuis 2020, reportée par la crise sanitaire.",
   "status": "synthesized",
-  "synthesisUpdatedAt": "2026-10-08",
-  "corpus": "Programme officiel complet, 24 transcripts de vidéos Indymotion lus (3 plénières, 21 conférences) plus l'ouverture, la clôture et l'assemblée générale de l'AFPy, sur 50 vidéos publiées entre janvier et février 2025. S'y ajoutent le rapport de transparence du code de conduite (13 novembre 2024, avec un sondage de 100 répondants), une trentaine de pouets Mastodon publiés du 31 octobre au 5 novembre 2024, deux fils du forum discuss.afpy.org et les slides de deux speakers.",
+  "synthesisUpdatedAt": "2026-11-25",
+  "corpus": "Programme officiel complet, 31 transcripts de vidéos Indymotion lus (3 plénières, 28 conférences, dont sept ajoutés lors de la révision de novembre 2026 : Wagtail, Kedro, scikit-learn, DBnomics, Django FTL, Django-Oscar, versionnement automatique) plus l'ouverture, la clôture et l'assemblée générale de l'AFPy, sur 50 vidéos publiées entre janvier et février 2025. S'y ajoutent le rapport de transparence du code de conduite (13 novembre 2024, avec un sondage de 100 répondants), une trentaine de pouets Mastodon publiés du 31 octobre au 5 novembre 2024, deux fils du forum discuss.afpy.org et les slides de deux speakers.",
   "limits": "Retours participants très minces : aucun post LinkedIn ni article de blog post-événement trouvé, et les pouets Mastodon (mrjmad, jmny, Ash_Crow, mdk, petitlepton, Sarah Abderemane) se limitent souvent à annoncer la session suivie. La plupart des résumés reposent donc sur les transcripts automatiques, qui déforment des noms propres. Les ateliers, les sprints et les lightning talks ne sont pas documentés, et la conférence sur la covariance n'a pas été publiée (problème de son).",
-  "revisit": "Retours participants minces : aucun post LinkedIn ni blog post-événement trouvé, une trentaine de pouets Mastodon surtout factuels ; ateliers, sprints et lightning talks non couverts ; 23 transcripts Indymotion déjà téléchargés dans transcripts/pyconfr2024/ non exploités (Wagtail, Kedro, scikit-learn, DBnomics, Django FTL, Django-Oscar, etc.).",
+  "revisit": "Retours participants toujours minces : aucun post LinkedIn ni blog post-événement trouvé (nouvelle recherche web de novembre 2026 sans résultat) ; ateliers, sprints et lightning talks non couverts ; il reste une quinzaine de transcripts locaux non exploités dans transcripts/pyconfr2024/ (Mergify, duckdb, Kedro et MLflow, pathlib, synthcity, Blender, philosophie, SLM, etc.).",
   "tldr": "Une PyConFR de communauté, gratuite et militante : **la qualité du code Python au quotidien (tests, ORM, migrations, packaging) et l'inclusion** ont dominé un programme où l'IA générative est surtout abordée sous l'angle de la sobriété et des petits modèles spécialisés.",
   "keyTakeaways": [
     "**Compter ses requêtes ORM** : `select_related` / `prefetch_related` côté Django, `joinedload` / `selectinload` côté SQLAlchemy, et verrouiller le résultat par un test `assertNumQueries` (Roxane Bellot, Carmen Alvarez).",
@@ -398,6 +398,104 @@
         "title": "Yuchiro Tachibana - What Streamlit Can and Can't (or Shouldn't) Do",
         "transcript": true
       }
+    },
+    {
+      "id": "integrer-un-cms-aux-applications-django-avec-wagtail",
+      "day": "2024-11-03",
+      "type": "talk",
+      "title": "Intégrer un CMS aux applications Django avec Wagtail",
+      "speakers": ["Darko Stankovski"],
+      "summary": "- **Sur scène** : Django sait faire un blog (titre, slug, texte brut), mais pas ce qu'on attend d'un CMS pour des éditeurs non techniques : mise en forme, gestion des images et documents, droits, workflows de validation.\n- **Wagtail est une simple app Django** (`pip install wagtail`, commande `start`), utilisable pour démarrer un site ou pour ajouter de l'éditorial à une application existante en modifiant les settings. Deux admins séparés : celui de Django pour les techniciens, celui de Wagtail pour les rédacteurs.\n- **Les pages forment un arbre** : l'URL se construit par le nommage et la position des pages ; un modèle de page hérite de `Page`, expose des `content_panels`, et Wagtail cherche un template du même nom (`blog_page.html`). `get_children`, `child_of`, `descendant_of`, `live()` servent à lister ; `parent_page_types` et `subpage_types` verrouillent la structure.\n- **StreamField** (« la même chose que Gutenberg », mais plus ancien) : un corps fait de blocs typés (titre, texte riche réduit, image avec légende et attribution, code), qu'on peut aussi parcourir pour générer un sommaire.\n- **Retour d'expérience assumé comme partiel** : le speaker dit avoir découvert Wagtail il y a six mois, via l'atelier de Gabriel Trouvé la veille, et préparer la migration de son site perso depuis WordPress. Wagtail se compare à Drupal ou Joomla plutôt qu'à WordPress ; l'outil de migration reproduit des pages à la WordPress, d'où l'intérêt de repenser la structure du contenu.\n- Ressources citées : tutoriel officiel, projet de démo « boulangerie » et un starter kit récent.\n- Attribution au programme déduite du contenu (atelier « hier », découverte récente) ; aucun retour participant trouvé, résumé tiré du seul transcript.",
+      "summarySources": ["transcript"],
+      "video": {
+        "url": "https://indymotion.fr/w/hQKtdHVA87Up1i2AGfauB7",
+        "title": "Intégrer un CMS aux applications Django avec Wagtail",
+        "transcript": true
+      }
+    },
+    {
+      "id": "python-et-kedro-au-service-de-l-agriculture-de-precision",
+      "day": "2024-11-02",
+      "type": "talk",
+      "title": "Python et Kedro au service de l'agriculture de précision",
+      "speakers": ["Flavien Lambert", "Paul Arnaud"],
+      "summary": "- **Contexte** : une start-up lilloise de stations météo connectées pour agriculteurs (environ 80 personnes, plus de 35 000 stations en Europe ; nom transcrit « System Crop » par la transcription automatique). Problème : fournir une donnée météo fiable en tout point GPS d'Europe, malgré un réseau dense mais non uniforme.\n- **Solution** : une grille d'hexagones **H3** (cellules de quelques km², résolution 7) agrégeant les mesures des stations, complétées par les données d'un fournisseur de prévisions quand la mesure manque ; série temporelle finale par cellule.\n- **Kedro** (framework open source de pipelines, issu de QuantumBlack, aujourd'hui sous Linux Foundation) : nœuds = fonctions Python pures testables, pipeline = enchaînement par entrées/sorties, **catalogue YAML** qui découple les sources de données du code. Passer du local à la production revient à changer de catalogue (fichiers locaux vers S3, sortie vers un topic Kafka via un dataset custom).\n- **Kedro-Viz** (graphe dynamique, tags) cité comme documentation partagée. Structure de projet rigide, comparée à Django, appréciée pour l'intégration d'un nouvel arrivant.\n- **Limites relevées** par les speakers et la salle : Pandas ne passe pas à l'échelle (14 milliards de lignes de prévision par semaine, donc Spark sur Databricks), double sortie du même dataset et SQL dynamique peu naturels, pipelines dynamiques difficiles ; Narwhals ou Ibis évoqués pour s'abstraire du moteur de calcul.\n- Déploiement : images Docker orchestrées par Airflow sur AWS, Kafka, PostgreSQL (Aurora), API FastAPI.\n- Première intervention des deux speakers à la PyConFR. Résumé tiré du seul transcript.",
+      "summarySources": ["transcript"],
+      "video": {
+        "url": "https://indymotion.fr/w/43GVwer8ApDzxbuF2XZJYd",
+        "title": "Flavien Lambert/Paul Arnaud - Python et Kedro au service de l'agriculture de précision",
+        "transcript": true
+      }
+    },
+    {
+      "id": "introduction-a-l-apprentissage-automatique-avec-scikit-learn",
+      "day": "2024-11-02",
+      "type": "talk",
+      "title": "Introduction à l'apprentissage automatique avec scikit-learn",
+      "speakers": ["Pénélope Gittos — Probabl"],
+      "summary": "- **Présentation de Probabl**, spin-off d'Inria née moins d'un an plus tôt, qui détient la marque scikit-learn et vise à pérenniser la bibliothèque (plus de 90 millions de téléchargements par mois selon la speaker) ; lancement la semaine même d'une première certification, le MOOC Inria gratuit servant de base au niveau 1.\n- **Démo en notebook** sur le jeu de données Iris : exploration, `train_test_split` (20 % en test), `RandomForestClassifier` (90 % de précision), matrice de confusion (confusion versicolor/virginica).\n- **API cohérente** : remplacer le modèle par une régression logistique ne change pas le code (96,67 % sur ce jeu).\n- **Mise en garde** : la vraie vie ne ressemble pas à Iris (qualité, variété des formats, volume, dérive des données).\n- Questions : scikit-learn pour le tabulaire, plutôt PyTorch, TensorFlow ou JAX pour les images ; attention aux licences de datasets issus de challenges. Premier talk de la speaker, qui le dit rapide. Résumé tiré du seul transcript.",
+      "summarySources": ["transcript"],
+      "video": {
+        "url": "https://indymotion.fr/w/wgd13hb1udwViARNgnhXX7",
+        "title": "Pénélope Gittos - Introduction à l'apprentissage automatique avec scikit-learn",
+        "transcript": true
+      }
+    },
+    {
+      "id": "dbnomics-un-agregateur-de-donnees-economiques-en-python",
+      "day": "2024-11-03",
+      "type": "talk",
+      "title": "DBnomics : un agrégateur de données économiques en Python",
+      "speakers": ["Christophe Benz"],
+      "summary": "- **Problème** : les données économiques publiques (INSEE, Eurostat, OCDE, Banque mondiale…) sont dispersées, en formats hétérogènes (XML, JSON, Excel colorés à la main), avec limites de débit et requêtes à découper.\n- **Réponse** : une plateforme libre, née vers 2014 d'une idée de Michel Juillard (Banque de France), qui **convertit les séries temporelles de plus de 100 fournisseurs** dans un format unique, archive les révisions passées (reproductibilité, science ouverte) et les livre en DataFrame via `pip install dbnomics` (`fetch_series`) ou par API et site web.\n- **Architecture** : API et *fetchers* en Python (un par fournisseur, templatisés, `uv`), site en SvelteKit, recherche Solr, et un détournement de **GitLab CI** comme pipeline de données quotidien avec dashboard statique généré par Jinja. Porté par le CEPREMAP, il est aujourd'hui entretenu par le speaker seul après la baisse des financements.\n- **Usages** : application cartographique de l'AFD (débranchée depuis), présentation macroéconomique rafraîchie chaque semaine, une quinzaine de dashboards Streamlit codés par des stagiaires non développeurs.\n- **Défis** : suivre les changements des fournisseurs (*« contre le courant »*), et surtout fédérer une communauté autour des fetchers ; appel aux contributions. Résumé tiré du seul transcript.",
+      "summarySources": ["transcript"],
+      "video": {
+        "url": "https://indymotion.fr/w/sJhNvt8xWVFMdChQPETsfd",
+        "title": "Christophe Benz - DBnomics : un agrégateur de données économiques en Python",
+        "transcript": true
+      }
+    },
+    {
+      "id": "django-ftl-resolving-bottlenecks",
+      "day": "2024-11-03",
+      "type": "talk",
+      "title": "Django FTL: Resolving Bottlenecks on the Path to High Performance",
+      "speakers": ["Maxim Danilov"],
+      "summary": "- **Thèse** : avant de réécrire en Rust, Go ou FastAPI, **chercher les goulots dans Django lui-même** ; d'abord le matériel, le cache et les CDN (moins chers que du code), puis la règle des 80/20 sur les algorithmes. *« Ne croyez pas les benchmarks, vérifiez vous-mêmes »*.\n- **Avertissements** : envelopper Django dans Litestar ou Django Ninja n'apporte pas de gain mesurable ; mélanger Rust et Python (FastAPI/Pydantic) coûte des conversions de contexte ; l'async de Django n'est pas prêt pour les vues classes.\n- **Pistes chiffrées sur le chemin requête-réponse** : middlewares retirés ou remplacés par des décorateurs (temps de réponse divisé par deux sur un hello world), URL les plus utilisées en premier, tables d'URL séparées GET et POST, formulaires Django sans `__init__` (initialisation 100 fois plus rapide), sous-requête plutôt que jointure, `get()` réécrit avec `iterator()` (environ 10 % plus rapide sur PostgreSQL), `orjson`, moins de template tags et filtres, réponses en streaming, callback après fermeture de la réponse.\n- Il juge Django REST Framework lent et a quitté ce paradigme au profit de « micro-Django ». Plusieurs de ces astuces sont des opinions du speaker, à tester avant adoption. Résumé tiré du seul transcript.",
+      "summarySources": ["transcript"],
+      "video": {
+        "url": "https://indymotion.fr/w/7D8pgeYisqPSh4M9ozc7M9",
+        "title": "Maxim Danilov - Django FTL: Resolving Bottlenecks on the Path to High Performance",
+        "transcript": true
+      }
+    },
+    {
+      "id": "django-oscar-retour-d-experience-site-marchand",
+      "day": "2024-11-03",
+      "type": "talk",
+      "title": "Django-Oscar, un retour d'expérience sur la création d'un site marchand en Python",
+      "speakers": ["Julie Rymer — Biru"],
+      "summary": "- **Contexte** : une place de marché généraliste pour les DOM-TOM (TVA variable, SI ancien type AS400), prévue en quelques mois, sortie après un an et huit mois.\n- **Choix de Django-Oscar** après comparaison : solutions clés en main trop rigides, Django-Shop et Shuup peu rassurants, Saleor sans multi-vendeur ; Oscar est costaud, multi-vendeur et extensible (`oscar_fork_app`, `get_model`/`get_class`, templates en petits blocs).\n- **Coût** : beaucoup d'indirections et d'héritages, un IDE perdu par les chargements dynamiques, un écosystème entier à apprendre.\n- **Conseil à contre-courant** : ne pas suivre les recommandations d'Oscar, mais **cloner le code et se l'approprier**, retirer les chargements dynamiques, au prix d'un suivi manuel des montées de version.\n- **Point le plus difficile d'une place de marché** : récupérer les données des vendeurs (aucun format ni convention, les agrégateurs de flux ne s'intéressent pas aux petits) ; piste non testée : django-oscar-odin. Résumé tiré du seul transcript.",
+      "summarySources": ["transcript"],
+      "video": {
+        "url": "https://indymotion.fr/w/rX7tUdhFvVxo6KMK57CmZu",
+        "title": "Julie Rymer - Django-Oscar, retour d'expérience sur un site marchand en Python",
+        "transcript": true
+      }
+    },
+    {
+      "id": "une-application-versionnee-automatiquement",
+      "day": "2024-11-03",
+      "type": "talk",
+      "title": "Une application versionnée automatiquement",
+      "speakers": ["David Rigaudie"],
+      "summary": "- **Principe** : appliquer le versionnement sémantique à une application (son blog) sans geste manuel, avec **Python Semantic Release** qui lit des messages de commit conventionnels pour incrémenter la version, générer le changelog, créer le tag et la release GitLab.\n- **Workflow** : branches feature éphémères, `dev` et `master` persistantes ; le job de version tourne à la fusion vers `master`, avec un cherry-pick pour resynchroniser `dev`, puis un déploiement Ansible lancé manuellement.\n- **Pièges** : hook pre-commit pour vérifier les préfixes de commit, perte des préfixes quand on squashe une merge request sans message personnalisé, version majeure à forcer par une option plutôt que par les commits, et passage de la v7 à la v8 de l'outil qui a cassé son workflow.\n- Question de la salle : retirer certains commits du changelog demanderait un parseur personnalisé (non testé par le speaker). Résumé tiré du seul transcript.",
+      "summarySources": ["transcript"],
+      "video": {
+        "url": "https://indymotion.fr/w/2JKgpxTgECgCfz2bdy8f6b",
+        "title": "David Rigaudie - Une application versionnée automatiquement",
+        "transcript": true
+      }
     }
   ],
   "sessionsWithoutFeedback": [
@@ -411,11 +509,7 @@
     "Pathlib, mangez-en ! (HS-157, vidéo)",
     "Quelques challenges techniques rencontrés sur l'auto instrumentation (Christophe Papazian)",
     "Sparse Dataframes, a Memory Must (Michel Klüger, vidéo)",
-    "Introduction à l'apprentissage automatique avec scikit-learn (Pénélope Gittos, vidéo)",
     "Duckdb for Data Scientists (Sara Iris Garcia, vidéo)",
-    "Python et Kedro au service de l'agriculture de précision (Flavien Lambert, Paul Arnaud, vidéo)",
-    "Intégrer un CMS aux applications Django avec Wagtail (Darko Stankovski, vidéo ; simples mentions Mastodon de mrjmad et Ash_Crow)",
-    "Une application versionnée automatiquement (David Rigaudie, vidéo)",
     "Dédé ! Des dés aux données (Antoine Rigoureau, vidéo)",
     "Impostor Syndrome in Tech (Paweł Zajączkowski, vidéo)",
     "Confidentialité des bases de données médicales avec synthcity (Clément Benoist, vidéo)",
@@ -424,12 +518,9 @@
     "Une stack ML complète avec Kedro et MLflow (Anis Smail, vidéo)",
     "Visual Data Storytelling with Blender and Python (Neeraj Pandey, vidéo)",
     "Vos variables de configurations, le menu Rougail - Tiramisu (Emmanuel Garette)",
-    "Django FTL: Resolving Bottlenecks on the Path to High Performance (Maxim Danilov, vidéo)",
     "Python et éducation : bien, mais peut mieux faire… (Claude Simon)",
     "Créez une app mobile hybride avec Turbo Native et Strada (Thierry Chappuis)",
     "Python WebServer : du WSGI à ASGI (Guillaume Fassot, vidéo)",
-    "Django-Oscar, retour d'expérience sur un site marchand en Python (Julie Rymer, vidéo)",
-    "DBnomics : un agrégateur de données économiques en Python (Christophe Benz, vidéo)",
     "Lightning talks « C'est vous qui choisissez ! »",
     "Ateliers (OpenTelemetry, pandas, animation de communauté, Wagtail, web app data science, Make Open Data, jeux vidéo, microservices Flask, HARP Proxy)",
     "Sprints des 31 octobre et 1er novembre (dont traduction de la documentation Python et Le Bureau)",

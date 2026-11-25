@@ -12,10 +12,10 @@
   "dateConfidence": "ok",
   "note": "Deux jours de conférence mono-track en anglais (20 et 21 mars 2025), précédés d'une journée de workshops payants le 19 mars et de deux meetups gratuits (18 et 19 mars) ; organisée par BeJS, 18 speakers, MC Tejas Kumar et Sarah Dayan. Replays : playlist YouTube « React Paris 2025 » (https://www.youtube.com/playlist?list=PL53Z0yyYnpWitP8Zv01TSEQmKLvuRh_Dj).",
   "status": "synthesized",
-  "synthesisUpdatedAt": "2026-10-08",
-  "revisit": "aucun retour participant détaillé trouvé (LinkedIn, blogs, Bluesky) : 9 recherches web sans résultat exploitable, API Bluesky inaccessible ; synthèse fondée sur les transcripts. Transcript de Kent C. Dodds non récupéré (YouTube 429, deux tentatives).",
-  "corpus": "Programme officiel archivé (Wayback Machine, mars 2025) et **17 transcripts sur 18 talks** de la playlist officielle « React Paris 2025 » (chaîne BeJS, vidéos publiées le 25/03/2025), complétés par la description YouTube du talk de Kent C. Dodds, les slides PDF de François Best et une mention dans la newsletter This Week in React #227 (26/03/2025).",
-  "limits": "Aucun retour de participant détaillé n'a été trouvé, à part la mention de Sébastien Lorber (This Week in React) : les résumés décrivent ce qui a été dit sur scène (sous-titres automatiques anglais, parfois bruités sur les noms propres), pas la réception par le public. Le talk d'ouverture de Kent C. Dodds n'est résumé que d'après son descriptif. Les cinq workshops du 19 mars et les meetups ne sont pas documentés.",
+  "synthesisUpdatedAt": "2026-11-25",
+  "revisit": "un seul retour détaillé trouvé (blog de Kate Marshalkina, speaker) ; aucun post LinkedIn ou Bluesky exploitable (recherches web des 08/10 et 25/11/2026) ; rapport Fork it (04/04/2025) introuvable (404). Transcript de Kent C. Dodds toujours non récupéré (YouTube 429 ; yt-dlp non autorisé lors de la dernière reprise).",
+  "corpus": "Programme officiel archivé (Wayback Machine, mars 2025) et **17 transcripts sur 18 talks** de la playlist officielle « React Paris 2025 » (chaîne BeJS, vidéos publiées le 25/03/2025), complétés par la description YouTube du talk de Kent C. Dodds, les slides PDF de François Best, une mention dans la newsletter This Week in React #227 (26/03/2025) et **un billet de blog** de Kate Marshalkina (25/03/2025) qui commente les 18 talks.",
+  "limits": "Un seul retour détaillé, celui de Kate Marshalkina, qui était aussi speaker : ses avis sont brefs et ne reflètent pas l'ensemble du public. Les résumés décrivent surtout ce qui a été dit sur scène (sous-titres automatiques anglais, parfois bruités sur les noms propres). Le talk d'ouverture de Kent C. Dodds n'est résumé que d'après son descriptif et le blog. Les cinq workshops du 19 mars et les meetups ne sont pas documentés ; un rapport de l'équipe Fork it existe mais n'a pas pu être lu.",
   "tldr": "**React 19 et les Server Components entrent dans le quotidien** : moins de `useState` et de JavaScript, plus d'URL, de HTML natif et de serveur, sur fond de premiers usages concrets de l'IA dans le front et de rappels insistants sur l'accessibilité à l'approche de l'European Accessibility Act.",
   "keyTakeaways": [
     "Réserver `useState` à l'état interne d'un composant : valeurs dérivées calculées au rendu, `useRef` pour ce qui ne s'affiche pas, `useReducer` ou un store pour la logique contrainte (Khourshid).",
@@ -38,9 +38,13 @@
       "speakers": [
         "Kent C. Dodds — Epic Web"
       ],
-      "summary": "- Talk d'ouverture de la conférence (9 h 15, suivi d'un Q&A).\n- D'après le descriptif : le réseau entre serveur et client est **la principale source de complexité** du développement web (UI initiale, appels d'API à la navigation, soumissions de formulaires).\n- Thèse annoncée : les **React Server Components et les Actions** font « disparaître » cette complexité et permettent de meilleures expériences utilisateur.\n- Le reste du jour 1 y fait écho : Jean Burellier cite la présentation « juste avant » sur le réseau, Aurora Scharff et David Khourshid prolongent sur RSC et formulaires.\n- Contenu exact non vérifié : transcript non récupéré.",
+      "summary": "- Talk d'ouverture de la conférence (9 h 15, suivi d'un Q&A).\n- D'après le descriptif : le réseau entre serveur et client est **la principale source de complexité** du développement web (UI initiale, appels d'API à la navigation, soumissions de formulaires).\n- Thèse annoncée : les **React Server Components et les Actions** font « disparaître » cette complexité et permettent de meilleures expériences utilisateur.\n- Le reste du jour 1 y fait écho : Jean Burellier cite la présentation « juste avant » sur le réseau, Aurora Scharff et David Khourshid prolongent sur RSC et formulaires.\n- Retour de Kate Marshalkina : keynote que beaucoup avaient déjà vue ; à une question sur la frontière floue front/back avec les RSC, Kent a répondu qu'une séparation stricte des équipes n'est pas forcément nécessaire.\n- Contenu exact non vérifié : transcript non récupéré.",
+      "feedbackFrom": [
+        "Kate Marshalkina (blog)"
+      ],
       "summarySources": [
-        "program"
+        "program",
+        "blog"
       ],
       "video": {
         "youtubeId": "-W3_dxNDHVw",
@@ -57,10 +61,14 @@
       "speakers": [
         "Jean Burellier — Sanofi"
       ],
-      "summary": "- Contexte Sanofi : des milliers d'applications internes et publiques, toutes régulées, déclinées par pays. Le design system est porté par **4 ingénieurs et 2 designers pour plus de 2 000 ingénieurs**.\n- Choix d'un design system maison, sans librairie tierce (objectif : zéro dépendance) : cycles produit de 7 à 8 ans, besoins multi-supports, accessibilité au-delà de la loi, personnalisation par marque.\n- Ce qui change en 2025 : coexistence CSR/SSR, compatibilité React, Remix et Next.js, React 18 et 19 ; jusqu'à **48 variantes** de test par cas (frameworks, versions, navigateurs, rendu). L'**European Accessibility Act** arrive dans trois mois et vise aussi les outils internes.\n- Résultats annoncés : délai de livraison réduit de 25 à 45 %, prototype en moins d'une heure, site statique en quatre heures ; un socle validé fait passer la validation qualité **de deux ou trois mois à moins d'une semaine**.\n- Points durs : construire la communauté, viser zéro breaking change, boucle de feedback, culture inner source encore à installer.\n- Pistes : playground pour non-développeurs, assistant LLM nourri de la documentation, tests « canari » sur les projets les plus utilisés (inspiré de Node.js), composants métier complets (profil, recherche d'essai clinique).",
+      "summary": "- Contexte Sanofi : des milliers d'applications internes et publiques, toutes régulées, déclinées par pays. Le design system est porté par **4 ingénieurs et 2 designers pour plus de 2 000 ingénieurs**.\n- Choix d'un design system maison, sans librairie tierce (objectif : zéro dépendance) : cycles produit de 7 à 8 ans, besoins multi-supports, accessibilité au-delà de la loi, personnalisation par marque.\n- Ce qui change en 2025 : coexistence CSR/SSR, compatibilité React, Remix et Next.js, React 18 et 19 ; jusqu'à **48 variantes** de test par cas (frameworks, versions, navigateurs, rendu). L'**European Accessibility Act** arrive dans trois mois et vise aussi les outils internes.\n- Résultats annoncés : délai de livraison réduit de 25 à 45 %, prototype en moins d'une heure, site statique en quatre heures ; un socle validé fait passer la validation qualité **de deux ou trois mois à moins d'une semaine**.\n- Points durs : construire la communauté, viser zéro breaking change, boucle de feedback, culture inner source encore à installer.\n- Pistes : playground pour non-développeurs, assistant LLM nourri de la documentation, tests « canari » sur les projets les plus utilisés (inspiré de Node.js), composants métier complets (profil, recherche d'essai clinique).\n- Retenu par Kate Marshalkina : dans un contexte pharma régulé, la solution maison était la seule viable et revenait moins cher que les librairies existantes.",
+      "feedbackFrom": [
+        "Kate Marshalkina (blog)"
+      ],
       "summarySources": [
         "transcript",
-        "program"
+        "program",
+        "blog"
       ],
       "video": {
         "youtubeId": "JWsp_L6N_qg",
@@ -77,10 +85,14 @@
       "speakers": [
         "Jemima Abu — Google Developer Expert"
       ],
-      "summary": "- Rappel historique : JavaScript a été créé pour **soutenir** HTML et CSS (validation côté client), pas pour porter tout le contenu. Anecdote left-pad pour illustrer la dépendance excessive.\n- Règle proposée : si la page était imprimée sans JavaScript, le contenu devrait rester lisible ; garder JS pour la fonctionnalité (par exemple persister un choix de thème).\n- Démos CodePen sans JS : sélecteur de thème avec `:has()`, accordéon `<details>` (accessibilité native, recherche dans la page, exclusivité avec l'attribut `name`), modale avec l'attribut **`popover`** (focus, fermeture au clic extérieur), `::backdrop`.\n- Fonctions encore expérimentales montrées : `calc-size(auto)`, `@starting-style`, animations pilotées par le scroll (`animation-timeline`, `animation-range`).\n- Q&A : pour un thème persistant en SSR, stocker le choix en local et laisser le CSS gérer l'affichage.",
+      "summary": "- Rappel historique : JavaScript a été créé pour **soutenir** HTML et CSS (validation côté client), pas pour porter tout le contenu. Anecdote left-pad pour illustrer la dépendance excessive.\n- Règle proposée : si la page était imprimée sans JavaScript, le contenu devrait rester lisible ; garder JS pour la fonctionnalité (par exemple persister un choix de thème).\n- Démos CodePen sans JS : sélecteur de thème avec `:has()`, accordéon `<details>` (accessibilité native, recherche dans la page, exclusivité avec l'attribut `name`), modale avec l'attribut **`popover`** (focus, fermeture au clic extérieur), `::backdrop`.\n- Fonctions encore expérimentales montrées : `calc-size(auto)`, `@starting-style`, animations pilotées par le scroll (`animation-timeline`, `animation-range`).\n- Q&A : pour un thème persistant en SSR, stocker le choix en local et laisser le CSS gérer l'affichage.\n- Retenu par Kate Marshalkina : la formule *« We went from JS supporting the web to JS running the web »*.",
+      "feedbackFrom": [
+        "Kate Marshalkina (blog)"
+      ],
       "summarySources": [
         "transcript",
-        "program"
+        "program",
+        "blog"
       ],
       "video": {
         "youtubeId": "h_tMtyvVPY0",
@@ -97,10 +109,14 @@
       "speakers": [
         "Kateryna Porshnieva — Buffer"
       ],
-      "summary": "- Bases : l'**arbre d'accessibilité** (rôle, nom accessible, états) exposé aux technologies d'assistance ; démonstrations au lecteur d'écran tout au long du talk.\n- Première règle d'ARIA : ne pas l'utiliser si le HTML natif suffit. ARIA ne change que la sémantique, pas le comportement, et les pages qui en usent ont en moyenne plus d'erreurs.\n- Boutons icônes : `aria-hidden` sur l'icône, composant `VisuallyHidden` plutôt qu'`aria-label` (non traduit) ; `:focus-visible`, `:has()` et `@media (hover: hover)` pour les actions au survol.\n- Formulaires : labels reliés explicitement, `aria-describedby` pour aides et erreurs, `useId` pour les identifiants, `aria-required` et `aria-invalid` (aussi utilisés comme sélecteurs CSS), erreurs pas uniquement en couleur.\n- Notifications : régions live (`role=status`, `role=alert`).\n- Tests : axe, Lighthouse, jsx-a11y, puis **requêtes sémantiques** de Testing Library ; enfin lecteur d'écran et tests avec des utilisateurs handicapés (pratique de Buffer).",
+      "summary": "- Bases : l'**arbre d'accessibilité** (rôle, nom accessible, états) exposé aux technologies d'assistance ; démonstrations au lecteur d'écran tout au long du talk.\n- Première règle d'ARIA : ne pas l'utiliser si le HTML natif suffit. ARIA ne change que la sémantique, pas le comportement, et les pages qui en usent ont en moyenne plus d'erreurs.\n- Boutons icônes : `aria-hidden` sur l'icône, composant `VisuallyHidden` plutôt qu'`aria-label` (non traduit) ; `:focus-visible`, `:has()` et `@media (hover: hover)` pour les actions au survol.\n- Formulaires : labels reliés explicitement, `aria-describedby` pour aides et erreurs, `useId` pour les identifiants, `aria-required` et `aria-invalid` (aussi utilisés comme sélecteurs CSS), erreurs pas uniquement en couleur.\n- Notifications : régions live (`role=status`, `role=alert`).\n- Tests : axe, Lighthouse, jsx-a11y, puis **requêtes sémantiques** de Testing Library ; enfin lecteur d'écran et tests avec des utilisateurs handicapés (pratique de Buffer).\n- Réaction de Kate Marshalkina : à la question de savoir comment justifier ce travail auprès des chefs de projet, la réponse était « just do it » ; elle y ajoute que l'accessibilité relève de la Definition of Done.",
+      "feedbackFrom": [
+        "Kate Marshalkina (blog)"
+      ],
       "summarySources": [
         "transcript",
-        "program"
+        "program",
+        "blog"
       ],
       "video": {
         "youtubeId": "tFO0-aMxitY",
@@ -317,7 +333,10 @@
       "speakers": [
         "Kate Marshalkina — Aetion"
       ],
-      "summary": "- Contexte : couvrir 64 epics de tests end-to-end exigés par la réglementation, sur une app React 17 non typée et un back Java vieux de dix ans.\n- Stratégie ad hoc, le « **testing mushroom** » : d'abord un chapeau de tests E2E comme filet de sécurité, puis intégration et unitaires.\n- Leçons : tests instables dus à un mauvais usage des API (corrigé par `eslint-plugin-playwright`), dépendances entre tests cassées par le mode **fully parallel**, rapports lisibles grâce au décorateur `step` et à Allure.\n- Vitesse : de 51 à 17 minutes en augmentant les workers, 10 minutes gagnées sur 200 tests grâce à un cache réseau (« mocking without mocks »).\n- Effet de bord : un an après, React mis à jour, monorepo, feature-sliced design et migration TypeScript ; *« everything else becomes easier when you've got your testing right »*.",
+      "summary": "- Contexte : couvrir 64 epics de tests end-to-end exigés par la réglementation, sur une app React 17 non typée et un back Java vieux de dix ans.\n- Stratégie ad hoc, le « **testing mushroom** » : d'abord un chapeau de tests E2E comme filet de sécurité, puis intégration et unitaires.\n- Leçons : tests instables dus à un mauvais usage des API (corrigé par `eslint-plugin-playwright`), dépendances entre tests cassées par le mode **fully parallel**, rapports lisibles grâce au décorateur `step` et à Allure.\n- Vitesse : de 51 à 17 minutes en augmentant les workers, 10 minutes gagnées sur 200 tests grâce à un cache réseau (« mocking without mocks »).\n- Effet de bord : un an après, React mis à jour, monorepo, feature-sliced design et migration TypeScript ; *« everything else becomes easier when you've got your testing right »*.\n- Retour de la speaker (Kate Marshalkina, blog) : elle s'attendait à peu d'intérêt pour le test et a rendu son talk plus ludique ; le public a bien réagi, malgré des problèmes de micro.",
+      "feedbackFrom": [
+        "Kate Marshalkina (speaker, blog)"
+      ],
       "summarySources": [
         "transcript",
         "program"
@@ -416,7 +435,11 @@
       "url": "https://thisweekinreact.com/newsletter/227"
     },
     {
-      "label": "Posts LinkedIn, Bluesky, blogs : aucun retour participant trouvé (9 recherches web, octobre 2026)"
+      "label": "Kate Marshalkina : « React Paris 2025 » (billet de blog, 25/03/2025)",
+      "url": "https://kalabro-blog.pages.dev/react-paris-2025"
+    },
+    {
+      "label": "Posts LinkedIn, Bluesky : aucun retour participant trouvé (recherches web, octobre et novembre 2026)"
     }
   ]
 }

@@ -5,9 +5,129 @@
   "start": "2019-12-09",
   "end": "2019-12-11",
   "city": "Paris",
+  "venue": "Le Beffroi, Montrouge",
   "url": "https://web.archive.org/web/20211022/https://www.apidays.io/paris2019/",
+  "edition": "8e édition",
   "theme": "APIs: From Legacy to Agile, From Product to Ecosystems",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-25",
+  "revisit": "Corpus mince : aucune vidéo ni transcript lu (yt-dlp indisponible), programme officiel archivé non lisible, un seul compte rendu participant (Hitachi). À reprendre avec la playlist YouTube 2019 et le programme Wayback.",
+  "corpus": "Sept decks publiés sur SlideShare et Speaker Deck (IBM, Carrefour, Vaudoise Assurances, Publicis Sapient, Fabernovel, Mehdi Lahmam), un compte rendu de participant japonais (Takashi Norimatsu, Hitachi), un extrait de programme (jour 2 et 3) et deux articles de présentation (FrenchWeb, apisecurity.io).",
+  "limits": "Aucune vidéo ni transcript exploité, programme complet non consulté : la couverture dépend des slides que les orateurs ont choisi de publier, donc surtout des retours d'orateurs ou de sponsors, sans recul critique de participants. Un seul compte rendu de participant, d'un orateur de l'événement.",
+  "tldr": "En 2019, apidays Paris (Montrouge, 9 au 11 décembre) a déplacé le débat de l'API comme **outil technique vers l'API comme produit et brique d'écosystème**, avec de nombreux retours de grands comptes sur la gouvernance et l'héritage legacy.",
+  "keyTakeaways": [
+    "Faire de l'API un produit : la concevoir pour un large réemploi et ne pas recréer du legacy plus vite qu'avant (Daniel Pays, Carrefour).",
+    "Mettre en place une communauté de pratique et des guidelines d'API en approche ascendante, avec des managers qui apportent légitimité et soutien (Vaudoise Assurances).",
+    "Relier le programme d'API à des objectifs métier mesurés, confier l'expérience développeur à une équipe produit unique et automatiser la gouvernance (Ronnie Mitra, Publicis Sapient).",
+    "Passer à une approche spec-first (OpenAPI, AsyncAPI) validée en CI pour garder documentation, mocks et tests alignés (Mehdi Lahmam).",
+    "Prévoir une plateforme d'API interne, gouvernée, pour que l'innovation passe à l'échelle sur l'ensemble des clients et canaux (Cyril Vart, Fabernovel).",
+    "Compléter le REST par des événements (Kafka, MQ) dans une plateforme d'intégration hybride (IBM, présentation de sponsor)."
+  ],
+  "sessions": [
+    {
+      "id": "paris-architect-point-of-view-keynote",
+      "day": "2019-12-10",
+      "type": "keynote",
+      "title": "Paris, the architect's point of view",
+      "speakers": ["Dominique Alba — Apur"],
+      "feedbackFrom": [],
+      "summary": "- Keynote d'ouverture du jour 2, sur la ville de Paris vue par l'architecte.\n- Seul l'intitulé et l'orateur sont connus (extrait de programme et page de l'European Data Portal) : le contenu n'a pas été consulté.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "federated-apis-across-ecosystems",
+      "day": "2019-12-10",
+      "type": "keynote",
+      "title": "Federated APIs across Ecosystems",
+      "speakers": ["Paul Fremantle — WSO2"],
+      "feedbackFrom": [],
+      "summary": "- Seconde keynote du jour 2, sur les API fédérées entre écosystèmes.\n- Seul l'intitulé et l'orateur sont connus (extrait de programme) : le contenu n'a pas été consulté.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "carrefour-leveraging-api-new-business-channel",
+      "type": "talk",
+      "title": "How Carrefour is leveraging API to activate new business channels",
+      "speakers": ["Daniel Pays — Carrefour"],
+      "feedbackFrom": ["slides publiées (speaker)"],
+      "summary": "- **Point de départ en 2016** : des systèmes legacy hétérogènes et lents. Carrefour bâtit une couche d'abstraction sur Hadoop qui collecte, nettoie et expose les données pour des architectures « digital natives ».\n- Les premiers usages étaient en lecture seule ; les back-ends modernisés ont ensuite exposé des API nativement.\n- L'API manager sert à la gouvernance (réutilisation, cohérence sémantique, sécurité, supervision) et de couche technique de protection.\n- Croissance forte et irrégulière : les slides montrent 60, 115 puis 300 API et 3, 200 puis 400 millions d'appels par mois (lecture des années incertaine sur la page extraite), avec le milliard d'appels attendu pour 2020.\n- Exemple de la commande en magasins de proximité : une API par produit et par magasin sur 5 000 magasins, plusieurs milliers d'appels par seconde ; choix d'un outil de gestion d'API cloud native (Apigee) selon les notes.\n- **Leçon** : on crée du legacy bien plus vite qu'avant, d'où le risque de doublons d'API ; il faut les concevoir pour un large réemploi, selon l'idée d'« API as a product ».",
+      "summarySources": ["slides"]
+    },
+    {
+      "id": "api-community-of-practice-insurance-company",
+      "type": "talk",
+      "title": "The (really) long journey to an API Community of Practice in a 125 years old insurance company",
+      "speakers": ["Julien Duvanel — Vaudoise Assurances", "Jérôme Freyre — Vaudoise Assurances"],
+      "feedbackFrom": ["slides publiées (speaker)"],
+      "summary": "- **Constat d'octobre 2015** : des API dupliquées pour chaque consommateur, des données copiées jusqu'à 14 fois, des conventions HTTP ignorées (« HTTP 200 KO »).\n- Décembre 2016 : six personnes rédigent ensemble les premières guidelines ; février 2017 : naissance de la communauté de pratique ; septembre 2017 : accent sur l'adoption auprès des managers IT, product owners et développeurs.\n- Approche **ascendante**, portée par des leaders naturels, avec des managers pour la légitimité. La motivation s'érode : il faut rappeler sans cesse le sens du travail.\n- Résultats annoncés : guidelines en version 1.1, plus de 47 revues de design avant implémentation, plus de 30 API conformes, 33 membres dans la communauté.\n- Les orateurs disent que le problème « ne sera jamais résolu », sans pour autant renoncer.",
+      "summarySources": ["slides"]
+    },
+    {
+      "id": "api-operating-model-playbook-value-release",
+      "type": "talk",
+      "title": "The API Operating Model: A Playbook for Value Release",
+      "speakers": ["Ronnie Mitra — Publicis Sapient"],
+      "feedbackFrom": ["slides publiées (speaker)"],
+      "summary": "- Un playbook en six actions pour tirer de la valeur d'un écosystème d'API, avec un écosystème externe (partenaires, développeurs) au-dessus de la « ligne de flottaison » et un écosystème interne en dessous.\n- **Commencer par le pourquoi** : définir et mesurer les objectifs métier (portée client, innovation, monétisation, données, conformité), puis en déduire les API à construire.\n- Investir sélectivement dans l'expérience développeur avec le modèle de Kano (besoins de base, performance, éléments différenciants).\n- **Une seule équipe produit** pour l'expérience API externe : *« Inconsistency kills the API developer experience because it multiplies interaction costs »*.\n- Passer à l'échelle avec des standards et une gouvernance sur tout le cycle de vie, puis automatiser (linting, sécurité, documentation, tests, déploiement de passerelle).",
+      "summarySources": ["slides"]
+    },
+    {
+      "id": "innovation-at-scale-apis-digital-factories",
+      "type": "talk",
+      "title": "Innovation @ scale: APIs as Digital Factories' New Machines?",
+      "speakers": ["Cyril Vart — Fabernovel"],
+      "feedbackFrom": ["slides publiées (speaker)"],
+      "summary": "- Les entreprises tech dominent la valeur de marché ; la logique économique passe du prix unitaire au **revenu par client** et du partage de marché au partage d'usage.\n- Exemples cités : Glossier, Bergamotte (chaîne d'approvisionnement ramenée d'environ 7 à 2 jours), Nike et son virage logiciel.\n- Constat sévère : de 2000 à 2017, les labs et pilotes digitaux ont eu au mieux environ 0,1 % d'impact.\n- Pour innover à l'échelle, bâtir sa propre « software factory » ; obstacles : accès au legacy, culture et vocabulaire, données partagées.\n- **Solution proposée** : une plateforme d'API interne, éventuellement gérée comme un éditeur interne, avec une gouvernance forte.",
+      "summarySources": ["slides"]
+    },
+    {
+      "id": "openapi-asyncapi-specifications-as-contracts",
+      "day": "2019-12-11",
+      "type": "talk",
+      "title": "OpenAPI and AsyncAPI specifications as contracts",
+      "speakers": ["Mehdi Lahmam B."],
+      "feedbackFrom": ["slides publiées (speaker)"],
+      "summary": "- La documentation d'API est un point de douleur, et les microservices multiplient le problème ; la doc n'est qu'une partie des besoins (conception amont, communication des changements, tests continus, clients à jour).\n- Historique : Swagger (Tony Tam, vers 2011) devenu OpenAPI ; AsyncAPI (Fran Mendez, 2016) pour les API par événements.\n- **Workflow spec-first** : discuter la conception, écrire la spec, générer doc et mock, l'affiner, la réutiliser dans les tests, puis coder. La CI valide la spec et notifie les équipes.\n- Outils cités : Spectral, Swagger UI, ReDoc, Prism, OpenAPI Generator, validation de messages Kafka avec AsyncAPI.\n- Résumé établi à partir des titres de slides et de l'abstract, pas du discours oral.",
+      "summarySources": ["slides"]
+    },
+    {
+      "id": "event-driven-apis-integrated-platform-ibm",
+      "type": "talk",
+      "title": "How an Integrated Platform Helps to Drive Business with Event-Driven APIs",
+      "speakers": ["Yann Théau — IBM", "Michel Lara — IBM"],
+      "feedbackFrom": ["slides publiées (speaker)"],
+      "summary": "- Présentation de sponsor : les ESB monolithiques et les équipes d'intégration cloisonnées freinent ; l'orateur défend une intégration fine, hybride et multicloud.\n- Argument central : **IBM Cloud Pak for Integration**, qui regroupe API Connect, intégration d'applications, MQ, Event Streams (Kafka) et la passerelle DataPower sur une architecture de conteneurs.\n- Chiffre cité en slide : 65 % des organisations auraient une plateforme d'intégration hybride d'ici 2022 (source Gartner).\n- Cas d'usage : expérience client en magasin, service client en temps réel, financement de la chaîne logistique avec blockchain.\n- Les slides sont celles d'un fournisseur : à lire comme un argumentaire produit.",
+      "summarySources": ["slides"]
+    },
+    {
+      "id": "fapi-security-profile-keycloak",
+      "type": "talk",
+      "title": "What are protected and secured by security requirements for APIs providing financial services, from implementer's perspective",
+      "speakers": ["Takashi Norimatsu — Hitachi"],
+      "feedbackFrom": ["Takashi Norimatsu (speaker)"],
+      "summary": "- Présente le profil de sécurité Financial-grade API (FAPI) et son implémentation dans Keycloak.\n- Le speaker raconte, dans son compte rendu, avoir présenté en anglais, exercice difficile pour lui, et qu'un participant l'a félicité au déjeuner (*retour du speaker*).",
+      "summarySources": ["blog"]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Phil Sturgeon (Stoplight) : les descriptions d'API comme code de production (jour 3, extrait de programme)",
+    "Mehdi Medjaoui : The Programmable Society",
+    "Luca Ferrari : How Do Async APIs Survive in a Rest World ? (speaker non confirmé)",
+    "François Masson (Amadeus)",
+    "Ateliers sponsors (WSO2, Apigee, Kong, NGINX, Okta, Postman, Twilio, etc.)"
+  ],
+  "sources": [
+    { "label": "Programme archivé apidays Paris 2019 (Wayback)", "url": "https://web.archive.org/web/20211022/https://www.apidays.io/paris2019/" },
+    { "label": "Extrait de programme, jour 2 (Google Sheets)", "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnxLwaem92-kmRCJobN1kuBwhNMACklzu7j0m_rpl5zfu174V4QacD31mMrAqSgL41X7PTa8RdGYm/pubhtml" },
+    { "label": "apisecurity.io : apidays Paris 2019", "url": "https://apisecurity.io/events/apidays-paris-2019/" },
+    { "label": "FrenchWeb : API Days, la 8e édition", "url": "https://www.frenchweb.fr/api-days-la-8eme-edition-de-la-conference-dediee-aux-enjeux-business-des-apis/385758" },
+    { "label": "Compte rendu de Takashi Norimatsu (Hitachi), Qiita", "url": "https://qiita.com/tnorimat/items/f82a7c4b6916dcc7d5fb" },
+    { "label": "Slides Carrefour (Daniel Pays)", "url": "https://www.slideshare.net/APIdays_official/apidays-paris-2019-how-carrefour-is-leveraging-api-to-activate-new-business-chanel-by-daniel-pays-carrefour" },
+    { "label": "Slides Vaudoise Assurances", "url": "https://www.slideshare.net/APIdays_official/apidays-paris-2019-the-really-long-journey-to-an-api-community-of-practice-in-a-125-years-old-insurance-company-by-julien-duvanel-and-jrome-freyre-vaudoise-assurances" },
+    { "label": "Slides Ronnie Mitra (Publicis Sapient)", "url": "https://www.slideshare.net/slideshow/apidays-paris-2019-the-api-operating-model-a-playbook-for-value-release-by-ronnie-mitra-publicis-sapient/227018344" },
+    { "label": "Slides Cyril Vart (Fabernovel)", "url": "https://www.slideshare.net/slideshow/apidays-paris-2019-innovation-scale-apis-as-digital-factories-new-machines-by-cyril-vart-fabernovel/224183732" },
+    { "label": "Slides IBM (Yann Théau)", "url": "https://www.slideshare.net/slideshow/apidays-paris-2019-how-an-integrated-platform-helps-to-drive-business-with-eventdriven-apis-by-yann-theau-ibm/224020014" },
+    { "label": "Slides Mehdi Lahmam (Speaker Deck)", "url": "https://speakerdeck.com/mehlah/openapi-and-asyncapi-specifications-as-contracts" }
+  ]
 }
