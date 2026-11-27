@@ -7,7 +7,457 @@
   "city": "Bordeaux",
   "venue": "Université de Bordeaux",
   "url": "https://www.pycon.fr/2019/",
+  "programUrl": "https://www.pycon.fr/2019/fr/schedule.html",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "note": "Conférence gratuite organisée par des bénévoles de l'AFPy sur le campus de Talence de l'Université de Bordeaux : sprints les 31 octobre et 1er novembre, conférences et ateliers les 2 et 3 novembre. Le programme compte 3 keynotes et 74 conférences réparties sur le samedi et le dimanche, avec un dîner participants à Cap Sciences le samedi soir et l'assemblée générale de l'AFPy le dimanche matin.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-27",
+  "revisit": "Corpus mince : programme officiel, page pyvideo et trois billets de speakers seulement. Aucun post LinkedIn ni retour de participant non-speaker lu, aucun transcript (vidéos non téléchargées), 4 recherches web sans compte-rendu d'ensemble. À reprendre avec des transcripts (les vidéos sont sur YouTube, PeerTube et dl.afpy.org) et une recherche des tweets #pyconfr de l'époque.",
+  "corpus": "Programme officiel complet (74 conférences et 3 keynotes, descriptifs), page pyvideo.org de l'édition (70 vidéos listées, page de la keynote d'ouverture lue), billet de blog de Lionel Atty (gRPC/Python), billet d'Estelle Scifo (ses deux talks Neo4j), annonce de sponsoring de Mergify et extrait de recherche d'un billet de Santiago Fraire Willemoes sur son talk pytest.",
+  "limits": "Les résumés reposent surtout sur les descriptifs du programme, donc sur ce que les speakers annonçaient et non sur ce qui a été dit sur scène. Seuls des speakers ont écrit des retours (biais d'auto-évaluation) et aucun participant ordinaire n'a été trouvé. Les jours exacts des keynotes 2 et 3 ne figurent pas dans les pages lues, et le billet de Fraire Willemoes n'a pu être relu en entier.",
+  "tldr": "**Une PyConFR bordelaise très large** : 74 conférences en deux jours, de la sécurité, du packaging et des tests aux graphes, au machine learning et à la CAO, avec trois keynotes centrées sur la **communauté open source, les biais d'attention et la technologie dans les mouvements sociaux**.",
+  "keyTakeaways": [
+    "Une grosse pull request est un test de résilience pour une communauté open source : OpenFisca en a tiré une organisation capable d'absorber l'incertitude (Gomart, descriptif de la keynote).",
+    "Face à Python 2 en fin de vie, préparer la migration plutôt que de la subir : différences clés entre les deux versions et migration propre du code (Casabianca, programme).",
+    "Python 3.8 apporte les audit hooks (PEP 578) : un nouvel outil pour détecter et bloquer des vulnérabilités applicatives (Vivet, programme).",
+    "Le packaging reste un sujet de débat en 2019 : pip, Pipenv, Poetry et l'arrivée des PEP 517 et 518 (Chappuis, programme).",
+    "Pour un premier talk, la préparation compte : un speaker a passé plus de trois semaines sur sa présentation pytest, un autre juge son contenu pertinent mais sa prestation orale perfectible (billets de Fraire Willemoes et Atty).",
+    "Les bases de graphes (Neo4j) servent aussi à enrichir des données : détection de communautés, prédiction de liens (Scifo, speaker).",
+    "Quand l'écosystème pousse la performance, regarder Cython, Pybind11, Rust ou Transonic selon le cas (Chan, Gomès, Augier, programme)."
+  ],
+  "sessions": [
+    {
+      "id": "keynote-the-750000-line-long-pull-request",
+      "day": "2019-11-02",
+      "type": "keynote",
+      "title": "The 750,000-Line Long Pull Request: Crafting a more Resilient Open Source Community",
+      "speakers": [
+        "Anna-Livia Gomart"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **OpenFisca** est un framework Python open source né en 2011 qui transforme la loi en logiciel, pour des administrations, des économistes et des militants (descriptif).\n- À mesure que la communauté grandit, elle fait face à de **nouveaux contributeurs, de nouvelles attentes et de nouvelles habitudes de travail**.\n- Une pull request géante a servi d'épreuve : comment accueillir un changement de cette taille sans casser la dynamique collective.\n- La session raconte comment l'équipe a bâti une communauté capable de gérer l'incertitude et de continuer à croître.\n- Résumé tiré du descriptif de la keynote et de la page vidéo : aucun transcript ni retour participant lu.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "youtubeId": "PxPuSa8kG88",
+        "title": "Plénière n°1 / Keynote #1: The 750,000-Line Long Pull Request: Crafting a more Resilient Open Source Community",
+        "publishedAt": "2019-11-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "au-bonheur-des-likes",
+      "day": "2019-11-03",
+      "type": "keynote",
+      "title": "Au bonheur des likes",
+      "speakers": [
+        "Nina Cercy"
+      ],
+      "feedbackFrom": [],
+      "summary": "- La keynote examine les **biais cognitifs, les sciences comportementales et les incitations douces** qui font du cerveau des utilisateurs un terrain de jeu (descriptif).\n- Thèse annoncée : l'économie de l'attention nuit à des expériences numériques adultes et émancipatrices.\n- Mais les sciences comportementales peuvent aussi faire partie du remède.\n- Résumé tiré du programme ; le jour exact de la keynote n'a pas été vérifié et la date indiquée est celle de la fin de l'édition.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "url": "https://pyvideo.org/pycon-fr-2019/pleniere-ndeg2-keynote-2-au-bonheur-des-likes.html",
+        "title": "Plénière n°2 / Keynote #2: Au bonheur des likes",
+        "publishedAt": "2019-11-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "the-role-of-21st-century-technology-in-protests",
+      "day": "2019-11-03",
+      "type": "keynote",
+      "title": "The Role of 21st Century Technology in Protests",
+      "speakers": [
+        "Cheuk Ting Ho"
+      ],
+      "feedbackFrom": [],
+      "summary": "- La keynote revient sur les **manifestations de Hong Kong en 2019**, nées en partie de la crainte de perdre un « haut degré d'autonomie » (descriptif).\n- Elle explore l'usage par les manifestants d'applications détournées : Telegram, Tinder, Pokémon Go, Uber, AirDrop.\n- Elle aborde aussi l'usage possible de la technologie par le pouvoir pour contrôler, et l'éthique de son impact social.\n- Résumé tiré du programme ; le jour exact n'a pas été vérifié et la date indiquée est celle de la fin de l'édition.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "url": "https://pyvideo.org/pycon-fr-2019/pleniere-ndeg3-keynote-3-the-role-of-21st-century-technology-in-protests.html",
+        "title": "Plénière n°3 / Keynote #3: The Role of 21st Century Technology in Protests",
+        "publishedAt": "2019-11-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "grpc-python-micro-services-analyse-semantique",
+      "day": "2019-11-03",
+      "type": "talk",
+      "title": "gRPC/Python : Exemple pratique d'utilisation de micro-services pour une (mini) application d'analyse sémantique de textes (NPL)",
+      "speakers": [
+        "Lionel Atty"
+      ],
+      "feedbackFrom": [
+        "Lionel Atty (billet de blog, speaker)"
+      ],
+      "summary": "- Le talk présente une application NLP en **micro-services gRPC** : séparation des responsabilités, conteneurisation, distribution, mise à l'échelle, spécification explicite, validation, stratégie de packaging et de versioning (speaker).\n- Tests unitaires, déploiement (Docker, Compose, Makefile) et monitoring figurent dans le support mais n'ont pas été traités en séance (speaker).\n- Le speaker, pour sa première conférence, juge le **contenu intéressant et pertinent** mais sa prestation orale en dessous de ses attentes (oral, narration, clarté).\n- Il se dit plus à l'aise à l'écrit et prévoit de préparer plus tôt et de publier davantage sur son blog.",
+      "summarySources": [
+        "blog",
+        "program"
+      ],
+      "video": {
+        "url": "https://pyvideo.org/pycon-fr-2019/grpcpython-exemple-pratique-dutilisation-de-micro-services-pour-une-mini-application-danalyse-semantique-de-textes-npl.html",
+        "title": "gRPC/Python : Exemple pratique d'utilisation de micro-services pour une (mini) application d'analyse sémantique de textes (NPL)",
+        "publishedAt": "2019-11-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "pytest-yes-lets-go",
+      "day": "2019-11-03",
+      "type": "talk",
+      "title": "Pytest: Yes Let's Go",
+      "speakers": [
+        "Santiago E Fraire Willemoes"
+      ],
+      "feedbackFrom": [
+        "Santiago Fraire Willemoes (billet de blog, speaker, lu par extrait de recherche)"
+      ],
+      "summary": "- Le programme annonce un tour de **fixtures, paramétrisation, mocks et plugins** pour écrire des tests plus clairs et guider la conception.\n- Le speaker décrit son passage à PyCon France comme une expérience très positive et dit avoir préparé la présentation **pendant plus de trois semaines** (speaker, extrait de recherche : le billet n'a pu être relu en entier).",
+      "summarySources": [
+        "program",
+        "blog"
+      ],
+      "video": {
+        "url": "https://pyvideo.org/pycon-fr-2019/pytest-yes-lets-go.html",
+        "title": "Pytest: Yes Let's Go",
+        "publishedAt": "2019-11-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "augmentez-vos-donnees-avec-les-algorithmes-de-graphes",
+      "day": "2019-11-02",
+      "type": "talk",
+      "title": "Augmentez vos données avec les algorithmes de graphes",
+      "speakers": [
+        "Estelle Scifo"
+      ],
+      "feedbackFrom": [
+        "Estelle Scifo (billet de blog, speaker)"
+      ],
+      "summary": "- Le talk présente des **algorithmes de graphes** (détection de communautés, prédiction de liens) pour enrichir des jeux de données, avec des bases de graphes (programme).\n- La speaker précise que ses deux talks de l'édition étaient en français, supports compris, ce qui était une **exigence de l'organisation** (speaker).\n- Le billet ne donne ni détail du contenu ni lien vers les slides.",
+      "summarySources": [
+        "program",
+        "blog"
+      ],
+      "video": {
+        "url": "https://pyvideo.org/pycon-fr-2019/augmentez-vos-donnees-avec-les-algorithmes-de-graphes.html",
+        "title": "Augmentez vos données avec les algorithmes de graphes",
+        "publishedAt": "2019-11-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "du-sql-a-neo4j-avec-python",
+      "day": "2019-11-03",
+      "type": "talk",
+      "title": "Du SQL à Neo4j avec python",
+      "speakers": [
+        "Estelle Scifo"
+      ],
+      "feedbackFrom": [
+        "Estelle Scifo (billet de blog, speaker)"
+      ],
+      "summary": "- Le programme annonce le passage de **tables relationnelles à un modèle de graphe** avec Neo4j et Cypher, depuis Python.\n- Talk donné en français, comme le précédent de la même speaker (speaker).\n- Résumé tiré du programme : le billet du speaker ne donne que le titre.",
+      "summarySources": [
+        "program",
+        "blog"
+      ],
+      "video": {
+        "url": "https://pyvideo.org/pycon-fr-2019/du-sql-a-neo4j-avec-python.html",
+        "title": "Du SQL à Neo4j avec python",
+        "publishedAt": "2019-11-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "passer-a-python-3",
+      "day": "2019-11-02",
+      "type": "talk",
+      "title": "Passer à Python 3",
+      "speakers": [
+        "Michel Casabianca"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le programme annonce les **différences clés entre Python 2 et 3** et une migration propre du code avant la fin du support de Python 2.\n- Résumé tiré du descriptif officiel uniquement.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "url": "https://pyvideo.org/pycon-fr-2019/passer-a-python-3.html",
+        "title": "Passer à Python 3",
+        "publishedAt": "2019-11-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "securisez-votre-application-web-avec-les-audit-hooks",
+      "day": "2019-11-02",
+      "type": "talk",
+      "title": "Sécurisez votre application web avec les nouveaux « audit hooks » de Python",
+      "speakers": [
+        "Nicolas Vivet"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le talk porte sur les **audit hooks de Python 3.8 (PEP 578)** pour détecter et bloquer des vulnérabilités dans une application web.\n- Résumé tiré du descriptif officiel uniquement.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "url": "https://pyvideo.org/pycon-fr-2019/securisez-votre-application-web-avec-les-nouveaux-audit-hooks-de-python.html",
+        "title": "Sécurisez votre application web avec les nouveaux « audit hooks » de Python",
+        "publishedAt": "2019-11-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "pip-pipenv-poetry-et-pep517-518",
+      "day": "2019-11-03",
+      "type": "talk",
+      "title": "Pip, Pipenv, Poetry et PEP517/518 : le point sur le packaging, la gestion des dépendances et leur évolution",
+      "speakers": [
+        "Thierry Chappuis"
+      ],
+      "feedbackFrom": [],
+      "summary": "- État des lieux du **packaging Python fin 2019** et impact des PEP 517 et 518 (programme).\n- Compare les outils de gestion de dépendances du moment : pip, Pipenv, Poetry.\n- Résumé tiré du descriptif officiel uniquement.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "url": "https://pyvideo.org/pycon-fr-2019/pip-pipenv-poetry-et-pep517518-le-point-sur-le-packaging-la-gestion-des-dependances-et-leur-evolution.html",
+        "title": "Pip, Pipenv, Poetry et PEP517/518 : le point sur le packaging, la gestion des dépendances et leur évolution",
+        "publishedAt": "2019-11-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "gitlab-mercurial-heptapod",
+      "day": "2019-11-02",
+      "type": "talk",
+      "title": "GitLab + Mercurial = Heptapod",
+      "speakers": [
+        "Georges Racinet"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Présentation de **Heptapod**, un fork de GitLab qui ajoute la prise en charge de Mercurial, et d'un flux de travail Mercurial moderne (programme).\n- Résumé tiré du descriptif officiel uniquement.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "url": "https://pyvideo.org/pycon-fr-2019/gitlab-mercurial-heptapod.html",
+        "title": "GitLab + Mercurial = Heptapod",
+        "publishedAt": "2019-11-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "booster-python-avec-rust-le-cas-de-mercurial",
+      "day": "2019-11-03",
+      "type": "talk",
+      "title": "Booster Python avec Rust : le cas de Mercurial",
+      "speakers": [
+        "Raphaël Gomès"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le talk décrit l'**intégration de modules Rust** dans la base de code Python de Mercurial, avec des chiffres de performance (programme).\n- Résumé tiré du descriptif officiel uniquement.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "url": "https://pyvideo.org/pycon-fr-2019/booster-python-avec-rust-le-cas-de-mercurial.html",
+        "title": "Booster Python avec Rust : le cas de Mercurial",
+        "publishedAt": "2019-11-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "optimizing-python-at-scale",
+      "day": "2019-11-03",
+      "type": "talk",
+      "title": "Optimizing Python at Scale",
+      "speakers": [
+        "Bogdan Balas",
+        "Thibault Poisson"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Le programme annonce les **optimisations de latence de YouTube** avec Cython, Clif et le langage de templates Spitfire.\n- Résumé tiré du descriptif officiel uniquement.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "url": "https://pyvideo.org/pycon-fr-2019/optimizing-python-at-scale.html",
+        "title": "Optimizing Python at Scale",
+        "publishedAt": "2019-11-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "le-processus-de-lisibilite-de-code-a-google",
+      "day": "2019-11-02",
+      "type": "talk",
+      "title": "Le processus de lisibilité de code à Google",
+      "speakers": [
+        "Bruno Cauet"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Description du **processus de « readability » de Google**, qui contrôle quels ingénieurs peuvent soumettre du code dans chaque langage (programme).\n- Résumé tiré du descriptif officiel uniquement.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "url": "https://pyvideo.org/pycon-fr-2019/le-processus-de-lisibilite-de-code-a-google.html",
+        "title": "Le processus de lisibilité de code à Google",
+        "publishedAt": "2019-11-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "le-code-ne-suffit-pas",
+      "day": "2019-11-03",
+      "type": "talk",
+      "title": "Le code ne suffit pas (2)",
+      "speakers": [
+        "Constance de Quatrebarbes"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Pratiques pour un **environnement de développement plus inclusif**, en particulier pour les femmes dans l'open source (programme).\n- Résumé tiré du descriptif officiel uniquement.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "url": "https://pyvideo.org/pycon-fr-2019/le-code-ne-suffit-pas.html",
+        "title": "Le code ne suffit pas",
+        "publishedAt": "2019-11-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "impacts-technologiques-au-dela-du-code",
+      "day": "2019-11-02",
+      "type": "talk",
+      "title": "Impacts technologiques − Au delà du code",
+      "speakers": [
+        "Geoffroy Bailly"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Les **impacts climatiques et sociaux de la technologie**, présentés pour un public généraliste (programme).\n- À rapprocher du talk sur le CMS écoconçu (Delval et Deleu, dimanche).\n- Résumé tiré du descriptif officiel uniquement.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "url": "https://pyvideo.org/pycon-fr-2019/impacts-technologiques-au-dela-du-code.html",
+        "title": "Impacts technologiques − Au delà du code",
+        "publishedAt": "2019-11-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "un-cms-concu-pour-la-performance-ecologique",
+      "day": "2019-11-03",
+      "type": "talk",
+      "title": "Un CMS conçu pour la performance écologique",
+      "speakers": [
+        "Hugo Delval",
+        "Lucien Deleu"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Un **CMS léger à pages statiques** bâti avec Django, Wagtail et nginx pour réduire l'empreinte écologique du web (programme).\n- Résumé tiré du descriptif officiel uniquement.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "url": "https://pyvideo.org/pycon-fr-2019/un-cms-concu-pour-la-performance-ecologique.html",
+        "title": "Un CMS conçu pour la performance écologique",
+        "publishedAt": "2019-11-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "python-pour-tous-milieux-moins-favorises",
+      "day": "2019-11-02",
+      "type": "talk",
+      "title": "Python pour tous : amener un zeste de programmation dans les milieux moins favorisés",
+      "speakers": [
+        "Nathanaël Langlois",
+        "Amaury Carrade",
+        "Titouan Soulard"
+      ],
+      "feedbackFrom": [],
+      "summary": "- Les **ateliers de programmation de Zeste de Savoir** pour des élèves de quartiers défavorisés (programme).\n- Résumé tiré du descriptif officiel uniquement.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "url": "https://pyvideo.org/pycon-fr-2019/python-pour-tous-amener-un-zeste-de-programmation-dans-les-milieux-moins-favorises.html",
+        "title": "Python pour tous : amener un zeste de programmation dans les milieux moins favorisés",
+        "publishedAt": "2019-11-03",
+        "transcript": false
+      }
+    },
+    {
+      "id": "pourquoi-j-ai-traduit-la-doc-de-python",
+      "day": "2019-11-02",
+      "type": "talk",
+      "title": "Pourquoi j'ai traduit une partie de la doc de python et pourquoi je vais continuer",
+      "speakers": [
+        "Pierre Bousquié"
+      ],
+      "feedbackFrom": [],
+      "summary": "- **Retour d'expérience** sur la traduction en français de la documentation Python (programme).\n- Résumé tiré du descriptif officiel uniquement.",
+      "summarySources": [
+        "program"
+      ],
+      "video": {
+        "url": "https://pyvideo.org/pycon-fr-2019/pourquoi-jai-traduit-une-partie-de-la-doc-de-python-et-pourquoi-je-vais-continuer.html",
+        "title": "Pourquoi j'ai traduit une partie de la doc de python et pourquoi je vais continuer",
+        "publishedAt": "2019-11-03",
+        "transcript": false
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Environ 55 autres conférences du programme (74 au total), dont Solving Python Cold Start Issues (Makogon), Zero to Blockchain in 30 minutes, RedisGears (Haber), Monitoring : de rien à bien (Ayoub, Anglade), Boîte à outils Python de l'expert CTF, Witness Angel (Chambon), Robotique (Mollard), Déployer Flask sur AWS Lambda avec Zappa (Zind), TDID avec Salt (Lutz), Workalendar (Bord), Un Captcha libre (Mindiell)"
+  ],
+  "sources": [
+    {
+      "label": "Site officiel PyConFR 2019",
+      "url": "https://www.pycon.fr/2019/"
+    },
+    {
+      "label": "Programme : conférences",
+      "url": "https://www.pycon.fr/2019/fr/talks/conference.html"
+    },
+    {
+      "label": "Programme : keynotes",
+      "url": "https://www.pycon.fr/2019/fr/talks/keynote.html"
+    },
+    {
+      "label": "Vidéos de l'édition sur pyvideo.org",
+      "url": "https://pyvideo.org/events/pycon-fr-2019.html"
+    },
+    {
+      "label": "Billet de Lionel Atty : gRPC/Python à PyConFR 2019",
+      "url": "https://yoyonel.github.io/en/pyconfr-2019-grpc-python.html"
+    },
+    {
+      "label": "Billet d'Estelle Scifo : ses talks à PyConFR 2019",
+      "url": "https://stellasia.github.io/blog/2020-03-15-talks-at-pyconfr-2019"
+    },
+    {
+      "label": "Billet de Santiago Fraire Willemoes : PyCon France 2019 experience",
+      "url": "https://woile.github.io/posts/pycon-france-2019-experience"
+    },
+    {
+      "label": "Mergify, sponsor de PyConFR 2019",
+      "url": "https://articles.mergify.com/mergify-at-pyconfr/"
+    }
+  ]
 }

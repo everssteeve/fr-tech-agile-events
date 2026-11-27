@@ -10,6 +10,222 @@
   "programUrl": "https://compute.events/paris2026/schedule.html",
   "dateConfidence": "ok",
   "note": "Première édition sous ce nom : l'événement prend la suite de PyData Paris (organisateurs en partie communs) et s'ouvre aux autres écosystèmes (R, Julia…).",
-  "status": "scheduled",
-  "sessions": []
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-27",
+  "revisit": "J+1 : aucun retour participant public (post, blog, vidéo) trouvé, synthèse fondée sur le seul programme officiel. À reprendre quand posts, slides et vidéos seront publiés.",
+  "corpus": "Programme officiel exporté depuis pretalx (schedule.json, version 0.13) : 4 keynotes et 42 talks sur deux jours, plus des sessions Birds of Feather. Quelques recherches web n'ont renvoyé que des annonces d'avant l'événement.",
+  "limits": "Édition terminée depuis un jour : aucun post LinkedIn, article de blog, slide ni vidéo trouvé, donc aucun retour de participant. Les résumés décrivent ce que les speakers annonçaient (résumés du programme), pas ce qui a été dit sur scène. Le programme a été lu via un export tronqué par l'outil de lecture : les sessions de la salle 1 et des salles 2 et 3 du premier jour ont été lues, mais la liste n'est pas garantie exhaustive, et le lieu a changé en dernière minute (blocage étudiant à Jussieu, repli à Nogent-sur-Marne d'après le site officiel).",
+  "tldr": "Première édition de Compute!, successeur de PyData Paris : **deux jours open source autour de Python, R, Julia et Jupyter**, avec l'IA tabulaire, l'évaluation des agents, Parquet/Arrow et la durabilité des communautés en fil rouge (d'après le programme, sans retour participant à J+1).",
+  "keyTakeaways": [
+    "Le programme met l'évaluation et la validation au centre de l'IA appliquée : Probabl annonce que la validation devient le goulot d'étranglement, skore propose des contrôles d'erreurs de modélisation réutilisables par des agents (programme).",
+    "Plusieurs talks proposent des outils concrets d'évaluation d'agents avec incertitude chiffrée, par exemple GLIDE, qui combine environ 100 étiquettes humaines et des jugements de LLM (programme, speaker Grégoire Martinon).",
+    "Les agents de code s'invitent dans l'outillage scientifique : Jeremy Tuloup explore leur pilotage de JupyterLab, Marie Sacksick défend l'usage de skills réutilisables pour garder un métier de data scientist intéressant (programme).",
+    "Les formats de stockage ouverts sont un sujet à part entière : type Variant de Parquet, déduplication par Content Defined Chunking, anatomie d'Arrow et Parquet, implémentation C++20 Sparrow (programme).",
+    "La performance passe par Rust, GPU et compilateurs : Polars multi-GPU, bibliothèques Python réécrites en Rust, SPy, Nim, génération de noyaux GPU (programme).",
+    "La soutenabilité de l'open source est traitée en tant que telle : mesure de l'impact du financement public (Sovereign Tech Agency), community managers de JupyterHub et Jupyter Book, coordination de la sécurité sur plus de 350 dépôts Jupyter (programme).",
+    "Reproductibilité et accessibilité sont au programme : 30 réplications d'études publiées rendues FAIR et citables, et accessibilité des graphiques, rapports et PDF (programme)."
+  ],
+  "sessions": [
+    {
+      "id": "jupyter-open-source-and-ai-science-and-humans",
+      "day": "2026-11-25",
+      "type": "keynote",
+      "title": "Jupyter, open source and AI: science and humans?",
+      "speakers": ["Fernando Pérez — Project Jupyter"],
+      "feedbackFrom": [],
+      "summary": "- Keynote d'ouverture du premier jour, par le cofondateur de Project Jupyter et créateur d'IPython.\n- Le résumé du programme est marqué à confirmer (TBC) : **le contenu réel n'est pas documenté**.\n- Le titre pose la question de la place des humains et de la science face à l'IA dans l'écosystème open source.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "the-state-of-tabular-ai-2026",
+      "day": "2026-11-25",
+      "type": "talk",
+      "title": "The State of Tabular AI 2026: scikit-learn, Tabular Foundation Models, and Agentic Data Science",
+      "speakers": ["Gaël Varoquaux — Probabl", "Madelon Hulsebos"],
+      "feedbackFrom": [],
+      "summary": "- Rapport annoncé de Probabl sur l'IA tabulaire, suivi d'une discussion.\n- Thèses annoncées : **l'open source tire le progrès**, les nouveaux outils augmentent les data scientists, et la validation devient le goulot d'étranglement.\n- À lire comme une annonce de programme : aucun retour sur la discussion.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "tabicl-vs-scikit-learn-for-predictive-uncertainty-quantification",
+      "day": "2026-11-25",
+      "type": "talk",
+      "title": "TabICL vs scikit-learn for predictive uncertainty quantification",
+      "speakers": ["Olivier Grisel"],
+      "feedbackFrom": [],
+      "summary": "- Compare le modèle de fondation tabulaire **TabICL** aux alternatives de scikit-learn pour les prédictions probabilistes.\n- Évaluation annoncée avec des règles de score propres (proper scoring rules).",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "catching-ml-mistakes-automatically-with-skore",
+      "day": "2026-11-25",
+      "type": "talk",
+      "title": "Catching ML mistakes automatically with skore: from data scientists to agentic pipelines",
+      "speakers": ["Gaetan de Castellane — Probabl"],
+      "feedbackFrom": [],
+      "summary": "- skore propose des **contrôles (checks) intégrés ou personnalisés** qui signalent les erreurs de modélisation.\n- Les erreurs ont des codes stables, ce qui permet de les exploiter dans des boucles d'agents.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "stop-guessing-start-measuring-prediction-powered-inference",
+      "day": "2026-11-25",
+      "type": "talk",
+      "title": "Stop Guessing, Start Measuring. Rigorous Evaluation of Agentic Systems with Prediction-Powered Inference",
+      "speakers": ["Grégoire Martinon"],
+      "feedbackFrom": [],
+      "summary": "- Présente **GLIDE**, un paquet open source qui combine environ 100 étiquettes humaines et des jugements de LLM.\n- Objectif annoncé : des métriques non biaisées avec intervalles de confiance pour évaluer des systèmes agentiques.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "beyond-json-how-parquets-new-variant-type-changes-semi-structured-data",
+      "day": "2026-11-25",
+      "type": "talk",
+      "title": "Beyond JSON: How Parquet's New Variant Type Changes Semi-Structured Data",
+      "speakers": ["Rok Mihevc"],
+      "feedbackFrom": [],
+      "summary": "- Présente le type **Variant** de Parquet et le shredding pour les données semi-structurées.\n- Benchmarks annoncés contre les chaînes JSON, les structs et les maps.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "efficient-parquet-deduplication-and-storage",
+      "day": "2026-11-25",
+      "type": "talk",
+      "title": "Efficient Parquet deduplication and storage",
+      "speakers": ["Quentin Lhoest — Hugging Face"],
+      "feedbackFrom": [],
+      "summary": "- Présente le **Content Defined Chunking** de Parquet pour dédupliquer au niveau des pages.\n- Illustré par des exemples de stockage chez Hugging Face.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "scaling-up-gpu-acceleration-in-the-polars-dataframe-library",
+      "day": "2026-11-25",
+      "type": "talk",
+      "title": "Scaling up GPU acceleration in the Polars dataframe library",
+      "speakers": ["Lawrence Mitchell"],
+      "feedbackFrom": [],
+      "summary": "- Moteur **multi-GPU de Polars** : modèle d'exécution et résultats de passage à l'échelle sur TPC-H et TPC-DS.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "the-invisible-work-of-the-stack",
+      "day": "2026-11-25",
+      "type": "talk",
+      "title": "The Invisible Work of the Stack: Measuring the Impact of Public Investment in Python",
+      "speakers": ["Laia Domenech Burin"],
+      "feedbackFrom": [],
+      "summary": "- Cadre d'évaluation de l'impact du financement de la **Sovereign Tech Agency** sur PyPI et l'infrastructure Python.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "building-human-focused-tech-communities-in-the-age-of-ai",
+      "day": "2026-11-25",
+      "type": "talk",
+      "title": "Building Human-Focused Tech Communities in the Age of AI",
+      "speakers": ["Thomas Berger"],
+      "feedbackFrom": [],
+      "summary": "- Comment passer de **participant à contributeur** dans une communauté tech, et comment abaisser la barrière de participation.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "the-rust-tipping-point-for-python-libraries",
+      "day": "2026-11-25",
+      "type": "talk",
+      "title": "The Rust tipping point for Python libraries",
+      "speakers": ["Arthur Andres"],
+      "feedbackFrom": [],
+      "summary": "- Quand réécrire une partie d'une bibliothèque Python en Rust devient pertinent.\n- Présente le processus actuel avec PyO3 et maturin.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "advancing-neuroscience-research-with-ai",
+      "day": "2026-11-25",
+      "type": "keynote",
+      "title": "Advancing neuroscience research with AI",
+      "speakers": ["Mackenzie Weygandt Mathis"],
+      "feedbackFrom": [],
+      "summary": "- Keynote de clôture du premier jour sur les outils open source **DeepLabCut** (estimation de pose) et **CEBRA** (plongements latents comportement-neurones).",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "a-new-era-of-developer-tools",
+      "day": "2026-11-26",
+      "type": "keynote",
+      "title": "A New Era of Developer Tools",
+      "speakers": ["Ines Montani — Explosion"],
+      "feedbackFrom": [],
+      "summary": "- Keynote d'ouverture du second jour sur les **workflows de développement agentiques** pour construire des systèmes d'IA sur mesure.\n- Annonce aussi le rôle de l'open source dans les outils de développement.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "the-roadmap-towards-scipy-2-0",
+      "day": "2026-11-26",
+      "type": "talk",
+      "title": "The road(map) towards SciPy 2.0",
+      "speakers": ["Lucas Colley"],
+      "feedbackFrom": [],
+      "summary": "- Rétrospective de SciPy depuis la 1.0.\n- Changements envisagés pour SciPy 2.0 : **types de tableaux alternatifs** et fin de l'exigence de compilation Fortran.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "data-science-and-engineering-we-were-on-a-break",
+      "day": "2026-11-26",
+      "type": "talk",
+      "title": "Data Science and Engineering: We Were on a Break!",
+      "speakers": ["Romain Clement"],
+      "feedbackFrom": [],
+      "summary": "- Pourquoi les équipes data science et ingénierie peinent encore à se passer le relais sur les projets ML, avec des suggestions pratiques.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "reshaping-the-jupyter-computing-environment",
+      "day": "2026-11-26",
+      "type": "talk",
+      "title": "Reshaping the Jupyter Computing Environment",
+      "speakers": ["Jeremy Tuloup"],
+      "feedbackFrom": [],
+      "summary": "- Explore comment des **agents de code** peuvent remodeler et piloter JupyterLab via ses commandes, plugins et noyaux.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "coordinating-security-across-350-jupyter-repositories",
+      "day": "2026-11-26",
+      "type": "talk",
+      "title": "Coordinating security across 350+ Jupyter repositories",
+      "speakers": ["Yann Pellegrini"],
+      "feedbackFrom": [],
+      "summary": "- Leçons et outils d'un effort de **sécurité de six mois** sur des centaines de dépôts et paquets Jupyter.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "how-can-you-use-agents-and-keep-an-interesting-data-science-job",
+      "day": "2026-11-26",
+      "type": "talk",
+      "title": "How can you use agents and keep an interesting data science job?",
+      "speakers": ["Marie Sacksick"],
+      "feedbackFrom": [],
+      "summary": "- Propose d'utiliser des **skills et abstractions réutilisables** pour que les agents fassent un travail utile sans produire un volume de code impossible à relire.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "saving-conda",
+      "day": "2026-11-26",
+      "type": "keynote",
+      "title": "Saving Conda",
+      "speakers": ["Wolf Vollprecht"],
+      "feedbackFrom": [],
+      "summary": "- Keynote de clôture : pourquoi le modèle de paquets conda compte pour le calcul scientifique et comment son outillage a été **reconstruit pour la vitesse et l'ergonomie**.",
+      "summarySources": ["program"]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Toutes les sessions : aucun retour participant, slide ni vidéo trouvé à J+1 (les 19 sessions ci-dessus ne s'appuient que sur le programme)",
+    "Autres talks non repris ici (programme de 4 keynotes et 42 talks, dont Pharo, SPy, Nim, Makie, Altair, EasyFEA, CIL, GeoPandas)",
+    "Birds of Feather : GIS, R, Arrow/Parquet, Jupyter"
+  ],
+  "sources": [
+    { "label": "Programme officiel", "url": "https://compute.events/paris2026/schedule.html" },
+    { "label": "Programme pretalx (export schedule.json, version 0.13)", "url": "https://pretalx.com/compute-paris-2026/schedule/" },
+    { "label": "Annonce du changement de nom PyData Paris vers Compute! Paris (forum Julia)", "url": "https://discourse.julialang.org/t/compute-paris-ex-pydata-paris-25-26-november-2026/138889" },
+    { "label": "Aucun post LinkedIn, blog ni vidéo trouvé à J+1" }
+  ]
 }

@@ -7,7 +7,46 @@
   "city": "Strasbourg",
   "url": "https://devfest19.gdgstrasbourg.fr",
   "dateConfidence": "sec",
-  "note": "Date d'après Conference Hall et l'agenda scraly ; les métadonnées du site 2019 indiquent une autre date (mal formée).",
-  "status": "pending",
-  "sessions": []
+  "note": "Date d'après Conference Hall et l'agenda scraly ; les métadonnées du site 2019 indiquent une autre date (mal formée). Le deck de Christopher Maneu est daté du 6 novembre 2019, ce qui concorde.",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-27",
+  "corpus": "Deux decks Speaker Deck publiés par des intervenants (Pierre-Yves Lapersonne, Christopher Maneu) ont été lus. Le site officiel de 2019, une application monopage, n'expose aucun programme lisible sans JavaScript ; 4 recherches web n'ont trouvé ni programme archivé, ni retour de participant, ni vidéo.",
+  "limits": "Corpus très mince : deux sessions documentées sur un programme d'ampleur inconnue, uniquement par les slides des speakers eux-mêmes (pas de recul critique). Aucune vidéo, aucun transcript, aucun post de participant ni compte rendu d'organisateur trouvé. Bash refusé pendant cette passe : pas de lecture des archives Wayback ni de listes de vidéos.",
+  "tldr": "Première édition du DevFest du GDG Strasbourg (6 novembre 2019), dont on ne connaît que **deux interventions techniques** : Kotlin/Native côté mobile et l'entretien d'un projet open source côté communauté.",
+  "keyTakeaways": [
+    "Kotlin/Native convient aux modèles de données et à la logique métier partagés avec une app iOS, mais son intégration Swift demande de connaître plusieurs frictions (companion objects, data classes, protocoles, exceptions via @Throws) (Pierre-Yves Lapersonne, slides).",
+    "Au moment du talk, le speaker jugeait Kotlin/Native pas encore prêt pour la production (Pierre-Yves Lapersonne, slides).",
+    "Un projet open source se pense pour trois publics : utilisateurs, mainteneurs et contributeurs (Christopher Maneu, slides).",
+    "Pour abaisser la barrière à la contribution : README soigné, CONTRIBUTING, code de conduite, modèles d'issues et de PR, tâches étiquetées pour débutants (Christopher Maneu, slides).",
+    "Automatiser builds, tests des PR et mises à jour de dépendances (Azure Pipelines, Dependabot, Pull Panda) (Christopher Maneu, slides)."
+  ],
+  "sessions": [
+    {
+      "id": "kotlin-native",
+      "day": "2019-11-06",
+      "type": "talk",
+      "title": "Kotlin/Native",
+      "speakers": ["Pierre-Yves Lapersonne"],
+      "feedbackFrom": ["slides du speaker (Speaker Deck)"],
+      "summary": "- **Kotlin/Native** compile du Kotlin en binaires natifs sans machine virtuelle, via un backend LLVM et une bibliothèque standard native (Pierre-Yves Lapersonne, slides).\n- Il ne vise pas à remplacer les frameworks existants mais à **partager du code commun** tout en respectant chaque plateforme, avec une interopérabilité bidirectionnelle.\n- Retour d'expérience sur l'intégration dans une app iOS Swift : le Kotlin est exposé comme framework avec un en-tête de style Objective-C. Frictions listées : accès aux membres via le companion, data classes vues comme classes Swift, protocoles Swift à implémenter en classes, noms en camelCase, génériques et nullables imparfaits, exceptions propagées en NSError seulement avec `@Throws`.\n- Limites citées : pas de gestion complète des exceptions, mémoire peu efficace, pas de débogage, certaines API Java absentes (`java.util.Date`, `java.math.BigDecimal`).\n- Conclusion du speaker : adapté aux **modèles de données et à la logique métier**, mais **pas encore prêt pour la production** à l'époque.\n\nLecture critique : source unique, les slides du speaker (datées du 23 octobre 2019), sans écho du public ; l'état de Kotlin/Native a depuis évolué.",
+      "summarySources": ["slides"]
+    },
+    {
+      "id": "booster-votre-projet-opensource-en-moins-de-15-minutes",
+      "day": "2019-11-06",
+      "type": "lightning",
+      "title": "Booster votre projet OpenSource en moins de 15 minutes",
+      "speakers": ["Christopher Maneu — Microsoft"],
+      "feedbackFrom": ["slides du speaker (Speaker Deck)"],
+      "summary": "- Le talk distingue trois publics, **utilisateurs, mainteneurs, contributeurs**, et s'appuie sur l'« OSS funnel » pour comprendre le parcours de la découverte à la contribution (Christopher Maneu, slides).\n- Attirer les utilisateurs : README clair avec logo, description courte, démo visuelle et démarrage rapide ; documentation (guides, tutoriels, architecture) ; annonces sur plusieurs canaux.\n- Lever les freins à la contribution : fichiers standards (LICENSE, CONTRIBUTING, CODE_OF_CONDUCT, modèles d'issues et de PR, vérifiables avec Repolinter), tâches simples étiquetées, environnement de dev prêt à l'emploi avec VS Code Remote.\n- Automatisation : **Azure Pipelines** pour builds et releases (minutes gratuites pour les projets publics), Dependabot pour les mises à jour de dépendances, Pull Panda pour le cycle de vie des PR.\n- Le financement du projet était annoncé au programme mais n'apparaît pas dans les slides.\n\nLecture critique : parole d'un employé Microsoft, avec une forte présence des outils de l'écosystème Microsoft/GitHub ; format court (moins de 15 minutes).",
+      "summarySources": ["slides"]
+    }
+  ],
+  "sessionsWithoutFeedback": [],
+  "revisit": "Corpus mince : seulement 2 sessions documentées (slides de speakers). À reprendre : programme complet (archive de devfest19.gdgstrasbourg.fr, Conference Hall devfest-strasbourg-2019, base Firestore du site), vidéos éventuelles de la chaîne GDG Strasbourg, posts ou blogs de participants, nombre de sessions et lieu.",
+  "sources": [
+    { "label": "Site officiel DevFest Strasbourg 2019 (application monopage, programme non lisible sans JavaScript)", "url": "https://devfest19.gdgstrasbourg.fr" },
+    { "label": "Slides Kotlin/Native, Pierre-Yves Lapersonne (Speaker Deck)", "url": "https://speakerdeck.com/pylapp/native-devfest-strasbourg-2019" },
+    { "label": "Slides Booster votre projet OpenSource en moins de 15 minutes, Christopher Maneu (Speaker Deck)", "url": "https://speakerdeck.com/cmaneu/devfest-strasbourg-19-booster-votre-projet-opensource-en-moins-de-15-minutes" }
+  ]
 }

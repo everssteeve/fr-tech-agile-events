@@ -9,6 +9,135 @@
   "url": "https://web.archive.org/web/2019/http://2019.devops-dday.com/",
   "theme": "DevOps, cloud, Docker et logiciel libre (55 speakers, 3 workshops)",
   "note": "Organisé sous le nom DevOps D-Day (Treeptik). Prédécesseur rattaché à WAX Conf (devopsdday.com redirige vers waxconf.fr). Vidéos : playlist « DEVOPS D-DAY 2019 » de la chaîne YouTube @devopsdday.",
-  "status": "pending",
-  "sessions": []
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-27",
+  "corpus": "Deux comptes rendus de l'époque lus en entier : le billet de Sandor Dargo (dev.to, speaker et participant) et l'article du blog HPE Developer (sponsor). La playlist officielle compte 43 vidéos (titres et durées exploités), sans transcript disponible.",
+  "limits": "Corpus mince : aucun post LinkedIn lu, deux témoignages seulement, dont un d'un sponsor et un d'un speaker. Le site archivé du programme n'a pas pu être lu (Wayback inaccessible), donc les résumés reposent sur les comptes rendus et les titres des vidéos. La date de publication des vidéos est inconnue : la date de l'événement est utilisée par défaut.",
+  "revisit": "Corpus mince (deux comptes rendus, aucun transcript, aucun post LinkedIn, programme archivé non lu) : à compléter avec les transcripts des vidéos de la playlist 2019 et le programme Wayback.",
+  "tldr": "Cinquième DevOps D-Day dans les loges du Vélodrome (environ 1 200 participants, 24 sponsors) : **Kubernetes domine le programme**, avec des retours d'expérience d'entreprises (Decathlon, CMA CGM, Airbus) et une place faite au management, à la sécurité et à la qualité des API.",
+  "keyTakeaways": [
+    "Répondre à un problème remonté par un collaborateur avec la méthode « 2-3-4 » : deux mots de remerciement, trois précisions (ce que l'on veut, ne veut pas, attend), quatre questions ouvertes (Stéphanie Giordano et William Bartlett, relayés par Sandor Dargo).",
+    "Prévoir dans chaque équipe de développement une personne plus experte en sécurité et former les équipes, par exemple avec une petite prime pour les cours de sécurité gratuits terminés (Giuliano Ippoliti, relayé par Sandor Dargo).",
+    "Intégrer des outils de test de sécurité dans le pipeline CI/CD et appliquer des règles d'or pour la sécurité dans le cloud public (Giuliano Ippoliti).",
+    "Auditer une API comme un contrôle technique : nommage « ennuyeux », gestion des identités et accès, versioning, pagination, multi-tenance, supervision (François-Guillaume Ribreau).",
+    "Définir les objectifs d'un service en SLO, SLI et SLA, pas seulement en fonctionnalités (François-Guillaume Ribreau, relayé par Sandor Dargo).",
+    "Animer une communauté de développeurs en interne, avec des rencontres régulières, et laisser ses suggestions orienter les choix techniques (Decathlon, relayé par le blog HPE).",
+    "Un DevOps mal fait devient du « DevOops » : il demande de changer des processus profondément ancrés (un manager de CMA CGM, relayé par le blog HPE)."
+  ],
+  "sessions": [
+    {
+      "id": "quand-le-devops-donne-les-renes-aux-managers",
+      "day": "2019-11-14",
+      "type": "talk",
+      "title": "Quand le devops donne les rênes aux managers",
+      "speakers": ["Stéphanie Giordano", "William Bartlett"],
+      "feedbackFrom": ["Sandor Dargo (dev.to)"],
+      "summary": "- Le talk s'adresse aux **managers qui craignent de perdre du pouvoir** quand DevOps et agilité donnent plus d'autonomie aux individus.\n- Les speakers proposent la méthode **« 2-3-4 »** pour réagir quand quelqu'un signale un problème.\n- **2** : commencer par deux mots, « Bravo et merci » d'avoir reconnu le problème et de l'avoir remonté.\n- **3** : dire trois choses, ce que l'on veut, ce que l'on ne veut pas et ce que l'on attend.\n- **4** : poser quatre questions, comme « Que proposes-tu ? » et « Comment puis-je t'aider ? ».\n- Sandor Dargo l'a trouvé rassurant, car il confortait l'approche DevOps de son équipe, et comptait le partager à sa hiérarchie.",
+      "summarySources": ["feedback"],
+      "video": {
+        "youtubeId": "u9_sQN4ghWc",
+        "title": "Stéphanie GIORDANO & William BARTLETT: Quand le devops donne les rênes aux managers",
+        "publishedAt": "2019-11-14",
+        "transcript": false
+      }
+    },
+    {
+      "id": "devsecops-integrer-la-securite-dans-les-pratiques-devops",
+      "day": "2019-11-14",
+      "type": "talk",
+      "title": "DevSecOps, ou comment intégrer la sécurité dans les pratiques DevOps",
+      "speakers": ["Giuliano Ippoliti"],
+      "feedbackFrom": ["Sandor Dargo (dev.to)"],
+      "summary": "- **DevSecOps = DevOps + livrer du logiciel sûr** : les équipes de développement collaborent plus étroitement avec la sécurité.\n- Chaque équipe a besoin d'**une personne plus pointue en sécurité**.\n- Former les équipes : une petite prime pour les développeurs qui terminent des cours de sécurité gratuits est un moyen peu coûteux de susciter l'intérêt.\n- Les outils de test de sécurité trouvent leur place dans le workflow CI/CD.\n- Le speaker a présenté des « règles d'or » pour sécuriser du logiciel dans un cloud public.\n- Lecture critique (Sandor Dargo) : le contenu sur la sécurité cloud n'était pas nouveau, mais mérite d'être répété ; le concept de DevSecOps lui était flou avant le talk.",
+      "summarySources": ["feedback"],
+      "video": {
+        "youtubeId": "H05_O5FCpVI",
+        "title": "Giuliano IPPOLITI : DevSecOps, ou comment intégrer la sécurité dans les pratiques DevOps",
+        "publishedAt": "2019-11-14",
+        "transcript": false
+      }
+    },
+    {
+      "id": "votre-api-web-passe-t-elle-les-50-points-du-controle-technique",
+      "day": "2019-11-14",
+      "type": "keynote",
+      "title": "Votre API web passe-t-elle les 50 points du contrôle technique ?",
+      "speakers": ["François-Guillaume Ribreau"],
+      "feedbackFrom": ["Sandor Dargo (dev.to)"],
+      "summary": "- Le talk ouvre sur une citation de **Christopher Strachey (1969)** : l'informatique doit apprendre ses principes de base.\n- Retour sur l'histoire des API, des API de bibliothèques à REST puis aux API publiques de plateformes.\n- Il propose d'examiner une API avec la **rigueur d'un scientifique**, comme un contrôle technique de véhicule, avec une checklist.\n- Les objectifs se définissent en **SLO, SLI et SLA**, car le but du logiciel est souvent de rapporter de l'argent.\n- Domaines couverts : nommage (« qui doit être ennuyeux ! »), identités et accès, sécurité, versioning, pagination, recherche et tri, multi-tenance, supervision et alertes.\n- Remarque de Sandor Dargo : le titre annonce 50 points, la checklist du talk en compte 70 ; slides en anglais, talk en français.",
+      "summarySources": ["feedback"],
+      "video": {
+        "youtubeId": "kZQUbnUPN64",
+        "title": "Votre API web passe-t-elle les 50 points du contrôle technique ?",
+        "publishedAt": "2019-11-14",
+        "transcript": false
+      }
+    },
+    {
+      "id": "mise-a-jour-sur-l-adoption-de-kubernetes-en-2019",
+      "day": "2019-11-14",
+      "type": "keynote",
+      "title": "Mise à jour sur l'adoption de Kubernetes en 2019",
+      "speakers": ["Samuel Bertholier", "Christian Schutz — AntemetA"],
+      "feedbackFrom": ["Blog HPE Developer"],
+      "summary": "- Keynote co-sponsorisée par **HPE et AntemetA**, consacrée à l'adoption de Kubernetes dans les entreprises françaises en 2019.\n- Le blog HPE cite aussi une seconde intervention de Christian Schutz sur la construction d'un pipeline CI/CD avec Kubernetes et OpenStack (la playlist propose « Kubernetes et Openstack : des démos s'il vous plaît ? »).\n- Le blog HPE note que Kubernetes était **un sujet particulièrement populaire** du programme.\n- Le détail du contenu n'est pas documenté ici : seuls le titre et la présentation du sponsor ont été lus.",
+      "summarySources": ["blog", "program"],
+      "video": {
+        "youtubeId": "cRwa7yOeJM0",
+        "title": "Samuel BERTHOLLIER et Christian SCHUTZ : Mise à jour sur l'adoption de Kubernetes en 2019",
+        "publishedAt": "2019-11-14",
+        "transcript": false
+      }
+    },
+    {
+      "id": "kubernetes-journey-decathlon",
+      "day": "2019-11-14",
+      "type": "talk",
+      "title": "Kubernetes journey @Decathlon",
+      "speakers": ["Sébastien Lecocq", "Geoffrey Thery — Decathlon"],
+      "feedbackFrom": ["Blog HPE Developer"],
+      "summary": "- Decathlon a présenté sa **mise en oeuvre de DevOps** et l'outillage mis à disposition des équipes de développement.\n- L'entreprise anime une **communauté de développeurs** avec des rencontres régulières en présentiel sur des sujets techniques précis.\n- Les suggestions de cette communauté **orientent les choix technologiques** de l'entreprise.\n- Le résumé vient d'un compte rendu de sponsor, qui ne précise pas quelle partie concernait Kubernetes.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "Mzo-KEWAndA",
+        "title": "Sébastien LECOCQ et Geoffrey THERY : Kubernetes journey @Decathlon",
+        "publishedAt": "2019-11-14",
+        "transcript": false
+      }
+    },
+    {
+      "id": "zuckerberg-gray-tshirt-and-coding-guidelines",
+      "day": "2019-11-14",
+      "type": "talk",
+      "title": "Zuckerberg gray tshirt and coding guidelines",
+      "speakers": ["Sandor Dargo"],
+      "feedbackFrom": ["Sandor Dargo (speaker)"],
+      "summary": "- Talk sur les **guidelines de code, la qualité du code et la fatigue décisionnelle** (le titre fait référence au t-shirt gris de Mark Zuckerberg).\n- Sandor Dargo (speaker) ne résume pas son propre talk dans son billet : il renvoie seulement vers les slides et la vidéo.\n- Il salue la qualité de l'organisation et la rapidité du montage et de la mise en ligne des vidéos, et a reçu une vidéo professionnelle de son intervention.",
+      "summarySources": ["feedback", "program"],
+      "video": {
+        "youtubeId": "CNDejB6Hg5A",
+        "title": "Sandor DARGO : Zuckerberg gray tshirt and coding guidelines",
+        "publishedAt": "2019-11-14",
+        "transcript": false
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Horacio Gonzales (OVH) : Monitoring OVH, 300K serveurs, 27 DCs",
+    "Jérôme Petazzoni : Le refactoring le plus difficile de ma carrière",
+    "Julien Topcu : Comment se faire hacker bien comme il faut",
+    "Adrien Blind et Frédéric Petit : DataOps et Datafabric",
+    "Vanessa Ranaivoson et Aurélie Feher : Et si vous passiez au DivOps ?",
+    "Hassan Hamade et Alexandre Vasseur : Déployer une application à travers plusieurs Clouds",
+    "Bastien Arata : Personne dans le cockpit, pilote automatique",
+    "Aymeric Thas-Pinot et Sébastien Pauset : Astuces FinOps",
+    "Equipe Airbus : Comment Airbus accélère le passage des applications digitales",
+    "Journée LIBDAY (Paul Poulain, Sébastien Giraud, Pierre Freund, Sylvain Garcia, Patrice Ferlet, Damien Clochard, Maxime Longuet)"
+  ],
+  "sources": [
+    { "label": "Programme archivé DevOps D-Day 2019 (Wayback Machine, non lu)", "url": "https://web.archive.org/web/2019/http://2019.devops-dday.com/" },
+    { "label": "Playlist YouTube DEVOPS D-DAY 2019 (titres et durées)", "url": "https://www.youtube.com/playlist?list=PLNBeWtNgozif748HBgTOo6cVkCvqZ6oY-" },
+    { "label": "Sandor Dargo, I went to DevOps D-Day #5 (dev.to)", "url": "https://dev.to/sandordargo/i-went-to-devops-d-day-5-3i6o" },
+    { "label": "HPE Developer, DevOps D-Day speakers focus on real world use cases", "url": "https://developer.hpe.com/blog/devops-d-day-speakers-focus-on-real-world-use-cases" }
+  ]
 }

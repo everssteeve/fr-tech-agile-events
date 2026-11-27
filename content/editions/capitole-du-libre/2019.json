@@ -8,6 +8,132 @@
   "venue": "INP-ENSEEIHT",
   "url": "https://2019.capitoledulibre.org",
   "dateConfidence": "ok",
-  "status": "pending",
-  "sessions": []
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-27",
+  "programUrl": "https://2019.capitoledulibre.org/programme/",
+  "corpus": "Trois sources publiques lues : le compte-rendu de Stéphane Bortzmeyer (18 novembre 2019, PDF de son blog), les sketchnotes de Kevin Ottens (17 novembre 2019) et un fil du forum de la communauté /e/. Le site officiel annonce plus de 100 conférences et 25 ateliers, mais la liste détaillée du programme n'a pas pu être lue.",
+  "limits": "Corpus mince : un seul blog de fond, des sketchnotes sans texte lisible et un message du forum /e/, soit trois regards sur plus de 120 sessions. Le programme archivé n'a pas pu être récupéré (page dynamique, Wayback Machine inaccessible) et aucun transcript n'a été lu. Les jours exacts des sessions ne sont pas connus : le samedi 16 novembre est utilisé par défaut, de même que le 17 novembre pour la date de publication des vidéos.",
+  "tldr": "Un week-end toulousain très riche (plus de 100 conférences, 25 ateliers) où la **protection des données, la censure et l'usage du libre dans l'éducation** ont marqué les comptes-rendus, avec une forte présence des alternatives aux GAFAM (/e/, fédiverse).",
+  "keyTakeaways": [
+    "Mesurer la censure d'Internet est possible avec OONI et les sondes RIPE Atlas, faute de liste consolidée des domaines bloqués (Taziden, relayé par Stéphane Bortzmeyer).",
+    "Pour contourner un blocage DNS, préférer un résolveur public en DoT ou DoH plutôt qu'en UDP, sans authentification ni confidentialité (Bortzmeyer).",
+    "Le machine learning rend les données personnelles rentables : le « rien à cacher » ne tient plus face à la reconnaissance faciale et au ciblage (Julien Osman, d'après Bortzmeyer).",
+    "Écrire un roman avec un langage de balisage sémantique (Frundis) plutôt qu'un traitement de texte permet d'utiliser git et grep et de produire PDF et EPUB (Marina Fernández de Retana, d'après Bortzmeyer).",
+    "Dans les écoles sans électricité ni Internet, un Raspberry Pi avec une copie locale de Wikipédia est une solution robuste et sobre (EDA, Guinée).",
+    "Les ordinateurs installés pour les enfants sont souvent captés par les adultes : choisir des objets peu convoités comme le Raspberry Pi (Afrikalan, Mali)."
+  ],
+  "sessions": [
+    {
+      "id": "quic-bortzmeyer",
+      "day": "2019-11-16",
+      "type": "talk",
+      "title": "Le protocole QUIC",
+      "speakers": ["Stéphane Bortzmeyer"],
+      "feedbackFrom": ["Stéphane Bortzmeyer (speaker)", "sketchnote de Kevin Ottens"],
+      "summary": "- Exposé sur **QUIC**, alors en cours de normalisation à l'IETF (depuis normalisé, les RFC sont publiés) (Stéphane Bortzmeyer, speaker).\n- Supports publiés : version PDF de présentation, version imprimable et source LaTeX/Beamer.\n- Kevin Ottens en a tiré une sketchnote.\n- Le descriptif ne détaille pas le contenu technique : seule la présence de la session et des supports est documentée.",
+      "summarySources": ["blog", "slides"],
+      "video": {
+        "youtubeId": "tJTWaG9VF6c",
+        "title": "Capitole du Libre 2019 : QUIC",
+        "publishedAt": "2019-11-17",
+        "transcript": false
+      }
+    },
+    {
+      "id": "rien-a-cacher-vous-devriez",
+      "day": "2019-11-16",
+      "type": "talk",
+      "title": "Rien à cacher ? Vous devriez.",
+      "speakers": ["Julien Osman"],
+      "feedbackFrom": ["Stéphane Bortzmeyer"],
+      "summary": "- Julien Osman explique « très clairement » les enjeux de la protection des données face au **machine learning** (Bortzmeyer).\n- Image retenue : *« Le machine learning est à la data ce que sont les raffineries au pétrole »* : il transforme une matière brute sans intérêt en ressource rentable.\n- Cela permet d'identifier les points sensibles d'un individu pour un ciblage publicitaire efficace (exemple de Cambridge Analytica).\n- Mise en garde sur la vidéosurveillance et la reconnaissance faciale : un gouvernement bienveillant aujourd'hui ne garantit pas celui de demain.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "censure-de-sites-imposee-aux-fai",
+      "day": "2019-11-16",
+      "type": "talk",
+      "title": "Censure de sites imposée aux FAI : où en est-on ?",
+      "speakers": ["Taziden"],
+      "feedbackFrom": ["Stéphane Bortzmeyer"],
+      "summary": "- Il n'existe **aucune liste consolidée** des noms de domaine censurés par décision judiciaire, ce qui rend l'ampleur de la censure difficile à évaluer (Taziden).\n- Pour mesurer l'application des blocages : OONI et les sondes RIPE Atlas (Bortzmeyer cite aussi son outil Blaeu).\n- Censure administrative (police) plus opaque : seulement un rapport annuel agrégé, 879 demandes de blocage en 2018 ; des sites retirent des contenus par peur d'être listés.\n- Les documents obtenus par l'orateur montrent un désaccord entre police et CNIL ; le tribunal administratif de Cergy a annulé le 1er septembre 2019 les blocages des sites Indymedia.\n- Contournement : résolveurs DNS publics, mais en DoT ou DoH, car l'UDP n'offre ni authentification, ni intégrité, ni confidentialité (précision de Bortzmeyer).",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "le-logiciel-libre-au-service-de-l-education-en-guinee",
+      "day": "2019-11-16",
+      "type": "talk",
+      "title": "Le logiciel libre au service de l'éducation en Guinée",
+      "speakers": ["Kovann Ly — EDA (Enfants De l'Aïr)"],
+      "feedbackFrom": ["Stéphane Bortzmeyer"],
+      "summary": "- Pour encourager la scolarisation dans une zone de mines d'or, l'école doit être attractive : l'informatique y contribue (EDA).\n- Pas de réseau électrique : un groupe électrogène ne supporte pas vingt PC, d'où le choix de **Raspberry Pi** reliés en WiFi.\n- Pas d'Internet dans les écoles : une copie de Wikipédia sur le serveur, logiciels libres sur les postes, dont Scratch.\n- Bilan positif : matériel robuste, faible consommation (l'essentiel vient des écrans) ; il faut juste dépoussiérer souvent la latérite.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "afrikalan-logiciels-libres-educatifs-hors-des-pays-du-nord",
+      "day": "2019-11-16",
+      "type": "talk",
+      "title": "Afrikalan : rendre les logiciels libres éducatifs accessibles hors des pays du nord",
+      "speakers": ["Association Bilou Toguna"],
+      "feedbackFrom": ["Stéphane Bortzmeyer"],
+      "summary": "- Malgré son sous-titre sur les pingouins dans les écoles d'Afrique, la session porte surtout sur le **périscolaire** (Bortzmeyer).\n- Au Mali, les enseignants appliquent des contenus sans en créer, ce qui complique l'introduction du libre en classe.\n- Utilisation des activités éducatives de Pepit.\n- Les adultes s'approprient souvent les ordinateurs destinés aux enfants : il faut des objets non perçus comme des ordinateurs, d'où le Raspberry Pi, pas moins cher mais moins convoité.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "zot-hubzilla-zap",
+      "day": "2019-11-16",
+      "type": "talk",
+      "title": "Zot : aux frontières des réseaux fédérés avec Hubzilla et Zap",
+      "speakers": ["Ale Abdo"],
+      "feedbackFrom": ["Stéphane Bortzmeyer"],
+      "summary": "- Hubzilla utilise le protocole Zot pour un réseau social décentralisé, avec une passerelle vers ActivityPub.\n- Originalité : l'**identité** et les contacts peuvent passer d'une instance à l'autre en copiant clé privée et profil.\n- Zap est une scission de Hubzilla centrée sur l'aspect réseau social.\n- Lecture critique : Bortzmeyer a été moins convaincu, l'orateur ayant manqué de temps pour présenter ces systèmes peu évidents.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "cycle-de-shaedra-ecrire-avec-frundis",
+      "day": "2019-11-16",
+      "type": "talk",
+      "title": "Écrire un roman avec un langage de balisage (Cycle de Shaedra, Frundis)",
+      "speakers": ["Marina Fernández de Retana (Kaoseto)"],
+      "feedbackFrom": ["Stéphane Bortzmeyer"],
+      "summary": "- L'auteure écrit ses romans en **WYSIWYM** plutôt qu'avec un logiciel WYSIWYG : intégration avec grep et git (Bortzmeyer).\n- Parcours : LaTeX (messages d'erreur insupportables), Markdown (pas de balisage sémantique), puis Frundis.\n- Frundis permet de créer ses propres balises sémantiques, même pour la poésie, et produit du PDF (impression) et de l'EPUB (écran).\n- Elle tape le Frundis avec vim sur clavier Bépo. Bortzmeyer dit avoir beaucoup aimé la présentation.\n- Le titre de la session est reconstitué à partir du compte-rendu, pas du programme officiel.",
+      "summarySources": ["blog"],
+      "video": {
+        "youtubeId": "QqDOkcrh1eU",
+        "title": "Capitole du Libre 2019 : Cycle de Shaedra",
+        "publishedAt": "2019-11-17",
+        "transcript": false
+      }
+    },
+    {
+      "id": "e-foundation-keynote-donnees-personnelles",
+      "day": "2019-11-16",
+      "type": "keynote",
+      "title": "/e/ : keynote sur la protection des données personnelles",
+      "speakers": ["Julien — /e/ Foundation", "rhunault — /e/ Foundation"],
+      "feedbackFrom": ["Message sur le forum /e/ (membres de la communauté)"],
+      "summary": "- /e/ tenait un stand et une keynote sur la **protection des données personnelles**.\n- Environ 70 personnes dans la salle (e-media, forum /e/).\n- Retours décrits comme très positifs : un « très bon moment » avec de nombreux retours d'utilisateurs (rhunault, forum, source partisane).\n- Captation en ligne sous le titre « /e/ Capitole du Libre 2019 ».",
+      "summarySources": ["feedback"],
+      "video": {
+        "youtubeId": "DqM20AJFZig",
+        "title": "/e/ Capitole du Libre 2019",
+        "publishedAt": "2019-11-17",
+        "transcript": false
+      }
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "GitLab CI (sketchnote seule, sans contenu lisible)",
+    "Panorama des menaces sur les libertés numériques (sketchnote seule)",
+    "AR et VR sur le web, état des lieux (sketchnote seule)",
+    "Le Libre et l'ESS peuvent-ils faire bon ménage ? (sketchnote seule)"
+  ],
+  "sources": [
+    { "label": "Capitole du Libre 2019, site officiel", "url": "https://2019.capitoledulibre.org/programme/" },
+    { "label": "Stéphane Bortzmeyer, compte-rendu de Capitole du Libre 2019", "url": "https://www.bortzmeyer.org/capitole-du-libre-2019.html" },
+    { "label": "Kevin Ottens, sketchnotes at Capitole du Libre 2019", "url": "https://ervin.ipsquad.net/blog/2019/11/17/sketchnotes-at-capitole-du-libre-2019/" },
+    { "label": "Forum /e/ : Capitole du libre 2019 (Toulouse)", "url": "https://community.e.foundation/t/capitole-du-libre-2019-toulouse/6942" },
+    { "label": "Vidéos PeerTube officielles", "url": "https://videos.capitoledulibre.org/c/capitoledulibre/videos" }
+  ],
+  "revisit": "Corpus mince : un seul blog détaillé, programme archivé non lu, aucun transcript ni post LinkedIn. À reprendre avec le programme complet (Wayback) et les vidéos 2019 de la chaîne PeerTube."
 }
