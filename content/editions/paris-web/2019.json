@@ -7,6 +7,144 @@
   "end": "2019-10-12",
   "city": "Paris",
   "url": "https://www.paris-web.fr/2019",
-  "status": "pending",
-  "sessions": []
+  "programUrl": "https://www.paris-web.fr/2019/conferences",
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-28",
+  "revisit": "Deux retours participants seulement (Gandi, Paperblog), centrés sur l'accessibilité ; aucune vidéo ni transcript retrouvé (pages paris-web.fr/revoir 2 à 10 non lues, Wayback Machine et Bash indisponibles). À reprendre : replays sous-titrés, blogs des orateurs (adactio.com, etc.), diapositives PDF, jours des sessions.",
+  "corpus": "Programme officiel paris-web.fr/2019 (32 conférences et 15 ateliers), lecture de 8 pages de conférence (descriptif, biographie, liens de diapositives) et de deux comptes rendus de participants : Pascal Duez (blog Gandi, 8 novembre 2019) et Tetue (Paperblog, 14 octobre 2019). Deux recherches web.",
+  "limits": "Corpus mince et biaisé vers l'accessibilité : les deux retours lus ne couvrent que quelques sessions. Aucune vidéo, aucun transcript, aucune diapositive ouverte ; les jours et horaires ne figurent pas sur les pages lues. Les sessions résumées d'après le seul descriptif disent ce qui était annoncé, pas ce qui a été dit.",
+  "tldr": "Paris Web 2019 (10 au 12 octobre) a proposé **32 conférences et 15 ateliers** où l'**accessibilité** domine les retours, aux côtés du design éthique, de la qualité du code, de la production et d'un web résilient (hors ligne, indépendant, publié chez soi).",
+  "keyTakeaways": [
+    "Traiter l'accessibilité dès la conception ou le cahier des charges : un audit fait après coup arrive trop tard, coûte plus cher et se perd en tableurs (Pascal Duez, Gandi, d'après les sessions de Julie Moynat et d'Accor).",
+    "Auditer par composants ou par fonctionnalités, avec un audit flash pour les erreurs évidentes, plutôt que page par page dans un tableau (Julie Moynat, relayée par Tetue et Pascal Duez).",
+    "Déployer l'accessibilité à grande échelle passe par la formation, la documentation et l'accompagnement de toute la chaîne de production, sous-traitants compris (Olivier Keul et Arnaud Delafosse, Accor, relayés par Tetue).",
+    "Former des relais internes plutôt que de laisser les auditeurs seuls experts (Pascal Duez, Gandi).",
+    "Annoncer les changements d'état des applications asynchrones aux lecteurs d'écran, par exemple avec des régions ARIA live (Sergei Kriger, relayé par Pascal Duez).",
+    "Reprendre la maîtrise de ses publications avec le principe POSSE : publier chez soi, diffuser ailleurs (Nicolas Hoizey, descriptif).",
+    "Les développeurs qui exploitent eux-mêmes la production font de meilleurs choix techniques : « You build it, you run it » (Morgan Leroi, descriptif).",
+    "La revue de code bienveillante peut masquer des rapports de pouvoir dans l'équipe (Kim Lai Trinh, descriptif)."
+  ],
+  "sessions": [
+    {
+      "id": "reinventons-les-audits-d-accessibilite-web",
+      "type": "talk",
+      "title": "Réinventons les audits d'accessibilité web",
+      "speakers": ["Julie Moynat"],
+      "feedbackFrom": ["Tetue (Paperblog)", "Pascal Duez (Gandi)"],
+      "summary": "- Point de départ (descriptif) : la grille d'audit en tableur, avec ses cases grises, vertes et rouges et ses longs commentaires, **montre ses limites** pour les équipes.\n- Proposition : **auditer par composants et par fonctionnalités**, plus proche de la façon dont les projets sont construits ; la conférencière prévient qu'il ne s'agit pas d'une solution miracle (descriptif).\n- Selon Tetue, elle critique les audits RGAA demandés trop tard et livrés en tableur, et propose un **audit flash** pour les erreurs évidentes, un audit de composants plus détaillé, et l'audit de maquettes en amont.\n- Pascal Duez (Gandi) retient des audits fastidieux et rigides, et des alternatives comme les audits rapides ou par morceaux.\n- Les diapositives sont en ligne (PDF et pw2019.tanaguru.com).",
+      "summarySources": ["feedback", "program"]
+    },
+    {
+      "id": "ya-pas-quele-alt-dans-la-vie",
+      "type": "talk",
+      "title": "Y'a pas qu'le ALT dans la vie : déployer l'accessibilité web à grande échelle",
+      "speakers": ["Olivier Keul — Accor", "Arnaud Delafosse — Accor"],
+      "feedbackFrom": ["Tetue (Paperblog)", "Pascal Duez (Gandi)"],
+      "summary": "- Retour d'expérience d'Accor sur le déploiement de l'accessibilité à grande échelle (Tetue).\n- Les orateurs cherchent **moins la conformité que l'accessibilité** (Tetue, citant la session).\n- Trois leviers : **formation, documentation et accompagnement** sur toute la chaîne de production, y compris les prestataires externes (Tetue).\n- Au-delà du technique, les relations, la pédagogie et l'organisation conditionnent le succès durable (Pascal Duez).\n- Leçons communes avec la session de Julie Moynat, selon Pascal Duez : agir tôt, prévenir les régressions, compter sur des relais internes, composer avec la feuille de route et le SEO.",
+      "summarySources": ["feedback"]
+    },
+    {
+      "id": "time-control-in-web-accessibility",
+      "type": "talk",
+      "title": "Time Control in Web Accessibility",
+      "speakers": ["Sergei Kriger"],
+      "feedbackFrom": ["Pascal Duez (Gandi)"],
+      "summary": "- Les applications modernes, asynchrones et riches visuellement, doivent fonctionner avec les technologies d'assistance, **en particulier les lecteurs d'écran** (Pascal Duez).\n- Techniques simples présentées : régions **ARIA live** pour annoncer clairement changements d'état, succès et erreurs (Pascal Duez).\n- Session de 30 minutes en anglais (programme).",
+      "summarySources": ["feedback", "program"]
+    },
+    {
+      "id": "on-vous-ment-on-vous-manipule",
+      "type": "workshop",
+      "title": "On vous ment, on vous manipule : à la découverte des biais cognitifs",
+      "speakers": ["Stéphanie Walter", "Laurence Vagner"],
+      "feedbackFrom": ["Tetue (Paperblog)"],
+      "summary": "- Atelier de 90 minutes sur les biais cognitifs (programme).\n- Les participants les découvrent par **un jeu de 52 cartes**, que Tetue juge ludique et engageant.",
+      "summarySources": ["feedback", "program"]
+    },
+    {
+      "id": "going-offline",
+      "type": "keynote",
+      "title": "Going Offline",
+      "speakers": ["Jeremy Keith — Clearleft"],
+      "feedbackFrom": [],
+      "summary": "- Descriptif officiel : un site n'a plus à dépendre d'une connexion, les **service workers** rendent possible le fonctionnement hors ligne.\n- L'orateur annonce plusieurs stratégies hors ligne et le code pour les mettre en oeuvre.\n- Conférence de 50 minutes en anglais, sous-titrée en français ; l'orateur est l'auteur du livre du même titre (A Book Apart).\n- Résumé tiré du seul descriptif ; diapositives PDF publiées sur la page.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "the-web-of-now-balancing-man-and-machine",
+      "type": "talk",
+      "title": "The web of now: balancing man and machine",
+      "speakers": ["Chris Heilmann — Microsoft"],
+      "feedbackFrom": [],
+      "summary": "- Descriptif officiel : les standards, le balisage soigné et le JavaScript en amélioration progressive **ne suffisent pas** à produire de bons produits web.\n- Beaucoup de ces produits n'arrivent jamais sur le web, et ceux qui y arrivent sont souvent lourds et dépendants d'experts.\n- Il aborde le risque d'automatisation par l'apprentissage automatique et la transmission de la culture de la qualité à une nouvelle génération.\n- Diapositives sur noti.st et en PDF. Résumé tiré du seul descriptif.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "why-every-interface-should-be-black-and-white",
+      "type": "talk",
+      "title": "Why Every Interface Should Be Black And White",
+      "speakers": ["Heydon Pickering"],
+      "feedbackFrom": [],
+      "summary": "- Descriptif officiel : concevoir **sans couleur dès le départ**, car la couleur ajoute de la complexité qui peut gêner la cognition.\n- Ce que la couleur apporte peut souvent l'être de façon plus accessible ; il évoque aussi les inconvénients de l'ajouter après coup.\n- Conférence de 50 minutes en anglais, sous-titrée en français. Résumé tiré du seul descriptif.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "autocritique-de-la-revue-de-code-bienveillante",
+      "type": "talk",
+      "title": "Autocritique de la revue de code (bienveillante)",
+      "speakers": ["Kim Lai Trinh"],
+      "feedbackFrom": [],
+      "summary": "- Après six ans de revues de code dans une même équipe (La Ruche qui dit Oui !), l'oratrice ou l'orateur évalue si la revue tient ses promesses (descriptif).\n- Les guides de revue bienveillante (« vous n'êtes pas votre code ») ignorent selon lui ou elle les **rapports de pouvoir** et peuvent renforcer les hiérarchies sociales.\n- Effets contre-productifs cités : code difficile à maintenir, projets qui piétinent, juniors qui ne progressent pas, détresse au travail ; des pistes sont proposées.\n- Résumé tiré du seul descriptif.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "au-secours-je-dois-gerer-la-production",
+      "type": "talk",
+      "title": "Au secours, je dois gérer la production !",
+      "speakers": ["Morgan Leroi — Société Générale"],
+      "feedbackFrom": [],
+      "summary": "- Question de départ (descriptif) : comment la conception changerait-elle si l'on pensait **production dès le début** ?\n- Il part de la formule de Werner Vogels « You build it, you run it ».\n- Retour de trois ans dans une équipe où les développeurs exploitent eux-mêmes une application de salle de marchés : choix techniques, préparation des releases, support, supervision.\n- Approche baptisée « Production Driven Development ». Résumé tiré du seul descriptif.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "ne-vous-laissez-plus-deposseder-de-vos-contenus",
+      "type": "talk",
+      "title": "Ne vous laissez plus déPOSSEder de vos contenus !",
+      "speakers": ["Nicolas Hoizey — Clever Age"],
+      "feedbackFrom": [],
+      "summary": "- Descriptif officiel : on s'inquiète de l'usage des données par les grandes plateformes mais on y reste par commodité.\n- Ce qu'on publie est aussi une donnée personnelle : seule la **reprise de la plateforme de publication** permet de maîtriser diffusion, durée de vie et suppression.\n- Moyen proposé : le mouvement IndieWeb et le principe **POSSE** (Publish on your Own Site, Syndicate Elsewhere).\n- Diapositives PDF et en ligne. Résumé tiré du seul descriptif.",
+      "summarySources": ["program"]
+    },
+    {
+      "id": "pour-un-design-de-l-independance",
+      "type": "talk",
+      "title": "Pour un design de l'indépendance",
+      "speakers": ["Geoffrey Dorne"],
+      "feedbackFrom": [],
+      "summary": "- Descriptif officiel : la résilience humaine et le passage du design comme métier au design comme **outil d'émancipation**.\n- Le design est présenté comme une voie parmi d'autres face à l'Anthropocène.\n- Résumé tiré du seul descriptif.",
+      "summarySources": ["program"]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Souriez, vous êtes cartographiés (Jérémy Renard)",
+    "VPTCS, un modèle transversal pour la qualité de l'expérience utilisateur (Eric Gateau, Elie Sloïm)",
+    "Design éthique, de l'essence à la pratique (Véronique Lapierre)",
+    "SVG et accessibilité (Jérémie Patonnier)",
+    "Le web est-il toujours l'unique solution ? (Benedetta Pastore)",
+    "Performance : il se passe quoi après le backend ? (Jean-Pierre Vincent)",
+    "Designers, développeurs, créons la différence ! (Florent Berthelot, Cécile Freyd-Foucault)",
+    "L'accessibilité chez Orange France, comment ça marche ? (Stéphane Deschamps)",
+    "Votre API web passe-t-elle les 60 points du contrôle technique ? (François-Guillaume Ribreau)",
+    "Femmes du web (Marjorie Llombart)",
+    "Revoir la documentation, de zéro (Matthias Dugué)",
+    "Ecoconception web : la boîte à outils de la communauté, atelier (Frédéric Bordage)",
+    "Autres conférences et ateliers du programme (47 sessions au total)"
+  ],
+  "sources": [
+    { "label": "Programme officiel Paris Web 2019", "url": "https://www.paris-web.fr/2019/conferences" },
+    { "label": "Pascal Duez (Gandi) : The web and accessibility, key takeaways from Paris Web 2019", "url": "https://news.gandi.net/?p=56586" },
+    { "label": "Tetue (Paperblog) : Paris Web 2019", "url": "https://www.paperblog.fr/8996949/paris-web-2019/" },
+    { "label": "Diapositives de Chris Heilmann (noti.st)", "url": "https://noti.st/codepo8/j8GkPq/slides" },
+    { "label": "Replays Paris Web (non consultés pour 2019)", "url": "https://www.paris-web.fr/revoir" }
+  ]
 }

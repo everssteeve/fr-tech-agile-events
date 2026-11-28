@@ -10,6 +10,179 @@
   "url": "https://www.youtube.com/playlist?list=PL-Wbj9VN8zDRTas7ycjZzE08zmql1DPdr",
   "dateConfidence": "ok",
   "note": "Ancien nom de Swift Connection. Dates et lieu (« October 7-8, 2019 / Le Beffroi de Montrouge ») issus du site frenchkit.fr archivé (Wayback Machine, août 2019). Vidéos publiées le 24 octobre 2019.",
-  "status": "pending",
-  "sessions": []
+  "status": "synthesized",
+  "synthesisUpdatedAt": "2026-11-28",
+  "theme": "Swift, SwiftUI et Combine, un an après leur annonce à la WWDC 2019",
+  "corpus": "Deux comptes-rendus d'un participant (Mickaël Rémond, blog ProcessOne, un par jour, publiés les 10 et 11 octobre 2019) couvrant 14 sessions. Les extraits de résultats de recherche mentionnent aussi un article iAdvize et un récapitulatif dotSwift, non lus.",
+  "limits": "Corpus très mince : un seul auteur, avec ses préférences (il a assisté à certaines sessions et pas à d'autres). Le programme officiel archivé et la playlist YouTube n'ont pas pu être lus (Wayback Machine et YouTube inaccessibles depuis cet environnement) : aucune vidéo ni transcript n'est rattaché, et le programme complet (environ 26 speakers annoncés) n'est pas listé. Les jours des sessions du jour 2 sont déduits des dates officielles de l'événement.",
+  "tldr": "FrenchKit 2019 a mis **SwiftUI et Combine au centre** (animations, Redux, réactif), à côté de sujets plus durables : génériques, property wrappers, tests par propriétés, Swift côté serveur et Catalyst.",
+  "keyTakeaways": [
+    "Écrire d'abord du code concret, puis le généraliser avec les génériques (Rob Napier, d'après ProcessOne).",
+    "Maîtriser UIKit et Core Animation permet parfois de construire un composant maison plus léger qu'une dépendance GitHub (Joel Kin, d'après ProcessOne).",
+    "Ajouter un menu « showcase » dans le build Debug pour montrer des travaux inachevés et raccourcir les cycles (Jérôme Alves, Heetch).",
+    "Compléter les tests classiques par du property-based testing avec SwiftCheck (Vincent Pradeilles).",
+    "Les property wrappers de Swift 5.1 peuvent gérer des formats de date sans `Codable` sur mesure (Olivier Halligon).",
+    "Des fonctions d'IA accessibles aux développeurs iOS existent déjà via les API Apple : recherche sémantique, analyse de sentiment, réponses intelligentes (Hervé Beranger)."
+  ],
+  "sessions": [
+    {
+      "id": "swift-pills",
+      "day": "2019-10-07",
+      "type": "lightning",
+      "title": "Swift Pills",
+      "speakers": ["Vincent Pradeilles"],
+      "feedbackFrom": ["Mickaël Rémond (blog ProcessOne)"],
+      "summary": "- Trois lightning talks de cinq minutes répartis dans la journée : **encapsuler `[weak self]`**, `@autoclosure` et les optionnels.\n- Le participant a apprécié ce format qui coupe les sessions longues.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "animations-with-swiftui",
+      "day": "2019-10-07",
+      "type": "talk",
+      "title": "Animations with SwiftUI",
+      "speakers": ["Chris Eidhof"],
+      "feedbackFrom": ["Mickaël Rémond (blog ProcessOne)"],
+      "summary": "- Démonstration en live coding d'une **animation de secousse personnalisée** construite avec un modificateur de vue `GeometryEffect`.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "understanding-combine",
+      "day": "2019-10-07",
+      "type": "talk",
+      "title": "Understanding Combine",
+      "speakers": ["Daniel Steinberg"],
+      "feedbackFrom": ["Mickaël Rémond (blog ProcessOne)"],
+      "summary": "- Compare le **motif réactif** au motif de délégation.\n- Montre comment utiliser Combine avec UIKit, notamment `@Published` dans des view controllers UIKit.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "swiftui-with-redux",
+      "day": "2019-10-07",
+      "type": "talk",
+      "title": "SwiftUI with Redux",
+      "speakers": ["Thomas Ricouard"],
+      "feedbackFrom": ["Mickaël Rémond (blog ProcessOne)"],
+      "summary": "- Courte introduction à Redux, illustrée par son application open source MovieSwiftUI.\n- Apple a évoqué à la WWDC un **flux de données unidirectionnel** sans expliquer comment l'utiliser : le talk comble ce manque (d'après le compte-rendu).",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "showcase-driven-development",
+      "day": "2019-10-07",
+      "type": "talk",
+      "title": "Showcase Driven Development",
+      "speakers": ["Jérôme Alves — Heetch"],
+      "feedbackFrom": ["Mickaël Rémond (blog ProcessOne)"],
+      "summary": "- Des cycles plus courts passent par des **branches petites et éphémères**, donc par un découpage des fonctionnalités en sous-fonctionnalités et en couches.\n- Pour montrer du travail inachevé, Heetch ajoute un menu showcase au build Debug (prototypes, parcours, animations), utile pour échanger avec le management, le marketing et les clients.\n- Heetch a publié ShowcaseKit en open source comme exemple.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "slide-to-unlock-custom-ui-uikit-core-animation",
+      "day": "2019-10-07",
+      "type": "talk",
+      "title": "Slide to Unlock: Building Custom UI with UIKit and Core Animation",
+      "speakers": ["Joel Kin"],
+      "feedbackFrom": ["Mickaël Rémond (blog ProcessOne)"],
+      "summary": "- Thèse : maîtriser les couches d'Apple (UIKit jusqu'à Core Animation) permet de **construire son composant** plutôt que d'ajouter une dépendance GitHub.\n- Composant « slide to unlock » bâti à partir d'un `UISlider`, avec effet shimmer, en moins de lignes que les alternatives open source (code publié sur GitHub, d'après le compte-rendu).",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "workshops-exploring-combine",
+      "day": "2019-10-07",
+      "type": "workshop",
+      "title": "Workshops (dont Exploring Combine)",
+      "speakers": ["Florent Pillet", "Antoine Van Der Lee"],
+      "feedbackFrom": ["Mickaël Rémond (blog ProcessOne)"],
+      "summary": "- Sept ateliers étaient proposés en fin de journée.\n- Le participant a suivi « Exploring Combine » : une introduction au framework réactif d'Apple en **programmation en binôme**, jugée utile pour rencontrer des gens et partager des idées.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "swift-superpowers",
+      "day": "2019-10-08",
+      "type": "lightning",
+      "title": "Swift Superpowers",
+      "speakers": ["David Bonnet"],
+      "feedbackFrom": ["Mickaël Rémond (blog ProcessOne)"],
+      "summary": "- Trois lightning talks sur **Swift côté serveur** : exemples Vapor 3, réseau avec SwiftNIO et client URLSession multiplateforme, débogage d'applications Vapor dans Xcode et tests XCTest multiplateformes dans Docker.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "swift-generics-it-isnt-supposed-to-hurt",
+      "day": "2019-10-08",
+      "type": "talk",
+      "title": "Swift Generics: It isn't supposed to hurt",
+      "speakers": ["Rob Napier"],
+      "feedbackFrom": ["Mickaël Rémond (blog ProcessOne)"],
+      "summary": "- Refactoring progressif pour utiliser les génériques : plus de flexibilité, moins de répétition.\n- Message clé : **écrire d'abord le code concret, puis le généraliser**.\n- Le participant a trouvé la masterclass plus longue de la journée difficile à suivre sur 90 minutes.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "note-encryption-10-lines-1500-lines-key-management",
+      "day": "2019-10-08",
+      "type": "talk",
+      "title": "Note encryption: 10 lines for encryption, 1500 lines for key management",
+      "speakers": ["Anastasiia Voitova — Cossack Labs"],
+      "feedbackFrom": ["Mickaël Rémond (blog ProcessOne)"],
+      "summary": "- Retour d'expérience de Cossack Labs sur l'ajout du **chiffrement de bout en bout** à l'application de notes Bear.\n- Le participant l'a jugé très instructif.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "swiftpm-new-resolver",
+      "day": "2019-10-08",
+      "type": "talk",
+      "title": "SwiftPM's New Resolver: Can it Resolve the Conflicts in my Relationship?",
+      "speakers": ["Mert Buran"],
+      "feedbackFrom": ["Mickaël Rémond (blog ProcessOne)"],
+      "summary": "- Rend un sujet aride, la **résolution de dépendances** de Swift Package Manager, vivant grâce à une analogie avec la résolution de conflits dans son groupe de rock.\n- Jugé le talk le plus drôle de la conférence ; le participant retient que SwiftPM est du code open source qui mérite d'être lu.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "this-is-not-rocket-data-science",
+      "day": "2019-10-08",
+      "type": "talk",
+      "title": "This is not rocket (data) science",
+      "speakers": ["Hervé Beranger"],
+      "feedbackFrom": ["Mickaël Rémond (blog ProcessOne)"],
+      "summary": "- Fonctions d'**IA concrètes à la portée des développeurs iOS** : interfaces vocales, traduction, recherche sémantique, analyse de sentiment, suggestions de recherche, réponses intelligentes, classifieurs de texte personnalisés.\n- Les API Apple correspondantes ont été montrées pour chaque cas.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "introduction-to-property-based-testing",
+      "day": "2019-10-08",
+      "type": "talk",
+      "title": "An introduction to property-based testing",
+      "speakers": ["Vincent Pradeilles"],
+      "feedbackFrom": ["Mickaël Rémond (blog ProcessOne)"],
+      "summary": "- Le **property-based testing** complète les tests classiques.\n- SwiftCheck est recommandé, comme implémentation Swift de QuickCheck ; des alternatives plus légères existent (générateurs de données aléatoires comme Faker, fuzzing).",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "shipping-a-catalyst-app",
+      "day": "2019-10-08",
+      "type": "talk",
+      "title": "Shipping a Catalyst app: The Good, the Bad and the Ugly",
+      "speakers": ["Peter Steinberger"],
+      "feedbackFrom": ["Mickaël Rémond (blog ProcessOne)"],
+      "summary": "- Retour sur **Catalyst**, qui porte des apps iPad UIKit vers macOS.\n- Son application de lecture PDF a demandé des ponts AppKit (éditeur de barre d'outils, NSSearch, NSCursor, menu Open Recent), compliqué par le sandbox des apps Catalyst.",
+      "summarySources": ["blog"]
+    },
+    {
+      "id": "and-thats-a-wrap",
+      "day": "2019-10-08",
+      "type": "talk",
+      "title": "And that's a wrap",
+      "speakers": ["Olivier Halligon"],
+      "feedbackFrom": ["Mickaël Rémond (blog ProcessOne)"],
+      "summary": "- Pourquoi et comment utiliser les **property wrappers** (Swift 5.1), fonctionnalité préférée du participant.\n- Avec un but clair, ils améliorent le code ; astuce : gérer des formats de date sans implémentation `Codable` sur mesure.",
+      "summarySources": ["blog"]
+    }
+  ],
+  "sessionsWithoutFeedback": [
+    "Autres sessions et ateliers du programme (environ 26 speakers annoncés), non listés faute de programme lisible"
+  ],
+  "sources": [
+    { "label": "ProcessOne : FrenchKit Conference, Day 1 Highlights (Mickaël Rémond, 10 octobre 2019)", "url": "https://www.process-one.net/blog/frenchkit-conference-day-1-highlights/" },
+    { "label": "ProcessOne : FrenchKit Conference, Day 2 Highlights (Mickaël Rémond, 11 octobre 2019)", "url": "https://www.process-one.net/blog/frenchkit-conference-day-2-highlights/" },
+    { "label": "Playlist YouTube FrenchKit 2019 (non lue)", "url": "https://www.youtube.com/playlist?list=PL-Wbj9VN8zDRTas7ycjZzE08zmql1DPdr" }
+  ],
+  "revisit": "Corpus mince : un seul blog lu, programme officiel archivé et vidéos non lus (Bash et Wayback Machine inaccessibles). À compléter avec la liste des vidéos de la playlist, les transcripts et d'autres retours (iAdvize, Medium, Twitter)."
 }
